@@ -1,0 +1,101 @@
+<mat-sidenav-container class="chat-container">
+  <mat-sidenav mode="side" opened class="thread-sidebar">
+    <div class="sidebar-header">
+      <h3>Threads</h3>
+      <button mat-icon-button (click)="chatStore.newThread()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <mat-nav-list>
+      @for (t of chatStore.threads(); track t.id) {
+        <mat-list-item
+          [class.active]="t.id === chatStore.activeThreadId()"
+          (click)="chatStore.loadThread(t.id)">
+          <span matListItemTitle>{{ t.title ?? 'Untitled' }}</span>
+          <span matListItemMeta>
+            <button mat-icon-button (click)="chatStore.deleteThread(t.id); $event.stopPropagation()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </span>
+        </mat-list-item>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="chat-main">
+    <div class="chat-controls">
+      <mat-form-field appearance="outline" class="mode-select">
+        <mat-label>Mode</mat-label>
+        <mat-select [ngModel]="chatStore.mode()" (ngModelChange)="chatStore.setMode($event)">
+          <mat-option value="auto">Auto</mat-option>
+          <mat-option value="find-problems">Find Problems</mat-option>
+          <mat-option value="mock-interview">Mock Interview</mat-option>
+          <mat-option value="subject-quiz">Subject Quiz</mat-option>
+          <mat-option value="content-enricher">Content Enricher</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="model-select">
+        <mat-label>Model</mat-label>
+        <mat-select [ngModel]="modelsStore.selectedModelId()" (ngModelChange)="modelsStore.selectModel($event)">
+          @for (m of modelsStore.models(); track m.id) {
+            <mat-option [value]="m.id">{{ m.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    @if (chatStore.streaming()) {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+
+    <div class="messages" #messagesContainer>
+      @for (msg of chatStore.messages(); track msg.id) {
+        <div class="message" [class]="'message-' + msg.role">
+          <div class="message-header">
+            <span class="message-role">{{ msg.role === 'user' ? 'You' : 'Assistant' }}</span>
+            @if (msg.content && !msg.streaming) {
+              <button mat-icon-button
+                class="copy-btn"
+                matTooltip="Copy to clipboard"
+                (click)="copyMessage(msg.content)">
+                <mat-icon>content_copy</mat-icon>
+              </button>
+            }
+          </div>
+          <div class="message-content markdown-body" [innerHTML]="renderMd(msg.content)"></div>
+          @if (msg.streaming) {
+            <span class="typing-indicator">...</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="composer">
+      <mat-form-field appearance="outline" class="composer-input">
+        <mat-label>Message</mat-label>
+        <textarea matInput
+          [(ngModel)]="userInput"
+          (keydown.enter)="onSend($event)"
+          placeholder="Ask about problems, request a mock interview..."
+          rows="2"
+          [disabled]="chatStore.streaming()">
+        </textarea>
+      </mat-form-field>
+
+      <button mat-fab color="primary"
+        [disabled]="chatStore.streaming() || !userInput().trim()"
+        (click)="sendMessage()">
+        @if (chatStore.streaming()) {
+          <mat-icon (click)="chatStore.abort(); $event.stopPropagation()">stop</mat-icon>
+        } @else {
+          <mat-icon>send</mat-icon>
+        }
+      </button>
+    </div>
+
+    @if (chatStore.error()) {
+      <div class="error-banner">{{ chatStore.error() }}</div>
+    }
+  </mat-sidenav-content>
+</mat-sidenav-container>

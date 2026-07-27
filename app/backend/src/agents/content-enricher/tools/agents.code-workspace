@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../../../agents"
+		},
+		{
+			"path": "../../../../../.."
+		}
+	],
+	"settings": {
+		"markdown.extension.tableFormatter.enabled": false,
+		"markdown.extension.completion.enabled": false
+	}
+}

@@ -1,0 +1,32 @@
+<h2>Study Subjects</h2>
+
+@if (store.status() === 'loading') {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<div class="subjects-grid">
+  @for (s of store.items(); track s.id) {
+    <mat-card class="subject-card" [routerLink]="['/subjects', s.id]">
+      <mat-card-header>
+        <mat-card-title>{{ s.title }}</mat-card-title>
+        <mat-card-subtitle>{{ s.wordCount }} words</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chips">
+          @for (c of s.keyConcepts.slice(0, 5); track c) {
+            <mat-chip-set><mat-chip>{{ c }}</mat-chip></mat-chip-set>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>
+
+<mat-paginator
+  [length]="store.total()"
+  [pageSize]="store.pageSize()"
+  [pageIndex]="store.page() - 1"
+  [pageSizeOptions]="[10, 25, 50]"
+  (page)="onPage($event)"
+  showFirstLastButtons>
+</mat-paginator>

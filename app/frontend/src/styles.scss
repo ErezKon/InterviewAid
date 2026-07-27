@@ -63,6 +63,17 @@ html, body {
   --mat-menu-container-color: #2c2c2c;
   --mat-menu-item-label-text-color: #e0e0e0;
 
+  --mdc-list-item-label-text-color: #e0e0e0;
+  --mdc-list-item-primary-text-color: #e0e0e0;
+  --mdc-list-item-secondary-text-color: #b0b0b0;
+  --mdc-list-item-supporting-text-color: #b0b0b0;
+  --mat-list-active-indicator-color: rgba(144, 202, 249, 0.15);
+
+  --mdc-fab-container-color: #90caf9;
+  --mat-fab-foreground-color: #121212;
+  --mat-fab-state-layer-color: #121212;
+  --mdc-fab-icon-color: #121212;
+
   --mat-progress-spinner-active-indicator-color: #90caf9;
 
   --chat-user-bg: #1a3a5c;
@@ -75,6 +86,8 @@ html, body {
     color: #e0e0e0;
   }
 }
+
+.composer .mat-mdc-form-field-subscript-wrapper { display: none; }
 
 .difficulty-easy { color: #4caf50; }
 .difficulty-medium { color: #ff9800; }

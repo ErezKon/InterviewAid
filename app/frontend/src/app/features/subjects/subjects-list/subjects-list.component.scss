@@ -1,0 +1,14 @@
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.subject-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.subject-card:hover {
+  box-shadow: 0 4px 20px color-mix(in srgb, currentColor 12%, transparent);
+}
+.chips { display: flex; gap: 0.25rem; flex-wrap: wrap; }

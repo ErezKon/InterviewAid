@@ -1,0 +1,15 @@
+.detail-page { max-width: 900px; margin: 0 auto; }
+.detail-card { margin-top: 1rem; }
+.lc-id { opacity: 0.5; margin-right: 0.5rem; }
+.topic-badge {
+  margin-left: 1rem;
+  background: rgba(25, 118, 210, 0.12);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+.lc-link { margin-left: 1rem; }
+.chips-row { display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 1rem; }
+section { margin-bottom: 1.5rem; }
+mat-expansion-panel { margin-bottom: 1rem; }
+.loading { display: flex; justify-content: center; padding: 3rem; }

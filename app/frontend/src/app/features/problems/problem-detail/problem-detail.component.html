@@ -1,0 +1,87 @@
+<div class="detail-page">
+  <a mat-button routerLink="/problems">
+    <mat-icon>arrow_back</mat-icon> Back to Problems
+  </a>
+
+  @if (detail(); as d) {
+    <mat-card class="detail-card">
+      <mat-card-header>
+        <mat-card-title>
+          @if (d.leetcodeId) {
+            <span class="lc-id">#{{ d.leetcodeId }}</span>
+          }
+          {{ d.title }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span [class]="'difficulty-' + d.difficulty.toLowerCase()">{{ d.difficulty }}</span>
+          @if (d.primaryTopic) {
+            <span class="topic-badge">{{ d.primaryTopic }}</span>
+          }
+          @if (d.url) {
+            <a [href]="d.url" target="_blank" rel="noopener" class="lc-link">LeetCode</a>
+          }
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="chips-row">
+          @for (t of d.topics; track t) {
+            <mat-chip-set><mat-chip>{{ t }}</mat-chip></mat-chip-set>
+          }
+        </div>
+
+        @if (d.descriptionMd) {
+          <section>
+            <h3>Description</h3>
+            <div class="markdown-body" [innerHTML]="renderMd(d.descriptionMd)"></div>
+          </section>
+        }
+
+        @if (d.examplesMd) {
+          <section>
+            <h3>Examples</h3>
+            <div class="markdown-body" [innerHTML]="renderMd(d.examplesMd)"></div>
+          </section>
+        }
+
+        @if (d.solutionMd) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Solution</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="markdown-body" [innerHTML]="renderMd(d.solutionMd)"></div>
+          </mat-expansion-panel>
+        }
+
+        @if (d.complexityMd) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Complexity Analysis</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="markdown-body" [innerHTML]="renderMd(d.complexityMd)"></div>
+          </mat-expansion-panel>
+        }
+
+        @if (d.followUpsMd) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Follow-ups</mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="markdown-body" [innerHTML]="renderMd(d.followUpsMd)"></div>
+          </mat-expansion-panel>
+        }
+
+        @if (d.takeawayMd) {
+          <section>
+            <h3>Key Takeaway</h3>
+            <div class="markdown-body" [innerHTML]="renderMd(d.takeawayMd)"></div>
+          </section>
+        }
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <div class="loading">
+      <mat-spinner diameter="48"></mat-spinner>
+    </div>
+  }
+</div>

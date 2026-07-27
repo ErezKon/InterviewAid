@@ -5,32 +5,32 @@ export const routes: Routes = [
   {
     path: 'problems',
     loadComponent: () =>
-      import('./features/problems/problems-list.component').then(m => m.ProblemsListComponent),
+      import('./features/problems/problems-list/problems-list.component').then(m => m.ProblemsListComponent),
   },
   {
     path: 'problems/:slug',
     loadComponent: () =>
-      import('./features/problems/problem-detail.component').then(m => m.ProblemDetailComponent),
+      import('./features/problems/problem-detail/problem-detail.component').then(m => m.ProblemDetailComponent),
   },
   {
     path: 'subjects',
     loadComponent: () =>
-      import('./features/subjects/subjects-list.component').then(m => m.SubjectsListComponent),
+      import('./features/subjects/subjects-list/subjects-list.component').then(m => m.SubjectsListComponent),
   },
   {
     path: 'subjects/:id',
     loadComponent: () =>
-      import('./features/subjects/subject-detail.component').then(m => m.SubjectDetailComponent),
+      import('./features/subjects/subject-detail/subject-detail.component').then(m => m.SubjectDetailComponent),
   },
   {
     path: 'chat',
     loadComponent: () =>
-      import('./features/chat/chat-page.component').then(m => m.ChatPageComponent),
+      import('./features/chat/chat-page/chat-page.component').then(m => m.ChatPageComponent),
   },
   {
     path: 'chat/:threadId',
     loadComponent: () =>
-      import('./features/chat/chat-page.component').then(m => m.ChatPageComponent),
+      import('./features/chat/chat-page/chat-page.component').then(m => m.ChatPageComponent),
   },
   { path: '**', redirectTo: 'problems' },
 ];
