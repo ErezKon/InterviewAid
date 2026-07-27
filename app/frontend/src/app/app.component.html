@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <span class="brand" routerLink="/">Interview Prep</span>
+  <nav class="nav-links">
+    <a mat-button routerLink="/problems" routerLinkActive="active">Problems</a>
+    <a mat-button routerLink="/subjects" routerLinkActive="active">Subjects</a>
+    <a mat-button routerLink="/chat" routerLinkActive="active">Chat</a>
+  </nav>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="theme.toggle()" [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'">
+    <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<main class="app-content">
+  <router-outlet />
+</main>

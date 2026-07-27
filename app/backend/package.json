@@ -1,0 +1,34 @@
+{
+  "name": "interview-prep-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx watch src/index.ts",
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx src/index.ts",
+    "index:parse": "tsx src/indexer/run-index.ts --stage=parse",
+    "index:classify": "tsx src/indexer/run-index.ts --stage=classify",
+    "index:build": "tsx src/indexer/run-index.ts --stage=build",
+    "index:all": "tsx src/indexer/run-index.ts --stage=parse && tsx src/indexer/run-index.ts --stage=classify && tsx src/indexer/run-index.ts --stage=build",
+    "test": "tsx --test $(find src -name '*.test.ts')"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.1.16",
+    "@langchain/langgraph": "^1.0.7",
+    "@langchain/openai": "^1.2.0",
+    "better-sqlite3": "^9.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "langchain": "^1.2.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

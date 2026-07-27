@@ -1,0 +1,3415 @@
+01 Matrix.md
+132 Pattern.md
+1-bit and 2-bit Characters.md
+24 Game.md
+2 Keys Keyboard.md
+3Sum Closest.md
+3Sum.md
+3Sum Smaller.md
+3Sum With Multiplicity.md
+4 Keys Keyboard.md
+4Sum II.md
+4Sum.md
+Abbreviating the Product of a Range.md
+Accounts Merge Extended.md
+Accounts Merge.md
+Active Businesses.md
+Active Users.md
+Activity Participants.md
+Actors and Directors Who Cooperated At Least Three Times.md
+Add Binary.md
+Add Bold Tag in String.md
+Add Digits.md
+Add Edges to Make Degrees of All Nodes Even.md
+Adding Spaces to a String.md
+Adding Two Negabinary Numbers.md
+Additive Number.md
+Add One Row to Tree.md
+Add Strings.md
+Add to Array-Form of Integer.md
+Add Two Integers.md
+Add Two Numbers II.md
+Add Two Numbers.md
+Add Two Polynomials Represented as Linked Lists.md
+Add Two Promises.md
+Ad-Free Sessions.md
+Adjacent Increasing Subarrays Detection II.md
+Adjacent Increasing Subarrays Detection I.md
+Ads Performance.md
+Advantage Shuffle.md
+Airplane Seat Assignment Probability.md
+Alert Using Same Key-Card Three or More Times in a One Hour Period.md
+Alice and Bob Playing Flower Game.md
+Alien Dictionary Extended.md
+Alien Dictionary.md
+Alien Dictionary Patterns.md
+All Ancestors of a Node in a Directed Acyclic Graph.md
+All Divisions With the Highest Score of a Binary Array.md
+All Elements in Two Binary Search Trees.md
+All Nodes Distance K in Binary Tree.md
+Allocate Mailboxes.md
+All O'one Data Structure.md
+All O`one Data Structure.md
+Allow One Function Call.md
+All Paths from Source Lead to Destination.md
+All Paths From Source to Target.md
+All People Report to the Given Manager.md
+All Possible Full Binary Trees.md
+All the Matches of the League.md
+All the Pairs With the Maximum Number of Common Followers.md
+All Valid Triplets That Can Represent a Country.md
+Alphabet Board Path.md
+Alternating Digit Sum.md
+Alternating Groups II.md
+Alternating Groups I.md
+Ambiguous Coordinates.md
+Amount of New Area Painted Each Day.md
+Amount of Time for Binary Tree to Be Infected.md
+Analyze Organization Hierarchy.md
+Analyze Subscription Conversion.md
+Analyze User Website Visit Pattern.md
+Android Unlock Patterns.md
+Angle Between Hands of a Clock.md
+Ant on the Boundary.md
+A Number After a Double Reversal.md
+Append Characters to String to Make Subsequence.md
+Append K Integers With Minimal Sum.md
+Apple Redistribution into Boxes.md
+Apples & Oranges.md
+Apply Bitwise Operations to Make Strings Equal.md
+Apply Discount Every n Orders.md
+Apply Discount to Prices.md
+Apply Operations on Array to Maximize Sum of Squares.md
+Apply Operations to an Array.md
+Apply Operations to Make All Array Elements Equal to Zero.md
+Apply Operations to Make String Empty.md
+Apply Operations to Make Sum of Array Greater Than or Equal to k.md
+Apply Operations to Make Two Strings Equal.md
+Apply Operations to Maximize Frequency Score.md
+Apply Operations to Maximize Score.md
+Apply Substitutions.md
+Apply Transform Over Each Element in Array.md
+Arithmetic Slices II - Subsequence.md
+Arithmetic Slices.md
+Arithmetic Subarrays.md
+Armstrong Number.md
+Arranging Coins.md
+Array Nesting.md
+Array of Doubled Pairs.md
+Array Partition.md
+Array Prototype Last.md
+Array Reduce Transformation.md
+Array Transformation.md
+Array With Elements Not Equal to Average of Neighbors.md
+Article Views II.md
+Article Views I.md
+As Far from Land as Possible.md
+Assign Cookies.md
+Assign Elements to Groups with Constraints.md
+Asteroid Collision Extended.md
+Asteroid Collision.md
+Available Captures for Rook.md
+Average Height of Buildings in Each Segment.md
+Average of Levels in Binary Tree.md
+Average Salary Excluding the Minimum and Maximum Salary.md
+Average Selling Price.md
+Average Time of Process per Machine.md
+Average Value of Even Numbers That Are Divisible by Three.md
+Average Waiting Time.md
+Avoid Flood in The City.md
+Backspace String Compare.md
+Bag of Tokens.md
+Balance a Binary Search Tree.md
+Balanced Binary Tree.md
+Balanced K-Factor Decomposition.md
+Bank Account Summary II.md
+Bank Account Summary.md
+Base 7.md
+Baseball Game.md
+Basic Calculator III.md
+Basic Calculator II.md
+Basic Calculator IV.md
+Basic Calculator.md
+Battleships in a Board.md
+Beautiful Arrangement II.md
+Beautiful Arrangement.md
+Beautiful Array.md
+Beautiful Towers II.md
+Beautiful Towers I.md
+Before and After Puzzle.md
+Best Meeting Point.md
+Best Poker Hand.md
+Best Position for a Service Centre.md
+Best Sightseeing Pair.md
+Best Team With No Conflicts.md
+Best Time to Buy and Sell Stock III.md
+Best Time to Buy and Sell Stock II.md
+Best Time to Buy and Sell Stock IV.md
+Best Time to Buy and Sell Stock.md
+Best Time to Buy and Sell Stock using Strategy.md
+Best Time to Buy and Sell Stock V.md
+Best Time to Buy and Sell Stock with Cooldown.md
+Best Time to Buy and Sell Stock with Transaction Fee.md
+Better Compression of String.md
+Big Countries.md
+Biggest Single Number.md
+Binary Gap.md
+Binary Number with Alternating Bits.md
+Binary Prefix Divisible By 5.md
+Binary Searchable Numbers in an Unsorted Array.md
+Binary Search.md
+Binary Search Tree Iterator II.md
+Binary Search Tree Iterator.md
+Binary Search Tree to Greater Sum Tree.md
+Binary String With Substrings Representing 1 To N.md
+Binary Subarrays With Sum.md
+Binary Tree Cameras.md
+Binary Tree Coloring Game.md
+Binary Tree Inorder Traversal.md
+Binary Tree Level Order Traversal II.md
+Binary Tree Level Order Traversal.md
+Binary Tree Longest Consecutive Sequence II.md
+Binary Tree Longest Consecutive Sequence.md
+Binary Tree Maximum Path Sum.md
+Binary Tree Nodes.md
+Binary Tree Paths.md
+Binary Tree Postorder Traversal.md
+Binary Tree Preorder Traversal.md
+Binary Tree Pruning.md
+Binary Tree Right Side View.md
+Binary Trees With Factors.md
+Binary Tree Tilt.md
+Binary Tree Upside Down.md
+Binary Tree Vertical Order Traversal.md
+Binary Tree Zigzag Level Order Traversal.md
+Binary Watch.md
+Bitwise AND of Numbers Range.md
+Bitwise OR of Adjacent Elements.md
+Bitwise OR of All Subsequence Sums.md
+Bitwise OR of Even Numbers in an Array.md
+Bitwise ORs of Subarrays.md
+Bitwise XOR of All Pairings.md
+Block Placement Queries.md
+Boats to Save People.md
+Bold Words in String.md
+Bomb Enemy.md
+Booking Concert Tickets in Groups.md
+Boundary of Binary Tree.md
+Brace Expansion II.md
+Brace Expansion.md
+Break a Palindrome.md
+Bricks Falling When Hit.md
+Brick Wall.md
+Brightest Position on Street.md
+Broken Calculator.md
+Buddy Strings.md
+Build a Matrix With Conditions.md
+Build an Array With Stack Operations.md
+Build Array from Permutation.md
+Build Array Where You Can Find The Maximum Exactly K Comparisons.md
+Build Binary Expression Tree From Infix Expression.md
+Building H2O.md
+Buildings With an Ocean View.md
+Bulb Switcher II.md
+Bulb Switcher.md
+Bulls and Cows.md
+Burst Balloons.md
+Bus Routes.md
+Button with Longest Push Time.md
+Buy Two Chocolates.md
+Cache With Time Limit.md
+Calculate Amount Paid in Taxes.md
+Calculate Compressed Mean.md
+Calculate Delayed Arrival Time.md
+Calculate Digit Sum of a String.md
+Calculate Money in Leetcode Bank.md
+Calculate Score After Performing Instructions.md
+Calculate Special Bonus.md
+Calculator with Method Chaining.md
+Camelcase Matching.md
+Campus Bikes II.md
+Campus Bikes.md
+Can Convert String in K Moves.md
+Candy Crush.md
+Candy.md
+Can I Win.md
+Can Make Arithmetic Progression From Sequence.md
+Can Make Palindrome from Substring.md
+Can Place Flowers.md
+Can You Eat Your Favorite Candy on Your Favorite Day.md
+Capacity To Ship Packages Within D Days.md
+Capital Gain-Loss.md
+Card Flipping Game.md
+Car Fleet II.md
+Car Fleet.md
+Car Pooling.md
+Cat and Mouse II.md
+Cat and Mouse.md
+Categorize Box According to Criteria.md
+Cells with Odd Values in a Matrix.md
+Chalkboard XOR Game.md
+Champagne Tower.md
+Change Data Type.md
+Change Minimum Characters to Satisfy One of Three Conditions.md
+Change Null Values in a Table to the Previous Value.md
+Change the Root of a Binary Tree.md
+Cheapest Flights Within K Stops.md
+Check Balanced String.md
+Check Completeness of a Binary Tree.md
+Check Digitorial Permutation.md
+Check for Contradictions in Equations.md
+Check If All 1's Are at Least Length K Places Away.md
+Check if All A's Appears Before All B's.md
+Check if All Characters Have Equal Number of Occurrences.md
+Check if All the Integers in a Range Are Covered.md
+Check if an Original String Exists Given Two Encoded Strings.md
+Check If a Number Is Majority Element in a Sorted Array.md
+Check if a Parentheses String Can Be Valid.md
+Check if Array is Good.md
+Check if Array Is Sorted and Rotated.md
+Check If Array Pairs Are Divisible by k.md
+Check If a String Contains All Binary Codes of Size K.md
+Check if a String Is an Acronym of Words.md
+Check If a Word Occurs As a Prefix of Any Word in a Sentence.md
+Check if Binary String Has at Most One Segment of Ones.md
+Check if Bitwise OR Has Trailing Zeros.md
+Check if DFS Strings Are Palindromes.md
+Check If Digits Are Equal in String After Operations II.md
+Check If Digits Are Equal in String After Operations I.md
+Check if Every Row and Column Contains All Numbers.md
+Check if Grid can be Cut into Sections.md
+Check If It Is a Good Array.md
+Check If It Is a Straight Line.md
+Check if it is Possible to Split Array.md
+Check if Matrix Is X-Matrix.md
+Check if Move is Legal.md
+Check If N and Its Double Exist.md
+Check if Number Has Equal Digit Count and Digit Value.md
+Check if Number is a Sum of Powers of Three.md
+Check if Object Instance of Class.md
+Check if One String Swap Can Make Strings Equal.md
+Check if Point Is Reachable.md
+Check If String Is a Prefix of Array.md
+Check If String Is Transformable With Substring Sort Operations.md
+Check if Strings Can be Made Equal With Operations II.md
+Check if Strings Can be Made Equal With Operations I.md
+Check if the Rectangle Corner Is Reachable.md
+Check if There is a Path With Equal Number of 0's And 1's.md
+Check if There Is a Valid Parentheses String Path.md
+Check if There is a Valid Partition For The Array.md
+Check if There is a Valid Path in a Grid.md
+Check if the Sentence Is Pangram.md
+Check if Two Chessboard Squares Have the Same Color.md
+Check If Two Expression Trees are Equivalent.md
+Check If Two String Arrays are Equivalent.md
+Check if Word Can Be Placed In Crossword.md
+Check If Word Is Valid After Substitutions.md
+Checking Existence of Edge Length Limited Paths II.md
+Checking Existence of Edge Length Limited Paths.md
+Check Knight Tour Configuration.md
+Check Whether Two Strings are Almost Equivalent.md
+Cherry Pickup II.md
+Cherry Pickup.md
+Choose Edges to Maximize Score in a Tree.md
+Choose K Elements With Maximum Sum.md
+Choose Numbers From Two Arrays in Range.md
+Chunk Array.md
+Cinema Seat Allocation.md
+Circle and Rectangle Overlapping.md
+Circular Array Loop.md
+Circular Permutation in Binary Representation.md
+Circular Sentence.md
+Classes With at Least 5 Students.md
+Classifying Triangles by Lengths.md
+Class Performance.md
+Clear Digits.md
+Climbing Stairs.md
+Climbing Stairs Variants.md
+Clone Binary Tree With Random Pointer.md
+Clone Graph.md
+Clone N-ary Tree.md
+Closest Binary Search Tree Value II.md
+Closest Binary Search Tree Value.md
+Closest Dessert Cost.md
+Closest Divisors.md
+Closest Equal Element Queries.md
+Closest Leaf in a Binary Tree.md
+Closest Nodes Queries in a Binary Search Tree.md
+Closest Node to Path in Tree.md
+Closest Prime Numbers in Range.md
+Closest Room.md
+Closest Subsequence Sum.md
+Clumsy Factorial.md
+Coin Change Extended.md
+Coin Change II.md
+Coin Change.md
+Coin Path.md
+Collect Coins in a Tree.md
+Collecting Chocolates.md
+Coloring A Border.md
+Combinations.md
+Combinations Sum III.md
+Combination Sum III.md
+Combination Sum II.md
+Combination Sum IV.md
+Combination Sum.md
+Combine Two Tables.md
+Compare Strings by Frequency of the Smallest Character.md
+Compare Version Numbers.md
+Complement of Base 10 Integer.md
+Complete Binary Tree Inserter.md
+Complex Number Multiplication.md
+Compute Decimal Representation.md
+Concatenated Divisibility.md
+Concatenated Words.md
+Concatenate Non-Zero Digits and Multiply by Sum II.md
+Concatenation of Array.md
+Concatenation of Consecutive Binary Numbers.md
+Confirmation Rate.md
+Confusing Number II.md
+Confusing Number.md
+Connecting Cities With Minimum Cost.md
+Consecutive Characters.md
+Consecutive Numbers.md
+Consecutive Numbers Sum.md
+Constrained Subsequence Sum.md
+Construct Binary Search Tree from Preorder Traversal.md
+Construct Binary Tree from Inorder and Postorder Traversal.md
+Construct Binary Tree from Preorder and Inorder Traversal.md
+Construct Binary Tree from Preorder and Postorder Traversal.md
+Construct Binary Tree from String.md
+Construct K Palindrome Strings.md
+Construct Product Matrix.md
+Construct Quad Tree.md
+Construct Smallest Number From DI String.md
+Construct String from Binary Tree.md
+Construct String with Minimum Cost.md
+Construct String With Repeat Limit.md
+Construct Target Array With Multiple Sums.md
+Construct the Lexicographically Largest Valid Sequence.md
+Construct the Longest New String.md
+Construct the Minimum Bitwise Array II.md
+Construct the Minimum Bitwise Array I.md
+Construct the Rectangle.md
+Construct Uniform Parity Array II.md
+Construct Uniform Parity Array I.md
+Container With Most Water.md
+Contains Duplicate III.md
+Contains Duplicate II.md
+Contains Duplicate.md
+Contain Virus.md
+Contiguous Array.md
+Continuous Subarrays.md
+Continuous Subarray Sum.md
+Convert 1D Array Into 2D Array.md
+Convert an Array Into a 2D Array With Conditions.md
+Convert a Number to Hexadecimal.md
+Convert Binary Number in a Linked List to Integer.md
+Convert Binary Search Tree to Sorted Doubly Linked List.md
+Convert BST to Greater Tree.md
+Convert Date to Binary.md
+Convert Integer to the Sum of Two No-Zero Integers.md
+Convert JSON String to Object.md
+Convert Object to JSON String.md
+Convert Sorted Array to Binary Search Tree.md
+Convert Sorted List to Binary Search Tree.md
+Convert the Temperature.md
+Convert to Base -2.md
+Convex Polygon.md
+Coordinate With Maximum Network Quality.md
+Copy List with Random Pointer.md
+Corporate Flight Bookings.md
+Correct a Binary Tree.md
+Count All Valid Pickup and Delivery Options.md
+Count Almost Equal Pairs I.md
+Count Alternating Subarrays.md
+Count Anagrams.md
+Count and Say.md
+Count Array Pairs Divisible by K.md
+Count Asterisks.md
+Count Beautiful Numbers.md
+Count Beautiful Splits in an Array.md
+Count Beautiful Substrings II.md
+Count Beautiful Substrings I.md
+Count Binary Substrings.md
+Count Bowl Subarrays.md
+Count Caesar Cipher Pairs.md
+Count Cells in Overlapping Horizontal and Vertical Substrings.md
+Count Collisions of Monkeys on a Polygon.md
+Count Collisions on a Road.md
+Count Common Words With One Occurrence.md
+Count Complete Subarrays in an Array.md
+Count Complete Substrings.md
+Count Complete Tree Nodes.md
+Count Covered Buildings.md
+Count Days Without Meetings.md
+Count Different Palindromic Subsequences.md
+Count Distinct Integers After Removing Zeros.md
+Count Distinct Numbers on Board.md
+Count Elements With Maximum Frequency.md
+Count Elements With Strictly Smaller and Greater Elements.md
+Count Equal and Divisible Pairs in an Array.md
+Counter II.md
+Counter.md
+Count Fertile Pyramids in a Land.md
+Count Good Meals.md
+Count Good Nodes in Binary Tree.md
+Count Good Numbers.md
+Count Good Subarrays.md
+Count Good Triplets in an Array.md
+Count Good Triplets.md
+Count Hills and Valleys in an Array.md
+Count Houses in a Circular Street.md
+Count Increasing Quadruplets.md
+Counting Bits.md
+Counting Elements.md
+Counting Sort.md
+Counting Words With a Given Prefix.md
+Count Integers in Intervals.md
+Count Integers With Even Digit Sum.md
+Count Islands With Total Value Divisible by K.md
+Count Items Matching a Rule.md
+Count K-Reducible Numbers Less Than N.md
+Count K-Subsequences of a String With Maximum Beauty.md
+Count K-th Roots in a Range.md
+Count Largest Group.md
+Count Lattice Points Inside a Circle.md
+Count Mentions Per User.md
+Count Monobit Integers.md
+Count Negative Numbers in a Sorted Matrix.md
+Count Nice Pairs in an Array.md
+Count Nodes Equal to Average of Subtree.md
+Count Nodes Equal to Sum of Descendants.md
+Count Nodes With the Highest Score.md
+Count Non Decreasing Arrays With Given Digit Sums.md
+Count Non-Decreasing Subarrays After K Operations.md
+Count Number of Bad Pairs.md
+Count Number of Balanced Permutations.md
+Count Number of Distinct Integers After Reverse Operations.md
+Count Number of Homogenous Substrings.md
+Count Number of Maximum Bitwise-OR Subsets.md
+Count Number of Nice Subarrays.md
+Count Number of Pairs With Absolute Difference K.md
+Count Number of Rectangles Containing Each Point.md
+Count Number of Special Subsequences.md
+Count Number of Teams.md
+Count Number of Texts.md
+Count Number of Trapezoids II.md
+Count Number of Trapezoids I.md
+Count Number of Ways to Place Houses.md
+Count Numbers With Unique Digits II.md
+Count Numbers with Unique Digits.md
+Count Odd Numbers in an Interval Range.md
+Count of Integers.md
+Count of Interesting Subarrays.md
+Count of Matches in Tournament.md
+Count of Range Sum.md
+Count of Smaller Numbers After Self.md
+Count of Substrings Containing Every Vowel and K Consonants II.md
+Count Operations to Obtain Zero.md
+Count Pairs in Two Arrays.md
+Count Pairs of Connectable Servers in a Weighted Tree Network.md
+Count Pairs of Equal Substrings With Minimum Difference.md
+Count Pairs Of Nodes.md
+Count Pairs of Points With Distance k.md
+Count Pairs Of Similar Strings.md
+Count Pairs That Form a Complete Day II.md
+Count Pairs That Form a Complete Day I.md
+Count Pairs Whose Sum is Less than Target.md
+Count Pairs With XOR in a Range.md
+Count Palindromic Subsequences.md
+Count Partitions with Even Sum Difference.md
+Count Partitions With Max-Min Difference at Most K.md
+Count Paths That Can Form a Palindrome in a Tree.md
+Count Paths With the Given XOR Value.md
+Count Positions on Street With Required Brightness.md
+Count Prefix and Suffix Pairs II.md
+Count Prefix and Suffix Pairs I.md
+Count Prefixes of a Given String.md
+Count Prime-Gap Balanced Subarrays.md
+Count Primes.md
+Count Residue Prefixes.md
+Count Routes to Climb a Rectangular Grid.md
+Count Salary Categories.md
+Count Sequences to K.md
+Count Servers that Communicate.md
+Count Sorted Vowel Strings.md
+Count Special Quadruplets.md
+Count Special Subsequences.md
+Count Special Triplets.md
+Count Square Submatrices with All Ones.md
+Count Square Sum Triples.md
+Count Stepping Numbers in Range.md
+Count Strictly Increasing Subarrays.md
+Count Student Number in Departments.md
+Count Subarrays of Length Three With a Condition.md
+Count Subarrays Where Max Element Appears at Least K Times.md
+Count Subarrays With Fixed Bounds.md
+Count Subarrays With Median K.md
+Count Subarrays With More Ones Than Zeros.md
+Count Subarrays With Score Less Than K.md
+Count Sub Islands.md
+Count Submatrices With All Ones.md
+Count Submatrices With Equal Frequency of X and Y.md
+Count Submatrices with Top-Left Element and Sum Less Than k.md
+Count Substrings Divisible By Last Digit.md
+Count Substrings That Can Be Rearranged to Contain a String I.md
+Count Substrings That Differ by One Character.md
+Count Substrings That Satisfy K-Constraint I.md
+Count Substrings With K-Frequency Characters I.md
+Count Substrings with Only One Distinct Letter.md
+Count Substrings Without Repeating Character.md
+Count Symmetric Integers.md
+Count Tested Devices After Test Operations.md
+Count the Digits That Divide a Number.md
+Count the Hidden Sequences.md
+Count the Number of Arrays with K Matching Adjacent Elements.md
+Count the Number of Complete Components.md
+Count the Number of Computer Unlocking Permutations.md
+Count the Number of Consistent Strings.md
+Count the Number of Experiments.md
+Count the Number of Fair Pairs.md
+Count the Number of Good Partitions.md
+Count the Number of Good Subarrays.md
+Count the Number of Good Subsequences.md
+Count the Number of Houses at a Certain Distance II.md
+Count the Number of Houses at a Certain Distance I.md
+Count the Number of Ideal Arrays.md
+Count the Number of Incremovable Subarrays II.md
+Count the Number of Incremovable Subarrays I.md
+Count the Number of Infection Sequences.md
+Count the Number of Inversions.md
+Count the Number of K-Big Indices.md
+Count the Number of K-Free Subsets.md
+Count the Number of Powerful Integers.md
+Count the Number of Special Characters II.md
+Count the Number of Special Characters I.md
+Count the Number of Square-Free Subsets.md
+Count the Number of Substrings With Dominant Ones.md
+Count the Number of Vowel Strings in Range.md
+Count The Number of Winning Sequences.md
+Count The Repetitions.md
+Count Total Number of Colored Cells.md
+Count Triplets That Can Form Two Arrays of Equal XOR.md
+Count Triplets with Even XOR Set Bits II.md
+Count Triplets with Even XOR Set Bits I.md
+Count Unguarded Cells in the Grid.md
+Count Unhappy Friends.md
+Count Unique Characters of All Substrings of a Given String.md
+Count Univalue Subtrees.md
+Count Unreachable Pairs of Nodes in an Undirected Graph.md
+Count Valid Paths in a Tree.md
+Count Visited Nodes in a Directed Graph.md
+Count Vowels Permutation.md
+Count Vowel Strings in Ranges.md
+Count Vowel Substrings of a String.md
+Count Ways To Build Good Strings.md
+Count Ways to Build Rooms in an Ant Colony.md
+Count Ways to Distribute Candies.md
+Count Ways to Group Overlapping Ranges.md
+Count Ways to Make Array With Product.md
+Count Words Obtained After Adding a Letter.md
+Count Zero Request Servers.md
+Couples Holding Hands.md
+Coupon Code Validator.md
+Course Schedule III.md
+Course Schedule II.md
+Course Schedule IV.md
+Course Schedule.md
+Cousins in Binary Tree II.md
+Cousins in Binary Tree.md
+Cracking the Safe.md
+Crawler Log Folder.md
+Create a DataFrame from List.md
+Create a Session Bar Chart.md
+Create Binary Tree From Descriptions.md
+Create Components With Same Value.md
+Create Hello World Function.md
+Create Maximum Number.md
+Create Sorted Array through Instructions.md
+Create Target Array in the Given Order.md
+Critical Connections in a Network.md
+Customer Order Frequency.md
+Customer Placing the Largest Number of Orders.md
+Customer Purchasing Behavior Analysis.md
+Customers Who Bought All Products.md
+Customers Who Bought Products A and B but Not C.md
+Customers Who Never Order.md
+Customers With Strictly Increasing Purchases.md
+Customer Who Visited but Did Not Make Any Transactions.md
+Custom Sort String.md
+Cut Off Trees for Golf Event.md
+Cutting Ribbons.md
+Cycle Length Queries in a Tree.md
+Cyclically Rotating a Grid.md
+Daily Leads and Partners.md
+Daily Temperatures.md
+Daily Temperatures Stack.md
+Data Stream as Disjoint Intervals.md
+Day of the Week.md
+Day of the Year.md
+Debounce.md
+Decoded String at Index.md
+Decode String Extended.md
+Decode String.md
+Decode the Message.md
+Decode the Slanted Ciphertext.md
+Decode Ways II.md
+Decode Ways.md
+Decode XORed Permutation.md
+Decompress Run-Length Encoded List.md
+Decrease Elements To Make Array Zigzag.md
+Decrypt String from Alphabet to Integer Mapping.md
+Deepest Leaves Sum.md
+Deep Merge of Two Objects.md
+Defanging an IP Address.md
+Defuse the Bomb.md
+Degree of an Array.md
+Delayed Count of Equal Elements.md
+Delete and Earn.md
+Delete Characters to Make Fancy String.md
+Delete Columns to Make Sorted III.md
+Delete Columns to Make Sorted II.md
+Delete Columns to Make Sorted.md
+Delete Duplicate Emails.md
+Delete Duplicate Folders in System.md
+Delete Greatest Value in Each Row.md
+Delete Leaves With a Given Value.md
+Delete N Nodes After M Nodes of a Linked List.md
+Delete Node in a BST.md
+Delete Node in a Linked List.md
+Delete Nodes And Return Forest.md
+Delete Nodes From Linked List Present in Array.md
+Delete Operation for Two Strings.md
+Delete the Middle Node of a Linked List.md
+Delete Tree Nodes.md
+Delivering Boxes from Storage to Ports.md
+Department Highest Salary.md
+Department Top Three Salaries.md
+Describe the Painting.md
+Design a 3D Binary Matrix with Efficient Layer Tracking.md
+Design Add and Search Words Data Structure.md
+Design a File Sharing System.md
+Design a Food Rating System.md
+Design A Leaderboard.md
+Design an Array Statistics Tracker.md
+Design an ATM Machine.md
+Design an Expression Tree With Evaluate Function.md
+Design an Ordered Stream.md
+Design a Number Container System.md
+Design a Stack With Increment Operation.md
+Design a Text Editor.md
+Design a Todo List.md
+Design Auction System.md
+Design Authentication Manager.md
+Design Bounded Blocking Queue.md
+Design Browser History.md
+Design Circular Deque.md
+Design Circular Queue.md
+Design Compressed String Iterator.md
+Design Event Manager.md
+Design Exam Scores Tracker.md
+Design Excel Sum Formula.md
+Design File System.md
+Design Front Middle Back Queue.md
+Design Graph With Shortest Path Calculator.md
+Design HashMap.md
+Design HashSet.md
+Design Hit Counter.md
+Design In-Memory File System.md
+Design Linked List.md
+Design Log Storage System.md
+Design Memory Allocator.md
+Design Most Recently Used Queue.md
+Design Movie Rental System.md
+Design Order Management System.md
+Design Parking System.md
+Design Phone Directory.md
+Design Ride Sharing System.md
+Design Search Autocomplete System.md
+Design Skiplist.md
+Design Snake Game.md
+Design Spreadsheet.md
+Design SQL.md
+Design Task Manager.md
+Design Tic-Tac-Toe.md
+Design Twitter.md
+Design Underground System.md
+Design Undo Redo Stack.md
+Design Video Sharing Platform.md
+Destination City.md
+Destroying Asteroids.md
+Destroy Sequential Targets.md
+Detect Capital.md
+Detect Cycles in 2D Grid.md
+Detect Pattern of Length M Repeated K or More Times.md
+Detect Squares.md
+Determine Color of a Chessboard Square.md
+Determine if a Cell Is Reachable at a Given Time.md
+Determine if String Halves Are Alike.md
+Determine if Two Events Have Conflict.md
+Determine if Two Strings Are Close.md
+Determine the Minimum Sum of a k-avoiding Array.md
+Determine the Winner of a Bowling Game.md
+Determine Whether Matrix Can Be Obtained By Rotation.md
+Detonate the Maximum Bombs.md
+Diagonal Traverse II.md
+Diagonal Traverse.md
+Diameter of Binary Tree.md
+Diameter of N-Ary Tree.md
+Dice Roll Simulation.md
+Diet Plan Performance.md
+Difference Between Element Sum and Digit Sum of an Array.md
+Difference Between Maximum and Minimum Price Sum.md
+Difference Between Ones and Zeros in Row and Column.md
+Differences Between Two Objects.md
+Different Ways to Add Parentheses.md
+Digit Count in Range.md
+Digit Operations to Make Two Integers Equal.md
+Dinner Plate Stacks.md
+Disconnect Path in a Binary Matrix by at Most One Flip.md
+Display Table of Food Orders in a Restaurant.md
+Display the First Three Rows.md
+Distance Between Bus Stops.md
+Distance to a Cycle in Undirected Graph.md
+Distant Barcodes.md
+Distinct Echo Substrings.md
+Distinct Numbers in Each Subarray.md
+Distinct Prime Factors of Product of Array.md
+Distinct Subsequences II.md
+Distinct Subsequences.md
+Distribute Candies Among Children III.md
+Distribute Candies Among Children II.md
+Distribute Candies Among Children I.md
+Distribute Candies.md
+Distribute Coins in Binary Tree.md
+Distribute Elements Into Two Arrays II.md
+Distribute Elements Into Two Arrays I.md
+Distribute Money to Maximum Children.md
+Distribute Repeating Integers.md
+DI String Match.md
+Divide an Array Into Subarrays With Minimum Cost II.md
+Divide an Array Into Subarrays With Minimum Cost I.md
+Divide Array in Sets of K Consecutive Numbers.md
+Divide Array Into Arrays With Max Difference.md
+Divide Array Into Equal Pairs.md
+Divide Array Into Increasing Sequences.md
+Divide a String Into Groups of Size k.md
+Divide Chocolate.md
+Divide Intervals Into Minimum Number of Groups.md
+Divide Nodes Into the Maximum Number of Groups.md
+Divide Players Into Teams of Equal Skill.md
+Divide Two Integers.md
+Divisible and Non-divisible Sums Difference.md
+Divisor Game.md
+DNA Pattern Recognition.md
+Domino and Tromino Tiling.md
+Dota2 Senate.md
+Dot Product of Two Sparse Vectors.md
+Double a Number Represented as a Linked List.md
+Double Modular Exponentiation.md
+Dungeon Game.md
+Duplicate Emails.md
+Duplicate Zeros.md
+Earliest Possible Day of Full Bloom.md
+Earliest Second to Mark Indices II.md
+Earliest Second to Mark Indices I.md
+Eat Pizzas!.md
+Edit Distance Extended.md
+Edit Distance.md
+Egg Drop With 2 Eggs and N Floors.md
+Element Appearing More Than 25% In Sorted Array.md
+Eliminate Maximum Number of Monsters.md
+Elimination Game.md
+Employee Bonus.md
+Employee Free Time.md
+Employee Importance.md
+Employees Earning More Than Their Managers.md
+Employees Whose Manager Left the Company.md
+Employees With Deductions.md
+Encode and Decode Strings.md
+Encode and Decode TinyURL.md
+Encode Number.md
+Encode String with Shortest Length.md
+Encrypt and Decrypt Strings.md
+Equalize Strings by Adding or Removing Characters at Ends.md
+Equal Rational Numbers.md
+Equal Row and Column Pairs.md
+Equal Sum Arrays With Minimum Number of Operations.md
+Equal Sum Grid Partition II.md
+Equal Sum Grid Partition I.md
+Equal Tree Partition.md
+Erect the Fence II.md
+Erect the Fence.md
+Escape a Large Maze.md
+Escape The Ghosts.md
+Escape the Spreading Fire.md
+Evaluate Boolean Binary Tree.md
+Evaluate Boolean Expression.md
+Evaluate Division.md
+Evaluate Reverse Polish Notation.md
+Evaluate the Bracket Pairs of a String.md
+Even Odd Tree.md
+Event Emitter.md
+Exam Room.md
+Excel Sheet Column Number.md
+Excel Sheet Column Title.md
+Exchange Seats.md
+Exclusive Time of Functions.md
+Execute Asynchronous Functions in Parallel.md
+Existence of a Substring in a String and Its Reverse.md
+Expression Add Operators.md
+Expressive Words.md
+Extra Characters in a String.md
+Extract Kth Character From The Rope Tree.md
+Factor Combinations.md
+Factorial Trailing Zeroes.md
+Fair Candy Swap.md
+Fair Distribution of Cookies.md
+Falling Squares.md
+Fancy Sequence.md
+Faulty Keyboard.md
+Faulty Sensor.md
+Fibonacci Number.md
+Fill a Special Grid.md
+Filling Bookcase Shelves.md
+Fill Missing Data.md
+Filter Characters by Frequency.md
+Filter Elements from Array.md
+Filter Restaurants by Vegan-Friendly, Price and Distance.md
+Final Array State After K Multiplication Operations II.md
+Final Array State After K Multiplication Operations I.md
+Final Element After Subarray Deletions.md
+Final Prices With a Special Discount in a Shop.md
+Final Value of Variable After Performing Operations.md
+Find a Corresponding Node of a Binary Tree in a Clone of That Tree.md
+Find All Anagrams in a String.md
+Find All Duplicates in an Array.md
+Find All Good Indices.md
+Find All Good Strings.md
+Find All Groups of Farmland.md
+Find All K-Distant Indices in an Array.md
+Find All Lonely Numbers in the Array.md
+Find All Numbers Disappeared in an Array.md
+Find All People With Secret.md
+Find All Possible Recipes from Given Supplies.md
+Find All Possible Stable Binary Arrays II.md
+Find All Possible Stable Binary Arrays I.md
+Find All The Lonely Nodes.md
+Find Anagram Mappings.md
+Find And Replace in String.md
+Find and Replace Pattern.md
+Find a Peak Element II.md
+Find Array Given Subset Sums.md
+Find a Safe Walk Through a Grid.md
+Find a Value of a Mysterious Function Closest to Target.md
+Find Beautiful Indices in the Given Array II.md
+Find Beautiful Indices in the Given Array I.md
+Find Books with No Available Copies.md
+Find Bottom Left Tree Value.md
+Find Building Where Alice and Bob Can Meet.md
+Find Candidates for Data Scientist Position.md
+Find Center of Star Graph.md
+Find Champion II.md
+Find Champion I.md
+Find Closest Node to Given Two Nodes.md
+Find Closest Number to Zero.md
+Find Closest Person.md
+Find Common Characters.md
+Find Common Elements Between Two Arrays.md
+Find Consecutive Integers from a Data Stream.md
+Find COVID Recovery Patients.md
+Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree.md
+Find Cumulative Salary of an Employee.md
+Find Customer Referee.md
+Find Customers With Positive Revenue this Year.md
+Find Diameter Endpoints of a Tree.md
+Find Distance in a Binary Tree.md
+Find Duplicate File in System.md
+Find Duplicate Subtrees.md
+Find Edges in Shortest Paths.md
+Find Elements in a Contaminated Binary Tree.md
+Find Eventual Safe States.md
+Find Expensive Cities.md
+Find First and Last Position of Element in Sorted Array.md
+Find Followers Count.md
+Find Good Days to Rob the Bank.md
+Find Greatest Common Divisor of Array.md
+Find if Array Can Be Sorted.md
+Find if Path Exists in Graph.md
+Find Indices of Stable Mountains.md
+Find Indices With Index and Value Difference II.md
+Find Indices With Index and Value Difference I.md
+Finding 3-Digit Even Numbers.md
+Finding MK Average.md
+Finding Pairs With a Certain Sum.md
+Finding the Number of Visible Mountains.md
+Finding the Topic of Each Post.md
+Finding the Users Active Minutes.md
+Find in Mountain Array.md
+Find Interview Candidates.md
+Find K Closest Elements.md
+Find K-Length Substrings With No Repeated Characters.md
+Find K Pairs with Smallest Sums.md
+Find Kth Bit in Nth Binary String.md
+Find Kth Largest XOR Coordinate Value.md
+Find K-th Smallest Pair Distance.md
+Find Largest Value in Each Tree Row Extended.md
+Find Largest Value in Each Tree Row.md
+Find Latest Group of Size M.md
+Find Leaves of Binary Tree.md
+Find Longest Awesome Substring.md
+Find Longest Self-Contained Substring.md
+Find Longest Special Substring That Occurs Thrice II.md
+Find Longest Special Substring That Occurs Thrice I.md
+Find Lucky Integer in an Array.md
+Find Maximal Uncovered Ranges.md
+Find Maximum Area of a Triangle.md
+Find Maximum Non-decreasing Array Length.md
+Find Maximum Number of Non Intersecting Substrings.md
+Find Maximum Removals From Source String.md
+Find Maximum Value in a Constrained Sequence.md
+Find Median from Data Stream.md
+Find Median Given Frequency of Numbers.md
+Find Minimum Cost to Remove Array Elements.md
+Find Minimum Diameter After Merging Two Trees.md
+Find Minimum in Rotated Sorted Array II.md
+Find Minimum in Rotated Sorted Array.md
+Find Minimum Operations to Make All Elements Divisible by Three.md
+Find Minimum Time to Finish All Jobs II.md
+Find Minimum Time to Finish All Jobs.md
+Find Minimum Time to Reach Last Room II.md
+Find Minimum Time to Reach Last Room I.md
+Find Mirror Score of a String.md
+Find Missing and Repeated Values.md
+Find Missing Elements.md
+Find Missing Observations.md
+Find Mode in Binary Search Tree.md
+Find Most Frequent Vowel and Consonant.md
+Find Nearest Point That Has the Same X or Y Coordinate.md
+Find Nearest Right Node in Binary Tree.md
+Find Nth Smallest Integer With K One Bits.md
+Find Number of Coins to Place in Tree Nodes.md
+Find Number of Ways to Reach the K-th Stair.md
+Find Numbers with Even Number of Digits.md
+Find N Unique Integers Sum up to Zero.md
+Find Occurrences of an Element in an Array.md
+Find Original Array From Doubled Array.md
+Find Palindrome With Fixed Length.md
+Find Pattern in Infinite Stream II.md
+Find Pattern in Infinite Stream I.md
+Find Peak Calling Hours for Each City.md
+Find Peak Element.md
+Find Permutation.md
+Find Pivot Index.md
+Find Players With Zero or One Losses.md
+Find Polygon With the Largest Perimeter.md
+Find Positive Integer Solution for a Given Equation.md
+Find Product Recommendation Pairs.md
+Find Products of Elements of Big Array.md
+Find Resultant Array After Removing Anagrams.md
+Find Right Interval.md
+Find Root of N-Ary Tree.md
+Find Score of an Array After Marking All Elements.md
+Find Servers That Handled Most Number of Requests.md
+Find Shortest Path with K Hops.md
+Find Smallest Common Element in All Rows.md
+Find Smallest Letter Greater Than Target.md
+Find Special Substring of Length K.md
+Find Students Who Improved.md
+Find Subarrays With Equal Sum.md
+Find Subarray With Bitwise OR Closest to K.md
+Find Subsequence of Length K With the Largest Sum.md
+Find Substring With Given Hash Value.md
+Find Sum of Array Product of Magical Sequences.md
+Find Target Indices After Sorting Array.md
+Find the Array Concatenation Value.md
+Find the Celebrity.md
+Find the Child Who Has the Ball After K Seconds.md
+Find the City With the Smallest Number of Neighbors at a Threshold Distance.md
+Find the Closest Palindrome.md
+Find the Count of Good Integers.md
+Find the Count of Monotonic Pairs II.md
+Find the Count of Monotonic Pairs I.md
+Find the Derangement of An Array.md
+Find the Difference.md
+Find the Difference of Two Arrays.md
+Find the Distance Value Between Two Arrays.md
+Find the Divisibility Array of a String.md
+Find the Duplicate Number.md
+Find The First Player to win K Games in a Row.md
+Find the Grid of Region Average.md
+Find the Highest Altitude.md
+Find the Index of the First Occurrence in a String.md
+Find the Index of the Large Integer.md
+Find the Integer Added to Array II.md
+Find the Integer Added to Array I.md
+Find the K-Beauty of a Number.md
+Find the Key of the Numbers.md
+Find the K-or of an Array.md
+Find the K-Sum of an Array.md
+Find the K-th Character in String Game II.md
+Find the K-th Character in String Game I.md
+Find the Kth Largest Integer in the Array.md
+Find the Kth Smallest Sum of a Matrix With Sorted Rows.md
+Find the Largest Almost Missing Integer.md
+Find the Largest Area of Square Inside Two Rectangles.md
+Find the Largest Palindrome Divisible by K.md
+Find the Last Marked Nodes in Tree.md
+Find The Least Frequent Digit.md
+Find the Length of the Longest Common Prefix.md
+Find the Level of Tree with Minimum Sum.md
+Find the Lexicographically Largest String From the Box I.md
+Find the Longest Balanced Substring of a Binary String.md
+Find the Longest Equal Subarray.md
+Find the Longest Substring Containing Vowels in Even Counts.md
+Find the Longest Valid Obstacle Course at Each Position.md
+Find the Maximum Achievable Number.md
+Find the Maximum Divisibility Score.md
+Find the Maximum Factor Score of Array.md
+Find the Maximum Length of a Good Subsequence II.md
+Find the Maximum Length of a Good Subsequence I.md
+Find the Maximum Length of Valid Subsequence II.md
+Find the Maximum Length of Valid Subsequence I.md
+Find the Maximum Number of Elements in Subset.md
+Find the Maximum Number of Fruits Collected.md
+Find the Maximum Sequence Value of Array.md
+Find the Maximum Sum of Node Values.md
+Find the Median of the Uniqueness Array.md
+Find the Middle Index in Array.md
+Find the Minimum Amount of Time to Brew Potions.md
+Find the Minimum and Maximum Number of Nodes Between Critical Points.md
+Find the Minimum Area to Cover All Ones II.md
+Find the Minimum Area to Cover All Ones I.md
+Find the Minimum Cost Array Permutation.md
+Find the Minimum Number of Fibonacci Numbers Whose Sum Is K.md
+Find the Minimum Possible Sum of a Beautiful Array.md
+Find the Missing IDs.md
+Find the Most Common Response.md
+Find the Most Competitive Subsequence.md
+Find the N-th Value After K Seconds.md
+Find the Number of Copy Arrays.md
+Find the Number of Distinct Colors Among the Balls.md
+Find the Number of Good Pairs II.md
+Find the Number of Good Pairs I.md
+Find the Number of Possible Ways for an Event.md
+Find the Number of Subarrays Where Boundary Elements Are Maximum.md
+Find the Number of Subsequences With Equal GCD.md
+Find the Number of Ways to Place People II.md
+Find the Number of Ways to Place People I.md
+Find the Number of Winning Players.md
+Find the Occurrence of First Almost Equal Substring.md
+Find The Original Array of Prefix Xor.md
+Find the Original Typed String II.md
+Find the Original Typed String I.md
+Find the Peaks.md
+Find the Pivot Integer.md
+Find the Power of K-Size Subarrays I.md
+Find the Prefix Common Array of Two Arrays.md
+Find the Punishment Number of an Integer.md
+Find the Safest Path in a Grid.md
+Find the Score of All Prefixes of an Array.md
+Find the Shortest Superstring.md
+Find the Smallest Balanced Index.md
+Find the Smallest Divisor Given a Threshold.md
+Find the Start and End Number of Continuous Ranges.md
+Find the String with LCP.md
+Find the Student that Will Replace the Chalk.md
+Find the Substring With Maximum Cost.md
+Find the Subtasks That Did Not Execute.md
+Find the Sum of Encrypted Integers.md
+Find the Sum of Subsequence Powers.md
+Find the Sum of the Power of All Subsequences.md
+Find the Team Size.md
+Find the Town Judge.md
+Find the Width of Columns of a Grid.md
+Find the Winner of an Array Game.md
+Find the Winner of the Circular Game.md
+Find the Winning Player in Coin Game.md
+Find the XOR of Numbers Which Appear Twice.md
+Find Third Transaction.md
+Find Three Consecutive Integers That Sum to a Given Number.md
+Find Total Time Spent by Each Employee.md
+Find Triangular Sum of an Array.md
+Find Two Non-overlapping Sub-arrays Each With Target Sum.md
+Find Unique Binary String.md
+Find Users With Valid E-Mails.md
+Find Valid Matrix Given Row and Column Sums.md
+Find Valid Pair of Adjacent Digits in String.md
+Find Weighted Median Node in Tree.md
+Find Winner on a Tic Tac Toe Game.md
+Find Words Containing Character.md
+Find Words That Can Be Formed by Characters.md
+Find Xor-Beauty of Array.md
+Find XOR Sum of All Pairs Bitwise AND.md
+Find X-Sum of All K-Long Subarrays II.md
+Find X-Sum of All K-Long Subarrays I.md
+Find X Value of Array II.md
+Find X Value of Array I.md
+First and Last Call On the Same Day.md
+First Bad Version.md
+First Completely Painted Row or Column.md
+First Day Where You Have Been in All the Rooms.md
+First Letter to Appear Twice.md
+First Missing Positive.md
+First Unique Character in a String.md
+First Unique Number.md
+Fixed Point.md
+Fix Names in a Table.md
+Fizz Buzz.md
+Fizz Buzz Multithreaded.md
+Flatten 2D Vector.md
+Flatten a Multilevel Doubly Linked List.md
+Flatten Binary Tree to Linked List Extended.md
+Flatten Binary Tree to Linked List.md
+Flatten Deeply Nested Array.md
+Flatten Nested List Iterator.md
+Flip Columns For Maximum Number of Equal Rows.md
+Flip Equivalent Binary Trees.md
+Flip Game II.md
+Flip Game.md
+Flipping an Image.md
+Flip Square Submatrix Vertically.md
+Flip String to Monotone Increasing.md
+Flood Fill.md
+Flower Planting With No Adjacent.md
+Form Array by Concatenating Subarrays of Another Array.md
+Form Largest Integer With Digits That Add up to Target.md
+Form Smallest Number From Two Digit Arrays.md
+Four Divisors.md
+Fraction Addition and Subtraction.md
+Fraction to Recurring Decimal.md
+Freedom Trail.md
+Frequencies of Shortest Supersequences.md
+Frequency of the Most Frequent Element.md
+Friday Purchases I.md
+Friendly Movies Streamed Last Month.md
+Friend Requests II - Who Has the Most Friends.md
+Friend Requests I - Overall Acceptance Rate.md
+Friends Of Appropriate Ages.md
+Frog Jump II.md
+Frog Jump.md
+Frog Position After T Seconds.md
+Fruit Into Baskets.md
+Fruits Into Baskets III.md
+Fruits Into Baskets II.md
+Function Composition.md
+Furthest Building You Can Reach.md
+Furthest Point From Origin.md
+Game of Life.md
+Game Play Analysis III.md
+Game Play Analysis II.md
+Game Play Analysis I.md
+Game Play Analysis IV.md
+Game Play Analysis V.md
+Gas Station.md
+GCD of Odd and Even Sums.md
+GCD Sort of an Array.md
+Generalized Abbreviation.md
+Generate a String With Characters That Have Odd Counts.md
+Generate Binary Strings Without Adjacent Zeros.md
+Generate Fibonacci Sequence.md
+Generate Parentheses.md
+Generate Random Point in a Circle.md
+Generate Schedule.md
+Generate Tag for Video Caption.md
+Get Biggest Three Rhombus Sums in a Grid.md
+Get Equal Substrings Within Budget.md
+Get Highest Answer Rate Question.md
+Get Maximum in Generated Array.md
+Get the Maximum Score.md
+Get the Second Most Recent Activity.md
+Get the Size of a DataFrame.md
+Get Watched Videos by Your Friends.md
+Global and Local Inversions.md
+Goal Parser Interpretation.md
+Goat Latin.md
+Good Subsequence Queries.md
+Grand Slam Titles.md
+Graph Bipartite.md
+Graph Connectivity With Threshold.md
+Graph Valid Tree.md
+Gray Code.md
+Greatest Common Divisor of Strings.md
+Greatest English Letter in Upper and Lower Case.md
+Greatest Sum Divisible by Three.md
+Grid Game.md
+Grid Illumination.md
+Grid Teleportation Traversal.md
+Group Anagrams.md
+Group Employees of the Same Salary.md
+Group Shifted Strings.md
+Groups of Special-Equivalent Strings.md
+Groups of Strings.md
+Group Sold Products By The Date.md
+Group the People Given the Group Size They Belong To.md
+Grumpy Bookstore Owner.md
+Guess Number Higher or Lower II.md
+Guess Number Higher or Lower.md
+Guess the Majority in a Hidden Array.md
+Guess the Word.md
+Hamming Distance.md
+Handling Sum Queries After Update.md
+Hand of Straights.md
+Handshakes That Don't Cross.md
+Happy Number.md
+Happy Students.md
+Harshad Number.md
+Hash Divided String.md
+Heaters.md
+Height Checker.md
+Height of Binary Tree After Subtree Removal Queries.md
+Hexadecimal and Hexatrigesimal Conversion.md
+Hexspeak.md
+High-Access Employees.md
+Highest Grade For Each Student.md
+High Five.md
+H-Index II.md
+H-Index.md
+Hopper Company Queries III.md
+Hopper Company Queries II.md
+Hopper Company Queries I.md
+House Robber III.md
+House Robber II.md
+House Robber IV.md
+House Robber.md
+How Many Apples Can You Put into the Basket.md
+How Many Numbers Are Smaller Than the Current Number.md
+HTML Entity Parser.md
+Human Traffic of Stadium.md
+Identify the Largest Outlier in an Array.md
+Image Overlap.md
+Image Smoother.md
+Immediate Food Delivery II.md
+Immediate Food Delivery I.md
+Implement Magic Dictionary.md
+Implement Queue using Stacks Extended.md
+Implement Queue using Stacks.md
+Implement Rand10 Using Rand7.md
+Implement Rand10() Using Rand7().md
+Implement Router.md
+Implement Stack using Queues.md
+Implement strStr().md
+Implement Trie II (Prefix Tree).md
+Implement Trie (Prefix Tree).md
+Increasing Decreasing String.md
+Increasing Order Search Tree.md
+Increasing Triplet Subsequence.md
+Incremental Memory Leak.md
+Increment Submatrices by One.md
+INDEX.md
+Index Pairs of a String.md
+Inorder Successor in BST II.md
+Inorder Successor in BST.md
+Insert Delete GetRandom O(1) - Duplicates allowed.md
+Insert Delete GetRandom O(1).md
+Insert Greatest Common Divisors in Linked List.md
+Insert Interval.md
+Insert into a Binary Search Tree.md
+Insert into a Sorted Circular Linked List.md
+Insertion Sort List.md
+Insufficient Nodes in Root to Leaf Paths.md
+Integer Break.md
+Integer Replacement.md
+Integer to English Words.md
+Integer to Roman.md
+Interleaving String.md
+Intersection of Multiple Arrays.md
+Intersection of Three Sorted Arrays.md
+Intersection of Two Arrays II.md
+Intersection of Two Arrays.md
+Intersection of Two Linked Lists.md
+Interval List Intersections.md
+Intervals Between Identical Elements.md
+Intervals Pattern Collection.md
+Invalid Transactions.md
+Invalid Tweets.md
+Inverse Coin Change.md
+Invert Binary Tree.md
+Investments in 2016.md
+IPO.md
+IP to CIDR.md
+Is Graph Bipartite.md
+Island Perimeter.md
+Is Object Empty.md
+Isomorphic Strings.md
+Is Subsequence.md
+Iterator for Combination.md
+Jewels and Stones.md
+Jump Game III.md
+Jump Game II.md
+Jump Game IV.md
+Jump Game IX.md
+Jump Game.md
+Jump Game VIII.md
+Jump Game VII.md
+Jump Game VI.md
+Jump Game V.md
+K Closest Points to Origin.md
+K-Concatenation Maximum Sum.md
+K-diff Pairs in an Array.md
+K Divisible Elements Subarrays.md
+Keep Multiplying Found Values by Two.md
+K Empty Slots.md
+Keyboard Row.md
+Keys and Rooms.md
+K Highest Ranked Items Within a Price Range.md
+Kids With the Greatest Number of Candies.md
+Kill Process.md
+K Inverse Pairs Array.md
+Knight Dialer.md
+Knight Probability in Chessboard.md
+Koko Eating Bananas Extended.md
+Koko Eating Bananas.md
+K Radius Subarray Averages.md
+K-Similar Strings.md
+Kth Ancestor of a Tree Node.md
+Kth Distinct String in an Array.md
+Kth Largest Element in an Array.md
+Kth Largest Element in a Stream.md
+K-th Largest Perfect Subtree Size in Binary Tree.md
+Kth Largest Sum in a Binary Tree.md
+Kth Missing Positive Number.md
+K-th Nearest Obstacle Queries.md
+Kth Smallest Element in a BST.md
+Kth Smallest Element in a Sorted Matrix.md
+K-th Smallest in Lexicographical Order.md
+Kth Smallest Instructions.md
+Kth Smallest Number in Multiplication Table.md
+K-th Smallest Prime Fraction.md
+Kth Smallest Product of Two Sorted Arrays.md
+Kth Smallest Subarray Sum.md
+K-th Symbol in Grammar.md
+Largest 1-Bordered Square.md
+Largest 3-Same-Digit Number in String.md
+Largest BST Subtree.md
+Largest Color Value in a Directed Graph.md
+Largest Combination With Bitwise AND Greater Than Zero.md
+Largest Component Size by Common Factor.md
+Largest Divisible Subset.md
+Largest Element in an Array after Merge Operations.md
+Largest Local Values in a Matrix.md
+Largest Magic Square.md
+Largest Merge Of Two Strings.md
+Largest Multiple of Three.md
+Largest Number After Digit Swaps by Parity.md
+Largest Number After Mutating Substring.md
+Largest Number At Least Twice of Others.md
+Largest Number.md
+Largest Odd Number in String.md
+Largest Palindrome Product.md
+Largest Palindromic Number.md
+Largest Perimeter Triangle.md
+Largest Plus Sign.md
+Largest Positive Integer That Exists With Its Negative.md
+Largest Prime from Consecutive Prime Sum.md
+Largest Rectangle in Histogram Extended.md
+Largest Rectangle in Histogram.md
+Largest Subarray Length K.md
+Largest Submatrix With Rearrangements.md
+Largest Substring Between Two Equal Characters.md
+Largest Sum of Averages.md
+Largest Time for Given Digits.md
+Largest Triangle Area.md
+Largest Unique Number.md
+Largest Values From Labels.md
+Last Day Where You Can Still Cross.md
+Last Moment Before All Ants Fall Out of a Plank.md
+Last Person to Fit in the Bus.md
+Last Stone Weight II.md
+Last Stone Weight.md
+Last Substring in Lexicographical Order.md
+Latest Time by Replacing Hidden Digits.md
+Latest Time You Can Obtain After Replacing Characters.md
+Leaf-Similar Trees.md
+Least Number of Unique Integers after K Removals.md
+Least Operators to Express Number.md
+Leetcodify Friends Recommendations.md
+Leetcodify Similar Friends.md
+Leetflex Banned Accounts.md
+Left and Right Sum Differences.md
+Leftmost Column with at Least a One.md
+Lemonade Change.md
+Length of Last Word.md
+Length of Longest Fibonacci Subsequence.md
+Length of Longest Subarray With at Most K Frequency.md
+Length of Longest V-Shaped Diagonal Segment.md
+Length of the Longest Alphabetical Continuous Substring.md
+Length of the Longest Subsequence That Sums to Target.md
+Length of the Longest Valid Substring.md
+Letter Case Permutation.md
+Letter Combinations of a Phone Number.md
+Letter Tile Possibilities.md
+Lexicographically Minimum String After Removing Stars.md
+Lexicographically Smallest Beautiful String.md
+Lexicographically Smallest Equivalent String.md
+Lexicographically Smallest Generated String.md
+Lexicographically Smallest Negated Permutation that Sums to Target.md
+Lexicographically Smallest Palindrome.md
+Lexicographically Smallest Permutation Greater Than Target.md
+Lexicographically Smallest String After Applying Operations.md
+Lexicographically Smallest String After a Swap.md
+Lexicographically Smallest String After Deleting Duplicate Characters.md
+Lexicographically Smallest String After Operations With Constraint.md
+Lexicographically Smallest String After Substring Operation.md
+Lexicographical Numbers.md
+LFU Cache.md
+License Key Formatting.md
+Line Reflection.md
+Linked List Components.md
+Linked List Cycle II.md
+Linked List Cycle.md
+Linked List in Binary Tree.md
+Linked List Random Node.md
+List the Products Ordered in a Period.md
+Loan Types.md
+Logger Rate Limiter.md
+Lonely Pixel II.md
+Lonely Pixel I.md
+Longest Absolute File Path.md
+Longest Arithmetic Sequence After Changing At Most One Element.md
+Longest Arithmetic Subsequence.md
+Longest Arithmetic Subsequence of Given Difference.md
+Longest Balanced Subarray II.md
+Longest Balanced Subarray I.md
+Longest Balanced Substring After One Swap.md
+Longest Balanced Substring II.md
+Longest Balanced Substring I.md
+Longest Binary Subsequence Less Than or Equal to K.md
+Longest Chunked Palindrome Decomposition.md
+Longest Common Prefix Between Adjacent Strings After Removals.md
+Longest Common Prefix Extended.md
+Longest Common Prefix.md
+Longest Common Subpath.md
+Longest Common Subsequence Between Sorted Arrays.md
+Longest Common Subsequence.md
+Longest Common Suffix Queries.md
+Longest Consecutive Sequence.md
+Longest Continuous Increasing Subsequence.md
+Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit.md
+Longest Cycle in a Graph.md
+Longest Duplicate Substring.md
+Longest Even Odd Subarray With Threshold.md
+Longest Happy Prefix.md
+Longest Happy String.md
+Longest Harmonious Subsequence.md
+Longest Ideal Subsequence.md
+Longest Increasing Path in a Matrix.md
+Longest Increasing Subsequence II.md
+Longest Increasing Subsequence.md
+Longest Line of Consecutive One in Matrix.md
+Longest Mountain in Array.md
+Longest Nice Subarray.md
+Longest Nice Substring.md
+Longest Non-Decreasing Subarray After Replacing at Most One Element.md
+Longest Non-decreasing Subarray From Two Arrays.md
+Longest Palindrome After Substring Concatenation II.md
+Longest Palindrome After Substring Concatenation I.md
+Longest Palindrome by Concatenating Two Letter Words.md
+Longest Palindrome Extended.md
+Longest Palindrome.md
+Longest Palindromic Subsequence After at Most K Operations.md
+Longest Palindromic Subsequence.md
+Longest Palindromic Substring.md
+Longest Path With Different Adjacent Characters.md
+Longest Repeating Character Replacement.md
+Longest Repeating Substring.md
+Longest Special Path II.md
+Longest Square Streak in an Array.md
+Longest Strictly Increasing or Strictly Decreasing Subarray.md
+Longest String Chain.md
+Longest Subarray of 1's After Deleting One Element.md
+Longest Subarray of 1s After Deleting One Element.md
+Longest Subarray With Maximum Bitwise AND.md
+Longest Subsequence Repeated k Times.md
+Longest Subsequence With Decreasing Adjacent Difference.md
+Longest Subsequence With Limited Sum.md
+Longest Substring Of All Vowels in Order.md
+Longest Substring of One Repeating Character.md
+Longest Substring with At Least K Repeating Characters.md
+Longest Substring with At Most K Distinct Characters.md
+Longest Substring with At Most Two Distinct Characters.md
+Longest Substring Without Repeating Characters.md
+Longest Turbulent Subarray.md
+Longest Uncommon Subsequence II.md
+Longest Uncommon Subsequence I.md
+Longest Unequal Adjacent Groups Subsequence II.md
+Longest Unequal Adjacent Groups Subsequence I.md
+Longest Univalue Path.md
+Longest Uploaded Prefix.md
+Longest Valid Parentheses.md
+Longest Well-Performing Interval.md
+Longest Winning Streak.md
+Longest Word in Dictionary.md
+Longest Word in Dictionary through Deleting.md
+Longest Word With All Prefixes.md
+Longest ZigZag Path in a Binary Tree.md
+Long Pressed Name.md
+Loud and Rich.md
+Lowest Common Ancestor of a Binary Search Tree.md
+Lowest Common Ancestor of a Binary Tree III.md
+Lowest Common Ancestor of a Binary Tree II.md
+Lowest Common Ancestor of a Binary Tree IV.md
+Lowest Common Ancestor of a Binary Tree.md
+Lowest Common Ancestor of Deepest Leaves.md
+LRU Cache.md
+Lucky Numbers in a Matrix.md
+Magical String.md
+Magic Squares In Grid.md
+Magnetic Force Between Two Balls.md
+Majority Element II.md
+Majority Element.md
+Make a Positive Array.md
+Make Array Elements Equal to Zero.md
+Make Array Empty.md
+Make Array Non-decreasing.md
+Make Array Non-decreasing or Non-increasing.md
+Make Array Zero by Subtracting Equal Amounts.md
+Make Costs of Paths Equal in a Binary Tree.md
+Make K-Subarray Sums Equal.md
+Make Lexicographically Smallest Array by Swapping Elements.md
+Make Number of Distinct Characters Equal.md
+Make String Anti-palindrome.md
+Make String a Subsequence Using Cyclic Increments.md
+Make Sum Divisible by P.md
+Make the Prefix Sum Non-negative.md
+Make The String Great.md
+Make the XOR of All Segments Equal to Zero.md
+Make Three Strings Equal.md
+Make Two Arrays Equal by Reversing Subarrays.md
+Making A Large Island.md
+Making File Names Unique.md
+Manager of the Largest Department.md
+Managers with at Least 5 Direct Reports.md
+Manhattan Distances of All Arrangements of Pieces.md
+Map of Highest Peak.md
+Map Sum Pairs.md
+Mark Elements on Array by Performing Queries.md
+Market Analysis II.md
+Market Analysis I.md
+Masking Personal Information.md
+Match Alphanumerical Pattern in Matrix I.md
+Matchsticks to Square.md
+Match Substring After Replacement.md
+Matrix Block Sum.md
+Matrix Cells in Distance Order.md
+Matrix Diagonal Sum.md
+Matrix Similarity After Cyclic Shifts.md
+Max Area of Island.md
+Max Chunks To Make Sorted II.md
+Max Chunks To Make Sorted.md
+Max Consecutive Ones III.md
+Max Consecutive Ones II.md
+Max Consecutive Ones.md
+Max Difference You Can Get From Changing an Integer.md
+Max Dot Product of Two Subsequences.md
+Maximal Network Rank.md
+Maximal Range That Each Element Is Maximum in It.md
+Maximal Rectangle.md
+Maximal Score After Applying K Operations.md
+Maximal Square.md
+Maximize Active Section with Trade I.md
+Maximize Alternating Sum Using Swaps.md
+Maximize Amount After Two Days of Conversions.md
+Maximize Area of Square Hole in Grid.md
+Maximize Consecutive Elements in an Array After Modification.md
+Maximize Count of Distinct Primes After Split.md
+Maximize Cyclic Partition Score.md
+Maximize Distance to Closest Person.md
+Maximize Fixed Points After Deletions.md
+Maximize Greatness of an Array.md
+Maximize Grid Happiness.md
+Maximize Happiness of Selected Children.md
+Maximize Items.md
+Maximize Number of Nice Divisors.md
+Maximize Number of Subsequences in a String.md
+Maximize Palindrome Length From Subsequences.md
+Maximize Points After Choosing K Tasks.md
+Maximize Score After N Operations.md
+Maximize Score After Pair Deletions.md
+Maximize Score of Numbers in Ranges.md
+Maximize Spanning Tree Stability with Upgrades.md
+Maximize Subarray GCD Score.md
+Maximize Subarrays After Removing One Conflicting Pair.md
+Maximize Subarray Sum After Removing All Occurrences of One Element.md
+Maximize Sum Of Array After K Negations.md
+Maximize Sum of Squares of Digits.md
+Maximize Sum of Weights after Edge Removals.md
+Maximize the Beauty of the Garden.md
+Maximize the Confusion of an Exam.md
+Maximize the Distance Between Points on a Square.md
+Maximize the Minimum Game Score.md
+Maximize the Minimum Powered City.md
+Maximize the Number of Partitions After Operations.md
+Maximize the Number of Target Nodes After Connecting Trees II.md
+Maximize the Number of Target Nodes After Connecting Trees I.md
+Maximize the Profit as the Salesman.md
+Maximize the Topmost Element After K Moves.md
+Maximize Total Cost of Alternating Subarrays.md
+Maximize Total Tastiness of Purchased Fruits.md
+Maximize Value of Function in a Ball Passing Game.md
+Maximize Win From Two Segments.md
+Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values.md
+Maximum 69 Number.md
+Maximum Absolute Sum of Any Subarray.md
+Maximum Alternating Subarray Sum.md
+Maximum Alternating Subsequence Sum.md
+Maximum Amount of Money Robot Can Earn.md
+Maximum and Minimum Sums of at Most Size K Subsequences.md
+Maximum AND Sum of Array.md
+Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts.md
+Maximum Area of Island.md
+Maximum Area of Longest Diagonal Rectangle.md
+Maximum Area Rectangle With Point Constraints II.md
+Maximum Area Rectangle With Point Constraints I.md
+Maximum Array Hopping Score II.md
+Maximum Array Hopping Score I.md
+Maximum Ascending Subarray Sum.md
+Maximum Average Pass Ratio.md
+Maximum Average Subarray II.md
+Maximum Average Subarray I.md
+Maximum Average Subtree.md
+Maximum Bags With Full Capacity of Rocks.md
+Maximum Balanced Shipments.md
+Maximum Balanced Subsequence Sum.md
+Maximum Beauty of an Array After Applying Operation.md
+Maximum Binary String After Change.md
+Maximum Binary Tree II.md
+Maximum Binary Tree.md
+Maximum Bitwise AND After Increment Operations.md
+Maximum Building Height.md
+Maximum Calories Burnt from Jumps.md
+Maximum Candies Allocated to K Children.md
+Maximum Candies You Can Get from Boxes.md
+Maximum Capacity Within Budget.md
+Maximum Coin Collection.md
+Maximum Coins From K Consecutive Bags.md
+Maximum Coins Heroes Can Collect.md
+Maximum Compatibility Score Sum.md
+Maximum Consecutive Floors Without Special Floors.md
+Maximum Containers on a Ship.md
+Maximum Count of Positive Integer and Negative Integer.md
+Maximum Deletions on a String.md
+Maximum Depth of Binary Tree Extended.md
+Maximum Depth of Binary Tree.md
+Maximum Depth of N-ary Tree.md
+Maximum Difference Between Adjacent Elements in a Circular Array.md
+Maximum Difference Between Even and Odd Frequency II.md
+Maximum Difference Between Even and Odd Frequency I.md
+Maximum Difference Between Increasing Elements.md
+Maximum Difference Between Node and Ancestor.md
+Maximum Difference by Remapping a Digit.md
+Maximum Difference Score in a Grid.md
+Maximum Distance Between a Pair of Values.md
+Maximum Distance Between Unequal Words in Array I.md
+Maximum Distance in Arrays.md
+Maximum Earnings From Taxi.md
+Maximum Element After Decreasing and Rearranging.md
+Maximum Element-Sum of a Complete Subset of Indices.md
+Maximum Employees to Be Invited to a Meeting.md
+Maximum Energy Boost From Two Drinks.md
+Maximum Equal Frequency.md
+Maximum Erasure Value.md
+Maximum Font to Fit a Sentence in a Screen.md
+Maximum Frequency After Subarray Operation.md
+Maximum Frequency of an Element After Performing Operations II.md
+Maximum Frequency of an Element After Performing Operations I.md
+Maximum Frequency Score of a Subarray.md
+Maximum Frequency Stack.md
+Maximum Fruits Harvested After at Most K Steps.md
+Maximum Gap.md
+Maximum GCD-Sum of a Subarray.md
+Maximum Genetic Difference Query.md
+Maximum Good People Based on Statements.md
+Maximum Good Subarray Sum.md
+Maximum Good Subtree Score.md
+Maximum Height by Stacking Cuboids.md
+Maximum Height of a Triangle.md
+Maximum Ice Cream Bars.md
+Maximum Increasing Triplet Value.md
+Maximum K to Sort a Permutation.md
+Maximum Length of a Concatenated String with Unique Characters.md
+Maximum Length of Pair Chain.md
+Maximum Length of Repeated Subarray.md
+Maximum Length of Semi-Decreasing Subarrays.md
+Maximum Length of Subarray With Positive Product.md
+Maximum Length Substring With Two Occurrences.md
+Maximum Level Sum of a Binary Tree.md
+Maximum Linear Stock Score.md
+Maximum Manhattan Distance After K Changes.md
+Maximum Matching of Players With Trainers.md
+Maximum Matrix Sum.md
+Maximum Median Sum of Subsequences of Size 3.md
+Maximum Nesting Depth of the Parentheses.md
+Maximum Nesting Depth of Two Valid Parentheses Strings.md
+Maximum Non Negative Product in a Matrix.md
+Maximum Number of Accepted Invitations.md
+Maximum Number of Achievable Transfer Requests.md
+Maximum Number of Alloys.md
+Maximum Number of Balloons.md
+Maximum Number of Balls in a Box.md
+Maximum Number of Books You Can Take.md
+Maximum Number of Coins You Can Get.md
+Maximum Number of Consecutive Values You Can Make.md
+Maximum Number of Darts Inside of a Circular Dartboard.md
+Maximum Number of Distinct Elements After Operations.md
+Maximum Number of Eaten Apples.md
+Maximum Number of Events That Can Be Attended II.md
+Maximum Number of Events That Can Be Attended.md
+Maximum Number of Fish in a Grid.md
+Maximum Number of Groups Entering a Competition.md
+Maximum Number of Groups Getting Fresh Donuts.md
+Maximum Number of Groups With Increasing Length.md
+Maximum Number of Integers to Choose From a Range II.md
+Maximum Number of Integers to Choose From a Range I.md
+Maximum Number of Intersections on the Chart.md
+Maximum Number of Jumps to Reach the Last Index.md
+Maximum Number of K-Divisible Components.md
+Maximum Number of Moves in a Grid.md
+Maximum Number of Moves to Kill All Pawns.md
+Maximum Number of Non-overlapping Palindrome Substrings.md
+Maximum Number of Non-Overlapping Subarrays With Sum Equals Target.md
+Maximum Number of Non-Overlapping Substrings.md
+Maximum Number of Occurrences of a Substring.md
+Maximum Number of Ones.md
+Maximum Number of Operations to Move Ones to the End.md
+Maximum Number of Operations With the Same Score II.md
+Maximum Number of Operations With the Same Score I.md
+Maximum Number of Pairs in Array.md
+Maximum Number of Points From Grid Queries.md
+Maximum Number of Points with Cost.md
+Maximum Number of Potholes That Can Be Fixed.md
+Maximum Number of Removable Characters.md
+Maximum Number of Robots Within Budget.md
+Maximum Number of Subsequences After One Inserting.md
+Maximum Number of Tasks You Can Assign.md
+Maximum Number of Upgradable Servers.md
+Maximum Number of Visible Points.md
+Maximum Number of Vowels in a Substring of Given Length.md
+Maximum Number of Ways to Partition an Array.md
+Maximum Number of Weeks for Which You Can Work.md
+Maximum Number of Words Found in Sentences.md
+Maximum Number of Words You Can Type.md
+Maximum Number That Makes Result of Bitwise AND Zero.md
+Maximum Number That Sum of the Prices Is Less Than or Equal to K.md
+Maximum Odd Binary Number.md
+Maximum of Absolute Value Expression.md
+Maximum of Minimum Values in All Subarrays.md
+Maximum OR.md
+Maximum Palindromes After Operations.md
+Maximum Partition Factor.md
+Maximum Path Quality of a Graph.md
+Maximum Path Score in a Grid.md
+Maximum Performance of a Team.md
+Maximum Points After Collecting Coins From All Nodes.md
+Maximum Points After Enemy Battles.md
+Maximum Points in an Archery Competition.md
+Maximum Points Inside the Square.md
+Maximum Points Tourist Can Earn.md
+Maximum Points You Can Obtain from Cards.md
+Maximum Population Year.md
+Maximum Possible Number by Binary Concatenation.md
+Maximum Price to Fill a Bag.md
+Maximum Prime Difference.md
+Maximum Product After K Increments.md
+Maximum Product of First and Last Elements of a Subsequence.md
+Maximum Product of Splitted Binary Tree.md
+Maximum Product of the Length of Two Palindromic Subsequences.md
+Maximum Product of Three Elements After One Replacement.md
+Maximum Product of Three Numbers.md
+Maximum Product of Two Digits.md
+Maximum Product of Two Elements in an Array.md
+Maximum Product of Word Lengths.md
+Maximum Product Subarray Extended.md
+Maximum Product Subarray.md
+Maximum Profitable Triplets With Increasing Prices II.md
+Maximum Profitable Triplets With Increasing Prices I.md
+Maximum Profit From Trading Stocks.md
+Maximum Profit from Trading Stocks with Discounts.md
+Maximum Profit in Job Scheduling.md
+Maximum Profit of Operating a Centennial Wheel.md
+Maximum Repeating Substring.md
+Maximum Rows Covered by Columns.md
+Maximum Running Time of N Computers.md
+Maximum Score After Applying Operations on a Tree.md
+Maximum Score After Binary Swaps.md
+Maximum Score After Splitting a String.md
+Maximum Score From Grid Operations.md
+Maximum Score from Performing Multiplication Operations.md
+Maximum Score From Removing Stones.md
+Maximum Score From Removing Substrings.md
+Maximum Score of a Good Subarray.md
+Maximum Score of a Node Sequence.md
+Maximum Score of Non-overlapping Intervals.md
+Maximum Score Of Spliced Array.md
+Maximum Score Words Formed by Letters.md
+Maximum Segment Sum After Removals.md
+Maximum Side Length of a Square with Sum Less than or Equal to Threshold.md
+Maximum Size of a Set After Removals.md
+Maximum Size Subarray Sum Equals k.md
+Maximum Spending After Buying Items.md
+Maximum Split of Positive Even Integers.md
+Maximum Square Area by Removing Fences From a Field.md
+Maximum Star Sum of a Graph.md
+Maximum Strength of K Disjoint Subarrays.md
+Maximum Strong Pair XOR II.md
+Maximum Strong Pair XOR I.md
+Maximum Students Taking Exam.md
+Maximum Subarray (Divide and Conquer).md
+Maximum Subarray.md
+Maximum Subarray Min-Product.md
+Maximum Subarrays After Removing One Conflicting Pair.md
+Maximum Subarray Sum After One Operation.md
+Maximum Subarray Sum With Length Divisible by K.md
+Maximum Subarray Sum with One Deletion.md
+Maximum Subarray With Equal Products.md
+Maximum Subgraph Score in a Tree.md
+Maximum Subsequence Score.md
+Maximum Subtree of the Same Color.md
+Maximum Sum BST in Binary Tree.md
+Maximum Sum Circular Subarray.md
+Maximum Sum Obtained of Any Permutation.md
+Maximum Sum of 3 Non-Overlapping Subarrays.md
+Maximum Sum of Almost Unique Subarray.md
+Maximum Sum of Alternating Subsequence With Distance at Least K.md
+Maximum Sum of an Hourglass.md
+Maximum Sum of Distinct Subarrays With Length K.md
+Maximum Sum of Edge Values in a Graph.md
+Maximum Sum of Subsequence With Non-adjacent Elements.md
+Maximum Sum of Three Numbers Divisible by Three.md
+Maximum Sum of Two Non-Overlapping Subarrays.md
+Maximum Sum Score of Array.md
+Maximum Sum With at Most K Elements.md
+Maximum Sum With Exactly K Elements.md
+Maximum Swap.md
+Maximum Tastiness of Candy Basket.md
+Maximum Team Size with Overlapping Intervals.md
+Maximum Total Beauty of the Gardens.md
+Maximum Total Damage With Spell Casting.md
+Maximum Total from Optimal Activation Order.md
+Maximum Total Importance of Roads.md
+Maximum Total Reward Using Operations II.md
+Maximum Total Reward Using Operations I.md
+Maximum Transactions Without Negative Balance.md
+Maximum Twin Sum of a Linked List.md
+Maximum Unique Subarray Sum After Deletion.md
+Maximum Units on a Truck.md
+Maximum Vacation Days.md
+Maximum Value after Insertion.md
+Maximum Value at a Given Index in a Bounded Array.md
+Maximum Value of an Ordered Triplet II.md
+Maximum Value of an Ordered Triplet I.md
+Maximum Value of a String in an Array.md
+Maximum Value of K Coins From Piles.md
+Maximum Walls Destroyed by Robots.md
+Maximum White Tiles Covered by a Carpet.md
+Maximum Width of Binary Tree.md
+Maximum Width Ramp.md
+Maximum XOR After Operations.md
+Maximum XOR for Each Query.md
+Maximum XOR of Two Non-Overlapping Subtrees.md
+Maximum XOR of Two Numbers in an Array.md
+Maximum Xor Product.md
+Maximum XOR Score Subarray Queries.md
+Maximum XOR With an Element From Array.md
+Max Increase to Keep City Skyline.md
+Max Number of K-Sum Pairs.md
+Max Pair Sum in an Array.md
+Max Points on a Line.md
+Max Stack.md
+Max Sum of a Pair With Equal Sum of Digits.md
+Max Sum of Rectangle No Larger Than K.md
+Max Value of Equation.md
+Mean of Array After Removing Some Elements.md
+Median Employee Salary.md
+Median of a Row Wise Sorted Matrix.md
+Median of Two Sorted Arrays.md
+Meeting Rooms III.md
+Meeting Rooms II.md
+Meeting Rooms.md
+Meeting Scheduler.md
+Memoize II.md
+Memoize.md
+Merge BSTs to Create Single BST.md
+Merge Close Characters.md
+Merge In Between Linked Lists.md
+Merge Intervals.md
+Merge k Sorted Lists.md
+Merge Nodes in Between Zeros.md
+Merge Operations for Minimum Travel Time.md
+Merge Operations to Turn Array Into a Palindrome.md
+Merge Similar Items.md
+Merge Sorted Array.md
+Merge Strings Alternately.md
+Merge Triplets to Form Target Triplet.md
+Merge Two 2D Arrays by Summing Values.md
+Merge Two Binary Trees.md
+Merge Two Sorted Lists.md
+Method Chaining.md
+Mice and Cheese.md
+Middle of the Linked List.md
+Min Cost Climbing Stairs.md
+Min Cost to Connect All Points.md
+Minesweeper.md
+Minimize Array Sum Using Divisible Replacements.md
+Minimize Connected Groups by Inserting Interval.md
+Minimize Deviation in Array.md
+Minimized Maximum of Products Distributed to Any Store.md
+Minimize Hamming Distance After Swap Operations.md
+Minimize Length of Array Using Operations.md
+Minimize Malware Spread II.md
+Minimize Malware Spread.md
+Minimize Max Distance to Gas Station.md
+Minimize Maximum Component Cost.md
+Minimize Maximum of Array.md
+Minimize Maximum Pair Sum in Array.md
+Minimize Maximum Value in a Grid.md
+Minimize OR of Remaining Elements Using Operations.md
+Minimize Product Sum of Two Arrays.md
+Minimize Result by Adding Parentheses to Expression.md
+Minimize Rounding Error to Meet Target.md
+Minimize String Length.md
+Minimize the Difference Between Target and Chosen Elements.md
+Minimize the Maximum Adjacent Element Difference.md
+Minimize the Maximum Difference of Pairs.md
+Minimize the Maximum Edge Weight of Graph.md
+Minimize the Maximum of Two Arrays.md
+Minimize XOR.md
+Minimizing Array After Replacing Pairs With Their Product.md
+Minimum Absolute Difference Between Elements With Constraint.md
+Minimum Absolute Difference Between Two Values.md
+Minimum Absolute Difference in BST.md
+Minimum Absolute Difference in Sliding Submatrix.md
+Minimum Absolute Difference.md
+Minimum Absolute Difference Queries.md
+Minimum Absolute Distance Between Mirror Pairs.md
+Minimum Absolute Sum Difference.md
+Minimum Additions to Make Valid String.md
+Minimum Addition to Make Integer Beautiful.md
+Minimum Add to Make Parentheses Valid.md
+Minimum Adjacent Swaps for K Consecutive Ones.md
+Minimum Adjacent Swaps to Make a Valid Array.md
+Minimum Adjacent Swaps to Reach the Kth Smallest Number.md
+Minimum Amount of Damage Dealt to Bob.md
+Minimum Amount of Time to Collect Garbage.md
+Minimum Amount of Time to Fill Cups.md
+Minimum Area Rectangle II.md
+Minimum Area Rectangle.md
+Minimum Array Changes to Make Differences Equal.md
+Minimum Array End.md
+Minimum Array Length After Pair Removals.md
+Minimum Array Sum.md
+Minimum ASCII Delete Sum for Two Strings.md
+Minimum Average Difference.md
+Minimum Average of Smallest and Largest Elements.md
+Minimum Bit Flips to Convert Number.md
+Minimum Bitwise OR From Grid.md
+Minimum Changes To Make Alternating Binary String.md
+Minimum Common Value.md
+Minimum Consecutive Cards to Pick Up.md
+Minimum Cost For Tickets.md
+Minimum Cost Good Caption.md
+Minimum Cost Homecoming of a Robot in a Grid.md
+Minimum Cost of a Path With Special Roads.md
+Minimum Cost of Buying Candies With Discount.md
+Minimum Cost Path with Edge Reversals.md
+Minimum Cost Path with Teleportations.md
+Minimum Costs Using the Train Line.md
+Minimum Cost to Buy Apples II.md
+Minimum Cost to Buy Apples.md
+Minimum Cost to Change the Final Value of Expression.md
+Minimum Cost to Connect Sticks.md
+Minimum Cost to Connect Two Groups of Points.md
+Minimum Cost to Convert String II.md
+Minimum Cost to Convert String I.md
+Minimum Cost to Cut a Stick.md
+Minimum Cost to Equalize Array.md
+Minimum Cost to Equalize Arrays Using Swaps.md
+Minimum Cost to Hire K Workers.md
+Minimum Cost to Make All Characters Equal.md
+Minimum Cost to Make Array Equalindromic.md
+Minimum Cost to Make Array Equal.md
+Minimum Cost to Make Arrays Identical.md
+Minimum Cost to Make at Least One Valid Path in a Grid.md
+Minimum Cost to Merge Stones.md
+Minimum Cost to Move Chips to The Same Position.md
+Minimum Cost to Partition a Binary String.md
+Minimum Cost to Reach City With Discounts.md
+Minimum Cost to Reach Destination in Time.md
+Minimum Cost to Separate Sentence Into Rows.md
+Minimum Cost to Set Cooking Time.md
+Minimum Cost to Split an Array.md
+Minimum Cost to Split into Ones.md
+Minimum Cost Tree From Leaf Values.md
+Minimum Cost Walk in Weighted Graph.md
+Minimum Cuts to Divide a Circle.md
+Minimum Degree of a Connected Trio in a Graph.md
+Minimum Deletions for At Most K Distinct Characters.md
+Minimum Deletions to Make Array Beautiful.md
+Minimum Deletions to Make Array Divisible.md
+Minimum Deletions to Make Character Frequencies Unique.md
+Minimum Deletions to Make String Balanced.md
+Minimum Deletions to Make String K-Special.md
+Minimum Depth of Binary Tree.md
+Minimum Difference Between Highest and Lowest of K Scores.md
+Minimum Difference Between Largest and Smallest Value in Three Moves.md
+Minimum Difference in Sums After Removal of Elements.md
+Minimum Difficulty of a Job Schedule.md
+Minimum Distance Between BST Nodes.md
+Minimum Distance Between Three Equal Elements II.md
+Minimum Distance Between Three Equal Elements I.md
+Minimum Distance to the Target Element.md
+Minimum Distance to Type a Word Using Two Fingers.md
+Minimum Division Operations to Make Array Non Decreasing.md
+Minimum Domino Rotations For Equal Row.md
+Minimum Edge Reversals So Every Node Is Reachable.md
+Minimum Edge Weight Equilibrium Queries in a Tree.md
+Minimum Elements to Add to Form a Given Sum.md
+Minimum Equal Sum of Two Arrays After Replacing Zeros.md
+Minimum Factorization.md
+Minimum Falling Path Sum II.md
+Minimum Falling Path Sum.md
+Minimum Flips in Binary Tree to Get Result.md
+Minimum Flips to Make a OR b Equal to c.md
+Minimum Flips to Make Binary String Coherent.md
+Minimum Fuel Cost to Report to the Capital.md
+Minimum Garden Perimeter to Collect Enough Apples.md
+Minimum Genetic Mutation.md
+Minimum Health to Beat Game.md
+Minimum Height Trees.md
+Minimum Hours of Training to Win a Competition.md
+Minimum Impossible OR.md
+Minimum Incompatibility.md
+Minimum Increase to Maximize Special Indices.md
+Minimum Increment Operations to Make Array Beautiful.md
+Minimum Increments to Equalize Leaf Paths.md
+Minimum Increment to Make Array Unique.md
+Minimum Index of a Valid Split.md
+Minimum Index Sum of Two Lists.md
+Minimum Initial Energy to Finish Tasks.md
+Minimum Insertion Steps to Make a String Palindrome.md
+Minimum Insertions to Balance a Parentheses String.md
+Minimum Interval to Include Each Query.md
+Minimum Jumps to Reach End via Prime Teleportation.md
+Minimum Jumps to Reach Home.md
+Minimum Knight Moves.md
+Minimum K to Reduce Array Within Limit.md
+Minimum Length of Anagram Concatenation.md
+Minimum Length of String After Deleting Similar Ends.md
+Minimum Length of String After Operations.md
+Minimum Levels to Gain More Points.md
+Minimum Limit of Balls in a Bag.md
+Minimum Lines to Represent a Line Chart.md
+Minimum Money Required Before Transactions.md
+Minimum Moves to Balance Circular Array.md
+Minimum Moves to Capture The Queen.md
+Minimum Moves to Clean the Classroom.md
+Minimum Moves to Convert String.md
+Minimum Moves to Equal Array Elements Extended.md
+Minimum Moves to Equal Array Elements III.md
+Minimum Moves to Equal Array Elements II.md
+Minimum Moves to Equal Array Elements.md
+Minimum Moves to Make Array Complementary.md
+Minimum Moves to Move a Box to Their Target Location.md
+Minimum Moves to Pick K Ones.md
+Minimum Moves to Reach Target in Grid.md
+Minimum Moves to Reach Target Score.md
+Minimum Moves to Reach Target with Rotations.md
+Minimum Moves to Spread Stones Over Grid.md
+Minimum Non-Zero Product of the Array Elements.md
+Minimum Number Game.md
+Minimum Number of Arrows to Burst Balloons Extended.md
+Minimum Number of Arrows to Burst Balloons.md
+Minimum Number of Chairs in a Waiting Room.md
+Minimum Number of Changes to Make Binary String Beautiful.md
+Minimum Number of Coins to be Added.md
+Minimum Number of Days to Disconnect Island.md
+Minimum Number of Days to Eat N Oranges.md
+Minimum Number of Days to Make m Bouquets.md
+Minimum Number of Flips to Convert Binary Matrix to Zero Matrix.md
+Minimum Number of Flips to Make Binary Grid Palindromic II.md
+Minimum Number of Flips to Make the Binary String Alternating.md
+Minimum Number of Food Buckets to Feed the Hamsters.md
+Minimum Number of Frogs Croaking.md
+Minimum Number of Groups to Create a Valid Assignment.md
+Minimum Number of Increments on Subarrays to Form a Target Array.md
+Minimum Number of K Consecutive Bit Flips.md
+Minimum Number of Keypresses.md
+Minimum Number of Lines to Cover Points.md
+Minimum Number of Moves to Make Palindrome.md
+Minimum Number of Moves to Seat Everyone.md
+Minimum Number of Operations to Convert Time.md
+Minimum Number of Operations to Have Distinct Elements.md
+Minimum Number of Operations to Make All Array Elements Equal to 1.md
+Minimum Number of Operations to Make Array Continuous.md
+Minimum Number of Operations to Make Array Empty.md
+Minimum Number of Operations to Make Arrays Similar.md
+Minimum Number of Operations to Make Array XOR Equal to K.md
+Minimum Number of Operations to Make Elements in Array Distinct.md
+Minimum Number of Operations to Make String Sorted.md
+Minimum Number of Operations to Make Word K-Periodic.md
+Minimum Number of Operations to Make X and Y Equal.md
+Minimum Number of Operations to Move All Balls to Each Box.md
+Minimum Number of Operations to Reinitialize a Permutation.md
+Minimum Number of Operations to Satisfy Conditions.md
+Minimum Number of Operations to Sort a Binary Tree by Level.md
+Minimum Number of People to Teach.md
+Minimum Number of Primes to Sum to Target.md
+Minimum Number of Pushes to Type Word II.md
+Minimum Number of Pushes to Type Word I.md
+Minimum Number of Refueling Stops.md
+Minimum Number of Removals to Make Mountain Array.md
+Minimum Number of Seconds to Make Mountain Height Zero.md
+Minimum Number of Steps to Make Two Strings Anagram II.md
+Minimum Number of Steps to Make Two Strings Anagram.md
+Minimum Number of Swaps to Make the Binary String Alternating.md
+Minimum Number of Swaps to Make the String Balanced.md
+Minimum Number of Taps to Open to Water a Garden.md
+Minimum Number of Valid Strings to Form Target I.md
+Minimum Number of Vertices to Reach All Nodes.md
+Minimum Number of Visited Cells in a Grid.md
+Minimum Number of Work Sessions to Finish the Tasks.md
+Minimum Numbers of Function Calls to Make Target Array.md
+Minimum Obstacle Removal to Reach Corner.md
+Minimum One Bit Operations to Make Integers Zero.md
+Minimum Operations to Collect Elements.md
+Minimum Operations to Convert All Elements to Zero.md
+Minimum Operations to Convert Number.md
+Minimum Operations to Equalize Binary String.md
+Minimum Operations to Exceed Threshold Value II.md
+Minimum Operations to Exceed Threshold Value I.md
+Minimum Operations to Form Subsequence With Target Sum.md
+Minimum Operations to Halve Array Sum.md
+Minimum Operations to Make All Array Elements Equal.md
+Minimum Operations to Make Array Elements Zero.md
+Minimum Operations to Make Array Equal II.md
+Minimum Operations to Make Array Equal.md
+Minimum Operations to Make Array Equal to Target.md
+Minimum Operations to Make Array Non Decreasing.md
+Minimum Operations to Make Array Sum Divisible by K.md
+Minimum Operations to Make Array Values Equal to K.md
+Minimum Operations to Make a Subsequence.md
+Minimum Operations to Make a Uni-Value Grid.md
+Minimum Operations to Make Binary Array Elements Equal to One II.md
+Minimum Operations to Make Binary Array Elements Equal to One I.md
+Minimum Operations to Make Binary Palindrome.md
+Minimum Operations to Make Character Frequencies Equal.md
+Minimum Operations to Make Columns Strictly Increasing.md
+Minimum Operations to Make Median of Array Equal to K.md
+Minimum Operations to Make Numbers Non-positive.md
+Minimum Operations to Make the Array Alternating.md
+Minimum Operations to Make the Array Increasing.md
+Minimum Operations to Make the Array K-Increasing.md
+Minimum Operations to Make the Integer Zero.md
+Minimum Operations to Reduce an Integer to 0.md
+Minimum Operations to Reduce X to Zero Extended.md
+Minimum Operations to Reduce X to Zero.md
+Minimum Operations to Remove Adjacent Ones in Matrix.md
+Minimum Operations to Sort a String.md
+Minimum Operations to Transform Array into Alternating Prime.md
+Minimum Operations to Write the Letter Y on a Grid.md
+Minimum Pair Removal to Sort Array II.md
+Minimum Pair Removal to Sort Array I.md
+Minimum Path Cost in a Grid.md
+Minimum Path Cost in a Hidden Grid.md
+Minimum Path Sum Extended.md
+Minimum Path Sum.md
+Minimum Penalty for a Shop.md
+Minimum Positive Sum Subarray.md
+Minimum Possible Integer After at Most K Adjacent Swaps On Digits.md
+Minimum Prefix Removal to Make Array Strictly Increasing.md
+Minimum Processing Time.md
+Minimum Recolors to Get K Consecutive Black Blocks.md
+Minimum Rectangles to Cover Points.md
+Minimum Removals to Balance Array.md
+Minimum Remove to Make Valid Parentheses.md
+Minimum Replacements to Sort the Array.md
+Minimum Reverse Operations.md
+Minimum Right Shifts to Sort the Array.md
+Minimum Rounds to Complete All Tasks.md
+Minimum Runes to Add to Cast Spell.md
+Minimum Score After Removals on a Tree.md
+Minimum Score of a Path Between Two Cities.md
+Minimum Score Triangulation of Polygon.md
+Minimum Seconds to Equalize a Circular Array.md
+Minimum Sensors to Cover Grid.md
+Minimum Sideway Jumps.md
+Minimum Size Subarray in Infinite Array.md
+Minimum Size Subarray Sum.md
+Minimum Skips to Arrive at Meeting On Time.md
+Minimum Space Wasted From Packaging.md
+Minimum Spanning Tree.md
+Minimum Speed to Arrive on Time.md
+Minimum Stability Factor of Array.md
+Minimum String Length After Removing Substrings.md
+Minimum Subarray Length With Distinct Sum At Least K.md
+Minimum Subsequence in Non-Increasing Order.md
+Minimum Substring Partition of Equal Character Frequency.md
+Minimum Suffix Flips.md
+Minimum Sum of Four Digit Number After Splitting Digits.md
+Minimum Sum of Mountain Triplets I.md
+Minimum Sum of Squared Difference.md
+Minimum Sum of Values by Dividing Array.md
+Minimum Swaps to Arrange a Binary Grid.md
+Minimum Swaps to Avoid Forbidden Values.md
+Minimum Swaps to Group All 1's Together II.md
+Minimum Swaps to Group All 1s Together II.md
+Minimum Swaps to Group All 1's Together.md
+Minimum Swaps To Make Sequences Increasing.md
+Minimum Swaps to Make Strings Equal.md
+Minimum Swaps to Sort by Digit Sum.md
+Minimum Time Difference.md
+Minimum Time for K Connected Components.md
+Minimum Time Takes to Reach Destination Without Drowning.md
+Minimum Time to Activate String.md
+Minimum Time to Break Locks II.md
+Minimum Time to Break Locks I.md
+Minimum Time to Build Blocks.md
+Minimum Time to Collect All Apples in a Tree.md
+Minimum Time to Complete All Deliveries.md
+Minimum Time to Complete All Tasks.md
+Minimum Time to Complete Trips.md
+Minimum Time to Eat All Grains.md
+Minimum Time to Finish the Race.md
+Minimum Time to Kill All Monsters.md
+Minimum Time to Make Array Sum At Most x.md
+Minimum Time to Make Rope Colorful.md
+Minimum Time to Remove All Cars Containing Illegal Goods.md
+Minimum Time to Repair Cars.md
+Minimum Time to Revert Word to Initial State II.md
+Minimum Time to Revert Word to Initial State I.md
+Minimum Time to Type Word Using Special Typewriter.md
+Minimum Time to Visit a Cell In a Grid.md
+Minimum Time to Visit All Houses.md
+Minimum Time Visiting All Points.md
+Minimum Total Cost to Make Arrays Unequal.md
+Minimum Total Distance Traveled.md
+Minimum Total Space Wasted With K Resizing Operations.md
+Minimum Unique Word Abbreviation.md
+Minimum Value to Get Positive Step by Step Sum.md
+Minimum Weighted Subgraph With the Required Paths.md
+Minimum White Tiles After Covering With Carpets.md
+Minimum Window Subsequence.md
+Minimum Window Substring Extended.md
+Minimum Window Substring.md
+Minimum XOR Path in a Grid.md
+Minimum XOR Sum of Two Arrays.md
+Mini Parser.md
+Min Stack Extended.md
+Min Stack.md
+Mirror Distance of an Integer.md
+Mirror Reflection.md
+Missing Element in Sorted Array.md
+Missing Number In Arithmetic Progression.md
+Missing Number.md
+Missing Ranges.md
+Modify Graph Edge Weights.md
+Modify the Matrix.md
+Monotone Increasing Digits.md
+Monotonic Array.md
+Monthly Transactions II.md
+Monthly Transactions I.md
+Most Beautiful Item for Each Query.md
+Most Common Word.md
+Most Expensive Item That Can Not Be Bought.md
+Most Frequent Even Element.md
+Most Frequent IDs.md
+Most Frequent Number Following Key In an Array.md
+Most Frequent Prime.md
+Most Frequent Subtree Sum.md
+Most Popular Video Creator.md
+Most Profitable Path in a Tree.md
+Most Profit Assigning Work.md
+Most Stones Removed with Same Row or Column.md
+Most Visited Sector in a Circular Track.md
+Movement of Robots.md
+Move Pieces to Obtain a String.md
+Move Sub-Tree of N-Ary Tree.md
+Move Zeroes Extended.md
+Move Zeroes.md
+Movie Rating.md
+Moving Average from Data Stream.md
+Moving Stones Until Consecutive II.md
+Moving Stones Until Consecutive.md
+Multiply Strings.md
+My Calendar III.md
+My Calendar II.md
+My Calendar I.md
+Naming a Company.md
+N-ary Tree Level Order Traversal.md
+N-ary Tree Postorder Traversal.md
+N-ary Tree Preorder Traversal.md
+Nearest Exit from Entrance in Maze.md
+Neighboring Bitwise XOR.md
+Nested List Weight Sum II.md
+Nested List Weight Sum.md
+Network Delay Time.md
+New 21 Game.md
+New Users Daily Count.md
+Next Closest Time.md
+Next Greater Element III.md
+Next Greater Element II.md
+Next Greater Element I.md
+Next Greater Node In Linked List.md
+Next Greater Numerically Balanced Number.md
+Next Palindrome Using Same Digits.md
+Next Permutation.md
+Next Special Palindrome Number.md
+Nim Game.md
+Node With Highest Edge Score.md
+Non-decreasing Array.md
+Non-decreasing Subsequences.md
+Non-negative Integers without Consecutive Ones.md
+Non-overlapping Intervals.md
+Not Boring Movies.md
+NPV Queries.md
+N-Queens II.md
+N-Queens.md
+N-Repeated Element in Size 2N Array.md
+Nth Digit.md
+Nth Highest Salary.md
+Nth Magical Number.md
+N-th Tribonacci Number.md
+Number Complement.md
+Number of 1 Bits.md
+Number of Accounts That Did Not Stream.md
+Number of Adjacent Elements With the Same Color.md
+Number of Arithmetic Triplets.md
+Number of Atoms.md
+Number of Beautiful Integers in the Range.md
+Number of Beautiful Partitions.md
+Number of Bit Changes to Make Two Integers Equal.md
+Number of Black Blocks.md
+Number of Boomerangs.md
+Number of Calls Between Two Persons.md
+Number of Changing Keys.md
+Number of Closed Islands.md
+Number of Comments per Post.md
+Number of Common Factors.md
+Number of Connected Components in an Undirected Graph.md
+Number Of Corner Rectangles.md
+Number of Days Between Two Dates.md
+Number of Days in a Month.md
+Number of Dice Rolls With Target Sum.md
+Number of Different Subsequences GCDs.md
+Number of Digit One.md
+Number of Distinct Averages.md
+Number of Distinct Binary Strings After Applying Operations.md
+Number of Distinct Islands II.md
+Number of Distinct Islands.md
+Number of Distinct Roll Sequences.md
+Number of Distinct Substrings in a String.md
+Number of Divisible Substrings.md
+Number of Divisible Triplet Sums.md
+Number of Employees Who Met the Target.md
+Number of Enclaves.md
+Number of Equal Count Substrings.md
+Number of Equal Numbers Blocks.md
+Number of Equivalent Domino Pairs.md
+Number of Even and Odd Bits.md
+Number of Excellent Pairs.md
+Number of Flowers in Full Bloom.md
+Number of Good Binary Strings.md
+Number of Good Leaf Nodes Pairs.md
+Number of Good Pairs.md
+Number of Good Paths.md
+Number of Good Ways to Split a String.md
+Number of Great Partitions.md
+Number of Increasing Paths in a Grid.md
+Number of Islands II.md
+Number of Islands.md
+Number of Laser Beams in a Bank.md
+Number of Lines To Write String.md
+Number of Longest Increasing Subsequence.md
+Number of Matching Subsequences.md
+Number of Music Playlists.md
+Number of Nodes in the Sub-Tree With the Same Label.md
+Number of Nodes With Value One.md
+Number of Operations to Make Network Connected.md
+Number of Orders in the Backlog.md
+Number of Pairs of Interchangeable Rectangles.md
+Number of Pairs of Strings With Concatenation Equal to Target.md
+Number of Pairs Satisfying Inequality.md
+Number of Paths with Max Score.md
+Number of People Aware of a Secret.md
+Number of People That Can Be Seen in a Grid.md
+Number of Perfect Pairs.md
+Number of Possible Sets of Closing Branches.md
+Number of Provinces.md
+Number of Recent Calls.md
+Number Of Rectangles That Can Form The Largest Square.md
+Number of Restricted Paths From First to Last Node.md
+Number of Same-End Substrings.md
+Number of Segments in a String.md
+Number of Self-Divisible Permutations.md
+Number of Senior Citizens.md
+Number of Sets of K Non-Overlapping Line Segments.md
+Number of Ships in a Rectangle.md
+Number of Smooth Descent Periods of a Stock.md
+Number of Spaces Cleaning Robot Cleaned.md
+Number of Squareful Arrays.md
+Number of Stable Subsequences.md
+Number of Steps to Reduce a Number in Binary Representation to One.md
+Number of Steps to Reduce a Number to Zero.md
+Number of Strings That Appear as Substrings in Word.md
+Number of Strings Which Can Be Rearranged to Contain Substring.md
+Number of Students Unable to Eat Lunch.md
+Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold.md
+Number of Subarrays That Match a Pattern II.md
+Number of Subarrays That Match a Pattern I.md
+Number of Subarrays With AND Value of K.md
+Number of Subarrays with Bounded Maximum.md
+Number of Subarrays With LCM Equal to K.md
+Number of Sub-arrays With Odd Sum.md
+Number of Submatrices That Sum to Target.md
+Number of Subsequences That Satisfy the Given Sum Condition.md
+Number of Substrings Containing All Three Characters.md
+Number of Substrings With Fixed Ratio.md
+Number of Substrings With Only 1s.md
+Number of Times a Driver Was a Passenger.md
+Number of Times Binary String Is Prefix-Aligned.md
+Number of Transactions per Visit.md
+Number of Trusted Contacts of a Customer.md
+Number of Unequal Triplets in Array.md
+Number of Unique Categories.md
+Number of Unique Flavors After Sharing K Candies.md
+Number of Unique Good Subsequences.md
+Number of Unique Subjects Taught by Each Teacher.md
+Number of Unique XOR Triplets II.md
+Number of Unique XOR Triplets I.md
+Number of Valid Clock Times.md
+Number of Valid Move Combinations On Chessboard.md
+Number of Valid Subarrays.md
+Number of Valid Words for Each Puzzle.md
+Number of Valid Words in a Sentence.md
+Number of Visible People in a Queue.md
+Number of Ways of Cutting a Pizza.md
+Number of Ways to Arrive at Destination.md
+Number of Ways to Build House of Cards.md
+Number of Ways to Build Sturdy Brick Wall.md
+Number of Ways to Buy Pens and Pencils.md
+Number of Ways to Divide a Long Corridor.md
+Number of Ways to Earn Points.md
+Number of Ways to Form a Target String Given a Dictionary.md
+Number of Ways to Paint N × 3 Grid.md
+Number of Ways to Paint N x 3 Grid.md
+Number of Ways to Reach a Position After Exactly k Steps.md
+Number of Ways to Reach Destination in the Grid.md
+Number of Ways to Rearrange Sticks With K Sticks Visible.md
+Number Of Ways To Reconstruct A Tree.md
+Number of Ways to Reorder Array to Get Same BST.md
+Number of Ways to Select Buildings.md
+Number of Ways to Separate Numbers.md
+Number of Ways to Split Array.md
+Number of Ways to Split a String.md
+Number of Ways to Stay in the Same Place After Some Steps.md
+Number of Ways to Wear Different Hats to Each Other.md
+Number of Wonderful Substrings.md
+Number of Zero-Filled Subarrays.md
+Numbers At Most N Given Digit Set.md
+Numbers With Repeated Digits.md
+Numbers With Same Consecutive Differences.md
+Occurrences After Bigram.md
+Odd Even Jump.md
+Odd Even Linked List Extended.md
+Odd Even Linked List.md
+Odd String Difference.md
+One Edit Distance.md
+Ones and Zeroes.md
+Online Election.md
+Online Majority Element In Subarray.md
+Online Stock Span.md
+Open the Lock.md
+Operations on Tree.md
+Optimal Account Balancing.md
+Optimal Division.md
+Optimal Partition of String.md
+Optimize Water Distribution in a Village.md
+Orderly Queue.md
+Order Two Columns Independently.md
+Out of Boundary Paths.md
+Output Contest Matches.md
+Pacific Atlantic Water Flow.md
+Page Recommendations II.md
+Page Recommendations.md
+Paint Fence.md
+Paint House III.md
+Paint House II.md
+Paint House IV.md
+Paint House.md
+Painting a Grid With Three Different Colors.md
+Painting the Walls.md
+Pairs of Songs With Total Durations Divisible by 60.md
+Palindrome Linked List.md
+Palindrome Number.md
+Palindrome Pairs.md
+Palindrome Partitioning II.md
+Palindrome Partitioning IV.md
+Palindrome Partitioning.md
+Palindrome Permutation.md
+Palindrome Removal.md
+Palindromic Substrings.md
+Pancake Sorting.md
+Parallel Courses III.md
+Parallel Courses II.md
+Parallel Courses.md
+Parse Lisp Expression.md
+Parsing A Boolean Expression.md
+Partition Array According to Given Pivot.md
+Partition Array for Maximum Sum.md
+Partition Array for Maximum XOR and AND.md
+Partition Array into Disjoint Intervals.md
+Partition Array Into K-Distinct Groups.md
+Partition Array Into Three Parts With Equal Sum.md
+Partition Array Into Two Arrays to Minimize Sum Difference.md
+Partition Array into Two Equal Product Subsets.md
+Partition Array Such That Maximum Difference Is K.md
+Partition Array to Minimize XOR.md
+Partition Equal Subset Sum.md
+Partitioning Into Minimum Number Of Deci-Binary Numbers.md
+Partition Labels.md
+Partition List.md
+Partition String.md
+Partition to K Equal Sum Subsets.md
+Pascal's Triangle II.md
+Pascal's Triangle.md
+Pass the Pillow.md
+Patching Array.md
+Path Crossing.md
+Path Existence Queries in a Graph II.md
+Path Existence Queries in a Graph I.md
+Path In Zigzag Labelled Binary Tree.md
+Paths in Matrix Whose Sum Is Divisible by K.md
+Paths in Maze That Lead to Same Room.md
+Path Sum Extended.md
+Path Sum III.md
+Path Sum II.md
+Path Sum IV.md
+Path Sum.md
+Path with Maximum Gold.md
+Path With Maximum Minimum Value.md
+Path with Maximum Probability.md
+Path With Minimum Effort.md
+Patients With a Condition.md
+Peak Index in a Mountain Array.md
+Peaks in Array.md
+Peeking Iterator.md
+People Whose List of Favorite Companies Is Not a Subset of Another List.md
+Percentage of Letter in String.md
+Percentage of Users Attended a Contest.md
+Perfect Number.md
+Perfect Rectangle.md
+Perfect Squares.md
+Perform String Shifts.md
+Permutation Difference between Two Strings.md
+Permutation in String.md
+Permutation Sequence.md
+Permutations III.md
+Permutations II.md
+Permutations.md
+Pizza Toppings Cost Analysis.md
+Pizza With 3n Slices.md
+Plates Between Candles.md
+Plus One Linked List.md
+Plus One.md
+Points That Intersect With Cars.md
+Poor Pigs.md
+Populating Next Right Pointers in Each Node II.md
+Populating Next Right Pointers in Each Node.md
+Positions of Large Groups.md
+Possible Bipartition.md
+Pour Water Between Buckets to Make Water Levels Equal.md
+Pour Water.md
+Power Grid Maintenance.md
+Power of Four.md
+Power of Three.md
+Power of Two.md
+Power Update After K-th Largest Insertion I.md
+Pow(x, n) Extended.md
+Pow(x, n).md
+Predict the Winner.md
+Prefix and Suffix Search.md
+Preimage Size of Factorial Zeroes Function.md
+Previous Permutation With One Swap.md
+Primary Department for Each Employee.md
+Prime Arrangements.md
+Prime In Diagonal.md
+Prime Number of Set Bits in Binary Representation.md
+Prime Palindrome.md
+Prime Subtraction Operation.md
+Print Binary Tree.md
+Print in Order.md
+Print Words Vertically.md
+Print Zero Even Odd.md
+Prison Cells After N Days.md
+Process Restricted Friend Requests.md
+Process String with Special Operations II.md
+Process String with Special Operations I.md
+Process Tasks Using Servers.md
+Product of Array Except Self.md
+Product of the Last K Numbers.md
+Product of Two Run-Length Encoded Arrays.md
+Product Price at a Given Date.md
+Product Sales Analysis III.md
+Product Sales Analysis II.md
+Product Sales Analysis I.md
+Product Sales Analysis IV.md
+Product Sales Analysis V.md
+Product's Price for Each Store.md
+Products With Three or More Orders in Two Consecutive Years.md
+Profitable Schemes.md
+Project Employees III.md
+Project Employees II.md
+Project Employees I.md
+Projection Area of 3D Shapes.md
+Promise Pool.md
+Promise Time Limit.md
+Properties Graph.md
+Pseudo-Palindromic Paths in a Binary Tree.md
+Push Dominoes.md
+Put Boxes Into the Warehouse II.md
+Put Boxes Into the Warehouse I.md
+Put Marbles in Bags.md
+Pyramid Transition Matrix.md
+Pythagorean Distance Nodes in a Tree.md
+Queens That Can Attack the King.md
+Queries on a Permutation With Key.md
+Queries on Number of Points Inside a Circle.md
+Queries Quality and Percentage.md
+Query Kth Smallest Trimmed Number.md
+Queue Reconstruction by Height.md
+Rabbits in Forest.md
+Race Car.md
+Random Flip Matrix.md
+Random Pick Index.md
+Random Pick with Blacklist.md
+Random Pick with Weight.md
+Random Point in Non-overlapping Rectangles.md
+Range Addition II.md
+Range Addition.md
+Range Frequency Queries.md
+Range Module.md
+Range Product Queries of Powers.md
+Range Sum of BST.md
+Range Sum of Sorted Subarray Sums.md
+Range Sum Query 2D - Immutable.md
+Range Sum Query 2D - Mutable.md
+Range Sum Query - Immutable.md
+Range Sum Query - Mutable.md
+Rank Scores.md
+Rank Teams by Votes.md
+Rank Transform of a Matrix.md
+Rank Transform of an Array.md
+Ransom Note.md
+Reachable Nodes In Subdivided Graph.md
+Reachable Nodes With Restrictions.md
+Reach a Number.md
+Reach End of Array With Max Score.md
+Reaching Points.md
+Read N Characters Given read4 II - Call Multiple Times.md
+Read N Characters Given Read4.md
+Rearrange Array Elements by Sign.md
+Rearrange Array to Maximize Prefix Score.md
+Rearrange Characters to Make Target String.md
+Rearrange Products Table.md
+Rearrange Spaces Between Words.md
+Rearrange String k Distance Apart.md
+Rearrange Words in a Sentence.md
+Rearranging Fruits.md
+Reconstruct a 2-Row Binary Matrix.md
+Reconstruct Itinerary.md
+Reconstruct Original Digits from English.md
+Recover a Tree From Preorder Traversal.md
+Recover Binary Search Tree.md
+Recover the Original Array.md
+Rectangle Area II.md
+Rectangle Area.md
+Rectangle Overlap.md
+Rectangles Area.md
+Recyclable and Low Fat Products.md
+Redistribute Characters to Make All Strings Equal.md
+Reduce Array Size to The Half.md
+Reducing Dishes.md
+Reduction Operations to Make the Array Elements Equal.md
+Redundant Connection II.md
+Redundant Connection.md
+Reformat Date.md
+Reformat Department Table.md
+Reformat Phone Number.md
+Reformat The String.md
+Regions Cut By Slashes.md
+Regular Expression Matching.md
+Relative Ranks.md
+Relative Sort Array.md
+Relocate Marbles.md
+Remove 9.md
+Remove Adjacent Almost-Equal Characters.md
+Remove All Adjacent Duplicates in String II.md
+Remove All Adjacent Duplicates In String.md
+Remove All Occurrences of a Substring.md
+Remove All Ones With Row and Column Flips II.md
+Remove All Ones With Row and Column Flips.md
+Remove Boxes.md
+Remove Colored Pieces if Both Neighbors are the Same Color.md
+Remove Comments.md
+Remove Covered Intervals.md
+Remove Digit From Number to Maximize Result.md
+Remove Duplicate Letters.md
+Remove Duplicates From an Unsorted Linked List.md
+Remove Duplicates from Sorted Array II.md
+Remove Duplicates from Sorted Array.md
+Remove Duplicates from Sorted List II.md
+Remove Duplicates from Sorted List.md
+Remove Element.md
+Remove Interval.md
+Remove Invalid Parentheses.md
+Remove K-Balanced Substrings.md
+Remove K Digits.md
+Remove Letter To Equalize Frequency.md
+Remove Linked List Elements.md
+Remove Max Number of Edges to Keep Graph Fully Traversable.md
+Remove Methods From Project.md
+Remove Nodes From Linked List.md
+Remove Nth Node From End of List.md
+Remove One Element to Make the Array Strictly Increasing.md
+Remove Outermost Parentheses.md
+Remove Palindromic Subsequences.md
+Remove Stones to Minimize the Total.md
+Remove Sub-Folders from the Filesystem.md
+Remove Vowels from a String.md
+Remove Zero Sum Consecutive Nodes from Linked List.md
+Removing Minimum Number of Magic Beans.md
+Removing Stars From a String.md
+Reorder Data in Log Files.md
+Reordered Power of 2.md
+Reorder List.md
+Reorder Routes to Make All Paths Lead to the City Zero.md
+Reorganize String.md
+Repeated DNA Sequences.md
+Repeated String Match.md
+Repeated Substring Pattern.md
+Replace All Digits with Characters.md
+Replace All 's to Avoid Consecutive Repeating Characters.md
+Replace Elements in an Array.md
+Replace Elements with Greatest Element on Right Side.md
+Replace Employee ID With The Unique Identifier.md
+Replace Non-Coprime Numbers in Array.md
+Replace Question Marks in String to Minimize Its Value.md
+Replace the Substring for Balanced String.md
+Replace Words.md
+Report Contiguous Dates.md
+Reported Posts II.md
+Reported Posts.md
+Report Spam Message.md
+Reschedule Meetings for Maximum Free Time II.md
+Reschedule Meetings for Maximum Free Time I.md
+Reshape Data - Concatenate.md
+Reshape Data - Melt.md
+Reshape Data - Pivot.md
+Reshape the Matrix.md
+Restaurant Growth.md
+Restore IP Addresses.md
+Restore the Array From Adjacent Pairs.md
+Restore The Array.md
+Resulting String After Adjacent Removals.md
+Return Length of Arguments Passed.md
+Reveal Cards In Increasing Order.md
+Reverse Bits.md
+Reverse Degree of a String.md
+Reverse Integer.md
+Reverse Linked List II.md
+Reverse Linked List.md
+Reverse Nodes in Even Length Groups.md
+Reverse Nodes in k-Group.md
+Reverse Odd Levels of Binary Tree.md
+Reverse Only Letters.md
+Reverse Pairs.md
+Reverse Prefix of Word.md
+Reverse String II.md
+Reverse String.md
+Reverse String Prefix.md
+Reverse Substrings Between Each Pair of Parentheses.md
+Reverse Vowels of a String.md
+Reverse Words in a String III.md
+Reverse Words in a String II.md
+Reverse Words in a String.md
+Reward Top K Students.md
+Richest Customer Wealth.md
+Right Triangles.md
+Rings and Rods.md
+Rising Temperature.md
+RLE Iterator.md
+Robot Bounded In Circle.md
+Robot Collisions.md
+Robot Return to Origin.md
+Robot Room Cleaner.md
+Roman to Integer.md
+Root Equals Sum of Children.md
+Rotate Array.md
+Rotated Digits.md
+Rotate Function.md
+Rotate Image Extended.md
+Rotate Image.md
+Rotate List.md
+Rotate Non Negative Elements.md
+Rotate String.md
+Rotating the Box.md
+Rotting Oranges Extended.md
+Rotting Oranges.md
+Row With Maximum Ones.md
+Running Sum of 1d Array.md
+Russian Doll Envelopes.md
+Sales Analysis III.md
+Sales Analysis II.md
+Sales Analysis I.md
+Sales by Day of the Week.md
+Sales Person.md
+Same Tree.md
+Satisfiability of Equality Equations.md
+Score After Flipping Matrix.md
+Score of a String.md
+Score of Parentheses.md
+Scramble String.md
+Search a 2D Matrix II.md
+Search a 2D Matrix.md
+Search in a Binary Search Tree.md
+Search in a Sorted Array of Unknown Size.md
+Search in Rotated Sorted Array II.md
+Search in Rotated Sorted Array.md
+Search Insert Position.md
+Search Suggestions System.md
+Seat Reservation Manager.md
+Second Highest Salary.md
+Second Largest Digit in a String.md
+Second Minimum Node In a Binary Tree.md
+Second Minimum Time to Reach Destination.md
+Select Data.md
+Select K Disjoint Special Substrings.md
+Self Crossing.md
+Self Dividing Numbers.md
+Sell Diminishing-Valued Colored Balls.md
+Selling Pieces of Wood.md
+Sender With Largest Word Count.md
+Sentence Screen Fitting.md
+Sentence Similarity III.md
+Sentence Similarity II.md
+Sentence Similarity.md
+Separate Black and White Balls.md
+Separate Squares II.md
+Separate Squares I.md
+Separate the Digits in an Array.md
+Sequence Reconstruction.md
+Sequential Digits.md
+Sequentially Ordinal Rank Tracker.md
+Serialize and Deserialize Binary Tree.md
+Serialize and Deserialize BST.md
+Serialize and Deserialize N-ary Tree.md
+Set Intersection Size At Least Two.md
+Set Matrix Zeroes.md
+Set Mismatch.md
+Shift 2D Grid.md
+Shift Distance Between Two Strings.md
+Shifting Letters II.md
+Shifting Letters.md
+Shopping Offers.md
+Short Encoding of Words.md
+Shortest and Lexicographically Smallest Beautiful String.md
+Shortest Bridge.md
+Shortest Common Supersequence.md
+Shortest Completing Word.md
+Shortest Cycle in a Graph.md
+Shortest Distance After Road Addition Queries I.md
+Shortest Distance from All Buildings.md
+Shortest Distance in a Plane.md
+Shortest Distance to a Character.md
+Shortest Distance to Target Color.md
+Shortest Distance to Target String in a Circular Array.md
+Shortest Impossible Sequence of Rolls.md
+Shortest Matching Substring.md
+Shortest Palindrome.md
+Shortest Path in a Grid with Obstacles Elimination.md
+Shortest Path in a Hidden Grid.md
+Shortest Path in a Weighted Tree.md
+Shortest Path in Binary Matrix.md
+Shortest Path to Get All Keys.md
+Shortest Path to Get Food.md
+Shortest Path Visiting All Nodes.md
+Shortest Path with Alternating Colors.md
+Shortest String That Contains Three Strings.md
+Shortest Subarray to be Removed to Make Array Sorted.md
+Shortest Subarray With OR at Least K II.md
+Shortest Subarray With OR at Least K I.md
+Shortest Subarray with Sum at Least K.md
+Shortest Uncommon Substring in an Array.md
+Shortest Unsorted Continuous Subarray.md
+Shortest Way to Form String.md
+Shortest Word Distance III.md
+Shortest Word Distance II.md
+Shortest Word Distance.md
+Shuffle an Array.md
+Shuffle String.md
+Shuffle the Array.md
+Sign of the Product of an Array.md
+Similar RGB Color.md
+Similar String Groups.md
+Simple Bank System.md
+Simplified Fractions.md
+Simplify Path.md
+Single Element in a Sorted Array.md
+Single Number III.md
+Single Number II.md
+Single Number.md
+Single-Row Keyboard.md
+Single-Threaded CPU.md
+Sleep.md
+Sliding Puzzle.md
+Sliding Subarray Beauty.md
+Sliding Window Maximum.md
+Sliding Window Median.md
+Slowest Key.md
+Smallest Common Region.md
+Smallest Divisible Digit Product II.md
+Smallest Divisible Digit Product I.md
+Smallest Even Multiple.md
+Smallest Good Base.md
+Smallest Greater Multiple Made of Two Digits.md
+Smallest Index With Digit Sum Equal to Index.md
+Smallest Index With Equal Value.md
+Smallest Integer Divisible by K.md
+Smallest K-Length Subsequence With Occurrences of a Letter.md
+Smallest Missing Integer Greater Than Sequential Prefix Sum.md
+Smallest Missing Non-negative Integer After Operations.md
+Smallest Number in Infinite Set.md
+Smallest Number With All Set Bits.md
+Smallest Number With Given Digit Product.md
+Smallest Pair With Different Frequencies.md
+Smallest Palindromic Rearrangement I.md
+Smallest Range Covering Elements from K Lists.md
+Smallest Range II.md
+Smallest Range I.md
+Smallest Rectangle Enclosing Black Pixels.md
+Smallest Rotation with Highest Score.md
+Smallest String Starting From Leaf.md
+Smallest String With A Given Numeric Value.md
+Smallest String With Swaps.md
+Smallest Subarrays With Maximum Bitwise OR.md
+Smallest Subsequence of Distinct Characters.md
+Smallest Substring With Identical Characters II.md
+Smallest Substring With Identical Characters I.md
+Smallest Subtree with all the Deepest Nodes.md
+Smallest Sufficient Team.md
+Smallest Value of the Rearranged Number.md
+Snake in Matrix.md
+Snakes and Ladders.md
+Snapshot Array.md
+Solve the Equation.md
+Solving Questions With Brainpower.md
+Sort an Array.md
+Sort Array By Absolute Value.md
+Sort Array by Increasing Frequency.md
+Sort Array by Moving Items to Empty Space.md
+Sort Array By Parity II.md
+Sort Array By Parity.md
+Sort By.md
+Sort Characters By Frequency.md
+Sort Colors.md
+Sorted GCD Pair Queries.md
+Sort Even and Odd Indices Independently.md
+Sort Features by Popularity.md
+Sorting the Sentence.md
+Sorting Three Groups.md
+Sort Integers by The Number of 1 Bits.md
+Sort Integers by The Power Value.md
+Sort Items by Groups Respecting Dependencies.md
+Sort List.md
+Sort Matrix by Diagonals.md
+Sort the Jumbled Numbers.md
+Sort the Matrix Diagonally.md
+Sort the People.md
+Sort the Students by Their Kth Score.md
+Sort Transformed Array.md
+Sort Vowels in a String.md
+Soup Servings.md
+Sparse Matrix Multiplication.md
+Special Array II.md
+Special Array I.md
+Special Array With X Elements Greater Than or Equal X.md
+Special Binary String.md
+Special Positions in a Binary Matrix.md
+Spiral Matrix III.md
+Spiral Matrix II.md
+Spiral Matrix IV.md
+Spiral Matrix.md
+Spiral Order Matrix III.md
+Split and Merge Array Transformation.md
+Split Array into Consecutive Subsequences.md
+Split Array into Fibonacci Sequence.md
+Split Array Largest Sum.md
+Split Array with Equal Sum.md
+Split Array With Minimum Difference.md
+Split Array With Same Average.md
+Split a String in Balanced Strings.md
+Split a String Into the Max Number of Unique Substrings.md
+Split BST.md
+Split Concatenated Strings.md
+Split Linked List in Parts.md
+Split Message Based on Limit.md
+Split Strings by Separator.md
+Split the Array.md
+Split the Array to Make Coprime Products.md
+Split Two Strings to Make Palindrome.md
+Split With Minimum Sum.md
+Sqrt(x).md
+Squares of a Sorted Array.md
+Squirrel Simulation.md
+Stable Subarrays With Equal Boundary and Interior Sum.md
+Stamping the Grid.md
+Stamping The Sequence.md
+Statistics from a Large Sample.md
+Step-By-Step Directions From a Binary Tree Node to Another.md
+Stepping Numbers.md
+Steps to Make Array Non-decreasing.md
+Stickers to Spell Word.md
+Stock Price Fluctuation.md
+Stone Game III.md
+Stone Game II.md
+Stone Game IV.md
+Stone Game IX.md
+Stone Game.md
+Stone Game VIII.md
+Stone Game VII.md
+Stone Game V.md
+Strange Printer II.md
+Strange Printer.md
+Stream of Characters.md
+Strictly Palindromic Number.md
+String Compression III.md
+String Compression II.md
+String Compression.md
+String Matching in an Array.md
+Strings Differ by One Character.md
+String to Integer (atoi) Extended.md
+String to Integer (atoi).md
+String Transformation.md
+String Transforms Into Another String.md
+String Without AAA or BBB.md
+Strobogrammatic Number II.md
+Strobogrammatic Number.md
+Strong Friendship.md
+Strong Password Checker II.md
+Strong Password Checker.md
+Student Attendance Record II.md
+Student Attendance Record I.md
+Students and Examinations.md
+Students With Invalid Departments.md
+Subarray Product Less Than K.md
+Subarrays Distinct Element Sum of Squares II.md
+Subarray Sum Equals K.md
+Subarray Sums Divisible by K.md
+Subarrays with K Different Integers.md
+Subarray With Elements Greater Than Varying Threshold.md
+Subdomain Visit Count.md
+Subrectangle Queries.md
+Subsequence of Size K With the Largest Even Sum.md
+Subsequence Sum After Capping Elements.md
+Subsequence With the Minimum Score.md
+Subsets II.md
+Subsets.md
+Substring Matching Pattern.md
+Substrings of Size Three with Distinct Characters.md
+Substring with Concatenation of All Words.md
+Substring With Largest Variance.md
+Substring XOR Queries.md
+Subtract the Product and Sum of Digits of an Integer.md
+Subtree of Another Tree.md
+Subtree Removal Game with Fibonacci Tree.md
+Successful Pairs of Spells and Potions.md
+Sudoku Solver.md
+Sum Game.md
+Summary Ranges.md
+Sum of Absolute Differences in a Sorted Array.md
+Sum of All Odd Length Subarrays.md
+Sum of All Subset XOR Totals.md
+Sum of Beautiful Subsequences.md
+Sum of Beauty in the Array.md
+Sum of Beauty of All Substrings.md
+Sum of Digit Differences of All Pairs.md
+Sum of Digits in Base K.md
+Sum of Digits in the Minimum Number.md
+Sum of Digits of String After Convert.md
+Sum of Distances in Tree.md
+Sum of Distances.md
+Sum of Even Numbers After Queries.md
+Sum of GCD of Formed Pairs.md
+Sum of Good Numbers.md
+Sum of Good Subsequences.md
+Sum of Imbalance Numbers of All Subarrays.md
+Sum of k-Mirror Numbers.md
+Sum of Largest Prime Substrings.md
+Sum of Left Leaves.md
+Sum of Mutated Array Closest to Target.md
+Sum of Nodes with Even-Valued Grandparent.md
+Sum of Number and Its Reverse.md
+Sum of Perfect Square Ancestors.md
+Sum of Prefix Scores of Strings.md
+Sum of Remoteness of All Cells.md
+Sum of Root To Leaf Binary Numbers.md
+Sum of Scores of Built Strings.md
+Sum Of Special Evenly-Spaced Elements In Array.md
+Sum of Square Numbers.md
+Sum of Squares of Special Elements.md
+Sum of Subarray Minimums.md
+Sum of Subarray Ranges.md
+Sum of Total Strength of Wizards.md
+Sum of Two Integers.md
+Sum of Unique Elements.md
+Sum of Values at Indices With K Set Bits.md
+Sum of Variable Length Subarrays.md
+Sum Root to Leaf Numbers.md
+Super Egg Drop.md
+Super Palindromes.md
+Super Pow.md
+Super Ugly Number.md
+Super Washing Machines.md
+Surface Area of 3D Shapes.md
+Surrounded Regions Extended.md
+Surrounded Regions.md
+Suspicious Bank Accounts.md
+Swap Adjacent in LR String.md
+Swap For Longest Repeated Character Substring.md
+Swap Nodes in Pairs Extended.md
+Swap Nodes in Pairs.md
+Swapping Nodes in a Linked List.md
+Swap Sex of Employees.md
+Swim in Rising Water Extended.md
+Swim in Rising Water.md
+Symmetric Coordinates.md
+Symmetric Tree.md
+Synonymous Sentences.md
+Tag Validator.md
+Take Gifts From the Richest Pile.md
+Take K of Each Character From Left and Right.md
+Taking Maximum Energy From the Mystic Dungeon.md
+Tallest Billboard.md
+Target Sum.md
+Task Scheduler Extended.md
+Task Scheduler II.md
+Task Scheduler.md
+Team Scores in Football Tournament.md
+Teemo Attacking.md
+Tenth Line.md
+Ternary Expression Parser.md
+Text Justification.md
+The Dining Philosophers.md
+The Earliest and Latest Rounds Where Players Compete.md
+The Earliest Moment When Everyone Become Friends.md
+The Employee That Worked on the Longest Task.md
+The Knight’s Tour.md
+The k Strongest Values in an Array.md
+The kth Factor of n.md
+The k-th Lexicographical String of All Happy Strings of Length n.md
+The K Weakest Rows in a Matrix.md
+The Latest Login in 2020.md
+The Latest Time to Catch a Bus.md
+The Maze III.md
+The Maze II.md
+The Maze.md
+The Most Frequently Ordered Products for Each Customer.md
+The Most Recent Orders for Each Product.md
+The Most Similar Path in a Graph.md
+The Number of Beautiful Subsets.md
+The Number of Employees Which Report to Each Employee.md
+The Number of Full Rounds You Have Played.md
+The Number of Good Subsets.md
+The Number of Rich Customers.md
+The Number of the Smallest Unoccupied Chair.md
+The Number of Users That Are Eligible for Discount.md
+The Number of Weak Characters in the Game.md
+The Score of Students Solving Math Expression.md
+The Skyline Problem.md
+The Time When the Network Becomes Idle.md
+The Two Sneaky Numbers of Digitville.md
+The Users That Are Eligible for Discount.md
+The Winner University.md
+Third Maximum Number.md
+Three Consecutive Odds.md
+Three Divisors.md
+Three Equal Parts.md
+Threshold Majority Queries.md
+Throne Inheritance.md
+Tiling a Rectangle with the Fewest Squares.md
+Time Based Key-Value Store.md
+Time Needed to Buy Tickets.md
+Time Needed to Inform All Employees.md
+Time Needed to Rearrange a Binary String.md
+Timeout Cancellation.md
+Time Taken to Cross the Door.md
+Time to Cross a Bridge.md
+To Be Or Not To Be.md
+Toeplitz Matrix.md
+Toggle Light Bulbs.md
+To Lower Case.md
+Top K Frequent Elements.md
+Top K Frequent Words.md
+Top Three Wineries.md
+Top Travellers.md
+Toss Strange Coins.md
+Total Appeal of A String.md
+Total Characters in String After Transformations II.md
+Total Characters in String After Transformations I.md
+Total Cost to Hire K Workers.md
+Total Distance Traveled.md
+Total Hamming Distance.md
+Total Sum of Interaction Cost in Tree Groups.md
+Total Waviness of Numbers in Range I.md
+Tournament Winners.md
+Traffic Signal Color.md
+Transform Array by Parity.md
+Transform Array to All Equal Elements.md
+Transformed Array.md
+Transform to Chessboard.md
+Transpose File.md
+Transpose Matrix.md
+Trapping Rain Water Extended.md
+Trapping Rain Water II.md
+Trapping Rain Water.md
+Tree Diameter.md
+Tree Node.md
+Tree of Coprimes.md
+Triangle Judgement.md
+Triangle.md
+Trim a Binary Search Tree.md
+Trionic Array II.md
+Trionic Array I.md
+Triples with Bitwise AND Equal To Zero.md
+Trips and Users.md
+Truncate Sentence.md
+Tuple with Same Product.md
+Tweet Counts Per Frequency.md
+Twisted Mirror Path Count.md
+Two Best Non-Overlapping Events.md
+Two City Scheduling.md
+Two Furthest Houses With Different Colors.md
+Two-Letter Card Game.md
+Two Out of Three.md
+Two Sum BSTs.md
+Two Sum III - Data structure design.md
+Two Sum II - Input Array Is Sorted.md
+Two Sum IV - Input is a BST.md
+Two Sum Less Than K.md
+Two Sum.md
+Type of Triangle.md
+Ugly Number III.md
+Ugly Number II.md
+Ugly Number.md
+Uncommon Words from Two Sentences.md
+Uncrossed Lines.md
+Unique 3-Digit Even Numbers.md
+Unique Binary Search Trees II.md
+Unique Binary Search Trees.md
+Unique Email Addresses.md
+Unique Length-3 Palindromic Subsequences.md
+Unique Morse Code Words.md
+Unique Number of Occurrences.md
+Unique Paths III.md
+Unique Paths II.md
+Unique Paths.md
+Unique Substrings in Wraparound String.md
+Unique Substrings With Equal Digit Frequency.md
+Unique Word Abbreviation.md
+Unit Conversion I.md
+Univalued Binary Tree.md
+Unpopular Books.md
+User Activity for the Past 30 Days II.md
+User Activity for the Past 30 Days I.md
+User Purchase Platform.md
+Users With Two Purchases Within Seven Days.md
+Using a Robot to Print the Lexicographically Smallest String.md
+UTF-8 Validation.md
+Valid Anagram.md
+Valid Arrangement of Pairs.md
+Validate Binary Search Tree.md
+Validate Binary Tree Nodes.md
+Validate IP Address.md
+Validate Stack Sequences.md
+Valid Boomerang.md
+Valid Mountain Array.md
+Valid Number.md
+Valid Palindrome III.md
+Valid Palindrome II.md
+Valid Palindrome IV.md
+Valid Palindrome.md
+Valid Parentheses.md
+Valid Parenthesis String.md
+Valid Perfect Square.md
+Valid Phone Numbers.md
+Valid Square.md
+Valid Sudoku.md
+Valid Tic-Tac-Toe State.md
+Valid Triangle Number.md
+Valid Word Abbreviation.md
+Valid Word.md
+Valid Word Square.md
+Verbal Arithmetic Puzzle.md
+Verifying an Alien Dictionary.md
+Verify Preorder Sequence in Binary Search Tree.md
+Verify Preorder Serialization of a Binary Tree.md
+Vertical Order Traversal of a Binary Tree.md
+Video Stitching.md
+Viewers Turned Streamers.md
+Vowels Game in a String.md
+Vowels of All Substrings.md
+Vowel Spellchecker.md
+Walking Robot Simulation II.md
+Walking Robot Simulation.md
+Walls and Gates.md
+Warehouse Manager.md
+Water and Jug Problem.md
+Water Bottles II.md
+Water Bottles.md
+Watering Plants II.md
+Watering Plants.md
+Ways to Express an Integer as Sum of Powers.md
+Ways to Make a Fair Array.md
+Ways to Split Array Into Good Subarrays.md
+Ways to Split Array Into Three Subarrays.md
+Weather Type in Each Country.md
+Web Crawler.md
+Web Crawler Multithreaded.md
+Where Will the Ball Fall.md
+Widest Pair of Indices With Equal Range Sum.md
+Widest Vertical Area Between Two Points Containing No Points.md
+Wiggle Sort II.md
+Wiggle Sort.md
+Wildcard Matching.md
+Word Abbreviation.md
+Word Break Extended.md
+Word Break II.md
+Word Break.md
+Word Frequency.md
+Word Ladder Extended.md
+Word Ladder II.md
+Word Ladder.md
+Word Pattern II.md
+Word Pattern.md
+Word Search II.md
+Word Search.md
+Word Squares II.md
+Word Squares.md
+Word Subsets.md
+Words Within Two Edits of Dictionary.md
+X of a Kind in a Deck of Cards.md
+XOR After Range Multiplication Queries II.md
+XOR After Range Multiplication Queries I.md
+XOR Operation in an Array.md
+XOR Queries of a Subarray.md
+Year on Year Growth Rate.md
+Zero Array Transformation III.md
+Zero Array Transformation II.md
+Zero Array Transformation I.md
+Zero Array Transformation IV.md
+Zigzag Conversion.md
+Zigzag Grid Traversal With Skip.md
+Zigzag Iterator.md
+Zigzag Level Order.md
+Zuma Game.md

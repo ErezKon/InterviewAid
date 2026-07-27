@@ -1,0 +1,1068 @@
+[
+  {
+    "id": "interview-materials-summary--table-of-contents",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "Table of Contents",
+    "level": 2,
+    "bodyMd": "1. [Generative AI vs Agentic AI](#1-generative-ai-vs-agentic-ai)\r\n2. [How Large Language Models (LLMs) Work](#2-how-large-language-models-llms-work)\r\n3. [AI Agents & Sub-Agents](#3-ai-agents--sub-agents)\r\n4. [Context Window & Context Rot](#4-context-window--context-rot)\r\n5. [AI Harness](#5-ai-harness)\r\n6. [Skills & Workflows (Windsurf / Devin)](#6-skills--workflows-windsurf--devin)\r\n7. [Agent Memory](#7-agent-memory)\r\n8. [Vector Databases](#8-vector-databases)\r\n9. [RAG — Retrieval-Augmented Generation](#9-rag--retrieval-augmented-generation)\r\n10. [MCP — Model Context Protocol](#10-mcp--model-context-protocol)\r\n11. [System Prompt](#11-system-prompt)\r\n12. [n8n & LangGraph](#12-n8n--langgraph)\r\n13. [Vibe Coding — And Why It Is Problematic](#13-vibe-coding--and-why-it-is-problematic)\r\n14. [SDD — Spec-Driven Development](#14-sdd--spec-driven-development)\r\n15. [Quick-Reference Comparison Tables](#15-quick-reference-comparison-tables)\r\n16. [Interview Tips & Talking Points](#16-interview-tips--talking-points)\r\n\r\n---",
+    "wordCount": 83,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--1-generative-ai-vs-agentic-ai",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "1. Generative AI vs Agentic AI",
+    "level": 2,
+    "bodyMd": "### 1.1 Generative AI\r\n\r\n**Definition:**\r\nGenerative AI refers to a class of artificial-intelligence models that can *generate*\r\nnew content — text, images, audio, video, or code — by learning statistical patterns\r\nfrom massive training datasets. The model produces outputs that are *novel* but\r\n*statistically consistent* with the data it was trained on.\r\n\r\n**Key characteristics:**\r\n\r\n| Characteristic | Detail |\r\n|---|---|\r\n| Output type | Content creation (text, image, code, music, etc.) |\r\n| Interaction model | Single prompt → single response (stateless by default) |\r\n| Decision making | None — it *generates*, it does not *decide* or *act* |\r\n| Examples | ChatGPT, DALL·E, Stable Diffusion, GitHub Copilot, Claude |\r\n\r\n**How it works (simplified):**\r\n\r\n```\r\nUser Prompt ──▶ Model (e.g., GPT-4) ──▶ Generated Output\r\n                   ▲\r\n            Training Data\r\n         (books, code, web, etc.)\r\n```\r\n\r\n### 1.2 Agentic AI\r\n\r\n**Definition:**\r\nAgentic AI refers to AI systems that can *autonomously plan, reason, use tools,\r\nand take multi-step actions* to accomplish a goal. Rather than producing a single\r\nresponse, an agent **loops** — it observes, thinks, acts, and re-evaluates until\r\nthe task is complete.\r\n\r\n**Key characteristics:**\r\n\r\n| Characteristic | Detail |\r\n|---|---|\r\n| Output type | Actions + decisions + content |\r\n| Interaction model | Goal → plan → iterative tool use → result |\r\n| Decision making | Yes — autonomous planning and execution |\r\n| Persistence | Maintains state, memory, and context across steps |\r\n| Examples | Devin, OpenAI Agents SDK, AutoGPT, CrewAI, LangGraph agents |\r\n\r\n**How it works (simplified):**\r\n\r\n```\r\nUser Goal\r\n   │\r\n   ▼\r\n┌──────────────┐\r\n│   OBSERVE    │◀──────────────────┐\r\n│  (read state)│                   │\r\n└──────┬───────┘                   │\r\n       ▼                           │\r\n┌──────────────┐                   │\r\n│    THINK     │                   │\r\n│ (plan / LLM) │                   │\r\n└──────┬───────┘                   │\r\n       ▼                           │\r\n┌──────────────┐                   │\r\n│     ACT      │                   │\r\n│ (use tools)  │───────────────────┘\r\n└──────┬───────┘        (loop until done)\r\n       ▼\r\n     Result\r\n```\r\n\r\n### 1.3 Side-by-Side Comparison\r\n\r\n| Dimension | Generative AI | Agentic AI |\r\n|---|---|---|\r\n| Autonomy | Low — responds to prompts | High — pursues goals |\r\n| State | Stateless (unless chat history is managed externally) | Stateful — maintains memory |\r\n| Tool use | None (unless explicitly integrated) | Core capability |\r\n| Planning | None | Multi-step planning & re-planning |\r\n| Error recovery | None — user must re-prompt | Self-correcting loops |\r\n| Example use case | \"Write me a function that sorts an array\" | \"Build and deploy a REST API for user management\" |\r\n\r\n### 1.4 The Spectrum\r\n\r\nIt is more accurate to think of this as a **spectrum** rather than a binary:\r\n\r\n```\r\nPure Generative ◄────────────────────────────────────► Fully Agentic\r\n     │                        │                              │\r\n  Single-turn           Multi-turn with               Autonomous\r\n  completion            tool calling                   goal pursuit\r\n  (GPT completion)      (ChatGPT + plugins)            (Devin, AutoGPT)\r\n```\r\n\r\n---",
+    "wordCount": 449,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--2-how-large-language-models-llms-work",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "2. How Large Language Models (LLMs) Work",
+    "level": 2,
+    "bodyMd": "### 2.1 Core Concept\r\n\r\nAn LLM is a deep neural network — specifically a **Transformer** — trained to\r\npredict the next token in a sequence. Despite this seemingly simple objective,\r\nscale (billions of parameters + massive data) produces emergent capabilities\r\nlike reasoning, translation, code generation, and summarization.\r\n\r\n### 2.2 Architecture — The Transformer\r\n\r\nThe Transformer architecture (Vaswani et al., 2017, \"Attention Is All You Need\")\r\nis the foundation of all modern LLMs.\r\n\r\n```\r\nInput Text\r\n    │\r\n    ▼\r\n┌─────────────┐\r\n│ Tokenizer   │   \"Hello world\" → [15496, 995]\r\n└──────┬──────┘\r\n       ▼\r\n┌─────────────┐\r\n│ Embedding   │   Token IDs → dense vectors (e.g., 4096-dim)\r\n│   Layer     │\r\n└──────┬──────┘\r\n       ▼\r\n┌─────────────────────────────────┐\r\n│  Transformer Blocks (×N)       │\r\n│  ┌───────────────────────────┐  │\r\n│  │  Multi-Head Self-Attention│  │  ← \"Which tokens should I attend to?\"\r\n│  └────────────┬──────────────┘  │\r\n│               ▼                 │\r\n│  ┌───────────────────────────┐  │\r\n│  │  Feed-Forward Network     │  │  ← Non-linear transformation\r\n│  └────────────┬──────────────┘  │\r\n│               ▼                 │\r\n│  ┌───────────────────────────┐  │\r\n│  │  Layer Normalization +    │  │\r\n│  │  Residual Connection      │  │\r\n│  └───────────────────────────┘  │\r\n└─────────────────────────────────┘\r\n       │  (repeat N times; N=96 for GPT-4 class)\r\n       ▼\r\n┌─────────────┐\r\n│  Linear +   │   Produces logits over vocabulary (~100k tokens)\r\n│  Softmax    │\r\n└──────┬──────┘\r\n       ▼\r\n  Next Token Prediction\r\n  (token with highest probability, or sampled with temperature)\r\n```\r\n\r\n### 2.3 Key Concepts\r\n\r\n#### Tokenization\r\nText is split into sub-word units called **tokens**.\r\n\r\n```\r\n\"unhappiness\" → [\"un\", \"happiness\"]\r\n\"ChatGPT\"    → [\"Chat\", \"G\", \"PT\"]\r\n```\r\n\r\nCommon tokenizers: BPE (Byte-Pair Encoding), SentencePiece, tiktoken.\r\n\r\n#### Self-Attention Mechanism\r\nEvery token computes **attention scores** against every other token, enabling the\r\nmodel to understand relationships regardless of distance in the text.\r\n\r\n```\r\nQuery (Q), Key (K), Value (V) matrices:\r\n\r\nAttention(Q, K, V) = softmax(Q × Kᵀ / √d_k) × V\r\n```\r\n\r\nThis is what allows the model to understand that in \"The cat sat on the mat\r\nbecause **it** was tired,\" the word \"it\" refers to \"cat.\"\r\n\r\n#### Training Phases\r\n\r\n| Phase | What happens | Data |\r\n|---|---|---|\r\n| **Pre-training** | Next-token prediction on massive corpus | Trillions of tokens from the internet |\r\n| **Supervised Fine-Tuning (SFT)** | Train on curated prompt-response pairs | High-quality human-written examples |\r\n| **RLHF / RLAIF** | Reinforce preferred responses using human or AI feedback | Comparison / preference data |\r\n\r\n#### Inference Parameters\r\n\r\n| Parameter | Effect |\r\n|---|---|\r\n| **Temperature** | Controls randomness. 0 = deterministic, 1+ = creative |\r\n| **Top-p (nucleus sampling)** | Only sample from tokens comprising the top p% of probability mass |\r\n| **Top-k** | Only sample from the k most likely tokens |\r\n| **Max tokens** | Hard cap on output length |\r\n| **Stop sequences** | Strings that signal the model to stop generating |\r\n\r\n### Top-k vs Top-p Sampling\r\n\r\n#### Top-k: Fixed Number of Candidates\r\n\r\nTop-k keeps exactly the **k most probable tokens**, regardless of their actual probabilities.\r\n\r\n```\r\nExample: top_k = 3\r\n\r\nToken        Probability\r\n─────────    ───────────\r\n\"Paris\"      0.50   ✅ (rank 1)\r\n\"London\"     0.25   ✅ (rank 2)\r\n\"Berlin\"     0.10   ✅ (rank 3)\r\n\"Madrid\"     0.05   ❌ (rank 4 — cut off)\r\n\"Rome\"       0.04   ❌\r\n\"Tokyo\"      0.03   ❌\r\n...others    0.03   ❌\r\n\r\n→ Model samples from {\"Paris\", \"London\", \"Berlin\"} only\r\n→ Always exactly 3 candidates, no matter what\r\n```\r\n\r\n**The problem with top-k:** It's blind to the probability distribution.\r\n\r\n```\r\nSCENARIO A: Model is confident          SCENARIO B: Model is uncertain\r\ntop_k = 3                               top_k = 3\r\n\r\n\"Paris\"   0.90  ✅                       \"Paris\"   0.12  ✅\r\n\"London\"  0.04  ✅ ← noise, shouldn't    \"London\"  0.11  ✅\r\n\"Berlin\"  0.02  ✅ ← be here             \"Berlin\"  0.10  ✅\r\n\"Madrid\"  0.01  ❌                       \"Madrid\"  0.09  ❌ ← should be included\r\n\"Rome\"    0.01  ❌                       \"Rome\"    0.08  ❌ ← should be included\r\n                                         \"Tokyo\"   0.08  ❌ ← should be included\r\n\r\nIn A: top-k=3 includes junk tokens (too many candidates)\r\nIn B: top-k=3 excludes valid tokens (too few candidates)\r\n```\r\n\r\n---\r\n\r\n#### Top-p (Nucleus Sampling): Dynamic Number Based on Cumulative Probability\r\n\r\nTop-p keeps the **smallest set of tokens whose cumulative probability reaches p**, so the number of candidates **adapts** to the model's confidence.\r\n\r\n```\r\nExample: top_p = 0.90\r\n\r\nToken        Probability   Cumulative\r\n─────────    ───────────   ──────────\r\n\"Paris\"      0.50          0.50   ✅ (still under 0.90)\r\n\"London\"     0.25          0.75   ✅ (still under 0.90)\r\n\"Berlin\"     0.10          0.85   ✅ (still under 0.90)\r\n\"Madrid\"     0.05          0.90   ✅ (just hit 0.90 — include, then stop)\r\n\"Rome\"       0.04          0.94   ❌ (over threshold)\r\n\"Tokyo\"      0.03          0.97   ❌\r\n...\r\n\r\n→ Model samples from {\"Paris\", \"London\", \"Berlin\", \"Madrid\"}\r\n→ 4 candidates this time — but could be 2 or 20 depending on distribution\r\n```\r\n\r\n**Top-p adapts automatically:**\r\n\r\n```\r\nSCENARIO A: Model is confident          SCENARIO B: Model is uncertain\r\ntop_p = 0.90                            top_p = 0.90\r\n\r\n\"Paris\"   0.90  ✅  cum=0.90 STOP       \"Paris\"   0.12  ✅  cum=0.12\r\n                                         \"London\"  0.11  ✅  cum=0.23\r\n→ Only 1 candidate!                      \"Berlin\"  0.10  ✅  cum=0.33\r\n   (Model is sure, so let it be sure)    \"Madrid\"  0.09  ✅  cum=0.42\r\n                                         \"Rome\"    0.08  ✅  cum=0.50\r\n                                         \"Tokyo\"   0.08  ✅  cum=0.58\r\n                                         \"Oslo\"    0.07  ✅  cum=0.65\r\n                                         \"Cairo\"   0.07  ✅  cum=0.72\r\n                                         \"Lima\"    0.06  ✅  cum=0.78\r\n                                         \"Seoul\"   0.06  ✅  cum=0.84\r\n                                         \"Delhi\"   0.06  ✅  cum=0.90 STOP\r\n\r\n                                         → 11 candidates!\r\n                                            (Model is unsure, so explore more)\r\n```\r\n\r\n---\r\n\r\n#### Side-by-Side Summary\r\n\r\n| Dimension | Top-k | Top-p |\r\n|---|---|---|\r\n| **What it controls** | Number of candidate tokens | Probability mass of candidates |\r\n| **Fixed or dynamic?** | Fixed count (always k tokens) | Dynamic count (adapts to confidence) |\r\n| **When model is confident** | Still picks k tokens (may include noise) | Narrows to very few tokens |\r\n| **When model is uncertain** | Still only k tokens (may miss good options) | Expands to many tokens |\r\n| **Typical values** | k = 10–100 | p = 0.85–0.95 |\r\n| **Analogy** | \"Pick the top 5 students\" | \"Pick enough students to cover 90% of the total score\" |\r\n\r\n#### In Practice\r\n\r\nMost modern APIs **default to top-p** (nucleus sampling) because it adapts better. Some APIs let you combine them — in that case, both filters are applied and the **more restrictive** one wins:\r\n\r\n```\r\ntop_k = 50, top_p = 0.90\r\n\r\nStep 1: Take top-50 tokens\r\nStep 2: From those 50, keep only enough to reach 90% cumulative probability\r\n→ You might end up with 5 tokens if the distribution is concentrated\r\n```\r\n\r\n**Rule of thumb:**\r\n- Use **top-p** for most tasks (set between 0.9–0.95)\r\n- Use **top-k** when you want a hard cap on candidate diversity\r\n- Lower values → more focused/deterministic; higher values → more creative/random\r\n\r\n### 2.4 Limitations\r\n\r\n- **No true understanding** — statistical pattern matching, not comprehension\r\n- **Hallucinations** — confidently produces plausible but incorrect information\r\n- **Knowledge cutoff** — training data has a fixed date\r\n- **Context window limits** — can only process a finite number of tokens at once\r\n- **Expensive** — training costs millions of dollars; inference costs scale with usage\r\n\r\n---",
+    "wordCount": 1111,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--3-ai-agents-sub-agents",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "3. AI Agents & Sub-Agents",
+    "level": 2,
+    "bodyMd": "### 3.1 What Is an AI Agent?\r\n\r\nAn **AI agent** is a software system that uses an LLM as its \"brain\" to\r\nautonomously **perceive**, **plan**, **decide**, and **act** in pursuit of a goal.\r\nIt combines the reasoning capabilities of an LLM with the ability to use external\r\n**tools** (APIs, databases, file systems, browsers, code interpreters).\r\n\r\n**Core components:**\r\n\r\n```\r\n┌──────────────────────────────────────────────────┐\r\n│                   AI AGENT                       │\r\n│                                                  │\r\n│  ┌────────────┐  ┌────────────┐  ┌────────────┐ │\r\n│  │   LLM      │  │   Tools    │  │  Memory    │ │\r\n│  │  (Brain)   │  │ (Hands)    │  │ (History)  │ │\r\n│  └────────────┘  └────────────┘  └────────────┘ │\r\n│                                                  │\r\n│  ┌────────────────────────────────────────────┐  │\r\n│  │          Planning / Orchestration          │  │\r\n│  │   (ReAct, CoT, Tool Selection, Looping)   │  │\r\n│  └────────────────────────────────────────────┘  │\r\n└──────────────────────────────────────────────────┘\r\n```\r\n\r\n### 3.2 The ReAct Pattern (Reasoning + Acting)\r\n\r\nThe most common agent loop:\r\n\r\n```\r\nGoal: \"Find the current stock price of AAPL and email it to john@example.com\"\r\n\r\nStep 1 — THOUGHT:  I need to look up the stock price of AAPL.\r\nStep 2 — ACTION:   call tool `get_stock_price(ticker=\"AAPL\")`\r\nStep 3 — OBSERVATION: $213.47\r\nStep 4 — THOUGHT:  Now I have the price. I need to send an email.\r\nStep 5 — ACTION:   call tool `send_email(to=\"john@example.com\",\r\n                   subject=\"AAPL Price\", body=\"Current price: $213.47\")`\r\nStep 6 — OBSERVATION: Email sent successfully.\r\nStep 7 — THOUGHT:  Task complete.\r\nStep 8 — FINAL ANSWER: \"Done. Emailed AAPL price ($213.47) to john@example.com.\"\r\n```\r\n\r\n### 3.3 What Is a Sub-Agent?\r\n\r\nA **sub-agent** is a specialized agent that is **delegated to by a parent agent**\r\nto handle a specific subtask. This creates a **hierarchical multi-agent system**.\r\n\r\n```\r\n┌──────────────────────────────────────┐\r\n│         ORCHESTRATOR AGENT           │\r\n│   (Understands the full goal)        │\r\n│                                      │\r\n│   Delegates to:                      │\r\n│   ┌──────────┐  ┌──────────┐        │\r\n│   │ Research  │  │  Coding  │        │\r\n│   │ Sub-Agent │  │ Sub-Agent│        │\r\n│   └──────────┘  └──────────┘        │\r\n│   ┌──────────┐  ┌──────────┐        │\r\n│   │  Testing  │  │  Deploy  │        │\r\n│   │ Sub-Agent │  │ Sub-Agent│        │\r\n│   └──────────┘  └──────────┘        │\r\n└──────────────────────────────────────┘\r\n```\r\n\r\n**How sub-agents work:**\r\n\r\n1. The **orchestrator** receives a high-level goal\r\n2. It **decomposes** the goal into subtasks\r\n3. Each subtask is **delegated** to a specialized sub-agent\r\n4. Sub-agents execute independently, potentially with their own tools and memory\r\n5. Results are **returned** to the orchestrator\r\n6. The orchestrator **synthesizes** results and continues\r\n\r\n**Example — Devin-style coding agent:**\r\n\r\n```\r\nUser: \"Add user authentication to the Express app\"\r\n\r\nOrchestrator Agent:\r\n  ├── Planning Sub-Agent → Creates implementation plan\r\n  ├── Research Sub-Agent → Looks up best practices, checks docs\r\n  ├── Coding Sub-Agent   → Writes the actual code (passport.js setup, routes, etc.)\r\n  ├── Testing Sub-Agent  → Writes and runs tests\r\n  └── Review Sub-Agent   → Reviews code for security issues\r\n```\r\n\r\n### 3.4 Pros and Cons\r\n\r\n| Aspect | Pros | Cons |\r\n|---|---|---|\r\n| Single Agent | Simple, easy to debug | Limited capability, context overload |\r\n| Multi-Agent (Sub-Agents) | Separation of concerns, specialized tools per agent | Complex orchestration, higher cost, error propagation |\r\n\r\n### 3.5 Frameworks for Building Agents\r\n\r\n| Framework | Creator | Key Feature |\r\n|---|---|---|\r\n| **OpenAI Agents SDK** | OpenAI | Native handoffs, tool calling, guardrails |\r\n| **LangGraph** | LangChain | Graph-based stateful agent workflows |\r\n| **CrewAI** | CrewAI | Role-based multi-agent collaboration |\r\n| **AutoGen** | Microsoft | Multi-agent conversation framework |\r\n| **Semantic Kernel** | Microsoft | Enterprise-grade agent orchestration |\r\n\r\n---",
+    "wordCount": 553,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--4-context-window-context-rot",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "4. Context Window & Context Rot",
+    "level": 2,
+    "bodyMd": "### 4.1 Context Window\r\n\r\n**Definition:**\r\nThe **context window** is the maximum number of tokens an LLM can process in a\r\nsingle inference call. It includes *everything* — the system prompt, conversation\r\nhistory, user input, tool results, AND the model's output.\r\n\r\n```\r\n◄──────────────── Context Window (e.g., 128K tokens) ────────────────►\r\n┌────────────┬──────────────────┬──────────────┬────────────────────┐\r\n│  System    │  Conversation    │   Current    │   Model's          │\r\n│  Prompt    │  History         │   User Input │   Output           │\r\n│  (~500)    │  (~50,000)       │   (~2,000)   │   (~4,000)         │\r\n└────────────┴──────────────────┴──────────────┴────────────────────┘\r\n```\r\n\r\n**Context windows by model (as of mid-2025):**\r\n\r\n| Model | Context Window |\r\n|---|---|\r\n| GPT-4o | 128K tokens |\r\n| Claude 3.5 / Claude 4 | 200K tokens |\r\n| Gemini 1.5 Pro | 1M–2M tokens |\r\n| Llama 3 | 8K–128K tokens |\r\n| Mistral Large | 128K tokens |\r\n\r\n**Important:**\r\nA larger context window does NOT mean the model pays equal attention to all parts.\r\nResearch (e.g., \"Lost in the Middle\" paper) shows models attend most to the\r\n**beginning** and **end** of the context, with degraded attention in the middle.\r\n\r\n### 4.2 Context Rot (Context Degradation)\r\n\r\n**Definition:**\r\n**Context rot** is the progressive degradation of an AI agent's effectiveness as\r\nits context window fills up during a long-running session. The model begins to\r\n\"forget,\" contradict itself, lose track of earlier instructions, or hallucinate.\r\n\r\n**Why it happens:**\r\n\r\n1. **Attention dilution** — With more tokens, self-attention scores spread thinner\r\n2. **Lost in the middle** — Important information buried in the middle is ignored\r\n3. **Instruction drift** — System prompt influence weakens as conversation grows\r\n4. **Conflicting signals** — Earlier and later messages may contradict each other\r\n5. **Summarization loss** — When history is compressed, nuance is lost\r\n\r\n**Symptoms of context rot:**\r\n\r\n```\r\nEarly in conversation:          Late in conversation:\r\n✅ Follows coding standards      ❌ Ignores established patterns\r\n✅ Remembers file structure      ❌ Creates duplicate files\r\n✅ Consistent variable naming    ❌ Mixes naming conventions\r\n✅ Accurate references           ❌ Hallucinates function names\r\n✅ Follows system prompt         ❌ Drifts from original instructions\r\n```\r\n\r\n**Mitigation strategies:**\r\n\r\n| Strategy | How It Helps |\r\n|---|---|\r\n| **Chunked sessions** | Start fresh sessions for new tasks |\r\n| **Context summarization** | Periodically summarize and replace history |\r\n| **RAG** | Keep knowledge external; retrieve only what's needed |\r\n| **Pinned instructions** | Repeat critical instructions at the end of the prompt |\r\n| **Spec files** | Feed structured specs instead of relying on memory |\r\n| **Agent memory systems** | Store important facts externally, inject as needed |\r\n\r\n---",
+    "wordCount": 411,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--5-ai-harness",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "5. AI Harness",
+    "level": 2,
+    "bodyMd": "### 5.1 Definition\r\n\r\nAn **AI harness** (also called an **AI coding harness** or **agent harness**) is an\r\ninfrastructure layer or framework that **wraps, controls, and mediates** the\r\ninteraction between human developers and AI coding agents. It provides structure,\r\nguardrails, context management, and workflow orchestration.\r\n\r\nThink of it as the **control plane** for AI-assisted development.\r\n\r\n### 5.2 What an AI Harness Does\r\n\r\n```\r\n┌─────────────────────────────────────────────────────────┐\r\n│                     AI HARNESS                          │\r\n│                                                         │\r\n│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐ │\r\n│  │  Context     │  │  Guardrails │  │  Tool           │ │\r\n│  │  Management  │  │  & Rules    │  │  Orchestration  │ │\r\n│  └─────────────┘  └─────────────┘  └─────────────────┘ │\r\n│                                                         │\r\n│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐ │\r\n│  │  Spec        │  │  Memory     │  │  Output         │ │\r\n│  │  Injection   │  │  Management │  │  Validation     │ │\r\n│  └─────────────┘  └─────────────┘  └─────────────────┘ │\r\n│                                                         │\r\n│     Developer ◄──────────────────────► AI Agent(s)      │\r\n└─────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### 5.3 Key Responsibilities\r\n\r\n| Responsibility | Description |\r\n|---|---|\r\n| **Context feeding** | Determines what files, specs, and docs to inject into the prompt |\r\n| **Prompt construction** | Assembles system prompt + context + user intent |\r\n| **Tool routing** | Decides which tools (file read/write, terminal, browser) the agent can use |\r\n| **Output validation** | Checks generated code against linters, tests, type checkers |\r\n| **Session management** | Handles context window limits, rotation, summarization |\r\n| **Guardrails** | Prevents destructive operations (e.g., `rm -rf /`) |\r\n| **Audit trail** | Logs all agent actions for review |\r\n\r\n### 5.4 Examples in Practice\r\n\r\n- **Windsurf's Cascade** — Acts as a harness for its AI coding agent\r\n- **Cursor's Composer** — Orchestrates multi-file edits with context management\r\n- **Devin** — Full harness with VM, browser, terminal, and editor access\r\n- **Custom harnesses** — Teams build internal harnesses using LangChain/LangGraph +\r\n  custom tooling\r\n\r\n### 5.5 Why It Matters for Principal Engineers\r\n\r\nAs a Principal Engineer, you may be expected to **design or evaluate** AI harnesses.\r\nKey considerations:\r\n\r\n- How much autonomy does the agent get?\r\n- How do you prevent hallucinated code from reaching production?\r\n- How do you manage context efficiently to avoid context rot?\r\n- How do you ensure the agent follows team coding standards?\r\n- How do you integrate with existing CI/CD pipelines?\r\n\r\n---",
+    "wordCount": 374,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--6-skills-workflows-windsurf-devin",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "6. Skills & Workflows (Windsurf / Devin)",
+    "level": 2,
+    "bodyMd": "### 6.1 Skills\r\n\r\n**Definition:**\r\nA **Skill** is a predefined, reusable capability that an AI coding agent can invoke.\r\nIt encapsulates a specific competency — like \"write a unit test,\" \"refactor a\r\nfunction,\" or \"create a database migration\" — along with the instructions, context,\r\nand constraints needed to execute it well.\r\n\r\n**Analogy:** If the agent is a developer, skills are items on their résumé.\r\n\r\n```yaml\r\n# Example skill definition (conceptual)\r\nskill:\r\n  name: \"create-react-component\"\r\n  description: \"Creates a new React component following team conventions\"\r\n  inputs:\r\n    - component_name: string\r\n    - props: list\r\n    - style_approach: \"css-modules\" | \"tailwind\" | \"styled-components\"\r\n  instructions: |\r\n    1. Create component file in src/components/{component_name}/\r\n    2. Use functional component with TypeScript\r\n    3. Include prop types interface\r\n    4. Create accompanying test file\r\n    5. Create index.ts barrel export\r\n  constraints:\r\n    - Must use named exports\r\n    - Must include JSDoc comments\r\n    - Must be accessible (ARIA attributes where applicable)\r\n```\r\n\r\n**In Windsurf:**\r\nWindsurf allows developers to define and share custom skills that the Cascade agent\r\ncan use. These go beyond simple prompts — they include structured instructions,\r\nfile templates, and validation rules.\r\n\r\n**In Devin:**\r\nDevin has built-in skills (terminal use, browser navigation, code editing) and can\r\nlearn new skills through demonstration and instruction.\r\n\r\n### 6.2 Workflows\r\n\r\n**Definition:**\r\nA **Workflow** is a structured, multi-step sequence of operations (often composed\r\nof multiple skills) that defines how an agent should approach a complex task from\r\nstart to finish.\r\n\r\n```\r\n┌──────────────┐     ┌──────────────┐     ┌──────────────┐\r\n│   Step 1:    │────▶│   Step 2:    │────▶│   Step 3:    │\r\n│  Read Spec   │     │ Generate Code│     │  Run Tests   │\r\n└──────────────┘     └──────────────┘     └──────┬───────┘\r\n                                                  │\r\n                                          ┌───────▼───────┐\r\n                                    ┌─ NO─┤ Tests Pass?   │\r\n                                    │     └───────┬───────┘\r\n                                    │             │ YES\r\n                                    ▼             ▼\r\n                             ┌──────────┐  ┌──────────────┐\r\n                             │ Fix Code │  │  Step 4:     │\r\n                             │ (loop)   │  │  Create PR   │\r\n                             └──────────┘  └──────────────┘\r\n```\r\n\r\n**Example workflow in Windsurf/Devin context:**\r\n\r\n```yaml\r\nworkflow:\r\n  name: \"feature-implementation\"\r\n  trigger: \"implement feature from spec\"\r\n  steps:\r\n    - skill: \"read-spec\"\r\n      input: \"{spec_file}\"\r\n    - skill: \"analyze-codebase\"\r\n      input: \"find relevant files and patterns\"\r\n    - skill: \"create-implementation-plan\"\r\n      output: \"plan.md\"\r\n    - skill: \"implement-code\"\r\n      input: \"plan.md\"\r\n      loop_until: \"all acceptance criteria met\"\r\n    - skill: \"write-tests\"\r\n      input: \"implementation files\"\r\n    - skill: \"run-tests\"\r\n      retry: 3\r\n      on_failure: \"fix-code\"\r\n    - skill: \"lint-and-format\"\r\n    - skill: \"create-pull-request\"\r\n      input: \"all changed files\"\r\n```\r\n\r\n### 6.3 Skills vs Workflows\r\n\r\n| Aspect | Skill | Workflow |\r\n|---|---|---|\r\n| Scope | Single capability | Multi-step process |\r\n| Granularity | Atomic | Composite |\r\n| Reusability | Highly reusable across workflows | Task-specific |\r\n| Analogy | A function | A program |\r\n| Example | \"Write a unit test\" | \"Implement feature end-to-end\" |\r\n\r\n---",
+    "wordCount": 420,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--7-agent-memory",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "7. Agent Memory",
+    "level": 2,
+    "bodyMd": "### 7.1 Definition\r\n\r\n**Agent memory** is the mechanism by which AI agents store, retrieve, and use\r\ninformation across interactions. Without memory, every interaction starts from\r\nscratch.\r\n\r\n### 7.2 Types of Memory\r\n\r\n```\r\n┌─────────────────────────────────────────────────────────────────┐\r\n│                      AGENT MEMORY                               │\r\n│                                                                 │\r\n│  ┌─────────────────┐  ┌──────────────────┐  ┌───────────────┐  │\r\n│  │  SHORT-TERM     │  │  LONG-TERM       │  │  EPISODIC     │  │\r\n│  │  (Working)      │  │  (Persistent)    │  │  (Experience) │  │\r\n│  │                 │  │                  │  │               │  │\r\n│  │  Current        │  │  Facts, prefs,   │  │  Past task    │  │\r\n│  │  conversation   │  │  project rules   │  │  outcomes,    │  │\r\n│  │  context        │  │  stored in DB    │  │  successes,   │  │\r\n│  │                 │  │                  │  │  failures     │  │\r\n│  └─────────────────┘  └──────────────────┘  └───────────────┘  │\r\n│                                                                 │\r\n│  ┌─────────────────┐  ┌──────────────────┐                     │\r\n│  │  SEMANTIC       │  │  PROCEDURAL      │                     │\r\n│  │  (Knowledge)    │  │  (How-to)        │                     │\r\n│  │                 │  │                  │                     │\r\n│  │  Domain facts,  │  │  Learned         │                     │\r\n│  │  relationships, │  │  patterns,       │                     │\r\n│  │  embeddings in  │  │  skills,         │                     │\r\n│  │  vector DB      │  │  workflows       │                     │\r\n│  └─────────────────┘  └──────────────────┘                     │\r\n└─────────────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### 7.3 Detailed Breakdown\r\n\r\n#### Short-Term Memory (Working Memory)\r\n- **What:** The current context window contents\r\n- **Lifespan:** Single session / conversation\r\n- **Capacity:** Limited by context window (e.g., 128K tokens)\r\n- **Example:** The current chat history in Cursor or Windsurf\r\n\r\n#### Long-Term Memory (Persistent Memory)\r\n- **What:** Information stored externally and retrieved when needed\r\n- **Lifespan:** Persists across sessions indefinitely\r\n- **Storage:** Vector databases, key-value stores, relational DBs\r\n- **Example:** Windsurf remembering your coding preferences across projects\r\n\r\n```\r\nSession 1: User says \"I prefer tabs over spaces and use 4-width indentation\"\r\n   → Stored in long-term memory\r\n\r\nSession 47: Agent retrieves preference automatically when generating code\r\n   → Code uses tabs with 4-width indentation\r\n```\r\n\r\n#### Episodic Memory\r\n- **What:** Records of past interactions, tasks, and their outcomes\r\n- **Purpose:** Learn from experience — avoid repeating mistakes\r\n- **Example:** \"Last time I tried to refactor auth.ts, tests broke because\r\n  of mock dependencies. I should update mocks first.\"\r\n\r\n#### Semantic Memory\r\n- **What:** Factual knowledge about the codebase, domain, or world\r\n- **Storage:** Often vector databases with embeddings\r\n- **Example:** Embeddings of all project documentation for RAG retrieval\r\n\r\n#### Procedural Memory\r\n- **What:** Knowledge of *how* to do things — patterns, workflows, skills\r\n- **Example:** \"When creating a new API endpoint, always: create route → \r\n  controller → service → test → update OpenAPI spec\"\r\n\r\n### 7.4 Implementation Patterns\r\n\r\n```python\r\n# Conceptual example: Memory-augmented agent\r\n\r\nclass AgentMemory:\r\n    def __init__(self):\r\n        self.short_term = []           # Current conversation\r\n        self.long_term = VectorDB()    # Persistent knowledge\r\n        self.episodic = []             # Past experiences\r\n    \r\n    def remember(self, fact: str, memory_type: str = \"long_term\"):\r\n        if memory_type == \"long_term\":\r\n            embedding = embed(fact)\r\n            self.long_term.store(fact, embedding)\r\n        elif memory_type == \"episodic\":\r\n            self.episodic.append({\r\n                \"event\": fact,\r\n                \"timestamp\": now(),\r\n                \"outcome\": None  # filled in later\r\n            })\r\n    \r\n    def recall(self, query: str, top_k: int = 5) -> list[str]:\r\n        \"\"\"Retrieve relevant memories for the current context.\"\"\"\r\n        query_embedding = embed(query)\r\n        return self.long_term.search(query_embedding, top_k=top_k)\r\n    \r\n    def get_context(self, current_query: str) -> str:\r\n        \"\"\"Build full context from all memory types.\"\"\"\r\n        relevant_memories = self.recall(current_query)\r\n        recent_episodes = self.episodic[-5:]  # Last 5 episodes\r\n        \r\n        return f\"\"\"\r\n        ## Relevant Knowledge\r\n        {relevant_memories}\r\n        \r\n        ## Recent Experience\r\n        {recent_episodes}\r\n        \r\n        ## Current Conversation\r\n        {self.short_term[-20:]}  # Last 20 messages\r\n        \"\"\"\r\n```\r\n\r\n---",
+    "wordCount": 549,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--8-vector-databases",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "8. Vector Databases",
+    "level": 2,
+    "bodyMd": "### 8.1 Definition\r\n\r\nA **vector database** (vectorized DB) is a specialized database designed to store,\r\nindex, and query **high-dimensional vectors** (embeddings). These embeddings are\r\nnumerical representations of data (text, images, audio) that capture *semantic\r\nmeaning*.\r\n\r\n### 8.2 How Embeddings Work\r\n\r\n```\r\nText: \"The cat sat on the mat\"\r\n         │\r\n         ▼\r\n   Embedding Model (e.g., OpenAI text-embedding-3-small)\r\n         │\r\n         ▼\r\n   Vector: [0.023, -0.041, 0.087, ..., 0.012]  ← 1536 dimensions\r\n```\r\n\r\n**Key insight:** Similar meanings produce vectors that are *close together* in\r\nvector space, regardless of the exact words used.\r\n\r\n```\r\n\"How do I reset my password?\"  ←─── cosine similarity: 0.92 ───→  \"Password recovery steps\"\r\n\"How do I reset my password?\"  ←─── cosine similarity: 0.23 ───→  \"Best pizza in New York\"\r\n```\r\n\r\n### 8.3 How Vector Databases Work\r\n\r\n```\r\n┌───────────────────────────────────────────────────────┐\r\n│                  VECTOR DATABASE                       │\r\n│                                                       │\r\n│  Storage:                                             │\r\n│  ┌─────────┬──────────────────────┬────────────────┐  │\r\n│  │   ID    │   Vector (embedding) │   Metadata     │  │\r\n│  ├─────────┼──────────────────────┼────────────────┤  │\r\n│  │  doc_1  │  [0.02, -0.04, ...]  │  {src: \"api\"} │  │\r\n│  │  doc_2  │  [0.15,  0.03, ...]  │  {src: \"auth\"} │ │\r\n│  │  doc_3  │  [-0.01, 0.22, ...]  │  {src: \"db\"}  │  │\r\n│  └─────────┴──────────────────────┴────────────────┘  │\r\n│                                                       │\r\n│  Indexing Algorithms:                                 │\r\n│  • HNSW (Hierarchical Navigable Small World)          │\r\n│  • IVF (Inverted File Index)                          │\r\n│  • PQ (Product Quantization)                          │\r\n│  • ScaNN (Scalable Nearest Neighbors)                 │\r\n│                                                       │\r\n│  Query: \"How does authentication work?\"               │\r\n│    → embed → [0.14, 0.02, ...] → nearest neighbors   │\r\n│    → Returns: doc_2 (similarity: 0.94)                │\r\n└───────────────────────────────────────────────────────┘\r\n```\r\n\r\n### 8.4 Similarity Metrics\r\n\r\n| Metric | Formula | Best For |\r\n|---|---|---|\r\n| **Cosine Similarity** | cos(θ) = A·B / (‖A‖·‖B‖) | Text similarity (most common) |\r\n| **Euclidean Distance** | √Σ(aᵢ - bᵢ)² | When magnitude matters |\r\n| **Dot Product** | Σ(aᵢ × bᵢ) | Normalized vectors, performance |\r\n\r\n### 8.5 Popular Vector Databases\r\n\r\n| Database | Type | Key Features |\r\n|---|---|---|\r\n| **Pinecone** | Cloud-managed | Serverless, easy setup, metadata filtering |\r\n| **Weaviate** | Open-source | GraphQL API, hybrid search, multi-modal |\r\n| **ChromaDB** | Open-source | Lightweight, embedded, great for prototyping |\r\n| **Qdrant** | Open-source | Rust-based, high performance, rich filtering |\r\n| **Milvus** | Open-source | Distributed, handles billions of vectors |\r\n| **pgvector** | PostgreSQL extension | Use your existing Postgres with vector support |\r\n| **FAISS** | Library (Meta) | Not a DB; in-memory index for fast similarity search |\r\n\r\n### 8.6 Example: Using ChromaDB\r\n\r\n```python\r\nimport chromadb\r\nfrom chromadb.utils import embedding_functions\r\n\r\n# Initialize\r\nclient = chromadb.PersistentClient(path=\"./chroma_data\")\r\nef = embedding_functions.OpenAIEmbeddingFunction(\r\n    api_key=\"sk-...\",\r\n    model_name=\"text-embedding-3-small\"\r\n)\r\n\r\n# Create collection\r\ncollection = client.get_or_create_collection(\r\n    name=\"codebase_docs\",\r\n    embedding_function=ef\r\n)\r\n\r\n# Add documents\r\ncollection.add(\r\n    documents=[\r\n        \"The authentication module uses JWT tokens with RS256 signing.\",\r\n        \"Database migrations are managed with Knex.js.\",\r\n        \"The API rate limiter allows 100 requests per minute per user.\",\r\n    ],\r\n    ids=[\"doc1\", \"doc2\", \"doc3\"],\r\n    metadatas=[\r\n        {\"module\": \"auth\"},\r\n        {\"module\": \"database\"},\r\n        {\"module\": \"api\"},\r\n    ]\r\n)\r\n\r\n# Query\r\nresults = collection.query(\r\n    query_texts=[\"How does login work?\"],\r\n    n_results=2\r\n)\r\n# Returns: doc1 (auth/JWT) with highest similarity\r\n```\r\n\r\n### 8.7 Pros and Cons\r\n\r\n| Pros | Cons |\r\n|---|---|\r\n| Semantic search (meaning, not just keywords) | Embedding quality depends on the model |\r\n| Fast nearest-neighbor retrieval | Additional infrastructure to manage |\r\n| Scalable to billions of vectors | Not suitable for exact-match or transactional queries |\r\n| Enable RAG, recommendation, anomaly detection | Approximate results (trade-off: speed vs. accuracy) |\r\n\r\n---",
+    "wordCount": 565,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--9-rag-retrieval-augmented-generation",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "9. RAG — Retrieval-Augmented Generation",
+    "level": 2,
+    "bodyMd": "### 9.1 Definition\r\n\r\n**RAG (Retrieval-Augmented Generation)** is an architecture pattern that enhances\r\nLLM responses by **retrieving relevant information from external knowledge sources**\r\nand injecting it into the prompt before generation. This grounds the model's\r\noutput in factual, up-to-date, domain-specific data.\r\n\r\n### 9.2 Why RAG Exists\r\n\r\n| Problem with Plain LLMs | How RAG Solves It |\r\n|---|---|\r\n| Knowledge cutoff (training data is stale) | Retrieves current information |\r\n| Hallucinations | Grounds answers in real documents |\r\n| No access to private/proprietary data | Indexes your internal docs |\r\n| Context window limits | Retrieves only relevant chunks |\r\n| Expensive fine-tuning | No retraining needed — just update the index |\r\n\r\n### 9.3 How RAG Works\r\n\r\n```\r\n                        ┌─────────────────────────┐\r\n                        │   INDEXING PHASE         │\r\n                        │   (done once / on update)│\r\n                        │                          │\r\n  Documents ──────────▶ │  1. Chunk documents      │\r\n  (PDFs, code, docs,   │  2. Generate embeddings   │\r\n   wikis, APIs)         │  3. Store in Vector DB    │\r\n                        └─────────────────────────┘\r\n\r\n                        ┌─────────────────────────────────────┐\r\n                        │   QUERY PHASE (every user query)     │\r\n                        │                                     │\r\n  User Query ─────┬────▶│  1. Embed the query                 │\r\n                  │     │  2. Search Vector DB (top-k)        │\r\n                  │     │  3. Retrieve relevant chunks        │\r\n                  │     │  4. Construct augmented prompt:     │\r\n                  │     │     [System + Context + Query]      │\r\n                  │     │  5. Send to LLM                     │\r\n                  │     │  6. LLM generates grounded answer   │\r\n                  │     └─────────────────────────────────────┘\r\n                  │\r\n                  │     ┌─────────────────────────────────────┐\r\n                  └────▶│         AUGMENTED PROMPT             │\r\n                        │                                     │\r\n                        │  System: You are a helpful assistant.│\r\n                        │  Answer based on the provided       │\r\n                        │  context only.                      │\r\n                        │                                     │\r\n                        │  Context:                           │\r\n                        │  [Retrieved chunk 1]                │\r\n                        │  [Retrieved chunk 2]                │\r\n                        │  [Retrieved chunk 3]                │\r\n                        │                                     │\r\n                        │  User Question: {query}             │\r\n                        └─────────────────────────────────────┘\r\n```\r\n\r\n### 9.4 Chunking Strategies\r\n\r\nHow you split documents significantly impacts retrieval quality.\r\n\r\n| Strategy | Description | Best For |\r\n|---|---|---|\r\n| **Fixed-size** | Split every N characters/tokens | Simple, predictable |\r\n| **Recursive** | Split by paragraphs → sentences → words | General purpose |\r\n| **Semantic** | Split by meaning boundaries using embeddings | High-quality retrieval |\r\n| **Code-aware** | Split by functions, classes, modules | Codebases |\r\n| **Document-aware** | Split by headers, sections | Structured docs (Markdown, HTML) |\r\n\r\n```python\r\n# Example: Recursive chunking with LangChain\r\nfrom langchain.text_splitter import RecursiveCharacterTextSplitter\r\n\r\nsplitter = RecursiveCharacterTextSplitter(\r\n    chunk_size=1000,\r\n    chunk_overlap=200,     # Overlap prevents losing context at boundaries\r\n    separators=[\"\\n\\n\", \"\\n\", \". \", \" \", \"\"]\r\n)\r\n\r\nchunks = splitter.split_text(document_text)\r\n```\r\n\r\n### 9.5 Advanced RAG Patterns\r\n\r\n#### Naive RAG\r\n\r\nQuery → Embed → Retrieve → Generate\r\n\r\nSimple but often insufficient for complex queries.\r\n\r\n#### Advanced RAG\r\n\r\n| Technique | Description |\r\n|---|---|\r\n| **Query Rewriting** | Rephrase the user query for better retrieval |\r\n| **HyDE** (Hypothetical Document Embeddings) | Generate a hypothetical answer, embed it, use that for retrieval |\r\n| **Multi-Query** | Generate multiple query variations, retrieve for each, merge results |\r\n| **Re-Ranking** | Retrieve top-50, then use a cross-encoder to re-rank to top-5 |\r\n| **Contextual Compression** | Compress retrieved chunks to only the relevant parts |\r\n| **Parent-Child Retrieval** | Retrieve small chunks but return the larger parent chunk |\r\n\r\n#### Modular RAG / Agentic RAG\r\n\r\n```\r\nQuery → Agent decides:\r\n  ├── Do I need retrieval at all?\r\n  ├── Which knowledge base(s) to search?\r\n  ├── Should I decompose the query first?\r\n  ├── Are the retrieved results sufficient?\r\n  │     └── No → reformulate query and retry\r\n  └── Generate final answer from best context\r\n```\r\n\r\n### 9.6 RAG vs Fine-Tuning\r\n\r\n| Dimension | RAG | Fine-Tuning |\r\n|---|---|---|\r\n| Knowledge update | Easy — update the index | Hard — retrain the model |\r\n| Cost | Low (embedding + storage) | High (GPU training) |\r\n| Transparency | High — can cite sources | Low — knowledge is implicit |\r\n| Latency | Higher (retrieval step) | Lower (direct generation) |\r\n| Best for | Factual Q&A, docs, codebase | Style, tone, format, specialized reasoning |\r\n\r\n---",
+    "wordCount": 646,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--10-mcp-model-context-protocol",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "10. MCP — Model Context Protocol",
+    "level": 2,
+    "bodyMd": "### 10.1 Definition\r\n\r\n**MCP (Model Context Protocol)** is an open standard (introduced by Anthropic, now\r\nbroadly adopted) that defines a **universal interface for connecting AI models to\r\nexternal data sources and tools**. Think of it as the \"USB-C for AI\" — a standard\r\nplug that lets any AI model connect to any data source or tool.\r\n\r\n### 10.2 The Problem MCP Solves\r\n\r\nBefore MCP, every AI tool integration was custom:\r\n\r\n```\r\nBEFORE MCP (N×M integration problem):\r\n┌───────────┐     ┌──────────┐\r\n│ Claude     │────▶│ GitHub   │  Custom integration\r\n│ ChatGPT   │────▶│ GitHub   │  Different custom integration\r\n│ Cursor     │────▶│ GitHub   │  Yet another integration\r\n│ Windsurf   │────▶│ GitHub   │  And another...\r\n└───────────┘     └──────────┘\r\n   × every tool = N×M integrations\r\n\r\nAFTER MCP (N+M integration):\r\n┌───────────┐     ┌─────────┐     ┌──────────┐\r\n│ Claude     │     │         │     │ GitHub   │\r\n│ ChatGPT   │────▶│   MCP   │◀────│ Slack    │\r\n│ Cursor     │     │ Protocol│     │ Jira     │\r\n│ Windsurf   │     │         │     │ Postgres │\r\n└───────────┘     └─────────┘     └──────────┘\r\n   N clients    +   standard    +  M servers = N+M integrations\r\n```\r\n\r\n### 10.3 Architecture\r\n\r\n```\r\n┌──────────────────────────────────────────────────────────────┐\r\n│                     MCP ARCHITECTURE                         │\r\n│                                                              │\r\n│  ┌────────────┐        ┌────────────┐        ┌────────────┐ │\r\n│  │  MCP HOST  │        │ MCP CLIENT │        │ MCP SERVER │ │\r\n│  │            │ 1:many │            │  1:1   │            │ │\r\n│  │ (Claude,   │───────▶│ (Protocol  │───────▶│ (GitHub,   │ │\r\n│  │  Cursor,   │        │  handler)  │        │  Postgres, │ │\r\n│  │  IDE)      │        │            │        │  Slack)    │ │\r\n│  └────────────┘        └────────────┘        └────────────┘ │\r\n│                                                              │\r\n│  The HOST creates CLIENT instances that connect to SERVERs   │\r\n└──────────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### 10.4 MCP Capabilities (Primitives)\r\n\r\n| Primitive | Direction | Description | Example |\r\n|---|---|---|---|\r\n| **Tools** | Server → Client (model-invoked) | Functions the LLM can call | `create_github_issue()` |\r\n| **Resources** | Server → Client (app-controlled) | Data the server exposes | File contents, DB schemas |\r\n| **Prompts** | Server → Client (user-invoked) | Pre-built prompt templates | \"Summarize this PR\" template |\r\n| **Sampling** | Client → Server | Server can request LLM completions | Server asks the LLM to analyze data |\r\n\r\n### 10.5 Example: Building an MCP Server\r\n\r\n```python\r\n# Simple MCP server using the Python SDK\r\nfrom mcp.server import Server, stdio_server\r\nfrom mcp.types import Tool, TextContent\r\n\r\nserver = Server(\"my-project-server\")\r\n\r\n@server.list_tools()\r\nasync def list_tools():\r\n    return [\r\n        Tool(\r\n            name=\"get_project_structure\",\r\n            description=\"Returns the file/folder structure of the project\",\r\n            inputSchema={\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                    \"path\": {\r\n                        \"type\": \"string\",\r\n                        \"description\": \"Root path to scan\"\r\n                    }\r\n                },\r\n                \"required\": [\"path\"]\r\n            }\r\n        ),\r\n        Tool(\r\n            name=\"run_tests\",\r\n            description=\"Runs the project test suite\",\r\n            inputSchema={\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                    \"test_path\": {\r\n                        \"type\": \"string\",\r\n                        \"description\": \"Specific test file or directory\"\r\n                    }\r\n                }\r\n            }\r\n        )\r\n    ]\r\n\r\n@server.call_tool()\r\nasync def call_tool(name: str, arguments: dict):\r\n    if name == \"get_project_structure\":\r\n        structure = scan_directory(arguments[\"path\"])\r\n        return [TextContent(type=\"text\", text=structure)]\r\n    elif name == \"run_tests\":\r\n        result = run_test_suite(arguments.get(\"test_path\", \".\"))\r\n        return [TextContent(type=\"text\", text=result)]\r\n\r\nasync def main():\r\n    async with stdio_server() as (read, write):\r\n        await server.run(read, write)\r\n```\r\n\r\n### 10.6 MCP Configuration (in Claude Desktop / Cursor)\r\n\r\n```json\r\n// claude_desktop_config.json or .cursor/mcp.json\r\n{\r\n  \"mcpServers\": {\r\n    \"github\": {\r\n      \"command\": \"npx\",\r\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-github\"],\r\n      \"env\": {\r\n        \"GITHUB_TOKEN\": \"ghp_xxxxxxxxxxxx\"\r\n      }\r\n    },\r\n    \"postgres\": {\r\n      \"command\": \"npx\",\r\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-postgres\"],\r\n      \"env\": {\r\n        \"DATABASE_URL\": \"postgresql://user:pass@localhost/mydb\"\r\n      }\r\n    },\r\n    \"filesystem\": {\r\n      \"command\": \"npx\",\r\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", \"/path/to/project\"]\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n### 10.7 Pros and Cons\r\n\r\n| Pros | Cons |\r\n|---|---|\r\n| Universal standard — write once, use everywhere | Still evolving — breaking changes possible |\r\n| Growing ecosystem of pre-built servers | Security surface area — agents get tool access |\r\n| Open source and vendor-neutral | Debugging can be complex (stdio/SSE transport) |\r\n| Reduces integration overhead dramatically | Not all AI platforms fully support it yet |\r\n| Enables powerful agentic workflows | Performance overhead for simple use cases |\r\n\r\n---",
+    "wordCount": 617,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--11-system-prompt",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "11. System Prompt",
+    "level": 2,
+    "bodyMd": "### 11.1 Definition\r\n\r\nA **system prompt** (also called a **system message** or **system instruction**) is\r\na special instruction block sent to the LLM *before* the user's message that defines\r\nthe model's **identity, behavior, constraints, tone, and capabilities** for the\r\nentire conversation.\r\n\r\n### 11.2 How It Fits in the Message Structure\r\n\r\n```json\r\n{\r\n  \"messages\": [\r\n    {\r\n      \"role\": \"system\",        // ◄── SYSTEM PROMPT\r\n      \"content\": \"You are a senior TypeScript developer. \r\n                  Always use functional components. \r\n                  Never use `any` type.\"\r\n    },\r\n    {\r\n      \"role\": \"user\",          // ◄── User's message\r\n      \"content\": \"Create a React component for a todo list\"\r\n    },\r\n    {\r\n      \"role\": \"assistant\",     // ◄── Model's response\r\n      \"content\": \"Here's a TodoList component...\"\r\n    }\r\n  ]\r\n}\r\n```\r\n\r\n### 11.3 Anatomy of an Effective System Prompt\r\n\r\n```\r\n# System Prompt Structure",
+    "wordCount": 123,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--1-identity-role",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "1. Identity & Role",
+    "level": 2,
+    "bodyMd": "You are [role]. You specialize in [domain].",
+    "wordCount": 7,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--2-core-behavior",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "2. Core Behavior",
+    "level": 2,
+    "bodyMd": "- Always do X\r\n- Never do Y\r\n- Prefer Z approach",
+    "wordCount": 12,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--3-output-format",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "3. Output Format",
+    "level": 2,
+    "bodyMd": "- Use [language/format]\r\n- Include [required elements]\r\n- Structure responses as [structure]",
+    "wordCount": 12,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--4-constraints-guardrails",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "4. Constraints & Guardrails",
+    "level": 2,
+    "bodyMd": "- Do not [prohibited actions]\r\n- If unsure, [fallback behavior]\r\n- Always [safety requirement]",
+    "wordCount": 14,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--5-context-knowledge",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "5. Context & Knowledge",
+    "level": 2,
+    "bodyMd": "- The project uses [tech stack]\r\n- Follow [coding standards]\r\n- Reference [documentation]",
+    "wordCount": 13,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--6-examples-few-shot",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "6. Examples (Few-Shot)",
+    "level": 2,
+    "bodyMd": "### Input: [example input]\r\n### Output: [example output]\r\n```\r\n\r\n### 11.4 Real-World Example\r\n\r\n```\r\nYou are a Principal Full Stack Engineer AI assistant for an enterprise SaaS platform.",
+    "wordCount": 28,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--tech-stack",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "Tech Stack",
+    "level": 2,
+    "bodyMd": "- Frontend: React 18, TypeScript 5, TanStack Query, Tailwind CSS\r\n- Backend: Node.js 20, Express, Prisma ORM, PostgreSQL 16\r\n- Testing: Vitest, Playwright, MSW\r\n- Infrastructure: AWS (ECS, RDS, S3), Terraform",
+    "wordCount": 31,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--coding-standards",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "Coding Standards",
+    "level": 2,
+    "bodyMd": "- Use functional components with hooks; no class components\r\n- All functions must have explicit return types\r\n- Use `unknown` instead of `any`; use type guards for narrowing\r\n- Prefer composition over inheritance\r\n- All API endpoints must have input validation (Zod schemas)\r\n- Error handling: use Result types, never throw in service layer",
+    "wordCount": 54,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--response-format",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "Response Format",
+    "level": 2,
+    "bodyMd": "- Explain your reasoning before writing code\r\n- Include file paths as comments at the top of each code block\r\n- Provide tests alongside implementation\r\n- Flag any security concerns proactively",
+    "wordCount": 31,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--constraints",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "Constraints",
+    "level": 2,
+    "bodyMd": "- Never suggest `console.log` for production code; use the structured logger\r\n- Never expose environment variables in client-side code\r\n- All database queries must use parameterized inputs\r\n- Suggest breaking changes only with migration path\r\n```\r\n\r\n### 11.5 System Prompt in Agent Systems\r\n\r\nIn agentic systems, the system prompt is critical — it defines:\r\n\r\n| Aspect | What the System Prompt Controls |\r\n|---|---|\r\n| **Agent persona** | \"You are a code review agent focused on security\" |\r\n| **Available tools** | \"You have access to: file_read, file_write, terminal, browser\" |\r\n| **Decision framework** | \"Always check existing tests before modifying code\" |\r\n| **Output format** | \"Return tool calls in JSON format\" |\r\n| **Safety constraints** | \"Never execute destructive commands without confirmation\" |\r\n| **Handoff rules** | \"If the task involves database changes, hand off to the DBA agent\" |\r\n\r\n### 11.6 Prompt Engineering Best Practices\r\n\r\n1. **Be specific** — Vague prompts get vague results\r\n2. **Use structure** — Headers, lists, numbered steps\r\n3. **Provide examples** — Few-shot learning dramatically improves output\r\n4. **Set negative constraints** — \"Do NOT...\" is as important as \"Do...\"\r\n5. **Position matters** — Critical instructions at the beginning AND end\r\n6. **Iterate** — System prompts are code; version control and test them\r\n\r\n---",
+    "wordCount": 210,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--12-n8n-langgraph",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "12. n8n & LangGraph",
+    "level": 2,
+    "bodyMd": "### 12.1 n8n\r\n\r\n#### What Is n8n?\r\n\r\n**n8n** (pronounced \"n-eight-n\", stands for \"nodemation\") is an **open-source\r\nworkflow automation platform** — think Zapier or Make (Integromat) but\r\nself-hostable, extendable, and with a strong focus on **AI agent workflows**.\r\n\r\n#### Key Features\r\n\r\n| Feature | Description |\r\n|---|---|\r\n| **Visual workflow editor** | Drag-and-drop node-based canvas |\r\n| **400+ integrations** | Slack, GitHub, Jira, databases, APIs, etc. |\r\n| **AI agent nodes** | Built-in support for LLM chains and agents |\r\n| **Self-hostable** | Run on your own infrastructure (Docker, K8s) |\r\n| **Code nodes** | Write custom JavaScript/Python when needed |\r\n| **Credential management** | Securely store API keys, tokens |\r\n| **Webhook triggers** | Start workflows from HTTP requests |\r\n| **Fair-code license** | Source-available; free to self-host |\r\n\r\n#### n8n Architecture\r\n\r\n```\r\n┌──────────────────────────────────────────────────────┐\r\n│                    n8n WORKFLOW                        │\r\n│                                                      │\r\n│  ┌─────────┐    ┌─────────┐    ┌─────────────────┐  │\r\n│  │ Trigger │───▶│ AI Agent│───▶│ Process Result  │  │\r\n│  │ (Webhook│    │  Node   │    │ (Slack message, │  │\r\n│  │  /Cron) │    │         │    │  DB write, etc.)│  │\r\n│  └─────────┘    └────┬────┘    └─────────────────┘  │\r\n│                      │                                │\r\n│                 ┌────▼────┐                           │\r\n│                 │  Tools  │                           │\r\n│                 │ ┌─────┐ │                           │\r\n│                 │ │ SQL │ │                           │\r\n│                 │ │Query│ │                           │\r\n│                 │ └─────┘ │                           │\r\n│                 │ ┌─────┐ │                           │\r\n│                 │ │ HTTP │ │                           │\r\n│                 │ │ Req  │ │                           │\r\n│                 │ └─────┘ │                           │\r\n│                 └─────────┘                           │\r\n└──────────────────────────────────────────────────────┘\r\n```\r\n\r\n#### Example Use Cases\r\n\r\n1. **AI-powered ticket triage** — Webhook receives Jira ticket → LLM classifies\r\n   priority and team → auto-assigns and notifies via Slack\r\n2. **Document processing pipeline** — New PDF uploaded to S3 → Extract text →\r\n   Chunk → Embed → Store in Pinecone → Notify team\r\n3. **Code review bot** — GitHub PR webhook → Fetch diff → LLM reviews code →\r\n   Posts comments on PR\r\n\r\n#### n8n vs Alternatives\r\n\r\n| Feature | n8n | Zapier | Make | Custom Code |\r\n|---|---|---|---|---|\r\n| Self-hostable | ✅ | ❌ | ❌ | ✅ |\r\n| AI agent support | ✅ Native | Limited | Limited | ✅ |\r\n| Pricing | Free (self-host) | Expensive | Moderate | Free |\r\n| Code flexibility | ✅ | Limited | Limited | ✅ |\r\n| Visual editor | ✅ | ✅ | ✅ | ❌ |\r\n| Enterprise ready | ✅ | ✅ | ✅ | Depends |\r\n\r\n---\r\n\r\n### 12.2 LangGraph\r\n\r\n#### What Is LangGraph?\r\n\r\n**LangGraph** is a framework (by LangChain) for building **stateful, multi-actor\r\nAI agent applications** using a **graph-based** architecture. It models agent\r\nworkflows as **directed graphs** where nodes are computational steps and edges\r\ndefine control flow (including cycles/loops).\r\n\r\n#### Why LangGraph Exists\r\n\r\nLangChain's original `AgentExecutor` was too rigid — hard to customize loops,\r\nhandle branching, or manage complex multi-agent workflows. LangGraph was created\r\nto give developers **full control** over agent orchestration.\r\n\r\n#### Core Concepts\r\n\r\n| Concept | Description |\r\n|---|---|\r\n| **StateGraph** | The graph definition — nodes, edges, and state schema |\r\n| **State** | A typed dictionary that flows through the graph and accumulates data |\r\n| **Node** | A function that receives state, does work, and returns updated state |\r\n| **Edge** | Connection between nodes (can be conditional) |\r\n| **Conditional Edge** | Routes to different nodes based on state values |\r\n| **Checkpointing** | Persists state at each step for debugging, resumption, and human-in-the-loop |\r\n| **Human-in-the-loop** | Pause execution and wait for human approval |\r\n\r\n#### LangGraph Architecture\r\n\r\n```\r\n                    ┌───────────────────┐\r\n                    │    START          │\r\n                    └────────┬──────────┘\r\n                             │\r\n                             ▼\r\n                    ┌───────────────────┐\r\n                    │   Plan Task       │\r\n                    │   (LLM node)      │\r\n                    └────────┬──────────┘\r\n                             │\r\n                    ┌────────▼──────────┐\r\n                    │  Route Decision   │ ◄── Conditional Edge\r\n                    └──┬─────────┬──────┘\r\n                       │         │\r\n              ┌────────▼──┐  ┌──▼────────┐\r\n              │  Code     │  │  Research  │\r\n              │  Agent    │  │  Agent     │\r\n              └────────┬──┘  └──┬────────┘\r\n                       │        │\r\n                    ┌──▼────────▼──┐\r\n                    │   Review     │\r\n                    │   (LLM node) │\r\n                    └──────┬───────┘\r\n                           │\r\n                  ┌────────▼────────┐\r\n                  │   Needs Fixes?  │ ◄── Conditional Edge\r\n                  └──┬──────────┬───┘\r\n                     │          │\r\n                YES (loop)     NO\r\n                     │          │\r\n              ┌──────▼──┐   ┌──▼──────┐\r\n              │  Back to │   │  END    │\r\n              │  Code    │   │         │\r\n              │  Agent   │   └─────────┘\r\n              └──────────┘\r\n```\r\n\r\n#### Code Example\r\n\r\n```python\r\nfrom langgraph.graph import StateGraph, END\r\nfrom typing import TypedDict, Annotated, Literal\r\nimport operator\r\n\r\n# 1. Define State\r\nclass AgentState(TypedDict):\r\n    messages: Annotated[list, operator.add]  # Append-only message list\r\n    plan: str\r\n    code: str\r\n    test_results: str\r\n    iteration: int\r\n\r\n# 2. Define Nodes\r\ndef planner(state: AgentState) -> dict:\r\n    \"\"\"LLM plans the implementation.\"\"\"\r\n    response = llm.invoke(f\"Plan implementation for: {state['messages'][-1]}\")\r\n    return {\"plan\": response.content}\r\n\r\ndef coder(state: AgentState) -> dict:\r\n    \"\"\"LLM writes code based on the plan.\"\"\"\r\n    response = llm.invoke(f\"Write code for plan: {state['plan']}\")\r\n    return {\"code\": response.content, \"iteration\": state[\"iteration\"] + 1}\r\n\r\ndef tester(state: AgentState) -> dict:\r\n    \"\"\"Runs tests on the generated code.\"\"\"\r\n    result = run_tests(state[\"code\"])\r\n    return {\"test_results\": result}\r\n\r\ndef reviewer(state: AgentState) -> dict:\r\n    \"\"\"Reviews code quality.\"\"\"\r\n    response = llm.invoke(f\"Review this code: {state['code']}\")\r\n    return {\"messages\": [response.content]}\r\n\r\n# 3. Define Routing Logic\r\ndef should_continue(state: AgentState) -> Literal[\"coder\", \"end\"]:\r\n    if \"PASS\" in state[\"test_results\"] or state[\"iteration\"] >= 3:\r\n        return \"end\"\r\n    return \"coder\"  # Loop back\r\n\r\n# 4. Build Graph\r\nworkflow = StateGraph(AgentState)\r\n\r\nworkflow.add_node(\"planner\", planner)\r\nworkflow.add_node(\"coder\", coder)\r\nworkflow.add_node(\"tester\", tester)\r\nworkflow.add_node(\"reviewer\", reviewer)\r\n\r\nworkflow.set_entry_point(\"planner\")\r\nworkflow.add_edge(\"planner\", \"coder\")\r\nworkflow.add_edge(\"coder\", \"tester\")\r\nworkflow.add_conditional_edges(\"tester\", should_continue, {\r\n    \"coder\": \"coder\",\r\n    \"end\": \"reviewer\"\r\n})\r\nworkflow.add_edge(\"reviewer\", END)\r\n\r\n# 5. Compile & Run\r\napp = workflow.compile()\r\nresult = app.invoke({\r\n    \"messages\": [\"Build a user authentication endpoint\"],\r\n    \"plan\": \"\",\r\n    \"code\": \"\",\r\n    \"test_results\": \"\",\r\n    \"iteration\": 0\r\n})\r\n```\r\n\r\n### 12.3 n8n vs LangGraph\r\n\r\n| Dimension | n8n | LangGraph |\r\n|---|---|---|\r\n| **Type** | Visual workflow automation | Code-first agent framework |\r\n| **Target user** | Ops, low-code devs, full-stack devs | ML/AI engineers, backend devs |\r\n| **Interface** | Visual drag-and-drop | Python/TypeScript code |\r\n| **State management** | Basic (workflow variables) | Advanced (typed state, checkpoints) |\r\n| **AI focus** | General automation + AI nodes | AI-agent-first design |\r\n| **Loops/Cycles** | Limited | First-class support |\r\n| **Human-in-the-loop** | Basic (manual approval nodes) | Advanced (breakpoints, state editing) |\r\n| **Deployment** | Self-host or cloud | Library (you deploy your app) |\r\n| **Best for** | Business process automation with AI | Complex, stateful AI agent systems |\r\n\r\n---",
+    "wordCount": 1005,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--13-vibe-coding-and-why-it-is-problematic",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "13. Vibe Coding — And Why It Is Problematic",
+    "level": 2,
+    "bodyMd": "### 13.1 What Is Vibe Coding?\r\n\r\n**Vibe coding** is a term (coined by Andrej Karpathy in February 2025) describing a\r\nstyle of software development where the programmer **describes what they want in\r\nnatural language** and lets an AI (Copilot, Cursor, Windsurf, etc.) generate all\r\nthe code — accepting the output with **minimal review or understanding**.\r\n\r\n> \"You just see things, say things, run things, and copy-paste things,\r\n> and it mostly works.\" — Andrej Karpathy\r\n\r\n**The core behavior:**\r\n\r\n```\r\nDeveloper: \"Make a dashboard with charts showing user signups\"\r\n    │\r\n    ▼\r\nAI generates 500 lines of code\r\n    │\r\n    ▼\r\nDeveloper: *glances at it* → \"Looks right\" → Ships it\r\n    │\r\n    ▼\r\nDeveloper: \"Now add filtering by date range\"\r\n    │\r\n    ▼\r\nAI generates more code (may conflict with previous code)\r\n    │\r\n    ▼\r\nDeveloper: \"There's a bug\" → Pastes error → AI \"fixes\" it\r\n    │\r\n    ▼\r\nRepeat until it seems to work...\r\n```\r\n\r\n### 13.2 Why Vibe Coding Is Problematic\r\n\r\n#### 🔴 Technical Debt Explosion\r\n\r\n```\r\nVibe Coding:                    Disciplined AI-Assisted Development:\r\n                                \r\n\"Make it work\" × 50 prompts     Spec → Plan → Implement → Review → Test\r\n         │                                    │\r\n         ▼                                    ▼\r\n┌──────────────────┐            ┌──────────────────┐\r\n│  Spaghetti code  │            │  Structured,     │\r\n│  No architecture │            │  maintainable    │\r\n│  Duplicated logic│            │  code with clear │\r\n│  Inconsistent    │            │  architecture    │\r\n│  patterns        │            │                  │\r\n└──────────────────┘            └──────────────────┘\r\n```\r\n\r\n#### 🔴 Critical Issues\r\n\r\n| Problem | Description |\r\n|---|---|\r\n| **No comprehension** | Developer doesn't understand the generated code |\r\n| **Hidden bugs** | Code appears to work but has subtle logic errors |\r\n| **Security vulnerabilities** | AI may generate SQL injection, XSS, or auth bypass patterns |\r\n| **Unmaintainable code** | No human has a mental model of the system |\r\n| **Context rot** | Long sessions degrade AI output quality; developer doesn't notice |\r\n| **Architecture erosion** | No deliberate design; patterns emerge randomly |\r\n| **Dependency hell** | AI pulls in unnecessary or outdated dependencies |\r\n| **Test illusion** | AI writes tests that pass but don't test the right things |\r\n| **Debugging impossibility** | When it breaks, no one knows how it works |\r\n\r\n#### 🔴 The \"Works on My Machine\" Amplified\r\n\r\n```\r\nSURFACE TESTING:    ✅ It renders!  ✅ Button clicks!  ✅ Data appears!\r\n\r\nREAL-WORLD ISSUES:\r\n  ❌ Race condition when two users edit simultaneously\r\n  ❌ Memory leak in WebSocket handler after 1000 connections\r\n  ❌ SQL injection via the search parameter\r\n  ❌ No rate limiting on the API\r\n  ❌ PII logged to console in production\r\n  ❌ State desync between client cache and server\r\n```\r\n\r\n### 13.3 When Vibe Coding Is Acceptable\r\n\r\nTo be fair, there ARE legitimate uses:\r\n\r\n| Acceptable | Not Acceptable |\r\n|---|---|\r\n| Quick prototypes / POCs | Production systems |\r\n| Personal scripts / tools | Customer-facing applications |\r\n| Hackathons | Healthcare, financial, security-critical systems |\r\n| Learning & exploration | Team codebases others must maintain |\r\n| One-off data analysis | Long-lived systems |\r\n\r\n### 13.4 The Better Alternative: Structured AI-Assisted Development\r\n\r\n```\r\n                    VIBE CODING              SDD / STRUCTURED\r\n                    ─────────────            ─────────────────\r\nPlanning:           None                     Spec → Architecture → Plan\r\nPrompting:          Ad-hoc, vague            Precise, context-rich\r\nReview:             Glance / none            Line-by-line code review\r\nTesting:            \"It seems to work\"       Comprehensive test suite\r\nUnderstanding:      Minimal                  Full comprehension\r\nDocumentation:      None                     Spec + comments + ADRs\r\nIteration:          \"Fix this error\"         Planned refactoring\r\n```\r\n\r\n---",
+    "wordCount": 553,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--14-sdd-spec-driven-development",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "14. SDD — Spec-Driven Development",
+    "level": 2,
+    "bodyMd": "### 14.1 Definition\r\n\r\n**Spec-Driven Development (SDD)** is a software development methodology where\r\n**detailed specifications are written *before* code** and serve as the **single\r\nsource of truth** for both human developers and AI coding agents. The spec\r\ndocuments the *what*, *why*, and *how* of every feature before a single line of\r\ncode is written.\r\n\r\nSDD is the **antidote to vibe coding**.\r\n\r\n### 14.2 Why SDD Matters in the AI Era\r\n\r\n```\r\nTraditional Development:        AI-Assisted Vibe Coding:       SDD:\r\n                                \r\nHuman writes code               Human describes loosely        Human writes detailed spec\r\n  │                               │                              │\r\n  ▼                               ▼                              ▼\r\nHuman reviews code              AI generates code              AI generates code from spec\r\n  │                               │                              │\r\n  ▼                               ▼                              ▼\r\nHuman understands code          Human doesn't understand       Spec validates code\r\n                                code, ships anyway               │\r\n                                                                 ▼\r\n                                                               Human + AI verify against spec\r\n```\r\n\r\n**Key insight:** In an AI-coding world, the **spec becomes the primary artifact**\r\nthat humans write and own. The code becomes a *derivative* of the spec.\r\n\r\n### 14.3 The SDD Workflow\r\n\r\n```\r\n┌──────────────────────────────────────────────────────────────┐\r\n│                      SDD WORKFLOW                            │\r\n│                                                              │\r\n│  1. SPEC CREATION                                           │\r\n│     ├── Requirements gathering                               │\r\n│     ├── Architecture decisions                               │\r\n│     ├── API contracts (OpenAPI, GraphQL schema)              │\r\n│     ├── Data models                                         │\r\n│     ├── Acceptance criteria                                  │\r\n│     └── Edge cases & error handling                          │\r\n│                                                              │\r\n│  2. SPEC REVIEW                                              │\r\n│     ├── Team review (humans)                                 │\r\n│     ├── AI review (check for ambiguity, gaps, inconsistency) │\r\n│     └── Stakeholder approval                                 │\r\n│                                                              │\r\n│  3. CODE GENERATION                                          │\r\n│     ├── AI generates code FROM the spec                      │\r\n│     ├── Each function/module maps to a spec section          │\r\n│     └── Spec is injected into AI context (via harness)       │\r\n│                                                              │\r\n│  4. VERIFICATION                                             │\r\n│     ├── Code is validated AGAINST the spec                   │\r\n│     ├── Tests are derived from acceptance criteria in spec   │\r\n│     ├── AI checks its own output against the spec            │\r\n│     └── Human reviews for correctness                        │\r\n│                                                              │\r\n│  5. ITERATION                                                │\r\n│     ├── Spec updates when requirements change                │\r\n│     ├── Code is regenerated / updated accordingly            │\r\n│     └── Spec and code stay in sync                           │\r\n└──────────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### 14.4 What a Good Spec Looks Like\r\n\r\n````markdown\r\n# Feature Spec: User Authentication",
+    "wordCount": 366,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--1-overview",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "1. Overview",
+    "level": 2,
+    "bodyMd": "Implement JWT-based authentication with email/password login, registration,\r\nand password reset functionality.",
+    "wordCount": 11,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--2-architecture-decision",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "2. Architecture Decision",
+    "level": 2,
+    "bodyMd": "- Use bcrypt (cost factor 12) for password hashing\r\n- JWT with RS256 signing, 15-minute access token, 7-day refresh token\r\n- Refresh tokens stored in HTTP-only secure cookies\r\n- Access tokens sent via Authorization header",
+    "wordCount": 35,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--3-data-models",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "3. Data Models",
+    "level": 2,
+    "bodyMd": "### User\r\n| Field        | Type      | Constraints              |\r\n|--------------|-----------|--------------------------|\r\n| id           | UUID      | PK, auto-generated       |\r\n| email        | string    | unique, max 255, indexed  |\r\n| passwordHash | string    | bcrypt hash               |\r\n| createdAt    | timestamp | auto-set                  |\r\n| updatedAt    | timestamp | auto-updated              |\r\n| isVerified   | boolean   | default: false            |\r\n\r\n### RefreshToken\r\n| Field     | Type      | Constraints              |\r\n|-----------|-----------|--------------------------|\r\n| id        | UUID      | PK                        |\r\n| userId    | UUID      | FK → User.id              |\r\n| token     | string    | unique, indexed           |\r\n| expiresAt | timestamp | createdAt + 7 days        |\r\n| revoked   | boolean   | default: false            |",
+    "wordCount": 110,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--4-api-endpoints",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "4. API Endpoints",
+    "level": 2,
+    "bodyMd": "### POST /api/auth/register\r\n**Request:**\r\n```json\r\n{\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"SecureP@ss123\"\r\n}\r\n```\r\n\r\n**Validation:**\r\n- Email: valid format, max 255 chars\r\n- Password: min 8 chars, must include uppercase, lowercase, number, special char\r\n\r\n**Success Response (201):**\r\n```json\r\n{\r\n  \"user\": { \"id\": \"uuid\", \"email\": \"user@example.com\" },\r\n  \"message\": \"Registration successful. Please verify your email.\"\r\n}\r\n```\r\n\r\n**Error Responses:**\r\n- 409: `{ \"error\": \"Email already registered\" }`\r\n- 422: `{ \"error\": \"Validation failed\", \"details\": [...] }`\r\n\r\n### POST /api/auth/login\r\n[... similar detail ...]",
+    "wordCount": 79,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--5-acceptance-criteria",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "5. Acceptance Criteria",
+    "level": 2,
+    "bodyMd": "- [ ] User can register with valid email and password\r\n- [ ] Duplicate email returns 409\r\n- [ ] Passwords are hashed with bcrypt (cost 12)\r\n- [ ] JWT contains user ID and email in payload\r\n- [ ] Access token expires after 15 minutes\r\n- [ ] Refresh token is HTTP-only, secure, SameSite=Strict\r\n- [ ] Invalid login returns 401 with generic message (no user enumeration)\r\n- [ ] Rate limiting: max 5 login attempts per minute per IP",
+    "wordCount": 83,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--6-edge-cases",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "6. Edge Cases",
+    "level": 2,
+    "bodyMd": "- User registers, then tries to register again with same email\r\n- Token expires mid-request\r\n- Simultaneous refresh token usage (token rotation race condition)\r\n- SQL injection attempts in email field\r\n- Password with unicode characters",
+    "wordCount": 36,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--7-security-requirements",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "7. Security Requirements",
+    "level": 2,
+    "bodyMd": "- No password in logs or error messages\r\n- Timing-safe comparison for tokens\r\n- CSRF protection on cookie-based auth\r\n- Account lockout after 10 failed attempts (15-minute cooldown)\r\n````\r\n\r\n### 14.5 SpecKit and SDD Tools\r\n\r\n#### SpecKit\r\n\r\n**SpecKit** is a tool/framework designed to streamline Spec-Driven Development.\r\nIt provides utilities for creating, managing, and feeding specifications to AI\r\ncoding agents.\r\n\r\n**Core capabilities:**\r\n\r\n| Capability | Description |\r\n|---|---|\r\n| **Spec templates** | Pre-built templates for common features (auth, CRUD, API, etc.) |\r\n| **Spec validation** | Checks specs for completeness, ambiguity, and inconsistency |\r\n| **AI integration** | Feeds specs directly into AI agent context |\r\n| **Spec ↔ Code mapping** | Tracks which code implements which spec section |\r\n| **Spec diffing** | Shows what changed when specs are updated |\r\n| **Test generation** | Auto-generates test cases from acceptance criteria |\r\n\r\n#### Typical SpecKit Workflow\r\n\r\n```bash\r\nspeckit init                          # Initialize SpecKit in project\r\nspeckit new feature auth-system       # Create new feature spec from template\r\nspeckit validate specs/auth.md        # Validate spec completeness\r\nspeckit generate specs/auth.md        # Feed spec to AI and generate code\r\nspeckit verify specs/auth.md          # Verify code matches spec\r\nspeckit test-gen specs/auth.md        # Generate tests from spec criteria\r\n```\r\n\r\n#### Other SDD-Adjacent Tools & Concepts\r\n\r\n| Tool/Concept | Description |\r\n|---|---|\r\n| **OpenAPI / Swagger** | API specification standard — define endpoints before implementing |\r\n| **Storybook** | UI component specification through visual stories |\r\n| **ADRs** (Architecture Decision Records) | Document architectural decisions |\r\n| **RFC Process** | Design documents for significant changes |\r\n| **BDD / Gherkin** | Behavior specs: Given-When-Then acceptance criteria |\r\n| **Design Docs** | Google-style design documents before implementation |\r\n| **PRD Templates** | Product requirement documents as formal specs |\r\n| **Cursor Rules / Windsurf Rules** | `.cursorrules` or `.windsurfrules` files that provide spec-like context |\r\n\r\n### 14.6 SDD Pros and Cons\r\n\r\n| Pros | Cons |\r\n|---|---|\r\n| AI generates higher-quality code from clear specs | Upfront time investment to write specs |\r\n| Forces thorough thinking before coding | Specs can become stale if not maintained |\r\n| Creates documentation as a side effect | Over-specification can limit creativity |\r\n| Enables meaningful code review (against spec) | Learning curve for teams new to the process |\r\n| Reduces context rot (spec re-injected each session) | Requires discipline and cultural buy-in |\r\n| Makes AI output verifiable and auditable | Not all tasks warrant a full spec |\r\n| Specs survive even if code is thrown away | Balancing spec granularity is an art |\r\n\r\n### 14.7 SDD vs Vibe Coding — Summary\r\n\r\n```\r\n┌──────────────────────────────────────────────────────────┐\r\n│                                                          │\r\n│   VIBE CODING          SDD                               │\r\n│   ──────────           ───                               │\r\n│   \"Build me a          \"Here is a 3-page spec            │\r\n│    login page\"          with data models, API             │\r\n│                         contracts, validation             │\r\n│   AI: *generates        rules, error handling,            │\r\n│    whatever*            security requirements,            │\r\n│                         and acceptance criteria.          │\r\n│   Dev: \"Looks good      Build the implementation.\"        │\r\n│    enough\" → ships                                       │\r\n│                        AI: *generates code that           │\r\n│   Result: 🎰            matches the spec*                │\r\n│   (gambling on                                           │\r\n│    quality)            Dev: *verifies against spec*       │\r\n│                                                          │\r\n│                        Result: ✅                         │\r\n│                        (verifiable quality)               │\r\n│                                                          │\r\n└──────────────────────────────────────────────────────────┘\r\n```\r\n\r\n---",
+    "wordCount": 538,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--15-quick-reference-comparison-tables",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "15. Quick-Reference Comparison Tables",
+    "level": 2,
+    "bodyMd": "### AI Paradigms\r\n\r\n| Paradigm | Input | Output | Statefulness | Autonomy |\r\n|---|---|---|---|---|\r\n| Generative AI | Prompt | Content | Stateless | None |\r\n| Agentic AI | Goal | Actions + Content | Stateful | High |\r\n| RAG | Query + Retrieved Docs | Grounded Answer | Stateless (per query) | None |\r\n\r\n### Memory Types\r\n\r\n| Type | Lifespan | Storage | Example |\r\n|---|---|---|---|\r\n| Short-term | Session | Context window | Chat history |\r\n| Long-term | Permanent | Vector DB / KV store | User preferences |\r\n| Episodic | Permanent | Database | \"Last time X failed because Y\" |\r\n| Semantic | Permanent | Vector DB | Codebase knowledge |\r\n| Procedural | Permanent | Skills/workflows | \"How to deploy\" |\r\n\r\n### Tools & Frameworks\r\n\r\n| Tool | Category | Key Use Case |\r\n|---|---|---|\r\n| LangGraph | Agent framework | Complex stateful agent workflows |\r\n| n8n | Workflow automation | Business process automation with AI |\r\n| MCP | Protocol/Standard | Universal AI ↔ tool connectivity |\r\n| ChromaDB | Vector database | RAG and semantic search |\r\n| SpecKit | SDD tooling | Spec-driven AI code generation |\r\n\r\n### Development Approaches\r\n\r\n| Approach | Speed | Quality | Maintainability | Best For |\r\n|---|---|---|---|---|\r\n| Vibe Coding | 🚀🚀🚀 | ⚠️ Low | ❌ Poor | Prototypes, throwaway scripts |\r\n| Traditional Dev | 🐢 | ✅ High | ✅ Good | Established teams, critical systems |\r\n| AI-Assisted (ad hoc) | 🚀🚀 | ⚠️ Variable | ⚠️ Variable | Individual productivity |\r\n| SDD + AI | 🚀 | ✅ High | ✅ Good | Production systems, teams |\r\n\r\n---",
+    "wordCount": 285,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--16-interview-tips-talking-points",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "16. Interview Tips & Talking Points",
+    "level": 2,
+    "bodyMd": "### Demonstrating Principal-Level Thinking\r\n\r\nWhen discussing these topics in an interview, emphasize:\r\n\r\n1. **Systems thinking** — Don't just explain *what* something is; explain how it\r\n   fits into the larger architecture and what trade-offs it introduces.\r\n\r\n2. **Risk awareness** — For every AI capability, articulate the risks:\r\n   - Context rot → stale/wrong code\r\n   - Vibe coding → technical debt\r\n   - Agent autonomy → security surface area\r\n\r\n3. **Practical experience** — Frame answers with \"In my experience...\" or\r\n   \"When evaluating this for our team, I considered...\"\r\n\r\n4. **Opinionated but open** — Principals are expected to have strong opinions,\r\n   loosely held. Take a position on SDD vs. vibe coding, but acknowledge nuance.\r\n\r\n5. **Cost/benefit framing** — Everything is a trade-off. Discuss the engineering\r\n   economics of AI tooling adoption.\r\n\r\n### Sample Questions & Talking Points\r\n\r\n| Question | Key Points to Hit |\r\n|---|---|\r\n| \"How would you integrate AI coding agents into your team's workflow?\" | SDD, harness design, guardrails, code review process, gradual adoption, measuring quality |\r\n| \"What are the risks of AI-generated code?\" | Hallucinations, security vulnerabilities, context rot, loss of understanding, testing gaps |\r\n| \"Explain RAG and when you'd use it\" | Architecture, chunking strategy, embedding models, when RAG vs. fine-tuning, evaluation metrics |\r\n| \"How do you prevent context rot?\" | Session management, spec injection, RAG, summarization, fresh context strategies |\r\n| \"What is your opinion on vibe coding?\" | Clear stance (it's prototyping, not engineering), explain SDD as the alternative, acknowledge speed benefits for appropriate contexts |\r\n| \"How would you design a multi-agent system?\" | Orchestrator pattern, sub-agents with specialized tools, memory architecture, error handling, human-in-the-loop |\r\n| \"What is MCP and why does it matter?\" | N×M → N+M problem, universal standard, security implications, ecosystem growth |\r\n\r\n---",
+    "wordCount": 294,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "interview-materials-summary--appendix-further-reading-resources",
+    "sourceFile": "interview-materials-summary.md",
+    "title": "Appendix: Further Reading & Resources",
+    "level": 2,
+    "bodyMd": "| Topic | Resource |\r\n|---|---|\r\n| Transformer architecture | [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017) |\r\n| Lost in the Middle | [Lost in the Middle: How LLMs Use Long Contexts](https://arxiv.org/abs/2307.03172) |\r\n| ReAct pattern | [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629) |\r\n| RAG | [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) |\r\n| MCP specification | [modelcontextprotocol.io](https://modelcontextprotocol.io) |\r\n| LangGraph docs | [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/) |\r\n| n8n docs | [docs.n8n.io](https://docs.n8n.io) |\r\n| Vibe Coding (Karpathy) | [Original tweet / post, Feb 2025](https://x.com/karpathy/status/1886192184808149383) |\r\n| Prompt Engineering Guide | [platform.openai.com/docs/guides/prompt-engineering](https://platform.openai.com/docs/guides/prompt-engineering) |\r\n\r\n---\r\n\r\n*Last updated: July 2025. Verify details with primary sources as this field evolves rapidly.*\r\n\r\n\r\nThis document covers all 14 topics from your list with explanations, diagrams, code examples, comparison tables, and interview-specific guidance. You can save it as a `.md` file and use it as your study reference. Good luck with the interview!",
+    "wordCount": 147,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--1-how-much-autonomy-does-the-agent-get",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "1. How much autonomy does the agent get?",
+    "level": 2,
+    "bodyMd": "### The Autonomy Spectrum\r\n\r\n```\r\nLevel 0          Level 1           Level 2           Level 3           Level 4\r\nSUGGEST          DRAFT             APPLY WITH        AUTONOMOUS        FULLY\r\nONLY             & WAIT            APPROVAL          WITH GUARDRAILS   AUTONOMOUS\r\n                                                     \r\nAI suggests      AI writes code,   AI writes code,   AI writes, tests, AI does\r\ncompletions      human applies     applies to files  and commits —     everything\r\ninline           manually          after human       human reviews     including\r\n                                   clicks \"Accept\"   after the fact    deploy\r\n                                                     \r\n(Copilot)        (Cursor Compose)  (Windsurf)        (Devin)           (Not yet safe)\r\n```\r\n\r\n### The Answer: Tiered Autonomy Based on Risk\r\n\r\nYou don't pick one level — you **assign autonomy per operation type**:\r\n\r\n```\r\n┌─────────────────────────────────┬───────────┬─────────────────────────┐\r\n│ Operation                       │ Risk      │ Autonomy Level          │\r\n├─────────────────────────────────┼───────────┼─────────────────────────┤\r\n│ Read files / analyze code       │ None      │ Full autonomy           │\r\n│ Write new files                 │ Low       │ Auto-apply, log it      │\r\n│ Modify existing files           │ Medium    │ Diff review required    │\r\n│ Run tests                       │ Low       │ Full autonomy           │\r\n│ Install dependencies            │ Medium    │ Approval required       │\r\n│ Run arbitrary shell commands    │ High      │ Allowlist only          │\r\n│ Modify CI/CD config             │ High      │ Human approval + review │\r\n│ Database migrations             │ Critical  │ Human-only with AI draft│\r\n│ Delete files / resources        │ Critical  │ Explicit confirmation   │\r\n│ Deploy to production            │ Critical  │ Never autonomous        │\r\n└─────────────────────────────────┴───────────┴─────────────────────────┘\r\n```\r\n\r\n### Implementation Pattern: Permission Tiers\r\n\r\n```python\r\nclass AgentPermissions:\r\n    TIERS = {\r\n        \"unrestricted\": [\r\n            \"file_read\", \"search_codebase\", \"run_tests\",\r\n            \"lint\", \"type_check\"\r\n        ],\r\n        \"auto_with_logging\": [\r\n            \"file_create\", \"file_write_new\",\r\n        ],\r\n        \"requires_diff_review\": [\r\n            \"file_modify\", \"file_rename\",\r\n        ],\r\n        \"requires_explicit_approval\": [\r\n            \"install_dependency\", \"modify_config\",\r\n            \"shell_command\", \"file_delete\",\r\n        ],\r\n        \"forbidden\": [\r\n            \"deploy\", \"drop_database\", \"modify_secrets\",\r\n            \"push_to_main\", \"modify_ci_pipeline\",\r\n        ]\r\n    }\r\n\r\n    def check_permission(self, action: str) -> PermissionResult:\r\n        if action in self.TIERS[\"forbidden\"]:\r\n            return PermissionResult.DENIED\r\n        if action in self.TIERS[\"requires_explicit_approval\"]:\r\n            return PermissionResult.NEEDS_HUMAN_APPROVAL\r\n        if action in self.TIERS[\"requires_diff_review\"]:\r\n            return PermissionResult.NEEDS_DIFF_REVIEW\r\n        if action in self.TIERS[\"auto_with_logging\"]:\r\n            self.audit_log.record(action)\r\n            return PermissionResult.ALLOWED\r\n        return PermissionResult.ALLOWED\r\n```\r\n\r\n### Key Principle for the Interview\r\n\r\n> \"Autonomy should be proportional to reversibility. If an action is easily\r\n> undone (read a file, run a test), automate it. If it's hard to undo\r\n> (delete data, deploy to prod), require human approval. The harness\r\n> enforces this — the agent doesn't get to decide its own permissions.\"\r\n\r\n---",
+    "wordCount": 349,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--2-how-do-you-prevent-hallucinated-code-from-reaching-production",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "2. How do you prevent hallucinated code from reaching production?",
+    "level": 2,
+    "bodyMd": "### Multi-Layer Defense Strategy\r\n\r\n```\r\nAI generates code\r\n       │\r\n       ▼\r\n┌──────────────────┐\r\n│  LAYER 1:        │   Immediate automated checks\r\n│  Static Analysis │   before the code is even shown to the developer\r\n│  - TypeScript    │\r\n│    compiler      │\r\n│  - ESLint        │\r\n│  - Type checking │\r\n└──────┬───────────┘\r\n       │ Pass?\r\n       ▼\r\n┌──────────────────┐\r\n│  LAYER 2:        │   Does the code reference things that actually exist?\r\n│  Hallucination   │\r\n│  Detection       │\r\n│  - Import check  │\r\n│  - Function      │\r\n│    existence     │\r\n│  - API endpoint  │\r\n│    verification  │\r\n└──────┬───────────┘\r\n       │ Pass?\r\n       ▼\r\n┌──────────────────┐\r\n│  LAYER 3:        │   Does the code actually work?\r\n│  Test Execution  │\r\n│  - Existing tests│\r\n│  - AI-generated  │\r\n│    tests         │\r\n│  - Integration   │\r\n│    tests         │\r\n└──────┬───────────┘\r\n       │ Pass?\r\n       ▼\r\n┌──────────────────┐\r\n│  LAYER 4:        │   Does a human (or second AI) agree it's correct?\r\n│  Review Gate     │\r\n│  - Human review  │\r\n│  - Second LLM    │\r\n│    review        │\r\n│  - Spec          │\r\n│    compliance    │\r\n│    check         │\r\n└──────┬───────────┘\r\n       │ Pass?\r\n       ▼\r\n┌──────────────────┐\r\n│  LAYER 5:        │   Standard CI/CD pipeline\r\n│  CI Pipeline     │\r\n│  - Full test     │\r\n│    suite         │\r\n│  - Security scan │\r\n│  - Build check   │\r\n│  - Staging       │\r\n│    deploy + E2E  │\r\n└──────┬───────────┘\r\n       │ Pass?\r\n       ▼\r\n    Production\r\n```\r\n\r\n### Concrete Hallucination Detection\r\n\r\n```python\r\nclass HallucinationDetector:\r\n    \"\"\"Catches common AI hallucination patterns before code is applied.\"\"\"\r\n\r\n    def check(self, generated_code: str, project_context: dict) -> list[Issue]:\r\n        issues = []\r\n\r\n        # 1. Phantom imports — AI invents packages that don't exist\r\n        for import_stmt in extract_imports(generated_code):\r\n            if import_stmt not in project_context[\"installed_packages\"]:\r\n                if not exists_on_npm(import_stmt):\r\n                    issues.append(Issue(\r\n                        severity=\"ERROR\",\r\n                        message=f\"Hallucinated package: '{import_stmt}' \"\r\n                                f\"does not exist in npm registry\"\r\n                    ))\r\n\r\n        # 2. Phantom functions — AI calls functions that don't exist\r\n        for function_call in extract_function_calls(generated_code):\r\n            if not exists_in_codebase(function_call, project_context):\r\n                issues.append(Issue(\r\n                    severity=\"ERROR\",\r\n                    message=f\"Hallucinated function: '{function_call}' \"\r\n                            f\"not found in codebase\"\r\n                ))\r\n\r\n        # 3. Phantom API endpoints — AI invents routes\r\n        for api_call in extract_api_calls(generated_code):\r\n            if api_call not in project_context[\"openapi_spec\"][\"paths\"]:\r\n                issues.append(Issue(\r\n                    severity=\"WARNING\",\r\n                    message=f\"API endpoint '{api_call}' not in OpenAPI spec\"\r\n                ))\r\n\r\n        # 4. Outdated patterns — AI uses deprecated APIs\r\n        for pattern in DEPRECATED_PATTERNS:\r\n            if pattern.matches(generated_code):\r\n                issues.append(Issue(\r\n                    severity=\"WARNING\",\r\n                    message=f\"Deprecated pattern: {pattern.description}\"\r\n                ))\r\n\r\n        return issues\r\n```\r\n\r\n### Key Principle for the Interview\r\n\r\n> \"You treat AI-generated code exactly like code from an untrusted\r\n> junior developer — it must pass the same gates as any other code:\r\n> type checking, linting, tests, and human review. The harness\r\n> automates the first three layers so humans only spend time on\r\n> what requires judgment.\"\r\n\r\n---",
+    "wordCount": 423,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--3-how-do-you-manage-context-efficiently-to-avoid-context-rot",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "3. How do you manage context efficiently to avoid context rot?",
+    "level": 2,
+    "bodyMd": "### Strategy: Context Budget Architecture\r\n\r\n```\r\nTotal Context Window: 128K tokens\r\n┌──────────────────────────────────────────────────────────┐\r\n│                                                          │\r\n│  PINNED (always present, re-injected every turn)         │\r\n│  ┌────────────────────────────────────────────────────┐  │\r\n│  │ System Prompt + Team Rules       (~2K tokens)      │  │\r\n│  │ Current Spec / Task Definition   (~3K tokens)      │  │\r\n│  │ Project Architecture Overview    (~1K tokens)      │  │\r\n│  └────────────────────────────────────────────────────┘  │\r\n│                                              ~6K fixed   │\r\n│                                                          │\r\n│  DYNAMIC (retrieved per-turn via RAG)                    │\r\n│  ┌────────────────────────────────────────────────────┐  │\r\n│  │ Relevant source files            (~10K tokens)     │  │\r\n│  │ Relevant docs / specs            (~5K tokens)      │  │\r\n│  │ Similar past solutions           (~3K tokens)      │  │\r\n│  └────────────────────────────────────────────────────┘  │\r\n│                                              ~18K dynamic│\r\n│                                                          │\r\n│  CONVERSATION (sliding window with summarization)        │\r\n│  ┌────────────────────────────────────────────────────┐  │\r\n│  │ Summary of earlier turns         (~2K tokens)      │  │\r\n│  │ Last 5-10 turns verbatim         (~15K tokens)     │  │\r\n│  └────────────────────────────────────────────────────┘  │\r\n│                                              ~17K conv   │\r\n│                                                          │\r\n│  RESERVED FOR OUTPUT                                     │\r\n│  ┌────────────────────────────────────────────────────┐  │\r\n│  │ Model's response                 (~8K tokens)      │  │\r\n│  └────────────────────────────────────────────────────┘  │\r\n│                                              ~8K output  │\r\n│                                                          │\r\n│  SAFETY BUFFER                               ~79K free   │\r\n│  (room for larger files, longer conversations)           │\r\n│                                                          │\r\n└──────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### Concrete Strategies\r\n\r\n```python\r\nclass ContextManager:\r\n    MAX_TOKENS = 128_000\r\n    RESERVED_OUTPUT = 8_000\r\n    PINNED_BUDGET = 6_000\r\n    DYNAMIC_BUDGET = 20_000\r\n    CONVERSATION_BUDGET = 20_000\r\n\r\n    def build_context(self, user_message: str, session: Session) -> list[Message]:\r\n        budget_remaining = self.MAX_TOKENS - self.RESERVED_OUTPUT\r\n\r\n        # 1. PINNED — Always present (fight instruction drift)\r\n        pinned = [\r\n            self.system_prompt,                    # Rules, persona\r\n            self.current_spec,                     # What we're building\r\n            self.architecture_summary,             # Project structure\r\n        ]\r\n        budget_remaining -= count_tokens(pinned)\r\n\r\n        # 2. DYNAMIC — RAG retrieval based on current message\r\n        relevant_files = self.rag.retrieve(\r\n            query=user_message,\r\n            top_k=10,\r\n            max_tokens=self.DYNAMIC_BUDGET\r\n        )\r\n        budget_remaining -= count_tokens(relevant_files)\r\n\r\n        # 3. CONVERSATION — Summarize old turns, keep recent verbatim\r\n        if session.turn_count > 10:\r\n            # Summarize everything except the last 5 turns\r\n            old_turns = session.messages[:-5]\r\n            summary = self.llm.summarize(old_turns)\r\n            recent_turns = session.messages[-5:]\r\n            conversation = [summary] + recent_turns\r\n        else:\r\n            conversation = session.messages\r\n\r\n        # 4. TRIM if over budget\r\n        while count_tokens(conversation) > budget_remaining:\r\n            conversation = self.compress(conversation)\r\n\r\n        # 5. REASSERT critical instructions at the end\r\n        #    (fights \"lost in the middle\" effect)\r\n        reminder = {\r\n            \"role\": \"system\",\r\n            \"content\": \"REMINDER: Follow the spec exactly. \"\r\n                       \"Use TypeScript strict mode. \"\r\n                       \"No `any` types.\"\r\n        }\r\n\r\n        return [*pinned, *relevant_files, *conversation,\r\n                user_message, reminder]\r\n```\r\n\r\n### Session Rotation Policy\r\n\r\n```\r\n┌────────────────────────────────────────────────────────┐\r\n│              SESSION ROTATION RULES                     │\r\n│                                                        │\r\n│  Start a NEW session when:                             │\r\n│  ✦ Switching to a different feature / task             │\r\n│  ✦ Context window exceeds 60% capacity                │\r\n│  ✦ Agent starts contradicting earlier decisions        │\r\n│  ✦ Agent hallucinates a function that existed earlier  │\r\n│  ✦ More than ~30 turns in a single session             │\r\n│                                                        │\r\n│  Carry forward to new session:                         │\r\n│  ✦ Spec file (always re-injected)                     │\r\n│  ✦ Summary of decisions made                          │\r\n│  ✦ List of files modified                             │\r\n│  ✦ Known issues / TODOs                               │\r\n│                                                        │\r\n│  Do NOT carry forward:                                 │\r\n│  ✦ Raw conversation history                           │\r\n│  ✦ Failed attempts / debug cycles                     │\r\n│  ✦ Exploratory tangents                               │\r\n└────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### Key Principle for the Interview\r\n\r\n> \"Context is a precious, finite resource — manage it like memory in an\r\n> embedded system. Pin what's critical, retrieve what's relevant, summarize\r\n> what's old, and rotate sessions before the quality cliff. The spec is\r\n> your anchor — it survives across sessions and prevents drift.\"\r\n\r\n---",
+    "wordCount": 560,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--4-how-do-you-ensure-the-agent-follows-team-coding-standards",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "4. How do you ensure the agent follows team coding standards?",
+    "level": 2,
+    "bodyMd": "### Multi-Layered Standards Enforcement\r\n\r\n```\r\n┌─────────────────────────────────────────────────────────────┐\r\n│           STANDARDS ENFORCEMENT PIPELINE                     │\r\n│                                                             │\r\n│  ┌───────────────────────────────────────────────────────┐  │\r\n│  │  LAYER 1: TELL (System Prompt + Rules Files)          │  │\r\n│  │                                                       │  │\r\n│  │  • System prompt includes coding standards            │  │\r\n│  │  • .cursorrules / .windsurfrules / AGENTS.md          │  │\r\n│  │  • Few-shot examples of correct patterns              │  │\r\n│  │  • Project-specific conventions doc                   │  │\r\n│  └───────────────────────────────────────────────────────┘  │\r\n│                          │                                   │\r\n│                          ▼                                   │\r\n│  ┌───────────────────────────────────────────────────────┐  │\r\n│  │  LAYER 2: SHOW (RAG + Codebase Examples)              │  │\r\n│  │                                                       │  │\r\n│  │  • Retrieve similar existing code as reference        │  │\r\n│  │  • \"Here's how we did this in UserService.ts\"         │  │\r\n│  │  • Feed architectural patterns from actual codebase   │  │\r\n│  │  • Include relevant test examples                     │  │\r\n│  └───────────────────────────────────────────────────────┘  │\r\n│                          │                                   │\r\n│                          ▼                                   │\r\n│  ┌───────────────────────────────────────────────────────┐  │\r\n│  │  LAYER 3: CHECK (Automated Enforcement)               │  │\r\n│  │                                                       │  │\r\n│  │  • ESLint / Prettier with team config                 │  │\r\n│  │  • TypeScript strict mode (no implicit any)           │  │\r\n│  │  • Custom lint rules for project patterns             │  │\r\n│  │  • Architecture linting (dependency-cruiser)          │  │\r\n│  └───────────────────────────────────────────────────────┘  │\r\n│                          │                                   │\r\n│                          ▼                                   │\r\n│  ┌───────────────────────────────────────────────────────┐  │\r\n│  │  LAYER 4: FIX (Auto-Correction Loop)                  │  │\r\n│  │                                                       │  │\r\n│  │  If lint/type check fails:                            │  │\r\n│  │    → Feed errors back to agent                        │  │\r\n│  │    → Agent fixes and resubmits                        │  │\r\n│  │    → Re-check (max 3 iterations)                      │  │\r\n│  │    → If still failing → flag for human review         │  │\r\n│  └───────────────────────────────────────────────────────┘  │\r\n│                          │                                   │\r\n│                          ▼                                   │\r\n│  ┌───────────────────────────────────────────────────────┐  │\r\n│  │  LAYER 5: REVIEW (Human + AI Review)                  │  │\r\n│  │                                                       │  │\r\n│  │  • Second LLM reviews against standards checklist     │  │\r\n│  │  • Human reviews for architectural fit                │  │\r\n│  │  • PR template includes standards compliance section  │  │\r\n│  └───────────────────────────────────────────────────────┘  │\r\n└─────────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### The Rules File (Practical Example)\r\n\r\n```markdown\r\n# .cursorrules / .windsurfrules / AGENTS.md",
+    "wordCount": 357,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--architecture",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "Architecture",
+    "level": 2,
+    "bodyMd": "- Follow hexagonal architecture: routes → controllers → services → repositories\r\n- Never import from a sibling module's internal files; use the barrel export\r\n- All business logic lives in /src/services/ — controllers are thin",
+    "wordCount": 35,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--typescript",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "TypeScript",
+    "level": 2,
+    "bodyMd": "- strict mode always; no `any`, no `@ts-ignore`\r\n- Use `unknown` + type guards for external data\r\n- Prefer `interface` for object shapes, `type` for unions/intersections\r\n- All functions must have explicit return types",
+    "wordCount": 34,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--naming",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "Naming",
+    "level": 2,
+    "bodyMd": "- Files: kebab-case (user-service.ts)\r\n- Classes/Interfaces: PascalCase (UserService, CreateUserInput)\r\n- Functions/variables: camelCase (getUserById)\r\n- Constants: UPPER_SNAKE_CASE (MAX_RETRY_COUNT)\r\n- Boolean variables: prefix with is/has/should (isActive, hasPermission)",
+    "wordCount": 25,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--error-handling",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "Error Handling",
+    "level": 2,
+    "bodyMd": "- Services return Result<T, E>, never throw\r\n- Controllers catch and map to HTTP responses\r\n- Use AppError class hierarchy, not raw Error",
+    "wordCount": 23,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--testing",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "Testing",
+    "level": 2,
+    "bodyMd": "- Test file next to source: user-service.ts → user-service.test.ts\r\n- Use describe/it blocks with clear descriptions\r\n- AAA pattern: Arrange, Act, Assert\r\n- Mock external dependencies with MSW for HTTP, vi.mock for modules",
+    "wordCount": 33,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--forbidden-patterns",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "Forbidden Patterns",
+    "level": 2,
+    "bodyMd": "- No console.log (use logger.info/warn/error)\r\n- No default exports (use named exports only)\r\n- No magic numbers (extract to named constants)\r\n- No nested ternaries\r\n- No mutation of function parameters\r\n```\r\n\r\n### Key Principle for the Interview\r\n\r\n> \"You can't rely on *telling* the AI your standards — you have to *show*\r\n> it (via RAG'd code examples), *check* it (via automated tooling), and\r\n> *enforce* it (via a feedback loop). The rules file is necessary but not\r\n> sufficient. The linter is your last line of defense, not your first.\"\r\n\r\n---",
+    "wordCount": 93,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--5-how-do-you-integrate-with-existing-ci-cd-pipelines",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "5. How do you integrate with existing CI/CD pipelines?",
+    "level": 2,
+    "bodyMd": "### Architecture: AI Harness as a Pre-CI Layer\r\n\r\n```\r\n┌─────────────────────────────────────────────────────────────────┐\r\n│                     DEVELOPMENT FLOW                             │\r\n│                                                                 │\r\n│  Developer + AI Agent                                           │\r\n│       │                                                         │\r\n│       ▼                                                         │\r\n│  ┌──────────────────────┐                                       │\r\n│  │   AI HARNESS         │                                       │\r\n│  │   (Pre-CI Checks)    │                                       │\r\n│  │                      │                                       │\r\n│  │   ✦ Type check       │                                       │\r\n│  │   ✦ Lint             │                                       │\r\n│  │   ✦ Unit tests       │                                       │\r\n│  │   ✦ Hallucination    │                                       │\r\n│  │     detection        │                                       │\r\n│  │   ✦ Spec compliance  │                                       │\r\n│  └──────────┬───────────┘                                       │\r\n│             │ All pass                                          │\r\n│             ▼                                                   │\r\n│  ┌──────────────────────┐                                       │\r\n│  │   GIT COMMIT + PR    │  Agent creates branch + PR            │\r\n│  │                      │  with structured description:         │\r\n│  │   Branch: ai/feat-   │  - What spec section it implements   │\r\n│  │   auth-jwt           │  - What files changed and why        │\r\n│  │                      │  - What tests were added             │\r\n│  └──────────┬───────────┘                                       │\r\n│             │                                                   │\r\n│             ▼                                                   │\r\n│  ┌──────────────────────────────────────────────────────────┐   │\r\n│  │              EXISTING CI/CD PIPELINE                      │   │\r\n│  │              (unchanged — AI code is just code)           │   │\r\n│  │                                                          │   │\r\n│  │  Stage 1: Build                                          │   │\r\n│  │    ✦ npm ci / install dependencies                       │   │\r\n│  │    ✦ TypeScript compilation                              │   │\r\n│  │    ✦ Build artifacts                                     │   │\r\n│  │                                                          │   │\r\n│  │  Stage 2: Quality                                        │   │\r\n│  │    ✦ ESLint                                              │   │\r\n│  │    ✦ Prettier check                                      │   │\r\n│  │    ✦ Unit tests + coverage threshold                     │   │\r\n│  │    ✦ Integration tests                                   │   │\r\n│  │                                                          │   │\r\n│  │  Stage 3: Security                                       │   │\r\n│  │    ✦ npm audit                                           │   │\r\n│  │    ✦ SAST (Semgrep / SonarQube)                          │   │\r\n│  │    ✦ Secret scanning                                     │   │\r\n│  │    ✦ License compliance                                  │   │\r\n│  │                                                          │   │\r\n│  │  Stage 4: Review Gate                                    │   │\r\n│  │    ✦ Required human approvals (1-2 reviewers)            │   │\r\n│  │    ✦ AI-generated PR summary for faster review           │   │\r\n│  │    ✦ AI-generated diff annotations                       │   │\r\n│  │                                                          │   │\r\n│  │  Stage 5: Deploy                                         │   │\r\n│  │    ✦ Staging deploy + E2E tests (Playwright)             │   │\r\n│  │    ✦ Manual QA approval (for major features)             │   │\r\n│  │    ✦ Production deploy (canary → full rollout)           │   │\r\n│  └──────────────────────────────────────────────────────────┘   │\r\n└─────────────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### CI Enhancements for AI-Generated Code\r\n\r\nThings you **add** to your existing pipeline (not replace):\r\n\r\n```yaml\r\n# .github/workflows/ci.yml — additional steps for AI-generated code\r\n\r\njobs:\r\n  ai-code-checks:\r\n    runs-on: ubuntu-latest\r\n    steps:\r\n      # Standard steps (unchanged)\r\n      - uses: actions/checkout@v4\r\n      - uses: actions/setup-node@v4\r\n      - run: npm ci\r\n      - run: npm run type-check\r\n      - run: npm run lint\r\n      - run: npm run test -- --coverage\r\n\r\n      # NEW: AI-specific checks\r\n      - name: Detect hallucinated imports\r\n        run: |\r\n          # Check that all imported packages exist in package.json\r\n          node scripts/check-imports.js\r\n\r\n      - name: Architecture boundary check\r\n        run: |\r\n          # Ensure no forbidden cross-module imports\r\n          npx dependency-cruiser --config .dependency-cruiser.cjs src/\r\n\r\n      - name: Spec compliance check\r\n        run: |\r\n          # Verify that acceptance criteria from spec have matching tests\r\n          node scripts/spec-compliance.js specs/ src/__tests__/\r\n\r\n      - name: AI provenance label\r\n        if: contains(github.head_ref, 'ai/')\r\n        run: |\r\n          # Add label so reviewers know this is AI-generated\r\n          gh pr edit ${{ github.event.pull_request.number }} \\\r\n            --add-label \"ai-generated\"\r\n\r\n      - name: AI-assisted review comment\r\n        if: contains(github.head_ref, 'ai/')\r\n        run: |\r\n          # Use a second LLM to review the diff and post comments\r\n          node scripts/ai-review.js ${{ github.event.pull_request.number }}\r\n```\r\n\r\n### Branching Convention\r\n\r\n```\r\nmain\r\n ├── feature/auth-system          ← human-driven feature branch\r\n ├── ai/auth-jwt-implementation   ← AI-generated (clearly labeled)\r\n ├── ai/fix-user-validation       ← AI-generated fix\r\n └── hotfix/payment-bug           ← human-driven hotfix\r\n```\r\n\r\nThe `ai/` prefix:\r\n- Triggers additional CI checks\r\n- Adds an \"ai-generated\" label to the PR\r\n- Routes to reviewers who are trained in reviewing AI code\r\n- Enables tracking metrics (AI code quality over time)\r\n\r\n### Metrics to Track\r\n\r\n```\r\n┌────────────────────────────────────────────────────────┐\r\n│          AI CODE QUALITY METRICS                       │\r\n│                                                        │\r\n│  ✦ AI PR pass rate (% that pass CI on first push)     │\r\n│  ✦ AI PR review turnaround (faster or slower?)        │\r\n│  ✦ AI PR defect rate (bugs found post-merge)          │\r\n│  ✦ AI PR revert rate (how often AI code gets reverted)│\r\n│  ✦ Test coverage delta (does AI code meet thresholds?)│\r\n│  ✦ Security findings per AI PR vs human PR            │\r\n│  ✦ Time-to-merge: AI-assisted vs pure human           │\r\n│  ✦ Lines of spec vs lines of code (spec leverage)     │\r\n└────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### Key Principle for the Interview\r\n\r\n> \"The CI/CD pipeline doesn't change — AI-generated code is just code,\r\n> and it must pass the same quality gates as everything else. What you\r\n> *add* is a pre-CI harness layer that catches AI-specific issues\r\n> (hallucinated imports, spec drift, architectural violations) *before*\r\n> they even hit the pipeline. And you *label* AI-generated PRs so you\r\n> can measure quality over time and adjust your harness accordingly.\"\r\n\r\n---",
+    "wordCount": 808,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "ai-harness-in-detail--summary-the-five-answers-at-a-glance",
+    "sourceFile": "AI-Harness-in-detail.md",
+    "title": "Summary: The Five Answers at a Glance",
+    "level": 2,
+    "bodyMd": "| Question | One-Line Answer |\r\n|---|---|\r\n| **How much autonomy?** | Tiered by risk — full autonomy for reads/tests, human approval for destructive ops |\r\n| **Prevent hallucinated code?** | Multi-layer defense: static analysis → hallucination detection → tests → review → CI |\r\n| **Manage context?** | Budget architecture: pin critical context, RAG for relevance, summarize old turns, rotate sessions |\r\n| **Enforce coding standards?** | Tell (rules file) → Show (RAG examples) → Check (linter) → Fix (feedback loop) → Review (human) |\r\n| **CI/CD integration?** | AI code is just code — same pipeline, plus a pre-CI harness layer and AI-specific labels/metrics |",
+    "wordCount": 107,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "lru-and-lfu-cache-algorithms--table-of-contents",
+    "sourceFile": "LRU and LFU cache algorithms.md",
+    "title": "Table of Contents",
+    "level": 2,
+    "bodyMd": "1. [LRU — Least Recently Used](#lru--least-recently-used)\r\n2. [LFU — Least Frequently Used](#lfu--least-frequently-used)\r\n3. [LRU vs LFU Comparison](#lru-vs-lfu-comparison)\r\n4. [Related Algorithms](#related-algorithms)\r\n\r\n---",
+    "wordCount": 21,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "lru-and-lfu-cache-algorithms--lru-least-recently-used",
+    "sourceFile": "LRU and LFU cache algorithms.md",
+    "title": "LRU — Least Recently Used",
+    "level": 2,
+    "bodyMd": "### Overview\r\n\r\nThe **Least Recently Used (LRU)** cache algorithm evicts the item that has **not been accessed for the longest period of time** when the cache reaches capacity.\r\n\r\nBased on the principle of **temporal locality** — if data was recently used, it's likely to be used again soon.\r\n\r\n### How It Works\r\n\r\n1. **Cache Hit:** Item is moved to the **most recently used** position.\r\n2. **Cache Miss (cache not full):** New item is added to the most recently used position.\r\n3. **Cache Miss (cache full):** The **least recently used** item is **evicted**, and the new item is inserted.\r\n\r\n### Example\r\n\r\nCache with **capacity = 3**:\r\n\r\n```\r\nAccess: A → Cache: [A]\r\nAccess: B → Cache: [A, B]\r\nAccess: C → Cache: [A, B, C]       (cache is now full)\r\nAccess: A → Cache: [B, C, A]       (A moved to most recent)\r\nAccess: D → Cache: [C, A, D]       (B evicted — least recently used)\r\nAccess: C → Cache: [A, D, C]       (C moved to most recent)\r\nAccess: E → Cache: [D, C, E]       (A evicted — least recently used)\r\n```\r\n\r\n### Data Structure\r\n\r\nUses **two components**:\r\n\r\n| Component            | Purpose                                                  |\r\n| -------------------- | -------------------------------------------------------- |\r\n| **Doubly Linked List** | Maintains access order (head = LRU, tail = MRU)        |\r\n| **Hash Map**           | key → pointer to node in DLL for O(1) lookup           |\r\n\r\n```\r\n  HashMap                    Doubly Linked List\r\n ┌─────┬─────┐\r\n │  A  │  ●──────────┐      LRU                              MRU\r\n ├─────┼─────┤        │\r\n │  B  │  ●───────┐   │      HEAD ⇄ [C] ⇄ [B] ⇄ [A] ⇄ TAIL\r\n ├─────┼─────┤    │   │               ▲      ▲      ▲\r\n │  C  │  ●────┐  │   │               │      │      │\r\n └─────┴─────┘ │  │   │               │      │      │\r\n                └──│───│───────────────┘      │      │\r\n                   └───│──────────────────────┘      │\r\n                       └─────────────────────────────┘\r\n```\r\n\r\n### Operations Complexity\r\n\r\n| Operation    | Time Complexity |\r\n| ------------ | --------------- |\r\n| **Get**      | O(1)            |\r\n| **Put**      | O(1)            |\r\n| **Eviction** | O(1)            |\r\n\r\n### Pseudocode\r\n\r\n```\r\nclass LRUCache:\r\n    initialize(capacity):\r\n        maxCapacity = capacity\r\n        hashMap = {}\r\n        doublyLinkedList = new DoublyLinkedList()\r\n\r\n    get(key):\r\n        if key in hashMap:\r\n            node = hashMap[key]\r\n            move node to tail (most recent)\r\n            return node.value\r\n        else:\r\n            return -1\r\n\r\n    put(key, value):\r\n        if key in hashMap:\r\n            update node value\r\n            move node to tail\r\n        else:\r\n            if size == maxCapacity:\r\n                evict head node (least recent)\r\n                remove from hashMap\r\n            create new node\r\n            add to tail\r\n            add to hashMap\r\n```\r\n\r\n### Advantages\r\n\r\n- Simple and intuitive concept\r\n- O(1) time for all operations\r\n- Good performance for workloads with temporal locality\r\n- Widely used in practice\r\n\r\n### Disadvantages\r\n\r\n- Extra memory overhead (linked list pointers + hash map)\r\n- Not optimal for all access patterns (e.g., sequential scans flush the cache)\r\n- Doesn't consider **frequency** of access\r\n\r\n### Real-World Applications\r\n\r\n- **Operating Systems** — Page replacement in virtual memory\r\n- **Databases** — Buffer pool management\r\n- **Web Browsers** — Caching web pages and resources\r\n- **CDNs** — Content delivery networks\r\n- **CPU Architecture** — Hardware cache management\r\n- **Software Libraries** — `functools.lru_cache` in Python, `LinkedHashMap` in Java\r\n\r\n---",
+    "wordCount": 490,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "lru-and-lfu-cache-algorithms--lfu-least-frequently-used",
+    "sourceFile": "LRU and LFU cache algorithms.md",
+    "title": "LFU — Least Frequently Used",
+    "level": 2,
+    "bodyMd": "### Overview\r\n\r\nThe **Least Frequently Used (LFU)** cache algorithm evicts the item that has been **accessed the fewest number of times** when the cache reaches capacity.\r\n\r\nBased on the principle of **frequency locality** — items accessed more often are more likely to be needed again.\r\n\r\n> **Tie-breaking rule:** When multiple items share the same lowest frequency, the **least recently used** among them is evicted.\r\n\r\n### How It Works\r\n\r\n1. **Cache Hit:** The item's **frequency counter is incremented** and recency is updated.\r\n2. **Cache Miss (cache not full):** New item is added with **frequency = 1**.\r\n3. **Cache Miss (cache full):** The item with the **lowest frequency** is evicted (LRU among ties). New item is inserted with frequency = 1.\r\n\r\n### Example\r\n\r\nCache with **capacity = 3**:\r\n\r\n```\r\nAccess: A → Cache: {A(1)}\r\nAccess: B → Cache: {A(1), B(1)}\r\nAccess: A → Cache: {A(2), B(1)}                  (A freq incremented)\r\nAccess: C → Cache: {A(2), B(1), C(1)}             (cache full)\r\nAccess: A → Cache: {A(3), B(1), C(1)}             (A freq incremented)\r\nAccess: D → Cache: {A(3), C(1), D(1)}             (B evicted — freq 1, older than C)\r\nAccess: C → Cache: {A(3), C(2), D(1)}             (C freq incremented)\r\nAccess: E → Cache: {A(3), C(2), E(1)}             (D evicted — lowest freq = 1)\r\n```\r\n\r\n### Data Structure\r\n\r\nUses **three components**:\r\n\r\n| Component                                  | Purpose                                                                     |\r\n| ------------------------------------------ | --------------------------------------------------------------------------- |\r\n| **keyMap** (key → node pointer)            | O(1) direct access to the node so you can unlink it from its DLL            |\r\n| **freqMap** (freq → Doubly Linked List)    | Groups nodes by frequency; each DLL maintains LRU order within that group   |\r\n| **minFreq** (integer)                      | Tracks the current minimum frequency for O(1) eviction                      |\r\n\r\n```\r\n ┌─────────────────────────────────────────────────────────────────┐\r\n │                                                                 │\r\n │  1.  minFreq = 1                                                │\r\n │                                                                 │\r\n │  2.  freqMap:  freq → Doubly Linked List                        │\r\n │      ┌───────┬──────────────────────────────┐                   │\r\n │      │   1   │  DLL: HEAD ⇄ [D] ⇄ TAIL     │                   │\r\n │      │   2   │  DLL: HEAD ⇄ [B] ⇄ [C] ⇄ TAIL                  │\r\n │      │   3   │  DLL: HEAD ⇄ [A] ⇄ TAIL     │                   │\r\n │      └───────┴──────────────────────────────┘                   │\r\n │                                                                 │\r\n │  3.  keyMap:  key → pointer to the ACTUAL NODE in the DLL       │\r\n │      ┌─────┬────────────────────┐                               │\r\n │      │  A  │  ● ──── points to [A] node in freqMap[3]          │\r\n │      │  B  │  ● ──── points to [B] node in freqMap[2]          │\r\n │      │  C  │  ● ──── points to [C] node in freqMap[2]          │\r\n │      │  D  │  ● ──── points to [D] node in freqMap[1]          │\r\n │      └─────┴────────────────────┘                               │\r\n │                                                                 │\r\n └─────────────────────────────────────────────────────────────────┘\r\n```\r\n\r\n### Node Structure\r\n\r\n```\r\n  ┌────────────────┐\r\n  │  key:    A     │\r\n  │  value:  valA  │\r\n  │  freq:   3     │\r\n  │  prev:   ● ───── → previous node in DLL\r\n  │  next:   ● ───── → next node in DLL\r\n  └────────────────┘\r\n```\r\n\r\n> **Key Insight:** The `keyMap` stores a direct pointer to the node object itself. Since the node has `prev`/`next` pointers, you can unlink it from its DLL in O(1) **without searching**. This is why no per-bucket hashmap is needed.\r\n\r\n### Operations Complexity\r\n\r\n| Operation    | Time Complexity |\r\n| ------------ | --------------- |\r\n| **Get**      | O(1)            |\r\n| **Put**      | O(1)            |\r\n| **Eviction** | O(1)            |\r\n\r\n### Pseudocode\r\n\r\n```\r\nclass LFUCache:\r\n    initialize(capacity):\r\n        maxCapacity = capacity\r\n        minFreq = 0\r\n        keyMap = {}\r\n        freqMap = {}\r\n\r\n    get(key):\r\n        if key not in keyMap:\r\n            return -1\r\n        node = keyMap[key]\r\n        updateFrequency(node)\r\n        return node.value\r\n\r\n    put(key, value):\r\n        if maxCapacity == 0:\r\n            return\r\n        if key in keyMap:\r\n            node = keyMap[key]\r\n            node.value = value\r\n            updateFrequency(node)\r\n        else:\r\n            if size == maxCapacity:\r\n                evictList = freqMap[minFreq]\r\n                evictNode = evictList.removeHead()\r\n                delete keyMap[evictNode.key]\r\n            newNode = Node(key, value, freq=1)\r\n            keyMap[key] = newNode\r\n            if 1 not in freqMap:\r\n                freqMap[1] = new DoublyLinkedList()\r\n            freqMap[1].addToTail(newNode)\r\n            minFreq = 1\r\n\r\n    updateFrequency(node):\r\n        oldFreq = node.freq\r\n        newFreq = oldFreq + 1\r\n        node.freq = newFreq\r\n        freqMap[oldFreq].remove(node)\r\n        if freqMap[oldFreq] is empty:\r\n            delete freqMap[oldFreq]\r\n            if minFreq == oldFreq:\r\n                minFreq = newFreq\r\n        if newFreq not in freqMap:\r\n            freqMap[newFreq] = new DoublyLinkedList()\r\n        freqMap[newFreq].addToTail(node)\r\n```\r\n\r\n### Advantages\r\n\r\n- Considers **frequency of access**, not just recency\r\n- Excellent for workloads with **stable popular items**\r\n- O(1) operations achievable with proper implementation\r\n\r\n### Disadvantages\r\n\r\n- **Cache pollution** — Old high-frequency items can get stuck in cache\r\n- **Cold start problem** — New items enter with freq = 1, vulnerable to immediate eviction\r\n- More complex to implement than LRU\r\n- Higher memory overhead\r\n- Slow to adapt to changing access patterns\r\n\r\n### Real-World Applications\r\n\r\n- **CDNs** — Caching popular content\r\n- **Database Systems** — Buffer pool management\r\n- **DNS Caching** — Frequently resolved domain names\r\n- **Redis** — Offers LFU eviction policies (`volatile-lfu`, `allkeys-lfu`)\r\n\r\n### Variants & Improvements\r\n\r\n| Variant          | Description                                                                                      |\r\n| ---------------- | ------------------------------------------------------------------------------------------------ |\r\n| **LFU with Aging** | Periodically halves all frequencies to prevent stale entries                                    |\r\n| **Window-LFU**     | Only counts accesses within a sliding time window                                              |\r\n| **TinyLFU**        | Space-efficient frequency estimation using Count-Min Sketch; used in **Caffeine** (Java)       |\r\n| **W-TinyLFU**      | Combines a small LRU admission window with TinyLFU — considered state-of-the-art               |\r\n\r\n---",
+    "wordCount": 823,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "lru-and-lfu-cache-algorithms--lru-vs-lfu-comparison",
+    "sourceFile": "LRU and LFU cache algorithms.md",
+    "title": "LRU vs LFU Comparison",
+    "level": 2,
+    "bodyMd": "| Aspect               | LRU                          | LFU                                   |\r\n| ----------------------| ---------------------------- | ------------------------------------- |\r\n| **Eviction Criteria** | Least recently accessed      | Least frequently accessed             |\r\n| **Tracks**            | Recency                      | Frequency (+ recency for ties)        |\r\n| **Best For**          | Temporal locality             | Stable popularity patterns            |\r\n| **Weakness**          | Sequential scans flush cache  | Stale high-frequency items            |\r\n| **Data Structures**   | 1 HashMap + 1 DLL            | 2 HashMaps + multiple DLLs + minFreq  |\r\n| **Implementation**    | Simpler                      | More complex                          |\r\n| **Adaptability**      | Adapts quickly to changes    | Slow to adapt                         |\r\n| **Memory Overhead**   | Moderate                     | Higher                                |\r\n\r\n---",
+    "wordCount": 106,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "lru-and-lfu-cache-algorithms--related-algorithms",
+    "sourceFile": "LRU and LFU cache algorithms.md",
+    "title": "Related Algorithms",
+    "level": 2,
+    "bodyMd": "| Algorithm | Eviction Policy                                |\r\n| --------- | ---------------------------------------------- |\r\n| **FIFO**  | Evicts the oldest inserted item                |\r\n| **LRU**   | Evicts the least recently accessed item        |\r\n| **MRU**   | Evicts the most recently used item             |\r\n| **LFU**   | Evicts the least frequently accessed item      |\r\n| **ARC**   | Adaptive combination of LRU and LFU            |\r\n| **CLOCK** | Approximation of LRU using a circular buffer   |",
+    "wordCount": 71,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--table-of-contents",
+    "sourceFile": "Call Center Problem.md",
+    "title": "Table of Contents",
+    "level": 2,
+    "bodyMd": "1. [Problem Definition](#1-problem-definition)\r\n2. [Visual Example](#2-visual-example)\r\n3. [Key Insight: The Parentheses Connection](#3-key-insight-the-parentheses-connection)\r\n4. [Naive Approach](#4-naive-approach)\r\n5. [Optimal Solution: Sweep Line](#5-optimal-solution-sweep-line)\r\n   - [Core Idea](#core-idea)\r\n   - [Edge Case: Simultaneous Start and End](#edge-case-simultaneous-start-and-end)\r\n   - [Pseudocode](#pseudocode)\r\n   - [Step-by-Step Walkthrough](#step-by-step-walkthrough)\r\n   - [Complexity Analysis](#complexity-analysis)\r\n6. [Follow-Up 1: Return the Full Peak Time Range](#6-follow-up-1-return-the-full-peak-time-range)\r\n   - [What They're Asking](#61-what-theyre-asking)\r\n   - [Adapted Pseudocode](#62-adapted-pseudocode)\r\n   - [Walkthrough](#63-walkthrough)\r\n   - [Bonus: Multiple Peak Windows](#64-bonus-multiple-peak-windows)\r\n7. [Follow-Up 2: Discrete Time Slots (Bucket Optimization)](#7-follow-up-2-discrete-time-slots-bucket-optimization)\r\n   - [What They're Asking](#71-what-theyre-asking)\r\n   - [Why This Enables a Better Solution](#72-why-this-enables-a-better-solution)\r\n   - [Adapted Pseudocode](#73-adapted-pseudocode)\r\n   - [Walkthrough](#74-walkthrough)\r\n   - [Complexity Comparison](#75-complexity-comparison)\r\n8. [Follow-Up 3: Minimum Staff Needed](#8-follow-up-3-minimum-staff-needed)\r\n   - [Why It's the Same Problem](#81-why-its-the-same-problem)\r\n   - [Disguised Variations](#82-disguised-variations)\r\n9. [Follow-Up 4: Real-Time Streaming Calls](#9-follow-up-4-real-time-streaming-calls)\r\n   - [What They're Asking](#91-what-theyre-asking)\r\n   - [Why Previous Approaches Break Down](#92-why-previous-approaches-break-down)\r\n   - [Adapted Pseudocode (Min-Heap)](#93-adapted-pseudocode-min-heap)\r\n   - [Walkthrough](#94-walkthrough)\r\n   - [Complexity](#95-complexity)\r\n10. [Final Summary Cheat Sheet](#10-final-summary-cheat-sheet)\r\n\r\n---",
+    "wordCount": 133,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--1-problem-definition",
+    "sourceFile": "Call Center Problem.md",
+    "title": "1. Problem Definition",
+    "level": 2,
+    "bodyMd": "You are given a log of phone calls, each with a **start time** and an **end time**. Find the **maximum number of calls happening simultaneously** and identify **when** that peak occurs.\r\n\r\n**Input:**\r\n```\r\nA list of calls, each represented as (startTime, endTime)\r\n```\r\n\r\n**Output:**\r\n```\r\nThe maximum number of concurrent calls (and optionally when it occurs)\r\n```\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 64,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--2-visual-example",
+    "sourceFile": "Call Center Problem.md",
+    "title": "2. Visual Example",
+    "level": 2,
+    "bodyMd": "**Input Calls:**\r\n```\r\nCall A:  [09:00 - 09:30]\r\nCall B:  [09:15 - 09:45]\r\nCall C:  [09:20 - 09:35]\r\nCall D:  [09:40 - 10:00]\r\n```\r\n\r\n**Timeline:**\r\n```\r\n09:00    09:15    09:20    09:30    09:35    09:40    09:45    10:00\r\n  A: |============================|\r\n  B:          |======================================|\r\n  C:                   |====================|\r\n  D:                                         |==================|\r\n                        ^^^^^^^^^^\r\n                     3 simultaneous calls (PEAK)\r\n```\r\n\r\n**Expected Output:** Maximum concurrency = **3**, occurring at **09:20**\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 64,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--3-key-insight-the-parentheses-connection",
+    "sourceFile": "Call Center Problem.md",
+    "title": "3. Key Insight: The Parentheses Connection",
+    "level": 2,
+    "bodyMd": "This problem is conceptually **identical** to finding the maximum nesting depth of parentheses.\r\n\r\n```\r\nString:  ( ( ( ) ( ) ) )\r\nCounter: 1 2 3 2 3 2 1 0\r\n             ^   ^\r\n          Max depth = 3\r\n```\r\n\r\n| Aspect | Parentheses | Concurrent Calls |\r\n|--------|-------------|-------------------|\r\n| **+1 event** | `(` open | Call starts |\r\n| **-1 event** | `)` close | Call ends |\r\n| **Tracking** | Running counter | Running counter |\r\n| **Answer** | Max nesting depth | Max concurrency |\r\n| **Pre-sorted?** | Yes (left to right) | **No** (must sort first) |\r\n\r\n> The call center problem is the **max nesting depth of parentheses**, but with an **unsorted input** that requires a sort step first.\r\n\r\nThis is a great observation to mention in an interview — it shows you recognize **patterns across problems**.\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 148,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--4-naive-approach",
+    "sourceFile": "Call Center Problem.md",
+    "title": "4. Naive Approach",
+    "level": 2,
+    "bodyMd": "You could check every pair of calls for overlap:\r\n\r\n```\r\nFOR each call_i:\r\n    count = 0\r\n    FOR each call_j:\r\n        IF call_i overlaps call_j:\r\n            count += 1\r\n    maxConcurrent = MAX(maxConcurrent, count)\r\n```\r\n\r\n**Time Complexity: O(n²)** — not scalable for millions of records.\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 48,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--5-optimal-solution-sweep-line",
+    "sourceFile": "Call Center Problem.md",
+    "title": "5. Optimal Solution: Sweep Line",
+    "level": 2,
+    "bodyMd": "### Core Idea\r\n\r\nInstead of thinking about *calls*, think about **events**:\r\n\r\n- Every call produces **two events**:\r\n  - A **START** event → one more concurrent call (+1)\r\n  - An **END** event → one fewer concurrent call (−1)\r\n\r\nSort all events by time. Sweep through them, maintaining a running counter.\r\n\r\n```\r\nCall A (09:00 - 09:30)  →  (09:00, +1)  and  (09:30, -1)\r\nCall B (09:15 - 09:45)  →  (09:15, +1)  and  (09:45, -1)\r\nCall C (09:20 - 09:35)  →  (09:20, +1)  and  (09:35, -1)\r\nCall D (09:40 - 10:00)  →  (09:40, +1)  and  (10:00, -1)\r\n```\r\n\r\n### Edge Case: Simultaneous Start and End\r\n\r\n> What if a call **ends** at the exact same time another **starts**?\r\n\r\nTypically, we process **END events before START events** at the same timestamp, meaning the departing call has hung up before the new one is counted.\r\n\r\n**Always clarify this with your interviewer!**\r\n\r\n### Pseudocode\r\n\r\n```\r\nFUNCTION findPeakConcurrency(calls):\r\n\r\n    // ---- STEP 1: Create events ----\r\n    events = empty list\r\n\r\n    FOR each call IN calls:\r\n        events.ADD( (call.startTime, +1) )\r\n        events.ADD( (call.endTime,   -1) )\r\n\r\n    // ---- STEP 2: Sort events ----\r\n    // Primary sort:   by time (ascending)\r\n    // Secondary sort: by type (-1 before +1 at same time)\r\n    SORT events BY (time ASC, type ASC)\r\n\r\n    // ---- STEP 3: Sweep through events ----\r\n    currentConcurrent = 0\r\n    maxConcurrent     = 0\r\n    peakTime          = NULL\r\n\r\n    FOR each (time, type) IN events:\r\n        currentConcurrent = currentConcurrent + type\r\n\r\n        IF currentConcurrent > maxConcurrent:\r\n            maxConcurrent = currentConcurrent\r\n            peakTime      = time\r\n\r\n    // ---- STEP 4: Return result ----\r\n    RETURN (maxConcurrent, peakTime)\r\n```\r\n\r\n### Step-by-Step Walkthrough\r\n\r\n```\r\nAfter sorting:\r\n  (09:00, +1) → concurrent = 1  ← new max\r\n  (09:15, +1) → concurrent = 2  ← new max\r\n  (09:20, +1) → concurrent = 3  ← new max ★ PEAK\r\n  (09:30, -1) → concurrent = 2\r\n  (09:35, -1) → concurrent = 1\r\n  (09:40, +1) → concurrent = 2\r\n  (09:45, -1) → concurrent = 1\r\n  (10:00, -1) → concurrent = 0\r\n\r\nResult: Max = 3 concurrent calls, peak starts at 09:20\r\n```\r\n\r\n### Complexity Analysis\r\n\r\n| Aspect | Complexity | Reason |\r\n|--------|------------|--------|\r\n| **Time** | **O(n log n)** | Dominated by the sorting step |\r\n| **Space** | **O(n)** | Storing 2n events |\r\n\r\nWhere **n** = number of calls.\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 377,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--6-follow-up-1-return-the-full-peak-time-range",
+    "sourceFile": "Call Center Problem.md",
+    "title": "6. Follow-Up 1: Return the Full Peak Time Range",
+    "level": 2,
+    "bodyMd": "### 6.1 What They're Asking\r\n\r\nInstead of just:\r\n> \"The peak is 3 calls at 09:20\"\r\n\r\nThey want:\r\n> \"The peak is 3 concurrent calls **from 09:20 to 09:30**\"\r\n\r\nYou need the **start AND end** of the peak window.\r\n\r\nThe basic solution only captures the **moment** concurrency increases to a new max. It doesn't track **when it drops back down**.\r\n\r\n### 6.2 Adapted Pseudocode\r\n\r\n```\r\nFUNCTION findPeakRange(calls):\r\n\r\n    events = empty list\r\n\r\n    FOR each call IN calls:\r\n        events.ADD( (call.startTime, +1) )\r\n        events.ADD( (call.endTime,   -1) )\r\n\r\n    SORT events BY (time ASC, type ASC)\r\n\r\n    currentConcurrent = 0\r\n    maxConcurrent     = 0\r\n    peakStart         = NULL\r\n    peakEnd           = NULL\r\n\r\n    FOR each (time, type) IN events:\r\n        currentConcurrent = currentConcurrent + type\r\n\r\n        IF currentConcurrent > maxConcurrent:\r\n            maxConcurrent = currentConcurrent\r\n            peakStart     = time\r\n            peakEnd       = NULL          // reset — we don't know when it ends yet\r\n\r\n        ELSE IF peakEnd IS NULL AND currentConcurrent < maxConcurrent:\r\n            peakEnd = time                // peak just dropped, it ended HERE\r\n\r\n    RETURN (maxConcurrent, peakStart, peakEnd)\r\n```\r\n\r\n### 6.3 Walkthrough\r\n\r\n```\r\n(09:00, +1) → concurrent = 1  ← new max, peakStart = 09:00\r\n(09:15, +1) → concurrent = 2  ← new max, peakStart = 09:15\r\n(09:20, +1) → concurrent = 3  ← new max, peakStart = 09:20\r\n(09:30, -1) → concurrent = 2  ← dropped!  peakEnd  = 09:30\r\n(09:35, -1) → concurrent = 1\r\n(09:40, +1) → concurrent = 2\r\n(09:45, -1) → concurrent = 1\r\n(10:00, -1) → concurrent = 0\r\n\r\nResult: 3 calls from 09:20 → 09:30\r\n```\r\n\r\n### 6.4 Bonus: Multiple Peak Windows\r\n\r\nIf concurrency reaches the same max multiple times, collect all windows:\r\n\r\n```\r\nFUNCTION findAllPeakRanges(calls):\r\n\r\n    // ... same event creation and sorting ...\r\n\r\n    // FIRST PASS: find the maxConcurrent (same as basic solution)\r\n    // SECOND PASS: collect all windows that hit that max\r\n\r\n    peakWindows      = empty list\r\n    currentConcurrent = 0\r\n    windowStart       = NULL\r\n\r\n    FOR each (time, type) IN events:\r\n        previousConcurrent = currentConcurrent\r\n        currentConcurrent  = currentConcurrent + type\r\n\r\n        // Entering a peak window\r\n        IF currentConcurrent == maxConcurrent AND previousConcurrent < maxConcurrent:\r\n            windowStart = time\r\n\r\n        // Leaving a peak window\r\n        IF currentConcurrent < maxConcurrent AND previousConcurrent == maxConcurrent:\r\n            peakWindows.ADD( (windowStart, time) )\r\n\r\n    RETURN (maxConcurrent, peakWindows)\r\n```\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 360,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--7-follow-up-2-discrete-time-slots-bucket-optimization",
+    "sourceFile": "Call Center Problem.md",
+    "title": "7. Follow-Up 2: Discrete Time Slots (Bucket Optimization)",
+    "level": 2,
+    "bodyMd": "### 7.1 What They're Asking\r\n\r\nIf all calls start and end on **whole hours** (e.g., hour 0 through hour 23), can you do better than **O(n log n)**?\r\n\r\n### 7.2 Why This Enables a Better Solution\r\n\r\nWhen the time range is **bounded and discrete**, you don't need to sort. You can use a **bucket array** — the same insight as **counting sort vs. comparison sort**. When the value range is small and known, you can avoid sorting entirely.\r\n\r\n### 7.3 Adapted Pseudocode\r\n\r\n```\r\nFUNCTION findPeakDiscrete(calls, MIN_HOUR, MAX_HOUR):\r\n\r\n    // Create a bucket for each possible hour\r\n    buckets = ARRAY of size (MAX_HOUR - MIN_HOUR + 2) initialized to 0\r\n\r\n    // STEP 1: Drop events into buckets — O(n)\r\n    FOR each call IN calls:\r\n        buckets[call.startHour - MIN_HOUR] += 1\r\n        buckets[call.endHour   - MIN_HOUR] -= 1\r\n\r\n    // STEP 2: Prefix sum sweep — O(k)\r\n    currentConcurrent = 0\r\n    maxConcurrent     = 0\r\n    peakHour          = MIN_HOUR\r\n\r\n    FOR hour FROM 0 TO LENGTH(buckets) - 1:\r\n        currentConcurrent += buckets[hour]\r\n\r\n        IF currentConcurrent > maxConcurrent:\r\n            maxConcurrent = currentConcurrent\r\n            peakHour      = hour + MIN_HOUR\r\n\r\n    RETURN (maxConcurrent, peakHour)\r\n```\r\n\r\n### 7.4 Walkthrough\r\n\r\n```\r\nCalls: [1-4], [2-6], [3-5]\r\n\r\nSTEP 1 — Populate buckets:\r\nIndex:     1     2     3     4     5     6\r\nStarts:   +1    +1    +1     0     0     0\r\nEnds:      0     0     0    -1    -1    -1\r\n         ────────────────────────────────────\r\nNet:      +1    +1    +1    -1    -1    -1\r\n\r\nSTEP 2 — Prefix sum sweep:\r\nHour 1 → 1\r\nHour 2 → 2\r\nHour 3 → 3  ← PEAK ★\r\nHour 4 → 2\r\nHour 5 → 1\r\nHour 6 → 0\r\n\r\nResult: Max = 3 at hour 3\r\n```\r\n\r\n### 7.5 Complexity Comparison\r\n\r\n| Approach | Time | When to Use |\r\n|----------|------|-------------|\r\n| Sort-based | O(n log n) | Arbitrary / continuous timestamps |\r\n| Bucket-based | O(n + k) | Discrete, bounded time range (k = number of time slots) |\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 310,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--8-follow-up-3-minimum-staff-needed",
+    "sourceFile": "Call Center Problem.md",
+    "title": "8. Follow-Up 3: Minimum Staff Needed",
+    "level": 2,
+    "bodyMd": "### 8.1 Why It's the Same Problem\r\n\r\n> \"How many call center agents do we need so that **no caller ever waits**?\"\r\n\r\nThink about it:\r\n\r\n```\r\nAt 09:20, there are 3 simultaneous calls happening.\r\n    → You need at LEAST 3 agents at that moment.\r\n\r\nAt 09:40, there are 2 simultaneous calls.\r\n    → 2 agents would suffice, but you already hired 3.\r\n\r\nThe PEAK concurrency dictates minimum staffing.\r\n```\r\n\r\nThe answer is simply:\r\n\r\n```\r\nminimumStaff = findPeakConcurrency(calls).maxConcurrent\r\n```\r\n\r\nNo new algorithm needed.\r\n\r\n### 8.2 Disguised Variations\r\n\r\nInterviewers test whether you can **recognize a disguised problem**. All of these are the **exact same algorithm**:\r\n\r\n| Disguised Version | What They're Really Asking |\r\n|-------------------|---------------------------|\r\n| Minimum **meeting rooms** needed? | Max concurrent meetings |\r\n| Minimum **platforms** at a train station? | Max concurrent trains |\r\n| Minimum **servers** to handle all requests? | Max concurrent requests |\r\n| Minimum **parking spots** needed? | Max concurrent parked cars |\r\n| Minimum **doctors** in an ER? | Max concurrent patients |\r\n| Minimum **runways** at an airport? | Max concurrent landings/takeoffs |\r\n\r\n> Recognizing and stating this pattern in an interview demonstrates strong problem-solving maturity.\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 199,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--9-follow-up-4-real-time-streaming-calls",
+    "sourceFile": "Call Center Problem.md",
+    "title": "9. Follow-Up 4: Real-Time Streaming Calls",
+    "level": 2,
+    "bodyMd": "### 9.1 What They're Asking\r\n\r\nYou **don't** get all calls upfront. Instead:\r\n\r\n> Calls arrive **one at a time** in chronological order, and at each arrival you need to report the **current concurrency**.\r\n\r\n### 9.2 Why Previous Approaches Break Down\r\n\r\n| Approach | Problem with Streaming |\r\n|----------|----------------------|\r\n| Sort-based | You'd re-sort after every new call → O(n log n) per call |\r\n| Bucket-based | Works only if time range is known in advance |\r\n\r\n### 9.3 Adapted Pseudocode (Min-Heap)\r\n\r\nThe key insight: when a new call arrives, some earlier calls may have **already ended**. Use a **min-heap** sorted by **end time** to efficiently discard expired calls.\r\n\r\n```\r\nFUNCTION processCallStream():\r\n\r\n    activeCallsHeap = empty MIN-HEAP (sorted by endTime)\r\n    maxConcurrent   = 0\r\n\r\n    WHEN a new call (startTime, endTime) arrives:\r\n\r\n        // STEP 1: Evict all calls that ended\r\n        //         before (or exactly at) this call's start\r\n        WHILE activeCallsHeap IS NOT EMPTY\r\n              AND activeCallsHeap.PEEK().endTime <= startTime:\r\n            activeCallsHeap.REMOVE_MIN()\r\n\r\n        // STEP 2: Add the new call\r\n        activeCallsHeap.INSERT(endTime)\r\n\r\n        // STEP 3: Current concurrency = heap size\r\n        currentConcurrent = activeCallsHeap.SIZE()\r\n\r\n        IF currentConcurrent > maxConcurrent:\r\n            maxConcurrent = currentConcurrent\r\n\r\n        REPORT currentConcurrent\r\n```\r\n\r\n### 9.4 Walkthrough\r\n\r\n```\r\nCall A arrives (09:00 - 09:30):\r\n    Evict: nothing to evict\r\n    Insert: 09:30\r\n    Heap: [09:30]\r\n    → Concurrent = 1\r\n\r\nCall B arrives (09:15 - 09:45):\r\n    Evict: peek is 09:30 > 09:15 → nothing to evict\r\n    Insert: 09:45\r\n    Heap: [09:30, 09:45]\r\n    → Concurrent = 2\r\n\r\nCall C arrives (09:20 - 09:35):\r\n    Evict: peek is 09:30 > 09:20 → nothing to evict\r\n    Insert: 09:35\r\n    Heap: [09:30, 09:35, 09:45]\r\n    → Concurrent = 3 ★ PEAK\r\n\r\nCall D arrives (09:40 - 10:00):\r\n    Evict: peek is 09:30 ≤ 09:40 → REMOVE ✓\r\n    Evict: peek is 09:35 ≤ 09:40 → REMOVE ✓\r\n    Evict: peek is 09:45 > 09:40 → STOP\r\n    Insert: 10:00\r\n    Heap: [09:45, 10:00]\r\n    → Concurrent = 2\r\n```\r\n\r\n### 9.5 Complexity\r\n\r\n| Operation | Cost | Reason |\r\n|-----------|------|--------|\r\n| Insert one call | O(log n) | Heap insertion |\r\n| Evict expired calls | O(k log n) | k calls removed, each O(log n) |\r\n| **Amortized per call** | **O(log n)** | Each call is inserted and removed exactly once across its lifetime |\r\n\r\n> **Important Assumption:** This approach assumes calls arrive in **chronological order** (sorted by start time). If they arrive out of order, you'd need a more complex structure like a balanced BST or interval tree.\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)\r\n\r\n---",
+    "wordCount": 400,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "call-center-problem--10-final-summary-cheat-sheet",
+    "sourceFile": "Call Center Problem.md",
+    "title": "10. Final Summary Cheat Sheet",
+    "level": 2,
+    "bodyMd": "| Variant | Core Technique | Time Complexity |\r\n|---------|---------------|-----------------|\r\n| **Basic: max concurrency** | Sort events + sweep | O(n log n) |\r\n| **Peak time range** | Track when max starts AND drops | O(n log n) |\r\n| **Discrete hours** | Bucket array + prefix sum | O(n + k) |\r\n| **Min staff / rooms / platforms** | Same as basic — it's the same answer | O(n log n) |\r\n| **Real-time streaming** | Min-heap for lazy eviction | O(log n) amortized per call |\r\n\r\n### Why Interviewers Love This Problem\r\n\r\nIt tests multiple skills simultaneously:\r\n\r\n1. **Decomposition** — breaking calls into atomic events\r\n2. **Sorting logic** — handling tie-breaking correctly\r\n3. **Sweep line technique** — a foundational algorithm pattern\r\n4. **Edge case awareness** — same-time starts/ends\r\n5. **Pattern recognition** — connecting it to parentheses, meeting rooms, etc.\r\n6. **Adaptability** — handling follow-ups with different constraints\r\n7. **Communication** — stating assumptions clearly\r\n\r\n[↑ Back to Table of Contents](#table-of-contents)",
+    "wordCount": 163,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--table-of-contents",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "Table of Contents",
+    "level": 2,
+    "bodyMd": "- [1. Definition](#1-definition)\r\n- [2. Why It Matters in Interviews](#2-why-it-matters-in-interviews)\r\n- [3. The Key Insight](#3-the-key-insight)\r\n- [4. Approach 1: Brute Force — O(n)](#4-approach-1-brute-force--on)\r\n- [5. Approach 2: Binary Search — O(log n)](#5-approach-2-binary-search--olog-n)\r\n  - [5.1 Algorithm](#51-algorithm)\r\n  - [5.2 Pseudocode Implementation](#52-pseudocode-implementation)\r\n- [6. Walkthrough Example](#6-walkthrough-example)\r\n- [7. Complexity Analysis](#7-complexity-analysis)\r\n- [8. Variations](#8-variations)\r\n  - [8.1 Find a Peak Element (Local Max)](#81-find-a-peak-element-local-max)\r\n  - [8.2 2D Peak Finding (Matrix)](#82-2d-peak-finding-matrix)\r\n  - [8.3 Multiple Local Minima](#83-multiple-local-minima)\r\n- [9. Common Interview Follow-Up Questions & Answers](#9-common-interview-follow-up-questions--answers)\r\n  - [9.1 Why does binary search work on an unsorted array?](#91-why-does-binary-search-work-on-an-unsorted-array)\r\n  - [9.2 Does this work with duplicates?](#92-does-this-work-with-duplicates)\r\n  - [9.3 Can there be multiple local minima?](#93-can-there-be-multiple-local-minima)\r\n  - [9.4 What about a circular array?](#94-what-about-a-circular-array)\r\n  - [9.5 What if the array is fully sorted?](#95-what-if-the-array-is-fully-sorted)\r\n  - [9.6 Can you do this recursively?](#96-can-you-do-this-recursively)\r\n  - [9.7 How does this relate to gradient descent?](#97-how-does-this-relate-to-gradient-descent)\r\n- [10. Key Takeaway](#10-key-takeaway)\r\n\r\n---",
+    "wordCount": 140,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--1-definition",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "1. Definition",
+    "level": 2,
+    "bodyMd": "A **local minimum** is an element in a collection that is **smaller than all its immediate neighbors**. A **local maximum** is an element that is **larger than all its immediate neighbors**.\r\n\r\n### Formal Definition (1D Array)\r\n\r\nFor an array `A[0..n-1]` of distinct elements:\r\n\r\n| Position | Condition for Local Min |\r\n|---|---|\r\n| `i = 0` (first element) | `A[0] < A[1]` |\r\n| `i = n-1` (last element) | `A[n-1] < A[n-2]` |\r\n| `0 < i < n-1` (interior) | `A[i] < A[i-1]` **AND** `A[i] < A[i+1]` |\r\n\r\n*(Reverse the inequalities for local maximum.)*\r\n\r\n---",
+    "wordCount": 97,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--2-why-it-matters-in-interviews",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "2. Why It Matters in Interviews",
+    "level": 2,
+    "bodyMd": "- Tests understanding of **binary search** beyond sorted arrays\r\n- Demonstrates **divide and conquer** thinking\r\n- Common gateway to harder problems (peak element, 2D peak finding)\r\n- Frequently asked at **FAANG-level** interviews\r\n\r\n---",
+    "wordCount": 33,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--3-the-key-insight",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "3. The Key Insight",
+    "level": 2,
+    "bodyMd": "> You do **NOT** need to scan the entire array. A local min/max **always exists** in any array of distinct elements, and you can find one in **O(log n)** using a modified binary search.\r\n\r\n**Why must one always exist?**\r\n\r\n- If the array is always increasing → the first element is a local min.\r\n- If always decreasing → the last element is a local min.\r\n- If it goes down then up at some point → that valley is a local min.\r\n- In all cases, at least one exists.\r\n\r\n---",
+    "wordCount": 92,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--4-approach-1-brute-force-o-n",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "4. Approach 1: Brute Force — O(n)",
+    "level": 2,
+    "bodyMd": "```\r\nFUNCTION FindLocalMinBrute(A[0..n-1])\r\n\r\n    IF n = 0 THEN\r\n        RETURN -1\r\n\r\n    IF n = 1 OR A[0] < A[1] THEN\r\n        RETURN 0\r\n\r\n    IF A[n-1] < A[n-2] THEN\r\n        RETURN n - 1\r\n\r\n    FOR i ← 1 TO n - 2 DO\r\n        IF A[i] < A[i-1] AND A[i] < A[i+1] THEN\r\n            RETURN i\r\n\r\n    RETURN -1\r\n\r\nEND FUNCTION\r\n```\r\n\r\n**Time:** O(n) — not optimal\r\n\r\n---",
+    "wordCount": 61,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--5-approach-2-binary-search-o-log-n",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "5. Approach 2: Binary Search — O(log n) ✅",
+    "level": 2,
+    "bodyMd": "### 5.1 Algorithm\r\n\r\n```\r\n1. Look at the middle element A[mid].\r\n2. If A[mid] is less than both neighbors → it's a local min. Done!\r\n3. If A[mid-1] < A[mid] → a local min MUST exist on the left half.\r\n   (Because either we keep decreasing to the left edge,\r\n    or we find a valley — either way, a local min is there.)\r\n4. Else → go right.\r\n```\r\n\r\n### 5.2 Pseudocode Implementation\r\n\r\n```\r\nFUNCTION FindLocalMin(A[0..n-1])\r\n\r\n    IF n = 0 THEN\r\n        RETURN -1\r\n\r\n    IF n = 1 THEN\r\n        RETURN 0\r\n\r\n    ——— Edge checks ———\r\n\r\n    IF A[0] < A[1] THEN\r\n        RETURN 0\r\n\r\n    IF A[n-1] < A[n-2] THEN\r\n        RETURN n - 1\r\n\r\n    ——— Binary search on interior ———\r\n\r\n    lo ← 1\r\n    hi ← n - 2\r\n\r\n    WHILE lo ≤ hi DO\r\n\r\n        mid  ← FLOOR((lo + hi) / 2)\r\n        left  ← A[mid - 1]\r\n        right ← A[mid + 1]\r\n        curr  ← A[mid]\r\n\r\n        IF curr < left AND curr < right THEN\r\n            RETURN mid                          // Found local min\r\n\r\n        ELSE IF left < curr THEN\r\n            hi ← mid - 1                       // Go left\r\n\r\n        ELSE\r\n            lo ← mid + 1                       // Go right\r\n\r\n    END WHILE\r\n\r\n    RETURN -1          // Should never reach here with distinct elements\r\n\r\nEND FUNCTION\r\n```\r\n\r\n---",
+    "wordCount": 202,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--6-walkthrough-example",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "6. Walkthrough Example",
+    "level": 2,
+    "bodyMd": "```\r\nArray:  [9, 7, 3, 1, 5, 8, 12]\r\nIndex:   0  1  2  3  4  5  6\r\n```\r\n\r\n**Edge checks first:**\r\n- `A[0]=9` vs `A[1]=7` → 9 > 7, not a local min at 0.\r\n- `A[6]=12` vs `A[5]=8` → 12 > 8, not a local min at 6.\r\n- Set `lo = 1`, `hi = 5`.\r\n\r\n| Step | lo | hi | mid | A[mid-1], A[mid], A[mid+1] | Action |\r\n|------|----|----|-----|----------------------------|--------|\r\n| 1 | 1 | 5 | 3 | 3, **1**, 5 | **1 < 3 AND 1 < 5 → FOUND at index 3** |\r\n\r\n**Result:** Index 3 (value 1) is a local minimum. ✅\r\n\r\n---",
+    "wordCount": 110,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--7-complexity-analysis",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "7. Complexity Analysis",
+    "level": 2,
+    "bodyMd": "| Approach | Time | Space |\r\n|----------|------|-------|\r\n| Brute Force | O(n) | O(1) |\r\n| Binary Search | **O(log n)** | O(1) |\r\n\r\n---",
+    "wordCount": 26,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--8-variations",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "8. Variations",
+    "level": 2,
+    "bodyMd": "### 8.1 Find a Peak Element (Local Max)\r\n\r\nFlip the comparison signs. This is **LeetCode #162**.\r\n\r\n```\r\nFUNCTION FindPeak(A[0..n-1])\r\n\r\n    lo ← 0\r\n    hi ← n - 1\r\n\r\n    WHILE lo < hi DO\r\n\r\n        mid ← FLOOR((lo + hi) / 2)\r\n\r\n        IF A[mid] < A[mid + 1] THEN\r\n            lo ← mid + 1                   // Peak is to the right\r\n        ELSE\r\n            hi ← mid                       // Peak is at mid or to the left\r\n\r\n    END WHILE\r\n\r\n    RETURN lo\r\n\r\nEND FUNCTION\r\n```\r\n\r\n### 8.2 2D Peak Finding (Matrix)\r\n\r\nFind an element greater than all 4 neighbors in an `m × n` matrix.\r\n\r\n**Strategy:**\r\n1. Pick the middle column.\r\n2. Find the global maximum in that column → O(m).\r\n3. Compare it to its left and right neighbors.\r\n4. If it is larger than both → peak found.\r\n5. Otherwise, recurse into the half that contains the larger neighbor.\r\n\r\n**Time:** O(m log n) or O(n log m), depending on which dimension you split.\r\n\r\n### 8.3 Multiple Local Minima\r\n\r\nBinary search finds **one**. Finding **all** local minima requires a full scan → **O(n)** in the worst case, and that is tight because every other element could be a local minimum.\r\n\r\n---",
+    "wordCount": 194,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--9-common-interview-follow-up-questions-answers",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "9. Common Interview Follow-Up Questions & Answers",
+    "level": 2,
+    "bodyMd": "### 9.1 Why does binary search work on an unsorted array?\r\n\r\nBinary search does **not** require a sorted array. It requires a **decision rule** that guarantees the target exists in one of the two halves so you can safely discard the other.\r\n\r\nFor local min, the rule is the **descent argument**:\r\n\r\n```\r\nAfter edge checks, we know:\r\n    A[0] > A[1]          (left edge goes DOWN)\r\n    A[n-2] < A[n-1]      (right edge goes UP)\r\n\r\nAt any mid:\r\n  • If A[mid-1] < A[mid], then on the subarray [lo..mid-1]\r\n    the left boundary is still \"descending inward\" and the\r\n    right boundary (mid) is higher than mid-1.\r\n    By the intermediate value / pigeonhole reasoning,\r\n    a local min MUST exist in that half.\r\n\r\n  • Symmetric reasoning applies when going right.\r\n```\r\n\r\nThis guarantees we always keep a half that **must contain** a local minimum.\r\n\r\n---\r\n\r\n### 9.2 Does this work with duplicates?\r\n\r\n**Not reliably.** Duplicates break the strict inequality that drives the decision rule.\r\n\r\n**Example:**\r\n\r\n```\r\n[1, 1, 1, 1, 0, 1, 1]\r\n```\r\n\r\nAt `mid = 3`, `A[mid] == A[mid-1] == A[mid+1]`. You cannot determine which half to discard. In the worst case (e.g., all elements identical except one), you must inspect every element → **O(n)**.\r\n\r\n**What to tell the interviewer:**\r\n> \"With distinct elements, O(log n) is guaranteed. With duplicates, worst case degrades to O(n). We can try to handle plateaus by linearly scanning away from mid until we find a strict change, but that loses the log-time guarantee.\"\r\n\r\n---\r\n\r\n### 9.3 Can there be multiple local minima?\r\n\r\n**Yes.** Consider:\r\n\r\n```\r\n[5, 1, 4, 2, 6]\r\n     ^     ^\r\n   idx 1  idx 3   ← both are local minima\r\n```\r\n\r\n- The binary search approach finds **any one** of them (whichever the search path reaches first).\r\n- Finding **all** of them requires O(n) because each must be individually verified.\r\n- In an array of `n` distinct elements, there can be up to **⌊n/2⌋** local minima (alternating pattern like `[3,1,3,1,3]`).\r\n\r\n---\r\n\r\n### 9.4 What about a circular array?\r\n\r\nIn a circular array, element `0` and element `n-1` are neighbors.\r\n\r\n**Neighbor calculation:**\r\n\r\n```\r\nleft_neighbor  ← A[(i - 1 + n) MOD n]\r\nright_neighbor ← A[(i + 1) MOD n]\r\n```\r\n\r\n**Brute force approach (O(n)):**\r\n\r\n```\r\nFUNCTION FindLocalMinCircular(A[0..n-1])\r\n\r\n    FOR i ← 0 TO n - 1 DO\r\n\r\n        left  ← A[(i - 1 + n) MOD n]\r\n        right ← A[(i + 1) MOD n]\r\n\r\n        IF A[i] < left AND A[i] < right THEN\r\n            RETURN i\r\n\r\n    END FOR\r\n\r\n    RETURN -1\r\n\r\nEND FUNCTION\r\n```\r\n\r\n**Can we still use binary search?**\r\nNot directly with the same argument, because we lose the fixed \"descending left edge / ascending right edge\" boundary conditions. However, if the circular array has a special structure (e.g., a rotated sorted array), binary search variants apply — this leads to **LeetCode #153 (Find Minimum in Rotated Sorted Array)**.\r\n\r\n---\r\n\r\n### 9.5 What if the array is fully sorted?\r\n\r\n| Sorted Order | Local Min | Local Max |\r\n|---|---|---|\r\n| Ascending `[1,2,3,4,5]` | First element (index 0) | Last element (index n-1) |\r\n| Descending `[5,4,3,2,1]` | Last element (index n-1) | First element (index 0) |\r\n\r\nThe edge checks in our algorithm handle both cases immediately in **O(1)**, before the loop even starts.\r\n\r\n---\r\n\r\n### 9.6 Can you do this recursively?\r\n\r\nYes. The iterative binary search converts naturally to recursion:\r\n\r\n```\r\nFUNCTION FindLocalMinRecursive(A[0..n-1], lo, hi)\r\n\r\n    mid ← FLOOR((lo + hi) / 2)\r\n\r\n    ——— Check if mid is a local min ———\r\n\r\n    isLessThanLeft  ← (mid = 0)     OR A[mid] < A[mid - 1]\r\n    isLessThanRight ← (mid = n - 1) OR A[mid] < A[mid + 1]\r\n\r\n    IF isLessThanLeft AND isLessThanRight THEN\r\n        RETURN mid\r\n\r\n    ——— If left neighbor is smaller, go left ———\r\n\r\n    IF mid > 0 AND A[mid - 1] < A[mid] THEN\r\n        RETURN FindLocalMinRecursive(A, lo, mid - 1)\r\n\r\n    ——— Otherwise, go right ———\r\n\r\n    RETURN FindLocalMinRecursive(A, mid + 1, hi)\r\n\r\nEND FUNCTION\r\n\r\n\r\n// Usage\r\nresult ← FindLocalMinRecursive(A, 0, n - 1)\r\n```\r\n\r\n| | Iterative | Recursive |\r\n|---|---|---|\r\n| **Time** | O(log n) | O(log n) |\r\n| **Space** | O(1) | O(log n) call stack |\r\n| **Interview preference** | Generally preferred | Fine if asked or if clearer to explain |\r\n\r\n---\r\n\r\n### 9.7 How does this relate to gradient descent?\r\n\r\nThis is a great question to demonstrate **breadth of knowledge**.\r\n\r\n| Aspect | Local Min (Array) | Gradient Descent |\r\n|---|---|---|\r\n| **Domain** | Discrete (finite array) | Continuous (differentiable function) |\r\n| **\"Slope\" signal** | Compare `A[mid]` to neighbors | Compute gradient ∇f(x) |\r\n| **Move direction** | Go toward the smaller neighbor | Step opposite to gradient |\r\n| **Guarantee** | Finds **a** local min (global if unimodal) | Converges to **a** local min |\r\n| **Limitation** | Finds only one; may miss global min | Can get stuck in local minima |\r\n\r\n**Key parallel:** Both exploit the idea of **following the descent direction** — if a neighbor is lower, move toward it, because a minimum must lie in that direction (or you would have already found one).\r\n\r\n---",
+    "wordCount": 833,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "local-min-max-problem--10-key-takeaway",
+    "sourceFile": "Local Min-Max problem.md",
+    "title": "10. Key Takeaway",
+    "level": 2,
+    "bodyMd": "> **Binary search doesn't require a sorted array — it requires a decision rule that lets you eliminate half the search space.** For the local min/max problem, the slope direction relative to the midpoint provides that rule. Master this insight and you unlock an entire family of binary search problems beyond simple sorted-array lookups.\r\n\r\n---",
+    "wordCount": 55,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--when-to-use",
+    "sourceFile": "SKILL.md",
+    "title": "When to Use",
+    "level": 2,
+    "bodyMd": "- User wants to add problem descriptions to LeetCode files that lack them\n- User wants to add examples, walkthroughs, or explanations to existing problem files\n- User wants to batch process multiple LeetCode problem files (e.g., \"first 100\", \"files 101-1000\")\n- User wants to enrich files that have pseudocode but no surrounding explanation\n- User wants to generate full solution content for skeleton files",
+    "wordCount": 65,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--file-structure",
+    "sourceFile": "SKILL.md",
+    "title": "File Structure",
+    "level": 2,
+    "bodyMd": "The skill operates on markdown files in the `LeetCode/Problems/` directory with this standard header format:\n\n```markdown\n# [ID]. [Problem Title]\n\n**Difficulty:** [🟢 Easy / 🟡 Medium / 🔴 Hard]\n**Acceptance:** [percentage]\n**LeetCode:** [URL]\n**Companies:** [company list]\n```",
+    "wordCount": 37,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--enrichment-format",
+    "sourceFile": "SKILL.md",
+    "title": "Enrichment Format",
+    "level": 2,
+    "bodyMd": "Follow the structure from `Local Min-Max problem.md`:\n\n### Required Sections\n\n1. **Table of Contents** - Link to all sections\n2. **Problem Description** - Clear statement of what the problem asks, including constraints\n3. **Examples** - Input/output examples with explanations\n4. **Key Insight** - The core insight that makes the solution work\n5. **Approach** - Solution approach with:\n   - Algorithm explanation\n   - Pseudocode implementation\n6. **Walkthrough** - Step-by-step trace through an example\n7. **Complexity Analysis** - Time and space complexity table\n8. **Follow-Up Questions** - Common interview follow-ups with answers\n9. **Key Takeaway** - One-sentence summary of the main lesson\n\n### Pseudocode Style\n\nUse the style from the reference file:\n- Uppercase function names: `FUNCTION FindLocalMin`\n- Assignment: `←` or `=`\n- Loops: `FOR ... DO`, `WHILE ... DO`\n- Conditionals: `IF ... THEN`, `ELSE IF`, `ELSE`\n- Returns: `RETURN`\n- Comments: `// comment` or `——— section ———`",
+    "wordCount": 147,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--processing-modes",
+    "sourceFile": "SKILL.md",
+    "title": "Processing Modes",
+    "level": 2,
+    "bodyMd": "### Single File\n\nWhen the user specifies a single file:\n- Read the file\n- Analyze what's missing (description, examples, explanation, etc.)\n- Generate missing sections while preserving existing content\n- Preserve the `**Difficulty:**` and `**Companies:**` lines exactly as-is\n\n### Batch Processing\n\nWhen the user specifies a range like \"first 100\" or \"files 101-1000\":\n- List all `.md` files in `LeetCode/Problems/` (excluding `INDEX.md`)\n- Sort alphabetically\n- Extract the specified range\n- Process each file in the range\n- Report progress as files are completed\n\n### Range Syntax\n\n- `\"first N\"` - Files 1 through N\n- `\"files X-Y\"` - Files X through Y (inclusive)\n- `\"files X-\"` - Files X through end\n- `\"files -Y\"` - Files 1 through Y",
+    "wordCount": 121,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--preservation-rules",
+    "sourceFile": "SKILL.md",
+    "title": "Preservation Rules",
+    "level": 2,
+    "bodyMd": "**NEVER modify:**\n- The problem ID and title in the header\n- The `**Difficulty:**` line\n- The `**Acceptance:**` line (if present)\n- The `**LeetCode:**` URL\n- The `**Companies:**` list\n- Any existing pseudocode (wrap explanation around it instead)\n\n**DO preserve:**\n- Any existing well-written sections (don't overwrite good content)\n- The overall structure if it already matches the target format",
+    "wordCount": 60,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--content-generation-guidelines",
+    "sourceFile": "SKILL.md",
+    "title": "Content Generation Guidelines",
+    "level": 2,
+    "bodyMd": "### Problem Description\n- State clearly what the problem asks for\n- Include constraints (input size, value ranges, etc.)\n- Define any special terms\n\n### Examples\n- Provide 2-3 representative examples\n- Show input and output\n- Explain why the output is correct\n\n### Key Insight\n- The \"aha\" moment that makes the solution obvious\n- Why the approach works\n- What pattern this represents\n\n### Approach\n- Start with the intuition\n- Explain the algorithm step by step\n- Provide clear pseudocode\n- If multiple approaches exist, show the optimal one with ✅\n\n### Walkthrough\n- Pick a concrete example\n- Show the algorithm's state at each step\n- Use tables for clarity when appropriate\n\n### Complexity Analysis\n- Table format with Time and Space columns\n- Explain why the complexity is what it is\n\n### Follow-Up Questions\n- 3-5 common interview follow-ups\n- Provide thoughtful answers\n- Connect to related problems\n\n### Key Takeaway\n- One sentence that captures the main lesson\n- Mention the pattern or technique learned",
+    "wordCount": 171,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--error-handling",
+    "sourceFile": "SKILL.md",
+    "title": "Error Handling",
+    "level": 2,
+    "bodyMd": "If a file:\n- Has no problem ID in the title - Skip and report\n- Is already well-formatted - Skip and report as \"no changes needed\"\n- Has corrupted content - Skip and report the error",
+    "wordCount": 37,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  },
+  {
+    "id": "skill--output",
+    "sourceFile": "SKILL.md",
+    "title": "Output",
+    "level": 2,
+    "bodyMd": "After processing, report:\n- Number of files processed\n- Number of files skipped (and why)\n- Any errors encountered\n- Where the modified files are located",
+    "wordCount": 26,
+    "primaryTopic": "theory-ai",
+    "topics": [
+      "theory-ai"
+    ],
+    "keyConcepts": []
+  }
+]

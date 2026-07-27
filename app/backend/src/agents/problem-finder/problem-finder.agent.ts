@@ -1,0 +1,33 @@
+import { createReactAgent } from '@langchain/langgraph/prebuilt';
+import { SystemMessage } from '@langchain/core/messages';
+import { createChatModel } from '../model-factory.js';
+import { createSearchProblemsTool } from '../shared/tools/search-problems.tool.js';
+import { createListFiltersTool } from '../shared/tools/list-filters.tool.js';
+import { createGetProblemTool } from '../shared/tools/get-problem.tool.js';
+import { createGetProblemHintTool } from '../shared/tools/get-problem-hint.tool.js';
+import { createSearchSubjectsTool } from '../shared/tools/search-subjects.tool.js';
+import { PROBLEM_FINDER_SYSTEM_PROMPT } from './problem-finder.prompt.js';
+import { createLogger } from '../../utils/logger.js';
+
+const log = createLogger('problem-finder');
+
+export async function createProblemFinderAgent(modelId?: string): Promise<{ agent: any; def: any }> {
+  const { def, model } = await createChatModel(modelId);
+  log.info(`Creating Problem Finder agent with model ${def.id}`);
+
+  const tools = [
+    createListFiltersTool(),
+    createSearchProblemsTool(),
+    createGetProblemTool(),
+    createGetProblemHintTool(),
+    createSearchSubjectsTool(),
+  ];
+
+  const agent = createReactAgent({
+    llm: model,
+    tools,
+    prompt: new SystemMessage(PROBLEM_FINDER_SYSTEM_PROMPT),
+  });
+
+  return { agent, def };
+}
