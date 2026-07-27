@@ -91,6 +91,7 @@ chatRouter.post('/chat', async (req, res) => {
     }
 
     const { agent, def } = agentResult;
+    const recursionLimit = agentName === 'content-enricher' ? 500 : 50;
 
     if (body.stream) {
       // SSE streaming response
@@ -104,7 +105,7 @@ chatRouter.post('/chat', async (req, res) => {
       try {
         const stream = await agent.stream(
           { messages: [...historyMessages, new HumanMessage(userMessage)] },
-          { configurable: { thread_id: threadId }, recursionLimit: 50 },
+          { configurable: { thread_id: threadId }, recursionLimit },
         );
 
         let lastContent = '';
@@ -196,7 +197,7 @@ chatRouter.post('/chat', async (req, res) => {
       try {
         const stream = await agent.stream(
           { messages: [...historyMessages, new HumanMessage(userMessage)] },
-          { configurable: { thread_id: threadId }, recursionLimit: 50 },
+          { configurable: { thread_id: threadId }, recursionLimit },
         );
 
         let lastState: any = null;
