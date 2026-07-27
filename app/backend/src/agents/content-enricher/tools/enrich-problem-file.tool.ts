@@ -18,10 +18,10 @@ export const createEnrichProblemFileTool = () => tool(
     }
 
     // Safety: back up original if not already backed up
-    const backupPath = filePath + '.bak';
-    if (!fs.existsSync(backupPath)) {
-      fs.copyFileSync(filePath, backupPath);
-    }
+    // const backupPath = filePath + '.bak';
+    // if (!fs.existsSync(backupPath)) {
+    //   fs.copyFileSync(filePath, backupPath);
+    // }
 
     fs.writeFileSync(filePath, input.newContent, 'utf-8');
 

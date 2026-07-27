@@ -24,13 +24,23 @@ export const createUpdateProblemMetadataTool = () => tool(
 
     const problems: Problem[] = JSON.parse(fs.readFileSync(problemsPath, 'utf-8'));
     const bySlug = new Map(problems.map(p => [p.slug, p]));
+    // Build a secondary index by filename (from filePath) for fallback matching
+    const byFilename = new Map<string, Problem>();
+    for (const p of problems) {
+      if (p.filePath) {
+        const fname = path.basename(p.filePath, '.md');
+        byFilename.set(fname.toLowerCase(), p);
+      }
+    }
 
     const validTopicIds = new Set(TAXONOMY_IDS);
     const results: { slug: string; status: string }[] = [];
 
     for (const update of input.updates) {
       const slug = slugify(update.title);
-      const problem = bySlug.get(slug);
+      // Try slug match first, then fall back to filename match
+      const problem = bySlug.get(slug)
+        ?? byFilename.get(update.title.toLowerCase());
 
       if (!problem) {
         results.push({ slug, status: 'not_found' });
