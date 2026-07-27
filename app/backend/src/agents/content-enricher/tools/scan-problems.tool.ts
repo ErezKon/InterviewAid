@@ -24,48 +24,48 @@ function isInsufficient(filePath: string): boolean {
 
 export const createScanProblemsTool = () => tool(
   async (input) => {
-    log.info(`INPUT: offset=${input.offset}, limit=${input.limit}`);
+    const batchSize = Math.min(input.batchSize ?? 5, 10);
+    log.info(`INPUT: offset=${input.offset}, batchSize=${batchSize}`);
 
     const allFiles = fs.readdirSync(PROBLEMS_DIR)
       .filter(f => f.endsWith('.md'))
       .sort();
 
     const start = Math.max(0, (input.offset ?? 1) - 1);
-    const limit = input.limit ?? 50;
-    const slice = allFiles.slice(start, start + limit);
+    const insufficient: { index: number; filename: string; lineCount: number }[] = [];
+    let scannedUpTo = start;
 
-    const results: { index: number; filename: string; lineCount: number; insufficient: boolean }[] = [];
-
-    for (let i = 0; i < slice.length; i++) {
-      const filename = slice[i];
+    // Scan forward until we collect batchSize insufficient files or reach end
+    for (let i = start; i < allFiles.length && insufficient.length < batchSize; i++) {
+      scannedUpTo = i + 1;
+      const filename = allFiles[i];
       const filePath = path.join(PROBLEMS_DIR, filename);
-      const lineCount = fs.readFileSync(filePath, 'utf-8').split('\n').length;
-      results.push({
-        index: start + i + 1,
-        filename,
-        lineCount,
-        insufficient: isInsufficient(filePath),
-      });
+      if (isInsufficient(filePath)) {
+        const lineCount = fs.readFileSync(filePath, 'utf-8').split('\n').length;
+        insufficient.push({ index: i + 1, filename, lineCount });
+      }
     }
 
-    const insufficientCount = results.filter(r => r.insufficient).length;
+    const hasMore = scannedUpTo < allFiles.length;
     const output = JSON.stringify({
       totalFiles: allFiles.length,
-      scannedRange: `${start + 1}-${start + slice.length}`,
-      scannedCount: slice.length,
-      insufficientCount,
-      files: results,
+      scannedUpTo,
+      batchSize,
+      insufficientCount: insufficient.length,
+      hasMore,
+      nextOffset: hasMore ? scannedUpTo + 1 : null,
+      files: insufficient,
     });
 
-    log.info(`OUTPUT: scanned ${slice.length}, ${insufficientCount} insufficient`);
+    log.info(`OUTPUT: scanned to ${scannedUpTo}, found ${insufficient.length} insufficient, hasMore=${hasMore}`);
     return output;
   },
   {
     name: 'scan_problems',
-    description: 'Scan problem markdown files and identify which ones need enrichment. Returns file list with insufficient flag. Use offset/limit to paginate through all 3400+ files.',
+    description: 'Scan problem files and return the next batch of INSUFFICIENT files that need enrichment. Returns only insufficient files (up to batchSize, default 5). Use nextOffset from previous result to continue scanning.',
     schema: z.object({
-      offset: z.number().optional().describe('1-indexed start position (default 1)'),
-      limit: z.number().optional().describe('Max files to scan (default 50, max 200)'),
+      offset: z.number().optional().describe('1-indexed start position (default 1). Use nextOffset from previous scan result.'),
+      batchSize: z.number().optional().describe('Max insufficient files to return per batch (default 5, max 10). Keep small so each batch can be fully processed.'),
     }),
   }
 );

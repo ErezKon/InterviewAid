@@ -92,7 +92,7 @@ chatRouter.post('/chat', async (req, res) => {
     }
 
     const { agent, def } = agentResult;
-    const recursionLimit = agentName === 'content-enricher' ? 500 : 50;
+    const recursionLimit = agentName === 'content-enricher' ? 800 : 50;
 
     if (body.stream) {
       // SSE streaming response
