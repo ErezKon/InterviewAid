@@ -41,7 +41,8 @@ chatRouter.post('/chat', async (req, res) => {
     // Get or create thread
     let threadId = body.threadId;
     if (!threadId) {
-      threadId = createThread(resolvedMode, body.modelId ?? 'gpt-oss-120b');
+      const title = body.message.slice(0, 60).trim() + (body.message.length > 60 ? '…' : '');
+      threadId = createThread(resolvedMode, body.modelId ?? 'gpt-oss-120b', title);
     }
 
     // Persist user message

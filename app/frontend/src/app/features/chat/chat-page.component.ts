@@ -11,6 +11,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { ChatStore } from '../../state/chat.store';
 import { ModelsStore } from '../../state/models.store';
 import { MarkdownService } from '../../core/services/markdown.service';
@@ -23,7 +25,7 @@ import { ChatMode } from '../../core/models/chat.model';
     CommonModule, FormsModule,
     MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule,
     MatInputModule, MatSelectModule, MatListModule, MatProgressBarModule,
-    MatSidenavModule, MatMenuModule,
+    MatSidenavModule, MatMenuModule, MatTooltipModule, ClipboardModule,
   ],
   template: `
     <mat-sidenav-container class="chat-container">
@@ -39,7 +41,7 @@ import { ChatMode } from '../../core/models/chat.model';
             <mat-list-item
               [class.active]="t.id === chatStore.activeThreadId()"
               (click)="chatStore.loadThread(t.id)">
-              <span matListItemTitle>{{ t.title || 'Untitled' }}</span>
+              <span matListItemTitle>{{ t.title ?? 'Untitled' }}</span>
               <span matListItemMeta>
                 <button mat-icon-button (click)="chatStore.deleteThread(t.id); $event.stopPropagation()">
                   <mat-icon>delete</mat-icon>
@@ -80,7 +82,17 @@ import { ChatMode } from '../../core/models/chat.model';
         <div class="messages" #messagesContainer>
           @for (msg of chatStore.messages(); track msg.id) {
             <div class="message" [class]="'message-' + msg.role">
-              <div class="message-role">{{ msg.role === 'user' ? 'You' : 'Assistant' }}</div>
+              <div class="message-header">
+                <span class="message-role">{{ msg.role === 'user' ? 'You' : 'Assistant' }}</span>
+                @if (msg.content && !msg.streaming) {
+                  <button mat-icon-button
+                    class="copy-btn"
+                    matTooltip="Copy to clipboard"
+                    (click)="copyMessage(msg.content)">
+                    <mat-icon>content_copy</mat-icon>
+                  </button>
+                }
+              </div>
               <div class="message-content markdown-body" [innerHTML]="renderMd(msg.content)"></div>
               @if (msg.streaming) {
                 <span class="typing-indicator">...</span>
@@ -162,11 +174,34 @@ import { ChatMode } from '../../core/models/chat.model';
       background: var(--chat-assistant-bg, #f5f5f5);
       align-self: flex-start;
     }
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.25rem;
+    }
     .message-role {
       font-size: 0.75rem;
       font-weight: 600;
       opacity: 0.6;
-      margin-bottom: 0.25rem;
+    }
+    .copy-btn {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .copy-btn .mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+    .message:hover .copy-btn {
+      opacity: 0.6;
+    }
+    .message:hover .copy-btn:hover {
+      opacity: 1;
     }
     .typing-indicator {
       animation: blink 1s infinite;
@@ -199,6 +234,7 @@ export class ChatPageComponent implements OnInit, AfterViewChecked {
   readonly chatStore = inject(ChatStore);
   readonly modelsStore = inject(ModelsStore);
   private md = inject(MarkdownService);
+  private clipboard = inject(Clipboard);
 
   threadId = input<string>();
   userInput = signal('');
@@ -240,5 +276,9 @@ export class ChatPageComponent implements OnInit, AfterViewChecked {
     this.userInput.set('');
     this.shouldScroll = true;
     this.chatStore.send(text, this.modelsStore.selectedModelId());
+  }
+
+  copyMessage(content: string): void {
+    this.clipboard.copy(content);
   }
 }
