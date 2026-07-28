@@ -14,7 +14,7 @@ Design a file system with `createPath(path, value)` (fails if parent doesn't exi
 
 ## Approach: Hash Map — O(path length) ✅
 
-```
+```text
 CLASS FileSystem:
     CONSTRUCTOR:
         paths = {"": -1}    // root
@@ -29,6 +29,31 @@ CLASS FileSystem:
     FUNCTION get(path):
         RETURN paths.get(path, -1)
 ```
+
+---
+
+## Examples
+
+| Operation | Result |
+|-----------|--------|
+| `createPath("/a", 1)` | `true` (creates `/a` with value 1) |
+| `createPath("/a/b", 2)` | `true` (parent `/a` exists) |
+| `createPath("/c/d", 3)` | `false` (parent `/c` missing) |
+| `get("/a")` | `1` |
+| `get("/a/b")` | `2` |
+| `get("/c")` | `-1` (path not found) |
+
+---
+
+## Walkthrough
+
+1. **Initialize** – `paths` contains only the root `""`.
+2. **createPath("/a",1)** – parent is `""` (exists), `/a` not present → store `paths["/a"] = 1`.
+3. **createPath("/a/b",2)** – parent `"/a"` exists, `/a/b` new → store `paths["/a/b"] = 2`.
+4. **createPath("/c/d",3)** – parent `"/c"` missing → return `false`.
+5. **get("/a")** – lookup returns `1`.
+6. **get("/a/b")** – lookup returns `2`.
+7. **get("/c")** – not in map → return `-1`.
 
 ---
 

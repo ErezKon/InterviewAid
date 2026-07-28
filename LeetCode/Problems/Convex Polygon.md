@@ -20,7 +20,7 @@ Given a list of points forming a polygon (in order), determine if the polygon is
 
 ## 3. Approach: Cross Product Sign Check — O(n) ✅
 
-```
+```text
 FUNCTION isConvex(points):
     n = len(points)
     sign = 0
@@ -40,6 +40,39 @@ FUNCTION isConvex(points):
 | Time | Space |
 |------|-------|
 | O(n) | O(1) |
+
+---
+
+## Examples
+
+| Input | Output |
+|-------|--------|
+| `[[0,0],[2,0],[2,2],[0,2]]` | `true` |
+| `[[0,0],[1,1],[2,0],[1,-1]]` | `false` |
+
+---
+
+## Walkthrough
+
+Consider the square `[[0,0],[2,0],[2,2],[0,2]]`:
+1. Compute cross product for each triplet of consecutive points.
+2. All cross products are positive, indicating a consistent left turn.
+3. Since the sign never changes, the polygon is convex.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n) – each point is visited once.
+- **Space:** O(1) – only a few scalar variables are used.
+
+---
+
+## Follow-Up Questions
+
+1. How would you handle polygons with colinear edges?
+2. Can you extend the algorithm to detect self‑intersecting polygons?
+3. What changes are needed for 3‑D convex hull verification?
 
 ---
 

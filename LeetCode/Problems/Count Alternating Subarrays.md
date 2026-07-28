@@ -20,22 +20,68 @@ Given a binary array `nums`, count the number of subarrays where elements altern
 
 ## 3. Approach: Running Count — O(n) ✅
 
-```
+```text
 FUNCTION countAlternatingSubarrays(nums):
-    count = 1
-    result = 1
-    FOR i FROM 1 TO len(nums) - 1:
+    SET count ← 1
+    SET result ← 1
+    FOR i ← 1 TO len(nums) - 1:
         IF nums[i] != nums[i-1]:
-            count += 1
+            SET count ← count + 1
         ELSE:
-            count = 1
-        result += count
+            SET count ← 1
+        SET result ← result + count
     RETURN result
 ```
 
 | Time | Space |
 |------|-------|
 | O(n) | O(1) |
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: nums = [1,0,1,0]
+Output: 10
+Explanation: All possible subarrays are alternating. There are 4 single‑element subarrays, 3 of length 2, 2 of length 3, and 1 of length 4, totaling 10.
+```
+
+**Example 2:**
+```
+Input: nums = [1,1,0]
+Output: 4
+Explanation: Alternating subarrays are [1], [1], [0], and [1,0].
+```
+
+---
+
+## Walkthrough
+
+Consider Example 1 (`[1,0,1,0]`).
+| Index | Value | `count` (run length) | `result` (total so far) |
+|-------|-------|----------------------|------------------------|
+| 0     | 1     | 1                    | 1                      |
+| 1     | 0     | 2 (different)       | 3 (=1+2)                |
+| 2     | 1     | 3 (different)       | 6 (=3+3)                |
+| 3     | 0     | 4 (different)       | 10 (=6+4)               |
+The final `result` equals 10, matching the expected output.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n) – single pass through the array.
+- **Space:** O(1) – only a few scalar variables are used.
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the algorithm to count subarrays with at most `k` alternating segments?
+2. Can you extend the solution to handle arrays with more than two distinct values where adjacent elements must differ?
+3. What if you need to return the list of all alternating subarrays instead of just the count?
 
 ---
 

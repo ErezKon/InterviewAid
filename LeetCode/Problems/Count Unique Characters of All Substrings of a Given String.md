@@ -6,19 +6,27 @@
 
 ---
 
-## Table of Contents
-- [Problem Description](#problem-description)
-- [Key Insight](#key-insight)
-- [Approach](#approach)
-- [Walkthrough](#walkthrough)
-- [Complexity Analysis](#complexity-analysis)
-- [Key Takeaway](#key-takeaway)
-
----
-
 ## Problem Description
 
 For each substring, count its unique characters (characters appearing exactly once). Sum this count across all substrings.
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: s = "ABC"
+Output: 10
+Explanation: Substrings are "A","B","C","AB","BC","ABC". Unique character counts are 1,1,1,2,2,3 respectively, summing to 10.
+```
+
+**Example 2:**
+```
+Input: s = "ABA"
+Output: 8
+Explanation: Substrings: "A","B","A","AB","BA","ABA". Unique counts: 1,1,1,2,2,1 = 8.
+```
 
 ---
 

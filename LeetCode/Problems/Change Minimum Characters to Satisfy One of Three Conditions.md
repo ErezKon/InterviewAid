@@ -8,45 +8,91 @@
 
 ## 1. Problem Description
 
-Given strings `a` and `b`, find the minimum operations (change any character) to satisfy one of: (1) every char in `a` < every char in `b`, (2) every char in `b` < every char in `a`, (3) both consist of only one distinct character.
+Given two lowercase strings `a` and `b`, you may change any character to any other lowercase letter. Find the minimum number of character changes required so that **one** of the following holds:
+1. Every character in `a` is strictly less than every character in `b`.
+2. Every character in `b` is strictly less than every character in `a`.
+3. Both strings consist of a single repeated character.
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> For conditions 1 & 2: try each split character `c` ('b'-'z'). Cost = chars in `a` ≥ c + chars in `b` < c (for condition 1). Use prefix frequency counts.
-> For condition 3: try each letter, cost = total chars not equal to that letter.
+**Example 1:**
+```
+Input: a = "aba", b = "caa"
+Output: 2
+Explanation: Change `a` to "aaa" (2 changes) so that condition 3 holds.
+```
+
+**Example 2:**
+```
+Input: a = "abc", b = "def"
+Output: 0
+Explanation: Condition 1 already holds because 'c' < 'd'.
+```
 
 ---
 
 ## 3. Approach: Frequency Counting — O(n + m) ✅
 
-```
+```text
 FUNCTION minCharacters(a, b):
-    freqA = [0]*26; freqB = [0]*26
-    FOR ch IN a: freqA[ord(ch)-ord('a')] += 1
-    FOR ch IN b: freqB[ord(ch)-ord('a')] += 1
+    freqA ← [0] * 26
+    freqB ← [0] * 26
+    FOR ch IN a:
+        freqA[ord(ch) - ord('a')] ← freqA[ord(ch) - ord('a')] + 1
+    FOR ch IN b:
+        freqB[ord(ch) - ord('a')] ← freqB[ord(ch) - ord('a')] + 1
     
-    ans = INF
-    prefA = prefB = 0
-    FOR c ← 0 TO 24:    // split between c and c+1
-        prefA += freqA[c]; prefB += freqB[c]
-        // Condition 1: all a < all b → a chars must be ≤ c, b chars must be > c
-        ans = MIN(ans, (len(a) - prefA) + prefB)
+    ans ← INF
+    prefA ← 0
+    prefB ← 0
+    // Evaluate conditions 1 and 2 for each split point
+    FOR c ← 0 TO 24:
+        prefA ← prefA + freqA[c]
+        prefB ← prefB + freqB[c]
+        // Condition 1: all a < all b
+        ans ← MIN(ans, (LEN(a) - prefA) + prefB)
         // Condition 2: all b < all a
-        ans = MIN(ans, prefA + (len(b) - prefB))
-    // Condition 3: make all same char
+        ans ← MIN(ans, prefA + (LEN(b) - prefB))
+    // Evaluate condition 3 (make both strings uniform)
     FOR c ← 0 TO 25:
-        ans = MIN(ans, (len(a) - freqA[c]) + (len(b) - freqB[c]))
+        ans ← MIN(ans, (LEN(a) - freqA[c]) + (LEN(b) - freqB[c]))
     RETURN ans
 ```
 
-| Time | Space |
-|------|-------|
-| O(n + m) | O(1) |
+---
+
+## 4. Walkthrough
+
+Consider `a = "aba"`, `b = "caa"`.
+1. Frequency arrays:
+   - `freqA` for 'a':2, 'b':1, others:0.
+   - `freqB` for 'a':2, 'c':1, others:0.
+2. Iterate split points:
+   - At split `'b'` (c=1): `prefA=2` (a's ≤ 'b'), `prefB=2` (b's ≤ 'b').
+   - Condition 1 cost = (3‑2) + 2 = 3.
+   - Condition 2 cost = 2 + (3‑2) = 3.
+3. Uniform cost for each letter:
+   - For `'a'`: changes = (3‑2) + (3‑2) = 2 → best.
+4. Return 2.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(|a| + |b| + 26) → linear in input size.
+- **Space:** O(26) → constant extra space for frequency arrays.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would the solution change if the alphabet size were larger (e.g., Unicode characters)?
+- Can you extend the approach to handle uppercase letters and digits simultaneously?
 
 ---
 
 ## Key Takeaway
 
-> Enumerate all 26 possible split points for conditions 1&2 and all 26 target characters for condition 3. Prefix sums over character frequencies make each check O(1).
+> By counting character frequencies and evaluating all possible split points and target characters, you can solve the problem in linear time without exhaustive string modifications.

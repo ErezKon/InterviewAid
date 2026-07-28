@@ -51,9 +51,46 @@ FUNCTION numberOfPatterns(m, n):
     RETURN result
 ```
 
-| Time | Space |
-|------|-------|
-| O(1) — bounded by 9! | O(9) |
+---
+
+## Examples
+
+| m | n | Output |
+|---|---|--------|
+| 1 | 1 | 9 |
+| 1 | 2 | 65 |
+| 2 | 3 | 320 |
+
+*Explanation*: For length 1 there are 9 single‑key patterns. For length 2, patterns from corners, edges, and center are counted with symmetry.
+
+---
+
+## Walkthrough
+
+**Example**: `m = 1, n = 2`
+
+1. Length 1: each of the 9 keys is a valid pattern → 9.
+2. Length 2:
+   - Start from corner (1): possible next keys are 2,4,5,6,8 (skip 3,7,9 blocked). → 5 patterns. Multiply by 4 corners = 20.
+   - Start from edge (2): possible next keys are 1,3,4,5,6,7,9 → 7 patterns. Multiply by 4 edges = 28.
+   - Start from center (5): can go to any of the 8 others → 8 patterns.
+   - Total length 2 = 20+28+8 = 56.
+3. Sum = 9 + 56 = 65.
+
+---
+
+## Complexity Analysis
+
+- **Time**: O(1) – bounded by the finite search space of 9! possible permutations.
+- **Space**: O(9) for the `visited` set and recursion stack.
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the algorithm to return the actual patterns instead of just the count?
+- Can the approach be extended to larger grids (e.g., 4×4) while keeping it efficient?
+- How would you handle additional constraints such as mandatory inclusion of certain keys?
 
 ---
 

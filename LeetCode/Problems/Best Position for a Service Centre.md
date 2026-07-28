@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
 Given positions of houses, find the point that minimizes the **sum of Euclidean distances** to all houses (the geometric median). Return the minimum total distance.
 
@@ -15,33 +15,69 @@ Given positions of houses, find the point that minimizes the **sum of Euclidean 
 
 ---
 
-## 2. Key Insight
+## Key Insight
 
 > The geometric median has no closed-form solution (unlike the centroid which minimizes squared distances). Use **Weiszfeld's algorithm** (iterative reweighted least squares) or **gradient descent** to converge.
 
 ---
 
-## 3. Approach: Weiszfeld's Algorithm — O(n × iterations) ✅
+## Approach: Weiszfeld's Algorithm — O(n × iterations) ✅
 
-```
+```text
 FUNCTION getMinDistSum(positions):
-    x, y = centroid(positions)    // start at centroid
+    // Start at centroid as initial guess
+    SET x, y ← centroid(positions)
     FOR iter ← 0 TO 1000:
-        wx, wy, wsum = 0, 0, 0
-        FOR px, py IN positions:
-            d = distance((x, y), (px, py))
+        SET wx, wy, wsum ← 0, 0, 0
+        FOR each (px, py) IN positions:
+            SET d ← distance((x, y), (px, py))
             IF d < 1e-7: CONTINUE
-            w = 1.0 / d
-            wx += w * px; wy += w * py; wsum += w
-        nx, ny = wx / wsum, wy / wsum
-        IF distance((x,y), (nx,ny)) < 1e-7: BREAK
-        x, y = nx, ny
-    RETURN sum(distance((x,y), p) for p in positions)
+            SET w ← 1.0 / d
+            SET wx ← wx + w * px
+            SET wy ← wy + w * py
+            SET wsum ← wsum + w
+        SET nx, ny ← wx / wsum, wy / wsum
+        IF distance((x, y), (nx, ny)) < 1e-7:
+            BREAK
+        SET x, y ← nx, ny
+    RETURN sum(distance((x, y), p) for p in positions)
 ```
+
+---
+
+## Examples
+
+| houses (x, y) | Minimum total distance |
+|---------------|------------------------|
+| `[(0,0), (2,0), (1,√3)]` | `≈ 3.464` |
+| `[(1,1), (4,5), (9,6)]` | `≈ 11.18` |
+
+---
+
+## Walkthrough
+
+Consider positions `[(0,0), (2,0), (1,√3)]`.
+
+| Step | x, y (current) | Computation | New x, y |
+|------|----------------|-------------|----------|
+| 1 | centroid `(1, √3/3)` | compute weighted averages → `(1, √3/3)` | converged |
+| 2 | sum distances from `(1, √3/3)` to each point → `≈ 3.464` |
+
+---
+
+## Complexity Analysis
 
 | Time | Space |
 |------|-------|
-| O(n × iterations) | O(1) |
+| O(n × iterations) – typically < 100 iterations | O(1) |
+
+---
+
+## Follow-Up Questions
+
+1. How would you handle points with duplicate coordinates?
+2. Can you achieve higher precision with Newton's method?
+3. What changes for Manhattan distance (L1 norm)?
 
 ---
 

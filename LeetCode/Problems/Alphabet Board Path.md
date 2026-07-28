@@ -52,6 +52,37 @@ FUNCTION alphabetBoardPath(target):
 
 ---
 
+## Examples
+
+| target | output |
+|--------|--------|
+| "leet" | "DDR!UURRR!!DDD!" |
+| "code" | "RR!DDRR!UUL!R!" |
+
+*Explanation*: The moves navigate the board to each character, appending `!` after reaching it.
+
+---
+
+## Walkthrough
+
+**Example**: target = "leet"
+
+| Step | Current (r,c) | Target Char | Move Sequence | New (r,c) |
+|------|---------------|-------------|---------------|----------|
+| 1 | (0,0) | l (2,1) | D D R ! | (2,1) |
+| 2 | (2,1) | e (0,4) | U U R R R ! | (0,4) |
+| 3 | (0,4) | e (0,4) | ! | (0,4) |
+| 4 | (0,4) | t (3,4) | D D D ! | (3,4) |
+
+---
+
+## Complexity Analysis
+
+- **Time**: O(|target|) – each character processed once.
+- **Space**: O(|target|) for the result string (output), O(1) auxiliary.
+
+---
+
 ## Key Takeaway
 
 > Map characters to grid coordinates and compute moves. The only tricky part is the `z` edge case — always move UP/LEFT before DOWN/RIGHT to avoid stepping off the board at row 5.

@@ -14,10 +14,11 @@
 2. [Visual Example](#2-visual-example)
 3. [Approach 1: Brute Force — O(n²)](#3-approach-1-brute-force--on²)
 4. [Approach 2: Two Pointers — O(n) ✅](#4-approach-2-two-pointers--on-)
-5. [Walkthrough](#5-walkthrough)
-6. [Why Moving the Shorter Line Is Correct](#6-why-moving-the-shorter-line-is-correct)
-7. [Complexity Analysis](#7-complexity-analysis)
-8. [Follow-Up Questions](#8-follow-up-questions)
+5. [Examples](#5-examples)
+6. [Walkthrough](#6-walkthrough)
+7. [Why Moving the Shorter Line Is Correct](#7-why-moving-the-shorter-line-is-correct)
+8. [Complexity Analysis](#8-complexity-analysis)
+9. [Follow-Up Questions](#9-follow-up-questions)
 
 ---
 
@@ -94,7 +95,25 @@ FUNCTION maxArea(height):
 
 ---
 
-## 5. Walkthrough
+## 5. Examples
+
+**Example 1:**
+```
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The max area is formed by the lines at indices 1 and 8.
+```
+
+**Example 2:**
+```
+Input: height = [4,3,2,1,4]
+Output: 16
+Explanation: Choose the first and last lines (both height 4) with width 4 → area 4*4=16.
+```
+
+---
+
+## 6. Walkthrough
 
 ```
 height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
@@ -130,7 +149,7 @@ Result: 49 ✅
 
 ---
 
-## 6. Why Moving the Shorter Line Is Correct
+## 7. Why Moving the Shorter Line Is Correct
 
 **Proof by contradiction:**
 
@@ -144,7 +163,7 @@ Therefore, moving the shorter side is the only move that has a **chance** of imp
 
 ---
 
-## 7. Complexity Analysis
+## 8. Complexity Analysis
 
 | Approach | Time | Space |
 |----------|------|-------|
@@ -153,9 +172,9 @@ Therefore, moving the shorter side is the only move that has a **chance** of imp
 
 ---
 
-## 8. Follow-Up Questions
+## 9. Follow-Up Questions
 
-### 8.1 How does this differ from Trapping Rain Water (#42)?
+### 9.1 How does this differ from Trapping Rain Water (#42)?
 
 | Aspect | Container With Most Water | Trapping Rain Water |
 |--------|--------------------------|---------------------|
@@ -163,11 +182,11 @@ Therefore, moving the shorter side is the only move that has a **chance** of imp
 | **Container** | Two walls, nothing in between | Multiple walls forming valleys |
 | **Goal** | Maximize a single rectangle | Sum of water columns |
 
-### 8.2 What if the lines can have width?
+### 9.2 What if the lines can have width?
 
 Then the area calculation changes — the containers could overlap with the bars. The problem becomes more complex and depends on exact bar widths.
 
-### 8.3 What if we need the top-k largest containers?
+### 9.3 What if we need the top-k largest containers?
 
 Maintain a **max-heap** of size k during the two-pointer sweep. After each area calculation, push to the heap. The two-pointer still guarantees we consider all potential maximums.
 

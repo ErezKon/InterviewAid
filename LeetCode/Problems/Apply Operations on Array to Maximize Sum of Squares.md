@@ -8,42 +8,79 @@
 
 ## 1. Problem Description
 
-Given an array `nums`, you can repeatedly pick any two elements and apply: `nums[i] = nums[i] AND nums[j]`, `nums[j] = nums[i] OR nums[j]`. Choose exactly `k` elements and maximize the sum of their squares, modulo 10^9+7.
+Given an integer array `nums`, you may repeatedly pick any two indices `i` and `j` and perform the operations:
+```
+nums[i] = nums[i] AND nums[j]
+nums[j] = nums[i] OR nums[j]
+```
+After performing any number of such operations, select exactly `k` elements from the array. Return the maximum possible sum of the squares of the selected `k` elements, modulo `10^9 + 7`.
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> The AND/OR operations redistribute bits but preserve bit counts per position. After unlimited operations, each bit position's 1s consolidate into the top elements. Count the number of 1s at each bit position across all elements, then greedily build the `k` largest values.
+**Example 1:**
+```
+Input: nums = [1,2,3,4], k = 2
+Output: 25
+Explanation: Bit counts are: bit0→2, bit1→2, bit2→1.
+Construct the two largest numbers: 5 (101) and 4 (100). 5^2 + 4^2 = 25.
+```
+**Example 2:**
+```
+Input: nums = [7,7,7], k = 3
+Output: 147
+Explanation: All numbers are 111. No redistribution changes bits. Sum = 3 * 7^2 = 147.
+```
 
 ---
 
 ## 3. Approach: Bit Count Greedy — O(n × 30) ✅
 
-```
+```text
 FUNCTION maxSum(nums, k):
-    MOD = 10^9 + 7
-    bitCount = [0] * 30  // count of 1s at each bit position
-    FOR num IN nums:
-        FOR b FROM 0 TO 29:
-            IF num & (1 << b):
-                bitCount[b] += 1
-    
-    result = 0
-    FOR i FROM 0 TO k-1:
-        val = 0
-        FOR b FROM 0 TO 29:
+    SET MOD ← 1_000_000_007
+    SET bitCount[0..29] ← 0
+    FOR each num IN nums:
+        FOR b ← 0 TO 29:
+            IF (num >> b) AND 1 = 1:
+                SET bitCount[b] ← bitCount[b] + 1
+    SET result ← 0
+    FOR i ← 0 TO k-1:
+        SET val ← 0
+        FOR b ← 0 TO 29:
             IF bitCount[b] > 0:
-                val |= (1 << b)
-                bitCount[b] -= 1
-        result = (result + val * val) % MOD
-    
+                SET val ← val OR (1 << b)
+                SET bitCount[b] ← bitCount[b] - 1
+        SET result ← (result + val * val) MOD MOD
     RETURN result
 ```
 
-| Time | Space |
-|------|-------|
-| O(n × 30) | O(30) = O(1) |
+---
+
+## 4. Walkthrough
+
+| Step | Action | Bit Counts After Step | Constructed Value |
+|------|--------|-----------------------|-------------------|
+| 1    | Count bits in original array `[1,2,3,4]` | bit0:2, bit1:2, bit2:1 | — |
+| 2    | Build first number (i=0) by taking one from each non‑zero count | bit0:1, bit1:1, bit2:0 | `101`₂ = 5 |
+| 3    | Build second number (i=1) | bit0:0, bit1:0, bit2:0 | `100`₂ = 4 |
+| 4    | Sum of squares: 5² + 4² = 25 |
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n × B) where B = 30 (number of bit positions) → effectively O(n).
+- **Space:** O(B) = O(1) for the bit count array.
+
+---
+
+## Follow-Up Questions
+
+- How would the solution change if the operations were limited to a fixed number of times?
+- Can you extend the approach to work with 64‑bit integers efficiently?
+- What if the goal is to maximize the sum of the selected elements (not squares)?
 
 ---
 

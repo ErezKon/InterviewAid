@@ -8,6 +8,7 @@
 
 ## Table of Contents
 - [Problem Description](#problem-description)
+- [Examples](#examples)
 - [Key Insight](#key-insight)
 - [Approach](#approach)
 - [Walkthrough](#walkthrough)
@@ -24,6 +25,24 @@ Given a `differences` array where `differences[i] = hidden[i+1] - hidden[i]`, an
 - `1 <= differences.length <= 10^5`
 - `-10^5 <= differences[i] <= 10^5`
 - `-10^5 <= lower <= upper <= 10^5`
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: differences = [1, -3, 4], lower = 1, upper = 6
+Output: 2
+Explanation: The two possible hidden arrays are [3,4,1,5] and [4,5,2,6].
+```
+
+**Example 2:**
+```
+Input: differences = [0, 0, 0], lower = 0, upper = 0
+Output: 1
+Explanation: The only valid hidden array is [0,0,0,0].
+```
 
 ---
 

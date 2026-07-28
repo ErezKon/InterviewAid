@@ -12,34 +12,60 @@ A **powerful** integer in `[start, finish]` ends with suffix string `s` and has 
 
 ---
 
-## Key Insight
+## Examples
 
-Use digit DP with the formula `count(finish) - count(start - 1)`. The number has a fixed suffix `s` — only the **prefix digits** are free. Each prefix digit must be ≤ `limit`, and the tight constraint applies to digits of the upper bound.
+**Example 1:**
+```
+Input: start = 1, finish = 1000, limit = 5, s = "23"
+Output: 4
+Explanation: The powerful integers are 23, 123, 523, 923.
+```
+
+**Example 2:**
+```
+Input: start = 10, finish = 200, limit = 3, s = "0"
+Output: 2
+Explanation: The powerful integers are 30 and 130.
+```
 
 ---
 
 ## Approach: Digit DP — O(log(finish)) ✅
 
-```
+```text
 FUNCTION numberOfPowerfulInt(start, finish, limit, s):
     RETURN count(finish, limit, s) - count(start - 1, limit, s)
 
 FUNCTION count(n, limit, s):
-    numStr = str(n)
-    suffixLen = LENGTH(s)
-    prefixLen = LENGTH(numStr) - suffixLen
+    numStr ← STRING(n)
+    suffixLen ← LENGTH(s)
+    prefixLen ← LENGTH(numStr) - suffixLen
     IF prefixLen < 0: RETURN 0
-
-    // Count numbers with prefixLen free digits (each ≤ limit)
-    // followed by exact suffix s, total ≤ n
-    result = 0
-    FOR each prefix digit position (tight or free):
-        IF tight: digit ≤ numStr[pos], also ≤ limit
-        ELSE: digit ≤ limit
-        // Count valid completions
-    // Handle suffix matching against numStr's suffix
+    result ← 0
+    // DP over prefix digits with tight flag
+    FOR each position i in 0..prefixLen-1:
+        // handle tight / free cases, ensure digit ≤ limit
+        // accumulate valid completions
+    // verify suffix matches exactly and respects limit
     RETURN result
 ```
+
+---
+
+## Walkthrough
+
+Consider **Example 1** (`start = 1, finish = 1000, limit = 5, s = "23"`).
+
+1. Compute `count(1000)`:
+   - `numStr = "1000"`, `suffixLen = 2`, `prefixLen = 2`.
+   - Enumerate all 2‑digit prefixes where each digit ≤ 5 and the combined number ≤ 1000.
+   - Valid prefixes: `00, 01, 02, 03, 04, 05, 10, 11, …, 95` (subject to tight bound).
+   - Append suffix `23` to each prefix → numbers like `0023, 0123, …, 9523`.
+   - Only those ≤ 1000 survive: `23, 123, 523, 923` → 4 numbers.
+2. Compute `count(0)` (since `start‑1 = 0`): returns 0.
+3. Final answer = `4 - 0 = 4`.
+
+The DP efficiently counts prefixes without enumerating each integer.
 
 ---
 
@@ -49,6 +75,14 @@ FUNCTION count(n, limit, s):
 |---|---|
 | **Time** | O(log(finish)) — number of digits |
 | **Space** | O(log(finish)) |
+
+---
+
+## Follow-Up Questions
+
+1. How would the solution change if the suffix `s` could appear **anywhere** in the integer rather than only at the end?
+2. What if the digit limit applied only to the **prefix** and not the suffix?
+3. Extend the problem to count numbers in multiple disjoint ranges efficiently.
 
 ---
 

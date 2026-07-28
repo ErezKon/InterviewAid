@@ -12,26 +12,73 @@ Given two expression trees (with `+` operators and lowercase variable leaves), c
 
 ---
 
-## 2. Approach: Count Variables — O(n) ✅
+## 2. Examples
 
+**Example 1:**
 ```
+Input: root1 = [+, a, b], root2 = [+, b, a]
+Output: true
+Explanation: Both trees represent the expression a + b.
+```
+
+**Example 2:**
+```
+Input: root1 = [+, a, [+, b, c]], root2 = [+, a, b, c]
+Output: true
+Explanation: Addition is associative, so a + (b + c) equals a + b + c.
+```
+
+---
+
+## 3. Approach: Count Variables — O(n) ✅
+
+```text
 FUNCTION checkEquivalence(root1, root2):
-    count1 = countVars(root1)    // frequency map of variables
+    // Build frequency maps for both trees
+    count1 = countVars(root1)
     count2 = countVars(root2)
     RETURN count1 == count2
 
 FUNCTION countVars(node):
-    IF node is leaf: RETURN {node.val: 1}
-    left = countVars(node.left)
-    right = countVars(node.right)
-    RETURN merge(left, right)    // combine frequency maps
+    IF node is leaf:
+        RETURN {node.val: 1}
+    leftMap = countVars(node.left)
+    rightMap = countVars(node.right)
+    RETURN merge(leftMap, rightMap)  // combine frequency maps
 ```
 
 Since only `+` is used, the expression is just a multiset of variables. Two expressions are equivalent iff they contain the same variables with the same frequencies.
 
-| Time | Space |
-|------|-------|
-| O(n) | O(n) |
+---
+
+## 4. Walkthrough
+
+Consider the trees from Example 2:
+
+1. **Traverse root1** (`[+, a, [+, b, c]]`):
+   - Visit leaf `a` → `{a:1}`
+   - Recurse into right subtree `[+, b, c]` → `{b:1, c:1}`
+   - Merge → `{a:1, b:1, c:1}`
+2. **Traverse root2** (`[+, a, b, c]`):
+   - Leaves `a`, `b`, `c` → `{a:1, b:1, c:1}`
+3. Compare the two maps – they are identical, so return `true`.
+
+---
+
+## 5. Complexity Analysis
+
+| Metric | Complexity |
+|--------|------------|
+| Time   | O(n) – each node visited once |
+| Space  | O(k) – map of distinct variables (k ≤ n) |
+
+---
+
+## 6. Follow-Up Questions
+
+* How would you handle other operators (e.g., `*`, `-`) that are not commutative?
+* Can you extend the solution to support parentheses and operator precedence?
+* What if the trees are very large – can you reduce space usage?
 
 ---
 

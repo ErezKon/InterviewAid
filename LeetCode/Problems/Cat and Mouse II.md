@@ -20,7 +20,7 @@ Given a grid with walls, a mouse, a cat, and food, determine if the mouse can re
 
 ## 3. Approach: Minimax DP — O(m²n² × 128) ✅
 
-```
+```text
 FUNCTION canMouseWin(grid, catJump, mouseJump):
     memo = {}
     
@@ -45,9 +45,50 @@ FUNCTION canMouseWin(grid, catJump, mouseJump):
     RETURN dp(mouseStart, catStart, 0)
 ```
 
-| Time | Space |
-|------|-------|
-| O(rows² × cols² × 128) | O(rows² × cols² × 128) |
+---
+
+## 4. Examples
+
+**Example 1:**
+```
+grid = [["#","#","#","#","#"],
+        ["#","M",".","C","#"],
+        ["#",".","#",".","#"],
+        ["#",".","F",".","#"],
+        ["#","#","#","#","#"]]
+catJump = 1, mouseJump = 2
+Output: true
+```
+*Explanation:* Mouse can reach the food in two moves while avoiding the cat.
+
+**Example 2:**
+```
+grid = [["#","#","#","#","#"],
+        ["#","M",".","C","#"],
+        ["#",".","#",".","#"],
+        ["#",".","F",".","#"],
+        ["#","#","#","#","#"]]
+catJump = 2, mouseJump = 1
+Output: false
+```
+*Explanation:* Cat can catch the mouse before it reaches the food.
+
+---
+
+## 5. Walkthrough
+
+| Turn | Player | Position(s) | Decision |
+|------|--------|------------|----------|
+| 0    | Mouse  | (1,1)      | Moves toward food within 2 steps |
+| 1    | Cat    | (1,3)      | Moves towards mouse, cannot catch yet |
+| 2    | Mouse  | Reaches food (3,2) | Wins before cat's next move |
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** O(m² × n² × 128) due to exploring all positions for both players up to depth 128.
+- **Space:** O(m² × n² × 128) for memoization table.
 
 ---
 

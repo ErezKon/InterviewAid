@@ -30,6 +30,38 @@ var chunk = function(arr, size) {
 
 ---
 
+## Examples
+
+| Input | Output |
+|-------|--------|
+| `arr = [1,2,3,4,5], size = 2` | `[[1,2],[3,4],[5]]` |
+| `arr = [1,2,3,4,5,6], size = 3` | `[[1,2,3],[4,5,6]]` |
+
+---
+
+## Walkthrough
+
+1. Start with `i = 0`. Slice `arr[0:2]` → `[1,2]`, push to result.
+2. Increment `i` by `size` (2). Slice `arr[2:4]` → `[3,4]`, push.
+3. Increment `i` to 4. Slice `arr[4:6]` → `[5]`, push (last chunk smaller).
+4. Loop ends when `i >= arr.length`. Return `[[1,2],[3,4],[5]]`.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n) – each element is visited once during slicing.
+- **Space:** O(n) – output array stores all elements.
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the algorithm to work in-place without extra space?
+- Can you handle streaming input where the array size is unknown upfront?
+
+---
+
 ## Key Takeaway
 
 > Use `slice(i, i + size)` in a loop stepping by `size` — a clean O(n) chunking pattern.

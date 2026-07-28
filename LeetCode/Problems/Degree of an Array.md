@@ -12,6 +12,15 @@ Find the shortest contiguous subarray that has the same degree (max frequency) a
 
 ---
 
+## Examples
+
+| Input | Output |
+|-------|--------|
+| `[1,2,2,3,1]` | `2` |
+| `[1,2,2,3,1,4,2]` | `6` |
+
+---
+
 ## Approach
 
 ```
@@ -28,12 +37,28 @@ FUNCTION findShortestSubArray(nums):
 
 ---
 
+## Walkthrough
+
+1. Iterate through the array while recording the first index, last index, and frequency of each number.
+2. After the pass, determine the degree = maximum frequency.
+3. For every number whose frequency equals the degree, compute the length of its subarray `last - first + 1`.
+4. Return the smallest such length.
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Value |
 |---|---|
 | **Time** | O(n) |
 | **Space** | O(n) |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the solution to also return the actual subarray(s) achieving the minimum length?
+- Can you solve it in a single pass without storing both first and last indices separately?
 
 ---
 

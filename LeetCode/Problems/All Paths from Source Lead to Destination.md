@@ -24,31 +24,75 @@ Given a directed graph with `n` nodes and `edges`, determine if **all** paths st
 
 ## 3. Approach: DFS with Cycle Detection — O(V + E) ✅
 
-```
+```text
 FUNCTION leadsToDestination(n, edges, source, destination):
-    graph = build adjacency list from edges
-    state = [UNVISITED] * n    // 0=unvisited, 1=in-progress, 2=done
+    // build adjacency list
+    SET graph ← BUILD_ADJACENCY_LIST(edges)
+    SET state ← ARRAY of size n filled with 0   // 0=UNVISITED, 1=IN_PROGRESS, 2=DONE
 
     FUNCTION dfs(node):
-        IF state[node] == IN_PROGRESS: RETURN false    // cycle
-        IF state[node] == DONE: RETURN true
-        IF graph[node] is empty:
-            RETURN node == destination    // terminal must be dest
-        state[node] = IN_PROGRESS
-        FOR next IN graph[node]:
-            IF NOT dfs(next): RETURN false
-        state[node] = DONE
+        IF state[node] == 1:
+            RETURN false   // cycle detected
+        IF state[node] == 2:
+            RETURN true    // already verified
+        IF graph[node] IS EMPTY:
+            RETURN node == destination   // terminal must be destination
+        SET state[node] ← 1   // mark IN_PROGRESS
+        FOR each next IN graph[node]:
+            IF NOT dfs(next):
+                RETURN false
+        SET state[node] ← 2   // mark DONE
         RETURN true
 
     RETURN dfs(source)
 ```
 
-| Time | Space |
-|------|-------|
-| O(V + E) | O(V + E) |
+---
+
+## 4. Examples
+
+**Example 1:**
+```
+Input: n = 3, edges = [[0,1],[0,2],[1,1],[2,1]], source = 0, destination = 1
+Output: false
+Explanation: There is a path 0 → 2 → 1 that reaches the destination, but also a cycle 1 → 1, causing an infinite path that never ends at destination.
+```
+
+**Example 2:**
+```
+Input: n = 4, edges = [[0,1],[0,2],[1,3],[2,3]], source = 0, destination = 3
+Output: true
+Explanation: Every path from 0 ends at node 3, and there are no cycles.
+```
 
 ---
 
-## Key Takeaway
+## 5. Walkthrough
 
-> Three-state DFS (white/gray/black) detects cycles and validates terminal conditions simultaneously. Every terminal node must be the destination, and no cycles are allowed.
+Consider the second example with `n = 4` and edges `[[0,1],[0,2],[1,3],[2,3]]`.
+| Step | node visited | state before | action | state after |
+|------|--------------|--------------|--------|-------------|
+| 1 | 0 | all 0 | call dfs(0), mark IN_PROGRESS | state[0]=1 |
+| 2 | 1 | state[1]=0 | dfs(1), mark IN_PROGRESS | state[1]=1 |
+| 3 | 3 | state[3]=0 | dfs(3) sees no outgoing edges, node==dest → true, mark DONE | state[3]=2 |
+| 4 | return to 1 | state[1]=1 | all children true → mark DONE | state[1]=2 |
+| 5 | 2 | state[2]=0 | dfs(2), mark IN_PROGRESS | state[2]=1 |
+| 6 | 3 again | state[3]=2 | returns true immediately |
+| 7 | return to 2 → DONE, then return to 0 → DONE | all true → overall true |
+
+All possible traversals end at the destination without encountering a cycle.
+
+---
+
+## 6. Complexity Analysis
+
+| Metric | Complexity |
+|--------|------------|
+| Time   | O(V + E) – each node and edge visited at most once |
+| Space  | O(V) – recursion stack / explicit stack plus state array |
+
+---
+
+## 7. Key Takeaway
+
+> Three‑state DFS (white/gray/black) simultaneously detects cycles and ensures every terminal node equals the destination, guaranteeing all paths lead to the target.

@@ -20,36 +20,74 @@ Given a rooted tree where each edge has a weight, select a subset of edges such 
 
 ## 3. Approach: Tree DP — O(n) ✅
 
-```
+```text
 FUNCTION maxScore(edges):
-    build adjacency list with weights
+    // Build adjacency list with weights
+    build adjacency list
     
     FUNCTION dfs(node):
-        sumNotPicked = 0    // none of node's edges to children are picked
-        FOR child, weight IN children[node]:
-            childNot, childYes = dfs(child)
-            sumNotPicked += childNot
+        // sum of best scores from children when edge to child is NOT picked
+        sumNotPicked ← 0
+        FOR each child, weight IN children[node]:
+            childNot, childYes ← dfs(child)
+            sumNotPicked ← sumNotPicked + childNot
         
-        // dp[node][0]: edge to parent NOT picked → can pick best child edge
-        notPicked = sumNotPicked
-        bestGain = 0
-        FOR child, weight IN children[node]:
-            childNot, childYes = ...
-            gain = weight + childYes - childNot  // if we pick this child edge
-            bestGain = MAX(bestGain, gain)
-        notPicked += bestGain
+        // If edge from parent to this node is NOT picked, we may pick at most one child edge
+        notPicked ← sumNotPicked
+        bestGain ← 0
+        FOR each child, weight IN children[node]:
+            childNot, childYes ← dfs(child)
+            gain ← weight + childYes - childNot   // gain if we pick this child edge
+            bestGain ← MAX(bestGain, gain)
+        notPicked ← notPicked + bestGain
         
-        // dp[node][1]: edge to parent IS picked → can't pick any child edge
-        picked = sumNotPicked
+        // If edge from parent to this node IS picked, cannot pick any child edge
+        picked ← sumNotPicked
         
         RETURN (notPicked, picked)
     
     RETURN dfs(root)[0]
 ```
 
+---
+
+## 4. Examples
+
+**Example 1:**
+```
+Input: edges = [[1,2,5],[1,3,3],[2,4,4],[2,5,2]]
+Output: 9
+Explanation: Choose edges (1,2) with weight 5 and (2,4) with weight 4. No two chosen edges share a node.
+```
+
+**Example 2:**
+```
+Input: edges = [[1,2,1],[1,3,2],[2,4,3],[3,5,4]]
+Output: 7
+Explanation: Choose edges (2,4) and (3,5) for a total weight of 3+4=7.
+```
+
+---
+
+## 5. Walkthrough
+
+Consider Example 1.
+| Step | Node | Action | dp[node][0] | dp[node][1] |
+|------|------|--------|------------|------------|
+| 1 | 4 | Leaf → no children | 0 | 0 |
+| 2 | 5 | Leaf → no children | 0 | 0 |
+| 3 | 2 | Children 4 (w=4) & 5 (w=2) | notPicked = 0 + max(4+0-0, 2+0-0) = 4 | picked = 0 |
+| 4 | 3 | Leaf → no children | 0 | 0 |
+| 5 | 1 (root) | Children 2 (w=5) & 3 (w=3) | notPicked = (dp[2][0]) + max(5+dp[2][1]-dp[2][0], 3+dp[3][1]-dp[3][0]) = 4 + max(5+0-4, 3+0-0) = 4 + 5 = 9 | picked = dp[2][0] + dp[3][0] = 4 + 0 = 4 |
+The answer is dp[1][0] = 9.
+
+---
+
+## 6. Complexity Analysis
+
 | Time | Space |
 |------|-------|
-| O(n) | O(n) |
+| O(n) where n is the number of nodes | O(n) for recursion stack and dp tables |
 
 ---
 

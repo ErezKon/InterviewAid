@@ -9,54 +9,66 @@
 
 ## Problem Description
 
-Delete a node with a given key from a BST and return the updated root.
+Delete a node with a given key from a Binary Search Tree (BST) and return the updated root while preserving BST properties.
 
----
+## Examples
 
-## Key Insight
+| Input BST | Key | Output BST |
+|-----------|-----|------------|
+| `[5,3,6,2,4,null,7]` | `3` | `[5,4,6,2,null,null,7]` |
+| `[5,3,6,2,4,null,7]` | `0` | `[5,3,6,2,4,null,7]` |
 
-Three cases: (1) leaf → remove, (2) one child → replace with child, (3) two children → replace value with inorder successor (smallest in right subtree), then delete successor.
+*Explanation:* Deleting `3` replaces it with its inorder successor `4`. Deleting a non‑existent key leaves the tree unchanged.
 
----
-
-## Approach: Recursive — O(h) ✅
+## Approach
 
 ```
 FUNCTION deleteNode(root, key):
     IF root == null: RETURN null
-
     IF key < root.val:
         root.left = deleteNode(root.left, key)
     ELSE IF key > root.val:
         root.right = deleteNode(root.right, key)
     ELSE:
-        // Found node to delete
+        // Node to delete found
         IF root.left == null: RETURN root.right
         IF root.right == null: RETURN root.left
-
         // Two children: replace with inorder successor
         successor = findMin(root.right)
         root.val = successor.val
         root.right = deleteNode(root.right, successor.val)
-
     RETURN root
 
 FUNCTION findMin(node):
-    WHILE node.left: node = node.left
+    WHILE node.left != null:
+        node = node.left
     RETURN node
 ```
 
----
+## Walkthrough
+
+Delete key `3` from `[5,3,6,2,4,null,7]`.
+1. Compare `3` with root `5` → go left.
+2. Compare `3` with node `3` → match.
+3. Node has two children (`2` and `4`). Find inorder successor: smallest in right subtree → `4`.
+4. Replace node value with `4`; recursively delete `4` from right subtree (which is a leaf, so removed).
+5. Resulting tree `[5,4,6,2,null,null,7]` maintains BST order.
 
 ## Complexity Analysis
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(h) where h = tree height |
+| **Time** | O(h) where h is tree height |
 | **Space** | O(h) recursion stack |
+
+## Follow-Up Questions
+
+- How would you implement the deletion iteratively without recursion?
+- Can you delete a node in a self‑balancing BST (e.g., AVL or Red‑Black) while preserving balance?
+- What changes are needed if the tree allows duplicate values?
 
 ---
 
 ## Key Takeaway
 
-> **BST deletion has three cases. The two-children case uses the inorder successor (or predecessor) to maintain BST property. Recursive approach naturally handles relinking.**
+> **BST deletion handles three cases: leaf, one child, two children (replace with inorder successor). Recursive approach cleanly updates links while preserving BST invariants.**

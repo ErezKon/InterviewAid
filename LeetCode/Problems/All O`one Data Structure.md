@@ -9,6 +9,31 @@
 ## Problem Description
 Design a data structure that supports inserting keys, incrementing/decrementing their counts, and retrieving a key with maximal or minimal count, all in O(1) time.
 
+## Examples
+**Example 1:**
+```
+AllOne obj = new AllOne();
+obj.inc("apple");      // "apple" count is 1
+obj.inc("apple");      // "apple" count becomes 2
+obj.inc("banana");     // "banana" count is 1
+obj.dec("apple");      // "apple" count becomes 1
+obj.getMaxKey();        // returns "apple" or "banana" (both have count 1)
+obj.getMinKey();        // returns "apple" or "banana"
+```
+*Explanation:* After the operations, both keys have the same count, so either can be returned.
+
+**Example 2:**
+```
+AllOne obj = new AllOne();
+obj.inc("dog");
+obj.inc("cat");
+obj.inc("dog");
+obj.dec("cat");
+obj.getMaxKey(); // returns "dog" (count 2)
+obj.getMinKey(); // returns "dog" (only key left)
+```
+*Explanation:* "cat" is removed after decrement, leaving only "dog".
+
 ## Operations
 - `inc(key)`: Increment the count of `key`. If `key` does not exist, insert it with count 1.
 - `dec(key)`: Decrement the count of `key`. If the count becomes 0, remove the key.

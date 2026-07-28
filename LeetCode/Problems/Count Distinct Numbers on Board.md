@@ -20,17 +20,63 @@ Start with number `n` on a board. Each day, for every number `x` on the board, i
 
 ## 3. Approach: Math — O(1) ✅
 
-```
+```text
 FUNCTION distinctNumbers(n):
-    RETURN 1 IF n == 1 ELSE n - 1
+    IF n == 1:
+        RETURN 1
+    ELSE:
+        RETURN n - 1
 ```
 
-| Time | Space |
-|------|-------|
-| O(1) | O(1) |
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: n = 5
+Output: 4
+Explanation: Numbers added are 4,3,2,5 (distinct count = 4).
+```
+
+**Example 2:**
+```
+Input: n = 1
+Output: 1
+Explanation: Only the initial number 1 remains.
+```
+
+---
+
+## Walkthrough
+
+For `n = 5`:
+| Step | Board before | New numbers added |
+|------|--------------|-------------------|
+| 0    | {5}          | —                 |
+| 1    | {5}          | 4 (5 % 4 == 1)    |
+| 2    | {5,4}        | 3 (4 % 3 == 1)    |
+| 3    | {5,4,3}      | 2 (3 % 2 == 1)    |
+| 4    | {5,4,3,2}    | — (no new)        |
+All numbers {2,3,4,5} are present, count = 4.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(1) – direct formula based on `n`.
+- **Space:** O(1) – only constant extra variables.
+
+---
+
+## Follow-Up Questions
+
+1. How would the answer change if the condition were `x % i == 0`?
+2. What if the board could also remove numbers that no longer satisfy the condition?
+3. Can this reasoning be extended to a range of starting numbers instead of a single `n`?
 
 ---
 
 ## Key Takeaway
 
-> The chain reaction adds all integers from 2 to n. After enough days, the board contains exactly `{2, 3, ..., n}`, which has `n - 1` elements.
+> The process creates a chain that adds every integer from `2` up to `n`; thus the distinct count is `n‑1` (or `1` when `n` is `1`).

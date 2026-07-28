@@ -8,13 +8,17 @@
 
 ## Problem Description
 
-Given an encoded string (letters + digits where a digit `d` repeats the preceding decoded string `d` times), find the `k`-th character without fully decoding.
+Given an encoded string consisting of lowercase letters and digits, where each digit `d` means the current decoded string is repeated `d` times, find the `k`‑th character of the fully decoded string without constructing it.
 
----
+## Examples
 
-## Key Insight
+| s | k | output |
+|---|---|---|
+| "leet2code3" | 10 | "o" |
+| "ha22" | 5 | "h" |
+| "a2345678999999999999999" | 1 | "a" |
 
-Compute total decoded length forward. Then work **backwards**: when hitting a digit, the string was repeated so `k %= size`; when hitting a letter, `size--` and check if `k == 0`.
+*Explanation*: In the first example, the decoded string is "leetleetcodeleetleetcodeleetleetcode"; the 10th character is "o".
 
 ---
 
@@ -22,17 +26,35 @@ Compute total decoded length forward. Then work **backwards**: when hitting a di
 
 ```
 FUNCTION decodeAtIndex(s, k):
-    size = 0
+    size ← 0
     FOR c IN s:
-        IF c.isdigit(): size *= int(c)
-        ELSE: size += 1
-
-    FOR c IN reversed(s):
-        k %= size
-        IF k == 0 AND c.isalpha(): RETURN c
-        IF c.isdigit(): size /= int(c)
-        ELSE: size -= 1
+        IF c IS DIGIT:
+            size ← size * INTEGER(c)
+        ELSE:
+            size ← size + 1
+    FOR c IN REVERSED(s):
+        k ← k MOD size
+        IF k = 0 AND c IS LETTER:
+            RETURN c
+        IF c IS DIGIT:
+            size ← size DIV INTEGER(c)
+        ELSE:
+            size ← size - 1
+    RETURN ''
 ```
+
+---
+
+## Walkthrough
+
+**Example 1** – `s = "leet2code3"`, `k = 10`
+1. **Forward pass** to compute total length:
+   - l → size=1, e→2, e→3, t→4, 2→size=4*2=8, c→9, o→10, d→11, e→12, 3→size=12*3=36.
+2. **Backward pass**:
+   - Start with `c='3'`, `size=36`. `k = 10 % 36 = 10`. Since `c` is digit, `size = 36 / 3 = 12`.
+   - Next `c='e'`, `size=12`. `k = 10 % 12 = 10`. `c` is letter, decrement `size → 11`. `k != 0`.
+   - Continue similarly until reaching `c='o'` with `size=10` and `k=10 % 10 = 0`. Since `k=0` and `c` is a letter, return `'o'`.
+The algorithm efficiently maps `k` back through the repeated expansions.
 
 ---
 
@@ -40,8 +62,16 @@ FUNCTION decodeAtIndex(s, k):
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n) where n = length of encoded string |
+| **Time** | O(n) where n = length of `s` |
 | **Space** | O(1) |
+
+---
+
+## Follow-Up Questions
+
+1. How would you adapt the solution if the encoded string could contain uppercase letters?
+2. Can the algorithm be extended to return a substring of length `m` starting at position `k`?
+3. What changes are needed if the repetition factor can be larger than a single digit?
 
 ---
 

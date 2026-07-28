@@ -37,6 +37,43 @@ ORDER BY h.level, h.employee_id;
 
 ---
 
+## Examples
+
+| employee_id | employee_name | manager_id | salary | level | sub_count | budget |
+|-------------|---------------|------------|--------|-------|-----------|--------|
+| 1 | Alice | NULL | 100000 | 1 | 3 | 250000 |
+| 2 | Bob   | 1    | 80000  | 2 | 1 | 50000 |
+| 3 | Carol | 1    | 90000  | 2 | 0 | 0 |
+| 4 | Dave  | 2    | 50000  | 3 | 0 | 0 |
+
+*Explanation*: Alice is the CEO (level 1) with three subordinates (Bob, Carol, Dave) and total budget including sub‑salaries 250 k.
+
+---
+
+## Walkthrough
+
+1. **Base case** – select the CEO (manager_id NULL) with level 1.
+2. **Recursive step** – join each employee to its manager, increment level.
+3. **Subordinate aggregation** – self‑join hierarchy on manager_id to count direct subordinates and sum their salaries.
+4. **Final select** – combine hierarchy and subordinates, compute total budget as own salary plus subordinates' salaries.
+
+---
+
+## Complexity Analysis
+
+- **Time**: O(N log N) for the recursive join processing all employees (depends on DB optimizer).
+- **Space**: O(N) for the CTE tables storing hierarchy and aggregation.
+
+---
+
+## Follow-Up Questions
+
+- How to compute the total budget for *all* indirect subordinates (entire subtree) efficiently?
+- How to handle cycles or invalid manager references in the data?
+- Can the query be adapted to return the top‑k departments by total budget?
+
+---
+
 ## Key Takeaway
 
-> Recursive CTEs handle tree traversals in SQL. Build the hierarchy first, then aggregate subordinate counts and budgets with self-joins or window functions.
+> Recursive CTEs let you traverse hierarchical data directly in SQL, enabling level computation and aggregation of subordinate information without external code.

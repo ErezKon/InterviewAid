@@ -10,6 +10,7 @@ import { HumanMessage } from '@langchain/core/messages';
 import { createContentEnricherAgent } from './content-enricher.agent.js';
 import { PROBLEMS_DIR, CONTENT_ROOT } from '../../config/paths.js';
 import { createLogger } from '../../utils/logger.js';
+import { countRemainingAuditIssues, fixClassificationIssuesDirect, type AuditFixType } from './audit-report-parser.js';
 
 const log = createLogger('enricher-loop');
 
@@ -61,25 +62,21 @@ function countInsufficient(): { total: number; insufficient: number } {
   return { total: allFiles.length, insufficient };
 }
 
-type AuditFixType = 'wrong_primary_topic' | 'missing_sub_topics' | 'insufficient_content' | 'all';
+type AuditFixTypeOrAll = AuditFixType | 'all';
 
 const AUDIT_FIX_TYPES: AuditFixType[] = ['wrong_primary_topic', 'missing_sub_topics', 'insufficient_content'];
 
-function buildAuditMessage(auditFile: string, fixType: AuditFixType, batchSize: number): string {
-  const fixDesc = fixType === 'all'
-    ? 'Fix ALL issue types (wrong_primary_topic, missing_sub_topics, insufficient_content) from the audit report.'
-    : `Fix "${fixType}" issues from the audit report.`;
-
-  const batchHint = fixType === 'insufficient_content' || fixType === 'all'
-    ? `For content fixes use batchSize=${batchSize}. For classification fixes use batchSize=50.`
+function buildAuditMessage(auditFile: string, fixType: AuditFixType, remaining: number, batchSize: number): string {
+  const batchHint = fixType === 'insufficient_content'
+    ? `Use batchSize=${batchSize}.`
     : `Use batchSize=50.`;
 
   return [
-    `${fixDesc}`,
+    `Fix "${fixType}" issues from the audit report.`,
+    `There are ${remaining} remaining issues of this type.`,
     `Audit file: ${auditFile}`,
-    `Start by calling read_audit_report(issueType="summary", filePath="${auditFile}") to see the overview.`,
-    `Then process all batches for the specified issue type(s). ${batchHint}`,
-    `Pass filePath="${auditFile}" to every read_audit_report call.`,
+    `Call read_audit_report(issueType="${fixType}", filePath="${auditFile}") to get a batch. ${batchHint}`,
+    `Process the entire batch, then stop. Pass filePath="${auditFile}" to every read_audit_report call.`,
   ].join(' ');
 }
 
@@ -93,8 +90,8 @@ async function main() {
   const auditMode = args.includes('--audit');
   const auditFile = args.find(a => a.startsWith('--audit-file='))?.split('=')[1]
     ?? path.join(CONTENT_ROOT, 'LeetCode', 'audit_report.md');
-  const fixArg = args.find(a => a.startsWith('--fix='))?.split('=')[1] as AuditFixType | undefined;
-  const fixType: AuditFixType = fixArg && [...AUDIT_FIX_TYPES, 'all'].includes(fixArg) ? fixArg : 'all';
+  const fixArg = args.find(a => a.startsWith('--fix='))?.split('=')[1] as AuditFixTypeOrAll | undefined;
+  const fixType: AuditFixTypeOrAll = fixArg && [...AUDIT_FIX_TYPES, 'all'].includes(fixArg) ? fixArg : 'all';
 
   if (auditMode) {
     return runAuditLoop(modelId, auditFile, fixType, batchSize, maxBatches);
@@ -194,7 +191,7 @@ async function main() {
 async function runAuditLoop(
   modelId: string,
   auditFile: string,
-  fixType: AuditFixType,
+  fixType: AuditFixTypeOrAll,
   batchSize: number,
   maxBatches: number,
 ) {
@@ -217,9 +214,35 @@ async function runAuditLoop(
 
   for (const currentFixType of fixTypes) {
     log.info(`--- Processing issue type: ${currentFixType} ---`);
+
+    // Classification fixes (wrong_primary_topic, missing_sub_topics) are deterministic —
+    // apply them directly without an LLM.
+    if (currentFixType === 'wrong_primary_topic' || currentFixType === 'missing_sub_topics') {
+      const before = countRemainingAuditIssues(auditFile, currentFixType);
+      log.info(`Scan: ${before.remaining}/${before.total} ${currentFixType} issues still unfixed`);
+      if (before.remaining === 0) {
+        log.info(`All ${currentFixType} issues are fixed. Moving on.`);
+        continue;
+      }
+      const { fixed, notFound } = fixClassificationIssuesDirect(auditFile, currentFixType);
+      const after = countRemainingAuditIssues(auditFile, currentFixType);
+      log.info(`Direct fix: ${fixed} fixed, ${notFound} not found. Remaining: ${after.remaining}/${after.total}`);
+      continue;
+    }
+
+    // Content fixes (insufficient_content) require the LLM.
     let batchNum = 0;
 
     while (true) {
+      // Check remaining issues against live data before each batch
+      const { total, remaining } = countRemainingAuditIssues(auditFile, currentFixType);
+      log.info(`Scan: ${remaining}/${total} ${currentFixType} issues still unfixed`);
+
+      if (remaining === 0) {
+        log.info(`All ${currentFixType} issues are fixed. Moving on.`);
+        break;
+      }
+
       if (batchNum >= maxBatches) {
         log.info(`Reached max batches limit (${maxBatches}) for ${currentFixType}. Moving on.`);
         break;
@@ -228,13 +251,13 @@ async function runAuditLoop(
       batchNum++;
       totalBatches++;
       const batchStart = Date.now();
-      log.info(`--- ${currentFixType} batch ${batchNum} starting ---`);
+      log.info(`--- ${currentFixType} batch ${batchNum} starting (${remaining} remaining) ---`);
 
       try {
         const { agent, def } = await createContentEnricherAgent(modelId);
         log.info(`Agent created with model ${def.id}`);
 
-        const message = buildAuditMessage(auditFile, currentFixType, batchSize);
+        const message = buildAuditMessage(auditFile, currentFixType, remaining, batchSize);
 
         const result = await agent.invoke(
           { messages: [new HumanMessage(message)] },
@@ -247,19 +270,6 @@ async function runAuditLoop(
         log.info(`Batch completed in ${elapsed}s — ${content.slice(0, 200)}`);
         rateLimitStreak = 0;
         consecutiveOtherFailures = 0;
-
-        // For classification fixes the agent processes all items in one invocation
-        // (using internal pagination via read_audit_report), so we break after one pass.
-        if (currentFixType !== 'insufficient_content') {
-          break;
-        }
-
-        // For content fixes, check if there are still insufficient files
-        const { insufficient } = countInsufficient();
-        if (insufficient === 0) {
-          log.info(`No more insufficient files. Done with ${currentFixType}.`);
-          break;
-        }
       } catch (err) {
         const elapsed = ((Date.now() - batchStart) / 1000).toFixed(1);
         log.error(`Batch failed after ${elapsed}s: ${err instanceof Error ? err.message : String(err)}`);

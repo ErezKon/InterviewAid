@@ -54,7 +54,7 @@ async function fetchNewToken(): Promise<string> {
     const tokenString = `${clientId}:${clientSecret}`;
     const encodedToken = Buffer.from(tokenString).toString('base64');
 
-    console.log(`$[OAUTH] Requesting new access token from ${process.env.OAUTH_TOKEN_URL}...`);
+    console.log(`[OAUTH] Requesting new access token from ${process.env.OAUTH_TOKEN_URL}...`);
 
     let response: Response;
     try {
@@ -98,7 +98,7 @@ async function fetchNewToken(): Promise<string> {
     cachedToken = data.access_token;
     expiresAtMs = Date.now() + data.expires_in * 1000;
 
-    console.log(`$[OAUTH] Fetched new token (expires in ${data.expires_in}s)`);
+    console.log(`[OAUTH] Fetched new token (expires in ${data.expires_in}s)`);
 
     return cachedToken;
 }

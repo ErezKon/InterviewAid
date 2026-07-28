@@ -12,39 +12,65 @@ Given an integer `num`, find two integers whose product is either `num + 1` or `
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> The closest pair of divisors of a number `n` is found near `√n`. Check both `num + 1` and `num + 2`, scanning down from the square root.
+**Example 1:**
+```
+num = 8
+```
+`num + 1 = 9` → factor pairs: (1,9), (3,3). Closest pair is **(3,3)**.
+
+**Example 2:**
+```
+num = 12
+```
+`num + 2 = 14` → factor pairs: (1,14), (2,7). Closest pair is **(2,7)** (difference 5) which is better than any pair from `num+1`.
 
 ---
 
 ## 3. Approach: Sqrt Scan — O(√n) ✅
 
-```
+```text
 FUNCTION closestDivisors(num):
-    FOR n IN [num + 2, num + 1]:  // prefer num+2 first (might have closer pair)
-        FOR i FROM floor(sqrt(n)) DOWN TO 1:
-            IF n % i == 0:
-                RETURN [i, n / i]
+    bestPair ← [1, num + 1]
+    FOR candidate IN [num + 1, num + 2]:
+        // start from sqrt(candidate) and move downwards
+        FOR i ← FLOOR(SQRT(candidate)) DOWNTO 1:
+            IF candidate MOD i == 0:
+                j ← candidate / i
+                // update if this pair is closer than current best
+                IF ABS(j - i) < ABS(bestPair[1] - bestPair[0]):
+                    bestPair ← [i, j]
+                BREAK   // first divisor gives the closest pair for this candidate
+    RETURN bestPair
 ```
 
-Actually check both and return the pair with smaller difference:
+---
 
-```
-FUNCTION closestDivisors(num):
-    best = [1, num + 1]
-    FOR n IN [num + 1, num + 2]:
-        FOR i FROM floor(sqrt(n)) DOWN TO 1:
-            IF n % i == 0:
-                IF n/i - i < best[1] - best[0]:
-                    best = [i, n / i]
-                BREAK
-    RETURN best
-```
+## 4. Walkthrough (Example 2)
+| Step | candidate | i (decreasing) | divisor found? | pair | bestPair update |
+|------|-----------|----------------|----------------|------|-----------------|
+| 1 | 14 | 3 | 14 % 3 ≠ 0 | — | — |
+| 2 | 14 | 2 | 14 % 2 = 0 | (2,7) | bestPair ← (2,7) |
+| 3 | 13 | 3 | 13 % 3 ≠ 0 | — | — |
+| 4 | 13 | 2 | 13 % 2 ≠ 0 | — | — |
+| 5 | 13 | 1 | divisor 1 → (1,13) but diff 12 > 5, so keep (2,7)
+The scan stops after the first divisor for each candidate because any smaller divisor would increase the difference.
 
-| Time | Space |
-|------|-------|
-| O(√n) | O(1) |
+---
+
+## 5. Complexity Analysis
+| Aspect | Complexity |
+|--------|------------|
+| Time   | O(√(num)) – we scan down from √(num+2) for each of the two candidates. |
+| Space  | O(1) – only constant extra variables are used. |
+
+---
+
+## 6. Follow‑Up Questions
+- How would you adapt the algorithm if you needed the pair whose product is exactly `num + k` for a larger `k`?
+- Can you solve the problem without scanning from √n by using prime factorization?
+- What changes are needed if the numbers can be up to 10¹⁸ (requiring 64‑bit arithmetic)?
 
 ---
 

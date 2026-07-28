@@ -12,6 +12,32 @@ Given a digit string `s`, count substrings where the numeric value of the substr
 
 ---
 
+## Examples
+
+| Input | Output |
+|-------|--------|
+| `s = "12"` | `2` |
+| `s = "303"` | `4` |
+
+*Explanation*: For `"12"`, substrings `"1"` (1%1=0) and `"12"` (12%2=0) are valid.
+
+---
+
+## Walkthrough
+
+Consider `s = "303"`.
+
+1. Enumerate all substrings:
+   - `"3"` (last digit 3, 3%3=0) ✅
+   - `"30"` (last digit 0 → invalid, skip)
+   - `"303"` (last digit 3, 303%3=0) ✅
+   - `"0"` (last digit 0 → invalid)
+   - `"03"` (last digit 3, 3%3=0) ✅
+   - `"3"` (second position, same as first) ✅
+2. Count the valid ones → 4.
+
+---
+
 ## Key Insight
 
 For each ending position `j`, the last digit `d = s[j]`. We need substrings `s[i..j]` where the number formed is divisible by `d`. Track running remainders mod `d` as you extend substrings leftward, or use prefix-based modular arithmetic.
@@ -35,8 +61,6 @@ FUNCTION countSubstrings(s):
         FOR j ← 0 TO n - 1 DO
             prefixMod = (prefixMod * 10 + INT(s[j])) % d
             IF INT(s[j]) == d:
-                // Substring s[i..j] has value = (prefix[j] - prefix[i-1]*10^(j-i+1))
-                // Needs careful modular arithmetic
                 result += freqMod[prefixMod]
                 IF prefixMod == 0: result += 1
             // Update freq based on current position's digit

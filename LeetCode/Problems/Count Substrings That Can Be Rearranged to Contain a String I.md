@@ -12,9 +12,14 @@ Given strings `word1` and `word2`, count substrings of `word1` that can be rearr
 
 ---
 
-## Key Insight
+## Examples
 
-This is equivalent to: count substrings of `word1` whose character frequency dominates `word2`'s frequency. Use a **sliding window** that shrinks from the left once the condition is met, then count all right-extensions.
+| Input | Output |
+|-------|--------|
+| `word1 = "ababc", word2 = "abc"` | `3` |
+| `word1 = "aaaa", word2 = "aa"` | `6` |
+
+*Explanation*: For the first case, the valid substrings are `"ababc"` (positions 0‑4), `"bab"` (1‑3) after rearrangement contains `abc`, and `"abc"` (2‑4).
 
 ---
 
@@ -44,15 +49,37 @@ FUNCTION countSubstrings(word1, word2):
 
 ---
 
+## Walkthrough
+
+Take `word1 = "ababc"`, `word2 = "abc"`.
+
+1. `need` = {a:1, b:1, c:1}. Start with `right = 0` (`'a'`): `have`={a:1}, `formed`=0.
+2. `right = 1` (`'b'`): `have`={a:1,b:1}, `formed`=0.
+3. `right = 2` (`'a'`): `have`={a:2,b:1}, `formed`=0.
+4. `right = 3` (`'b'`): `have`={a:2,b:2}, `formed`=0.
+5. `right = 4` (`'c'`): `have`={a:2,b:2,c:1}. Now each needed char meets requirement, so `formed = 3`.
+6. Enter while‑loop: add `len(word1)-right = 5-4 = 1` to result (substring `"ababc"`). Shrink left: remove `'a'`, `have` a becomes 1, still meets need, continue while‑loop, add another 1 (substring `"babc"`). Remove `'b'`, now `b` count falls below need, exit while‑loop.
+7. Continue scanning – no more characters – final result = 3.
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n) where n = length of word1 |
+| **Time** | O(n) where n = length of `word1` |
 | **Space** | O(26) = O(1) |
+
+---
+
+## Follow-Up Questions
+
+1. How would the solution change if `word2` could contain duplicate characters more than once?
+2. Can the algorithm be adapted to return the actual substrings instead of just the count?
+3. What if the condition was “strictly contains” (must have at least one extra character beyond `word2`)?
 
 ---
 
 ## Key Takeaway
 
-> **"Contains as anagram" substring counting = sliding window with character frequency tracking. Once all required frequencies are met, count all right-extensions and shrink from the left.**
+> **"Contains as anagram" substring counting = sliding window with character frequency tracking. Once all required frequencies are met, count all right‑extensions and shrink from the left.**

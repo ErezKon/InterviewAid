@@ -12,9 +12,14 @@ Given two strings `s` and `t`, count pairs of substrings `(s[i..i+len], t[j..j+l
 
 ---
 
-## Key Insight
+## Examples
 
-Fix the mismatch position. For each pair `(i, j)` where `s[i] ≠ t[j]`, count how far matching extends on both sides. If there are `left` matching characters before and `right` matching characters after, this mismatch contributes `(left + 1) × (right + 1)` pairs.
+| Input | Output |
+|-------|--------|
+| `s = "aba", t = "baba"` | `6` |
+| `s = "abcd", t = "abcd"` | `0` |
+
+*Explanation*: For the first case, the valid pairs are `(s[0..0], t[0..0]) = ("a","b")`, `(s[0..1], t[0..1]) = ("ab","ba")`, `(s[1..1], t[1..1]) = ("b","a")`, `(s[1..2], t[1..2]) = ("ba","ab")`, `(s[2..2], t[2..2]) = ("a","b")`, and `(s[0..2], t[0..2]) = ("aba","bab")`.
 
 ---
 
@@ -32,12 +37,29 @@ FUNCTION countSubstrings(s, t):
                     left += 1
                 // Count matching chars after (i,j)
                 right = 0
-                WHILE i+right+1 < len(s) AND j+right+1 < len(t) AND s[i+right+1] == t[j+right+1]:
+                WHILE i+right+1 < LENGTH(s) AND j+right+1 < LENGTH(t) AND s[i+right+1] == t[j+right+1]:
                     right += 1
                 result += (left + 1) * (right + 1)
 
     RETURN result
 ```
+
+---
+
+## Walkthrough
+
+Take `s = "aba"`, `t = "baba"`.
+
+1. Iterate over all positions. At `i=0` (`'a'`) and `j=0` (`'b'`), characters differ.
+   - Extend left: none, so `left = 0`.
+   - Extend right while characters match: compare `s[1]` (`'b'`) with `t[1]` (`'a'`) → mismatch, stop. So `right = 0`.
+   - Contribution: `(0+1)*(0+1) = 1` (pair `"a"` vs `"b"`).
+2. At `i=0`, `j=1` (`'a'` vs `'a'`) → same, skip.
+3. At `i=0`, `j=2` (`'a'` vs `'b'`), differ.
+   - Left extension: none → `left=0`.
+   - Right extension: `s[1]='b'` matches `t[3]='a'`? No, stop → `right=0`.
+   - Contribution: 1 (pair `"a"` vs `"b"`).
+4. Continue scanning; mismatches at positions `(i=1,j=0)`, `(i=1,j=1)`, `(i=1,j=2)`, `(i=1,j=3)`, each yielding contributions based on matching extensions. Summing all contributions gives the total `6`.
 
 ---
 
@@ -47,6 +69,14 @@ FUNCTION countSubstrings(s, t):
 |---|---|
 | **Time** | O(m × n × min(m,n)) worst case, but typically much better |
 | **Space** | O(1) |
+
+---
+
+## Follow-Up Questions
+
+1. How would you adapt the algorithm to count pairs that differ in **at most** one character?
+2. Can this approach be extended to handle a larger alphabet or Unicode characters efficiently?
+3. What optimizations are possible if the strings are very long (e.g., using suffix arrays or hashing)?
 
 ---
 

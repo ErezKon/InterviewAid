@@ -20,7 +20,7 @@ Alice and Bob play a game with flowers on a line. Alice picks `x` flowers from t
 
 ## 3. Approach: Math — O(1) ✅
 
-```
+```text
 FUNCTION flowerGame(n, m):
     // Alice wins when total flowers is odd
     // x + y is odd when one is even and one is odd
@@ -30,9 +30,46 @@ FUNCTION flowerGame(n, m):
 - Odd numbers in `[1..n]` = `⌈n/2⌉ = (n+1)/2`
 - Even numbers in `[1..n]` = `⌊n/2⌋ = n/2`
 
-| Time | Space |
-|------|-------|
-| O(1) | O(1) |
+---
+
+## 4. Examples
+
+| n | m | Output |
+|---|---|--------|
+| 2 | 3 | 4 |
+| 1 | 1 | 1 |
+| 4 | 4 | 8 |
+
+**Explanation:** For `n = 2, m = 3` the odd/even counts are: odd x = 1, even x = 1; odd y = 2, even y = 1. Pairs = (1*1) + (1*2) = 4.
+
+---
+
+## 5. Walkthrough
+
+Consider `n = 4, m = 4`:
+
+1. Count odd numbers in `[1..4]` → 2 (1,3). Even numbers → 2 (2,4).
+2. Same counts for `y`.
+3. Compute pairs: (odd x × even y) = 2 × 2 = 4.
+4. Compute pairs: (even x × odd y) = 2 × 2 = 4.
+5. Total winning pairs = 4 + 4 = 8.
+
+Thus the function returns 8.
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** O(1) – only constant‑time arithmetic operations.
+- **Space:** O(1) – no additional data structures.
+
+---
+
+## 7. Follow-Up Questions
+
+- How would the solution change if the win condition required `x + y` to be even?
+- What if Alice could also pick from the right and Bob from the left?
+- Can you extend the problem to multiple players taking turns?
 
 ---
 

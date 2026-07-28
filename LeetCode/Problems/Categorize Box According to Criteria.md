@@ -14,7 +14,7 @@ Given a box's length, width, height, and mass, categorize it as "Bulky" (any dim
 
 ## 2. Approach: Conditional Check — O(1) ✅
 
-```
+```text
 FUNCTION categorizeBox(length, width, height, mass):
     bulky = (length >= 10000 OR width >= 10000 OR height >= 10000
              OR length * width * height >= 1000000000)
@@ -25,9 +25,40 @@ FUNCTION categorizeBox(length, width, height, mass):
     RETURN "Neither"
 ```
 
-| Time | Space |
-|------|-------|
-| O(1) | O(1) |
+---
+
+## 2. Examples
+
+**Example 1:**
+```
+length = 10000, width = 2, height = 2, mass = 150
+Output: "Both"
+```
+*Explanation:* Length ≥ 10⁴ makes it bulky, and mass ≥ 100 makes it heavy.
+
+**Example 2:**
+```
+length = 5, width = 5, height = 5, mass = 50
+Output: "Neither"
+```
+*Explanation:* Neither dimension nor volume is large enough, and mass is below 100.
+
+---
+
+## 3. Walkthrough
+
+| Step | Condition Checked | Result |
+|------|-------------------|--------|
+| 1 | length ≥ 10000? | true → bulky |
+| 2 | mass ≥ 100? | true → heavy |
+| 3 | both true? | return "Both" |
+
+---
+
+## 4. Complexity Analysis
+
+- **Time:** O(1) — constant checks.
+- **Space:** O(1) — only a few variables.
 
 ---
 

@@ -15,34 +15,61 @@ Given a string `s` containing only digits, return the number of ways to decode i
 
 ## 2. Approach: DP — O(n) ✅
 
-```
+```text
 FUNCTION numDecodings(s):
-    IF s[0] == '0': RETURN 0
-
-    prev2 = 1    // dp[i-2]
-    prev1 = 1    // dp[i-1]
-
-    FOR i ← 1 TO len(s) - 1:
-        curr = 0
-
+    IF s[0] == '0':
+        RETURN 0
+    prev2 ← 1            // dp[i-2]
+    prev1 ← 1            // dp[i-1]
+    FOR i ← 1 TO len(s)-1:
+        curr ← 0
         // Single digit decode (1-9)
         IF s[i] != '0':
-            curr += prev1
-
+            curr ← curr + prev1
         // Two digit decode (10-26)
-        twoDigit = int(s[i-1..i])
-        IF 10 <= twoDigit <= 26:
-            curr += prev2
-
-        prev2 = prev1
-        prev1 = curr
-
+        twoDigit ← int(s[i-1..i])
+        IF 10 ≤ twoDigit ≤ 26:
+            curr ← curr + prev2
+        prev2 ← prev1
+        prev1 ← curr
     RETURN prev1
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
+---
+
+## Examples
+
+| Input | Output | Explanation |
+|---|---|---|
+| `"12"` | `2` | "12" can be decoded as "AB" (1,2) or "L" (12). |
+| `"226"` | `3` | "226" → "BZ" (2,26), "VF" (22,6), "BBF" (2,2,6). |
+| `"06"` | `0` | Leading zero makes decoding impossible. |
+
+---
+
+## Walkthrough
+
+Take the input `"226"`:
+
+1. Initialize `prev2 = 1`, `prev1 = 1` (first character `"2"` is valid).
+2. `i = 1` (second character `"2"`):
+   - Single‑digit: `prev1 = 1` → `curr = 1`.
+   - Two‑digit `22` is within 10‑26 → add `prev2 = 1` → `curr = 2`.
+   - Update `prev2 ← 1`, `prev1 ← 2`.
+3. `i = 2` (third character `"6"`):
+   - Single‑digit: `curr = prev1 = 2`.
+   - Two‑digit `26` is valid → add `prev2 = 1` → `curr = 3`.
+   - Update `prev2 ← 2`, `prev1 ← 3`.
+4. End of string, return `prev1 = 3`.
+
+---
+
+## Complexity Analysis
+
+| Aspect | Value |
+|---|---|
+| **Time** | O(n) where n = length of the string |
+| **Space** | O(1) |
 
 ---
 

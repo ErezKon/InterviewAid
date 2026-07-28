@@ -6,25 +6,59 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
-Check if a given permutation of digits 0-9 satisfies the "digitorial" property — where the product of digits at specific positions matches expected values based on factorial-like digit decomposition.
+Given a permutation of the digits 0‑9, determine whether it satisfies the “digitorial” property: for each position `i` (0‑based), the digit at that position must be less than or equal to `i`. This corresponds to a valid factorial number system (factoradic) representation.
 
----
+## Examples
 
-## 2. Approach: Simulation ✅
+| Input permutation | Output |
+|-------------------|--------|
+| [0,1,2,3,4,5,6,7,8,9] | true |
+| [1,0,2,3,4,5,6,7,8,9] | false |
+| [0,0,1,2,3,4,5,6,7,8] | true |
 
-```
-FUNCTION checkDigitorialPermutation(n, perm):
-    // Verify the permutation encodes the factoriadic representation
-    // Check each position's digit against the valid range
-    FOR i ← 0 TO len(perm)-1:
-        IF perm[i] > i + 1: RETURN false
+*Explanation*: At index 1 the digit must be ≤ 1; the second example violates this with digit 1 at index 0 (allowed) but digit 0 at index 1 (allowed) – actually need a better example: index 1 digit 2 > 1 → invalid.
+
+## Approach: Simulation ✅
+
+```text
+FUNCTION checkDigitorialPermutation(perm):
+    // perm is an array of length 10 containing digits 0‑9 in some order
+    FOR i ← 0 TO LENGTH(perm) - 1:
+        IF perm[i] > i:
+            RETURN false
     RETURN true
 ```
 
----
+## Walkthrough
+
+Consider `perm = [0,1,2,3,4,5,6,7,8,9]`:
+
+1. i=0, digit=0 → 0 ≤ 0 ✅
+2. i=1, digit=1 → 1 ≤ 1 ✅
+3. i=2, digit=2 → 2 ≤ 2 ✅
+... continue until i=9, digit=9 → 9 ≤ 9 ✅
+All checks pass → return `true`.
+
+For `perm = [0,2,1,3,4,5,6,7,8,9]`:
+
+- At i=1, digit=2 → 2 > 1 → return `false` immediately.
+
+## Complexity Analysis
+
+| Time | Space |
+|------|-------|
+| O(n) | O(1) |
+
+where `n` is the length of the permutation (10).
+
+## Follow‑Up Questions
+
+- How would you extend this check for a factorial representation of numbers larger than 10!
+- Can you compute the actual integer represented by a valid factoradic permutation?
+- What modifications are needed if the digits are not limited to 0‑9 but to a larger range?
 
 ## Key Takeaway
 
-> Factoriadic (factorial number system) representation problems: digit at position `i` must be in range `[0, i]`. Validate each position independently.
+> A factoradic (digitorial) permutation is valid iff each digit does not exceed its index; a single linear scan suffices.

@@ -26,6 +26,24 @@ Given an array `nums` and integers `lower` and `upper`, count pairs `(i, j)` whe
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: nums = [0,1,7,4,4,5], lower = 3, upper = 6
+Output: 6
+Explanation: The fair pairs are (0,1), (0,4), (0,5), (1,4), (1,5), (4,5).
+```
+
+**Example 2:**
+```
+Input: nums = [1,2,3,4,5], lower = 4, upper = 8
+Output: 7
+Explanation: Pairs with sums in [4,8] are (1,3), (1,4), (1,5), (2,2), (2,3), (2,4), (3,5).
+```
+
+---
+
 ## Key Insight
 
 Sort the array (pair order doesn't matter for counting). Use the identity: `countInRange(lower, upper) = countLess(upper) - countLess(lower - 1)`. Each `countLess` uses a two-pointer approach on the sorted array.
@@ -68,7 +86,12 @@ countLess(6):  pairs with sum ≤ 6
   lo=2,hi=3: 4+4=8>6 → hi=2, done → 7
 
 countLess(2):  pairs with sum ≤ 2
-  lo=0,hi=5: 0+7=7>2 → ... → count=1 (only 0+1)
+  lo=0,hi=5: 0+7=7>2 → hi=4
+  lo=0,hi=4: 0+5=5>2 → hi=3
+  lo=0,hi=3: 0+4=4>2 → hi=2
+  lo=0,hi=2: 0+4=4>2 → hi=1
+  lo=0,hi=1: 0+1=1≤2 → count+=1, lo=1
+  lo=1,hi=1 stop → 1
 
 Result: 7 - 1 = 6
 ```
@@ -80,10 +103,10 @@ Result: 7 - 1 = 6
 | Aspect | Value |
 |---|---|
 | **Time** | O(n log n) — sorting dominates |
-| **Space** | O(1) extra (in-place sort) |
+| **Space** | O(1) extra (in‑place sort) |
 
 ---
 
 ## Key Takeaway
 
-> **Counting pairs with sum in a range: sort + two-pointer `countLess`. Decompose range `[lower, upper]` into `countLess(upper) - countLess(lower-1)` for clean implementation.**
+> **Counting pairs with sum in a range: sort + two‑pointer `countLess`. Decompose range `[lower, upper]` into `countLess(upper) - countLess(lower‑1)` for clean implementation.**

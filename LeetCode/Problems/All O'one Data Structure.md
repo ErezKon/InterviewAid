@@ -7,7 +7,36 @@
 ---
 
 ## Problem Description
-Design a data structure that supports the following operations in O(1) time:
+Design a data structure that supports inserting keys, incrementing/decrementing their counts, and retrieving a key with maximal or minimal count, all in O(1) time.
+
+## 2. Examples
+
+**Example 1:**
+```
+Input: ["AllOne","inc","inc","getMaxKey","inc","getMinKey"],
+       [[],["hello"],["hello"],[],["leet"],[]]
+Output: [null,null,null,"hello",null,"leet"]
+Explanation:
+AllOne allOne = new AllOne();
+allOne.inc("hello"); // "hello" count = 1
+allOne.inc("hello"); // "hello" count = 2
+allOne.getMaxKey();   // returns "hello"
+allOne.inc("leet");  // "leet" count = 1
+allOne.getMinKey();   // returns "leet"
+```
+
+**Example 2:**
+```
+Input: ["AllOne","inc","inc","inc","dec","getMaxKey","getMinKey"],
+       [[],["a"],["b"],["b"],["b"],[],[]]
+Output: [null,null,null,null,null,"a","a"]
+Explanation:
+After operations, "a" and "b" both have count 1, so either can be returned as min or max.
+```
+
+---
+
+## Operations
 - `inc(key)`: Increment the count of `key`. If `key` does not exist, insert it with count 1.
 - `dec(key)`: Decrement the count of `key`. If the count becomes 0, remove the key.
 - `getMaxKey()`: Return any key with the maximal count.
@@ -62,7 +91,7 @@ CLASS AllOne:
 
     FUNCTION dec(key):
         curBucket ← map[key]
-        IF curBucket.count = 1:
+        IF curBucket.count == 1:
             REMOVE key FROM curBucket.keys
             DELETE map[key]
         ELSE:

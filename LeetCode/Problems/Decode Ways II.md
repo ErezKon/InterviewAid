@@ -20,24 +20,31 @@ Same DP as Decode Ways but with multiplied possibilities. `*` as a single digit 
 
 ## Approach
 
-```
+```text
 FUNCTION numDecodings(s):
-    MOD = 10^9 + 7
-    prev2 = 1; prev1 = (9 if s[0]=='*' else (0 if s[0]=='0' else 1))
+    MOD ← 10^9 + 7
+    prev2 ← 1
+    IF s[0] == '*':
+        prev1 ← 9
+    ELSE IF s[0] == '0':
+        prev1 ← 0
+    ELSE:
+        prev1 ← 1
 
     FOR i ← 1 TO len(s)-1:
-        curr = 0
-        // Single digit: s[i]
-        IF s[i] == '*': curr += 9 * prev1
-        ELSE IF s[i] != '0': curr += prev1
+        curr ← 0
+        // Single digit
+        IF s[i] == '*':
+            curr ← curr + 9 * prev1
+        ELSE IF s[i] != '0':
+            curr ← curr + prev1
+        // Two digits
+        curr ← curr + twoDigitWays(s[i-1], s[i]) * prev2
+        curr ← curr MOD MOD
+        prev2 ← prev1
+        prev1 ← curr
 
-        // Two digits: s[i-1..i]
-        // Handle all combinations of digits and '*'
-        curr += twoDigitWays(s[i-1], s[i]) * prev2
-        curr %= MOD
-        prev2 = prev1; prev1 = curr
-
-    RETURN prev1 % MOD
+    RETURN prev1 MOD MOD
 ```
 
 ---
@@ -48,6 +55,37 @@ FUNCTION numDecodings(s):
 |---|---|
 | **Time** | O(n) |
 | **Space** | O(1) |
+
+---
+
+## Examples
+
+| Input | Output | Explanation |
+|---|---|---|
+| `"*"` | `9` | `*` can be any digit 1‑9, each forms a valid decoding. |
+| `"1*"` | `18` | `1*` can be `11`‑`19` (9 ways) plus `*` as a single digit (9 ways). |
+| `"2*"` | `15` | `2*` yields `21`‑`26` (6 ways) plus single `*` (9 ways). |
+
+---
+
+## Walkthrough
+
+Consider the input `"1*"`:
+
+1. Initialize `prev2 = 1`. First character `"1"` gives `prev1 = 1`.
+2. At `i = 1` (second character `"*"`):
+   - Single‑digit contribution: `9 * prev1 = 9`.
+   - Two‑digit contribution: `twoDigitWays('1','*') = 9` (for `11`‑`19`). Multiply by `prev2 = 1` → `9`.
+   - `curr = 9 + 9 = 18`; update `prev2 ← 1`, `prev1 ← 18`.
+3. End of string, return `18`.
+
+---
+
+## Follow-Up Questions
+
+- How would you adapt the solution if `*` could also represent `0`?
+- Can the DP be extended to handle other wildcard patterns, such as `#` representing any digit 0‑9?
+- What modifications are needed to output the actual decoded strings instead of just the count?
 
 ---
 

@@ -2,131 +2,21 @@ import { tool } from '@langchain/core/tools';
 import { z } from 'zod';
 import fs from 'node:fs';
 import path from 'node:path';
-import { CONTENT_ROOT } from '../../../config/paths.js';
+import { CONTENT_ROOT, PROBLEMS_DIR } from '../../../config/paths.js';
 import { createLogger } from '../../../utils/logger.js';
+import {
+  type AuditItem,
+  type InsufficientContentItem,
+  extractSection,
+  parseInsufficientContent,
+  parseWrongPrimaryTopic,
+  parseMissingSubTopics,
+  parseSummary,
+} from '../audit-report-parser.js';
 
 const log = createLogger('read_audit_report');
 
 const DEFAULT_AUDIT_PATH = path.join(CONTENT_ROOT, 'LeetCode', 'audit_report.md');
-
-// ── Parsers for each audit section ──────────────────────────────────────────
-
-interface InsufficientContentItem {
-  filename: string;
-  missingSections: string[];
-  lines: number;
-}
-
-interface WrongPrimaryTopicItem {
-  title: string;
-  currentPrimary: string;
-  shouldBe: string;
-  additionalSubTopics: string[];
-}
-
-interface MissingSubTopicsItem {
-  title: string;
-  primary: string;
-  currentTopics: string[];
-  missingSubTopics: string[];
-}
-
-type AuditItem = InsufficientContentItem | WrongPrimaryTopicItem | MissingSubTopicsItem;
-
-function parseInsufficientContent(tableLines: string[]): InsufficientContentItem[] {
-  const items: InsufficientContentItem[] = [];
-  for (const line of tableLines) {
-    // | 1 | Active Businesses.md | examples, walkthrough, complexity | 25 |
-    const cols = line.split('|').map(c => c.trim()).filter(Boolean);
-    if (cols.length < 4 || cols[0] === '#') continue;
-    const filename = cols[1];
-    const missingSections = cols[2].split(',').map(s => s.trim()).filter(Boolean);
-    const lines = parseInt(cols[3], 10) || 0;
-    items.push({ filename, missingSections, lines });
-  }
-  return items;
-}
-
-function parseWrongPrimaryTopic(tableLines: string[]): WrongPrimaryTopicItem[] {
-  const items: WrongPrimaryTopicItem[] = [];
-  for (const line of tableLines) {
-    // | 1 | 3Sum Closest | `arrays-hashing` | `two-pointers` | — |
-    const cols = line.split('|').map(c => c.trim()).filter(Boolean);
-    if (cols.length < 5 || cols[0] === '#') continue;
-    const title = cols[1];
-    const currentPrimary = cols[2].replace(/`/g, '');
-    const shouldBe = cols[3].replace(/`/g, '');
-    const additionalRaw = cols[4].replace(/`/g, '').trim();
-    const additionalSubTopics = additionalRaw === '—' || additionalRaw === '-'
-      ? []
-      : additionalRaw.split(',').map(s => s.trim()).filter(Boolean);
-    items.push({ title, currentPrimary, shouldBe, additionalSubTopics });
-  }
-  return items;
-}
-
-function parseMissingSubTopics(tableLines: string[]): MissingSubTopicsItem[] {
-  const items: MissingSubTopicsItem[] = [];
-  for (const line of tableLines) {
-    // | 1 | 01 Matrix | `arrays-hashing` | `arrays-hashing` | `graphs` |
-    const cols = line.split('|').map(c => c.trim()).filter(Boolean);
-    if (cols.length < 5 || cols[0] === '#') continue;
-    const title = cols[1];
-    const primary = cols[2].replace(/`/g, '');
-    const currentTopics = cols[3].replace(/`/g, '').split(',').map(s => s.trim()).filter(Boolean);
-    const missingSubTopics = cols[4].replace(/`/g, '').split(',').map(s => s.trim()).filter(Boolean);
-    items.push({ title, primary, currentTopics, missingSubTopics });
-  }
-  return items;
-}
-
-function extractSection(content: string, sectionHeader: string): string[] {
-  const lines = content.split('\n');
-  let inSection = false;
-  let pastHeader = false;
-  const tableLines: string[] = [];
-
-  for (const line of lines) {
-    if (line.startsWith('## ') && inSection) break; // next section
-    if (line.includes(sectionHeader)) {
-      inSection = true;
-      continue;
-    }
-    if (inSection) {
-      // Skip sub-headers like ### 1b.
-      if (line.startsWith('### ')) { continue; }
-      // Skip the table header row and separator
-      if (line.startsWith('| #') || line.startsWith('|---')) {
-        pastHeader = true;
-        continue;
-      }
-      if (pastHeader && line.startsWith('|')) {
-        tableLines.push(line);
-      }
-    }
-  }
-  return tableLines;
-}
-
-function parseSummary(content: string): Record<string, number> {
-  const summary: Record<string, number> = {};
-  const headerMatch = content.match(/\*\*Total files scanned:\*\*\s*(\d+)/);
-  if (headerMatch) summary.totalFiles = parseInt(headerMatch[1], 10);
-
-  const sufficientMatch = content.match(/\*\*Sufficient content:\*\*\s*(\d+)/);
-  if (sufficientMatch) summary.sufficientContent = parseInt(sufficientMatch[1], 10);
-
-  const insufficientMatch = content.match(/\*\*Insufficient content:\*\*\s*(\d+)/);
-  if (insufficientMatch) summary.insufficientContent = parseInt(insufficientMatch[1], 10);
-
-  const wrongTopicMatch = content.match(/\*\*Wrong primary topic:\*\*\s*(\d+)/);
-  if (wrongTopicMatch) summary.wrongPrimaryTopic = parseInt(wrongTopicMatch[1], 10);
-
-  const missingSubMatch = content.match(/\*\*Missing sub-topics:\*\*\s*(\d+)/);
-  if (missingSubMatch) summary.missingSubTopics = parseInt(missingSubMatch[1], 10);
-
-  return summary;
-}
 
 export const createReadAuditReportTool = () => tool(
   async (input) => {
@@ -154,7 +44,21 @@ export const createReadAuditReportTool = () => tool(
 
     if (issueType === 'insufficient_content') {
       const tableLines = extractSection(content, '## 1. Insufficient Content');
-      allItems = parseInsufficientContent(tableLines);
+      const parsed = parseInsufficientContent(tableLines);
+      // Filter out items that are already fixed (all missing sections now exist)
+      allItems = parsed.filter((item) => {
+        const ic = item as InsufficientContentItem;
+        const filePath = path.join(PROBLEMS_DIR, ic.filename);
+        if (!fs.existsSync(filePath)) return true; // still unfixed (file missing)
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        return ic.missingSections.some(s => {
+          if (s === 'examples')    return !/##\s+(\d+\.\s+)?Examples?/i.test(fileContent);
+          if (s === 'approach')    return !/##\s+(\d+\.\s+)?Approach/i.test(fileContent);
+          if (s === 'walkthrough') return !/##\s+(\d+\.\s+)?Walkthrough/i.test(fileContent);
+          if (s === 'complexity')  return !/##\s+(\d+\.\s+)?Complexity/i.test(fileContent);
+          return true;
+        });
+      });
     } else if (issueType === 'wrong_primary_topic') {
       const tableLines = extractSection(content, '## 2. Wrong Primary Topic');
       allItems = parseWrongPrimaryTopic(tableLines);

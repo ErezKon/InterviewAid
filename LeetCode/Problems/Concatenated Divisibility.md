@@ -8,53 +8,84 @@
 
 ## 1. Problem Description
 
-Given an array `nums` and integer `k`, find all permutations of `nums` such that concatenating all numbers in order forms a number divisible by `k`. Return the lexicographically smallest such permutation, or empty if none exists.
+Given an array `nums` and an integer `k`, arrange the numbers in some order, concatenate them to form a single large integer, and require that this integer be divisible by `k`. Return the lexicographically smallest such permutation, or an empty array if none exists.
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> Use bitmask DP tracking `(used_mask, remainder_mod_k)`. When concatenating number `x` to a value with remainder `r`, the new remainder is `(r × 10^digits(x) + x) % k`. Precompute `10^digits(x) % k` for each element.
+| nums | k | Output | Explanation |
+|------|---|--------|-------------|
+| [12, 34, 5] | 3 | [12,5,34] | Concatenation `12534` % 3 == 0 and this ordering is lexicographically smallest. |
+| [1,2,3] | 7 | [] | No permutation yields a number divisible by 7.
 
 ---
 
 ## 3. Approach: Bitmask DP — O(2^n × k × n) ✅
 
-```
+```text
 FUNCTION concatenatedDivisibility(nums, k):
-    n = len(nums)
-    SORT nums  // for lexicographic smallest
+    n = LENGTH(nums)
+    SORT nums  // ensures lexicographically smallest result
     
-    // precompute shift[i] = 10^(digits of nums[i]) % k
-    shift = [pow(10, len(str(nums[i])), k) for i in range(n)]
+    // precompute shift[i] = (10 ^ DIGITS(nums[i])) % k
+    FOR i FROM 0 TO n-1:
+        shift[i] = MODULO(POWER(10, DIGITS(nums[i])), k)
     
-    // dp[mask][rem] = true if reachable
-    // backtrack to find lexicographically smallest
-    dp = [dict() for _ in range(1 << n)]
-    dp[0][0] = -1  // base: empty, remainder 0
+    dp = ARRAY[1<<n] OF MAP   // dp[mask][rem] = (prevMask, prevRem, index)
+    dp[0][0] = NULL
     
-    FOR mask FROM 0 TO (1 << n) - 1:
-        FOR rem IN dp[mask]:
+    FOR mask FROM 0 TO (1<<n)-1:
+        FOR each rem IN dp[mask]:
             FOR i FROM 0 TO n-1:
-                IF mask & (1 << i): CONTINUE
-                // skip duplicates for lex smallest
-                newRem = (rem * shift[i] + nums[i]) % k
-                newMask = mask | (1 << i)
+                IF mask HAS_BIT i: CONTINUE
+                newRem = MODULO(rem * shift[i] + nums[i], k)
+                newMask = mask OR (1<<i)
                 IF newRem NOT IN dp[newMask]:
                     dp[newMask][newRem] = (mask, rem, i)
     
-    fullMask = (1 << n) - 1
+    fullMask = (1<<n) - 1
     IF 0 NOT IN dp[fullMask]: RETURN []
-    // backtrack to reconstruct
-    ...
+    
+    // reconstruct lexicographically smallest permutation
+    result = []
+    curMask = fullMask
+    curRem = 0
+    WHILE curMask != 0:
+        (prevMask, prevRem, idx) = dp[curMask][curRem]
+        PREPEND nums[idx] TO result
+        curMask = prevMask
+        curRem = prevRem
+    RETURN result
 ```
 
-| Time | Space |
-|------|-------|
-| O(2^n × k × n) | O(2^n × k) |
+---
+
+## 4. Walkthrough
+
+Consider `nums = [12, 34, 5]`, `k = 3`:
+1. After sorting: `[12, 5, 34]`.
+2. Precompute shifts: `shift[12] = 10^2 % 3 = 1`, `shift[5] = 10^1 % 3 = 1`, `shift[34] = 10^2 % 3 = 1`.
+3. DP builds reachable remainders for each mask. When mask = `111` (all used) and remainder = `0`, backtrack yields `[12,5,34]`.
+4. Concatenated number `12534` % 3 == 0, and no lexicographically smaller ordering satisfies the condition.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** `O(2^n × k × n)` – each state `(mask, remainder)` explores up to `n` transitions.
+- **Space:** `O(2^n × k)` – DP table stores a map for each mask.
+
+---
+
+## 6. Follow-Up Questions
+
+1. How would the solution change if `k` could be up to 10^9, making the DP over remainders infeasible?
+2. Can you adapt the algorithm to return the count of all valid permutations instead of just the smallest one?
+3. What optimizations are possible when many numbers share the same number of digits?
 
 ---
 
 ## Key Takeaway
 
-> Concatenation divisibility is tracked via modular arithmetic on the remainder. Bitmask DP over permutations with remainder state efficiently handles small `n` (≤ 15–20).
+> By tracking the remainder of the concatenated value modulo `k` in a bitmask DP, we can efficiently explore all permutations and retrieve the lexicographically smallest valid ordering.

@@ -6,16 +6,6 @@
 
 ---
 
-## Table of Contents
-- [Problem Description](#problem-description)
-- [Key Insight](#key-insight)
-- [Approach](#approach)
-- [Walkthrough](#walkthrough)
-- [Complexity Analysis](#complexity-analysis)
-- [Key Takeaway](#key-takeaway)
-
----
-
 ## Problem Description
 
 A subarray is **good** if it has at least `k` pairs of equal elements `(i, j)` where `i < j`. Return the count of good subarrays.
@@ -26,30 +16,47 @@ A subarray is **good** if it has at least `k` pairs of equal elements `(i, j)` w
 
 ---
 
-## Key Insight
+## Examples
 
-When adding element `x` to the window, it forms `count[x]` new pairs (one with each existing `x`). Use a sliding window: when pairs ≥ k, all right-extensions are also valid → add `n - right`. Then shrink from the left (removing element `y` removes `count[y] - 1` pairs).
+**Example 1:**
+```
+Input: nums = [1,1,1,1,1], k = 10
+Output: 1
+Explanation: Only the full array contains 10 equal‑element pairs.
+```
+
+**Example 2:**
+```
+Input: nums = [1,2,1,2,3], k = 2
+Output: 4
+Explanation:
+Good subarrays are [1,2,1], [2,1,2], [1,2,1,2], and [1,2,1,2,3].
+```
 
 ---
 
-## Approach: Sliding Window — O(n) ✅
+## Approach
 
-```
+```text
 FUNCTION countGood(nums, k):
-    count = Counter()
-    pairs = 0
-    left = 0
-    result = 0
+    SET count ← MAP()          // frequency of each value in window
+    SET pairs ← 0
+    SET left ← 0
+    SET result ← 0
+    SET n ← LENGTH(nums)
 
     FOR right ← 0 TO n - 1:
-        pairs += count[nums[right]]
-        count[nums[right]] += 1
+        // Adding nums[right] creates `count[nums[right]]` new equal‑element pairs
+        SET pairs ← pairs + count.GET(nums[right], 0)
+        SET count[nums[right]] ← count.GET(nums[right], 0) + 1
 
+        // While window already has enough pairs, all extensions to the right are valid
         WHILE pairs >= k:
-            result += n - right    // all extensions are valid
-            count[nums[left]] -= 1
-            pairs -= count[nums[left]]
-            left += 1
+            SET result ← result + (n - right)   // every longer subarray starting at `left` works
+            // Shrink from left
+            SET count[nums[left]] ← count[nums[left]] - 1
+            SET pairs ← pairs - count[nums[left]]   // removing left element destroys `count[nums[left]]` pairs
+            SET left ← left + 1
 
     RETURN result
 ```
@@ -58,18 +65,18 @@ FUNCTION countGood(nums, k):
 
 ## Walkthrough
 
-**Input:** `nums = [1,1,1,1,1], k = 10`
+**Using Example 1 (`nums = [1,1,1,1,1]`, `k = 10`):**
+| Step | right | left | count[1] | pairs | result |
+|------|-------|------|----------|-------|--------|
+| 1 | 0 | 0 | 1 | 0 | 0 |
+| 2 | 1 | 0 | 2 | 1 | 0 |
+| 3 | 2 | 0 | 3 | 3 | 0 |
+| 4 | 3 | 0 | 4 | 6 | 0 |
+| 5 | 4 | 0 | 5 | 10 | 0 |
+| – | – | – | – | – | **pairs ≥ k, add `n‑right = 5‑4 = 1` to result → result=1** |
+| Shrink left | left=1, count[1]=4, pairs = 10‑4 = 6 (now < k) |
 
-```
-right=0: count[1]=0→1, pairs=0
-right=1: pairs+=1→1, count[1]=2
-right=2: pairs+=2→3, count[1]=3
-right=3: pairs+=3→6, count[1]=4
-right=4: pairs+=4→10 ≥ 10
-  → result += 5-4 = 1, shrink: count[1]=3, pairs -= 3 → 7 < 10
-
-Result: 1 (only the full array has ≥ 10 pairs)
-```
+Result = 1, matching the expected output.
 
 ---
 
@@ -77,11 +84,11 @@ Result: 1 (only the full array has ≥ 10 pairs)
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n) — each element enters/leaves once |
-| **Space** | O(n) — frequency counter |
+| **Time** | O(n) — each element enters and leaves the sliding window at most once |
+| **Space** | O(m) where m is the number of distinct values (frequency map) |
 
 ---
 
 ## Key Takeaway
 
-> **Counting equal-element pairs in a sliding window: adding element x creates `count[x]` new pairs, removing x destroys `count[x]-1` pairs. When threshold is met, count all right-extensions.**
+> **Counting equal‑element pairs in a sliding window: adding an element creates `count[x]` new pairs, removing it destroys `count[x]‑1` pairs. When the pair count reaches the threshold, all right‑extensions are automatically good.**

@@ -14,19 +14,62 @@ Implement a custom `reduce` function that takes an array `nums`, a reducer funct
 
 ## 2. Approach: Iterative Accumulation — O(n) ✅
 
-```javascript
-var reduce = function(nums, fn, init) {
-    let accum = init;
-    for (const num of nums) {
-        accum = fn(accum, num);
-    }
-    return accum;
-};
+```text
+FUNCTION reduceArray(nums, fn, init):
+    SET accum ← init
+    FOR each num IN nums:
+        SET accum ← fn(accum, num)
+    END FOR
+    RETURN accum
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
+---
+
+## 3. Examples
+
+**Example 1:**
+```
+nums = [1,2,3,4]
+fn = (a, b) => a + b
+init = 0
+```
+Result: `10` (sum of all elements).
+
+**Example 2:**
+```
+nums = [1,2,3,4]
+fn = (a, b) => a * b
+init = 1
+```
+Result: `24` (product of all elements).
+
+---
+
+## 4. Walkthrough
+
+| Step | accum before | num | accum after |
+|------|--------------|-----|------------|
+| 1 | 0 | 1 | 1 |
+| 2 | 1 | 2 | 3 |
+| 3 | 3 | 3 | 6 |
+| 4 | 6 | 4 | 10 |
+
+The accumulator starts at `init` and is updated by applying `fn` with each array element.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) – each element is visited once.
+- **Space:** O(1) – only a few scalar variables are used.
+
+---
+
+## 6. Follow-Up Questions
+
+1. How would you modify the function to support early termination (e.g., stop when a condition is met)?
+2. Can you implement `reduce` recursively?
+3. How would you handle asynchronous reducer functions?
 
 ---
 

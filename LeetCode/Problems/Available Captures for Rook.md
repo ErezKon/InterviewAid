@@ -14,28 +14,63 @@ Given an 8×8 chessboard with one white rook `'R'`, bishops `'B'`, and black paw
 
 ## 2. Approach: Four-Direction Scan — O(1) ✅
 
-```
+```text
 FUNCTION numRookCaptures(board):
-    // Find the rook
-    FOR r, c IN all cells:
-        IF board[r][c] == 'R': break
+    // Locate the rook
+    FOR r FROM 0 TO 7:
+        FOR c FROM 0 TO 7:
+            IF board[r][c] == 'R':
+                rookRow ← r; rookCol ← c; BREAK
     
-    count = 0
+    captures ← 0
     FOR dr, dc IN [(0,1),(0,-1),(1,0),(-1,0)]:
-        nr, nc = r + dr, c + dc
+        nr ← rookRow + dr; nc ← rookCol + dc
         WHILE 0 ≤ nr < 8 AND 0 ≤ nc < 8:
-            IF board[nr][nc] == 'B': BREAK    // blocked
-            IF board[nr][nc] == 'p': count += 1; BREAK
-            nr += dr; nc += dc
-    RETURN count
+            IF board[nr][nc] == 'B': BREAK   // blocked by bishop
+            IF board[nr][nc] == 'p':
+                captures ← captures + 1
+                BREAK
+            nr ← nr + dr; nc ← nc + dc
+    RETURN captures
 ```
 
-| Time | Space |
-|------|-------|
-| O(1) — board is 8×8 | O(1) |
+---
+
+## 3. Examples
+
+| board | captures |
+|-------|----------|
+| `[[".",".",".",".",".",".",".","."], [".",".",".","p",".",".",".","."], [".",".",".","R",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."]]` | 1 |
+| `[[".",".",".",".",".",".",".","."], [".","p",".",".",".",".",".","."], [".",".",".","R",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."], [".",".",".",".",".",".",".","."]]` | 2 |
+
+---
+
+## 4. Walkthrough
+
+For the first board example:
+1. Locate `'R'` at (2,3).
+2. Scan right: encounter `'.'` until board edge → no pawn.
+3. Scan left: encounter `'.'` then `'p'` at (1,3) → capture count = 1, stop.
+4. Scan up/down: only `'.'` → no captures.
+Result = 1.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(1) – constant 8×8 board, four direction scans.
+- **Space:** O(1) – only a few integer variables.
+
+---
+
+## 6. Follow‑Up Questions
+
+- How would you modify the algorithm for an N×N board?
+- What if there were multiple rooks?
+- Could you extend it to handle queens with diagonal moves?
 
 ---
 
 ## Key Takeaway
 
-> Simple simulation: scan in 4 directions from the rook, stop at first piece encountered. Board is fixed size, so everything is O(1).
+> Simple simulation: scan in 4 directions from the rook, stop at the first piece encountered. Board is fixed size, so everything is O(1).

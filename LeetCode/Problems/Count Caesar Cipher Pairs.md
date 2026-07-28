@@ -12,39 +12,72 @@ Given an array of strings, count pairs `(i, j)` where one string can be transfor
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> Two strings are Caesar cipher pairs if their "difference signature" (differences between consecutive characters mod 26) are identical. Normalize each string by this signature and group.
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `["abc","bcd","ace"]` | `1` | "abc" → shift by 1 → "bcd" forms one valid pair. |
+| `["xyz","abc","def"]` | `3` | All three strings are cyclic shifts of each other, forming three pairs. |
 
 ---
 
-## 3. Approach: Canonical Form Grouping — O(n × L) ✅
+## 3. Approach
 
-```
+**Algorithm:** Canonical Form Grouping
+
+> Compute a difference signature for each word (differences between consecutive characters modulo 26). Words with identical signatures belong to the same group; each group of size *c* contributes `c·(c‑1)/2` pairs.
+
+```text
 FUNCTION countCaesarPairs(words):
-    FUNCTION normalize(word):
-        // Convert to difference-based canonical form
-        diffs = []
-        FOR i FROM 1 TO len(word)-1:
-            diffs.ADD((ord(word[i]) - ord(word[i-1])) % 26)
+    FUNCTION signature(word):
+        diffs ← []
+        FOR i ← 1 TO len(word)-1:
+            SET diff ← (ord(word[i]) - ord(word[i-1])) % 26
+            APPEND diff TO diffs
         RETURN (len(word), tuple(diffs))
     
-    groups = Counter()
-    FOR word IN words:
-        groups[normalize(word)] += 1
+    groups ← Counter()
+    FOR w IN words:
+        SET sig ← signature(w)
+        groups[sig] += 1
     
-    count = 0
-    FOR g, c IN groups.items():
-        count += c * (c - 1) / 2
-    RETURN count
+    SET total ← 0
+    FOR _, cnt IN groups.items():
+        SET total ← total + cnt * (cnt - 1) / 2
+    RETURN total
 ```
 
-| Time | Space |
-|------|-------|
-| O(n × L) | O(n × L) |
+---
+
+## 4. Walkthrough
+
+Consider `words = ["abc", "bcd", "ace"]`.
+
+| Word | Signature (len, diffs) |
+|------|------------------------|
+| abc  | (3, [1,1]) |
+| bcd  | (3, [1,1]) |
+| ace  | (3, [2,2]) |
+
+The first two share the same signature, forming one pair. The third is in a different group, so no additional pairs.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** `O(n × L)` where *n* is number of words and *L* average word length.
+- **Space:** `O(n × L)` for storing signatures and group counts.
+
+---
+
+## 6. Follow-Up Questions
+
+1. How would you handle Unicode characters beyond the English alphabet?
+2. Can you extend the solution to support variable shift amounts per character?
+3. What if the input size is massive and cannot fit in memory?
 
 ---
 
 ## Key Takeaway
 
-> Caesar cipher preserves the relative differences between characters. Normalize strings by their difference sequence and count pairs within each group using `C(n,2)`.
+> Caesar cipher preserves relative character differences. Normalizing strings by their difference sequence enables grouping and counting pairs in linear time.

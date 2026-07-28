@@ -12,6 +12,22 @@ In a functional graph (each node has exactly one outgoing edge), for each node d
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+edges = [2,0,1]
+```
+The graph forms a cycle 0 → 2 → 1 → 0. Starting from any node, we visit all three nodes, so the answer is `[3,3,3]`.
+
+**Example 2:**
+```
+edges = [1,2,3,4,2]
+```
+Nodes 0→1→2→3→4→2 create a tail (0,1) leading into a cycle (2,3,4). The answers are `[5,5,3,3,3]` because tail nodes visit the three‑node cycle plus the nodes on the tail.
+
+---
+
 ## Key Insight
 
 A functional graph decomposes into **rho-shaped** components: tails leading into cycles. Nodes on a cycle visit exactly `cycle_length` nodes. Tail nodes visit `distance_to_cycle + cycle_length` nodes. Find cycles first, then process tails via reverse topological order.
@@ -49,12 +65,35 @@ FUNCTION countVisitedNodes(edges):
 
 ---
 
+## Walkthrough
+
+| Step | Node | Action | Result for node |
+|------|------|--------|-----------------|
+| 1 | 0 | Tail node, edge → 1 | will inherit result of node 1 + 1 |
+| 2 | 1 | Tail node, edge → 2 | will inherit result of node 2 + 1 |
+| 3 | 2 | Part of cycle (2‑3‑4) length 3 | result[2] ← 3 |
+| 4 | 3 | Cycle node | result[3] ← 3 |
+| 5 | 4 | Cycle node | result[4] ← 3 |
+| 6 | Back‑propagate | result[1] ← result[2] + 1 = 4 |
+| 7 | Back‑propagate | result[0] ← result[1] + 1 = 5 |
+
+Thus the final array is `[5,4,3,3,3]`.
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Value |
 |---|---|
 | **Time** | O(n) |
 | **Space** | O(n) |
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the algorithm if each node could have multiple outgoing edges? (Leads to general directed graphs and requires DFS/BFS.)
+2. Can you compute the number of visited nodes for each node in a graph that contains self‑loops and multiple components?
 
 ---
 

@@ -3,7 +3,7 @@ import { z } from 'zod';
 import fs from 'node:fs';
 import path from 'node:path';
 import { METADATA_DIR } from '../../../config/paths.js';
-import { TAXONOMY_IDS } from '../../../indexer/taxonomy.js';
+import { TAXONOMY, TAXONOMY_IDS } from '../../../indexer/taxonomy.js';
 import { Problem } from '../../../types/problem.types.js';
 import { createLogger } from '../../../utils/logger.js';
 
@@ -34,7 +34,16 @@ export const createUpdateProblemMetadataTool = () => tool(
     }
 
     const validTopicIds = new Set(TAXONOMY_IDS);
+    // Build a lookup from slugified label → id for normalizing LLM-sent topic strings
+    const labelToId = new Map<string, string>();
+    for (const t of TAXONOMY) {
+      labelToId.set(t.id, t.id);
+      labelToId.set(slugify(t.label), t.id);
+      labelToId.set(t.label.toLowerCase(), t.id);
+    }
+
     const results: { slug: string; status: string }[] = [];
+    let rejectedSample: string[] = [];
 
     for (const update of input.updates) {
       const slug = slugify(update.title);
@@ -47,33 +56,52 @@ export const createUpdateProblemMetadataTool = () => tool(
         continue;
       }
 
-      // Validate and set topics
-      const validTopics = update.topics.filter(t => validTopicIds.has(t));
+      // Normalize and validate topics — accept IDs, slugified labels, or lowercase labels
+      const resolved: string[] = [];
+      for (const raw of update.topics) {
+        const cleaned = raw.replace(/`/g, '').trim();
+        const match = labelToId.get(cleaned) ?? labelToId.get(slugify(cleaned));
+        if (match) {
+          resolved.push(match);
+        } else if (rejectedSample.length < 5) {
+          rejectedSample.push(cleaned);
+        }
+      }
+      // Deduplicate while preserving order
+      const validTopics = [...new Set(resolved)];
+      let topicsChanged = false;
       if (validTopics.length > 0) {
         problem.topics = validTopics;
         problem.primaryTopic = validTopics[0];
+        topicsChanged = true;
       }
 
       if (update.seniority) problem.seniority = update.seniority;
       if (update.oneLiner) problem.oneLiner = update.oneLiner;
       if (update.patterns) problem.patterns = update.patterns;
 
-      results.push({ slug, status: 'updated' });
+      results.push({ slug, status: topicsChanged ? 'updated' : 'no_valid_topics' });
     }
 
     fs.writeFileSync(problemsPath, JSON.stringify(problems, null, 2));
 
     const updated = results.filter(r => r.status === 'updated').length;
     const notFound = results.filter(r => r.status === 'not_found').length;
+    const noValidTopics = results.filter(r => r.status === 'no_valid_topics').length;
+
+    if (rejectedSample.length > 0) {
+      log.warn(`Rejected topic samples: ${JSON.stringify(rejectedSample)}`);
+    }
 
     const output = JSON.stringify({
       totalUpdated: updated,
       notFound,
+      noValidTopics,
       results,
       validTopicIds: TAXONOMY_IDS,
     });
 
-    log.info(`OUTPUT: ${updated} updated, ${notFound} not found`);
+    log.info(`OUTPUT: ${updated} updated, ${notFound} not found, ${noValidTopics} no valid topics`);
     return output;
   },
   {

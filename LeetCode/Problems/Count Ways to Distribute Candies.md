@@ -12,27 +12,43 @@ Distribute `n` unique candies into `k` bags (each bag non-empty, bags are indist
 
 ---
 
-## Key Insight
+## Examples
 
-`S(n, k) = k × S(n-1, k) + S(n-1, k-1)`: either add the new candy to one of `k` existing bags, or start a new bag with it.
+| n | k | Output |
+|---|---|---|
+| 3 | 2 | 3 |
+| 4 | 2 | 7 |
+| 5 | 3 | 25 |
+
+*Explanation*: For `n = 3, k = 2`, the three valid partitions are `{ {c1,c2}, {c3} }, { {c1,c3}, {c2} }, { {c2,c3}, {c1} }`.
 
 ---
 
 ## Approach
 
 ```
+text
 FUNCTION waysToDistribute(n, k):
-    MOD = 10^9 + 7
-    // dp[i][j] = S(i, j) = Stirling number of second kind
-    dp = [[0]*(k+1) for _ in range(n+1)]
-    dp[0][0] = 1
-
+    MOD ← 1_000_000_007
+    dp ← MATRIX of size (n+1) × (k+1) filled with 0
+    dp[0][0] ← 1
     FOR i ← 1 TO n:
         FOR j ← 1 TO MIN(i, k):
-            dp[i][j] = (j * dp[i-1][j] + dp[i-1][j-1]) % MOD
-
+            dp[i][j] ← (j * dp[i-1][j] + dp[i-1][j-1]) MOD MOD
     RETURN dp[n][k]
 ```
+
+---
+
+## Walkthrough
+
+Consider `n = 4, k = 2`.
+1. Initialize `dp[0][0] = 1`.
+2. `i = 1`: `dp[1][1] = 1 * dp[0][1] + dp[0][0] = 1`.
+3. `i = 2`: `dp[2][1] = 1 * dp[1][1] + dp[1][0] = 1`; `dp[2][2] = 2 * dp[1][2] + dp[1][1] = 1`.
+4. `i = 3`: compute `dp[3][1] = 1`, `dp[3][2] = (2*dp[2][2] + dp[2][1]) = 2*1+1 = 3`.
+5. `i = 4`: `dp[4][2] = (2*dp[3][2] + dp[3][1]) = 2*3+1 = 7`.
+Result `dp[4][2] = 7` matches the example.
 
 ---
 
@@ -45,6 +61,14 @@ FUNCTION waysToDistribute(n, k):
 
 ---
 
+## Follow-Up Questions
+
+1. How would you compute the answer for very large `n` and `k` modulo a prime?
+2. Can the recurrence be optimized to use only O(k) space?
+3. How does the problem change if bags are distinguishable?
+
+---
+
 ## Key Takeaway
 
-> **Distributing n distinct items into k non-empty indistinguishable groups = Stirling number S(n,k). Recurrence: `S(n,k) = k·S(n-1,k) + S(n-1,k-1)`.**
+> **Distributing n distinct items into k non‑empty indistinguishable groups equals the Stirling number S(n,k). The recurrence `S(n,k) = k·S(n‑1,k) + S(n‑1,k‑1)` enables an O(n·k) DP solution.**

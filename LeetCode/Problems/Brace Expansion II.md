@@ -20,31 +20,71 @@ Given a brace expression like `"{a,b}{c,{d,e}}"`, expand it into a sorted list o
 
 ## 3. Approach: Recursive Parsing — O(output size) ✅
 
-```
+```text
 FUNCTION braceExpansionII(expression):
     FUNCTION parse(expr, i):
-        groups = [[""]]  // list of union groups, each a set of strings
-        WHILE i < len(expr) AND expr[i] != '}':
+        // groups holds each union branch as a list of strings
+        groups ← [[""]]
+        WHILE i < LEN(expr) AND expr[i] != '}':
             IF expr[i] == '{':
-                sub, i = parse(expr, i + 1)  // recurse
-                // concatenate sub with current group
-                groups[-1] = [a + b for a in groups[-1] for b in sub]
+                sub, i ← parse(expr, i + 1)
+                // concatenate each string in current branch with every string in sub
+                groups[-1] ← [a + b FOR a IN groups[-1] FOR b IN sub]
             ELSE IF expr[i] == ',':
-                groups.ADD([""])  // new union branch
-                i += 1
+                // start a new union branch
+                groups.APPEND([""])
+                i ← i + 1
             ELSE:
-                // letter: concatenate to current group
-                groups[-1] = [s + expr[i] for s in groups[-1]]
-                i += 1
+                // literal character, concatenate to current branch
+                groups[-1] ← [s + expr[i] FOR s IN groups[-1]]
+                i ← i + 1
         RETURN UNION of all groups, i + 1
     
-    result = parse(expression, 0)
+    result ← parse(expression, 0)
     RETURN SORTED(result)
 ```
 
-| Time | Space |
-|------|-------|
-| O(output size × depth) | O(output size) |
+---
+
+## 4. Examples
+
+| Input | Output |
+|-------|--------|
+| `{a,b}{c,{d,e}}` | `["ac","ad","ae","bc","bd","be"]` |
+| `{{a,b},{c,d}}` | `["a","b","c","d"]` |
+
+---
+
+## 5. Walkthrough
+
+Consider the expression `{a,b}{c,{d,e}}`.
+1. Parse outer level: encounter `{` → recurse.
+2. Inside first braces `a,b` → union branch produces `['a','b']`.
+3. After closing `}` we have current groups `[['a','b']]`.
+4. Next character is `{` again → recurse for `c,{d,e}`.
+5. Inside second braces: start with `['']`.
+   - Read `c` → `['c']`.
+   - Encounter `,` → start new branch `['']`.
+   - Read `{d,e}` → recurse → `['d','e']`.
+   - Concatenate with current branch → `['d','e']`.
+   - Union of branches → `['c','d','e']`.
+6. Concatenate first union `['a','b']` with second union `['c','d','e']` → `['ac','ad','ae','bc','bd','be']`.
+7. Sort the list → final output.
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** Proportional to the total size of the output strings, i.e., O(total characters produced). Each character is processed once during parsing.
+- **Space:** Stores intermediate sets of strings; worst‑case O(total output size).
+
+---
+
+## 7. Follow‑Up Questions
+
+- How would you modify the algorithm to handle escaped braces or nested commas?
+- Can you generate the output lazily without storing all strings at once?
+- Extend to support range expressions like `{1..3}`.
 
 ---
 

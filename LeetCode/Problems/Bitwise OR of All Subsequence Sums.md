@@ -8,49 +8,66 @@
 
 ## 1. Problem Description
 
-Given an array `nums` of non-negative integers, return the bitwise OR of the sums of all possible subsequences.
+Given an array `nums` of non‑negative integers, return the bitwise OR of the sums of **all** possible subsequences (including the empty subsequence whose sum is 0).
 
 ---
 
-## 2. Key Insight
+## 2. Approach: Bitset DP — O(n × S) ✅
 
-> Consider each bit position independently. If bit `b` is set in any element, then through subset sums, all bits from position `b` upward can potentially be set (due to carry propagation). The answer is simply: OR all elements together, then "fill in" all bits up to the highest set bit.
-
-Actually, the result equals the bitwise OR of all prefix sums when considering binary addition with carries. A simpler observation: the OR of all subsequence sums equals `(total_sum)` with all lower bits filled? No — the key insight is:
-
-> OR all elements. If any bit is set, all bits at that position and above (up to total sum) can be achieved. The answer = all bits that can be produced by any subset sum, which equals OR-ing the prefix sums of a sorted array considering carry.
-
-Simplest correct approach: the answer is `(1 << (highest_bit(sum) + 1)) - 1` if sum > 0, else 0. Wait — that's not right either. The correct answer: **OR all the elements together gives a lower bound. Due to carries in addition, bits above can also be set.** The result is the OR of all possible subset sums.
-
-A clean O(n × log(sum)) approach: use a bitset DP tracking achievable sums, then OR them all.
-
----
-
-## 3. Approach: Bitset DP or Observation — O(n × S) ✅
-
-```
+```text
 FUNCTION subsequenceSumOR(nums):
-    // Track all achievable subset sums via bitset
-    possible = {0}  // set of achievable sums (use bitset for efficiency)
-    prefix_or = 0
+    // possible sums tracked as a bitset where bit i indicates sum i achievable
+    possible = BITSET with only bit 0 set
     FOR num IN nums:
-        possible = possible | (possible << num)  // shift = add num
-        prefix_or |= num
+        // shift left by num and OR to include sums that use current num
+        possible = possible OR (possible << num)
     
     result = 0
-    FOR s IN possible:
-        result |= s
+    FOR i FROM 0 TO possible.MAX_INDEX():
+        IF possible[i] == 1:
+            result = result OR i
     RETURN result
 ```
 
-**Optimized insight:** The result = `(OR of all elements)` with all lower bits between set bits filled in due to carry propagation. Specifically: compute prefix OR running through sorted elements, accumulating carries.
+---
 
-| Time | Space |
-|------|-------|
-| O(n × max_sum / 64) with bitset | O(max_sum / 64) |
+## 3. Examples
+
+| Input | Output |
+|-------|--------|
+| `[1,2,3]` | `7` |
+| `[5,1,2]` | `7` |
+| `[0,0]` | `0` |
+
+---
+
+## 4. Walkthrough
+
+Take `nums = [1,2,3]`.
+
+1. Start with `possible = {0}`.
+2. Process `1`: shift `{0}` by 1 → `{1}`; union → `{0,1}`.
+3. Process `2`: shift `{0,1}` by 2 → `{2,3}`; union → `{0,1,2,3}`.
+4. Process `3`: shift `{0,1,2,3}` by 3 → `{3,4,5,6}`; union → `{0,1,2,3,4,5,6}`.
+5. OR all achievable sums: `0|1|2|3|4|5|6 = 7`.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n × maxSum / wordSize) – each number shifts the bitset.
+- **Space:** O(maxSum) bits for the bitset.
+
+---
+
+## 6. Follow-Up Questions
+
+1. Can you derive a closed‑form answer without DP using bit‑carry properties?
+2. How would the solution change if numbers could be negative?
+3. What if you needed the **count** of distinct subsequence sums instead of their OR?
 
 ---
 
 ## Key Takeaway
 
-> The OR of all subsequence sums captures both the direct bits from elements and carry-propagated bits from addition. Bitset DP efficiently tracks all achievable sums.
+> Bitset DP efficiently captures all achievable subset sums; the final OR aggregates bits from every possible sum.

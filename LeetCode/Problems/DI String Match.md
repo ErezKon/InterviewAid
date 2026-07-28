@@ -12,6 +12,18 @@ Given a string `s` of length `n` containing only `'I'` (increase) and `'D'` (dec
 
 ---
 
+## Examples
+
+| Input | Output |
+|-------|--------|
+| `"IDID"` | `[0,4,1,3,2]` |
+| `"III"` | `[0,1,2,3]` |
+| `"DDI"` | `[3,2,0,1]` |
+
+*Explanation*: The algorithm picks the smallest or largest remaining number based on the character, guaranteeing the required ordering.
+
+---
+
 ## Key Insight
 
 > Greedy: for 'I', place the smallest remaining number (guarantees the next is larger). For 'D', place the largest remaining (guarantees the next is smaller). Use two pointers `lo` and `hi`.
@@ -20,16 +32,19 @@ Given a string `s` of length `n` containing only `'I'` (increase) and `'D'` (dec
 
 ## Approach: Two Pointers Greedy ✅
 
-```
+```text
 FUNCTION diStringMatch(s):
-    lo, hi = 0, len(s)
-    result = []
+    lo ← 0
+    hi ← LENGTH(s)
+    result ← []
     FOR c IN s:
         IF c == 'I':
-            result.ADD(lo); lo += 1
+            APPEND lo TO result
+            lo ← lo + 1
         ELSE:
-            result.ADD(hi); hi -= 1
-    result.ADD(lo)
+            APPEND hi TO result
+            hi ← hi - 1
+    APPEND lo TO result  // lo == hi now
     RETURN result
 ```
 
@@ -37,7 +52,7 @@ FUNCTION diStringMatch(s):
 
 ## Walkthrough
 
-```
+```text
 s = "IDID"  →  n = 4, lo=0, hi=4
 
 I → add 0, lo=1

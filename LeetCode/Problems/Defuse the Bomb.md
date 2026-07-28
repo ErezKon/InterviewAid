@@ -31,12 +31,40 @@ FUNCTION decrypt(code, k):
 
 ---
 
+## Examples
+
+| code | k | Output |
+|------|---|--------|
+| [5,7,1,4] | 3 | [12,10,16,13] |
+| [2,4,9,3] | 0 | [0,0,0,0] |
+| [2,4,9,3] | -2 | [12,5,6,13] |
+
+---
+
+## Walkthrough
+
+1. **First example** `code = [5,7,1,4]`, `k = 3`.
+2. For index `0`, sum next three elements: `7 + 1 + 4 = 12` → `result[0] = 12`.
+3. For index `1`, sum `1 + 4 + 5 = 10` (wrap around) → `result[1] = 10`.
+4. Continue similarly for indices `2` and `3` to obtain `[12,10,16,13]`.
+5. When `k = 0`, every element becomes `0`.
+6. When `k = -2`, sum the two previous elements using modular indexing.
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n × |k|), or O(n) with sliding window |
+| **Time** | O(n × |k|) naïve, O(n) with sliding window |
 | **Space** | O(n) |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the algorithm to handle very large `k` values efficiently?
+- Can you solve the problem in-place without extra output array?
 
 ---
 

@@ -7,13 +7,33 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
-Design a circular queue with: `enQueue`, `deQueue`, `Front`, `Rear`, `isEmpty`, `isFull`.
+Design a circular queue with `enQueue`, `deQueue`, `Front`, `Rear`, `isEmpty`, `isFull` operations.
 
 ---
 
-## 2. Approach: Array with Head/Tail Pointers ✅
+## Examples
+
+**Example 1:**
+
+```text
+Input:
+["MyCircularQueue","enQueue","enQueue","enQueue","enQueue","Rear","isFull"]
+[[3],[1],[2],[3],[4],[],[]]
+
+Output:
+[null,true,true,true,false,3,true]
+```
+
+Explanation:
+- Initialize a queue of capacity 3.
+- Enqueue 1,2,3 succeed; fourth enqueue fails because the queue is full.
+- `Rear` returns 3, and `isFull` is true.
+
+---
+
+## Approach: Array with Head/Tail Pointers ✅
 
 ```
 CLASS MyCircularQueue:
@@ -49,7 +69,38 @@ CLASS MyCircularQueue:
     FUNCTION isFull(): RETURN size == capacity
 ```
 
-All operations O(1).
+All operations run in O(1) time.
+
+---
+
+## Walkthrough
+
+| Step | Operation | Head | Tail | Size | Comments |
+|------|-----------|------|------|------|----------|
+| 1 | `MyCircularQueue(3)` | -1 | -1 | 0 | Empty buffer |
+| 2 | `enQueue(1)` | 0 | 0 | 1 | Head set to 0, tail to 0 |
+| 3 | `enQueue(2)` | 0 | 1 | 2 | Tail moves to 1 |
+| 4 | `enQueue(3)` | 0 | 2 | 3 | Tail moves to 2, queue full |
+| 5 | `enQueue(4)` | 0 | 2 | 3 | Fails because `isFull()` true |
+| 6 | `Rear()` | – | – | – | Returns `data[2] = 3` |
+| 7 | `isFull()` | – | – | – | Returns true |
+
+---
+
+## Complexity Analysis
+
+| Aspect | Value |
+|---|---|
+| **Time** | O(1) per operation |
+| **Space** | O(k) for the underlying array |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the design to support dynamic resizing when the queue becomes full?
+- Can you implement the same queue using a singly linked list with a dummy head?
+- How would you make the queue thread‑safe for concurrent producers and consumers?
 
 ---
 
