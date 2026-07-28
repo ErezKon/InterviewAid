@@ -14,6 +14,8 @@ const log = createLogger('scan_problems');
  * - Lacks a "## Problem Description" or "## 1. Problem Description" section
  */
 function isInsufficient(filePath: string): boolean {
+  const basename = path.basename(filePath);
+  if (basename === 'INDEX.md') return false;
   const content = fs.readFileSync(filePath, 'utf-8');
   const lines = content.split('\n');
   if (lines.length <= 12) return true;

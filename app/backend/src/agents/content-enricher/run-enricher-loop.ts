@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { HumanMessage } from '@langchain/core/messages';
 import { createContentEnricherAgent } from './content-enricher.agent.js';
-import { PROBLEMS_DIR } from '../../config/paths.js';
+import { PROBLEMS_DIR, CONTENT_ROOT } from '../../config/paths.js';
 import { createLogger } from '../../utils/logger.js';
 
 const log = createLogger('enricher-loop');
@@ -17,6 +17,16 @@ function isRateLimitError(err: unknown): boolean {
   if (err instanceof Error) {
     const msg = err.message.toLowerCase();
     return msg.includes('429') || msg.includes('rate limit') || msg.includes('rate_limit');
+  }
+  return false;
+}
+
+function isConnectionError(err: unknown): boolean {
+  if (err instanceof Error) {
+    const msg = err.message.toLowerCase();
+    return msg.includes('connection error') || msg.includes('econnrefused')
+      || msg.includes('econnreset') || msg.includes('etimedout')
+      || msg.includes('fetch failed') || msg.includes('socket hang up');
   }
   return false;
 }
@@ -32,6 +42,8 @@ function sleep(ms: number): Promise<void> {
  * - Lacks a "## Problem Description" or "## 1. Problem Description" section
  */
 function isInsufficient(filePath: string): boolean {
+  const basename = path.basename(filePath);
+  if (basename === 'INDEX.md') return false;
   const content = fs.readFileSync(filePath, 'utf-8');
   const lines = content.split('\n');
   if (lines.length <= 12) return true;
@@ -49,11 +61,44 @@ function countInsufficient(): { total: number; insufficient: number } {
   return { total: allFiles.length, insufficient };
 }
 
+type AuditFixType = 'wrong_primary_topic' | 'missing_sub_topics' | 'insufficient_content' | 'all';
+
+const AUDIT_FIX_TYPES: AuditFixType[] = ['wrong_primary_topic', 'missing_sub_topics', 'insufficient_content'];
+
+function buildAuditMessage(auditFile: string, fixType: AuditFixType, batchSize: number): string {
+  const fixDesc = fixType === 'all'
+    ? 'Fix ALL issue types (wrong_primary_topic, missing_sub_topics, insufficient_content) from the audit report.'
+    : `Fix "${fixType}" issues from the audit report.`;
+
+  const batchHint = fixType === 'insufficient_content' || fixType === 'all'
+    ? `For content fixes use batchSize=${batchSize}. For classification fixes use batchSize=50.`
+    : `Use batchSize=50.`;
+
+  return [
+    `${fixDesc}`,
+    `Audit file: ${auditFile}`,
+    `Start by calling read_audit_report(issueType="summary", filePath="${auditFile}") to see the overview.`,
+    `Then process all batches for the specified issue type(s). ${batchHint}`,
+    `Pass filePath="${auditFile}" to every read_audit_report call.`,
+  ].join(' ');
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const modelId = args.find(a => a.startsWith('--model='))?.split('=')[1] || 'gpt-oss-120b';
   const batchSize = Number(args.find(a => a.startsWith('--batch='))?.split('=')[1] ?? 5);
   const maxBatches = Number(args.find(a => a.startsWith('--max-batches='))?.split('=')[1] ?? Infinity);
+
+  // Audit mode
+  const auditMode = args.includes('--audit');
+  const auditFile = args.find(a => a.startsWith('--audit-file='))?.split('=')[1]
+    ?? path.join(CONTENT_ROOT, 'LeetCode', 'audit_report.md');
+  const fixArg = args.find(a => a.startsWith('--fix='))?.split('=')[1] as AuditFixType | undefined;
+  const fixType: AuditFixType = fixArg && [...AUDIT_FIX_TYPES, 'all'].includes(fixArg) ? fixArg : 'all';
+
+  if (auditMode) {
+    return runAuditLoop(modelId, auditFile, fixType, batchSize, maxBatches);
+  }
 
   let batchNum = 0;
   let rateLimitStreak = 0;
@@ -119,6 +164,15 @@ async function main() {
         const waitMinutes = rateLimitStreak;
         log.info(`Rate limited — waiting ${waitMinutes} minute(s) before retry (${rateLimitStreak}/${MAX_RATE_LIMIT_RETRIES})...`);
         await sleep(waitMinutes * 60_000);
+      } else if (isConnectionError(err)) {
+        rateLimitStreak++;
+        if (rateLimitStreak > MAX_RATE_LIMIT_RETRIES) {
+          log.error(`${MAX_RATE_LIMIT_RETRIES} consecutive connection failures — aborting.`);
+          break;
+        }
+        const waitSec = rateLimitStreak * 15;
+        log.info(`Connection error — waiting ${waitSec}s before retry (${rateLimitStreak}/${MAX_RATE_LIMIT_RETRIES})...`);
+        await sleep(waitSec * 1000);
       } else {
         consecutiveOtherFailures++;
         if (err instanceof Error && err.stack) {
@@ -135,6 +189,114 @@ async function main() {
 
   const totalElapsed = ((Date.now() - globalStart) / 1000).toFixed(1);
   log.info(`=== Enricher Loop Finished: ${batchNum} batches in ${totalElapsed}s ===`);
+}
+
+async function runAuditLoop(
+  modelId: string,
+  auditFile: string,
+  fixType: AuditFixType,
+  batchSize: number,
+  maxBatches: number,
+) {
+  if (!fs.existsSync(auditFile)) {
+    log.error(`Audit report not found: ${auditFile}`);
+    process.exit(1);
+  }
+
+  const globalStart = Date.now();
+  const fixTypes = fixType === 'all' ? AUDIT_FIX_TYPES : [fixType];
+
+  log.info('=== Audit Fix Loop Started ===');
+  log.info(`Config: model=${modelId}, auditFile=${auditFile}, fixTypes=${fixTypes.join(',')}, maxBatches=${maxBatches === Infinity ? '∞' : maxBatches}`);
+
+  let totalBatches = 0;
+  let rateLimitStreak = 0;
+  const MAX_RATE_LIMIT_RETRIES = 5;
+  let consecutiveOtherFailures = 0;
+  const MAX_OTHER_FAILURES = 3;
+
+  for (const currentFixType of fixTypes) {
+    log.info(`--- Processing issue type: ${currentFixType} ---`);
+    let batchNum = 0;
+
+    while (true) {
+      if (batchNum >= maxBatches) {
+        log.info(`Reached max batches limit (${maxBatches}) for ${currentFixType}. Moving on.`);
+        break;
+      }
+
+      batchNum++;
+      totalBatches++;
+      const batchStart = Date.now();
+      log.info(`--- ${currentFixType} batch ${batchNum} starting ---`);
+
+      try {
+        const { agent, def } = await createContentEnricherAgent(modelId);
+        log.info(`Agent created with model ${def.id}`);
+
+        const message = buildAuditMessage(auditFile, currentFixType, batchSize);
+
+        const result = await agent.invoke(
+          { messages: [new HumanMessage(message)] },
+          { recursionLimit: 200 },
+        );
+
+        const lastMsg = result.messages?.[result.messages.length - 1];
+        const content = typeof lastMsg?.content === 'string' ? lastMsg.content : '';
+        const elapsed = ((Date.now() - batchStart) / 1000).toFixed(1);
+        log.info(`Batch completed in ${elapsed}s — ${content.slice(0, 200)}`);
+        rateLimitStreak = 0;
+        consecutiveOtherFailures = 0;
+
+        // For classification fixes the agent processes all items in one invocation
+        // (using internal pagination via read_audit_report), so we break after one pass.
+        if (currentFixType !== 'insufficient_content') {
+          break;
+        }
+
+        // For content fixes, check if there are still insufficient files
+        const { insufficient } = countInsufficient();
+        if (insufficient === 0) {
+          log.info(`No more insufficient files. Done with ${currentFixType}.`);
+          break;
+        }
+      } catch (err) {
+        const elapsed = ((Date.now() - batchStart) / 1000).toFixed(1);
+        log.error(`Batch failed after ${elapsed}s: ${err instanceof Error ? err.message : String(err)}`);
+
+        if (isRateLimitError(err)) {
+          rateLimitStreak++;
+          if (rateLimitStreak > MAX_RATE_LIMIT_RETRIES) {
+            log.error(`${MAX_RATE_LIMIT_RETRIES} consecutive rate-limit failures — aborting.`);
+            break;
+          }
+          const waitMinutes = rateLimitStreak;
+          log.info(`Rate limited — waiting ${waitMinutes} minute(s) before retry...`);
+          await sleep(waitMinutes * 60_000);
+        } else if (isConnectionError(err)) {
+          rateLimitStreak++;
+          if (rateLimitStreak > MAX_RATE_LIMIT_RETRIES) {
+            log.error(`${MAX_RATE_LIMIT_RETRIES} consecutive connection failures — aborting.`);
+            break;
+          }
+          const waitSec = rateLimitStreak * 15;
+          log.info(`Connection error — waiting ${waitSec}s before retry (${rateLimitStreak}/${MAX_RATE_LIMIT_RETRIES})...`);
+          await sleep(waitSec * 1000);
+        } else {
+          consecutiveOtherFailures++;
+          if (err instanceof Error && err.stack) console.error(err.stack);
+          if (consecutiveOtherFailures >= MAX_OTHER_FAILURES) {
+            log.error(`${MAX_OTHER_FAILURES} consecutive failures — aborting ${currentFixType}.`);
+            break;
+          }
+          log.info(`Continuing (${consecutiveOtherFailures}/${MAX_OTHER_FAILURES} failures)...`);
+        }
+      }
+    }
+  }
+
+  const totalElapsed = ((Date.now() - globalStart) / 1000).toFixed(1);
+  log.info(`=== Audit Fix Loop Finished: ${totalBatches} batches in ${totalElapsed}s ===`);
 }
 
 main().catch(err => {

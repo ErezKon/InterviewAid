@@ -5,6 +5,7 @@ import { createScanProblemsTool } from './tools/scan-problems.tool.js';
 import { createReadProblemFileTool } from './tools/read-problem-file.tool.js';
 import { createEnrichProblemFileTool } from './tools/enrich-problem-file.tool.js';
 import { createUpdateProblemMetadataTool } from './tools/update-problem-metadata.tool.js';
+import { createReadAuditReportTool } from './tools/read-audit-report.tool.js';
 import { CONTENT_ENRICHER_SYSTEM_PROMPT } from './content-enricher.prompt.js';
 import { createLogger } from '../../utils/logger.js';
 
@@ -19,6 +20,7 @@ export async function createContentEnricherAgent(modelId?: string): Promise<{ ag
     createReadProblemFileTool(),
     createEnrichProblemFileTool(),
     createUpdateProblemMetadataTool(),
+    createReadAuditReportTool(),
   ];
 
   const agent = createReactAgent({
