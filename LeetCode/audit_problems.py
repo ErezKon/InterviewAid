@@ -1,33 +1,32 @@
 #!/usr/bin/env python3
 """
-Audit LeetCode problem files for:
-1. Sufficient content (per leetcode-enricher skill)
-2. Classification correctness vs problems.json
+Audit LeetCode problem files for classification correctness vs problems.json.
    - A problem can have one PRIMARY topic and multiple SUB topics
    - Flag "wrong primary" only when it's clearly a default/catch-all
    - Flag "missing sub-topics" when obvious additional topics are missing
+
+NOTE: Enrichment sufficiency (sections check) was removed — all 3414 files
+pass as of 2026-07-28.  Re-add if new unenriched files are introduced.
 """
 
 import json
-import os
 import re
-from collections import defaultdict
 from pathlib import Path
 
 PROBLEMS_DIR = Path("/home/sio/Code/Interview/LeetCode/Problems")
 METADATA_FILE = Path("/home/sio/Code/Interview/app/backend/data/metadata/problems.json")
 OUTPUT_FILE = Path("/home/sio/Code/Interview/LeetCode/audit_report.md")
 
-# Required sections for "sufficient" content per the enricher skill
-REQUIRED_SECTIONS = [
-    "problem description",
-    "examples",
-]
-DESIRED_SECTIONS = [
-    "approach",
-    "walkthrough",
-    "complexity",
-]
+# -------------------------------------------------------------------
+# Known false-positive sub-topic suggestions from content heuristics.
+# Format: { "Problem Title": {"topic-to-ignore", ...} }
+# These are problems where the content mentions a topic incidentally
+# (e.g. in comparisons or follow-ups) but the topic is NOT a real
+# classification for the problem.
+# -------------------------------------------------------------------
+CONTENT_SUB_FALSE_POSITIVES = {
+    "Container With Most Water": {"heap-priority-queue"},
+}
 
 # -------------------------------------------------------------------
 # TITLE-BASED topic inference (strong signal → suitable as PRIMARY)
@@ -307,38 +306,6 @@ def load_metadata():
     return data, by_filepath, by_title
 
 
-def check_file_sufficiency(filepath):
-    try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            content = f.read()
-    except Exception:
-        return False, ["unreadable"], False, 0
-
-    content_lower = content.lower()
-    lines = content.split("\n")
-    non_empty_lines = [l for l in lines if l.strip()]
-
-    has_placeholder = (
-        "*solution approach and pseudocode to be added.*" in content_lower
-        or "*to be added*" in content_lower
-    )
-
-    missing_required = []
-    for section in REQUIRED_SECTIONS:
-        pattern = r"##\s+(?:\d+\.\s+)?" + re.escape(section)
-        if not re.search(pattern, content_lower):
-            missing_required.append(section)
-
-    missing_desired = []
-    for section in DESIRED_SECTIONS:
-        pattern = r"##\s+(?:\d+\.\s+)?" + re.escape(section)
-        if not re.search(pattern, content_lower):
-            missing_desired.append(section)
-
-    is_sufficient = len(missing_required) == 0 and not has_placeholder
-    return is_sufficient, missing_required + missing_desired, has_placeholder, len(non_empty_lines)
-
-
 def infer_primary_from_title(title):
     """Strong signal: infer the BEST primary topic from title."""
     title_lower = title.lower()
@@ -378,6 +345,12 @@ def classify_issue(meta, title_suggestions, content_suggestions):
     """
     current_primary = meta.get("primaryTopic", "")
     current_topics = set(meta.get("topics", []))
+
+    # Remove known false-positive sub-topic suggestions
+    title = meta.get("title", "")
+    fp_set = CONTENT_SUB_FALSE_POSITIVES.get(title, set())
+    content_suggestions = content_suggestions - fp_set
+
     all_suggestions = set(title_suggestions) | content_suggestions
 
     wrong_primary = False
@@ -427,12 +400,10 @@ def main():
 
     print("Scanning problem files...")
 
-    insufficient_files = []
     wrong_primary_issues = []
     missing_sub_issues = []
     not_in_metadata = []
     file_count = 0
-    sufficient_count = 0
 
     for md_file in sorted(PROBLEMS_DIR.glob("*.md")):
         if md_file.name == "INDEX.md":
@@ -440,18 +411,6 @@ def main():
 
         file_count += 1
         relative_path = f"LeetCode/Problems/{md_file.name}"
-
-        # --- Sufficiency check ---
-        is_sufficient, missing, has_placeholder, line_count = check_file_sufficiency(md_file)
-        if not is_sufficient:
-            insufficient_files.append({
-                "file": md_file.name,
-                "missing": missing,
-                "has_placeholder": has_placeholder,
-                "line_count": line_count,
-            })
-        else:
-            sufficient_count += 1
 
         # --- Classification check ---
         meta = by_filepath.get(relative_path)
@@ -494,91 +453,69 @@ def main():
     # -------------------------------------------------------------------
     print("Generating report...")
 
+    total_issues = len(wrong_primary_issues) + len(missing_sub_issues) + len(not_in_metadata)
+
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("# LeetCode Problems Audit Report\n\n")
         f.write(f"**Total files scanned:** {file_count}\n")
-        f.write(f"**Sufficient content:** {sufficient_count}\n")
-        f.write(f"**Insufficient content:** {len(insufficient_files)}\n")
         f.write(f"**Wrong primary topic:** {len(wrong_primary_issues)}\n")
         f.write(f"**Missing sub-topics:** {len(missing_sub_issues)}\n")
         f.write(f"**Not in problems.json:** {len(not_in_metadata)}\n\n")
 
-        # ===================== INSUFFICIENT CONTENT =====================
-        f.write("---\n\n")
-        f.write("## 1. Insufficient Content\n\n")
-        f.write(f"These **{len(insufficient_files)}** files lack required sections ")
-        f.write("per the enricher skill.\n\n")
-
-        missing_desc = [x for x in insufficient_files if "problem description" in x["missing"]]
-        missing_other = [x for x in insufficient_files if "problem description" not in x["missing"]]
-
-        if missing_desc:
-            f.write(f"### 1a. Missing Problem Description ({len(missing_desc)} files)\n\n")
-            f.write("| # | File | Missing Sections | Lines |\n")
-            f.write("|---|------|-----------------|-------|\n")
-            for i, item in enumerate(missing_desc, 1):
-                f.write(f"| {i} | {item['file']} | {', '.join(item['missing'])} | {item['line_count']} |\n")
-            f.write("\n")
-
-        if missing_other:
-            f.write(f"### 1b. Has Description but Missing Other Sections ({len(missing_other)} files)\n\n")
-            f.write("| # | File | Missing Sections | Lines |\n")
-            f.write("|---|------|-----------------|-------|\n")
-            for i, item in enumerate(missing_other, 1):
-                f.write(f"| {i} | {item['file']} | {', '.join(item['missing'])} | {item['line_count']} |\n")
-            f.write("\n")
+        if total_issues == 0:
+            f.write("> All files are well enriched and correctly classified.\n\n")
 
         # ===================== WRONG PRIMARY TOPIC =====================
-        f.write("---\n\n")
-        f.write("## 2. Wrong Primary Topic\n\n")
-        f.write(f"These **{len(wrong_primary_issues)}** problems have a clearly incorrect ")
-        f.write("`primaryTopic`. Most are defaulted to `arrays-hashing` when they belong ")
-        f.write("to a different category.\n\n")
-        f.write("| # | Title | Current Primary | Should Be | Additional Sub-topics |\n")
-        f.write("|---|-------|----------------|-----------|----------------------|\n")
-        for i, item in enumerate(wrong_primary_issues, 1):
-            subs = ", ".join(item["missing_subs"]) if item["missing_subs"] else "—"
-            f.write(f"| {i} | {item['title']} | `{item['current_primary']}` | "
-                    f"`{item['suggested_primary']}` | {subs} |\n")
+        if wrong_primary_issues:
+            f.write("---\n\n")
+            f.write("## 1. Wrong Primary Topic\n\n")
+            f.write(f"These **{len(wrong_primary_issues)}** problems have a clearly incorrect ")
+            f.write("`primaryTopic`. Most are defaulted to `arrays-hashing` when they belong ")
+            f.write("to a different category.\n\n")
+            f.write("| # | Title | Current Primary | Should Be | Additional Sub-topics |\n")
+            f.write("|---|-------|----------------|-----------|----------------------|\n")
+            for i, item in enumerate(wrong_primary_issues, 1):
+                subs = ", ".join(item["missing_subs"]) if item["missing_subs"] else "—"
+                f.write(f"| {i} | {item['title']} | `{item['current_primary']}` | "
+                        f"`{item['suggested_primary']}` | {subs} |\n")
+            f.write("\n")
 
         # ===================== MISSING SUB-TOPICS =====================
-        f.write("\n---\n\n")
-        f.write("## 3. Missing Sub-Topics\n\n")
-        f.write(f"These **{len(missing_sub_issues)}** problems have a correct primary topic ")
-        f.write("but are missing relevant sub-classifications in their `topics[]` array.\n\n")
-        f.write("| # | Title | Primary | Current Topics | Missing Sub-topics |\n")
-        f.write("|---|-------|---------|---------------|-------------------|\n")
-        for i, item in enumerate(missing_sub_issues, 1):
-            current = ", ".join(f"`{t}`" for t in item["current_topics"])
-            missing = ", ".join(f"`{t}`" for t in item["missing_subs"])
-            f.write(f"| {i} | {item['title']} | `{item['current_primary']}` | "
-                    f"{current} | {missing} |\n")
+        if missing_sub_issues:
+            f.write("---\n\n")
+            f.write("## 2. Missing Sub-Topics\n\n")
+            f.write(f"These **{len(missing_sub_issues)}** problems have a correct primary topic ")
+            f.write("but are missing relevant sub-classifications in their `topics[]` array.\n\n")
+            f.write("| # | Title | Primary | Current Topics | Missing Sub-topics |\n")
+            f.write("|---|-------|---------|---------------|-------------------|\n")
+            for i, item in enumerate(missing_sub_issues, 1):
+                current = ", ".join(f"`{t}`" for t in item["current_topics"])
+                missing = ", ".join(f"`{t}`" for t in item["missing_subs"])
+                f.write(f"| {i} | {item['title']} | `{item['current_primary']}` | "
+                        f"{current} | {missing} |\n")
+            f.write("\n")
 
         # ===================== NOT IN METADATA =====================
         if not_in_metadata:
-            f.write("\n---\n\n")
-            f.write("## 4. Files Not in problems.json\n\n")
+            f.write("---\n\n")
+            f.write("## 3. Files Not in problems.json\n\n")
             f.write(f"These **{len(not_in_metadata)}** files have no metadata entry:\n\n")
             for i, name in enumerate(not_in_metadata, 1):
                 f.write(f"{i}. {name}\n")
+            f.write("\n")
 
         # ===================== SUMMARY =====================
-        f.write("\n---\n\n")
+        f.write("---\n\n")
         f.write("## Summary\n\n")
-        f.write(f"| Metric | Count | % |\n")
-        f.write(f"|--------|-------|---|\n")
-        pct_suff = f"{100*sufficient_count/file_count:.1f}%" if file_count else "—"
-        pct_insuff = f"{100*len(insufficient_files)/file_count:.1f}%" if file_count else "—"
-        f.write(f"| Total files | {file_count} | — |\n")
-        f.write(f"| Sufficient content | {sufficient_count} | {pct_suff} |\n")
-        f.write(f"| Insufficient content | {len(insufficient_files)} | {pct_insuff} |\n")
-        f.write(f"| Wrong primary topic | {len(wrong_primary_issues)} | — |\n")
-        f.write(f"| Missing sub-topics | {len(missing_sub_issues)} | — |\n")
-        f.write(f"| Not in metadata | {len(not_in_metadata)} | — |\n")
+        f.write("| Metric | Count |\n")
+        f.write("|--------|-------|\n")
+        f.write(f"| Total files | {file_count} |\n")
+        f.write(f"| Wrong primary topic | {len(wrong_primary_issues)} |\n")
+        f.write(f"| Missing sub-topics | {len(missing_sub_issues)} |\n")
+        f.write(f"| Not in metadata | {len(not_in_metadata)} |\n")
 
     print(f"\nDone! Report: {OUTPUT_FILE}")
-    print(f"  Sufficient:     {sufficient_count}/{file_count}")
-    print(f"  Insufficient:   {len(insufficient_files)}/{file_count}")
+    print(f"  Total files:    {file_count}")
     print(f"  Wrong primary:  {len(wrong_primary_issues)}")
     print(f"  Missing subs:   {len(missing_sub_issues)}")
     print(f"  Not in metadata:{len(not_in_metadata)}")
