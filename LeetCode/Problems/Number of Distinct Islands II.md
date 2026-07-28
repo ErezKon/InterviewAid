@@ -39,7 +39,37 @@ Count distinct islands considering rotations and reflections as equivalent.
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: grid = [[1,1,0,0,0],[1,0,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]
+Output: 1
+Explanation: The two islands are the same under rotation.
+```
+
+**Example 2:**
+```
+Input: grid = [[1,1,0,1,1],[1,0,0,0,1],[0,0,0,0,0],[1,1,0,1,1]]
+Output: 2
+Explanation: There are two distinct island shapes after considering rotations and reflections.
+```
+
+---
+
+## 5. Walkthrough
+
+| Step | Action |
+|------|--------|
+| 1 | Iterate over each cell; when a `1` is found, start DFS to collect all coordinates of that island.
+| 2 | For the collected coordinates, generate the 8 possible transformations (rotate 0°,90°,180°,270° and reflect each).
+| 3 | For each transformation, translate coordinates so the smallest x and y become 0 (normalization) and sort them.
+| 4 | Choose the lexicographically smallest normalized list as the island's **canonical form**.
+| 5 | Insert the canonical form into a hash set. The set size at the end is the number of distinct islands.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -48,6 +78,6 @@ Count distinct islands considering rotations and reflections as equivalent.
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
 > **Canonical form under transformations.** Generate all 8 orientations, normalize each (sort + translate to origin), pick the smallest. Same technique used in polyomino classification.

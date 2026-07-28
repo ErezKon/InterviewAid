@@ -9,8 +9,10 @@
 ## Table of Contents
 
 - [Problem Description](#problem-description)
+- [Examples](#examples)
 - [Key Insight](#key-insight)
 - [Approach: Binary Lifting — O(n log k)](#approach-binary-lifting--on-log-k-)
+- [Walkthrough](#walkthrough)
 - [Complexity Analysis](#complexity-analysis)
 - [Key Takeaway](#key-takeaway)
 
@@ -26,6 +28,27 @@ Given a functional graph where each node `i` has exactly one outgoing edge to `r
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: receiver = [1,2,0], k = 4
+Output: 6
+Explanation:
+- Starting at node 0: path 0→1→2→0→1, sum = 0+1+2+0+1 = 4
+- Starting at node 1: 1→2→0→1→2, sum = 1+2+0+1+2 = 6 (maximum)
+- Starting at node 2: 2→0→1→2→0, sum = 2+0+1+2+0 = 5
+```
+
+**Example 2:**
+```
+Input: receiver = [2,2,2], k = 3
+Output: 6
+Explanation: Starting at any node reaches node 2 three times, sum = start + 2 + 2 + 2. Starting at node 2 gives 2+2+2+2 = 8, which is maximum.
+```
+
+---
+
 ## Key Insight
 
 > With k up to 10¹⁰, simulating each pass is too slow. Use **binary lifting**: precompute for each node where you end up after 2⁰, 2¹, 2², ... steps, along with the sum of IDs accumulated. Then decompose k into powers of 2 and combine.
@@ -34,12 +57,14 @@ Given a functional graph where each node `i` has exactly one outgoing edge to `r
 
 ## Approach: Binary Lifting — O(n log k) ✅
 
-```
+```text
 FUNCTION maxValue(receiver, k):
-    n = len(receiver); LOG = log2(k) + 1
+    n = len(receiver); LOG = floor(log2(k)) + 1
     // jump[j][i] = node reached after 2^j steps from i
     // sumVal[j][i] = sum of IDs accumulated in those 2^j steps
-    jump[0][i] = receiver[i]; sumVal[0][i] = receiver[i]
+    FOR i ← 0 TO n - 1:
+        jump[0][i] = receiver[i]
+        sumVal[0][i] = receiver[i]
     
     FOR j ← 1 TO LOG:
         FOR i ← 0 TO n - 1:
@@ -50,13 +75,29 @@ FUNCTION maxValue(receiver, k):
     FOR start ← 0 TO n - 1:
         curr = start; total = start
         FOR j ← LOG DOWNTO 0:
-            IF k has bit j set:
+            IF (k >> j) & 1 == 1:
                 total += sumVal[j][curr]
                 curr = jump[j][curr]
         result = MAX(result, total)
     
     RETURN result
 ```
+
+---
+
+## Walkthrough
+
+Consider `receiver = [1,2,0]` and `k = 4`.
+1. Precompute LOG = 3 (since 2³ = 8 > 4).
+2. Build tables:
+   - `jump[0] = [1,2,0]`, `sumVal[0] = [1,2,0]`.
+   - `jump[1][i] = jump[0][jump[0][i]]` → `[2,0,1]`, `sumVal[1][i] = sumVal[0][i] + sumVal[0][jump[0][i]]` → `[1+2, 2+0, 0+1] = [3,2,1]`.
+   - `jump[2][i] = jump[1][jump[1][i]]` → `[0,1,2]`, `sumVal[2][i] = sumVal[1][i] + sumVal[1][jump[1][i]]` → `[3+1, 2+3, 1+2] = [4,5,3]`.
+3. For each start node, decompose `k=4` = `2²`.
+   - Start 0: total = 0 + sumVal[2][0] = 0 + 4 = 4, end at jump[2][0] = 0.
+   - Start 1: total = 1 + sumVal[2][1] = 1 + 5 = 6, end at 1.
+   - Start 2: total = 2 + sumVal[2][2] = 2 + 3 = 5, end at 2.
+   Maximum total = 6.
 
 ---
 

@@ -26,9 +26,19 @@ Given an integer array `nums`, you may choose **one** value and remove **all** i
 
 ---
 
-## Key Insight
+## Examples
 
-> Removing a value `v` benefits us only if `v < 0`. For each negative value, compute how much the maximum subarray sum would increase if all its occurrences were removed. Use a modified Kadane's: for each candidate value to remove, track the prefix sum gain from removing all occurrences of that value within the current subarray.
+**Example 1:**
+```
+nums = [1, -2, 3, -2, 5]
+```
+Removing `-2` (all occurrences) yields `[1,3,5]` whose maximum subarray sum is `9`. Keeping the array gives max subarray sum `7` (subarray `[3,-2,5]`). The answer is `9`.
+
+**Example 2:**
+```
+nums = [-1, -2, -3]
+```
+Removing `-1` results in `[-2, -3]` with max subarray sum `-2`. Removing `-2` gives `[-1, -3]` with `-1`. Removing `-3` gives `[-1, -2]` with `-1`. Not removing anything yields `-1`. The best achievable sum is `-1`.
 
 ---
 
@@ -36,26 +46,39 @@ Given an integer array `nums`, you may choose **one** value and remove **all** i
 
 ```
 FUNCTION maxSubarraySum(nums):
-    // Standard Kadane's for baseline
+    // Baseline using standard Kadane's algorithm
     result = Kadane(nums)
     
-    // For each distinct negative value, compute gain from removal
-    // Use modified prefix sums: for value v, 
-    //   removing it effectively adds |v| at each occurrence
-    negGain = {}    // value → cumulative gain from removing all of v so far
+    // Map each negative value to cumulative gain if removed
+    negGain = {}    // value → total |value| seen so far
     
     currSum = 0
     FOR num IN nums:
         currSum += num
         IF num < 0:
-            negGain[num] = negGain.get(num, 0) + abs(num)
+            negGain[num] = negGain.get(num, 0) + ABS(num)
+            // If we removed this value, its contribution becomes positive
             result = MAX(result, currSum + negGain[num])
-        // Reset if going below what removal would give
-        IF currSum < 0 AND currSum + max(negGain.values()) < 0:
-            currSum = 0; negGain.clear()
-    
+        // Reset when current sum becomes detrimental even after best removal
+        IF currSum < 0 AND currSum + MAX(negGain.values() OR 0) < 0:
+            currSum = 0
+            negGain.clear()
     RETURN result
 ```
+
+---
+
+## Walkthrough
+
+| Index | num | `currSum` | `negGain` (value → gain) | `result` |
+|-------|-----|-----------|--------------------------|----------|
+| 0 | 1   | 1         | {}                       | 1 |
+| 1 | -2  | -1        | {-2 → 2}                 | 1 (max of 1, -1+2) = 1 |
+| 2 | 3   | 2         | {-2 → 2}                 | 3 (subarray `[3]`) |
+| 3 | -2  | 0         | {-2 → 4}                 | 4 (remove `-2` gives sum `1+3+5` later) |
+| 4 | 5   | 5         | {-2 → 4}                 | 9 (currSum 5 + gain 4) |
+
+The algorithm discovers that removing `-2` adds a gain of `4`, turning the best subarray sum to `9`.
 
 ---
 
@@ -63,7 +86,7 @@ FUNCTION maxSubarraySum(nums):
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Modified Kadane's | **O(n)** | O(n) |
+| Modified Kadane's | **O(n)** | O(k) where k is number of distinct negative values |
 
 ---
 

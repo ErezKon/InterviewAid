@@ -30,27 +30,56 @@ Count how many strings in `words` are subsequences of `s`.
 
 ## 3. Approach: Bucket Pointers — O(n + Σ|words|) ✅
 
-```
+```text
 FUNCTION numMatchingSubseq(s, words):
-    // Bucket words by their current needed character
-    buckets = defaultdict(list)
+    // Bucket words by the character they are currently waiting for
+    buckets ← MAP from char TO LIST of iterators
     FOR word IN words:
-        buckets[word[0]].ADD(iter(word))
+        IF word IS NOT EMPTY:
+            firstChar ← word[0]
+            buckets[firstChar].ADD(ITERATOR(word))
 
-    count = 0
-    FOR char IN s:
-        waiting = buckets[char]
-        buckets[char] = []
+    count ← 0
+    FOR ch IN s:
+        waiting ← buckets[ch]
+        buckets[ch] ← []
         FOR it IN waiting:
-            next_char = next(it, None)    // advance past current match
-            next_char = next(it, None)    // peek at next needed char
-            IF next_char is None:
-                count += 1
+            // Advance iterator past the matched character
+            NEXT(it)  // discard current char
+            nextChar ← PEEK(it)  // look at next needed char, or NONE
+            IF nextChar IS NONE:
+                count ← count + 1
             ELSE:
-                buckets[next_char].ADD(it)
-
+                buckets[nextChar].ADD(it)
     RETURN count
 ```
+
+---
+
+## Examples
+
+1. **Input:** `s = "abcde"`, `words = ["a","bb","acd","ace"]`
+   **Output:** `3`
+   **Explanation:** "a", "acd" and "ace" are subsequences of `s`.
+2. **Input:** `s = "dsahjpjaw"`, `words = ["ahj","ja","ahjw"]`
+   **Output:** `2`
+   **Explanation:** "ahj" and "ja" are subsequences; "ahjw" is not because `w` appears after the end of `s`.
+
+---
+
+## Walkthrough
+
+Consider the first example.
+| Step | Character `ch` | Waiting Buckets (before) | Actions | Count |
+|------|----------------|--------------------------|---------|-------|
+| 0    | –              | a:["a"], b:["bb"], a:["acd"], a:["ace"] | Initialize buckets | 0 |
+| 1    | `a`            | a:["a","acd","ace"] | Advance all three iterators. `"a"` finishes → count=1. `"acd"` now waits for `c`. `"ace"` now waits for `c`. | 1 |
+| 2    | `b`            | b:["bb"] | Advance iterator for "bb" to wait for `b`. | 1 |
+| 3    | `c`            | c:["acd","ace"] | Advance both; now waiting for `d` and `e` respectively. | 1 |
+| 4    | `d`            | d:["acd"] | "acd" finishes → count=2. | 2 |
+| 5    | `e`            | e:["ace"] | "ace" finishes → count=3. | 3 |
+
+The algorithm processes `s` once and updates buckets accordingly, yielding the final count of 3.
 
 ---
 

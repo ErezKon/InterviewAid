@@ -15,47 +15,57 @@ Given an array `nums` of **distinct** integers, return all possible permutations
 
 ## 2. Approach: Backtracking — O(n·n!) ✅
 
-```
+```text
 FUNCTION permute(nums):
-    result = []
+    result ← []
     backtrack(nums, [], result, set())
     RETURN result
 
 FUNCTION backtrack(nums, path, result, used):
     IF len(path) == len(nums):
-        result.ADD(copy of path)
+        APPEND copy of path TO result
         RETURN
-
     FOR num IN nums:
         IF num IN used: CONTINUE
-        used.ADD(num)
-        path.ADD(num)
+        ADD num TO used
+        APPEND num TO path
         backtrack(nums, path, result, used)
-        path.REMOVE_LAST()
-        used.REMOVE(num)
-```
-
-### Alternative: Swap-based
-
-```
-FUNCTION permute(nums):
-    result = []
-    backtrack(nums, 0, result)
-    RETURN result
-
-FUNCTION backtrack(nums, start, result):
-    IF start == len(nums):
-        result.ADD(copy of nums)
-        RETURN
-    FOR i ← start TO len(nums) - 1:
-        SWAP(nums[start], nums[i])
-        backtrack(nums, start + 1, result)
-        SWAP(nums[start], nums[i])
+        REMOVE last FROM path
+        REMOVE num FROM used
 ```
 
 ---
 
-## 3. Follow-Up: Permutations II (LeetCode #47) — with duplicates?
+## 3. Examples
+
+| nums | Output |
+|------|--------|
+| [1,2,3] | [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] |
+| [0,1] | [[0,1],[1,0]] |
+
+---
+
+## 4. Walkthrough
+
+Take `nums = [1,2,3]`.
+
+1. Start with empty `path`. Choose `1` → `path=[1]`.
+2. Recurse, choose `2` → `path=[1,2]`.
+3. Recurse, choose `3` → `path=[1,2,3]` → add to result.
+4. Backtrack: remove `3`, choose next (none). Backtrack to `path=[1]`.
+5. Choose `3` → `path=[1,3]` → then `2` → add `[1,3,2]`.
+6. Continue similarly to generate all 6 permutations.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n·n!) – each of the n! permutations takes O(n) to copy.
+- **Space:** O(n) recursion stack + O(n) for current `path`.
+
+---
+
+## 6. Follow-Up: Permutations II (LeetCode #47) — with duplicates?
 
 Sort first. Skip `nums[i]` if `nums[i] == nums[i-1]` and `nums[i-1]` was not used at this level.
 

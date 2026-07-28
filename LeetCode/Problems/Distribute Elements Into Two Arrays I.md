@@ -16,18 +16,44 @@ Distribute elements of `nums` into `arr1` and `arr2`. Start with `arr1 = [nums[0
 
 ## Approach: Simulation ✅
 
-```
+```text
 FUNCTION resultArray(nums):
-    arr1 ← [nums[0]]
-    arr2 ← [nums[1]]
-    FOR i ← 2 TO length(nums) - 1 DO
+    // Initialize the two result arrays
+    SET arr1 ← [nums[0]]
+    SET arr2 ← [nums[1]]
+    // Process remaining elements
+    FOR i ← 2 TO len(nums) - 1:
         IF arr1[-1] > arr2[-1] THEN
-            arr1.ADD(nums[i])
+            APPEND nums[i] TO arr1
         ELSE
-            arr2.ADD(nums[i])
+            APPEND nums[i] TO arr2
+    // Concatenate the two arrays
     RETURN arr1 + arr2
-END FUNCTION
 ```
+
+---
+
+## Examples
+
+| nums | Expected Output |
+|------|-----------------|
+| `[2,1,3,4,5]` | `[2,3,4,5,1]` |
+| `[1,2,3]` | `[1,2,3]` |
+
+---
+
+## Walkthrough
+
+**Example 1:** `nums = [2,1,3,4,5]`
+
+| Step | arr1 | arr2 | Action |
+|------|------|------|--------|
+| Init | `[2]` | `[1]` | – |
+| i=2 (3) | `2 > 1` → append to arr1 | `[2,3]` | `[1]` |
+| i=3 (4) | `3 > 1` → append to arr1 | `[2,3,4]` | `[1]` |
+| i=4 (5) | `4 > 1` → append to arr1 | `[2,3,4,5]` | `[1]` |
+
+Result = `[2,3,4,5,1]`.
 
 ---
 
@@ -35,8 +61,16 @@ END FUNCTION
 
 | Metric | Value | Explanation |
 |--------|-------|-------------|
-| **Time** | O(n) | Single pass |
-| **Space** | O(n) | Two arrays |
+| **Time** | O(n) | Single pass through `nums` |
+| **Space** | O(n) | Output arrays store all elements |
+
+---
+
+## Follow-Up Questions
+
+1. How would the algorithm change if the comparison rule were reversed?
+2. Can you solve it in-place without extra arrays?
+3. What if the input size were much larger – would a streaming approach work?
 
 ---
 

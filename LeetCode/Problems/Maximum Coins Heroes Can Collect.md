@@ -9,38 +9,65 @@
 ## Table of Contents
 
 - [Problem Description](#problem-description)
-- [Key Insight](#key-insight)
-- [Approach: Sort + Binary Search + Prefix Sum — O((n+m) log m)](#approach-sort--binary-search--prefix-sum--onm-log-m-)
+- [Examples](#examples)
+- [Approach](#approach)
+- [Walkthrough](#walkthrough)
 - [Complexity Analysis](#complexity-analysis)
+- [Follow-Up Questions](#follow-up-questions)
 - [Key Takeaway](#key-takeaway)
 
 ---
 
 ## Problem Description
 
-Given heroes with health values and monsters with health and coin values, each hero can defeat all monsters with health ≤ hero's health. Find the total coins each hero can collect.
+Given a list of heroes with health values and a list of monsters each with a health value and a coin reward, each hero can defeat all monsters whose health is less than or equal to the hero's health. Return an array where the i‑th element is the total number of coins the i‑th hero can collect.
 
 ---
 
-## Key Insight
+## Examples
 
-> Sort monsters by health. Build a prefix sum of coins. For each hero, binary search for the rightmost monster they can defeat and use the prefix sum to get total coins.
-
----
-
-## Approach: Sort + Binary Search + Prefix Sum — O((n+m) log m) ✅
-
+**Example 1:**
 ```
-FUNCTION maxCoins(heroes, monsters, coins):
-    // Pair and sort monsters by health
-    paired = SORT(ZIP(monsters, coins) by monster health)
-    prefixCoins = PREFIX_SUM([c for (_, c) in paired])
+heroes = [3,1]
+monsters = [2,4]
+coins = [5,7]
+Output: [5,0]
+Explanation: Hero with health 3 can defeat monster 2 and collect 5 coins. Hero with health 1 cannot defeat any monster.
+```
 
-    result = []
+**Example 2:**
+```
+heroes = [5]
+monsters = [1,2,3]
+coins = [10,20,30]
+Output: [60]
+Explanation: The single hero defeats all monsters and collects 10+20+30 = 60 coins.
+```
+
+---
+
+## Approach
+
+**Algorithm:** Sort + Binary Search + Prefix Sum
+
+1. Pair each monster's health with its coin value and sort the pairs by health.
+2. Build a prefix‑sum array of the sorted coin values.
+3. For each hero, binary‑search the rightmost monster whose health ≤ hero health.
+4. Use the prefix‑sum index to retrieve the total coins the hero can collect.
+
+```text
+FUNCTION maxCoins(heroes, monsters, coins):
+    paired ← ZIP(monsters, coins)
+    SORT paired BY monster health ASCENDING
+    healths ← [h FROM paired]
+    prefix ← [0]
+    FOR (_, c) IN paired:
+        APPEND(prefix[-1] + c) TO prefix
+    result ← []
     FOR h IN heroes:
-        idx = BISECT_RIGHT(paired_healths, h) - 1
+        idx ← BISECT_RIGHT(healths, h) - 1
         IF idx >= 0:
-            result.APPEND(prefixCoins[idx + 1])
+            result.APPEND(prefix[idx + 1])
         ELSE:
             result.APPEND(0)
     RETURN result
@@ -48,14 +75,38 @@ FUNCTION maxCoins(heroes, monsters, coins):
 
 ---
 
+## Walkthrough
+
+Consider `heroes = [3,1]`, `monsters = [2,4]`, `coins = [5,7]`.
+
+| Step | Action | Data |
+|------|--------|------|
+| 1 | Pair & sort monsters | paired = [(2,5),(4,7)] |
+| 2 | Build prefix sum | prefix = [0,5,12] |
+| 3 | Hero 3: binary search → idx = 0 | coins = prefix[1] = 5 |
+| 4 | Hero 1: binary search → idx = -1 | coins = 0 |
+
+Result = [5,0].
+
+---
+
 ## Complexity Analysis
 
-| Approach | Time | Space |
-|----------|------|-------|
-| Sort + Binary Search | **O((n+m) log m)** | O(m) |
+| Metric | Complexity |
+|--------|-------------|
+| Time   | **O((n+m) log m)** – sorting `m` monsters and binary searching for each of `n` heroes |
+| Space  | **O(m)** – storage for sorted pairs and prefix sum |
+
+---
+
+## Follow-Up Questions
+
+- How would you handle updates where new monsters are added dynamically?
+- Can the solution be extended to support range queries for multiple hero health thresholds?
+- What if each hero can defeat at most `k` monsters?
 
 ---
 
 ## Key Takeaway
 
-> **"Defeat all enemies ≤ threshold" = sort enemies, prefix sum coins, binary search per hero.** Classic sort + binary search pattern for threshold queries.
+> Sorting monsters by health, building a prefix‑sum of coins, and binary‑searching per hero provides an efficient way to answer “total reward ≤ threshold” queries.

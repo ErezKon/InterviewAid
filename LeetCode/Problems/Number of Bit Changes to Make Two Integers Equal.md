@@ -30,20 +30,57 @@ Given `n` and `k`, you can only change 1-bits of `n` to 0. Return the number of 
 
 ## 3. Approach: Bit Manipulation — O(1) ✅
 
-```
+```text
 FUNCTION minChanges(n, k):
-    IF (k & ~n) != 0: RETURN -1    // k has bit n doesn't have
-    RETURN popcount(n ^ k)         // bits that differ (all are 1→0)
+    // feasibility check: k must not have 1 where n has 0
+    IF (k AND NOT n) != 0:
+        RETURN -1
+    // count bits that differ (all are 1→0 flips)
+    RETURN popcount(n XOR k)
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: n = 10 (1010₂), k = 8 (1000₂)
+Output: 1
+Explanation: Only the second least‑significant 1‑bit needs to be flipped to 0.
+```
+
+**Example 2:**
+```
+Input: n = 7 (0111₂), k = 8 (1000₂)
+Output: -1
+Explanation: k has a 1‑bit at position 3 while n has 0; cannot set 0→1.
+```
+
+---
+
+## 5. Walkthrough
+
+Take `n = 13 (1101₂)`, `k = 9 (1001₂)`.
+1. Feasibility: `k & ~n = 1001₂ & 0010₂ = 0` → possible.
+2. XOR: `n XOR k = 1101₂ XOR 1001₂ = 0100₂`.
+3. Popcount of `0100₂` is 1 → one flip needed (the second bit from the left).
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(1) |
 | **Space** | O(1) |
+
+---
+
+## 7. Follow-Up Questions
+
+- How would the solution change if you could also flip 0‑bits to 1 at a cost?
+- What if you needed to output the actual positions of bits to flip?
 
 ---
 

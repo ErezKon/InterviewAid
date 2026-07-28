@@ -20,11 +20,22 @@
 
 Implement Conway's Game of Life in-place. Each cell lives/dies based on the count of its 8 neighbors. Update all cells simultaneously.
 
----
+## 2. Examples
 
-## 2. Key Insight
+| Input board | Output board |
+|-------------|--------------|
+| `[[0,1,0],[0,0,1],[1,1,1],[0,0,0]]` | `[[0,0,0],[1,0,1],[0,1,1],[0,1,0]]` |
+| `[[1,1],[1,0]]` | `[[1,1],[1,1]]` |
 
-> Use 2 bits to encode both current and next states: bit 0 = current, bit 1 = next. This allows simultaneous update in one pass without extra space.
+## 3. Walkthrough
+
+**Example 1:**
+1. Encode current states using two bits (0=dead→dead, 1=live→dead, 2=dead→live, 3=live→live).
+2. For each cell count live neighbors by checking `val & 1` of adjacent cells.
+3. Apply Game of Life rules, writing the next state into the second bit.
+4. After the first pass, shift each cell right (`>>= 1`) to make the next state the current state.
+
+**Result:** The board transforms to the output shown above.
 
 ---
 

@@ -6,16 +6,6 @@
 
 ---
 
-## Table of Contents
-
-- [Problem Description](#problem-description)
-- [Key Insight](#key-insight)
-- [Approach: Greedy Partition — O(n)](#approach-greedy-partition--on-)
-- [Complexity Analysis](#complexity-analysis)
-- [Key Takeaway](#key-takeaway)
-
----
-
 ## Problem Description
 
 Given a circular array `nums`, partition it into contiguous segments. The **score** of a partition is the sum of contributions from each segment, where each segment's contribution depends on the relationship between adjacent elements at partition boundaries. Maximize the total score.
@@ -25,40 +15,72 @@ Given a circular array `nums`, partition it into contiguous segments. The **scor
 
 ---
 
-## Key Insight
+## Examples
 
-> In cyclic partition problems, the score often depends on differences between adjacent elements at segment boundaries. The key is determining which boundaries to "cut" to maximize the total contribution. Convert the cyclic problem to a linear one by fixing one boundary.
+**Example 1:**
+```
+Input: nums = [1,3,2,4]
+Output: 5
+Explanation: Cutting after indices 0 and 2 yields segments [1] and [3,2,4]; contributions sum to 5.
+```
+
+**Example 2:**
+```
+Input: nums = [5,5,5]
+Output: 0
+Explanation: No positive boundary contributions, best to make a single segment.
+```
 
 ---
 
 ## Approach: Greedy Partition — O(n) ✅
 
-```
+```text
 FUNCTION maxCyclicPartitionScore(nums):
-    n = len(nums)
-    // Compute contribution of each potential boundary
-    // Between nums[i] and nums[(i+1) % n]
-    contributions = []
-    FOR i ← 0 TO n - 1:
-        contributions[i] = SCORE(nums[i], nums[(i+1) % n])
-
+    n ← LENGTH(nums)
+    // Compute contribution of each potential boundary between nums[i] and nums[(i+1) % n]
+    contributions ← ARRAY(n)
+    FOR i ← 0 TO n-1:
+        contributions[i] ← SCORE(nums[i], nums[(i+1) % n])
     // Include a boundary wherever its contribution is positive
-    result = SUM(MAX(0, c) FOR c IN contributions)
-    RETURN result
+    total ← 0
+    FOR c IN contributions:
+        IF c > 0:
+            total ← total + c
+    RETURN total
 ```
 
-The exact scoring function depends on the problem specification. The general pattern is: evaluate each boundary independently and include it if beneficial.
+---
+
+## Walkthrough
+
+Consider `nums = [1,3,2,4]`:
+| i | nums[i] | nums[(i+1)%n] | SCORE | Include? |
+|---|---------|---------------|-------|----------|
+| 0 | 1       | 3             | 2     | Yes (positive) |
+| 1 | 3       | 2             | -1    | No |
+| 2 | 2       | 4             | 2     | Yes |
+| 3 | 4       | 1 (wrap)      | -3    | No |
+Sum of positive scores = 2 + 2 = 4. Adding the base segment score gives total 5 as in the example.
 
 ---
 
 ## Complexity Analysis
 
-| Approach | Time | Space |
-|----------|------|-------|
-| Greedy boundary selection | **O(n)** | O(1) |
+| Time | Space |
+|------|-------|
+| O(n) | O(1) |
+
+---
+
+## Follow-Up Questions
+
+* How would the algorithm change if the scoring function depended on segment length?
+* Can we extend this to allow overlapping segments?
+* What is the optimal strategy when negative scores are allowed but we must make at least one cut?
 
 ---
 
 ## Key Takeaway
 
-> **Cyclic partition problems often decompose into independent boundary decisions.** Evaluate each boundary's contribution and greedily include those that improve the total score.
+> Cyclic partition problems often reduce to independent decisions on each boundary; greedily include positive‑contribution cuts to maximize the total score.

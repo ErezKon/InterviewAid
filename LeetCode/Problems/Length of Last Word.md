@@ -12,21 +12,66 @@ Return the length of the last word in a string (words separated by spaces).
 
 ---
 
-## 2. Approach — O(n) ✅
+## 2. Examples
 
-```
-FUNCTION lengthOfLastWord(s):
-    RETURN len(s.strip().split()[-1])
-```
+| s | expected |
+|---|----------|
+| "Hello World" | 5 |
+| "   fly me   to   the moon  " | 4 |
+| "luffy is still joyboy" | 6 |
 
-Or iterate from the end: skip trailing spaces, count non-space characters.
-
-| Time | Space |
-|------|-------|
-| O(n) | O(1) with reverse scan |
+*Explanation*: Trim trailing spaces, then count characters of the final word.
 
 ---
 
-## 3. Key Takeaway
+## 3. Approach — O(n) ✅
 
-> Strip trailing spaces, then count characters backward until a space. One-liner with `split()` also works.
+```text
+FUNCTION lengthOfLastWord(s):
+    // Remove trailing spaces
+    SET i ← length(s) - 1
+    WHILE i ≥ 0 AND s[i] == ' ':
+        SET i ← i - 1
+    // Count characters of last word
+    SET length ← 0
+    WHILE i ≥ 0 AND s[i] != ' ':
+        SET length ← length + 1
+        SET i ← i - 1
+    RETURN length
+```
+
+---
+
+## 4. Walkthrough
+
+Consider `s = "Hello World"`:
+
+1. Start from the end, skip no trailing spaces (`i = 10`).
+2. Count characters until a space is hit: `d, l, r, o, W` → length = 5.
+3. Stop when space at index 5 is reached. Return 5.
+
+For a string with trailing spaces like `"fly me   "`:
+
+1. Move `i` left past spaces to index of `e`.
+2. Count `e, m` → length = 2.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) – single pass from the end.
+- **Space:** O(1) – only a few integer variables.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would you handle Unicode whitespace characters?
+- Could you solve it in a single pass from the start without extra space?
+- What if the input were a stream of characters?
+
+---
+
+## 7. Key Takeaway
+
+> Scan from the end, skip trailing spaces, then count until the next space. Simple O(1) space solution.

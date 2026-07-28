@@ -40,12 +40,51 @@ CLASS CustomStack:
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Operations: ["CustomStack","push","push","pop","increment","pop","pop"]
+Arguments: [[3],[1],[2],[],[2,1],[],[]]
+Output: [null,null,null,2, null,3,-1]
+Explanation:
+CustomStack cs = new CustomStack(3); // maxSize = 3
+cs.push(1); // stack = [1]
+cs.push(2); // stack = [1,2]
+cs.pop(); // returns 2, stack = [1]
+cs.increment(2,1); // stack becomes [2]
+cs.pop(); // returns 2
+cs.pop(); // returns -1, stack empty
+```
+
+---
+
+## Walkthrough
+
+| Step | Operation | Stack | Inc |
+|------|-----------|-------|-----|
+| 1 | `push(1)` | [1] | [0]
+| 2 | `push(2)` | [1,2] | [0,0]
+| 3 | `pop()` | [1] | [0] (returns 2)
+| 4 | `increment(2,1)` | [1] | [1]
+| 5 | `pop()` | [] | [] (returns 1+1=2)
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Value |
 |---|---|
 | **Time** | O(1) per push/pop/increment |
 | **Space** | O(n) |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the design to support `increment` on a range of indices instead of the bottom `k`?
+- Can you achieve O(1) amortized time without the auxiliary `inc` array?
+- How would you handle overflow of integer values?
 
 ---
 

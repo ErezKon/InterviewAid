@@ -12,6 +12,9 @@
 - [Key Insight](#key-insight)
 - [Approach: DP + LCP — O(n²)](#approach-dp--lcp--on²-)
 - [Complexity Analysis](#complexity-analysis)
+- [Examples](#examples)
+- [Walkthrough](#walkthrough)
+- [Follow-Up Questions](#follow-up-questions)
 - [Key Takeaway](#key-takeaway)
 
 ---
@@ -33,22 +36,20 @@ Given a string `s`, repeatedly delete the longest prefix that equals the followi
 
 ## Approach: DP + LCP — O(n²) ✅
 
-```
+```text
 FUNCTION deleteString(s):
-    n = len(s)
+    n ← LENGTH(s)
     // Precompute LCP[i][j] = length of longest common prefix of s[i:] and s[j:]
-    lcp = (n+1) × (n+1) of 0
+    lcp ← MATRIX(n+1, n+1) FILLED WITH 0
     FOR i ← n - 1 DOWNTO 0:
         FOR j ← n - 1 DOWNTO 0:
-            IF s[i] == s[j]:
-                lcp[i][j] = lcp[i+1][j+1] + 1
-
-    dp = [1] * n    // base: delete entire remaining string
+            IF s[i] = s[j]:
+                lcp[i][j] ← lcp[i+1][j+1] + 1
+    dp ← ARRAY(n) FILLED WITH 1    // base: delete entire remaining string
     FOR i ← n - 1 DOWNTO 0:
         FOR length ← 1 TO (n - i) / 2:
-            IF lcp[i][i + length] >= length:
-                dp[i] = MAX(dp[i], dp[i + length] + 1)
-
+            IF lcp[i][i + length] ≥ length:
+                dp[i] ← MAX(dp[i], dp[i + length] + 1)
     RETURN dp[0]
 ```
 
@@ -59,6 +60,50 @@ FUNCTION deleteString(s):
 | Approach | Time | Space |
 |----------|------|-------|
 | DP + LCP | **O(n²)** | O(n²) |
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input:  s = "abcabcabc"
+Output: 3
+Explanation:
+- Delete prefix "abc" (matches next "abc"), string becomes "abcabc".
+- Delete prefix "abc" again, string becomes "abc".
+- Delete remaining "abc".
+Total deletions = 3.
+```
+
+**Example 2:**
+```
+Input:  s = "aaaa"
+Output: 2
+Explanation:
+- Delete prefix "aa" (matches next "aa"), string becomes "aa".
+- Delete remaining "aa".
+Total deletions = 2.
+```
+
+---
+
+## Walkthrough
+
+Consider the first example `"abcabcabc"`:
+| Step | Remaining String | Action |
+|------|------------------|--------|
+| 1 | abcabcabc | Prefix `"abc"` equals next `"abc"` → delete first 3 chars |
+| 2 | abcabc | Prefix `"abc"` equals next `"abc"` → delete first 3 chars |
+| 3 | abc | No further equal prefix, delete whole string |
+The DP computes the optimal deletions by checking all possible prefix lengths using the pre‑computed LCP table.
+
+---
+
+## Follow-Up Questions
+- How would the solution change if deletions could be performed on any equal substring, not just prefixes?
+- Can the LCP pre‑computation be optimized to O(n) using suffix arrays or Z‑algorithm?
+- How would you adapt the algorithm for a streaming input where the string is received character by character?
 
 ---
 

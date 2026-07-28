@@ -14,8 +14,6 @@ Find the longest mountain subarray (strictly increases then strictly decreases, 
 
 ## 2. Approach: Two Pass — O(n) ✅
 
-`up[i]` = length of increasing run ending at i. `down[i]` = length of decreasing run starting at i.
-
 ```
 FUNCTION longestMountain(arr):
     n = len(arr)
@@ -36,12 +34,47 @@ FUNCTION longestMountain(arr):
     RETURN maxLen
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(n) |
+---
+
+## 3. Examples
+
+**Example 1:**
+```
+Input: arr = [2,1,4,7,3,2,5]
+Output: 5
+Explanation: The longest mountain is [1,4,7,3,2].
+```
+
+**Example 2:**
+```
+Input: arr = [2,2,2]
+Output: 0
+Explanation: No mountain exists because there is no strict increase then decrease.
+```
 
 ---
 
-## 3. Key Takeaway
+## 4. Walkthrough
 
-> Precompute up[] and down[] arrays. A peak at index `i` has `up[i] > 0` and `down[i] > 0`. Mountain length = `up[i] + down[i] + 1`. Can also be done in O(1) space with a single pass.
+Consider Example 1. The first pass computes `up` lengths: `[0,0,1,2,0,0,1]`. The second pass computes `down` lengths: `[0,0,2,1,1,0,0]`. At index 3 (value 7), `up[3]=2` and `down[3]=1`, giving mountain length `2+1+1=4`. At index 2, `up[2]=1` and `down[2]=2` → length `1+2+1=4`. The maximum occurs at index 3 with length 5 (including the peak itself).
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) – two linear passes.
+- **Space:** O(n) for the `up` and `down` arrays (can be reduced to O(1) with a single‑pass two‑pointer method).
+
+---
+
+## 6. Follow‑Up Questions
+
+- How would you solve the problem using O(1) extra space?
+- Can you extend the solution to handle multiple peaks and return all longest mountains?
+- What changes are needed if the mountain length must be at least `k`?
+
+---
+
+## 7. Key Takeaway
+
+> Precompute increasing and decreasing run lengths. A peak with both runs >0 forms a mountain; combine lengths to get total size.

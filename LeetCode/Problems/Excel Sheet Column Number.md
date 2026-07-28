@@ -7,40 +7,69 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
 Given an Excel column title (e.g., "A", "AB", "ZY"), return its corresponding column number.
 
 ---
 
-## 2. Approach: Base-26 Conversion — O(n) ✅
+## Approach
 
-```
+### Base-26 Conversion — O(n) ✅
+
+```text
 FUNCTION titleToNumber(columnTitle):
-    result = 0
+    SET result ← 0
     FOR char IN columnTitle:
-        result = result * 26 + (char - 'A' + 1)
-    RETURN result
-```
-
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
-
-### Reverse: Column Number to Title (#168)
-
-```
-FUNCTION convertToTitle(n):
-    result = ""
-    WHILE n > 0:
-        n -= 1
-        result = chr(n % 26 + ord('A')) + result
-        n /= 26
+        // Convert character to 1‑based value
+        SET value ← (ASCII(char) - ASCII('A') + 1)
+        SET result ← result * 26 + value
     RETURN result
 ```
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: "A"
+Output: 1
+```
+
+**Example 2:**
+```
+Input: "AB"
+Output: 28
+```
+
+**Example 3:**
+```
+Input: "ZY"
+Output: 701
+```
+
+---
+
+## Walkthrough
+
+| Step | char | result calculation |
+|------|------|--------------------|
+| 1 | 'A' | result = 0 * 26 + 1 = 1 |
+| 2 | 'B' | result = 1 * 26 + 2 = 28 |
+
+The algorithm processes each character, treating the string as a base‑26 number where 'A' maps to 1.
+
+---
+
+## Complexity Analysis
+
+| Operation | Time | Space |
+|-----------|------|-------|
+| Conversion | O(n) where n is length of title | O(1) |
+
+---
+
 ## Key Takeaway
 
-> It's base-26 but 1-indexed (A=1 not 0). For the reverse, subtract 1 before modding.
+> It's base‑26 but 1‑indexed (A=1 not 0). For the reverse, subtract 1 before modding.

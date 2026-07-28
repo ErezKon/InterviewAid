@@ -11,40 +11,72 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: DP on Remainders — O(n) ✅](#3-approach-dp-on-remainders--on-)
-4. [Key Takeaway](#4-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
 ## 1. Problem Description
 
-Find the maximum sum of elements in the array that is divisible by 3.
+Given an integer array `nums`, find the maximum possible sum of a subset of its elements such that the sum is divisible by three.
 
 ---
 
 ## 2. Key Insight
 
-> Track the best achievable sum for each remainder mod 3 (`dp[0]`, `dp[1]`, `dp[2]`). For each number, update all three remainder states.
+> Track the best achievable sum for each remainder modulo 3 (`dp[0]`, `dp[1]`, `dp[2]`). For each number, update all three remainder states based on the previous best values.
 
 ---
 
 ## 3. Approach: DP on Remainders — O(n) ✅
 
-```
-FUNCTION maxSumDivThree(nums):
-    dp = [0, -infinity, -infinity]    // best sum with remainder 0, 1, 2
+```text
+FUNCTION maxSumDivisibleByThree(nums):
+    SET dp[0] ← 0
+    SET dp[1] ← -∞
+    SET dp[2] ← -∞
 
-    FOR num IN nums:
-        temp = dp.copy()
+    FOR each num IN nums:
+        SET temp ← dp COPY
         FOR i ← 0 TO 2:
-            newRem = (i + num) % 3
-            temp[newRem] = MAX(temp[newRem], dp[i] + num)
-        dp = temp
+            SET newRem ← (i + num) MOD 3
+            SET temp[newRem] ← MAX(temp[newRem], dp[i] + num)
+        SET dp ← temp
 
     RETURN dp[0]
 ```
 
 ---
 
-## 4. Key Takeaway
+## 4. Examples
 
-> **DP on remainder mod k** — only 3 states needed. Classic pattern for "max/min sum divisible by k".
+| nums | Output |
+|------|--------|
+| [3,6,5,1,8] | 18 |
+| [4] | 0 |
+| [1,2,3,4,4] | 12 |
+
+---
+
+## 5. Walkthrough
+
+1. Initialise `dp` with `dp[0]=0` and the other remainders as negative infinity.
+2. Process each element, creating a temporary copy of `dp`.
+3. For each remainder `i`, compute the new remainder after adding `num` and update the temporary array with the larger sum.
+4. Replace `dp` with the temporary array after handling the current number.
+5. After all numbers are processed, `dp[0]` holds the largest sum divisible by three.
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** O(n) where n is the length of `nums` (single pass with constant‑size DP).
+- **Space:** O(1) extra space for the three‑element DP array.
+
+---
+
+## 7. Key Takeaway
+
+> Using a tiny DP table for each possible remainder modulo k efficiently solves “maximum sum divisible by k” problems.

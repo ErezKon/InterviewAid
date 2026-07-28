@@ -33,20 +33,52 @@ Draw cards 1..maxPts uniformly. Stop when total ≥ k. Return the probability th
 
 ## 3. Approach: DP + Sliding Window — O(n) ✅
 
-```
+```text
 FUNCTION new21Game(n, k, maxPts):
     IF k == 0 OR n >= k + maxPts: RETURN 1.0
-    dp = [0.0] * (n + 1)
-    dp[0] = 1.0
-    windowSum = 1.0
+    dp ← array of size n+1 filled with 0.0
+    dp[0] ← 1.0
+    windowSum ← 1.0
 
     FOR i ← 1 TO n:
-        dp[i] = windowSum / maxPts
-        IF i < k: windowSum += dp[i]
-        IF i >= maxPts: windowSum -= dp[i - maxPts]
+        dp[i] ← windowSum / maxPts
+        IF i < k: windowSum ← windowSum + dp[i]
+        IF i >= maxPts: windowSum ← windowSum - dp[i - maxPts]
 
-    RETURN SUM(dp[k:n+1])
+    RETURN SUM of dp[i] for i from k to n inclusive
 ```
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: n = 10, k = 1, maxPts = 10
+Output: 1.0
+Explanation: Player stops immediately because k = 1, and any draw results in a total ≤ 10.
+```
+
+**Example 2:**
+```
+Input: n = 6, k = 1, maxPts = 10
+Output: 0.6
+Explanation: Only draws of 1‑6 keep total ≤ 6. Probability = 6/10.
+```
+
+---
+
+## Walkthrough
+
+| i | windowSum before i | dp[i] | windowSum after i |
+|---|--------------------|-------|-------------------|
+| 0 | — | 1.0 | 1.0 (initial) |
+| 1 | 1.0 | 1.0/10 = 0.1 | add dp[1] (i<k? no) → 1.0 |
+| 2 | 1.0 | 1.0/10 = 0.1 | add dp[2] (i<k? no) → 1.0 |
+| … | … | … | … |
+| 6 | 1.0 | 0.1 | … |
+
+Result sum dp[1..6] = 0.6.
 
 ---
 

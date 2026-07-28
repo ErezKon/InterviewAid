@@ -56,6 +56,44 @@ FUNCTION maxDistance(points, k, sideLength):
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+points = [(0,0), (0,2), (2,2), (2,0)]   // square side = 2
+k = 2
+Output: 8
+Explanation: Choose opposite corners; perimeter distance = 8.
+```
+
+**Example 2:**
+```
+points = [(0,1), (1,2), (2,1), (1,0)]
+sideLength = 2, k = 3
+Output: 4
+Explanation: Selecting three points equally spaced gives minimum gap 4 along the perimeter.
+```
+
+---
+
+## Walkthrough
+
+1. **Convert to linear positions:**
+   - For each point, compute its distance from the bottom‑left corner moving clockwise.
+   - Example 1 yields positions `[0, 2, 6, 8]` on a perimeter of `8`.
+2. **Binary search:**
+   - Start with `lo = 0`, `hi = 8`.
+   - Mid = 4 → `canPlace(4)` succeeds (places points at 0 and 4), so `lo = 4`.
+   - Mid = 6 → fails, set `hi = 5`.
+   - Continue until `lo = 8` is the maximum feasible gap.
+3. **Greedy check (`canPlace`):**
+   - Place the first point at the smallest position.
+   - Scan forward, placing a new point whenever the distance from the last placed point reaches `minGap`.
+   - If we can place `k` points, the gap is feasible.
+4. **Result:** The final `lo` is the largest minimum distance achievable.
+
+---
+
 ## Complexity Analysis
 
 | Approach | Time | Space |

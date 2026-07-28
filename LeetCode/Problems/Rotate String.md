@@ -12,18 +12,59 @@ Given strings `s` and `goal`, return `true` if `goal` is a rotation of `s` (e.g.
 
 ---
 
+## Examples
+
+| s | goal | Output |
+|---|------|--------|
+| "abcde" | "cdeab" | true |
+| "abcde" | "abced" | false |
+| "" | "" | true |
+
+*Explanation*: Concatenating `s` with itself yields all possible rotations; checking if `goal` is a substring determines rotation.
+
+---
+
 ## Approach
 
 ```
 FUNCTION rotateString(s, goal):
-    RETURN len(s) == len(goal) AND goal IN (s + s)
+    // Ensure same length
+    IF LENGTH(s) != LENGTH(goal):
+        RETURN false
+    // Check if goal appears in s concatenated with itself
+    RETURN goal IN (s + s)
 ```
 
-`s + s` contains all rotations of `s`. Check if `goal` is a substring.
+`s + s` contains every rotation of `s`. The substring check validates rotation.
+
+---
+
+## Walkthrough
+
+Consider `s = "abcde"`, `goal = "cdeab"`.
+1. Verify lengths are equal (both 5).
+2. Compute `s + s = "abcdeabcde"`.
+3. Search for `goal` (`"cdeab"`) in `"abcdeabcde"` → found starting at index 2.
+4. Since `goal` is a substring, return `true`.
+
+If `goal = "abced"`, it does not appear in `"abcdeabcde"`, so return `false`.
+
+---
+
+## Complexity Analysis
 
 | Time | Space |
 |------|-------|
 | O(n) | O(n) |
+
+The substring search scans at most `2n` characters; additional space holds the concatenated string.
+
+---
+
+## Follow-Up Questions
+
+1. How would you solve the problem without extra space for `s + s`?
+2. Can you generalize the approach to check rotations for arrays of integers?
 
 ---
 

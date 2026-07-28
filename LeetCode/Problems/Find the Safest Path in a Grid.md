@@ -10,8 +10,10 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Multi-source BFS + Binary Search — O(n² log n) ✅](#3-approach-multi-source-bfs--binary-search--on²-log-n-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
@@ -32,7 +34,7 @@ Given an `n × n` grid with thieves at certain cells, find a path from (0,0) to 
 
 ## 3. Approach: Multi-source BFS + Binary Search — O(n² log n) ✅
 
-```
+```text
 FUNCTION maximumSafenessFactor(grid):
     // Step 1: Multi-source BFS from all thief cells
     dist ← BFS from all cells where grid[r][c] == 1
@@ -52,7 +54,44 @@ FUNCTION maximumSafenessFactor(grid):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: grid = [[0,0,1],[0,0,0],[0,0,0]]
+Output: 2
+Explanation: The safest path keeps a distance of at least 2 from the thief at (0,2).
+```
+
+**Example 2:**
+```
+Input: grid = [[0,1],[0,0]]
+Output: 1
+Explanation: Any path must pass adjacent to the thief, so the safety factor is 1.
+```
+
+---
+
+## 5. Walkthrough
+
+Consider Example 1 (3×3 grid). After multi‑source BFS, each cell receives its Manhattan distance to the thief:
+| Cell | Distance |
+|------|----------|
+| (0,0) | 2 |
+| (0,1) | 1 |
+| (0,2) | 0 |
+| (1,0) | 3 |
+| (1,1) | 2 |
+| (1,2) | 1 |
+| (2,0) | 4 |
+| (2,1) | 3 |
+| (2,2) | 2 |
+
+Binary search tries mid = 2. A BFS restricted to cells with distance ≥2 finds a path (0,0) → (1,0) → (2,0) → (2,1) → (2,2). Since reachable, lo becomes 2. Next mid = 3 fails, so answer = 2.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -61,6 +100,6 @@ FUNCTION maximumSafenessFactor(grid):
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
-> **Multi-source BFS** computes distances, then **binary search on answer** checks reachability. Alternative: max-heap Dijkstra variant for a single-pass O(n² log n) solution.
+> **Multi-source BFS** computes distances, then **binary search on answer** checks reachability. Alternative: max‑heap Dijkstra variant for a single‑pass O(n² log n) solution.

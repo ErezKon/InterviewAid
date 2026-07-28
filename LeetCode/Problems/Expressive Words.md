@@ -14,6 +14,24 @@ A word matches `s` if their character groups align and for each group: either th
 
 ---
 
+## Examples
+
+**Example 1:**
+```text
+Input: s = "heeellooo", words = ["hello","hi","heello"]
+Output: 1
+Explanation: Only "hello" can be stretched to become "heeellooo".
+```
+
+**Example 2:**
+```text
+Input: s = "zzzzzyyyyy", words = ["zzyy","zy","zzzzzy"]
+Output: 2
+Explanation: "zzyy" and "zzzzzy" are stretchy; "zy" is not because groups differ.
+```
+
+---
+
 ## Key Insight
 
 > Run-length encode both `s` and each word. Compare group-by-group: same character, and either same count or s's count ≥ 3 and ≥ word's count.

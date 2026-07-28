@@ -11,8 +11,10 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: DP Knapsack + Contribution Counting — O(n · k) ✅](#3-approach-dp-knapsack--contribution-counting)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
@@ -34,33 +36,61 @@ The **power** of an array is the number of subsequences whose sum equals a given
 
 ## 3. Approach: DP Knapsack + Contribution Counting — O(n · k) ✅
 
-```
+```text
 FUNCTION sumOfPower(nums, k):
-    // dp[j] = sum of 2^(n-size) over all subsets of sum j
-    // Equivalently: dp[j] tracks weighted count
-    dp ← array of size k+1, all 0
-    dp[0] ← 1
-
-    FOR num IN nums DO
+    // dp[j] = weighted count of subsets with sum j
+    SET dp[0..k] ← 0
+    SET dp[0] ← 1
+    FOR each num IN nums DO
+        // update sums in reverse to avoid reuse
         FOR j ← k DOWNTO num DO
-            dp[j] = (dp[j] * 2 + dp[j - num]) % MOD
+            SET dp[j] ← (dp[j] * 2 + dp[j - num]) MOD MOD
+        // for sums that cannot include num, just double the count
         FOR j ← 0 TO MIN(num-1, k) DO
-            dp[j] = dp[j] * 2 % MOD
-
+            SET dp[j] ← (dp[j] * 2) MOD MOD
     RETURN dp[k]
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
 
-| Aspect | Complexity |
-|--------|------------|
-| **Time** | O(n · k) |
-| **Space** | O(k) |
+**Example 1:**
+```
+nums = [1,2,3], k = 3
+```
+Subsequences summing to 3 are `[3]` (size 1) and `[1,2]` (size 2). Their contributions are `2^(3-1)=4` and `2^(3-2)=2` respectively, total `6`.
+
+**Example 2:**
+```
+nums = [2,2,2], k = 4
+```
+Valid subsequences: three ways to pick two `2`s. Each has size 2, contribution `2^(3-2)=2`, total `6`.
 
 ---
 
-## 5. Key Takeaway
+## 5. Walkthrough
 
-> **Contribution trick**: each subset summing to k of size s contributes `2^(n-s)`. Fold the `2^(n-s)` factor into the DP transitions by multiplying non-selected states by 2.
+Take `nums = [1,2,3]`, `k = 3`.
+
+| Step | num | dp before | dp after (updates) |
+|------|-----|-----------|--------------------|
+| 0    | -   | `[1,0,0,0]` | — |
+| 1    | 1   | update j=3..1 → dp[1]=1, others doubled → `[2,1,0,0]` |
+| 2    | 2   | update j=3..2 → dp[3]=dp[1]=1, dp[2]=dp[0]=2, double lower j → dp[0]=4, dp[1]=2 → `[4,2,2,1]` |
+| 3    | 3   | update j=3 → dp[3]=dp[3]*2 + dp[0]=1*2+4=6, double lower j → dp[0]=8, dp[1]=4, dp[2]=4 → final `dp[3]=6` |
+
+Result `dp[3]=6` matches the manual contribution sum.
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** O(n · k)
+- **Space:** O(k)
+
+---
+
+## 7. Key Takeaway
+
+> **Contribution trick**: each subset summing to k of size s contributes `2^(n-s)`. Fold the `2^(n-s)` factor into the DP transitions by multiplying non‑selected states by 2.

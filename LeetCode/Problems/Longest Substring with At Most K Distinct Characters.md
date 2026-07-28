@@ -15,43 +15,58 @@ Given a string `s` and an integer `k`, return the length of the longest substrin
 
 ## 2. Approach: Sliding Window + Hash Map — O(n) ✅
 
-```
+```text
 FUNCTION lengthOfLongestSubstringKDistinct(s, k):
     IF k == 0: RETURN 0
-
     charCount = {}
     left = 0
     maxLen = 0
-
     FOR right ← 0 TO len(s) - 1:
-        charCount[s[right]] += 1
-
+        charCount[s[right]] = charCount.get(s[right], 0) + 1
         WHILE len(charCount) > k:
-            charCount[s[left]] -= 1
+            charCount[s[left]] = charCount[s[left]] - 1
             IF charCount[s[left]] == 0:
                 DELETE charCount[s[left]]
-            left += 1
-
+            left = left + 1
         maxLen = MAX(maxLen, right - left + 1)
-
     RETURN maxLen
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(k) |
+---
+
+## 3. Examples
+
+| Input | k | Output | Explanation |
+|-------|---|--------|-------------|
+| `"eceba"` | 2 | 3 | Substring `"ece"` has 2 distinct chars.
+| `"aa"` | 1 | 2 | Whole string qualifies.
+| `"abc"` | 0 | 0 | No characters allowed.
 
 ---
 
-## Follow-Up
+## 4. Walkthrough
 
-### Longest Substring Without Repeating Characters (LeetCode #3)?
+Take `s = "eceba"`, `k = 2`.
+1. Expand right pointer, add `e` → `{e:1}`.
+2. Add `c` → `{e:1, c:1}` (size 2 ≤ k).
+3. Add `e` → `{e:2, c:1}`.
+4. Add `b` → size becomes 3 > k. Shrink left: remove `e` (count 1), still size 3, remove `c` (count 0) → `{e:1, b:1}` size 2.
+5. Continue expanding, max window length observed is 3 (`"ece"`).
 
-Special case where k = number of distinct characters (each appears at most once). Same sliding window with a set.
+---
 
-### Longest Substring with At Most Two Distinct Characters (LeetCode #159)?
+## 5. Complexity Analysis
 
-Special case where k = 2.
+- **Time:** O(n) – each character is visited at most twice (once by right, once by left).
+- **Space:** O(k) – hash map stores at most k distinct characters.
+
+---
+
+## Follow‑Up
+
+- How would you modify the solution for Unicode characters where the alphabet size is large?
+- Can you solve the problem in O(n) without a hash map by using an array of size 256 for ASCII?
+- What changes are needed for the variant "longest substring with at most k distinct *vowels*"?
 
 ---
 

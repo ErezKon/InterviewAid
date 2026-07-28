@@ -9,6 +9,7 @@
 ## Table of Contents
 
 - [Problem Description](#problem-description)
+- [Examples](#examples)
 - [Key Insight](#key-insight)
 - [Approach](#approach)
 - [Walkthrough](#walkthrough)
@@ -28,6 +29,15 @@ Given an array `nums` and integer `x`, find the minimum `|nums[i] - nums[j]|` wh
 
 ---
 
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `nums = [4,3,2,4]`, `x = 2` | `0` | Elements `4` at indices 0 and 3 have distance 3 ≥ 2, difference `|4-4| = 0` which is minimal. |
+| `nums = [1,5,9,14]`, `x = 3` | `13` | Only pairs with distance ≥3 are `(1,14)`. Difference `|1-14| = 13`. |
+
+---
+
 ## Key Insight
 
 > Maintain a **SortedList** of elements seen at least `x` positions ago. For each `nums[i]`, binary search for the closest value in the sorted set. This gives O(log n) per query.
@@ -36,7 +46,7 @@ Given an array `nums` and integer `x`, find the minimum `|nums[i] - nums[j]|` wh
 
 ## Approach: SortedList + Sliding Window — O(n log n) ✅
 
-```
+```text
 FUNCTION minAbsoluteDifference(nums, x):
     IF x = 0 THEN RETURN 0
     sl ← SortedList()
@@ -63,8 +73,7 @@ FUNCTION minAbsoluteDifference(nums, x):
 nums = [4, 3, 2, 4], x = 2
 
 i=2: add nums[0]=4. sl=[4]. bisect(2)=0 → sl[0]-2=2. minDiff=2
-i=3: add nums[1]=3. sl=[3,4]. bisect(4)=2 → sl[1]-4=0. minDiff=0? 
-     Actually sl[1]=4, 4-4=0 → minDiff=0
+i=3: add nums[1]=3. sl=[3,4]. bisect(4)=2 → sl[1]-4=0. minDiff=0
 
 Return 0 ✅
 ```

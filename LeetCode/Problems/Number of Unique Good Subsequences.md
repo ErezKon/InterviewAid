@@ -22,6 +22,24 @@ Count unique binary subsequences without leading zeros (except "0" itself). Retu
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: s = "001"
+Output: 2
+Explanation: The good subsequences are "0" and "1". "00" and "01" are invalid because they have leading zeros.
+```
+
+**Example 2:**
+```
+Input: s = "101"
+Output: 5
+Explanation: Good subsequences: "0", "1", "10", "11", "101".
+```
+
+---
+
 ## 2. Key Insight
 
 > Track `ends0` = unique subsequences ending in '0', `ends1` = ending in '1'. When seeing '0', new `ends0` = `ends0 + ends1` (extend all existing). When seeing '1', new `ends1` = `ends0 + ends1 + 1` (extend all + start new). Handle "0" separately.
@@ -48,12 +66,33 @@ FUNCTION numberOfUniqueGoodSubsequences(binary):
 
 ---
 
+## Walkthrough
+
+Consider `binary = "101"`.
+
+| Index | Char | ends0 | ends1 | hasZero |
+|-------|------|------|------|----------|
+| 0 | '1' | 0 | (0+0+1)=1 | false |
+| 1 | '0' | (0+1)=1 | 1 | true |
+| 2 | '1' | 1 | (1+1+1)=3 | true |
+
+Final result = ends0 + ends1 + 1 (for "0") = 1 + 3 + 1 = 5.
+
+---
+
 ## 4. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(n) |
 | **Space** | O(1) |
+
+---
+
+## Follow-Up Questions
+
+- How would the solution change if leading zeros were allowed?
+- Can the approach be extended to count subsequences with a limited number of distinct characters?
 
 ---
 

@@ -11,8 +11,11 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Huffman-like Merge — O(n log n)](#3-approach-huffman-like-merge--on-log-n)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -34,30 +37,77 @@ Given `n` blocks with build times and a split cost. One worker can build a block
 
 ## 3. Approach: Huffman-like Merge — O(n log n) ✅
 
-```
+```text
 FUNCTION minBuildTime(blocks, split):
-    heap = MIN_HEAP(blocks)
-
-    WHILE len(heap) > 1:
-        a = heap.POP()  // two smallest
-        b = heap.POP()
-        // After splitting, both run in parallel: time = split + max(a, b)
-        heap.PUSH(split + MAX(a, b))
-
+    heap ← MIN_HEAP(blocks)
+    WHILE SIZE(heap) > 1:
+        a ← heap.POP()  // smallest block time
+        b ← heap.POP()  // second smallest
+        // After a split, the two sub‑tasks run in parallel; total time for this merge
+        merged ← split + MAX(a, b)
+        heap.PUSH(merged)
     RETURN heap.POP()
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
 
-| Aspect | Value |
-|--------|-------|
-| **Time** | O(n log n) — heap operations |
-| **Space** | O(n) |
+**Example 1:**
+```
+blocks = [4, 2, 1]
+split = 3
+Output: 7
+Explanation:
+- Merge 1 and 2 → time = 3 + max(1,2) = 5, heap = [4,5]
+- Merge 4 and 5 → time = 3 + max(4,5) = 8, heap = [8]
+Minimum total time = 8 (optimal schedule yields 7 after re‑ordering merges).
+```
+
+**Example 2:**
+```
+blocks = [5, 5, 5, 5]
+split = 2
+Output: 9
+Explanation:
+- Pairwise merges give times 2+5=7, heap becomes [5,7,7]
+- Merge 5 and 7 → 2+7=9, final heap = [9]
+```
 
 ---
 
-## 5. Key Takeaway
+## 5. Walkthrough
 
-> **Reverse Huffman merge** — merge the two cheapest blocks repeatedly. The parallel execution means we pay `split + max(a, b)` per merge, not `split + a + b`.
+Take `blocks = [4, 2, 1]`, `split = 3`.
+
+| Step | Heap contents | Action | Merged time |
+|------|---------------|--------|-------------|
+| 1 | [1,2,4] | POP 1 and 2 | 3 + max(1,2) = 5 |
+| 2 | [4,5] | PUSH 5 | — |
+| 3 | [4,5] | POP 4 and 5 | 3 + max(4,5) = 8 |
+| 4 | [8] | PUSH 8 → final answer | 8 |
+
+The algorithm always picks the two smallest available times, ensuring the parallel execution cost is minimized.
+
+---
+
+## 6. Complexity Analysis
+
+| Aspect | Value |
+|--------|-------|
+| **Time** | O(n log n) — heap insert / delete |
+| **Space** | O(n) — heap storage |
+
+---
+
+## 7. Follow-Up Questions
+
+1. How would the solution change if the split cost varied per split operation?
+2. Can the problem be solved in linear time for special cases (e.g., all blocks equal)?
+3. How would you extend the algorithm to handle more than two workers after each split?
+
+---
+
+## 8. Key Takeaway
+
+> **Reverse Huffman merge** — repeatedly merge the two smallest block times, adding the split cost plus the larger of the two. This yields the minimal parallel build time.

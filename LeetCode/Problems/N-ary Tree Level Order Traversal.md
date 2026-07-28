@@ -9,48 +9,90 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: BFS — O(n)](#3-approach)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: BFS — O(n)](#4-approach)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
 ## 1. Problem Description
 
-Return the level order traversal of an N-ary tree as a list of lists.
+Given the root of an N-ary tree, return the level order traversal of its nodes' values as a list of lists. Each inner list contains values of nodes at the same depth from left to right.
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> Standard BFS with level-by-level processing. Process all nodes at current level, collect their children for the next level.
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `[[1,null],[3,2,4],[5,6]]` | `[[1],[3,2,4],[5,6]]` | Level 0: `[1]`; Level 1: children of 1 are `3,2,4`; Level 2: children of those nodes are `5,6`. |
+| `[[1,null]]` | `[[1]]` | Single node tree yields one level. |
 
 ---
 
-## 3. Approach: BFS — O(n) ✅
+## 3. Key Insight
 
-```
+> Perform a breadth‑first search, processing nodes level by level. Collect values of the current queue, then build the next queue from all children.
+
+---
+
+## 4. Approach: BFS — O(n) ✅
+
+```text
 FUNCTION levelOrder(root):
-    IF NOT root: RETURN []
-    result = []; queue = [root]
-    WHILE queue:
-        result.ADD([node.val for node in queue])
-        queue = [child for node in queue for child in node.children]
+    IF root IS NULL:
+        RETURN []
+    SET result ← []
+    SET queue ← [root]
+    WHILE queue IS NOT EMPTY:
+        SET levelValues ← []
+        SET nextQueue ← []
+        FOR node IN queue:
+            APPEND node.val TO levelValues
+            FOR child IN node.children:
+                APPEND child TO nextQueue
+        APPEND levelValues TO result
+        SET queue ← nextQueue
     RETURN result
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 5. Walkthrough
 
-| Aspect | Value |
-|--------|-------|
-| **Time** | O(n) |
-| **Space** | O(n) — queue width |
+Consider the tree `[[1,null],[3,2,4],[5,6]]`.
+
+| Step | queue (nodes) | levelValues | nextQueue |
+|------|---------------|------------|-----------|
+| 1 | `[1]` | `[1]` | `[3,2,4]` |
+| 2 | `[3,2,4]` | `[3,2,4]` | `[5,6]` |
+| 3 | `[5,6]` | `[5,6]` | `[]` |
+
+Result after each iteration: `[[1]]`, `[[1],[3,2,4]]`, `[[1],[3,2,4],[5,6]]`.
 
 ---
 
-## 5. Key Takeaway
+## 6. Complexity Analysis
 
-> **Level-by-level BFS** — swap queue each level. Works identically to binary tree BFS but iterates over `node.children` instead of left/right.
+| Aspect | Value |
+|--------|-------|
+| **Time** | O(n) — each node visited once |
+| **Space** | O(w) — width of the tree (max nodes at any level) |
+
+---
+
+## 7. Follow-Up Questions
+
+1. How would you perform a depth‑first traversal to achieve the same result?
+2. Can you modify the algorithm to return a zig‑zag (alternating left‑right) level order?
+3. How would you handle very deep trees where recursion depth is a concern?
+
+---
+
+## 8. Key Takeaway
+
+> **Level‑by‑level BFS** works for N‑ary trees just like binary trees: use a queue to process each depth, collect node values, and enqueue all children for the next level.

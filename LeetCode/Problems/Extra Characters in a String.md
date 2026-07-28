@@ -12,6 +12,16 @@ Given string `s` and a dictionary, break `s` into non-overlapping substrings fro
 
 ---
 
+## Examples
+
+| Input | Dictionary | Output | Explanation |
+|-------|------------|--------|-------------|
+| `"leetscode"` | `["leet","code","leetcode"]` | `1` | The substring "leet" and "code" can be used, leaving the extra character "s".
+| `"applepie"` | `["apple","pie","app","le"]` | `0` | The whole string can be segmented as "apple" + "pie" with no extra characters.
+| `"abcd"` | `["ab","cd"]` | `0` | Both "ab" and "cd" are in the dictionary, covering the entire string.
+
+---
+
 ## Key Insight
 
 > DP where `dp[i]` = min extra chars for `s[0..i-1]`. Either skip char `i` (dp[i-1]+1) or match a dictionary word ending at `i` (`dp[j]` if `s[j:i]` is in dictionary).

@@ -9,58 +9,93 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: Iterative Flattening — O(n) ✅](#3-approach-iterative-flattening--on-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Approach](#3-approach)
+4. [Walkthrough](#4-walkthrough)
+5. [Complexity Analysis](#5-complexity-analysis)
+6. [Follow-Up Questions](#6-follow-up-questions)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
 ## 1. Problem Description
 
-Flatten a multilevel doubly linked list where nodes may have a `child` pointer to another doubly linked list. All children should be inlined at their parent's position.
+Flatten a multilevel doubly linked list where each node may have a `child` pointer to another doubly linked list. All child lists should be inserted into the main list at the position of their parent node, preserving the original order. Return the head of the flattened list.
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> When a node has a child, find the tail of the child list, splice it between the current node and its next, then clear the child pointer. Continue traversal.
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `1↔2↔3` with `2.child = 4↔5` | `1↔2↔4↔5↔3` | The child list `4↔5` is spliced between `2` and `3`. |
+| `1` with `1.child = 2` and `2.child = 3` | `1↔2↔3` | Nested children are flattened recursively/iteratively. |
 
 ---
 
-## 3. Approach: Iterative Flattening — O(n) ✅
+## 3. Approach
 
-```
+Iteratively traverse the list. When a node has a `child`, locate the tail of the child list, splice the child list between the current node and its `next`, and clear the `child` pointer. Continue until the end of the list.
+
+```text
 FUNCTION flatten(head):
-    curr = head
-    WHILE curr:
-        IF curr.child:
+    curr ← head
+    WHILE curr IS NOT NULL:
+        IF curr.child IS NOT NULL:
             // Find tail of child list
-            tail = curr.child
-            WHILE tail.next: tail = tail.next
-
-            // Insert child list between curr and curr.next
-            tail.next = curr.next
-            IF curr.next: curr.next.prev = tail
-            curr.next = curr.child
-            curr.child.prev = curr
-            curr.child = null
-
-        curr = curr.next
+            tail ← curr.child
+            WHILE tail.next IS NOT NULL:
+                tail ← tail.next
+            // Connect tail to curr.next
+            tail.next ← curr.next
+            IF curr.next IS NOT NULL:
+                curr.next.prev ← tail
+            // Connect curr to child list
+            curr.next ← curr.child
+            curr.child.prev ← curr
+            // Remove child pointer
+            curr.child ← NULL
+        END IF
+        curr ← curr.next
+    END WHILE
     RETURN head
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Walkthrough
 
-| Aspect | Complexity |
-|--------|------------|
-| **Time** | O(n) |
-| **Space** | O(1) |
+Consider the list `1↔2↔3` where `2.child = 4↔5`.
+
+| Step | Current Node | Action |
+|------|--------------|--------|
+| 1 | 1 | No child, move to next. |
+| 2 | 2 | Child exists. Find tail (`5`). Splice `4↔5` between `2` and `3`. |
+| 3 | 4 | No child, move forward. |
+| 4 | 5 | No child, move forward. |
+| 5 | 3 | No child, end traversal. |
+
+Resulting list: `1↔2↔4↔5↔3`.
 
 ---
 
-## 5. Key Takeaway
+## 5. Complexity Analysis
 
-> **Inline child lists** by splicing them between the current node and its next. Iterative approach runs in O(n) time and O(1) space.
+| Aspect | Complexity |
+|--------|------------|
+| **Time** | O(n) – each node visited a constant number of times |
+| **Space** | O(1) – in‑place modifications only |
+
+---
+
+## 6. Follow-Up Questions
+
+1. How would you modify the algorithm to flatten the list in **reverse order** (children inserted after the parent’s next node)?
+2. Can you flatten the list using **recursion** while still achieving O(n) time?
+3. How would you handle **circular doubly linked lists**?
+
+---
+
+## 7. Key Takeaway
+
+> Inline child lists by splicing them between the current node and its next pointer. An iterative traversal achieves O(n) time and O(1) extra space.

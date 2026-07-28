@@ -9,51 +9,62 @@
 
 ## 1. Problem Description
 
-A robot is at the top-left corner of an `m x n` grid. It can only move **right** or **down**. How many unique paths exist to reach the bottom-right corner?
+A robot starts at the top‑left corner of an `m × n` grid and can only move **right** or **down**. How many distinct paths lead to the bottom‑right corner?
 
 ---
 
-## 2. Approach 1: DP — O(m·n) ✅
+## 2. Examples
 
-```
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `m = 3, n = 7` | `28` | 28 different sequences of moves.
+| `m = 3, n = 2` | `3` | Paths: DDR, DRD, RDD.
+| `m = 1, n = 1` | `1` | Only the starting cell.
+
+---
+
+## 3. Approach: Dynamic Programming — O(m·n)
+
+```text
 FUNCTION uniquePaths(m, n):
-    dp = m × n matrix
-    // First row and column are all 1 (only one way to reach them)
-    FOR i ← 0 TO m-1: dp[i][0] = 1
-    FOR j ← 0 TO n-1: dp[0][j] = 1
-
+    // dp[i][j] = number of ways to reach cell (i,j)
+    dp ← matrix of size m × n filled with 0
+    FOR i ← 0 TO m-1: dp[i][0] ← 1   // first column
+    FOR j ← 0 TO n-1: dp[0][j] ← 1   // first row
     FOR i ← 1 TO m-1:
         FOR j ← 1 TO n-1:
-            dp[i][j] = dp[i-1][j] + dp[i][j-1]
-
+            dp[i][j] ← dp[i-1][j] + dp[i][j-1]
     RETURN dp[m-1][n-1]
 ```
 
-Space optimized to O(n) using a single row.
+---
+
+## 4. Walkthrough
+
+For `m = 3, n = 3`:
+1. Initialize first row and column to 1.
+2. Fill cell (1,1): `dp[1][1] = dp[0][1] + dp[1][0] = 1 + 1 = 2`.
+3. Fill cell (1,2): `dp[1][2] = dp[0][2] + dp[1][1] = 1 + 2 = 3`.
+4. Continue similarly; final `dp[2][2] = 6` paths.
 
 ---
 
-## 3. Approach 2: Combinatorics — O(m+n)
+## 5. Complexity Analysis
 
-Total moves = `(m-1) + (n-1)`. Choose which `m-1` are "down": `C(m+n-2, m-1)`.
-
-```
-FUNCTION uniquePaths(m, n):
-    RETURN C(m + n - 2, m - 1)
-```
+| Time | Space |
+|------|-------|
+| O(m·n) | O(m·n) |
 
 ---
 
-## 4. Follow-Up Questions
+## 6. Follow‑Up Questions
 
-### Unique Paths II (LeetCode #63)?
-Some cells are obstacles (`1`). Set `dp[i][j] = 0` for obstacles.
-
-### Minimum Path Sum (LeetCode #64)?
-Each cell has a cost. `dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])`.
+* **Unique Paths II** – grids with obstacles.
+* **Minimum Path Sum** – each cell has a cost.
+* **Combinatorial Formula** – `C(m+n-2, m-1)` for O(1) time.
 
 ---
 
 ## Key Takeaway
 
-> Classic grid DP. Each cell's paths = sum of paths from above and left. The combinatorial formula gives O(min(m,n)) time.
+> DP on a grid: each cell’s path count equals the sum of paths from the cell above and the cell to the left.

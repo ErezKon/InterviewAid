@@ -10,9 +10,12 @@
 
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
-3. [Approach: Z-function — O(n)](#3-approach-z-function--on)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+3. [Approach: Z-function — O(n)](#3-approach)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -34,30 +37,65 @@ Same as Part I but with larger constraints. Each second, remove the first `k` ch
 
 ## 3. Approach: Z-function — O(n) ✅
 
-```
+```text
 FUNCTION minimumTimeToRevert(word, k):
-    n = len(word)
-    z = Z_function(word)
-
-    FOR t ← 1 TO CEIL(n / k):
-        pos = t * k
-        IF pos >= n: RETURN t
-        IF z[pos] >= n - pos: RETURN t
-
-    RETURN CEIL(n / k)
+    n ← LENGTH(word)
+    z ← Z_FUNCTION(word)
+    maxT ← CEIL(n / k)
+    FOR t ← 1 TO maxT:
+        pos ← t * k
+        IF pos ≥ n:
+            RETURN t  // whole word removed
+        IF z[pos] ≥ n - pos:
+            RETURN t  // suffix matches prefix
+    RETURN maxT
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+word = "ababab", k = 2
+```
+After one operation we can remove "ab" and append "ab" again, restoring the original word. Minimum seconds = **1**.
+
+**Example 2:**
+```
+word = "abcdabcd", k = 4
+```
+Two operations are needed: first remove "abcd", then the next "abcd" can be matched. Minimum seconds = **2**.
+
+---
+
+## 5. Walkthrough
+
+| t | pos = t*k | Condition | Result |
+|---|----------|-----------|--------|
+| 1 | 2 | `z[2] = 6 ≥ 6` → true | return 1 |
+
+The algorithm checks `z[t*k] ≥ n - t*k` and finds `t = 1` satisfies the condition, yielding the minimal seconds.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n) |
-| **Space** | O(n) |
+| **Time** | O(n) — Z-function computation and linear scan |
+| **Space** | O(n) for the Z-array |
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
 
-> **Z-function scales to large n.** Same logic as Part I — check suffix-prefix matches at multiples of `k`. Z-function is O(n), handling n up to 10⁶ efficiently.
+1. How would the solution differ if the appended characters must be a permutation of the removed ones?
+2. Can we extend the method to handle multiple possible `k` values per operation?
+3. What alternative string‑matching techniques could replace the Z-function?
+
+---
+
+## 8. Key Takeaway
+
+> **Z-function enables efficient suffix‑prefix matching.** By checking `z[t*k] ≥ n - t*k` for increasing `t`, we obtain the minimum seconds in linear time.

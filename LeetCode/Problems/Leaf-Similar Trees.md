@@ -6,15 +6,22 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
-Two trees are **leaf-similar** if their leaf value sequences (left to right) are equal.
+Two binary trees are **leaf-similar** if their leaf value sequences (from left to right) are identical.
 
----
+## Examples
 
-## 2. Approach: DFS to Collect Leaves — O(n) ✅
+| Input Trees | Output | Explanation |
+|-------------|--------|-------------|
+| `root1 = [3,5,1,6,2,null,9,null,null,7,4]`<br>`root2 = [3,5,1,6,7,4,null,null,null,2,null,9]` | `true` | Both trees produce leaf sequence `[6,7,4,9]`.
+| `root1 = [1,2,3]`<br>`root2 = [1,3,2]` | `false` | Leaf sequences are `[2,3]` vs `[3,2]`.
 
-```
+## Approach
+
+**Depth‑First Search (DFS)** – Collect leaves of each tree in order, then compare the two lists.
+
+```text
 FUNCTION leafSimilar(root1, root2):
     RETURN getLeaves(root1) == getLeaves(root2)
 
@@ -25,12 +32,27 @@ FUNCTION getLeaves(node):
     RETURN getLeaves(node.left) + getLeaves(node.right)
 ```
 
+## Walkthrough
+
+For the first example:
+1. Traverse `root1` DFS left‑to‑right, collecting leaves: `6, 7, 4, 9`.
+2. Traverse `root2` similarly, also obtaining `6, 7, 4, 9`.
+3. Compare the two sequences – they match, so return `true`.
+
+## Complexity Analysis
+
 | Time | Space |
 |------|-------|
-| O(n₁ + n₂) | O(n₁ + n₂) |
+| O(n₁ + n₂) | O(h₁ + h₂) |
 
----
+`n₁, n₂` are node counts; `h₁, h₂` are tree heights (recursion stack).
 
-## 3. Key Takeaway
+## Follow‑Up Questions
 
-> DFS collects leaves in left-to-right order. Compare the two sequences. Simple recursive tree traversal.
+* How would you solve this iteratively using a stack?
+* Can you modify the algorithm to handle very large trees without storing the full leaf sequences?
+* What changes are needed if the trees are not binary?
+
+## Key Takeaway
+
+> DFS collects leaves in left‑to‑right order. Comparing the two leaf sequences determines leaf similarity.

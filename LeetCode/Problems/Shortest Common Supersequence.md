@@ -48,3 +48,40 @@ FUNCTION shortestCommonSupersequence(str1, str2):
 ```
 
 Length = len(str1) + len(str2) - LCS length.
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: str1 = "abac", str2 = "cab"
+Output: "cabac"
+Explanation: "cabac" contains both "abac" and "cab" as subsequences and is the shortest possible.
+```
+
+**Example 2:**
+```
+Input: str1 = "aaaaaaaa", str2 = "aaaaaaaa"
+Output: "aaaaaaaa"
+Explanation: Both strings are identical, so the SCS is the string itself.
+```
+
+---
+
+## Walkthrough
+
+| Step | i (str1) | j (str2) | Action | Result so far |
+|------|----------|----------|--------|---------------|
+| 1 | 4 | 3 | chars equal 'c' | add 'c', i←3, j←2 |
+| 2 | 3 | 2 | chars not equal, dp[2][2] > dp[3][1] → take from str1 'a' | add 'a' |
+| 3 | 2 | 2 | chars equal 'a' | add 'a', i←1, j←1 |
+| 4 | 1 | 1 | chars equal 'a' | add 'a', i←0, j←0 |
+| Append remaining str2 prefix "c" | final reversed "cabac" |
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(m·n) – DP table construction and reconstruction each traverse the strings.
+- **Space:** O(m·n) – DP table storing LCS lengths.

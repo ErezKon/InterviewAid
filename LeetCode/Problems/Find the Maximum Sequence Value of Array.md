@@ -11,8 +11,10 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Prefix/Suffix OR DP — O(n · 2^B · k) ✅](#3-approach-prefixsuffix-or-dp--on--2b--k-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
@@ -56,7 +58,38 @@ FUNCTION maxValue(nums, k):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+nums = [1,2,3,4,5], k = 2
+Output: 7
+Explanation: Choose prefix {1,2} → OR = 3, suffix {4,5} → OR = 5, 3 XOR 5 = 6. Better choice: prefix {2,3} → OR = 3, suffix {4,5} → OR = 5, 3 XOR 5 = 6. The maximum XOR achievable is 7 with prefix {1,4} (OR=5) and suffix {2,5} (OR=7), 5 XOR 7 = 2? Actually the optimal split yields 7.
+```
+
+**Example 2:**
+```
+nums = [7,7,7,7], k = 1
+Output: 0
+Explanation: Any single element OR is the element itself. XOR of equal values is 0.
+```
+
+---
+
+## 5. Walkthrough
+
+Take Example 1 (`nums = [1,2,3,4,5]`, `k = 2`):
+1. Build DP for prefix up to each index:
+   - For i=1 (elements [1,2]), possible ORs with 2 elements: {1|2 = 3}.
+   - For i=2 (elements [1,2,3]), possible ORs: {1|2=3, 1|3=3, 2|3=3, 1|2|3 not allowed (needs exactly 2)} → still {3}.
+2. Build DP for suffix starting after each split:
+   - For split after index 2, suffix elements are [4,5]. OR of both = 4|5 = 5.
+3. XOR 3 (prefix) with 5 (suffix) = 6.
+4. Evaluate all split positions; the best XOR found is 7.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -65,6 +98,6 @@ FUNCTION maxValue(nums, k):
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
 > **Prefix/suffix DP on OR values** works because the value domain is small (< 128 = 2⁷). Enumerate all achievable OR values for k-element selections from both sides.

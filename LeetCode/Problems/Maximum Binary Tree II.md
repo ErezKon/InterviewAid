@@ -11,6 +11,8 @@
 - [Problem Description](#problem-description)
 - [Key Insight](#key-insight)
 - [Approach: Rightmost Path Insertion — O(n)](#approach-rightmost-path-insertion--on-)
+- [Examples](#examples)
+- [Walkthrough](#walkthrough)
 - [Complexity Analysis](#complexity-analysis)
 - [Key Takeaway](#key-takeaway)
 
@@ -30,15 +32,45 @@ Given a maximum binary tree (constructed from LC 654) and a new value `val` appe
 
 ## Approach: Rightmost Path Insertion — O(n) ✅
 
-```
+```text
 FUNCTION insertIntoMaxTree(root, val):
-    IF NOT root OR val > root.val:
-        node = TreeNode(val)
-        node.left = root
+    IF root IS NULL OR val > root.val:
+        node ← NEW TreeNode(val)
+        node.left ← root
         RETURN node
-    root.right = insertIntoMaxTree(root.right, val)
+    root.right ← insertIntoMaxTree(root.right, val)
     RETURN root
 ```
+
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: root = [4,1,3,null,null,2], val = 5
+Output: [5,4,1,3,null,null,2]
+Explanation: 5 becomes the new root, original tree becomes its left subtree.
+```
+
+**Example 2:**
+```
+Input: root = [5,2,4,null,1], val = 3
+Output: [5,2,4,3,1]
+Explanation: 3 is inserted on the rightmost path under node 4.
+```
+
+---
+
+## Walkthrough
+
+Consider the first example where `val = 5`.
+| Step | Current Node | Action |
+|------|--------------|--------|
+| 1 | root (4) | 5 > 4 → create new node 5, set left child = 4 |
+| 2 | Done | Return new root 5 |
+
+The resulting tree has 5 as root with the original tree as its left child.
 
 ---
 

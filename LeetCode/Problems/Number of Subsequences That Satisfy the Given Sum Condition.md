@@ -22,30 +22,55 @@ Count non-empty subsequences where `min + max ≤ target`. Return mod 10⁹+7.
 
 ---
 
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `nums = [3,5,6,7]`, `target = 9` | `4` | Valid subsequences: `[3]`, `[5]`, `[6]`, `[3,5]` (min+max=8). |
+| `nums = [3,3,6,8]`, `target = 10` | `6` | Subsequences using the two `3`s are counted separately. |
+
+---
+
 ## 2. Key Insight
 
-> Sort the array. Fix the smallest element (lo). Find the rightmost hi where `nums[lo] + nums[hi] ≤ target`. All 2^(hi-lo) subsets of `[lo+1..hi]` including lo are valid.
+> Sort the array. Fix the smallest element (lo). Find the rightmost hi where `nums[lo] + nums[hi] ≤ target`. All 2^(hi‑lo) subsets of `[lo+1..hi]` including lo are valid.
 
 ---
 
 ## 3. Approach: Sort + Two Pointers — O(n log n) ✅
 
-```
+```text
 FUNCTION numSubseq(nums, target):
-    MOD = 10^9 + 7
+    MOD ← 10^9 + 7
     SORT nums
-    lo, hi = 0, len(nums) - 1
-    result = 0
+    lo ← 0
+    hi ← LENGTH(nums) - 1
+    result ← 0
 
-    WHILE lo <= hi:
+    WHILE lo ≤ hi:
         IF nums[lo] + nums[hi] > target:
-            hi -= 1
+            hi ← hi - 1
         ELSE:
-            result = (result + pow(2, hi - lo, MOD)) % MOD
-            lo += 1
+            result ← (result + POW(2, hi - lo, MOD)) % MOD
+            lo ← lo + 1
 
     RETURN result
 ```
+
+---
+
+## Walkthrough
+
+Consider `nums = [3,5,6,7]`, `target = 9`.
+
+| Step | lo | hi | nums[lo]+nums[hi] | Action | result |
+|------|----|----|------------------|--------|--------|
+| 1 | 0 (3) | 3 (7) | 10 > 9 | hi-- → 2 |
+| 2 | 0 (3) | 2 (6) | 9 ≤ 9 | add 2^(2‑0)=4 → result=4, lo++ → 1 |
+| 3 | 1 (5) | 2 (6) | 11 > 9 | hi-- → 1 |
+| 4 | 1 (5) | 1 (5) | 10 > 9 | hi-- → 0 (loop ends) |
+
+Result = 4.
 
 ---
 

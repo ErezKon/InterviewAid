@@ -16,7 +16,7 @@ Given three integers `a`, `b`, and `c`, return the **minimum number of bit flips
 
 ## Approach: Bit-by-Bit — O(32) ✅
 
-```
+```text
 FUNCTION minFlips(a, b, c):
     flips ← 0
     FOR bit ← 0 TO 31:
@@ -24,16 +24,41 @@ FUNCTION minFlips(a, b, c):
         bBit ← (b >> bit) & 1
         cBit ← (c >> bit) & 1
         IF cBit == 1:
-            IF aBit == 0 AND bBit == 0: flips ← flips + 1
+            IF aBit == 0 AND bBit == 0:
+                flips ← flips + 1
         ELSE:
             flips ← flips + aBit + bBit
     RETURN flips
 ```
 
-| Time | Space |
-|------|-------|
-| O(1) — 32 bits | O(1) |
+## Examples
+
+| a | b | c | Output |
+|---|---|---|--------|
+| 2 | 6 | 5 | 3 |
+| 4 | 2 | 7 | 1 |
+
+*Explanation*: For the first example, binary representations are `010`, `110`, `101`. Flipping bits at positions 0, 1, and 2 yields `a|b = 101`.
+
+## Walkthrough
+
+1. Initialize `flips = 0`.
+2. Iterate bits 0‑31.
+3. For each bit, extract bits of `a`, `b`, `c`.
+4. Apply the rules from the insight to update `flips`.
+5. After the loop, return `flips`.
+
+## Complexity Analysis
+
+- **Time**: O(1) – constant 32 iterations.
+- **Space**: O(1).
+
+## Follow-Up Questions
+
+- How would the solution change if numbers could be up to 64‑bit?
+- Can you extend the approach to handle a list of `(a,b)` pairs needing to match the same `c`?
+- What if flipping a bit has a different cost for `a` vs `b`?
 
 ## Key Takeaway
 
-> Bit manipulation problems are solved **bit-by-bit** — analyze each position independently based on the desired output bit value.
+> Bit manipulation problems are solved **bit‑by‑bit** — analyze each position independently based on the desired output bit value.

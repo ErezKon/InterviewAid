@@ -9,10 +9,13 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: Sort + Stack — O(n log n) ✅](#3-approach-sort--stack--on-log-n-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: Sort + Stack — O(n log n) ✅](#4-approach-sort--stack)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -25,44 +28,71 @@ Mountains are triangles with given peak coordinates. A mountain is **visible** i
 
 ---
 
-## 2. Key Insight
+## 2. Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `[[1,2],[2,1],[3,2]]` | `2` | The first mountain covers the second, so only the first and third are visible. |
+| `[[0,1],[1,2],[2,1]]` | `3` | No mountain is fully contained within another. |
+
+---
+
+## 3. Key Insight
 
 > Convert each mountain to an interval `[peak_x - height, peak_x + height]`. A mountain is hidden if its interval is a subset of another's. Sort by left endpoint ascending, then right endpoint descending. Use a stack to track nested intervals.
 
 ---
 
-## 3. Approach: Sort + Stack — O(n log n) ✅
+## 4. Approach: Sort + Stack — O(n log n) ✅
 
-```
+```text
 FUNCTION visibleMountains(peaks):
     // Convert to intervals [x - h, x + h]
     intervals ← [(x - h, x + h) for (x, h) in peaks]
-    SORT intervals by left asc, right desc
+    SORT intervals BY left ASC, right DESC
 
-    // Count non-contained intervals
-    count ← 0; maxRight ← -∞
+    SET count ← 0
+    SET maxRight ← -∞
     FOR (l, r) IN intervals DO
         IF r > maxRight THEN
-            // Check for duplicates
-            count += 1
+            count ← count + 1
             maxRight ← r
-        // If r <= maxRight, this mountain is contained
-
-    // Handle duplicate intervals (both are hidden)
-    RETURN count adjusted for duplicates
+        // else r <= maxRight → this mountain is hidden
+    RETURN count
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 5. Walkthrough
 
-| Aspect | Complexity |
-|--------|------------|
-| **Time** | O(n log n) |
-| **Space** | O(n) |
+Consider `peaks = [[1,2],[2,1],[3,2]]`:
+1. Convert to intervals: `[( -1,3 ), (1,3), (1,5 )]`.
+2. Sort → `[( -1,3 ), (1,5 ), (1,3 )]` (left asc, right desc).
+3. Iterate:
+   - First interval `(-1,3)`: `maxRight = -∞`, so count=1, `maxRight=3`.
+   - Second interval `(1,5)`: `r=5 > maxRight=3`, count=2, `maxRight=5`.
+   - Third interval `(1,3)`: `r=3 <= maxRight=5`, hidden.
+Result = 2 visible mountains.
 
 ---
 
-## 5. Key Takeaway
+## 6. Complexity Analysis
+
+| Aspect | Complexity |
+|--------|------------|
+| **Time** | O(n log n) — sorting dominates |
+| **Space** | O(n) for interval list |
+
+---
+
+## 7. Follow-Up Questions
+
+- How would you modify the algorithm if mountains could have the same interval? How would you count duplicates?
+- Can you solve the problem in O(n) time using a single pass after sorting by a different key?
+- How would the solution change if mountains were defined by arbitrary polygons instead of triangles?
+
+---
+
+## 8. Key Takeaway
 
 > Convert mountains to intervals, sort, and greedily track the maximum right endpoint. An interval contained within a wider one is not visible. Handle duplicate intervals carefully.

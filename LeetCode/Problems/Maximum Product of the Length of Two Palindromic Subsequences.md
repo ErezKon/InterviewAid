@@ -9,8 +9,20 @@
 ## Problem Description
 Given string `s`, find two **disjoint** subsequences that are both palindromes. Maximize the **product of their lengths**.
 
-## Key Insight
-> `|s| ≤ 12` → enumerate all 3^n or 2^n subsets. For each bitmask, check if the subsequence is a palindrome. Then for all disjoint pairs of palindromic masks, maximize the product.
+## Examples
+**Example 1:**
+```
+Input: s = "acdapmpomp"
+Output: 15
+Explanation: Choose "aca" and "pmpom" which are palindromes. Their lengths are 3 and 5, product = 15.
+```
+
+**Example 2:**
+```
+Input: s = "axb"
+Output: 1
+Explanation: The best we can do is pick "a" and "b" (or any single character). Product = 1.
+```
 
 ## Approach
 ```
@@ -36,11 +48,24 @@ FUNCTION maxProduct(s)
 END FUNCTION
 ```
 
+## Walkthrough
+Consider the first example `"acdapmpomp"` (length 10).
+1. Enumerate all masks (2^10‑1 = 1023). For mask representing positions {0,2,4} we get subsequence "aca", which is a palindrome of length 3.
+2. Store this length in `palLen[mask]`.
+3. Later, when processing mask for "pmpom" (positions {5,6,7,8,9}), its mask is disjoint from the first (bitwise AND = 0).
+4. The algorithm examines the pair of masks, multiplies their lengths 3 × 5 = 15 and updates `best`.
+5. After all pairs are checked, `best` holds the maximum product 15.
+
 ## Complexity Analysis
 | Aspect | Complexity |
 |--------|-----------|
 | Time   | **O(3^n)** — submask enumeration |
 | Space  | **O(2^n)** — palindrome cache |
+
+## Follow-Up Questions
+- How would you adapt the solution if the string length could be up to 1000?
+- Can you modify the approach to return the actual subsequences, not just the product?
+- What if the two palindromes must also be of equal length?
 
 ## Key Takeaway
 > **Bitmask DP with submask enumeration** — small `n` allows brute-force over all subset pairs. Check palindrome + disjointness via bitmask AND.

@@ -19,19 +19,29 @@
 
 Generate all possible generalized abbreviations of a word. Each position can either keep the letter or abbreviate (collapse consecutive letters into a number).
 
-**Example:** `"word"` → `["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", ...]`
+**Example:** `"word"` → `["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1o2", "2o1", "3d", "4"]`
 
----
+## 2. Examples
 
-## 2. Key Insight
+| word | abbreviations |
+|------|----------------|
+| "word" | `["word","1ord","w1rd","wo1d","wor1","2rd","w2d","wo2","1o1d","1o2","2o1","3d","4"]` |
+| "a"   | `["a","1"]` |
 
-> At each character, choose to either keep it (append letter) or abbreviate (increment a counter). When keeping a letter, flush any accumulated count first.
+## 3. Walkthrough
+
+**Example "word":**
+1. Start at position 0 with empty current string and count 0.
+2. Choose to abbreviate → count 1, move to position 1.
+3. At position 1, either continue abbreviating (count 2) or keep the letter (flush count 1 then add `'w'`).
+4. Recursively explore all choices; when reaching the end, append any remaining count.
+5. Collect each fully built string into the result list.
 
 ---
 
 ## 3. Approach: Backtracking — O(2ⁿ) ✅
 
-```
+```text
 FUNCTION generateAbbreviations(word):
     result ← []
     FUNCTION backtrack(pos, current, count):
@@ -50,6 +60,16 @@ FUNCTION generateAbbreviations(word):
 
 ---
 
-## 4. Key Takeaway
+## Complexity
+
+- **Time:** O(2ⁿ) – each character has two choices (abbreviate or keep).
+- **Space:** O(n) – recursion stack depth and current string building.
+
+## Follow-Up Questions
+
+- How would you modify the algorithm to generate abbreviations in lexicographic order?
+- Can you extend this to handle a list of words and generate combined abbreviations?
+
+## Key Takeaway
 
 > Each position has 2 choices → 2ⁿ abbreviations. Backtrack with a running count for consecutive abbreviations.

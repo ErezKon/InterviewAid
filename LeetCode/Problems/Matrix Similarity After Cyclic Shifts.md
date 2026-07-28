@@ -12,23 +12,59 @@ Check if a matrix remains the same after cyclically shifting each row by `k` pos
 
 ---
 
-## 2. Approach: Direct Comparison — O(m·n) ✅
+## 2. Examples
 
-```
-FUNCTION areSimilar(mat, k):
-    FOR row IN mat:
-        n = len(row)
-        FOR j ← 0 TO n - 1:
-            IF row[j] != row[(j + k) % n]: RETURN false
-    RETURN true
-```
+| Matrix | k | Output |
+|--------|---|--------|
+| `[[1,2,3],[4,5,6]]` | 1 | `false` |
+| `[[1,2,3],[1,2,3]]` | 3 | `true` |
+| `[[7,7,7],[7,7,7]]` | 2 | `true` |
 
-| Time | Space |
-|------|-------|
-| O(m · n) | O(1) |
+*Explanation*: Shifting each row by `k` positions must result in the original matrix.
 
 ---
 
-## 3. Key Takeaway
+## 3. Approach: Direct Comparison — O(m·n) ✅
 
-> For each row, check if `row[j] == row[(j+k) % n]` for all j. The matrix is unchanged iff every row is periodic with period dividing k.
+```text
+FUNCTION areSimilar(mat, k):
+    FOR each row IN mat:
+        n ← LENGTH(row)
+        FOR j ← 0 TO n‑1:
+            IF row[j] != row[(j + k) MOD n]:
+                RETURN false
+    RETURN true
+```
+
+---
+
+## 4. Walkthrough
+
+Consider `mat = [[1,2,3],[4,5,6]]` with `k = 1`:
+
+| Row index | j | row[j] | row[(j+k) mod n] | Equal? |
+|-----------|---|--------|-------------------|--------|
+| 0 | 0 | 1 | 2 | false → return false |
+
+The algorithm stops at the first mismatch, returning `false`.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time**: O(m·n) – each element is inspected once.
+- **Space**: O(1) extra space.
+
+---
+
+## 6. Follow‑Up Questions
+
+- How would you handle **different shift values per row**?
+- Can you determine the **minimum k** that makes the matrix similar, or report that none exists?
+- What changes are needed if the matrix is **circularly shifted column‑wise** instead of row‑wise?
+
+---
+
+## Key Takeaway
+
+> Directly compare each element with its cyclic counterpart; the matrix is unchanged iff every row is periodic with a period dividing `k`.

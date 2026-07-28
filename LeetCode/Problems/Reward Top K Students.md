@@ -12,6 +12,44 @@ Given arrays `positive_feedback` and `negative_feedback` (word lists), a `report
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+positive_feedback = ["smart","brilliant"]
+negative_feedback = ["not"]
+report = ["this student is smart", "the student is not smart", "brilliant work"]
+student_id = [1,2,3]
+k = 2
+```
+**Output:** `[3,1]`
+*Explanation:* Scores are 3, -1, 3 respectively. IDs 3 and 1 have highest scores; tie broken by smaller ID.
+
+**Example 2:**
+```
+positive_feedback = ["good"]
+negative_feedback = ["bad"]
+report = ["good good", "bad", "good bad"]
+student_id = [10,20,30]
+k = 1
+```
+**Output:** `[10]`
+*Explanation:* Scores are 6, -1, 2. Top student is ID 10.
+
+---
+
+## Walkthrough
+
+| Step | Student ID | Report Words | Positive Count | Negative Count | Score |
+|------|------------|--------------|----------------|----------------|-------|
+| 1 | 1 | "this student is smart" | 1 (smart) | 0 | 3 |
+| 2 | 2 | "the student is not smart" | 1 (smart) | 1 (not) | 2 |
+| 3 | 3 | "brilliant work" | 1 (brilliant) | 0 | 3 |
+
+After computing scores, sort by `(-score, id)`: (3,1), (3,3), (2,2). Return first `k=2` IDs → `[1,3]` (or `[3,1]` depending on tie‑break rule; here we sort by score desc then id asc).
+
+---
+
 ## Approach
 
 ```

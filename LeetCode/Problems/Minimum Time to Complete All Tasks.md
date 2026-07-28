@@ -34,23 +34,28 @@ Given tasks with `[start, end, duration]`, the computer runs at chosen time slot
 
 ## 3. Approach: Greedy + Timeline — O(n · T) ✅
 
-```
+```text
 FUNCTION findMinimumTime(tasks):
     SORT tasks BY end
-    active = [false] * 2001
-
-    FOR (start, end, dur) IN tasks:
+    active ← ARRAY[0..2000] OF FALSE
+    FOR EACH (start, end, dur) IN tasks:
         // Count already-active slots in [start, end]
-        existing = SUM(active[t] for t in range(start, end+1))
-        needed = dur - existing
+        existing ← 0
+        FOR t ← start TO end:
+            IF active[t]:
+                existing ← existing + 1
+        needed ← dur - existing
         // Activate from right end
-        FOR t ← end DOWN TO start:
-            IF needed <= 0: BREAK
+        FOR t ← end DOWNTO start:
+            IF needed ≤ 0: BREAK
             IF NOT active[t]:
-                active[t] = true
-                needed -= 1
-
-    RETURN SUM(active)
+                active[t] ← TRUE
+                needed ← needed - 1
+    total ← 0
+    FOR t ← 0 TO 2000:
+        IF active[t]:
+            total ← total + 1
+    RETURN total
 ```
 
 ---
@@ -64,6 +69,36 @@ FUNCTION findMinimumTime(tasks):
 
 ---
 
-## 5. Key Takeaway
+## 5. Examples
+
+**Example 1:**
+```
+Input: tasks = [[1,3,2],[2,5,2]]
+Output: 3
+Explanation: Activate slots at times 2,3,5. Both tasks have required durations.
+```
+
+**Example 2:**
+```
+Input: tasks = [[1,4,2],[2,6,3],[5,7,1]]
+Output: 5
+Explanation: Activate slots 3,4,5,6,7. All tasks satisfied with minimal slots.
+```
+
+---
+
+## 6. Walkthrough
+
+| Step | Task (start,end,dur) | Active slots before | Needed | Slots added | Active slots after |
+|------|----------------------|---------------------|--------|-------------|--------------------|
+| 1 | (1,3,2) | none | 2 | 3,2 (from right) | {2,3} |
+| 2 | (2,5,2) | {2,3} → 2 slots in range | 0 | none | {2,3} |
+| 3 | (5,7,1) | none in [5,7] | 1 | 7 | {2,3,7} |
+
+Total active slots = 3.
+
+---
+
+## 7. Key Takeaway
 
 > **Greedy: sort by deadline, activate latest slots first.** This maximizes overlap with future tasks. Classic scheduling greedy with "latest-first" slot assignment.

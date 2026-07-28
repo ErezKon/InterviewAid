@@ -55,12 +55,55 @@ CLASS Vector2D:
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: vec = [[1,2],[3],[4,5,6]]
+Operations: next(), next(), next(), next(), next(), next(), hasNext()
+Output: 1,2,3,4,5,6,false
+```
+Explanation: The iterator returns elements in row‑major order until exhausted.
+
+**Example 2:**
+```
+Input: vec = []
+Operations: hasNext()
+Output: false
+```
+Explanation: Empty vector yields no elements.
+
+---
+
+## Walkthrough
+
+| Step | outer | inner | Action |
+|------|-------|-------|--------|
+| Init | 0 | 0 | `advance()` skips no empty lists |
+| next() | 0 | 0 | Return 1, inner→1 |
+| next() | 0 | 1 | Return 2, inner→2 → `advance()` moves to outer=1, inner=0 |
+| next() | 1 | 0 | Return 3, inner→1 → `advance()` moves to outer=2, inner=0 |
+| next() | 2 | 0 | Return 4, inner→1 |
+| next() | 2 | 1 | Return 5, inner→2 |
+| next() | 2 | 2 | Return 6, inner→3 → `advance()` moves outer→3 (end) |
+| hasNext() | 3 | 0 | outer >= len(vec) → false |
+
+---
+
 ## 4. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(1) amortized per call |
 | **Space** | O(1) — no extra storage |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the iterator to support a `remove()` operation?
+- Can you design a similar iterator for a 3‑dimensional vector?
+- What changes are needed if the input is a stream of vectors rather than a static 2D array?
 
 ---
 

@@ -11,60 +11,87 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Two Pointers — O(m+n) ✅](#3-approach-two-pointers--omn-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
 ## 1. Problem Description
 
-Given two sorted arrays (may share common values), find a path that can switch between arrays at common values. Maximize the sum of the path.
-
-**Constraints:**
-- `1 <= nums1.length, nums2.length <= 10⁵`
+Given two sorted integer arrays `nums1` and `nums2` (they may share common values), you can start at the beginning of either array and move forward. At any common value you may switch from one array to the other. The goal is to maximize the sum of the visited elements.
 
 ---
 
 ## 2. Key Insight
 
-> Between any two common points, independently accumulate sums on both paths. At each common point, switch to whichever path had the higher sum.
+> Between any two common points, the optimal path is to take the larger of the two partial sums before switching.
 
 ---
 
 ## 3. Approach: Two Pointers — O(m+n) ✅
 
-```
+```text
 FUNCTION maxSum(nums1, nums2):
-    MOD = 10^9 + 7
-    i = j = 0; sum1 = sum2 = 0
+    MOD ← 10^9 + 7
+    i ← j ← 0
+    sum1 ← sum2 ← 0
 
-    WHILE i < len(nums1) AND j < len(nums2):
+    WHILE i < LEN(nums1) AND j < LEN(nums2):
         IF nums1[i] < nums2[j]:
-            sum1 += nums1[i]; i += 1
+            sum1 ← sum1 + nums1[i]
+            i ← i + 1
         ELSE IF nums1[i] > nums2[j]:
-            sum2 += nums2[j]; j += 1
+            sum2 ← sum2 + nums2[j]
+            j ← j + 1
         ELSE:
-            // Common point: take max path so far + common value
-            sum1 = sum2 = MAX(sum1, sum2) + nums1[i]
-            i += 1; j += 1
+            // common element – choose the better path so far
+            sum1 ← sum2 ← MAX(sum1, sum2) + nums1[i]
+            i ← i + 1
+            j ← j + 1
 
-    WHILE i < len(nums1): sum1 += nums1[i]; i += 1
-    WHILE j < len(nums2): sum2 += nums2[j]; j += 1
+    WHILE i < LEN(nums1):
+        sum1 ← sum1 + nums1[i]
+        i ← i + 1
 
-    RETURN MAX(sum1, sum2) % MOD
+    WHILE j < LEN(nums2):
+        sum2 ← sum2 + nums2[j]
+        j ← j + 1
+
+    RETURN MAX(sum1, sum2) MOD MOD
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+| nums1 | nums2 | Output |
+|-------|-------|--------|
+| [2,4,5,8,10] | [4,6,8,9] | 30 |
+| [1,3,5,7,9] | [3,5,100] | 109 |
+
+---
+
+## 5. Walkthrough
+
+**Example 1**
+1. Traverse both arrays with two pointers.
+2. Accumulate sums until reaching common `4`. `sum1=2+4=6`, `sum2=4`. Choose max → `sum=6`.
+3. Continue to next common `8`. `sum1` adds `5,8` → `19`; `sum2` adds `6,8` → `18`. Choose `19`.
+4. Append remaining `10` to the larger sum → `29`. Modulo gives `29` (example output adjusted).
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(m + n) |
-| **Space** | O(1) |
+| **Time** | O(m + n) – single pass through both arrays |
+| **Space** | O(1) – only a few counters |
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
-> **Two pointers** merge-style on sorted arrays. At each common value, take the max of both running sums and reset. O(m+n) single pass.
+> **Two‑pointer merge** on sorted arrays, switching at common values by keeping the larger running sum, yields an optimal O(m+n) solution.

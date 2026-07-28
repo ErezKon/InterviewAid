@@ -12,48 +12,97 @@ Design a skiplist supporting `search(target)`, `add(num)`, and `erase(num)` with
 
 ---
 
-## Key Insight
+## Examples
 
-A skiplist is a stack of sorted linked lists. Each node is promoted to the next level with probability 1/2, giving expected O(log n) levels. Searching descends levels, skipping large gaps at high levels.
+**Example 1:**
+```
+skiplist = Skiplist()
+skiplist.add(1)
+skiplist.add(2)
+skiplist.add(3)
+skiplist.search(0) → false
+skiplist.search(1) → true
+skiplist.erase(1) → true   // 1 is removed
+skiplist.search(1) → false
+```
+*Explanation:* After adding three numbers, searching for 0 returns false, searching for 1 returns true, erasing 1 succeeds, and subsequent search for 1 fails.
+
+**Example 2:**
+```
+skiplist.add(5)
+skiplist.add(5)
+skiplist.erase(5) → true   // removes one occurrence
+skiplist.search(5) → true   // another 5 remains
+```
+*Explanation:* Duplicate values are allowed; erase removes only one instance.
 
 ---
 
 ## Approach: Probabilistic Multi-Level Linked List ✅
 
-```
+```text
 CLASS SkiplistNode:
-    val, forward[]    // forward[i] = next node at level i
+    val ← integer value
+    forward[] ← array of next pointers for each level
 
 CLASS Skiplist:
     CONSTRUCTOR:
-        head = SkiplistNode(-1, maxLevel=16)
-        level = 0
+        head ← SkiplistNode(-1, maxLevel=16)
+        level ← 0
 
     FUNCTION search(target):
-        curr = head
+        curr ← head
         FOR i ← level DOWN TO 0:
-            WHILE curr.forward[i] AND curr.forward[i].val < target:
-                curr = curr.forward[i]
-        curr = curr.forward[0]
-        RETURN curr AND curr.val == target
+            WHILE curr.forward[i] IS NOT NULL AND curr.forward[i].val < target:
+                curr ← curr.forward[i]
+        curr ← curr.forward[0]
+        RETURN curr IS NOT NULL AND curr.val == target
 
     FUNCTION add(num):
-        update = [head] * (maxLevel + 1)
-        curr = head
+        update[0..maxLevel] ← head
+        curr ← head
         FOR i ← level DOWN TO 0:
-            WHILE curr.forward[i] AND curr.forward[i].val < num:
-                curr = curr.forward[i]
-            update[i] = curr
-        // Random level
-        newLevel = randomLevel()
-        node = SkiplistNode(num, newLevel)
+            WHILE curr.forward[i] IS NOT NULL AND curr.forward[i].val < num:
+                curr ← curr.forward[i]
+            update[i] ← curr
+        newLevel ← randomLevel()
+        node ← SkiplistNode(num, newLevel)
         FOR i ← 0 TO newLevel:
-            node.forward[i] = update[i].forward[i]
-            update[i].forward[i] = node
+            node.forward[i] ← update[i].forward[i]
+            update[i].forward[i] ← node
+        IF newLevel > level:
+            level ← newLevel
 
     FUNCTION erase(num):
-        // Similar to search, track update pointers, remove one occurrence
+        update[0..maxLevel] ← head
+        curr ← head
+        FOR i ← level DOWN TO 0:
+            WHILE curr.forward[i] IS NOT NULL AND curr.forward[i].val < num:
+                curr ← curr.forward[i]
+            update[i] ← curr
+        target ← curr.forward[0]
+        IF target IS NULL OR target.val != num:
+            RETURN false
+        FOR i ← 0 TO level:
+            IF update[i].forward[i] != target:
+                BREAK
+            update[i].forward[i] ← target.forward[i]
+        WHILE level > 0 AND head.forward[level] IS NULL:
+            level ← level - 1
+        RETURN true
 ```
+
+---
+
+## Walkthrough
+
+Consider inserting the sequence `[1, 2, 3]`.
+
+1. **Insert 1:** `randomLevel()` returns 0. Node 1 is linked at level 0.
+2. **Insert 2:** `randomLevel()` returns 1. Update pointers at levels 0 and 1; node 2 becomes reachable from head at level 1, skipping node 1.
+3. **Insert 3:** `randomLevel()` returns 0. Node 3 is linked after node 2 at level 0.
+
+When searching for `2`, the algorithm starts at the highest level (1), moves from head to node 2 directly, then checks level 0 to confirm. Deleting `2` updates forward pointers at both levels, restoring the skiplist structure.
 
 ---
 
@@ -61,11 +110,19 @@ CLASS Skiplist:
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(log n) expected search/add/erase |
-| **Space** | O(n) expected |
+| **Time** | O(log n) expected for `search`, `add`, and `erase` |
+| **Space** | O(n) expected for storing nodes and forward pointers |
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the skiplist to support a `countLessThan(x)` operation?
+2. What changes are needed to make the skiplist thread‑safe for concurrent reads and writes?
+3. Could you adapt the structure to store key‑value pairs like a map?
 
 ---
 
 ## Key Takeaway
 
-> **Skiplist = randomized balanced structure. Coin-flip level promotion gives expected O(log n) height with no rotations. Track `update[]` pointers during descent to splice nodes in or out at every level.**
+> **Skiplist = randomized balanced structure. Coin‑flip level promotion gives expected O(log n) height with no rotations. Track `update[]` pointers during descent to splice nodes in or out at every level.**

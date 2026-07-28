@@ -33,17 +33,18 @@ Can you make the array non-decreasing by modifying **at most one** element?
 
 ## 3. Approach: Greedy — O(n) ✅
 
-```
+```text
 FUNCTION checkPossibility(nums):
-    count = 0
+    count ← 0
     FOR i ← 1 TO n - 1:
         IF nums[i] < nums[i - 1]:
-            count += 1
-            IF count > 1: RETURN false
+            count ← count + 1
+            IF count > 1:
+                RETURN false
             IF i >= 2 AND nums[i] < nums[i - 2]:
-                nums[i] = nums[i - 1]    // raise nums[i]
+                nums[i] ← nums[i - 1]    // raise nums[i]
             ELSE:
-                nums[i - 1] = nums[i]    // lower nums[i-1]
+                nums[i - 1] ← nums[i]    // lower nums[i-1]
     RETURN true
 ```
 
@@ -58,6 +59,32 @@ FUNCTION checkPossibility(nums):
 
 ---
 
-## 5. Key Takeaway
+## 5. Examples
+
+| Input | Output |
+|-------|--------|
+| `[4,2,3]` | `true` |
+| `[4,2,1]` | `false` |
+| `[3,4,2,3]` | `false` |
+
+---
+
+## 6. Walkthrough
+
+**Example:** `[4,2,3]`
+1. At `i = 1`, `2 < 4` → first violation (`count = 1`).
+2. `i >= 2` is false, so we lower the peak: set `nums[0] = 2` → array becomes `[2,2,3]`.
+3. Continue scanning, no further violations. Return `true`.
+
+---
+
+## 7. Follow-Up Questions
+
+- How would you extend the solution to allow **k** modifications?
+- Can you adapt the greedy check to work for a streaming input where the array is not fully stored?
+
+---
+
+## 8. Key Takeaway
 
 > **Greedy fix at violation.** When a drop is found, choose the fix that minimizes disruption: lower the peak if possible, otherwise raise the valley. Allow at most one fix.

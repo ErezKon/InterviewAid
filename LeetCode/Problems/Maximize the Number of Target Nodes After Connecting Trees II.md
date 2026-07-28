@@ -25,6 +25,34 @@ Similar to Part I, but `k` is not given — instead, a node is a "target" if its
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: tree1 = [[0,1],[1,2]], tree2 = [[0,1]]
+Output: [3,3,3]
+Explanation: Connecting node 0 of tree1 to node 0 of tree2 yields three even‑distance nodes (including the node itself) for each node in tree1.
+```
+
+**Example 2:**
+```
+Input: tree1 = [[0,1],[1,2],[2,3]], tree2 = [[0,1],[1,2]]
+Output: [4,4,4,4]
+Explanation: The best connection adds the larger bipartition size from tree2 to each node's own even‑distance count.
+```
+
+---
+
+## Walkthrough
+
+| Step | Action | Resulting even‑distance count for a sample node |
+|------|--------|-----------------------------------------------|
+| 1 | Color tree1 (even/odd depths) → partitions sizes 2 and 2 | Node 0 belongs to even partition size 2 |
+| 2 | Color tree2 → partitions sizes 2 and 1, best = 2 | 
+| 3 | For each node in tree1, answer = its partition size + bestTree2 | Node 0: 2 + 2 = 4, etc. |
+
+---
+
 ## Key Insight
 
 > In a tree, even-distance nodes from a root form one **bipartition** (2-coloring). All nodes at even depth from root = one color, odd depth = other color. For each tree1 node, its even-distance count is its bipartition group size. Connecting to tree2 adds tree2's best bipartition group.
@@ -33,7 +61,7 @@ Similar to Part I, but `k` is not given — instead, a node is a "target" if its
 
 ## Approach: Parity-Based Tree Coloring — O(n + m) ✅
 
-```
+```text
 FUNCTION maxTargetNodes(edges1, edges2):
     // Color each tree by bipartition (even/odd depth)
     color1, count1 = bipartition(edges1)    // count1[0], count1[1]
@@ -57,6 +85,14 @@ FUNCTION maxTargetNodes(edges1, edges2):
 | Approach | Time | Space |
 |----------|------|-------|
 | BFS bipartition | **O(n + m)** | O(n + m) |
+
+---
+
+## Follow-Up Questions
+
+- How would the solution change if the connection edge could be added between any two nodes (not just one from each tree)?
+- What if the definition of a target node used odd distances instead of even?
+- Can the algorithm be extended to handle multiple connections between the trees?
 
 ---
 

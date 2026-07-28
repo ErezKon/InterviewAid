@@ -16,32 +16,57 @@ A gene string is 8 characters from `{A, C, G, T}`. Given `startGene`, `endGene`,
 
 ## Approach: BFS — O(B·8·4) ✅
 
-```
+```text
 FUNCTION minMutation(startGene, endGene, bank):
-    bankSet = SET(bank)
+    bankSet ← SET(bank)
     IF endGene NOT IN bankSet: RETURN -1
 
-    queue = [(startGene, 0)]
-    visited = {startGene}
+    queue ← [(startGene, 0)]
+    visited ← {startGene}
 
-    WHILE queue:
-        (gene, mutations) = queue.DEQUEUE()
+    WHILE queue IS NOT EMPTY:
+        (gene, mutations) ← DEQUEUE(queue)
         IF gene == endGene: RETURN mutations
 
         FOR i ← 0 TO 7:
             FOR c IN ['A', 'C', 'G', 'T']:
                 IF c == gene[i]: CONTINUE
-                newGene = gene[:i] + c + gene[i+1:]
+                newGene ← REPLACE_CHAR(gene, i, c)
                 IF newGene IN bankSet AND newGene NOT IN visited:
-                    visited.ADD(newGene)
-                    queue.ENQUEUE((newGene, mutations + 1))
+                    ADD newGene TO visited
+                    ENQUEUE(queue, (newGene, mutations + 1))
 
     RETURN -1
 ```
 
-| Time | Space |
-|------|-------|
-| O(B · 32) | O(B) |
+## Examples
+
+| startGene | endGene | bank | Output |
+|-----------|---------|------|--------|
+| "AACCGGTT" | "AACCGGTA" | ["AACCGGTA"] | 1 |
+| "AACCGGTT" | "AAACGGTA" | ["AACCGGTA","AACCGCTA","AAACGGTA"] | 2 |
+| "AAAAACCC" | "CCCCCCCC" | ["AAAACCCC","AAACCCCC","AACCCCCC","ACCCCCCC","CCCCCCCC"] | 4 |
+
+*Explanation*: Each row shows the shortest mutation path length.
+
+## Walkthrough
+
+1. Initialize `bankSet` and check if `endGene` is reachable.
+2. Start BFS with `startGene` at depth 0.
+3. Dequeue a gene, generate all possible one‑letter mutations.
+4. For each valid mutation present in `bankSet` and not visited, enqueue with depth+1.
+5. When `endGene` is dequeued, its associated depth is the minimum number of mutations.
+
+## Complexity Analysis
+
+- **Time**: O(B · 8 · 4) — each gene generates at most 24 neighbors, each lookup is O(1).
+- **Space**: O(B) for the `bankSet` and visited set.
+
+## Follow-Up Questions
+
+- How would you modify the algorithm if each mutation had a different cost?
+- Can you solve the problem using bidirectional BFS to reduce the search space?
+- What if the gene length were variable and the alphabet larger?
 
 ## Key Takeaway
 

@@ -11,8 +11,11 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Binary Lifting — O(n log n) / O(log n) ✅](#3-approach-binary-lifting--on-log-n--olog-n-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -34,7 +37,7 @@ Given a tree with `n` nodes and a `parent[]` array, implement `getKthAncestor(no
 
 ## 3. Approach: Binary Lifting — O(n log n) / O(log n) ✅
 
-```
+```text
 CLASS TreeAncestor:
     CONSTRUCTOR(n, parent):
         LOG = ceil(log2(n)) + 1
@@ -55,16 +58,46 @@ CLASS TreeAncestor:
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
 
-| Metric | Value | Explanation |
-|--------|-------|-------------|
-| Preprocess | O(n log n) | Fill the binary lifting table |
-| Query | O(log n) | At most log n jumps |
-| Space | O(n log n) | The `up` table |
+| n | parent | query (node, k) | Output |
+|---|--------|----------------|--------|
+| 7 | [-1,0,0,1,1,2,2] | (5, 2) | 0 |
+| 7 | [-1,0,0,1,1,2,2] | (4, 3) | -1 |
+
+*Explanation:* In the first query, node 5 → parent 2 → parent 0, so the 2‑th ancestor is 0. In the second query, climbing three steps from node 4 exceeds the root, yielding -1.
 
 ---
 
-## 5. Key Takeaway
+## 5. Walkthrough
 
-> **Binary lifting** is the standard technique for k-th ancestor queries. Precompute 2^j-th ancestors for all nodes, then decompose k into powers of 2. Also used in LCA (Lowest Common Ancestor) algorithms.
+Consider the tree with `parent = [-1,0,0,1,1,2,2]` and query `(node=5, k=2)`.
+
+1. **Preprocess:** Build `up` table. For each node, store ancestors at powers of two.
+2. **Binary representation of k:** `k = 2` → `10₂`. Only the 2¹ (second) bit is set.
+3. **Jump:** Starting at node 5, look at `up[5][1]` (2‑th ancestor) which is node 0.
+4. Return node 0 as the answer.
+
+---
+
+## 6. Complexity Analysis
+
+| Metric | Value |
+|--------|-------|
+| Preprocess | O(n log n) – fill binary lifting table |
+| Query | O(log n) – at most log n jumps |
+| Space | O(n log n) – `up` table |
+
+---
+
+## 7. Follow-Up Questions
+
+- How would you modify the structure to support dynamic updates (adding/removing edges)?
+- Can you extend binary lifting to answer Lowest Common Ancestor (LCA) queries efficiently?
+- What is the trade‑off between preprocessing time and query time for different `k` ranges?
+
+---
+
+## 8. Key Takeaway
+
+> **Binary lifting** precomputes 2^j‑th ancestors for every node, enabling k‑th ancestor queries in logarithmic time by decomposing `k` into binary bits.

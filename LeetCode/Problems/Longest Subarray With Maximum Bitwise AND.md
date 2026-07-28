@@ -12,31 +12,69 @@ Find the longest subarray whose bitwise AND equals the maximum possible AND of a
 
 ---
 
-## 2. Approach: Find Max + Longest Run — O(n) ✅
+## 2. Examples
 
-AND of a subarray ≤ every element. Maximum AND = max value in array. Find the longest consecutive run of that max value.
-
+**Example 1:**
 ```
-FUNCTION longestSubarray(nums):
-    maxVal = MAX(nums)
-    maxLen = 0; currLen = 0
-
-    FOR num IN nums:
-        IF num == maxVal:
-            currLen += 1
-            maxLen = MAX(maxLen, currLen)
-        ELSE:
-            currLen = 0
-
-    RETURN maxLen
+Input: nums = [1,2,3,4]
+Output: 1
+Explanation: The maximum AND value is 4 (subarray [4]), and its longest run length is 1.
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
+**Example 2:**
+```
+Input: nums = [7,7,7,5]
+Output: 3
+Explanation: The maximum AND is 7. The longest consecutive run of 7s has length 3.
+```
 
 ---
 
-## 3. Key Takeaway
+## 3. Approach: Find Max + Longest Run — O(n) ✅
 
-> Key insight: `AND(subarray) ≤ min(subarray) ≤ max(array)`. The max AND is achieved by a subarray of identical max-value elements. Just find the longest such run.
+```text
+FUNCTION longestSubarray(nums):
+    maxVal ← MAXIMUM(nums)
+    maxLen ← 0
+    currLen ← 0
+    FOR num IN nums:
+        IF num == maxVal:
+            currLen ← currLen + 1
+            maxLen ← MAX(maxLen, currLen)
+        ELSE:
+            currLen ← 0
+    RETURN maxLen
+```
+
+---
+
+## 4. Walkthrough
+
+Consider `nums = [7,7,7,5]`:
+| Index | Value | currLen | maxLen |
+|-------|-------|---------|--------|
+| 0 | 7 | 1 | 1 |
+| 1 | 7 | 2 | 2 |
+| 2 | 7 | 3 | 3 |
+| 3 | 5 | 0 | 3 |
+The algorithm tracks the length of the current run of the maximum value, yielding a final answer of 3.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time Complexity:** O(n) – single pass through the array.
+- **Space Complexity:** O(1) – only a few integer variables are used.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would the solution change if you needed the subarray with the second‑largest possible AND?
+- Can you extend the approach to handle queries for the longest subarray achieving a given AND value?
+
+---
+
+## 7. Key Takeaway
+
+> The maximum AND of any subarray is simply the maximum element; the problem reduces to finding the longest consecutive run of that element.

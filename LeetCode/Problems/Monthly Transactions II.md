@@ -11,7 +11,11 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Solution: SQL](#3-solution-sql)
-4. [Key Takeaway](#4-key-takeaway)
+4. [Examples](#4-examples)
+5. [Approach](#5-approach)
+6. [Walkthrough](#6-walkthrough)
+7. [Complexity Analysis](#7-complexity-analysis)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -47,6 +51,59 @@ GROUP BY month, country;
 
 ---
 
-## 4. Key Takeaway
+## 4. Examples
 
-> **UNION ALL to merge event types**, then GROUP BY with conditional aggregation. Chargebacks use the chargeback date, not the original transaction date.
+**Example 1:**
+```
+Transactions table:
+| id | trans_date | country | amount | state |
+|----|------------|---------|--------|-------|
+| 1  | 2023-01-10 | US      | 100    | approved |
+| 2  | 2023-01-12 | US      | 50     | declined |
+Chargebacks table:
+| trans_id | trans_date |
+|----------|------------|
+| 1        | 2023-02-01 |
+```
+Result:
+```
+month | country | approved_count | approved_amount | chargeback_count | chargeback_amount
+2023-01 | US | 1 | 100 | 0 | 0
+2023-02 | US | 0 | 0 | 1 | 100
+```
+*Shows aggregation across months and chargeback handling.*
+
+---
+
+## 5. Approach
+
+1. **Extract approved transactions** with month derived from `trans_date`.
+2. **Extract chargebacks** joining to original transaction to get amount and country, using chargeback date as month.
+3. **Combine** both sets with `UNION ALL` and label each row as `approved` or `chargeback`.
+4. **Group** by month and country.
+5. **Apply conditional aggregation** using `SUM(CASE WHEN type='approved' THEN …)` for each metric.
+
+---
+
+## 6. Walkthrough
+
+Given the example data:
+- Approved part yields a row `(2023-01, US, 100, 'approved')`.
+- Chargeback part yields `(2023-02, US, 100, 'chargeback')`.
+- After UNION ALL we have two rows.
+- Grouping by month and country aggregates counts and sums per type, producing the final table shown above.
+
+---
+
+## 7. Complexity Analysis
+
+| Aspect | Value |
+|--------|-------|
+| **Time** | O(N) – single scan of both tables by the database engine |
+| **Space** | O(G) – space for groups, where G is number of month‑country pairs |
+
+---
+
+## 8. Key Takeaway
+
+> **UNION ALL + conditional aggregation** lets you merge different event types and compute multiple metrics in one grouped query.

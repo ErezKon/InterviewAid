@@ -35,7 +35,7 @@ Given a binary string `floor` (1=white, 0=black), `numCarpets` carpets each of l
 
 ## 3. Approach: DP — O(n · k) ✅
 
-```
+```text
 FUNCTION minimumWhiteTiles(floor, numCarpets, carpetLen):
     n = len(floor)
     dp = (n+1) × (numCarpets+1) of 0
@@ -51,7 +51,42 @@ FUNCTION minimumWhiteTiles(floor, numCarpets, carpetLen):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: floor = "10101", numCarpets = 2, carpetLen = 2
+Output: 1
+Explanation: Place one carpet covering indices [0,1] ("10") and another covering [3,4] ("01"). Only the tile at index 2 remains white.
+```
+
+**Example 2:**
+```
+Input: floor = "11111", numCarpets = 1, carpetLen = 3
+Output: 2
+Explanation: The best carpet placement covers three consecutive white tiles, leaving two white tiles uncovered.
+```
+
+---
+
+## 5. Walkthrough
+
+Consider Example 1 (`floor = "10101", numCarpets = 2, carpetLen = 2`).
+
+| i (1‑based) | floor[i‑1] | dp[i][0] (no carpet) | dp[i][1] | dp[i][2] |
+|------------|-----------|----------------------|----------|----------|
+| 0          | -         | 0                    | 0        | 0        |
+| 1          | 1         | 1                    | 0 (cover) | 0        |
+| 2          | 0         | 1                    | 0        | 0 (cover) |
+| 3          | 1         | 2                    | 1        | 0        |
+| 4          | 0         | 2                    | 1        | 0        |
+| 5          | 1         | 3                    | 2        | 1        |
+
+The final answer `dp[5][2] = 1` matches the expected output.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -60,6 +95,6 @@ FUNCTION minimumWhiteTiles(floor, numCarpets, carpetLen):
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
 > **Carpet placement DP** — at each tile, either expose it or end a carpet here (covering the last `carpetLen` tiles). Classic "place k items" DP pattern.

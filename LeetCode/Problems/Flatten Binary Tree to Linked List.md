@@ -63,6 +63,56 @@ FUNCTION flatten(root):
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+```
+Explanation: The tree is flattened to a right‑skewed linked list following preorder.
+
+**Example 2:**
+```
+Input: root = []
+Output: []
+```
+Explanation: Empty tree remains empty.
+
+---
+
+## Walkthrough
+
+| Step | Current Node | Action |
+|------|--------------|--------|
+| 1 | 1 | Left child 2 exists → find rightmost (4), attach right subtree (5) to 4, move left subtree to right.
+| 2 | 2 | Left child 3 exists → rightmost is 4, attach null, move left to right.
+| 3 | 3 | No left child → move to right (4).
+| 4 | 4 | No left child → move to right (5).
+| 5 | 5 | Left child null, right child 6 → move to 6.
+| 6 | 6 | No children → end.
+
+Resulting right‑skewed list: 1→2→3→4→5→6.
+
+---
+
+## Complexity Analysis
+
+| Aspect | Complexity |
+|--------|------------|
+| **Time** | O(n) – each node visited once |
+| **Space** | O(1) for Morris‑like, O(h) for recursive alternative |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the algorithm to flatten the tree into a doubly linked list?
+- Can you perform the flattening using only recursion without extra pointers?
+- What changes are needed if the traversal order should be inorder instead of preorder?
+
+---
+
 ## Key Takeaway
 
 > The iterative approach uses no extra space by threading the right subtree onto the leftmost path's rightmost node — similar to Morris traversal.

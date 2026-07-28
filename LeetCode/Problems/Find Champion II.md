@@ -12,16 +12,67 @@ Given a DAG of `n` teams with edges `[u, v]` meaning team `u` is stronger than `
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: n = 3, edges = [[0,1],[0,2]]
+Output: 0
+Explanation: Node 0 has in-degree 0, nodes 1 and 2 have in-degree 1.
+```
+
+**Example 2:**
+```
+Input: n = 3, edges = [[0,1],[2,1]]
+Output: -1
+Explanation: Nodes 0 and 2 both have in-degree 0, so there is no unique champion.
+```
+
+---
+
 ## Approach: In-Degree Check — O(n + m) ✅
 
-```
+```text
 FUNCTION findChampion(n, edges):
-    inDegree = [0] * n
-    FOR [u, v] IN edges:
-        inDegree[v] += 1
-    candidates = [i for i in range(n) if inDegree[i] == 0]
-    RETURN candidates[0] IF len(candidates) == 1 ELSE -1
+    SET inDegree ← ARRAY of size n filled with 0
+    FOR each edge [u, v] IN edges:
+        SET inDegree[v] ← inDegree[v] + 1
+    SET candidates ← []
+    FOR i ← 0 TO n - 1:
+        IF inDegree[i] == 0:
+            APPEND i TO candidates
+    IF LENGTH(candidates) == 1:
+        RETURN candidates[0]
+    ELSE:
+        RETURN -1
 ```
+
+---
+
+## Walkthrough
+
+Consider the first example `n = 3, edges = [[0,1],[0,2]]`.
+| Node | In‑Degree |
+|------|-----------|
+| 0    | 0 |
+| 1    | 1 |
+| 2    | 1 |
+The algorithm builds the in‑degree array, finds node 0 as the sole candidate, and returns it as the champion.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n + m) – one pass to compute in‑degrees and one pass to scan candidates.
+- **Space:** O(n) – the in‑degree array.
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the solution to return all nodes with in‑degree 0?
+2. Can you detect cycles in the graph while computing the champion?
+3. What if the graph is given as an adjacency matrix instead of edge list?
 
 ---
 

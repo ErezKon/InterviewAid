@@ -12,14 +12,45 @@ Given an array of `2n` integers, return `true` if you can divide it into `n` pai
 
 ---
 
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `[3,3,2,2]` | `true` | Both `3` and `2` appear twice, so they can be paired. |
+| `[1,2,3,4]` | `false` | No element appears twice, impossible to form equal pairs. |
+| `[5,5,5,5]` | `true` | All elements are the same, can be paired arbitrarily.
+
+---
+
 ## Approach: Frequency Check ✅
 
-```
+```text
 FUNCTION divideArray(nums):
-    RETURN all(c % 2 == 0 for c in Counter(nums).values())
+    // Count occurrences of each number
+    SET freqMap ← COUNTER(nums)
+    // Every count must be even
+    FOR each count IN freqMap.values():
+        IF count MOD 2 != 0:
+            RETURN false
+    RETURN true
 ```
 
-Every element must appear an even number of times to form pairs.
+The insight is that a pair of equal numbers requires each distinct value to appear an even number of times.
+
+---
+
+## Walkthrough
+
+Consider the input `[3,3,2,2]`:
+
+1. Build frequency map → `{3:2, 2:2}`.
+2. Iterate counts: `2` is even for `3`, `2` is even for `2`.
+3. All counts satisfy the even condition → return `true`.
+
+If the input were `[1,2,3,4]`:
+
+1. Frequency map → `{1:1, 2:1, 3:1, 4:1}`.
+2. First count `1` is odd → immediately return `false`.
 
 ---
 
@@ -27,11 +58,19 @@ Every element must appear an even number of times to form pairs.
 
 | Metric | Value | Explanation |
 |--------|-------|-------------|
-| **Time** | O(n) | Count frequencies |
-| **Space** | O(n) | Counter |
+| **Time** | O(n) | Single pass to count frequencies. |
+| **Space** | O(n) | Frequency map stores up to n distinct values. |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the solution if the array length were odd?
+- Can you solve the problem in‑place without extra space?
+- What if pairs must consist of numbers whose sum equals a target value?
 
 ---
 
 ## Key Takeaway
 
-> **Pairing requires even frequency for every value — one-liner with a Counter check.**
+> **Pairing requires even frequency for every value — a simple Counter check solves the problem in linear time.**

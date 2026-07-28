@@ -27,6 +27,24 @@ Given arrays `nums` and `andValues`, divide `nums` into `m` contiguous subarrays
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+nums = [7, 3, 5, 6]
+andValues = [3, 4]
+```
+*We can split into `[7,3]` (AND = 3) and `[5,6]` (AND = 4). The last elements are 3 and 6, sum = 9.*
+
+**Example 2:**
+```
+nums = [1,2,3]
+andValues = [0]
+```
+*All numbers AND together give 0, but the last element is 3, so the answer is 3.*
+
+---
+
 ## 2. Key Insight
 
 > **DP with AND tracking**: `dp[i][j]` = minimum sum when the first `i` elements are divided into `j` subarrays. The AND of a subarray only decreases (or stays) as we extend it — there are at most O(log max) distinct AND values as we extend a suffix. Use this to prune the DP transitions.
@@ -35,33 +53,48 @@ Given arrays `nums` and `andValues`, divide `nums` into `m` contiguous subarrays
 
 ## 3. Approach: DP + Bitwise AND — O(n · m · log(max)) ✅
 
-```
+```text
 FUNCTION minimumValueSum(nums, andValues):
-    n, m = len(nums), len(andValues)
+    n, m ← LENGTH(nums), LENGTH(andValues)
     // dp[i][j] = min sum using first i elements in j groups
-    // For each (i, j), track possible AND values for the j-th group
+    // For each (i, j), track possible AND values for the j‑th group
     
-    MEMO = {}
+    MEMO ← {}
     FUNCTION solve(i, j, curAnd):
-        IF i == n AND j == m: RETURN 0
-        IF i == n OR j == m: RETURN infinity
+        IF i = n AND j = m: RETURN 0
+        IF i = n OR j = m: RETURN INFINITY
         
-        curAnd &= nums[i]
-        IF curAnd < andValues[j]: RETURN infinity  // AND can only decrease
+        curAnd ← curAnd AND nums[i]
+        IF curAnd < andValues[j]: RETURN INFINITY  // AND can only decrease
         
-        result = solve(i+1, j, curAnd)  // extend current group
-        IF curAnd == andValues[j]:       // end group here
-            result = MIN(result, nums[i] + solve(i+1, j+1, -1))
+        // Extend current group
+        result ← solve(i+1, j, curAnd)
+        // End group here if AND matches target
+        IF curAnd = andValues[j]:
+            result ← MIN(result, nums[i] + solve(i+1, j+1, -1))
         
         RETURN result
     
-    ans = solve(0, 0, -1)  // -1 as identity for AND (all bits set)
-    RETURN ans IF ans < infinity ELSE -1
+    ans ← solve(0, 0, -1)  // -1 as identity (all bits set)
+    RETURN ans IF ans < INFINITY ELSE -1
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Walkthrough
+
+Consider `nums = [7,3,5,6]` and `andValues = [3,4]`.
+| i | curAnd (extending) | Decision |
+|---|--------------------|----------|
+|0|7|cannot end (7≠3) → extend|
+|1|7 AND 3 = 3|matches `andValues[0]`; end first subarray, add last element `3` to sum|
+|2|5|start second subarray, curAnd=5|
+|3|5 AND 6 = 4|matches `andValues[1]`; end second subarray, add last element `6`|
+Total sum = 3 + 6 = 9.
+
+---
+
+## 5. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -70,6 +103,14 @@ FUNCTION minimumValueSum(nums, andValues):
 
 ---
 
-## 5. Key Takeaway
+## Follow-Up Questions
+
+1. How would the solution change if the cost to minimize were the **sum of subarray lengths** instead of last elements?
+2. Can the approach be adapted for a **non‑contiguous** partition of `nums`?
+3. What if the AND operation were replaced by **OR** or **XOR**?
+
+---
+
+## Key Takeaway
 
 > **AND monotonicity enables pruning** — as a subarray extends, its AND only decreases. This limits the number of distinct states, making the DP tractable despite the seemingly large state space.

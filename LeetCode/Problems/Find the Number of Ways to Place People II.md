@@ -1,7 +1,6 @@
 # 3027. Find the Number of Ways to Place People II
 
 **Difficulty:** 🔴 Hard
-
 **Companies:** Google, Meta, Uber
 ---
 
@@ -21,43 +20,72 @@ Same as Part I but with larger constraints (n ≤ 1000). Count valid (Alice, Bob
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> Sort by x ascending, y descending. For each Alice, scan subsequent points as potential Bobs. Track the minimum y seen among intermediate points to quickly check if any point falls inside.
+| # | points | Output |
+|---|--------|--------|
+| 1 | `[[0,0],[1,1],[2,2],[3,3]]` | `6` |
+| 2 | `[[0,3],[1,2],[2,1],[3,0]]` | `4` |
+
+*Explanation*: After sorting, each pair that satisfies the geometric condition and has no interior points is counted.
 
 ---
 
 ## 3. Approach: Sort + Greedy Scan — O(n²) ✅
 
-```
+```text
 FUNCTION numberOfPairs(points):
-    // Sort by x asc, y desc
-    SORT(points by x asc, then y desc)
-    count ← 0
-
-    FOR i ← 0 TO n - 1 DO
-        maxY ← -∞   // track max y of intermediate points
-        FOR j ← i + 1 TO n - 1 DO
-            IF points[j][1] <= points[i][1] THEN
+    // Sort by x ascending, y descending
+    SORT(points BY x ASC, y DESC)
+    SET n ← LENGTH(points)
+    SET count ← 0
+    FOR i ← 0 TO n - 1:
+        SET maxY ← -∞
+        FOR j ← i + 1 TO n - 1:
+            IF points[j][1] <= points[i][1]:
                 // Bob candidate: lower or equal y
-                IF points[j][1] > maxY THEN
-                    count += 1    // no point with higher y was inside
-            maxY ← MAX(maxY, points[j][1])
-
+                IF points[j][1] > maxY:
+                    SET count ← count + 1    // no interior point with higher y
+            SET maxY ← MAX(maxY, points[j][1])
     RETURN count
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Walkthrough
 
-| Aspect | Complexity |
-|--------|------------|
-| **Time** | O(n²) |
-| **Space** | O(1) (excluding sort) |
+Take points `[[0,0],[1,2],[2,1],[3,3]]`.
+1. After sorting: `[(0,0),(1,2),(2,1),(3,3)]`.
+2. For `i=0` (point (0,0)), scan j:
+   - j=1: y=2 > 0 → not a lower‑right candidate.
+   - j=2: y=1 > 0 → not candidate.
+   - j=3: y=3 > 0 → not candidate.
+   No pairs from i=0.
+3. For `i=1` (1,2), maxY starts `-∞`.
+   - j=2: y=1 ≤ 2 and 1 > -∞ → count++ (pair (1,2)). maxY=1.
+   - j=3: y=3 > 2 → not candidate.
+   Resulting count = 1.
+Continue similarly for remaining i to obtain total valid pairs.
 
 ---
 
-## 5. Key Takeaway
+## 5. Complexity Analysis
 
-> **Sorting + tracking max intermediate y** eliminates the inner O(n) check. After sorting, scan potential Bobs in order and a Bob is valid only if no previously seen point has a higher y (meaning it'd be inside the rectangle).
+| Aspect | Complexity |
+|--------|------------|
+| **Time** | O(n²) — double loop after sorting |
+| **Space** | O(1) extra (in‑place sort) |
+
+---
+
+## 6. Follow-Up Questions
+
+- How would you handle `n` up to 10⁵? (Consider sweep line with segment tree.)
+- What if points can share the same x or y coordinate?
+- Can the problem be extended to count unordered pairs only?
+
+---
+
+## 7. Key Takeaway
+
+> **Sorting + tracking max intermediate y** eliminates the inner O(n) check. After sorting, a Bob is valid only if no previously seen point has a higher y, enabling an O(n²) solution.

@@ -9,54 +9,98 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: DP — O(steps · min(steps, arrLen))](#3-approach)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: DP — O(steps · min(steps, arrLen))](#4-approach)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
 ## 1. Problem Description
 
-Starting at index 0, take exactly `steps` moves (left, right, or stay). Count ways to be back at index 0. Array length `arrLen` bounds movement. Return mod 10⁹+7.
+Starting at index 0 on a line of length `arrLen`, you must make exactly `steps` moves. Each move can go left, right, or stay in place. Count the number of distinct sequences of moves that end back at index 0. Return the answer modulo 10⁹ + 7.
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> You can never go further than `steps/2` positions right (must return). Cap the position range at `min(arrLen, steps/2 + 1)`. DP on (remaining steps, current position).
+| steps | arrLen | Output |
+|-------|--------|--------|
+| 1 | 2 | 1 |
+| 2 | 2 | 2 |
+| 3 | 2 | 4 |
+| 4 | 2 | 8 |
+
+*Explanation*: With `steps = 2` and `arrLen = 2`, the valid sequences are `stay‑stay` and `right‑left`.
 
 ---
 
-## 3. Approach: DP — O(steps · min(steps, arrLen)) ✅
+## 3. Key Insight
 
-```
+> In `steps` moves you can never travel more than `steps/2` positions to the right, because you must return to index 0. Therefore the reachable position range is bounded by `min(arrLen, steps/2 + 1)`. This small bound enables a DP over positions.
+
+---
+
+## 4. Approach: DP — O(steps · min(steps, arrLen)) ✅
+
+```text
 FUNCTION numWays(steps, arrLen):
-    MOD = 10^9 + 7
-    maxPos = MIN(arrLen, steps / 2 + 1)
-    dp = [0] * maxPos; dp[0] = 1
+    MOD ← 1_000_000_007
+    maxPos ← MIN(arrLen, steps / 2 + 1)
+    dp ← ARRAY of size maxPos filled with 0
+    dp[0] ← 1
     FOR s ← 1 TO steps:
-        newDp = [0] * maxPos
+        newDp ← ARRAY of size maxPos filled with 0
         FOR i ← 0 TO maxPos - 1:
-            newDp[i] = dp[i]    // stay
-            IF i > 0: newDp[i] += dp[i-1]    // from left
-            IF i < maxPos - 1: newDp[i] += dp[i+1]    // from right
-            newDp[i] %= MOD
-        dp = newDp
+            // stay at i
+            newDp[i] ← (newDp[i] + dp[i]) MOD MOD
+            // move from left neighbor
+            IF i > 0:
+                newDp[i] ← (newDp[i] + dp[i-1]) MOD MOD
+            // move from right neighbor
+            IF i < maxPos - 1:
+                newDp[i] ← (newDp[i] + dp[i+1]) MOD MOD
+        dp ← newDp
     RETURN dp[0]
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 5. Walkthrough
 
-| Aspect | Value |
-|--------|-------|
-| **Time** | O(steps · min(steps, arrLen)) |
-| **Space** | O(min(steps, arrLen)) |
+Consider `steps = 3`, `arrLen = 2`.
+
+| s (step) | dp[0] | dp[1] |
+|----------|-------|-------|
+| 0 (init) | 1 | 0 |
+| 1 | 1 (stay) | 1 (right) |
+| 2 | 2 (stay‑stay, right‑left) | 2 (stay‑right, right‑stay) |
+| 3 | 4 (stay‑stay‑stay, right‑left‑stay, stay‑right‑left, right‑left‑right) | 4 |
+
+The answer after 3 steps is `dp[0] = 4`.
 
 ---
 
-## 5. Key Takeaway
+## 6. Complexity Analysis
 
-> **Bound reachable positions by steps/2.** Standard position DP with 3 transitions (left, right, stay). Space optimization via rolling array.
+| Aspect | Value |
+|--------|-------|
+| **Time** | O(steps · min(steps, arrLen)) |
+| **Space** | O(min(steps, arrLen)) |
+
+---
+
+## 7. Follow-Up Questions
+
+1. How would you modify the DP if moves could only be left or right (no stay)?
+2. Can the solution be optimized further using combinatorial formulas?
+3. What changes are needed if the line is circular (wrap‑around movement)?
+
+---
+
+## 8. Key Takeaway
+
+> **Bound the state space.** By limiting positions to `steps/2`, DP becomes feasible even for large `arrLen`. Rolling arrays give O(min(steps, arrLen)) space.

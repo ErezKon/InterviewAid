@@ -15,11 +15,13 @@ Given a non-empty array where every element appears **twice** except for one, fi
 
 ## 2. Approach: XOR — O(n) ✅
 
-```
+```text
 FUNCTION singleNumber(nums):
-    result = 0
+    // Initialize accumulator
+    SET result ← 0
     FOR num IN nums:
-        result = result XOR num
+        // XOR cancels paired numbers
+        SET result ← result XOR num
     RETURN result
 ```
 
@@ -31,18 +33,44 @@ FUNCTION singleNumber(nums):
 
 ---
 
-## 3. Follow-Up Questions
+## 3. Examples
 
-### Single Number II (LeetCode #137) — every element appears 3 times?
+| Input | Output |
+|-------|--------|
+| `[2,2,1]` | `1` |
+| `[4,1,2,1,2]` | `4` |
+| `[1]` | `1` |
 
-Count bits modulo 3 using two bitmasks. Or sort and check triplets.
+---
 
-### Single Number III (LeetCode #260) — two unique numbers?
+## 4. Walkthrough
 
-XOR all → result has bits set where the two numbers differ. Use any set bit to partition into two groups and XOR each group.
+Consider `[4,1,2,1,2]`:
+
+1. `result = 0 XOR 4 = 4`
+2. `result = 4 XOR 1 = 5`
+3. `result = 5 XOR 2 = 7`
+4. `result = 7 XOR 1 = 6`
+5. `result = 6 XOR 2 = 4`
+
+All paired numbers cancel, leaving the unique `4`.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) – single pass through the array.
+- **Space:** O(1) – only a constant‑size accumulator.
+
+---
+
+## 6. Follow-Up Questions
+
+- **Single Number II:** Every element appears three times except one.
+- **Single Number III:** Exactly two elements appear once, all others appear twice.
 
 ---
 
 ## Key Takeaway
 
-> XOR is the go-to for "find the unique element" problems. `a ^ a = 0` cancels duplicates. O(n) time, O(1) space.
+> XOR is the go‑to for "find the unique element" problems. `a ^ a = 0` cancels duplicates. O(n) time, O(1) space.

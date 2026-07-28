@@ -34,7 +34,7 @@ Same as Game I but with much larger `k` (up to 10¹⁴) and custom operations pe
 
 ## 3. Approach: Recursive Binary Lifting — O(log k) ✅
 
-```
+```text
 FUNCTION kthCharacter(k, operations):
     // Find how many doubling steps are needed
     n ← LENGTH(operations)
@@ -55,7 +55,7 @@ FUNCTION kthCharacter(k, operations):
 
 ## 4. Walkthrough
 
-```
+```text
 k = 5, operations = [1, 1, 1]
 
 step=2: halfLen=4, k=5>4 → k=1, shift=1 (op=1)
@@ -67,7 +67,23 @@ Answer: chr('a' + 1) = 'b' ✅
 
 ---
 
-## 5. Complexity Analysis
+## 5. Examples
+
+```text
+Input: k = 10, operations = [0,1,0]
+Output: 'c'
+Explanation: After processing the operations, the 10th character maps back to the first character with a total shift of 2.
+```
+
+```text
+Input: k = 1, operations = []
+Output: 'a'
+Explanation: The first character is always 'a' regardless of operations.
+```
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -76,6 +92,14 @@ Answer: chr('a' + 1) = 'b' ✅
 
 ---
 
-## 6. Key Takeaway
+## 7. Follow-Up Questions
+
+- How would you modify the solution if the shift operation could increase characters by more than one?
+- Can the approach be extended to support deletions or insertions in the string?
+- What if `k` could be as large as 10¹⁸?
+
+---
+
+## 8. Key Takeaway
 
 > **Binary lifting** traces position `k` back through doubling steps without building the string. Each step either maps `k` to the first half (with an optional +1 shift) or stays. This handles k up to 10¹⁴ efficiently.

@@ -33,17 +33,52 @@ The XOR-beauty of an array is defined as XOR of `((nums[i] | nums[j]) & nums[k])
 
 ## 3. Approach: Math Simplification — O(n) ✅
 
-```
+```text
 FUNCTION xorBeauty(nums):
-    result ← 0
+    // Initialize result to 0
+    SET result ← 0
+    // XOR each element with result
     FOR num IN nums DO
-        result ^= num
+        SET result ← result XOR num
     RETURN result
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: nums = [1,2,3]
+Output: 0
+Explanation: XOR of all elements = 1 XOR 2 XOR 3 = 0.
+```
+
+**Example 2:**
+```
+Input: nums = [5,5,5,5]
+Output: 0
+Explanation: Even count of each bit cancels out, resulting XOR is 0.
+```
+
+---
+
+## 5. Walkthrough
+
+Consider the array `[1,2,3]`.
+
+| Step | Action | result |
+|------|--------|--------|
+| 1 | Initialize result = 0 | 0 |
+| 2 | XOR with 1 | 0 XOR 1 = 1 |
+| 3 | XOR with 2 | 1 XOR 2 = 3 |
+| 4 | XOR with 3 | 3 XOR 3 = 0 |
+
+Final result is 0, matching the expected XOR-beauty.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -52,6 +87,13 @@ FUNCTION xorBeauty(nums):
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
+
+- How would the solution change if the operation were `((nums[i] & nums[j]) | nums[k])`?
+- Can you extend this approach to compute XOR-beauty for a stream of numbers?
+
+---
+
+## 8. Key Takeaway
 
 > The triple XOR expression simplifies to just `XOR(nums)` — prove by analyzing each bit position and noting that most pairings cancel.

@@ -18,7 +18,7 @@
 
 ## 1. Problem Description
 
-Given pairs of ancestor-descendant relationships, determine if you can reconstruct a rooted tree. Return `0` (impossible), `1` (unique), or `2` (multiple ways).
+Given pairs of ancestor‑descendant relationships, determine if you can reconstruct a rooted tree. Return `0` (impossible), `1` (unique), or `2` (multiple ways).
 
 ---
 
@@ -30,19 +30,19 @@ Given pairs of ancestor-descendant relationships, determine if you can reconstru
 
 ## 3. Approach: Ancestor Relationship — O(n²) ✅
 
-```
+```text
 FUNCTION checkWays(pairs):
-    adj = build adjacency sets from pairs
-    nodes = sorted by degree descending
+    adj ← build adjacency sets from pairs
+    nodes ← sorted by degree descending
 
     // Root must connect to all other nodes
     IF len(adj[root]) != n - 1: RETURN 0
 
-    multiple = false
+    multiple ← false
     FOR each node (sorted by degree):
-        parent = node with smallest degree > node's degree that is connected
+        parent ← node with smallest degree > node's degree that is connected
         IF no valid parent AND node != root: RETURN 0
-        IF degree[parent] == degree[node]: multiple = true
+        IF degree[parent] == degree[node]: multiple ← true
         // Verify parent's connections are superset of node's
         IF NOT adj[node] ⊆ adj[parent]: RETURN 0
 
@@ -51,7 +51,28 @@ FUNCTION checkWays(pairs):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+| # | pairs | output | explanation |
+|---|-------|--------|-------------|
+| 1 | `[[1,2],[2,3]]` | `1` | The tree `1→2→3` is the only possible reconstruction. |
+| 2 | `[[1,2],[2,3],[1,3]]` | `2` | Nodes `2` and `3` have identical degree sets, so they can be swapped, yielding two valid trees. |
+
+---
+
+## 5. Walkthrough
+
+**Example 1:** `pairs = [[1,2],[2,3]]`
+
+1. Build adjacency sets: `1:{2}`, `2:{1,3}`, `3:{2}`.
+2. Degrees: `2` (2), `1` (1), `3` (1). Root is node `2` (highest degree).
+3. For node `1`, the only higher‑degree neighbor is `2`; parent = `2`.
+4. For node `3`, the only higher‑degree neighbor is `2`; parent = `2`.
+5. No equal‑degree siblings, so the reconstruction is unique → return `1`.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -60,6 +81,14 @@ FUNCTION checkWays(pairs):
 
 ---
 
+## 7. Follow-Up Questions
+
+1. How would the solution change if the input were given as preorder and inorder traversals?
+2. Can the algorithm be optimized to O(n log n) using hash maps for subset checks?
+3. How would you handle reconstruction when the tree is not guaranteed to be binary?
+
+---
+
 ## 5. Key Takeaway
 
-> **Degree ordering determines parent-child relationships.** A node's parent has the smallest degree strictly greater. Equal degrees indicate interchangeable nodes → multiple trees possible.
+> **Degree ordering determines parent‑child relationships.** A node's parent has the smallest degree strictly greater. Equal degrees indicate interchangeable nodes → multiple trees possible.

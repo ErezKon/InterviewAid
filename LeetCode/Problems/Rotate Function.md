@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-Given an array `nums`, define `F(k) = Σ(i * nums[(i+k) % n])` for rotation k. Return the **maximum** value of `F(k)` across all rotations.
+Given an integer array `nums`, define `F(k) = Σ(i * nums[(i + k) % n])` where `n` is the length of the array and `k` is the number of rotations. Return the maximum value of `F(k)` for any `k`.
 
 ---
 
@@ -20,19 +20,40 @@ Given an array `nums`, define `F(k) = Σ(i * nums[(i+k) % n])` for rotation k. R
 
 ## Approach
 
-```
+```text
 FUNCTION maxRotateFunction(nums):
-    n = len(nums)
-    totalSum = SUM(nums)
-    F = SUM(i * nums[i] for i in range(n))
-    maxF = F
+    n ← LENGTH(nums)
+    totalSum ← SUM(nums)
+    F ← SUM(i * nums[i] FOR i ← 0 TO n-1)
+    maxF ← F
 
-    FOR k ← 1 TO n - 1:
-        F = F + totalSum - n * nums[n - k]
-        maxF = MAX(maxF, F)
+    FOR k ← 1 TO n-1:
+        F ← F + totalSum - n * nums[n - k]
+        maxF ← MAX(maxF, F)
 
     RETURN maxF
 ```
+
+---
+
+## Examples
+
+| nums | Output |
+|------|--------|
+| `[4,3,2,6]` | `26` |
+| `[1,2,3,4,5]` | `55` |
+
+---
+
+## Walkthrough
+
+1. Compute `totalSum = 4+3+2+6 = 15` and initial `F(0) = 0*4 + 1*3 + 2*2 + 3*6 = 25`.
+2. For `k=1`: `F = 25 + 15 - 4*4 = 26` → update `maxF`.
+3. Continue updating `F` using the recurrence for remaining rotations; the maximum remains `26`.
+
+---
+
+## Complexity Analysis
 
 | Time | Space |
 |------|-------|
@@ -40,6 +61,13 @@ FUNCTION maxRotateFunction(nums):
 
 ---
 
+## Follow-Up Questions
+
+* How would you adapt the solution if the array could be updated between queries?
+* Can the recurrence be derived for a weighted sum with different coefficients?
+
+---
+
 ## Key Takeaway
 
-> Derive a recurrence between consecutive rotations to avoid recomputing each F(k) from scratch — transforms O(n²) brute force into O(n).
+> Derive a recurrence between consecutive rotations to avoid recomputing each `F(k)` from scratch — transforms O(n²) brute force into O(n).

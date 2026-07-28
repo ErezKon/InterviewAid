@@ -12,7 +12,9 @@
 2. [Key Insight](#2-key-insight)
 3. [Approach: Prefix Parity — O(n)](#3-approach)
 4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+5. [Examples](#5-examples)
+6. [Walkthrough](#6-walkthrough)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
@@ -30,23 +32,23 @@ Count subarrays with an odd sum. Return mod 10⁹+7.
 
 ## 3. Approach: Prefix Parity — O(n) ✅
 
-```
+```text
 FUNCTION numOfSubarrays(arr):
-    MOD = 10^9 + 7
-    oddCount = evenCount = 0
-    evenCount = 1    // empty prefix
-    prefixSum = 0
-    result = 0
-
+    SET MOD ← 1_000_000_007
+    SET oddCount ← 0
+    SET evenCount ← 1   // empty prefix counts as even
+    SET prefixSum ← 0
+    SET result ← 0
     FOR num IN arr:
-        prefixSum += num
+        SET prefixSum ← prefixSum + num
         IF prefixSum % 2 == 0:
-            result = (result + oddCount) % MOD
-            evenCount += 1
+            // current prefix even, pair with previous odd prefixes
+            SET result ← (result + oddCount) % MOD
+            SET evenCount ← evenCount + 1
         ELSE:
-            result = (result + evenCount) % MOD
-            oddCount += 1
-
+            // current prefix odd, pair with previous even prefixes
+            SET result ← (result + evenCount) % MOD
+            SET oddCount ← oddCount + 1
     RETURN result
 ```
 
@@ -61,6 +63,39 @@ FUNCTION numOfSubarrays(arr):
 
 ---
 
-## 5. Key Takeaway
+## 5. Examples
+
+**Example 1:**
+```
+arr = [1,2,3,4]
+Output: 4
+Explanation: The odd‑sum subarrays are [1], [2,3], [1,2,3], [3,4].
+```
+
+**Example 2:**
+```
+arr = [2,4,6]
+Output: 0
+Explanation: All subarrays have even sum.
+```
+
+---
+
+## 6. Walkthrough
+
+Consider Example 1 `[1,2,3,4]`:
+| Index | Num | Prefix Sum | Parity | evenCount | oddCount | result |
+|-------|-----|------------|--------|-----------|----------|--------|
+| -1   | -   | 0          | even   | 1         | 0        | 0 |
+| 0    | 1   | 1          | odd    | 1         | 1        | 1 (paired with evenCount) |
+| 1    | 2   | 3          | odd    | 1         | 2        | 2 (add evenCount) |
+| 2    | 3   | 6          | even   | 2         | 2        | 4 (add oddCount) |
+| 3    | 4   | 10         | even   | 3         | 2        | 4 (add oddCount) |
+
+The final result 4 matches the counted odd‑sum subarrays.
+
+---
+
+## 7. Key Takeaway
 
 > **Prefix parity counting.** Even prefix - odd prefix = odd sum. Track even/odd prefix sum counts and pair them.

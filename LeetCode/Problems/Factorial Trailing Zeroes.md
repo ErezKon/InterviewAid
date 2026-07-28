@@ -18,14 +18,24 @@ Given integer `n`, return the number of **trailing zeroes** in `n!`.
 
 ---
 
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| 3 | 0 | 3! = 6 has no trailing zero. |
+| 5 | 1 | 5! = 120 → one trailing zero. |
+| 100 | 24 | Count ⌊100/5⌋ + ⌊100/25⌋ = 20 + 4 = 24. |
+
+---
+
 ## Approach: Count Factors of 5 — O(log n) ✅
 
-```
+```text
 FUNCTION trailingZeroes(n):
-    count = 0
+    SET count ← 0
     WHILE n >= 5:
-        n /= 5
-        count += n
+        SET n ← n / 5
+        SET count ← count + n
     RETURN count
 ```
 
@@ -40,6 +50,20 @@ n = 100
   4/5 = 0    → STOP
   count = 20 + 4 = 24 trailing zeros ✅
 ```
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(log₅ n) – repeatedly divide by 5.
+- **Space:** O(1) – only a few variables.
+
+---
+
+## Follow-Up Questions
+
+- How would you compute trailing zeros for factorials of very large numbers (beyond 64‑bit)?
+- Can you extend the method to count trailing zeros in other bases?
 
 ---
 

@@ -22,6 +22,24 @@ Share exactly `k` consecutive candies. Maximize the number of unique flavors in 
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: candies = [1,2,1,3,4,2,3], k = 3
+Output: 4
+Explanation: Share candies at positions 2‑4 (flavors 2,1,3). Remaining flavors are {1,4,2,3} → 4 unique.
+```
+
+**Example 2:**
+```
+Input: candies = [5,5,5,5], k = 2
+Output: 1
+Explanation: No matter which two candies are shared, only flavor 5 remains.
+```
+
+---
+
 ## 2. Key Insight
 
 > Sliding window of size `k` (shared portion). Track unique flavors outside the window. Slide and update counts.
@@ -32,22 +50,44 @@ Share exactly `k` consecutive candies. Maximize the number of unique flavors in 
 
 ```
 FUNCTION shareCandies(candies, k):
-    IF k == 0: RETURN len(set(candies))
-    total = Counter(candies)
-    // Remove first k from "kept"
+    n ← LENGTH(candies)
+    IF k == 0: RETURN SIZE(SET(candies))
+    // Count all flavors
+    totalCounts ← COUNTER(candies)
+    // Remove flavors in initial shared window
     FOR i ← 0 TO k-1:
-        total[candies[i]] -= 1
-        IF total[candies[i]] == 0: DEL total[candies[i]]
-    best = len(total)
-
+        totalCounts[candies[i]] ← totalCounts[candies[i]] - 1
+        IF totalCounts[candies[i]] == 0:
+            DELETE totalCounts[candies[i]]
+    best ← SIZE(totalCounts)
+    // Slide window across array
     FOR i ← k TO n-1:
-        // Add back candies[i-k], remove candies[i]
-        total[candies[i-k]] += 1
-        total[candies[i]] -= 1
-        IF total[candies[i]] == 0: DEL total[candies[i]]
-        best = MAX(best, len(total))
+        // Add back candy leaving window
+        leftFlavor ← candies[i - k]
+        totalCounts[leftFlavor] ← totalCounts.get(leftFlavor, 0) + 1
+        // Remove new candy entering window
+        rightFlavor ← candies[i]
+        totalCounts[rightFlavor] ← totalCounts[rightFlavor] - 1
+        IF totalCounts[rightFlavor] == 0:
+            DELETE totalCounts[rightFlavor]
+        best ← MAX(best, SIZE(totalCounts))
     RETURN best
 ```
+
+---
+
+## Walkthrough
+
+Consider `candies = [1,2,1,3,4,2,3]`, `k = 3`.
+
+| Step | Window (shared) | Remaining counts | Unique remaining |
+|------|----------------|------------------|-------------------|
+| Init | [1,2,1] | {3:1,4:1,2:1,3:1} → 4 | 4 |
+| Slide 1 | [2,1,3] | {1:1,4:1,2:1,3:1} → 4 | 4 |
+| Slide 2 | [1,3,4] | {2:2,1:1,3:1} → 3 | 3 |
+| ... | ... | ... | ... |
+
+The maximum unique count observed is **4**.
 
 ---
 

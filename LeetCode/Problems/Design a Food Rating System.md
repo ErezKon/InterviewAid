@@ -35,15 +35,48 @@ CLASS FoodRatings:
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+foods = ["kimchi", "miso", "sushi", "ramen"]
+cuisines = ["korean", "japanese", "japanese", "japanese"]
+ratings = [9, 12, 8, 15]
+fr = FoodRatings(foods, cuisines, ratings)
+fr.highestRated("japanese") → "ramen"   // rating 15 highest
+fr.changeRating("sushi", 16)
+fr.highestRated("japanese") → "sushi"   // now sushi has highest rating
+```
+Explanation: The system initializes heaps per cuisine; after a rating change, the heap is updated to reflect the new order.
+
+---
+
+## Walkthrough
+
+| Step | Operation | Heap for "japanese" (sorted by -rating, name) |
+|------|-----------|-----------------------------------------------|
+| 1 | Initialize | [(-15, "ramen"), (-12, "miso"), (-8, "sushi")] |
+| 2 | `highestRated("japanese")` | Returns "ramen" (top of heap) |
+| 3 | `changeRating("sushi", 16)` | Remove (-8, "sushi"), add (-16, "sushi") → [(-16, "sushi"), (-15, "ramen"), (-12, "miso")] |
+| 4 | `highestRated("japanese")` | Returns "sushi" |
+
+---
+
 ## Complexity Analysis
 
-| Aspect | Value |
-|---|---|
-| **Time** | O(log n) per change/query with SortedList |
-| **Space** | O(n) |
+- **Time:** Each `changeRating` and `highestRated` operation O(log n) due to heap insertion/removal.
+- **Space:** O(n) to store food‑to‑cuisine, food‑to‑rating maps and a heap per cuisine.
+
+---
+
+## Follow‑Up Questions
+
+1. How would you support ties by returning the lexicographically smallest food name?
+2. Can you extend the design to handle removal of foods?
+3. What if you need to query the top k foods per cuisine?
 
 ---
 
 ## Key Takeaway
 
-> **SortedList per cuisine with `(-rating, name)` tuples gives O(log n) updates and O(1) top query. Negate rating for max-first ordering; name breaks ties lexicographically.**
+> **SortedList per cuisine with `(-rating, name)` tuples gives O(log n) updates and O(1) top query. Negate rating for max‑first ordering; name breaks ties lexicographically.**

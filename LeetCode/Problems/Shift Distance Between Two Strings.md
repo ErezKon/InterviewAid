@@ -32,6 +32,53 @@ FUNCTION shiftDistance(s, t, nextCost, previousCost):
 
 Use prefix sums on a doubled alphabet array for O(1) range queries.
 
-| Time | Space |
-|------|-------|
-| O(n + 26) | O(26) |
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: s = "abc", t = "bcd", nextCost = [1,1,...], previousCost = [1,1,...]
+Output: 3
+Explanation: Shift each character forward by 1 (cost 1 each).
+```
+
+**Example 2:**
+```
+Input: s = "az", t = "za", nextCost = [2,2,...], previousCost = [1,1,...]
+Output: 2
+Explanation: Best to shift 'a' backward to 'z' (cost 1) and 'z' forward to 'a' (cost 1).
+```
+
+---
+
+## Walkthrough
+
+| Index | s[i] | t[i] | Forward Cost | Backward Cost | Chosen |
+|-------|------|------|--------------|---------------|--------|
+| 0 | a (0) | b (1) | nextCost[0] = 1 | previousCost[0] = 1 | 1 |
+| 1 | b (1) | c (2) | nextCost[1] = 1 | previousCost[1] = 1 | 1 |
+| 2 | c (2) | d (3) | nextCost[2] = 1 | previousCost[2] = 1 | 1 |
+
+Total = 3.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n + 26) – one pass over the strings plus constant‑time prefix‑sum queries.
+- **Space:** O(26) – prefix arrays for forward and backward costs.
+
+---
+
+## Follow‑Up Questions
+
+1. How would you handle a **dynamic** update to `nextCost`/`previousCost` after many queries?
+2. Can the solution be extended to support **different alphabets** or Unicode characters?
+3. What if the cost arrays are **non‑circular** (no wrap‑around)?
+
+---
+
+## Key Takeaway
+
+> Precompute circular prefix sums for forward and backward shift costs, then each character pair is solved in O(1) by picking the cheaper direction.

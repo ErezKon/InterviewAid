@@ -48,6 +48,36 @@ FUNCTION numOfWays(n):
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: n = 1
+Output: 12
+Explanation: Each of the 3 cells can be any of the 3 colors, but adjacent cells must differ. There are 12 valid colorings.
+```
+
+**Example 2:**
+```
+Input: n = 2
+Output: 54
+Explanation: Using the pattern transition counts, the total for two rows is 54.
+```
+
+---
+
+## Walkthrough
+
+| Row | ABA patterns | ABC patterns |
+|-----|--------------|--------------|
+| 1   | 6            | 6            |
+| 2   | 3*6 + 2*6 = 30 | 2*6 + 2*6 = 24 |
+| 3   | 3*30 + 2*24 = 138 | 2*30 + 2*24 = 108 |
+
+The final answer for n rows is `(ABA + ABC) mod 10⁹+7`.
+
+---
+
 ## 4. Complexity Analysis
 
 | Aspect | Value |

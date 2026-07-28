@@ -11,8 +11,11 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Z-function / KMP — O(n)](#3-approach)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -34,30 +37,65 @@ Each second, remove the first `k` characters and append any `k` characters. Retu
 
 ## 3. Approach: Z-function — O(n) ✅
 
-```
+```text
 FUNCTION minimumTimeToRevert(word, k):
-    n = len(word)
-    z = Z_function(word)
-
-    FOR t ← 1 TO CEIL(n / k):
-        pos = t * k
-        IF pos >= n: RETURN t  // entire word removed
-        IF z[pos] >= n - pos: RETURN t  // suffix matches prefix
-
-    RETURN CEIL(n / k)  // worst case: remove everything
+    n ← LENGTH(word)
+    z ← Z_FUNCTION(word)
+    maxT ← CEIL(n / k)
+    FOR t ← 1 TO maxT:
+        pos ← t * k
+        IF pos ≥ n:
+            RETURN t  // whole word removed
+        IF z[pos] ≥ n - pos:
+            RETURN t  // suffix matches prefix
+    RETURN maxT
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+word = "abcabc", k = 3
+```
+After one operation we can remove "abc" and append "abc" again, restoring the original word. Minimum seconds = **1**.
+
+**Example 2:**
+```
+word = "abcd", k = 2
+```
+We need two operations: remove "ab" (append any two chars), then remove the new first two characters which can be chosen to match the original prefix. Minimum seconds = **2**.
+
+---
+
+## 5. Walkthrough
+
+| Step | Removed | Remaining | Condition Checked |
+|------|---------|-----------|-------------------|
+| t=1 | first 3 chars (`"abc"`) | `"abc"` | `z[3] = 3 ≥ 3` → matches prefix, stop |
+
+The algorithm finds `t = 1` as the smallest satisfying `z[t*k] ≥ n - t*k`.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n) — Z-function |
-| **Space** | O(n) |
+| **Time** | O(n) — Z-function computation and linear scan |
+| **Space** | O(n) for the Z-array |
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
 
-> **Z-function for periodic suffix-prefix matching.** Check if `word[t*k:]` is a prefix of `word` for each candidate `t`. Z-function computes this efficiently in O(n).
+1. How would the solution change if the appended characters must be the same as the removed ones?
+2. Can the approach be adapted for a variable `k` per operation?
+3. What is the impact of using other string‑matching algorithms like KMP instead of Z‑function?
+
+---
+
+## 8. Key Takeaway
+
+> **Z-function enables efficient suffix‑prefix matching.** By checking `z[t*k] ≥ n - t*k` for increasing `t`, we obtain the minimum seconds in linear time.

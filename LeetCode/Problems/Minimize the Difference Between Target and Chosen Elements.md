@@ -6,16 +6,6 @@
 
 ---
 
-## Table of Contents
-
-- [Problem Description](#problem-description)
-- [Key Insight](#key-insight)
-- [Approach](#approach)
-- [Complexity Analysis](#complexity-analysis)
-- [Key Takeaway](#key-takeaway)
-
----
-
 ## Problem Description
 
 Given an `m × n` matrix, pick exactly one element from each row. Minimize `|sum - target|`.
@@ -26,28 +16,42 @@ Given an `m × n` matrix, pick exactly one element from each row. Minimize `|sum
 
 ---
 
-## Key Insight
+## Examples
 
-> Use DP with a **set of reachable sums**. For each row, extend every reachable sum by adding each element in that row. Prune sums that are already way above target (they can only grow larger).
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `matrix = [[1,2,3],[4,5,6]], target = 7` | `0` | Choose 3 from first row and 4 from second row, sum = 7, difference = 0. |
+| `matrix = [[1,2],[3,4]], target = 10` | `4` | Best sum is 6 (2+4), difference = |6-10| = 4. |
+| `matrix = [[5]], target = 3` | `2` | Only one choice, sum = 5, difference = 2.
 
 ---
 
-## Approach: DP with Set of Sums ✅
+## Approach
 
-```
-FUNCTION minimizeTheDifference(mat, target):
-    reachable ← {0}
-    
-    FOR row IN mat DO
-        nextReachable ← SET()
-        FOR s IN reachable DO
-            FOR val IN row DO
-                nextReachable.ADD(s + val)
-        reachable ← nextReachable
-        // Prune: keep sums ≤ target + some buffer, but always keep the minimum sum ≥ target
-    
+Use dynamic programming to track all reachable sums after processing each row. Represent reachable sums as a set. For each row, add each element to every previously reachable sum, forming a new set. After processing all rows, compute the minimal absolute difference to the target.
+
+```text
+FUNCTION minimizeDifference(matrix, target):
+    SET reachable ← {0}
+    FOR each row IN matrix DO
+        SET next ← EMPTY SET
+        FOR each sum IN reachable DO
+            FOR each val IN row DO
+                ADD (sum + val) TO next
+        SET reachable ← next
     RETURN MIN(ABS(s - target) FOR s IN reachable)
 ```
+
+---
+
+## Walkthrough
+
+Consider `matrix = [[1,2,3],[4,5,6]], target = 7`:
+
+1. Start with `reachable = {0}`.
+2. After first row, `next = {1,2,3}`.
+3. After second row, combine each of `{1,2,3}` with `{4,5,6}` → `{5,6,7,8,9,10}`.
+4. Compute differences to target 7: `{2,1,0,1,2,3}` → minimum is `0`.
 
 ---
 
@@ -55,14 +59,22 @@ FUNCTION minimizeTheDifference(mat, target):
 
 | Approach | Time | Space |
 |----------|------|-------|
-| DP with set pruning | **O(m · n · S)** | **O(S)** |
+| DP with sets | **O(m · n · S)** | **O(S)** |
 
-Where S is the number of distinct reachable sums (bounded by m × 70 ≈ 4900).
+`S` is the number of distinct reachable sums (bounded by `m·70`).
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the algorithm if you could pick up to two elements per row?
+- Can you reduce space usage by using a boolean array instead of a set?
+- What if the matrix size is much larger (e.g., `m, n ≤ 500`)?
 
 ---
 
 ## Key Takeaway
 
-> **DP over reachable sums** — track all possible sums row by row using a set. Prune aggressively to keep the set manageable — sums far above target can only get farther.
+> **DP over reachable sums** — track all possible sums row by row using a set, then pick the sum closest to the target.
 
 ---

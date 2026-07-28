@@ -12,29 +12,50 @@ Distribute `money` dollars among `children` kids. Each child must get at least 1
 
 ---
 
-## Key Insight
-
-> Give everyone 1 dollar first (minimum). Then greedily distribute 7 more to as many children as possible (to make them receive 8). Handle edge cases: leftover money forcing someone to get 4, or excess money with no one left to absorb it.
-
----
-
 ## Approach: Greedy ✅
 
-```
+```text
 FUNCTION distMoney(money, children):
-    IF money < children: RETURN -1
-    money -= children    // give 1 to each
-    eights = MIN(money // 7, children)
-    money -= eights * 7
-    // Edge cases
-    IF eights == children AND money > 0: eights -= 1
-    IF eights == children - 1 AND money == 3: eights -= 1
+    // If not enough money for minimum 1 per child
+    IF money < children:
+        RETURN -1
+    // Give each child 1 dollar first
+    SET remaining ← money - children
+    // Each child that gets 8 dollars needs 7 extra dollars
+    SET eights ← MIN(remaining / 7, children)
+    SET remaining ← remaining - eights * 7
+    // Edge case: all children get 8 dollars but leftover money forces a 4-dollar child
+    IF eights == children AND remaining > 0:
+        SET eights ← eights - 1
+    // Edge case: one child would end up with exactly 4 dollars
+    IF eights == children - 1 AND remaining == 3:
+        SET eights ← eights - 1
     RETURN eights
 ```
 
-**Edge cases:**
-- All children get 8 but money left → must give extra to someone, so one fewer "8-child"
-- Last remaining child would get exactly 4 (1+3) → forbidden, sacrifice one "8-child"
+---
+
+## Examples
+
+| money | children | Expected Output |
+|-------|----------|-----------------|
+| 16    | 2        | 2 |
+| 20    | 3        | 2 |
+| 4     | 5        | -1 |
+
+---
+
+## Walkthrough
+
+**Example 1:** `money = 16`, `children = 2`
+
+| Step | Action | Remaining Money | Children with 8$ |
+|------|--------|----------------|-------------------|
+| 1 | Minimum 1$ each → give 2$ | 14 | 0 |
+| 2 | Allocate 7$ extra per child → can give to both (14/7 = 2) | 0 | 2 |
+| 3 | No edge cases triggered | 0 | 2 |
+
+Result: 2 children receive 8 dollars.
 
 ---
 
@@ -42,11 +63,19 @@ FUNCTION distMoney(money, children):
 
 | Metric | Value | Explanation |
 |--------|-------|-------------|
-| **Time** | O(1) | Arithmetic only |
-| **Space** | O(1) | No extra storage |
+| **Time** | O(1) | Simple arithmetic |
+| **Space** | O(1) | No extra data structures |
+
+---
+
+## Follow-Up Questions
+
+1. How would the solution change if the forbidden amount were a different value, e.g., 5 dollars?
+2. Can you extend the algorithm to maximize children receiving a different target amount, such as 10 dollars?
+3. What if the distribution must be done in a streaming fashion where children arrive one by one?
 
 ---
 
 ## Key Takeaway
 
-> **Greedy distribution with forbidden values — give the minimum first, then maximize the target allocation. Handle edge cases where leftover forces a forbidden value.**
+> **Greedy distribution with forbidden values — give the minimum first, then maximize the target allocation while handling edge cases that force a forbidden amount.**

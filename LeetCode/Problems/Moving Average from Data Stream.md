@@ -9,10 +9,13 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: Queue + Running Sum — O(1)](#3-approach)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: Queue + Running Sum — O(1)](#4-approach)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -25,32 +28,56 @@ Implement a class that computes the **moving average** of the last `size` values
 
 ---
 
-## 2. Key Insight
+## 2. Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `MovingAverage(3)`<br>`next(1)`<br>`next(10)`<br>`next(3)`<br>`next(5)` | `null`<br>`1.0`<br>`5.5`<br>`6.0`<br>`6.0` | After the first three calls, the window contains `[1,10,3]` → average `14/3 ≈ 4.67`. After the fourth call, the oldest value `1` is dropped, window `[10,3,5]` → average `6.0`.
+
+---
+
+## 3. Key Insight
 
 > Maintain a deque of at most `size` elements and a running sum. On each new value, add it; if queue exceeds size, remove the oldest and subtract from sum.
 
 ---
 
-## 3. Approach: Queue + Running Sum — O(1) ✅
+## 4. Approach: Queue + Running Sum — O(1) ✅
 
-```
+```text
 CLASS MovingAverage:
     CONSTRUCTOR(size):
-        queue = deque()
-        self.size = size
-        self.sum = 0
+        queue ← deque()
+        self.size ← size
+        self.sum ← 0
 
     FUNCTION next(val):
         queue.APPEND(val)
-        sum += val
-        IF len(queue) > size:
-            sum -= queue.POPLEFT()
-        RETURN sum / len(queue)
+        self.sum ← self.sum + val
+        IF queue.LENGTH() > self.size:
+            self.sum ← self.sum - queue.POPLEFT()
+        RETURN self.sum / queue.LENGTH()
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 5. Walkthrough
+
+Consider `size = 3` and the sequence of `next` calls `[1, 10, 3, 5]`.
+
+| Step | Queue Content | Sum | Returned Avg |
+|------|---------------|-----|--------------|
+| Init | [] | 0 | - |
+| next(1) | [1] | 1 | 1 / 1 = 1.0 |
+| next(10) | [1,10] | 11 | 11 / 2 = 5.5 |
+| next(3) | [1,10,3] | 14 | 14 / 3 ≈ 4.67 |
+| next(5) | [10,3,5] (1 removed) | 18 | 18 / 3 = 6.0 |
+
+The deque never exceeds the size, and the sum is updated in O(1) each step.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -59,6 +86,14 @@ CLASS MovingAverage:
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
+
+- How would you modify the design to support a variable window size?
+- Can you extend this to compute other statistics (e.g., median) efficiently?
+- What if the stream is extremely large and you need to persist the state?
+
+---
+
+## 8. Key Takeaway
 
 > **Sliding window with deque + running sum.** Classic data stream pattern. Each operation is O(1) amortized.

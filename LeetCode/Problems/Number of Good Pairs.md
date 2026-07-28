@@ -30,15 +30,44 @@ Count pairs `(i, j)` where `i < j` and `nums[i] == nums[j]`.
 
 ## 3. Approach: Counter — O(n) ✅
 
-```
+```text
 FUNCTION numIdenticalPairs(nums):
-    count = {}
-    pairs = 0
+    count ← MAP()
+    pairs ← 0
     FOR num IN nums:
-        pairs += count.get(num, 0)
-        count[num] = count.get(num, 0) + 1
+        pairs ← pairs + count.get(num, 0)
+        count[num] ← count.get(num, 0) + 1
     RETURN pairs
 ```
+
+---
+
+## Examples
+
+**Example 1:** `nums = [1,2,3,1,1,3]`
+
+Pairs: `(0,3)`, `(0,4)`, `(3,4)`, `(2,5)` → total `4`.
+
+**Example 2:** `nums = [1,1,1,1]`
+
+All six possible index pairs are good → answer `6`.
+
+---
+
+## Walkthrough
+
+For `nums = [1,2,3,1,1,3]`:
+
+| Index | num | count before | new pairs added | cumulative pairs |
+|-------|-----|--------------|----------------|------------------|
+| 0 | 1 | {} | 0 | 0 |
+| 1 | 2 | {1:1} | 0 | 0 |
+| 2 | 3 | {1:1,2:1} | 0 | 0 |
+| 3 | 1 | {1:1,2:1,3:1} | 1 (previous 1) | 1 |
+| 4 | 1 | {1:2,2:1,3:1} | 2 (two previous 1s) | 3 |
+| 5 | 3 | {1:3,2:1,3:1} | 1 (previous 3) | 4 |
+
+The final count is `4`.
 
 ---
 

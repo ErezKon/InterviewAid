@@ -22,23 +22,53 @@ Find the maximum difference `nums[j] - nums[i]` where `i < j` and `nums[i] < num
 
 ---
 
-## Key Insight
+## Examples
 
-> Track the running minimum. At each position, if current > min, update max difference. Same as "best time to buy and sell stock" but return -1 if no profit.
+**Example 1:**
+```
+Input: nums = [7,1,5,4,6,2]
+Output: 5
+Explanation: Choose i=1 (value 1) and j=4 (value 6), difference = 5.
+```
+
+**Example 2:**
+```
+Input: nums = [9,8,7]
+Output: -1
+Explanation: No increasing pair exists, so return -1.
+```
 
 ---
 
 ## Approach: Track Min — O(n) ✅
 
-```
+```text
 FUNCTION maximumDifference(nums):
-    minVal = nums[0]; maxDiff = -1
+    minVal ← nums[0]
+    maxDiff ← -1
     FOR i ← 1 TO n - 1:
         IF nums[i] > minVal:
-            maxDiff = MAX(maxDiff, nums[i] - minVal)
-        minVal = MIN(minVal, nums[i])
+            maxDiff ← MAX(maxDiff, nums[i] - minVal)
+        minVal ← MIN(minVal, nums[i])
     RETURN maxDiff
 ```
+
+---
+
+## Walkthrough
+
+Consider `nums = [7,1,5,4,6,2]`.
+
+| i | nums[i] | minVal (so far) | maxDiff (so far) |
+|---|---------|----------------|------------------|
+|0|7|7|-1|
+|1|1|1|-1| (minVal updated)
+|2|5|1|4| (5-1=4)
+|3|4|1|4| (4-1=3 < 4)
+|4|6|1|5| (6-1=5 updates maxDiff)
+|5|2|1|5| (2-1=1 < 5)
+
+Result is 5.
 
 ---
 
@@ -47,6 +77,14 @@ FUNCTION maximumDifference(nums):
 | Approach | Time | Space |
 |----------|------|-------|
 | Track min | **O(n)** | O(1) |
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the algorithm to return the indices `i` and `j` of the optimal pair?
+2. What if you need the maximum difference with at most `k` deletions allowed in the array?
+3. Can this be extended to find the maximum product of an increasing pair?
 
 ---
 

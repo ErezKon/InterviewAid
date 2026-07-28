@@ -6,31 +6,64 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
-Given an `m × n` grid of 0s and 1s, return the area of the largest square whose **border** is all 1s. (Interior can be anything.)
+Given an `m × n` binary grid, return the area of the largest square whose border consists entirely of `1`s. The interior of the square may contain any values.
 
 ---
 
-## 2. Approach: Prefix Sums — O(m·n·min(m,n)) ✅
+## Examples
 
-Precompute consecutive 1s to the left and above each cell. For each cell as bottom-right corner, check all possible side lengths.
+| grid | Output |
+|------|--------|
+| `[[1,1,1],[1,0,1],[1,1,1]]` | 9 |
+| `[[0,1,0],[1,1,1],[0,1,0]]` | 1 |
+| `[[0,0,0],[0,0,0]]` | 0 |
 
-```
+*Explanation*: In the first grid the whole 3×3 square has a border of `1`s, area = 9.
+
+---
+
+## Approach
+
+Prefix Sums — O(m·n·min(m,n)) ✅
+
+Pre‑compute for each cell the number of consecutive `1`s to its left and above. For a candidate bottom‑right corner, a square of side `len` exists if the four edges each have at least `len` consecutive `1`s.
+
+```text
 FUNCTION largest1BorderedSquare(grid):
-    m, n = dimensions
-    // Precompute consecutive 1s to the left and above each cell
-    left = m × n; above = m × n
-    FOR r, c: compute left[r][c], above[r][c]
-
-    FOR side ← MIN(m, n) DOWN TO 1:
-        FOR r ← side - 1 TO m - 1:
-            FOR c ← side - 1 TO n - 1:
+    m ← ROWS(grid); n ← COLS(grid)
+    left ← MATRIX(m, n, 0); above ← MATRIX(m, n, 0)
+    FOR r FROM 0 TO m-1:
+        FOR c FROM 0 TO n-1:
+            IF grid[r][c] == 1:
+                left[r][c] ← 1 + (left[r][c-1] IF c>0 ELSE 0)
+                above[r][c] ← 1 + (above[r-1][c] IF r>0 ELSE 0)
+    FOR side FROM MIN(m,n) DOWNTO 1:
+        FOR r FROM side-1 TO m-1:
+            FOR c FROM side-1 TO n-1:
                 IF left[r][c] >= side AND above[r][c] >= side AND
-                   left[r - side + 1][c] >= side AND above[r][c - side + 1] >= side:
+                   left[r-side+1][c] >= side AND above[r][c-side+1] >= side:
                     RETURN side * side
     RETURN 0
 ```
+
+---
+
+## Walkthrough
+
+Grid:
+```
+1 1 1
+1 0 1
+1 1 1
+```
+1. Compute `left` and `above` matrices.
+2. Start with `side = 3`. Bottom‑right at (2,2) has `left=3`, `above=3`, top edge `left[0][2]=3`, left edge `above[2][0]=3` → valid → return `9`.
+
+---
+
+## Complexity Analysis
 
 | Time | Space |
 |------|-------|
@@ -38,6 +71,14 @@ FUNCTION largest1BorderedSquare(grid):
 
 ---
 
-## 3. Key Takeaway
+## Follow‑Up Questions
 
-> Precompute runs of consecutive 1s in two directions (left and above). A square border exists if all four edges have sufficient consecutive 1s. Search from largest side down for early termination.
+1. How would you adapt the algorithm for a grid with characters where the border must be a specific character?
+2. Can you improve the time complexity using binary search on side length?
+3. What if the interior also must be all `1`s?
+
+---
+
+## Key Takeaway
+
+> Pre‑computing runs of consecutive `1`s in two directions lets us verify any square border in O(1). Searching side lengths from large to small yields early termination.

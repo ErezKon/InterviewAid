@@ -25,26 +25,62 @@ Laser beams go between every pair of security devices on two consecutive rows th
 
 ```
 FUNCTION numberOfBeams(bank):
-    prev = 0; total = 0
+    prev ← 0
+    total ← 0
     FOR row IN bank:
-        count = row.count('1')
+        count ← COUNT('1' IN row)
         IF count > 0:
-            total += prev * count
-            prev = count
+            total ← total + (prev * count)
+            prev ← count
     RETURN total
 ```
 
 ---
 
-## 3. Complexity Analysis
+## Examples
+
+**Example 1:**
+```
+bank = ["011001","000000","010100","001000"]
+Output: 8
+Explanation: Non‑empty rows have 3, 2, and 1 devices. Beams = 3*2 + 2*1 = 8.
+```
+
+**Example 2:**
+```
+bank = ["000","111","000"]
+Output: 0
+Explanation: Only one non‑empty row, so no beams.
+```
+
+---
+
+## Walkthrough
+
+1. Row 1: "011001" → 3 devices. `prev = 0`, `total = 0`. Set `prev = 3`.
+2. Row 2: "000000" → 0 devices. Skip.
+3. Row 3: "010100" → 2 devices. Add `prev * count = 3*2 = 6` → `total = 6`. Set `prev = 2`.
+4. Row 4: "001000" → 1 device. Add `prev * count = 2*1 = 2` → `total = 8`. Set `prev = 1`.
+Result = 8.
+
+---
+
+## Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(m · n) |
+| **Time** | O(m·n) |
 | **Space** | O(1) |
 
 ---
 
-## 4. Key Takeaway
+## Follow-Up Questions
 
-> **Consecutive non-empty rows multiply.** Beams = product of device counts between consecutive non-empty rows. Skip empty rows.
+- How would you modify the solution if beams could also be formed between non‑consecutive rows?
+- What if the bank is extremely large and stored in a streaming fashion?
+
+---
+
+## Key Takeaway
+
+> **Consecutive non‑empty rows multiply.** Beams = product of device counts between consecutive non‑empty rows. Skip empty rows.

@@ -9,10 +9,13 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: 2D Prefix Sum + Region Scan — O(m·n) ✅](#3-approach-2d-prefix-sum--region-scan--omn-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: 2D Prefix Sum + Region Scan — O(m·n) ✅](#4-approach-2d-prefix-sum--region-scan--omn-)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -26,15 +29,37 @@ Given an `m x n` grid of integers and a threshold, for each cell compute the ave
 
 ---
 
-## 2. Key Insight
+## 2. Examples
+
+**Example 1:**
+```
+image = [[10,10,10],[10,10,10],[10,10,10]]
+threshold = 0
+```
+All 3×3 regions are smooth, average is 10, so output grid is the same as input.
+
+**Example 2:**
+```
+image = [[1,2,3],[4,5,6],[7,8,9]]
+threshold = 1
+```
+Only the center region (cells 5) is smooth because adjacent differences exceed 1 elsewhere. The average of the center 3×3 block is 5, so the output grid becomes:
+```
+[[1,2,3],[4,5,6],[7,8,9]]
+```
+(unchanged for cells outside the smooth region).
+
+---
+
+## 3. Key Insight
 
 > For each valid 3×3 sub-grid, check if all adjacent differences are within the threshold. If so, mark all cells in that region and compute their average. Use a result grid that accumulates averages and counts per cell.
 
 ---
 
-## 3. Approach: 2D Prefix Sum + Region Scan — O(m·n) ✅
+## 4. Approach: 2D Prefix Sum + Region Scan — O(m·n) ✅
 
-```
+```text
 FUNCTION resultGrid(image, threshold):
     m, n ← DIMENSIONS(image)
     result ← copy of image
@@ -59,7 +84,21 @@ FUNCTION resultGrid(image, threshold):
 
 ---
 
-## 4. Complexity Analysis
+## 5. Walkthrough
+
+Consider the first example where the entire grid is smooth.
+
+| Step | Action | sumGrid (center cell) | countGrid (center cell) |
+|------|--------|----------------------|--------------------------|
+| 1    | Scan (0,0) region is smooth, avg=10 | +10 | +1 |
+| 2    | No other regions (grid size 3) | | |
+| 3    | Finalize: result[1][1] = 10/1 = 10 | | |
+
+The algorithm correctly leaves every cell unchanged.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -68,6 +107,14 @@ FUNCTION resultGrid(image, threshold):
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
+
+- How would you extend the solution to handle variable‑size regions?
+- Can the algorithm be adapted to compute median instead of average for each smooth region?
+- What changes are needed if the threshold varies per cell?
+
+---
+
+## 8. Key Takeaway
 
 > **Enumerate all 3×3 regions, validate smoothness, accumulate averages per cell.** The fixed region size makes this a straightforward grid simulation with constant overhead per cell.

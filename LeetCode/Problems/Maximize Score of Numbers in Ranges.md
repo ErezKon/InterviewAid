@@ -27,9 +27,21 @@ Given an array of starting points `start` and an integer `d`, each element `i` c
 
 ---
 
-## Key Insight
+## Examples
 
-> Binary search on the answer (minimum gap). For a candidate gap `g`, greedily assign each range's value as early as possible while maintaining gap ≥ g from the previous assignment. Sort ranges by start point first.
+**Example 1:**
+```
+start = [1, 3, 6]
+d = 2
+```
+Choosing values `[1, 5, 8]` yields gaps `4` and `3`; the minimum gap is `3`. No other assignment can achieve a larger minimum gap, so the answer is `3`.
+
+**Example 2:**
+```
+start = [0, 0, 0]
+d = 5
+```
+We can pick `[0, 5, 10]` (by treating the third element as `0 + 2*d`). The minimum gap is `5`, which is optimal.
 
 ---
 
@@ -55,6 +67,21 @@ FUNCTION maxScore(start, d):
 
     RETURN lo
 ```
+
+---
+
+## Walkthrough
+
+| Step | `prev` (last placed) | `i` | `start[i]` | `next = max(start[i], prev+gap)` | Feasible? |
+|------|----------------------|-----|------------|----------------------------------|----------|
+| 1    | 1 (first element)   | 1   | 3          | max(3, 1+gap)                    | — |
+| 2    | ...                  | ... | ...        | ...                              | ... |
+
+Assuming a candidate `gap = 3`:
+1. Place first value at `1`.
+2. For `i=1`, `prev+gap = 4`; `start[1]=3`, so `next = 4` (within `[3,5]`).
+3. For `i=2`, `prev+gap = 7`; `start[2]=6`, so `next = 7` (within `[6,8]`).
+All placements succeed, so gap `3` is achievable. Binary search confirms it is maximal.
 
 ---
 

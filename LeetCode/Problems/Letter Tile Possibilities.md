@@ -12,14 +12,25 @@ Given a string of uppercase letters (tiles), return the number of distinct non-e
 
 ---
 
-## 2. Approach: Backtracking on Counts — O(n!) ✅
+## 2. Examples
 
-```
+| Tiles | Output |
+|-------|--------|
+| "AAB" | 8 |
+| "AAABBC" | 188 |
+
+*Explanation*: All possible non‑empty permutations respecting tile counts are counted.
+
+---
+
+## 3. Approach: Backtracking on Counts — O(n!) ✅
+
+```text
 FUNCTION numTilePossibilities(tiles):
-    count = Counter(tiles)
+    SET count ← Counter(tiles)
 
     FUNCTION backtrack():
-        total = 0
+        SET total ← 0
         FOR c IN count:
             IF count[c] > 0:
                 count[c] -= 1
@@ -30,9 +41,33 @@ FUNCTION numTilePossibilities(tiles):
     RETURN backtrack()
 ```
 
-| Time | Space |
-|------|-------|
-| O(n!) worst case | O(n) recursion |
+---
+
+## 4. Walkthrough
+
+Consider "AAB":
+1. Start with empty sequence, counts {A:2, B:1}.
+2. Choose 'A' → sequence "A", counts {A:1, B:1}. Recurse adds 1 + further combos.
+3. From "A", choose another 'A' → "AA", counts {A:0, B:1}.
+4. From "AA", choose 'B' → "AAB" (leaf).
+5. Backtrack, from "A" choose 'B' → "AB", then choose remaining 'A' → "ABA".
+6. Also start with 'B' directly, then add 'A's.
+All 8 distinct strings are generated.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n!) in the worst case where n is the number of tiles (all distinct).
+- **Space:** O(n) recursion stack plus O(Alphabet) for the counter.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would you modify the algorithm to return the actual list of sequences?
+- Can you compute the result modulo a large prime for very long strings?
+- How does the solution change if tiles can be lowercase as well?
 
 ---
 

@@ -16,7 +16,7 @@ Distribute `n` integers into `n/k` groups of size `k`. Each group must have **al
 
 ## Approach: Bitmask DP — O(3^n) ✅
 
-```
+```text
 FUNCTION minimumIncompatibility(nums, k):
     n ← len(nums)
     groupSize ← k
@@ -41,9 +41,38 @@ FUNCTION minimumIncompatibility(nums, k):
     RETURN dp[(1<<n)-1] IF finite ELSE -1
 ```
 
-| Time | Space |
-|------|-------|
-| O(3^n) — subset enumeration | O(2^n) |
+## Examples
+
+| nums | k | Output |
+|------|---|--------|
+| [1,2,1,4] | 2 | 4 |
+| [1,2,3,4,5,6] | 3 | 3 |
+| [5,3,3,2,6,1,1,4] | 4 | 7 |
+
+*Explanation*: In the first example, groups can be `[1,2]` and `[1,4]` with incompatibilities `1` and `3`, total `4`.
+
+## Walkthrough
+
+**Example 1** (`nums = [1,2,1,4]`, `k = 2`)
+
+| Step | Mask (binary) | Chosen Group | Group Cost | DP State (`dp[mask]`) |
+|------|---------------|--------------|------------|----------------------|
+| 1 | 0000 | – | – | dp[0] = 0 |
+| 2 | 0011 (indices 0,1) | `[1,2]` | 1 | dp[0011] = 1 |
+| 3 | 1100 (indices 2,3) | `[1,4]` | 3 | dp[1111] = dp[0011] + 3 = 4 |
+
+The final mask `1111` covers all elements with total incompatibility `4`.
+
+## Complexity Analysis
+
+- **Time**: O(3^n) – enumerating all subsets of size `k` and DP over masks.
+- **Space**: O(2^n) – DP table storing minimum incompatibility for each mask.
+
+## Follow-Up Questions
+
+- How would you adapt the solution if groups could have variable sizes?
+- Can you design an approximation algorithm for larger `n` where exact DP is infeasible?
+- How does the problem change if the incompatibility metric is defined as sum of absolute differences instead of max‑min?
 
 ## Key Takeaway
 

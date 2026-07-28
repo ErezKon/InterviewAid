@@ -45,10 +45,45 @@ FUNCTION maximumBeauty(items, queries):
 
     result = []
     FOR q IN queries:
-        idx = bisect_right(maxBeauty, (q, infinity)) - 1
+        idx = bisect_right(maxBeauty, (q, INFINITY)) - 1
         result.ADD(maxBeauty[idx][1] IF idx >= 0 ELSE 0)
     RETURN result
 ```
+
+---
+
+## Examples
+
+**Example 1:**
+```
+items = [[1,2],[3,5],[2,4]]
+queries = [2,3]
+```
+- For budget `2`, items with price ≤2 are `[1,2]` and `[2,4]`; maximum beauty is `4`.
+- For budget `3`, all items are affordable; maximum beauty is `5`.
+**Output:** `[4,5]`
+
+**Example 2:**
+```
+items = [[5,10],[1,1]]
+queries = [0,5]
+```
+- Budget `0` yields no items → `0`.
+- Budget `5` includes both items, max beauty `10`.
+**Output:** `[0,10]`
+
+---
+
+## Walkthrough
+
+| Step | Action | Prefix Max Beauty |
+|------|--------|-------------------|
+| 1 | Sort items by price → `[[1,2],[2,4],[3,5]]` | — |
+| 2 | Build prefix max: after first → `(1,2)` | `[(1,2)]` |
+| 3 | After second → max(2,4)=4 → `(2,4)` | `[(1,2),(2,4)]` |
+| 4 | After third → max(4,5)=5 → `(3,5)` | `[(1,2),(2,4),(3,5)]` |
+| 5 | Query `2`: binary search finds index `1` → beauty `4` |
+| 6 | Query `3`: index `2` → beauty `5` |
 
 ---
 

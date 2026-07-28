@@ -20,21 +20,51 @@ Find the length of the shortest reference string that encodes all given words. A
 
 ## Approach
 
-```
+```text
 FUNCTION minimumLengthEncoding(words):
     wordSet ← SET(words)
     FOR word IN words:
-        FOR i ← 1 TO len(word) - 1:
+        FOR i ← 1 TO LEN(word) - 1:
             wordSet.DISCARD(word[i:])  // remove suffixes
-    RETURN SUM(len(w) + 1 for w in wordSet)
+    RETURN SUM(LEN(w) + 1 FOR w IN wordSet)
 ```
 
-| Time | Space |
-|------|-------|
-| O(Σ wᵢ²) | O(Σ wᵢ) |
+---
+
+## Examples
+
+**Example 1:**
+```
+words = ["time", "me", "bell"]
+```
+The optimal encoding is `"time#bell#"`, length **10**.
+
+**Example 2:**
+```
+words = ["t"]
+```
+Encoding is `"t#"`, length **2**.
+
+---
+
+## Walkthrough
+
+1. Insert all words into a set.
+2. For each word, remove all its suffixes from the set.
+3. After processing, the set contains only words that are not suffixes of any other word.
+4. Sum the length of each remaining word plus one for the trailing `#`.
+
+For the first example, removing suffixes yields the set {"time", "bell"}. The total length is `LEN("time")+1 + LEN("bell")+1 = 5+5 = 10`.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(Σ |wᵢ|²) – each word generates all its suffixes.
+- **Space:** O(Σ |wᵢ|) – storing the set of words.
 
 ---
 
 ## Key Takeaway
 
-> Suffix deduplication — remove words that are suffixes of longer words. Can also be solved with a **reverse trie** (insert reversed words).
+> Suffix deduplication — remove words that are suffixes of longer words. This can also be solved with a **reverse trie** (insert reversed words).

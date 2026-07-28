@@ -7,43 +7,78 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
-Given a linked list, return the node where the cycle begins. If no cycle, return null.
+Given the head of a singly linked list, return the node where the cycle begins. If there is no cycle, return `null`. The list may contain a cycle that loops back to a previous node.
 
 ---
 
-## 2. Approach: Floyd's Algorithm Phase 2 — O(n) ✅
+## Examples
 
-```
+| Input (list) | Output (node) | Explanation |
+|--------------|---------------|-------------|
+| `3→2→0→-4` (cycle back to node with value `2`) | Node `2` | The cycle starts at the node with value `2`. |
+| `1→2` (no cycle) | `null` | No cycle exists, so return `null`. |
+| `1` (cycle to itself) | Node `1` | Single node points to itself, forming a cycle at that node. |
+
+---
+
+## Approach: Floyd's Tortoise and Hare — Phase 2 ✅
+
+First detect a meeting point using two pointers moving at different speeds. Then reset one pointer to the head and move both one step at a time; they meet at the cycle entrance.
+
+```text
 FUNCTION detectCycle(head):
-    slow = fast = head
-
-    // Phase 1: Detect cycle
-    WHILE fast AND fast.next:
-        slow = slow.next
-        fast = fast.next.next
+    // Phase 1: Find meeting point
+    slow ← head
+    fast ← head
+    WHILE fast IS NOT NULL AND fast.next IS NOT NULL:
+        slow ← slow.next
+        fast ← fast.next.next
         IF slow == fast:
-            // Phase 2: Find entrance
-            slow = head
+            // Phase 2: Locate start of cycle
+            slow ← head
             WHILE slow != fast:
-                slow = slow.next
-                fast = fast.next
+                slow ← slow.next
+                fast ← fast.next
             RETURN slow
-
     RETURN null
 ```
 
-### Why Phase 2 Works
+---
 
-When slow and fast meet, slow has traveled `d + k` steps (d = distance to cycle start, k = distance into cycle). Resetting slow to head and advancing both one step at a time: they'll meet at the cycle entrance after `d` steps.
+## Walkthrough
+
+Consider the list `3→2→0→-4` with a cycle back to `2`.
+
+1. **Phase 1** – pointers move:
+   - Step1: `slow=2`, `fast=0`
+   - Step2: `slow=0`, `fast=2`
+   - Step3: `slow=-4`, `fast=-4` → meeting point.
+2. **Phase 2** – reset `slow` to head (`3`).
+   - Move both one step:
+     - `slow=2`, `fast=2` → they meet at node `2`, the cycle start.
+
+---
+
+## Complexity Analysis
 
 | Time | Space |
 |------|-------|
 | O(n) | O(1) |
 
+The algorithm traverses the list at most twice and uses constant extra space.
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the algorithm to return the length of the cycle?
+2. Can you detect a cycle using only O(1) extra space without the two‑pointer technique?
+3. What changes are needed if the list is a doubly linked list?
+
 ---
 
 ## Key Takeaway
 
-> Floyd's Phase 2: after detection, reset one pointer to head and advance both at speed 1. They meet at the cycle entrance. The math: if the meeting point is k steps into the cycle, head is also k steps from the cycle entrance (through the non-cycle path).
+> Floyd's algorithm detects a cycle and, after resetting one pointer to the head, the two pointers meet at the cycle's entry point.

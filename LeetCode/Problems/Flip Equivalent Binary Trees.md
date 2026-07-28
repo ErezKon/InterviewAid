@@ -30,7 +30,7 @@ Two binary trees are **flip equivalent** if one can be transformed into the othe
 
 ## 3. Approach: Recursive — O(n) ✅
 
-```
+```text
 FUNCTION flipEquiv(root1, root2):
     IF NOT root1 AND NOT root2: RETURN true
     IF NOT root1 OR NOT root2: RETURN false
@@ -41,7 +41,39 @@ FUNCTION flipEquiv(root1, root2):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: root1 = [1,2,3,4,5,6,null,null,null,7,8],
+       root2 = [1,3,2,null,6,4,5,null,null,null,8,7]
+Output: true
+Explanation: By flipping the left child of node 2 and the right child of node 3, the trees become identical.
+```
+
+**Example 2:**
+```
+Input: root1 = [1,2,3], root2 = [1,3,2]
+Output: true
+Explanation: A single flip at the root makes the trees equivalent.
+```
+
+---
+
+## 5. Walkthrough
+
+| Step | root1 node | root2 node | Action |
+|------|------------|------------|--------|
+| 1 | 1 | 1 | Values match, recurse both children. |
+| 2 | left children: 2 vs 3 | right children: 3 vs 2 | Check flip: 2 matches 2 (right of root2) and 3 matches 3 (left of root2). |
+| 3 | Recurse on subtrees of node 2 and node 3 with flipped orientation. |
+| … | Continue until leaves; all leaf pairs match. |
+
+Result: All recursive checks succeed → trees are flip equivalent.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -50,6 +82,14 @@ FUNCTION flipEquiv(root1, root2):
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
+
+- How would you modify the algorithm to return the sequence of flips performed?
+- Can you solve the problem iteratively using a stack or queue?
+- How does the solution change if the trees are not binary but n-ary?
+
+---
+
+## 8. Key Takeaway
 
 > Check both **no-flip** and **flip** orderings at each node. If either matches recursively, the trees are flip equivalent.

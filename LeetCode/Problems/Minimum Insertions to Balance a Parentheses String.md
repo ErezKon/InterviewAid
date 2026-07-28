@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-Each `'('` must be matched by `'))'` (two closing parens). Return the **minimum insertions** to balance the string.
+Each `'('` must be matched by `'))'` (two closing parentheses). Given a string `s` consisting of `'('` and `')'`, return the **minimum number of insertions** required to make the string balanced under this rule.
 
 ## Key Insight
 
@@ -16,27 +16,73 @@ Each `'('` must be matched by `'))'` (two closing parens). Return the **minimum 
 
 ## Approach: Greedy Scan — O(n) ✅
 
-```
+```text
 FUNCTION minInsertions(s):
-    insertions = 0; open = 0; i = 0
-    WHILE i < len(s):
+    SET insertions ← 0
+    SET open ← 0
+    SET i ← 0
+    WHILE i < LENGTH(s):
         IF s[i] == '(':
-            open += 1
-        ELSE:
-            IF i + 1 < len(s) AND s[i+1] == ')':
-                i += 1    // consume '))'
+            SET open ← open + 1
+        ELSE: // s[i] == ')'
+            // Check if next char forms a pair '))'
+            IF i + 1 < LENGTH(s) AND s[i+1] == ')':
+                // Consumes a valid pair
+                SET i ← i + 1
             ELSE:
-                insertions += 1    // need extra ')'
-            IF open > 0: open -= 1
-            ELSE: insertions += 1    // need '('
-        i += 1
-    RETURN insertions + 2 * open    // remaining open need '))'
+                // Need to insert a second ')'
+                SET insertions ← insertions + 1
+            END IF
+            IF open > 0:
+                SET open ← open - 1
+            ELSE:
+                // No matching '('; insert one
+                SET insertions ← insertions + 1
+            END IF
+        END IF
+        SET i ← i + 1
+    END WHILE
+    // Each remaining '(' needs two ')'
+    RETURN insertions + 2 * open
 ```
+
+## Examples
+
+**Example 1:**
+```
+Input: s = "(()))"
+Output: 1
+Explanation: Insert one '(' at the beginning to get "((()))" which is balanced.
+```
+
+**Example 2:**
+```
+Input: s = "())"
+Output: 0
+Explanation: The string is already balanced: "())" → "(())" after interpreting the first ')' as part of a pair.
+```
+
+## Walkthrough
+
+Take `s = "(()))"`.
+1. i=0 `'('`: open=1.
+2. i=1 `'('`: open=2.
+3. i=2 `')'`: next char is `')'`, consume pair, open>0 so open=1.
+4. i=4 `')'`: no next char, insert one `')'` (insertions=1), open>0 so open=0.
+5. End of string, open=0, total insertions = 1.
+
+## Complexity Analysis
 
 | Time | Space |
 |------|-------|
-| O(n) | O(1) |
+| O(n) – single pass through the string | O(1) – constant extra variables |
+
+## Follow-Up Questions
+
+- How would the algorithm change if each `'('` required exactly three `')'` to balance?
+- Can you extend the solution to handle other types of brackets like `{}` and `[]` with custom matching rules?
+- What is the effect on runtime if the input string length can be up to 10⁶?
 
 ## Key Takeaway
 
-> Variant of balanced parentheses where `(` needs `))`. Process greedily: pair closing brackets, insert missing ones, and handle unmatched opens at the end.
+> By scanning once and handling pairs of `')'` greedily, we can compute the minimal insertions needed to satisfy the unusual `('` → `'))'` balancing rule.

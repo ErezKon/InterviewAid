@@ -9,8 +9,10 @@
 ## Table of Contents
 
 - [Problem Description](#problem-description)
+- [Examples](#examples)
 - [Key Insight](#key-insight)
 - [Approach](#approach)
+- [Walkthrough](#walkthrough)
 - [Complexity Analysis](#complexity-analysis)
 - [Key Takeaway](#key-takeaway)
 
@@ -22,26 +24,44 @@ Given a tree with weighted edges and an integer `k`, remove exactly `k` edges to
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+values = [4,2,1,6,5]
+edges = [[0,1],[0,2],[1,3],[1,4]]
+k = 1
+```
+Removing edge `(1,4)` creates components with costs `13` and `5`; the maximum is `13`.
+
+**Example 2:**
+```
+values = [3,3,3,3]
+edges = [[0,1],[1,2],[2,3]]
+k = 2
+```
+Cut the two edges `(1,2)` and `(2,3)` → components costs `[6,3,3]`, max = `6`.
+
+---
+
 ## Key Insight
 
 > **Binary search on the answer.** For a candidate max cost `C`, greedily check: traverse the tree and whenever a subtree's cost exceeds `C`, cut it off (increment cuts). If cuts ≤ k, `C` is feasible.
 
 ---
 
-## Approach: Binary Search + DFS Greedy — O(n log S) ✅
+## Approach
 
-```
+```text
 FUNCTION minimizeMaxCost(tree, values, k):
     lo ← MAX(values)
     hi ← SUM(values)
-    
     WHILE lo < hi DO
         mid ← (lo + hi) / 2
         IF canSplit(tree, values, k, mid) THEN
             hi ← mid
         ELSE
             lo ← mid + 1
-    
     RETURN lo
 
 FUNCTION canSplit(tree, values, k, maxCost):
@@ -55,10 +75,19 @@ FUNCTION canSplit(tree, values, k, maxCost):
             cuts ← cuts + 1
             RETURN 0    // cut this subtree off
         RETURN subtreeSum
-    
     dfs(root, -1)
     RETURN cuts ≤ k
 ```
+
+---
+
+## Walkthrough
+
+Consider Example 1:
+1. `lo = 6` (max node value), `hi = 18` (sum of all values).
+2. Mid `12` → DFS finds a subtree of cost `13` (>12) → cut once, cuts = 1 ≤ k, so `hi = 12`.
+3. Mid `9` → two cuts needed (subtrees `13` and `5`), cuts = 2 > k, so `lo = 10`.
+4. Continue narrowing until `lo = hi = 13`, the minimal feasible maximum component cost.
 
 ---
 
@@ -68,7 +97,7 @@ FUNCTION canSplit(tree, values, k, maxCost):
 |----------|------|-------|
 | Binary search + DFS | **O(n log S)** | **O(n)** |
 
-Where S = sum of all values.
+Where `S` is the sum of all node values.
 
 ---
 

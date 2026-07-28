@@ -19,7 +19,7 @@ The max circular subarray is either:
 1. A normal subarray (standard Kadane's) — `maxSum`
 2. A wrapping subarray = `totalSum - minSubarray` — `totalSum - minSum`
 
-```
+```text
 FUNCTION maxSubarraySumCircular(nums):
     maxSum = curMax = nums[0]
     minSum = curMin = nums[0]
@@ -34,7 +34,6 @@ FUNCTION maxSubarraySumCircular(nums):
 
         totalSum += nums[i]
 
-    // Edge case: all negative → maxSum is the answer (can't take empty subarray)
     IF maxSum < 0: RETURN maxSum
 
     RETURN MAX(maxSum, totalSum - minSum)
@@ -46,6 +45,64 @@ FUNCTION maxSubarraySumCircular(nums):
 
 ---
 
+## 3. Examples
+
+**Example 1:**
+```
+Input: nums = [1,-2,3,-2]
+Output: 3
+Explanation: Subarray [3] has the maximum sum.
+```
+
+**Example 2:**
+```
+Input: nums = [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] (wrapping) has sum 10.
+```
+
+**Example 3:**
+```
+Input: nums = [-3,-2,-3]
+Output: -2
+Explanation: All numbers are negative, pick the largest one.
+```
+
+---
+
+## 4. Walkthrough
+
+Take Example 2: `nums = [5,-3,5]`.
+1. Initialize `maxSum = curMax = 5`, `minSum = curMin = 5`, `totalSum = 5`.
+2. Iterate i=1 (value -3):
+   - `curMax = MAX(-3, 5 + -3) = 2`; `maxSum = MAX(5,2) = 5`.
+   - `curMin = MIN(-3, 5 + -3) = -3`; `minSum = MIN(5,-3) = -3`.
+   - `totalSum = 5 + -3 = 2`.
+3. Iterate i=2 (value 5):
+   - `curMax = MAX(5, 2 + 5) = 7`; `maxSum = MAX(5,7) = 7`.
+   - `curMin = MIN(5, -3 + 5) = 2`; `minSum = MIN(-3,2) = -3`.
+   - `totalSum = 2 + 5 = 7`.
+4. After loop: `maxSum = 7`, `minSum = -3`, `totalSum = 7`.
+5. Since `maxSum` is positive, compute wrap sum: `totalSum - minSum = 7 - (-3) = 10`.
+6. Return `MAX(7,10) = 10`.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** Single pass O(n).
+- **Space:** Constant O(1) extra space.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would you modify the algorithm to also return the actual subarray indices?
+- Can this approach be extended to find the maximum product subarray in a circular array?
+- What if the array size is extremely large and cannot fit into memory? Discuss streaming solutions.
+
+---
+
 ## Key Takeaway
 
-> Max circular subarray = max(normal Kadane's, total - min subarray). The "wrapping" case is the complement of the minimum subarray. Handle all-negative edge case separately.
+> Max circular subarray = max(normal Kadane's, total - min subarray). The "wrapping" case is the complement of the minimum subarray. Handle all‑negative edge case separately.

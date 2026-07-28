@@ -9,10 +9,13 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: Next Permutation — O(d)](#3-approach)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: Next Permutation — O(d)](#4-approach)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -22,48 +25,79 @@ Given a positive integer `n`, find the **smallest** integer with the **same digi
 
 ---
 
-## 2. Key Insight
+## 2. Examples
 
-> This is exactly the **Next Permutation** algorithm (#31) applied to the digits of `n`. Find pivot, swap with successor, reverse suffix.
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `12` | `21` | Swapping the digits yields the next greater number. |
+| `21` | `-1` | No larger permutation exists. |
+| `1234` | `1243` | Swap `3` with `4` and reverse the suffix. |
 
 ---
 
-## 3. Approach: Next Permutation — O(d) ✅
+## 3. Key Insight
 
-```
+> This is exactly the **Next Permutation** algorithm applied to the digits of `n`. Find the pivot where digits increase, swap with the smallest larger digit to the right, then reverse the suffix.
+
+---
+
+## 4. Approach: Next Permutation — O(d) ✅
+
+```text
 FUNCTION nextGreaterElement(n):
-    digits = list(str(n))
+    digits ← LIST of characters of STRING(n)
+    // 1. Find rightmost index i where digits[i] < digits[i+1]
+    i ← LENGTH(digits) - 2
+    WHILE i ≥ 0 AND digits[i] ≥ digits[i+1]:
+        i ← i - 1
+    IF i < 0:
+        RETURN -1
 
-    // 1. Find rightmost digit smaller than its successor
-    i = len(digits) - 2
-    WHILE i >= 0 AND digits[i] >= digits[i+1]:
-        i -= 1
-    IF i < 0: RETURN -1
+    // 2. Find rightmost index j where digits[j] > digits[i]
+    j ← LENGTH(digits) - 1
+    WHILE digits[j] ≤ digits[i]:
+        j ← j - 1
 
-    // 2. Find rightmost digit greater than digits[i]
-    j = len(digits) - 1
-    WHILE digits[j] <= digits[i]:
-        j -= 1
-
-    // 3. Swap and reverse
+    // 3. Swap and reverse suffix
     SWAP(digits[i], digits[j])
     REVERSE(digits[i+1:])
 
-    result = int(JOIN(digits))
-    RETURN result IF result <= 2^31 - 1 ELSE -1
+    result ← INTEGER formed by JOIN(digits)
+    RETURN result IF result ≤ 2^31 - 1 ELSE -1
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 5. Walkthrough
+
+Take `n = 1243`:
+
+1. Digits = `[1,2,4,3]`.
+2. Scan from right: `4 < 3`? No. `2 < 4`? Yes → pivot index `i = 1` (digit `2`).
+3. Find smallest digit > `2` to the right: `3` at index `3`.
+4. Swap: `[1,3,4,2]`.
+5. Reverse suffix after index `1`: suffix `[4,2]` → `[2,4]`.
+6. Final digits `[1,3,2,4]` → number `1324` which is the next greater permutation.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(d) — d = number of digits |
-| **Space** | O(d) |
+| **Space** | O(d) — to store digit list |
 
 ---
 
-## 5. Key Takeaway
+## 7. Follow-Up Questions
 
-> **Next Permutation on digits.** Same three-step algorithm: find pivot, swap with smallest larger digit to the right, reverse suffix. Check 32-bit overflow.
+- How would you adapt the algorithm to find the *previous* permutation?
+- Can you solve the problem without converting the integer to a string?
+- What changes are needed to handle very large numbers beyond 32‑bit range?
+
+---
+
+## 8. Key Takeaway
+
+> **Next Permutation on digits.** Find the pivot, swap with the next larger digit, and reverse the suffix to obtain the smallest greater number.

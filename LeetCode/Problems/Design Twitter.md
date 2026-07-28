@@ -47,6 +47,36 @@ CLASS Twitter:
 
 ---
 
+## Examples
+
+| Operation | Explanation |
+|---|---|
+| `postTweet(1, 5)` | User 1 posts tweet 5. |
+| `follow(1, 2)` | User 1 follows user 2. |
+| `getNewsFeed(1)` | Returns up to 10 most recent tweets from user 1 and user 2. |
+
+---
+
+## Walkthrough
+
+1. **postTweet** stores `(time,5)` in `tweets[1]` and increments global `time`.
+2. **follow** adds `2` to `following[1]`.
+3. **getNewsFeed(1)** builds `users = {1,2}`.
+4. For each user, the last 10 tweets are pushed into a min‑heap of size 10.
+5. The heap now contains the most recent tweets; extracting them in descending order yields the feed.
+
+---
+
+## Complexity Analysis
+
+| Operation | Time | Space |
+|---|---|---|
+| `postTweet` | O(1) | — |
+| `follow` / `unfollow` | O(1) | — |
+| `getNewsFeed` | O(k log k) where *k* = total tweets considered (≤ 10 × #followees) | O(k) for the heap |
+
+---
+
 ## Key Takeaway
 
-> Combines hash maps for relationships/posts with a heap for k-way merge of sorted tweet lists. A practical OOD problem that tests data structure composition.
+> Combines hash maps for relationships/posts with a heap for k‑way merge of sorted tweet lists. A practical OOD problem that tests data structure composition.

@@ -24,9 +24,21 @@ Given an undirected weighted graph with edges that can be "upgraded" (increase t
 
 ---
 
-## Key Insight
+## Examples
 
-> Binary search on the minimum edge weight (stability threshold). For each candidate threshold, check if we can build a spanning tree where all edges have weight ≥ threshold (using upgrades within budget). Use Union-Find/Kruskal's to verify connectivity.
+**Example 1:**
+```
+Nodes: 4, Edges: [(1,2,3), (2,3,1), (3,4,2), (4,1,4)]
+Budget: 3
+```
+Upgrading edge (2,3) from 1 to 4 (cost 3) allows a spanning tree with edges weights `[3,4,4]`; the minimum edge weight is `3`. No other set of upgrades yields a higher minimum.
+
+**Example 2:**
+```
+Nodes: 3, Edges: [(1,2,5), (2,3,5), (1,3,1)]
+Budget: 0
+```
+Without upgrades, the best spanning tree uses edges `(1,2,5)` and `(2,3,5)`, giving a minimum edge weight of `5`.
 
 ---
 
@@ -50,6 +62,18 @@ FUNCTION maxStability(n, edges, budget):
 
     RETURN lo
 ```
+
+---
+
+## Walkthrough
+
+| Step | Action | Result |
+|------|--------|--------|
+| 1 | Set `lo=0`, `hi` to max possible weight after upgrades. | Initial bounds.
+| 2 | Mid = (lo+hi+1)/2, e.g., `mid=3` for Example 1. | Test threshold `3`.
+| 3 | Filter edges that can reach `3` within budget (all edges). Compute MST using cheapest upgrades. | MST cost `3` ≤ budget, so `lo=3`.
+| 4 | Next `mid` becomes higher, e.g., `mid=4`. Filter edges, MST requires upgrading edge (2,3) to `4` (cost `3`). Still within budget, set `lo=4`.
+| 5 | `mid=5` fails (requires more budget), set `hi=4`. Loop ends, answer `4`.
 
 ---
 

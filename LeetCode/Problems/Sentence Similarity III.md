@@ -12,6 +12,18 @@ Two sentences are similar if you can insert a sentence into one to make it equal
 
 ---
 
+## Examples
+
+| sentence1 | sentence2 | Output |
+|-----------|-----------|--------|
+| "I love eating pizza" | "I love pizza" | true |
+| "I love eating pizza" | "I love eating pizza with cheese" | true |
+| "I love eating pizza" | "I love pizza eating" | false |
+
+*Explanation*: In the first two examples, the shorter sentence can be obtained by inserting a contiguous block into the longer one. In the third example, the order of words differs, so it's not a simple insertion.
+
+---
+
 ## Approach
 
 ```
@@ -31,9 +43,31 @@ FUNCTION areSentencesSimilar(sentence1, sentence2):
     RETURN i + j >= len(w2)
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(n) — word arrays |
+---
+
+## Walkthrough
+
+Consider the second example: `sentence1 = "I love eating pizza"`, `sentence2 = "I love eating pizza with cheese"`.
+
+1. Split into words: `w1 = [I, love, eating, pizza]`, `w2 = [I, love, eating, pizza, with, cheese]`.
+2. Since `w1` is shorter, swap so `w1` becomes the longer array.
+3. Match prefix: `i` progresses through `I, love, eating, pizza` → `i = 4`.
+4. No suffix needed because `i` already covers all words of the shorter sentence.
+5. `i + j = 4 >= len(w2)=4` → return `true`.
+
+---
+
+## Complexity Analysis
+
+**Time:** O(n) where n is the total number of words across both sentences.
+**Space:** O(n) for storing the word arrays.
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the solution to handle transitive similarity (Sentence Similarity II)?
+- Could the insertion be split into multiple non‑contiguous blocks?
 
 ---
 

@@ -17,7 +17,7 @@ Given strings `s1` and `s2`, return `true` if `s2` contains a permutation of `s1
 
 Fixed window of size `len(s1)`. Compare frequency counts.
 
-```
+```text
 FUNCTION checkInclusion(s1, s2):
     IF len(s1) > len(s2): RETURN false
 
@@ -45,9 +45,35 @@ FUNCTION checkInclusion(s1, s2):
     RETURN false
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
+---
+
+## 3. Examples
+
+| s1 | s2 | Output |
+|----|----|--------|
+| "ab" | "eidbaooo" | true |
+| "ab" | "eidboaoo" | false |
+| "adc" | "dcda" | true |
+
+---
+
+## 4. Walkthrough
+
+Consider `s1 = "ab"`, `s2 = "eidbaooo"`.
+
+1. Window size = 2. Initial window "ei": counts differ → `matches` < 26.
+2. Slide to "id": still mismatched.
+3. Slide to "db": still mismatched.
+4. Slide to "ba": counts match `a:1, b:1` → `matches` becomes 26 → return **true**.
+
+The algorithm stops as soon as a matching window is found.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) where n = `len(s2)`, each character enters and leaves the window once.
+- **Space:** O(1) – fixed size arrays of length 26 for character frequencies.
 
 ---
 

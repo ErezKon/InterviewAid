@@ -33,13 +33,48 @@ Start with array `[1, 1, ..., 1]` of length `n`. Each second, replace each eleme
 
 ## 3. Approach: Simulation or Combinatorics — O(n·k) or O(1) ✅
 
-```
+```text
 FUNCTION valueAfterKSeconds(n, k):
     // Direct formula: C(n+k-1, k) mod (10^9 + 7)
     RETURN binomial(n + k - 1, k) MOD (10^9 + 7)
 
     // Or simulate k rounds of prefix sum on array of n ones
 ```
+
+---
+
+## Examples
+
+| n | k | Output |
+|---|---|--------|
+| 3 | 2 | 6 |
+| 5 | 1 | 5 |
+| 4 | 3 | 20 |
+
+*Explanation*: For `n=3, k=2`, the array evolves `[1,1,1] → [1,2,3] → [1,3,6]`; the third element is `6`.
+
+---
+
+## Walkthrough
+
+**Example `n = 4, k = 3`**
+
+| Step | Array state |
+|------|-------------|
+| Start | `[1,1,1,1]` |
+| 1st second | `[1,2,3,4]` |
+| 2nd second | `[1,3,6,10]` |
+| 3rd second | `[1,4,10,20]` |
+
+The 4th element after 3 seconds is `20`, matching `C(4+3-1,3) = C(6,3) = 20`.
+
+---
+
+## Follow-Up Questions
+
+1. How would you extend the solution to support queries asking for any index `i` after `k` seconds?
+2. Can the approach be adapted for an initial array with arbitrary values instead of all ones?
+3. What if the modulo were a non‑prime number—how would you compute the binomial efficiently?
 
 ---
 

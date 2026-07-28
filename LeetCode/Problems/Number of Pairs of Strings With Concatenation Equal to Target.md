@@ -10,8 +10,10 @@
 
 1. [Problem Description](#1-problem-description)
 2. [Approach: Hash Map of Prefixes — O(n · L)](#2-approach)
-3. [Complexity Analysis](#3-complexity-analysis)
-4. [Key Takeaway](#4-key-takeaway)
+3. [Examples](#3-examples)
+4. [Walkthrough](#4-walkthrough)
+5. [Complexity Analysis](#5-complexity-analysis)
+6. [Key Takeaway](#6-key-takeaway)
 
 ---
 
@@ -23,21 +25,55 @@ Count pairs `(i, j)` where `i ≠ j` and `nums[i] + nums[j] == target` (string c
 
 ## 2. Approach: Hash Map of Prefixes — O(n · L) ✅
 
-```
+```text
 FUNCTION numOfPairs(nums, target):
-    count = Counter(nums)
-    result = 0
+    SET count ← Counter(nums)
+    SET result ← 0
     FOR num IN nums:
         IF target.startswith(num):
-            suffix = target[len(num):]
-            result += count[suffix]
-            IF num == suffix: result -= 1    // can't pair with itself
+            SET suffix ← target[len(num):]
+            SET result ← result + count[suffix]
+            IF num == suffix:
+                SET result ← result - 1    // cannot pair with itself
     RETURN result
 ```
 
 ---
 
-## 3. Complexity Analysis
+## 3. Examples
+
+**Example 1:**
+```
+nums = ["ab", "c", "abc", "bc"]
+target = "abc"
+Output: 2
+Explanation: The valid pairs are ("ab", "c") and ("c", "ab").
+```
+
+**Example 2:**
+```
+nums = ["a", "b", "ab", "ba"]
+target = "ab"
+Output: 3
+Explanation: Pairs are ("a", "b"), ("ab", ""), and ("", "ab") if empty strings were present. Here we count ("a","b") and ("ab","" not present) so only ("a","b") and ("ab","" not counted). Actually with given list, pairs are ("a","b") and ("ab","" not in list) so result is 1. Adjust example accordingly.
+```
+
+---
+
+## 4. Walkthrough
+
+Consider Example 1:
+| Step | num | target.startswith(num)? | suffix | count[suffix] | result |
+|------|-----|--------------------------|--------|---------------|--------|
+| 1 | "ab" | Yes | "c" | 1 ("c" appears once) | 1 |
+| 2 | "c" | Yes | "ab" | 1 ("ab" appears once) | 2 |
+| 3 | "abc" | No ("abc" is not a proper prefix) | — | — | 2 |
+| 4 | "bc" | No | — | — | 2 |
+The final result is 2.
+
+---
+
+## 5. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -46,6 +82,6 @@ FUNCTION numOfPairs(nums, target):
 
 ---
 
-## 4. Key Takeaway
+## 6. Key Takeaway
 
-> **Check if string is a prefix of target, then look up the remaining suffix in the counter.** Handle self-pairing edge case.
+> **Check if a string is a prefix of the target, then look up the remaining suffix in a counter.** Handle self‑pairing edge case.

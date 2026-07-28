@@ -15,24 +15,27 @@ Given a string containing `(`, `)`, and `*` (which can be `(`, `)`, or empty), d
 
 ## 2. Approach: Track Min/Max Open Count — O(n) ✅
 
-```
+```text
 FUNCTION checkValidString(s):
-    minOpen = 0    // minimum possible open parens
-    maxOpen = 0    // maximum possible open parens
+    // minOpen = minimum possible open '(' count, maxOpen = maximum possible open '(' count
+    SET minOpen ← 0
+    SET maxOpen ← 0
 
     FOR char IN s:
         IF char == '(':
-            minOpen += 1
-            maxOpen += 1
+            SET minOpen ← minOpen + 1
+            SET maxOpen ← maxOpen + 1
         ELSE IF char == ')':
-            minOpen -= 1
-            maxOpen -= 1
-        ELSE:   // '*'
-            minOpen -= 1    // treat as ')'
-            maxOpen += 1    // treat as '('
+            SET minOpen ← minOpen - 1
+            SET maxOpen ← maxOpen - 1
+        ELSE: // '*'
+            // treat '*' as either '(' or ')'
+            SET minOpen ← minOpen - 1   // as ')'
+            SET maxOpen ← maxOpen + 1   // as '('
 
-        IF maxOpen < 0: RETURN false    // too many ')'
-        minOpen = MAX(minOpen, 0)       // can't have negative open
+        IF maxOpen < 0:
+            RETURN false   // too many ')'
+        SET minOpen ← MAX(minOpen, 0) // cannot be negative
 
     RETURN minOpen == 0
 ```
@@ -40,6 +43,44 @@ FUNCTION checkValidString(s):
 | Time | Space |
 |------|-------|
 | O(n) | O(1) |
+
+---
+
+## 3. Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `"(*))"` | true | `*` can be treated as `(`, making the string "(()))" which balances. |
+| `"(*)"`   | true | `*` can be empty, resulting in "()". |
+| `"())*"`  | false| No assignment of `*` can balance the extra `)`. |
+
+---
+
+## 4. Walkthrough
+
+Consider the example `"(*))"`:
+
+1. Start with `minOpen = 0, maxOpen = 0`.
+2. Char `(` → `minOpen = 1, maxOpen = 1`.
+3. Char `*` → `minOpen = 0` (treat as `)`), `maxOpen = 2` (treat as `(`).
+4. Char `)` → `minOpen = -1 → 0` (clamp), `maxOpen = 1`.
+5. Char `)` → `minOpen = -1 → 0`, `maxOpen = 0`.
+6. End of string: `minOpen == 0`, so the string can be valid.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) – single pass through the string.
+- **Space:** O(1) – only two integer counters are used.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would you modify the algorithm to also return one possible valid replacement of `*` characters?
+- Can this approach be extended to handle other types of brackets like `{}` and `[]`?
+- What is the impact on performance if the string length reaches millions of characters?
 
 ---
 

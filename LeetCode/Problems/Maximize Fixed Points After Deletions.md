@@ -33,28 +33,53 @@ Given a permutation `nums` of `[0, n-1]`, you can delete some elements. After de
 
 ## Approach: DP — O(n) ✅
 
-```
+```text
 FUNCTION maxFixedPoints(nums):
     n = len(nums)
-    // dp[d] = max fixed points using exactly d deletions so far
     dp = [-infinity] * (n + 1)
     dp[0] = 0
-
     FOR i ← 0 TO n - 1:
         newDp = [-infinity] * (n + 1)
         FOR d ← 0 TO i:
             IF dp[d] == -infinity: CONTINUE
-            // Option 1: delete nums[i], increase deletions
+            // delete nums[i]
             newDp[d + 1] = MAX(newDp[d + 1], dp[d])
-            // Option 2: keep nums[i]
+            // keep nums[i]
             fixed = 1 IF nums[i] == i - d ELSE 0
             newDp[d] = MAX(newDp[d], dp[d] + fixed)
         dp = newDp
-
     RETURN MAX(dp)
 ```
 
-**Optimization:** Since `d = i - nums[i]` is the only deletion count that creates a fixed point, optimize to O(n) by tracking only feasible transitions.
+---
+
+## Examples
+
+**Example 1:**
+```
+Input: nums = [0,2,1]
+Output: 2
+Explanation: Delete element at index 1 (value 2). Remaining array [0,1] has fixed points at both indices.
+```
+
+**Example 2:**
+```
+Input: nums = [3,0,1,2]
+Output: 1
+Explanation: No deletions needed; only index 0 becomes a fixed point after re-indexing.
+```
+
+---
+
+## Walkthrough
+
+| Step | i | d (deletions) | nums[i] | New Index | Fixed? | dp State |
+|------|---|---------------|---------|-----------|--------|----------|
+| 1 | 0 | 0 | 0 | 0 | ✅ | dp[0]=1 |
+| 2 | 1 | 0 | 2 | 1 | ❌ | dp unchanged |
+| 3 | 2 | 1 (delete index1) | 1 | 1 | ✅ | dp[1]=2 |
+
+The DP tracks the best count for each possible deletion count, ultimately yielding 2 fixed points.
 
 ---
 
@@ -63,6 +88,14 @@ FUNCTION maxFixedPoints(nums):
 | Approach | Time | Space |
 |----------|------|-------|
 | DP (optimized) | **O(n)** | O(n) |
+
+---
+
+## Follow-Up Questions
+
+- How would the solution change if deletions were limited to at most `k` elements?
+- Can the problem be solved in O(1) extra space?
+- What if the array is not a permutation but may contain duplicates?
 
 ---
 

@@ -7,51 +7,78 @@
 
 ---
 
-## 1. Problem Description
+## Problem Description
 
-Design a stack-like data structure. `push(val)` pushes a value. `pop()` removes and returns the most frequent element. If tie, return the one closest to the top.
+Design a stack-like data structure that supports `push(val)` and `pop()`. `push(val)` inserts an integer onto the stack. `pop()` removes and returns the most frequent element in the stack; if multiple elements share the highest frequency, the element closest to the top of the stack is removed and returned.
 
 ---
 
-## 2. Approach: Frequency Map + Stack per Frequency — O(1) ✅
+## Examples
 
+**Example 1:**
 ```
-CLASS FreqStack:
-    CONSTRUCTOR:
-        freq = {}           // val → frequency
-        freqToStack = {}    // frequency → stack of values
-        maxFreq = 0
-
-    FUNCTION push(val):
-        freq[val] = freq.get(val, 0) + 1
-        f = freq[val]
-        maxFreq = MAX(maxFreq, f)
-
-        IF f NOT IN freqToStack:
-            freqToStack[f] = []
-        freqToStack[f].PUSH(val)
-
-    FUNCTION pop():
-        val = freqToStack[maxFreq].POP()
-        freq[val] -= 1
-
-        IF freqToStack[maxFreq] is empty:
-            maxFreq -= 1
-
-        RETURN val
+Input: push(5), push(7), push(5), push(7), push(4), push(5)
+pop() → 5   // 5 is the most frequent
+pop() → 7   // 5 and 7 both have frequency 2, but 7 is closest to the top
+pop() → 5
 ```
 
-### How It Works
+**Example 2:**
+```
+Input: push(1), push(2), push(3), pop()
+Output: 3   // All have frequency 1, return the most recent
+```
 
-Each value appears in multiple frequency stacks. A value with freq=3 is in stacks for freq 1, 2, and 3. Popping from `maxFreq` naturally handles the "most recent among most frequent" tie-breaking.
+---
 
-| Operation | Time |
-|-----------|------|
-| push | O(1) |
-| pop | O(1) |
+## Approach
+
+**Algorithm:** Frequency Map + Stack per Frequency (O(1) operations).
+
+Maintain:
+- `freq[val]` – current frequency of each value.
+- `group[freq]` – a stack of values that have this exact frequency, preserving insertion order.
+- `maxFreq` – the highest frequency present.
+
+`push(val)`: increment its frequency, update `maxFreq`, and push onto the corresponding frequency stack.
+
+`pop()`: pop from `group[maxFreq]`, decrement the value's frequency, and if that stack becomes empty, decrement `maxFreq`.
+
+---
+
+## Walkthrough
+
+Consider the sequence `push(5), push(7), push(5), push(7), push(4), push(5)`.
+
+1. After first `push(5)`: `freq[5]=1`, `group[1]=[5]`, `maxFreq=1`.
+2. `push(7)`: `freq[7]=1`, `group[1]=[5,7]`.
+3. `push(5)`: `freq[5]=2`, `group[2]=[5]`, `maxFreq=2`.
+4. `push(7)`: `freq[7]=2`, `group[2]=[5,7]`.
+5. `push(4)`: `freq[4]=1`, `group[1]=[5,7,4]`.
+6. `push(5)`: `freq[5]=3`, `group[3]=[5]`, `maxFreq=3`.
+
+`pop()`: remove from `group[3]` → returns `5`. Decrement `freq[5]` to 2, `group[3]` empty so `maxFreq=2`.
+
+Next `pop()`: `group[2]` currently `[5,7]`; pop returns `7` (most recent). Update frequencies accordingly.
+
+---
+
+## Complexity Analysis
+
+| Approach | Time | Space |
+|----------|------|-------|
+| Frequency Map + Stacks | **O(1)** per operation | O(n) for storing frequencies and stacks |
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the design to support `peek()` of the most frequent element without removing it?
+2. Can the structure be extended to support a `popMin()` operation that removes the least frequent element?
+3. What changes are needed if the stack must also support `incrementAll(val)` that adds `val` to every element?
 
 ---
 
 ## Key Takeaway
 
-> Group values by frequency using a stack per frequency level. `maxFreq` tracks the current highest. Both operations are O(1) with this elegant design.
+> Using a hash map for frequencies together with a stack per frequency level yields constant‑time `push` and `pop` while automatically handling tie‑breaking by recency.

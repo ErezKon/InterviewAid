@@ -15,29 +15,59 @@ Given an integer array `nums` that may contain duplicates, return all possible s
 
 ## 2. Approach: Backtracking with Skip — O(n·2ⁿ) ✅
 
-Sort first. At each level, skip duplicates.
-
-```
+```text
 FUNCTION subsetsWithDup(nums):
+    // Sort to bring duplicates together
     SORT nums
-    result = []
-    backtrack(nums, 0, [], result)
+    result ← []
+    backtrack(0, [], result)
     RETURN result
 
-FUNCTION backtrack(nums, start, path, result):
-    result.ADD(copy of path)
-
-    FOR i ← start TO len(nums) - 1:
+FUNCTION backtrack(start, path, result):
+    // Record current subset
+    APPEND copy(path) TO result
+    FOR i ← start TO LENGTH(nums) - 1:
+        // Skip duplicate elements at the same recursion level
         IF i > start AND nums[i] == nums[i-1]:
-            CONTINUE    // skip duplicates at same level
-
-        path.ADD(nums[i])
-        backtrack(nums, i + 1, path, result)
-        path.REMOVE_LAST()
+            CONTINUE
+        APPEND nums[i] TO path
+        backtrack(i + 1, path, result)
+        REMOVE LAST FROM path
 ```
+
+---
+
+## 3. Examples
+
+| Input | Output |
+|-------|--------|
+| `[1,2,2]` | `[[],[1],[2],[1,2],[2,2],[1,2,2]]` |
+| `[0]` | `[[],[0]]` |
+
+---
+
+## 4. Walkthrough
+
+For `[1,2,2]`:
+
+1. Start with empty path `[]` → add to result.
+2. Choose `1` → path `[1]` → add.
+3. Recurse, choose first `2` → `[1,2]` → add.
+4. Choose second `2` (skip duplicate at same level) → `[1,2,2]` → add.
+5. Backtrack to `[]`, skip `1`, choose first `2` → `[2]` → add.
+6. From `[2]`, skip second `2` at same level, then include it → `[2,2]` → add.
+
+All unique subsets are collected.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n·2ⁿ) – each element leads to two branches, with duplicate‑skipping reducing redundant work.
+- **Space:** O(n) – recursion stack and current path.
 
 ---
 
 ## Key Takeaway
 
-> `if i > start and nums[i] == nums[i-1]: continue` is the universal duplicate-skipping line for sorted backtracking. Works for Subsets II, Combination Sum II, Permutations II.
+> `if i > start and nums[i] == nums[i-1]: continue` is the universal duplicate‑skipping line for sorted backtracking. Works for Subsets II, Combination Sum II, Permutations II.

@@ -70,3 +70,31 @@ FUNCTION maximumLength(nums):
 ## 5. Key Takeaway
 
 > **Successive squaring chains** grow extremely fast (double the exponent each step), so chains are short. Count occurrences, then greedily build each chain.
+
+---
+
+## Examples
+
+**Example 1:**
+```
+nums = [2, 4, 8, 16, 1]
+Output: 5
+Explanation: Chain 2 → 4 → 16 → 4 → 2 uses all numbers, and 1 can be the center.
+```
+
+**Example 2:**
+```
+nums = [3, 9, 81, 2]
+Output: 3
+Explanation: Chain 3 → 9 → 81 → 9 → 3 uses three numbers; 2 cannot be paired.
+```
+
+---
+
+## Walkthrough
+
+Take Example 1:
+1. Build a frequency map: {1:1, 2:1, 4:1, 8:1, 16:1}.
+2. Start with x=2: 2²=4 exists, 4²=16 exists, 16²=256 not present. Chain length = 2 (pairs) + 1 center = 5.
+3. No other x yields a longer chain.
+4. Return 5 as the maximum subset size.

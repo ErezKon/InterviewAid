@@ -13,49 +13,63 @@ Given `head`, determine if the linked list has a **cycle**. Return `true` if the
 
 ---
 
-## 2. Approach: Floyd's Cycle Detection — O(n) ✅
+## 2. Examples
 
-```
-FUNCTION hasCycle(head):
-    slow = head
-    fast = head
-
-    WHILE fast != null AND fast.next != null:
-        slow = slow.next
-        fast = fast.next.next
-        IF slow == fast:
-            RETURN true
-
-    RETURN false
-```
-
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `[3,2,0,-4]`, pos = 1 | `true` | The tail connects to the node at index 1, forming a cycle. |
+| `[1,2]`, pos = -1 | `false` | No cycle exists in the list. |
 
 ---
 
-## 3. Follow-Up: Find the cycle start (LeetCode #142)?
+## 3. Approach
 
-After slow and fast meet, reset one to head. Advance both one step at a time. They meet at the cycle start.
+**Floyd's Cycle Detection (Tortoise and Hare)** – Use two pointers moving at different speeds. If they ever meet, a cycle exists; otherwise, the fast pointer reaches the end.
 
-```
-FUNCTION detectCycle(head):
-    slow = fast = head
-    WHILE fast AND fast.next:
-        slow = slow.next
-        fast = fast.next.next
+```text
+FUNCTION hasCycle(head):
+    SET slow ← head
+    SET fast ← head
+    WHILE fast != null AND fast.next != null:
+        SET slow ← slow.next
+        SET fast ← fast.next.next
         IF slow == fast:
-            slow = head
-            WHILE slow != fast:
-                slow = slow.next
-                fast = fast.next
-            RETURN slow
-    RETURN null
+            RETURN true
+    RETURN false
 ```
+
+---
+
+## 4. Walkthrough
+
+Consider the list `[3,2,0,-4]` with a cycle starting at index 1.
+
+| Step | slow pointer | fast pointer | Observation |
+|------|--------------|--------------|-------------|
+| 0 | node 3 (head) | node 3 (head) | start |
+| 1 | node 2 | node 0 | fast moves two steps |
+| 2 | node 0 | node 2 | fast moves two steps |
+| 3 | node -4 | node -4 | pointers meet → cycle detected |
+
+---
+
+## 5. Complexity Analysis
+
+| Metric | Complexity |
+|--------|------------|
+| Time | O(n) – each node visited at most twice |
+| Space | O(1) – only two pointers used |
+
+---
+
+## 6. Follow-Up Questions
+
+1. How to return the node where the cycle begins? (LeetCode #142)
+2. Can you detect a cycle in a directed graph?
+3. What modifications are needed for a singly linked list with random pointers?
 
 ---
 
 ## Key Takeaway
 
-> Floyd's tortoise and hare algorithm: if there's a cycle, the fast pointer (moving 2 steps) will eventually catch the slow pointer (moving 1 step). O(1) space.
+> Floyd's tortoise and hare algorithm detects a cycle using two pointers with O(1) extra space.

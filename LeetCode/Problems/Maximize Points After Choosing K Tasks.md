@@ -9,9 +9,11 @@
 ## Table of Contents
 
 - [Problem Description](#problem-description)
-- [Key Insight](#key-insight)
-- [Approach: Sort + Greedy / Heap — O(n log n)](#approach-sort--greedy--heap--on-log-n-)
+- [Examples](#examples)
+- [Approach](#approach)
+- [Walkthrough](#walkthrough)
 - [Complexity Analysis](#complexity-analysis)
+- [Follow-Up Questions](#follow-up-questions)
 - [Key Takeaway](#key-takeaway)
 
 ---
@@ -26,21 +28,51 @@ Given an array of tasks with point values and an integer `k`, choose exactly `k`
 
 ---
 
-## Key Insight
+## Examples
 
-> Sort tasks by point value in descending order and greedily select the top `k`. If there are multipliers or bonuses for selecting in a particular order, use a priority queue to dynamically pick the best available task at each step.
+**Example 1:**
+```
+Input: tasks = [5, 3, 9, 1, 7], k = 3
+Output: 21
+Explanation: Choose tasks with points 9, 7, and 5 for a total of 21.
+```
+
+**Example 2:**
+```
+Input: tasks = [2, 4, 6, 8], k = 2
+Output: 14
+Explanation: Selecting the two largest values 8 and 6 yields the maximum sum.
+```
 
 ---
 
-## Approach: Sort + Greedy / Heap — O(n log n) ✅
+## Approach
 
-```
+> Sort tasks by point value in descending order and greedily select the top `k`. If there are order‑dependent bonuses, maintain a max‑heap to pick the best available task at each step.
+
+```text
 FUNCTION maximizePoints(tasks, k):
-    SORT tasks by points DESC
-    RETURN SUM(tasks[i].points FOR i IN 0..k-1)
+    SORT tasks BY points DESCENDING
+    SET total ← 0
+    FOR i ← 0 TO k-1:
+        SET total ← total + tasks[i]
+    RETURN total
 ```
 
-If order-dependent bonuses exist, use a heap to dynamically select the best task at each step.
+---
+
+## Walkthrough
+
+Consider Example 1: `tasks = [5, 3, 9, 1, 7]`, `k = 3`.
+
+| Step | Sorted tasks | Selected | Running total |
+|------|--------------|----------|---------------|
+| 0    | [9,7,5,3,1]  | –        | 0 |
+| 1    | –            | 9        | 9 |
+| 2    | –            | 7        | 16 |
+| 3    | –            | 5        | 21 |
+
+After selecting the top three values, the maximum achievable points are 21.
 
 ---
 
@@ -48,10 +80,18 @@ If order-dependent bonuses exist, use a heap to dynamically select the best task
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sort + top-k | **O(n log n)** | O(1) |
+| Sort + top‑k | **O(n log n)** | O(1) |
+
+---
+
+## Follow-Up Questions
+
+1. How would you handle tasks that have prerequisite dependencies?
+2. What if each task provides a multiplier that depends on the order of selection?
+3. Can you solve the problem in O(n) time using a selection algorithm instead of sorting?
 
 ---
 
 ## Key Takeaway
 
-> **"Choose k items to maximize score" problems are typically sort + greedy.** When order matters or there are interaction effects, use a priority queue for dynamic selection.
+> **"Choose k items to maximize score" problems are typically solved with a sort‑and‑greedy approach.** When order‑dependent bonuses exist, a priority queue enables dynamic selection.

@@ -38,6 +38,41 @@ FUNCTION maxNonDecreasingLength(nums1, nums2):
 
 ---
 
-## 3. Key Takeaway
+## Examples
 
-> At each position, two choices → two DP states. Each state tracks the longest non-decreasing subarray ending at `i` using `nums1[i]` or `nums2[i]`. Check all 4 transitions.
+**Example 1:**
+```
+Input: nums1 = [1,3,5], nums2 = [2,4,6]
+Output: 3
+Explanation: Choose nums1[0]=1, nums2[1]=4, nums2[2]=6 → [1,4,6] is non‑decreasing.
+```
+
+**Example 2:**
+```
+Input: nums1 = [5,4,3], nums2 = [1,2,3]
+Output: 2
+Explanation: Best we can do is [1,2] or [3,3] of length 2.
+```
+
+## Walkthrough
+
+Take the first example `[1,3,5]` and `[2,4,6]`.
+| i | nums1[i] | nums2[i] | dp1 | dp2 | maxLen |
+|---|----------|----------|-----|-----|--------|
+|0|1|2|1|1|1|
+|1|3|4|2 (3≥1) |2 (4≥2) |2|
+|2|5|6|3 (5≥3 or 5≥4) |3 (6≥4 or 6≥5) |3|
+The DP maintains the longest subarray ending at each index for both choices, yielding length 3.
+
+## Complexity Analysis
+- **Time:** O(n) – single pass over the arrays.
+- **Space:** O(1) – only a few scalar variables.
+
+## Follow-Up Questions
+- How would the algorithm change if you could pick from *k* arrays?
+- What if the subarray does not need to be contiguous?
+- Can we extend this to handle decreasing subarrays as well?
+
+## Key Takeaway
+
+> Maintain two DP states representing the longest non‑decreasing subarray ending at the current index when choosing from the first or second array. Update both states using the four possible transitions.

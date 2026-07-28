@@ -9,34 +9,56 @@
 
 ## 1. Problem Description
 
-Houses are arranged in a **circle**. You can't rob two adjacent houses. Return the maximum amount you can rob.
+A row of houses forms a circle. Each house contains a certain amount of money. You cannot rob two adjacent houses. Return the maximum amount of money you can rob without alerting the police.
 
----
+## 2. Examples
 
-## 2. Approach: Two House Robber I Calls — O(n) ✅
+| houses | max rob |
+|--------|---------|
+| [2,3,2] | 3 |
+| [1,2,3,1] | 4 |
+| [1,2,3] | 3 |
 
-Since houses form a circle, house 0 and house n-1 are adjacent. Either skip the first or skip the last.
+*Explanation*: In the first example, you can only rob house 2 (value 3) because houses 1 and 3 are adjacent to each other.
 
-```
+## 3. Approach
+
+Treat the circular arrangement as two linear House Robber I problems: one excluding the first house, the other excluding the last house. The answer is the maximum of the two results.
+
+```text
 FUNCTION rob(nums):
-    IF len(nums) == 1: RETURN nums[0]
+    IF LENGTH(nums) == 1:
+        RETURN nums[0]
     RETURN MAX(robLinear(nums[0..n-2]), robLinear(nums[1..n-1]))
 
-FUNCTION robLinear(nums):
-    prev2 = 0, prev1 = 0
-    FOR num IN nums:
-        curr = MAX(prev1, prev2 + num)
-        prev2 = prev1
-        prev1 = curr
+FUNCTION robLinear(arr):
+    SET prev2 ← 0
+    SET prev1 ← 0
+    FOR value IN arr:
+        SET curr ← MAX(prev1, prev2 + value)
+        SET prev2 ← prev1
+        SET prev1 ← curr
     RETURN prev1
 ```
 
-| Time | Space |
-|------|-------|
-| O(n) | O(1) |
+## 4. Walkthrough
 
----
+Consider `nums = [1,2,3,1]`:
+1. Exclude first house → subarray `[2,3,1]` → `robLinear` yields 4 (houses 2 and 4).
+2. Exclude last house → subarray `[1,2,3]` → `robLinear` yields 4 (houses 1 and 3).
+3. Max of both cases = 4.
 
-## Key Takeaway
+## 5. Complexity Analysis
 
-> Circular constraint → run House Robber I twice: once excluding the first house, once excluding the last. Take the maximum.
+- **Time**: O(n) – each house is processed twice.
+- **Space**: O(1) – only constant extra variables are used.
+
+## 6. Follow-Up Questions
+
+- How would you modify the solution if houses were arranged in a binary tree?
+- What if each house had a cooldown period after being robbed?
+- Can you extend the algorithm to handle k‑adjacent restriction?
+
+## 7. Key Takeaway
+
+> Convert the circular constraint into two linear sub‑problems and take the maximum, achieving linear time and constant space.

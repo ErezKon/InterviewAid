@@ -20,23 +20,23 @@ Given an undirected graph with `n` nodes, edge travel takes `time` units, and tr
 
 ## Approach
 
-```
+```text
 FUNCTION secondMinimum(n, edges, time, change):
     graph ← adjacency list from edges
     dist1 ← [INF] * (n+1)
     dist2 ← [INF] * (n+1)
     dist1[1] ← 0
-    queue ← [(0, 1)]  // (time, node)
+    queue ← [(0, 1)]  // (elapsedTime, node)
 
-    WHILE queue:
+    WHILE queue NOT EMPTY:
         t, u ← queue.DEQUEUE()
         FOR v IN graph[u]:
-            // Wait for green light
-            IF (t / change) % 2 == 1:  // red light
-                t_wait ← change - (t % change)
+            // Determine waiting time for green light
+            IF (t / change) % 2 == 1:               // red phase
+                wait ← change - (t % change)
             ELSE:
-                t_wait ← 0
-            newTime ← t + t_wait + time
+                wait ← 0
+            newTime ← t + wait + time
 
             IF newTime < dist1[v]:
                 dist2[v] ← dist1[v]
@@ -51,11 +51,42 @@ FUNCTION secondMinimum(n, edges, time, change):
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: n = 5, edges = [[1,2],[1,3],[1,4],[3,5],[4,5]], time = 3, change = 5
+Output: 13
+Explanation: The shortest time is 11 (1→2→1→3→5). The second shortest is 13 (1→3→5).
+```
+
+**Example 2:**
+```
+Input: n = 2, edges = [[1,2]], time = 3, change = 2
+Output: 7
+Explanation: First arrival at t=3 (green). Second arrival must wait for red at node 2, arriving at t=7.
+```
+
+---
+
+## Walkthrough
+
+| Step | Node | Arrival Time | Light State | Action |
+|------|------|--------------|-------------|--------|
+| 1 | 1 | 0 | Green | Start
+| 2 | 2 | 3 | Green | Travel edge (1,2)
+| 3 | 1 | 6 | Red (wait 2) | Return to 1
+| 4 | 3 | 11 | Green | Travel via 1→3→5, second shortest path
+
+The BFS explores both earliest and second‑earliest arrivals, applying the waiting logic at each node, ultimately yielding the second minimum time.
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Complexity |
-|--------|-----------|
-| Time   | O(V + E) — BFS with bounded visits per node |
+|--------|------------|
+| Time   | O(V + E) — each node processed at most twice |
 | Space  | O(V + E) |
 
 ---

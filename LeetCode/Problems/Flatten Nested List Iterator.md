@@ -33,14 +33,14 @@ Implement an iterator to flatten a nested list of integers. Each element is eith
 ```
 CLASS NestedIterator:
     CONSTRUCTOR(nestedList):
-        stack = REVERSE(nestedList)    // push in reverse
+        stack = REVERSE(nestedList)    // push in reverse order
 
     FUNCTION hasNext():
-        WHILE stack AND stack.TOP() is a list:
+        WHILE stack IS NOT EMPTY AND stack.TOP() IS LIST:
             top = stack.POP()
             FOR item IN REVERSE(top.getList()):
                 stack.PUSH(item)
-        RETURN stack is not empty
+        RETURN stack IS NOT EMPTY
 
     FUNCTION next():
         RETURN stack.POP().getInteger()
@@ -48,7 +48,46 @@ CLASS NestedIterator:
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: nestedList = [[1,1],2,[1,1]]
+Operations: next(), next(), next(), next(), hasNext()
+Output: 1,1,2,1,false
+```
+Explanation: The iterator returns the integers in order, flattening each sub‑list lazily.
+
+**Example 2:**
+```
+Input: nestedList = [1,[4,[6]]]
+Operations: next(), next(), next(), hasNext()
+Output: 1,4,6,true
+```
+Explanation: Nested lists are expanded as needed; after the last element, `hasNext()` reports false.
+
+---
+
+## 5. Walkthrough
+
+| Step | Stack (top→bottom) | Action |
+|------|-------------------|--------|
+| Init | 2, [1,1], [1,1] | Constructor pushes reversed list |
+| hasNext | 2, [1,1], [1,1] | Top is integer → stop |
+| next | 2, [1,1] | Pop 1 → return 1 |
+| hasNext | 2, [1,1] | Top integer → stop |
+| next | 2 | Pop 1 → return 1 |
+| hasNext | 2, [1,1] | Top integer → stop |
+| next | [1,1] | Pop 2 → return 2 |
+| hasNext | [1,1] | Top is list → expand: push 1,1 |
+| next | 1,1 | Pop 1 → return 1 |
+| hasNext | 1 | Top integer → stop |
+| next | (empty) | Pop 1 → return 1 |
+| hasNext | (empty) | Stack empty → false |
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -57,6 +96,14 @@ CLASS NestedIterator:
 
 ---
 
-## 5. Key Takeaway
+## Follow-Up Questions
+
+- How would you modify the iterator to support a `remove()` operation?
+- Can you implement the same functionality using recursion instead of an explicit stack?
+- What changes are needed if the nested structure is streamed rather than fully materialized?
+
+---
+
+## 7. Key Takeaway
 
 > **Lazy stack flattening** — `hasNext()` peels nested lists until an integer surfaces. Clean iterator pattern for nested structures.

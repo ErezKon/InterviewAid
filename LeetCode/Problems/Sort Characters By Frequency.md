@@ -9,36 +9,68 @@
 
 ## 1. Problem Description
 
-Given a string `s`, sort it in decreasing order based on the frequency of characters.
+Given a string `s`, return a new string where the characters are sorted in **decreasing order of frequency**. If multiple characters have the same frequency, any order among them is acceptable.
 
 ---
 
 ## 2. Approach: Bucket Sort — O(n) ✅
 
-```
+```text
 FUNCTION frequencySort(s):
-    count = frequency map of s
-    buckets = [[] for _ in range(len(s) + 1)]
+    // Count frequency of each character
+    count ← map()
+    FOR ch IN s:
+        INCREMENT count[ch]
 
-    FOR (char, freq) IN count:
-        buckets[freq].ADD(char)
+    // Create buckets where index = frequency
+    buckets ← array of empty lists with size LENGTH(s) + 1
+    FOR (ch, freq) IN count:
+        APPEND ch TO buckets[freq]
 
-    result = []
-    FOR freq ← len(s) DOWN TO 1:
-        FOR char IN buckets[freq]:
-            result.ADD(char * freq)
-
+    // Build result from highest frequency to lowest
+    result ← []
+    FOR freq ← LENGTH(s) DOWN TO 1:
+        FOR ch IN buckets[freq]:
+            APPEND (ch REPEAT freq) TO result
     RETURN JOIN(result)
 ```
 
-| Approach | Time | Space |
-|----------|------|-------|
-| **Bucket Sort** | **O(n)** | **O(n)** |
-| Heap | O(n log k) | O(n) |
-| Sort | O(n log n) | O(n) |
+---
+
+## 3. Examples
+
+| Input | Output |
+|-------|--------|
+| `"tree"` | `"eetr"` (or `"eert"`) |
+| `"cccaaa"` | `"cccaaa"` (or `"aaaccc"`) |
+| `"Aabb"` | `"bbAa"` (or `"bbaA"`) |
+
+---
+
+## 4. Walkthrough
+
+For `"tree"`:
+
+1. Frequencies: `t:1`, `r:1`, `e:2`.
+2. Buckets: index 2 → `[e]`; index 1 → `[t, r]`.
+3. Iterate from high to low: add `e` twice → `"ee"`, then `t` and `r` → `"eetr"`.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n) – one pass to count, one pass to fill buckets, one pass to build output.
+- **Space:** O(n) – frequency map and buckets store at most `n` characters.
+
+---
+
+## 6. Follow-Up Questions
+
+- How would you modify the algorithm to return the **lexicographically smallest** string among all valid orderings?
+- Can this be solved using a **max‑heap** instead of bucket sort? What would be the time trade‑off?
 
 ---
 
 ## Key Takeaway
 
-> Bucket sort by frequency: index = frequency, value = characters with that frequency. Iterate buckets in reverse for descending frequency.
+> Bucket sort by frequency uses the frequency itself as an index, giving a linear‑time solution for sorting characters by how often they appear.

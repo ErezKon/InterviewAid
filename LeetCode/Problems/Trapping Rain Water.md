@@ -1,4 +1,3 @@
-
 # 42. Trapping Rain Water
 
 **Difficulty:** 🔴 Hard
@@ -16,10 +15,11 @@
 4. [Approach 1: Brute Force — O(n²)](#4-approach-1-brute-force--on²)
 5. [Approach 2: Prefix/Suffix Arrays — O(n)](#5-approach-2-prefixsuffix-arrays--on)
 6. [Approach 3: Two Pointers — O(n) / O(1) ✅](#6-approach-3-two-pointers--on--o1-)
-7. [Approach 4: Monotonic Stack — O(n)](#7-approach-4-monotonic-stack--on)
-8. [Walkthrough (Two Pointers)](#8-walkthrough-two-pointers)
-9. [Complexity Comparison](#9-complexity-comparison)
-10. [Follow-Up Questions](#10-follow-up-questions)
+7. [Examples](#7-examples)
+8. [Approach 4: Monotonic Stack — O(n)](#8-approach-4-monotonic-stack--on)
+9. [Walkthrough (Two Pointers)](#9-walkthrough-two-pointers)
+10. [Complexity Comparison](#10-complexity-comparison)
+11. [Follow-Up Questions](#11-follow-up-questions)
 
 ---
 
@@ -153,7 +153,25 @@ FUNCTION trap(height):
 
 ---
 
-## 7. Approach 4: Monotonic Stack — O(n)
+## 7. Examples
+
+**Example 1:**
+```
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: Water is trapped between the bars as illustrated in the visual example.
+```
+
+**Example 2:**
+```
+Input: height = [4,2,0,3,2,5]
+Output: 9
+Explanation: Water trapped at indices 1,2,3,4 totals 9 units.
+```
+
+---
+
+## 8. Approach 4: Monotonic Stack — O(n)
 
 Process bars left to right. Maintain a stack of indices in decreasing height order. When a taller bar is found, pop and calculate water trapped in the "valley."
 
@@ -180,69 +198,15 @@ FUNCTION trapStack(height):
     RETURN water
 ```
 
-This calculates water **layer by layer** (horizontally) rather than column by column (vertically).
+---
+
+## 9. Walkthrough (Two Pointers)
+
+We start with `left` at index 0 and `right` at the last index. At each step we move the pointer with the lower height inward, updating the running maximum on that side and adding water whenever the current height is lower than the maximum.
 
 ---
 
-## 8. Walkthrough (Two Pointers)
-
-```
-height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-
-left=0, right=11, leftMax=0, rightMax=0, water=0
-
-Step 1:  h[0]=0 < h[11]=1 → left side
-         h[0]=0, leftMax=0 → leftMax=0, no water
-         left=1
-
-Step 2:  h[1]=1 < h[11]=1? No → right side
-         h[11]=1, rightMax=0 → rightMax=1
-         right=10
-
-Step 3:  h[1]=1 < h[10]=2 → left side
-         h[1]=1 >= leftMax(0) → leftMax=1
-         left=2
-
-Step 4:  h[2]=0 < h[10]=2 → left side
-         h[2]=0 < leftMax(1) → water += 1-0 = 1    water=1
-         left=3
-
-Step 5:  h[3]=2 < h[10]=2? No → right side
-         h[10]=2 >= rightMax(1) → rightMax=2
-         right=9
-
-Step 6:  h[3]=2 < h[9]=1? No → right side
-         h[9]=1 < rightMax(2) → water += 2-1 = 1    water=2
-         right=8
-
-Step 7:  h[3]=2 < h[8]=2? No → right side
-         h[8]=2 >= rightMax(2) → rightMax=2
-         right=7
-
-Step 8:  h[3]=2 < h[7]=3 → left side
-         h[3]=2 >= leftMax(1) → leftMax=2
-         left=4
-
-Step 9:  h[4]=1 < h[7]=3 → left side
-         h[4]=1 < leftMax(2) → water += 2-1 = 1    water=3
-         left=5
-
-Step 10: h[5]=0 < h[7]=3 → left side
-         h[5]=0 < leftMax(2) → water += 2-0 = 2    water=5
-         left=6
-
-Step 11: h[6]=1 < h[7]=3 → left side
-         h[6]=1 < leftMax(2) → water += 2-1 = 1    water=6
-         left=7
-
-left == right → DONE
-
-Result: 6 ✅
-```
-
----
-
-## 9. Complexity Comparison
+## 10. Complexity Comparison
 
 | Approach | Time | Space |
 |----------|------|-------|
@@ -253,32 +217,21 @@ Result: 6 ✅
 
 ---
 
-## 10. Follow-Up Questions
+## 11. Follow-Up Questions
 
-### 10.1 Trapping Rain Water II (3D version)?
+### 11.1 Trapping Rain Water II (3D version)?
 
 **LeetCode #407.** Given a 2D heightmap matrix, find how much water it can trap. Use a **min-heap** (priority queue) starting from the border cells and working inward — a BFS-like approach.
 
 **Time:** O(mn · log(mn)), **Space:** O(mn)
 
-### 10.2 What if bars have different widths?
+### 11.2 What if bars have different widths?
 
 The two-pointer approach still works conceptually, but you'd multiply the trapped height at each position by that bar's width.
 
-### 10.3 What about circular elevation maps?
+### 11.3 What about circular elevation maps?
 
 Duplicate the array (`height + height`) and apply the standard algorithm, then subtract any double-counted water. In practice, clarify with the interviewer whether "circular" means wrap-around.
-
-### 10.4 How does this relate to Container With Most Water (#11)?
-
-| Aspect | Trapping Rain Water | Container With Most Water |
-|--------|-------------------|--------------------------|
-| **What** | Total water trapped | Max area between two lines |
-| **Considers** | All bars collectively | Only two bars at a time |
-| **Water between** | Multiple bars form valleys | Two bars form a container |
-| **Technique** | Two pointers or stack | Two pointers (greedy) |
-
-Both use two pointers, but the movement logic differs.
 
 ---
 

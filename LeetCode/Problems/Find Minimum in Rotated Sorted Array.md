@@ -15,17 +15,16 @@ Given a sorted rotated array with unique elements, find the minimum element in O
 
 ## 2. Approach: Binary Search — O(log n) ✅
 
-```
+```text
 FUNCTION findMin(nums):
-    lo, hi = 0, len(nums) - 1
-
+    lo ← 0
+    hi ← len(nums) - 1
     WHILE lo < hi:
-        mid = (lo + hi) / 2
+        mid ← (lo + hi) / 2
         IF nums[mid] > nums[hi]:
-            lo = mid + 1       // min is in the right half
+            SET lo ← mid + 1       // min is in the right half
         ELSE:
-            hi = mid           // min is at mid or left of mid
-
+            SET hi ← mid           // min is at mid or left of mid
     RETURN nums[lo]
 ```
 
@@ -33,15 +32,41 @@ FUNCTION findMin(nums):
 
 If `nums[mid] > nums[hi]`, the rotation point (minimum) is between `mid+1` and `hi`. Otherwise, the minimum is at `mid` or to its left.
 
-| Time | Space |
-|------|-------|
-| O(log n) | O(1) |
+---
+
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `[3,4,5,1,2]` | `1` | The array is rotated; the smallest element is at index 3. |
+| `[1,2,3,4,5]` | `1` | No rotation; the first element is the minimum. |
+| `[2,1]` | `1` | Two‑element rotated array, minimum at index 1. |
 
 ---
 
-## Follow-Up: With duplicates (#154)?
+## Walkthrough
 
-When `nums[mid] == nums[hi]`, can't determine which half → `hi -= 1`. Worst case O(n).
+Consider `nums = [4,5,6,7,0,1,2]`:
+
+1. `lo=0`, `hi=6`, `mid=3` → `nums[mid]=7 > nums[hi]=2` → set `lo=4`.
+2. `lo=4`, `hi=6`, `mid=5` → `nums[mid]=1 ≤ nums[hi]=2` → set `hi=5`.
+3. `lo=4`, `hi=5`, `mid=4` → `nums[mid]=0 ≤ nums[hi]=1` → set `hi=4`.
+4. Loop ends (`lo==hi==4`), return `nums[4]=0`.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(log n) – binary search halves the search space each iteration.
+- **Space:** O(1) – only a few integer variables.
+
+---
+
+## Follow-Up Questions
+
+- How would the algorithm change if duplicates were allowed? (Hint: need to handle `nums[mid] == nums[hi]` by decrementing `hi`.)
+- Can you adapt the method to find the rotation index instead of the minimum value?
+- What is the worst‑case time complexity when duplicates are present?
 
 ---
 

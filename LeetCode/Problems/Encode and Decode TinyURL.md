@@ -10,6 +10,8 @@
 - [Problem Description](#problem-description)
 - [Key Insight](#key-insight)
 - [Approach: Hash Map with Random Key](#approach-hash-map-with-random-key--o1-)
+- [Examples](#examples)
+- [Walkthrough](#walkthrough)
 - [Complexity Analysis](#complexity-analysis)
 - [Follow-Up Questions](#follow-up-questions)
 - [Key Takeaway](#key-takeaway)
@@ -24,7 +26,7 @@ Design a URL shortening service. Implement `encode(longUrl)` → short URL and `
 
 ## Key Insight
 
-> Generate a random 6-character key from `[a-zA-Z0-9]` (62⁶ ≈ 56 billion combinations). Store bidirectional mappings. Re-generate on collision. For idempotency, cache `longUrl → shortUrl` so the same URL always gets the same short code.
+> Generate a random 6-character key from `[a-zA-Z0-9]` (62⁶ ≈ 56 billion combinations). Store bidirectional mappings. Re‑generate on collision. For idempotency, cache `longUrl → shortUrl` so the same URL always gets the same short code.
 
 ---
 
@@ -52,6 +54,33 @@ CLASS Codec:
 
 ---
 
+## Examples
+
+| longUrl                                 | shortUrl                     |
+|----------------------------------------|------------------------------|
+| `https://leetcode.com/problems/123`    | `http://tinyurl.com/abc123` |
+| `https://example.com/about`            | `http://tinyurl.com/xYz9K1` |
+
+- Encoding the same `longUrl` again returns the previously generated `shortUrl`.
+- Decoding the `shortUrl` yields the original `longUrl`.
+
+---
+
+## Walkthrough
+
+1. **First call to `encode`** with a new URL:
+   - No entry in `longToShort`, generate a random 6‑char key.
+   - Ensure the key is unique (check `shortToLong`).
+   - Store mappings in both dictionaries.
+2. **Subsequent call to `encode`** with the same URL:
+   - Find the URL in `longToShort` and return the existing short code.
+3. **Calling `decode`**:
+   - Look up the short URL in `shortToLong` and return the associated long URL.
+4. **Collision handling**:
+   - If a generated key already exists, repeat generation until a free key is found (collision probability is negligible with 62⁶ space).
+
+---
+
 ## Complexity Analysis
 
 | Aspect | Complexity |
@@ -64,11 +93,11 @@ CLASS Codec:
 
 ## Follow-Up Questions
 
-**Q1: What about using an auto-incrementing counter instead of random?**
+**Q1: What about using an auto‑incrementing counter instead of random?**
 > Counter → base62 encoding gives predictable, sequential short URLs. Simpler but URLs are guessable (security concern).
 
 **Q2: How would you scale this for production?**
-> Distributed key generation (e.g., ID ranges per server), database-backed storage, caching layer, and 301/302 redirects.
+> Distributed key generation (e.g., ID ranges per server), database‑backed storage, caching layer, and 301/302 redirects.
 
 **Q3: What if the same long URL is encoded twice?**
 > The `longToShort` cache ensures idempotency — same long URL always returns the same short URL.
@@ -77,4 +106,4 @@ CLASS Codec:
 
 ## Key Takeaway
 
-> **URL shortening = bidirectional hash map + random key generation. In interviews, discuss trade-offs: random vs counter, collision handling, and scaling to distributed systems.**
+> **URL shortening = bidirectional hash map + random key generation. In interviews, discuss trade‑offs: random vs counter, collision handling, and scaling to distributed systems.**

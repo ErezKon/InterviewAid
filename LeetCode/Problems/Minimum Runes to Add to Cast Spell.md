@@ -30,8 +30,6 @@ Given a directed graph representing spell dependencies, find the **minimum** num
 
 > Compute **Strongly Connected Components** (SCCs), condense the graph to a DAG, and count the number of SCCs with **in-degree 0** in the condensed DAG. The answer is the number of such source SCCs minus 1 (since at least one source already exists).
 
-Actually, the minimum edges to add = number of source SCCs with in-degree 0 minus the ones already reachable. The exact formulation depends on the problem variant.
-
 ---
 
 ## 3. Approach: SCC + DAG In-degree — O(n + e) ✅
@@ -56,7 +54,30 @@ FUNCTION minRunesToAdd(n, edges):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: n = 5, edges = [[0,1],[1,2],[3,4]]
+Output: 1
+Explanation: SCCs are {0},{1},{2},{3},{4}. The condensed DAG has two source components (0 and 3). Adding one rune from component 0 to 3 makes all nodes reachable.
+```
+**Example 2:**
+```
+Input: n = 3, edges = []
+Output: 2
+Explanation: Three isolated nodes form three source SCCs. Need 2 runes to connect them into a single reachable component.
+```
+
+---
+
+## 5. Walkthrough
+
+Take Example 1. After finding SCCs, each node is its own SCC. In‑degree counts: component 0 has 0, component 3 has 0, others have >0. Sources = 2, so answer = 2‑1 = 1. Adding an edge from node 0 to node 3 connects the two source components, making all nodes reachable.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
@@ -65,6 +86,6 @@ FUNCTION minRunesToAdd(n, edges):
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
 > **SCC condensation + source counting** — to make all nodes reachable, condense SCCs into a DAG and count how many source nodes exist. The minimum additions connect these isolated sources.

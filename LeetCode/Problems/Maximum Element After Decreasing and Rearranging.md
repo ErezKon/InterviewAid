@@ -12,6 +12,9 @@
 - [Key Insight](#key-insight)
 - [Approach: Sort + Greedy — O(n log n)](#approach-sort--greedy--on-log-n-)
 - [Complexity Analysis](#complexity-analysis)
+- [Examples](#examples)
+- [Walkthrough](#walkthrough)
+- [Follow-Up Questions](#follow-up-questions)
 - [Key Takeaway](#key-takeaway)
 
 ---
@@ -30,13 +33,13 @@ Given an array, you can rearrange and decrease elements. The first element must 
 
 ## Approach: Sort + Greedy — O(n log n) ✅
 
-```
+```text
 FUNCTION maximumElementAfterDecrementingAndRearranging(arr):
     SORT arr
-    arr[0] = 1
-    FOR i ← 1 TO n - 1:
-        arr[i] = MIN(arr[i], arr[i-1] + 1)
-    RETURN arr[n - 1]
+    SET arr[0] ← 1
+    FOR i ← 1 TO LEN(arr) - 1:
+        SET arr[i] ← MIN(arr[i], arr[i-1] + 1)
+    RETURN arr[LEN(arr) - 1]
 ```
 
 ---
@@ -46,6 +49,39 @@ FUNCTION maximumElementAfterDecrementingAndRearranging(arr):
 | Approach | Time | Space |
 |----------|------|-------|
 | Sort + greedy | **O(n log n)** | O(1) |
+
+---
+
+## Examples
+
+| arr | Output |
+|-----|--------|
+| `[3,2,5,1,7]` | `5` |
+| `[1,1,1,1]` | `1` |
+
+*Explanation*: After sorting, the array becomes `[1,1,2,3,5]`. Applying the greedy cap yields `[1,2,3,4,5]`, so the maximum element is `5`.
+
+---
+
+## Walkthrough
+
+Consider `arr = [3,2,5,1,7]`.
+
+1. **Sort** → `[1,2,3,5,7]`.
+2. **Initialize** first element to `1`.
+3. **i=1**: `min(2, 1+1)=2` → array `[1,2,3,5,7]`.
+4. **i=2**: `min(3, 2+1)=3` → unchanged.
+5. **i=3**: `min(5, 3+1)=4` → array `[1,2,3,4,7]`.
+6. **i=4**: `min(7, 4+1)=5` → final array `[1,2,3,4,5]`.
+7. Return last element `5`.
+
+---
+
+## Follow-Up Questions
+
+- How would the solution change if the first element could be any value?
+- Can you solve the problem in O(n) time without sorting?
+- What if the adjacency constraint was `|a[i] - a[i-1]| ≤ k` for a given `k`?
 
 ---
 

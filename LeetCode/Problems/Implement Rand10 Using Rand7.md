@@ -3,43 +3,61 @@
 **Difficulty:** 🟡 Medium
 **LeetCode:** [https://leetcode.com/problems/implement-rand10-using-rand7](https://leetcode.com/problems/implement-rand10-using-rand7)
 **Companies:** Bloomberg, De Shaw, Google, Linkedin, Microsoft, Tencent, Tiktok, Yandex
-
----
-
-## Table of Contents
-
-1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: Rejection Sampling — O(1) expected ✅](#3-approach-rejection-sampling--o1-expected-)
-4. [Key Takeaway](#4-key-takeaway)
-
 ---
 
 ## 1. Problem Description
 
-Implement `rand10()` using only `rand7()`. Each call must return a uniformly random integer in [1, 10].
+Implement `rand10()` using only `rand7()`. Each call must return a uniformly random integer in the range [1, 10].
 
 ---
 
-## 2. Key Insight
+## 2. Approach: Rejection Sampling — Expected O(1) ✅
 
-> `(rand7()-1)*7 + rand7()` generates uniform [1, 49]. Accept [1, 40] and map to [1, 10]. Reject [41, 49] and retry.
-
----
-
-## 3. Approach: Rejection Sampling — O(1) expected ✅
+Generate a uniform number in a larger range (1‑49) using two calls to `rand7()`. Accept numbers 1‑40 and map them to 1‑10; reject 41‑49 and retry.
 
 ```
 FUNCTION rand10():
     WHILE true:
-        // Generate uniform [1, 49]
-        num = (rand7() - 1) * 7 + rand7()
-        IF num <= 40:
+        // Uniform [1, 49]
+        SET num ← (rand7() - 1) * 7 + rand7()
+        IF num ≤ 40:
             RETURN (num - 1) % 10 + 1
 ```
 
 ---
 
-## 4. Key Takeaway
+## 3. Examples
 
-> **Rejection sampling**: generate a larger uniform range, accept only multiples of 10. Expected ~2.4 rand7() calls per rand10() call.
+| Calls to `rand7()` | Computed `num` | Result `rand10()` |
+|--------------------|----------------|-------------------|
+| 3, 5               | (3‑1)*7+5 = 19 |  (19‑1)%10+1 = 9 |
+| 7, 2               | (7‑1)*7+2 = 44 → reject, repeat |
+| 1, 4               | (1‑1)*7+4 = 4  |  (4‑1)%10+1 = 4 |
+
+---
+
+## 4. Walkthrough
+
+1. Call `rand7()` twice → 3 and 5 → compute `num = 19` (≤40). Return `(19‑1)%10+1 = 9`.
+2. If `num` had been 44 (>40), the loop repeats until an accepted value is produced.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time**: Expected O(1) calls to `rand7()` (rejection probability 9/49). Worst‑case unbounded but rare.
+- **Space**: O(1).
+
+---
+
+## 6. Follow‑Up Questions
+
+- How to generate `rand10()` using only `rand5()`?
+- Can you reduce the expected number of `rand7()` calls?
+- How to generate numbers in a different range efficiently?
+
+---
+
+## Key Takeaway
+
+> **Rejection sampling**: create a larger uniform range, accept only values that map evenly to the target range, and retry on rejects. This yields an expected constant number of base random calls.

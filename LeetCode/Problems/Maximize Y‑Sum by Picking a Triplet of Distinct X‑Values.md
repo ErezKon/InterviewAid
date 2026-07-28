@@ -43,6 +43,39 @@ FUNCTION maxYSum(points):
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+points = [[1,5],[2,3],[3,4],[1,2]]
+Output: 12
+Explanation: Choose (1,5), (2,3), (3,4). Their x-values are distinct and the sum is 5+3+4 = 12.
+```
+
+**Example 2:**
+```
+points = [[1,10],[1,8],[2,7],[3,6]]
+Output: 23
+Explanation: The best y for x=1 is 10. Pick (1,10), (2,7), (3,6) → sum = 23.
+```
+
+---
+
+## Walkthrough
+
+1. **Group by x:**
+   - Iterate over each pair and store the maximum y for each x in a hash map.
+2. **Collect maxima:**
+   - After processing all pairs, the map contains the best y for every distinct x.
+3. **Select top 3:**
+   - Sort the map values in descending order and take the first three.
+4. **Sum:**
+   - Return the sum of these three values.
+
+For Example 1, the map becomes `{1:5, 2:3, 3:4}`. Sorting the values yields `[5,4,3]`; the sum of the top three is `12`.
+
+---
+
 ## Complexity Analysis
 
 | Approach | Time | Space |

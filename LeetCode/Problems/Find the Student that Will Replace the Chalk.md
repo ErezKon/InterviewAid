@@ -11,8 +11,10 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Modulo + Linear Scan — O(n) ✅](#3-approach-modulo--linear-scan--on-)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
@@ -44,15 +46,37 @@ FUNCTION chalkReplacer(chalk, k):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+| chalk | k | Output |
+|-------|---|--------|
+| [5,1,5] | 22 | 0 |
+| [3,4,1,2] | 7 | 1 |
+
+*Explanation*: In the first case, after full cycles `k % 11 = 0`, so student `0` runs out immediately.
+
+---
+
+## 5. Walkthrough
+
+1. **Compute total**: `total = 5+1+5 = 11`.
+2. **Remaining chalk**: `k % total = 22 % 11 = 0`.
+3. **Linear scan**:
+   - Student 0 needs 5 pieces, but `k = 0 < 5`, so return `0`.
+
+The same steps apply to the second example, yielding student `1`.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(n) |
+| **Time** | O(n) – single pass after modulo |
 | **Space** | O(1) |
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
 > **Modulo** eliminates full rounds, then a single linear scan finds the answer. Could also use binary search on prefix sums for O(log n) after modulo.

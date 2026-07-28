@@ -16,6 +16,16 @@ Given a string `s`, repeatedly remove any two **adjacent** characters whose alph
 
 ---
 
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `"abc"` | `"c"` | Remove `"ab"` (a and b differ by 1), then `"c"` remains. |
+| `"acbd"` | `"ad"` | Remove `"cb"` (c and b differ by 1) → `"ad"`. No further removals. |
+| `"abdc"` | `"dc"` | Remove `"ab"` → `"dc"`. |
+
+---
+
 ## Key Insight
 
 > Use a **stack**: push characters one by one. Before pushing, check if the stack top and current character differ by exactly 1 — if so, pop (remove the pair) instead of pushing. This handles cascading removals automatically.
@@ -24,7 +34,7 @@ Given a string `s`, repeatedly remove any two **adjacent** characters whose alph
 
 ## Approach
 
-```
+```text
 FUNCTION resultingString(s)
     stack ← []
 
@@ -62,6 +72,13 @@ Result: `"c"` ✅
 |--------|-----------|
 | Time   | O(n) — each character pushed/popped at most once |
 | Space  | O(n) — stack |
+
+---
+
+## Follow-Up Questions
+
+- How would you modify the algorithm to handle removal of characters with a difference of **k** instead of 1?
+- Can this be extended to support removal of non‑adjacent pairs?
 
 ---
 

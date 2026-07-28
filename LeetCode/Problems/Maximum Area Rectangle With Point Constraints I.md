@@ -33,7 +33,7 @@ Given points on a 2D plane, find the maximum area **axis-aligned rectangle** who
 
 ## Approach: Enumerate Pairs — O(n² · n) ✅
 
-```
+```text
 FUNCTION maxRectArea(points):
     pointSet = SET(points)
     result = -1
@@ -51,11 +51,50 @@ FUNCTION maxRectArea(points):
 
 ---
 
+## Examples
+
+**Example 1:**
+```
+Input: points = [[0,0],[0,2],[2,0],[2,2],[1,1]]
+Output: 4
+Explanation: The rectangle formed by (0,0), (0,2), (2,0), (2,2) has area 4 and no interior points.
+```
+
+**Example 2:**
+```
+Input: points = [[0,0],[1,1],[2,2]]
+Output: -1
+Explanation: No axis‑aligned rectangle can be formed.
+```
+
+---
+
+## Walkthrough
+
+| Step | Action | Reason |
+|------|--------|--------|
+| 1 | Insert all points into a hash set for O(1) lookup. | Enables quick existence checks. |
+| 2 | Iterate over every unordered pair of points as potential diagonal corners. | Enumerates all rectangle candidates. |
+| 3 | Skip pairs sharing x or y coordinate (cannot form a rectangle). | Ensures rectangle is axis‑aligned. |
+| 4 | Verify the other two corners exist in the set. | Guarantees a complete rectangle. |
+| 5 | Call `noPointsInside` to ensure no other points lie inside or on the boundary. | Satisfies the interior‑free constraint. |
+| 6 | Compute area and update the maximum if larger. | Tracks the best solution. |
+
+---
+
 ## Complexity Analysis
 
 | Approach | Time | Space |
 |----------|------|-------|
 | Brute-force pairs | **O(n³)** | O(n) |
+
+---
+
+## Follow-Up Questions
+
+- How would you handle a large number of points (n up to 10⁵)?
+- Can the problem be extended to non‑axis‑aligned rectangles?
+- What if interior points are allowed but must be minimized?
 
 ---
 

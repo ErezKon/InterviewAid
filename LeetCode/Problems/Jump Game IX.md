@@ -30,40 +30,71 @@ Use a **monotonic stack** to efficiently find the next greater and next smaller/
 
 ## 3. Approach: DP + Monotonic Stack — O(n) ✅
 
-```
+```text
 FUNCTION minCost(nums, costs):
-    n = len(nums)
-    dp = [INF] * n
-    dp[0] = 0
+    // n = length of nums
+    SET n ← LENGTH(nums)
+    SET dp ← ARRAY of size n filled with INF
+    SET dp[0] ← 0
 
-    // Monotonic stack for next greater element
-    stack1 = []   // decreasing stack
-    // Monotonic stack for next smaller/equal element
-    stack2 = []   // increasing stack
+    // stack1: decreasing stack for next greater element
+    SET stack1 ← []
+    // stack2: increasing stack for next smaller or equal element
+    SET stack2 ← []
 
     FOR i ← 0 TO n - 1:
-        WHILE stack1 AND nums[stack1[-1]] < nums[i]:
-            dp[i] = MIN(dp[i], dp[stack1.POP()] + costs[0])
-        stack1.PUSH(i)
+        // Resolve jumps from previous smaller elements
+        WHILE stack1 NOT EMPTY AND nums[stack1[-1]] < nums[i]:
+            SET prev ← POP(stack1)
+            SET dp[i] ← MIN(dp[i], dp[prev] + costs[0])
+        PUSH(stack1, i)
 
-        WHILE stack2 AND nums[stack2[-1]] >= nums[i]:
-            dp[i] = MIN(dp[i], dp[stack2.POP()] + costs[1])
-        stack2.PUSH(i)
+        // Resolve jumps from previous greater-or-equal elements
+        WHILE stack2 NOT EMPTY AND nums[stack2[-1]] >= nums[i]:
+            SET prev ← POP(stack2)
+            SET dp[i] ← MIN(dp[i], dp[prev] + costs[1])
+        PUSH(stack2, i)
 
     RETURN dp[n - 1]
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
 
-| Metric | Value | Explanation |
-|--------|-------|-------------|
-| Time | O(n) | Each element pushed/popped at most once per stack |
-| Space | O(n) | Two stacks + DP array |
+| nums               | costs          | Output |
+|--------------------|----------------|--------|
+| `[5,1,3,4,2]`      | `[2,3]`        | `5`    |
+| `[1,2,3,4]`        | `[1,1]`        | `3`    |
 
 ---
 
-## 5. Key Takeaway
+## 5. Walkthrough
 
-> Monotonic stacks turn "next greater/smaller" lookups into amortized O(1), enabling linear DP for jump game variants with next-element-based transitions.
+Consider `nums = [5,1,3,4,2]` and `costs = [2,3]`.
+1. Start at index 0 (`dp[0]=0`).
+2. Using the decreasing stack, the next greater element for index 0 is none, so no cost 2 jump.
+3. Using the increasing stack, the next smaller/equal element is index 1 (`1`). `dp[1] = dp[0] + 3 = 3`.
+4. At index 1, the decreasing stack finds next greater at index 2 (`3`). `dp[2] = min(dp[2], dp[1] + 2) = 5`.
+5. Continue similarly; the algorithm updates `dp` via stack pops, eventually yielding `dp[4] = 5` as the minimum cost to reach the last index.
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** O(n) – each index is pushed and popped at most once from each stack.
+- **Space:** O(n) – DP array plus two auxiliary stacks.
+
+---
+
+## 7. Follow‑Up Questions
+
+- How would the solution change if jumps could skip multiple greater/smaller elements?
+- Can you adapt the algorithm to return the actual sequence of jumps, not just the cost?
+- What if the costs were different for each possible jump rather than a fixed pair?
+
+---
+
+## Key Takeaway
+
+> Monotonic stacks turn "next greater/smaller" lookups into amortized O(1), enabling linear DP for jump game variants with next‑element‑based transitions.

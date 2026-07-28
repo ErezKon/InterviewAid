@@ -10,6 +10,14 @@ The *word break* family of problems asks whether a string `s` can be segmented i
 - **Word Break II (#140):** Return all possible segmentations.
 - **Concatenated Words (#472):** Find all words in a list that can be formed by concatenating other words from the same list.
 
+## 2. Examples
+
+| s | wordDict | Output |
+|---|----------|--------|
+| "leetcode" | ["leet","code"] | true |
+| "applepenapple" | ["apple","pen"] | true |
+| "catsandog" | ["cats","dog","sand","and","cat"] | false |
+
 ## Approaches
 ### Word Break I (DP)
 Use a boolean DP array where `dp[i]` is true if `s[0..i-1]` can be segmented.

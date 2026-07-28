@@ -26,12 +26,47 @@ FUNCTION longestNiceSubstring(s):
     RETURN s
 ```
 
-| Time | Space |
-|------|-------|
-| O(n · 26) | O(n) recursion |
+---
+
+## 3. Examples
+
+**Example 1:**
+```
+Input: s = "YazaAay"
+Output: "aAa"
+Explanation: The longest nice substring is "aAa" where each character has both cases.
+```
+
+**Example 2:**
+```
+Input: s = "Bb"
+Output: "Bb"
+Explanation: The whole string is nice.
+```
 
 ---
 
-## 3. Key Takeaway
+## 4. Walkthrough
 
-> Split at any character missing its case counterpart. Recursively check both halves. If no split needed, the entire string is nice.
+Take "YazaAay". The set of characters is {Y,a,z,A,y}. At index 0, 'Y' has no matching 'y' in the set, so split into left "" and right "azaAay". Recursively process "azaAay": at index 2, 'z' lacks 'Z', split into "a" and "aAay". "a" is too short, "aAay" contains all pairs (a/A, y/Y) after further splits, finally returning "aAa" as the longest nice substring.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n · 26) – each recursive call scans the substring, and each character is examined at most 26 times (once per distinct letter).
+- **Space:** O(n) recursion stack in the worst case.
+
+---
+
+## 6. Follow‑Up Questions
+
+- How would you solve the problem iteratively in O(n) time?
+- Can the approach be adapted to return all nice substrings of maximum length?
+- What changes are needed if the alphabet includes Unicode characters?
+
+---
+
+## 7. Key Takeaway
+
+> Split at any character missing its opposite case counterpart. Recursively check both halves. If no split needed, the entire string is nice.

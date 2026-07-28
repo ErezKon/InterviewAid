@@ -23,6 +23,40 @@ WHERE salary IN (
 ORDER BY team_id, employee_id;
 ```
 
+## Examples
+
+| employee_id | name   | salary |
+|-------------|--------|--------|
+| 1           | Alice  | 1000   |
+| 2           | Bob    | 1500   |
+| 3           | Carol  | 1000   |
+| 4           | Dave   | 2000   |
+| 5           | Eve    | 1500   |
+
+**Result:**
+- Team 1: Alice, Carol (salary 1000)
+- Team 2: Bob, Eve (salary 1500)
+
+## Walkthrough
+
+1. Identify salaries appearing more than once using a sub‑query with `GROUP BY` and `HAVING COUNT(*) > 1`.
+2. Filter the `Employees` table to keep only those rows.
+3. Apply `DENSE_RANK()` ordered by salary to assign sequential `team_id`s.
+4. Order the final output by `team_id` and `employee_id` for readability.
+
+## Complexity Analysis
+
+- The sub‑query groups by `salary`: **O(N)** time where N is the number of employees.
+- `DENSE_RANK()` runs in linear time over the filtered rows.
+- Overall time complexity: **O(N)**.
+- Extra space for grouping and ranking: **O(K)** where K is the number of distinct qualifying salaries.
+
+## Follow-Up Questions
+
+- How would you modify the query to include employees with unique salaries in their own team?
+- Can you write a version that returns the top‑K salary groups with the most employees?
+- How would you handle this problem if the data were stored in a NoSQL document store?
+
 ## Key Takeaway
 
-> Filter to salaries with count > 1, then use `DENSE_RANK()` ordered by salary to assign sequential team IDs.
+> Use `DENSE_RANK()` after filtering salaries with count > 1 to assign compact team IDs to groups of employees sharing the same salary.

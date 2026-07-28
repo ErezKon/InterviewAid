@@ -11,7 +11,11 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Segment Tree with Lazy Propagation — O(n + q log n) ✅](#3-approach-segment-tree-with-lazy-propagation)
-4. [Key Takeaway](#4-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -29,17 +33,74 @@ Given arrays `nums1` (binary) and `nums2`, handle three types of queries: flip a
 
 ## 3. Approach: Segment Tree with Lazy Propagation — O(n + q log n) ✅
 
-```
-// Segment tree on nums1 with lazy XOR for range flips
-// Track count of 1s in each segment
-// Maintain running sum of nums2
-// Type 1: flip range [l, r] in nums1 (lazy XOR)
-// Type 2: sum2 += p * count_of_ones_in_nums1
-// Type 3: return sum2
+```text
+FUNCTION buildSegmentTree(nums1):
+    // build tree storing count of 1s per segment
+
+FUNCTION flipRange(node, l, r, ql, qr):
+    IF ql ≤ l AND r ≤ qr:
+        node.count ← (r - l + 1) - node.count  // invert count
+        node.lazy ← NOT node.lazy
+        RETURN
+    PUSH_DOWN(node)
+    mid ← (l + r) / 2
+    IF ql ≤ mid: flipRange(node.left, l, mid, ql, qr)
+    IF qr > mid: flipRange(node.right, mid+1, r, ql, qr)
+    node.count ← node.left.count + node.right.count
+
+FUNCTION queryOnes():
+    RETURN root.count
 ```
 
 ---
 
-## 4. Key Takeaway
+## 4. Examples
 
-> **Segment tree with lazy XOR** for range flips. The only thing needed from `nums1` is the global count of 1s for type-2 queries.
+**Example 1:**
+```
+nums1 = [0,1,0,1], nums2 = [1,2,3,4]
+queries = [[1,1,3],[2,1],[3]]
+Output: [10]
+Explanation:
+- Flip range [1,3] → nums1 becomes [0,0,1,1]
+- Add p=1 → sum(nums2) increases by 1 * countOnes(nums1)=2 → new sum = 10
+- Query sum → return 10
+```
+
+**Example 2:**
+```
+nums1 = [1,1,1], nums2 = [5,5,5]
+queries = [[2,2],[3],[1,0,2],[2,3]]
+Output: [30, 39]
+```
+
+---
+
+## 5. Walkthrough
+
+| Step | Operation | `nums1` | `countOnes` | `sum(nums2)` |
+|------|-----------|---------|------------|--------------|
+| 1 | Initial | [0,1,0,1] | 2 | 10 |
+| 2 | Flip [1,3] | [0,0,1,1] | 2 | 10 |
+| 3 | Add p=1 | — | 2 | 10 + 1*2 = 12 |
+| 4 | Query | — | — | 12 |
+
+---
+
+## 6. Complexity Analysis
+
+- **Time:** Building tree O(n). Each query O(log n). Overall O(n + q log n).
+- **Space:** Segment tree stores O(n) nodes.
+
+---
+
+## 7. Follow-Up Questions
+
+- How would you modify the solution if `nums1` contained arbitrary integers instead of binary values?
+- Can you achieve O(1) update time using a difference array when only type‑2 queries are present?
+
+---
+
+## 8. Key Takeaway
+
+> Use a segment tree with lazy XOR to maintain the count of 1s in a binary array, enabling fast range flips and constant‑time contribution to sum updates.

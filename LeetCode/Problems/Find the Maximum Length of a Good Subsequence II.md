@@ -18,7 +18,7 @@
 
 ## 1. Problem Description
 
-Same as Part I but with larger constraints: `n` up to 5 × 10⁴ and `k` up to min(50, n-1). Requires a more efficient DP approach.
+Same as Part I but with larger constraints: `n` up to 5 × 10⁴ and `k` up to min(50, n‑1). Requires a more efficient DP approach.
 
 **Constraints:**
 - `1 <= n <= 5 × 10⁴`
@@ -34,21 +34,21 @@ Same as Part I but with larger constraints: `n` up to 5 × 10⁴ and `k` up to m
 
 ## 3. Approach: Optimized DP with HashMap — O(n · k) ✅
 
-```
+```text
 FUNCTION maximumLength(nums, k):
     // bestByVal[v][t] = max length ending with value v, using t transitions
     // globalMax[t] = max over all values of bestByVal[v][t]
-    bestByVal ← defaultdict(lambda: [0] * (k+1))
-    globalMax ← [0] * (k+1)
+    bestByVal ← DEFAULTDICT(lambda: ARRAY(k+1, 0))
+    globalMax ← ARRAY(k+1, 0)
 
     FOR num IN nums DO
         FOR t ← k DOWNTO 0 DO
-            // Extend same value: free
-            bestByVal[num][t] ← MAX(bestByVal[num][t], bestByVal[num][t] + 1... )
-            // Extend different value: cost 1 transition
+            // Extend same value (no extra transition)
+            bestByVal[num][t] ← MAX(bestByVal[num][t], bestByVal[num][t] + 1)
+            // Extend from a different value (cost 1 transition)
             IF t > 0 THEN
                 bestByVal[num][t] ← MAX(bestByVal[num][t], globalMax[t-1] + 1)
-        // Update globalMax
+        // Update global maxima for each transition count
         FOR t ← 0 TO k DO
             globalMax[t] ← MAX(globalMax[t], bestByVal[num][t])
 
@@ -57,12 +57,54 @@ FUNCTION maximumLength(nums, k):
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+**Example 1:**
+```
+Input: nums = [1,2,1,2,1], k = 2
+Output: 5
+Explanation: The whole array can be taken because it uses only two bad transitions (1→2 and 2→1).
+```
+
+**Example 2:**
+```
+Input: nums = [3,1,4,1,5,9,2,6,5], k = 1
+Output: 3
+Explanation: The longest good subsequence with at most one bad transition is [1,1,1] (using the two 1s and the 1 at index 3) or any length‑3 subsequence with a single transition.
+```
+
+---
+
+## 5. Walkthrough
+
+Consider Example 1 (`nums = [1,2,1,2,1]`, `k = 2`).
+
+| Index | num | bestByVal[1][0] | bestByVal[1][1] | bestByVal[1][2] | bestByVal[2][0] | bestByVal[2][1] | bestByVal[2][2] |
+|-------|-----|----------------|----------------|----------------|----------------|----------------|----------------|
+| 0     | 1   | 1              | 1              | 1              | 0              | 0              | 0              |
+| 1     | 2   | 0              | 2 (from globalMax[0]+1) | 2 | 1 (extend same) | 2 | 2 |
+| 2     | 1   | 2 (extend same) | 3 (from globalMax[1]+1) | 3 | ... | ... | ... |
+| 3     | 2   | ... | ... | ... | 3 (extend same) | 4 (from globalMax[1]+1) | 4 |
+| 4     | 1   | 4 (extend same) | 5 (from globalMax[2]+1) | 5 | ... | ... | ... |
+
+The DP builds up lengths while respecting the transition budget, culminating in a maximum length of 5.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(n · k) |
-| **Space** | O(n · k) — hash map entries |
+| **Space** | O(distinctValues · k) — hash map storage |
+
+---
+
+## 7. Follow-Up Questions
+
+- How would the algorithm adapt if the cost of a transition depended on the absolute difference between values?
+- Can we further reduce space by compressing transition states?
+- What changes are needed if the subsequence must be contiguous (subarray) instead of arbitrary?
 
 ---
 

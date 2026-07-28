@@ -34,12 +34,56 @@ FUNCTION longestLine(mat):
     RETURN maxLen
 ```
 
-| Time | Space |
-|------|-------|
-| O(m · n) | O(m · n) |
+---
+
+## 3. Examples
+
+**Example 1:**
+```
+Input: mat = [[0,1,1,0],
+              [0,1,1,0],
+              [0,1,1,0]]
+Output: 3
+Explanation: The longest line of 1s is vertical in the second column.
+```
+
+**Example 2:**
+```
+Input: mat = [[1,1,0,0],
+              [0,1,1,0],
+              [0,0,1,1]]
+Output: 3
+Explanation: The longest line is the diagonal from (0,0) to (2,2).
+```
 
 ---
 
-## 3. Key Takeaway
+## 4. Walkthrough
+
+Consider Example 1. The DP table stores four direction lengths for each cell. When processing cell (1,1) which is `1`:
+- Horizontal extends from (1,0): length 1 → becomes 2.
+- Vertical extends from (0,1): length 1 → becomes 2.
+- Diagonal extends from (0,0): `0` → starts at 1.
+- Anti‑diagonal extends from (0,2): `1` → becomes 2.
+Continuing this for every `1` updates `maxLen` to 3 at column 1.
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(m·n) – each cell is visited once.
+- **Space:** O(m·n) for the DP table (can be reduced to O(n) by keeping only the previous row).
+
+---
+
+## 6. Follow‑Up Questions
+
+- How would you modify the solution to return the coordinates of the longest line?
+- Can the space be reduced to O(1) by updating in‑place?
+- How does the algorithm change for a toroidal (wrap‑around) matrix?
+
+---
+
+## 7. Key Takeaway
 
 > Track 4 directions per cell. Each direction extends from its predecessor. Similar to "Maximal Square" but for lines in 4 orientations.

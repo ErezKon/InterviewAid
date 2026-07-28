@@ -9,11 +9,13 @@
 ## Table of Contents
 
 1. [Problem Description](#1-problem-description)
-2. [Key Insight](#2-key-insight)
-3. [Approach: Greedy Pair Gains — O(n log n) ✅](#3-approach-greedy-pair-gains--on-log-n-)
-4. [Walkthrough](#4-walkthrough)
-5. [Complexity Analysis](#5-complexity-analysis)
-6. [Key Takeaway](#6-key-takeaway)
+2. [Examples](#2-examples)
+3. [Key Insight](#3-key-insight)
+4. [Approach: Greedy Pair Gains — O(n log n) ✅](#4-approach-greedy-pair-gains--on-log-n-)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Follow-Up Questions](#7-follow-up-questions)
+8. [Key Takeaway](#8-key-takeaway)
 
 ---
 
@@ -27,13 +29,31 @@ Given a tree with `n` nodes, each having a value, you can select any edge and XO
 
 ---
 
-## 2. Key Insight
+## 2. Examples
+
+**Example 1:**
+```
+nums = [1, 2, 1], k = 3, edges = [[0,1],[1,2]]
+Output: 6
+```
+*Explanation:* Gains from XOR are `[1, -1, 1]`. Pair the two positive gains to increase total sum by `2`.
+
+**Example 2:**
+```
+nums = [5, 7, 9], k = 2, edges = [[0,1],[1,2]]
+Output: 23
+```
+*Explanation:* Gains are `[7, 5, 11]`. Pair `(11,7)` gives `+18` improvement.
+
+---
+
+## 3. Key Insight
 
 > Any operation XORs an **even** number of nodes (pairs along a path). So the problem reduces to: choose any even-sized subset of nodes to XOR with k. Greedily pick pairs with the highest combined gain.
 
 ---
 
-## 3. Approach: Greedy Pair Gains — O(n log n) ✅
+## 4. Approach: Greedy Pair Gains — O(n log n) ✅
 
 ```
 FUNCTION maximumValueSum(nums, k, edges):
@@ -49,7 +69,7 @@ FUNCTION maximumValueSum(nums, k, edges):
 
 ---
 
-## 4. Walkthrough
+## 5. Walkthrough
 
 ```
 nums = [1, 2, 1], k = 3, edges = [[0,1],[1,2]]
@@ -64,7 +84,7 @@ total = (1+2+1) + 2 = 6 ✅
 
 ---
 
-## 5. Complexity Analysis
+## 6. Complexity Analysis
 
 | Aspect | Complexity |
 |--------|------------|
@@ -73,6 +93,14 @@ total = (1+2+1) + 2 = 6 ✅
 
 ---
 
-## 6. Key Takeaway
+## 7. Follow-Up Questions
+
+1. How would the solution change if XOR could be applied to any subset (not necessarily even-sized)?
+2. Can the approach be extended to weighted edges where each XOR operation incurs a cost?
+3. What if the tree is dynamic, with nodes being added or removed?
+
+---
+
+## 8. Key Takeaway
 
 > The tree structure is irrelevant — any even-sized subset can be XORed. **Sort gains descending, greedily pair up positive-sum pairs.** This works because XOR on a path can be decomposed into independent edge operations.

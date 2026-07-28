@@ -11,8 +11,10 @@
 1. [Problem Description](#1-problem-description)
 2. [Key Insight](#2-key-insight)
 3. [Approach: Bitmask XOR — O(1)](#3-approach)
-4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+4. [Examples](#4-examples)
+5. [Walkthrough](#5-walkthrough)
+6. [Complexity Analysis](#6-complexity-analysis)
+7. [Key Takeaway](#7-key-takeaway)
 
 ---
 
@@ -30,23 +32,48 @@ Return the complement of a positive integer (flip all bits in its binary represe
 
 ## 3. Approach: Bitmask XOR — O(1) ✅
 
-```
+```text
 FUNCTION findComplement(num):
-    mask = (1 << num.bit_length()) - 1
-    RETURN num ^ mask
+    // Determine number of bits needed for num
+    SET bitLength ← FLOOR(LOG2(num)) + 1
+    // Build mask with bitLength ones: e.g., for 5 bits -> 11111 (31)
+    SET mask ← (1 << bitLength) - 1
+    // XOR flips bits where mask has 1s
+    RETURN num XOR mask
 ```
 
 ---
 
-## 4. Complexity Analysis
+## 4. Examples
+
+| Input | Binary | Mask | Output |
+|-------|--------|------|--------|
+| `5`   | `101`  | `111` (7) | `2` (`010`)
+| `1`   | `1`    | `1` (1)   | `0` (`0`)
+| `10`  | `1010` | `1111` (15) | `5` (`0101`)
+
+---
+
+## 5. Walkthrough
+
+Take `num = 10`:
+
+1. `bitLength = FLOOR(LOG2(10)) + 1 = 4`.
+2. `mask = (1 << 4) - 1 = 16 - 1 = 15` → binary `1111`.
+3. `num XOR mask = 1010 XOR 1111 = 0101` → decimal `5`.
+4. Return `5` as the complement.
+
+---
+
+## 6. Complexity Analysis
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(1) |
-| **Space** | O(1) |
+| **Time** | O(1) – constant arithmetic operations |
+| **Space** | O(1) – only a few scalar variables |
 
 ---
 
-## 5. Key Takeaway
+## 7. Key Takeaway
 
-> **XOR with all-ones mask flips bits.** `(1 << bitLength) - 1` creates the right-sized mask. Fundamental bit manipulation pattern.
+> **XOR with an all‑ones mask flips bits.** `(1 << bitLength) - 1` creates the appropriate mask for any positive integer.

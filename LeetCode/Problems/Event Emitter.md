@@ -12,44 +12,45 @@ Design an `EventEmitter` class with `subscribe(eventName, callback)` and `emit(e
 
 ---
 
-## Key Insight
+## Examples
 
-> Store callbacks in a map of arrays keyed by event name. `subscribe` pushes to the array and returns a closure that removes the callback. `emit` maps over the array calling each callback.
+**Example 1:**
+```
+EventEmitter emitter = new EventEmitter();
+Subscription s1 = emitter.subscribe("click", () -> print("first"));
+Subscription s2 = emitter.subscribe("click", () -> print("second"));
+emitter.emit("click"); // prints "first" then "second"
+```
 
----
-
-## Approach: Map of Callback Arrays ✅
-
-```javascript
-class EventEmitter {
-    constructor() { this.events = {}; }
-
-    subscribe(eventName, callback) {
-        if (!this.events[eventName]) this.events[eventName] = [];
-        this.events[eventName].push(callback);
-        return { unsubscribe: () => {
-            this.events[eventName] = this.events[eventName].filter(cb => cb !== callback);
-        }};
-    }
-
-    emit(eventName, args = []) {
-        return (this.events[eventName] || []).map(cb => cb(...args));
-    }
-}
+**Example 2:**
+```
+Subscription s = emitter.subscribe("data", x -> print(x));
+s.unsubscribe(); // removes the callback
+emitter.emit("data", [5]); // no output
 ```
 
 ---
 
-## Complexity Analysis
+## Walkthrough
 
-| Operation | Complexity |
-|-----------|-----------|
-| **subscribe** | O(1) |
-| **unsubscribe** | O(n) — filter array |
-| **emit** | O(n) — call all subscribers |
+| Step | Action | State of `events` map |
+|------|--------|----------------------|
+| 1 | `subscribe("click", cb1)` | `{ "click": [cb1] }` |
+| 2 | `subscribe("click", cb2)` | `{ "click": [cb1, cb2] }` |
+| 3 | `emit("click")` calls `cb1` then `cb2` | unchanged |
+| 4 | `unsubscribe` on `cb1` | `{ "click": [cb2] }` |
+| 5 | `emit("click")` calls only `cb2` | unchanged |
+
+---
+
+## Follow-Up Questions
+
+1. How would you modify the design to support once‑only listeners?
+2. How can you ensure thread‑safety if `subscribe`/`emit` are called from multiple threads?
+3. How would you implement priority ordering of callbacks?
 
 ---
 
 ## Key Takeaway
 
-> **Classic observer pattern in JavaScript. Map of event name → callback arrays. Closures enable clean unsubscribe. Common frontend interview question.**
+> Classic observer pattern: map event names to arrays of callbacks, with closures for clean unsubscribe.

@@ -22,6 +22,31 @@ WHERE (p1.x, p1.y) != (p2.x, p2.y);
 
 ---
 
+## Examples
+
+| Points Table | Shortest Distance |
+|--------------|-------------------|
+| (1,2), (3,4), (5,6) | 2.83 |
+| (0,0), (0,5), (5,0) | 5.00 |
+
+---
+
+## Walkthrough
+
+1. Perform a self‑join of `Point2D` to generate every pair of distinct points.
+2. For each pair, compute the Euclidean distance using `SQRT(POW(dx,2) + POW(dy,2))`.
+3. Use `MIN` to keep the smallest distance across all pairs.
+4. Round the result to two decimal places for readability.
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n²) due to the self‑join generating all point pairs.
+- **Space:** O(1) extra space besides the input table.
+
+---
+
 ## Key Takeaway
 
-> Self-join on the points table and exclude same-point pairs. Apply the Euclidean distance formula and take the minimum.
+> Self‑join on the points table and exclude same‑point pairs. Apply the Euclidean distance formula and take the minimum.

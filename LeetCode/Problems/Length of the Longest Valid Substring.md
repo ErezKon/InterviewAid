@@ -11,26 +11,63 @@ Given a string and a list of forbidden substrings (each ≤ 10 chars), find the 
 
 ---
 
-## 2. Approach: Reverse Sliding Window — O(n·10) ✅
+## 2. Examples
 
-Scan right to left. For each `left`, check substrings of length 1–10 starting at `left`. If forbidden, tighten `right`.
-
+**Example 1:**
 ```
-FUNCTION longestValidSubstring(word, forbidden):
-    forbSet = SET(forbidden); maxLen = 0; right = len(word) - 1
-    FOR left ← len(word) - 1 DOWN TO 0:
-        FOR k ← left TO MIN(left + 9, right):
-            IF word[left:k+1] IN forbSet: right = k - 1; BREAK
-        maxLen = MAX(maxLen, right - left + 1)
-    RETURN maxLen
+Input: word = "abcde", forbidden = ["ab", "cd"]
+Output: 2
+Explanation: The longest valid substrings are "c" and "e" with length 2.
 ```
 
-| Time | Space |
-|------|-------|
-| O(n · 10) = O(n) | O(F) for forbidden set |
+**Example 2:**
+```
+Input: word = "aaaa", forbidden = ["aa"]
+Output: 1
+Explanation: Any longer substring contains "aa". The maximum length is 1.
+```
 
 ---
 
-## 3. Key Takeaway
+## 3. Walkthrough
 
-> Exploit the constraint that forbidden words are ≤ 10 chars. For each position, only check 10 substrings. Tighten the right boundary when a forbidden word is found.
+| left | right (initial) | checked substrings | action | new right |
+|------|----------------|--------------------|--------|----------|
+| 3 | 3 | "a" (not forbidden) | keep | 3 |
+| 2 | 3 | "a", "aa" (forbidden) | shrink right to 1 | 1 |
+| 1 | 1 | "a" (not forbidden) | keep | 1 |
+| 0 | 1 | "a", "aa" (forbidden) | shrink right to -1 | -1 |
+
+The algorithm scans from right to left, tightening the right boundary whenever a forbidden substring is encountered within the next 10 characters.
+
+---
+
+## 4. Approach: Reverse Sliding Window — O(n·10) ✅
+
+```text
+FUNCTION longestValidSubstring(word, forbidden):
+    SET forbSet ← SET(forbidden)
+    SET maxLen ← 0
+    SET right ← LENGTH(word) - 1
+    FOR left ← LENGTH(word) - 1 DOWNTO 0:
+        FOR k ← left TO MIN(left + 9, right):
+            SET sub ← SUBSTRING(word, left, k)
+            IF sub IN forbSet:
+                SET right ← k - 1
+                BREAK
+        SET maxLen ← MAX(maxLen, right - left + 1)
+    RETURN maxLen
+```
+
+---
+
+## 5. Complexity Analysis
+
+- **Time:** O(n·L) where L ≤ 10, effectively O(n).
+- **Space:** O(F) for the forbidden set, where F is the number of forbidden strings.
+
+---
+
+## 6. Key Takeaway
+
+> Exploit the short length of forbidden words. By scanning right‑to‑left and only checking up to 10 characters ahead, we efficiently maintain the longest valid window.

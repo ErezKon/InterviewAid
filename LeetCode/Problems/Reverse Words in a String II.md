@@ -14,9 +14,12 @@ Given a character array `s`, reverse the order of **words** in-place using O(1) 
 
 ---
 
-## Key Insight
+## Examples
 
-> Reverse the entire array, then reverse each word individually — the classic **two-pass reversal** technique for in-place word reordering.
+| Input | Output |
+|-------|--------|
+| `['t','h','e',' ','s','k','y']` | `['s','k','y',' ','t','h','e']` |
+| `['h','e','l','l','o',' ','w','o','r','l','d']` | `['w','o','r','l','d',' ','h','e','l','l','o']` |
 
 ---
 
@@ -33,9 +36,33 @@ FUNCTION reverseWords(s):
             start = i + 1
 ```
 
+---
+
+## Walkthrough
+
+**Example:** `['t','h','e',' ','s','k','y']`
+
+1. Reverse whole array → `['y','k','s',' ','e','h','t']`
+2. Scan for spaces:
+   - Word `yks` (indices 0‑2) → reverse → `['s','k','y',' ','e','h','t']`
+   - Word `eht` (indices 4‑6) → reverse → `['s','k','y',' ','t','h','e']`
+3. Result matches expected output.
+
+---
+
+## Complexity Analysis
+
 | Time | Space |
 |------|-------|
-| O(n) | O(1) |
+| O(n) – each character visited a constant number of times | O(1) – in‑place modifications only |
+
+---
+
+## Follow‑Up Questions
+
+- How would you modify the algorithm if words could be separated by multiple spaces?
+- Can you adapt the solution to handle Unicode characters with variable byte length?
+- What changes are needed if the input is a mutable string rather than a character array?
 
 ---
 

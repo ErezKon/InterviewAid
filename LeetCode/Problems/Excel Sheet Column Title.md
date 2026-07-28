@@ -12,37 +12,66 @@ Given an integer `columnNumber`, return its corresponding Excel column title (A=
 
 ---
 
-## Key Insight
+## Approach
 
-> It's base-26 but **1-indexed** (A=1, not 0). Before each modulo, subtract 1 to convert to 0-indexed, then map `0→A, 1→B, ..., 25→Z`.
+### Modified Base-26 — O(log n) ✅
+
+```text
+FUNCTION convertToTitle(columnNumber):
+    SET result ← ""
+    WHILE columnNumber > 0:
+        SET columnNumber ← columnNumber - 1  // make 0-indexed
+        SET charCode ← (columnNumber % 26) + ASCII('A')
+        SET result ← CHAR(charCode) + result
+        SET columnNumber ← columnNumber / 26
+    RETURN result
+```
 
 ---
 
-## Approach: Modified Base-26 — O(log n) ✅
+## Examples
 
+**Example 1:**
 ```
-FUNCTION convertToTitle(columnNumber):
-    result = ""
-    WHILE columnNumber > 0:
-        columnNumber -= 1    // make 0-indexed
-        result = chr(columnNumber % 26 + ord('A')) + result
-        columnNumber /= 26
-    RETURN result
+Input: 1
+Output: "A"
+```
+
+**Example 2:**
+```
+Input: 28
+Output: "AB"
+```
+
+**Example 3:**
+```
+Input: 701
+Output: "ZY"
 ```
 
 ---
 
 ## Walkthrough
 
-```
-columnNumber = 28
-  28-1=27, 27%26=1→'B', 27/26=1, result="B"
-  1-1=0, 0%26=0→'A', 0/26=0, result="AB"
-Answer: "AB" ✅
-```
+| Step | columnNumber | Operation | result |
+|------|--------------|-----------|--------|
+| 1 | 28 | subtract 1 → 27 | |
+|   |   | char = 27 % 26 = 1 → 'B' | result = "B" |
+|   |   | columnNumber = 27 / 26 = 1 | |
+| 2 | 1 | subtract 1 → 0 | |
+|   |   | char = 0 % 26 = 0 → 'A' | result = "AB" |
+|   |   | columnNumber = 0 → stop | |
+
+---
+
+## Complexity Analysis
+
+| Operation | Time | Space |
+|-----------|------|-------|
+| Conversion | O(log n) where n is the column number | O(1) |
 
 ---
 
 ## Key Takeaway
 
-> **1-indexed base conversion: subtract 1 before each mod/divide. Pair with LC 171 (title → number) for the reverse direction.**
+> 1‑indexed base‑26 conversion: subtract 1 before each modulo/division.

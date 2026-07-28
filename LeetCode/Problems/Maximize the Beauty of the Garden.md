@@ -26,38 +26,31 @@ Given an array `flowers` where `flowers[i]` represents the beauty of the i-th fl
 
 ---
 
-## Key Insight
+## Examples
 
-> Build a prefix sum of positive values. For each flower value `v`, find the first and last occurrence. The beauty = `prefix[last] - prefix[first] + (v if v > 0 else 2*v)` (we must include the endpoints). Track the earliest prefix sum for each flower value.
+**Example 1:**
+```
+flowers = [1, -2, 3, 1, 2, -1, 1]
+Output: 7
+Explanation: Choose subarray [0..3] (values 1, -2, 3, 1). Positive sum = 1 + 3 + 1 = 5, plus endpoints give total 7.
+```
+
+**Example 2:**
+```
+flowers = [-5, -1, -3, -5]
+Output: -5
+Explanation: All values are negative; the best we can do is pick a single flower as both endpoints.
+```
 
 ---
 
-## Approach: Prefix Sum + Hash Map — O(n) ✅
+## Walkthrough
 
-```
-FUNCTION maximumBeauty(flowers):
-    n = len(flowers)
-    prefix = [0] * (n + 1)    // prefix sum of max(0, flowers[i])
-    FOR i ← 0 TO n - 1:
-        prefix[i + 1] = prefix[i] + MAX(0, flowers[i])
-
-    firstSeen = {}    // value → first index
-    result = -infinity
-
-    FOR i ← 0 TO n - 1:
-        IF flowers[i] IN firstSeen:
-            j = firstSeen[flowers[i]]
-            // Sum of positives in [j+1..i-1] + both endpoints
-            beauty = prefix[i] - prefix[j + 1] + flowers[i] + flowers[i]
-            // If flowers[i] > 0, they're already in prefix
-            // Adjust: we want flowers[j] + positives_between + flowers[i]
-            beauty = prefix[i] - prefix[j + 1] + 2 * flowers[i]
-            result = MAX(result, beauty)
-        ELSE:
-            firstSeen[flowers[i]] = i
-
-    RETURN result
-```
+1. **Prefix sum of positives:** Build `prefix[i]` = sum of `max(0, flowers[t])` for `t < i`.
+2. **First occurrence map:** While scanning, store the first index where each flower value appears.
+3. **Compute beauty:** When we encounter a value seen before at index `j`, the beauty of subarray `[j..i]` is `prefix[i] - prefix[j+1] + 2*flowers[i]` (adding both endpoints).
+4. **Track maximum:** Update the global maximum with each computed beauty.
+5. **Result:** After the scan, the stored maximum is the answer.
 
 ---
 

@@ -8,7 +8,25 @@
 
 ## Problem Description
 
-Given operations `["++X", "X++", "--X", "X--"]`, start with `X = 0` and apply each. Return final value.
+Given an array of operation strings `["++X", "X++", "--X", "X--"]`, start with `X = 0` and apply each operation in order. Increment or decrement `X` accordingly and return its final value.
+
+---
+
+## Examples
+
+**Example 1:**
+```
+operations = ["++X","X++","--X"]
+Result: 1
+```
+*Explanation:* `X` goes 0→1→2→1.
+
+**Example 2:**
+```
+operations = ["X--","X--","X++"]
+Result: -1
+```
+*Explanation:* 0→-1→-2→-1.
 
 ---
 
@@ -16,12 +34,39 @@ Given operations `["++X", "X++", "--X", "X--"]`, start with `X = 0` and apply ea
 
 ```
 FUNCTION finalValueAfterOperations(operations):
-    x = 0
+    x ← 0
     FOR op IN operations:
-        IF '+' IN op: x += 1
-        ELSE: x -= 1
+        IF '+' IN op:
+            x ← x + 1
+        ELSE:
+            x ← x - 1
     RETURN x
 ```
+
+---
+
+## Walkthrough
+
+| Step | Operation | X before | X after |
+|------|-----------|----------|---------|
+| 1 | ++X | 0 | 1 |
+| 2 | X++ | 1 | 2 |
+| 3 | --X | 2 | 1 |
+
+---
+
+## Complexity Analysis
+
+- **Time:** O(n) – one pass over the operations.
+- **Space:** O(1) – only a constant integer variable.
+
+---
+
+## Follow-Up Questions
+
+1. How would you handle operations that include `+=` or `-=` with arbitrary integers?
+2. Can you extend the solution to support multiple variables simultaneously?
+3. What changes are needed if the operations are given as a single concatenated string?
 
 ---
 

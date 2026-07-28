@@ -4,7 +4,6 @@
 **Acceptance:** 67.0%
 **LeetCode:** [https://leetcode.com/problems/implement-queue-using-stacks](https://leetcode.com/problems/implement-queue-using-stacks)
 **Companies:** Amazon, Apple, Bloomberg, Google, Infosys, Meta, Microsoft, Qualcomm, Sap, Tiktok, Yandex
-
 ---
 
 ## 1. Problem Description
@@ -23,8 +22,8 @@ When `popStack` is empty, pour all of `pushStack` into `popStack` (reversing ord
 ```
 CLASS MyQueue:
     CONSTRUCTOR:
-        pushStack = []
-        popStack = []
+        pushStack ← []
+        popStack ← []
 
     FUNCTION push(x):
         pushStack.PUSH(x)
@@ -46,6 +45,35 @@ CLASS MyQueue:
 ```
 
 Each element is moved at most once from pushStack to popStack → **amortized O(1)** per operation.
+
+---
+
+## 3. Examples
+
+| Operation | Queue State |
+|-----------|-------------|
+| `push(1)` | [1] |
+| `push(2)` | [1,2] |
+| `peek()` → 1 | [1,2] |
+| `pop()` → 1 | [2] |
+| `empty()` → false | [2] |
+
+---
+
+## 4. Walkthrough
+
+1. **push(1)**: `pushStack` = [1]; `popStack` = []
+2. **push(2)**: `pushStack` = [1,2]
+3. **peek()**: `popStack` empty, transfer → `popStack` = [2,1]; return top = 1
+4. **pop()**: `popStack` now [2]; returns 1
+5. **empty()**: both stacks not empty → false
+
+---
+
+## 5. Complexity Analysis
+
+- **Time**: Amortized O(1) per operation; worst‑case O(n) when transferring.
+- **Space**: O(n) for storing elements across two stacks.
 
 ---
 

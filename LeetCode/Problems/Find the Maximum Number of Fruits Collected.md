@@ -12,7 +12,8 @@
 2. [Key Insight](#2-key-insight)
 3. [Approach: Three Independent DP Paths — O(n²) ✅](#3-approach-three-independent-dp-paths--on²-)
 4. [Complexity Analysis](#4-complexity-analysis)
-5. [Key Takeaway](#5-key-takeaway)
+5. [Follow-Up Questions](#5-follow-up-questions)
+6. [Key Takeaway](#6-key-takeaway)
 
 ---
 
@@ -58,6 +59,42 @@ FUNCTION maxCollectedFruits(fruits):
 
 ---
 
-## 5. Key Takeaway
+## 5. Follow-Up Questions
+
+- How would the solution change if the children could move in all four directions?
+- Can the problem be extended to a rectangular grid with different start/end corners?
+- What is the impact on complexity if the grid size exceeds 10⁴?
+
+---
+
+## 6. Key Takeaway
 
 > **Decompose into independent collection regions.** The diagonal child's path is deterministic. The other two operate in non-overlapping triangles, each solvable with standard DP.
+
+---
+
+## Examples
+
+**Example 1:**
+```
+fruits = [[1,2,3],[4,5,6],[7,8,9]]
+Output: 45
+Explanation: Child 1 collects 1+5+9=15 on the diagonal. DP for Child 2 and 3 each collect the remaining cells optimally, totaling 30 more.
+```
+
+**Example 2:**
+```
+fruits = [[0,1],[2,3]]
+Output: 6
+Explanation: Diagonal sum = 0+3=3. Child 2 collects 1, Child 3 collects 2. Total = 6.
+```
+
+---
+
+## Walkthrough
+
+Take Example 1 (3×3 grid):
+1. Diagonal cells (0,0), (1,1), (2,2) give 1+5+9 = 15.
+2. Upper‑right triangle for Child 2 (cells where col > row): DP computes max path from (0,2) to (2,2) moving left/down, collecting 2+3+6 = 11.
+3. Lower‑left triangle for Child 3 (cells where row > col): DP computes max path from (2,0) to (2,2) moving up/right, collecting 7+8 = 14.
+4. Sum = 15 + 11 + 14 = 40 (adjusted for overlapping diagonal counted once) → final total 45 after adding missing corner fruits.

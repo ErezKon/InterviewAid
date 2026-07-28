@@ -9,6 +9,7 @@
 ## Table of Contents
 
 - [Problem Description](#problem-description)
+- [Examples](#examples)
 - [Key Insight](#key-insight)
 - [Approach](#approach)
 - [Walkthrough](#walkthrough)
@@ -23,6 +24,16 @@ Given a string of `(` and `)`, return the **minimum number of parentheses** to a
 
 ---
 
+## Examples
+
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| `"())"` | `1` | Need one `'('` before the last `')'`.
+| `"(("` | `2` | Need two `')'` to close the two opens.
+| `"()"` | `0` | Already valid.
+
+---
+
 ## Key Insight
 
 > Track unmatched `(` and `)` separately. A `)` matches an unmatched `(` if available. Otherwise it's an unmatched `)`. Answer = unmatched opens + unmatched closes.
@@ -31,7 +42,7 @@ Given a string of `(` and `)`, return the **minimum number of parentheses** to a
 
 ## Approach: Counter — O(n) ✅
 
-```
+```text
 FUNCTION minAddToMakeValid(s):
     open ← 0     // unmatched '('
     close ← 0    // unmatched ')'
