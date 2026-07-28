@@ -1,138 +1,73 @@
 # Complement Technique: Find Middle Instead
 
-Related: #1658, #209, #862
-
 ---
 
-## Table of Contents
+## Problem Description
+Many array problems ask for the minimum number of removals from the **ends** of the array to achieve a target sum. Instead of reasoning about two‑sided deletions, consider the **complement**: the subarray that remains in the middle. If the total sum of the array is `total` and we need to remove elements summing to `x`, the middle subarray must sum to `total - x`. Finding the longest such middle subarray minimizes the number of removals.
 
-1. [Pattern Description](#1-pattern-description)
-2. [Examples](#2-examples)
-3. [Key Insight](#3-key-insight)
-4. [Approach: Sliding Window on Complement — O(n)](#4-approach-sliding-window-on-complement--on)
-5. [Walkthrough](#5-walkthrough)
-6. [Complexity Analysis](#6-complexity-analysis)
-7. [Where This Pattern Applies](#7-where-this-pattern-applies)
-8. [Key Takeaway](#8-key-takeaway)
-
----
-
-## 1. Pattern Description
-
-**"Remove from ends" = "Find middle subarray"**
-
-For #1658 Minimum Operations to Reduce X to Zero:
-- You can remove elements from either end of an array, reducing `x` by the removed value.
-- Instead of thinking about removals from both ends, find the **longest subarray** with sum = `total - x`.
-- Answer = `n - longestSubarrayLength`.
-
-This reframing converts a two-pointer-from-both-ends problem into a standard sliding window problem.
-
----
-
-## 2. Examples
+## Examples
 
 ```
 Example 1:
   Input: nums = [1,1,4,2,3], x = 5
-  total = 11, target = 11 - 5 = 6
-  Longest subarray with sum 6: [4,2] (length 2)
-  Answer: 5 - 2 = 3
+  total = 11, target = 6
+  Longest subarray with sum 6: [1,1,4] (length 3)
+  Answer: 5 - 3 = 2
+```
 
+```
 Example 2:
   Input: nums = [5,6,7,8,9], x = 4
-  total = 35, target = 35 - 4 = 31
+  total = 35, target = 31
   No subarray sums to 31 → Answer: -1
+```
 
+```
 Example 3:
   Input: nums = [3,2,20,1,1,3], x = 10
-  total = 30, target = 30 - 10 = 20
-  Longest subarray with sum 20: [20] or [2,20]... 
-  Actually [20] has sum 20 (len 1), [2,20] has sum 22.
-  Longest = [20] (length 1). Answer: 6 - 1 = 5.
-  But also: remove [3,2] from left and [1,1,3] from right = 5 ops. ✅
+  total = 30, target = 20
+  Longest subarray with sum 20: [20] (length 1)
+  Answer: 6 - 1 = 5
 ```
 
----
+## Approach
+The complement insight converts a two‑pointer removal problem into a classic **sliding window** search for a subarray with sum `target = total - x`. Because all numbers are positive, a sliding window can expand to increase the sum and shrink to decrease it, guaranteeing O(n) time.
 
-## 3. Key Insight
-
-> **Complement thinking**: if we remove some elements from the ends totaling `x`, the remaining middle subarray must sum to `total - x`. Maximizing the middle = minimizing the removals.
-
-This works because:
-- All elements are **positive** → sliding window is valid (expanding increases sum, shrinking decreases it)
-- The "ends" constraint is tricky to handle directly, but the "middle" is a contiguous subarray — much simpler
-
----
-
-## 4. Approach: Sliding Window on Complement — O(n) ✅
-
-```
-target = SUM(nums) - x
-IF target < 0: RETURN -1
-IF target == 0: RETURN n
-
-// Standard sliding window for sum == target
-left = 0
-curSum = 0
-maxLen = -1
-FOR right ← 0 TO n - 1:
-    curSum += nums[right]
-    WHILE curSum > target:
-        curSum -= nums[left]
-        left += 1
-    IF curSum == target:
-        maxLen = MAX(maxLen, right - left + 1)
-
-RETURN n - maxLen IF maxLen != -1 ELSE -1
+```text
+FUNCTION minOperations(nums, x):
+    total ← SUM(nums)
+    target ← total - x
+    IF target < 0: RETURN -1
+    IF target == 0: RETURN LEN(nums)
+    left ← 0
+    curSum ← 0
+    maxLen ← -1
+    FOR right ← 0 TO LEN(nums) - 1:
+        curSum ← curSum + nums[right]
+        WHILE curSum > target:
+            curSum ← curSum - nums[left]
+            left ← left + 1
+        IF curSum == target:
+            maxLen ← MAX(maxLen, right - left + 1)
+    RETURN LEN(nums) - maxLen IF maxLen != -1 ELSE -1
 ```
 
----
+## Walkthrough
+Consider `nums = [1,1,4,2,3]`, `x = 5`.
+1. `total = 11`, `target = 6`.
+2. Slide window:
+   - Expand to include first three elements → sum = 6 → `maxLen = 3`.
+   - Continue expanding/shrinking; no longer subarray exceeds length 3.
+3. Minimum removals = `5 - 3 = 2` (remove the last two elements).
 
-## 5. Walkthrough
+## Complexity Analysis
+- **Time:** O(n) – single pass with sliding window.
+- **Space:** O(1) – only constant extra variables.
 
-```
-nums = [1, 1, 4, 2, 3], x = 5
-total = 11, target = 6
+## Follow-Up Questions
+1. How does the approach change if the array contains negative numbers?
+2. Can the complement technique be applied to circular arrays?
+3. What if each removal has a different cost?
 
-right=0: curSum=1, < 6
-right=1: curSum=2, < 6
-right=2: curSum=6, == 6 → maxLen=3 (subarray [1,1,4])
-right=3: curSum=8, > 6 → shrink: curSum=8-1=7, left=1
-                         > 6 → shrink: curSum=7-1=6, left=2
-                         == 6 → maxLen=max(3,2)=3
-right=4: curSum=6+3=9, > 6 → shrink: curSum=9-4=5, left=3
-                                < 6
-
-maxLen = 3
-Answer = 5 - 3 = 2 ✅ (remove [3] from right and [1,1] from left... 
-actually answer should be 3 from the problem. Let me re-check: 
-remove nums[0]=1, nums[1]=1, nums[4]=3 → sum=5 → 3 operations.)
-Wait: maxLen=3 means middle [1,1,4], remove indices 3,4 → [2,3]=5 → 2 ops. ✅
-```
-
----
-
-## 6. Complexity Analysis
-
-| Aspect | Value |
-|--------|-------|
-| **Time** | O(n) — single-pass sliding window |
-| **Space** | O(1) |
-
----
-
-## 7. Where This Pattern Applies
-
-| Problem | Complement Reframing |
-|---------|---------------------|
-| **#1658** Min ops to reduce X | Longest middle subarray with sum = total - x |
-| **#209** Min size subarray sum | Direct sliding window (no complement needed) |
-| **#862** Shortest subarray with sum ≥ k | Prefix sums + deque (negatives allowed) |
-| **Circular array** problems | Often reduce to "find a subarray" in a doubled array |
-
----
-
-## 8. Key Takeaway
-
-> **When a problem asks about removing from both ends, think about what stays in the middle.** The complement approach converts a complex two-sided removal into a standard subarray search, typically solvable with sliding window in O(n).
+## Key Takeaway
+Reframing end‑removal problems as a search for the longest middle subarray (the complement) turns a two‑sided challenge into a simple sliding‑window task.

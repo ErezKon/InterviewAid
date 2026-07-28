@@ -1,97 +1,77 @@
 # MST Patterns (Kruskal & Prim)
 
-Related: #1135 Connecting Cities, #1584 Min Cost to Connect All Points
-
 ---
 
-## Table of Contents
+## Problem Description
+A Minimum Spanning Tree (MST) connects all `n` vertices of an undirected weighted graph with exactly `n‑1` edges such that the total edge weight is minimized. Two classic algorithms solve this: **Kruskal** (edge‑centric) and **Prim** (vertex‑centric). The problem may ask for the total weight of the MST or to construct the edge set.
 
-1. [Overview](#1-overview)
-2. [Kruskal's Algorithm — O(E log E)](#2-kruskals-algorithm--oe-log-e)
-3. [Prim's Algorithm — O(E log V)](#3-prims-algorithm--oe-log-v)
-4. [When to Use Which](#4-when-to-use-which)
-5. [Related Problems](#5-related-problems)
-6. [Key Takeaway](#6-key-takeaway)
-
----
-
-## 1. Overview
-
-A **Minimum Spanning Tree** connects all `n` nodes with `n-1` edges of minimum total weight. Two classic algorithms exist — Kruskal's (edge-centric) and Prim's (vertex-centric).
-
----
-
-## 2. Kruskal's Algorithm — O(E log E) ✅
-
-Sort all edges by weight, add them greedily if they don't create a cycle (Union-Find check).
-
+## Examples
+**Example 1 – Kruskal:**
 ```
-FUNCTION kruskal(n, edges):
-    SORT edges by weight
-    uf = UnionFind(n)
-    cost = 0, edgeCount = 0
+n = 4
+edges = [(1,0,1),(4,0,2),(3,1,2),(2,1,3),(5,2,3)]
+Output: 7   // edges (1,0,1), (2,1,3), (3,1,2) form MST
+```
+**Example 2 – Prim:**
+```
+adj = {
+ 0: [(1,1),(2,4)],
+ 1: [(0,1),(2,3),(3,2)],
+ 2: [(0,4),(1,3),(3,5)],
+ 3: [(1,2),(2,5)]
+}
+Output: 7
+```
 
+## Approach
+Both algorithms rely on a **greedy** selection of the smallest edge that does not create a cycle.
+- **Kruskal:** Sort all edges by weight, then iterate, adding an edge if its endpoints belong to different Union‑Find sets.
+- **Prim:** Start from an arbitrary vertex, push all incident edges into a min‑heap, repeatedly extract the smallest edge that connects to an unvisited vertex, and add its outgoing edges to the heap.
+
+```text
+FUNCTION kruskal(n, edges):
+    SORT edges BY weight
+    uf ← UnionFind(n)
+    cost ← 0
+    edgeCount ← 0
     FOR (w, u, v) IN edges:
         IF uf.find(u) != uf.find(v):
             uf.union(u, v)
-            cost += w
-            edgeCount += 1
+            cost ← cost + w
+            edgeCount ← edgeCount + 1
             IF edgeCount == n - 1: BREAK
-
     RETURN cost IF edgeCount == n - 1 ELSE -1
-```
 
----
-
-## 3. Prim's Algorithm — O(E log V) ✅
-
-Grow the MST from a starting node, always adding the cheapest edge to an unvisited node.
-
-```
 FUNCTION prim(n, adj):
-    visited = set()
-    heap = [(0, 0)]    // (weight, node)
-    cost = 0
-
-    WHILE heap AND len(visited) < n:
-        (w, u) = heap.POP_MIN()
+    visited ← SET()
+    heap ← MIN-HEAP()
+    heap.PUSH((0, 0))   // (weight, vertex)
+    cost ← 0
+    WHILE heap NOT EMPTY AND SIZE(visited) < n:
+        (w, u) ← heap.POP_MIN()
         IF u IN visited: CONTINUE
         visited.ADD(u)
-        cost += w
+        cost ← cost + w
         FOR (v, wt) IN adj[u]:
             IF v NOT IN visited:
                 heap.PUSH((wt, v))
-
     RETURN cost
 ```
 
----
+## Walkthrough (Kruskal Example)
+1. Sort edges → [(1,0,1),(2,1,3),(3,1,2),(4,0,2),(5,2,3)].
+2. Add (1,0,1): union 0‑1, cost=1.
+3. Add (2,1,3): union 1‑3, cost=3.
+4. Add (3,1,2): union 1‑2, cost=6 → now 3 edges (`n‑1`), MST complete.
 
-## 4. When to Use Which
+## Complexity Analysis
+- **Time:** Kruskal O(E log E) for sorting; Prim O(E log V) using a heap.
+- **Space:** O(E) for edge list or adjacency, plus O(V) for Union‑Find / visited set.
 
-| Criterion | Kruskal | Prim |
-|-----------|---------|------|
-| **Graph type** | Sparse (E ≈ V) | Dense (E ≈ V²) |
-| **Data structure** | Edge list + Union-Find | Adjacency list + Min-Heap |
-| **Best when** | Edges given as list | Graph given as adjacency |
-| **Complexity** | O(E log E) | O(E log V) |
+## Follow-Up Questions
+1. How would you modify Kruskal to list all **critical** and **pseudo‑critical** edges?
+2. Can you compute an MST when edge weights are updated dynamically?
+3. What changes are needed for a **directed** graph with a minimum arborescence?
 
-For **dense graphs** (e.g., #1584 all-pairs distances), Prim avoids sorting O(V²) edges.
-
----
-
-## 5. Related Problems
-
-| Problem | MST Variant |
-|---------|-------------|
-| **#1135** Connecting Cities With Min Cost | Direct MST |
-| **#1584** Min Cost to Connect All Points | Dense graph → Prim preferred |
-| **#1168** Optimize Water Distribution | Virtual node + MST |
-| **#1489** Find Critical and Pseudo-Critical Edges | MST edge classification |
-| **#1631** Path With Minimum Effort | Modified MST / binary search + BFS |
-
----
-
-## 6. Key Takeaway
-
-> **Kruskal = sort edges + union-find; Prim = grow from source + min-heap.** Both find the same MST. Choose based on graph density and input format.
+## Key Takeaway
+Both Kruskal and Prim apply a greedy edge‑selection principle; choose Kruskal for edge‑list input or sparse graphs, and Prim for dense adjacency representations.

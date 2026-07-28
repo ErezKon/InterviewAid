@@ -6,21 +6,35 @@
 
 ---
 
-## Approach: Stack of (char, count) — O(n) ✅
+## Problem Description
+Given a string `s` of lowercase letters and an integer `k`, repeatedly delete any group of `k` adjacent identical characters. Continue until no such group exists and return the final string.
 
-```
-FUNCTION removeDuplicates(s, k):
-    stack = []    // [(char, count)]
+## Examples
+| Input | Output | Explanation |
+|-------|--------|-------------|
+| "deeedbbcccbdaa", k=3 | "aa" | Delete `eee` → `ddbbcccbdaa`; delete `bbb` → `ddcccbdaa`; delete `ccc` → `ddbaa`; delete `ddd` → `baa`; delete `bbb` not present; finally delete `aaa` → `aa`. |
+| "pbbcggttciiippooaais", k=2 | "ps" | Remove pairs `bb`, `gg`, `tt`, `ii`, `pp`, `oo`, `aa` sequentially, leaving `ps`. |
+| "abcd", k=2 | "abcd" | No group of size 2, string unchanged.
 
-    FOR char IN s:
-        IF stack AND stack.TOP().char == char:
-            stack.TOP().count += 1
-            IF stack.TOP().count == k:
-                stack.POP()
-        ELSE:
-            stack.PUSH((char, 1))
+## Approach
+**Stack of (char, count) Greedy** – Iterate through `s`, maintaining a stack where each entry stores a character and its consecutive count. Increment count when the same character repeats; when count reaches `k`, pop the entry to delete the group.
 
-    RETURN JOIN(char * count for (char, count) in stack)
-```
+## Walkthrough
+For `"deeedbbcccbdaa"`, k=3:
+1. Push `d` (count 1).
+2. Next `e`: push `e` (1).
+3. Next `e`: increment count → 2.
+4. Next `e`: increment count → 3 → pop `e` (delete `eee`).
+5. Continue with remaining characters, applying the same rule, ultimately yielding `"aa"`.
 
-Generalizes Remove All Adjacent Duplicates (#1047) from k=2 to arbitrary k.
+## Complexity Analysis
+- **Time:** O(n) where n = length of `s`.
+- **Space:** O(n) for the stack (worst case when no deletions occur).
+
+## Follow‑Up Questions
+- How would you modify the algorithm to delete groups of size ≥ k instead of exactly k?
+- Can the solution be extended to handle Unicode characters?
+- What is the effect of processing the string in reverse order?
+
+## Key Takeaway
+A stack tracking character counts enables single‑pass removal of k‑sized adjacent duplicate groups.

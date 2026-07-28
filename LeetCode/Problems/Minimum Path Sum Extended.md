@@ -1,101 +1,73 @@
 # Grid DP Patterns
 
-Related: #62, #63, #64, #120, #174, #221, #931
-
 ---
 
-## Table of Contents
+## Problem Description
+Grid dynamic programming problems share a common structure: compute an optimal value for each cell based on previously computed neighboring cells. The direction of iteration (forward from top‑left or reverse from bottom‑right) and the aggregation operation (min, max, sum, count) define the specific variant, such as unique paths, minimum path sum, or dungeon game.
 
-1. [Pattern Overview](#1-pattern-overview)
-2. [Template: Min/Max Path in Grid](#2-template-minmax-path-in-grid)
-3. [Problem Variations](#3-problem-variations)
-4. [Visual: DP Flow Direction](#4-visual-dp-flow-direction)
-5. [Space Optimization](#5-space-optimization)
-6. [When to Use Reverse DP](#6-when-to-use-reverse-dp)
-7. [Key Takeaway](#7-key-takeaway)
+## Examples
 
----
-
-## 1. Pattern Overview
-
-Grid DP problems share a common structure: compute an optimal value for each cell based on previously computed cells. The direction of computation and the combining operation define the variant.
-
----
-
-## 2. Template: Min/Max Path in Grid
-
+**Example 1 – Minimum Path Sum (#64):**
 ```
-dp[i][j] = optimal value to reach (i, j)
-
-Base: dp[0][0] = grid[0][0]
-Transition: dp[i][j] = grid[i][j] + MIN(dp[i-1][j], dp[i][j-1])
-Answer: dp[m-1][n-1]
+grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7   // path 1→3→1→1→1
 ```
 
----
-
-## 3. Problem Variations
-
-| Problem | Direction | Operation |
-|---------|-----------|-----------|
-| Unique Paths (#62) | right/down | SUM (count) |
-| Unique Paths II (#63) | right/down | SUM, 0 at obstacles |
-| Min Path Sum (#64) | right/down | MIN |
-| Triangle (#120) | down-left/down-right | MIN |
-| Dungeon Game (#174) | **Reverse** (bottom-right to top-left) | MIN health |
-| Maximal Square (#221) | right/down/diagonal | MIN of 3 neighbors |
-| Falling Path (#931) | down ± 1 col | MIN |
-
----
-
-## 4. Visual: DP Flow Direction
-
+**Example 2 – Dungeon Game (#174):**
 ```
-Standard (top-left → bottom-right):     Reverse (bottom-right → top-left):
-
-  → → → →                                          ← ← ← ←
-  ↓       ↓                                ↑       ↑
-  → → → →                                          ← ← ← ←
-  ↓       ↓                                ↑       ↑
-  → → → →                                          ← ← ← ←
-
-  Used for: #62, #63, #64                 Used for: #174 (Dungeon Game)
+grid = [[-2,-3,3],[-5,-10,1],[10,30,-5]]
+Output: 7   // minimum initial health needed
 ```
 
-**When to go forward:** The answer at `(i,j)` depends only on cells above/left.
-**When to go backward:** The answer at `(i,j)` depends on what's ahead (e.g., minimum health needed to survive the rest of the path).
+## Approach
+The generic DP template iterates over the grid, filling `dp[i][j]` from reachable predecessors. For forward DP the predecessors are the cells above and to the left; for reverse DP they are below and to the right. The transition combines the current cell value with the optimal predecessor value using the problem‑specific operation.
 
----
-
-## 5. Space Optimization
-
-Most grid DPs only need the previous row → O(n) space instead of O(mn).
-
+```text
+FUNCTION gridDP(grid, mode):
+    m ← ROW_COUNT(grid)
+    n ← COL_COUNT(grid)
+    dp ← MATRIX(m, n)
+    IF mode = "forward":
+        FOR i ← 0 TO m-1:
+            FOR j ← 0 TO n-1:
+                IF i = 0 AND j = 0:
+                    dp[i][j] ← grid[i][j]
+                ELSE:
+                    best ← INF   // or -INF / 0 depending on operation
+                    IF i > 0: best ← COMBINE(best, dp[i-1][j])
+                    IF j > 0: best ← COMBINE(best, dp[i][j-1])
+                    dp[i][j] ← APPLY(grid[i][j], best)
+    ELSE IF mode = "reverse":
+        FOR i ← m-1 DOWNTO 0:
+            FOR j ← n-1 DOWNTO 0:
+                IF i = m-1 AND j = n-1:
+                    dp[i][j] ← grid[i][j]
+                ELSE:
+                    best ← INF
+                    IF i < m-1: best ← COMBINE(best, dp[i+1][j])
+                    IF j < n-1: best ← COMBINE(best, dp[i][j+1])
+                    dp[i][j] ← APPLY(grid[i][j], best)
+    RETURN dp[m-1][n-1]   // or dp[0][0] for reverse mode
 ```
-// Instead of dp[m][n]:
-prev = [0] * n
-curr = [0] * n
+`COMBINE` and `APPLY` are instantiated per problem (e.g., `MIN`/`+` for min‑path, `MAX`/`+` for max‑path, `SUM` for counting paths).
 
-FOR i ← 0 TO m - 1:
-    FOR j ← 0 TO n - 1:
-        curr[j] = grid[i][j] + MIN(prev[j], curr[j-1])
-    prev = curr.copy()
-```
+## Walkthrough
+Consider the Minimum Path Sum example.
+1. Initialize `dp[0][0] = 1`.
+2. Fill first row: `dp[0][1] = 1+3 = 4`, `dp[0][2] = 4+1 = 5`.
+3. Fill first column: `dp[1][0] = 1+1 = 2`, `dp[2][0] = 2+4 = 6`.
+4. For cell (1,1): `best = MIN(dp[0][1], dp[1][0]) = MIN(4,2) = 2`; `dp[1][1] = 5 + 2 = 7`.
+5. Continue similarly; final `dp[2][2] = 7`.
+The same template with `mode="reverse"` solves Dungeon Game by propagating required health backwards.
 
-For in-place modification (like Min Path Sum), space is O(1) by modifying the grid directly.
+## Complexity Analysis
+- **Time:** O(m·n) – each cell processed once.
+- **Space:** O(m·n) for the DP matrix, reducible to O(n) by keeping only the previous row/column.
 
----
+## Follow-Up Questions
+1. How can you modify the template to handle obstacles that block movement?
+2. What changes are needed for diagonal moves or knight‑like jumps?
+3. Can you extend the approach to 3‑D grids or irregular graphs?
 
-## 6. When to Use Reverse DP
-
-Use reverse DP when:
-- The optimal decision at a cell depends on **future** cells (e.g., "how much health do I need to survive from here to the end?")
-- Forward DP would require tracking additional state (like minimum health along the path)
-
-**Dungeon Game example:** `dp[i][j] = min health needed at (i,j)` to reach `(m-1, n-1)` alive. Computed from bottom-right to top-left.
-
----
-
-## 7. Key Takeaway
-
-> **Grid DP is one template with many faces** — the direction (forward/reverse), the operation (min/max/sum/count), and movement rules define the variant. Master the template and you solve the entire family.
+## Key Takeaway
+All grid‑based DP problems reduce to a single template: iterate in the appropriate direction, combine optimal predecessor values, and apply the problem‑specific operation.

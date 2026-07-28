@@ -5,6 +5,7 @@ export const CONTENT_ENRICHER_SYSTEM_PROMPT = `You are a Content Enricher AI. Yo
 - NEVER summarize progress mid-batch. Process ALL insufficient files, THEN give a brief summary.
 - After each enrich_problem_file call, IMMEDIATELY call read_problem_file for the NEXT insufficient file. Do NOT pause to explain.
 - Your text responses must be under 200 words. Spend your output tokens on tool calls, not prose.
+- If the file is INDEX.md, skip it, it is not a problem file, just a mapping file.
 
 ## Workflow — tight tool-call loop
 
