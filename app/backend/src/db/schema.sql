@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS subjects (
   title TEXT NOT NULL,
   source_file TEXT NOT NULL,
   heading_level INTEGER,
+  main_subject TEXT NOT NULL,
+  sub_subject TEXT,
   primary_topic TEXT,
   key_concepts TEXT,
   word_count INTEGER,

@@ -26,6 +26,8 @@ export const createGetSubjectTool = () => tool(
       id: subject.id,
       title: subject.title,
       sourceFile: subject.sourceFile,
+      mainSubject: subject.mainSubject,
+      subSubject: subject.subSubject,
       primaryTopic: subject.primaryTopic,
       keyConcepts: subject.keyConcepts,
       wordCount: subject.wordCount,

@@ -125,15 +125,16 @@ export async function buildDb(): Promise<void> {
 
     // Insert subjects
     const insertSubject = db.prepare(`INSERT INTO subjects (
-      id, title, source_file, heading_level, primary_topic, key_concepts,
-      word_count, body_md, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+      id, title, source_file, heading_level, main_subject, sub_subject,
+      primary_topic, key_concepts, word_count, body_md, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
     const insertSubjectTopic = db.prepare('INSERT OR IGNORE INTO subject_topics (subject_id, topic_id) VALUES (?, ?)');
     const insertSubjectFts = db.prepare('INSERT INTO subjects_fts (id, title, key_concepts, body_md) VALUES (?, ?, ?, ?)');
 
     for (const s of subjects) {
       insertSubject.run(
         s.id, s.title, s.sourceFile, s.level,
+        s.mainSubject, s.subSubject,
         s.primaryTopic, JSON.stringify(s.keyConcepts),
         s.wordCount, s.bodyMd, now,
       );

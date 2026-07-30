@@ -28,6 +28,12 @@ export const TAXONOMY: TaxonomyEntry[] = [
   { id: 'system-design', label: 'System Design' },
   { id: 'oop-design', label: 'OOP / Low-Level Design' },
   { id: 'theory-ai', label: 'AI / LLM / Agents Theory' },
+  { id: 'theory-ai-engineering', label: 'AI Engineering' },
+  { id: 'theory-distributed-systems', label: 'Distributed Systems' },
+  { id: 'theory-frontend', label: 'Frontend Architecture' },
+  { id: 'theory-infra-devops', label: 'Infrastructure & DevOps' },
+  { id: 'theory-security', label: 'Security & Auth' },
+  { id: 'theory-engineering-leadership', label: 'Engineering Practices & Leadership' },
   { id: 'theory-architecture', label: 'Architecture & Practices Theory' },
 ];
 

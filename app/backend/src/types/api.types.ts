@@ -58,6 +58,7 @@ export const problemDetailParamsSchema = z.object({
 export const subjectsQuerySchema = z.object({
   topics: optionalCsvArray,
   sourceFile: z.string().optional(),
+  mainSubject: z.string().optional(),
   q: z.string().optional(),
   page: z.coerce.number().int().min(1).default(1),
   pageSize: z.coerce.number().int().min(1).max(100).default(25),

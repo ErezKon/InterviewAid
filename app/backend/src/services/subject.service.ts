@@ -4,6 +4,7 @@ import { NotFoundError } from '../utils/errors.js';
 export interface SubjectFilters {
   topics?: string[];
   sourceFile?: string;
+  mainSubject?: string;
   q?: string;
   page?: number;
   pageSize?: number;
@@ -13,6 +14,8 @@ export interface SubjectListItem {
   id: string;
   title: string;
   sourceFile: string;
+  mainSubject: string;
+  subSubject: string | null;
   primaryTopic: string | null;
   topics: string[];
   keyConcepts: string[];
@@ -50,6 +53,11 @@ export function querySubjects(filters: SubjectFilters): { items: SubjectListItem
     params.sourceFile = filters.sourceFile;
   }
 
+  if (filters.mainSubject) {
+    wheres.push(`s.main_subject = :mainSubject`);
+    params.mainSubject = filters.mainSubject;
+  }
+
   const whereClause = wheres.length ? `WHERE ${wheres.join(' AND ')}` : '';
 
   const countSql = `
@@ -62,11 +70,12 @@ export function querySubjects(filters: SubjectFilters): { items: SubjectListItem
 
   const offset = (page - 1) * pageSize;
   const dataSql = `
-    SELECT DISTINCT s.id, s.title, s.source_file, s.primary_topic, s.key_concepts, s.word_count
+    SELECT DISTINCT s.id, s.title, s.source_file, s.main_subject, s.sub_subject,
+           s.primary_topic, s.key_concepts, s.word_count
     FROM subjects s
     ${joins.join('\n')}
     ${whereClause}
-    ORDER BY s.title ASC
+    ORDER BY s.main_subject ASC, s.sub_subject ASC, s.title ASC
     LIMIT :limit OFFSET :offset
   `;
   params.limit = pageSize;
@@ -78,6 +87,8 @@ export function querySubjects(filters: SubjectFilters): { items: SubjectListItem
     id: row.id,
     title: row.title,
     sourceFile: row.source_file,
+    mainSubject: row.main_subject,
+    subSubject: row.sub_subject,
     primaryTopic: row.primary_topic,
     topics: getTopicsForSubject(row.id),
     keyConcepts: parseJsonArray(row.key_concepts),
@@ -96,6 +107,8 @@ export function getSubjectById(id: string): SubjectDetail {
     id: row.id,
     title: row.title,
     sourceFile: row.source_file,
+    mainSubject: row.main_subject,
+    subSubject: row.sub_subject,
     primaryTopic: row.primary_topic,
     topics: getTopicsForSubject(id),
     keyConcepts: parseJsonArray(row.key_concepts),

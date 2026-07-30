@@ -89,7 +89,7 @@ async function main() {
   // Audit mode
   const auditMode = args.includes('--audit');
   const auditFile = args.find(a => a.startsWith('--audit-file='))?.split('=')[1]
-    ?? path.join(CONTENT_ROOT, 'LeetCode', 'audit_report.md');
+    ?? path.join(CONTENT_ROOT, 'Data', 'Problems', 'LeetCode', 'audit_report.md');
   const fixArg = args.find(a => a.startsWith('--fix='))?.split('=')[1] as AuditFixTypeOrAll | undefined;
   const fixType: AuditFixTypeOrAll = fixArg && [...AUDIT_FIX_TYPES, 'all'].includes(fixArg) ? fixArg : 'all';
 

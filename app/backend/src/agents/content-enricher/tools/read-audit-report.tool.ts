@@ -16,7 +16,7 @@ import {
 
 const log = createLogger('read_audit_report');
 
-const DEFAULT_AUDIT_PATH = path.join(CONTENT_ROOT, 'LeetCode', 'audit_report.md');
+const DEFAULT_AUDIT_PATH = path.join(CONTENT_ROOT, 'Data', 'Problems', 'LeetCode', 'audit_report.md');
 
 export const createReadAuditReportTool = () => tool(
   async (input) => {
@@ -95,7 +95,7 @@ export const createReadAuditReportTool = () => tool(
       issueType: z.enum(['summary', 'insufficient_content', 'wrong_primary_topic', 'missing_sub_topics'])
         .describe('Type of audit issue to retrieve'),
       filePath: z.string().optional()
-        .describe('Absolute path to the audit report .md file. Defaults to CONTENT_ROOT/LeetCode/audit_report.md'),
+        .describe('Absolute path to the audit report .md file. Defaults to CONTENT_ROOT/Data/Problems/LeetCode/audit_report.md'),
       offset: z.number().optional()
         .describe('0-indexed offset for pagination (default 0). Use nextOffset from previous result.'),
       batchSize: z.number().optional()

@@ -54,9 +54,9 @@ describe('SubjectsListComponent', () => {
     expect(compiled.querySelector('h2')?.textContent).toContain('Study Subjects');
   });
 
-  it('should render the subjects grid container', () => {
+  it('should not render subjects grid when store is empty', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.subjects-grid')).toBeTruthy();
+    expect(compiled.querySelector('.subjects-grid')).toBeFalsy();
   });
 });

@@ -11,21 +11,39 @@ process.env.ANTHROPIC_API_KEY ??= 'test-key';
 process.env.ANTHROPIC_BASE_URL ??= 'https://localhost:9998';
 
 const CONTENT_ROOT = process.env.CONTENT_ROOT!;
-const SUMMARY_PATH = path.join(CONTENT_ROOT, 'interview-materials-summary.md');
+const MATERIAL_DIR = path.join(CONTENT_ROOT, 'Data', 'Material');
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+interface ParsedSubject {
+  id: string;
+  title: string;
+  mainSubject: string;
+  subSubject: string | null;
+  wordCount: number;
+}
 
 /**
  * Re-implement the core parsing logic locally so we don't call parseTheory()
  * which writes to disk. This mirrors the algorithm in parse-theory-md.ts.
  */
-function parseTheoryFile(filePath: string) {
+function parseMdFile(
+  filePath: string,
+  mainSubject: string,
+  subSubject: string | null,
+  seenIds: Set<string>,
+): ParsedSubject[] {
   const content = fs.readFileSync(filePath, 'utf-8');
-  const relativePath = path.relative(CONTENT_ROOT, filePath);
-  const fileSlug = path.basename(filePath, '.md')
-    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const mainSlug = slugify(mainSubject);
+  const subSlug = subSubject ? slugify(subSubject) : null;
 
   const lines = content.split('\n');
-  const subjects: { id: string; title: string; wordCount: number }[] = [];
-  const seenIds = new Set<string>();
+  const subjects: ParsedSubject[] = [];
   let currentHeading = '';
   let currentBody: string[] = [];
 
@@ -33,16 +51,22 @@ function parseTheoryFile(filePath: string) {
     if (!currentHeading) return;
     const body = currentBody.join('\n').trim();
     if (!body) return;
-    const headingSlug = currentHeading
-      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    let id = `${fileSlug}--${headingSlug}`;
+    const headingSlug = slugify(currentHeading);
+    const parts = [mainSlug, subSlug, headingSlug].filter(Boolean);
+    let id = parts.join('--');
     if (seenIds.has(id)) {
       let counter = 2;
       while (seenIds.has(`${id}-${counter}`)) counter++;
       id = `${id}-${counter}`;
     }
     seenIds.add(id);
-    subjects.push({ id, title: currentHeading, wordCount: body.split(/\s+/).filter(Boolean).length });
+    subjects.push({
+      id,
+      title: currentHeading,
+      mainSubject,
+      subSubject,
+      wordCount: body.split(/\s+/).filter(Boolean).length,
+    });
   };
 
   for (const line of lines) {
@@ -59,13 +83,56 @@ function parseTheoryFile(filePath: string) {
   return subjects;
 }
 
-describe('parseTheory — interview-materials-summary.md', () => {
-  const subjects = parseTheoryFile(SUMMARY_PATH);
+function fileNameToTitle(filename: string): string {
+  const base = filename.replace(/\.md$/i, '');
+  const stripped = base.replace(/^\d+[-\s]+/, '');
+  return stripped
+    .split(/[-_]+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
 
-  it('should yield >= 20 subjects', () => {
+/** Scan Data/Material/ the same way parseTheory() does. */
+function scanMaterialDir(): ParsedSubject[] {
+  if (!fs.existsSync(MATERIAL_DIR)) return [];
+  const subjects: ParsedSubject[] = [];
+  const seenIds = new Set<string>();
+
+  const mainFolders = fs.readdirSync(MATERIAL_DIR, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+    .sort();
+
+  for (const mainFolder of mainFolders) {
+    const mainPath = path.join(MATERIAL_DIR, mainFolder);
+    const entries = fs.readdirSync(mainPath, { withFileTypes: true });
+
+    const subFolders = entries.filter(e => e.isDirectory()).map(e => e.name).sort();
+    const mdFiles = entries.filter(e => e.isFile() && e.name.endsWith('.md')).map(e => e.name).sort();
+
+    for (const subFolder of subFolders) {
+      const subPath = path.join(mainPath, subFolder);
+      for (const file of fs.readdirSync(subPath).filter(f => f.endsWith('.md')).sort()) {
+        subjects.push(...parseMdFile(path.join(subPath, file), mainFolder, subFolder, seenIds));
+      }
+    }
+
+    for (const file of mdFiles) {
+      const subSubject = fileNameToTitle(file);
+      subjects.push(...parseMdFile(path.join(mainPath, file), mainFolder, subSubject, seenIds));
+    }
+  }
+
+  return subjects;
+}
+
+describe('parseTheory — Data/Material/ scanning', () => {
+  const subjects = scanMaterialDir();
+
+  it('should yield subjects from the Material directory', () => {
     assert.ok(
-      subjects.length >= 20,
-      `Expected >=20 subjects, got ${subjects.length}`,
+      subjects.length >= 10,
+      `Expected >=10 subjects from Data/Material/, got ${subjects.length}`,
     );
   });
 
@@ -81,35 +148,39 @@ describe('parseTheory — interview-materials-summary.md', () => {
     }
   });
 
+  it('every subject should have a mainSubject', () => {
+    for (const s of subjects) {
+      assert.ok(s.mainSubject.length > 0, `Subject ${s.id} has empty mainSubject`);
+    }
+  });
+
   it('every subject should have wordCount > 0', () => {
     for (const s of subjects) {
       assert.ok(s.wordCount > 0, `Subject ${s.id} has wordCount=0`);
     }
   });
 
-  it('ids should be lowercase kebab-case', () => {
+  it('ids should be lowercase kebab-case with -- separators', () => {
     for (const s of subjects) {
       assert.match(s.id, /^[a-z0-9-]+$/, `Id not kebab-case: ${s.id}`);
     }
   });
-});
 
-describe('parseTheory — all theory files', () => {
-  const theoryFiles = [
-    'interview-materials-summary.md',
-    'AI-Harness-in-detail.md',
-    'LRU and LFU cache algorithms.md',
-    'Call Center Problem.md',
-    'Local Min-Max problem.md',
-    'SKILL.md',
-  ];
+  it('should include subjects from multiple main folders', () => {
+    const mainSubjects = new Set(subjects.map(s => s.mainSubject));
+    assert.ok(
+      mainSubjects.size >= 3,
+      `Expected subjects from >=3 main folders, got ${mainSubjects.size}: ${[...mainSubjects].join(', ')}`,
+    );
+  });
 
-  it('should parse every theory file without crashing', () => {
-    for (const file of theoryFiles) {
-      const filePath = path.join(CONTENT_ROOT, file);
-      if (!fs.existsSync(filePath)) continue;
-      const subjects = parseTheoryFile(filePath);
-      assert.ok(subjects.length >= 1, `${file} should produce at least 1 subject, got ${subjects.length}`);
-    }
+  it('Architectures should have sub-folder-based sub-subjects', () => {
+    const archSubjects = subjects.filter(s => s.mainSubject === 'Architectures');
+    assert.ok(archSubjects.length > 0, 'Should have Architectures subjects');
+    const subSubjects = new Set(archSubjects.map(s => s.subSubject).filter(Boolean));
+    assert.ok(
+      subSubjects.has('Distributed Systems & System Architecture'),
+      `Expected sub-subject "Distributed Systems & System Architecture", got: ${[...subSubjects].join(', ')}`,
+    );
   });
 });

@@ -20,6 +20,8 @@ export const createSearchSubjectsTool = () => tool(
       id: s.id,
       title: s.title,
       sourceFile: s.sourceFile,
+      mainSubject: s.mainSubject,
+      subSubject: s.subSubject,
       primaryTopic: s.primaryTopic,
       keyConcepts: s.keyConcepts,
       wordCount: s.wordCount,

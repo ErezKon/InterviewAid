@@ -10,6 +10,7 @@ subjectsRouter.get('/subjects', (req, res, next) => {
     const { items, total } = querySubjects({
       topics: parsed.topics,
       sourceFile: parsed.sourceFile,
+      mainSubject: parsed.mainSubject,
       q: parsed.q,
       page: parsed.page,
       pageSize: parsed.pageSize,

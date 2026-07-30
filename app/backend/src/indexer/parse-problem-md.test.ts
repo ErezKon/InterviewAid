@@ -13,7 +13,7 @@ process.env.ANTHROPIC_BASE_URL ??= 'https://localhost:9998';
 const { parseSingleFile } = await import('./parse-problem-md.js');
 
 const CONTENT_ROOT = process.env.CONTENT_ROOT!;
-const THREE_SUM_PATH = path.join(CONTENT_ROOT, 'LeetCode', 'Problems', '3Sum.md');
+const THREE_SUM_PATH = path.join(CONTENT_ROOT, 'Data', 'Problems', 'LeetCode', '3Sum.md');
 
 describe('parseSingleFile', () => {
   let result: ReturnType<typeof parseSingleFile>;
@@ -95,7 +95,7 @@ describe('parseSingleFile', () => {
 });
 
 describe('parseSingleFile — Two Sum (id=1)', () => {
-  const TWO_SUM_PATH = path.join(CONTENT_ROOT, 'LeetCode', 'Problems', 'Two Sum.md');
+  const TWO_SUM_PATH = path.join(CONTENT_ROOT, 'Data', 'Problems', 'LeetCode', 'Two Sum.md');
   let result: ReturnType<typeof parseSingleFile>;
 
   before(() => {

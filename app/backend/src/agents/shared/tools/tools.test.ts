@@ -51,9 +51,9 @@ function seedForTools() {
   db.prepare('INSERT OR IGNORE INTO problem_patterns (problem_slug, pattern) VALUES (?, ?)').run('two-sum', 'hash map');
 
   // Subjects
-  db.prepare(`INSERT OR IGNORE INTO subjects (id, title, source_file, heading_level, primary_topic, key_concepts, word_count, body_md, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`)
-    .run('test-subject-1', 'System Design Basics', 'interview-materials-summary.md', 2, 'system-design', '["scalability","caching"]', 500, 'Body markdown content for system design basics. This covers load balancers and databases.');
+  db.prepare(`INSERT OR IGNORE INTO subjects (id, title, source_file, heading_level, main_subject, sub_subject, primary_topic, key_concepts, word_count, body_md, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`)
+    .run('test-subject-1', 'System Design Basics', 'Data/Material/Architectures/System Design/01-basics.md', 2, 'Architectures', 'System Design', 'system-design', '["scalability","caching"]', 500, 'Body markdown content for system design basics. This covers load balancers and databases.');
 
   // FTS — ensure tables exist and populate
   try { db.exec(`CREATE VIRTUAL TABLE IF NOT EXISTS problems_fts USING fts5(slug UNINDEXED, title, one_liner, description_md, solution_md, patterns, tokenize='porter unicode61')`); } catch {}

@@ -29,6 +29,8 @@ export interface Subject {
   level: number;
   bodyMd: string;
   wordCount: number;
+  mainSubject: string;
+  subSubject: string | null;
   primaryTopic: string | null;
   topics: string[];
   keyConcepts: string[];
