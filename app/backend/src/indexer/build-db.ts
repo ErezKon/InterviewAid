@@ -40,10 +40,12 @@ export async function buildDb(): Promise<void> {
   db.exec('BEGIN TRANSACTION');
 
   try {
-    // Clear content tables
+    // Drop content tables so schema changes take effect (IF NOT EXISTS won't alter existing tables)
     for (const table of contentTables) {
-      db.exec(`DELETE FROM ${table}`);
+      db.exec(`DROP TABLE IF EXISTS ${table}`);
     }
+    // Recreate content tables from schema
+    initSchema();
 
     // Drop and recreate FTS tables
     db.exec('DROP TABLE IF EXISTS problems_fts');

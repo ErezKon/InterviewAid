@@ -29,102 +29,65 @@ function fileNameToTitle(filename: string): string {
     .join(' ');
 }
 
+/** Strip leading number prefix from a heading (e.g. "14. SDD" → "SDD"). */
+function stripHeadingNumber(heading: string): string {
+  return heading.replace(/^\d+[\.\)]\s*/, '');
+}
+
 /** Derive the sub-subject name from a file name. */
 function deriveSubSubject(filename: string): string {
   return fileNameToTitle(filename);
 }
 
-/** Parse a single .md file and return subjects extracted from it. */
+/**
+ * Parse a single .md file and return ONE subject for the whole file.
+ * The title is derived from the first ## heading (with number prefix stripped)
+ * or from the filename. The entire file content is used as bodyMd.
+ */
 function parseMdFile(
   filePath: string,
   mainSubject: string,
   subSubject: string | null,
   seenIds: Set<string>,
-): Subject[] {
+): Subject {
   const content = fs.readFileSync(filePath, 'utf-8');
   const relativePath = path.relative(CONTENT_ROOT, filePath);
   const mainSlug = slugify(mainSubject);
   const subSlug = subSubject ? slugify(subSubject) : null;
   const fileSlug = slugify(path.basename(filePath, '.md'));
 
-  const lines = content.split('\n');
-  const subjects: Subject[] = [];
-  let currentHeading = '';
-  let currentLevel = 0;
-  let currentBody: string[] = [];
+  // Derive title from the first ## heading (stripped of number prefix),
+  // or fall back to subSubject / filename
+  const firstH2 = content.match(/^## (.+)/m);
+  let title: string;
+  if (firstH2) {
+    title = stripHeadingNumber(firstH2[1].trim());
+  } else {
+    title = subSubject ?? fileNameToTitle(path.basename(filePath));
+  }
 
-  const flush = () => {
-    if (!currentHeading) return;
-    const body = currentBody.join('\n').trim();
-    if (!body) return;
+  const id_parts = [mainSlug, subSlug ?? fileSlug].filter(Boolean);
+  let id = id_parts.join('--');
+  if (seenIds.has(id)) {
+    let counter = 2;
+    while (seenIds.has(`${id}-${counter}`)) counter++;
+    id = `${id}-${counter}`;
+  }
+  seenIds.add(id);
 
-    const headingSlug = slugify(currentHeading);
-    const parts = [mainSlug, subSlug, headingSlug].filter(Boolean);
-    let id = parts.join('--');
-    if (seenIds.has(id)) {
-      let counter = 2;
-      while (seenIds.has(`${id}-${counter}`)) counter++;
-      id = `${id}-${counter}`;
-    }
-    seenIds.add(id);
-
-    subjects.push({
-      id,
-      sourceFile: relativePath,
-      title: currentHeading,
-      level: currentLevel,
-      bodyMd: body,
-      wordCount: countWords(body),
-      mainSubject,
-      subSubject,
-      primaryTopic: null,
-      topics: [],
-      keyConcepts: [],
-    });
+  return {
+    id,
+    sourceFile: relativePath,
+    title,
+    level: 1,
+    bodyMd: content.trim(),
+    wordCount: countWords(content),
+    mainSubject,
+    subSubject,
+    primaryTopic: null,
+    topics: [],
+    keyConcepts: [],
   };
-
-  for (const line of lines) {
-    const h2Match = line.match(/^## (.+)/);
-
-    if (h2Match) {
-      flush();
-      currentHeading = h2Match[1].trim();
-      currentLevel = 2;
-      currentBody = [];
-    } else {
-      currentBody.push(line);
-    }
-  }
-  flush();
-
-  // If no ## headings were found, treat the entire file as one subject
-  if (subjects.length === 0 && content.trim().length > 0) {
-    const title = subSubject ?? fileNameToTitle(path.basename(filePath));
-    const id_parts = [mainSlug, subSlug ?? fileSlug].filter(Boolean);
-    let id = id_parts.join('--');
-    if (seenIds.has(id)) {
-      let counter = 2;
-      while (seenIds.has(`${id}-${counter}`)) counter++;
-      id = `${id}-${counter}`;
-    }
-    seenIds.add(id);
-
-    subjects.push({
-      id,
-      sourceFile: relativePath,
-      title,
-      level: 1,
-      bodyMd: content.trim(),
-      wordCount: countWords(content),
-      mainSubject,
-      subSubject,
-      primaryTopic: null,
-      topics: [],
-      keyConcepts: [],
-    });
-  }
-
-  return subjects;
 }
 
 export async function parseTheory(): Promise<void> {
@@ -160,8 +123,7 @@ export async function parseTheory(): Promise<void> {
 
         for (const file of subFiles) {
           const filePath = path.join(subPath, file);
-          const parsed = parseMdFile(filePath, mainFolder, subFolder, seenIds);
-          subjects.push(...parsed);
+          subjects.push(parseMdFile(filePath, mainFolder, subFolder, seenIds));
         }
         log.info(`${mainFolder}/${subFolder}: ${subFiles.length} files`);
       }
@@ -172,8 +134,7 @@ export async function parseTheory(): Promise<void> {
       for (const file of mdFiles) {
         const filePath = path.join(mainPath, file);
         const subSubject = deriveSubSubject(file);
-        const parsed = parseMdFile(filePath, mainFolder, subSubject, seenIds);
-        subjects.push(...parsed);
+        subjects.push(parseMdFile(filePath, mainFolder, subSubject, seenIds));
       }
       log.info(`${mainFolder}: ${mdFiles.length} files (flat)`);
     }

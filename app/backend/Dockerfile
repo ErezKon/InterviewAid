@@ -8,6 +8,9 @@ RUN apt-get update && \
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
+
+RUN npm config set strict-ssl false
+
 RUN NODE_TLS_REJECT_UNAUTHORIZED=0 npm i --ignore-scripts && \
     NODE_TLS_REJECT_UNAUTHORIZED=0 npm rebuild better-sqlite3
 

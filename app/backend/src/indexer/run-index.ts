@@ -1,3 +1,8 @@
+import { webcrypto } from 'node:crypto';
+if (!globalThis.crypto) {
+  (globalThis as any).crypto = webcrypto;
+}
+
 import { createLogger } from '../utils/logger.js';
 import { parseProblems } from './parse-problem-md.js';
 import { parseTheory } from './parse-theory-md.js';

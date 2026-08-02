@@ -8,6 +8,7 @@ import { METADATA_DIR } from '../config/paths.js';
 import { TAXONOMY_IDS, SENIORITY } from './taxonomy.js';
 import { Problem, Subject } from '../types/problem.types.js';
 import { createLogger } from '../utils/logger.js';
+import { getAccessToken } from '../utils/oauth.util.js';
 
 const log = createLogger('classify');
 
@@ -44,10 +45,17 @@ const subjectClassificationSchema = z.object({
 type ClassificationResult = z.infer<typeof classificationResultSchema>['results'][number];
 type SubjectClassificationResult = z.infer<typeof subjectClassificationSchema>['results'][number];
 
-function createModel(): ChatOpenAI {
+async function resolveApiKey(): Promise<string> {
+  const explicit = env.OPENAI_API_KEY || undefined;
+  if (explicit) return explicit;
+  return getAccessToken();
+}
+
+async function createModel(): Promise<ChatOpenAI> {
+  const apiKey = await resolveApiKey();
   return new ChatOpenAI({
     model: 'gpt-oss-120b',
-    apiKey: env.OPENAI_API_KEY,
+    apiKey,
     temperature: 0,
     maxRetries: 0,
     timeout: 120_000,
@@ -162,7 +170,7 @@ export async function classifyProblems(force = false): Promise<void> {
   } else {
     log.info(`Classifying ${toClassify.length} problems in batches of ${BATCH_SIZE}...`);
 
-    const model = createModel();
+    const model = await createModel();
     const batches: { id: string; title: string; difficulty: string; description: string }[][] = [];
 
     for (let i = 0; i < toClassify.length; i += BATCH_SIZE) {
@@ -250,7 +258,7 @@ export async function classifySubjects(force = false): Promise<void> {
   const subjects: Subject[] = JSON.parse(fs.readFileSync(subjectsPath, 'utf-8'));
   log.info(`Loaded ${subjects.length} raw subjects`);
 
-  const model = createModel();
+  const model = await createModel();
   const taxonomyList = TAXONOMY_IDS.join(', ');
 
   const batchInput = subjects.map(s => ({

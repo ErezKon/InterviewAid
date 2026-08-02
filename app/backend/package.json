@@ -7,9 +7,9 @@
     "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx watch src/index.ts",
     "start": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx src/index.ts",
     "index:parse": "tsx src/indexer/run-index.ts --stage=parse",
-    "index:classify": "tsx src/indexer/run-index.ts --stage=classify",
+    "index:classify": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx src/indexer/run-index.ts --stage=classify",
     "index:build": "tsx src/indexer/run-index.ts --stage=build",
-    "index:all": "tsx src/indexer/run-index.ts --stage=parse && tsx src/indexer/run-index.ts --stage=classify && tsx src/indexer/run-index.ts --stage=build",
+    "index:all": "tsx src/indexer/run-index.ts --stage=parse && NODE_TLS_REJECT_UNAUTHORIZED=0 tsx src/indexer/run-index.ts --stage=classify && tsx src/indexer/run-index.ts --stage=build",
     "enrich": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx src/agents/content-enricher/run-enricher-loop.ts",
     "enrich:audit": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx src/agents/content-enricher/run-enricher-loop.ts --audit",
     "test": "tsx --test $(find src -name '*.test.ts')"
