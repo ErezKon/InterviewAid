@@ -29,10 +29,15 @@ function fileNameToTitle(filename: string): string {
     .join(' ');
 }
 
-/** Strip leading number prefix from a heading (e.g. "14. SDD" → "SDD"). */
+/** Strip leading number prefix or "Part X —" prefix from a heading (e.g. "14. SDD" → "SDD", "Part I — Foo" → "Foo"). */
 function stripHeadingNumber(heading: string): string {
-  return heading.replace(/^\d+[\.\)]\s*/, '');
+  return heading
+    .replace(/^\d+[\.\)]\s*/, '')
+    .replace(/^Part\s+[IVXLCDM\d]+\s*[—–\-:]\s*/i, '');
 }
+
+/** Headings that should not be used as a subject title. */
+const NON_TITLE_HEADINGS = new Set(['introduction', 'table of contents']);
 
 /** Derive the sub-subject name from a file name. */
 function deriveSubSubject(filename: string): string {
@@ -41,8 +46,11 @@ function deriveSubSubject(filename: string): string {
 
 /**
  * Parse a single .md file and return ONE subject for the whole file.
- * The title is derived from the first ## heading (with number prefix stripped)
- * or from the filename. The entire file content is used as bodyMd.
+ * Title priority:
+ *   1. First # (H1) heading (with number / "Part X —" prefix stripped)
+ *   2. First ## (H2) heading that is NOT a generic heading like "Introduction" or "Table of Contents"
+ *   3. subSubject or filename as fallback
+ * The entire file content is used as bodyMd.
  */
 function parseMdFile(
   filePath: string,
@@ -56,14 +64,37 @@ function parseMdFile(
   const subSlug = subSubject ? slugify(subSubject) : null;
   const fileSlug = slugify(path.basename(filePath, '.md'));
 
-  // Derive title from the first ## heading (stripped of number prefix),
-  // or fall back to subSubject / filename
-  const firstH2 = content.match(/^## (.+)/m);
-  let title: string;
-  if (firstH2) {
-    title = stripHeadingNumber(firstH2[1].trim());
-  } else {
-    title = subSubject ?? fileNameToTitle(path.basename(filePath));
+  // 1. Try the first # (H1) heading
+  const firstH1 = content.match(/^# (.+)/m);
+  let title: string | null = null;
+  if (firstH1) {
+    const candidate = stripHeadingNumber(firstH1[1].trim());
+    if (candidate && !NON_TITLE_HEADINGS.has(candidate.toLowerCase())) {
+      title = candidate;
+    }
+  }
+
+  // 2. Try the first ## (H2) heading that isn't a generic heading
+  if (!title) {
+    const h2Matches = content.matchAll(/^## (.+)/gm);
+    for (const m of h2Matches) {
+      const candidate = stripHeadingNumber(m[1].trim());
+      if (candidate && !NON_TITLE_HEADINGS.has(candidate.toLowerCase())) {
+        title = candidate;
+        break;
+      }
+    }
+  }
+
+  // 3. Fall back to subSubject or filename, skipping generic names
+  if (!title) {
+    const fallback = subSubject ?? fileNameToTitle(path.basename(filePath));
+    if (!NON_TITLE_HEADINGS.has(fallback.toLowerCase())) {
+      title = fallback;
+    } else {
+      // Last resort: use mainSubject as title context
+      title = mainSubject;
+    }
   }
 
   const id_parts = [mainSlug, subSlug ?? fileSlug].filter(Boolean);

@@ -28,9 +28,19 @@ interface ParsedSubject {
   wordCount: number;
 }
 
+/** Strip leading number prefix or "Part X —" prefix from a heading. */
+function stripHeadingNumber(heading: string): string {
+  return heading
+    .replace(/^\d+[\.\)]\s*/, '')
+    .replace(/^Part\s+[IVXLCDM\d]+\s*[—–\-:]\s*/i, '');
+}
+
+const NON_TITLE_HEADINGS = new Set(['introduction', 'table of contents']);
+
 /**
  * Re-implement the core parsing logic locally so we don't call parseTheory()
  * which writes to disk. This mirrors the algorithm in parse-theory-md.ts.
+ * Returns ONE subject per file with title derived from H1 > H2 > filename.
  */
 function parseMdFile(
   filePath: string,
@@ -41,46 +51,56 @@ function parseMdFile(
   const content = fs.readFileSync(filePath, 'utf-8');
   const mainSlug = slugify(mainSubject);
   const subSlug = subSubject ? slugify(subSubject) : null;
+  const fileSlug = slugify(path.basename(filePath, '.md'));
 
-  const lines = content.split('\n');
-  const subjects: ParsedSubject[] = [];
-  let currentHeading = '';
-  let currentBody: string[] = [];
-
-  const flush = () => {
-    if (!currentHeading) return;
-    const body = currentBody.join('\n').trim();
-    if (!body) return;
-    const headingSlug = slugify(currentHeading);
-    const parts = [mainSlug, subSlug, headingSlug].filter(Boolean);
-    let id = parts.join('--');
-    if (seenIds.has(id)) {
-      let counter = 2;
-      while (seenIds.has(`${id}-${counter}`)) counter++;
-      id = `${id}-${counter}`;
-    }
-    seenIds.add(id);
-    subjects.push({
-      id,
-      title: currentHeading,
-      mainSubject,
-      subSubject,
-      wordCount: body.split(/\s+/).filter(Boolean).length,
-    });
-  };
-
-  for (const line of lines) {
-    const h2Match = line.match(/^## (.+)/);
-    if (h2Match) {
-      flush();
-      currentHeading = h2Match[1].trim();
-      currentBody = [];
-    } else {
-      currentBody.push(line);
+  // 1. Try H1 heading
+  const firstH1 = content.match(/^# (.+)/m);
+  let title: string | null = null;
+  if (firstH1) {
+    const candidate = stripHeadingNumber(firstH1[1].trim());
+    if (candidate && !NON_TITLE_HEADINGS.has(candidate.toLowerCase())) {
+      title = candidate;
     }
   }
-  flush();
-  return subjects;
+
+  // 2. Try first non-generic H2
+  if (!title) {
+    const h2Matches = content.matchAll(/^## (.+)/gm);
+    for (const m of h2Matches) {
+      const candidate = stripHeadingNumber(m[1].trim());
+      if (candidate && !NON_TITLE_HEADINGS.has(candidate.toLowerCase())) {
+        title = candidate;
+        break;
+      }
+    }
+  }
+
+  // 3. Fall back to subSubject or filename, skipping generic names
+  if (!title) {
+    const fallback = subSubject ?? fileNameToTitle(path.basename(filePath));
+    if (!NON_TITLE_HEADINGS.has(fallback.toLowerCase())) {
+      title = fallback;
+    } else {
+      title = mainSubject;
+    }
+  }
+
+  const id_parts = [mainSlug, subSlug ?? fileSlug].filter(Boolean);
+  let id = id_parts.join('--');
+  if (seenIds.has(id)) {
+    let counter = 2;
+    while (seenIds.has(`${id}-${counter}`)) counter++;
+    id = `${id}-${counter}`;
+  }
+  seenIds.add(id);
+
+  return [{
+    id,
+    title,
+    mainSubject,
+    subSubject,
+    wordCount: content.split(/\s+/).filter(Boolean).length,
+  }];
 }
 
 function fileNameToTitle(filename: string): string {
@@ -181,6 +201,16 @@ describe('parseTheory — Data/Material/ scanning', () => {
     assert.ok(
       subSubjects.has('Distributed Systems & System Architecture'),
       `Expected sub-subject "Distributed Systems & System Architecture", got: ${[...subSubjects].join(', ')}`,
+    );
+  });
+
+  it('no subject should have "Introduction" or "Table of Contents" as title', () => {
+    const bad = subjects.filter(s =>
+      NON_TITLE_HEADINGS.has(s.title.toLowerCase()),
+    );
+    assert.equal(
+      bad.length, 0,
+      `Found subjects with generic titles: ${bad.map(s => `${s.id} => "${s.title}"`).join(', ')}`,
     );
   });
 });
