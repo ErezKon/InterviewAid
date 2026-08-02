@@ -8,6 +8,7 @@ import { parseProblems } from './parse-problem-md.js';
 import { parseTheory } from './parse-theory-md.js';
 import { classifyProblems, classifySubjects } from './classify-with-llm.js';
 import { buildDb } from './build-db.js';
+import { generateQuestions } from './generate-questions.js';
 
 const log = createLogger('indexer');
 
@@ -16,6 +17,8 @@ async function main() {
   const stageArg = args.find(a => a.startsWith('--stage='));
   const stage = stageArg?.split('=')[1] ?? 'all';
   const force = args.includes('--force');
+  const modelArg = args.find(a => a.startsWith('--model='));
+  const modelId = modelArg?.split('=')[1];
 
   log.info(`Running indexer stage: ${stage}${force ? ' (force)' : ''}`);
   const start = Date.now();
@@ -36,6 +39,10 @@ async function main() {
         await buildDb();
         break;
 
+      case 'questions':
+        await generateQuestions(force, modelId);
+        break;
+
       case 'all':
         log.info('=== Stage 1: Parse ===');
         await parseProblems();
@@ -48,7 +55,7 @@ async function main() {
         break;
 
       default:
-        log.error(`Unknown stage: ${stage}. Use: parse, classify, build, or all`);
+        log.error(`Unknown stage: ${stage}. Use: parse, classify, build, questions, or all`);
         process.exit(1);
     }
 

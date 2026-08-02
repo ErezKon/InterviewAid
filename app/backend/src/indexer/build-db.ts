@@ -149,6 +149,33 @@ export async function buildDb(): Promise<void> {
     }
     log.info(`Inserted ${subjects.length} subjects`);
 
+    // Import pre-generated quiz questions if metadata file exists
+    // (subject_questions is NOT dropped during rebuild to preserve expensive LLM-generated data)
+    const questionsPath = path.join(METADATA_DIR, 'subject_questions.json');
+    if (fs.existsSync(questionsPath)) {
+      const questionsData = JSON.parse(fs.readFileSync(questionsPath, 'utf-8')) as any[];
+      // Only import if table is empty (don't overwrite existing questions)
+      const existing = (db.prepare('SELECT COUNT(*) as c FROM subject_questions').get() as { c: number }).c;
+      if (existing === 0) {
+        const insertQ = db.prepare(`INSERT OR IGNORE INTO subject_questions (
+          id, subject_id, type, difficulty, question, options,
+          expected_answer, reference_quote, follow_up, generated_at, model_id
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+        for (const q of questionsData) {
+          insertQ.run(
+            q.id, q.subjectId ?? q.subject_id, q.type, q.difficulty, q.question,
+            q.options ? (typeof q.options === 'string' ? q.options : JSON.stringify(q.options)) : null,
+            q.expectedAnswer ?? q.expected_answer, q.referenceQuote ?? q.reference_quote,
+            q.followUp ?? q.follow_up ?? null, q.generatedAt ?? q.generated_at ?? now,
+            q.modelId ?? q.model_id ?? 'imported',
+          );
+        }
+        log.info(`Imported ${questionsData.length} quiz questions from metadata`);
+      } else {
+        log.info(`Skipped question import: ${existing} questions already in DB`);
+      }
+    }
+
     db.exec('COMMIT');
   } catch (err) {
     db.exec('ROLLBACK');
@@ -186,6 +213,7 @@ export async function buildDb(): Promise<void> {
     problemTopics: db.prepare('SELECT COUNT(*) as c FROM problem_topics').get() as { c: number },
     problemCompanies: db.prepare('SELECT COUNT(*) as c FROM problem_companies').get() as { c: number },
     patterns: db.prepare('SELECT COUNT(*) as c FROM problem_patterns').get() as { c: number },
+    quizQuestions: db.prepare('SELECT COUNT(*) as c FROM subject_questions').get() as { c: number },
   };
 
   log.info('=== Build Summary ===');
@@ -196,6 +224,7 @@ export async function buildDb(): Promise<void> {
   log.info(`  Problem-Topics:    ${stats.problemTopics.c}`);
   log.info(`  Problem-Companies: ${stats.problemCompanies.c}`);
   log.info(`  Patterns:          ${stats.patterns.c}`);
+  log.info(`  Quiz Questions:    ${stats.quizQuestions.c}`);
 
   closeDb();
 }

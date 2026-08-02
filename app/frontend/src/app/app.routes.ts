@@ -23,6 +23,11 @@ export const routes: Routes = [
       import('./features/subjects/subject-detail/subject-detail.component').then(m => m.SubjectDetailComponent),
   },
   {
+    path: 'quiz',
+    loadComponent: () =>
+      import('./features/quiz/quiz-page/quiz-page.component').then(m => m.QuizPageComponent),
+  },
+  {
     path: 'chat',
     loadComponent: () =>
       import('./features/chat/chat-page/chat-page.component').then(m => m.ChatPageComponent),

@@ -12,6 +12,7 @@ import { companiesRouter } from './routes/companies.routes.js';
 import { modelsRouter } from './routes/models.routes.js';
 import { sessionsRouter } from './routes/sessions.routes.js';
 import { chatRouter } from './routes/chat.routes.js';
+import { quizRouter } from './routes/quiz.routes.js';
 import { AppError } from './utils/errors.js';
 import { ZodError } from 'zod';
 
@@ -39,6 +40,7 @@ app.use('/api', subjectsRouter);
 app.use('/api', companiesRouter);
 app.use('/api', modelsRouter);
 app.use('/api', sessionsRouter);
+app.use('/api', quizRouter);
 
 // §4 Agentic chat route
 app.use('/api', chatRouter);

@@ -1,0 +1,219 @@
+<!-- ========== SELECTION STATE ========== -->
+@if (store.status() === 'idle' || store.status() === 'loading') {
+  <div class="quiz-selection">
+    <h2>Quiz</h2>
+    <p class="subtitle">Select subjects to quiz yourself on. Questions are pre-generated from the study materials.</p>
+
+    @if (store.status() === 'loading') {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+
+    @if (store.error()) {
+      <div class="error-banner">{{ store.error() }}</div>
+    }
+
+    @for (group of store.stats(); track group.mainSubject) {
+      <mat-expansion-panel [expanded]="true" class="subject-group">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-checkbox
+              [checked]="isGroupFullySelected(group.mainSubject)"
+              (change)="store.selectAllInGroup(group.mainSubject)"
+              (click)="$event.stopPropagation()">
+            </mat-checkbox>
+            <span class="group-title">{{ group.mainSubject }}</span>
+            <span class="group-count">{{ group.totalQuestions }} questions</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="subject-list">
+          @for (s of group.subjects; track s.id) {
+            <div class="subject-row" [class.disabled]="s.questionCount === 0">
+              <mat-checkbox
+                [checked]="isSubjectSelected(s.id)"
+                [disabled]="s.questionCount === 0"
+                (change)="store.toggleSubject(s.id)">
+                {{ s.title }}
+              </mat-checkbox>
+              <span class="question-count">
+                @if (s.questionCount > 0) {
+                  {{ s.questionCount }} q
+                } @else {
+                  <span class="no-questions">no questions</span>
+                }
+              </span>
+            </div>
+          }
+        </div>
+      </mat-expansion-panel>
+    }
+
+    <div class="selection-actions">
+      <div class="selection-summary">
+        {{ store.selectedSubjectIds().length }} subjects selected
+        &middot; {{ store.selectedQuestionCount() }} questions
+      </div>
+      <button mat-raised-button color="primary"
+        [disabled]="store.selectedSubjectIds().length === 0 || store.selectedQuestionCount() === 0 || store.status() === 'loading'"
+        (click)="store.startQuiz()">
+        <mat-icon>play_arrow</mat-icon>
+        Start Quiz
+      </button>
+    </div>
+  </div>
+}
+
+<!-- ========== ACTIVE QUIZ STATE ========== -->
+@if (store.status() === 'active') {
+  <div class="quiz-active">
+    <div class="quiz-header">
+      <button mat-icon-button (click)="store.resetQuiz()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="quiz-progress">
+        Question {{ store.progress() }} of {{ store.totalQuestions() }}
+      </span>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="getProgressPercent()"
+        class="progress-bar">
+      </mat-progress-bar>
+    </div>
+
+    @if (store.currentQuestion(); as q) {
+      <mat-card class="question-card">
+        <mat-card-header>
+          <div class="question-meta">
+            <mat-chip-set>
+              <mat-chip [class]="getDifficultyClass(q.difficulty)">{{ q.difficulty }}</mat-chip>
+              <mat-chip>{{ q.type === 'multiple-choice' ? 'Multiple Choice' : 'Open' }}</mat-chip>
+              <mat-chip class="subject-chip">{{ q.subjectTitle }}</mat-chip>
+            </mat-chip-set>
+          </div>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="question-text" [innerHTML]="renderMd(q.question)"></div>
+
+          @if (q.type === 'multiple-choice' && q.options) {
+            <div class="options-list">
+              @for (opt of q.options; track opt; let i = $index) {
+                <div class="option-item"
+                  [class.revealed]="store.revealed()"
+                  [class.correct-option]="store.revealed() && q.expectedAnswer.includes(opt)">
+                  <span class="option-letter">{{ 'ABCD'[i] }}</span>
+                  <span class="option-text">{{ opt }}</span>
+                </div>
+              }
+            </div>
+          }
+
+          @if (!store.revealed()) {
+            <button mat-raised-button color="accent" (click)="store.revealAnswer()" class="reveal-btn">
+              <mat-icon>visibility</mat-icon>
+              Reveal Answer
+            </button>
+          }
+
+          @if (store.revealed()) {
+            <mat-divider></mat-divider>
+
+            <div class="answer-section">
+              <h4>Expected Answer</h4>
+              <div class="answer-text" [innerHTML]="renderMd(q.expectedAnswer)"></div>
+
+              <h4>Reference from Material</h4>
+              <blockquote class="reference-quote">{{ q.referenceQuote }}</blockquote>
+
+              @if (q.followUp) {
+                <h4>Follow-up Question</h4>
+                <p class="follow-up">{{ q.followUp }}</p>
+              }
+            </div>
+
+            @if (!store.currentAnswered()) {
+              <div class="self-assessment">
+                <span>How did you do?</span>
+                <button mat-raised-button color="primary" (click)="store.markAnswer(true)">
+                  <mat-icon>check_circle</mat-icon> Got it
+                </button>
+                <button mat-raised-button color="warn" (click)="store.markAnswer(false)">
+                  <mat-icon>cancel</mat-icon> Missed it
+                </button>
+              </div>
+            } @else {
+              <div class="self-assessment answered">
+                @if (store.answers()[store.answers().length - 1]; as lastAnswer) {
+                  @if (lastAnswer.correct) {
+                    <mat-icon class="result-icon correct">check_circle</mat-icon>
+                    <span>Marked as correct</span>
+                  } @else {
+                    <mat-icon class="result-icon incorrect">cancel</mat-icon>
+                    <span>Marked as missed</span>
+                  }
+                }
+              </div>
+            }
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <div class="nav-actions">
+        <button mat-button
+          [disabled]="store.currentIndex() === 0"
+          (click)="store.previousQuestion()">
+          <mat-icon>chevron_left</mat-icon> Previous
+        </button>
+
+        @if (store.currentIndex() < store.totalQuestions() - 1) {
+          <button mat-raised-button color="primary" (click)="store.nextQuestion()">
+            Next <mat-icon>chevron_right</mat-icon>
+          </button>
+        } @else {
+          <button mat-raised-button color="primary" (click)="store.finishQuiz()">
+            <mat-icon>flag</mat-icon> Finish Quiz
+          </button>
+        }
+      </div>
+    }
+  </div>
+}
+
+<!-- ========== COMPLETE STATE ========== -->
+@if (store.status() === 'complete') {
+  <div class="quiz-complete">
+    <h2>Quiz Complete</h2>
+
+    <mat-card class="summary-card">
+      <mat-card-content>
+        <div class="score-display">
+          <div class="score-circle" [class.good]="getScorePercent() >= 70" [class.ok]="getScorePercent() >= 40 && getScorePercent() < 70" [class.bad]="getScorePercent() < 40">
+            <span class="score-value">{{ getScorePercent() }}%</span>
+          </div>
+          <div class="score-details">
+            <div class="score-line correct">
+              <mat-icon>check_circle</mat-icon>
+              {{ store.correctCount() }} correct
+            </div>
+            <div class="score-line incorrect">
+              <mat-icon>cancel</mat-icon>
+              {{ store.incorrectCount() }} missed
+            </div>
+            <div class="score-line total">
+              {{ store.answers().length }} of {{ store.totalQuestions() }} answered
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="complete-actions">
+      <button mat-raised-button (click)="store.retryQuiz()">
+        <mat-icon>replay</mat-icon> Retry (Shuffled)
+      </button>
+      <button mat-raised-button color="primary" (click)="store.resetQuiz()">
+        <mat-icon>quiz</mat-icon> New Quiz
+      </button>
+    </div>
+  </div>
+}

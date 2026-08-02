@@ -73,6 +73,21 @@ CREATE TABLE IF NOT EXISTS subject_topics (
   PRIMARY KEY (subject_id, topic_id)
 );
 
+-- Pre-generated quiz questions
+CREATE TABLE IF NOT EXISTS subject_questions (
+  id TEXT PRIMARY KEY,
+  subject_id TEXT NOT NULL,
+  type TEXT NOT NULL CHECK (type IN ('open', 'multiple-choice')),
+  difficulty TEXT NOT NULL CHECK (difficulty IN ('easy', 'medium', 'hard')),
+  question TEXT NOT NULL,
+  options TEXT,
+  expected_answer TEXT NOT NULL,
+  reference_quote TEXT NOT NULL,
+  follow_up TEXT,
+  generated_at TEXT NOT NULL,
+  model_id TEXT
+);
+
 -- Session persistence
 CREATE TABLE IF NOT EXISTS chat_threads (
   id TEXT PRIMARY KEY,
@@ -111,3 +126,4 @@ CREATE INDEX IF NOT EXISTS idx_problems_primary_topic ON problems(primary_topic)
 CREATE INDEX IF NOT EXISTS idx_pc_company ON problem_companies(company_slug);
 CREATE INDEX IF NOT EXISTS idx_pt_topic ON problem_topics(topic_id);
 CREATE INDEX IF NOT EXISTS idx_msg_thread ON chat_messages(thread_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_sq_subject ON subject_questions(subject_id);
