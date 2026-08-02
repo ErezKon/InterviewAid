@@ -16,6 +16,7 @@ import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { ChatStore } from '../../../state/chat.store';
 import { ModelsStore } from '../../../state/models.store';
 import { MarkdownService } from '../../../core/services/markdown.service';
+import { MermaidDirective } from '../../../core/directives/mermaid.directive';
 import { ChatMode } from '../../../core/models/chat.model';
 
 @Component({
@@ -26,6 +27,7 @@ import { ChatMode } from '../../../core/models/chat.model';
     MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule,
     MatInputModule, MatSelectModule, MatListModule, MatProgressBarModule,
     MatSidenavModule, MatMenuModule, MatTooltipModule, ClipboardModule,
+    MermaidDirective,
   ],
   templateUrl: './chat-page.component.html',
   styleUrl: './chat-page.component.scss',

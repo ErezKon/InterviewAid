@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProblemsStore } from '../../../state/problems.store';
 import { MarkdownService } from '../../../core/services/markdown.service';
+import { MermaidDirective } from '../../../core/directives/mermaid.directive';
 
 @Component({
   selector: 'app-problem-detail',
@@ -17,6 +18,7 @@ import { MarkdownService } from '../../../core/services/markdown.service';
     CommonModule, RouterLink,
     MatCardModule, MatButtonModule, MatIconModule, MatChipsModule,
     MatExpansionModule, MatProgressSpinnerModule,
+    MermaidDirective
   ],
   templateUrl: './problem-detail.component.html',
   styleUrl: './problem-detail.component.scss',

@@ -4,7 +4,10 @@ FROM node:22-slim AS build
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN npm i
+
+RUN npm config set strict-ssl false
+
+RUN npm i --legacy-peer-deps
 
 COPY . .
 RUN npx ng build --configuration=production

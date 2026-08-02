@@ -104,6 +104,12 @@ html, body {
     color: #e0e0e0;
   }
 
+  pre.mermaid {
+    background: transparent;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
   code {
     font-family: 'Fira Code', 'Consolas', monospace;
     font-size: 0.875rem;

@@ -63,7 +63,7 @@
               </button>
             }
           </div>
-          <div class="message-content markdown-body" [innerHTML]="renderMd(msg.content)"></div>
+          <div class="message-content markdown-body" appMermaid [innerHTML]="renderMd(msg.content)"></div>
           @if (msg.streaming) {
             <span class="typing-indicator">...</span>
           }

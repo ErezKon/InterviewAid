@@ -10,7 +10,8 @@
         <mat-card-subtitle>{{ d.wordCount }} words</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <div class="markdown-body" [innerHTML]="renderedBody()"></div>
+        <div class="markdown-body" appMermaid [innerHTML]="renderedBody()"></div>
+        <!-- <markdown [data]="renderedBody()" mermaid></markdown> -->
       </mat-card-content>
     </mat-card>
   } @else {

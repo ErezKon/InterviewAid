@@ -33,14 +33,14 @@
         @if (d.descriptionMd) {
           <section>
             <h3>Description</h3>
-            <div class="markdown-body" [innerHTML]="renderMd(d.descriptionMd)"></div>
+            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.descriptionMd)"></div>
           </section>
         }
 
         @if (d.examplesMd) {
           <section>
             <h3>Examples</h3>
-            <div class="markdown-body" [innerHTML]="renderMd(d.examplesMd)"></div>
+            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.examplesMd)"></div>
           </section>
         }
 
@@ -49,7 +49,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Solution</mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="markdown-body" [innerHTML]="renderMd(d.solutionMd)"></div>
+            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.solutionMd)"></div>
           </mat-expansion-panel>
         }
 
@@ -58,7 +58,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Complexity Analysis</mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="markdown-body" [innerHTML]="renderMd(d.complexityMd)"></div>
+            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.complexityMd)"></div>
           </mat-expansion-panel>
         }
 
@@ -67,14 +67,14 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Follow-ups</mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="markdown-body" [innerHTML]="renderMd(d.followUpsMd)"></div>
+            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.followUpsMd)"></div>
           </mat-expansion-panel>
         }
 
         @if (d.takeawayMd) {
           <section>
             <h3>Key Takeaway</h3>
-            <div class="markdown-body" [innerHTML]="renderMd(d.takeawayMd)"></div>
+            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.takeawayMd)"></div>
           </section>
         }
       </mat-card-content>

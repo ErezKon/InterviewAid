@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SubjectsStore } from '../../../state/subjects.store';
 import { MarkdownService } from '../../../core/services/markdown.service';
+import { MermaidDirective } from '../../../core/directives/mermaid.directive';
 
 @Component({
   selector: 'app-subject-detail',
@@ -14,6 +15,7 @@ import { MarkdownService } from '../../../core/services/markdown.service';
   imports: [
     CommonModule, RouterLink,
     MatCardModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule,
+    MermaidDirective
   ],
   templateUrl: './subject-detail.component.html',
   styleUrl: './subject-detail.component.scss',
