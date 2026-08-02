@@ -6,6 +6,7 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ChatPageComponent } from './chat-page.component';
 import { MarkdownService } from '../../../core/services/markdown.service';
+import { ChatMessage } from '../../../core/models/chat.model';
 
 describe('ChatPageComponent', () => {
   let component: ChatPageComponent;
@@ -113,5 +114,45 @@ describe('ChatPageComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.composer')).toBeTruthy();
+  });
+
+  it('should return null from uiFor for a user message', () => {
+    const userMsg: ChatMessage = {
+      id: 'test-1',
+      threadId: 'thread-1',
+      role: 'user',
+      content: 'Hello',
+      payloadJson: null,
+      createdAt: new Date().toISOString(),
+    };
+    expect(component.uiFor(userMsg)).toBeNull();
+  });
+
+  it('should return the envelope from uiFor for an assistant message with ui', () => {
+    const envelope = { component: 'text' as const, message: 'Hi', inputs: {}, followUpSuggestions: [] };
+    const assistantMsg: ChatMessage = {
+      id: 'test-2',
+      threadId: 'thread-1',
+      role: 'assistant',
+      content: 'Hi',
+      payloadJson: null,
+      createdAt: new Date().toISOString(),
+      ui: envelope,
+    };
+    expect(component.uiFor(assistantMsg)).toEqual(envelope);
+  });
+
+  it('should return empty followUps while streaming', () => {
+    const msg: ChatMessage = {
+      id: 'test-3',
+      threadId: 'thread-1',
+      role: 'assistant',
+      content: '',
+      payloadJson: null,
+      createdAt: new Date().toISOString(),
+      streaming: true,
+      ui: { component: 'text', message: 'Hi', inputs: {}, followUpSuggestions: ['Ask more'] },
+    };
+    expect(component.followUpsFor(msg)).toEqual([]);
   });
 });

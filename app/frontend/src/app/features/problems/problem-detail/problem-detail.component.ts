@@ -9,7 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProblemsStore } from '../../../state/problems.store';
 import { MarkdownService } from '../../../core/services/markdown.service';
-import { MermaidDirective } from '../../../core/directives/mermaid.directive';
+import { ChatMarkdownViewerComponent } from '../../chat/chat-markdown-viewer/chat-markdown-viewer.component';
 
 @Component({
   selector: 'app-problem-detail',
@@ -18,7 +18,7 @@ import { MermaidDirective } from '../../../core/directives/mermaid.directive';
     CommonModule, RouterLink,
     MatCardModule, MatButtonModule, MatIconModule, MatChipsModule,
     MatExpansionModule, MatProgressSpinnerModule,
-    MermaidDirective
+    ChatMarkdownViewerComponent,
   ],
   templateUrl: './problem-detail.component.html',
   styleUrl: './problem-detail.component.scss',

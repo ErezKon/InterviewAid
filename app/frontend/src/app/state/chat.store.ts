@@ -2,22 +2,7 @@ import { inject } from '@angular/core';
 import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
 import { ChatApi, ChatRequest } from '../core/api/chat.api';
 import { ThreadsApi } from '../core/api/threads.api';
-import { ChatThread, ChatMessage, ChatMode } from '../core/models/chat.model';
-
-/** Try to extract a JSON object from fenced or bare JSON in text content. */
-function extractJsonFromContent(text: string): any | null {
-  // Try fenced JSON first (```json ... ``` or ``` ... ```)
-  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (fenceMatch) {
-    try { return JSON.parse(fenceMatch[1].trim()); } catch { /* fall through */ }
-  }
-  // Try bare JSON object
-  const braceStart = text.indexOf('{');
-  if (braceStart >= 0) {
-    try { return JSON.parse(text.slice(braceStart).trim()); } catch { /* fall through */ }
-  }
-  return null;
-}
+import { ChatThread, ChatMessage, ChatMode, ChatUiEnvelope } from '../core/models/chat.model';
 
 interface ChatState {
   threads: ChatThread[];
@@ -57,8 +42,8 @@ export const ChatStore = signalStore(
         threadsApi.get(threadId).subscribe({
           next: (data) => {
             const messages = data.messages.map(m => {
-              if (m.payloadJson && !m.structured) {
-                try { return { ...m, structured: JSON.parse(m.payloadJson) }; } catch { /* skip */ }
+              if (m.role === 'assistant' && m.payloadJson) {
+                try { return { ...m, ui: JSON.parse(m.payloadJson) as ChatUiEnvelope }; } catch { /* skip */ }
               }
               return m;
             });
@@ -146,14 +131,10 @@ export const ChatStore = signalStore(
                 case 'tool':
                   break;
                 case 'result': {
-                  // Handle structured as object or JSON string
-                  let structured = data.structured;
-                  if (typeof structured === 'string') {
-                    try { structured = JSON.parse(structured); } catch { /* keep as string */ }
-                  }
                   msgs[lastIdx] = {
                     ...msgs[lastIdx],
-                    structured,
+                    ui: data.ui as ChatUiEnvelope,
+                    content: data.ui?.message ?? msgs[lastIdx].content,
                     streaming: false,
                   };
                   patchState(store, { messages: msgs, streaming: false });
@@ -164,14 +145,12 @@ export const ChatStore = signalStore(
                   break;
                 case 'done': {
                   const msg = msgs[lastIdx];
-                  // Safety net: extract structured from content if result event didn't set it
-                  if (!msg.structured && msg.content) {
-                    const extracted = extractJsonFromContent(msg.content);
-                    if (extracted && typeof extracted === 'object') {
-                      msgs[lastIdx] = { ...msg, structured: extracted, streaming: false };
-                    } else {
-                      msgs[lastIdx] = { ...msg, streaming: false };
-                    }
+                  if (!msg.ui) {
+                    msgs[lastIdx] = {
+                      ...msg,
+                      ui: { component: 'text', message: msg.content, inputs: {}, followUpSuggestions: [] },
+                      streaming: false,
+                    };
                   } else {
                     msgs[lastIdx] = { ...msg, streaming: false };
                   }

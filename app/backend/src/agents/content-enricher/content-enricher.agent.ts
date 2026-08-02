@@ -1,11 +1,11 @@
-import { createReactAgent } from '@langchain/langgraph/prebuilt';
-import { SystemMessage } from '@langchain/core/messages';
-import { createChatModel } from '../model-factory.js';
+import { createAgent } from 'langchain';
+import { createChatModel, createResponseFormat } from '../model-factory.js';
 import { createScanProblemsTool } from './tools/scan-problems.tool.js';
 import { createReadProblemFileTool } from './tools/read-problem-file.tool.js';
 import { createEnrichProblemFileTool } from './tools/enrich-problem-file.tool.js';
 import { createUpdateProblemMetadataTool } from './tools/update-problem-metadata.tool.js';
 import { createReadAuditReportTool } from './tools/read-audit-report.tool.js';
+import { chatUiResponseSchema } from '../shared/ui-response.schema.js';
 import { CONTENT_ENRICHER_SYSTEM_PROMPT } from './content-enricher.prompt.js';
 import { createLogger } from '../../utils/logger.js';
 
@@ -23,10 +23,11 @@ export async function createContentEnricherAgent(modelId?: string): Promise<{ ag
     createReadAuditReportTool(),
   ];
 
-  const agent = createReactAgent({
-    llm: model,
+  const agent = createAgent({
+    model,
     tools,
-    prompt: new SystemMessage(CONTENT_ENRICHER_SYSTEM_PROMPT),
+    systemPrompt: CONTENT_ENRICHER_SYSTEM_PROMPT,
+    responseFormat: createResponseFormat(def, chatUiResponseSchema),
   });
 
   return { agent, def };

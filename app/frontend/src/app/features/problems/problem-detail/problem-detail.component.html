@@ -33,14 +33,14 @@
         @if (d.descriptionMd) {
           <section>
             <h3>Description</h3>
-            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.descriptionMd)"></div>
+            <app-chat-markdown-viewer [content]="d.descriptionMd" />
           </section>
         }
 
         @if (d.examplesMd) {
           <section>
             <h3>Examples</h3>
-            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.examplesMd)"></div>
+            <app-chat-markdown-viewer [content]="d.examplesMd" />
           </section>
         }
 
@@ -49,7 +49,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Solution</mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.solutionMd)"></div>
+            <app-chat-markdown-viewer [content]="d.solutionMd" />
           </mat-expansion-panel>
         }
 
@@ -58,7 +58,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Complexity Analysis</mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.complexityMd)"></div>
+            <app-chat-markdown-viewer [content]="d.complexityMd" />
           </mat-expansion-panel>
         }
 
@@ -67,14 +67,14 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Follow-ups</mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.followUpsMd)"></div>
+            <app-chat-markdown-viewer [content]="d.followUpsMd" />
           </mat-expansion-panel>
         }
 
         @if (d.takeawayMd) {
           <section>
             <h3>Key Takeaway</h3>
-            <div class="markdown-body" appMermaid [innerHTML]="renderMd(d.takeawayMd)"></div>
+            <app-chat-markdown-viewer [content]="d.takeawayMd" />
           </section>
         }
       </mat-card-content>

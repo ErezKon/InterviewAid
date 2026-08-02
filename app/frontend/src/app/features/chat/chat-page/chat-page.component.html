@@ -55,43 +55,34 @@
           <div class="message-header">
             <span class="message-role">{{ msg.role === 'user' ? 'You' : 'Assistant' }}</span>
             @if (msg.content && !msg.streaming) {
-              <button mat-icon-button
-                class="copy-btn"
-                matTooltip="Copy to clipboard"
-                (click)="copyMessage(msg.content)">
+              <button mat-icon-button class="copy-btn" matTooltip="Copy to clipboard"
+                      (click)="copyMessage(msg.content)">
                 <mat-icon>content_copy</mat-icon>
               </button>
             }
           </div>
-          @if (getDisplayContent(msg)) {
-            <div class="message-content markdown-body" appMermaid [innerHTML]="renderMd(getDisplayContent(msg))"></div>
+
+          @if (msg.role === 'user' || !uiFor(msg)) {
+            @if (msg.content) {
+              <div class="message-content markdown-body" appMermaid [innerHTML]="renderMd(msg.content)"></div>
+            }
+          } @else {
+            @if (uiFor(msg)!.message) {
+              <div class="message-content markdown-body" appMermaid [innerHTML]="renderMd(uiFor(msg)!.message)"></div>
+            }
+            <app-chat-component-host [ui]="uiFor(msg)!" />
           }
-          @if (hasSubjectContent(msg)) {
-            <app-chat-markdown-viewer
-              [content]="getSubjectContent(msg)"
-              [followUpSuggestions]="getFollowUpSuggestions(msg)"
-              [disabled]="chatStore.streaming()"
-              (followUpClicked)="sendFollowUp($event)" />
-          }
-          @if (hasQuizCards(msg)) {
-            <app-chat-quiz-cards
-              [questions]="getQuizQuestions(msg)"
-              [studyTips]="getStudyTips(msg)" />
-          }
-          @if (msg.role === 'assistant' && !msg.streaming && !hasSubjectContent(msg) && getFollowUpSuggestions(msg).length > 0) {
+
+          @if (followUpsFor(msg).length > 0) {
             <div class="follow-up-suggestions">
-              @for (suggestion of getFollowUpSuggestions(msg); track suggestion) {
+              @for (s of followUpsFor(msg); track s) {
                 <button mat-stroked-button class="follow-up-chip"
-                  [disabled]="chatStore.streaming()"
-                  (click)="sendFollowUp(suggestion)">
-                  {{ suggestion }}
-                </button>
+                        [disabled]="chatStore.streaming()" (click)="sendFollowUp(s)">{{ s }}</button>
               }
             </div>
           }
-          @if (msg.streaming) {
-            <span class="typing-indicator">...</span>
-          }
+
+          @if (msg.streaming) { <span class="typing-indicator">...</span> }
         </div>
       }
     </div>

@@ -7,6 +7,23 @@ export interface ChatThread {
   updatedAt: string;
 }
 
+export type ChatComponentName =
+  | 'text'
+  | 'chat-markdown-viewer'
+  | 'chat-quiz-cards'
+  | 'chat-problem-list'
+  | 'chat-hint-card'
+  | 'chat-interview-question'
+  | 'chat-evaluation-scorecard'
+  | 'chat-enrichment-report';
+
+export interface ChatUiEnvelope {
+  component: ChatComponentName;
+  message: string;
+  inputs: Record<string, any>;
+  followUpSuggestions: string[];
+}
+
 export interface ChatMessage {
   id: string;
   threadId: string;
@@ -14,7 +31,7 @@ export interface ChatMessage {
   content: string;
   payloadJson: string | null;
   createdAt: string;
-  structured?: any;
+  ui?: ChatUiEnvelope;
   streaming?: boolean;
 }
 

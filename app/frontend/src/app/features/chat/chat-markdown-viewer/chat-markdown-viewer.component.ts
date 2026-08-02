@@ -1,8 +1,6 @@
-import { Component, inject, input, output, computed } from '@angular/core';
+import { Component, inject, input, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MarkdownService } from '../../../core/services/markdown.service';
 import { MermaidDirective } from '../../../core/directives/mermaid.directive';
 
@@ -11,7 +9,7 @@ import { MermaidDirective } from '../../../core/directives/mermaid.directive';
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule, MatButtonModule, MatIconModule,
+    MatCardModule,
     MermaidDirective,
   ],
   templateUrl: './chat-markdown-viewer.component.html',
@@ -20,9 +18,6 @@ import { MermaidDirective } from '../../../core/directives/mermaid.directive';
 export class ChatMarkdownViewerComponent {
   content = input.required<string>();
   title = input<string>();
-  followUpSuggestions = input<string[]>([]);
-  disabled = input(false);
-  followUpClicked = output<string>();
 
   private md = inject(MarkdownService);
 

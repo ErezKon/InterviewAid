@@ -1,0 +1,46 @@
+@if (interpretedFilters(); as filters) {
+  <div class="filter-chips">
+    @for (c of filters.companies; track c) {
+      <span class="filter-chip company-chip">{{ c }}</span>
+    }
+    @for (d of filters.difficulties; track d) {
+      <span class="filter-chip" [class]="'difficulty-' + d.toLowerCase()">{{ d }}</span>
+    }
+    @for (t of filters.topics; track t) {
+      <span class="filter-chip topic-chip">{{ t }}</span>
+    }
+    @if (filters.seniority) {
+      <span class="filter-chip seniority-chip">{{ filters.seniority }}</span>
+    }
+  </div>
+}
+
+@if (problems().length === 0) {
+  <p class="empty-state">No matching problems.</p>
+} @else {
+  <div class="problem-list">
+    @for (p of problems(); track p.slug) {
+      <mat-card class="problem-card">
+        <mat-card-header>
+          <mat-card-title>
+            <a [routerLink]="'/problems/' + p.slug" class="problem-link">{{ p.title }}</a>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chips-row">
+            <span class="difficulty-chip" [class]="'difficulty-' + p.difficulty.toLowerCase()">{{ p.difficulty }}</span>
+            @for (t of p.topics; track t) {
+              <span class="topic-chip">{{ t }}</span>
+            }
+            @for (c of p.companies; track c) {
+              <span class="company-chip">{{ c }}</span>
+            }
+          </div>
+          @if (p.why) {
+            <p class="why-text">{{ p.why }}</p>
+          }
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+}

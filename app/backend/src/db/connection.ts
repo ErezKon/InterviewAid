@@ -46,7 +46,30 @@ export function initSchema(): void {
       }
     }
   }
+
+  migrateChatHistory();
   log.info('Schema initialized');
+}
+
+const CHAT_SCHEMA_VERSION = '2';
+
+/** One-shot: pre-v2 chat rows use the legacy structured payload and cannot be rendered. */
+function migrateChatHistory(): void {
+  const database = getDb();
+  const row = database.prepare("SELECT value FROM app_meta WHERE key = 'chat_schema_version'").get() as
+    | { value: string } | undefined;
+  if (row?.value === CHAT_SCHEMA_VERSION) return;
+
+  const tx = database.transaction(() => {
+    database.exec('DELETE FROM chat_messages');
+    database.exec('DELETE FROM interview_sessions');
+    database.exec('DELETE FROM chat_threads');
+    database
+      .prepare("INSERT OR REPLACE INTO app_meta (key, value) VALUES ('chat_schema_version', ?)")
+      .run(CHAT_SCHEMA_VERSION);
+  });
+  tx();
+  log.warn('Chat history wiped — migrated to GenUI envelope schema v2');
 }
 
 export function closeDb(): void {

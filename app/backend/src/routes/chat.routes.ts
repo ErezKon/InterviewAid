@@ -5,6 +5,7 @@ import { createMockInterviewAgent } from '../agents/mock-interview/mock-intervie
 import { createSubjectQuizAgent } from '../agents/subject-quiz/subject-quiz.agent.js';
 import { createContentEnricherAgent } from '../agents/content-enricher/content-enricher.agent.js';
 import { extractJson } from '../agents/model-factory.js';
+import { chatUiResponseSchema, type ChatUiResponse } from '../agents/shared/ui-response.schema.js';
 import {
   createThread, appendMessage, getRecentMessages,
   upsertInterviewSession, getInterviewSession,
@@ -20,6 +21,49 @@ import { env } from '../config/env.js';
 import { DATA_DIR } from '../config/paths.js';
 
 const log = createLogger('chat');
+
+/** Dig the structured response out of a LangGraph stream chunk / final state. */
+function findStructuredResponse(state: any): any | null {
+  if (!state) return null;
+  if (state.structuredResponse) return state.structuredResponse;
+  for (const key of Object.keys(state)) {
+    const node = state[key];
+    if (node && typeof node === 'object' && node.structuredResponse) return node.structuredResponse;
+  }
+  return null;
+}
+
+/** Always produce a valid envelope, whatever the model did. */
+function toEnvelope(raw: any, fallbackText: string): ChatUiResponse {
+  const parsed = chatUiResponseSchema.safeParse(raw);
+  if (parsed.success) return parsed.data;
+
+  // Model returned prose or malformed JSON — try fenced JSON, then degrade to text.
+  const viaJson = typeof fallbackText === 'string' ? extractJson(fallbackText) : null;
+  const parsed2 = chatUiResponseSchema.safeParse(viaJson);
+  if (parsed2.success) return parsed2.data;
+
+  log.warn('Falling back to text envelope; structured output did not validate');
+  return {
+    component: 'text',
+    message: fallbackText || 'Sorry, I could not produce a response.',
+    inputs: {},
+    followUpSuggestions: [],
+  };
+}
+
+/** Drop hallucinated problem slugs. */
+function validateProblemSlugs(envelope: ChatUiResponse): ChatUiResponse {
+  if (!envelope.inputs?.problems?.length) return envelope;
+  const db = getDb();
+  const stmt = db.prepare('SELECT 1 FROM problems WHERE slug = ?');
+  const kept = envelope.inputs.problems.filter((p: any) => {
+    const exists = stmt.get(p.slug);
+    if (!exists) log.warn(`Dropped unknown slug: ${p.slug}`);
+    return !!exists;
+  });
+  return { ...envelope, inputs: { ...envelope.inputs, problems: kept } };
+}
 
 export const chatRouter = Router();
 
@@ -110,80 +154,66 @@ chatRouter.post('/chat', async (req, res) => {
         );
 
         let lastContent = '';
+        let lastStructured: any = null;
         let stepCount = 0;
 
         for await (const chunk of stream) {
           if (closed) break;
           stepCount++;
-          const nodeNames = Object.keys(chunk);
-          sendSseEvent(res, 'step', { index: stepCount, nodes: nodeNames });
+          sendSseEvent(res, 'step', { index: stepCount, nodes: Object.keys(chunk) });
 
-          // Extract content from the agent node
-          for (const nodeName of nodeNames) {
+          const structured = findStructuredResponse(chunk);
+          if (structured) lastStructured = structured;
+
+          for (const nodeName of Object.keys(chunk)) {
             const nodeData = chunk[nodeName];
-            if (nodeData?.messages) {
-              for (const msg of nodeData.messages) {
-                if (msg._getType() === 'ai') {
-                  const content = typeof msg.content === 'string' ? msg.content : JSON.stringify(msg.content);
-                  if (content && content !== lastContent) {
-                    sendSseEvent(res, 'token', { delta: content });
-                    lastContent = content;
-                  }
-                  // Report tool calls
-                  if (msg.tool_calls?.length) {
-                    for (const tc of msg.tool_calls) {
-                      sendSseEvent(res, 'tool', { name: tc.name, phase: 'start', summary: JSON.stringify(tc.args).slice(0, 200) });
-                    }
+            if (!nodeData?.messages) continue;
+            for (const msg of nodeData.messages) {
+              if (msg._getType?.() === 'ai') {
+                const content = typeof msg.content === 'string' ? msg.content : JSON.stringify(msg.content);
+                if (content && content !== lastContent) {
+                  sendSseEvent(res, 'token', { delta: content });
+                  lastContent = content;
+                }
+                if (msg.tool_calls?.length) {
+                  for (const tc of msg.tool_calls) {
+                    sendSseEvent(res, 'tool', { name: tc.name, phase: 'start', summary: JSON.stringify(tc.args).slice(0, 200) });
                   }
                 }
-                if (msg._getType() === 'tool') {
-                  sendSseEvent(res, 'tool', {
-                    name: (msg as any).name ?? 'tool',
-                    phase: 'end',
-                    summary: (typeof msg.content === 'string' ? msg.content : '').slice(0, 200),
-                  });
-                }
+              }
+              if (msg._getType?.() === 'tool') {
+                sendSseEvent(res, 'tool', {
+                  name: (msg as any).name ?? 'tool',
+                  phase: 'end',
+                  summary: (typeof msg.content === 'string' ? msg.content : '').slice(0, 200),
+                });
               }
             }
           }
         }
 
-        // Persist assistant response
-        if (lastContent) {
-          const structured = extractJson(lastContent);
-          appendMessage(threadId, 'assistant', lastContent, structured ? JSON.stringify(structured) : undefined);
+        const envelope = validateProblemSlugs(toEnvelope(lastStructured, lastContent));
 
-          // Validate returned slugs against DB
-          if (structured?.problems) {
-            const db = getDb();
-            structured.problems = structured.problems.filter((p: any) => {
-              const exists = db.prepare('SELECT 1 FROM problems WHERE slug = ?').get(p.slug);
-              if (!exists) log.warn(`Dropped unknown slug: ${p.slug}`);
-              return !!exists;
-            });
-          }
+        appendMessage(threadId, 'assistant', envelope.message, JSON.stringify(envelope));
+        sendSseEvent(res, 'result', { threadId, ui: envelope });
 
-          sendSseEvent(res, 'result', { threadId, structured: structured ?? lastContent });
-
-          // Handle interview session persistence
-          if (agentName === 'mock-interview' && structured?.stage) {
-            const existingSession = getInterviewSession(threadId);
-            upsertInterviewSession({
-              id: existingSession?.id ?? crypto.randomUUID(),
-              threadId,
-              targetCompany: structured.interpretedFilters?.companies?.[0],
-              targetRole: structured.interpretedFilters?.seniority,
-              planJson: JSON.stringify(structured.problems ?? []),
-              currentStep: structured.sessionProgress?.step ?? 0,
-              stage: structured.stage,
-              status: structured.nextAction === 'end_interview' ? 'completed' : 'active',
-            });
-          }
+        // Mock-interview session persistence now reads the envelope
+        if (agentName === 'mock-interview' && envelope.inputs?.stage) {
+          const existingSession = getInterviewSession(threadId);
+          upsertInterviewSession({
+            id: existingSession?.id ?? crypto.randomUUID(),
+            threadId,
+            targetCompany: envelope.inputs.interpretedFilters?.companies?.[0],
+            targetRole: envelope.inputs.interpretedFilters?.seniority ?? undefined,
+            planJson: JSON.stringify(envelope.inputs.problems ?? []),
+            currentStep: envelope.inputs.sessionProgress?.step ?? 0,
+            stage: envelope.inputs.stage,
+            status: envelope.inputs.nextAction === 'end_interview' ? 'completed' : 'active',
+          });
         }
 
-        // Debug dump
         if (env.DEBUG_RUNS) {
-          saveDebugDump(agentName, { message: body.message, modelId: def.id }, lastContent);
+          saveDebugDump(agentName, { message: body.message, modelId: def.id }, JSON.stringify(envelope, null, 2));
         }
 
         clearInterval(heartbeat);
@@ -201,43 +231,32 @@ chatRouter.post('/chat', async (req, res) => {
           { configurable: { thread_id: threadId }, recursionLimit },
         );
 
-        let lastState: any = null;
+        let lastContent = '';
+        let lastStructured: any = null;
         let stepCount = 0;
         for await (const chunk of stream) {
           stepCount++;
-          lastState = chunk;
-        }
-        log.info(`Agent completed in ${stepCount} steps`);
+          const structured = findStructuredResponse(chunk);
+          if (structured) lastStructured = structured;
 
-        // Extract final content
-        let finalContent = '';
-        if (lastState) {
-          for (const nodeName of Object.keys(lastState)) {
-            const nodeData = lastState[nodeName];
+          for (const nodeName of Object.keys(chunk)) {
+            const nodeData = chunk[nodeName];
             if (nodeData?.messages) {
               for (const msg of nodeData.messages) {
-                if (msg._getType() === 'ai' && typeof msg.content === 'string') {
-                  finalContent = msg.content;
+                if (msg._getType?.() === 'ai' && typeof msg.content === 'string') {
+                  lastContent = msg.content;
                 }
               }
             }
           }
         }
+        log.info(`Agent completed in ${stepCount} steps`);
 
-        const structured = extractJson(finalContent);
-        appendMessage(threadId, 'assistant', finalContent, structured ? JSON.stringify(structured) : undefined);
-
-        // Validate slugs
-        if (structured?.problems) {
-          const db = getDb();
-          structured.problems = structured.problems.filter((p: any) => {
-            const exists = db.prepare('SELECT 1 FROM problems WHERE slug = ?').get(p.slug);
-            return !!exists;
-          });
-        }
+        const envelope = validateProblemSlugs(toEnvelope(lastStructured, lastContent));
+        appendMessage(threadId, 'assistant', envelope.message, JSON.stringify(envelope));
 
         if (env.DEBUG_RUNS) {
-          saveDebugDump(agentName, { message: body.message, modelId: def.id }, finalContent);
+          saveDebugDump(agentName, { message: body.message, modelId: def.id }, JSON.stringify(envelope, null, 2));
         }
 
         res.json({
@@ -245,8 +264,7 @@ chatRouter.post('/chat', async (req, res) => {
             threadId,
             modelId: def.id,
             agent: agentName,
-            content: finalContent,
-            structured,
+            ui: envelope,
           },
         });
       } catch (err: any) {

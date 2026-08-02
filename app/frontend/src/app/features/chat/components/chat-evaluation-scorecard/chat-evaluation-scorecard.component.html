@@ -1,0 +1,30 @@
+@if (evaluation(); as e) {
+  <mat-card class="scorecard">
+    <mat-card-header>
+      <mat-card-title>Evaluation Scorecard</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="scores">
+        @for (axis of axes(); track axis.label) {
+          <div class="score-row">
+            <span class="score-label">{{ axis.label }}</span>
+            <mat-progress-bar mode="determinate" [value]="axis.score * 20"></mat-progress-bar>
+            <span class="score-value">{{ axis.score }}/5</span>
+          </div>
+        }
+      </div>
+
+      <div class="average-badge">
+        <span class="average-label">Average</span>
+        <span class="average-value">{{ average() | number:'1.1-1' }}</span>
+        <span class="average-max">/ 5</span>
+      </div>
+
+      @if (e.notes) {
+        <div class="notes">
+          <p>{{ e.notes }}</p>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+}

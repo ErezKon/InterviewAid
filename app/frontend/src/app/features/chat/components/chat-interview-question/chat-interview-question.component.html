@@ -1,0 +1,33 @@
+<mat-card class="interview-card">
+  <mat-card-header>
+    <div class="header-row">
+      @if (stage()) {
+        <span class="stage-chip">{{ stage() }}</span>
+      }
+      @if (sessionProgress(); as p) {
+        <span class="progress-label">{{ p.step }} / {{ p.total }}</span>
+      }
+    </div>
+  </mat-card-header>
+
+  @if (sessionProgress()) {
+    <mat-progress-bar mode="determinate" [value]="progressPercent"></mat-progress-bar>
+  }
+
+  <mat-card-content>
+    @if (questionText()) {
+      <div class="question-text" [innerHTML]="renderMd(questionText()!)"></div>
+    }
+
+    @if (hintsGiven() != null && hintsGiven()! > 0) {
+      <div class="hints-counter">
+        <mat-icon>lightbulb</mat-icon>
+        <span>{{ hintsGiven() }} hint{{ hintsGiven()! > 1 ? 's' : '' }} given</span>
+      </div>
+    }
+
+    @if (nextActionLabel) {
+      <div class="next-action">{{ nextActionLabel }}</div>
+    }
+  </mat-card-content>
+</mat-card>

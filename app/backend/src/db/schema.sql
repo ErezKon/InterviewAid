@@ -120,6 +120,12 @@ CREATE TABLE IF NOT EXISTS interview_sessions (
   updated_at TEXT
 );
 
+-- App metadata (schema version tracking, etc.)
+CREATE TABLE IF NOT EXISTS app_meta (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_problems_difficulty ON problems(difficulty);
 CREATE INDEX IF NOT EXISTS idx_problems_primary_topic ON problems(primary_topic);

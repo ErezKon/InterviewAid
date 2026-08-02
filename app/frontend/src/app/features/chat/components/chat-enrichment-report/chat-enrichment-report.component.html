@@ -1,0 +1,37 @@
+@if (enrichment(); as e) {
+  <mat-card class="enrichment-card">
+    <mat-card-header>
+      <mat-card-title>Enrichment Report</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="stats-row">
+        <div class="stat-tile">
+          <span class="stat-value">{{ e.filesScanned }}</span>
+          <span class="stat-label">Scanned</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-value">{{ e.filesEnriched }}</span>
+          <span class="stat-label">Enriched</span>
+        </div>
+      </div>
+
+      @if (e.auditSummary) {
+        <div class="audit-summary" [innerHTML]="renderMd(e.auditSummary)"></div>
+      }
+
+      @if (e.items.length > 0) {
+        <div class="items-list">
+          @for (item of e.items; track item.file) {
+            <div class="item-row" [class]="statusClass(item.status)">
+              <mat-icon [class]="statusClass(item.status)">{{ statusIcon(item.status) }}</mat-icon>
+              <span class="item-file">{{ item.file }}</span>
+              @if (item.notes) {
+                <span class="item-notes">{{ item.notes }}</span>
+              }
+            </div>
+          }
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+}

@@ -38,6 +38,7 @@ interface CardState {
 export class ChatQuizCardsComponent {
   questions = input.required<ChatQuizQuestion[]>();
   studyTips = input<string[]>([]);
+  subject = input<{ id: string; title: string; sourceFile: string }>();
 
   cardStates = signal<Map<string, CardState>>(new Map());
 

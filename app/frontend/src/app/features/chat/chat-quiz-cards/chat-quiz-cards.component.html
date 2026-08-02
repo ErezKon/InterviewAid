@@ -1,4 +1,7 @@
 <div class="quiz-cards">
+  @if (subject(); as s) {
+    <div class="quiz-subject-caption">{{ s.title }}</div>
+  }
   @for (q of questions(); track q.id; let i = $index) {
     <mat-card class="quiz-card">
       <mat-card-header>

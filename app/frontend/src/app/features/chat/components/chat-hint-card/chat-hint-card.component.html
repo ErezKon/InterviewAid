@@ -1,0 +1,22 @@
+@if (problemTitle()) {
+  <h4 class="hint-title">Hints for {{ problemTitle() }}</h4>
+}
+
+<div class="hints-list">
+  @for (hint of hints(); track hint.level) {
+    <mat-card class="hint-card">
+      @if (!isRevealed(hint.level)) {
+        <mat-card-content class="hint-hidden">
+          <button mat-stroked-button (click)="reveal(hint.level)">
+            <mat-icon>visibility</mat-icon> Reveal Hint {{ hint.level }}
+          </button>
+        </mat-card-content>
+      } @else {
+        <mat-card-content>
+          <span class="hint-level">Hint {{ hint.level }}</span>
+          <div class="hint-text" [innerHTML]="renderMd(hint.text)"></div>
+        </mat-card-content>
+      }
+    </mat-card>
+  }
+</div>

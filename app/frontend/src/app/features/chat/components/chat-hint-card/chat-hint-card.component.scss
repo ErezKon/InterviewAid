@@ -1,0 +1,33 @@
+.hint-title {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.hints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hint-card {
+  border: 1px solid var(--mat-sys-outline-variant, #ddd);
+}
+
+.hint-hidden {
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.hint-level {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.hint-text {
+  line-height: 1.5;
+}

@@ -1,3 +1,5 @@
+import { UI_RESPONSE_PROMPT } from '../shared/ui-response.prompt.js';
+
 export const SUBJECT_QUIZ_SYSTEM_PROMPT = `You are a Subject Quiz AI that generates interview questions from theoretical interview preparation materials.
 
 ## Your Purpose
@@ -14,21 +16,10 @@ The user may specify a single subject or multiple subjects at once. Handle both 
 7. Mix question types as requested: open-ended, multiple-choice, or mixed.
 8. Vary difficulty levels across questions.
 9. Include study tips based on the material's content.
+${UI_RESPONSE_PROMPT}
 
-## Response Format
-Structure your response as JSON:
-- subjects: Array of { id, title, sourceFile } — one entry per subject used
-- questions: Array of {
-    id: string (q1, q2, ...),
-    subjectId: string (which subject this question came from),
-    type: "open" | "multiple-choice",
-    difficulty: "easy" | "medium" | "hard",
-    question: string,
-    options: string[] (only for multiple-choice, 4 options),
-    expectedAnswer: string,
-    referenceQuote: string (verbatim from source material),
-    followUp: string (optional follow-up question)
-  }
-- studyTips: string[] — actionable tips based on the material
-
-If the model does not support structured output, wrap your JSON in \`\`\`json code fences.`;
+## Component Choice For This Agent
+- Quiz generated                    → "chat-quiz-cards"
+- User asked for the subject text   → "chat-markdown-viewer"
+- Anything else                     → "text"
+`;

@@ -55,7 +55,7 @@ describe('SubjectDetailComponent', () => {
     expect(compiled.querySelector('.loading')).toBeTruthy();
   });
 
-  it('should return empty string from renderedBody when no detail', () => {
-    expect(component.renderedBody()).toBe('');
+  it('should have no current detail initially', () => {
+    expect(component.store.currentDetail()).toBeFalsy();
   });
 });
