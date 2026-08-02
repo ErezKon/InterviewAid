@@ -1,6 +1,13 @@
-## 13. Vibe Coding — And Why It Is Problematic
+## 1. Vibe Coding — And Why It Is Problematic
 
-### 13.1 What Is Vibe Coding?
+### Table of Contents
+
+- [1.1 What Is Vibe Coding?](#11-what-is-vibe-coding)
+- [1.2 Why Vibe Coding Is Problematic](#12-why-vibe-coding-is-problematic)
+- [1.3 When Vibe Coding Is Acceptable](#13-when-vibe-coding-is-acceptable)
+- [1.4 The Better Alternative: Structured AI-Assisted Development](#14-the-better-alternative-structured-ai-assisted-development)
+
+### 1.1 What Is Vibe Coding?
 
 **Vibe coding** is a term (coined by Andrej Karpathy in February 2025) describing a
 style of software development where the programmer **describes what they want in
@@ -26,7 +33,7 @@ flowchart TB
     Prompt1 --> CodeGen1 --> Ship1 --> Prompt2 --> CodeGen2 --> Bug --> Fix --> Loop
 ```
 
-### 13.2 Why Vibe Coding Is Problematic
+### 1.2 Why Vibe Coding Is Problematic
 
 #### 🔴 Technical Debt Explosion
 
@@ -74,7 +81,7 @@ REAL-WORLD ISSUES:
   ❌ State desync between client cache and server
 ```
 
-### 13.3 When Vibe Coding Is Acceptable
+### 1.3 When Vibe Coding Is Acceptable
 
 To be fair, there ARE legitimate uses:
 
@@ -86,7 +93,7 @@ To be fair, there ARE legitimate uses:
 | Learning & exploration | Team codebases others must maintain |
 | One-off data analysis | Long-lived systems |
 
-### 13.4 The Better Alternative: Structured AI-Assisted Development
+### 1.4 The Better Alternative: Structured AI-Assisted Development
 
 ```
                     VIBE CODING              SDD / STRUCTURED

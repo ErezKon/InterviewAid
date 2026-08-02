@@ -1,11 +1,11 @@
-## 16. Multimodal AI Engineering
+## 1. Multimodal AI Engineering
 
 ### Table of Contents
 
-- [16.1 Vision + Language](#161-vision-language)
+- [1.1 Vision + Language](#11-vision-language)
 
 
-### 16.1 Vision + Language
+### 1.1 Vision + Language
 
 ```python
 from openai import OpenAI

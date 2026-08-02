@@ -1,12 +1,19 @@
-## 7. Agent Memory
+## 1. Agent Memory
 
-### 7.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 Types of Memory](#12-types-of-memory)
+- [1.3 Detailed Breakdown](#13-detailed-breakdown)
+- [1.4 Implementation Patterns](#14-implementation-patterns)
+
+### 1.1 Definition
 
 **Agent memory** is the mechanism by which AI agents store, retrieve, and use
 information across interactions. Without memory, every interaction starts from
 scratch.
 
-### 7.2 Types of Memory
+### 1.2 Types of Memory
 ```mermaid
 flowchart TB
     subgraph AgentMemory["Agent Memory"]
@@ -21,7 +28,7 @@ flowchart TB
     Semantic --> Procedural
 ```
 
-### 7.3 Detailed Breakdown
+### 1.3 Detailed Breakdown
 
 #### Short-Term Memory (Working Memory)
 - **What:** The current context window contents
@@ -59,7 +66,7 @@ Session 47: Agent retrieves preference automatically when generating code
 - **Example:** "When creating a new API endpoint, always: create route → 
   controller → service → test → update OpenAPI spec"
 
-### 7.4 Implementation Patterns
+### 1.4 Implementation Patterns
 
 ```python
 # Conceptual example: Memory-augmented agent

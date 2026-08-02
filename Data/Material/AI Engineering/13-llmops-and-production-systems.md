@@ -1,13 +1,13 @@
-## 13. LLMOps & Production Systems
+## 1. LLMOps & Production Systems
 
 ### Table of Contents
 
-- [13.1 Production Architecture](#131-production-architecture)
-- [13.2 Model Router & Fallback](#132-model-router-and-fallback)
-- [13.3 Streaming Responses](#133-streaming-responses)
+- [1.1 Production Architecture](#11-production-architecture)
+- [1.2 Model Router & Fallback](#12-model-router-and-fallback)
+- [1.3 Streaming Responses](#13-streaming-responses)
 
 
-### 13.1 Production Architecture
+### 1.1 Production Architecture
 
 ```mermaid
 graph TB
@@ -78,7 +78,7 @@ graph TB
     style GUARD_OUT fill:#c33,stroke:#fff,color:#fff
 ```
 
-### 13.2 Model Router & Fallback
+### 1.2 Model Router & Fallback
 
 ```python
 from dataclasses import dataclass
@@ -231,7 +231,7 @@ class ModelRouter:
         raise ValueError(f"Unknown provider: {config.provider}")
 ```
 
-### 13.3 Streaming Responses
+### 1.3 Streaming Responses
 
 ```python
 from fastapi import FastAPI, Request

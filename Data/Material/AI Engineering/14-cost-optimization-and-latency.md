@@ -1,13 +1,13 @@
-## 14. Cost Optimization & Latency
+## 1. Cost Optimization & Latency
 
 ### Table of Contents
 
-- [14.1 Optimization Strategies](#141-optimization-strategies)
-- [14.2 Semantic Cache](#142-semantic-cache)
-- [14.3 Cost Tracking](#143-cost-tracking)
+- [1.1 Optimization Strategies](#11-optimization-strategies)
+- [1.2 Semantic Cache](#12-semantic-cache)
+- [1.3 Cost Tracking](#13-cost-tracking)
 
 
-### 14.1 Optimization Strategies
+### 1.1 Optimization Strategies
 
 ```mermaid
 graph TB
@@ -38,7 +38,7 @@ graph TB
     style OPT fill:#e63,stroke:#fff,color:#fff
 ```
 
-### 14.2 Semantic Cache
+### 1.2 Semantic Cache
 
 ```python
 import hashlib
@@ -161,7 +161,7 @@ def cached_llm_call(messages: list[dict], model: str = "gpt-4o") -> str:
     return result
 ```
 
-### 14.3 Cost Tracking
+### 1.3 Cost Tracking
 
 ```python
 from dataclasses import dataclass, field

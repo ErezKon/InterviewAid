@@ -1,13 +1,13 @@
-## 10. Orchestration Frameworks
+## 1. Orchestration Frameworks
 
 ### Table of Contents
 
-- [10.1 Framework Comparison](#101-framework-comparison)
-- [10.2 LangGraph Example — Stateful Agent](#102-langgraph-example-stateful-agent)
-- [10.3 DSPy — Programmatic Prompt Optimization](#103-dspy-programmatic-prompt-optimization)
+- [1.1 Framework Comparison](#11-framework-comparison)
+- [1.2 LangGraph Example — Stateful Agent](#12-langgraph-example-stateful-agent)
+- [1.3 DSPy — Programmatic Prompt Optimization](#13-dspy-programmatic-prompt-optimization)
 
 
-### 10.1 Framework Comparison
+### 1.1 Framework Comparison
 
 | Framework | Philosophy | Best For | Language |
 |---|---|---|---|
@@ -20,7 +20,7 @@
 | **CrewAI** | Multi-agent collaboration | Multi-agent systems | Python |
 | **Mastra** | TypeScript AI framework | TS-native agent building | TypeScript |
 
-### 10.2 LangGraph Example — Stateful Agent
+### 1.2 LangGraph Example — Stateful Agent
 
 ```python
 from langgraph.graph import StateGraph, END
@@ -137,7 +137,7 @@ result = app.invoke({
 })
 ```
 
-### 10.3 DSPy — Programmatic Prompt Optimization
+### 1.3 DSPy — Programmatic Prompt Optimization
 
 ```python
 import dspy

@@ -1,6 +1,14 @@
-## 5. AI Harness
+## 1. AI Harness
 
-### 5.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 What an AI Harness Does](#12-what-an-ai-harness-does)
+- [1.3 Key Responsibilities](#13-key-responsibilities)
+- [1.4 Examples in Practice](#14-examples-in-practice)
+- [1.5 Why It Matters for Principal Engineers](#15-why-it-matters-for-principal-engineers)
+
+### 1.1 Definition
 
 An **AI harness** (also called an **AI coding harness** or **agent harness**) is an
 infrastructure layer or framework that **wraps, controls, and mediates** the
@@ -9,7 +17,7 @@ guardrails, context management, and workflow orchestration.
 
 Think of it as the **control plane** for AI-assisted development.
 
-### 5.2 What an AI Harness Does
+### 1.2 What an AI Harness Does
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -29,7 +37,7 @@ Think of it as the **control plane** for AI-assisted development.
 └─────────────────────────────────────────────────────────┘
 ```
 
-### 5.3 Key Responsibilities
+### 1.3 Key Responsibilities
 
 | Responsibility | Description |
 |---|---|
@@ -41,7 +49,7 @@ Think of it as the **control plane** for AI-assisted development.
 | **Guardrails** | Prevents destructive operations (e.g., `rm -rf /`) |
 | **Audit trail** | Logs all agent actions for review |
 
-### 5.4 Examples in Practice
+### 1.4 Examples in Practice
 
 - **Windsurf's Cascade** — Acts as a harness for its AI coding agent
 - **Cursor's Composer** — Orchestrates multi-file edits with context management
@@ -49,7 +57,7 @@ Think of it as the **control plane** for AI-assisted development.
 - **Custom harnesses** — Teams build internal harnesses using LangChain/LangGraph +
   custom tooling
 
-### 5.5 Why It Matters for Principal Engineers
+### 1.5 Why It Matters for Principal Engineers
 
 As a Principal Engineer, you may be expected to **design or evaluate** AI harnesses.
 Key considerations:

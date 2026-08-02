@@ -1,19 +1,19 @@
-## 6. Retrieval-Augmented Generation (RAG)
+## 1. Retrieval-Augmented Generation (RAG)
 
 ### Table of Contents
 
-- [6.1 Architecture Overview](#61-architecture-overview)
-- [6.2 Chunking Strategies](#62-chunking-strategies)
+- [1.1 Architecture Overview](#11-architecture-overview)
+- [1.2 Chunking Strategies](#12-chunking-strategies)
 - [Chunking Strategy Decision Matrix](#chunking-strategy-decision-matrix)
-- [6.3 Full RAG Pipeline](#63-full-rag-pipeline)
-- [6.4 Advanced RAG Patterns](#64-advanced-rag-patterns)
+- [1.3 Full RAG Pipeline](#13-full-rag-pipeline)
+- [1.4 Advanced RAG Patterns](#14-advanced-rag-patterns)
   - [Hybrid Search (Vector + Keyword)](#hybrid-search-vector-keyword)
   - [Self-Reflective RAG (CRAG Pattern)](#self-reflective-rag-crag-pattern)
 
 
 RAG is the most common pattern in AI Engineering. It grounds LLM responses in your proprietary data without retraining the model.
 
-### 6.1 Architecture Overview
+### 1.1 Architecture Overview
 
 ```mermaid
 graph TB
@@ -43,7 +43,7 @@ graph TB
     style RERANK fill:#d4a,stroke:#fff,color:#fff
 ```
 
-### 6.2 Chunking Strategies
+### 1.2 Chunking Strategies
 
 ```python
 from dataclasses import dataclass
@@ -168,7 +168,7 @@ def semantic_chunking(
 | **Document-based** | Structured docs (MD, HTML) | Variable | Preserves hierarchy | Requires format-specific parsing |
 | **Agentic (LLM-based)** | High-value corpora | Variable | Best quality | Very expensive |
 
-### 6.3 Full RAG Pipeline
+### 1.3 Full RAG Pipeline
 
 ```python
 from dataclasses import dataclass
@@ -348,7 +348,7 @@ Rules:
         return result
 ```
 
-### 6.4 Advanced RAG Patterns
+### 1.4 Advanced RAG Patterns
 
 ```mermaid
 graph TB

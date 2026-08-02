@@ -1,14 +1,14 @@
-## 11. Evaluation & Observability
+## 1. Evaluation & Observability
 
 ### Table of Contents
 
-- [11.1 The Evaluation Problem](#111-the-evaluation-problem)
-- [11.2 Evaluation Framework](#112-evaluation-framework)
-- [11.3 RAG-Specific Evaluation Metrics](#113-rag-specific-evaluation-metrics)
-- [11.4 Observability Stack](#114-observability-stack)
+- [1.1 The Evaluation Problem](#11-the-evaluation-problem)
+- [1.2 Evaluation Framework](#12-evaluation-framework)
+- [1.3 RAG-Specific Evaluation Metrics](#13-rag-specific-evaluation-metrics)
+- [1.4 Observability Stack](#14-observability-stack)
 
 
-### 11.1 The Evaluation Problem
+### 1.1 The Evaluation Problem
 
 ```mermaid
 graph LR
@@ -32,7 +32,7 @@ graph LR
     style HUMAN fill:#2a9,stroke:#fff,color:#fff
 ```
 
-### 11.2 Evaluation Framework
+### 1.2 Evaluation Framework
 
 ```python
 from dataclasses import dataclass
@@ -206,7 +206,7 @@ Respond in JSON: {{"score": <float>, "reasoning": "<explanation>",
         }
 ```
 
-### 11.3 RAG-Specific Evaluation Metrics
+### 1.3 RAG-Specific Evaluation Metrics
 
 ```mermaid
 graph TB
@@ -236,7 +236,7 @@ graph TB
     style REL fill:#e63,stroke:#fff,color:#fff
 ```
 
-### 11.4 Observability Stack
+### 1.4 Observability Stack
 
 ```python
 # Using Langfuse for production observability (open-source alternative to LangSmith)

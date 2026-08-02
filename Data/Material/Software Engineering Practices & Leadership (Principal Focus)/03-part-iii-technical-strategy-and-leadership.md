@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [3.1 Architectural Decision Records (ADRs)](#31-architectural-decision-records-adrs)
+- [1.1 Architectural Decision Records (ADRs)](#11-architectural-decision-records-adrs)
   - [ADR Lifecycle](#adr-lifecycle)
   - [ADR Template (Michael Nygard Format)](#adr-template-michael-nygard-format)
 - [Status](#status)
@@ -15,26 +15,26 @@
 - [Alternatives Considered](#alternatives-considered)
 - [Related](#related)
   - [ADR Best Practices](#adr-best-practices)
-- [3.2 Managing & Reducing Technical Debt](#32-managing-and-reducing-technical-debt)
+- [1.2 Managing & Reducing Technical Debt](#12-managing-and-reducing-technical-debt)
   - [What Is Technical Debt?](#what-is-technical-debt)
   - [Technical Debt Quadrant (Martin Fowler)](#technical-debt-quadrant-martin-fowler)
   - [Technical Debt Management Framework](#technical-debt-management-framework)
   - [Practical Debt-Reduction Tactics](#practical-debt-reduction-tactics)
   - [Communicating Debt to Non-Technical Stakeholders](#communicating-debt-to-non-technical-stakeholders)
-- [3.3 Cost-vs-Benefit Evaluation for Technology Adoption](#33-cost-vs-benefit-evaluation-for-technology-adoption)
+- [1.3 Cost-vs-Benefit Evaluation for Technology Adoption](#13-cost-vs-benefit-evaluation-for-technology-adoption)
   - [Decision Framework](#decision-framework)
   - [Weighted Scoring Matrix](#weighted-scoring-matrix)
   - [Total Cost of Ownership (TCO) Checklist](#total-cost-of-ownership-tco-checklist)
-- [3.4 System Capacity Planning & Estimation](#34-system-capacity-planning-and-estimation)
+- [1.4 System Capacity Planning & Estimation](#14-system-capacity-planning-and-estimation)
   - [The Capacity Planning Process](#the-capacity-planning-process)
-  - [3.4.1 QPS (Queries Per Second) Estimation](#341-qps-queries-per-second-estimation)
-  - [3.4.2 Storage Estimation](#342-storage-estimation)
-  - [3.4.3 Bandwidth Estimation](#343-bandwidth-estimation)
+  - [1.4.1 QPS (Queries Per Second) Estimation](#141-qps-queries-per-second-estimation)
+  - [1.4.2 Storage Estimation](#142-storage-estimation)
+  - [1.4.3 Bandwidth Estimation](#143-bandwidth-estimation)
   - [Quick-Reference: Useful Numbers Every Principal Should Know](#quick-reference-useful-numbers-every-principal-should-know)
   - [Capacity Planning Worksheet Template](#capacity-planning-worksheet-template)
 
 
-## 3.1 Architectural Decision Records (ADRs)
+## 1.1 Architectural Decision Records (ADRs)
 
 An ADR captures a **single, significant architectural decision** along with its context and consequences. They form the project's institutional memory.
 
@@ -110,7 +110,7 @@ data store for the Order Service.
 
 ---
 
-## 3.2 Managing & Reducing Technical Debt
+## 1.2 Managing & Reducing Technical Debt
 
 ### What Is Technical Debt?
 
@@ -183,7 +183,7 @@ Use financial metaphors:
 
 ---
 
-## 3.3 Cost-vs-Benefit Evaluation for Technology Adoption
+## 1.3 Cost-vs-Benefit Evaluation for Technology Adoption
 
 ### Decision Framework
 
@@ -229,7 +229,7 @@ graph TD
 
 ---
 
-## 3.4 System Capacity Planning & Estimation
+## 1.4 System Capacity Planning & Estimation
 
 ### The Capacity Planning Process
 
@@ -250,7 +250,7 @@ graph LR
 
 ---
 
-### 3.4.1 QPS (Queries Per Second) Estimation
+### 1.4.1 QPS (Queries Per Second) Estimation
 
 **Scenario:** An e-commerce platform with 10M daily active users (DAU).
 
@@ -269,7 +269,7 @@ Step 4: Design target (add 2× headroom for spikes + growth)
   QPS_design = 6,945 × 2 ≈ 14,000 QPS
 ```
 
-### 3.4.2 Storage Estimation
+### 1.4.2 Storage Estimation
 
 **Scenario:** Order storage for the same platform.
 
@@ -300,7 +300,7 @@ Design target (round up with 30% buffer):
   ≈ 11 TB provisioned storage
 ```
 
-### 3.4.3 Bandwidth Estimation
+### 1.4.3 Bandwidth Estimation
 
 ```
 Inbound (client → server):

@@ -1,13 +1,23 @@
-## 8. Vector Databases
+## 1. Vector Databases
 
-### 8.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 How Embeddings Work](#12-how-embeddings-work)
+- [1.3 How Vector Databases Work](#13-how-vector-databases-work)
+- [1.4 Similarity Metrics](#14-similarity-metrics)
+- [1.5 Popular Vector Databases](#15-popular-vector-databases)
+- [1.6 Example: Using ChromaDB](#16-example-using-chromadb)
+- [1.7 Pros and Cons](#17-pros-and-cons)
+
+### 1.1 Definition
 
 A **vector database** (vectorized DB) is a specialized database designed to store,
 index, and query **high-dimensional vectors** (embeddings). These embeddings are
 numerical representations of data (text, images, audio) that capture *semantic
 meaning*.
 
-### 8.2 How Embeddings Work
+### 1.2 How Embeddings Work
 
 ```mermaid
 flowchart TB
@@ -26,7 +36,7 @@ vector space, regardless of the exact words used.
 "How do I reset my password?"  ←─── cosine similarity: 0.23 ───→  "Best pizza in New York"
 ```
 
-### 8.3 How Vector Databases Work
+### 1.3 How Vector Databases Work
 
 ```mermaid
 flowchart TB
@@ -50,7 +60,7 @@ flowchart TB
     Query --> QEmbed --> Neighbors --> Doc2
 ```
 
-### 8.4 Similarity Metrics
+### 1.4 Similarity Metrics
 
 | Metric | Formula | Best For |
 |---|---|---|
@@ -58,7 +68,7 @@ flowchart TB
 | **Euclidean Distance** | √Σ(aᵢ - bᵢ)² | When magnitude matters |
 | **Dot Product** | Σ(aᵢ × bᵢ) | Normalized vectors, performance |
 
-### 8.5 Popular Vector Databases
+### 1.5 Popular Vector Databases
 
 | Database | Type | Key Features |
 |---|---|---|
@@ -70,7 +80,7 @@ flowchart TB
 | **pgvector** | PostgreSQL extension | Use your existing Postgres with vector support |
 | **FAISS** | Library (Meta) | Not a DB; in-memory index for fast similarity search |
 
-### 8.6 Example: Using ChromaDB
+### 1.6 Example: Using ChromaDB
 
 ```python
 import chromadb
@@ -112,7 +122,7 @@ results = collection.query(
 # Returns: doc1 (auth/JWT) with highest similarity
 ```
 
-### 8.7 Pros and Cons
+### 1.7 Pros and Cons
 
 | Pros | Cons |
 |---|---|

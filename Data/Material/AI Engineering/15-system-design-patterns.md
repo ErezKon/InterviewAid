@@ -1,10 +1,10 @@
-## 15. System Design Patterns
+## 1. System Design Patterns
 
 ### Table of Contents
 
-- [15.1 Common AI System Design Questions](#151-common-ai-system-design-questions)
-- [15.2 Design Template: AI-Powered Customer Support](#152-design-template-ai-powered-customer-support)
-- [15.3 Key Design Considerations Checklist](#153-key-design-considerations-checklist)
+- [1.1 Common AI System Design Questions](#11-common-ai-system-design-questions)
+- [1.2 Design Template: AI-Powered Customer Support](#12-design-template-ai-powered-customer-support)
+- [1.3 Key Design Considerations Checklist](#13-key-design-considerations-checklist)
 - [📐 Requirements](#requirements)
 - [🏗️ Architecture Decisions](#architecture-decisions)
 - [📊 Data](#data)
@@ -13,7 +13,7 @@
 - [💰 Cost & Scale](#cost-and-scale)
 
 
-### 15.1 Common AI System Design Questions
+### 1.1 Common AI System Design Questions
 
 ```mermaid
 graph TB
@@ -27,7 +27,7 @@ graph TB
     end
 ```
 
-### 15.2 Design Template: AI-Powered Customer Support
+### 1.2 Design Template: AI-Powered Customer Support
 
 ```mermaid
 graph TB
@@ -66,7 +66,7 @@ graph TB
     style EVAL_LOOP fill:#2a9,stroke:#fff,color:#fff
 ```
 
-### 15.3 Key Design Considerations Checklist
+### 1.3 Key Design Considerations Checklist
 
 ```markdown
 ## System Design Checklist for AI Applications

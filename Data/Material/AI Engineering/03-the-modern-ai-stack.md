@@ -1,4 +1,4 @@
-## 3. The Modern AI Stack
+## 1. The Modern AI Stack
 
 ### Table of Contents
 

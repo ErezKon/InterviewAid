@@ -1,6 +1,16 @@
-## 14. SDD — Spec-Driven Development
+## 1. SDD — Spec-Driven Development
 
-### 14.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 Why SDD Matters in the AI Era](#12-why-sdd-matters-in-the-ai-era)
+- [1.3 The SDD Workflow](#13-the-sdd-workflow)
+- [1.4 What a Good Spec Looks Like](#14-what-a-good-spec-looks-like)
+- [1.5 SpecKit and SDD Tools](#15-speckit-and-sdd-tools)
+- [1.6 SDD Pros and Cons](#16-sdd-pros-and-cons)
+- [1.7 SDD vs Vibe Coding — Summary](#17-sdd-vs-vibe-coding-summary)
+
+### 1.1 Definition
 
 **Spec-Driven Development (SDD)** is a software development methodology where
 **detailed specifications are written *before* code** and serve as the **single
@@ -10,7 +20,7 @@ code is written.
 
 SDD is the **antidote to vibe coding**.
 
-### 14.2 Why SDD Matters in the AI Era
+### 1.2 Why SDD Matters in the AI Era
 
 ```mermaid
 flowchart TB
@@ -41,7 +51,7 @@ flowchart TB
 **Key insight:** In an AI-coding world, the **spec becomes the primary artifact**
 that humans write and own. The code becomes a *derivative* of the spec.
 
-### 14.3 The SDD Workflow
+### 1.3 The SDD Workflow
 
 ```mermaid
 flowchart TB
@@ -58,7 +68,7 @@ flowchart TB
     SpecCreation --> SpecReview --> CodeGen --> Verification --> Iteration
 ```
 
-### 14.4 What a Good Spec Looks Like
+### 1.4 What a Good Spec Looks Like
 
 ````markdown
 # Feature Spec: User Authentication
@@ -148,7 +158,7 @@ and password reset functionality.
 - Account lockout after 10 failed attempts (15-minute cooldown)
 ````
 
-### 14.5 SpecKit and SDD Tools
+### 1.5 SpecKit and SDD Tools
 
 #### SpecKit
 
@@ -191,7 +201,7 @@ speckit test-gen specs/auth.md        # Generate tests from spec criteria
 | **PRD Templates** | Product requirement documents as formal specs |
 | **Cursor Rules / Windsurf Rules** | `.cursorrules` or `.windsurfrules` files that provide spec-like context |
 
-### 14.6 SDD Pros and Cons
+### 1.6 SDD Pros and Cons
 
 | Pros | Cons |
 |---|---|
@@ -203,7 +213,7 @@ speckit test-gen specs/auth.md        # Generate tests from spec criteria
 | Makes AI output verifiable and auditable | Not all tasks warrant a full spec |
 | Specs survive even if code is thrown away | Balancing spec granularity is an art |
 
-### 14.7 SDD vs Vibe Coding — Summary
+### 1.7 SDD vs Vibe Coding — Summary
 
 ```mermaid
 flowchart TB

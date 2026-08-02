@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [2.1 OWASP Top 10 Deep Dive](#21-owasp-top-10-deep-dive)
+- [1.1 OWASP Top 10 Deep Dive](#11-owasp-top-10-deep-dive)
   - [Overview (2021 Edition)](#overview-2021-edition)
   - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
     - [Types of XSS](#types-of-xss)
@@ -24,7 +24,7 @@
     - [Common Access Control Failures](#common-access-control-failures)
     - [IDOR Example & Fix](#idor-example-and-fix)
     - [Access Control Best Practices](#access-control-best-practices)
-- [2.2 CSP, CORS, and SameSite Cookie Flags](#22-csp-cors-and-samesite-cookie-flags)
+- [1.2 CSP, CORS, and SameSite Cookie Flags](#12-csp-cors-and-samesite-cookie-flags)
   - [Content Security Policy (CSP)](#content-security-policy-csp)
     - [How CSP Works](#how-csp-works)
     - [Key CSP Directives](#key-csp-directives)
@@ -38,7 +38,7 @@
     - [SameSite Values](#samesite-values)
     - [Behavior Comparison](#behavior-comparison)
     - [Recommended Cookie Configuration](#recommended-cookie-configuration)
-- [2.3 Encryption Standards](#23-encryption-standards)
+- [1.3 Encryption Standards](#13-encryption-standards)
   - [Symmetric vs. Asymmetric Encryption](#symmetric-vs-asymmetric-encryption)
     - [Detailed Comparison](#detailed-comparison)
     - [When to Use Each](#when-to-use-each)
@@ -55,7 +55,7 @@
     - [Recommended Parameters (2024)](#recommended-parameters-2024)
 
 
-## 2.1 OWASP Top 10 Deep Dive
+## 1.1 OWASP Top 10 Deep Dive
 
 > The **OWASP Top 10** is a standard awareness document representing the most critical security risks to web applications. Updated periodically by the Open Web Application Security Project.
 
@@ -516,7 +516,7 @@ app.get('/api/orders/:orderId', authenticate, async (req, res) => {
 
 ---
 
-## 2.2 CSP, CORS, and SameSite Cookie Flags
+## 1.2 CSP, CORS, and SameSite Cookie Flags
 
 ### Content Security Policy (CSP)
 
@@ -775,7 +775,7 @@ app.use(session({
 
 ---
 
-## 2.3 Encryption Standards
+## 1.3 Encryption Standards
 
 ### Symmetric vs. Asymmetric Encryption
 

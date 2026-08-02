@@ -1,13 +1,13 @@
-## 7. Embeddings & Vector Databases
+## 1. Embeddings & Vector Databases
 
 ### Table of Contents
 
-- [7.1 Embedding Models Comparison](#71-embedding-models-comparison)
-- [7.2 Vector Database Operations](#72-vector-database-operations)
-- [7.3 Distance Metrics](#73-distance-metrics)
+- [1.1 Embedding Models Comparison](#11-embedding-models-comparison)
+- [1.2 Vector Database Operations](#12-vector-database-operations)
+- [1.3 Distance Metrics](#13-distance-metrics)
 
 
-### 7.1 Embedding Models Comparison
+### 1.1 Embedding Models Comparison
 
 | Model | Dimensions | Max Tokens | Use Case | Provider |
 |---|---|---|---|---|
@@ -18,7 +18,7 @@
 | `e5-mistral-7b` | 4096 | 32768 | Open-source, long ctx | Microsoft |
 | `jina-embeddings-v3` | 1024 | 8192 | Multilingual | Jina AI |
 
-### 7.2 Vector Database Operations
+### 1.2 Vector Database Operations
 
 ```python
 # Example: Qdrant vector database operations
@@ -128,7 +128,7 @@ class VectorStore:
         ]
 ```
 
-### 7.3 Distance Metrics
+### 1.3 Distance Metrics
 
 ```mermaid
 graph LR

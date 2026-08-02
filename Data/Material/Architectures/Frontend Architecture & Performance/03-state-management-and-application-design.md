@@ -2,18 +2,18 @@
 
 ## Table of Contents
 
-- [3.1 Global vs. Local State](#31-global-vs-local-state)
+- [1.1 Global vs. Local State](#11-global-vs-local-state)
   - [State Categories](#state-categories)
   - [The Decision Framework](#the-decision-framework)
   - [Local State](#local-state)
   - [Global State (Zustand Example)](#global-state-zustand-example)
   - [React Context — When and Why](#react-context-when-and-why)
-- [3.2 Server State Management](#32-server-state-management)
+- [1.2 Server State Management](#12-server-state-management)
   - [TanStack Query (React Query) — Comprehensive Example](#tanstack-query-react-query-comprehensive-example)
   - [Query Lifecycle Visualization](#query-lifecycle-visualization)
   - [SWR Comparison](#swr-comparison)
   - [TanStack Query vs SWR](#tanstack-query-vs-swr)
-- [3.3 Reactivity Models](#33-reactivity-models)
+- [1.3 Reactivity Models](#13-reactivity-models)
   - [Virtual DOM Reconciliation (React)](#virtual-dom-reconciliation-react)
     - [How React's Diffing Works](#how-reacts-diffing-works)
     - [The Importance of Keys in Lists](#the-importance-of-keys-in-lists)
@@ -21,7 +21,7 @@
     - [SolidJS Signals Example](#solidjs-signals-example)
     - [Preact Signals in React](#preact-signals-in-react)
   - [Signals vs. Virtual DOM Comparison](#signals-vs-virtual-dom-comparison)
-- [3.4 Micro-Frontends](#34-micro-frontends)
+- [1.4 Micro-Frontends](#14-micro-frontends)
   - [What Are Micro-Frontends?](#what-are-micro-frontends)
   - [Integration Patterns](#integration-patterns)
   - [Pattern 1: Module Federation (Webpack 5 / Vite)](#pattern-1-module-federation-webpack-5-vite)
@@ -35,7 +35,7 @@
 
 ---
 
-## 3.1 Global vs. Local State
+## 1.1 Global vs. Local State
 
 ### State Categories
 
@@ -244,7 +244,7 @@ const LocaleContext = React.createContext({ locale: 'en', t: (key: string) => ke
 
 ---
 
-## 3.2 Server State Management
+## 1.2 Server State Management
 
 Server state is **fundamentally different** from client state. It is:
 - Persisted remotely (database, API)
@@ -473,7 +473,7 @@ function ProductPage({ id }: { id: string }) {
 
 ---
 
-## 3.3 Reactivity Models
+## 1.3 Reactivity Models
 
 ### Virtual DOM Reconciliation (React)
 
@@ -695,7 +695,7 @@ flowchart TB
 
 ---
 
-## 3.4 Micro-Frontends
+## 1.4 Micro-Frontends
 
 ### What Are Micro-Frontends?
 

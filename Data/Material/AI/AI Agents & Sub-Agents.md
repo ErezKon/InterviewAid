@@ -1,6 +1,14 @@
-## 3. AI Agents & Sub-Agents
+## 1. AI Agents & Sub-Agents
 
-### 3.1 What Is an AI Agent?
+### Table of Contents
+
+- [1.1 What Is an AI Agent?](#11-what-is-an-ai-agent)
+- [1.2 The ReAct Pattern (Reasoning + Acting)](#12-the-react-pattern-reasoning-acting)
+- [1.3 What Is a Sub-Agent?](#13-what-is-a-sub-agent)
+- [1.4 Pros and Cons](#14-pros-and-cons)
+- [1.5 Frameworks for Building Agents](#15-frameworks-for-building-agents)
+
+### 1.1 What Is an AI Agent?
 
 An **AI agent** is a software system that uses an LLM as its "brain" to
 autonomously **perceive**, **plan**, **decide**, and **act** in pursuit of a goal.
@@ -23,7 +31,7 @@ flowchart TB
     Memory --> Orchestrator
 ```
 
-### 3.2 The ReAct Pattern (Reasoning + Acting)
+### 1.2 The ReAct Pattern (Reasoning + Acting)
 
 The most common agent loop:
 
@@ -41,7 +49,7 @@ Step 7 — THOUGHT:  Task complete.
 Step 8 — FINAL ANSWER: "Done. Emailed AAPL price ($213.47) to john@example.com."
 ```
 
-### 3.3 What Is a Sub-Agent?
+### 1.3 What Is a Sub-Agent?
 
 A **sub-agent** is a specialized agent that is **delegated to by a parent agent**
 to handle a specific subtask. This creates a **hierarchical multi-agent system**.
@@ -85,14 +93,14 @@ Orchestrator Agent:
   └── Review Sub-Agent   → Reviews code for security issues
 ```
 
-### 3.4 Pros and Cons
+### 1.4 Pros and Cons
 
 | Aspect | Pros | Cons |
 |---|---|---|
 | Single Agent | Simple, easy to debug | Limited capability, context overload |
 | Multi-Agent (Sub-Agents) | Separation of concerns, specialized tools per agent | Complex orchestration, higher cost, error propagation |
 
-### 3.5 Frameworks for Building Agents
+### 1.5 Frameworks for Building Agents
 
 | Framework | Creator | Key Feature |
 |---|---|---|

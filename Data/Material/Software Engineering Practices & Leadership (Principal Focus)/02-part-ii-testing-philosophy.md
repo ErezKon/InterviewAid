@@ -2,22 +2,22 @@
 
 ## Table of Contents
 
-- [2.1 The Testing Pyramid](#21-the-testing-pyramid)
+- [1.1 The Testing Pyramid](#11-the-testing-pyramid)
   - [Layer Characteristics](#layer-characteristics)
   - [What Each Layer Validates](#what-each-layer-validates)
-- [2.2 Contract Testing](#22-contract-testing)
-- [2.3 Test-Driven Development (TDD)](#23-test-driven-development-tdd)
+- [1.2 Contract Testing](#12-contract-testing)
+- [1.3 Test-Driven Development (TDD)](#13-test-driven-development-tdd)
   - [The Red-Green-Refactor Cycle](#the-red-green-refactor-cycle)
   - [TDD Rules (Robert C. Martin — "Uncle Bob")](#tdd-rules-robert-c-martin-uncle-bob)
   - [TDD Example — Building a `RomanNumeral` Converter Step-by-Step](#tdd-example-building-a-romannumeral-converter-step-by-step)
   - [When TDD Shines vs. When to Adapt](#when-tdd-shines-vs-when-to-adapt)
-- [2.4 Behavior-Driven Development (BDD)](#24-behavior-driven-development-bdd)
+- [1.4 Behavior-Driven Development (BDD)](#14-behavior-driven-development-bdd)
   - [Gherkin Example](#gherkin-example)
   - [BDD Toolchain Flow](#bdd-toolchain-flow)
   - [TDD vs. BDD Comparison](#tdd-vs-bdd-comparison)
 
 
-## 2.1 The Testing Pyramid
+## 1.1 The Testing Pyramid
 
 ```mermaid
 graph TB
@@ -59,7 +59,7 @@ graph LR
 
 ---
 
-## 2.2 Contract Testing
+## 1.2 Contract Testing
 
 Contract testing verifies that the **API contract** between a consumer and a provider remains compatible, without requiring both services to run simultaneously.
 
@@ -98,7 +98,7 @@ sequenceDiagram
 
 ---
 
-## 2.3 Test-Driven Development (TDD)
+## 1.3 Test-Driven Development (TDD)
 
 ### The Red-Green-Refactor Cycle
 
@@ -140,7 +140,7 @@ graph LR
 
 ---
 
-## 2.4 Behavior-Driven Development (BDD)
+## 1.4 Behavior-Driven Development (BDD)
 
 BDD extends TDD by expressing tests in **business-readable language** using the **Given-When-Then** format (Gherkin syntax).
 

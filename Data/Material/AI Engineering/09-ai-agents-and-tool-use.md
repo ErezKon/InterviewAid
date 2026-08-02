@@ -1,13 +1,13 @@
-## 9. AI Agents & Tool Use
+## 1. AI Agents & Tool Use
 
 ### Table of Contents
 
-- [9.1 Agent Architecture](#91-agent-architecture)
-- [9.2 ReAct Pattern (Reasoning + Acting)](#92-react-pattern-reasoning-acting)
-- [9.3 Multi-Agent Patterns](#93-multi-agent-patterns)
+- [1.1 Agent Architecture](#11-agent-architecture)
+- [1.2 ReAct Pattern (Reasoning + Acting)](#12-react-pattern-reasoning-acting)
+- [1.3 Multi-Agent Patterns](#13-multi-agent-patterns)
 
 
-### 9.1 Agent Architecture
+### 1.1 Agent Architecture
 
 ```mermaid
 graph TB
@@ -44,7 +44,7 @@ graph TB
     style STATE fill:#36e,stroke:#fff,color:#fff
 ```
 
-### 9.2 ReAct Pattern (Reasoning + Acting)
+### 1.2 ReAct Pattern (Reasoning + Acting)
 
 ```python
 from openai import OpenAI
@@ -224,7 +224,7 @@ agent = ReActAgent(tools=tools)
 result = agent.run("What's the total value of Widget A if we sell all stock at full price?")
 ```
 
-### 9.3 Multi-Agent Patterns
+### 1.3 Multi-Agent Patterns
 
 ```mermaid
 graph TB

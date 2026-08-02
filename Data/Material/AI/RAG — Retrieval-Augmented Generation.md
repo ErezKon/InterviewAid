@@ -1,13 +1,22 @@
-## 9. RAG — Retrieval-Augmented Generation
+## 1. RAG — Retrieval-Augmented Generation
 
-### 9.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 Why RAG Exists](#12-why-rag-exists)
+- [1.3 How RAG Works](#13-how-rag-works)
+- [1.4 Chunking Strategies](#14-chunking-strategies)
+- [1.5 Advanced RAG Patterns](#15-advanced-rag-patterns)
+- [1.6 RAG vs Fine-Tuning](#16-rag-vs-fine-tuning)
+
+### 1.1 Definition
 
 **RAG (Retrieval-Augmented Generation)** is an architecture pattern that enhances
 LLM responses by **retrieving relevant information from external knowledge sources**
 and injecting it into the prompt before generation. This grounds the model's
 output in factual, up-to-date, domain-specific data.
 
-### 9.2 Why RAG Exists
+### 1.2 Why RAG Exists
 
 | Problem with Plain LLMs | How RAG Solves It |
 |---|---|
@@ -17,7 +26,7 @@ output in factual, up-to-date, domain-specific data.
 | Context window limits | Retrieves only relevant chunks |
 | Expensive fine-tuning | No retraining needed — just update the index |
 
-### 9.3 How RAG Works
+### 1.3 How RAG Works
 
 ```mermaid
 flowchart TB
@@ -51,7 +60,7 @@ flowchart TB
     BuildPrompt --> AugmentedPrompt
 ```
 
-### 9.4 Chunking Strategies
+### 1.4 Chunking Strategies
 
 How you split documents significantly impacts retrieval quality.
 
@@ -76,7 +85,7 @@ splitter = RecursiveCharacterTextSplitter(
 chunks = splitter.split_text(document_text)
 ```
 
-### 9.5 Advanced RAG Patterns
+### 1.5 Advanced RAG Patterns
 
 #### Naive RAG
 
@@ -107,7 +116,7 @@ Query → Agent decides:
   └── Generate final answer from best context
 ```
 
-### 9.6 RAG vs Fine-Tuning
+### 1.6 RAG vs Fine-Tuning
 
 | Dimension | RAG | Fine-Tuning |
 |---|---|---|

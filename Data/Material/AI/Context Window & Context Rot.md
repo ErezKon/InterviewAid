@@ -1,6 +1,11 @@
-## 4. Context Window & Context Rot
+## 1. Context Window & Context Rot
 
-### 4.1 Context Window
+### Table of Contents
+
+- [1.1 Context Window](#11-context-window)
+- [1.2 Context Rot (Context Degradation)](#12-context-rot-context-degradation)
+
+### 1.1 Context Window
 
 **Definition:**
 The **context window** is the maximum number of tokens an LLM can process in a
@@ -34,7 +39,7 @@ A larger context window does NOT mean the model pays equal attention to all part
 Research (e.g., "Lost in the Middle" paper) shows models attend most to the
 **beginning** and **end** of the context, with degraded attention in the middle.
 
-### 4.2 Context Rot (Context Degradation)
+### 1.2 Context Rot (Context Degradation)
 
 **Definition:**
 **Context rot** is the progressive degradation of an AI agent's effectiveness as

@@ -1,4 +1,4 @@
-## 2. AI Engineering vs. Adjacent Roles
+## 1. AI Engineering vs. Adjacent Roles
 
 ```mermaid
 graph TB

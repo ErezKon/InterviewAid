@@ -1,13 +1,21 @@
-## 2. How Large Language Models (LLMs) Work
+## 1. How Large Language Models (LLMs) Work
 
-### 2.1 Core Concept
+### Table of Contents
+
+- [1.1 Core Concept](#11-core-concept)
+- [1.2 Architecture — The Transformer](#12-architecture-the-transformer)
+- [1.3 Key Concepts](#13-key-concepts)
+- [Top-k vs Top-p Sampling](#top-k-vs-top-p-sampling)
+- [1.4 Limitations](#14-limitations)
+
+### 1.1 Core Concept
 
 An LLM is a deep neural network — specifically a **Transformer** — trained to
 predict the next token in a sequence. Despite this seemingly simple objective,
 scale (billions of parameters + massive data) produces emergent capabilities
 like reasoning, translation, code generation, and summarization.
 
-### 2.2 Architecture — The Transformer
+### 1.2 Architecture — The Transformer
 
 The Transformer architecture (Vaswani et al., 2017, "Attention Is All You Need")
 is the foundation of all modern LLMs.
@@ -32,7 +40,7 @@ flowchart TD
     Norm --> Linear --> Output
 ```
 
-### 2.3 Key Concepts
+### 1.3 Key Concepts
 
 #### Tokenization
 Text is split into sub-word units called **tokens**.
@@ -190,7 +198,7 @@ Step 2: From those 50, keep only enough to reach 90% cumulative probability
 - Use **top-k** when you want a hard cap on candidate diversity
 - Lower values → more focused/deterministic; higher values → more creative/random
 
-### 2.4 Limitations
+### 1.4 Limitations
 
 - **No true understanding** — statistical pattern matching, not comprehension
 - **Hallucinations** — confidently produces plausible but incorrect information

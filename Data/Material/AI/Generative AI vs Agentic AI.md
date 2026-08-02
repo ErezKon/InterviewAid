@@ -1,5 +1,12 @@
 ## 1. Generative AI vs Agentic AI
 
+### Table of Contents
+
+- [1.1 Generative AI](#11-generative-ai)
+- [1.2 Agentic AI](#12-agentic-ai)
+- [1.3 Side-by-Side Comparison](#13-side-by-side-comparison)
+- [1.4 The Spectrum](#14-the-spectrum)
+
 ### 1.1 Generative AI
 
 **Definition:**

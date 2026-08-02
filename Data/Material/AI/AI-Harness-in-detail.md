@@ -3,6 +3,15 @@
 
 ## 1. How much autonomy does the agent get?
 
+### Table of Contents
+
+- [1. How much autonomy does the agent get?](#1-how-much-autonomy-does-the-agent-get)
+- [2. How do you prevent hallucinated code from reaching production?](#2-how-do-you-prevent-hallucinated-code-from-reaching-production)
+- [3. How do you manage context efficiently to avoid context rot?](#3-how-do-you-manage-context-efficiently-to-avoid-context-rot)
+- [4. How do you ensure the agent follows team coding standards?](#4-how-do-you-ensure-the-agent-follows-team-coding-standards)
+- [5. How do you integrate with existing CI/CD pipelines?](#5-how-do-you-integrate-with-existing-cicd-pipelines)
+- [Summary: The Five Answers at a Glance](#summary-the-five-answers-at-a-glance)
+
 ### The Autonomy Spectrum
 
 ```

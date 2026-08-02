@@ -1,13 +1,22 @@
-## 11. System Prompt
+## 1. System Prompt
 
-### 11.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 How It Fits in the Message Structure](#12-how-it-fits-in-the-message-structure)
+- [1.3 Anatomy of an Effective System Prompt](#13-anatomy-of-an-effective-system-prompt)
+- [1.4 Real-World Example](#14-real-world-example)
+- [1.5 System Prompt in Agent Systems](#15-system-prompt-in-agent-systems)
+- [1.6 Prompt Engineering Best Practices](#16-prompt-engineering-best-practices)
+
+### 1.1 Definition
 
 A **system prompt** (also called a **system message** or **system instruction**) is
 a special instruction block sent to the LLM *before* the user's message that defines
 the model's **identity, behavior, constraints, tone, and capabilities** for the
 entire conversation.
 
-### 11.2 How It Fits in the Message Structure
+### 1.2 How It Fits in the Message Structure
 
 ```json
 {
@@ -30,7 +39,7 @@ entire conversation.
 }
 ```
 
-### 11.3 Anatomy of an Effective System Prompt
+### 1.3 Anatomy of an Effective System Prompt
 
 ```
 # System Prompt Structure
@@ -63,7 +72,7 @@ You are [role]. You specialize in [domain].
 ### Output: [example output]
 ```
 
-### 11.4 Real-World Example
+### 1.4 Real-World Example
 
 ```
 You are a Principal Full Stack Engineer AI assistant for an enterprise SaaS platform.
@@ -95,7 +104,7 @@ You are a Principal Full Stack Engineer AI assistant for an enterprise SaaS plat
 - Suggest breaking changes only with migration path
 ```
 
-### 11.5 System Prompt in Agent Systems
+### 1.5 System Prompt in Agent Systems
 
 In agentic systems, the system prompt is critical — it defines:
 
@@ -108,7 +117,7 @@ In agentic systems, the system prompt is critical — it defines:
 | **Safety constraints** | "Never execute destructive commands without confirmation" |
 | **Handoff rules** | "If the task involves database changes, hand off to the DBA agent" |
 
-### 11.6 Prompt Engineering Best Practices
+### 1.6 Prompt Engineering Best Practices
 
 1. **Be specific** — Vague prompts get vague results
 2. **Use structure** — Headers, lists, numbered steps

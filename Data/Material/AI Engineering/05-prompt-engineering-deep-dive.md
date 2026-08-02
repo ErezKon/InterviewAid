@@ -1,19 +1,19 @@
-## 5. Prompt Engineering — Deep Dive
+## 1. Prompt Engineering — Deep Dive
 
 ### Table of Contents
 
-- [5.1 Taxonomy of Prompting Techniques](#51-taxonomy-of-prompting-techniques)
-- [5.2 Prompting Patterns with Examples](#52-prompting-patterns-with-examples)
+- [1.1 Taxonomy of Prompting Techniques](#11-taxonomy-of-prompting-techniques)
+- [1.2 Prompting Patterns with Examples](#12-prompting-patterns-with-examples)
   - [Zero-Shot vs. Few-Shot](#zero-shot-vs-few-shot)
   - [Chain-of-Thought (CoT)](#chain-of-thought-cot)
   - [Self-Consistency (Ensemble Reasoning)](#self-consistency-ensemble-reasoning)
   - [Structured Output](#structured-output)
-- [5.3 Prompt Management as Software Engineering](#53-prompt-management-as-software-engineering)
+- [1.3 Prompt Management as Software Engineering](#13-prompt-management-as-software-engineering)
 
 
 Prompt engineering is not ad-hoc; at senior level it is a **systematic discipline** with patterns, versioning, and evaluation.
 
-### 5.1 Taxonomy of Prompting Techniques
+### 1.1 Taxonomy of Prompting Techniques
 
 ```mermaid
 graph TB
@@ -47,7 +47,7 @@ graph TB
     style ADV fill:#36e,stroke:#fff,color:#fff
 ```
 
-### 5.2 Prompting Patterns with Examples
+### 1.2 Prompting Patterns with Examples
 
 #### Zero-Shot vs. Few-Shot
 
@@ -193,7 +193,7 @@ for entity in result.entities:
     print(f"  {entity.name} ({entity.entity_type}) — {entity.confidence:.0%}")
 ```
 
-### 5.3 Prompt Management as Software Engineering
+### 1.3 Prompt Management as Software Engineering
 
 ```python
 from dataclasses import dataclass, field

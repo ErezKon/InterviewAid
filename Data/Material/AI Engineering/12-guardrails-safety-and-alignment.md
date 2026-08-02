@@ -1,12 +1,12 @@
-## 12. Guardrails, Safety & Alignment
+## 1. Guardrails, Safety & Alignment
 
 ### Table of Contents
 
-- [12.1 Defense-in-Depth Architecture](#121-defense-in-depth-architecture)
-- [12.2 Prompt Injection Defense](#122-prompt-injection-defense)
+- [1.1 Defense-in-Depth Architecture](#11-defense-in-depth-architecture)
+- [1.2 Prompt Injection Defense](#12-prompt-injection-defense)
 
 
-### 12.1 Defense-in-Depth Architecture
+### 1.1 Defense-in-Depth Architecture
 
 ```mermaid
 graph LR
@@ -39,7 +39,7 @@ graph LR
     style RESP fill:#2a9,stroke:#fff,color:#fff
 ```
 
-### 12.2 Prompt Injection Defense
+### 1.2 Prompt Injection Defense
 
 ```python
 from openai import OpenAI

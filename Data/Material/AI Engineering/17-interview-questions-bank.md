@@ -1,13 +1,13 @@
-## 17. Interview Questions Bank
+## 1. Interview Questions Bank
 
 ### Table of Contents
 
-- [17.1 Conceptual Questions (Senior)](#171-conceptual-questions-senior)
-- [17.2 System Design Questions (Principal)](#172-system-design-questions-principal)
-- [17.3 Coding Questions](#173-coding-questions)
+- [1.1 Conceptual Questions (Senior)](#11-conceptual-questions-senior)
+- [1.2 System Design Questions (Principal)](#12-system-design-questions-principal)
+- [1.3 Coding Questions](#13-coding-questions)
 
 
-### 17.1 Conceptual Questions (Senior)
+### 1.1 Conceptual Questions (Senior)
 
 | # | Question | Key Points to Cover |
 |---|---|---|
@@ -22,7 +22,7 @@
 | 9 | **What is model distillation and when would you use it?** | Train smaller model on larger model's outputs. Use when: need lower latency, lower cost, edge deployment, consistent behavior. |
 | 10 | **Explain the tradeoffs of using open-source vs. API-based models.** | API: faster start, no infra, better models, vendor lock-in, data privacy concerns. OSS: full control, data stays private, infra complexity, potentially lower quality, but rapidly improving. |
 
-### 17.2 System Design Questions (Principal)
+### 1.2 System Design Questions (Principal)
 
 | # | Question | Key Evaluation Criteria |
 |---|---|---|
@@ -32,7 +32,7 @@
 | 4 | **Design an AI agent that can perform multi-step data analysis** | Planning, tool selection, error recovery, sandboxed code execution, intermediate result caching, user confirmation for actions |
 | 5 | **Design an evaluation platform for LLM applications** | Dataset management, metric definitions, LLM-as-judge calibration, human eval workflows, regression detection, CI/CD integration |
 
-### 17.3 Coding Questions
+### 1.3 Coding Questions
 
 ```python
 # QUESTION 1: Implement a token-aware text splitter

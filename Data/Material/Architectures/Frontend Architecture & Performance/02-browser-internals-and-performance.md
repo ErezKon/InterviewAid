@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [2.1 Critical Rendering Path](#21-critical-rendering-path)
+- [1.1 Critical Rendering Path](#11-critical-rendering-path)
   - [The Complete Pipeline](#the-complete-pipeline)
   - [Step 1: DOM Construction](#step-1-dom-construction)
   - [Step 2: CSSOM Construction](#step-2-cssom-construction)
@@ -11,7 +11,7 @@
   - [Step 5: Paint](#step-5-paint)
   - [Step 6: Composite](#step-6-composite)
   - [Cost Hierarchy of Visual Changes](#cost-hierarchy-of-visual-changes)
-- [2.2 Browser Event Loop](#22-browser-event-loop)
+- [1.2 Browser Event Loop](#12-browser-event-loop)
   - [The Single-Threaded Reality](#the-single-threaded-reality)
   - [Complete Event Loop Architecture](#complete-event-loop-architecture)
   - [The Event Loop Cycle](#the-event-loop-cycle)
@@ -19,7 +19,7 @@
   - [The Critical Rule](#the-critical-rule)
   - [Web Workers: True Parallelism](#web-workers-true-parallelism)
   - [Web Worker Limitations](#web-worker-limitations)
-- [2.3 Core Web Vitals](#23-core-web-vitals)
+- [1.3 Core Web Vitals](#13-core-web-vitals)
   - [LCP — Largest Contentful Paint](#lcp-largest-contentful-paint)
     - [Optimization Strategies for LCP](#optimization-strategies-for-lcp)
   - [INP — Interaction to Next Paint](#inp-interaction-to-next-paint)
@@ -29,7 +29,7 @@
     - [CLS Score Calculation](#cls-score-calculation)
     - [Common Causes and Fixes](#common-causes-and-fixes)
   - [Core Web Vitals Targets Summary](#core-web-vitals-targets-summary)
-- [2.4 Assets Optimization](#24-assets-optimization)
+- [1.4 Assets Optimization](#14-assets-optimization)
   - [Code Splitting](#code-splitting)
     - [Route-Based Splitting (React)](#route-based-splitting-react)
     - [Component-Level Splitting](#component-level-splitting)
@@ -45,7 +45,7 @@ Understanding how the browser transforms bytes of HTML, CSS, and JavaScript into
 
 ---
 
-## 2.1 Critical Rendering Path
+## 1.1 Critical Rendering Path
 
 The **Critical Rendering Path (CRP)** is the sequence of steps the browser takes to convert HTML, CSS, and JS into rendered pixels.
 
@@ -291,7 +291,7 @@ flowchart TD
 
 ---
 
-## 2.2 Browser Event Loop
+## 1.2 Browser Event Loop
 
 ### The Single-Threaded Reality
 
@@ -508,7 +508,7 @@ flowchart LR
 
 ---
 
-## 2.3 Core Web Vitals
+## 1.3 Core Web Vitals
 
 Core Web Vitals are Google's standardized metrics for measuring real-world user experience. They directly impact **search rankings** and represent the three pillars of user experience: **loading**, **interactivity**, and **visual stability**.
 
@@ -865,7 +865,7 @@ function loadNotification() {
 
 ---
 
-## 2.4 Assets Optimization
+## 1.4 Assets Optimization
 
 ### Code Splitting
 

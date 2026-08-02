@@ -1,6 +1,12 @@
-## 6. Skills & Workflows (Windsurf / Devin)
+## 1. Skills & Workflows (Windsurf / Devin)
 
-### 6.1 Skills
+### Table of Contents
+
+- [1.1 Skills](#11-skills)
+- [1.2 Workflows](#12-workflows)
+- [1.3 Skills vs Workflows](#13-skills-vs-workflows)
+
+### 1.1 Skills
 
 **Definition:**
 A **Skill** is a predefined, reusable capability that an AI coding agent can invoke.
@@ -40,7 +46,7 @@ file templates, and validation rules.
 Devin has built-in skills (terminal use, browser navigation, code editing) and can
 learn new skills through demonstration and instruction.
 
-### 6.2 Workflows
+### 1.2 Workflows
 
 **Definition:**
 A **Workflow** is a structured, multi-step sequence of operations (often composed
@@ -90,7 +96,7 @@ workflow:
       input: "all changed files"
 ```
 
-### 6.3 Skills vs Workflows
+### 1.3 Skills vs Workflows
 
 | Aspect | Skill | Workflow |
 |---|---|---|

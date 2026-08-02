@@ -1,13 +1,23 @@
-## 10. MCP — Model Context Protocol
+## 1. MCP — Model Context Protocol
 
-### 10.1 Definition
+### Table of Contents
+
+- [1.1 Definition](#11-definition)
+- [1.2 The Problem MCP Solves](#12-the-problem-mcp-solves)
+- [1.3 Architecture](#13-architecture)
+- [1.4 MCP Capabilities (Primitives)](#14-mcp-capabilities-primitives)
+- [1.5 Example: Building an MCP Server](#15-example-building-an-mcp-server)
+- [1.6 MCP Configuration (in Claude Desktop / Cursor)](#16-mcp-configuration-in-claude-desktop-cursor)
+- [1.7 Pros and Cons](#17-pros-and-cons)
+
+### 1.1 Definition
 
 **MCP (Model Context Protocol)** is an open standard (introduced by Anthropic, now
 broadly adopted) that defines a **universal interface for connecting AI models to
 external data sources and tools**. Think of it as the "USB-C for AI" — a standard
 plug that lets any AI model connect to any data source or tool.
 
-### 10.2 The Problem MCP Solves
+### 1.2 The Problem MCP Solves
 
 Before MCP, every AI tool integration was custom:
 
@@ -52,7 +62,7 @@ flowchart TB
     end
 ```
 
-### 10.3 Architecture
+### 1.3 Architecture
 
 ```mermaid
 flowchart LR
@@ -68,7 +78,7 @@ flowchart LR
     end note
 ```
 
-### 10.4 MCP Capabilities (Primitives)
+### 1.4 MCP Capabilities (Primitives)
 
 | Primitive | Direction | Description | Example |
 |---|---|---|---|
@@ -77,7 +87,7 @@ flowchart LR
 | **Prompts** | Server → Client (user-invoked) | Pre-built prompt templates | "Summarize this PR" template |
 | **Sampling** | Client → Server | Server can request LLM completions | Server asks the LLM to analyze data |
 
-### 10.5 Example: Building an MCP Server
+### 1.5 Example: Building an MCP Server
 
 ```python
 # Simple MCP server using the Python SDK
@@ -132,7 +142,7 @@ async def main():
         await server.run(read, write)
 ```
 
-### 10.6 MCP Configuration (in Claude Desktop / Cursor)
+### 1.6 MCP Configuration (in Claude Desktop / Cursor)
 
 ```json
 // claude_desktop_config.json or .cursor/mcp.json
@@ -160,7 +170,7 @@ async def main():
 }
 ```
 
-### 10.7 Pros and Cons
+### 1.7 Pros and Cons
 
 | Pros | Cons |
 |---|---|

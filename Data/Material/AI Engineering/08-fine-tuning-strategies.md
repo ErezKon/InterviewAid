@@ -1,13 +1,13 @@
-## 8. Fine-Tuning Strategies
+## 1. Fine-Tuning Strategies
 
 ### Table of Contents
 
-- [8.1 When to Fine-Tune](#81-when-to-fine-tune)
-- [8.2 Fine-Tuning Approaches](#82-fine-tuning-approaches)
-- [8.3 Preparing Fine-Tuning Data](#83-preparing-fine-tuning-data)
+- [1.1 When to Fine-Tune](#11-when-to-fine-tune)
+- [1.2 Fine-Tuning Approaches](#12-fine-tuning-approaches)
+- [1.3 Preparing Fine-Tuning Data](#13-preparing-fine-tuning-data)
 
 
-### 8.1 When to Fine-Tune
+### 1.1 When to Fine-Tune
 
 ```mermaid
 graph TB
@@ -32,7 +32,7 @@ graph TB
     style FT_MAYBE fill:#da0,stroke:#fff,color:#fff
 ```
 
-### 8.2 Fine-Tuning Approaches
+### 1.2 Fine-Tuning Approaches
 
 | Approach | What Changes | Data Needed | Cost | Use Case |
 |---|---|---|---|---|
@@ -42,7 +42,7 @@ graph TB
 | **Distillation** | Smaller model trained on larger model's outputs | Varies | $$ | Cost/latency reduction |
 | **DPO / RLHF** | Alignment fine-tuning | Preference pairs | $$$ | Behavior alignment |
 
-### 8.3 Preparing Fine-Tuning Data
+### 1.3 Preparing Fine-Tuning Data
 
 ```python
 import json

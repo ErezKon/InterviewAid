@@ -1,6 +1,12 @@
-## 12. n8n & LangGraph
+## 1. n8n & LangGraph
 
-### 12.1 n8n
+### Table of Contents
+
+- [1.1 n8n](#11-n8n)
+- [1.2 LangGraph](#12-langgraph)
+- [1.3 n8n vs LangGraph](#13-n8n-vs-langgraph)
+
+### 1.1 n8n
 
 #### What Is n8n?
 
@@ -61,7 +67,7 @@ flowchart LR
 
 ---
 
-### 12.2 LangGraph
+### 1.2 LangGraph
 
 #### What Is LangGraph?
 
@@ -181,7 +187,7 @@ result = app.invoke({
 })
 ```
 
-### 12.3 n8n vs LangGraph
+### 1.3 n8n vs LangGraph
 
 | Dimension | n8n | LangGraph |
 |---|---|---|

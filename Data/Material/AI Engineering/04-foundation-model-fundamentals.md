@@ -1,15 +1,15 @@
-## 4. Foundation Model Fundamentals
+## 1. Foundation Model Fundamentals
 
 ### Table of Contents
 
-- [4.1 Transformer Architecture — What AI Engineers Must Know](#41-transformer-architecture-what-ai-engineers-must-know)
-- [4.2 Key Concepts](#42-key-concepts)
+- [1.1 Transformer Architecture — What AI Engineers Must Know](#11-transformer-architecture-what-ai-engineers-must-know)
+- [1.2 Key Concepts](#12-key-concepts)
   - [Tokenization](#tokenization)
   - [Decoding Parameters](#decoding-parameters)
-- [4.3 Context Window Management](#43-context-window-management)
+- [1.3 Context Window Management](#13-context-window-management)
 
 
-### 4.1 Transformer Architecture — What AI Engineers Must Know
+### 1.1 Transformer Architecture — What AI Engineers Must Know
 
 You don't need to implement transformers, but you **must** understand the concepts that affect your engineering decisions:
 
@@ -34,7 +34,7 @@ graph LR
     style COST fill:#c33,stroke:#fff,color:#fff
 ```
 
-### 4.2 Key Concepts
+### 1.2 Key Concepts
 
 #### Tokenization
 
@@ -112,7 +112,7 @@ response_nucleus = client.chat.completions.create(
 # KEY RULE: Adjust temperature OR top_p, not both simultaneously
 ```
 
-### 4.3 Context Window Management
+### 1.3 Context Window Management
 
 ```mermaid
 graph TB
