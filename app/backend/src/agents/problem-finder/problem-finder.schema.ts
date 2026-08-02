@@ -22,6 +22,7 @@ export const problemFinderResponseSchema = z.object({
     level: z.number(),
     text: z.string(),
   })).optional(),
+  subjectContent: z.string().optional(),
   followUpSuggestions: z.array(z.string()),
 });
 

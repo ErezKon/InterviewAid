@@ -63,7 +63,32 @@
               </button>
             }
           </div>
-          <div class="message-content markdown-body" appMermaid [innerHTML]="renderMd(msg.content)"></div>
+          @if (getDisplayContent(msg)) {
+            <div class="message-content markdown-body" appMermaid [innerHTML]="renderMd(getDisplayContent(msg))"></div>
+          }
+          @if (hasSubjectContent(msg)) {
+            <app-chat-markdown-viewer
+              [content]="getSubjectContent(msg)"
+              [followUpSuggestions]="getFollowUpSuggestions(msg)"
+              [disabled]="chatStore.streaming()"
+              (followUpClicked)="sendFollowUp($event)" />
+          }
+          @if (hasQuizCards(msg)) {
+            <app-chat-quiz-cards
+              [questions]="getQuizQuestions(msg)"
+              [studyTips]="getStudyTips(msg)" />
+          }
+          @if (msg.role === 'assistant' && !msg.streaming && !hasSubjectContent(msg) && getFollowUpSuggestions(msg).length > 0) {
+            <div class="follow-up-suggestions">
+              @for (suggestion of getFollowUpSuggestions(msg); track suggestion) {
+                <button mat-stroked-button class="follow-up-chip"
+                  [disabled]="chatStore.streaming()"
+                  (click)="sendFollowUp(suggestion)">
+                  {{ suggestion }}
+                </button>
+              }
+            </div>
+          }
           @if (msg.streaming) {
             <span class="typing-indicator">...</span>
           }

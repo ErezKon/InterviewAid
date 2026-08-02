@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, NgZone } from '@angular/core';
 import { ChatMode } from '../models/chat.model';
 
 export interface ChatRequest {
@@ -16,6 +16,8 @@ export interface ChatRequest {
 
 @Injectable({ providedIn: 'root' })
 export class ChatApi {
+  private ngZone = inject(NgZone);
+
   sendStream(body: ChatRequest, onEvent: (event: string, data: any) => void, signal?: AbortSignal): Promise<void> {
     return new Promise<void>(async (resolve, reject) => {
       try {
@@ -35,6 +37,7 @@ export class ChatApi {
         const reader = res.body!.getReader();
         const decoder = new TextDecoder();
         let buffer = '';
+        let currentEvent = '';
 
         while (true) {
           const { done, value } = await reader.read();
@@ -44,14 +47,13 @@ export class ChatApi {
           const lines = buffer.split('\n');
           buffer = lines.pop() ?? '';
 
-          let currentEvent = '';
           for (const line of lines) {
             if (line.startsWith('event: ')) {
               currentEvent = line.slice(7).trim();
             } else if (line.startsWith('data: ')) {
               try {
                 const data = JSON.parse(line.slice(6));
-                onEvent(currentEvent, data);
+                this.ngZone.run(() => onEvent(currentEvent, data));
                 if (currentEvent === 'done' || currentEvent === 'error') {
                   resolve();
                   return;

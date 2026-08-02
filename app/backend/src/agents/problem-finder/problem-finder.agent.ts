@@ -6,6 +6,7 @@ import { createListFiltersTool } from '../shared/tools/list-filters.tool.js';
 import { createGetProblemTool } from '../shared/tools/get-problem.tool.js';
 import { createGetProblemHintTool } from '../shared/tools/get-problem-hint.tool.js';
 import { createSearchSubjectsTool } from '../shared/tools/search-subjects.tool.js';
+import { createGetSubjectTool } from '../shared/tools/get-subject.tool.js';
 import { PROBLEM_FINDER_SYSTEM_PROMPT } from './problem-finder.prompt.js';
 import { createLogger } from '../../utils/logger.js';
 
@@ -21,6 +22,7 @@ export async function createProblemFinderAgent(modelId?: string): Promise<{ agen
     createGetProblemTool(),
     createGetProblemHintTool(),
     createSearchSubjectsTool(),
+    createGetSubjectTool(),
   ];
 
   const agent = createReactAgent({

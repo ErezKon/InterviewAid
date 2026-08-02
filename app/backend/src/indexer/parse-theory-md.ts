@@ -64,13 +64,19 @@ function parseMdFile(
   const subSlug = subSubject ? slugify(subSubject) : null;
   const fileSlug = slugify(path.basename(filePath, '.md'));
 
-  // 1. Try the first # (H1) heading
-  const firstH1 = content.match(/^# (.+)/m);
+  // 1. Try the first # (H1) heading, but only if it appears before any ## heading.
+  //    H1s that appear after H2s are likely examples or subsections, not document titles.
   let title: string | null = null;
+  const firstH1 = content.match(/^# (.+)/m);
+  const firstH2 = content.match(/^## (.+)/m);
   if (firstH1) {
-    const candidate = stripHeadingNumber(firstH1[1].trim());
-    if (candidate && !NON_TITLE_HEADINGS.has(candidate.toLowerCase())) {
-      title = candidate;
+    const h1Pos = content.indexOf(firstH1[0]);
+    const h2Pos = firstH2 ? content.indexOf(firstH2[0]) : Infinity;
+    if (h1Pos < h2Pos) {
+      const candidate = stripHeadingNumber(firstH1[1].trim());
+      if (candidate && !NON_TITLE_HEADINGS.has(candidate.toLowerCase())) {
+        title = candidate;
+      }
     }
   }
 

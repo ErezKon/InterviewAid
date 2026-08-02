@@ -17,6 +17,7 @@ interface QuizState {
   questions: QuizQuestion[];
   currentIndex: number;
   revealed: boolean;
+  selectedOptionIndex: number | null;
   answers: AnswerRecord[];
   status: QuizStatus;
   error: string | null;
@@ -30,6 +31,7 @@ export const QuizStore = signalStore(
     questions: [],
     currentIndex: 0,
     revealed: false,
+    selectedOptionIndex: null,
     answers: [],
     status: 'idle',
     error: null,
@@ -118,6 +120,7 @@ export const QuizStore = signalStore(
               questions,
               currentIndex: 0,
               revealed: false,
+              selectedOptionIndex: null,
               answers: [],
               status: 'active',
               error: null,
@@ -134,6 +137,20 @@ export const QuizStore = signalStore(
         patchState(store, { revealed: true });
       },
 
+      selectOption(index: number) {
+        if (store.revealed()) return;
+        const q = store.questions()[store.currentIndex()];
+        if (!q || !q.options) return;
+        const selectedText = q.options[index];
+        const isCorrect = q.expectedAnswer.includes(selectedText);
+        const existing = store.answers().filter(a => a.questionId !== q.id);
+        patchState(store, {
+          selectedOptionIndex: index,
+          revealed: true,
+          answers: [...existing, { questionId: q.id, correct: isCorrect }],
+        });
+      },
+
       markAnswer(correct: boolean) {
         const q = store.questions()[store.currentIndex()];
         if (!q) return;
@@ -146,14 +163,14 @@ export const QuizStore = signalStore(
       nextQuestion() {
         const idx = store.currentIndex();
         if (idx < store.questions().length - 1) {
-          patchState(store, { currentIndex: idx + 1, revealed: false });
+          patchState(store, { currentIndex: idx + 1, revealed: false, selectedOptionIndex: null });
         }
       },
 
       previousQuestion() {
         const idx = store.currentIndex();
         if (idx > 0) {
-          patchState(store, { currentIndex: idx - 1, revealed: false });
+          patchState(store, { currentIndex: idx - 1, revealed: false, selectedOptionIndex: null });
         }
       },
 
@@ -166,6 +183,7 @@ export const QuizStore = signalStore(
           questions: [],
           currentIndex: 0,
           revealed: false,
+          selectedOptionIndex: null,
           answers: [],
           status: 'idle',
           error: null,
@@ -178,6 +196,7 @@ export const QuizStore = signalStore(
           questions,
           currentIndex: 0,
           revealed: false,
+          selectedOptionIndex: null,
           answers: [],
           status: 'active',
         });

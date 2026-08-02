@@ -1,0 +1,21 @@
+<mat-card class="md-viewer-card">
+  @if (title()) {
+    <mat-card-header>
+      <mat-card-title>{{ title() }}</mat-card-title>
+    </mat-card-header>
+  }
+  <mat-card-content>
+    <div class="markdown-body" appMermaid [innerHTML]="renderedContent()"></div>
+  </mat-card-content>
+  @if (followUpSuggestions().length > 0) {
+    <mat-card-actions class="follow-up-actions">
+      @for (suggestion of followUpSuggestions(); track suggestion) {
+        <button mat-stroked-button class="follow-up-btn"
+          [disabled]="disabled()"
+          (click)="followUpClicked.emit(suggestion)">
+          {{ suggestion }}
+        </button>
+      }
+    </mat-card-actions>
+  }
+</mat-card>

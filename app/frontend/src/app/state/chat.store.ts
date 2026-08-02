@@ -4,6 +4,21 @@ import { ChatApi, ChatRequest } from '../core/api/chat.api';
 import { ThreadsApi } from '../core/api/threads.api';
 import { ChatThread, ChatMessage, ChatMode } from '../core/models/chat.model';
 
+/** Try to extract a JSON object from fenced or bare JSON in text content. */
+function extractJsonFromContent(text: string): any | null {
+  // Try fenced JSON first (```json ... ``` or ``` ... ```)
+  const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) {
+    try { return JSON.parse(fenceMatch[1].trim()); } catch { /* fall through */ }
+  }
+  // Try bare JSON object
+  const braceStart = text.indexOf('{');
+  if (braceStart >= 0) {
+    try { return JSON.parse(text.slice(braceStart).trim()); } catch { /* fall through */ }
+  }
+  return null;
+}
+
 interface ChatState {
   threads: ChatThread[];
   activeThreadId: string | null;
@@ -41,7 +56,13 @@ export const ChatStore = signalStore(
         patchState(store, { activeThreadId: threadId, messages: [] });
         threadsApi.get(threadId).subscribe({
           next: (data) => {
-            patchState(store, { messages: data.messages, activeThreadId: threadId });
+            const messages = data.messages.map(m => {
+              if (m.payloadJson && !m.structured) {
+                try { return { ...m, structured: JSON.parse(m.payloadJson) }; } catch { /* skip */ }
+              }
+              return m;
+            });
+            patchState(store, { messages, activeThreadId: threadId });
           },
         });
       },
@@ -118,26 +139,45 @@ export const ChatStore = signalStore(
                   patchState(store, { currentSteps: [...store.currentSteps(), ...data.nodes] });
                   break;
                 case 'token':
-                  msgs[lastIdx] = { ...msgs[lastIdx], content: msgs[lastIdx].content + data.delta };
+                  // Server sends full content (not deltas) — replace, don't append
+                  msgs[lastIdx] = { ...msgs[lastIdx], content: data.delta };
                   patchState(store, { messages: msgs });
                   break;
                 case 'tool':
                   break;
-                case 'result':
+                case 'result': {
+                  // Handle structured as object or JSON string
+                  let structured = data.structured;
+                  if (typeof structured === 'string') {
+                    try { structured = JSON.parse(structured); } catch { /* keep as string */ }
+                  }
                   msgs[lastIdx] = {
                     ...msgs[lastIdx],
-                    structured: data.structured,
+                    structured,
                     streaming: false,
                   };
                   patchState(store, { messages: msgs, streaming: false });
                   break;
+                }
                 case 'error':
                   patchState(store, { error: data.message, streaming: false });
                   break;
-                case 'done':
-                  msgs[lastIdx] = { ...msgs[lastIdx], streaming: false };
+                case 'done': {
+                  const msg = msgs[lastIdx];
+                  // Safety net: extract structured from content if result event didn't set it
+                  if (!msg.structured && msg.content) {
+                    const extracted = extractJsonFromContent(msg.content);
+                    if (extracted && typeof extracted === 'object') {
+                      msgs[lastIdx] = { ...msg, structured: extracted, streaming: false };
+                    } else {
+                      msgs[lastIdx] = { ...msg, streaming: false };
+                    }
+                  } else {
+                    msgs[lastIdx] = { ...msg, streaming: false };
+                  }
                   patchState(store, { messages: msgs, streaming: false });
                   break;
+                }
               }
             },
             abortController.signal,

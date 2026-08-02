@@ -55,6 +55,13 @@ function seedForTools() {
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`)
     .run('test-subject-1', 'System Design Basics', 'Data/Material/Architectures/System Design/01-basics.md', 2, 'Architectures', 'System Design', 'system-design', '["scalability","caching"]', 500, 'Body markdown content for system design basics. This covers load balancers and databases.');
 
+  // Subject with sections for section-extraction tests
+  db.prepare(`INSERT OR IGNORE INTO subjects (id, title, source_file, heading_level, main_subject, sub_subject, primary_topic, key_concepts, word_count, body_md, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`)
+    .run('test-agent-memory', 'Agent Memory', 'Data/Material/AI/Agent Memory.md', 2, 'AI', 'Agent Memory', 'ai-agents',
+      '["short-term","long-term","episodic"]', 300,
+      `## 1. Agent Memory\n\n### 1.1 Definition\n\nAgent memory is the mechanism by which AI agents store info.\n\n### 1.2 Types of Memory\n\nShort-Term, Long-Term, Episodic, Semantic, Procedural.\n\n### 1.3 Detailed Breakdown\n\n#### Short-Term Memory\nCurrent context window.\n\n#### Long-Term Memory\nPersistent storage.\n\n### 1.4 Implementation Patterns\n\nCode examples here.`);
+
   // FTS — ensure tables exist and populate
   try { db.exec(`CREATE VIRTUAL TABLE IF NOT EXISTS problems_fts USING fts5(slug UNINDEXED, title, one_liner, description_md, solution_md, patterns, tokenize='porter unicode61')`); } catch {}
   try { db.exec(`CREATE VIRTUAL TABLE IF NOT EXISTS subjects_fts USING fts5(id UNINDEXED, title, key_concepts, body_md, tokenize='porter unicode61')`); } catch {}
@@ -230,6 +237,44 @@ describe('Agent tools', () => {
       const result = await tool.invoke({ id: 'test-subject-1', maxChars: 50 });
       const parsed = JSON.parse(result);
       assert.ok(parsed.bodyMd.length <= 100, 'Body should be truncated');
+    });
+
+    it('should return sections list', async () => {
+      const result = await tool.invoke({ id: 'test-agent-memory' });
+      const parsed = JSON.parse(result);
+      assert.ok(Array.isArray(parsed.sections), 'Should have sections array');
+      assert.ok(parsed.sections.length > 0, 'Should list headings');
+      assert.ok(parsed.sections.some((s: string) => s.includes('Types of Memory')));
+      assert.equal(parsed.sectionExtracted, false);
+      assert.equal(parsed.matchedSection, null);
+    });
+
+    it('should extract a single section by heading match', async () => {
+      const result = await tool.invoke({ id: 'test-agent-memory', section: 'types of memory' });
+      const parsed = JSON.parse(result);
+      assert.equal(parsed.sectionExtracted, true);
+      assert.equal(parsed.matchedSection, '1.2 Types of Memory');
+      assert.ok(parsed.bodyMd.includes('Short-Term'), 'Extracted section should contain its content');
+      assert.ok(!parsed.bodyMd.includes('Implementation Patterns'), 'Should not contain later sections at same level');
+      assert.ok(!parsed.bodyMd.includes('Definition'), 'Should not contain earlier sections');
+    });
+
+    it('should return full content when section does not match', async () => {
+      const result = await tool.invoke({ id: 'test-agent-memory', section: 'nonexistent heading' });
+      const parsed = JSON.parse(result);
+      assert.equal(parsed.sectionExtracted, false);
+      assert.equal(parsed.matchedSection, null);
+      assert.ok(parsed.bodyMd.includes('Definition'), 'Should contain full content');
+      assert.ok(parsed.bodyMd.includes('Implementation Patterns'), 'Should contain full content');
+    });
+
+    it('should include sub-headings when extracting a section', async () => {
+      const result = await tool.invoke({ id: 'test-agent-memory', section: 'detailed breakdown' });
+      const parsed = JSON.parse(result);
+      assert.equal(parsed.sectionExtracted, true);
+      assert.equal(parsed.matchedSection, '1.3 Detailed Breakdown');
+      assert.ok(parsed.bodyMd.includes('Short-Term Memory'), 'Should include sub-headings');
+      assert.ok(parsed.bodyMd.includes('Long-Term Memory'), 'Should include sub-headings');
     });
   });
 });

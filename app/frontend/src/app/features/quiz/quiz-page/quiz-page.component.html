@@ -12,41 +12,40 @@
       <div class="error-banner">{{ store.error() }}</div>
     }
 
-    @for (group of store.stats(); track group.mainSubject) {
-      <mat-expansion-panel [expanded]="true" class="subject-group">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-checkbox
-              [checked]="isGroupFullySelected(group.mainSubject)"
-              (change)="store.selectAllInGroup(group.mainSubject)"
-              (click)="$event.stopPropagation()">
-            </mat-checkbox>
-            <span class="group-title">{{ group.mainSubject }}</span>
-            <span class="group-count">{{ group.totalQuestions }} questions</span>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
+    <div class="panels-scroll-area">
+      @for (group of store.stats(); track group.mainSubject) {
+        @if (group.totalQuestions > 0) {
+          <mat-expansion-panel [expanded]="false" class="subject-group">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-checkbox
+                  [checked]="isGroupFullySelected(group.mainSubject)"
+                  (change)="store.selectAllInGroup(group.mainSubject)"
+                  (click)="$event.stopPropagation()">
+                </mat-checkbox>
+                <span class="group-title">{{ group.mainSubject }}</span>
+                <span class="group-count">{{ group.totalQuestions }} questions</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-        <div class="subject-list">
-          @for (s of group.subjects; track s.id) {
-            <div class="subject-row" [class.disabled]="s.questionCount === 0">
-              <mat-checkbox
-                [checked]="isSubjectSelected(s.id)"
-                [disabled]="s.questionCount === 0"
-                (change)="store.toggleSubject(s.id)">
-                {{ s.title }}
-              </mat-checkbox>
-              <span class="question-count">
+            <div class="subject-list">
+              @for (s of group.subjects; track s.id) {
                 @if (s.questionCount > 0) {
-                  {{ s.questionCount }} q
-                } @else {
-                  <span class="no-questions">no questions</span>
+                  <div class="subject-row">
+                    <mat-checkbox
+                      [checked]="isSubjectSelected(s.id)"
+                      (change)="store.toggleSubject(s.id)">
+                      {{ s.title }}
+                    </mat-checkbox>
+                    <span class="question-count">{{ s.questionCount }} q</span>
+                  </div>
                 }
-              </span>
+              }
             </div>
-          }
-        </div>
-      </mat-expansion-panel>
-    }
+          </mat-expansion-panel>
+        }
+      }
+    </div>
 
     <div class="selection-actions">
       <div class="selection-summary">
@@ -99,8 +98,16 @@
             <div class="options-list">
               @for (opt of q.options; track opt; let i = $index) {
                 <div class="option-item"
+                  [class.clickable]="!store.revealed()"
                   [class.revealed]="store.revealed()"
-                  [class.correct-option]="store.revealed() && q.expectedAnswer.includes(opt)">
+                  [class.correct-option]="store.revealed() && q.expectedAnswer.includes(opt)"
+                  [class.wrong-option]="store.revealed() && store.selectedOptionIndex() === i && !q.expectedAnswer.includes(opt)"
+                  (click)="store.selectOption(i)">
+                  @if (store.revealed() && store.selectedOptionIndex() === i && q.expectedAnswer.includes(opt)) {
+                    <span class="option-emoji">&#x2705;</span>
+                  } @else if (store.revealed() && store.selectedOptionIndex() === i && !q.expectedAnswer.includes(opt)) {
+                    <span class="option-emoji">&#x274C;</span>
+                  }
                   <span class="option-letter">{{ 'ABCD'[i] }}</span>
                   <span class="option-text">{{ opt }}</span>
                 </div>
@@ -108,7 +115,7 @@
             </div>
           }
 
-          @if (!store.revealed()) {
+          @if (!store.revealed() && q.type !== 'multiple-choice') {
             <button mat-raised-button color="accent" (click)="store.revealAnswer()" class="reveal-btn">
               <mat-icon>visibility</mat-icon>
               Reveal Answer
@@ -131,28 +138,30 @@
               }
             </div>
 
-            @if (!store.currentAnswered()) {
-              <div class="self-assessment">
-                <span>How did you do?</span>
-                <button mat-raised-button color="primary" (click)="store.markAnswer(true)">
-                  <mat-icon>check_circle</mat-icon> Got it
-                </button>
-                <button mat-raised-button color="warn" (click)="store.markAnswer(false)">
-                  <mat-icon>cancel</mat-icon> Missed it
-                </button>
-              </div>
-            } @else {
-              <div class="self-assessment answered">
-                @if (store.answers()[store.answers().length - 1]; as lastAnswer) {
-                  @if (lastAnswer.correct) {
-                    <mat-icon class="result-icon correct">check_circle</mat-icon>
-                    <span>Marked as correct</span>
-                  } @else {
-                    <mat-icon class="result-icon incorrect">cancel</mat-icon>
-                    <span>Marked as missed</span>
+            @if (q.type !== 'multiple-choice') {
+              @if (!store.currentAnswered()) {
+                <div class="self-assessment">
+                  <span>How did you do?</span>
+                  <button mat-raised-button color="primary" (click)="store.markAnswer(true)">
+                    <mat-icon>check_circle</mat-icon> Got it
+                  </button>
+                  <button mat-raised-button color="warn" (click)="store.markAnswer(false)">
+                    <mat-icon>cancel</mat-icon> Missed it
+                  </button>
+                </div>
+              } @else {
+                <div class="self-assessment answered">
+                  @if (store.answers()[store.answers().length - 1]; as lastAnswer) {
+                    @if (lastAnswer.correct) {
+                      <mat-icon class="result-icon correct">check_circle</mat-icon>
+                      <span>Marked as correct</span>
+                    } @else {
+                      <mat-icon class="result-icon incorrect">cancel</mat-icon>
+                      <span>Marked as missed</span>
+                    }
                   }
-                }
-              </div>
+                </div>
+              }
             }
           }
         </mat-card-content>

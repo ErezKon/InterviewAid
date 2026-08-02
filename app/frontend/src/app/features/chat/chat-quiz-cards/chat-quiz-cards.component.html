@@ -1,0 +1,90 @@
+<div class="quiz-cards">
+  @for (q of questions(); track q.id; let i = $index) {
+    <mat-card class="quiz-card">
+      <mat-card-header>
+        <div class="card-header-row">
+          <span class="card-number">Q{{ i + 1 }}</span>
+          <mat-chip-set>
+            <mat-chip [class]="'difficulty-' + q.difficulty">{{ q.difficulty }}</mat-chip>
+            <mat-chip>{{ q.type === 'multiple-choice' ? 'MC' : 'Open' }}</mat-chip>
+          </mat-chip-set>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="question-text">{{ q.question }}</p>
+
+        @if (q.type === 'multiple-choice' && q.options) {
+          <div class="options-list">
+            @for (opt of q.options; track opt; let j = $index) {
+              <div class="option-item"
+                [class.clickable]="!getState(q.id).revealed"
+                [class.revealed]="getState(q.id).revealed"
+                [class.correct-option]="getState(q.id).revealed && isCorrectOption(q, opt)"
+                [class.wrong-option]="getState(q.id).revealed && getState(q.id).selectedOptionIndex === j && !isCorrectOption(q, opt)"
+                (click)="selectOption(q, j)">
+                @if (getState(q.id).revealed && getState(q.id).selectedOptionIndex === j && isCorrectOption(q, opt)) {
+                  <span class="option-emoji">&#x2705;</span>
+                } @else if (getState(q.id).revealed && getState(q.id).selectedOptionIndex === j && !isCorrectOption(q, opt)) {
+                  <span class="option-emoji">&#x274C;</span>
+                }
+                <span class="option-letter">{{ 'ABCD'[j] }}</span>
+                <span class="option-text">{{ opt }}</span>
+              </div>
+            }
+          </div>
+        }
+
+        @if (!getState(q.id).revealed && q.type !== 'multiple-choice') {
+          <button mat-stroked-button (click)="revealAnswer(q)" class="reveal-btn">
+            <mat-icon>visibility</mat-icon> Reveal Answer
+          </button>
+        }
+
+        @if (getState(q.id).revealed) {
+          <mat-divider></mat-divider>
+          <div class="answer-section">
+            <h4>Expected Answer</h4>
+            <p>{{ q.expectedAnswer }}</p>
+            <h4>Reference</h4>
+            <blockquote class="reference-quote">{{ q.referenceQuote }}</blockquote>
+            @if (q.followUp) {
+              <h4>Follow-up</h4>
+              <p class="follow-up">{{ q.followUp }}</p>
+            }
+          </div>
+
+          @if (q.type !== 'multiple-choice' && getState(q.id).correct === null) {
+            <div class="self-assessment">
+              <span>How did you do?</span>
+              <button mat-stroked-button class="got-it-btn" (click)="markAnswer(q, true)">
+                <mat-icon>check_circle</mat-icon> Got it
+              </button>
+              <button mat-stroked-button class="missed-btn" (click)="markAnswer(q, false)">
+                <mat-icon>cancel</mat-icon> Missed it
+              </button>
+            </div>
+          }
+        }
+      </mat-card-content>
+    </mat-card>
+  }
+
+  @if (score.answered > 0) {
+    <div class="inline-score">
+      Score: {{ score.correct }}/{{ score.answered }}
+      ({{ questions().length - score.answered }} remaining)
+    </div>
+  }
+
+  @if (studyTips().length > 0) {
+    <div class="study-tips">
+      <h4><mat-icon>lightbulb</mat-icon> Study Tips</h4>
+      <ul>
+        @for (tip of studyTips(); track tip) {
+          <li>{{ tip }}</li>
+        }
+      </ul>
+    </div>
+  }
+</div>

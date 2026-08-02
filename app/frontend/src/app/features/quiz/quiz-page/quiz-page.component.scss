@@ -3,6 +3,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
+  padding-bottom: 5rem; // space for the fixed selection-actions bar
 }
 
 .subtitle {
@@ -47,10 +48,6 @@
   padding: 0.25rem 0;
 }
 
-.subject-row.disabled {
-  opacity: 0.5;
-}
-
 .question-count {
   font-size: 0.85rem;
   opacity: 0.7;
@@ -58,18 +55,21 @@
   text-align: right;
 }
 
-.no-questions {
-  font-style: italic;
-}
-
 .selection-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   background: var(--mat-sys-surface-container, #f5f5f5);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .selection-summary {
@@ -122,7 +122,21 @@
   padding: 0.75rem 1rem;
   border-radius: 8px;
   border: 1px solid var(--mat-sys-outline-variant, #ddd);
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, box-shadow 0.3s, border-color 0.3s;
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      background: color-mix(in srgb, var(--mat-sys-primary, #6200ee) 8%, transparent);
+      border-color: var(--mat-sys-primary, #6200ee);
+    }
+  }
+}
+
+.option-emoji {
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 .option-letter {
@@ -133,6 +147,13 @@
 .option-item.revealed.correct-option {
   background: color-mix(in srgb, #4caf50 15%, transparent);
   border-color: #4caf50;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.5);
+}
+
+.option-item.revealed.wrong-option {
+  background: color-mix(in srgb, #f44336 12%, transparent);
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.5);
 }
 
 .reveal-btn {
