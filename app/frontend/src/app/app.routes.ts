@@ -37,5 +37,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/chat/chat-page/chat-page.component').then(m => m.ChatPageComponent),
   },
+  {
+    path: 'upload',
+    loadComponent: () =>
+      import('./features/upload/upload-page/upload-page.component').then(m => m.UploadPageComponent),
+  },
   { path: '**', redirectTo: 'problems' },
 ];

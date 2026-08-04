@@ -1,0 +1,192 @@
+<div class="upload-page">
+  <h2>Upload Content</h2>
+  <p class="subtitle">Upload your own study materials or interview problems as markdown files.</p>
+
+  @if (store.status() === 'idle' || store.status() === 'error') {
+    <!-- Type Selection -->
+    <div class="type-toggle">
+      <mat-button-toggle-group [value]="store.type()" (change)="store.setType($event.value)">
+        <mat-button-toggle value="material" class="study-material-toggle">
+          <mat-icon>menu_book</mat-icon> Study Material
+        </mat-button-toggle>
+        <mat-button-toggle value="problem" class="interview-problem-toggle">
+          <mat-icon>code</mat-icon> Interview Problem
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <!-- File Upload Area -->
+    <div class="drop-zone"
+      (dragover)="onDragOver($event)"
+      (dragleave)="$event.preventDefault()"
+      (drop)="onDrop($event)"
+      (click)="fileInput.click()">
+      <mat-icon class="upload-icon">cloud_upload</mat-icon>
+      <p>Drag & drop .md files here, or click to browse</p>
+      <p class="hint">Max 20 files, 5 MB each</p>
+      <input #fileInput type="file" accept=".md" multiple hidden (change)="onFilesSelected($event)">
+    </div>
+
+    <!-- Selected Files List -->
+    @if (store.files().length > 0) {
+      <div class="file-list">
+        @for (file of store.files(); track file.name) {
+          <div class="file-item">
+            <mat-icon>description</mat-icon>
+            <span class="file-name">{{ file.name }}</span>
+            <span class="file-size">{{ (file.size / 1024).toFixed(1) }} KB</span>
+            <button mat-icon-button (click)="removeFile(file); $event.stopPropagation()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Metadata Fields -->
+    <mat-card class="metadata-card">
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Title</mat-label>
+          <input matInput [value]="store.title()" (input)="store.setTitle($any($event.target).value)">
+        </mat-form-field>
+
+        <!-- Material-specific fields -->
+        @if (store.type() === 'material') {
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Main Subject</mat-label>
+            <input matInput [value]="store.mainSubject()"
+              (input)="store.setMainSubject($any($event.target).value)"
+              placeholder="e.g., AI, JavaScript, Kubernetes">
+            <mat-hint>The broad subject area for this material</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Sub-Subject (optional)</mat-label>
+            <input matInput [value]="store.subSubject()"
+              (input)="store.setSubSubject($any($event.target).value)"
+              placeholder="e.g., AI Agents & Sub-Agents">
+          </mat-form-field>
+
+          @if (!store.agentic()) {
+            <div class="info-banner">
+              <mat-icon>info</mat-icon>
+              <span>
+                For best results, split large markdown files into separate files by topic
+                before uploading. Each file should cover one sub-topic. If you prefer
+                automatic splitting, enable <strong>Agentic Mode</strong> below.
+              </span>
+            </div>
+          }
+        }
+
+        <!-- Problem-specific fields -->
+        @if (store.type() === 'problem') {
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Classification</mat-label>
+            <mat-select [value]="store.classification()"
+              (selectionChange)="store.setClassification($event.value)">
+              @for (t of taxonomyOptions(); track t.id) {
+                <mat-option [value]="t.id">{{ t.label }}</mat-option>
+              }
+            </mat-select>
+            <mat-hint>Primary algorithm/data structure category</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Sub-Classification (optional)</mat-label>
+            <mat-select [value]="store.subClassification()"
+              (selectionChange)="store.setSubClassification($event.value)">
+              <mat-option value="">None</mat-option>
+              @for (t of taxonomyOptions(); track t.id) {
+                <mat-option [value]="t.id">{{ t.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Difficulty</mat-label>
+            <mat-select [value]="store.difficulty()"
+              (selectionChange)="store.setDifficulty($event.value)">
+              <mat-option value="Easy">Easy</mat-option>
+              <mat-option value="Medium">Medium</mat-option>
+              <mat-option value="Hard">Hard</mat-option>
+            </mat-select>
+          </mat-form-field>
+        }
+
+        <!-- Agentic Toggle -->
+        <div class="agentic-toggle">
+          <mat-slide-toggle [checked]="store.agentic()" (change)="store.setAgentic($event.checked)">
+            Agentic Mode (LLM auto-classification)
+          </mat-slide-toggle>
+          <p class="hint">
+            @if (store.type() === 'material') {
+              When enabled, an LLM agent will read your files, automatically classify them,
+              and split multi-topic files into separate sub-topic files.
+            } @else {
+              When enabled, an LLM agent will read your files and automatically determine
+              difficulty, classification, and patterns.
+            }
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    @if (store.error()) {
+      <div class="error-banner">{{ store.error() }}</div>
+    }
+
+    <!-- Submit Button -->
+    <div class="actions">
+      <button mat-raised-button color="primary"
+        [disabled]="!canSubmit()"
+        (click)="store.submit()">
+        <mat-icon>upload</mat-icon>
+        Upload {{ store.files().length }} file(s)
+      </button>
+    </div>
+  }
+
+  <!-- Uploading State -->
+  @if (store.status() === 'uploading') {
+    <div class="upload-progress">
+      <h3>Processing...</h3>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      @if (store.agentic() && store.progress().length > 0) {
+        <div class="progress-log">
+          @for (event of store.progress(); track $index) {
+            <div class="progress-event">{{ event.data | json }}</div>
+          }
+        </div>
+      }
+      <div class="actions">
+        <button mat-button (click)="store.cancel()">Cancel</button>
+      </div>
+    </div>
+  }
+
+  <!-- Success State -->
+  @if (store.status() === 'success') {
+    <div class="upload-success">
+      <mat-icon class="success-icon">check_circle</mat-icon>
+      <h3>Upload Complete</h3>
+      @if (store.result(); as result) {
+        <p>{{ result.message }}</p>
+        <div class="uploaded-items">
+          @for (item of result.items; track item.id) {
+            <div class="uploaded-item">
+              <mat-icon>description</mat-icon>
+              <a [routerLink]="store.type() === 'material' ? ['/subjects', item.id] : ['/problems', item.id]">
+                {{ item.title }}
+              </a>
+            </div>
+          }
+        </div>
+      }
+      <button mat-raised-button (click)="store.reset()">
+        <mat-icon>add</mat-icon> Upload More
+      </button>
+    </div>
+  }
+</div>

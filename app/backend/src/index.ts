@@ -13,6 +13,7 @@ import { modelsRouter } from './routes/models.routes.js';
 import { sessionsRouter } from './routes/sessions.routes.js';
 import { chatRouter } from './routes/chat.routes.js';
 import { quizRouter } from './routes/quiz.routes.js';
+import { uploadRouter } from './routes/upload.routes.js';
 import { AppError } from './utils/errors.js';
 import { ZodError } from 'zod';
 
@@ -41,6 +42,7 @@ app.use('/api', companiesRouter);
 app.use('/api', modelsRouter);
 app.use('/api', sessionsRouter);
 app.use('/api', quizRouter);
+app.use('/api', uploadRouter);
 
 // §4 Agentic chat route
 app.use('/api', chatRouter);

@@ -81,6 +81,10 @@ html, body {
   --chat-error-bg: #4e1515;
   --chat-error-text: #ef9a9a;
 
+  a {
+    color: #a6b2ff !important;
+  }
+
   .markdown-body p code {
     background: rgba(255, 255, 255, 0.1);
     color: #e0e0e0;
@@ -88,6 +92,18 @@ html, body {
 
   label {
     color: #e0e0e0;
+  }
+
+  .mat-mdc-raised-button {
+    background-color: #1e59d2 !important;
+    color: white !important;
+    box-shadow: 0px 0px 6px 2px #a0b5ff !important;
+  }
+
+  .mat-mdc-outlined-button {
+    background-color: #1e59d200 !important;
+    color: #fff !important;
+    box-shadow: 0 0 6px 1px #a0b5ff !important;
   }
 
   .selection-actions {
@@ -131,15 +147,65 @@ html, body {
     color: white !important;
   }
 
-  .mdc-button__label {
-    color: #55a9ff !important;
-  }
+  // .mdc-button__label {
+  //   color: #55a9ff !important;
+  // }
 
   .answer-section {
     .follow-up {
       color: white !important;
     }
   }
+
+  .mat-button-toggle {
+    color: white !important;
+
+    &.mat-button-toggle-checked {
+      background-color: #315dcb !important;
+
+      .mat-pseudo-checkbox-checked:after {
+        color: white !important;
+      }
+    }
+  }
+
+  mat-form-field {
+    // Label color when focused
+    --mdc-outlined-text-field-focus-label-text-color: #c5c5ff !important;
+
+    // Label color on hover
+    --mdc-outlined-text-field-hover-label-text-color: white !important;
+  }
+
+  // .mat-mdc-option.mdc-list-item--selected {
+  //   background-color: #315dcb !important;
+  //     color: white !important;
+  // }
+
+  .mat-mdc-option {
+  &.mat-mdc-option-active,
+  &.mdc-list-item--selected,
+  &.mdc-list-item--selected:not(.mat-mdc-option-multiple) {
+    background-color: #315dcb !important;
+    color: white !important;
+
+    // Target the actual text span inside the option
+    .mdc-list-item__primary-text {
+      color: white !important;
+    }
+
+    // Override the MDC state layer pseudo-element
+    &::before {
+      background-color: #315dcb !important;
+      opacity: 1 !important;
+    }
+
+    // Ensure the checkmark is also white
+    .mat-pseudo-checkbox {
+      color: white !important;
+    }
+  }
+}
 }
 
 .composer .mat-mdc-form-field-subscript-wrapper { display: none; }

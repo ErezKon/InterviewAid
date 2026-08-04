@@ -13,8 +13,14 @@ async function resolveApiKey(explicit: string | undefined): Promise<string> {
   return getAccessToken();
 }
 
-export async function createChatModel(modelId?: string, temperature?: number): Promise<{ def: ModelDef; model: BaseChatModel }> {
+export async function createChatModel(
+  modelId?: string,
+  temperature?: number,
+  /** Per-request timeout in ms (default 120 000 = 2 min). */
+  timeout?: number,
+): Promise<{ def: ModelDef; model: BaseChatModel }> {
   const def = getModel(modelId);
+  const requestTimeout = timeout ?? 120_000;
 
   if (def.provider === 'anthropic-vertex') {
     const token = await resolveApiKey(env.ANTHROPIC_API_KEY || undefined);
@@ -38,7 +44,7 @@ export async function createChatModel(modelId?: string, temperature?: number): P
       apiKey,
       temperature: temperature ?? def.defaultTemperature,
       maxRetries: 3,
-      timeout: 60000,
+      timeout: requestTimeout,
       configuration: { baseURL: env.OPENAI_BASE_URL || undefined },
     }),
   };
