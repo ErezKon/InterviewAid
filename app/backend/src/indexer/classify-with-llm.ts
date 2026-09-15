@@ -2,13 +2,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 import { z } from 'zod';
-import { ChatOpenAI } from '@langchain/openai';
-import { env } from '../config/env.js';
 import { METADATA_DIR } from '../config/paths.js';
 import { TAXONOMY_IDS, SENIORITY } from './taxonomy.js';
 import { Problem, Subject } from '../types/problem.types.js';
 import { createLogger } from '../utils/logger.js';
-import { getAccessToken } from '../utils/oauth.util.js';
+import { createChatModel } from '../agents/model-factory.js';
+import type { BaseChatModel } from '@langchain/core/language_models/chat_models';
 
 const log = createLogger('classify');
 
@@ -45,22 +44,9 @@ const subjectClassificationSchema = z.object({
 type ClassificationResult = z.infer<typeof classificationResultSchema>['results'][number];
 type SubjectClassificationResult = z.infer<typeof subjectClassificationSchema>['results'][number];
 
-async function resolveApiKey(): Promise<string> {
-  const explicit = env.OPENAI_API_KEY || undefined;
-  if (explicit) return explicit;
-  return getAccessToken();
-}
-
-async function createModel(): Promise<ChatOpenAI> {
-  const apiKey = await resolveApiKey();
-  return new ChatOpenAI({
-    model: 'gpt-oss-120b',
-    apiKey,
-    temperature: 0,
-    maxRetries: 0,
-    timeout: 120_000,
-    configuration: { baseURL: env.OPENAI_BASE_URL || undefined },
-  });
+async function createModel(): Promise<BaseChatModel> {
+  const { model } = await createChatModel(undefined, 0);
+  return model;
 }
 
 function loadExistingClassifications(jsonlPath: string): Set<string> {
@@ -83,7 +69,7 @@ async function sleep(ms: number): Promise<void> {
 }
 
 async function classifyBatch(
-  model: ChatOpenAI,
+  model: BaseChatModel,
   batch: { id: string; title: string; difficulty: string; description: string }[],
   retryCount = 0,
 ): Promise<ClassificationResult[]> {

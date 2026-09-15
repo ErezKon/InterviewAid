@@ -1,6 +1,6 @@
 # Interview Prep Platform
 
-A monorepo with a Node/TypeScript backend (REST API over an LLM-classified SQLite index of 3,415 LeetCode problems and theory markdown) and an Angular 19 frontend (Angular Material + NgRx Signal Store) offering metadata filtering, streaming **Generative UI** chat with AI agents, mock interviews, and subject quizzes.
+A monorepo with a Node/TypeScript backend (REST API over an LLM-classified SQLite index of 3,415 LeetCode problems and theory markdown) and an Angular 19 frontend (Angular Material + NgRx Signal Store) offering metadata filtering, streaming **Generative UI** chat with AI agents, mock interviews, subject quizzes, and **user content uploads** (manual or LLM-agentic classification). Supports **multi-provider LLM** (OpenAI-compatible, Anthropic, Google Gemini) with automatic provider detection from model names.
 
 The chat system uses a **GenUI architecture**: every agent response is a structured `{ component, message, inputs, followUpSuggestions }` envelope that tells the frontend which Angular component to render, eliminating all client-side JSON heuristics.
 
@@ -11,7 +11,7 @@ The chat system uses a **GenUI architecture**: every agent response is a structu
 ### Prerequisites
 
 - **Node.js 22+** and **npm 10+**
-- API keys for your OpenAI-compatible and/or Anthropic providers, or OAuth client credentials (see [Environment Variables](#environment-variables))
+- API keys for your LLM provider(s): OpenAI-compatible, Anthropic, and/or Google Gemini — or OAuth client credentials as fallback for OpenAI-compatible models (see [Environment Variables](#environment-variables))
 
 ### 1. Install dependencies
 
@@ -24,16 +24,19 @@ npm install            # installs both backend and frontend workspaces
 
 ```bash
 cp backend/.env.example backend/.env
-# Edit backend/.env — either:
-#  - set OPENAI_API_KEY (and optional OPENAI_BASE_URL), and/or ANTHROPIC_API_KEY (and optional ANTHROPIC_BASE_URL)
-#  - or set OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_TOKEN_URL to enable OAuth token fallback when API keys are not provided
+# Edit backend/.env — set one or more provider API keys:
+#  - OPENAI_API_KEY (and optional OPENAI_BASE_URL) for OpenAI-compatible models
+#  - ANTHROPIC_API_KEY (and optional ANTHROPIC_BASE_URL) for Anthropic (Claude) models
+#  - GOOGLE_API_KEY (and optional GOOGLE_BASE_URL) for Google Gemini models
+#  - When ANY direct API key is set, OAuth is NOT required.
+#  - Or set OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_TOKEN_URL for OAuth fallback (OpenAI-compatible only)
 ```
 
 ### 3. Run the indexer (one-time, ~10-20 min for classification)
 
 ```bash
 npm run index:parse       # Parse 3,415 problem .md + theory docs -> JSON
-npm run index:classify    # LLM classification (needs OPENAI_API_KEY or OAuth fallback) -- resumable
+npm run index:classify    # LLM classification (needs an API key or OAuth fallback) -- resumable
 npm run index:build       # Build SQLite DB + FTS5 indexes
 
 # Or all at once:
@@ -87,7 +90,7 @@ docker compose up --build -d
 
 | Service | Image Base | Port | Description |
 |---|---|---|---|
-| `backend` | `node:22-slim` | 3100 | Express + SQLite + LangChain agents |
+| `backend` | `node:22-slim` | 3100 | Express + SQLite + multi-provider LangChain agents |
 | `frontend` | `nginx:alpine` | 4200->80 | Angular production build, `/api` proxied to backend |
 
 ### Volumes
@@ -119,10 +122,11 @@ app/
 │       ├── db/                       # SQLite connection, schema (with app_meta), queries
 │       ├── indexer/                  # parse -> classify -> build pipeline
 │       ├── routes/
-│       │   └── chat.routes.ts        # SSE streaming, envelope validation, slug guard
+│       │   ├── chat.routes.ts        # SSE streaming, envelope validation, slug guard
+│       │   └── upload.routes.ts      # POST /upload — multipart file upload (manual + agentic)
 │       ├── services/                 # Business logic layer
 │       ├── agents/
-│       │   ├── model-factory.ts      # ChatOpenAI / ChatAnthropicVertex + createResponseFormat()
+│       │   ├── model-factory.ts      # Multi-provider: ChatOpenAI / ChatAnthropic / ChatGoogleGenerativeAI + createResponseFormat()
 │       │   ├── shared/
 │       │   │   ├── ui-response.schema.ts   # chatUiResponseSchema (Zod) -- shared by all agents
 │       │   │   ├── ui-response.prompt.ts   # <component-logic> prompt block
@@ -130,8 +134,8 @@ app/
 │       │   ├── problem-finder/       # createAgent + 6 tools
 │       │   ├── mock-interview/       # createAgent + 4 tools
 │       │   ├── subject-quiz/         # createAgent + 2 tools
-│       │   └── content-enricher/     # createAgent + 5 tools
-│       ├── llm/                      # ChatAnthropicVertex (bindTools, streaming)
+│       │   ├── content-enricher/     # createAgent + 5 tools
+│       │   └── content-uploader/     # createAgent + 3 tools (classify, split, save)
 │       ├── types/
 │       └── utils/
 └── frontend/
@@ -144,6 +148,7 @@ app/
         ├── state/
         │   └── chat.store.ts               # SSE handler: result -> ui envelope, done -> fallback
         └── features/
+            ├── upload/                        # Upload page -- drag & drop .md files
             └── chat/
                 ├── component-registry.ts          # CHAT_COMPONENT_REGISTRY map
                 ├── chat-component-host/           # NgComponentOutlet dynamic host
@@ -203,7 +208,15 @@ The frontend's `ChatComponentHostComponent` uses Angular's `NgComponentOutlet` w
 
 ### Backend Agents
 
-All four agents are built with `createAgent` + `ChatOpenAI` (via `model-factory.ts`) and share one `responseFormat` (`chatUiResponseSchema`). The `createResponseFormat()` helper is provider-aware: native JSON-schema for OpenAI-compatible models, `toolStrategy()` (synthetic tool call) for `ChatAnthropicVertex`.
+All four agents are built with `createAgent` + the appropriate LLM class (via `model-factory.ts`) and share one `responseFormat` (`chatUiResponseSchema`). The `createResponseFormat()` helper is provider-aware: native JSON-schema for OpenAI-compatible models, `toolStrategy()` (synthetic tool call) for Anthropic and Google models. The model factory supports three providers:
+
+| Provider | LangChain Class | API Key Env Var | Models |
+|---|---|---|---|
+| `openai-like` | `ChatOpenAI` | `OPENAI_API_KEY` (or OAuth fallback) | `gpt-oss-120b`, any OpenAI-compatible |
+| `anthropic` | `ChatAnthropic` | `ANTHROPIC_API_KEY` | `claude-opus-4.6`, `claude-sonnet-4` |
+| `google` | `ChatGoogleGenerativeAI` | `GOOGLE_API_KEY` | `gemini-2.5-pro`, `gemini-2.5-flash` |
+
+Unknown model IDs are auto-detected by name pattern (`/claude|anthropic/` -> anthropic, `/gemini/` -> google, else -> openai-like).
 
 | Agent | Tools | UI Components |
 |---|---|---|
@@ -211,6 +224,7 @@ All four agents are built with `createAgent` + `ChatOpenAI` (via `model-factory.
 | **Mock Interview** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint` | `chat-interview-question`, `chat-evaluation-scorecard`, `chat-hint-card`, `text` |
 | **Subject Quiz** | `search_subjects`, `get_subject` | `chat-quiz-cards`, `chat-markdown-viewer`, `text` |
 | **Content Enricher** | `scan_problems`, `read_problem_file`, `enrich_problem_file`, `update_problem_metadata`, `read_audit_report` | `chat-enrichment-report`, `text` |
+| **Content Uploader** | `classify_content`, `split_material`, `save_uploaded_files` | _(SSE progress events, not GenUI)_ |
 
 ### Safety & Reliability
 
@@ -309,16 +323,20 @@ To add a 9th (or Nth) component:
 | `DB_PATH` | No | SQLite DB path (default: `./data/interview.db`) |
 | `OPENAI_API_KEY` | Optional | API key for OpenAI-compatible models; if not set, OAuth fallback will be used |
 | `OPENAI_BASE_URL` | Optional | Base URL for OpenAI-compatible endpoints (e.g., OSS gateways) |
-| `ANTHROPIC_API_KEY` | Optional | API key for Anthropic models; if not set, OAuth fallback will be used |
-| `ANTHROPIC_BASE_URL` | Optional | Base URL for Anthropic Vertex-style endpoints |
+| `ANTHROPIC_API_KEY` | Optional | API key for Anthropic (Claude) models |
+| `ANTHROPIC_BASE_URL` | Optional | Base URL override for Anthropic (for proxies) |
+| `GOOGLE_API_KEY` | Optional | API key for Google Gemini models |
+| `GOOGLE_BASE_URL` | Optional | Base URL override for Google (for proxies) |
 | `OAUTH_CLIENT_ID` | Optional | OAuth client ID used to request bearer tokens when API keys are absent |
 | `OAUTH_CLIENT_SECRET` | Optional | OAuth client secret used with client credentials flow |
 | `OAUTH_TOKEN_URL` | Optional | OAuth token URL (client_credentials) used to mint bearer tokens |
 | `DEBUG_RUNS` | No | Enable agent debug dumps (default: `false`) |
 
 Behavior:
-- For OpenAI-like provider, the backend uses `OPENAI_API_KEY` if present; otherwise it calls the OAuth client-credentials flow (`OAUTH_*`) to obtain a bearer token.
-- For Anthropic provider, the backend uses `ANTHROPIC_API_KEY` if present; otherwise it falls back to OAuth in the same way.
+- **When any direct API key is set** (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, or `GOOGLE_API_KEY`), **OAuth is not required** — the `OAUTH_*` variables can be left empty.
+- For the **OpenAI-like** provider, the backend uses `OPENAI_API_KEY` if present; otherwise it calls the OAuth client-credentials flow (`OAUTH_*`) to obtain a bearer token.
+- For the **Anthropic** provider, the backend uses `ANTHROPIC_API_KEY` directly. No OAuth fallback.
+- For the **Google** provider, the backend uses `GOOGLE_API_KEY` directly. No OAuth fallback.
 
 ---
 
@@ -358,6 +376,7 @@ Behavior:
 - **Environment requirements**
 
   - Provide `OPENAI_API_KEY` (and optional `OPENAI_BASE_URL`) or rely on OAuth fallback with `OAUTH_CLIENT_ID`, `OAUTH_CLIENT_SECRET`, `OAUTH_TOKEN_URL`.
+  - Any direct API key (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY`) bypasses the OAuth requirement.
 
 ---
 
@@ -388,6 +407,30 @@ Behavior:
 | `DELETE` | `/api/threads/:id` | Delete thread |
 | `POST` | `/api/threads/:id/title` | Update thread title |
 | `GET` | `/api/interview-sessions/:threadId` | Mock interview session state |
+
+### Content Upload
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/upload` | Upload `.md` files as study material or interview problems |
+
+Upload accepts `multipart/form-data` with the following fields:
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `files` | `File[]` | Yes | One or more `.md` files (max 20, 5 MB each) |
+| `type` | `"material" \| "problem"` | Yes | Content type |
+| `title` | `string` | Yes | Title (for problems) or subject name (for material) |
+| `agentic` | `boolean` | No | Enable LLM-based auto-classification (default: `false`) |
+| `mainSubject` | `string` | No | Material only -- broad subject area (e.g., "AI", "JavaScript") |
+| `subSubject` | `string` | No | Material only -- specific sub-topic |
+| `classification` | `string` | No | Problem only -- primary topic from taxonomy |
+| `subClassification` | `string` | No | Problem only -- secondary topic |
+| `difficulty` | `"Easy" \| "Medium" \| "Hard"` | No | Problem only -- difficulty level |
+
+**Non-agentic mode** saves files to `Data/Material/<subject>/` or `Data/Problems/LeetCode/`, updates `subjects.json`/`problems.json`, and inserts into the SQLite DB. Returns `{ data: { type, filesProcessed, items, message } }`.
+
+**Agentic mode** (`agentic=true`) streams SSE events while an LLM agent classifies the content, optionally splits multi-topic material files into per-topic sub-files with renumbered headings, and saves the results.
 
 ### Chat Modes & Auto-Detection
 
@@ -429,7 +472,7 @@ The mode dropdown selects which agent handles the request. In **Auto** mode, the
 ## Testing
 
 ```bash
-# Backend unit + integration tests (89 tests)
+# Backend unit + integration tests (100 tests)
 npm run test:backend
 
 # Frontend tests

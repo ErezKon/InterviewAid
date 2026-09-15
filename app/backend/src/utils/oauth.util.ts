@@ -12,11 +12,23 @@ let inflightPromise: Promise<string> | null = null;
  * Fetch a fresh Bearer token using OAuth2 client-credentials flow.
  * Caches the token in-process and refreshes 60s before expiry.
  * Concurrent callers share the same in-flight request.
+ *
+ * When any direct API key (OPENAI_API_KEY, ANTHROPIC_API_KEY, GOOGLE_API_KEY)
+ * is set and OAUTH_TOKEN_URL is not configured, returns a placeholder
+ * ('direct-api-key-mode') instead of throwing. The placeholder is safe because
+ * the model factory uses provider-specific API keys directly and never sends
+ * this placeholder to any LLM provider.
  */
 export async function getAccessToken(): Promise<string> {
     // Return cached token if still valid (with 60s safety margin)
     if (cachedToken && Date.now() < expiresAtMs - 60_000) {
         return cachedToken;
+    }
+
+    // Direct API key mode — skip OAuth when any direct key is set and OAuth is not configured
+    if (!process.env.OAUTH_TOKEN_URL &&
+        (process.env.OPENAI_API_KEY || process.env.ANTHROPIC_API_KEY || process.env.GOOGLE_API_KEY)) {
+        return 'direct-api-key-mode';
     }
 
     // If another caller is already fetching, piggyback on that promise

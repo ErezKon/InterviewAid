@@ -12,6 +12,8 @@ const envSchema = z.object({
   OPENAI_BASE_URL: z.string().optional().default(''),
   ANTHROPIC_API_KEY: z.string().optional().default(''),
   ANTHROPIC_BASE_URL: z.string().optional().default(''),
+  GOOGLE_API_KEY: z.string().optional().default(''),
+  GOOGLE_BASE_URL: z.string().optional().default(''),
   DEBUG_RUNS: z.string().default('false').transform(v => v === 'true'),
 });
 

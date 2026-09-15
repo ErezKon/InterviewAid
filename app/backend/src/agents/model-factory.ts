@@ -1,15 +1,20 @@
 import { ChatOpenAI } from '@langchain/openai';
+import { ChatAnthropic } from '@langchain/anthropic';
+import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
 import { toolStrategy } from 'langchain';
 import { getModel } from '../config/models.js';
 import { env } from '../config/env.js';
 import { getAccessToken } from '../utils/oauth.util.js';
-import { ChatAnthropicVertex } from '../llm/chat-anthropic-vertex.js';
 import type { BaseChatModel } from '@langchain/core/language_models/chat_models';
 import type { ModelDef } from '../config/models.js';
 import type { z } from 'zod';
 
-async function resolveApiKey(explicit: string | undefined): Promise<string> {
-  if (explicit) return explicit;
+/**
+ * Resolve an API key for the OpenAI-like provider.
+ * Uses the explicit OPENAI_API_KEY if set, otherwise falls back to OAuth.
+ */
+async function resolveOpenAIKey(): Promise<string> {
+  if (env.OPENAI_API_KEY) return env.OPENAI_API_KEY;
   return getAccessToken();
 }
 
@@ -22,39 +27,59 @@ export async function createChatModel(
   const def = getModel(modelId);
   const requestTimeout = timeout ?? 120_000;
 
-  if (def.provider === 'anthropic-vertex') {
-    const token = await resolveApiKey(env.ANTHROPIC_API_KEY || undefined);
-    return {
-      def,
-      model: new ChatAnthropicVertex({
-        accessToken: token,
-        model: def.id,
-        baseUrl: env.ANTHROPIC_BASE_URL || undefined,
-        temperature: temperature ?? def.defaultTemperature,
-        maxTokens: def.maxTokens,
-      }),
-    };
-  }
+  switch (def.provider) {
+    case 'anthropic': {
+      return {
+        def,
+        model: new ChatAnthropic({
+          model: def.id,
+          anthropicApiKey: env.ANTHROPIC_API_KEY || undefined,
+          temperature: temperature ?? def.defaultTemperature,
+          maxTokens: def.maxTokens,
+          maxRetries: 3,
+          ...(env.ANTHROPIC_BASE_URL && {
+            clientOptions: { baseURL: env.ANTHROPIC_BASE_URL },
+          }),
+        }),
+      };
+    }
 
-  const apiKey = await resolveApiKey(env.OPENAI_API_KEY || undefined);
-  return {
-    def,
-    model: new ChatOpenAI({
-      model: def.id,
-      apiKey,
-      temperature: temperature ?? def.defaultTemperature,
-      maxRetries: 3,
-      timeout: requestTimeout,
-      configuration: { baseURL: env.OPENAI_BASE_URL || undefined },
-    }),
-  };
+    case 'google': {
+      return {
+        def,
+        model: new ChatGoogleGenerativeAI({
+          model: def.id,
+          apiKey: env.GOOGLE_API_KEY || undefined,
+          temperature: temperature ?? def.defaultTemperature,
+          maxOutputTokens: def.maxTokens,
+          maxRetries: 3,
+        }),
+      };
+    }
+
+    case 'openai-like':
+    default: {
+      const apiKey = await resolveOpenAIKey();
+      return {
+        def,
+        model: new ChatOpenAI({
+          model: def.id,
+          apiKey,
+          temperature: temperature ?? def.defaultTemperature,
+          maxRetries: 3,
+          timeout: requestTimeout,
+          configuration: { baseURL: env.OPENAI_BASE_URL || undefined },
+        }),
+      };
+    }
+  }
 }
 
 /**
  * Pick the structured-output strategy for a model.
- * - openai-like (gpt-oss-120b): native JSON-schema response format — pass the Zod schema directly.
- * - anthropic-vertex (ChatAnthropicVertex): no native structured output, but bindTools() works,
- *   so force the schema through a synthetic tool call.
+ * - openai-like: native JSON-schema response format — pass the Zod schema directly.
+ * - anthropic / google: no native structured output, so force the schema through
+ *   a synthetic tool call via toolStrategy().
  */
 export function createResponseFormat(def: ModelDef, schema: z.ZodTypeAny): any {
   return def.supportsStructuredOutput ? schema : toolStrategy(schema);
