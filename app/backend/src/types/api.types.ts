@@ -88,7 +88,7 @@ export const chatBodySchema = z.object({
   message: z.string().min(1),
   modelId: z.string().optional(),
   threadId: z.string().optional(),
-  mode: z.enum(['auto', 'find-problems', 'mock-interview', 'subject-quiz', 'content-enricher']).default('auto'),
+  mode: z.enum(['auto', 'free-chat', 'find-problems', 'mock-interview', 'subject-quiz', 'content-enricher']).default('auto'),
   stream: z.boolean().default(true),
   context: z.object({
     subjectId: z.string().optional(),

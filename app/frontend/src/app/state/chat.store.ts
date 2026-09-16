@@ -20,7 +20,7 @@ export const ChatStore = signalStore(
     threads: [],
     activeThreadId: null,
     messages: [],
-    mode: 'auto',
+    mode: 'free-chat',
     streaming: false,
     currentSteps: [],
     error: null,

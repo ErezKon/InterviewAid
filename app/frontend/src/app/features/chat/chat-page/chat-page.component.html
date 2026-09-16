@@ -27,6 +27,7 @@
       <mat-form-field appearance="outline" class="mode-select">
         <mat-label>Mode</mat-label>
         <mat-select [ngModel]="chatStore.mode()" (ngModelChange)="chatStore.setMode($event)">
+          <mat-option value="free-chat">Free Chat</mat-option>
           <mat-option value="auto">Auto</mat-option>
           <mat-option value="find-problems">Find Problems</mat-option>
           <mat-option value="mock-interview">Mock Interview</mat-option>

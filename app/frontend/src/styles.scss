@@ -183,6 +183,11 @@ html, body {
   // }
 
   .mat-mdc-option {
+  // Ensure all option text is visible in dark mode
+  .mdc-list-item__primary-text {
+    color: #e0e0e0 !important;
+  }
+
   &.mat-mdc-option-active,
   &.mdc-list-item--selected,
   &.mdc-list-item--selected:not(.mat-mdc-option-multiple) {
@@ -192,17 +197,22 @@ html, body {
     // Target the actual text span inside the option
     .mdc-list-item__primary-text {
       color: white !important;
+      position: relative;
+      z-index: 1;
     }
 
     // Override the MDC state layer pseudo-element
     &::before {
       background-color: #315dcb !important;
       opacity: 1 !important;
+      z-index: 0;
     }
 
     // Ensure the checkmark is also white
     .mat-pseudo-checkbox {
       color: white !important;
+      position: relative;
+      z-index: 1;
     }
   }
 }

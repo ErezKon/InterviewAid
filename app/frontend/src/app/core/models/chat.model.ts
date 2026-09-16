@@ -43,7 +43,7 @@ export interface ModelInfo {
   supportsStructuredOutput: boolean;
 }
 
-export type ChatMode = 'auto' | 'find-problems' | 'mock-interview' | 'subject-quiz' | 'content-enricher';
+export type ChatMode = 'auto' | 'free-chat' | 'find-problems' | 'mock-interview' | 'subject-quiz' | 'content-enricher';
 
 export interface SseEvent {
   event: string;

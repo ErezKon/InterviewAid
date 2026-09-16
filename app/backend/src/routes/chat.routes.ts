@@ -4,6 +4,7 @@ import { createProblemFinderAgent } from '../agents/problem-finder/problem-finde
 import { createMockInterviewAgent } from '../agents/mock-interview/mock-interview.agent.js';
 import { createSubjectQuizAgent } from '../agents/subject-quiz/subject-quiz.agent.js';
 import { createContentEnricherAgent } from '../agents/content-enricher/content-enricher.agent.js';
+import { createFreeChatAgent } from '../agents/free-chat/free-chat.agent.js';
 import { extractJson } from '../agents/model-factory.js';
 import { chatUiResponseSchema, type ChatUiResponse } from '../agents/shared/ui-response.schema.js';
 import {
@@ -117,6 +118,10 @@ chatRouter.post('/chat', async (req, res) => {
     let agentName: string;
 
     switch (resolvedMode) {
+      case 'free-chat':
+        agentResult = await createFreeChatAgent(body.modelId);
+        agentName = 'free-chat';
+        break;
       case 'mock-interview':
         agentResult = await createMockInterviewAgent(body.modelId);
         agentName = 'mock-interview';
