@@ -1,4 +1,4 @@
-# Agentic Upload UI Stuck on "Processing..." After Backend Completes
+# Agentic Upload UI Stuck on Processing After Backend Completes
 
 ## Problem
 
