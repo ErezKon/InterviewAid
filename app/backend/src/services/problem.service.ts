@@ -20,6 +20,8 @@ export interface ProblemFilters {
   order?: 'asc' | 'desc';
   page?: number;
   pageSize?: number;
+  randomize?: boolean;
+  excludeSlugs?: string[];
 }
 
 export interface ProblemListItem {
@@ -145,6 +147,13 @@ export function queryProblems(filters: ProblemFilters): { items: ProblemListItem
     needsGroup = true;
   }
 
+  // Exclude slugs (for "give me another/different" requests)
+  if (filters.excludeSlugs?.length) {
+    const placeholders = filters.excludeSlugs.map((_, i) => `:excl_${i}`);
+    wheres.push(`p.slug NOT IN (${placeholders.join(',')})`);
+    filters.excludeSlugs.forEach((s, i) => { params[`excl_${i}`] = s; });
+  }
+
   const whereClause = wheres.length ? `WHERE ${wheres.join(' AND ')}` : '';
   const groupClause = needsGroup ? `GROUP BY p.slug` : '';
   const havingClause = havings.length ? `HAVING ${havings.join(' AND ')}` : '';
@@ -155,8 +164,9 @@ export function queryProblems(filters: ProblemFilters): { items: ProblemListItem
     acceptance: 'p.acceptance',
     interviewValue: 'p.interview_value',
   };
-  const orderCol = sortMap[sort] ?? 'p.interview_value';
-  const orderDir = order === 'asc' ? 'ASC' : 'DESC';
+  const useRandom = !!filters.randomize;
+  const orderCol = useRandom ? 'RANDOM()' : (sortMap[sort] ?? 'p.interview_value');
+  const orderDir = useRandom ? '' : (order === 'asc' ? 'ASC' : 'DESC');
 
   // Count query
   const countSql = `
@@ -278,9 +288,9 @@ export function getProblemSolution(slug: string): {
 }
 
 export function getRandomProblem(filters: ProblemFilters): ProblemListItem | null {
-  const { items } = queryProblems({ ...filters, page: 1, pageSize: 100 });
+  const { items } = queryProblems({ ...filters, page: 1, pageSize: 100, randomize: true });
   if (items.length === 0) return null;
-  return items[Math.floor(Math.random() * items.length)];
+  return items[0];
 }
 
 function getTopicsForProblem(slug: string): string[] {

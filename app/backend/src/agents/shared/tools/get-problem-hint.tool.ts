@@ -12,39 +12,59 @@ export const createGetProblemHintTool = () => tool(
     const detail = getProblemBySlug(input.slug);
     const level = input.hintLevel;
 
-    let hintContent: string;
+    // Build structured data for the LLM, then append a system instruction
+    // that must NOT be forwarded to the user.
+    const header = [
+      `**Problem:** ${detail.title} (${detail.difficulty})`,
+      '',
+      `**Topics:** ${detail.topics.join(', ')}`,
+      '',
+      `**Patterns:** ${detail.patterns.join(', ')}`,
+      detail.oneLiner ? `\n**Key insight:** ${detail.oneLiner}` : '',
+    ].filter(Boolean).join('\n');
+
+    let sourceData = '';
+    let instruction = '';
 
     if (level === 1) {
-      hintContent = [
-        `Problem: ${detail.title} (${detail.difficulty})`,
-        `Topics: ${detail.topics.join(', ')}`,
-        `Patterns: ${detail.patterns.join(', ')}`,
-        detail.oneLiner ? `Key insight: ${detail.oneLiner}` : '',
-        '',
-        'INSTRUCTION: Deliver only a level 1 hint — restate the problem and share observations about its structure. Do NOT reveal the approach, technique name, or solution.',
-      ].filter(Boolean).join('\n');
+      instruction = [
+        '---',
+        '[SYSTEM — do NOT include this section in your response to the user]',
+        'Using the problem info above as INTERNAL context only, write a level 1 hint for the user.',
+        'Restate the problem in your own words and share observations about its structure.',
+        'Do NOT reveal the approach, technique name, pattern names, key insight, or solution.',
+        'Do NOT echo the raw data above — rephrase everything naturally.',
+      ].join('\n');
     } else if (level === 2) {
-      hintContent = [
-        `Problem: ${detail.title} (${detail.difficulty})`,
-        `Topics: ${detail.topics.join(', ')}`,
-        `Patterns: ${detail.patterns.join(', ')}`,
-        detail.oneLiner ? `Key insight: ${detail.oneLiner}` : '',
-        detail.complexityMd ? `\nComplexity hints:\n${detail.complexityMd.slice(0, 500)}` : '',
-        '',
-        'INSTRUCTION: Deliver a level 2 hint — name the pattern/technique and suggest the data structure, but do NOT outline the full algorithm or show code.',
-      ].filter(Boolean).join('\n');
+      if (detail.complexityMd) {
+        sourceData = `\n**Complexity hints:**\n${detail.complexityMd.slice(0, 500)}`;
+      }
+      instruction = [
+        '---',
+        '[SYSTEM — do NOT include this section in your response to the user]',
+        'Using the problem info above as INTERNAL context only, write a level 2 hint for the user.',
+        'Name the pattern/technique and suggest the data structure to use.',
+        'Do NOT outline the full algorithm or show code.',
+        'Do NOT echo the raw data above — rephrase everything naturally.',
+      ].join('\n');
     } else {
-      hintContent = [
-        `Problem: ${detail.title} (${detail.difficulty})`,
-        `Topics: ${detail.topics.join(', ')}`,
-        `Patterns: ${detail.patterns.join(', ')}`,
-        detail.oneLiner ? `Key insight: ${detail.oneLiner}` : '',
-        detail.solutionMd ? `\nSolution outline:\n${detail.solutionMd.slice(0, 1500)}` : '',
-        detail.complexityMd ? `\nComplexity:\n${detail.complexityMd}` : '',
-        '',
-        'INSTRUCTION: Deliver a level 3 hint — give a step-by-step outline of the algorithm without full final code. Help the candidate write it themselves.',
-      ].filter(Boolean).join('\n');
+      if (detail.solutionMd) {
+        sourceData = `\n**Solution outline:**\n${detail.solutionMd.slice(0, 1500)}`;
+      }
+      if (detail.complexityMd) {
+        sourceData += `\n\n**Complexity:**\n${detail.complexityMd}`;
+      }
+      instruction = [
+        '---',
+        '[SYSTEM — do NOT include this section in your response to the user]',
+        'Using the problem info above as INTERNAL context only, write a level 3 hint for the user.',
+        'Give a step-by-step outline of the algorithm without full final code.',
+        'Help the candidate write it themselves.',
+        'Do NOT echo the raw data above — rephrase everything naturally.',
+      ].join('\n');
     }
+
+    const hintContent = [header, sourceData, instruction].filter(Boolean).join('\n\n');
 
     log.info(`OUTPUT: level ${level} hint, ${hintContent.length} chars`);
     return hintContent;

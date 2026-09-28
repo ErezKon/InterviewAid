@@ -18,6 +18,8 @@ export const createSearchProblemsTool = () => tool(
       seniority: input.seniority,
       matchMode: input.matchMode as 'any' | 'all' | undefined,
       minInterviewValue: input.minInterviewValue,
+      randomize: input.randomize,
+      excludeSlugs: input.excludeSlugs,
       page: 1,
       pageSize: Math.min(input.limit ?? 10, 25),
     });
@@ -48,6 +50,8 @@ export const createSearchProblemsTool = () => tool(
       matchMode: z.enum(['any', 'all']).optional().describe('How to combine multi-value filters'),
       minInterviewValue: z.number().optional().describe('Minimum interview value 1-5'),
       limit: z.number().optional().describe('Max results (default 10, max 25)'),
+      randomize: z.boolean().optional().describe('If true, return results in random order instead of sorted by interview value. Use when the user asks for a random/surprise problem.'),
+      excludeSlugs: z.array(z.string()).optional().describe('Problem slugs to exclude from results. Use when the user asks for a different/another problem — pass the slugs already shown in the conversation.'),
     }),
   }
 );

@@ -29,6 +29,6 @@ component the frontend should render and WHAT data to give it:
   - Only fill the inputs fields the chosen component needs. Leave the rest out entirely.
   - Never invent problem slugs, subject ids, or quotes — only use values returned by tools.
   - If you are unsure or need more information, use "text" and ask a clarifying question.
-  - followUpSuggestions: 0-4 short strings the user could click next.
+  - followUpSuggestions: 0-4 short strings the user could click next. Each suggestion must be self-contained and specific — include key filters/context so it works as a standalone request (e.g. "Give me another random medium problem from FAANG" instead of just "Give me another").
 </rules>
 `;
