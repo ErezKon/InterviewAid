@@ -1,0 +1,15 @@
+@if (topics().length) {
+  <button type="button" class="topic-spoiler" [class.revealed]="revealed()"
+          [attr.aria-expanded]="revealed()"
+          [title]="revealed() ? 'Hide topic' : 'Reveal topic (may hint at the solution)'"
+          (click)="toggle($event)">
+    @if (revealed()) {
+      @for (t of topics(); track t) {
+        <span class="topic-chip">{{ t }}</span>
+      }
+    } @else {
+      <mat-icon>visibility_off</mat-icon>
+      <span>{{ label() }}</span>
+    }
+  </button>
+}

@@ -29,9 +29,7 @@
         <mat-card-content>
           <div class="chips-row">
             <span class="difficulty-chip" [class]="'difficulty-' + p.difficulty.toLowerCase()">{{ p.difficulty }}</span>
-            @for (t of p.topics; track t) {
-              <span class="topic-chip">{{ t }}</span>
-            }
+            <app-topic-spoiler [topics]="p.topics" />
             @for (c of p.companies; track c) {
               <span class="company-chip">{{ c }}</span>
             }

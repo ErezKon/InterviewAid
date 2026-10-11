@@ -1,0 +1,38 @@
+:host { display: inline-flex; vertical-align: middle; }
+
+.topic-spoiler {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px dashed color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  color: inherit;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover { opacity: 1; }
+
+  &.revealed {
+    border-style: solid;
+    padding: 0.1rem 0.2rem;
+    background: transparent;
+  }
+
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.topic-chip {
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  background: rgba(25, 118, 210, 0.12);
+}

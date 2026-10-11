@@ -21,7 +21,7 @@ const problemCardSchema = z.object({
   difficulty: z.string().describe('Easy | Medium | Hard'),
   topics: z.array(z.string()).describe('Topic ids'),
   companies: z.array(z.string()).describe('Company slugs'),
-  why: z.string().describe('One sentence: why this problem is relevant to the user request'),
+  why: z.string().describe('One sentence: why this problem is relevant to the user request. Must NOT name its topic, pattern, data structure or technique'),
 });
 
 const quizQuestionSchema = z.object({

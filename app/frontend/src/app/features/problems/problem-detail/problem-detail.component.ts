@@ -4,21 +4,21 @@ import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProblemsStore } from '../../../state/problems.store';
 import { MarkdownService } from '../../../core/services/markdown.service';
 import { ChatMarkdownViewerComponent } from '../../chat/chat-markdown-viewer/chat-markdown-viewer.component';
+import { TopicSpoilerComponent } from '../../../shared/topic-spoiler/topic-spoiler.component';
 
 @Component({
   selector: 'app-problem-detail',
   standalone: true,
   imports: [
     CommonModule, RouterLink,
-    MatCardModule, MatButtonModule, MatIconModule, MatChipsModule,
+    MatCardModule, MatButtonModule, MatIconModule,
     MatExpansionModule, MatProgressSpinnerModule,
-    ChatMarkdownViewerComponent,
+    ChatMarkdownViewerComponent, TopicSpoilerComponent,
   ],
   templateUrl: './problem-detail.component.html',
   styleUrl: './problem-detail.component.scss',

@@ -14,9 +14,7 @@
         </mat-card-title>
         <mat-card-subtitle>
           <span [class]="'difficulty-' + d.difficulty.toLowerCase()">{{ d.difficulty }}</span>
-          @if (d.primaryTopic) {
-            <span class="topic-badge">{{ d.primaryTopic }}</span>
-          }
+          <app-topic-spoiler class="topic-badge" [topics]="d.topics" />
           @if (d.url) {
             <a [href]="d.url" target="_blank" rel="noopener" class="lc-link">LeetCode</a>
           }
@@ -24,12 +22,6 @@
       </mat-card-header>
 
       <mat-card-content>
-        <div class="chips-row">
-          @for (t of d.topics; track t) {
-            <mat-chip-set><mat-chip>{{ t }}</mat-chip></mat-chip-set>
-          }
-        </div>
-
         @if (d.descriptionMd) {
           <section>
             <h3>Description</h3>

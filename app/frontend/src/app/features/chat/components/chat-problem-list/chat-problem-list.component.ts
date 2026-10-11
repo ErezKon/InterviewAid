@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { TopicSpoilerComponent } from '../../../../shared/topic-spoiler/topic-spoiler.component';
 
 export interface ProblemCard {
   slug: string;
@@ -24,7 +25,7 @@ export interface InterpretedFilters {
 @Component({
   selector: 'app-chat-problem-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatCardModule, MatChipsModule, MatIconModule],
+  imports: [CommonModule, RouterLink, MatCardModule, MatChipsModule, MatIconModule, TopicSpoilerComponent],
   templateUrl: './chat-problem-list.component.html',
   styleUrl: './chat-problem-list.component.scss',
 })

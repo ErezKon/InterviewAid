@@ -177,8 +177,9 @@ app/
             │   └── directives/             # mermaid.directive.ts
             ├── state/                      # NgRx Signal Stores (chat, filters, models, problems, quiz, subjects, upload)
             │   └── chat.store.ts           # SSE handler: result -> ui envelope, done -> fallback
+            ├── shared/topic-spoiler/       # Click-to-reveal chip that hides problem topics (no spoilers)
             └── features/
-                ├── problems/               # Problem list (filters, pagination) + problem detail
+                ├── problems/               # Problem list (filters, pagination) + problem detail; topics hidden until clicked
                 ├── subjects/               # Subject list (grouped by main subject) + subject detail
                 ├── quiz/                   # Quiz page (pre-generated questions, local scoring)
                 ├── upload/                 # Upload page -- drag & drop .md files
@@ -277,7 +278,7 @@ Unknown model IDs are auto-detected by name pattern (`/claude|anthropic/` -> ant
 | `text` | Plain conversational reply, clarifying question, error | _(none -- message is rendered by the chat page)_ |
 | `chat-markdown-viewer` | Raw study material, source content | `content` (markdown), `title` |
 | `chat-quiz-cards` | Generated quiz questions with interactive reveal/score | `questions`, `studyTips`, `subject` |
-| `chat-problem-list` | Recommended coding problems with filter chips | `problems` (cards with slug, title, difficulty, topics, companies, why), `interpretedFilters` |
+| `chat-problem-list` | Recommended coding problems with filter chips (each card's topics are hidden behind a click-to-reveal "Show topic" chip) | `problems` (cards with slug, title, difficulty, topics, companies, why), `interpretedFilters` |
 | `chat-hint-card` | Progressive hints (collapsed behind reveal buttons) | `hints` (slug, level, text), `problemTitle` |
 | `chat-interview-question` | Mock interview question with progress tracking | `stage`, `questionText`, `currentProblemSlug`, `sessionProgress`, `nextAction`, `hintsGiven` |
 | `chat-evaluation-scorecard` | Candidate answer scoring (4 axes, 1-5 scale) | `evaluation` (correctness, complexity, communication, edgeCases, notes) |
@@ -300,7 +301,7 @@ Below are example questions you can ask in each mode, and what the response look
 
 | Example Question | Response View |
 |---|---|
-| _"hard graph problems asked at Google"_ | **`chat-problem-list`** -- filter chips with the interpreted filters (e.g. `google`, `Hard`, `graphs`) above a list of problem cards, each with title (linked to `/problems/:slug`), difficulty badge, topic/company chips, and a "why" sentence explaining relevance. |
+| _"hard graph problems asked at Google"_ | **`chat-problem-list`** -- filter chips with the interpreted filters (e.g. `google`, `Hard`, `graphs`) above a list of problem cards, each with title (linked to `/problems/:slug`), difficulty badge, a hidden "Show topic" chip, company chips, and a "why" sentence explaining relevance (without naming the problem's topic or pattern). |
 | _"show me the study material on agent memory"_ | **`chat-markdown-viewer`** -- a card with the raw markdown content from the matching subject (or just the matching section), rendered with code highlighting and mermaid diagrams. |
 | _"give me a hint for two-sum"_ | **`chat-hint-card`** -- progressive hints (level 1 = nudge, level 2 = approach, level 3 = near-solution), each hidden behind a "Reveal Hint N" button. |
 | _"what topics should I study for a senior backend role?"_ | **`text`** -- a conversational markdown response with advice and follow-up suggestion chips like "Find Hard problems on system design" or "Quiz me on distributed systems". |

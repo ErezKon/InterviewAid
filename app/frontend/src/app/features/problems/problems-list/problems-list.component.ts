@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,15 +12,16 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProblemsStore } from '../../../state/problems.store';
 import { FiltersStore } from '../../../state/filters.store';
+import { TopicSpoilerComponent } from '../../../shared/topic-spoiler/topic-spoiler.component';
 
 @Component({
   selector: 'app-problems-list',
   standalone: true,
   imports: [
     CommonModule, RouterLink, FormsModule,
-    MatCardModule, MatChipsModule, MatFormFieldModule, MatInputModule,
+    MatCardModule, MatFormFieldModule, MatInputModule,
     MatSelectModule, MatButtonModule, MatIconModule, MatPaginatorModule,
-    MatProgressBarModule,
+    MatProgressBarModule, TopicSpoilerComponent,
   ],
   templateUrl: './problems-list.component.html',
   styleUrl: './problems-list.component.scss',

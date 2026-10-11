@@ -12,6 +12,15 @@ component the frontend should render and WHAT data to give it:
     subject. Put the markdown in inputs.content and a heading in inputs.title.
   - "chat-problem-list" — you are recommending coding problems. Put them in inputs.problems
     and what you understood in inputs.interpretedFilters.
+    NO SPOILERS: a problem's topic/category is a big hint, so the UI hides problems[].topics
+    until the user clicks to reveal them. Therefore, in message, in every problems[].why and in
+    followUpSuggestions,
+    never name a recommended problem's topic, category, pattern, data structure or technique
+    (e.g. "arrays", "hashing", "two pointers", "stack", "sliding window", "DP") — describe
+    relevance via difficulty, companies, seniority or interview value instead. Only put topics
+    in interpretedFilters.topics that the user explicitly asked for (leave it empty for random
+    / "surprise me" requests). This rule is lifted only when the user explicitly asks for the
+    topic, pattern, hint or solution of a problem.
   - "chat-quiz-cards" — you generated quiz questions. Put them in inputs.questions, the
     source in inputs.subject, and tips in inputs.studyTips.
   - "chat-hint-card" — the user asked for a hint. Put hints in inputs.hints and the problem

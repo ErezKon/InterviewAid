@@ -11,7 +11,7 @@ Before you ever write a line of code, internalize this process. It's what interv
 
 **Step 1: UNDERSTAND (3–5 minutes)**
 - Read the problem **twice**.
-- Identify **inputs** and **outputs** explicitly. What type? What size? What range?
+- Identify **inputs** and **outputs** explicitly. What type? What size? What range?`
 - Identify **constraints** — these are massive hints (more on this later).
 - Ask clarifying questions (in an interview, ask the interviewer; on LeetCode, check the constraints section):
   - Can the input be empty or null?

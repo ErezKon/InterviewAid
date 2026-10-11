@@ -15,7 +15,9 @@ These rules apply to every task in this folder and take precedence over everythi
    - `README.md` is for humans: setup, running, Docker, env vars, API, scripts, testing.
    - `AGENTS.md` is for AI agents: architecture deep dive, conventions, sync points, pitfalls.
 3. **Never commit, never push.** Do not run `git commit`, `git push`, or any other command that creates commits or updates a remote. Leave all changes uncommitted in the working tree — the user reviews, commits and pushes them manually.
-4. **Never use tools or shell commands that require permission.** Only use tools that run without an approval prompt, and prefer the built-in file tools (read, search/grep, glob, edit) over shell equivalents. Do not run anything that asks for approval — e.g. any `git` command (including read-only ones such as `git status` or `git log`), package installs, network calls, deleting files, or writing outside the workspace. If a step such as a build, type-check or test run would require permission, skip it and list the exact commands in your final message so the user can run them.
+4. **Never use tools or shell commands that require permission — except build and test.** Only use tools that run without an approval prompt, and prefer the built-in file tools (read, search/grep, glob, edit) over shell equivalents. Do not run anything that asks for approval — e.g. any `git` command (including read-only ones such as `git status` or `git log`), package installs, network calls, deleting files, or writing outside the workspace.
+   - **Exception — build, type-check and test commands are permitted** (they are listed in [Build & Verify](#build--verify)): `npx tsc --noEmit --skipLibCheck` and `npm test` in `app/backend/`, and `npx ng build` in `app/frontend/`.
+5. **Always verify before finishing.** After any code change, run the relevant checks from [Build & Verify](#build--verify) and fix the failures your change caused: backend changes → type-check + `npm test`; frontend changes → `npx ng build`; changes on both sides → all three. `ng build` takes a while, so run it with a long timeout or in the background and wait for it to finish. The build's existing warnings (`Cannot find module 'lmdb'` and the mermaid "is not ESM" CommonJS warnings) are expected; only new warnings or errors count. Report the results in your final message. Do not use the frontend Karma tests (`frontend npm test`) to verify changes; they are broken (see [Testing](#testing)).
 
 ---
 
@@ -43,7 +45,7 @@ These rules apply to every task in this folder and take precedence over everythi
 
 ### Build & Verify
 
-> Subject to rule 4: run these only if they execute without a permission prompt; otherwise list them for the user.
+> These build/test commands are permitted (rule 4 exception) and must be run after every code change (rule 5). The dev servers below are long-running — start them only when asked.
 
 ```bash
 # Backend type-check (from app/backend/) — there is no compiled build
@@ -249,6 +251,8 @@ app/
             │   └── directives/
             │       └── mermaid.directive.ts # [appMermaid] — renders Mermaid blocks after innerHTML
             ├── state/                    # NgRx Signal Stores (chat, filters, models, problems, quiz, subjects, upload)
+            ├── shared/
+            │   └── topic-spoiler/        # <app-topic-spoiler [topics]> — hides problem topics until clicked (no-spoiler chip)
             └── features/
                 ├── chat/                 # chat-page, chat-component-host, component-registry.ts, chat-markdown-viewer,
                 │                         #   chat-quiz-cards, components/ (text, problem-list, hint-card,
@@ -556,9 +560,11 @@ Defined but currently not used by any component: `ChatApi.sendSync`, `ProblemsAp
 - **`MarkdownService`** — Renders markdown to HTML via `marked` + `marked-highlight` (highlight.js, auto-detect when no language). Mermaid blocks are rendered as `<pre class="mermaid">` (not highlighted).
 - **`ThemeService`** — `isDark` signal, `toggle()`, `init()`. Initial value from `localStorage('theme')`, falling back to `prefers-color-scheme: dark`. Applies the `body.dark-theme` class.
 
-#### Directives
+#### Directives & Shared Components
 
 - **`MermaidDirective` (`[appMermaid]`)** — Standalone attribute directive. Uses `MutationObserver` + `AfterViewChecked` to find `<pre class="mermaid">` blocks after `[innerHTML]` binding. Uses a `WeakSet` to prevent double-rendering. One-time global Mermaid init (`startOnLoad: false`, `theme: 'dark'`, `securityLevel: 'loose'`).
+
+- **`TopicSpoilerComponent` (`<app-topic-spoiler [topics]>`, `shared/topic-spoiler/`)** — No-spoiler policy: a problem's topic/category is a strong hint, so it is never shown directly. Renders a dashed "Show topic" chip; clicking toggles the topic chips (`preventDefault` + `stopPropagation`, so it works inside the `routerLink` problem cards). The revealed state is a `linkedSignal` reset whenever the `topics` input reference changes — pass a stable array (e.g. `p.topics`), never an inline expression like `p.topics.slice(0, 3)`, or it will re-hide on every change detection. Used by `ProblemsListComponent`, `ProblemDetailComponent` and `ChatProblemListComponent`.
 
 ### State Layer (NgRx Signal Stores)
 
@@ -578,8 +584,8 @@ All stores are `{ providedIn: 'root' }`, use `signalStore` + `withState` + `with
 
 | Route | Component | Store(s) | Notes |
 |---|---|---|---|
-| `/problems` | `ProblemsListComponent` | ProblemsStore, FiltersStore | Effect watches `filtersStore.queryParams()` to auto-reload; paginator |
-| `/problems/:slug` | `ProblemDetailComponent` | ProblemsStore | Route-bound `slug` input; renders the DB sections (description, examples, solution, complexity, follow-ups, takeaway) with `ChatMarkdownViewerComponent` |
+| `/problems` | `ProblemsListComponent` | ProblemsStore, FiltersStore | Effect watches `filtersStore.queryParams()` to auto-reload; paginator; topics hidden behind `TopicSpoilerComponent` |
+| `/problems/:slug` | `ProblemDetailComponent` | ProblemsStore | Route-bound `slug` input; renders the DB sections (description, examples, solution, complexity, follow-ups, takeaway) with `ChatMarkdownViewerComponent`; topics hidden behind `TopicSpoilerComponent` |
 | `/subjects` | `SubjectsListComponent` | SubjectsStore | Groups items by `mainSubject`; paginator |
 | `/subjects/:id` | `SubjectDetailComponent` | SubjectsStore | Uses `ChatMarkdownViewerComponent` |
 | `/quiz` | `QuizPageComponent` | QuizStore | Subject selection grouped by main subject (only subjects with questions), question answering, scoring |
@@ -665,6 +671,10 @@ In `chat.routes.ts → toEnvelope()`:
 3. Fallback: `{ component: 'text', message: rawText, inputs: {}, followUpSuggestions: [] }`
 
 Then `validateProblemSlugs()` drops any problem slugs not found in the DB.
+
+### No-Spoiler Rule for Problem Topics
+
+Problem topics/categories are hidden in the UI until clicked (`TopicSpoilerComponent`, see Frontend). The backend mirrors this in the `chat-problem-list` entry of `UI_RESPONSE_PROMPT` ("NO SPOILERS") and the `why` field description in `ui-response.schema.ts`: agents must not name a recommended problem's topic, pattern, data structure or technique in `message`, `problems[].why` or `followUpSuggestions`, and only put topics in `interpretedFilters.topics` that the user explicitly requested (empty for random requests). `problems[].topics` is still filled — the frontend hides it. Keep both sides in sync when changing how topics are displayed.
 
 ### SSE Event Protocol
 
@@ -1074,3 +1084,4 @@ These must stay in sync — changes to one require changes to the other:
 | Default model `gpt-oss-120b` | `config/models.ts`, `chat.routes.ts` (thread fallback), `run-enricher-loop.ts` (CLI default), `model-factory.test.ts` | `models.store.ts` initial state |
 | Taxonomy ids | `indexer/taxonomy.ts` + hardcoded list in `content-enricher.prompt.ts` + `kind` mapping in `build-db.ts` | Loaded dynamically via `GET /api/filters` |
 | Seniority values | `SENIORITY` in `taxonomy.ts`, `filters.routes.ts`, `build-db.ts` (`filters.json`) | Loaded dynamically via `GET /api/filters` |
+| Problem-topic no-spoiler policy | "NO SPOILERS" in `ui-response.prompt.ts` + `why` description in `ui-response.schema.ts` (+ rule 9 in `problem-finder.prompt.ts`) | `TopicSpoilerComponent` used in problems list, problem detail, `ChatProblemListComponent` |

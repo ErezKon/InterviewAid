@@ -83,21 +83,14 @@
             </mat-card-title>
             <mat-card-subtitle>
               <span [class]="'difficulty-' + p.difficulty.toLowerCase()">{{ p.difficulty }}</span>
-              <span class="topic">{{ p.primaryTopic }}</span>
+              <app-topic-spoiler class="topic" [topics]="p.topics" />
             </mat-card-subtitle>
           </mat-card-header>
-          <mat-card-content>
-            @if (p.oneLiner) {
+          @if (p.oneLiner) {
+            <mat-card-content>
               <p class="one-liner">{{ p.oneLiner }}</p>
-            }
-            <div class="chips">
-              @for (t of p.topics.slice(0, 3); track t) {
-                <mat-chip-set>
-                  <mat-chip>{{ t }}</mat-chip>
-                </mat-chip-set>
-              }
-            </div>
-          </mat-card-content>
+            </mat-card-content>
+          }
         </mat-card>
       }
     </div>
