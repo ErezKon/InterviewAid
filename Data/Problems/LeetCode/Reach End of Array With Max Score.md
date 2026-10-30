@@ -1,15 +1,40 @@
 # 3282. Reach End of Array With Max Score
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/reach-end-of-array-with-max-score](https://leetcode.com/problems/reach-end-of-array-with-max-score)
 **Companies:** Google, Meta, Microsoft
 ---
 
 ## Problem Description
-Given an integer array `nums` of length `n`, you start at index `0`. At each step `i` (0‑based, `i < n-1`) you may move to any later index `j > i`. Your score increases by the maximum value among all visited positions up to `i`. The goal is to maximize the total score when you reach the last index `n-1`.
+You are given an integer array `nums` of length `n`.
+
+Your goal is to start at index `0` and reach index `n - 1`. You can only jump to indices **greater** than your current index.
+
+The score for a jump from index `i` to index `j` is calculated as `(j - i) * nums[i]`.
+
+Return the **maximum** possible **total score** by the time you reach the last index.
+
+**Constraints:**
+
+- `1 <= nums.length <= 10⁵`
+- `1 <= nums[i] <= 10⁵`
 
 ## Examples
-- Input: `nums = [1,2,3,4]` → Optimal path visits all indices, score = `1+2+3+4 = 10`.
-- Input: `nums = [5,1,2,3]` → Jump directly from index 0 to 3, score = `5` (only the first element contributes).
+
+```
+Example 1:
+  Input: nums = [1,3,1,5]
+  Output: 7
+  Explanation: First, jump to index 1 and then jump to the last index. The final score is 1 * 1 + 2 * 3 = 7.
+```
+
+```
+Example 2:
+  Input: nums = [4,3,1,3,2]
+  Output: 16
+  Explanation: Jump directly to the last index. The final score is 4 * 4 = 16.
+```
+<!-- -->
 
 ## Approach
 A greedy strategy works: as you iterate, keep the maximum value seen so far (`maxSoFar`). Add this value to the score for each step except the last, because the score contributed by a step is the maximum of all visited positions up to that step.

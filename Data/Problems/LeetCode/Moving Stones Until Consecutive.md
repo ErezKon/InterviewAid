@@ -21,21 +21,45 @@
 
 ## 1. Problem Description
 
-Three stones are placed at distinct integer positions `a`, `b`, and `c` on an infinite number line. In one move, you may take an endpoint stone (the leftmost or rightmost) and relocate it to any empty position strictly between the other two stones (it cannot land on an existing stone or remain at an endpoint). Return a two‑element array `[minMoves, maxMoves]` where `minMoves` is the smallest possible number of moves to make the stones occupy three consecutive positions, and `maxMoves` is the largest possible number of moves before they become consecutive.
+There are three stones in different positions on the X-axis. You are given three integers `a`, `b`, and `c`, the positions of the stones.
+
+In one move, you pick up a stone at an endpoint (i.e., either the lowest or highest position stone), and move it to an unoccupied position between those endpoints. Formally, let's say the stones are currently at positions `x`, `y`, and `z` with `x < y < z`. You pick up the stone at either position `x` or position `z`, and move that stone to an integer position `k`, with `x < k < z` and `k != y`.
+
+The game ends when you cannot make any more moves (i.e., the stones are in three consecutive positions).
+
+Return *an integer array* `answer` *of length* `2` *where*:
+
+- `answer[0]` *is the minimum number of moves you can play, and*
+- `answer[1]` *is the maximum number of moves you can play*.
 
 **Constraints:**
 - `1 <= a, b, c <= 100`
-- `a`, `b`, `c` are distinct
+- `a`, `b`, and `c` have different values.
 
 ---
 
 ## 2. Examples
 
-| stones | Output | Explanation |
-|--------|--------|-------------|
-| `[1,2,5]` | `[1,2]` | Minimum 1 move (move stone at 5 to 3). Maximum 2 moves (move stone at 1 to 4, then stone at 5 to 3). |
-| `[4,3,2]` | `[0,0]` | Stones are already consecutive; no moves needed. |
-| `[6,5,4]` | `[0,0]` | Already consecutive in reverse order. |
+```
+Example 1:
+  Input: a = 1, b = 2, c = 5
+  Output: [1,2]
+  Explanation: Move the stone from 5 to 3, or move the stone from 5 to 4 to 3.
+```
+
+```
+Example 2:
+  Input: a = 4, b = 3, c = 2
+  Output: [0,0]
+  Explanation: We cannot make any moves.
+```
+
+```
+Example 3:
+  Input: a = 3, b = 5, c = 1
+  Output: [1,2]
+  Explanation: Move the stone from 1 to 4; or move the stone from 1 to 2 to 4.
+```
 
 ---
 

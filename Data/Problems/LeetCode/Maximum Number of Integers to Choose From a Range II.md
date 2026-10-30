@@ -20,24 +20,38 @@
 
 ## Problem Description
 
-Given a `banned` array, an integer `n`, and an integer `maxSum`, choose the **maximum number of integers** from `[1, n]` that are NOT in `banned` and whose sum does not exceed `maxSum`.
+You are given an integer array `banned` and two integers `n` and `maxSum`. You are choosing some number of integers following the below rules:
 
-This is the harder version where `n` can be up to `10^9`.
+- The chosen integers have to be in the range `[1, n]`.
+- Each integer can be chosen **at most once**.
+- The chosen integers should not be in the array `banned`.
+- The sum of the chosen integers should not exceed `maxSum`.
+
+Return *the **maximum** number of integers you can choose following the mentioned rules*.
 
 **Constraints:**
-- `1 <= banned.length <= 10^4`
-- `1 <= banned[i], n <= 10^9`
+- `1 <= banned.length <= 10^5`
+- `1 <= banned[i] <= n <= 10^9`
 - `1 <= maxSum <= 10^15`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  banned = [1,6,5], n = 5, maxSum = 6
-Output: 2
-Explanation: Pick 2 and 3 (sum=5 ≤ 6). Can't pick 4 too (sum would be 9).
+Example 1:
+  Input: banned = [1,4,6], n = 6, maxSum = 4
+  Output: 1
+  Explanation: You can choose the integer 3.
+    3 is in the range [1, 6], and do not appear in banned. The sum of the chosen integers is 3, which does not exceed maxSum.
+```
+
+```
+Example 2:
+  Input: banned = [4,3,5,6], n = 7, maxSum = 18
+  Output: 3
+  Explanation: You can choose the integers 1, 2, and 7.
+    All these integers are in the range [1, 7], all do not appear in banned, and their sum is 10, which does not exceed maxSum.
 ```
 
 ---

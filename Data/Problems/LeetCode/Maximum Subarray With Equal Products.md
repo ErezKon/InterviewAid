@@ -7,20 +7,43 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, find the length of the longest contiguous subarray where the product of all elements equals the product of the same subarray after removing any single element. In other words, there exists an index `k` inside the subarray such that `product(nums[l..r]) == product(nums[l..k-1]) * product(nums[k+1..r])`. Return the maximum possible length, or `0` if no such subarray exists.
+
+> *Note: the Approach below solves an invented condition ("contains a 1"). Officially a subarray is valid if `prod == lcm · gcd`. Correct idea (n ≤ 100, values ≤ 10): brute force over all starts, extending the end while maintaining `prod`, `gcd` and `lcm`. Stop when `prod` exceeds `lcm · gcd` by too much to recover (e.g. beyond `lcm_max · gcd_max`). O(n²).*
+
+You are given an array of **positive** integers `nums`.
+
+An array `arr` is called **product equivalent** if `prod(arr) == lcm(arr) * gcd(arr)`, where:
+
+- `prod(arr)` is the product of all elements of `arr`.
+- `gcd(arr)` is the GCD of all elements of `arr`.
+- `lcm(arr)` is the LCM of all elements of `arr`.
+
+Return the length of the **longest** **product equivalent** subarray of `nums`.
+
+**Constraints:**
+- `2 <= nums.length <= 100`
+- `1 <= nums[i] <= 10`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: nums = [2,2,1,2]
+Input: nums = [1,2,1,2,1,1,1]
+Output: 5
+Explanation: The longest product equivalent subarray is [1, 2, 1, 1, 1], where prod([1, 2, 1, 1, 1]) = 2, gcd([1, 2, 1, 1, 1]) = 1, and lcm([1, 2, 1, 1, 1]) = 2.
+```
+
+**Example 2:**
+```
+Input: nums = [2,3,4,5,6]
 Output: 3
-Explanation: Subarray [2,2,1] (indices 0‑2) has product 4. Removing the element at index 2 (value 1) leaves product 4 as well.
+Explanation: The longest product equivalent subarray is [3, 4, 5].
 ```
-**Example 2**
+
+**Example 3:**
 ```
-Input: nums = [3,5,7]
-Output: 0
-Explanation: No subarray satisfies the equal‑product condition.
+Input: nums = [1,2,3,1,4,5,1]
+Output: 5
 ```
 
 ## Approach

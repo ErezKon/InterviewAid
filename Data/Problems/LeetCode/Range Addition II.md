@@ -1,16 +1,44 @@
 # 598. Range Addition II
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/range-addition-ii](https://leetcode.com/problems/range-addition-ii)
 
 **Companies:** Amazon, Ixl
 ---
 
 ## Problem Description
-You are given an `m x n` matrix initialized with zeros. A list of operations `ops` is provided, where each operation is a pair `[a, b]` that increments every element in the sub‑matrix spanning rows `0` to `a-1` and columns `0` to `b-1` by one. After performing all operations, return the maximum integer present in the matrix.
+You are given an `m x n` matrix `M` initialized with all `0`'s and an array of operations `ops`, where `ops[i] = [ai, bi]` means `M[x][y]` should be incremented by one for all `0 <= x < ai` and `0 <= y < bi`.
+
+Count and return *the number of maximum integers in the matrix after performing all the operations*.
+
+**Constraints:**
+
+- `1 <= m, n <= 4 * 10⁴`
+- `0 <= ops.length <= 10⁴`
+- `ops[i].length == 2`
+- `1 <= ai <= m`
+- `1 <= bi <= n`
 
 ## Examples
-- Input: `m = 3, n = 3, ops = [[2,2],[3,3]]` → The overlapping region is a `2 x 2` sub‑matrix, so the maximum value is `2`.
-- Input: `m = 2, n = 3, ops = []` → No operations, all cells remain `0`.
+
+```
+Example 1:
+  Input: m = 3, n = 3, ops = [[2,2],[3,3]]
+  Output: 4
+  Explanation: The maximum integer in M is 2, and there are four of it in M. So return 4.
+```
+
+```
+Example 2:
+  Input: m = 3, n = 3, ops = [[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3]]
+  Output: 4
+```
+
+```
+Example 3:
+  Input: m = 3, n = 3, ops = []
+  Output: 9
+```
 
 ## Approach
 The value of each cell equals the number of operations whose rectangle covers it. The maximum occurs in the intersection of all operation rectangles, i.e., the smallest `a` and smallest `b` across `ops`. Compute these minima and multiply.

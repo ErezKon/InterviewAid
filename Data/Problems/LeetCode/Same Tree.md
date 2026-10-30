@@ -9,24 +9,36 @@
 
 ## Problem Description
 
-Given roots of two binary trees `p` and `q`, return `true` if they are structurally identical with the same node values.
+Given the roots of two binary trees `p` and `q`, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+**Constraints:**
+
+- The number of nodes in both trees is in the range `[0, 100]`.
+- `-10^4 <= Node.val <= 10^4`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: p = [1,2,3], q = [1,2,3]
-Output: true
-Explanation: Both trees have the same structure and node values.
+Example 1:
+  Input: p = [1,2,3], q = [1,2,3]
+  Output: true
 ```
 
-**Example 2:**
 ```
-Input: p = [1,2], q = [1,null,2]
-Output: false
-Explanation: The structures differ; the left child of the root in `q` is missing.
+Example 2:
+  Input: p = [1,2], q = [1,null,2]
+  Output: false
+  Explanation: The structures differ; p has 2 as a left child while q has 2 as a right child.
+```
+
+```
+Example 3:
+  Input: p = [1,2,1], q = [1,1,2]
+  Output: false
 ```
 
 ---

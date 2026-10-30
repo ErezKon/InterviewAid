@@ -8,23 +8,35 @@
 
 ## 1. Problem Description
 
-Given an integer `num`, find two integers whose product is either `num + 1` or `num + 2`, and whose absolute difference is minimized. Return them as a pair.
+Given an integer `num`, find the closest two integers in absolute difference whose product equals `num + 1` or `num + 2`.
+
+Return the two integers in any order.
+
+**Constraints:**
+- `1 <= num <= 10^9`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-num = 8
+Example 1:
+  Input: num = 8
+  Output: [3,3]
+  Explanation: For num + 1 = 9, the closest divisors are 3 & 3, for num + 2 = 10, the closest divisors are 2 & 5, hence 3 & 3 is chosen.
 ```
-`num + 1 = 9` → factor pairs: (1,9), (3,3). Closest pair is **(3,3)**.
 
-**Example 2:**
 ```
-num = 12
+Example 2:
+  Input: num = 123
+  Output: [5,25]
 ```
-`num + 2 = 14` → factor pairs: (1,14), (2,7). Closest pair is **(2,7)** (difference 5) which is better than any pair from `num+1`.
+
+```
+Example 3:
+  Input: num = 999
+  Output: [40,25]
+```
 
 ---
 

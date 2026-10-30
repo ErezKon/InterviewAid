@@ -8,7 +8,12 @@
 
 ## 1. Problem Description
 
-Return a string of length `n` where every character has an odd frequency.
+Given an integer `n`, *return a string with `n` characters such that each character in such string occurs **an odd number of times***.
+
+The returned string must contain only lowercase English letters. If there are multiples valid strings, return **any** of them.
+
+**Constraints:**
+- `1 <= n <= 500`
 
 ## 2. Approach: Simple Construction — O(n) ✅
 
@@ -20,11 +25,23 @@ FUNCTION generateTheString(n):
 
 ## Examples
 
-| n | Output |
-|---|--------|
-| 5 | "aaaaa" |
-| 4 | "aaab" |
-| 1 | "a" |
+```
+Example 1:
+  Input: n = 4
+  Output: "pppz"
+  Explanation: "pppz" is a valid string since the character 'p' occurs three times and the character 'z' occurs once. Note that there are many other valid strings such as "ohhh" and "love".
+```
+```
+Example 2:
+  Input: n = 2
+  Output: "xy"
+  Explanation: "xy" is a valid string since the characters 'x' and 'y' occur once. Note that there are many other valid strings such as "ag" and "ur".
+```
+```
+Example 3:
+  Input: n = 7
+  Output: "holasss"
+```
 
 ## Walkthrough
 

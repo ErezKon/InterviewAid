@@ -7,26 +7,36 @@
 ---
 
 ## Problem Description
-Given an integer `k`, return the number of non‑negative integers `x` such that the number of trailing zeroes in `x!` (factorial of `x`) is exactly `k`. The answer is either `0` or `5`.
+
+Let `f(x)` be the number of zeroes at the end of `x!`. Recall that `x! = 1 * 2 * 3 * ... * x` and by convention, `0! = 1`.
+
+- For example, `f(3) = 0` because `3! = 6` has no zeroes at the end, while `f(11) = 2` because `11! = 39916800` has two zeroes at the end.
+
+Given an integer `k`, return the number of non-negative integers `x` have the property that `f(x) = k`.
+
+**Constraints:**
+- `0 <= k <= 10^9`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: k = 0
 Output: 5
-Explanation: The numbers 0, 1, 2, 3, 4 all have 0 trailing zeroes.
+Explanation: 0!, 1!, 2!, 3!, and 4! end with k = 0 zeroes.
 ```
+
 **Example 2:**
 ```
 Input: k = 5
 Output: 0
-Explanation: No factorial has exactly 5 trailing zeroes.
+Explanation: There is no x such that x! ends in k = 5 zeroes.
 ```
+
 **Example 3:**
 ```
 Input: k = 3
 Output: 5
-Explanation: The numbers 15, 16, 17, 18, 19 each have 3 trailing zeroes.
 ```
 
 ## Approach

@@ -8,7 +8,20 @@
 
 ## 1. Problem Description
 
-Given items with values and labels, select at most `numWanted` items, using at most `useLimit` items from each label. Maximize total value.
+You are given `n` item's value and label as two integer arrays `values` and `labels`. You are also given two integers `numWanted` and `useLimit`.
+
+Your task is to find a subset of items with the **maximum sum** of their values such that:
+
+- The number of items is **at most** `numWanted`.
+- The number of items with the same label is **at most** `useLimit`.
+
+Return the maximum sum.
+
+**Constraints:**
+- `n == values.length == labels.length`
+- `1 <= n <= 2 * 10^4`
+- `0 <= values[i], labels[i] <= 2 * 10^4`
+- `1 <= numWanted, useLimit <= n`
 
 ---
 
@@ -33,23 +46,26 @@ FUNCTION largestValsFromLabels(values, labels, numWanted, useLimit):
 
 ## Examples
 
-**Example 1:**
 ```
-values = [5,4,3,2,1]
-labels = [1,1,2,2,3]
-numWanted = 3, useLimit = 1
+Example 1:
+  Input: values = [5,4,3,2,1], labels = [1,1,2,2,3], numWanted = 3, useLimit = 1
+  Output: 9
+  Explanation: The subset chosen is the first, third, and fifth items with the sum of values 5 + 3 + 1.
 ```
-**Output:** 12
-**Explanation:** Pick values 5 (label 1), 4 (label 1) cannot because limit 1, so pick 3 (label 2) and 5 (label 1) and 2 (label 2) → total 12.
 
-**Example 2:**
 ```
-values = [9,8,8,7,6]
-labels = [0,0,0,1,1]
-numWanted = 3, useLimit = 2
+Example 2:
+  Input: values = [5,4,3,2,1], labels = [1,3,3,3,2], numWanted = 3, useLimit = 2
+  Output: 12
+  Explanation: The subset chosen is the first, second, and third items with the sum of values 5 + 4 + 3.
 ```
-**Output:** 24
-**Explanation:** Choose 9 (label 0), 8 (label 0), 7 (label 1).
+
+```
+Example 3:
+  Input: values = [9,8,8,7,6], labels = [0,0,0,1,1], numWanted = 3, useLimit = 1
+  Output: 16
+  Explanation: The subset chosen is the first and fourth items with the sum of values 9 + 7.
+```
 
 ---
 

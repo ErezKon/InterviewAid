@@ -21,26 +21,28 @@
 
 ## 1. Problem Description
 
-Given an array of meeting time intervals `intervals` where `intervals[i] = [startᵢ, endᵢ]`, return the **minimum number of conference rooms** required.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an array of meeting time intervals `intervals` where `intervals[i] = [start_i, end_i]`, return *the minimum number of conference rooms required*.
 
 **Constraints:**
-- `1 <= intervals.length <= 10⁴`
-- `0 <= startᵢ < endᵢ <= 10⁶`
+- `1 <= intervals.length <= 10^4`
+- `0 <= start_i < end_i <= 10^6`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input:  intervals = [[0,30],[5,10],[15,20]]
-  Output: 2
-  Reason: Meeting [0,30] overlaps with [5,10] → need 2 rooms.
+Input: intervals = [[0,30],[5,10],[15,20]]
+Output: 2
+```
 
-Example 2:
-  Input:  intervals = [[7,10],[2,4]]
-  Output: 1
-  Reason: No overlap.
+**Example 2:**
+```
+Input: intervals = [[7,10],[2,4]]
+Output: 1
 ```
 
 ---

@@ -21,17 +21,40 @@
 
 ## 1. Problem Description
 
-Split a digit string into a non‑decreasing sequence of positive integers (no leading zeros). Count the number of valid splits modulo 10⁹ + 7.
+You wrote down many **positive** integers in a string called `num`. However, you realized that you forgot to add commas to seperate the different numbers. You remember that the list of integers was **non-decreasing** and that **no** integer had leading zeros.
+
+Return *the **number of possible lists of integers** that you could have written down to get the string *`num`. Since the answer may be large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= num.length <= 3500`
+- `num` consists of digits `'0'` through `'9'`.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"1234"` | `2` | The valid partitions are `[1,2,34]` and `[12,34]`. |
-| `"1001"` | `0` | Any split would create a number with a leading zero or a decreasing sequence. |
-| `"111111"` | `13` | Multiple ways to partition while keeping the sequence non‑decreasing. |
+**Example 1:**
+```
+Input: num = "327"
+Output: 2
+Explanation: You could have written down the numbers:
+3, 27
+327
+```
+
+**Example 2:**
+```
+Input: num = "094"
+Output: 0
+Explanation: No numbers can have leading zeros and all numbers must be positive.
+```
+
+**Example 3:**
+```
+Input: num = "0"
+Output: 0
+Explanation: No numbers can have leading zeros and all numbers must be positive.
+```
 
 ---
 

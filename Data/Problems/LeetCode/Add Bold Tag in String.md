@@ -7,21 +7,43 @@
 ---
 
 ## Problem Description
-Given a string `s` and a list of strings `words`, you need to add bold tags `<b>` and `</b>` to wrap any substring of `s` that matches **any** word in `words`. If two such substrings overlap or are consecutive, they should be merged into a single bold region.
+You are given a string `s` and an array of strings `words`.
 
-**Constraints**
+You should add a closed pair of bold tag `<b>` and `</b>` to wrap the substrings in `s` that exist in `words`.
+
+- If two such substrings overlap, you should wrap them together with only one pair of closed bold-tag.
+- If two substrings wrapped by bold tags are consecutive, you should combine them.
+
+Return `s` *after adding the bold tags*.
+
+**Constraints:**
 - `1 <= s.length <= 1000`
-- `1 <= words.length <= 100`
-- `1 <= words[i].length <= 100`
-- All strings consist of lowercase English letters.
+- `0 <= words.length <= 100`
+- `1 <= words[i].length <= 1000`
+- `s` and `words[i]` consist of English letters and digits.
+- All the values of `words` are **unique**.
+
+**Note:** This question is the same as 758. Bold Words in String.
 
 ## Examples
-| Input | Output |
-|-------|--------|
-| `s = "abcxyz123"`<br>`words = ["abc","123"]` | `<b>abc</b>xyz<b>123</b>` |
-| `s = "aaabbcc"`<br>`words = ["aaa","aab","bc"]` | `<b>aaabbc</b>c` |
-
-Explanation: In the second example the bold intervals `[0,4]` (from "aaa" and "aab") and `[4,6]` (from "bc") overlap, so they are merged into a single `<b>` region.
+```
+Example 1:
+  Input: s = "abcxyz123", words = ["abc","123"]
+  Output: "<b>abc</b>xyz<b>123</b>"
+  Explanation: The two strings of words are substrings of s as following: "abcxyz123".
+  We add <b> before each substring and </b> after each substring.
+```
+```
+Example 2:
+  Input: s = "aaabbb", words = ["aa","b"]
+  Output: "<b>aaabbb</b>"
+  Explanation:
+  "aa" appears as a substring two times: "[aa]abbb" and "a[aa]bbb".
+  "b" appears as a substring three times: "aaa[b]bb", "aaab[b]b", and "aaabb[b]".
+  We add <b> before each substring and </b> after each substring: "<b>a<b>a</b>a</b><b>b</b><b>b</b><b>b</b>".
+  Since the first two <b>'s overlap, we merge them: "<b>aaa</b><b>b</b><b>b</b><b>b</b>".
+  Since now the four <b>'s are consecutive, we merge them: "<b>aaabbb</b>".
+```
 
 ## Approach
 1. **Mark bold positions** – Create a boolean array `bold` of length `len(s)`. For each word, find all its occurrences in `s` (using `str.find` in a loop) and set the corresponding indices in `bold` to `True`.

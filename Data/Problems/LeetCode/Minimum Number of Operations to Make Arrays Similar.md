@@ -8,7 +8,22 @@
 
 ## Problem Description
 
-You are given two integer arrays `nums1` and `nums2` of the same length `n`. In one operation you may choose an index `i` and replace `nums1[i]` with any integer that has the same parity (odd/even) as the original value. The goal is to make `nums1` a permutation of `nums2`. Return the minimum number of operations required.
+You are given two positive integer arrays `nums` and `target`, of the same length.
+
+In one operation, you can choose any two **distinct** indices `i` and `j` where `0 <= i, j < nums.length` and:
+
+- set `nums[i] = nums[i] + 2` and
+- set `nums[j] = nums[j] - 2`.
+
+Two arrays are considered to be **similar** if the frequency of each element is the same.
+
+Return *the minimum number of operations required to make *`nums`* similar to *`target`. The test cases are generated such that `nums` can always be similar to `target`.
+
+**Constraints:**
+- `n == nums.length == target.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i], target[i] <= 10^6`
+- It is possible to make `nums` similar to `target`.
 
 ---
 
@@ -16,16 +31,27 @@ You are given two integer arrays `nums1` and `nums2` of the same length `n`. In 
 
 **Example 1:**
 ```
-Input: nums1 = [1,2,3], nums2 = [2,1,3]
-Output: 1
-Explanation: Change nums1[0] from 1 (odd) to 2 (even) – parity matches the target value at that position. After one operation the arrays are permutations of each other.
+Input: nums = [8,12,6], target = [2,14,10]
+Output: 2
+Explanation: It is possible to make nums similar to target in two operations:
+- Choose i = 0 and j = 2, nums = [10,12,4].
+- Choose i = 1 and j = 2, nums = [10,14,2].
+It can be shown that 2 is the minimum number of operations needed.
 ```
 
 **Example 2:**
 ```
-Input: nums1 = [5,7,9], nums2 = [2,4,6]
-Output: 3
-Explanation: All three numbers must change parity to become even.
+Input: nums = [1,2,5], target = [4,1,3]
+Output: 1
+Explanation: We can make nums similar to target in one operation:
+- Choose i = 1 and j = 2, nums = [1,4,3].
+```
+
+**Example 3:**
+```
+Input: nums = [1,1,1,1,1], target = [1,1,1,1,1]
+Output: 0
+Explanation: The array nums is already similiar to target.
 ```
 
 ---

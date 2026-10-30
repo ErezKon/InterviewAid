@@ -8,19 +8,41 @@
 
 ## Problem Description
 
-Given two arrays of digits, create the maximum number of length `k` by selecting digits from both arrays while preserving relative order within each array.
+You are given two integer arrays `nums1` and `nums2` of lengths `m` and `n` respectively. `nums1` and `nums2` represent the digits of two numbers. You are also given an integer `k`.
+
+Create the maximum number of length `k <= m + n` from digits of the two numbers. The relative order of the digits from the same array must be preserved.
+
+Return *an array of the* `k` *digits representing the answer.*
+
+**Constraints:**
+- `m == nums1.length`
+- `n == nums2.length`
+- `1 <= m, n <= 500`
+- `0 <= nums1[i], nums2[i] <= 9`
+- `1 <= k <= m + n`
+- `nums1` and `nums2` do not have leading zeros.
 
 ---
 
 ## Examples
 
-| nums1 | nums2 | k | Output |
-|-------|-------|---|--------|
-| [3,4,6,5] | [9,1,2,5,8,3] | 5 | [9,8,6,5,3] |
-| [6,7] | [6,0,4] | 5 | [6,7,6,0,4] |
-| [3,9] | [8,9] | 3 | [9,8,9] |
+```
+Example 1:
+  Input: nums1 = [3,4,6,5], nums2 = [9,1,2,5,8,3], k = 5
+  Output: [9,8,6,5,3]
+```
 
-*Explanation*: For each example, the algorithm selects digits to form the largest possible number while maintaining the original order within each input array.
+```
+Example 2:
+  Input: nums1 = [6,7], nums2 = [6,0,4], k = 5
+  Output: [6,7,6,0,4]
+```
+
+```
+Example 3:
+  Input: nums1 = [3,9], nums2 = [8,9], k = 3
+  Output: [9,8,9]
+```
 
 ---
 

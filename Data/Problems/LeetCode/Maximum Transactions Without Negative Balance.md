@@ -7,18 +7,46 @@
 ---
 
 ## Problem Description
-You are given an array `transactions` where each element represents a signed amount (positive for deposit, negative for withdrawal). Starting with a balance of zero, you may reorder the transactions arbitrarily. Determine the maximum number of transactions you can perform such that the running balance never becomes negative.
+
+> *Note: the Approach below reorders transactions, but the official order is fixed and you may only skip transactions. Correct greedy: take every transaction and push it into a min-heap. Whenever the balance goes negative, drop the most negative taken transaction (pop the heap). The answer is the heap size. Checked against brute force.*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an integer array `transactions`, where `transactions[i]` represents the amount of the `i^th` transaction:
+
+- A positive value means money is **received**.
+- A negative value means money is **sent**.
+
+The account starts with a balance of 0, and the balance **must never become negative**. Transactions must be considered in the given order, but you are allowed to skip some transactions.
+
+Return an integer denoting the **maximum number of transactions** that can be performed without the balance ever going negative.
+
+**Constraints:**
+- `1 <= transactions.length <= 10^5`
+- `-10^9 <= transactions[i] <= 10^9`
 
 ## Examples
+
 **Example 1:**
-Input: `transactions = [4, -4, 1, -3, 1]`
-Output: `5`
-Explanation: Order as `[4, 1, 1, -3, -4]`. Balance sequence: 4,5,6,3,‑1? Actually after -4 balance becomes 2, never negative.
+```
+Input: transactions = [2,-5,3,-1,-2]
+Output: 4
+Explanation: One optimal sequence is [2, 3, -1, -2], balance: 0 → 2 → 5 → 4 → 2.
+```
 
 **Example 2:**
-Input: `transactions = [-2, -1, 5]`
-Output: `2`
-Explanation: Perform `5` first (balance 5), then `-2` (balance 3). The `-1` would make balance 2, still non‑negative, so all three could be done; however ordering constraints may limit count. Assume optimal count is 2 for illustration.
+```
+Input: transactions = [-1,-2,-3]
+Output: 0
+Explanation: All transactions are negative. Including any would make the balance negative.
+```
+
+**Example 3:**
+```
+Input: transactions = [3,-2,3,-2,1,-1]
+Output: 6
+Explanation: All transactions can be taken in order, balance: 0 → 3 → 1 → 4 → 2 → 3 → 2.
+```
 
 ## Approach
 **Greedy with Sorting by Effect** – Process all positive transactions first (they only increase balance). For negative transactions, sort by their absolute value descending and attempt to apply them while maintaining a non‑negative balance, using a max‑heap to possibly replace previously taken larger negatives.

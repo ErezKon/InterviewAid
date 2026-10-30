@@ -21,13 +21,15 @@
 
 ## Problem Description
 
-Given two arrays `nums1` and `nums2`, return the **maximum dot product** between non-empty subsequences of `nums1` and `nums2` with the same length.
+Given two arrays `nums1` and `nums2`.
 
-A subsequence of an array is a new array formed by deleting some (possibly none) elements without changing the relative order. The dot product of two subsequences `[a₁,a₂,...,aₖ]` and `[b₁,b₂,...,bₖ]` is `a₁·b₁ + a₂·b₂ + ... + aₖ·bₖ`.
+Return the maximum dot product between **non-empty** subsequences of nums1 and nums2 with the same length.
+
+A subsequence of an array is a new array which is formed from the original array by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, `[2,3,5]` is a subsequence of `[1,2,3,4,5]` while `[1,5,3]` is not).
 
 **Constraints:**
-- `1 ≤ nums1.length, nums2.length ≤ 500`
-- `-1000 ≤ nums1[i], nums2[j] ≤ 1000`
+- `1 <= nums1.length, nums2.length <= 500`
+- `-1000 <= nums1[i], nums2[i] <= 1000`
 
 ---
 
@@ -35,23 +37,26 @@ A subsequence of an array is a new array formed by deleting some (possibly none)
 
 **Example 1:**
 ```
-Input:  nums1 = [2,1,-2,5], nums2 = [3,0,-6]
+Input: nums1 = [2,1,-2,5], nums2 = [3,0,-6]
 Output: 18
-Explanation: Subsequence [2,-2] from nums1, [3,-6] from nums2 → 2·3 + (-2)·(-6) = 6 + 12 = 18
+Explanation: Take subsequence [2,-2] from nums1 and subsequence [3,-6] from nums2.
+Their dot product is (2*3 + (-2)*(-6)) = 18.
 ```
 
 **Example 2:**
 ```
-Input:  nums1 = [3,-2], nums2 = [2,-6,7]
+Input: nums1 = [3,-2], nums2 = [2,-6,7]
 Output: 21
-Explanation: Subsequence [3] from nums1, [7] from nums2 → 3·7 = 21
+Explanation: Take subsequence [3] from nums1 and subsequence [7] from nums2.
+Their dot product is (3*7) = 21.
 ```
 
 **Example 3:**
 ```
-Input:  nums1 = [-1,-1], nums2 = [1,1]
+Input: nums1 = [-1,-1], nums2 = [1,1]
 Output: -1
-Explanation: Must pick at least one pair; best is (-1)·(1) = -1
+Explanation: Take subsequence [-1] from nums1 and subsequence [1] from nums2.
+Their dot product is -1.
 ```
 
 ---

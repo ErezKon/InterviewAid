@@ -7,22 +7,34 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, select **exactly three** elements whose sum is divisible by `3`. Return the maximum possible sum of such a triple. If no such triple exists, return `0`.
+
+You are given an integer array `nums`.
+
+Your task is to choose **exactly three** integers from `nums` such that their sum is divisible by three.
+
+Return the **maximum** possible sum of such a triplet. If no such triplet exists, return 0.
+
+**Constraints:**
+- `3 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [3,6,5,1,8]
-Output: 18
-Explanation: The triple (3,6,9) is not present, but (3,6,9) would sum to 18. The best available triple is (3,6,9) → actually using (3,6,9) not in array; correct triple is (3,6,9)??
+Input: nums = [4,2,3,1]
+Output: 9
+Explanation: The valid triplets whose sum is divisible by 3 are:
+- (4, 2, 3) with a sum of 4 + 2 + 3 = 9.
+- (2, 3, 1) with a sum of 2 + 3 + 1 = 6.
+Thus, the answer is 9.
 ```
-*Note: Example adjusted for clarity.*
 
 **Example 2:**
 ```
-Input: nums = [2,2,2]
-Output: 6
-Explanation: 2+2+2 = 6, which is divisible by 3.
+Input: nums = [2,1,5]
+Output: 0
+Explanation: No triplet forms a sum divisible by 3, so the answer is 0.
 ```
 
 ## Approach

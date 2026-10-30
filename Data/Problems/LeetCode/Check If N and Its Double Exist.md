@@ -7,14 +7,30 @@
 ---
 
 ## Problem Description
-Given an integer array `arr`, determine whether there exists two distinct indices `i` and `j` such that `arr[i] = 2 * arr[j]`. The array may contain positive, negative, and zero values.
+Given an array `arr` of integers, check if there exist two indices `i` and `j` such that :
+
+- `i != j`
+- `0 <= i, j < arr.length`
+- `arr[i] == 2 * arr[j]`
+
+**Constraints:**
+- `2 <= arr.length <= 500`
+- `-10^3 <= arr[i] <= 10^3`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[10,2,5,3]` | `true` | `10` is double of `5`.
-| `[3,1,7,11]` | `false` | No such pair exists.
-| `[0,0]` | `true` | `0` is double of `0` (different indices).
+```
+Example 1:
+  Input: arr = [10,2,5,3]
+  Output: true
+  Explanation: For i = 0 and j = 2, arr[i] == 10 == 2 * 5 == 2 * arr[j]
+```
+
+```
+Example 2:
+  Input: arr = [3,1,7,11]
+  Output: false
+  Explanation: There is no i and j that satisfy the conditions.
+```
 
 ## Approach
 **Algorithm:** Hash Set Scan

@@ -7,14 +7,29 @@
 ---
 
 ## Problem Description
-Given three points in a 2D plane, determine whether they form a boomerang. A boomerang is defined as three distinct points that are not collinear (i.e., they do not all lie on a single straight line).
+
+Given an array `points` where `points[i] = [x_i, y_i]` represents a point on the **X-Y** plane, return `true` *if these points are a **boomerang***.
+
+A **boomerang** is a set of three points that are **all distinct** and **not in a straight line**.
+
+**Constraints:**
+- `points.length == 3`
+- `points[i].length == 2`
+- `0 <= x_i, y_i <= 100`
 
 ## Examples
-| points | Output |
-|--------|--------|
-| [[1,1],[2,3],[3,2]] | true |
-| [[1,1],[2,2],[3,3]] | false |
-*The first set forms a non‑collinear triangle, the second lies on a straight line.*
+
+**Example 1:**
+```
+Input: points = [[1,1],[2,3],[3,2]]
+Output: true
+```
+
+**Example 2:**
+```
+Input: points = [[1,1],[2,2],[3,3]]
+Output: false
+```
 
 ## Approach
 Use the area (or cross product) of the triangle formed by the three points. If the area is non‑zero, the points are non‑collinear.

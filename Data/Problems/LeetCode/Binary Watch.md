@@ -7,13 +7,33 @@
 ---
 
 ## Problem Description
-A binary watch has 4 LEDs to represent the hour (0‑11) and 6 LEDs to represent the minutes (0‑59). Each LED is either on (1) or off (0). Given an integer `turnedOn` indicating the total number of LEDs that are lit, return all possible times the watch could represent.
+A binary watch has 4 LEDs on the top to represent the hours (0-11), and 6 LEDs on the bottom to represent the minutes (0-59). Each LED represents a zero or one, with the least significant bit on the right.
+
+- For example, the below binary watch reads `"4:51"`.
+
+Given an integer `turnedOn` which represents the number of LEDs that are currently on (ignoring the PM), return *all possible times the watch could represent*. You may return the answer in **any order**.
+
+The hour must not contain a leading zero.
+
+- For example, `"01:00"` is not valid. It should be `"1:00"`.
+
+The minute must consist of two digits and may contain a leading zero.
+
+- For example, `"10:2"` is not valid. It should be `"10:02"`.
+
+**Constraints:**
+- `0 ≤ turnedOn ≤ 10`
 
 ## Examples
-| turnedOn | Output | Explanation |
-|----------|--------|-------------|
-| 1 | `["0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"]` | Exactly one LED is on.
-| 2 | `["0:03","0:05","0:06","0:09","0:10","0:12","0:17","0:18","0:20","0:24","0:33","0:34","0:36","0:40","0:48","1:01","1:02", ...]` |
+```
+Example 1:
+  Input: turnedOn = 1
+  Output: ["0:01","0:02","0:04","0:08","0:16","0:32","1:00","2:00","4:00","8:00"]
+
+Example 2:
+  Input: turnedOn = 9
+  Output: []
+```
 
 ## Approach
 Iterate over all possible hour values (0‑11) and minute values (0‑59). Count the number of set bits in each using a bit‑count operation. If the sum equals `turnedOn`, format the time as `h:mm` (minutes padded to two digits) and add to the result list.

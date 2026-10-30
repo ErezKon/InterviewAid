@@ -9,7 +9,15 @@
 
 ## 1. Problem Description
 
-Houses form a binary tree. You can't rob two directly-linked houses (parent-child). Return the maximum amount.
+The thief has found himself a new place for his thievery again. There is only one entrance to this area, called `root`.
+
+Besides the `root`, each house has one and only one parent house. After a tour, the smart thief realized that all houses in this place form a binary tree. It will automatically contact the police if **two directly-linked houses were broken into on the same night**.
+
+Given the `root` of the binary tree, return *the maximum amount of money the thief can rob **without alerting the police***.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `0 <= Node.val <= 10^4`
 
 ---
 
@@ -19,14 +27,14 @@ Houses form a binary tree. You can't rob two directly-linked houses (parent-chil
 ```
 Input: root = [3,2,3,null,3,null,1]
 Output: 7
-Explanation: Rob nodes 3 (root), 3 (right child of left), and 1 (rightmost leaf) = 7.
+Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.
 ```
 
 **Example 2:**
 ```
 Input: root = [3,4,5,1,3,null,1]
 Output: 9
-Explanation: Rob nodes 4,5 = 9.
+Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
 ```
 
 ---

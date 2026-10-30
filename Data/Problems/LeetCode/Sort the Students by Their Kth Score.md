@@ -1,26 +1,46 @@
 # 2545. Sort the Students by Their Kth Score
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/sort-the-students-by-their-kth-score](https://leetcode.com/problems/sort-the-students-by-their-kth-score)
 
 **Companies:** Amazon, Ibm, Lime
 ---
 
 ## Problem Description
-Given a 2D integer array `score` where each `score[i]` represents the scores of the i‑th student in several exams, and an integer `k`, sort the students in **descending** order by their `k`‑th exam score. If two students have the same `k`‑th score, preserve their original relative order (stable sort). Return the sorted array.
+
+There is a class with `m` students and `n` exams. You are given a **0-indexed** `m x n` integer matrix `score`, where each row represents one student and `score[i][j]` denotes the score the `i^th` student got in the `j^th` exam. The matrix `score` contains **distinct** integers only.
+
+You are also given an integer `k`. Sort the students (i.e., the rows of the matrix) by their scores in the `k^th` (**0-indexed**) exam from the highest to the lowest.
+
+Return *the matrix after sorting it.*
+
+**Constraints:**
+- `m == score.length`
+- `n == score[i].length`
+- `1 <= m, n <= 250`
+- `1 <= score[i][j] <= 10^5`
+- `score` consists of **distinct** integers.
+- `0 <= k < n`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: score = [[10,6,9,1],[7,6,3,4],[7,6,7,7],[10,8,9,7]], k = 3
-Output: [[10,8,9,7],[10,6,9,1],[7,6,7,7],[7,6,3,4]]
-Explanation: Sort by the 3‑rd index (0‑based). The first two rows have score 9, then 7, then 3.
+Input: score = [[10,6,9,1],[7,5,11,2],[4,8,3,15]], k = 2
+Output: [[7,5,11,2],[10,6,9,1],[4,8,3,15]]
+Explanation: In the above diagram, S denotes the student, while E denotes the exam.
+- The student with index 1 scored 11 in exam 2, which is the highest score, so they got first place.
+- The student with index 0 scored 9 in exam 2, which is the second highest score, so they got second place.
+- The student with index 2 scored 3 in exam 2, which is the lowest score, so they got third place.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: score = [[3,2,1],[4,5,6],[7,8,9]], k = 0
-Output: [[7,8,9],[4,5,6],[3,2,1]]
-Explanation: Sort by the first column in descending order.
+Input: score = [[3,4],[5,6]], k = 0
+Output: [[5,6],[3,4]]
+Explanation: In the above diagram, S denotes the student, while E denotes the exam.
+- The student with index 1 scored 5 in exam 0, which is the highest score, so they got first place.
+- The student with index 0 scored 3 in exam 0, which is the lowest score, so they got second place.
 ```
 
 ## Approach

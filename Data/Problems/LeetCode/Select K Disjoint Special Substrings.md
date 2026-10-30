@@ -8,7 +8,22 @@
 
 ## Problem Description
 
-Given a string `s` and integer `k`, determine if you can select `k` **disjoint special substrings**. A substring is "special" if it contains all occurrences of every character that appears in it (i.e., no character appears both inside and outside the substring).
+Given a string `s` of length `n` and an integer `k`, determine whether it is possible to select `k` disjoint **special substrings**.
+
+A **special substring** is a substring where:
+
+- Any character present inside the substring should not appear outside it in the string.
+- The substring is not the entire string `s`.
+
+**Note** that all `k` substrings must be disjoint, meaning they cannot overlap.
+
+Return `true` if it is possible to select `k` such disjoint special substrings; otherwise, return `false`.
+
+**Constraints:**
+
+- `2 <= n == s.length <= 5 * 10^4`
+- `0 <= k <= 26`
+- `s` consists only of lowercase English letters.
 
 ---
 
@@ -58,18 +73,27 @@ FUNCTION maxDisjointSubstrings(s, k):
 
 ## Examples
 
-**Example 1:**
 ```
-s = "ababa", k = 2
-Output: true
-Explanation: The special substrings are "aba" (covers all 'a' and 'b') and the remaining "ba" cannot be selected, but we can choose "aba" and the trailing "a" as two disjoint special substrings.
+Example 1:
+  Input: s = "abcdbaefab", k = 2
+  Output: true
+  Explanation:
+  - We can select two disjoint special substrings: "cd" and "ef".
+  - "cd" contains the characters 'c' and 'd', which do not appear elsewhere in s.
+  - "ef" contains the characters 'e' and 'f', which do not appear elsewhere in s.
 ```
 
-**Example 2:**
 ```
-s = "abc", k = 2
-Output: false
-Explanation: Each character forms its own special substring, but they overlap, so we cannot select two disjoint ones.
+Example 2:
+  Input: s = "cdefdc", k = 3
+  Output: false
+  Explanation: There can be at most 2 disjoint special substrings: "e" and "f". Since k = 3, the output is false.
+```
+
+```
+Example 3:
+  Input: s = "abeabe", k = 0
+  Output: true
 ```
 
 ---

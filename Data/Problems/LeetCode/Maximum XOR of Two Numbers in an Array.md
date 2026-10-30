@@ -21,11 +21,11 @@
 
 ## Problem Description
 
-Given an integer array `nums`, return the **maximum XOR** of any two elements `nums[i] XOR nums[j]` where `0 ≤ i ≤ j < n`.
+Given an integer array `nums`, return *the maximum result of *`nums[i] XOR nums[j]`, where `0 <= i <= j < n`.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 2 × 10⁵`
-- `0 ≤ nums[i] ≤ 2³¹ - 1`
+- `1 <= nums.length <= 2 * 10^5`
+- `0 <= nums[i] <= 2^31 - 1`
 
 ---
 
@@ -33,14 +33,14 @@ Given an integer array `nums`, return the **maximum XOR** of any two elements `n
 
 **Example 1:**
 ```
-Input:  nums = [3, 10, 5, 25, 2, 8]
+Input: nums = [3,10,5,25,2,8]
 Output: 28
-Explanation: 5 XOR 25 = 28.
+Explanation: The maximum result is 5 XOR 25 = 28.
 ```
 
 **Example 2:**
 ```
-Input:  nums = [14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70]
+Input: nums = [14,70,53,83,49,91,36,80,92,51,66,70]
 Output: 127
 ```
 

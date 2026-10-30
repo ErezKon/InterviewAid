@@ -6,20 +6,25 @@
 ---
 
 ## Problem Description
-You have `n` coins and you want to build a staircase with `k` rows where the `i`‑th row contains exactly `i` coins. Return the maximum possible height `k` of the staircase.
+You have `n` coins and you want to build a staircase with these coins. The staircase consists of `k` rows where the `iᵗʰ` row has exactly `i` coins. The last row of the staircase **may be** incomplete.
+
+Given the integer `n`, return *the number of **complete rows** of the staircase you will build*.
+
+**Constraints:**
+- `1 <= n <= 2^31 - 1`
 
 ## Examples
-**Example 1:**
 ```
-Input: n = 5
-Output: 2
-Explanation: 1 + 2 = 3 ≤ 5, but 1 + 2 + 3 = 6 > 5.
+Example 1:
+  Input: n = 5
+  Output: 2
+  Explanation: Because the 3rd row is incomplete, we return 2.
 ```
-**Example 2:**
 ```
-Input: n = 8
-Output: 3
-Explanation: 1 + 2 + 3 = 6 ≤ 8, adding a fourth row would require 10 > 8.
+Example 2:
+  Input: n = 8
+  Output: 3
+  Explanation: Because the 4th row is incomplete, we return 3.
 ```
 
 ## Approach

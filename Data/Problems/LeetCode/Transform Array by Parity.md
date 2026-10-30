@@ -7,21 +7,37 @@
 ---
 
 ## Problem Description
-You are given an integer array `nums`. In one operation you may choose any element and replace it with any **even** integer if the element is currently odd, or with any **odd** integer if the element is currently even. Determine the minimum number of operations required to make all elements in the array have the same parity (all even or all odd). Return that minimum count.
+
+> *Note: the Approach/Walkthrough below solve an invented "minimum parity operations" problem. Correct idea: count the even numbers `e`; return `e` zeros followed by `n − e` ones. O(n).*
+
+You are given an integer array `nums`. Transform `nums` by performing the following operations in the **exact** order specified:
+
+- Replace each even number with 0.
+- Replace each odd numbers with 1.
+- Sort the modified array in **non-decreasing** order.
+
+Return the resulting array after performing these operations.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `1 <= nums[i] <= 1000`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [3,2,1,4]
-Output: 2
-Explanation: Change the two even numbers (2,4) to odd numbers → array becomes all odd.
+Input: nums = [4,3,2,1]
+Output: [0,0,1,1]
+Explanation: - Replace the even numbers (4 and 2) with 0 and the odd numbers (3 and 1) with 1. Now, nums = [0, 1, 0, 1].
+- After sorting nums in non-descending order, nums = [0, 0, 1, 1].
 ```
 
 **Example 2:**
 ```
-Input: nums = [2,4,6]
-Output: 0
-Explanation: All numbers are already even.
+Input: nums = [1,5,1,4,2]
+Output: [0,0,1,1,1]
+Explanation: - Replace the even numbers (4 and 2) with 0 and the odd numbers (1, 5 and 1) with 1. Now, nums = [1, 1, 1, 0, 0].
+- After sorting nums in non-descending order, nums = [0, 0, 1, 1, 1].
 ```
 
 ## Approach

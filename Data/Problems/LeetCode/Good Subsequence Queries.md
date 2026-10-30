@@ -8,16 +8,66 @@
 
 ## 1. Problem Description
 
-Given an array and queries `[l, r]`, count "good" subsequences in each subarray. A subsequence is good if all element frequencies differ by at most 1. (Hard problem)
+You are given an integer array `nums` of length `n` and an integer `p`.
+
+A **non-empty subsequence** of `nums` is called **good** if:
+
+- Its length is **strictly less** than `n`.
+- The **greatest common divisor (GCD)** of its elements is **exactly** `p`.
+
+You are also given a 2D integer array `queries` of length `q`, where each `queries[i] = [ind_i, val_i]` indicates that you should update `nums[ind_i]` to `val_i`.
+
+After each query, determine whether there exists **any good subsequence** in the current array.
+
+Return the **number** of queries for which a **good subsequence** exists.
+
+The term `gcd(a, b)` denotes the **greatest common divisor** of `a` and `b`.
+
+**Constraints:**
+- `2 <= n == nums.length <= 5 * 10^4`
+- `1 <= nums[i] <= 5 * 10^4`
+- `1 <= queries.length <= 5 * 10^4`
+- `queries[i] = [ind_i, val_i]`
+- `1 <= val_i, p <= 5 * 10^4`
+- `0 <= ind_i <= n - 1`
 
 ## 2. Examples
 
-| Array | Queries | Output |
-|-------|---------|--------|
-| `[1,2,2,1,3]` | `[[0,4],[1,3]]` | `[4,2]` |
-| `[5,5,5,5]` | `[[0,3]]` | `[1]` |
-
-*Explanation*: For the first query, good subsequences are those where the counts of each distinct number differ by at most one.
+```
+Example 1:
+  Input: nums = [4,8,12,16], p = 2, queries = [[0,3],[2,6]]
+  Output: 1
+  Explanation:
+  i=0: [0, 3] -> update nums[0] to 3 -> nums = [3, 8, 12, 16]
+       No, as no subsequence has GCD exactly p = 2
+  i=1: [2, 6] -> update nums[2] to 6 -> nums = [3, 8, 6, 16]
+       Yes, subsequence [8, 6] has GCD exactly p = 2
+  Thus, the answer is 1.
+```
+```
+Example 2:
+  Input: nums = [4,5,7,8], p = 3, queries = [[0,6],[1,9],[2,3]]
+  Output: 2
+  Explanation:
+  i=0: [0, 6] -> update nums[0] to 6 -> nums = [6, 5, 7, 8]
+       No, as no subsequence has GCD exactly p = 3
+  i=1: [1, 9] -> update nums[1] to 9 -> nums = [6, 9, 7, 8]
+       Yes, subsequence [6, 9] has GCD exactly p = 3
+  i=2: [2, 3] -> update nums[2] to 3 -> nums = [6, 9, 3, 8]
+       Yes, subsequence [6, 9, 3] has GCD exactly p = 3
+  Thus, the answer is 2.
+```
+```
+Example 3:
+  Input: nums = [5,7,9], p = 2, queries = [[1,4],[2,8]]
+  Output: 0
+  Explanation:
+  i=0: [1, 4] -> update nums[1] to 4 -> nums = [5, 4, 9]
+       No, as no subsequence has GCD exactly p = 2
+  i=1: [2, 8] -> update nums[2] to 8 -> nums = [5, 4, 8]
+       No, as no subsequence has GCD exactly p = 2
+  Thus, the answer is 0.
+```
 
 ## 3. Walkthrough
 

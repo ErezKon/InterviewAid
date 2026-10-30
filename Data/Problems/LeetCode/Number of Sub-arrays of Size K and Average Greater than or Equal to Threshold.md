@@ -20,18 +20,31 @@
 
 ## 1. Problem Description
 
-Count subarrays of size `k` with average ≥ `threshold`.
+Given an array of integers `arr` and two integers `k` and `threshold`, return *the number of sub-arrays of size *`k`* and average greater than or equal to *`threshold`.
+
+**Constraints:**
+- `1 <= arr.length <= 10^5`
+- `1 <= arr[i] <= 10^4`
+- `1 <= k <= arr.length`
+- `0 <= threshold <= 10^4`
 
 ---
 
 ## 2. Examples
 
-| nums | k | threshold | Output |
-|------|---|-----------|--------|
-| [2,2,2,2,5,5,5,8] | 3 | 4 | 3 |
-| [1,2,3,4,5] | 1 | 3 | 3 |
+**Example 1:**
+```
+Input: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4
+Output: 3
+Explanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively. All other sub-arrays of size 3 have averages less than 4 (the threshold).
+```
 
-*Explanation*: In the first example, the subarrays of length 3 are `[2,2,2]`, `[2,2,5]`, `[2,5,5]`, `[5,5,5]`, `[5,5,8]`. Their averages are 2, 3, 4, 5, 6 respectively; three meet the threshold.
+**Example 2:**
+```
+Input: arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5
+Output: 6
+Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note that averages are not integers.
+```
 
 ---
 

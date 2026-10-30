@@ -8,27 +8,40 @@
 
 ## Problem Description
 
-Given an integer array `nums` of length `n` and an integer `k` (the maximum possible value in the array), you can change any element to any value between `0` and `k` inclusive. For each mirrored pair `(nums[i], nums[n‑1‑i])` you consider the absolute difference. The goal is to make all these differences equal using the minimum number of element changes.
+You are given an integer array `nums` of size `n` where `n` is **even**, and an integer `k`.
 
-Constraints:
-- `2 ≤ n ≤ 10^5`
+You can perform some changes on the array, where in one change you can replace **any** element in the array with **any** integer in the range from `0` to `k`.
+
+You need to perform some changes (possibly none) such that the final array satisfies the following condition:
+- There exists an integer `X` such that `abs(a[i] - a[n - i - 1]) = X` for all `(0 <= i < n)`.
+
+Return the **minimum** number of changes required to satisfy the above condition.
+
+**Constraints:**
+- `2 ≤ n == nums.length ≤ 10^5`
+- `n` is even.
 - `0 ≤ nums[i] ≤ k ≤ 10^5`
-- `n` is even (pairs are well‑defined).
 
 ## Examples
 
-**Example 1**
 ```
-Input: nums = [1,2,3,4], k = 5
-Output: 1
-Explanation: Change nums[0] to 4, then pairs become (4,4) and (2,3) with differences 0 and 1. Choose target difference 0, total changes = 1.
+Example 1:
+  Input: nums = [1,0,1,2,4,3], k = 4
+  Output: 2
+  Explanation: We can perform the following changes:
+  - Replace nums[1] by 2. The resulting array is nums = [1,2,1,2,4,3].
+  - Replace nums[3] by 3. The resulting array is nums = [1,2,1,3,4,3].
+  The integer X will be 2.
 ```
 
-**Example 2**
 ```
-Input: nums = [0,0,0,0], k = 0
-Output: 0
-Explanation: All differences are already 0; no changes needed.
+Example 2:
+  Input: nums = [0,1,2,3,3,6,5,4], k = 6
+  Output: 2
+  Explanation: We can perform the following operations:
+  - Replace nums[3] by 0. The resulting array is nums = [0,1,2,0,3,6,5,4].
+  - Replace nums[4] by 4. The resulting array is nums = [0,1,2,0,4,6,5,4].
+  The integer X will be 4.
 ```
 
 ## Approach

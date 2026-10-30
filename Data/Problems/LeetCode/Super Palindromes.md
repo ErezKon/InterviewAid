@@ -7,21 +7,34 @@
 ---
 
 ## Problem Description
-A **super palindrome** is a number that is a palindrome in both its decimal representation and its binary representation. Given two integers `left` and `right` (0 ≤ left ≤ right ≤ 10^18), return the count of super palindromes in the inclusive range `[left, right]`.
+
+> *Note: the Approach/Walkthrough below additionally require the square to be a **binary** palindrome — that condition is not part of the official problem. Correct idea: generate palindromes `p` up to `√right` (≈10⁹, built from halves up to 10⁵ for odd/even lengths), and count `p²` in `[left, right]` that is a decimal palindrome.*
+
+Let's say a positive integer is a **super-palindrome** if it is a palindrome, and it is also the square of a palindrome.
+
+Given two positive integers `left` and `right` represented as strings, return *the number of **super-palindromes** integers in the inclusive range* `[left, right]`.
+
+**Constraints:**
+- `1 <= left.length, right.length <= 18`
+- `left` and `right` consist of only digits.
+- `left` and `right` cannot have leading zeros.
+- `left` and `right` represent integers in the range `[1, 10^18 - 1]`.
+- `left` is less than or equal to `right`.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: left = 4, right = 1000
+Input: left = "4", right = "1000"
 Output: 4
-Explanation: The super palindromes are 4 (100), 9 (1001), 121 (1111001), 484 (111100100).
+Explanation: 4, 9, 121, and 484 are superpalindromes.
+Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26 is not a palindrome.
 ```
 
 **Example 2:**
 ```
-Input: left = 1, right = 2
+Input: left = "1", right = "2"
 Output: 1
-Explanation: Only 1 (1) is a super palindrome.
 ```
 
 ## Approach

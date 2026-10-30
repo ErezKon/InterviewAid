@@ -20,12 +20,25 @@
 
 ## Problem Description
 
-Given an undirected graph with `n` nodes (0-indexed) where every node has **degree ≥ 2** and the graph contains **exactly one cycle**, return an array `answer` where `answer[i]` is the minimum distance from node `i` to the nearest node on the cycle.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given a positive integer `n` representing the number of nodes in a **connected undirected graph** containing **exactly one** cycle. The nodes are numbered from `0` to `n - 1` (**inclusive**).
+
+You are also given a 2D integer array `edges`, where `edges[i] = [node1_i, node2_i]` denotes that there is a **bidirectional** edge connecting `node1_i` and `node2_i` in the graph.
+
+The distance between two nodes `a` and `b` is defined to be the **minimum** number of edges that are needed to go from `a` to `b`.
+
+Return *an integer array `answer`** of size *`n`*, where *`answer[i]`* is the **minimum** distance between the *`i^th`* node and **any** node in the cycle.*
 
 **Constraints:**
-- `n == edges.length`
 - `3 <= n <= 10^5`
-- The graph is connected with exactly one cycle.
+- `edges.length == n`
+- `edges[i].length == 2`
+- `0 <= node1_i, node2_i <= n - 1`
+- `node1_i != node2_i`
+- The graph is connected.
+- The graph has exactly one cycle.
+- There is at most one edge between any pair of vertices.
 
 ---
 
@@ -33,15 +46,32 @@ Given an undirected graph with `n` nodes (0-indexed) where every node has **degr
 
 **Example 1:**
 ```
-    0 - 1 - 2
-    |       |
-    7   3 - 4
-    |
-    6 - 5
+Input: n = 7, edges = [[1,2],[2,4],[4,3],[3,1],[0,1],[5,2],[6,5]]
+Output: [1,0,0,0,0,1,2]
+Explanation: The nodes 1, 2, 3, and 4 form the cycle.
+The distance from 0 to 1 is 1.
+The distance from 1 to 1 is 0.
+The distance from 2 to 2 is 0.
+The distance from 3 to 3 is 0.
+The distance from 4 to 4 is 0.
+The distance from 5 to 2 is 1.
+The distance from 6 to 2 is 2.
+```
 
-Cycle: 0-1-2-4-3-0 (or some subset)
-Nodes on cycle: distance 0
-Nodes off cycle: distance = hops to nearest cycle node
+**Example 2:**
+```
+Input: n = 9, edges = [[0,1],[1,2],[0,2],[2,6],[6,7],[6,8],[0,3],[3,4],[3,5]]
+Output: [0,0,0,1,2,2,1,2,2]
+Explanation: The nodes 0, 1, and 2 form the cycle.
+The distance from 0 to 0 is 0.
+The distance from 1 to 1 is 0.
+The distance from 2 to 2 is 0.
+The distance from 3 to 1 is 1.
+The distance from 4 to 1 is 2.
+The distance from 5 to 1 is 2.
+The distance from 6 to 2 is 1.
+The distance from 7 to 2 is 2.
+The distance from 8 to 2 is 2.
 ```
 
 ---

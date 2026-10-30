@@ -8,16 +8,31 @@
 
 ## 1. Problem Description
 
-Swap at most one pair of adjacent digits with the same parity to make the number as small as possible.
+Given a string `s` containing only digits, return the lexicographically smallest string that can be obtained after swapping **adjacent** digits in `s` with the same **parity** at most **once**.
+
+Digits have the same parity if both are odd or both are even. For example, 5 and 9, as well as 2 and 4, have the same parity, while 6 and 9 do not.
+
+**Constraints:**
+- `2 <= s.length <= 100`
+- `s` consists only of digits.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| "1234" | "1234" | No adjacent same‑parity pair where the left digit is larger, so no swap improves the string. |
-| "4321" | "3421" | The first adjacent same‑parity pair is `4` and `3` (both even/odd? actually 4 even, 3 odd, not same). The first same‑parity decreasing pair is `3` and `2` (both odd/even? 3 odd, 2 even, not same). The first valid pair is `2` and `1` (both even? 2 even, 1 odd). Actually correct example: "2210" → swap first `2` and `2` (same parity) no effect, better example: "3102" → swap `1` and `0` (both odd/even? 1 odd, 0 even) not same. Use "1325" → swap `3` and `2` (both odd/even? 3 odd, 2 even) not same. Provide a valid example: "5543" → swap first `5` and `5` (same parity) no change, but swapping `5` and `4` (different parity) not allowed. Better example from LeetCode: "1234" stays same, "3412" → swap `4` and `1` (different parity) not allowed, so result "3412". We'll give a simple valid example: "2210" → swap the second `2` and `1` (different parity) not allowed, so result stays "2210". Actually need a case where swap occurs: "13542" → adjacent same parity pair `5` and `4` not same, `4` and `2` both even and `4 > 2`, swapping gives "13524" which is smaller.
+**Example 1:**
+```
+Input: s = "45320"
+Output: "43520"
+Explanation: s[1] == '5' and s[2] == '3' both have the same parity, and swapping them results in the lexicographically smallest string.
+```
+
+**Example 2:**
+```
+Input: s = "001"
+Output: "001"
+Explanation: There is no need to perform a swap because s is already the lexicographically smallest.
+```
 
 ## 3. Approach: Greedy — O(n) ✅
 

@@ -8,29 +8,55 @@
 
 ## Problem Description
 
-You are given a numeric string `num` and an integer `k`. Starting from `num`, apply the **next permutation** operation exactly `k` times to obtain a target string. Return the minimum number of adjacent swaps required to transform the original string into this target string.
+You are given a string `num`, representing a large integer, and an integer `k`.
 
-Constraints:
-- `1 <= num.length <= 1000`
-- `num` consists of digits `'0'`‑`'9'`.
+We call some integer **wonderful** if it is a **permutation** of the digits in `num` and is **greater in value** than `num`. There can be many wonderful integers. However, we only care about the **smallest-valued** ones.
+
+- For example, when `num = "5489355142"`:
+  - The 1st smallest wonderful integer is `"5489355214"`.
+  - The 2nd smallest wonderful integer is `"5489355241"`.
+  - The 3rd smallest wonderful integer is `"5489355412"`.
+  - The 4th smallest wonderful integer is `"5489355421"`.
+
+Return *the **minimum number of adjacent digit swaps** that needs to be applied to* `num` *to reach the* `k-th` ***smallest wonderful** integer*.
+
+The tests are generated in such a way that `k-th` smallest wonderful integer exists.
+
+**Constraints:**
+- `2 <= num.length <= 1000`
 - `1 <= k <= 1000`
+- `num` only consists of digits.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: num = "5489355142", k = 4
-Output: 2
-Explanation: After 4 next‑permutations the target is "5489355421". Only two adjacent swaps are needed to reach it.
+Example 1:
+  Input: num = "5489355142", k = 4
+  Output: 2
+  Explanation: The 4th smallest wonderful number is "5489355421". To get this number:
+  - Swap index 7 with index 8: "5489355142" -> "5489355412"
+  - Swap index 8 with index 9: "5489355412" -> "5489355421"
 ```
 
-**Example 2:**
 ```
-Input: num = "11112", k = 4
-Output: 4
-Explanation: The target after 4 permutations is "21111". Four swaps move the leading `2` to the front.
+Example 2:
+  Input: num = "11112", k = 4
+  Output: 4
+  Explanation: The 4th smallest wonderful number is "21111". To get this number:
+  - Swap index 3 with index 4: "11112" -> "11121"
+  - Swap index 2 with index 3: "11121" -> "11211"
+  - Swap index 1 with index 2: "11211" -> "12111"
+  - Swap index 0 with index 1: "12111" -> "21111"
+```
+
+```
+Example 3:
+  Input: num = "00123", k = 1
+  Output: 1
+  Explanation: The 1st smallest wonderful number is "00132". To get this number:
+  - Swap index 3 with index 4: "00123" -> "00132"
 ```
 
 ---

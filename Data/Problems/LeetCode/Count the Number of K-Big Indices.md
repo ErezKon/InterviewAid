@@ -8,28 +8,37 @@
 
 ## Problem Description
 
-Given an integer array `nums` and an integer `k`, an index `i` is called **k‑big** if there are at least `k` elements strictly smaller than `nums[i]` to its left **and** at least `k` elements strictly smaller than `nums[i]` to its right. Return the number of k‑big indices.
+You are given a **0-indexed** integer array `nums` and a positive integer `k`.
+
+We call an index `i` **k-big** if the following conditions are satisfied:
+
+- There exist at least `k` different indices `idx1` such that `idx1 < i` and `nums[idx1] < nums[i]`.
+- There exist at least `k` different indices `idx2` such that `idx2 > i` and `nums[idx2] < nums[i]`.
+
+Return *the number of k-big indices*.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i], k <= nums.length`
 
 ---
 
 ## Examples
 
-**Example 1**
 ```
-Input: nums = [3,1,4,2,5], k = 1
-Output: 2
-Explanation:
-- Index 2 (value 4): left smaller = [3,1] → 2 elements < 4, right smaller = [2,5] → 1 element < 4 → k‑big.
-- Index 4 (value 5): left smaller = [3,1,4,2] → 4 elements < 5, right smaller = [] → 0 < k, not k‑big.
-- Index 0 and 1 are not k‑big because they lack enough left elements.
-Thus, only index 2 satisfies the condition.
+Example 1:
+  Input: nums = [2,3,6,5,2,3], k = 2
+  Output: 2
+  Explanation: There are only two 2-big indices in nums:
+  - i = 2 --> There are two valid idx1: 0 and 1. There are three valid idx2: 3, 4, and 5.
+  - i = 3 --> There are two valid idx1: 0 and 1. There are two valid idx2: 4 and 5.
 ```
 
-**Example 2**
 ```
-Input: nums = [1,2,3,4], k = 2
-Output: 0
-Explanation: No index has at least two smaller elements on both sides.
+Example 2:
+  Input: nums = [1,1,1], k = 3
+  Output: 0
+  Explanation: There are no 3-big indices in nums.
 ```
 
 ---

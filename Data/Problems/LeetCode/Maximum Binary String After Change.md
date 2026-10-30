@@ -20,10 +20,21 @@
 
 ## Problem Description
 
-Given a binary string, apply operations: `"00" → "10"` or `"10" → "01"`. Maximize the resulting string (lexicographically largest).
+You are given a binary string `binary` consisting of only `0`'s or `1`'s. You can apply each of the following operations any number of times:
+
+- Operation 1: If the number contains the substring `"00"`, you can replace it with `"10"`.
+
+- For example, `"00010" -> "10010`"
+
+- Operation 2: If the number contains the substring `"10"`, you can replace it with `"01"`.
+
+- For example, `"00010" -> "00001"`
+
+*Return the **maximum binary string** you can obtain after any number of operations. Binary string `x` is greater than binary string `y` if `x`'s decimal representation is greater than `y`'s decimal representation.*
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁵`
+- `1 <= binary.length <= 10^5`
+- `binary` consist of `'0'` and `'1'`.
 
 ---
 
@@ -55,19 +66,21 @@ FUNCTION maximumBinaryString(binary):
 
 **Example 1:**
 ```
-Input:  "000110"
+Input: binary = "000110"
 Output: "111011"
-Explanation:
-- First zero at index 0, zeros after it = 4.
-- Zero position = 0 + 4 - 1 = 3.
-- Result = "1110" + "11" = "111011".
+Explanation: A valid transformation sequence can be:
+"000110" -> "000101"
+"000101" -> "100101"
+"100101" -> "110101"
+"110101" -> "110011"
+"110011" -> "111011"
 ```
 
 **Example 2:**
 ```
-Input:  "1111"
-Output: "1111"
-Explanation: No zeros, string is already maximal.
+Input: binary = "01"
+Output: "01"
+Explanation: "01" cannot be transformed any further.
 ```
 
 ---

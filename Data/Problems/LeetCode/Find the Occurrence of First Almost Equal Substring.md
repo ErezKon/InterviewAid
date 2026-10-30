@@ -21,10 +21,18 @@
 
 ## 1. Problem Description
 
-Given strings `s` and `pattern`, find the first index in `s` where a substring of length `|pattern|` differs from `pattern` in at most 1 position.
+You are given two strings `s` and `pattern`.
+
+A string `x` is called **almost equal** to `y` if you can change **at most** one character in `x` to make it *identical* to `y`.
+
+Return the **smallest** *starting index* of a substring in `s` that is **almost equal** to `pattern`. If no such index exists, return `-1`.
+A **substring** is a contiguous **non-empty** sequence of characters within a string.
+
+**Follow-up:** Could you solve the problem if **at most** `k` **consecutive** characters can be changed?
 
 **Constraints:**
-- `1 <= |s|, |pattern| <= 10⁵`
+- `1 <= pattern.length < s.length <= 10^5`
+- `s` and `pattern` consist only of lowercase English letters.
 
 ---
 
@@ -55,13 +63,31 @@ FUNCTION minStartingIndex(s, pattern):
 
 ## 4. Examples
 
-| s | pattern | Output |
-|---|---------|--------|
-| "abcde" | "abfde" | 0 |
-| "aaaaa" | "aaaba" | 1 |
-| "xyz" | "abc" | -1 |
+**Example 1:**
+```
+Input: s = "abcdefg", pattern = "bcdffg"
+Output: 1
+Explanation: The substring s[1..6] == "bcdefg" can be converted to "bcdffg" by changing s[4] to "f".
+```
 
-*Explanation*: In the first example, the substring "abcde" matches pattern with 0 mismatches, so index 0 is returned. In the second, the substring starting at index 1 differs by exactly one character, satisfying the condition.
+**Example 2:**
+```
+Input: s = "ababbababa", pattern = "bacaba"
+Output: 4
+Explanation: The substring s[4..9] == "bababa" can be converted to "bacaba" by changing s[6] to "c".
+```
+
+**Example 3:**
+```
+Input: s = "abcd", pattern = "dba"
+Output: -1
+```
+
+**Example 4:**
+```
+Input: s = "dde", pattern = "d"
+Output: 0
+```
 
 ---
 

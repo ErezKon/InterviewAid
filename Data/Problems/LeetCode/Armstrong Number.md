@@ -8,7 +8,14 @@
 
 ## 1. Problem Description
 
-Given an integer `n`, determine if it is an Armstrong number. An Armstrong number of `k` digits satisfies: sum of each digit raised to the power `k` equals `n`.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an integer `n`, return `true` *if and only if it is an **Armstrong number***.
+
+The `k`-digit number `n` is an Armstrong number if and only if the `k^th` power of each digit sums to `n`.
+
+**Constraints:**
+- `1 <= n <= 10^8`
 
 ---
 
@@ -32,15 +39,15 @@ FUNCTION isArmstrong(n):
 **Example 1:**
 ```
 Input: n = 153
-Digits: [1,5,3], k = 3
-1^3 + 5^3 + 3^3 = 153 → true
+Output: true
+Explanation: 153 is a 3-digit number, and 153 = 1^3 + 5^3 + 3^3.
 ```
 
 **Example 2:**
 ```
 Input: n = 123
-Digits: [1,2,3], k = 3
-1^3 + 2^3 + 3^3 = 36 → false
+Output: false
+Explanation: 123 is a 3-digit number, and 123 != 1^3 + 2^3 + 3^3 = 36.
 ```
 
 ---

@@ -1,28 +1,47 @@
 # 2027. Minimum Moves to Convert String
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/minimum-moves-to-convert-string](https://leetcode.com/problems/minimum-moves-to-convert-string)
 **Companies:** Bloomberg, Google, Jeavio
 
 ---
 
 ## Problem Description
 
-You are given a string consisting of characters `O` and `X`. In one move, you can select any three consecutive characters and change them all to `O`. Return the **minimum number of moves** required to convert the entire string to only `O`s.
+You are given a string `s` consisting of `n` characters which are either `'X'` or `'O'`.
+
+A **move** is defined as selecting **three** **consecutive characters** of `s` and converting them to `'O'`. Note that if a move is applied to the character `'O'`, it will stay the **same**.
+
+Return *the **minimum** number of moves required so that all the characters of *`s`* are converted to *`'O'`.
+
+**Constraints:**
+- `3 <= s.length <= 1000`
+- `s[i]` is either `'X'` or `'O'`.
 
 ## Examples
 
 **Example 1:**
 ```
-Input: s = "XOXOX"
-Output: 2
-Explanation: Convert the first three characters to `OOO` (move 1), resulting in "OOOX". Then convert the last three characters (positions 2‑4) to `OOO` (move 2) → "OOOOO".
+Input: s = "XXX"
+Output: 1
+Explanation: XXX -> OOO
+We select all the 3 characters and convert them in one move.
 ```
 
 **Example 2:**
 ```
+Input: s = "XXOX"
+Output: 2
+Explanation: XXOX -> OOOX -> OOOO
+We select the first 3 characters in the first move, and convert them to 'O'.
+Then we select the last 3 characters and convert them so that the final string contains all 'O's.
+```
+
+**Example 3:**
+```
 Input: s = "OOOO"
 Output: 0
-Explanation: No moves needed because the string already contains only `O`s.
+Explanation: There are no 'X's in s to convert.
 ```
 
 ## Approach

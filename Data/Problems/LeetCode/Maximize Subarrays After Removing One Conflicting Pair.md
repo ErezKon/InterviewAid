@@ -21,11 +21,18 @@
 
 ## Problem Description
 
-Given an array of length `n` and `m` conflicting pairs (pairs of indices that cannot both appear in a subarray), find the maximum number of valid subarrays (containing no conflicting pair) after removing exactly **one** conflicting pair.
+You are given an integer `n` which represents an array `nums` containing the numbers from 1 to `n` in order. Additionally, you are given a 2D array `conflictingPairs`, where `conflictingPairs[i] = [a, b]` indicates that `a` and `b` form a conflicting pair.
+
+Remove **exactly** one element from `conflictingPairs`. Afterward, count the number of non-empty subarrays of `nums` which do not contain both `a` and `b` for any remaining conflicting pair `[a, b]`.
+
+Return the **maximum** number of subarrays possible after removing **exactly** one conflicting pair.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁵`
-- `1 ≤ m ≤ 10⁵`
+- `2 <= n <= 10^5`
+- `1 <= conflictingPairs.length <= 2 * n`
+- `conflictingPairs[i].length == 2`
+- `1 <= conflictingPairs[i][j] <= n`
+- `conflictingPairs[i][0] != conflictingPairs[i][1]`
 
 ---
 
@@ -33,16 +40,20 @@ Given an array of length `n` and `m` conflicting pairs (pairs of indices that ca
 
 **Example 1:**
 ```
-Input: n = 5, conflicts = [(1,3), (2,4), (3,5)]
+Input: n = 4, conflictingPairs = [[2,3],[1,4]]
 Output: 9
-Explanation: Removing the pair (2,4) unblocks the subarrays that include indices 2‑4, increasing the total count to 9.
+Explanation: - Remove [2, 3] from conflictingPairs. Now, conflictingPairs = [[1, 4]].
+- There are 9 subarrays in nums where [1, 4] do not appear together. They are [1], [2], [3], [4], [1, 2], [2, 3], [3, 4], [1, 2, 3] and [2, 3, 4].
+- The maximum number of subarrays we can achieve after removing one element from conflictingPairs is 9.
 ```
 
 **Example 2:**
 ```
-Input: n = 4, conflicts = [(0,1), (2,3)]
-Output: 6
-Explanation: Removing either pair yields the same maximum of 6 valid subarrays.
+Input: n = 5, conflictingPairs = [[1,2],[2,5],[3,5]]
+Output: 12
+Explanation: - Remove [1, 2] from conflictingPairs. Now, conflictingPairs = [[2, 5], [3, 5]].
+- There are 12 subarrays in nums where [2, 5] and [3, 5] do not appear together.
+- The maximum number of subarrays we can achieve after removing one element from conflictingPairs is 12.
 ```
 
 ---

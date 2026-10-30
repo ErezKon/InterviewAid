@@ -8,7 +8,20 @@
 
 ## Problem Description
 
-You are given an integer array `nums` of length `n`. In one operation you may replace any element of `nums` with any integer. An array is *continuous* if it can be rearranged to form the sequence `[x, x+1, x+2, …, x+n‑1]` for some integer `x`. Return the minimum number of operations required to make `nums` continuous.
+You are given an integer array `nums`. In one operation, you can replace **any** element in `nums` with **any** integer.
+
+`nums` is considered **continuous** if both of the following conditions are fulfilled:
+
+- All elements in `nums` are **unique**.
+- The difference between the **maximum** element and the **minimum** element in `nums` equals `nums.length - 1`.
+
+For example, `nums = [4, 2, 5, 3]` is **continuous**, but `nums = [1, 2, 3, 5, 6]` is **not continuous**.
+
+Return the **minimum** number of operations to make `nums` **continuous**.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ---
 
@@ -16,16 +29,28 @@ You are given an integer array `nums` of length `n`. In one operation you may re
 
 **Example 1:**
 ```
-Input: nums = [5,3,2,1]
+Input: nums = [4,2,5,3]
 Output: 0
-Explanation: The array can be rearranged to [1,2,3,5] which is already a continuous range of length 4 (missing 4, but we can replace 5 with 4 in one operation). Actually the optimal is to replace 5 with 4, resulting in [1,2,3,4]; thus 1 operation is needed. Wait correct answer is 0? According to LeetCode, answer is 0 because the set {1,2,3,5} can be rearranged to [1,2,3,5] which is not continuous; the minimal operations is 1. We'll present correct example from problem statement.
+Explanation: nums is already continuous.
 ```
 
 **Example 2:**
 ```
 Input: nums = [1,2,3,5,6]
-Output: 2
-Explanation: Replace 5 and 6 with 4 and 7 to obtain [1,2,3,4,7] then replace 7 with 5 to get [1,2,3,4,5]. Minimum operations = 2.
+Output: 1
+Explanation: One possible solution is to change the last element to 4.
+The resulting array is [1,2,3,5,4], which is continuous.
+```
+
+**Example 3:**
+```
+Input: nums = [1,10,100,1000]
+Output: 3
+Explanation: One possible solution is to:
+- Change the second element to 2.
+- Change the third element to 3.
+- Change the fourth element to 4.
+The resulting array is [1,2,3,4], which is continuous.
 ```
 
 ---

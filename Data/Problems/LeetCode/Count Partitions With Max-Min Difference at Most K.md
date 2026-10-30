@@ -20,11 +20,15 @@
 
 ## Problem Description
 
-Given an array `nums` and an integer `k`, count the number of ways to partition `nums` into contiguous subarrays such that within each subarray, `max - min ≤ k`. Return the answer modulo `10^9 + 7`.
+You are given an integer array `nums` and an integer `k`. Your task is to partition `nums` into one or more **non-empty** contiguous segments such that in each segment, the difference between its **maximum** and **minimum** elements is **at most** `k`.
+
+Return the total number of ways to partition `nums` under this condition.
+
+Since the answer may be too large, return it **modulo** `10^9 + 7`.
 
 **Constraints:**
-- `1 <= nums.length <= 10^5`
-- `0 <= nums[i] <= 10^9`
+- `2 <= nums.length <= 5 * 10^4`
+- `1 <= nums[i] <= 10^9`
 - `0 <= k <= 10^9`
 
 ---
@@ -32,9 +36,26 @@ Given an array `nums` and an integer `k`, count the number of ways to partition 
 ## Examples
 
 **Example 1:**
-- **Input:** `nums = [1, 3, 2, 4], k = 2`
-- **Output:** `4`
-- **Explanation:** Valid partitions: [1,3,2,4], [1,3,2|4], [1|3,2,4], [1|3,2|4].
+```
+Input: nums = [9,4,1,3,7], k = 4
+Output: 6
+Explanation: There are 6 valid partitions where the difference between the maximum and minimum elements in each segment is at most k = 4:
+- [[9], [4], [1], [3], [7]]
+- [[9], [4], [1], [3, 7]]
+- [[9], [4], [1, 3], [7]]
+- [[9], [4, 1], [3], [7]]
+- [[9], [4, 1], [3, 7]]
+- [[9], [4, 1, 3], [7]]
+```
+
+**Example 2:**
+```
+Input: nums = [3,3,4], k = 0
+Output: 2
+Explanation: There are 2 valid partitions that satisfy the given conditions:
+- [[3], [3], [4]]
+- [[3, 3], [4]]
+```
 
 ---
 

@@ -7,16 +7,38 @@
 ---
 
 ## Problem Description
-Given a binary array `nums`, you may perform an operation that flips (0↔1) three consecutive elements starting at index `i` (i.e., `nums[i]`, `nums[i+1]`, `nums[i+2]`). Determine the minimum number of operations required to make the last two elements of the array equal to `1`. If it is impossible, return `-1`.
+You are given a binary array `nums`.
 
-Constraints: `3 ≤ nums.length ≤ 10⁵`, each `nums[i]` is `0` or `1`.
+You can do the following operation on the array **any** number of times (possibly zero):
+
+- Choose **any** 3 **consecutive** elements from the array and **flip** **all** of them.
+
+**Flipping** an element means changing its value from 0 to 1, and from 1 to 0.
+
+Return the **minimum** number of operations required to make all elements in `nums` equal to 1. If it is impossible, return `-1`.
+
+**Constraints:**
+- `3 ≤ nums.length ≤ 10⁵`
+- `0 ≤ nums[i] ≤ 1`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[0,0,0,1,1]` | `1` | Flip starting at index 0 changes the first three bits to `1,1,1`; the last two are already `1`.
-| `[0,1,0,0,1]` | `-1` | No sequence of flips can make both final bits `1` simultaneously.
-| `[1,1,1,1,1]` | `0` | Already satisfies the condition.
+
+```
+Example 1:
+  Input: nums = [0,1,1,1,0,0]
+  Output: 3
+  Explanation: We can do the following operations:
+  - Choose the elements at indices 0, 1 and 2. The resulting array is nums = [1,0,0,1,0,0].
+  - Choose the elements at indices 1, 2 and 3. The resulting array is nums = [1,1,1,0,0,0].
+  - Choose the elements at indices 3, 4 and 5. The resulting array is nums = [1,1,1,1,1,1].
+```
+
+```
+Example 2:
+  Input: nums = [0,1,1,1]
+  Output: -1
+  Explanation: It is impossible to make all elements equal to 1.
+```
 
 ## Approach
 The operation only affects a sliding window of size 3. A greedy left‑to‑right scan works: whenever we encounter a `0` at position `i` (where `i ≤ n‑3`), we must flip the window starting at `i` because later operations cannot affect `nums[i]`. This ensures the earliest possible correction and yields the minimum number of flips.

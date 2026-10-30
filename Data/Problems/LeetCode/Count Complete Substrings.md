@@ -8,7 +8,21 @@
 
 ## 1. Problem Description
 
-Given a string `word` and integer `k`, count substrings where each character that appears does so exactly `k` times, and adjacent characters differ by at most 2 in the alphabet.
+You are given a string `word` and an integer `k`.
+
+A substring `s` of `word` is **complete** if:
+
+- Each character in `s` occurs **exactly** `k` times.
+- The difference between two adjacent characters is **at most** `2`. That is, for any two adjacent characters `c1` and `c2` in `s`, the absolute difference in their positions in the alphabet is **at most** `2`.
+
+Return *the number of **complete** substrings of* `word`.
+
+A **substring** is a **non-empty** contiguous sequence of characters in a string.
+
+**Constraints:**
+- `1 <= word.length <= 10^5`
+- `word` consists only of lowercase English letters.
+- `1 <= k <= word.length`
 
 ---
 
@@ -48,18 +62,20 @@ FUNCTION countCompleteSubstrings(word, k):
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: word = "abcabc", k = 2
-Output: 2
-Explanation: The substrings "abcabc" and "bcabca" each contain 'a','b','c' exactly twice and adjacent chars differ by ≤2.
+Example 1:
+  Input: word = "igigee", k = 2
+  Output: 3
+  Explanation: The complete substrings where each character appears exactly twice and the difference
+  between adjacent characters is at most 2 are: "igig" (igigee), "ee" (igigee), "igigee".
 ```
 
-**Example 2:**
 ```
-Input: word = "aaabbbccc", k = 3
-Output: 1
-Explanation: Only the whole string satisfies the condition.
+Example 2:
+  Input: word = "aaabbbccc", k = 3
+  Output: 6
+  Explanation: The complete substrings where each character appears exactly three times and the
+  difference between adjacent characters is at most 2 are: "aaa", "bbb", "ccc", "aaabbb", "bbbccc", "aaabbbccc".
 ```
 
 ---

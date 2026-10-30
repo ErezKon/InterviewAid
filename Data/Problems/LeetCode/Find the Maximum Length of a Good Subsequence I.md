@@ -18,11 +18,14 @@
 
 ## 1. Problem Description
 
-Given an array `nums` and integer `k`, find the maximum length of a subsequence where at most `k` adjacent pairs have different values. A "good" subsequence has at most `k` "bad" transitions.
+You are given an integer array `nums` and a **non-negative** integer `k`. A sequence of integers `seq` is called **good** if there are **at most** `k` indices `i` in the range `[0, seq.length - 2]` such that `seq[i] != seq[i + 1]`.
+
+Return the **maximum** possible length of a **good** subsequence of `nums`.
 
 **Constraints:**
-- `1 <= n <= 500`
-- `1 <= k <= min(25, n-1)`
+- `1 <= nums.length <= 500`
+- `1 <= nums[i] <= 10⁹`
+- `0 <= k <= min(nums.length, 25)`
 
 ---
 
@@ -55,18 +58,16 @@ FUNCTION maximumLength(nums, k):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: nums = [1,2,1,2,1], k = 1
-Output: 4
-Explanation: Choose subsequence [1,1,1,1] (indices 0,2,4) – no bad transitions, length 3. Better: [1,2,2,1] (indices 0,1,3,4) has one bad transition between 2 and 1, length 4.
-```
+Example 1:
+  Input: nums = [1,2,1,1,3], k = 2
+  Output: 4
+  Explanation: The maximum length subsequence is [1,2,1,1] (taken from [1,2,1,1,3]).
 
-**Example 2:**
-```
-Input: nums = [3,3,3,3], k = 0
-Output: 4
-Explanation: All elements are equal, so the whole array is a good subsequence with zero bad transitions.
+Example 2:
+  Input: nums = [1,2,3,4,5,1], k = 0
+  Output: 2
+  Explanation: The maximum length subsequence is [1,1] (the first and last elements of [1,2,3,4,5,1]).
 ```
 
 ---

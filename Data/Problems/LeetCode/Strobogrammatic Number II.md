@@ -1,17 +1,35 @@
 # 247. Strobogrammatic Number II
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/strobogrammatic-number-ii](https://leetcode.com/problems/strobogrammatic-number-ii)
 **Companies:** Google, Meta
 
 ---
 
 ## Problem Description
-Given an integer `n`, return all strobogrammatic numbers of length `n`. A strobogrammatic number appears the same when rotated 180 degrees (e.g., "69", "88", "818"). Numbers cannot have leading zeros unless the number is exactly "0".
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an integer `n`, return all the **strobogrammatic numbers** that are of length `n`. You may return the answer in **any order**.
+
+A **strobogrammatic number** is a number that looks the same when rotated `180` degrees (looked at upside down).
+
+**Constraints:**
+- `1 <= n <= 14`
 
 ## Examples
-- **Input:** `n = 2` **Output:** `["11","69","88","96"]`
-- **Input:** `n = 3` **Output:** `["101","609","808","906","111","619","818","916","181","689","888","986"]`
-- **Input:** `n = 1` **Output:** `["0","1","8"]`
+
+**Example 1:**
+```
+Input: n = 2
+Output: ["11","69","88","96"]
+```
+
+**Example 2:**
+```
+Input: n = 1
+Output: ["0","1","8"]
+```
 
 ## Approach
 **Algorithm:** Recursive construction (DFS) building numbers from the outside in.

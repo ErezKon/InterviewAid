@@ -7,13 +7,29 @@
 ---
 
 ## Problem Description
-Given the head of a singly‑linked list and an integer `x`, reorder the list so that all nodes with values less than `x` appear before nodes with values greater than or equal to `x`. The original relative order of the nodes in each partition must be preserved.
+Given the `head` of a linked list and a value `x`, partition it such that all nodes **less than** `x` come before nodes **greater than or equal** to `x`.
+
+You should **preserve** the original relative order of the nodes in each of the two partitions.
+
+**Constraints:**
+
+- The number of nodes in the list is in the range `[0, 200]`.
+- `-100 <= Node.val <= 100`
+- `-200 <= x <= 200`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `head = [1,4,3,2,5,2]`, `x = 3` | `[1,2,2,4,3,5]` | Nodes `< 3` (`1,2,2`) come first, followed by nodes `≥ 3` (`4,3,5`). |
-| `head = [2,1]`, `x = 2` | `[1,2]` | Single node `1` moves before `2` while preserving order. |
+
+```
+Example 1:
+  Input: head = [1,4,3,2,5,2], x = 3
+  Output: [1,2,2,4,3,5]
+```
+
+```
+Example 2:
+  Input: head = [2,1], x = 2
+  Output: [1,2]
+```
 
 ## Approach
 Use two dummy heads to build two separate lists: one for nodes `< x` and one for nodes `≥ x`. Iterate through the original list, appending each node to the appropriate list. Finally, concatenate the two lists.

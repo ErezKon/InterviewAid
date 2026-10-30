@@ -21,13 +21,17 @@
 
 ## Problem Description
 
-There are `n` piles of coins. Each pile is a stack — you can only take coins from the **top**. You may take at most `k` coins **total** across all piles. Return the **maximum total value** of coins you can collect.
+There are `n` **piles** of coins on a table. Each pile consists of a **positive number** of coins of assorted denominations.
+
+In one move, you can choose any coin on **top** of any pile, remove it, and add it to your wallet.
+
+Given a list `piles`, where `piles[i]` is a list of integers denoting the composition of the `i^th` pile from **top to bottom**, and a positive integer `k`, return *the **maximum total value** of coins you can have in your wallet if you choose **exactly*** `k` *coins optimally*.
 
 **Constraints:**
-- `1 ≤ n ≤ 1000`
-- `1 ≤ piles[i].length ≤ 25` (each pile has at most 25 coins)
-- `1 ≤ k ≤ sum of all pile sizes`
-- `1 ≤ piles[i][j] ≤ 10⁵`
+- `n == piles.length`
+- `1 <= n <= 1000`
+- `1 <= piles[i][j] <= 10^5`
+- `1 <= k <= sum(piles[i].length) <= 2000`
 
 ---
 
@@ -35,16 +39,17 @@ There are `n` piles of coins. Each pile is a stack — you can only take coins f
 
 **Example 1:**
 ```
-Input:  piles = [[1,100,3],[7,8,9]], k = 2
+Input: piles = [[1,100,3],[7,8,9]], k = 2
 Output: 101
-Explanation: Take top 2 from pile 0: 1+100 = 101.
+Explanation: The above diagram shows the different ways we can choose k coins.
+The maximum total we can obtain is 101.
 ```
 
 **Example 2:**
 ```
-Input:  piles = [[100],[100],[100],[100],[100],[100],[1,1,1,1,1,1,700]], k = 7
+Input: piles = [[100],[100],[100],[100],[100],[100],[1,1,1,1,1,1,700]], k = 7
 Output: 706
-Explanation: Take 1 coin from each of the first 6 piles (600), then 1 from last pile (1+...→ actually take top of pile 7). Best: 6×100 + top of last pile = 600+1=601? Actually take all 7 from last pile: 1+1+1+1+1+1+700=706.
+Explanation: The maximum total can be obtained if we choose all coins from the last pile.
 ```
 
 ---

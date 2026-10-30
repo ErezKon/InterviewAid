@@ -4,6 +4,8 @@
 
 ## Problem Description
 
+> *Note: custom pattern-collection file (not an official LeetCode problem); the examples come from LeetCode #56 Merge Intervals, #57 Insert Interval and #253 Meeting Rooms II — see those files for official statements and constraints.*
+
 This collection groups classic interval manipulation problems. Each problem asks you to process a list of intervals—pairs of start and end points—under various constraints such as merging overlapping intervals, inserting a new interval, counting overlaps, or partitioning the timeline.
 
 ## Examples

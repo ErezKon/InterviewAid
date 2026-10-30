@@ -7,17 +7,41 @@
 ---
 
 ## Problem Description
-Given a stream of daily stock prices, implement a class `StockSpanner` with a method `next(price)` that returns the span of the stock's price for the current day. The span is defined as the number of consecutive days (including today) the price has been less than or equal to today's price.
+
+Design an algorithm that collects daily price quotes for some stock and returns **the span** of that stock's price for the current day.
+
+The **span** of the stock's price in one day is the maximum number of consecutive days (starting from that day and going backward) for which the stock price was less than or equal to the price of that day.
+
+- For example, if the prices of the stock in the last four days are `[7,2,1,2]` and the price of the stock today is 2, then the span of today is 4 because starting from today, the price of the stock was less than or equal to 2 for 4 consecutive days.
+- Also, if the prices of the stock in the last four days is `[7,34,1,2]` and the price of the stock today is `8`, then the span of today is `3` because starting from today, the price of the stock was less than or equal `8` for `3` consecutive days.
+
+Implement the `StockSpanner` class:
+
+- `StockSpanner()` Initializes the object of the class.
+- `int next(int price)` Returns the **span** of the stock's price given that today's price is `price`.
+
+**Constraints:**
+- `1 <= price <= 10^5`
+- At most `10^4` calls will be made to `next`.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input:  [100, 80, 60, 70, 60, 75, 85]
-Output: [1, 1, 1, 2, 1, 4, 6]
+Input
+["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
+[[], [100], [80], [60], [70], [60], [75], [85]]
+Output:
+[null, 1, 1, 1, 2, 1, 4, 6]
 Explanation:
-- Day 0: price 100 → span 1
-- Day 3: price 70 → previous day 60 ≤ 70, span 2
-- Day 6: price 85 → spans days 5,4,3,2,1,0 → span 6
+StockSpanner stockSpanner = new StockSpanner();
+stockSpanner.next(100); // return 1
+stockSpanner.next(80);  // return 1
+stockSpanner.next(60);  // return 1
+stockSpanner.next(70);  // return 2
+stockSpanner.next(60);  // return 1
+stockSpanner.next(75);  // return 4, because the last 4 prices (including today's price of 75) were less than or equal to today's price.
+stockSpanner.next(85);  // return 6
 ```
 
 ## Approach

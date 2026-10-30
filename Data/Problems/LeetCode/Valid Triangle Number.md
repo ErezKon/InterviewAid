@@ -7,12 +7,30 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, count the number of triplets `(i, j, k)` with `i < j < k` such that `nums[i]`, `nums[j]`, and `nums[k]` can be the side lengths of a triangle. A triplet forms a valid triangle if the sum of any two sides is greater than the third side.
+
+Given an integer array `nums`, return *the number of triplets chosen from the array that can make triangles if we take them as side lengths of a triangle*.
+
+**Constraints:**
+- `1 <= nums.length <= 1000`
+- `0 <= nums[i] <= 1000`
 
 ## Examples
-- Input: `[2,2,3,4]` → Output: `3` // Triplets: (2,2,3), (2,3,4), (2,3,4).
-- Input: `[4,2,3,4]` → Output: `4` // Triplets: (2,3,4) appears twice, plus (3,4,4) and (2,4,4).
-- Input: `[1,1,1,1]` → Output: `4` // All combinations of three 1's are valid.
+
+**Example 1:**
+```
+Input: nums = [2,2,3,4]
+Output: 3
+Explanation: Valid combinations are:
+2,3,4 (using the first 2)
+2,3,4 (using the second 2)
+2,2,3
+```
+
+**Example 2:**
+```
+Input: nums = [4,2,3,4]
+Output: 4
+```
 
 ## Approach
 Sort the array. For each index `k` treating `nums[k]` as the largest side, use two pointers `i` (start) and `j` (k‑1) to find how many pairs `(i, j)` satisfy `nums[i] + nums[j] > nums[k]`. When the condition holds, all elements between `i` and `j‑1` also satisfy it, so add `j - i` to the count and move `j` left; otherwise move `i` right.

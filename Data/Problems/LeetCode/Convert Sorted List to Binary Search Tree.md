@@ -7,25 +7,31 @@
 ---
 
 ## Problem Description
-Given the head of a singly‑linked list where node values are sorted in ascending order, convert it to a height‑balanced binary search tree (BST). A height‑balanced BST has the depth of the two sub‑trees of every node differ by at most one.
+Given the `head` of a singly linked list where elements are sorted in **ascending order**, convert *it to a **height-balanced** binary search tree*.
+
+A **height-balanced** binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+
+**Constraints:**
+- The number of nodes in `head` is in the range `[0, 2 * 10^4]`.
+- `-10^5 <= Node.val <= 10^5`
 
 ## Examples
-**Example 1:**
 ```
-Input: head = [-10, -3, 0, 5, 9]
-Output: [0, -3, 9, -10, null, 5]
-Explanation: One possible BST is:
+Example 1:
+  Input: head = [-10,-3,0,5,9]
+  Output: [0,-3,9,-10,null,5]
+  Explanation: One possible answer is [0,-3,9,-10,null,5], which represents the shown height balanced BST.
+
         0
        / \
      -3   9
      /   /
    -10  5
 ```
-**Example 2:**
 ```
-Input: head = []
-Output: []
-Explanation: An empty list yields an empty tree.
+Example 2:
+  Input: head = []
+  Output: []
 ```
 
 ## Approach

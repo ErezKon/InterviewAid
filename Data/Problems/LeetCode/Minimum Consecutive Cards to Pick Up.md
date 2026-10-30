@@ -8,26 +8,28 @@
 
 ## Problem Description
 
-You are given an array `cards` where each element represents a card value. In one move you may pick up a **consecutive** segment of cards. The goal is to pick up a segment that contains **at least two cards with the same value**. Return the length of the smallest such segment, or `-1` if no such segment exists.
+You are given an integer array `cards` where `cards[i]` represents the **value** of the `i^th` card. A pair of cards are **matching** if the cards have the **same** value.
 
-Constraints:
-- `1 ≤ cards.length ≤ 10^5`
-- `1 ≤ cards[i] ≤ 10^9`
+Return* the **minimum** number of **consecutive** cards you have to pick up to have a pair of **matching** cards among the picked cards.* If it is impossible to have matching cards, return `-1`.
+
+**Constraints:**
+- `1 <= cards.length <= 10^5`
+- `0 <= cards[i] <= 10^6`
 
 ## Examples
 
-**Example 1**
+**Example 1:**
 ```
 Input: cards = [3,4,2,3,4,7]
 Output: 4
-Explanation: The segment cards[0..3] = [3,4,2,3] contains two 3's and has length 4, which is minimal.
+Explanation: We can pick up the cards [3,4,2,3] which contain a matching pair of cards with value 3. Note that picking up the cards [4,2,3,4] is also optimal.
 ```
 
-**Example 2**
+**Example 2:**
 ```
 Input: cards = [1,0,5,3]
 Output: -1
-Explanation: No duplicate values, so no valid segment exists.
+Explanation: There is no way to pick up a set of consecutive cards that contain a pair of matching cards.
 ```
 
 ## Approach

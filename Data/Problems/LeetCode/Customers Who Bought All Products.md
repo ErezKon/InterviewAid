@@ -8,7 +8,36 @@
 
 ## Problem Description
 
-SQL: Find customers who bought every product in the Product table.
+Table: `Customer`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| customer_id | int     |
+| product_key | int     |
++-------------+---------+
+This table may contain duplicates rows.
+`customer_id` is not NULL`.`
+product_key is a foreign key (reference column) to `Product` table.
+```
+
+Table: `Product`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| product_key | int     |
++-------------+---------+
+product_key is the primary key (column with unique values) for this table.
+```
+
+Write a solution to report the customer ids from the `Customer` table that bought all the products in the `Product` table.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ---
 
@@ -16,45 +45,35 @@ SQL: Find customers who bought every product in the Product table.
 
 **Example 1:**
 ```
-Customer Table:
-+----+----------+
-| id | name     |
-+----+----------+
-| 1  | Alice    |
-| 2  | Bob      |
-+----+----------+
+Input:
+Customer table:
++-------------+-------------+
+| customer_id | product_key |
++-------------+-------------+
+| 1           | 5           |
+| 2           | 6           |
+| 3           | 5           |
+| 3           | 6           |
+| 1           | 6           |
++-------------+-------------+
+Product table:
++-------------+
+| product_key |
++-------------+
+| 5           |
+| 6           |
++-------------+
+Output:
++-------------+
+| customer_id |
++-------------+
+| 1           |
+| 3           |
++-------------+
+Explanation:
+The customers who bought all the products (5 and 6) are customers with IDs 1 and 3.
+```
 
-Product Table:
-+----+----------+
-| id | name     |
-+----+----------+
-| 1  | Phone    |
-| 2  | Laptop   |
-+----+----------+
-
-Orders Table:
-+----+------------+----------+
-| id | customerId | productId|
-+----+------------+----------+
-| 1  | 1          | 1        |
-| 2  | 1          | 2        |
-| 3  | 2          | 1        |
-+----+------------+----------+
-```
-**Output:**
-```
-+----+----------+
-| id | name     |
-+----+----------+
-| 1  | Alice    |
-+----+----------+
-```
-*Alice bought both Phone and Laptop, covering all products.*
-
-**Example 2:**
-```
-(If a customer has no orders, they are excluded because they haven't bought any product.)
-```
 ---
 
 ## Approach

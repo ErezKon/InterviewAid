@@ -7,15 +7,32 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, return the node values of each level in a zigzag order: left‑to‑right for the first level, right‑to‑left for the next, and so on alternating for subsequent levels.
+
+Given the `root` of a binary tree, return *the zigzag level order traversal of its nodes' values*. (i.e., from left to right, then right to left for the next level and alternate between).
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[0, 2000]`.
+- `-100 <= Node.val <= 100`
 
 ## Examples
-- **Input:** `root = [3,9,20,null,null,15,7]`
-  **Output:** `[[3],[20,9],[15,7]]`
-  *Explanation:* Level 0 left‑to‑right, level 1 right‑to‑left, level 2 left‑to‑right.
-- **Input:** `root = [1]`
-  **Output:** `[[1]]`
-  *Explanation:* Single node tree.
+
+**Example 1:**
+```
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[20,9],[15,7]]
+```
+
+**Example 2:**
+```
+Input: root = [1]
+Output: [[1]]
+```
+
+**Example 3:**
+```
+Input: root = []
+Output: []
+```
 
 ## Approach
 Perform a breadth‑first search (BFS) using a queue. For each level, collect node values in order, then reverse the list when the current level should be traversed right‑to‑left.

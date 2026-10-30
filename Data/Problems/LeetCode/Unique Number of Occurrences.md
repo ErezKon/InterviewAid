@@ -7,18 +7,33 @@
 ---
 
 ## Problem Description
-Given an integer array `arr`, determine whether the number of occurrences of each value is unique. In other words, no two distinct numbers should appear the same number of times.
+
+Given an array of integers `arr`, return `true` *if the number of occurrences of each value in the array is **unique** or* `false` *otherwise*.
+
+**Constraints:**
+- `1 <= arr.length <= 1000`
+- `-1000 <= arr[i] <= 1000`
 
 ## Examples
+
 **Example 1:**
-Input: `[1,2,2,1,1,3]`
-Output: `true`
-Explanation: Frequencies are `{1:3, 2:2, 3:1}` – all distinct.
+```
+Input: arr = [1,2,2,1,1,3]
+Output: true
+Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.
+```
 
 **Example 2:**
-Input: `[1,2]`
-Output: `false`
-Explanation: Both numbers appear once, so frequencies are not unique.
+```
+Input: arr = [1,2]
+Output: false
+```
+
+**Example 3:**
+```
+Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
+Output: true
+```
 
 ## Approach
 Count the frequency of each element using a hash map, then verify that the collection of frequency values contains no duplicates by comparing its size to the size of a set built from those values.

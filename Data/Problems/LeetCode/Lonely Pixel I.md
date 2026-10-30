@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Count 'B' (black) pixels that are the only 'B' in their row AND column.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an `m x n` `picture` consisting of black `'B'` and white `'W'` pixels, return *the number of **black** lonely pixels*.
+
+A black lonely pixel is a character `'B'` that located at a specific position where the same row and same column don't have **any other** black pixels.
+
+**Constraints:**
+- `m == picture.length`
+- `n == picture[i].length`
+- `1 <= m, n <= 500`
+- `picture[i][j]` is `'W'` or `'B'`.
 
 ---
 
@@ -16,26 +26,16 @@ Count 'B' (black) pixels that are the only 'B' in their row AND column.
 
 **Example 1:**
 ```
-picture = [
-  ["W","B","W","W"],
-  ["W","W","W","W"],
-  ["W","W","B","W"],
-  ["W","W","W","W"]
-]
+Input: picture = [["W","W","B"],["W","B","W"],["B","W","W"]]
+Output: 3
+Explanation: All the three 'B's are black lonely pixels.
 ```
-**Output:** `2`
-**Explanation:** The black pixels at (0,1) and (2,2) are each the only black pixel in their respective row and column.
 
 **Example 2:**
 ```
-picture = [
-  ["B","W","W"],
-  ["W","B","W"],
-  ["W","W","B"]
-]
+Input: picture = [["B","B","B"],["B","B","W"],["B","B","B"]]
+Output: 0
 ```
-**Output:** `0`
-**Explanation:** No black pixel satisfies both row and column uniqueness.
 
 ---
 

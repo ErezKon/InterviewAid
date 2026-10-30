@@ -7,26 +7,35 @@
 ---
 
 ## Problem Description
-Given an `m x n` grid, each cell must be painted one of three colors such that no two adjacent cells (horizontally or vertically) share the same color. Compute the number of valid colorings modulo `10^9 + 7`.
+You are given two integers `m` and `n`. Consider an `m x n` grid where each cell is initially white. You can paint each cell **red**, **green**, or **blue**. All cells **must** be painted.
 
-**Constraints** include:
+Return *the number of ways to color the grid with **no two adjacent cells having the same color***. Since the answer can be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+
 - `1 <= m <= 5`
 - `1 <= n <= 1000`
-- Colors are represented by integers `0,1,2`.
 
 ## Examples
-**Example 1**
+
 ```
-Input: m = 1, n = 1
-Output: 3
-Explanation: Any of the three colors can be used.
+Example 1:
+  Input: m = 1, n = 1
+  Output: 3
+  Explanation: The three possible colorings are: R, G, B.
 ```
 
-**Example 2**
 ```
-Input: m = 2, n = 3
-Output: 54
-Explanation: There are 54 ways to paint a 2×3 grid respecting the adjacency rule.
+Example 2:
+  Input: m = 1, n = 2
+  Output: 6
+  Explanation: The six possible colorings are: RG, RB, GR, GB, BR, BG.
+```
+
+```
+Example 3:
+  Input: m = 5, n = 5
+  Output: 580986
 ```
 
 ## Approach

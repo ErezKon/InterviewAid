@@ -7,13 +7,43 @@
 ---
 
 ## Problem Description
-Given a list of customers where each customer is represented as `[arrival_i, processing_i]` (arrival time and required processing time), compute the average waiting time. The waiting time for a customer is the total time from arrival until the order is completed.
+
+There is a restaurant with a single chef. You are given an array `customers`, where `customers[i] = [arrival_i, time_i]:`
+
+- `arrival_i` is the arrival time of the `i^th` customer. The arrival times are sorted in **non-decreasing** order.
+- `time_i` is the time needed to prepare the order of the `i^th` customer.
+
+When a customer arrives, he gives the chef his order, and the chef starts preparing it once he is idle. The customer waits till the chef finishes preparing his order. The chef does not prepare food for more than one customer at a time. The chef prepares food for customers **in the order they were given in the input**.
+
+Return *the **average** waiting time of all customers*. Solutions within `10^-5` from the actual answer are considered accepted.
+
+**Constraints:**
+- `1 <= customers.length <= 10^5`
+- `1 <= arrival_i, time_i <= 10^4`
+- `arrival_i <= arrival_i+1`
 
 ## Examples
-- **Input:** `customers = [[1,2],[2,5],[4,3]]` **Output:** `5.6667`
-  *Explanation:* Process order: Customer1 finishes at 3 (wait 2), Customer2 finishes at 8 (wait 6), Customer3 finishes at 11 (wait 7). Average = (2+6+7)/3 ≈ 5.6667.
-- **Input:** `customers = [[0,3],[1,9],[2,6]]` **Output:** `9`
-  *Explanation:* Processing order yields waits 3, 10, 14; average = (3+10+14)/3 = 9.
+
+**Example 1:**
+```
+Input: customers = [[1,2],[2,5],[4,3]]
+Output: 5.00000
+Explanation: 1) The first customer arrives at time 1, the chef takes his order and starts preparing it immediately at time 1, and finishes at time 3, so the waiting time of the first customer is 3 - 1 = 2.
+2) The second customer arrives at time 2, the chef takes his order and starts preparing it at time 3, and finishes at time 8, so the waiting time of the second customer is 8 - 2 = 6.
+3) The third customer arrives at time 4, the chef takes his order and starts preparing it at time 8, and finishes at time 11, so the waiting time of the third customer is 11 - 4 = 7.
+So the average waiting time = (2 + 6 + 7) / 3 = 5.
+```
+
+**Example 2:**
+```
+Input: customers = [[5,2],[5,4],[10,3],[20,1]]
+Output: 3.25000
+Explanation: 1) The first customer arrives at time 5, the chef takes his order and starts preparing it immediately at time 5, and finishes at time 7, so the waiting time of the first customer is 7 - 5 = 2.
+2) The second customer arrives at time 5, the chef takes his order and starts preparing it at time 7, and finishes at time 11, so the waiting time of the second customer is 11 - 5 = 6.
+3) The third customer arrives at time 10, the chef takes his order and starts preparing it at time 11, and finishes at time 14, so the waiting time of the third customer is 14 - 10 = 4.
+4) The fourth customer arrives at time 20, the chef takes his order and starts preparing it immediately at time 20, and finishes at time 21, so the waiting time of the fourth customer is 21 - 20 = 1.
+So the average waiting time = (2 + 6 + 4 + 1) / 4 = 3.25.
+```
 
 ## Approach
 Simulate the single‑server processing. Keep a `currTime` that tracks when the server becomes free. For each customer, start at `max(currTime, arrival)`, add the processing time, and accumulate the waiting time.

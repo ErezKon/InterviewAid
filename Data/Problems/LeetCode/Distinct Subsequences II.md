@@ -20,7 +20,8 @@
 
 ## Problem Description
 
-Given a string `s`, return the number of **distinct non-empty subsequences** of `s`. Return the answer modulo `10^9 + 7`.
+Given a string s, return *the number of **distinct non-empty subsequences** of* `s`. Since the answer may be very large, return it **modulo** `10^9 + 7`.
+A **subsequence** of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., `"ace"` is a subsequence of `"abcde"` while `"aec"` is not.
 
 **Constraints:**
 - `1 <= s.length <= 2000`
@@ -34,15 +35,21 @@ Given a string `s`, return the number of **distinct non-empty subsequences** of 
 ```
 Input: s = "abc"
 Output: 7
-Explanation: 7 distinct subsequences: "a", "b", "c", "ab", "ac", "bc", "abc"
+Explanation: The 7 distinct subsequences are "a", "b", "c", "ab", "ac", "bc", and "abc".
 ```
 
 **Example 2:**
 ```
 Input: s = "aba"
 Output: 6
-Explanation: "a", "b", "ab", "ba", "aa", "aba" (6 distinct)
-  Note: "a" appears twice but counts once.
+Explanation: The 6 distinct subsequences are "a", "b", "ab", "aa", "ba", and "aba".
+```
+
+**Example 3:**
+```
+Input: s = "aaa"
+Output: 3
+Explanation: The 3 distinct subsequences are "a", "aa" and "aaa".
 ```
 
 ---

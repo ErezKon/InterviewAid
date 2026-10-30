@@ -8,16 +8,47 @@
 
 ## Problem Description
 
-Squares fall one-by-one from above. Each square `[left, sideLength]` lands on top of any previously placed squares it overlaps. After each drop, return the current maximum height across all positions.
+There are several squares being dropped onto the X-axis of a 2D plane.
+
+You are given a 2D integer array `positions` where `positions[i] = [left_i, sideLength_i]` represents the `i^th` square with a side length of `sideLength_i` that is dropped with its left edge aligned with X-coordinate `left_i`.
+
+Each square is dropped one at a time from a height above any landed squares. It then falls downward (negative Y direction) until it either lands **on the top side of another square** or **on the X-axis**. A square brushing the left/right side of another square does not count as landing on it. Once it lands, it freezes in place and cannot be moved.
+
+After each square is dropped, you must record the **height of the current tallest stack of squares**.
+
+Return *an integer array* `ans` *where* `ans[i]` *represents the height described above after dropping the* `i^th` *square*.
+
+**Constraints:**
+
+- `1 <= positions.length <= 1000`
+- `1 <= left_i <= 10^8`
+- `1 <= sideLength_i <= 10^6`
 
 ---
 
 ## Examples
 
-| positions | Output | Explanation |
-|-----------|--------|-------------|
-| `[[1,2],[2,3],[6,1]]` | `[2,5,5]` | 1️⃣ Square at `[1,2]` lands on ground → height 2. 2️⃣ Square `[2,3]` overlaps first, sits on height 2 → new height 5. 3️⃣ Square `[6,1]` does not overlap → height remains 5. |
-| `[[100,100],[200,100]]` | `[100,100]` | No overlap, each square forms its own tower.
+```
+Example 1:
+  Input: positions = [[1,2],[2,3],[6,1]]
+  Output: [2,5,5]
+  Explanation:
+  After the first drop, the tallest stack is square 1 with a height of 2.
+  After the second drop, the tallest stack is squares 1 and 2 with a height of 5.
+  After the third drop, the tallest stack is still squares 1 and 2 with a height of 5.
+  Thus, we return an answer of [2, 5, 5].
+```
+
+```
+Example 2:
+  Input: positions = [[100,100],[200,100]]
+  Output: [100,100]
+  Explanation:
+  After the first drop, the tallest stack is square 1 with a height of 100.
+  After the second drop, the tallest stack is either square 1 or square 2, both with heights of 100.
+  Thus, we return an answer of [100, 100].
+  Note that square 2 only brushes the right side of square 1, which does not count as landing on it.
+```
 
 ---
 

@@ -7,18 +7,29 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, return the sum of values of all nodes whose grandparent node has an even value. A grandparent of a node is the parent of its parent.
+
+Given the `root` of a binary tree, return *the sum of values of nodes with an **even-valued grandparent***. If there are no nodes with an **even-valued grandparent**, return `0`.
+
+A **grandparent** of a node is the parent of its parent if it exists.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `1 <= Node.val <= 100`
 
 ## Examples
+
 **Example 1:**
+```
 Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
 Output: 18
-Explanation: Nodes with even‑valued grandparent (6) are 2, 7, 1, 4, and 5; their sum is 18.
+Explanation: The red nodes are the nodes with even-value grandparent while the blue nodes are the even-value grandparents.
+```
 
 **Example 2:**
+```
 Input: root = [1]
 Output: 0
-Explanation: No node has a grandparent.
+```
 
 ## Approach
 Perform a DFS passing the current node, its parent, and grandparent. When the grandparent exists and is even, add the node's value to the total.

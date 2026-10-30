@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-For each query, find the maximum number of elements from `nums` whose sum ≤ query value.
+You are given an integer array `nums` of length `n`, and an integer array `queries` of length `m`.
+
+Return *an array *`answer`* of length *`m`* where *`answer[i]`* is the **maximum** size of a **subsequence** that you can take from *`nums`* such that the **sum** of its elements is less than or equal to *`queries[i]`.
+
+A **subsequence** is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
+
+**Constraints:**
+- `n == nums.length`
+- `m == queries.length`
+- `1 <= n, m <= 1000`
+- `1 <= nums[i], queries[i] <= 10^6`
 
 ---
 
@@ -16,19 +26,20 @@ For each query, find the maximum number of elements from `nums` whose sum ≤ qu
 
 **Example 1:**
 ```
-nums = [4,5,2,1]
-queries = [3,10,21]
-output = [1,3,4]
+Input: nums = [4,5,2,1], queries = [3,10,21]
+Output: [2,3,4]
+Explanation: We answer the queries as follows:
+- The subsequence [2,1] has a sum less than or equal to 3. It can be proven that 2 is the maximum size of such a subsequence, so answer[0] = 2.
+- The subsequence [4,5,1] has a sum less than or equal to 10. It can be proven that 3 is the maximum size of such a subsequence, so answer[1] = 3.
+- The subsequence [4,5,2,1] has a sum less than or equal to 21. It can be proven that 4 is the maximum size of such a subsequence, so answer[2] = 4.
 ```
-*Explanation:* After sorting `nums` → [1,2,4,5], prefix sums are [1,3,7,12]. For query 3, the largest index with prefix ≤3 is 1 (count = 1). For 10 → index = 3 (count = 3). For 21 → all 4 elements fit.
 
 **Example 2:**
 ```
-nums = [2,2,2]
-queries = [1,2,3]
-output = [0,1,1]
+Input: nums = [2,3,4,5], queries = [1]
+Output: [0]
+Explanation: The empty subsequence is the only subsequence that has a sum less than or equal to 1, so answer[0] = 0.
 ```
-*Explanation:* No element fits query 1. For queries 2 and 3, only one element (value 2) can be taken.
 
 ---
 

@@ -19,28 +19,35 @@
 
 ## 1. Problem Description
 
-Given an array of `words` and a string `chars`, return the sum of lengths of all words that can be formed using the characters in `chars` (each character may be used at most once per word).
+You are given an array of strings `words` and a string `chars`.
+
+A string is **good** if it can be formed by characters from `chars` (each character can only be used once for **each** word in `words`).
+
+Return *the sum of lengths of all good strings in words*.
 
 **Constraints:**
 - `1 <= words.length <= 1000`
-- `1 <= chars.length <= 100`
+- `1 <= words[i].length, chars.length <= 100`
+- `words[i]` and `chars` consist of lowercase English letters.
 
 ---
 
 ## 2. Examples
 
-**Example 1**
+**Example 1:**
 ```
 Input: words = ["cat","bt","hat","tree"], chars = "atach"
 Output: 6
-Explanation: "cat" and "hat" can be formed, total length = 3 + 3 = 6.
+Explanation: The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
 ```
-**Example 2**
+
+**Example 2:**
 ```
 Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr"
 Output: 10
-Explanation: "hello" and "world" can be formed, total length = 5 + 5 = 10.
+Explanation: The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
 ```
+
 ---
 
 ## 3. Approach: Frequency Counting — O(n · L) ✅

@@ -20,10 +20,16 @@
 
 ## 1. Problem Description
 
-Given an array `nums`, sort it by **digit sum** (ascending), breaking ties by value. Return the **minimum** swaps needed.
+You are given an array `nums` of **distinct** positive integers. You need to sort the array in **increasing** order based on the sum of the digits of each number. If two numbers have the same digit sum, the **smaller** number appears first in the sorted order.
+
+Return the **minimum** number of swaps required to rearrange `nums` into this sorted order.
+
+A **swap** is defined as exchanging the values at two distinct positions in the array.
 
 **Constraints:**
-- `1 <= nums.length <= 10⁵`
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
+- `nums` consists of **distinct** positive integers.
 
 ---
 
@@ -31,15 +37,30 @@ Given an array `nums`, sort it by **digit sum** (ascending), breaking ties by va
 
 **Example 1:**
 ```
-nums = [13, 31, 22]
+Input: nums = [37,100]
+Output: 1
+Explanation: - Compute the digit sum for each integer: [3 + 7 = 10, 1 + 0 + 0 = 1] → [10, 1]
+- Sort the integers based on digit sum: [100, 37]. Swap 37 with 100 to obtain the sorted order.
+- Thus, the minimum number of swaps required to rearrange nums is 1.
 ```
-*Digit sums are 4, 4, and 4. Ties are broken by value, so the target order is `[13,22,31]`. The permutation mapping is `[0→0, 1→2, 2→1]`, which has one 2‑cycle, so minimum swaps = 1.
 
 **Example 2:**
 ```
-nums = [5, 12, 3]
+Input: nums = [22,14,33,7]
+Output: 0
+Explanation: - Compute the digit sum for each integer: [2 + 2 = 4, 1 + 4 = 5, 3 + 3 = 6, 7 = 7] → [4, 5, 6, 7]
+- Sort the integers based on digit sum: [22, 14, 33, 7]. The array is already sorted.
+- Thus, the minimum number of swaps required to rearrange nums is 0.
 ```
-*Digit sums are 5, 3, 3. Sorted order by digit sum then value is `[12,3,5]`. Mapping `[0→2, 1→0, 2→1]` forms a single 3‑cycle, requiring 2 swaps.
+
+**Example 3:**
+```
+Input: nums = [18,43,34,16]
+Output: 2
+Explanation: - Compute the digit sum for each integer: [1 + 8 = 9, 4 + 3 = 7, 3 + 4 = 7, 1 + 6 = 7] → [9, 7, 7, 7]
+- Sort the integers based on digit sum: [16, 34, 43, 18]. Swap 18 with 16, and swap 43 with 34 to obtain the sorted order.
+- Thus, the minimum number of swaps required to rearrange nums is 2.
+```
 
 ---
 

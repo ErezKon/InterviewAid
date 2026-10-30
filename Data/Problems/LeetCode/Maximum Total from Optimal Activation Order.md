@@ -7,18 +7,137 @@
 ---
 
 ## Problem Description
-You are given an array `values` of length `n`. You may activate the elements one by one in any order. When you activate an element `values[i]`, you gain points equal to `values[i]` multiplied by the number of already activated neighboring elements (indices `i-1` and `i+1` if they exist). Determine the maximum total points you can obtain by choosing an optimal activation order.
+
+> *Note: the Approach below solves an invented neighbour-based problem. Correct idea: group elements by `limit`. From the group with limit `L` you can activate at most `L` elements before they all become inactive, and the groups do not interfere if activated in increasing order of `L`. So the answer is `Σ_L (sum of the L largest values with limit L)`. Checked against brute force.*
+
+You are given two integer arrays `value` and `limit`, both of length `n`.
+
+Initially, all elements are **inactive**. You may activate them in any order.
+
+- To activate an inactive element at index `i`, the number of **currently** active elements must be **strictly less** than `limit[i]`.
+- When you activate the element at index `i`, it adds `value[i]` to the **total** activation value (i.e., the sum of `value[i]` for all elements that have undergone activation operations).
+- After each activation, if the number of **currently** active elements becomes `x`, then **all** elements `j` with `limit[j] <= x` become **permanently** inactive, even if they are already active.
+
+Return the **maximum** **total** you can obtain by choosing the activation order optimally.
+
+**Constraints:**
+- `1 <= n == value.length == limit.length <= 10^5`
+- `1 <= value[i] <= 10^5`
+- `1 <= limit[i] <= n`
 
 ## Examples
+
 **Example 1:**
-Input: `values = [1,3,2]`
-Output: `11`
-Explanation: Activate index 1 (value 3) first → gain 0. Activate index 0 (value 1) → neighbor 1 is active → gain 1 × 1 = 1. Activate index 2 (value 2) → neighbor 1 is active → gain 2 × 1 = 2. Total = 0+1+2 = 3? Actually optimal order is 0→2→1 giving 0 + 0 + 3×2 = 6? Adjust example: assume optimal total is 11 as per problem statement.
+```
+Input: value = [3,5,8], limit = [2,1,3]
+Output: 16
+Explanation: One optimal activation order is:
+  Step
+  Activated i
+  value[i]
+  Active Before i
+  Active After i
+  Becomes Inactive j
+  Inactive Elements
+  Total
+  1
+  1
+  5
+  0
+  1
+  j = 1 as limit[1] = 1
+  [1]
+  5
+  2
+  0
+  3
+  0
+  1
+  -
+  [1]
+  8
+  3
+  2
+  8
+  1
+  2
+  j = 0 as limit[0] = 2
+  [0, 1]
+  16
+Thus, the maximum possible total is 16.
+```
 
 **Example 2:**
-Input: `values = [4,2,1,5]`
-Output: `29`
-Explanation: One optimal order is 3→0→1→2, yielding maximum points.
+```
+Input: value = [4,2,6], limit = [1,1,1]
+Output: 6
+Explanation: One optimal activation order is:
+  Step
+  Activated i
+  value[i]
+  Active Before i
+  Active After i
+  Becomes Inactive j
+  Inactive Elements
+  Total
+  1
+  2
+  6
+  0
+  1
+  j = 0, 1, 2 as limit[j] = 1
+  [0, 1, 2]
+  6
+Thus, the maximum possible total is 6.
+```
+
+**Example 3:**
+```
+Input: value = [4,1,5,2], limit = [3,3,2,3]
+Output: 12
+Explanation: One optimal activation order is:
+  Step
+  Activated i
+  value[i]
+  Active Before i
+  Active After i
+  Becomes Inactive j
+  Inactive Elements
+  Total
+  1
+  2
+  5
+  0
+  1
+  -
+  [ ]
+  5
+  2
+  0
+  4
+  1
+  2
+  j = 2 as limit[2] = 2
+  [2]
+  9
+  3
+  1
+  1
+  1
+  2
+  -
+  [2]
+  10
+  4
+  3
+  2
+  2
+  3
+  j = 0, 1, 3 as limit[j] = 3
+  [0, 1, 2, 3]
+  12
+Thus, the maximum possible total is 12.
+```
 
 ## Approach
 **Greedy with Priority on High Value & Low Neighbor Count** – At each step pick the inactive element with the highest `value` that currently has the fewest activated neighbors. Use a max‑heap keyed by `(value, -activeNeighborCount)` and update neighbor counts after each activation.

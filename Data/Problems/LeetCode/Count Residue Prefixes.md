@@ -17,11 +17,18 @@
 
 ## Problem Description
 
-Given an array `nums` and an integer `k`, count how many prefixes of `nums` have a sum that gives a specific residue when divided by `k`. Count the number of prefix sums where `prefixSum % k` matches a target residue.
+> *Note: the Approach below solves an older, different description (prefix sums modulo `k`). Correct idea: scan `s` keeping a set of distinct characters; for each prefix length `i`, count it if `|set| == i % 3`. Since `i % 3 ≤ 2`, you can stop once the set has 3 distinct characters — O(n) time, O(1) space.*
+
+You are given a string `s` consisting only of lowercase English letters.
+
+A **prefix** of `s` is called a **residue** if the number of **distinct characters** in the **prefix** is equal to `len(prefix) % 3`.
+
+Return the count of **residue** prefixes in `s`.
+A **prefix** of a string is a **non-empty substring** that starts from the beginning of the string and extends to any point within it.
 
 **Constraints:**
-- `1 <= nums.length <= 10^5`
-- `1 <= nums[i], k <= 10^9`
+- `1 <= s.length <= 100`
+- `s` contains only lowercase English letters.
 
 ---
 
@@ -50,16 +57,27 @@ FUNCTION countResiduePrefixes(nums, k, target):
 
 **Example 1:**
 ```
-Input: nums = [3,1,4,2], k = 3, target = 1
+Input: s = "abc"
 Output: 2
-Explanation: Prefix sums are [3,4,8,10]; their residues modulo 3 are [0,1,2,1]. Two prefixes (second and fourth) have residue 1.
+Explanation: - Prefix "a" has 1 distinct character and length modulo 3 is 1, so it is a residue.
+- Prefix "ab" has 2 distinct characters and length modulo 3 is 2, so it is a residue.
+- Prefix "abc" does not satisfy the condition. Thus, the answer is 2.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,5,5], k = 5, target = 0
-Output: 3
-Explanation: Every prefix sum is a multiple of 5, so all three prefixes match the target residue 0.
+Input: s = "dd"
+Output: 1
+Explanation: - Prefix "d" has 1 distinct character and length modulo 3 is 1, so it is a residue.
+- Prefix "dd" has 1 distinct character but length modulo 3 is 2, so it is not a residue. Thus, the answer is 1.
+```
+
+**Example 3:**
+```
+Input: s = "bob"
+Output: 2
+Explanation: - Prefix "b" has 1 distinct character and length modulo 3 is 1, so it is a residue.
+- Prefix "bo" has 2 distinct characters and length mod 3 is 2, so it is a residue. Thus, the answer is 2.
 ```
 
 ---

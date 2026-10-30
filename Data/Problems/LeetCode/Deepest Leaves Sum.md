@@ -8,24 +8,29 @@
 
 ## Problem Description
 
-Return the sum of values of the deepest leaves in a binary tree.
+Given the `root` of a binary tree, return *the sum of values of its deepest leaves*.
+
+**Constraints:**
+
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `1 <= Node.val <= 100`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: root = [1,2,3,4,5,null,6,7,null,null,null,null,8]
-Output: 15
-Explanation: The deepest leaves are nodes with values 7 and 8. Their sum is 7 + 8 = 15.
+Example 1:
+  Input: root = [1,2,3,4,5,null,6,7,null,null,null,null,8]
+  Output: 15
+  Explanation: The deepest leaves are nodes with values 7 and 8. Their sum is 7 + 8 = 15.
 ```
 
-**Example 2:**
 ```
-Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
-Output: 19
-Explanation: The deepest level contains nodes 9, 1, 4, and 5. Their sum is 9+1+4+5 = 19.
+Example 2:
+  Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
+  Output: 19
+  Explanation: The deepest level contains nodes 9, 1, 4, and 5. Their sum is 9+1+4+5 = 19.
 ```
 
 ---

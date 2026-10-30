@@ -7,13 +7,60 @@
 ---
 
 ## Problem Description
-You are given an array `prices` where `prices[i]` is the price of the `i`‑th item, and an integer `k`. Determine the maximum number of items you can purchase such that the total sum of their prices does not exceed `k`.
+You are given an integer `k` and an integer `x`. The price of a number `num` is calculated by the count of set bits at positions `x`, `2x`, `3x`, etc., in its binary representation, starting from the least significant bit. The following table contains examples of how price is calculated.
+
+| x | num | Binary Representation | Price |
+|---|-----|-----------------------|-------|
+| 1 | 13  | 00000**1****1**0**1** | 3 |
+| 2 | 13  | 00000**1**101 | 1 |
+| 2 | 233 | 0**1**1**1**0**1**001 | 3 |
+| 3 | 13  | 000001**1**01 | 1 |
+| 3 | 362 | **1**01**1**01010 | 2 |
+
+The **accumulated price** of `num` is the **total** price of numbers from `1` to `num`. `num` is considered **cheap** if its accumulated price is less than or equal to `k`.
+
+Return the **greatest** cheap number.
+
+**Constraints:**
+- `1 <= k <= 10^15`
+- `1 <= x <= 8`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `prices = [2,3,1,5]`, `k = 7` | `3` | Buy items with costs `1,2,3` (total 6). |
-| `prices = [4,4,4]`, `k = 5` | `0` | No single item fits the budget.
+
+```
+Example 1:
+  Input: k = 9, x = 1
+  Output: 6
+  Explanation: As shown in the table below, 6 is the greatest cheap number.
+
+    x | num | Binary | Price | Accumulated Price
+    1 |  1  |  001   |   1   |  1
+    1 |  2  |  010   |   1   |  2
+    1 |  3  |  011   |   2   |  4
+    1 |  4  |  100   |   1   |  5
+    1 |  5  |  101   |   2   |  7
+    1 |  6  |  110   |   2   |  9
+    1 |  7  |  111   |   3   |  12
+```
+
+```
+Example 2:
+  Input: k = 7, x = 2
+  Output: 9
+  Explanation: As shown in the table below, 9 is the greatest cheap number.
+
+    x | num | Binary | Price | Accumulated Price
+    2 |  1  |  0001  |   0   |  0
+    2 |  2  |  0010  |   1   |  1
+    2 |  3  |  0011  |   1   |  2
+    2 |  4  |  0100  |   0   |  2
+    2 |  5  |  0101  |   0   |  2
+    2 |  6  |  0110  |   1   |  3
+    2 |  7  |  0111  |   1   |  4
+    2 |  8  |  1000  |   1   |  5
+    2 |  9  |  1001  |   1   |  6
+    2 | 10  |  1010  |   2   |  8
+```
 
 ## Approach
 Sort the `prices` array and greedily take the cheapest items until the budget is exhausted. This yields the maximum count because any other selection with the same count would have a larger total cost.

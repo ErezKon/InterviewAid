@@ -7,24 +7,53 @@
 ---
 
 ## Problem Description
-Given a list of method names used in a software project and a list of deprecated methods, remove all occurrences of the deprecated methods from the project list. Return the cleaned list preserving the original order of the remaining methods.
+
+> *Note: the Approach/Walkthrough below solve an invented "filter deprecated names" problem. Correct idea: DFS/BFS from `k` over `invocations` to mark all suspicious methods; then scan every edge `[a, b]` — if `a` is not suspicious but `b` is, removal is impossible, return all `0..n-1`; otherwise return the non-suspicious methods. O(n + m).*
+
+You are maintaining a project that has `n` methods numbered from `0` to `n - 1`.
+
+You are given two integers `n` and `k`, and a 2D integer array `invocations`, where `invocations[i] = [a_i, b_i]` indicates that method `a_i` invokes method `b_i`.
+
+There is a known bug in method `k`. Method `k`, along with any method invoked by it, either **directly** or **indirectly**, are considered **suspicious** and we aim to remove them.
+
+A group of methods can only be removed if no method **outside** the group invokes any methods **within** it.
+
+Return an array containing all the remaining methods after removing all the **suspicious** methods. You may return the answer in *any order*. If it is not possible to remove **all** the suspicious methods, **none** should be removed.
+
+**Constraints:**
+- `1 <= n <= 10^5`
+- `0 <= k <= n - 1`
+- `0 <= invocations.length <= 2 * 10^5`
+- `invocations[i] == [a_i, b_i]`
+- `0 <= a_i, b_i <= n - 1`
+- `a_i != b_i`
+- `invocations[i] != invocations[j]`
 
 ## Examples
+
 **Example 1:**
 ```
-methods = ["init", "load", "save", "delete", "load"]
-deprecated = ["load", "delete"]
-output = ["init", "save"]
+Input: n = 4, k = 1, invocations = [[1,2],[0,1],[3,2]]
+Output: [0,1,2,3]
+Explanation:
+Method 2 and method 1 are suspicious, but they are directly invoked by methods 3 and 0, which are not suspicious. We return all elements without removing anything.
 ```
-**Explanation:** All `load` and `delete` entries are removed.
 
 **Example 2:**
 ```
-methods = ["start", "stop", "restart"]
-deprecated = []
-output = ["start", "stop", "restart"]
+Input: n = 5, k = 0, invocations = [[1,2],[0,2],[0,1],[3,4]]
+Output: [3,4]
+Explanation:
+Methods 0, 1, and 2 are suspicious and they are not directly invoked by any other method. We can remove them.
 ```
-**Explanation:** No methods are deprecated, so the list stays unchanged.
+
+**Example 3:**
+```
+Input: n = 3, k = 2, invocations = [[1,2],[0,1],[2,0]]
+Output: []
+Explanation:
+All methods are suspicious. We can remove them.
+```
 
 ## Approach
 Iterate through the `methods` list and keep a hash set of deprecated method names for O(1) lookup. Append each method to the result only if it is not in the deprecated set.

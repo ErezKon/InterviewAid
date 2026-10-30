@@ -7,18 +7,37 @@
 ---
 
 ## Problem Description
-Given a string `num` containing only digits, determine if it can form an **additive sequence**. An additive sequence is a list of at least three numbers where each number is the sum of the two preceding numbers. Numbers in the sequence cannot have leading zeros unless the number itself is zero.
+An **additive number** is a string whose digits can form an **additive sequence**.
+
+A valid **additive sequence** should contain **at least** three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.
+
+Given a string containing only digits, return `true` if it is an **additive number** or `false` otherwise.
+
+**Note:** Numbers in the additive sequence **cannot** have leading zeros, so sequence `1, 2, 03` or `1, 02, 3` is invalid.
+
+**Constraints:**
+- `1 <= num.length <= 35`
+- `num` consists only of digits.
+
+**Follow up:** How would you handle overflow for very large input integers?
 
 ## Examples
-**Example 1**
-Input: `num = "112358"`
-Output: `true`
-Explanation: The sequence 1, 1, 2, 3, 5, 8 is additive.
-
-**Example 2**
-Input: `num = "199100199"`
-Output: `true`
-Explanation: The sequence 1, 99, 100, 199 is additive.
+```
+Example 1:
+  Input: "112358"
+  Output: true
+  Explanation:
+  The digits can form an additive sequence: 1, 1, 2, 3, 5, 8.
+  1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+```
+```
+Example 2:
+  Input: "199100199"
+  Output: true
+  Explanation:
+  The additive sequence is: 1, 99, 100, 199.
+  1 + 99 = 100, 99 + 100 = 199
+```
 
 ## Approach
 **Algorithm:** Backtracking – try every possible split for the first two numbers and recursively verify the rest.

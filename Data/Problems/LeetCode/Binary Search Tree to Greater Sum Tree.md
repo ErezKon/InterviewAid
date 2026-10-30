@@ -7,13 +7,31 @@
 ---
 
 ## Problem Description
-Given the root of a binary search tree (BST), transform it into a Greater Sum Tree where each node's new value equals the sum of all values greater than or equal to the node's original value. Return the root of the modified tree. Constraints: number of nodes ≤ 10⁴, node values fit in 32‑bit signed integer.
+Given the `root` of a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus the sum of all keys greater than the original key in BST.
+
+As a reminder, a *binary search tree* is a tree that satisfies these constraints:
+
+- The left subtree of a node contains only nodes with keys **less than** the node's key.
+- The right subtree of a node contains only nodes with keys **greater than** the node's key.
+- Both the left and right subtrees must also be binary search trees.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 100]`.
+- `0 ≤ Node.val ≤ 100`
+- All the values in the tree are **unique**.
+
+**Note:** This question is the same as 538: https://leetcode.com/problems/convert-bst-to-greater-tree/
 
 ## Examples
-| Input BST (inorder) | Output Greater Sum Tree (inorder) |
-|----------------------|-----------------------------------|
-| 2 → 1,3 | 5 → 6,3 |
-| 5 → 2,13,3 | 20 → 18,13,5 |
+```
+Example 1:
+  Input: root = [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+  Output: [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
+
+Example 2:
+  Input: root = [0,null,1]
+  Output: [1,null,1]
+```
 
 ## Approach
 **Reverse Inorder Traversal** – Perform a reverse inorder (right → node → left) while maintaining a running sum of visited node values. Update each node with the current sum.

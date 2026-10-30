@@ -20,23 +20,30 @@
 
 ## 1. Problem Description
 
-Given two arrays of digits, form the smallest number that contains at least one digit from each array.
+Given two arrays of **unique** digits `nums1` and `nums2`, return *the **smallest** number that contains **at least** one digit from each array*.
 
 **Constraints:**
 - `1 <= nums1.length, nums2.length <= 9`
-- Each element is a digit `0-9`
+- `1 <= nums1[i], nums2[i] <= 9`
+- All digits in each array are **unique**.
 
 ---
 
 ## 2. Examples
 
-| nums1 | nums2 | Output |
-|-------|-------|--------|
-| [4,1,3] | [5,7] | 14 |
-| [0,5,6] | [0,1] | 0 |
-| [2,8] | [3,9] | 23 |
+**Example 1:**
+```
+Input: nums1 = [4,1,3], nums2 = [5,7]
+Output: 15
+Explanation: The number 15 contains the digit 1 from nums1 and the digit 5 from nums2. It can be proven that 15 is the smallest number we can have.
+```
 
-*Explanation:* In the first example, the smallest common digit is `1`, so the answer is `1`. In the second example, `0` appears in both arrays, yielding `0`. In the third example, there is no common digit; the smallest two‑digit number formed by the minima `2` and `3` is `23`.
+**Example 2:**
+```
+Input: nums1 = [3,5,2,6], nums2 = [3,1,7]
+Output: 3
+Explanation: The number 3 contains the digit 3 which exists in both arrays.
+```
 
 ---
 

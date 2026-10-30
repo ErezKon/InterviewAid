@@ -7,20 +7,36 @@
 ---
 
 ## Problem Description
-Given an `n × n` grid where each cell contains a unique integer from `0` to `n²‑1` representing the step order of a knight’s tour, determine whether the sequence of moves forms a valid knight’s tour. The tour starts at the cell containing `0`. A move is valid if it follows the knight’s L‑shaped move: two squares in one direction and one square perpendicular. Return `true` if the entire sequence is a valid tour, otherwise `false`.
+
+There is a knight on an `n x n` chessboard. In a valid configuration, the knight starts **at the top-left cell** of the board and visits every cell on the board **exactly once**.
+
+You are given an `n x n` integer matrix `grid` consisting of distinct integers from the range `[0, n * n - 1]` where `grid[row][col]` indicates that the cell `(row, col)` is the `grid[row][col]^th` cell that the knight visited. The moves are **0-indexed**.
+
+Return `true` *if* `grid` *represents a valid configuration of the knight's movements or* `false` *otherwise*.
+
+**Note** that a valid knight move consists of moving two squares vertically and one square horizontally, or two squares horizontally and one square vertically. The figure below illustrates all the possible eight moves of a knight from some cell.
+![img](https://assets.leetcode.com/uploads/2018/10/12/knight.png)
+
+**Constraints:**
+- `n == grid.length == grid[i].length`
+- `3 <= n <= 7`
+- `0 <= grid[row][col] < n * n`
+- All integers in `grid` are **unique**.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: grid = [[0,11,16,5],[17,4,9,12],[10,15,6,1],[13,2,3,8]]
+Input: grid = [[0,11,16,5,20],[17,4,19,10,15],[12,1,8,21,6],[3,18,23,14,9],[24,13,2,7,22]]
 Output: true
-Explanation: The positions of 0→1→2→… follow valid knight moves.
+Explanation: The above diagram represents the grid. It can be shown that it is a valid configuration.
 ```
-**Example 2**
+
+**Example 2:**
 ```
 Input: grid = [[0,3,6],[5,8,1],[2,7,4]]
 Output: false
-Explanation: The move from 2 to 3 is not a knight move.
+Explanation: The above diagram represents the grid. The 8^th move of the knight is not valid considering its position after the 7^th move.
 ```
 
 ## Approach

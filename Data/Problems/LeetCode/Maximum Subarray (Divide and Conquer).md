@@ -8,6 +8,8 @@ This file covers the **divide and conquer** approach specifically.
 ---
 
 ## Problem Description
+> *Note: companion file of #53 Maximum Subarray (no LeetCode URL by design) — the official statement, examples and constraints are in [Maximum Subarray.md](Maximum%20Subarray.md).*
+
 Given an integer array `nums`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. This variant asks you to solve the problem using the **divide and conquer** technique.
 
 ## Examples

@@ -8,22 +8,30 @@
 
 ## Problem Description
 
-Given an array `nums`, find the **smallest positive integer** that cannot be represented as the OR of any subset of `nums`.
+You are given a **0-indexed** integer array `nums`.
+
+We say that an integer x is **expressible** from `nums` if there exist some integers `0 <= index_1 < index_2 < ... < index_k < nums.length` for which `nums[index_1] | nums[index_2] | ... | nums[index_k] = x`. In other words, an integer is expressible if it can be written as the bitwise OR of some subsequence of `nums`.
+
+Return *the minimum **positive non-zero integer** that is not **expressible from *`nums`.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ## Examples
 
 **Example 1:**
 ```
-Input: nums = [1,2,3]
-Output: 8
-Explanation: Subset ORs can produce 1,2,3,3 (1|2),3 (1|3),3 (2|3),3 (1|2|3). The smallest missing positive integer is 8.
+Input: nums = [2,1]
+Output: 4
+Explanation: 1 and 2 are already present in the array. We know that 3 is expressible, since nums[0] | nums[1] = 2 | 1 = 3. Since 4 is not expressible, we return 4.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,2,1]
-Output: 4
-Explanation: Subset ORs produce 1,2,3,5,7,6,7,7. 4 is missing.
+Input: nums = [5,3,2]
+Output: 1
+Explanation: We can show that 1 is the smallest number that is not expressible.
 ```
 
 ## Approach: Check Powers of 2 — O(n) ✅

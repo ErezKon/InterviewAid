@@ -18,11 +18,21 @@
 
 ## 1. Problem Description
 
-You have `n` gardens connected by bidirectional paths (each garden has at most 3 neighbors). Assign one of 4 flower types to each garden so no two adjacent gardens have the same flower.
+You have `n` gardens, labeled from `1` to `n`, and an array `paths` where `paths[i] = [x_i, y_i]` describes a bidirectional path between garden `x_i` to garden `y_i`. In each garden, you want to plant one of 4 types of flowers.
+
+All gardens have **at most 3** paths coming into or leaving it.
+
+Your task is to choose a flower type for each garden such that, for any two gardens connected by a path, they have different types of flowers.
+
+Return ***any** such a choice as an array *`answer`*, where *`answer[i]`* is the type of flower planted in the *`(i+1)^th`* garden. The flower types are denoted *`1`*, *`2`*, *`3`*, or *`4`*. It is guaranteed an answer exists.*
 
 **Constraints:**
-- `1 <= n <= 10⁴`
-- Each garden has at most 3 neighbors
+- `1 <= n <= 10^4`
+- `0 <= paths.length <= 2 * 10^4`
+- `paths[i].length == 2`
+- `1 <= x_i, y_i <= n`
+- `x_i != y_i`
+- Every garden has **at most 3** paths coming into or leaving it.
 
 ---
 
@@ -63,17 +73,25 @@ FUNCTION gardenNoAdj(n, paths):
 
 **Example 1:**
 ```
-n = 3, paths = [[1,2],[2,3],[3,1]]
-output = [1,2,3]   // any assignment where adjacent gardens differ
+Input: n = 3, paths = [[1,2],[2,3],[3,1]]
+Output: [1,2,3]
+Explanation: Gardens 1 and 2 have different types.
+Gardens 2 and 3 have different types.
+Gardens 3 and 1 have different types.
+Hence, [1,2,3] is a valid answer. Other valid answers include [1,2,4], [1,4,2], and [3,2,1].
 ```
-*Each garden has two neighbors, and with 4 colors we can assign distinct colors.
 
 **Example 2:**
 ```
-n = 4, paths = [[1,2],[3,4]]
-output = [1,2,1,2]
+Input: n = 4, paths = [[1,2],[3,4]]
+Output: [1,2,1,2]
 ```
-*Two separate components are colored independently.
+
+**Example 3:**
+```
+Input: n = 4, paths = [[1,2],[2,3],[3,4],[4,1],[1,3],[2,4]]
+Output: [1,2,3,4]
+```
 
 ---
 

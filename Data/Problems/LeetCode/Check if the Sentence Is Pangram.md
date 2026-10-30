@@ -5,13 +5,27 @@
 **Companies:** Amazon, Bloomberg, Goldman Sachs, Google, Meta, Microsoft
 ---
 ## Problem Description
-Given an English sentence containing only lowercase letters and spaces, determine whether it contains every letter of the alphabet ('a' to 'z') at least once. Return true if the sentence is a pangram, otherwise false.
+A **pangram** is a sentence where every letter of the English alphabet appears at least once.
+
+Given a string `sentence` containing only lowercase English letters, return `true` *if* `sentence` *is a **pangram**, or* `false` *otherwise.*
+
+**Constraints:**
+- `1 <= sentence.length <= 1000`
+- `sentence` consists of lowercase English letters.
 
 ## Examples
-| Sentence | Output | Explanation |
-|----------|--------|-------------|
-| "the quick brown fox jumps over the lazy dog" | true | All 26 letters appear.
-| "hello world" | false | Missing many letters.
+```
+Example 1:
+  Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
+  Output: true
+  Explanation: sentence contains at least one of every letter of the English alphabet.
+```
+
+```
+Example 2:
+  Input: sentence = "leetcode"
+  Output: false
+```
 
 ## Approach
 Collect each distinct alphabetic character in a set while scanning the sentence. After processing, the sentence is a pangram if the set size equals 26.

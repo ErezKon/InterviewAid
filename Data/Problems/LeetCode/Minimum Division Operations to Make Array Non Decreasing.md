@@ -20,11 +20,19 @@
 
 ## Problem Description
 
-Given an integer array `nums`, in one operation you can pick any `nums[i]` and divide it by its **greatest proper divisor** (i.e., replace `nums[i]` with its smallest prime factor). Return the **minimum number of operations** to make `nums` non-decreasing, or `-1` if impossible.
+You are given an integer array `nums`.
+
+Any **positive** divisor of a natural number `x` that is **strictly less** than `x` is called a **proper divisor** of `x`. For example, 2 is a *proper divisor* of 4, while 6 is not a *proper divisor* of 6.
+
+You are allowed to perform an **operation** any number of times on `nums`, where in each **operation** you select any *one* element from `nums` and divide it by its **greatest** **proper divisor**.
+
+Return the **minimum** number of **operations** required to make the array **non-decreasing**.
+
+If it is **not** possible to make the array *non-decreasing* using any number of operations, return `-1`.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `2 ≤ nums[i] ≤ 10⁶`
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^6`
 
 ---
 
@@ -32,17 +40,21 @@ Given an integer array `nums`, in one operation you can pick any `nums[i]` and d
 
 **Example 1:**
 ```
-Input: nums = [25, 7]
+Input: nums = [25,7]
 Output: 1
-Explanation: Divide 25 by its greatest proper divisor (5) → 25/5 = 5. Array = [5, 7]. Non-decreasing.
+Explanation: Using a single operation, 25 gets divided by 5 and nums becomes [5, 7].
 ```
 
 **Example 2:**
 ```
-Input: nums = [7, 7, 6]
+Input: nums = [7,7,6]
 Output: -1
-Explanation: 7's smallest prime factor is 7 (it's prime), so dividing gives 1. 
-  Can't make [7,7,6] non-decreasing since 6 < 7 and 6's smallest prime is 2.
+```
+
+**Example 3:**
+```
+Input: nums = [1,1,1,1]
+Output: 0
 ```
 
 ---

@@ -23,7 +23,17 @@
 
 ## 1. Problem Description
 
-Given `n` nodes labeled `0` to `n-1` and a list of undirected `edges`, determine if these edges form a **valid tree**.
+You have a graph of `n` nodes labeled from `0` to `n - 1`. You are given an integer `n` and a list of `edges` where `edges[i] = [a_i, b_i]` indicates that there is an undirected edge between nodes `a_i` and `b_i` in the graph.
+
+Return `true` *if the edges of the given graph make up a valid tree, and* `false` *otherwise*.
+
+**Constraints:**
+- `1 <= n <= 2000`
+- `0 <= edges.length <= 5000`
+- `edges[i].length == 2`
+- `0 <= a_i, b_i < n`
+- `a_i != b_i`
+- There are no self-loops or repeated edges.
 
 ---
 
@@ -31,19 +41,19 @@ Given `n` nodes labeled `0` to `n-1` and a list of undirected `edges`, determine
 
 ```
 Example 1:
-  n = 5, edges = [[0,1], [0,2], [0,3], [1,4]]
+  Input: n = 5, edges = [[0,1],[0,2],[0,3],[1,4]]
+  Output: true
 
-    0 — 1 — 4
-    |
-    2
-    |
-    3
+        0 — 1 — 4
+       / \
+      2   3
 
-  Output: true (connected, no cycles)
+  (connected, no cycles)
 
 Example 2:
-  n = 5, edges = [[0,1], [1,2], [2,3], [1,3], [1,4]]
-  Output: false (has cycle: 1-2-3-1)
+  Input: n = 5, edges = [[0,1],[1,2],[2,3],[1,3],[1,4]]
+  Output: false
+  (has cycle: 1-2-3-1)
 ```
 
 ---

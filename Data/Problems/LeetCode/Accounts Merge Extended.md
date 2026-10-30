@@ -5,18 +5,43 @@ Related: #200, #547, #684, #721, #990, #1135, #1202, #1584
 ---
 
 ## Problem Description
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 The *Accounts Merge* problem requires merging user accounts that share common email addresses. Each account is represented by a name followed by a list of emails. If two accounts have any email in common, they belong to the same person and must be merged into a single account containing the union of their emails.
 
-## Examples
-**Example 1**
-Input: `[["John", "johnsmith@mail.com", "john00@mail.com"], ["John", "johnnybravo@mail.com"], ["John", "johnsmith@mail.com", "john_newyork@mail.com"]]`
-Output: `[["John", "john00@mail.com", "john_newyork@mail.com", "johnsmith@mail.com"], ["John", "johnnybravo@mail.com"]]`
-Explanation: The first and third accounts share "johnsmith@mail.com" and are merged.
+Given a list `accounts` where `accounts[i][0]` is a name and `accounts[i][1:]` are emails, return the merged accounts. Each merged account must list the name first, followed by its emails in **sorted order**. Two accounts with the same name may belong to different people (they are only merged when they share an email). The accounts may be returned in any order.
 
-**Example 2**
-Input: `[["Emily", "emily@mail.com"], ["Emily", "emily@mail.com", "emily2@mail.com"]]`
-Output: `[["Emily", "emily@mail.com", "emily2@mail.com"]]`
-Explanation: Both accounts belong to the same person.
+This file also serves as a collection of the Union-Find pattern, which applies to related connectivity problems (#200, #547, #684, #990, #1135, #1202, #1584).
+
+**Constraints:**
+- `1 <= accounts.length <= 1000`
+- `2 <= accounts[i].length <= 10`
+- `1 <= accounts[i][j].length <= 30`
+- `accounts[i][0]` consists of English letters.
+- `accounts[i][j]` (for `j > 0`) is a valid email.
+
+## Examples
+```
+Example 1:
+  Input: accounts = [["John","johnsmith@mail.com","john00@mail.com"],["John","johnnybravo@mail.com"],["John","johnsmith@mail.com","john_newyork@mail.com"]]
+  Output: [["John","john00@mail.com","john_newyork@mail.com","johnsmith@mail.com"],["John","johnnybravo@mail.com"]]
+  Explanation: The first and third accounts share "johnsmith@mail.com" and are merged.
+  The second John shares no email with the others, so it stays a separate account.
+```
+```
+Example 2:
+  Input: accounts = [["Emily","emily@mail.com"],["Emily","emily@mail.com","emily2@mail.com"]]
+  Output: [["Emily","emily2@mail.com","emily@mail.com"]]
+  Explanation: Both accounts contain "emily@mail.com", so they belong to the same person.
+  Emails are sorted lexicographically ('2' < '@').
+```
+```
+Example 3:
+  Input: accounts = [["Alex","a@x.com","b@x.com"],["Bob","bob@x.com"],["Alex","c@x.com","d@x.com"],["Alex","b@x.com","d@x.com"]]
+  Output: [["Alex","a@x.com","b@x.com","c@x.com","d@x.com"],["Bob","bob@x.com"]]
+  Explanation: Accounts 1 and 4 share "b@x.com", and accounts 3 and 4 share "d@x.com", so the
+  three Alex accounts are transitively connected into one group. Bob's account shares nothing.
+```
 
 ## Approach
 **Algorithm:** Union‑Find (Disjoint Set Union)

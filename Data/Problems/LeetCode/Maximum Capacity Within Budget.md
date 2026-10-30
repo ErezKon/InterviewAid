@@ -21,7 +21,20 @@
 
 ## Problem Description
 
-Maximize the capacity (or number of items) you can handle within a given budget. Each item has a cost and capacity contribution.
+> *Note: the Approach below greedily takes the cheapest items without limit. Officially you pick **at most two distinct** machines with total cost **strictly less** than `budget`. Correct idea: sort machines by cost and build a prefix maximum of capacity. For each machine `j`, binary search the last earlier index `i < j` with `cost[i] < budget - cost[j]` and combine with the prefix max. Also consider single machines with `cost < budget`.*
+
+You are given two integer arrays `costs` and `capacity`, both of length `n`, where `costs[i]` represents the purchase cost of the `i^th` machine and `capacity[i]` represents its performance capacity.
+
+You are also given an integer `budget`.
+
+You may select **at most two distinct** machines such that the **total cost** of the selected machines is **strictly less** than `budget`.
+
+Return the **maximum** achievable total capacity of the selected machines.
+
+**Constraints:**
+- `1 <= n == costs.length == capacity.length <= 10^5`
+- `1 <= costs[i], capacity[i] <= 10^5`
+- `1 <= budget <= 2 * 10^5`
 
 ---
 
@@ -29,21 +42,30 @@ Maximize the capacity (or number of items) you can handle within a given budget.
 
 **Example 1:**
 ```
-items = [(cost=4, cap=5), (cost=2, cap=3), (cost=6, cap=8)]
-budget = 10
+Input: costs = [4,8,5,3], capacity = [1,5,2,7], budget = 8
+Output: 8
+Explanation: - Choose two machines with costs[0] = 4 and costs[3] = 3.
+- The total cost is 4 + 3 = 7, which is strictly less than budget = 8.
+- The maximum total capacity is capacity[0] + capacity[3] = 1 + 7 = 8.
 ```
-**Output:** `13`
-**Explanation:**
-Pick items with cost 4 (cap 5) and cost 2 (cap 3) and cost 4? Actually budget 10, best is items 4+6? Wait 4+6=10 gives cap 5+8=13, which is maximum.
 
 **Example 2:**
 ```
-items = [(cost=5, cap=7), (cost=3, cap=4), (cost=2, cap=2)]
-budget = 7
+Input: costs = [3,5,7,4], capacity = [2,4,3,6], budget = 7
+Output: 6
+Explanation: - Choose one machine with costs[3] = 4.
+- The total cost is 4, which is strictly less than budget = 7.
+- The maximum total capacity is capacity[3] = 6.
 ```
-**Output:** `11`
-**Explanation:**
-Choose items with cost 5 (cap 7) and cost 2 (cap 2) = total cost 7, capacity 9? Actually better choose 3+2=5 cost, capacity 6, still less. The optimal is 5+2 = 7 cost, capacity 7+2=9. Wait output 11 maybe choose 5+3? cost 8 exceeds. So adjust example: pick items 5 and 2 gives capacity 9. We'll set output 9.
+
+**Example 3:**
+```
+Input: costs = [2,2,2], capacity = [3,5,4], budget = 5
+Output: 9
+Explanation: - Choose two machines with costs[1] = 2 and costs[2] = 2.
+- The total cost is 2 + 2 = 4, which is strictly less than budget = 5.
+- The maximum total capacity is capacity[1] + capacity[2] = 5 + 4 = 9.
+```
 
 ---
 

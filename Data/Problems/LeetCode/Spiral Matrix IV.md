@@ -7,14 +7,39 @@
 ---
 
 ## Problem Description
-Given the dimensions `m` (rows) and `n` (columns) of an empty matrix and the head of a singly‑linked list, fill the matrix in a clockwise spiral order starting at the top‑left cell. Insert each node’s value into the matrix as you traverse; if the list ends before the matrix is full, fill remaining cells with `-1`. Return the completed matrix.
+You are given two integers `m` and `n`, which represent the dimensions of a matrix.
+
+You are also given the `head` of a linked list of integers.
+
+Generate an `m x n` matrix that contains the integers in the linked list presented in **spiral** order **(clockwise)**, starting from the **top-left** of the matrix. If there are remaining empty spaces, fill them with `-1`.
+
+Return *the generated matrix*.
+
+**Constraints:**
+- `1 <= m, n <= 10⁵`
+- `1 <= m * n <= 10⁵`
+- The number of nodes in the list is in the range `[1, m * n]`.
+- `0 <= Node.val <= 1000`
 
 ## Examples
-- **Input:** `m = 3, n = 3, head = [3→0→2→5→4]`
-  **Output:** `[[3,0,2],[5,4,-1],[-1,-1,-1]]`
-  *Explanation:* Values are placed in spiral order until the list is exhausted, then `-1` fills the rest.
-- **Input:** `m = 1, n = 4, head = [1→2→3]`
-  **Output:** `[[1,2,3,-1]]`
+```
+Example 1:
+  Input: m = 3, n = 5, head = [3,0,2,6,8,1,7,9,4,2,5,5,0]
+  Output: [[3,0,2,6,8],[5,0,-1,-1,1],[5,2,4,9,7]]
+  Explanation: Values are printed into the matrix in clockwise spiral order:
+    3  0  2  6  8
+    5  0 -1 -1  1
+    5  2  4  9  7
+    Note that the remaining spaces in the matrix are filled with -1.
+```
+
+```
+Example 2:
+  Input: m = 1, n = 4, head = [0,1,2]
+  Output: [[0,1,2,-1]]
+  Explanation: The values are printed from left to right in the matrix.
+    The last space in the matrix is set to -1.
+```
 
 ## Approach
 Simulate spiral traversal using direction vectors and boundaries. At each step, place the current node’s value (or `-1` if the list is exhausted) into the matrix, then move to the next cell. When hitting a boundary or a filled cell, turn clockwise.

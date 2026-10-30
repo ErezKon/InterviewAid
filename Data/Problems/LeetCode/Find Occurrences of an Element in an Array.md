@@ -1,17 +1,43 @@
 # 3159. Find Occurrences of an Element in an Array
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/find-occurrences-of-an-element-in-an-array](https://leetcode.com/problems/find-occurrences-of-an-element-in-an-array)
 **Companies:** Amazon, Ibm, Jpmorgan
+
 ---
 
 ## Problem Description
-Given an integer array `nums`, a list of query indices `queries`, and a target value `x`, return for each query the position (1‑based) of the `q`‑th occurrence of `x` in `nums`. If the `q`‑th occurrence does not exist, return `-1` for that query.
+You are given an integer array `nums`, an integer array `queries`, and an integer `x`.
+
+For each `queries[i]`, you need to find the index of the `queries[i]`-th occurrence of `x` in the `nums` array. If there are fewer than `queries[i]` occurrences of `x`, the answer should be `-1` for that query.
+
+Return an integer array `answer` containing the answers to all queries.
+
+> Note: the answer is the **0-based** index (the old description and Approach below used 1-based positions).
+
+**Constraints:**
+- `1 <= nums.length, queries.length <= 10^5`
+- `1 <= queries[i] <= 10^5`
+- `1 <= nums[i], x <= 10^4`
 
 ## Examples
-| nums | queries | x | Output | Explanation |
-|------|---------|---|--------|-------------|
-| `[5,1,2,1,3,1]` | `[1,2,3,4]` | `1` | `[2,4,6,-1]` | 1st,2nd,3rd occurrences at positions 2,4,6; 4th does not exist. |
-| `[7,7,7]` | `[1,3]` | `7` | `[1,3]` | Positions of 1st and 3rd occurrences. |
+```
+Example 1:
+  Input: nums = [1,3,1,7], queries = [1,3,2,4], x = 1
+  Output: [0,-1,2,-1]
+  Explanation:
+  - For the 1st query, the first occurrence of 1 is at index 0.
+  - For the 2nd query, there are only two occurrences of 1 in nums, so the answer is -1.
+  - For the 3rd query, the second occurrence of 1 is at index 2.
+  - For the 4th query, there are only two occurrences of 1 in nums, so the answer is -1.
+```
+
+```
+Example 2:
+  Input: nums = [1,2,3], queries = [10], x = 5
+  Output: [-1]
+  Explanation: For the 1st query, 5 doesn't exist in nums, so the answer is -1.
+```
 
 ## Approach
 Pre‑process the array to store all indices where `nums[i] == x` in a list `positions`. Then answer each query in O(1) by checking if `q` ≤ length of `positions`.

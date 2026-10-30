@@ -1,6 +1,7 @@
 # 2047. Number of Valid Words in a Sentence
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/number-of-valid-words-in-a-sentence](https://leetcode.com/problems/number-of-valid-words-in-a-sentence)
 **Companies:** Cisco, Meta, Oracle
 
 ---
@@ -19,7 +20,22 @@
 
 ## 1. Problem Description
 
-Count valid tokens in a sentence. A token is valid if: no digits, at most one hyphen (not at start/end, surrounded by letters), at most one punctuation (only at end).
+A sentence consists of lowercase letters (`'a'` to `'z'`), digits (`'0'` to `'9'`), hyphens (`'-'`), punctuation marks (`'!'`, `'.'`, and `','`), and spaces (`' '`) only. Each sentence can be broken down into **one or more tokens** separated by one or more spaces `' '`.
+
+A token is a valid word if **all three** of the following are true:
+
+- It only contains lowercase letters, hyphens, and/or punctuation (**no** digits).
+- There is **at most one** hyphen `'-'`. If present, it **must** be surrounded by lowercase characters (`"a-b"` is valid, but `"-ab"` and `"ab-"` are not valid).
+- There is **at most one** punctuation mark. If present, it **must** be at the **end** of the token (`"ab,"`, `"cd!"`, and `"."` are valid, but `"a!b"` and `"c.,"` are not valid).
+
+Examples of valid words include `"a-b."`, `"afad"`, `"ba-c"`, `"a!"`, and `"!"`.
+
+Given a string `sentence`, return *the **number** of valid words in *`sentence`.
+
+**Constraints:**
+- `1 <= sentence.length <= 1000`
+- `sentence` only contains lowercase English letters, digits, `' '`, `'-'`, `'!'`, `'.'`, and `','`.
+- There will be at least `1` token.
 
 ---
 
@@ -27,24 +43,27 @@ Count valid tokens in a sentence. A token is valid if: no digits, at most one hy
 
 **Example 1:**
 ```
-s = "Hello world"
+Input: sentence = "cat and  dog"
+Output: 3
+Explanation: The valid words in the sentence are "cat", "and", and "dog".
 ```
-**Output:** `2`
-- Both "Hello" and "world" satisfy all rules.
 
 **Example 2:**
 ```
-s = "cat and  dog"
+Input: sentence = "!this  1-s b8d!"
+Output: 0
+Explanation: There are no valid words in the sentence.
+"!this" is invalid because it starts with a punctuation mark.
+"1-s" and "b8d" are invalid because they contain digits.
 ```
-**Output:** `3`
-- "cat", "and", and "dog" are valid; the extra space creates an empty token which is ignored.
 
 **Example 3:**
 ```
-s = "!this  1-s b8d!"
+Input: sentence = "alice and  bob are playing stone-game10"
+Output: 5
+Explanation: The valid words in the sentence are "alice", "and", "bob", "are", and "playing".
+"stone-game10" is invalid because it contains digits.
 ```
-**Output:** `0`
-- Tokens contain digits or misplaced punctuation/hyphens, so none are valid.
 
 ---
 

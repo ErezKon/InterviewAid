@@ -8,25 +8,35 @@
 
 ## 1. Problem Description
 
-Given two arrays `arr1` and `arr2` representing two non‑negative integers in **negabinary** (base ‑2), return their sum in negabinary.
+Given two numbers `arr1` and `arr2` in base **-2**, return the result of adding them together.
 
-Negabinary: digit at position `i` represents `val × (-2)^i`.
+Each number is given in *array format*: as an array of 0s and 1s, from most significant bit to least significant bit. For example, `arr = [1,1,0,1]` represents the number `(-2)^3 + (-2)^2 + (-2)^0 = -3`. A number `arr` in *array format* is also guaranteed to have no leading zeros: either `arr == [0]` or `arr[0] == 1`.
+
+Return the result of adding `arr1` and `arr2` in the same format: as an array of 0s and 1s with no leading zeros.
 
 **Constraints:**
 - `1 ≤ arr1.length, arr2.length ≤ 1000`
-- Each array is non‑empty and has no leading zeros
+- `arr1[i]` and `arr2[i]` are `0` or `1`
+- `arr1` and `arr2` have no leading zeros
 
 ---
 
 ## 2. Examples
 
-| arr1 | arr2 | Output |
-|------|------|--------|
-| `[1,1,1,1,1]` | `[1,0,1]` | `[1,0,0,0,0]` |
-| `[1]` | `[1]` | `[1,1]` |
-| `[0]` | `[0]` | `[0]` |
+```
+Example 1:
+  Input: arr1 = [1,1,1,1,1], arr2 = [1,0,1]
+  Output: [1,0,0,0,0]
+  Explanation: arr1 represents 11, arr2 represents 5, the output represents 16.
 
-*Explanation:* The first example adds `11111` (base ‑2) and `101` (base ‑2) to get `10000` (base ‑2).
+Example 2:
+  Input: arr1 = [0], arr2 = [0]
+  Output: [0]
+
+Example 3:
+  Input: arr1 = [0], arr2 = [1]
+  Output: [1]
+```
 
 ---
 

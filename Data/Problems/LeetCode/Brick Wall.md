@@ -7,15 +7,30 @@
 ---
 
 ## Problem Description
-Given a wall represented by a list of rows, where each row contains the widths of bricks, find a vertical line that crosses the fewest number of bricks. The line must be drawn from the top to the bottom of the wall and cannot be drawn along the wall's outer edges.
+There is a rectangular brick wall in front of you with `n` rows of bricks. The `iᵗʰ` row has some number of bricks each of the same height (i.e., one unit) but they can be of different widths. The total width of each row is the same.
+
+Draw a vertical line from the top to the bottom and cross the least bricks. If your line goes through the edge of a brick, then the brick is not considered as crossed. You cannot draw a line just along one of the two vertical edges of the wall, in which case the line will obviously cross no bricks.
+
+Given the 2D array `wall` that contains the information about the wall, return *the minimum number of crossed bricks after drawing such a vertical line*.
+
+**Constraints:**
+- `n == wall.length`
+- `1 ≤ n ≤ 10⁴`
+- `1 ≤ wall[i].length ≤ 10⁴`
+- `1 ≤ sum(wall[i].length) ≤ 2 * 10⁴`
+- `sum(wall[i])` is the same for each row `i`.
+- `1 ≤ wall[i][j] ≤ 2³¹ - 1`
 
 ## Examples
-- Input: `wall = [[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]`
-  Output: `2`
-  Explanation: Drawing the line after the 2nd unit position crosses only two bricks.
-- Input: `wall = [[1],[1],[1]]`
-  Output: `0`
-  Explanation: No internal edge exists, so any line will cross all bricks.
+```
+Example 1:
+  Input: wall = [[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]
+  Output: 2
+
+Example 2:
+  Input: wall = [[1],[1],[1]]
+  Output: 3
+```
 
 ## Approach: Hash Map — O(total bricks) ✅
 

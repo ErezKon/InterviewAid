@@ -20,12 +20,17 @@
 
 ## Problem Description
 
-Given an integer array `nums`, find **non-overlapping subsequences** of size 3 such that the **sum of their medians** is maximized. The median of a size-3 subsequence is its middle value when sorted.
+You are given an integer array `nums` with a length divisible by 3.
 
-Return the **maximum sum of medians** across all such valid partitions.
+You want to make the array empty in steps. In each step, you can select any three elements from the array, compute their **median**, and remove the selected elements from the array.
+
+The **median** of an odd-length sequence is defined as the middle element of the sequence when it is sorted in non-decreasing order.
+
+Return the **maximum** possible sum of the medians computed from the selected elements.
 
 **Constraints:**
-- `3 <= nums.length <= 10^5`
+- `1 <= nums.length <= 5 * 10^5`
+- `nums.length % 3 == 0`
 - `1 <= nums[i] <= 10^9`
 
 ---
@@ -34,17 +39,20 @@ Return the **maximum sum of medians** across all such valid partitions.
 
 **Example 1:**
 ```
-Input:  nums = [1, 2, 3, 4, 5, 6]
-Output: 7
-Explanation: Groups: {1,2,6} median=2, {3,5,4} median=4 (sorted: 3,4,5). Sum = 2+5 = 7.
-Better: {1,4,5} median=4, {2,3,6} median=3 → sum=7.
+Input: nums = [2,1,3,2,1,3]
+Output: 5
+Explanation: - In the first step, select elements at indices 2, 4, and 5, which have a median 3. After removing these elements, nums becomes [2, 1, 2].
+- In the second step, select elements at indices 0, 1, and 2, which have a median 2. After removing these elements, nums becomes empty.
+Hence, the sum of the medians is 3 + 2 = 5.
 ```
 
 **Example 2:**
 ```
-Input:  nums = [5, 5, 5]
-Output: 5
-Explanation: Only one group of 3, median = 5.
+Input: nums = [1,1,10,10,10,10]
+Output: 20
+Explanation: - In the first step, select elements at indices 0, 2, and 3, which have a median 10. After removing these elements, nums becomes [1, 10, 10].
+- In the second step, select elements at indices 0, 1, and 2, which have a median 10. After removing these elements, nums becomes empty.
+Hence, the sum of the medians is 10 + 10 = 20.
 ```
 
 ---

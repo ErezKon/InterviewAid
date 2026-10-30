@@ -7,20 +7,44 @@
 ---
 
 ## Problem Description
-You are given an integer `n` representing `n` cities labeled from `0` to `n-1` and a list `connections` where each element `[a, b]` denotes a directed road from city `a` to city `b`. The network forms a tree (i.e., exactly `n-1` edges and all cities are reachable). Your goal is to reorient the minimum number of roads so that every city can reach city `0` via directed paths.
+
+There are `n` cities numbered from `0` to `n - 1` and `n - 1` roads such that there is only one way to travel between two different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one direction because they are too narrow.
+
+Roads are represented by `connections` where `connections[i] = [a_i, b_i]` represents a road from city `a_i` to city `b_i`.
+
+This year, there will be a big event in the capital (city `0`), and many people want to travel to this city.
+
+Your task consists of reorienting some roads such that each city can visit the city `0`. Return the **minimum** number of edges changed.
+
+It's **guaranteed** that each city can reach city `0` after reorder.
+
+**Constraints:**
+- `2 <= n <= 5 * 10^4`
+- `connections.length == n - 1`
+- `connections[i].length == 2`
+- `0 <= a_i, b_i <= n - 1`
+- `a_i != b_i`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: n = 6, connections = [[0,1],[1,3],[2,3],[4,0],[4,5]]
 Output: 3
-Explanation: Reorder edges (1→3), (2→3) and (4→5) to point towards city 0.
+Explanation: Change the direction of edges show in red such that each node can reach the node 0 (capital).
 ```
+
 **Example 2:**
 ```
 Input: n = 5, connections = [[1,0],[1,2],[3,2],[3,4]]
 Output: 2
-Explanation: Reorder edges (1→0) and (3→4) to point towards city 0.
+Explanation: Change the direction of edges show in red such that each node can reach the node 0 (capital).
+```
+
+**Example 3:**
+```
+Input: n = 3, connections = [[1,0],[2,0]]
+Output: 0
 ```
 
 ## Approach

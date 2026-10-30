@@ -1,25 +1,44 @@
 # 333. Largest BST Subtree
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/largest-bst-subtree](https://leetcode.com/problems/largest-bst-subtree)
 **Companies:** Meta, Microsoft
 
 ---
 
 ## Problem Description
 
-Given a binary tree, find the size (number of nodes) of the largest subtree that is a valid Binary Search Tree (BST).
+Given the root of a binary tree, find the largest subtree, which is also a Binary Search Tree (BST), where the largest means subtree has the largest number of nodes.
+
+A **Binary Search Tree (BST)** is a tree in which all the nodes follow the below-mentioned properties:
+- The left subtree values are less than the value of their parent (root) node's value.
+- The right subtree values are greater than the value of their parent (root) node's value.
+
+**Note:** A subtree must include all of its descendants.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[0, 10^4]`.
+- `-10^4 <= Node.val <= 10^4`
+
+**Follow up:** Can you figure out ways to solve it with `O(n)` time complexity?
 
 ---
 
 ## Examples
 
-| Tree | Largest BST Size |
-|------|------------------|
-| `5\n / \\ 1   4\n    / \\ 3 6` | 3 |
-| `2\n / \\ 1   3` | 3 |
-| `10\n / \\ 5   15\n    / \\   / \\ 6 20` | 2 |
+```
+Example 1:
+  Input: root = [10,5,15,1,8,null,7]
+  Output: 3
+  Explanation: The Largest BST Subtree in this case is the subtree rooted at 5 ([5,1,8]).
+  The return value is the subtree's size, which is 3.
+```
 
-*Explanation*: In the first tree, the subtree rooted at node `1` with child `null` is a BST of size 1, but the subtree rooted at `5` is not a BST. The largest BST is the right subtree `[4,3,6]` of size 3.
+```
+Example 2:
+  Input: root = [4,2,7,2,3,5,null,2,null,null,null,null,null,1]
+  Output: 2
+```
 
 ---
 

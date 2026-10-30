@@ -8,7 +8,22 @@
 
 ## Problem Description
 
-Given an integer array `nums`, you may jump from index `i` to any index `j` such that `i != j` and `nums[i]` and `nums[j]` share at least one common prime factor. Return the minimum number of jumps required to move from index `0` to index `n-1`. If it is impossible, return `-1`.
+> *Note: the Approach below teleports from any index sharing a prime factor and never takes adjacent steps. Officially you may step to `i ± 1`, and you may teleport only **from** an index whose value is itself a prime `p`, **to** indices `j` with `nums[j] % p == 0`. Run BFS with both move types, precomputing the indices divisible by each prime with a sieve and using each prime's teleport list once.*
+
+You are given an integer array `nums` of length `n`.
+
+You start at index 0, and your goal is to reach index `n - 1`.
+
+From any index `i`, you may perform one of the following operations:
+
+- **Adjacent Step**: Jump to index `i + 1` or `i - 1`, if the index is within bounds.
+- **Prime Teleportation**: If `nums[i]` is a prime number `p`, you may instantly jump to any index `j != i` such that `nums[j] % p == 0`.
+
+Return the **minimum** number of jumps required to reach index `n - 1`.
+
+**Constraints:**
+- `1 <= n == nums.length <= 10^5`
+- `1 <= nums[i] <= 10^6`
 
 ---
 
@@ -52,17 +67,30 @@ FUNCTION minJumps(nums):
 
 **Example 1:**
 ```
-nums = [2,3,6,7]
-output = 2
+Input: nums = [1,2,4,6]
+Output: 2
+Explanation: One optimal sequence of jumps is:
+- Start at index i = 0. Take an adjacent step to index 1.
+- At index i = 1, nums[1] = 2 is a prime number. Therefore, we teleport to index i = 3 as nums[3] = 6 is divisible by 2.
+Thus, the answer is 2.
 ```
-*Explanation:* Start at index 0 (`2`). It shares prime `2` with index 2 (`6`). Jump to index 2, then share prime `3` with index 1 (`3`) and finally reach index 3 (`7`) via index 2 → index 3 (prime `7`). Minimum jumps = 2.
 
 **Example 2:**
 ```
-nums = [5,11,17]
-output = -1
+Input: nums = [2,3,4,7,9]
+Output: 2
+Explanation: One optimal sequence of jumps is:
+- Start at index i = 0. Take an adjacent step to index i = 1.
+- At index i = 1, nums[1] = 3 is a prime number. Therefore, we teleport to index i = 4 since nums[4] = 9 is divisible by 3.
+Thus, the answer is 2.
 ```
-*Explanation:* No two numbers share a prime factor, so the target is unreachable.
+
+**Example 3:**
+```
+Input: nums = [4,6,5,8]
+Output: 3
+Explanation: - Since no teleportation is possible, we move through 0 → 1 → 2 → 3. Thus, the answer is 3.
+```
 
 ---
 

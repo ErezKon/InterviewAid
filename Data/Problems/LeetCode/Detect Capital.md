@@ -20,11 +20,13 @@
 
 ## Problem Description
 
-Given a string `word`, return `true` if the usage of capitals in it is correct. Capital usage is correct when one of the following rules holds:
+We define the usage of capitals in a word to be right when one of the following cases holds:
 
-1. **All** letters are capitals: `"USA"`
-2. **All** letters are lowercase: `"leetcode"`
-3. **Only the first** letter is capital: `"Google"`
+- All letters in this word are capitals, like `"USA"`.
+- All letters in this word are not capitals, like `"leetcode"`.
+- Only the first letter in this word is capital, like `"Google"`.
+
+Given a string `word`, return `true` if the usage of capitals in it is right.
 
 **Constraints:**
 - `1 <= word.length <= 100`
@@ -37,19 +39,13 @@ Given a string `word`, return `true` if the usage of capitals in it is correct. 
 **Example 1:**
 ```
 Input: word = "USA"
-Output: true       → all uppercase ✅
+Output: true
 ```
 
 **Example 2:**
 ```
 Input: word = "FlaG"
-Output: false      → mixed case, doesn't match any rule ✗
-```
-
-**Example 3:**
-```
-Input: word = "Google"
-Output: true       → only first letter capitalized ✅
+Output: false
 ```
 
 ---

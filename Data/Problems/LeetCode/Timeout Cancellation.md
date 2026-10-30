@@ -7,13 +7,62 @@
 ---
 
 ## Problem Description
-Given a function that performs an asynchronous operation, implement a wrapper that cancels the operation if it does not complete within a given time limit. Return a default value or error when the timeout occurs.
+
+> *Note: the Approach/Walkthrough below implement a "run with timeout" wrapper, which is a different task. Correct idea (JavaScript): `const id = setTimeout(() => fn(...args), t); return () => clearTimeout(id);`.*
+
+Given a function `fn`, an array of arguments `args`, and a timeout `t` in milliseconds, return a cancel function `cancelFn`.
+
+After a delay of `cancelTimeMs`, the returned cancel function `cancelFn` will be invoked.
+
+```
+setTimeout(cancelFn, cancelTimeMs)
+```
+
+Initially, the execution of the function `fn` should be delayed by `t` milliseconds.
+
+If, before the delay of `t` milliseconds, the function `cancelFn` is invoked, it should cancel the delayed execution of `fn`. Otherwise, if `cancelFn` is not invoked within the specified delay `t`, `fn` should be executed with the provided `args` as arguments.
+
+**Constraints:**
+- `fn` is a function
+- `args` is a valid JSON array
+- `1 <= args.length <= 10`
+- `20 <= t <= 1000`
+- `10 <= cancelTimeMs <= 1000`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| operation takes 5 s, timeout = 3 s | timeout error | The wrapper aborts after 3 s. |
-| operation takes 2 s, timeout = 3 s | operation result | The operation finishes before the timeout.
+
+**Example 1:**
+```
+Input: fn = (x) => x * 5, args = [2], t = 20
+Output: [{"time": 20, "returned": 10}]
+Explanation:
+const cancelTimeMs = 50;
+const cancelFn = cancellable((x) => x * 5, [2], 20);
+setTimeout(cancelFn, cancelTimeMs);
+The cancellation was scheduled to occur after a delay of cancelTimeMs (50ms), which happened after the execution of fn(2) at 20ms.
+```
+
+**Example 2:**
+```
+Input: fn = (x) => x**2, args = [2], t = 100
+Output: []
+Explanation:
+const cancelTimeMs = 50;
+const cancelFn = cancellable((x) => x**2, [2], 100);
+setTimeout(cancelFn, cancelTimeMs);
+The cancellation was scheduled to occur after a delay of cancelTimeMs (50ms), which happened before the execution of fn(2) at 100ms, resulting in fn(2) never being called.
+```
+
+**Example 3:**
+```
+Input: fn = (x1, x2) => x1 * x2, args = [2,4], t = 30
+Output: [{"time": 30, "returned": 8}]
+Explanation:
+const cancelTimeMs = 100;
+const cancelFn = cancellable((x1, x2) => x1 * x2, [2,4], 30);
+setTimeout(cancelFn, cancelTimeMs);
+The cancellation was scheduled to occur after a delay of cancelTimeMs (100ms), which happened after the execution of fn(2,4) at 30ms.
+```
 
 ## Approach
 Use a timer that triggers after the timeout duration. Run the original operation in a separate task. Whichever finishes first— the operation or the timer— determines the result.
@@ -34,10 +83,10 @@ FUNCTION RunWithTimeout(operation, timeout):
 ```
 
 ## Walkthrough
-Consider an operation that sleeps for 5 s with a timeout of 3 s.
-1. The async task starts and will send its result after 5 s.
-2. The timer is set for 3 s.
-3. After 3 s the timer fires first, so the function returns a timeout error and discards the later result.
+Consider an operation that sleeps for 5 s with a timeout of 3 s.
+1. The async task starts and will send its result after 5 s.
+2. The timer is set for 3 s.
+3. After 3 s the timer fires first, so the function returns a timeout error and discards the later result.
 
 ## Complexity Analysis
 Time: O(t) where *t* is the smaller of the operation duration and the timeout. Space: O(1) additional memory.

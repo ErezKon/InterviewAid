@@ -8,7 +8,11 @@
 
 ## 1. Problem Description
 
-Given an even‑length array `nums`, create a new array where each element is the bitwise OR of two consecutive elements: `result[i] = nums[2*i] | nums[2*i + 1]`.
+Given an array `nums` of length `n`, return an array `answer` of length `n - 1` such that `answer[i] = nums[i] | nums[i + 1]` where `|` is the bitwise `OR` operation.
+
+**Constraints:**
+- `2 ≤ nums.length ≤ 100`
+- `0 ≤ nums[i] ≤ 100`
 
 ---
 
@@ -26,11 +30,19 @@ FUNCTION orArray(nums):
 
 ## 3. Examples
 
-| Input | Output |
-|-------|--------|
-| `[1,2,3,4]` | `[3,7]` |
-| `[0,0,0,0]` | `[0,0]` |
-| `[5,9,12,15]` | `[13,15]` |
+```
+Example 1:
+  Input: nums = [1,3,7,15]
+  Output: [3,7,15]
+
+Example 2:
+  Input: nums = [8,4,2]
+  Output: [12,6]
+
+Example 3:
+  Input: nums = [5,4,9,11]
+  Output: [5,13,11]
+```
 
 ---
 

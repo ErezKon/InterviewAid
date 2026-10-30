@@ -18,7 +18,12 @@
 
 ## Problem Description
 
-Given a positive integer `num`, find the smallest positive integer whose digits multiply to `num`. Return 0 if no such integer exists or if the result exceeds 32-bit integer range.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given a positive integer num, return *the smallest positive integer *`x`* whose multiplication of each digit equals *`num`. If there is no answer or the answer is not fit in **32-bit** signed integer, return `0`.
+
+**Constraints:**
+- `1 <= num <= 2^31 - 1`
 
 ---
 
@@ -28,21 +33,12 @@ Given a positive integer `num`, find the smallest positive integer whose digits 
 ```
 Input: num = 48
 Output: 68
-Explanation: 6 * 8 = 48 and 68 is the smallest such integer.
 ```
 
 **Example 2:**
 ```
 Input: num = 15
 Output: 35
-Explanation: 3 * 5 = 15 and 35 is the smallest integer.
-```
-
-**Example 3:**
-```
-Input: num = 13
-Output: 0
-Explanation: 13 has a prime factor greater than 9, so no such integer exists.
 ```
 
 ---

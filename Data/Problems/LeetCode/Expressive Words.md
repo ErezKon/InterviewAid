@@ -8,26 +8,41 @@
 
 ## Problem Description
 
-A string `s` was formed by stretching some letters (repeating them 3+ times). Given a list of `words`, count how many words could have been stretched to form `s`.
+Sometimes people repeat letters to represent extra feeling. For example:
 
-A word matches `s` if their character groups align and for each group: either the counts are equal, or `s`'s count ≥ 3 and ≥ the word's count.
+- `"hello" -> "heeellooo"`
+- `"hi" -> "hiiii"`
+
+In these strings like `"heeellooo"`, we have groups of adjacent letters that are all the same: `"h"`, `"eee"`, `"ll"`, `"ooo"`.
+
+You are given a string `s` and an array of query strings `words`. A query word is **stretchy** if it can be made to be equal to `s` by any number of applications of the following extension operation: choose a group consisting of characters `c`, and add some number of characters `c` to the group so that the size of the group is **three or more**.
+
+- For example, starting with `"hello"`, we could do an extension on the group `"o"` to get `"hellooo"`, but we cannot get `"helloo"` since the group `"oo"` has a size less than three. Also, we could do another extension like `"ll" -> "lllll"` to get `"helllllooo"`. If `s = "helllllooo"`, then the query word `"hello"` would be **stretchy** because of these two extension operations: `query = "hello" -> "hellooo" -> "helllllooo" = s`.
+
+Given a list of query strings `words`, return *the number of query strings that are **stretchy***.
+
+**Constraints:**
+- `1 <= s.length, words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `s` and `words[i]` consist of lowercase letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
-```text
-Input: s = "heeellooo", words = ["hello","hi","heello"]
-Output: 1
-Explanation: Only "hello" can be stretched to become "heeellooo".
+```
+Example 1:
+  Input: s = "heeellooo", words = ["hello", "hi", "helo"]
+  Output: 1
+  Explanation:
+  We can extend "e" and "o" in the word "hello" to get "heeellooo".
+  We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more.
 ```
 
-**Example 2:**
-```text
-Input: s = "zzzzzyyyyy", words = ["zzyy","zy","zzzzzy"]
-Output: 2
-Explanation: "zzyy" and "zzzzzy" are stretchy; "zy" is not because groups differ.
+```
+Example 2:
+  Input: s = "zzzzzyyyyy", words = ["zzyy","zy","zyy"]
+  Output: 3
 ```
 
 ---

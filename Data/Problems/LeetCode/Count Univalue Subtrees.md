@@ -8,24 +8,35 @@
 
 ## Problem Description
 
-Count the number of **uni-value subtrees** — subtrees where all nodes have the same value.
+Given the `root` of a binary tree, return *the number of **uni-value** subtrees*.
+
+A **uni-value subtree** means all nodes of the subtree have the same value.
+
+**Constraints:**
+- The number of the node in the tree will be in the range `[0, 1000]`.
+- `-1000 <= Node.val <= 1000`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: root = [5,1,5,5,5,null,5]
-Output: 4
-Explanation: The uni-value subtrees are the three leaf nodes with value 5 and the right subtree rooted at the right child of the root.
+Example 1:
+  Input: root = [5,1,5,5,5,null,5]
+  Output: 4
+  Explanation: The uni-value subtrees are the three leaves with value 5 and the right subtree [5,null,5].
 ```
 
-**Example 2:**
 ```
-Input: root = [5,5,5,5,5,null,5]
-Output: 6
-Explanation: Every node forms a uni-value subtree because all values are identical.
+Example 2:
+  Input: root = []
+  Output: 0
+```
+
+```
+Example 3:
+  Input: root = [5,5,5,5,5,null,5]
+  Output: 6
 ```
 
 ---

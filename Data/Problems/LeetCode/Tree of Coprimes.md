@@ -7,32 +7,60 @@
 ---
 
 ## Problem Description
-Given a rooted tree with `n` nodes labeled `0` to `n-1`. Each node `i` has a value `vals[i]`. For every node, find the nearest ancestor whose value is coprime with `vals[i]`. Return an array `ans` where `ans[i]` is the ancestor's index or `-1` if none exists.
+
+There is a tree (i.e., a connected, undirected graph that has no cycles) consisting of `n` nodes numbered from `0` to `n - 1` and exactly `n - 1` edges. Each node has a value associated with it, and the **root** of the tree is node `0`.
+
+To represent this tree, you are given an integer array `nums` and a 2D array `edges`. Each `nums[i]` represents the `i`th node's value, and each `edges[j] = [u_j, v_j]` represents an edge between nodes `u_j` and `v_j` in the tree.
+
+Two values `x` and `y` are **coprime** if `gcd(x, y) == 1` where `gcd(x, y)` is the **greatest common divisor** of `x` and `y`.
+
+An ancestor of a node `i` is any other node on the shortest path from node `i` to the **root**. A node is **not** considered an ancestor of itself.
+
+Return *an array* `ans` *of size* `n`, *where* `ans[i]` *is the closest ancestor to node* `i` *such that* `nums[i]` *and* `nums[ans[i]]` are **coprime**, or `-1` *if there is no such ancestor*.
+
+**Constraints:**
+- `nums.length == n`
+- `1 <= nums[i] <= 50`
+- `1 <= n <= 10^5`
+- `edges.length == n - 1`
+- `edges[j].length == 2`
+- `0 <= u_j, v_j < n`
+- `u_j != v_j`
 
 ## Examples
+
 **Example 1:**
-Input: `vals = [2,3,3,2,4]`, `edges = [[0,1],[1,2],[1,3],[2,4]]`
-Output: `[-1,0,0,1,1]`
-Explanation: Node 1's nearest coprime ancestor is 0 (2 and 3 are coprime). Node 2's nearest coprime ancestor is 0, etc.
+```
+Input: nums = [2,3,3,2], edges = [[0,1],[1,2],[1,3]]
+Output: [-1,0,0,1]
+Explanation: In the above figure, each node's value is in parentheses.
+- Node 0 has no coprime ancestors.
+- Node 1 has only one ancestor, node 0. Their values are coprime (gcd(2,3) == 1).
+- Node 2 has two ancestors, nodes 1 and 0. Node 1's value is not coprime (gcd(3,3) == 3), but node 0's
+  value is (gcd(2,3) == 1), so node 0 is the closest valid ancestor.
+- Node 3 has two ancestors, nodes 1 and 0. It is coprime with node 1 (gcd(3,2) == 1), so node 1 is its
+  closest valid ancestor.
+```
 
 **Example 2:**
-Input: `vals = [5,6,10,15]`, `edges = [[0,1],[1,2],[2,3]]`
-Output: `[-1,0,-1,2]`
-Explanation: Node 2 has no coprime ancestor because 5 and 10 share factor 5.
+```
+Input: nums = [5,6,10,2,3,6,15], edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]]
+Output: [-1,0,-1,0,0,0,-1]
+```
 
 ## Approach
-Use a depth‑first search while maintaining, for each possible value `v` (1 ≤ v ≤ 50), the most recent node on the current path whose value equals `v`. For the current node `u`, iterate over all values `v` that are coprime with `vals[u]` (pre‑computed list). Among those, pick the node with greatest depth – that is the nearest ancestor.
+Use a depth‑first search while maintaining, for each possible value `v` (1 ≤ v ≤ 50), the most recent node on the current path whose value equals `v`. For the current node `u`, iterate over all values `v` that are coprime with `vals[u]` (pre‑computed list). Among those, pick the node with greatest depth – that is the nearest ancestor.
 
 ## Walkthrough
 | Step | Node | Current Path Values (value→node) | Coprime candidates checked | Chosen ancestor |
 |------|------|----------------------------------|----------------------------|-----------------|
 | 1 | 0 | {2→0} | none (root) | -1 |
-| 2 | 1 | {2→0, 3→1} | values coprime with 3: {2,4,5,…} → deepest is node 0 | 0 |
-| 3 | 2 | {2→0,3→1,3→2} | coprime with 3: {2,4,…} → deepest node 0 | 0 |
+| 2 | 1 | {2→0, 3→1} | values coprime with 3: {2,4,5,…} → deepest is node 0 | 0 |
+| 3 | 2 | {2→0,3→1,3→2} | coprime with 3: {2,4,…} → deepest node 0 | 0 |
 | … | … | … | … | … |
 
 ## Complexity Analysis
-- **Time:** `O(n * C)` where `C` is the number of values (≤ 50) checked per node (pre‑computed coprime list). Effectively `O(n * 50)`.
+- **Time:** `O(n * C)` where `C` is the number of values (≤ 50) checked per node (pre‑computed coprime list). Effectively `O(n * 50)`.
 - **Space:** `O(n + 50)` for adjacency list, depth map, and the value‑to‑node stack.
 
 ## Follow‑Up Questions

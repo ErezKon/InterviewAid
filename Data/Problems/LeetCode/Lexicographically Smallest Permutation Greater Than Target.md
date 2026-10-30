@@ -8,7 +8,15 @@
 
 ## 1. Problem Description
 
-Find the next permutation of the given array — the lexicographically smallest permutation greater than the target.
+You are given two strings `s` and `target`, both having length `n`, consisting of lowercase English letters.
+
+Return the **lexicographically smallest permutation** of `s` that is **strictly** greater than `target`. If no permutation of `s` is lexicographically strictly greater than `target`, return an empty string.
+
+A string `a` is **lexicographically strictly greater** than a string `b` (of the same length) if in the first position where `a` and `b` differ, string `a` has a letter that appears later in the alphabet than the corresponding letter in `b`.
+
+**Constraints:**
+- `1 <= s.length == target.length <= 300`
+- `s` and `target` consist of only lowercase English letters.
 
 ---
 
@@ -36,13 +44,32 @@ FUNCTION nextPermutation(nums):
 
 ## 3. Examples
 
-| Input | Output |
-|-------|--------|
-| `[1,2,3]` | `[1,3,2]` |
-| `[3,2,1]` | `[1,2,3]` |
-| `[1,1,5]` | `[1,5,1]` |
+```
+Example 1:
+  Input: s = "abc", target = "bba"
+  Output: "bca"
+  Explanation:
+  - The permutations of s (in lexicographical order) are "abc", "acb", "bac", "bca", "cab", and "cba".
+  - The lexicographically smallest permutation that is strictly greater than target is "bca".
+```
 
-*Explanation*: The algorithm finds the first decreasing pair from the right, swaps with the next larger element, then reverses the tail to obtain the smallest greater permutation.
+```
+Example 2:
+  Input: s = "leet", target = "code"
+  Output: "eelt"
+  Explanation:
+  - The permutations of s (in lexicographical order) are "eelt", "eetl", "elet", "elte", "etel", "etle", "leet", "lete", "ltee", "teel", "tele", and "tlee".
+  - The lexicographically smallest permutation that is strictly greater than target is "eelt".
+```
+
+```
+Example 3:
+  Input: s = "baba", target = "bbaa"
+  Output: ""
+  Explanation:
+  - The permutations of s (in lexicographical order) are "aabb", "abab", "abba", "baab", "baba", and "bbaa".
+  - None of them is lexicographically strictly greater than target. Therefore, the answer is "".
+```
 
 ---
 

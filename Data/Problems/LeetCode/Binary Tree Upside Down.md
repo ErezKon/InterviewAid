@@ -1,18 +1,51 @@
 # 156. Binary Tree Upside Down
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/binary-tree-upside-down](https://leetcode.com/problems/binary-tree-upside-down)
 **Companies:** Google, Linkedin
 
 ---
 
 ## Problem Description
-Given the root of a binary tree, transform the tree so that the original leftmost leaf becomes the new root. For each node, its original left child becomes the new parent, its original right child becomes the new left child, and the node itself becomes the new right child. Return the new root of the transformed tree. The tree contains up to `10^4` nodes.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given the `root` of a binary tree, turn the tree upside down and return *the new root*.
+
+You can turn a binary tree upside down with the following steps:
+
+- The original left child becomes the new root.
+- The original root becomes the new right child.
+- The original right child becomes the new left child.
+
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0156.Binary%20Tree%20Upside%20Down/images/main.jpg)
+The mentioned steps are done level by level. It is **guaranteed** that every right node has a sibling (a left node with the same parent) and has no children.
+
+**Constraints:**
+- The number of nodes in the tree will be in the range `[0, 10]`.
+- `1 <= Node.val <= 10`
+- Every right node in the tree has a sibling (a left node that shares the same parent).
+- Every right node in the tree has no children.
 
 ## Examples
-| Input Tree | Output Tree | Explanation |
-|------------|-------------|-------------|
-| `[[1,2,3],[4,5,null],[6,null,null]]` | `[[4,5,1],[6,null,2],[null,null,3]]` | The original leftmost leaf `4` becomes the root. Each node is re‑wired according to the rule. |
-| `[]` | `[]` | Empty tree remains empty. |
+
+**Example 1:**
+```
+Input: root = [1,2,3,4,5]
+Output: [4,5,2,null,null,3,1]
+```
+
+**Example 2:**
+```
+Input: root = []
+Output: []
+```
+
+**Example 3:**
+```
+Input: root = [1]
+Output: [1]
+```
 
 ## Approach
 Use recursion (postorder). Recurse to the leftmost node, which becomes the new root. While unwinding, rewire the current node: set its left child's left to its right child, and its left child's right to the node itself, then nullify the node's left and right pointers.

@@ -8,28 +8,49 @@
 
 ## Problem Description
 
-You are given an integer array `nums`. In one operation you may choose two distinct indices `i` and `j` such that `nums[i] < nums[j]` and remove both elements from the array. Return the minimum possible length of the array after performing any number of such operations.
+Given an integer array `nums` sorted in non-decreasing order.
 
-Constraints:
+You can perform the following operation any number of times:
+- Choose **two** indices, `i` and `j`, where `nums[i] < nums[j]`.
+- Then, remove the elements at indices `i` and `j` from `nums`. The remaining elements retain their original order, and the array is re-indexed.
+
+Return the **minimum** length of `nums` after applying the operation zero or more times.
+
+**Constraints:**
 - `1 <= nums.length <= 10^5`
-- `-10^9 <= nums[i] <= 10^9`
+- `1 <= nums[i] <= 10^9`
+- `nums` is sorted in **non-decreasing** order.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [1,2,3,4]
-Output: 0
-Explanation: Remove (1,4) then (2,3). All elements removed.
+Example 1:
+  Input: nums = [1,2,3,4]
+  Output: 0
+  Explanation: Remove (1,3) -> [2,4], then remove (2,4) -> []. All elements removed.
 ```
 
-**Example 2:**
 ```
-Input: nums = [1,1,1,2,2]
-Output: 1
-Explanation: Remove (1,2) twice, one `1` remains.
+Example 2:
+  Input: nums = [1,1,2,2,3,3]
+  Output: 0
+  Explanation: Remove (1,2) -> [1,2,3,3], remove (1,3) -> [2,3], remove (2,3) -> [].
+```
+
+```
+Example 3:
+  Input: nums = [1000000000,1000000000]
+  Output: 2
+  Explanation: Since both numbers are equal, they cannot be removed.
+```
+
+```
+Example 4:
+  Input: nums = [2,3,4,4,4]
+  Output: 1
+  Explanation: Remove (2,4) -> [3,4,4], remove (3,4) -> [4]. One element remains.
 ```
 
 ---

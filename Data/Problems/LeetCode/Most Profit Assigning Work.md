@@ -18,10 +18,23 @@
 
 ## 1. Problem Description
 
-Assign each worker a job with `difficulty ≤ worker's ability`. Each worker does at most one job. Multiple workers can do the same job. Return **maximum total profit**.
+You have `n` jobs and `m` workers. You are given three arrays: `difficulty`, `profit`, and `worker` where:
+
+- `difficulty[i]` and `profit[i]` are the difficulty and the profit of the `iᵗʰ` job, and
+- `worker[j]` is the ability of `jᵗʰ` worker (i.e., the `jᵗʰ` worker can only complete a job with difficulty at most `worker[j]`).
+
+Every worker can be assigned **at most one job**, but one job can be **completed multiple times**.
+
+- For example, if three workers attempt the same job that pays `$1`, then the total profit will be `$3`. If a worker cannot complete any job, their profit is `$0`.
+
+Return the maximum profit we can achieve after assigning the workers to the jobs.
 
 **Constraints:**
-- `1 <= n <= 10⁴`
+- `n == difficulty.length`
+- `n == profit.length`
+- `m == worker.length`
+- `1 <= n, m <= 10⁴`
+- `1 <= difficulty[i], profit[i], worker[i] <= 10⁵`
 
 ---
 
@@ -52,21 +65,18 @@ FUNCTION maxProfitAssignment(difficulty, profit, worker):
 
 ## 4. Examples
 
-**Example 1:**
 ```
- difficulty = [2,4,6]
- profit    = [3,5,7]
- worker    = [1,3,5]
+Example 1:
+  Input: difficulty = [2,4,6,8,10], profit = [10,20,30,40,50], worker = [4,5,6,7]
+  Output: 100
+  Explanation: Workers are assigned jobs of difficulty [4,4,6,6] and they get a profit of [20,20,30,30] separately.
 ```
-Workers with abilities 1,3,5 can take jobs with difficulties ≤ their ability. The best profits they can achieve are 0,3,5 respectively, giving total profit **8**.
 
-**Example 2 (multiple workers same job):**
 ```
- difficulty = [1,2]
- profit    = [2,4]
- worker    = [2,2]
+Example 2:
+  Input: difficulty = [85,47,57], profit = [24,66,99], worker = [40,25,25]
+  Output: 0
 ```
-Both workers can take the job with difficulty 2 and profit 4, so total profit is **8**.
 
 ---
 

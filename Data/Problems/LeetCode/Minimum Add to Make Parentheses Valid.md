@@ -20,17 +20,37 @@
 
 ## Problem Description
 
-Given a string of `(` and `)`, return the **minimum number of parentheses** to add to make it valid (every open has a matching close and vice versa).
+A parentheses string is valid if and only if:
+- It is the empty string,
+- It can be written as `AB` (`A` concatenated with `B`), where `A` and `B` are valid strings, or
+- It can be written as `(A)`, where `A` is a valid string.
+
+You are given a parentheses string `s`. In one move, you can insert a parenthesis at any position of the string.
+- For example, if `s = "()))"`, you can insert an opening parenthesis to be `"(()))"` or a closing parenthesis to be `"())))"`.
+
+Return *the minimum number of moves required to make* `s` *valid*.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s[i]` is either `'('` or `')'`.
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"())"` | `1` | Need one `'('` before the last `')'`.
-| `"(("` | `2` | Need two `')'` to close the two opens.
-| `"()"` | `0` | Already valid.
+```
+Example 1:
+  Input: s = "())"
+  Output: 1
+  Explanation: Insert one '(' to match the unmatched ')'.
+```
+
+```
+Example 2:
+  Input: s = "((("
+  Output: 3
+  Explanation: Insert three ')' to close the three unmatched '('.
+```
 
 ---
 

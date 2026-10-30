@@ -7,20 +7,33 @@
 ---
 
 ## Problem Description
-Given an integer `n`, consider the numbers from `1` to `n`. For each number, compute the sum of its digits. Group numbers that share the same digit‑sum. Return the number of groups that have the largest size.
+You are given an integer `n`.
+
+We need to group the numbers from `1` to `n` according to the sum of its digits. For example, the numbers 14 and 5 belong to the **same** group, whereas 13 and 3 belong to **different** groups.
+
+Return the number of groups that have the largest size, i.e. the **maximum** number of elements.
+
+(In other words, numbers with the same digit‑sum form one group.)
+
+**Constraints:**
+- `1 <= n <= 10^4`
 
 ## Examples
-**Example 1:**
 ```
-Input: n = 13
-Output: 4
-Explanation: Digit‑sum groups are {1,10}, {2,11}, {3,12}, {4,13}, {5}, {6}, {7}, {8}, {9}. The largest groups have size 2 and there are 4 such groups.
+Example 1:
+  Input: n = 13
+  Output: 4
+  Explanation: There are 9 groups in total, they are grouped according sum of its digits of numbers from 1 to 13:
+  [1,10], [2,11], [3,12], [4,13], [5], [6], [7], [8], [9].
+  There are 4 groups with largest size.
+  (Digit‑sum groups of the largest size have 2 elements each.)
 ```
-**Example 2:**
+
 ```
-Input: n = 2
-Output: 2
-Explanation: Groups are {1} and {2}, both of size 1.
+Example 2:
+  Input: n = 2
+  Output: 2
+  Explanation: There are 2 groups [1], [2] of size 1.
 ```
 
 ## Approach

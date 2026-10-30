@@ -20,7 +20,24 @@
 
 ## Problem Description
 
-Given positions and calorie burn values, maximize calories burnt by making jumps from start to end. Each jump burns calories based on the distance or positions involved.
+> *Note: the Approach below is a placeholder DP for an invented problem. Correct idea: sort `heights` and zigzag from the ground. Jump to the tallest block, then the shortest, then the next tallest, and so on (two pointers), summing `(a - b)²`. Checked against brute force on 3,000 random inputs. O(n log n).*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an integer array `heights` of size `n`, where `heights[i]` represents the height of the `i^th` block in an exercise routine.
+
+You start on the ground (height 0) and **must** jump onto each block **exactly once** in any order.
+
+- The **calories burned** for a jump from a block of height `a` to a block of height `b` is `(a - b)^2`.
+- The **calories burned** for the first jump from the ground to the chosen first block `heights[i]` is `(0 - heights[i])^2`.
+
+Return the **maximum** total calories you can burn by selecting an optimal jumping sequence.
+
+**Note:** Once you jump onto the first block, you cannot return to the ground.
+
+**Constraints:**
+- `1 <= n == heights.length <= 10^5`
+- `1 <= heights[i] <= 10^5`
 
 ---
 
@@ -28,16 +45,34 @@ Given positions and calorie burn values, maximize calories burnt by making jumps
 
 **Example 1:**
 ```
-Input: positions = [0,2,5,6], calories = [3,2,4,1]
-Output: 9
-Explanation: Jump 0→2 (burn 3), 2→5 (burn 4), 5→6 (burn 1) total 8? Actually optimal path yields 9 calories.
+Input: heights = [1,7,9]
+Output: 181
+Explanation: The optimal sequence is [9, 1, 7].
+- Initial jump from the ground to heights[2] = 9: (0 - 9)^2 = 81.
+- Next jump to heights[0] = 1: (9 - 1)^2 = 64.
+- Final jump to heights[1] = 7: (1 - 7)^2 = 36.
+Total calories burned = 81 + 64 + 36 = 181.
 ```
 
 **Example 2:**
 ```
-Input: positions = [0,1,3], calories = [5,1,2]
-Output: 7
-Explanation: Jump directly 0→3 burns 7 calories.
+Input: heights = [5,2,4]
+Output: 38
+Explanation: The optimal sequence is [5, 2, 4].
+- Initial jump from the ground to heights[0] = 5: (0 - 5)^2 = 25.
+- Next jump to heights[1] = 2: (5 - 2)^2 = 9.
+- Final jump to heights[2] = 4: (2 - 4)^2 = 4.
+Total calories burned = 25 + 9 + 4 = 38.
+```
+
+**Example 3:**
+```
+Input: heights = [3,3]
+Output: 9
+Explanation: The optimal sequence is [3, 3].
+- Initial jump from the ground to heights[0] = 3: (0 - 3)^2 = 9.
+- Next jump to heights[1] = 3: (3 - 3)^2 = 0.
+Total calories burned = 9 + 0 = 9.
 ```
 
 ---

@@ -8,16 +8,50 @@
 
 ## Problem Description
 
-You are given a string `s` consisting of lowercase English letters. You can assign each distinct character a positive integer keypress cost. When typing the string, the total number of keypresses equals the sum of the costs of its characters. Determine the minimum possible total number of keypresses required to type `s` if you can assign costs optimally, with the constraint that the most frequent character gets cost 1, the next most frequent gets cost 2, and so on.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You have a keypad with `9` buttons, numbered from `1` to `9`, each mapped to lowercase English letters. You can choose which characters each button is matched to as long as:
+
+- All 26 lowercase English letters are mapped to.
+- Each character is mapped to by **exactly** `1` button.
+- Each button maps to **at most** `3` characters.
+
+To type the first character matched to a button, you press the button once. To type the second character, you press the button twice, and so on.
+
+Given a string `s`, return *the **minimum** number of keypresses needed to type *`s`* using your keypad.*
+
+**Note** that the characters mapped to by each button, and the order they are mapped in cannot be changed.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of lowercase English letters.
 
 ## Examples
 
-1. **Input:** `s = "aabbccc"`
-   **Output:** `11`
-   **Explanation:** Frequencies: `c:3`, `a:2`, `b:2`. Assign costs `c→1`, `a→2`, `b→3`. Total = `3*1 + 2*2 + 2*3 = 11`.
-2. **Input:** `s = "abcd"`
-   **Output:** `10`
-   **Explanation:** All frequencies are `1`. Assign costs `1,2,3,4` to the four letters → total `1+2+3+4 = 10`.
+**Example 1:**
+```
+Input: s = "apple"
+Output: 5
+Explanation: One optimal way to setup your keypad is shown above.
+Type 'a' by pressing button 1 once.
+Type 'p' by pressing button 6 once.
+Type 'p' by pressing button 6 once.
+Type 'l' by pressing button 5 once.
+Type 'e' by pressing button 3 once.
+A total of 5 button presses are needed, so return 5.
+```
+
+**Example 2:**
+```
+Input: s = "abcdefghijkl"
+Output: 15
+Explanation: One optimal way to setup your keypad is shown above.
+The letters 'a' to 'i' can each be typed by pressing a button once.
+Type 'j' by pressing button 1 twice.
+Type 'k' by pressing button 2 twice.
+Type 'l' by pressing button 3 twice.
+A total of 15 button presses are needed, so return 15.
+```
 
 ## Approach
 

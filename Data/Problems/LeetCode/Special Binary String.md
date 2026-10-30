@@ -7,15 +7,36 @@
 ---
 
 ## Problem Description
-A *special* binary string is a non‑empty string consisting of only `'0'` and `'1'` that meets two conditions: (1) the number of `'1'`s equals the number of `'0'`s, and (2) for every prefix of the string, the count of `'1'`s is never less than the count of `'0'`s. Given a special binary string `s`, you may split it into several non‑overlapping special substrings, recursively reorder each substring, and then concatenate them. Return the lexicographically largest string that can be obtained.
+**Special binary strings** are binary strings with the following two properties:
+
+- The number of `0`'s is equal to the number of `1`'s.
+- Every prefix of the binary string has at least as many `1`'s as `0`'s.
+
+You are given a **special binary** string `s`.
+
+A move consists of choosing two consecutive, non-empty, special substrings of `s`, and swapping them. Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.
+
+Return *the lexicographically largest resulting string possible after applying the mentioned operations on the string*.
+
+**Constraints:**
+- `1 <= s.length <= 50`
+- `s[i]` is either `'0'` or `'1'`.
+- `s` is a special binary string.
 
 ## Examples
-- **Input:** `"11011000"`
-  **Output:** `"11100100"`
-  *Explanation:* Split as `"110" + "1100"`, reorder inner parts to `"10"` and `"10"`, then sort top‑level parts descending.
-- **Input:** `"10"`
-  **Output:** `"10"`
-  *Explanation:* Already the largest possible.
+```
+Example 1:
+  Input: s = "11011000"
+  Output: "11100100"
+  Explanation: The strings "10" [occuring at s[1]] and "1100" [at s[3]] are swapped.
+    This is the lexicographically largest string possible after some number of swaps.
+```
+
+```
+Example 2:
+  Input: s = "10"
+  Output: "10"
+```
 
 ## Approach
 The key insight is that any special string can be uniquely decomposed into top‑level special substrings. By recursively processing the inner part of each substring and then sorting the resulting pieces in descending order, we obtain the lexicographically largest arrangement.

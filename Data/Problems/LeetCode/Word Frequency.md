@@ -7,18 +7,30 @@
 ---
 
 ## Problem Description
-Given an array of strings `words`, return a list of strings representing each unique word and its frequency, sorted by descending frequency. If two words have the same frequency, sort them lexicographically.
+
+Write a bash script to calculate the frequency of each word in a text file `words.txt`.
+
+For simplicity sake, you may assume:
+
+- `words.txt` contains only lowercase characters and space `' '` characters.
+- Each word must consist of lowercase characters only.
+- Words are separated by one or more whitespace characters.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: words = ["apple", "banana", "apple", "orange", "banana", "apple"]
-Output: ["apple 3", "banana 2", "orange 1"]
-```
-**Example 2:**
-```
-Input: words = ["cat", "dog", "cat", "dog", "cat", "dog"]
-Output: ["cat 3", "dog 3"] // same frequency, alphabetical order
+Assume that words.txt has the following content:
+the day is sunny the the
+the sunny is is
+Your script should output the following, sorted by descending frequency:
+the 4
+is 3
+sunny 2
+day 1
+Note:
+- Don't worry about handling ties, it is guaranteed that each word's frequency count is unique.
+- Could you write it in one-line using Unix pipes?
 ```
 
 ## Approach

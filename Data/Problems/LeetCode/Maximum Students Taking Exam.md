@@ -7,20 +7,51 @@
 ---
 
 ## Problem Description
-Given a rectangular classroom represented by a binary matrix `seats` where `1` indicates a functional seat and `0` a broken one, students may sit only on functional seats. A student can cheat by looking left‑up, right‑up, left‑down, or right‑down. Determine the maximum number of students that can be placed such that no two students can cheat off each other.
+
+Given a `m * n` matrix `seats`  that represent seats distributions in a classroom. If a seat is broken, it is denoted by `'#'` character otherwise it is denoted by a `'.'` character.
+
+Students can see the answers of those sitting next to the left, right, upper left and upper right, but he cannot see the answers of the student sitting directly in front or behind him. Return the **maximum **number of students that can take the exam together without any cheating being possible.
+
+Students must be placed in seats in good condition.
+
+**Constraints:**
+- `seats` contains only characters `'.' and``'#'.`
+- `m == seats.length`
+- `n == seats[i].length`
+- `1 <= m <= 8`
+- `1 <= n <= 8`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: seats = [[1,0,1],[1,1,1],[1,0,1]]
+Input: seats = [["#",".","#","#",".","#"],
+                [".","#","#","#","#","."],
+                ["#",".","#","#",".","#"]]
 Output: 4
-Explanation: Place students at (0,0), (0,2), (1,1), (2,0) or (2,2).
+Explanation: Teacher can place 4 students in available seats so they don't cheat on the exam.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: seats = [[1,1,1],[1,0,1],[1,1,1]]
-Output: 6
-Explanation: All functional seats can be occupied without cheating.
+Input: seats = [[".","#"],
+                ["#","#"],
+                ["#","."],
+                ["#","#"],
+                [".","#"]]
+Output: 3
+Explanation: Place all students in available seats.
+```
+
+**Example 3:**
+```
+Input: seats = [["#",".",".",".","#"],
+                [".","#",".","#","."],
+                [".",".","#",".","."],
+                [".","#",".","#","."],
+                ["#",".",".",".","#"]]
+Output: 10
+Explanation: Place students in available seats in column 1, 3 and 5.
 ```
 
 ## Approach

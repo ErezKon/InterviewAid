@@ -8,16 +8,44 @@
 
 ## Problem Description
 
-Given a binary string `s` and integer `k`, count substrings where the number of `0`s ≤ `k` **or** the number of `1`s ≤ `k`.
+You are given a **binary** string `s` and an integer `k`.
+
+A **binary string** satisfies the **k-constraint** if **either** of the following conditions holds:
+
+- The number of `0`'s in the string is at most `k`.
+- The number of `1`'s in the string is at most `k`.
+
+Return an integer denoting the number of substrings of `s` that satisfy the **k-constraint**.
+
+**Constraints:**
+- `1 <= s.length <= 50`
+- `1 <= k <= s.length`
+- `s[i]` is either `'0'` or `'1'`.
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `s = "10101", k = 1` | `9` | Substrings satisfying the constraint are: all single‑character substrings (5), plus `10`, `01`, `10`, `01`, and `101` (the last has two `1`s but only one `0`). |
-| `s = "000", k = 0` | `3` | Only the three single‑character substrings contain at most zero `1`s.
+```
+Example 1:
+  Input: s = "10101", k = 1
+  Output: 12
+  Explanation: Every substring of s except the substrings "1010", "10101", and "0101" satisfies the k-constraint.
+```
+
+```
+Example 2:
+  Input: s = "1010101", k = 2
+  Output: 25
+  Explanation: Every substring of s except the substrings with a length greater than 5 satisfies the k-constraint.
+```
+
+```
+Example 3:
+  Input: s = "11111", k = 1
+  Output: 15
+  Explanation: All substrings of s satisfy the k-constraint.
+```
 
 ---
 

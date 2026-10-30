@@ -21,22 +21,36 @@
 
 ## Problem Description
 
-Design a max stack data structure that supports:
-- `push(x)` — Push element x onto stack.
-- `pop()` — Remove and return the element on top of the stack.
-- `top()` — Get the element on top without removing.
-- `peekMax()` — Retrieve the maximum element without removing.
-- `popMax()` — Retrieve and remove the maximum element. If there are multiple max elements, remove the one closest to the top.
+Design a max stack data structure that supports the stack operations and supports finding the stack's maximum element.
+
+Implement the `MaxStack` class:
+
+- `MaxStack()` Initializes the stack object.
+- `void push(int x)` Pushes element `x` onto the stack.
+- `int pop()` Removes the element on top of the stack and returns it.
+- `int top()` Gets the element on the top of the stack without removing it.
+- `int peekMax()` Retrieves the maximum element in the stack without removing it.
+- `int popMax()` Retrieves the maximum element in the stack and removes it. If there is more than one maximum element, only remove the **top-most** one.
+
+You must come up with a solution that supports `O(1)` for each `top` call and `O(log n)` for each other call.
 
 **Constraints:**
 - `-10⁷ ≤ x ≤ 10⁷`
-- At most `10⁵` calls total.
+- At most `10⁵` calls will be made to `push`, `pop`, `top`, `peekMax`, and `popMax`.
+- There will be **at least one element** in the stack when `pop`, `top`, `peekMax`, or `popMax` is called.
 
 ---
 
 ## Examples
 
 ```
+Example 1:
+  Input:
+  ["MaxStack", "push", "push", "push", "top", "popMax", "top", "peekMax", "pop", "top"]
+  [[], [5], [1], [5], [], [], [], [], [], []]
+  Output:
+  [null, null, null, null, 5, 5, 1, 5, 1, 5]
+  Explanation:
 MaxStack stk = new MaxStack();
 stk.push(5);    // stack: [5]
 stk.push(1);    // stack: [5, 1]

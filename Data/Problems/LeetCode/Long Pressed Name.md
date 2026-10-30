@@ -8,7 +8,13 @@
 
 ## 1. Problem Description
 
-Check if `typed` could be the result of long-pressing characters in `name`.
+Your friend is typing his `name` into a keyboard. Sometimes, when typing a character `c`, the key might get *long pressed*, and the character will be typed 1 or more times.
+
+You examine the `typed` characters of the keyboard. Return `True` if it is possible that it was your friends name, with some characters (possibly none) being long pressed.
+
+**Constraints:**
+- `1 <= name.length, typed.length <= 1000`
+- `name` and `typed` consist of only lowercase English letters.
 
 ---
 
@@ -18,14 +24,14 @@ Check if `typed` could be the result of long-pressing characters in `name`.
 ```
 Input: name = "alex", typed = "aaleex"
 Output: true
-Explanation: 'a' and 'e' in `name` were long‑pressed.
+Explanation: 'a' and 'e' in 'alex' were long pressed.
 ```
 
 **Example 2:**
 ```
 Input: name = "saeed", typed = "ssaaedd"
 Output: false
-Explanation: The extra 'd' cannot be produced by long‑pressing.
+Explanation: 'e' must have been pressed twice, but it was not in the typed output.
 ```
 
 ---

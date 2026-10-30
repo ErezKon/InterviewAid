@@ -18,10 +18,20 @@
 
 ## 1. Problem Description
 
-Draw cards 1..maxPts uniformly. Stop when total ≥ k. Return the probability that total ≤ n.
+Alice plays the following game, loosely based on the card game **"21"**.
+
+Alice starts with `0` points and draws numbers while she has less than `k` points. During each draw, she gains an integer number of points randomly from the range `[1, maxPts]`, where `maxPts` is an integer. Each draw is independent and the outcomes have equal probabilities.
+
+Alice stops drawing numbers when she gets `k` **or more points**.
+
+Return the probability that Alice has `n` or fewer points.
+
+Answers within `10⁻⁵` of the actual answer are considered accepted.
 
 **Constraints:**
+
 - `0 <= k <= n <= 10⁴`
+- `1 <= maxPts <= 10⁴`
 
 ---
 
@@ -52,18 +62,25 @@ FUNCTION new21Game(n, k, maxPts):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: n = 10, k = 1, maxPts = 10
-Output: 1.0
-Explanation: Player stops immediately because k = 1, and any draw results in a total ≤ 10.
+Example 1:
+  Input: n = 10, k = 1, maxPts = 10
+  Output: 1.00000
+  Explanation: Alice gets a single card, then stops.
 ```
 
-**Example 2:**
 ```
-Input: n = 6, k = 1, maxPts = 10
-Output: 0.6
-Explanation: Only draws of 1‑6 keep total ≤ 6. Probability = 6/10.
+Example 2:
+  Input: n = 6, k = 1, maxPts = 10
+  Output: 0.60000
+  Explanation: Alice gets a single card, then stops.
+  In 6 out of 10 possibilities, she is at or below 6 points.
+```
+
+```
+Example 3:
+  Input: n = 21, k = 17, maxPts = 10
+  Output: 0.73278
 ```
 
 ---

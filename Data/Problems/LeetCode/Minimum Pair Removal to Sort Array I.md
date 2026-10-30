@@ -21,7 +21,14 @@
 
 ## 1. Problem Description
 
-Given an integer array `nums`, in one operation pick the adjacent pair with the **minimum sum**, remove both, and insert their sum at that position. Return the minimum operations to make the array **non-decreasing**.
+Given an array `nums`, you can perform the following operation any number of times:
+
+- Select the **adjacent** pair with the **minimum** sum in `nums`. If multiple such pairs exist, choose the leftmost one.
+- Replace the pair with their sum.
+
+Return the **minimum number of operations** needed to make the array **non-decreasing**.
+
+An array is said to be **non-decreasing** if each element is greater than or equal to its previous element (if it exists).
 
 **Constraints:**
 - `1 <= nums.length <= 50`
@@ -31,16 +38,20 @@ Given an integer array `nums`, in one operation pick the adjacent pair with the 
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input: nums = [5, 2, 3, 1]
-  Output: 2
-  Explanation: Merge (3,1)→4 → [5,2,4], merge (2,4)→6 → [5,6]. ✅
+Input: nums = [5,2,3,1]
+Output: 2
+Explanation: - The pair (3,1) has the minimum sum of 4. After replacement, nums = [5,2,4].
+- The pair (2,4) has the minimum sum of 6. After replacement, nums = [5,6].
+The array nums became non-decreasing in two operations.
+```
 
-Example 2:
-  Input: nums = [1, 2, 3, 4]
-  Output: 0
-  Explanation: Already sorted.
+**Example 2:**
+```
+Input: nums = [1,2,2]
+Output: 0
+Explanation: The array nums is already sorted.
 ```
 
 ---

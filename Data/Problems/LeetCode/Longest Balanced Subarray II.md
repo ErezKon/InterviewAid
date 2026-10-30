@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Find the longest subarray where every element appears the same number of times.
+> *Note: the Approach/Walkthrough below solve a different problem (every element appears equally often). Official #3721 compares the number of **distinct** even values with the number of **distinct** odd values (n up to 10^5). Standard solution: sweep the left end from right to left; give each value weight +1 (even) / −1 (odd) only at its first occurrence at or after the left end, keep prefix sums of these weights in a segment tree with range add + min/max, and for each left end find the farthest right end whose prefix sum equals the prefix sum just before the left end. O(n log n).*
+
+You are given an integer array `nums`.
+
+A **subarray** is called **balanced** if the number of **distinct even** numbers in the subarray is equal to the number of **distinct odd** numbers.
+
+Return the length of the **longest** balanced subarray.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
@@ -16,16 +26,26 @@ Find the longest subarray where every element appears the same number of times.
 
 **Example 1:**
 ```
-Input: nums = [1,2,2,1,3,3]
-Output: 6
-Explanation: The whole array has each of 1,2,3 appearing twice.
+Input: nums = [2,5,4,3]
+Output: 4
+Explanation: - The longest balanced subarray is [2, 5, 4, 3].
+- It has 2 distinct even numbers [2, 4] and 2 distinct odd numbers [5, 3]. Thus, the answer is 4.
 ```
 
 **Example 2:**
 ```
-Input: nums = [1,1,2,2,2,3]
-Output: 4
-Explanation: Subarray [2,2,2,3] is not balanced. The longest balanced subarray is [1,1,2,2] where 1 and 2 appear twice.
+Input: nums = [3,2,2,5,4]
+Output: 5
+Explanation: - The longest balanced subarray is [3, 2, 2, 5, 4].
+- It has 2 distinct even numbers [2, 4] and 2 distinct odd numbers [3, 5]. Thus, the answer is 5.
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,2]
+Output: 3
+Explanation: - The longest balanced subarray is [2, 3, 2].
+- It has 1 distinct even number [2] and 1 distinct odd number [3]. Thus, the answer is 3.
 ```
 
 ---

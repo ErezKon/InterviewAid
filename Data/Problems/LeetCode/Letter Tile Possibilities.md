@@ -8,18 +8,36 @@
 
 ## 1. Problem Description
 
-Given a string of uppercase letters (tiles), return the number of distinct non-empty sequences that can be formed.
+You have `n` `tiles`, where each tile has one letter `tiles[i]` printed on it.
+
+Return *the number of possible non-empty sequences of letters* you can make using the letters printed on those `tiles`.
+
+**Constraints:**
+- `1 <= tiles.length <= 7`
+- `tiles` consists of uppercase English letters.
 
 ---
 
 ## 2. Examples
 
-| Tiles | Output |
-|-------|--------|
-| "AAB" | 8 |
-| "AAABBC" | 188 |
+```
+Example 1:
+  Input: tiles = "AAB"
+  Output: 8
+  Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+```
 
-*Explanation*: All possible non‑empty permutations respecting tile counts are counted.
+```
+Example 2:
+  Input: tiles = "AAABBC"
+  Output: 188
+```
+
+```
+Example 3:
+  Input: tiles = "V"
+  Output: 1
+```
 
 ---
 

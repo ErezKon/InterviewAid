@@ -8,7 +8,20 @@
 
 ## Problem Description
 
-Given a DataFrame `employees`, display the **first 3 rows**. This is a Pandas problem.
+DataFrame: `employees`
+
+```
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| employee_id | int    |
+| name        | object |
+| department  | object |
+| salary      | int    |
++-------------+--------+
+```
+
+Write a solution to display the **first** `3` rows of this DataFrame.
 
 ---
 
@@ -24,10 +37,29 @@ FUNCTION selectFirstRows(employees):
 
 ## Examples
 
-| employees (first 5 rows) | Output (first 3 rows) |
-|--------------------------|-----------------------|
-| `[["Alice", 30], ["Bob", 25], ["Carol", 27], ["Dave", 22], ["Eve", 29]]` | `[["Alice", 30], ["Bob", 25], ["Carol", 27]]` |
-| `[[1,2],[3,4],[5,6],[7,8]]` | `[[1,2],[3,4],[5,6]]` |
+```
+Example 1:
+  Input: DataFrame employees
+  +-------------+-----------+-----------------------+--------+
+  | employee_id | name      | department            | salary |
+  +-------------+-----------+-----------------------+--------+
+  | 3           | Bob       | Operations            | 48675  |
+  | 90          | Alice     | Sales                 | 11096  |
+  | 9           | Tatiana   | Engineering           | 33805  |
+  | 60          | Annabelle | InformationTechnology | 37678  |
+  | 49          | Jonathan  | HumanResources        | 23793  |
+  | 43          | Khaled    | Administration        | 40454  |
+  +-------------+-----------+-----------------------+--------+
+  Output:
+  +-------------+---------+-------------+--------+
+  | employee_id | name    | department  | salary |
+  +-------------+---------+-------------+--------+
+  | 3           | Bob     | Operations  | 48675  |
+  | 90          | Alice   | Sales       | 11096  |
+  | 9           | Tatiana | Engineering | 33805  |
+  +-------------+---------+-------------+--------+
+  Explanation: Only the first 3 rows are displayed.
+```
 
 ---
 

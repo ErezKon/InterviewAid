@@ -8,26 +8,50 @@
 
 ## Problem Description
 
-You are given a boolean expression string consisting of characters `'0'`, `'1'`, `'&'`, `'|'`, `'('`, and `')'`. The expression is guaranteed to be valid. You may change any single character (`'0'` ↔ `'1'` or `'&'` ↔ `'|'`) at a cost of **1** per change. Return the minimum total cost required to flip the final evaluated value of the entire expression (i.e., make it evaluate to the opposite boolean value).
+You are given a **valid** boolean expression as a string `expression` consisting of the characters `'1'`, `'0'`, `'&'` (bitwise **AND** operator), `'|'` (bitwise **OR** operator), `'('`, and `')'`.
+- For example, `"()1|1"` and `"(1)&()"` are **not valid** while `"1"`, `"(((1))|(0))"`, and `"1|(0&(1))"` are **valid** expressions.
 
-Constraints:
+Return *the **minimum cost** to change the final value of the expression*.
+- For example, if `expression = "1|1|(0&0)&1"`, its **value** is `1|1|(0&0)&1 = 1|1|0&1 = 1|0&1 = 1&1 = 1`. We want to apply operations so that the **new** expression evaluates to `0`.
+
+The **cost** of changing the final value of an expression is the **number of operations** performed on the expression. The types of **operations** are described as follows:
+- Turn a `'1'` into a `'0'`.
+- Turn a `'0'` into a `'1'`.
+- Turn a `'&'` into a `'|'`.
+- Turn a `'|'` into a `'&'`.
+
+**Note:** `'&'` does **not** take precedence over `'|'` in the **order of calculation**. Evaluate parentheses **first**, then in **left-to-right** order.
+
+**Constraints:**
 - `1 ≤ expression.length ≤ 10^5`
-- The expression contains only the characters mentioned above and is syntactically correct.
+- `expression` only contains `'1'`, `'0'`, `'&'`, `'|'`, `'('`, and `')'`
+- All parentheses are properly matched.
+- There will be no empty parentheses (i.e: `"()"` is not a substring of `expression`).
 
 ## Examples
 
-**Example 1**
 ```
-Input: expression = "1&0|1"
-Output: 1
-Explanation: Flipping the '&' to '|' makes the expression "1|0|1" which evaluates to 1 (originally 0). Only one change is needed.
+Example 1:
+  Input: expression = "1&(0|1)"
+  Output: 1
+  Explanation: We can turn "1&(0|1)" into "1&(0&1)" by changing the '|' to a '&' using 1 operation.
+  The new expression evaluates to 0.
 ```
 
-**Example 2**
 ```
-Input: expression = "((1|0)&(0|1))"
-Output: 2
-Explanation: One optimal way is to flip both inner '|' operators to '&', resulting in "((1&0)&(0&1))" which evaluates to 0 → 1 after another flip, total cost 2.
+Example 2:
+  Input: expression = "(0&0)&(0&0&0)"
+  Output: 3
+  Explanation: We can turn "(0&0)&(0&0&0)" into "(0|1)|(0&0&0)" using 3 operations.
+  The new expression evaluates to 1.
+```
+
+```
+Example 3:
+  Input: expression = "(0|(1|0&1))"
+  Output: 1
+  Explanation: We can turn "(0|(1|0&1))" into "(0|(0|0&1))" using 1 operation.
+  The new expression evaluates to 0.
 ```
 
 ## Approach

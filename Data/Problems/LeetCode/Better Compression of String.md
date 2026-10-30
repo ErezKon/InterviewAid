@@ -8,7 +8,22 @@
 
 ## Problem Description
 
-Given a compressed string like `"a3b2c1a2"`, return the **sorted** compressed form by combining counts of repeated characters: `"a5b2c1"`.
+You are given a string `compressed` representing a compressed version of a string. The format is a character followed by its frequency. For example, `"a3b1a1c2"` is a compressed version of the string `"aaabacc"`.
+
+We seek a **better compression** with the following conditions:
+
+- Each character should appear **only once** in the compressed version.
+- The characters should be in **alphabetical order**.
+
+Return the *better compression* of `compressed`.
+
+**Note:** In the better version of compression, the order of letters may change, which is acceptable.
+
+**Constraints:**
+- `1 ≤ compressed.length ≤ 6 * 10⁴`
+- `compressed` consists only of lowercase English letters and digits.
+- `compressed` is a valid compression, i.e., each character is followed by its frequency.
+- Frequencies are in the range `[1, 10⁴]` and have no leading zeroes.
 
 ---
 
@@ -40,10 +55,21 @@ FUNCTION betterCompression(compressed):
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `"a3b2c1a2"` | `"a5b2c1"` |
-| `"z1y2z3"`   | `"y2z4"` |
+```
+Example 1:
+  Input: compressed = "a3c9b2c1"
+  Output: "a3b2c10"
+  Explanation: Characters "a" and "b" appear only once in the input, but "c" appears twice, once with a size of 9 and once with a size of 1.
+  Hence, in the resulting string, it should have a size of 10.
+
+Example 2:
+  Input: compressed = "c2b3a1"
+  Output: "a1b3c2"
+
+Example 3:
+  Input: compressed = "a2b4c1"
+  Output: "a2b4c1"
+```
 
 ---
 

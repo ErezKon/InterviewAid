@@ -7,13 +7,36 @@
 ---
 
 ## Problem Description
-Given a binary array `nums`, you may flip at most one `0` to `1`. Return the length of the longest contiguous subarray that contains only `1`s after the flip.
+Given a binary array `nums`, return *the maximum number of consecutive* `1`*'s in the array if you can flip at most one* `0`.
+
+**Constraints:**
+
+- `1 <= nums.length <= 10^5`
+- `nums[i]` is either `0` or `1`.
+
+**Follow up:** What if the input numbers come in one by one as an infinite stream? In other words, you can't store all numbers coming from the stream as it's too large to hold in memory. Could you solve it efficiently?
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,0,1,1,0]` | `4` | Flip the first `0` to get `[1,1,1,1,0]`.
-| `[1,1,1]` | `3` | No flip needed; the whole array is already all `1`s.
+
+```
+Example 1:
+  Input: nums = [1,0,1,1,0]
+  Output: 4
+  Explanation:
+  - If we flip the first zero, nums becomes [1,1,1,1,0] and we have 4 consecutive ones.
+  - If we flip the second zero, nums becomes [1,0,1,1,1] and we have 3 consecutive ones.
+  The max number of consecutive ones is 4.
+```
+
+```
+Example 2:
+  Input: nums = [1,0,1,1,0,1]
+  Output: 4
+  Explanation:
+  - If we flip the first zero, nums becomes [1,1,1,1,0,1] and we have 4 consecutive ones.
+  - If we flip the second zero, nums becomes [1,0,1,1,1,1] and we have 4 consecutive ones.
+  The max number of consecutive ones is 4.
+```
 
 ## Approach
 Use a **Sliding Window** that maintains at most one zero inside the window. Expand the right pointer, and when the zero count exceeds one, shrink from the left until the constraint is satisfied.

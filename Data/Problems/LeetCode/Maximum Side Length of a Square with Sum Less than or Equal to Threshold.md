@@ -7,20 +7,29 @@
 ---
 
 ## Problem Description
-Given an `m x n` matrix `mat` of non‑negative integers and an integer `threshold`, find the maximum side length `k` of a square sub‑matrix such that the sum of its elements is **≤ threshold**. If no such square exists, return `0`.
+
+Given a `m x n` matrix `mat` and an integer `threshold`, return *the maximum side-length of a square with a sum less than or equal to *`threshold`* or return *`0`* if there is no such square*.
+
+**Constraints:**
+- `m == mat.length`
+- `n == mat[i].length`
+- `1 <= m, n <= 300`
+- `0 <= mat[i][j] <= 10^4`
+- `0 <= threshold <= 10^5`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: mat = [[1,1,3,2,4],[1,1,3,2,4],[1,1,3,2,4]], threshold = 8
+Input: mat = [[1,1,3,2,4,3,2],[1,1,3,2,4,3,2],[1,1,3,2,4,3,2]], threshold = 4
 Output: 2
-Explanation: A 2×2 square with top‑left corner at (0,0) has sum 4 ≤ 8. No 3×3 square satisfies the condition.
+Explanation: The maximum side length of square with sum less than or equal to 4 is 2 as shown.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: mat = [[2,2,2],[2,2,2]], threshold = 1
+Input: mat = [[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2]], threshold = 1
 Output: 0
-Explanation: Every element is larger than the threshold.
 ```
 
 ## Approach

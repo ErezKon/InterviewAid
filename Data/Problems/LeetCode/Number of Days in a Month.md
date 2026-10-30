@@ -20,17 +20,34 @@
 
 ## 1. Problem Description
 
-Given a year `y` and month `m`, return the number of days in that month.
+Given a year `year` and a month `month`, return *the number of days of that month*.
+
+**Constraints:**
+
+- `1583 <= year <= 2100`
+- `1 <= month <= 12`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `y = 2020, m = 2` | `29` | 2020 is a leap year, so February has 29 days. |
-| `y = 2019, m = 2` | `28` | 2019 is not a leap year, February has 28 days. |
-| `y = 2021, m = 11` | `30` | November always has 30 days.
+```
+Example 1:
+  Input: year = 1992, month = 7
+  Output: 31
+```
+
+```
+Example 2:
+  Input: year = 2000, month = 2
+  Output: 29
+```
+
+```
+Example 3:
+  Input: year = 1900, month = 2
+  Output: 28
+```
 
 ---
 

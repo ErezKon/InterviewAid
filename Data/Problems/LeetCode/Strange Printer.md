@@ -7,12 +7,33 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase letters, a special printer can print a sequence of identical characters in a single turn. The printer can start and stop at any position, and each turn overwrites existing characters. Determine the minimum number of turns needed to print the entire string.
+
+There is a strange printer with the following two special properties:
+
+- The printer can only print a sequence of **the same character** each time.
+- At each turn, the printer can print new characters starting from and ending at any place and will cover the original existing characters.
+
+Given a string `s`, return *the minimum number of turns the printer needed to print it*.
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s` consists of lowercase English letters.
 
 ## Examples
-- **Input:** `s = "aaabbb"` **Output:** `2` // Print all `a`s in one turn, then all `b`s.
-- **Input:** `s = "aba"` **Output:** `2` // Print `aaa` first, then overwrite the middle with `b`.
-- **Input:** `s = "abcabc"` **Output:** `4`
+
+**Example 1:**
+```
+Input: s = "aaabbb"
+Output: 2
+Explanation: Print "aaa" first and then print "bbb".
+```
+
+**Example 2:**
+```
+Input: s = "aba"
+Output: 2
+Explanation: Print "aaa" first and then print "b" from the second place of the string, which will cover the existing character 'a'.
+```
 
 ## Approach
 **Algorithm:** Interval Dynamic Programming.

@@ -7,18 +7,42 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree (not necessarily perfect or complete), populate each node's `next` pointer to point to its next right node on the same level. If there is no node to the right, set the `next` pointer to `null`. The operation must be performed in‑place using only constant extra space.
+
+Given a binary tree
+
+```
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+```
+
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to `NULL`.
+
+Initially, all next pointers are set to `NULL`.
+
+**Follow-up:**
+- You may only use constant extra space.
+- The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[0, 6000]`.
+- `-100 <= Node.val <= 100`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: [1,2,3,4,5,null,7]
+Input: root = [1,2,3,4,5,null,7]
 Output: [1,#,2,3,#,4,5,7,#]
-Explanation: Nodes on each level are connected left‑to‑right via `next` pointers.
+Explanation: Given the above binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
 ```
+
 **Example 2:**
 ```
-Input: []
+Input: root = []
 Output: []
 ```
 

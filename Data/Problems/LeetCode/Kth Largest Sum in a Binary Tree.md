@@ -8,7 +8,19 @@
 
 ## 1. Problem Description
 
-Given the root of a binary tree, compute the sum of node values at each depth (level). Return the **k‑th largest** of these level sums. If the tree has fewer than `k` levels, return `-1`.
+You are given the `root` of a binary tree and a positive integer `k`.
+
+The **level sum** in the tree is the sum of the values of the nodes that are on the **same** level.
+
+Return* the *`k^th`* **largest** level sum in the tree (not necessarily distinct)*. If there are fewer than `k` levels in the tree, return `-1`.
+
+**Note** that two nodes are on the same level if they have the same distance from the root.
+
+**Constraints:**
+- The number of nodes in the tree is `n`.
+- `2 <= n <= 10^5`
+- `1 <= Node.val <= 10^6`
+- `1 <= k <= n`
 
 ---
 
@@ -37,13 +49,24 @@ FUNCTION kthLargestLevelSum(root, k):
 
 ## 3. Examples
 
-| Tree (level order) | k | Output |
-|--------------------|---|--------|
-| [5,2,9,null,3] | 1 | 14 |
-| [5,2,9,null,3] | 2 | 5 |
-| [1] | 2 | -1 |
+**Example 1:**
+```
+Input: root = [5,8,9,2,1,3,7,4,6], k = 2
+Output: 13
+Explanation: The level sums are the following:
+- Level 1: 5.
+- Level 2: 8 + 9 = 17.
+- Level 3: 2 + 1 + 3 + 7 = 13.
+- Level 4: 4 + 6 = 10.
+The 2^nd largest level sum is 13.
+```
 
-*Explanation:* For the first tree, level sums are `[5, 11, 3]`. Sorted descending → `[11, 5, 3]`; the 1‑st largest is `11` (actually sum of level 1). Adjusted example to match output `14`? Let's correct: Level 0 sum = 5, level 1 sum = 2+9=11, level 2 sum = 3 → largest is 11. We'll keep output `11`.
+**Example 2:**
+```
+Input: root = [1,2,null,3], k = 1
+Output: 3
+Explanation: The largest level sum is 3.
+```
 
 ---
 

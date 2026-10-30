@@ -8,18 +8,40 @@
 
 ## Problem Description
 
-Given strings `word1` and `word2`, count substrings of `word1` that can be rearranged to **contain** `word2` as a substring (i.e., the substring has at least as many of each character as `word2`).
+You are given two strings `word1` and `word2`.
+
+A string `x` is called **valid** if `x` can be rearranged to have `word2` as a prefix.
+
+Return the total number of **valid** substrings of `word1`.
+
+**Constraints:**
+- `1 <= word1.length <= 10^5`
+- `1 <= word2.length <= 10^4`
+- `word1` and `word2` consist only of lowercase English letters.
 
 ---
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `word1 = "ababc", word2 = "abc"` | `3` |
-| `word1 = "aaaa", word2 = "aa"` | `6` |
+```
+Example 1:
+  Input: word1 = "bcca", word2 = "abc"
+  Output: 1
+  Explanation: The only valid substring is "bcca" which can be rearranged to "abcc" having "abc" as a prefix.
+```
 
-*Explanation*: For the first case, the valid substrings are `"ababc"` (positions 0‑4), `"bab"` (1‑3) after rearrangement contains `abc`, and `"abc"` (2‑4).
+```
+Example 2:
+  Input: word1 = "abcabc", word2 = "abc"
+  Output: 10
+  Explanation: All the substrings except substrings of size 1 and size 2 are valid.
+```
+
+```
+Example 3:
+  Input: word1 = "abcabc", word2 = "aaabc"
+  Output: 0
+```
 
 ---
 

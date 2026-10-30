@@ -1,19 +1,42 @@
 # 2582. Pass the Pillow
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/pass-the-pillow](https://leetcode.com/problems/pass-the-pillow)
 **Companies:** Bloomberg, Google, Mathworks
 
 ---
 
 ## Problem Description
-There are `n` people standing in a line numbered from `1` to `n`. A pillow starts with person `1` and is passed to the next person each second. When it reaches either end of the line, the direction reverses. Given the total number of seconds `time`, return the index of the person holding the pillow after `time` seconds.
+There are `n` people standing in a line labeled from `1` to `n`. The first person in the line is holding a pillow initially. Every second, the person holding the pillow passes it to the next person standing in the line. Once the pillow reaches the end of the line, the direction changes, and people continue passing the pillow in the opposite direction.
+
+- For example, once the pillow reaches the `n`-th person they pass it to the `n - 1`-th person, then to the `n - 2`-th person and so on.
+
+Given the two positive integers `n` and `time`, return *the index of the person holding the pillow after* `time` *seconds*.
+
+**Constraints:**
+
+- `2 <= n <= 1000`
+- `1 <= time <= 1000`
+
+**Note:** This question is the same as 3178: Find the Child Who Has the Ball After K Seconds.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 4, time = 5` | `2` | The passing order is `1→2→3→4→3→2`. After 5 seconds person `2` holds the pillow. |
-| `n = 3, time = 2` | `3` | Order: `1→2→3`. |
-| `n = 5, time = 8` | `4` | Sequence: `1→2→3→4→5→4→3→2→1`. After 8 seconds person `4` holds it.
+
+```
+Example 1:
+  Input: n = 4, time = 5
+  Output: 2
+  Explanation: People pass the pillow in the following way: 1 -> 2 -> 3 -> 4 -> 3 -> 2.
+  After five seconds, the 2nd person is holding the pillow.
+```
+
+```
+Example 2:
+  Input: n = 3, time = 2
+  Output: 3
+  Explanation: People pass the pillow in the following way: 1 -> 2 -> 3.
+  After two seconds, the 3rd person is holding the pillow.
+```
 
 ## Approach
 The movement forms a cycle of length `2*(n-1)`. Compute `time` modulo this cycle to find the position within one full back‑and‑forth traversal, then map it to the person index.

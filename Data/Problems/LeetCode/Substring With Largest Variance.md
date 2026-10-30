@@ -7,15 +7,39 @@
 ---
 
 ## Problem Description
-For a given string `s`, the **variance** of a substring is defined as the difference between the number of occurrences of two distinct characters `a` and `b` within that substring (i.e., `count(a) - count(b)`). The order of `a` and `b` matters; variance can be negative. Find the maximum variance among all substrings of `s`. Return that maximum value.
+
+The **variance** of a string is defined as the largest difference between the number of occurrences of **any** `2` characters present in the string. Note the two characters may or may not be the same.
+
+Given a string `s` consisting of lowercase English letters only, return *the **largest variance** possible among all **substrings** of* `s`.
+
+A **substring** is a contiguous sequence of characters within a string.
+
+**Constraints:**
+- `1 <= s.length <= 10^4`
+- `s` consists of lowercase English letters.
 
 ## Examples
-- **Input:** `s = "aababbb"`
-  **Output:** `3`
-  **Explanation:** Substring `"abbbb"` has `count('b') = 4` and `count('a') = 1`, variance `4-1 = 3`.
-- **Input:** `s = "abcde"`
-  **Output:** `0`
-  **Explanation:** Any two‑character substring has equal counts or only one character, giving variance `0`.
+
+**Example 1:**
+```
+Input: s = "aababbb"
+Output: 3
+Explanation:
+All possible variances along with their respective substrings are listed below:
+- Variance 0 for substrings "a", "aa", "ab", "abab", "aababb", "ba", "b", "bb", and "bbb".
+- Variance 1 for substrings "aab", "aba", "abb", "aabab", "ababb", "aababbb", and "bab".
+- Variance 2 for substrings "aaba", "ababbb", "abbb", and "babb".
+- Variance 3 for substring "babbb".
+Since the largest possible variance is 3, we return it.
+```
+
+**Example 2:**
+```
+Input: s = "abcde"
+Output: 0
+Explanation:
+No letter occurs more than once in s, so the variance of every substring is 0.
+```
 
 ## Approach
 The problem can be solved by a variant of Kadane’s algorithm applied to every ordered pair of distinct characters `(a, b)`. Treat each character as:

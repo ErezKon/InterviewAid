@@ -20,7 +20,23 @@
 
 ## 1. Problem Description
 
-Given destination `[row, col]`, you must reach it from `(0,0)` using only 'H' (right) and 'V' (down) moves. Return the k-th lexicographically smallest instruction string.
+Bob is standing at cell `(0, 0)`, and he wants to reach `destination`: `(row, column)`. He can only travel **right** and **down**. You are going to help Bob by providing **instructions** for him to reach `destination`.
+
+The **instructions** are represented as a string, where each character is either:
+
+- `'H'`, meaning move horizontally (go **right**), or
+- `'V'`, meaning move vertically (go **down**).
+
+Multiple **instructions** will lead Bob to `destination`. For example, if `destination` is `(2, 3)`, both `"HHHVV"` and `"HVHVH"` are valid **instructions**.
+
+However, Bob is very picky. Bob has a lucky number `k`, and he wants the `k^th` **lexicographically smallest instructions** that will lead him to `destination`. `k` is **1-indexed**.
+
+Given an integer array `destination` and an integer `k`, return *the *`k^th`* **lexicographically smallest instructions** that will take Bob to *`destination`.
+
+**Constraints:**
+- `destination.length == 2`
+- `1 <= row, column <= 15`
+- `1 <= k <= nCr(row + column, row)`, where `nCr(a, b)` denotes `a` choose `b`.
 
 ---
 
@@ -65,12 +81,27 @@ FUNCTION kthSmallestPath(destination, k):
 
 ## 5. Examples
 
-| destination | k | Output |
-|-------------|---|--------|
-| [2,3] | 3 | "HHVHV" |
-| [1,2] | 2 | "HVH" |
+**Example 1:**
+```
+Input: destination = [2,3], k = 1
+Output: "HHHVV"
+Explanation: All the instructions that reach (2, 3) in lexicographic order are as follows:
+["HHHVV", "HHVHV", "HHVVH", "HVHHV", "HVHVH", "HVVHH", "VHHHV", "VHHVH", "VHVHH", "VVHHH"].
+```
 
-*Explanation:* For `[2,3]` there are `C(5,2)=10` possible strings. The 3rd lexicographically is `HHVHV`.
+**Example 2:**
+```
+![img](https://assets.leetcode.com/uploads/2020/10/12/ex2.png)
+Input: destination = [2,3], k = 2
+Output: "HHVHV"
+```
+
+**Example 3:**
+```
+![img](https://assets.leetcode.com/uploads/2020/10/12/ex3.png)
+Input: destination = [2,3], k = 3
+Output: "HHVVH"
+```
 
 ---
 

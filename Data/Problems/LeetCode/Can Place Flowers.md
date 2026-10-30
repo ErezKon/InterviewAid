@@ -7,15 +7,30 @@
 ---
 
 ## Problem Description
-Given a binary array `flowerbed` where `0` means empty and `1` means a flower is planted, determine if `n` new flowers can be planted without violating the rule that no two adjacent plots can both contain flowers.
+You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in **adjacent** plots.
+
+Given an integer array `flowerbed` containing `0`'s and `1`'s, where `0` means empty and `1` means not empty, and an integer `n`, return `true` *if* `n` *new flowers can be planted in the* `flowerbed` *without violating the no-adjacent-flowers rule and* `false` *otherwise*.
+
+**Constraints:**
+- `1 <= flowerbed.length <= 2 * 10^4`
+- `flowerbed[i]` is `0` or `1`.
+- There are no two adjacent flowers in `flowerbed`.
+- `0 <= n <= flowerbed.length`
 
 ## Examples
-- Input: `flowerbed = [1,0,0,0,1]`, `n = 1`
-  Output: `true`
+```
+Example 1:
+  Input: flowerbed = [1,0,0,0,1], n = 1
+  Output: true
   Explanation: Plant a flower at index 2.
-- Input: `flowerbed = [1,0,0,0,1]`, `n = 2`
-  Output: `false`
+```
+
+```
+Example 2:
+  Input: flowerbed = [1,0,0,0,1], n = 2
+  Output: false
   Explanation: Only one spot is available.
+```
 
 ## Approach: Greedy Scan — O(n) ✅
 

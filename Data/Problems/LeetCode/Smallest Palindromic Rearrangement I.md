@@ -8,18 +8,37 @@
 
 ## Problem Description
 
-Given a string `num` representing a large integer, rearrange its digits to form the smallest possible palindromic number. The resulting number must not have leading zeros, unless it is the number `0` itself.
+You are given a **palindromic** string `s`.
+
+Return the **lexicographically smallest** palindromic permutation of `s`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of lowercase English letters.
+- `s` is guaranteed to be palindromic.
 
 ## Examples
 
-- **Input:** `num = "41231234"`
-  - **Frequencies:** `1:2, 2:2, 3:2, 4:2`. All even.
-  - **Half-string:** `1234`.
-  - **Output:** `"12344321"`.
-- **Input:** `num = "83138"`
-  - **Frequencies:** `1:1, 3:2, 8:2`. `1` is the middle character.
-  - **Half-string:** `38`.
-  - **Output:** `"38183"`.
+```
+Example 1:
+  Input: s = "z"
+  Output: "z"
+  Explanation: A string of only one character is already the lexicographically smallest palindrome.
+```
+
+```
+Example 2:
+  Input: s = "babab"
+  Output: "abbba"
+  Explanation: Rearranging "babab" -> "abbba" gives the smallest lexicographic palindrome.
+```
+
+```
+Example 3:
+  Input: s = "daccad"
+  Output: "acddca"
+  Explanation: Rearranging "daccad" -> "acddca" gives the smallest lexicographic palindrome.
+```
 
 ## Approach: Greedy with Frequency Count [Time: O(N), Space: O(1)]
 

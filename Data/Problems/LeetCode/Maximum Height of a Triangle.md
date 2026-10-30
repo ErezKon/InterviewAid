@@ -7,13 +7,46 @@
 ---
 
 ## Problem Description
-Given a positive integer `n` representing the total number of blocks, you build a triangle by placing `1` block in the first row, `2` blocks in the second row, `3` blocks in the third row, and so on. Return the maximum possible height `h` of the triangle such that the total number of used blocks does not exceed `n`.
+
+> *Note: the Approach below solves a one-color block version. Officially the rows alternate between `red` and `blue` balls. Correct idea: try both starting colors and simulate row `h = 1, 2, …`, taking `h` balls from the color whose turn it is until it runs out. Return the larger height.*
+
+You are given two integers `red` and `blue` representing the count of red and blue colored balls. You have to arrange these balls to form a triangle such that the 1^st row will have 1 ball, the 2^nd row will have 2 balls, the 3^rd row will have 3 balls, and so on.
+
+All the balls in a particular row should be the **same** color, and adjacent rows should have **different** colors.
+
+Return the **maximum*** height of the triangle* that can be achieved.
+
+**Constraints:**
+- `1 <= red, blue <= 100`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `5` | `2` | Rows `1 + 2 = 3` fit, adding a third row would need `6` blocks > `5`. |
-| `10` | `4` | `1+2+3+4 = 10` exactly fits. |
+
+**Example 1:**
+```
+Input: red = 2, blue = 4
+Output: 3
+Explanation: The only possible arrangement is shown above.
+```
+
+**Example 2:**
+```
+Input: red = 2, blue = 1
+Output: 2
+Explanation: The only possible arrangement is shown above.
+```
+
+**Example 3:**
+```
+Input: red = 1, blue = 1
+Output: 1
+```
+
+**Example 4:**
+```
+Input: red = 10, blue = 1
+Output: 2
+Explanation: The only possible arrangement is shown above.
+```
 
 ## Approach
 The sum of the first `h` natural numbers is `h·(h+1)/2`. We need the largest `h` with `h·(h+1)/2 ≤ n`. This can be solved by a simple **binary search** on `h` (or by solving the quadratic inequality directly). The binary search checks the mid value, computes the required blocks, and narrows the range.

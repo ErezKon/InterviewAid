@@ -7,20 +7,56 @@
 ---
 
 ## Problem Description
-Given a list of purchase records where each record contains a `userId` and a `timestamp` (in days), determine how many distinct users have made **at least two purchases** within any **7‑day window**. Each user may have multiple purchases; only one qualifying window per user is needed.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Purchases`
+
+```
++---------------+------+
+| Column Name   | Type |
++---------------+------+
+| purchase_id   | int  |
+| user_id       | int  |
+| purchase_date | date |
++---------------+------+
+purchase_id contains unique values.
+This table contains logs of the dates that users purchased from a certain retailer.
+```
+
+Write a solution to report the IDs of the users that made any two purchases **at most** `7` days apart.
+
+Return the result table ordered by `user_id`.
+
+The result format is in the following example.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: purchases = [[1,1],[2,2],[1,5],[1,10],[2,8]]
-Output: 1
-Explanation: User 1 purchased on days 1 and 5 (within 7 days). User 2's purchases are 6 days apart but not within any 7‑day window that contains two purchases.
-```
-**Example 2**
-```
-Input: purchases = [[3,2],[3,9],[3,15]]
-Output: 0
-Explanation: All purchases for user 3 are spaced more than 7 days apart.
+Input:
+Purchases table:
++-------------+---------+---------------+
+| purchase_id | user_id | purchase_date |
++-------------+---------+---------------+
+| 4           | 2       | 2022-03-13    |
+| 1           | 5       | 2022-02-11    |
+| 3           | 7       | 2022-06-19    |
+| 6           | 2       | 2022-03-20    |
+| 5           | 7       | 2022-06-19    |
+| 2           | 2       | 2022-06-08    |
++-------------+---------+---------------+
+Output:
++---------+
+| user_id |
++---------+
+| 2       |
+| 7       |
++---------+
+Explanation:
+User 2 had two purchases on 2022-03-13 and 2022-03-20. Since the second purchase is within 7 days of the first purchase, we add their ID.
+User 5 had only 1 purchase.
+User 7 had two purchases on the same day so we add their ID.
 ```
 
 ## Approach

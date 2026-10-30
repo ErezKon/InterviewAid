@@ -8,7 +8,29 @@
 
 ## 1. Problem Description
 
-Given two pandas DataFrames `df1` and `df2` that share identical column schemas, combine them vertically into a single DataFrame that contains all rows from both inputs.
+```
+DataFrame `df1`
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| student_id  | int    |
+| name        | object |
+| age         | int    |
++-------------+--------+
+
+DataFrame `df2`
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| student_id  | int    |
+| name        | object |
+| age         | int    |
++-------------+--------+
+```
+
+Write a solution to concatenate these two DataFrames **vertically** into one DataFrame.
+
+The result format is in the following example.
 
 ---
 
@@ -25,10 +47,39 @@ FUNCTION concatenateTables(df1, df2):
 
 ## 3. Examples
 
-| df1 (rows) | df2 (rows) | Result (rows) |
-|------------|------------|---------------|
-| `[[1, 'A'], [2, 'B']]` | `[[3, 'C']]` | `[[1, 'A'], [2, 'B'], [3, 'C']]` |
-| `[[10]]` | `[[20], [30]]` | `[[10], [20], [30]]` |
+**Example 1:**
+```
+Input:
+df1
++------------+---------+-----+
+| student_id | name    | age |
++------------+---------+-----+
+| 1          | Mason   | 8   |
+| 2          | Ava     | 6   |
+| 3          | Taylor  | 15  |
+| 4          | Georgia | 17  |
++------------+---------+-----+
+df2
++------------+------+-----+
+| student_id | name | age |
++------------+------+-----+
+| 5          | Leo  | 7   |
+| 6          | Alex | 7   |
++------------+------+-----+
+Output:
++------------+---------+-----+
+| student_id | name    | age |
++------------+---------+-----+
+| 1          | Mason   | 8   |
+| 2          | Ava     | 6   |
+| 3          | Taylor  | 15  |
+| 4          | Georgia | 17  |
+| 5          | Leo     | 7   |
+| 6          | Alex    | 7   |
++------------+---------+-----+
+Explanation:
+The two DataFramess are stacked vertically, and their rows are combined.
+```
 
 ---
 

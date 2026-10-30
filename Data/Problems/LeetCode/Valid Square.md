@@ -7,11 +7,36 @@
 ---
 
 ## Problem Description
-Given four points `p1, p2, p3, p4` in a 2D plane, determine whether they can form a square. The points are represented as integer coordinate pairs. Return `true` if they form a valid square, otherwise `false`.
+
+Given the coordinates of four points in 2D space `p1`, `p2`, `p3` and `p4`, return `true` *if the four points construct a square*.
+
+The coordinate of a point `p_i` is represented as `[x_i, y_i]`. The input is **not** given in any order.
+
+A **valid square** has four equal sides with positive length and four equal angles (90-degree angles).
+
+**Constraints:**
+- `p1.length == p2.length == p3.length == p4.length == 2`
+- `-10^4 <= x_i, y_i <= 10^4`
 
 ## Examples
-- Input: `p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]` → Output: `true` (forms a square of side length √2).
-- Input: `p1 = [0,0], p2 = [2,0], p3 = [1,1], p4 = [0,2]` → Output: `false` (does not satisfy equal side lengths).
+
+**Example 1:**
+```
+Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
+Output: true
+```
+
+**Example 2:**
+```
+Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,12]
+Output: false
+```
+
+**Example 3:**
+```
+Input: p1 = [1,0], p2 = [-1,0], p3 = [0,1], p4 = [0,-1]
+Output: true
+```
 
 ## Approach
 Calculate all six pairwise squared distances between the points. For a valid square, there should be exactly two distinct distances: the smaller one (side) appearing four times and the larger one (diagonal) appearing twice, and the side length must be > 0.

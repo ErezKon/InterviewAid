@@ -7,14 +7,43 @@
 ---
 
 ## Problem Description
-Given integers `n` and `k`, return the `k`‑th permutation sequence (1‑indexed) of the numbers `1` to `n` arranged in lexicographic order.
+
+The set `[1, 2, 3, ..., n]` contains a total of `n!` unique permutations.
+
+By listing and labeling all of the permutations in order, we get the following sequence for `n = 3`:
+
+- `"123"`
+- `"132"`
+- `"213"`
+- `"231"`
+- `"312"`
+- `"321"`
+
+Given `n` and `k`, return the `k^th` permutation sequence.
+
+**Constraints:**
+- `1 <= n <= 9`
+- `1 <= k <= n!`
 
 ## Examples
-| n | k | Output |
-|---|---|--------|
-| 3 | 3 | "213" |
-| 4 | 9 | "2314" |
-| 1 | 1 | "1" |
+
+**Example 1:**
+```
+Input: n = 3, k = 3
+Output: "213"
+```
+
+**Example 2:**
+```
+Input: n = 4, k = 9
+Output: "2314"
+```
+
+**Example 3:**
+```
+Input: n = 3, k = 1
+Output: "123"
+```
 
 ## Approach
 Use the factoradic representation of `k‑1` to determine the index of each digit among the remaining numbers.

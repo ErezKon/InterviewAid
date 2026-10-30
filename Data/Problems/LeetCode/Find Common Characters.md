@@ -8,7 +8,13 @@
 
 ## Problem Description
 
-Return a list of characters that appear in **all** strings (including duplicates at their minimum frequency).
+Given a string array `words`, return *an array of all characters that show up in all strings within the* `words` *(including duplicates)*. You may return the answer in **any order**.
+
+**Constraints:**
+
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `words[i]` consists of lowercase English letters.
 
 ---
 
@@ -26,10 +32,17 @@ FUNCTION commonChars(words):
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `["bella","label","roller"]` | `["e","l","l"]` | Characters `e` and `l` appear in all strings; `l` appears twice in each, so it is listed twice. |
-| `["cool","lock","cook"]` | `["c","o"]` | `c` and `o` are common to all three strings. |
+```
+Example 1:
+  Input: words = ["bella","label","roller"]
+  Output: ["e","l","l"]
+```
+
+```
+Example 2:
+  Input: words = ["cool","lock","cook"]
+  Output: ["c","o"]
+```
 
 ---
 

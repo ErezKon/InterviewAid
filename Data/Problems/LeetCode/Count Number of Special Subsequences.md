@@ -8,13 +8,24 @@
 
 ## 1. Problem Description
 
-Given an array `nums` consisting only of 0, 1, and 2, count the number of **special subsequences** of the form `0…0 1…1 2…2` (at least one of each value) and return the count modulo 10⁹ + 7.
+A sequence is **special** if it consists of a **positive** number of `0`s, followed by a **positive** number of `1`s, then a **positive** number of `2`s.
+
+- For example, `[0,1,2]` and `[0,0,1,1,1,2]` are special.
+- In contrast, `[2,1,0]`, `[1]`, and `[0,1,2,0]` are not special.
+
+Given an array `nums` (consisting of **only** integers `0`, `1`, and `2`), return *the **number of different subsequences** that are special*. Since the answer may be very large, **return it modulo** `10^9 + 7`.
+
+A **subsequence** of an array is a sequence that can be derived from the array by deleting some or no elements without changing the order of the remaining elements. Two subsequences are **different** if the **set of indices** chosen are different.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 2`
 
 ---
 
 ## 2. Key Insight
 
-> Track three DP states: `a` = subsequences using only 0s, `b` = subsequences of 0s followed by 1s, `c` = complete subsequences (0s → 1s → 2s). Each new element either starts a new subsequence of its phase or extends existing ones, doubling the possibilities.
+> Track three DP states: `a` = subsequences using only 0s, `b` = subsequences of 0s followed by 1s, `c` = complete subsequences (0s → 1s → 2s). Each new element either starts a new subsequence of its phase or extends existing ones, doubling the possibilities.
 
 ---
 
@@ -42,11 +53,27 @@ FUNCTION countSpecialSubsequences(nums):
 
 ## 4. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[0,1,2]` | `1` | Only subsequence `0,1,2` qualifies. |
-| `[0,0,1,2,2]` | `5` | Possible subsequences: `0,1,2` (choose any 0), `0,0,1,2`, `0,1,2,2`, `0,0,1,2,2`, `0,1,2,2` with different selections. |
-| `[2,1,0]` | `0` | No valid ordering of 0→1→2.
+```
+Example 1:
+  Input: nums = [0,1,2,2]
+  Output: 3
+  Explanation: The special subsequences use index sets {0,1,2}, {0,1,3}, and {0,1,2,3}.
+```
+
+```
+Example 2:
+  Input: nums = [2,2,0,0]
+  Output: 0
+  Explanation: There are no special subsequences in [2,2,0,0].
+```
+
+```
+Example 3:
+  Input: nums = [0,1,2,0,1,2]
+  Output: 7
+  Explanation: The special subsequences use index sets:
+  {0,1,2}, {0,1,5}, {0,4,5}, {3,4,5}, {0,3,4,5}, {0,1,4,5}, {0,1,2,5}.
+```
 
 ---
 

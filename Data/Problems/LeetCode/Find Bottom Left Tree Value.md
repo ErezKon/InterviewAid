@@ -8,24 +8,31 @@
 
 ## Problem Description
 
-Given the root of a binary tree, return the value of the leftmost node in the last (deepest) row of the tree.
+You are given the `root` of a binary tree.
+
+Return the **leftmost** value in the **last** row of the tree.
+
+**Constraints:**
+
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `-2^31 <= Node.val <= 2^31 - 1`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: root = [2,1,3]
-Output: 1
-Explanation: The deepest row is the second level with nodes 1 and 3. The leftmost node is 1.
+Example 1:
+  Input: root = [2,1,3]
+  Output: 1
+  Explanation: The last row is [1,3], so the leftmost value is 1.
 ```
 
-**Example 2:**
 ```
-Input: root = [1,2,3,4,null,5,6,null,null,7]
-Output: 7
-Explanation: The deepest row is the fourth level with nodes 7,5,6. The leftmost node is 7.
+Example 2:
+  Input: root = [1,2,3,4,null,5,6,null,null,7]
+  Output: 7
+  Explanation: The last row contains only the node 7.
 ```
 
 ---

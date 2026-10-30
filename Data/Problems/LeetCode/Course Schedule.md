@@ -23,9 +23,18 @@
 
 ## 1. Problem Description
 
-There are `numCourses` courses labeled `0` to `numCourses - 1`. You are given an array `prerequisites` where `prerequisites[i] = [a, b]` means you **must** take course `b` before course `a`.
+There are a total of `numCourses` courses you have to take, labeled from `0` to `numCourses - 1`. You are given an array `prerequisites` where `prerequisites[i] = [a_i, b_i]` indicates that you **must** take course `b_i` first if you want to take course `a_i`.
 
-Return `true` if you can finish all courses (i.e., there is a valid ordering), or `false` otherwise.
+- For example, the pair `[0, 1]`, indicates that to take course `0` you have to first take course `1`.
+
+Return `true` if you can finish all courses. Otherwise, return `false`.
+
+**Constraints:**
+- `1 <= numCourses <= 2000`
+- `0 <= prerequisites.length <= 5000`
+- `prerequisites[i].length == 2`
+- `0 <= a_i, b_i < numCourses`
+- All the pairs `prerequisites[i]` are **unique**.
 
 ---
 
@@ -33,14 +42,18 @@ Return `true` if you can finish all courses (i.e., there is a valid ordering), o
 
 ```
 Example 1:
-  Input:  numCourses = 2, prerequisites = [[1, 0]]
+  Input: numCourses = 2, prerequisites = [[1,0]]
   Output: true
-  Reason: Take 0 → then 1.
+  Explanation: There are a total of 2 courses to take.
+  To take course 1 you should have finished course 0. So it is possible.
+```
 
+```
 Example 2:
-  Input:  numCourses = 2, prerequisites = [[1, 0], [0, 1]]
+  Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
   Output: false
-  Reason: Circular dependency — 0 needs 1, and 1 needs 0.
+  Explanation: There are a total of 2 courses to take.
+  To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
 ```
 
 ---

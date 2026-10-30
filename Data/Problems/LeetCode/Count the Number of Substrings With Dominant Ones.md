@@ -8,17 +8,46 @@
 
 ## Problem Description
 
-Count substrings of a binary string where `count('1') >= count('0')²`. A substring has **dominant ones** if the number of ones is at least the square of the number of zeros.
+You are given a binary string `s`.
+
+Return the number of substrings with **dominant** ones.
+
+A string has **dominant** ones if the number of ones in the string is **greater than or equal to** the **square** of the number of zeros in the string.
+
+**Constraints:**
+- `1 <= s.length <= 4 * 10^4`
+- `s` consists only of characters `'0'` and `'1'`.
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"111"` | `6` | All 6 substrings have 0 zeros, so condition holds.
-| `"11010"` | `9` | Substrings satisfying the condition are listed in the editorial.
-| `"0"` | `0` | One zero, `1 < 0²` fails.
+```
+Example 1:
+  Input: s = "00011"
+  Output: 5
+  Explanation: The substrings with dominant ones are:
+  i | j | s[i..j] | zeros | ones
+  3 | 3 | "1"     | 0     | 1
+  4 | 4 | "1"     | 0     | 1
+  2 | 3 | "01"    | 1     | 1
+  3 | 4 | "11"    | 0     | 2
+  2 | 4 | "011"   | 1     | 2
+```
+
+```
+Example 2:
+  Input: s = "101101"
+  Output: 16
+  Explanation: The substrings with non-dominant ones are:
+  i | j | s[i..j] | zeros | ones
+  1 | 1 | "0"     | 1     | 0
+  4 | 4 | "0"     | 1     | 0
+  1 | 4 | "0110"  | 2     | 2
+  0 | 4 | "10110" | 2     | 3
+  1 | 5 | "01101" | 2     | 3
+  There are 21 substrings in total, with 5 having non-dominant ones, there are 16 substrings with dominant ones.
+```
 
 ---
 

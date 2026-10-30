@@ -18,11 +18,23 @@
 
 ## Problem Description
 
-Given an array `flowers` where `flowers[i]` represents the beauty of the i-th flower (can be negative), find a contiguous subarray `[i..j]` such that `flowers[i] == flowers[j]` and the sum of all **positive** flowers between `i` and `j` (inclusive) is maximized. Return the maximum beauty.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+There is a garden of `n` flowers, and each flower has an integer beauty value. The flowers are arranged in a line. You are given an integer array `flowers` of size `n` and each `flowers[i]` represents the beauty of the `i^th` flower.
+
+A garden is **valid** if it meets these conditions:
+
+- The garden has at least two flowers.
+- The first and the last flower of the garden have the same beauty value.
+
+As the appointed gardener, you have the ability to **remove** any (possibly none) flowers from the garden. You want to remove flowers in a way that makes the remaining garden **valid**. The beauty of the garden is the sum of the beauty of all the remaining flowers.
+
+Return the maximum possible beauty of some **valid** garden after you have removed any (possibly none) flowers.
 
 **Constraints:**
-- `2 ≤ flowers.length ≤ 10⁵`
-- `-10⁴ ≤ flowers[i] ≤ 10⁴`
+- `2 <= flowers.length <= 10^5`
+- `-10^4 <= flowers[i] <= 10^4`
+- It is possible to create a valid garden by removing some (possibly none) flowers.
 
 ---
 
@@ -30,16 +42,23 @@ Given an array `flowers` where `flowers[i]` represents the beauty of the i-th fl
 
 **Example 1:**
 ```
-flowers = [1, -2, 3, 1, 2, -1, 1]
-Output: 7
-Explanation: Choose subarray [0..3] (values 1, -2, 3, 1). Positive sum = 1 + 3 + 1 = 5, plus endpoints give total 7.
+Input: flowers = [1,2,3,1,2]
+Output: 8
+Explanation: You can produce the valid garden [2,3,1,2] to have a total beauty of 2 + 3 + 1 + 2 = 8.
 ```
 
 **Example 2:**
 ```
-flowers = [-5, -1, -3, -5]
-Output: -5
-Explanation: All values are negative; the best we can do is pick a single flower as both endpoints.
+Input: flowers = [100,1,1,-3,1]
+Output: 3
+Explanation: You can produce the valid garden [1,1,1] to have a total beauty of 1 + 1 + 1 = 3.
+```
+
+**Example 3:**
+```
+Input: flowers = [-1,-2,0,-1]
+Output: -2
+Explanation: You can produce the valid garden [-1,-1] to have a total beauty of -1 + -1 = -2.
 ```
 
 ---

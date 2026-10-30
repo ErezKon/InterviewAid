@@ -8,32 +8,51 @@
 
 ## Problem Description
 
-You are given an integer array `nums` (1‑indexed) and a list of queries `queries`, where each query is a pair `[l, r]` representing a subarray `nums[l..r]`. For each query, return the minimum absolute difference between any two distinct elements in that subarray, or `-1` if the subarray contains fewer than two distinct values.
+The **minimum absolute difference** of an array `a` is defined as the **minimum value** of `|a[i] - a[j]|`, where `0 <= i < j < a.length` and `a[i] != a[j]`. If all elements of `a` are the **same**, the minimum absolute difference is `-1`.
 
-Constraints:
-- `1 <= nums.length <= 10^5`
+- For example, the minimum absolute difference of the array `[5,2,3,7,2]` is `|2 - 3| = 1`. Note that it is not `0` because `a[i]` and `a[j]` must be different.
+
+You are given an integer array `nums` and the array `queries` where `queries[i] = [li, ri]`. For each query `i`, compute the **minimum absolute difference** of the **subarray** `nums[li...ri]` containing the elements of `nums` between the **0-based** indices `li` and `ri` (**inclusive**).
+
+Return *an **array*** `ans` *where* `ans[i]` *is the answer to the* `i-th` *query*.
+
+A **subarray** is a contiguous sequence of elements in an array.
+
+The value of `|x|` is defined as:
+- `x` if `x >= 0`.
+- `-x` if `x < 0`.
+
+**Constraints:**
+- `2 <= nums.length <= 10^5`
 - `1 <= nums[i] <= 100`
-- `1 <= queries.length <= 10^5`
-- `1 <= l <= r <= nums.length`
+- `1 <= queries.length <= 2 * 10^4`
+- `0 <= li < ri < nums.length`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [1,2,4,7], queries = [[1,2],[1,4]]
-Output: [1,1]
-Explanation:
-- Query [1,2] → subarray [1,2], min diff = |2-1| = 1.
-- Query [1,4] → subarray [1,2,4,7], min diff = 1 (between 1 and 2).
+Example 1:
+  Input: nums = [1,3,4,8], queries = [[0,1],[1,2],[2,3],[0,3]]
+  Output: [2,1,4,1]
+  Explanation: The queries are processed as follows:
+  - queries[0] = [0,1]: The subarray is [1,3] and the minimum absolute difference is |1-3| = 2.
+  - queries[1] = [1,2]: The subarray is [3,4] and the minimum absolute difference is |3-4| = 1.
+  - queries[2] = [2,3]: The subarray is [4,8] and the minimum absolute difference is |4-8| = 4.
+  - queries[3] = [0,3]: The subarray is [1,3,4,8] and the minimum absolute difference is |3-4| = 1.
 ```
 
-**Example 2:**
 ```
-Input: nums = [5,5,5], queries = [[1,3]]
-Output: [0]
-Explanation: All values equal, so min diff = 0.
+Example 2:
+  Input: nums = [4,5,2,2,7,10], queries = [[2,3],[0,2],[0,5],[3,5]]
+  Output: [-1,1,1,3]
+  Explanation: The queries are processed as follows:
+  - queries[0] = [2,3]: The subarray is [2,2] and the minimum absolute difference is -1 because all the
+    elements are the same.
+  - queries[1] = [0,2]: The subarray is [4,5,2] and the minimum absolute difference is |4-5| = 1.
+  - queries[2] = [0,5]: The subarray is [4,5,2,2,7,10] and the minimum absolute difference is |4-5| = 1.
+  - queries[3] = [3,5]: The subarray is [2,7,10] and the minimum absolute difference is |7-10| = 3.
 ```
 
 ---

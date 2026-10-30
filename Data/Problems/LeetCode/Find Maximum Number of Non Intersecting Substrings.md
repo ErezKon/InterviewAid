@@ -7,20 +7,29 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase English letters, you may select a set of substrings such that no two selected substrings intersect (share any index). Each selected substring must satisfy that for every character `c` appearing in it, all occurrences of `c` in the original string `s` are contained within that substring. Return the maximum possible number of such non‑intersecting substrings.
+> *Note: statement verified against the official LeetCode page. The old description/Approach (substrings that contain all occurrences of their characters — that is #1520) belong to a different problem; the official solution is a greedy scan keeping the last positions of each letter and cutting as soon as a length ≥ 4 substring with equal ends closes.*
+
+You are given a string `word`.
+
+Return the **maximum** number of non-intersecting **substrings** of `word` that are at **least** four characters long and start and end with the same letter.
+
+**Constraints:**
+- `1 <= word.length <= 2 * 10^5`
+- `word` consists only of lowercase English letters.
 
 ## Examples
-**Example 1**
 ```
-Input: s = "adefaddaccc"
-Output: 2
-Explanation: Choose substrings "adefadda" (covers a,d,e,f) and "ccc".
+Example 1:
+  Input: word = "abcdeafdef"
+  Output: 2
+  Explanation: The two substrings are "abcdea" and "fdef".
 ```
-**Example 2**
+
 ```
-Input: s = "abab"
-Output: 1
-Explanation: The whole string is the only valid substring covering a and b.
+Example 2:
+  Input: word = "bcdaaaab"
+  Output: 1
+  Explanation: The only substring is "aaaa". Note that we cannot also choose "bcdaaaab" since it intersects with the other substring.
 ```
 
 ## Approach

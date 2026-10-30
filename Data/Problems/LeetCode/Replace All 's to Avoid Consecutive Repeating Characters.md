@@ -19,39 +19,31 @@
 
 ## Problem Description
 
-Given a string `s` containing lowercase English letters and the character `?`, replace every `?` with a lowercase letter such that the resulting string has no two adjacent characters that are the same. Return any valid string that satisfies this condition.
+Given a string `s` containing only lowercase English letters and the `'?'` character, convert **all **the `'?'` characters into lowercase letters such that the final string does not contain any **consecutive repeating **characters. You **cannot **modify the non `'?'` characters.
 
-Constraints:
+It is **guaranteed **that there are no consecutive repeating characters in the given string **except **for `'?'`.
+
+Return *the final string after all the conversions (possibly zero) have been made*. If there is more than one solution, return **any of them**. It can be shown that an answer is always possible with the given constraints.
+
+**Constraints:**
 - `1 <= s.length <= 100`
-- `s[i]` is either `'a'` to `'z'` or `'?'`
-
-The answer is always possible because the alphabet has more than 2 letters.
+- `s` consist of lowercase English letters and `'?'`.
 
 ## Examples
 
-1) Input: `s = "?zs"`
+**Example 1:**
+```
+Input: s = "?zs"
+Output: "azs"
+Explanation: There are 25 solutions for this problem. From "azs" to "yzs", all are valid. Only "z" is an invalid modification as the string will consist of consecutive repeating characters in "zzs".
+```
 
-   Output: `"azs"`
-
-   Explanation: Replace `?` with `a`. `a != z` and `z != s`.
-
-2) Input: `s = "ubv?w"`
-
-   Output: `"ubvaw"`
-
-   Explanation: Replace `?` with `a` (any letter other than `v` and `w` works).
-
-3) Input: `s = "j?qg??b"`
-
-   Output: `"jaqgacb"`
-
-   Explanation: Each `?` is chosen to avoid matching its neighbors.
-
-4) Input: `s = "??"`
-
-   Output: `"ab"`
-
-   Explanation: First `?` can be `a`, second can be `b`.
+**Example 2:**
+```
+Input: s = "ubv?w"
+Output: "ubvaw"
+Explanation: There are 24 solutions for this problem. Only "v" and "w" are invalid modifications as the strings will consist of consecutive repeating characters in "ubvvw" and "ubvww".
+```
 
 ## Key Insight
 

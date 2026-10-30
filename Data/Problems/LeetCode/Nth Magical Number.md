@@ -7,14 +7,28 @@
 ---
 
 ## Problem Description
-Given three positive integers `n`, `a` and `b`, a *magical number* is a positive integer that is divisible by either `a` or `b`. Return the `n`‑th magical number modulo `10^9 + 7`.
+A positive integer is *magical* if it is divisible by either `a` or `b`.
+
+Given the three integers `n`, `a`, and `b`, return the `n^th` magical number. Since the answer may be very large, **return it modulo** `10^9 + 7`.
+
+**Constraints:**
+
+- `1 <= n <= 10^9`
+- `2 <= a, b <= 4 * 10^4`
 
 ## Examples
-| n | a | b | Nth Magical |
-|---|---|---|--------------|
-| 1 | 2 | 3 | 2 |
-| 4 | 2 | 3 | 8 |
-| 5 | 2 | 4 | 10 |
+
+```
+Example 1:
+  Input: n = 1, a = 2, b = 3
+  Output: 2
+```
+
+```
+Example 2:
+  Input: n = 4, a = 2, b = 3
+  Output: 6
+```
 
 ## Approach
 **Algorithm:** Binary search using inclusion‑exclusion.

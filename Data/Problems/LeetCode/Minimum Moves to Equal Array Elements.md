@@ -8,7 +8,15 @@
 
 ## Problem Description
 
-You are given an integer array `nums`. In one move you can increment **n‑1** elements by `1`. Return the **minimum number of moves** required to make all elements of the array equal.
+Given an integer array `nums` of size `n`, return *the minimum number of moves required to make all array elements equal*.
+
+In one move, you can increment `n - 1` elements of the array by `1`.
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
+- The answer is guaranteed to fit in a **32-bit** integer.
 
 ## Key Insight
 
@@ -29,13 +37,19 @@ FUNCTION minMoves(nums):
 
 ## Examples
 
-| nums | Minimum Moves |
-|------|---------------|
-| [1,2,3] | 3 |
-| [5,6,8,8,5] | 7 |
-| [0,0,0] | 0 |
+**Example 1:**
+```
+Input: nums = [1,2,3]
+Output: 3
+Explanation: Only three moves are needed (remember each move increments two elements):
+[1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+```
 
-*Explanation*: For `[1,2,3]` the minimum is `1`. Moves = `(1-1)+(2-1)+(3-1) = 3`.
+**Example 2:**
+```
+Input: nums = [1,1,1]
+Output: 0
+```
 
 ## Walkthrough
 

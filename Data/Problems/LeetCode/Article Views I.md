@@ -7,23 +7,52 @@
 ---
 
 ## Problem Description
-You are given a table `Views` with the following columns:
-- `author_id` – the ID of the author of an article.
-- `viewer_id` – the ID of the user who viewed the article.
+Table: `Views`
 
-Return a list of **distinct** `author_id`s where the author has viewed **their own** article (i.e., `author_id = viewer_id`). The result should be ordered in ascending order of `author_id`.
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| article_id    | int     |
+| author_id     | int     |
+| viewer_id     | int     |
+| view_date     | date    |
++---------------+---------+
+There is no primary key (column with unique values) for this table, the table may have duplicate rows.
+Each row of this table indicates that some viewer viewed an article (written by some author) on some date.
+Note that equal author_id and viewer_id indicate the same person.
+```
+
+Write a solution to find all the authors that viewed at least one of their own articles.
+
+Return the result table sorted by `id` in ascending order.
+
+The result format is in the following example.
 
 ## Examples
-| author_id | viewer_id |
-|-----------|-----------|
-| 1         | 2         |
-| 2         | 2         |
-| 3         | 1         |
-| 3         | 3         |
-
-**Output:** `[2, 3]`
-
-Explanation: Author 2 viewed their own article, and author 3 also viewed their own article. Author 1 never viewed their own article.
+```
+Example 1:
+  Input:
+  Views table:
+  +------------+-----------+-----------+------------+
+  | article_id | author_id | viewer_id | view_date  |
+  +------------+-----------+-----------+------------+
+  | 1          | 3         | 5         | 2019-08-01 |
+  | 1          | 3         | 6         | 2019-08-02 |
+  | 2          | 7         | 7         | 2019-08-01 |
+  | 2          | 7         | 6         | 2019-08-02 |
+  | 4          | 7         | 1         | 2019-07-22 |
+  | 3          | 4         | 4         | 2019-07-21 |
+  | 3          | 4         | 4         | 2019-07-21 |
+  +------------+-----------+-----------+------------+
+  Output:
+  +------+
+  | id   |
+  +------+
+  | 4    |
+  | 7    |
+  +------+
+```
 
 ## Approach
 The task is a straightforward filtering and deduplication operation in SQL:

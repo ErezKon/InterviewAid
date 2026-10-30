@@ -7,13 +7,30 @@
 ---
 
 ## Problem Description
-Given a binary array `nums` (containing only `0` and `1`) and an integer `goal`, return the number of non‑empty subarrays whose sum equals `goal`. A subarray is a contiguous part of the array.
+Given a binary array `nums` and an integer `goal`, return *the number of non-empty **subarrays** with a sum* `goal`.
+
+A **subarray** is a contiguous part of the array.
+
+**Constraints:**
+- `1 ≤ nums.length ≤ 3 * 10⁴`
+- `nums[i]` is either `0` or `1`.
+- `0 ≤ goal ≤ nums.length`
 
 ## Examples
-| nums | goal | Output | Explanation |
-|------|------|--------|-------------|
-| [1,0,1,0,1] | 2 | 4 | Subarrays `[1,0,1]`, `[1,0,1,0]`, `[0,1,0,1]`, `[1,0,1]` each sum to 2. |
-| [0,0,0,0,0] | 0 | 15 | All possible subarrays sum to 0.
+```
+Example 1:
+  Input: nums = [1,0,1,0,1], goal = 2
+  Output: 4
+  Explanation: The 4 subarrays are marked with brackets below:
+  [[1,0,1],0,1]
+  [[1,0,1,0],1]
+  [1,[0,1,0,1]]
+  [1,0,[1,0,1]]
+
+Example 2:
+  Input: nums = [0,0,0,0,0], goal = 0
+  Output: 15
+```
 
 ## Approach
 The problem can be solved using the **Sliding Window** technique. The key insight is that the number of subarrays with sum exactly `K` equals `atMost(K) - atMost(K‑1)`, where `atMost(x)` counts subarrays with sum **≤** `x`. For a binary array, a sliding window can maintain the current sum and expand/shrink efficiently.

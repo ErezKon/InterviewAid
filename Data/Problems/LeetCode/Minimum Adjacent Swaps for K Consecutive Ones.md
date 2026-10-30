@@ -8,29 +8,38 @@
 
 ## Problem Description
 
-You are given a binary array `nums` and an integer `k`. In one move you may swap any two adjacent elements. Return the minimum number of moves required to bring `k` ones together (i.e., make them consecutive) in the array.
+You are given an integer array, `nums`, and an integer `k`. `nums` comprises of only `0`'s and `1`'s. In one move, you can choose two **adjacent** indices and swap their values.
 
-Constraints:
+Return *the **minimum** number of moves required so that* `nums` *has* `k` ***consecutive*** `1`*'s*.
+
+**Constraints:**
 - `1 <= nums.length <= 10^5`
-- `0 <= nums[i] <= 1`
-- `1 <= k <= number of 1s in nums`
+- `nums[i]` is `0` or `1`.
+- `1 <= k <= sum(nums)`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [1,0,0,1,0,1], k = 2
-Output: 1
-Explanation: Swap the second and third elements to get [1,0,1,0,0,1]; the two ones at positions 0 and 2 are now consecutive.
+Example 1:
+  Input: nums = [1,0,0,1,0,1], k = 2
+  Output: 1
+  Explanation: In 1 move, nums could be [1,0,0,0,1,1] and have 2 consecutive 1's.
 ```
 
-**Example 2:**
 ```
-Input: nums = [1,1,0,1,0,1,1,0,1], k = 3
-Output: 2
-Explanation: Minimum swaps = 2 to gather three consecutive ones.
+Example 2:
+  Input: nums = [1,0,0,0,0,0,1,1], k = 3
+  Output: 5
+  Explanation: In 5 moves, the leftmost 1 can be shifted right until nums = [0,0,0,0,0,1,1,1].
+```
+
+```
+Example 3:
+  Input: nums = [1,1,0,1], k = 2
+  Output: 0
+  Explanation: nums already has 2 consecutive 1's.
 ```
 
 ---

@@ -8,7 +8,12 @@
 
 ## 1. Problem Description
 
-Count numbers in `[l, r]` where the product of digits is divisible by the sum of digits. These are "beautiful numbers."
+You are given two positive integers, `l` and `r`. A positive integer is called **beautiful** if the product of its digits is divisible by the sum of its digits.
+
+Return the count of **beautiful** numbers between `l` and `r`, inclusive.
+
+**Constraints:**
+- `1 <= l <= r < 10^9`
 
 ---
 
@@ -56,19 +61,18 @@ FUNCTION digitDP(num):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: l = 1, r = 20
-Output: 2
-Explanation: The beautiful numbers are 12 (1+2=3, 1*2=2, 2%3≠0) and 15 (1+5=6, 1*5=5, 5%6≠0). Actually only 0 qualifies, so output is 0.
+Example 1:
+  Input: l = 10, r = 20
+  Output: 2
+  Explanation: The beautiful numbers in the range are 10 and 20.
 ```
-*(Note: actual examples should be taken from LeetCode; placeholder provided.)*
 
-**Example 2:**
 ```
-Input: l = 100, r = 200
-Output: 5
-Explanation: Beautiful numbers in this range are ...
+Example 2:
+  Input: l = 1, r = 15
+  Output: 10
+  Explanation: The beautiful numbers in the range are 1, 2, 3, 4, 5, 6, 7, 8, 9, and 10.
 ```
 
 ---

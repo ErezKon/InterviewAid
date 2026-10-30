@@ -7,18 +7,36 @@
 ---
 
 ## Problem Description
-Given an integer `num`, reverse its decimal digits to obtain `rev`. Return the sum `num + rev`. The reversal discards any leading zeros in `rev`.
+
+> *Note: the Approach/Walkthrough below compute `num + reverse(num)`; the official problem asks whether `num` **can be written** as `k + reverse(k)`. Correct idea: brute force `k` from `0` to `num` and return `true` if `k + reverse(k) == num`. O(num · digits).*
+
+Given a **non-negative** integer `num`, return `true` *if* `num` *can be expressed as the sum of any **non-negative** integer and its reverse, or* `false` *otherwise.*
+
+**Constraints:**
+- `0 <= num <= 10^5`
 
 ## Examples
+
 **Example 1:**
-Input: num = 123
-Output: 444
-Explanation: rev = 321, sum = 123 + 321 = 444.
+```
+Input: num = 443
+Output: true
+Explanation: 172 + 271 = 443 so we return true.
+```
 
 **Example 2:**
-Input: num = 120
-Output: 141
-Explanation: rev = 21 (leading zero dropped), sum = 120 + 21 = 141.
+```
+Input: num = 63
+Output: false
+Explanation: 63 cannot be expressed as the sum of a non-negative integer and its reverse so we return false.
+```
+
+**Example 3:**
+```
+Input: num = 181
+Output: true
+Explanation: 140 + 041 = 181 so we return true. Note that when a number is reversed, there may be leading zeros.
+```
 
 ## Approach
 Iteratively extract digits of `num` using modulo and build the reversed number. Then add to the original.

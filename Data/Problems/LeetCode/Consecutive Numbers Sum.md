@@ -7,11 +7,30 @@
 ---
 
 ## Problem Description
-Given a positive integer `n`, return the number of ways to write `n` as the sum of one or more consecutive positive integers.
+Given an integer `n`, return *the number of ways you can write* `n` *as the sum of consecutive positive integers.*
+
+**Constraints:**
+- `1 <= n <= 10^9`
 
 ## Examples
-- Input: `n = 5` → Output: `2` (5 = 5, 5 = 2+3)
-- Input: `n = 9` → Output: `3` (9 = 9, 9 = 4+5, 9 = 2+3+4)
+```
+Example 1:
+  Input: n = 5
+  Output: 2
+  Explanation: 5 = 2 + 3
+```
+```
+Example 2:
+  Input: n = 9
+  Output: 3
+  Explanation: 9 = 4 + 5 = 2 + 3 + 4
+```
+```
+Example 3:
+  Input: n = 15
+  Output: 4
+  Explanation: 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
+```
 
 ## Approach
 **Algorithm:** Math based on divisor enumeration (O(√n))

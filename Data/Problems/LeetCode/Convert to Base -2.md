@@ -7,14 +7,32 @@
 ---
 
 ## Problem Description
-Given an integer `n`, return its representation in base `-2` as a string. The base `-2` representation should not contain leading zeros unless the number itself is zero.
+Given an integer `n`, return *a binary string representing its representation in base* `-2`.
+
+**Note** that the returned string should not have leading zeros unless the string is `"0"`.
+
+**Constraints:**
+- `0 <= n <= 10^9`
 
 ## Examples
-- Input: `n = 2` → Output: `"110"`
-- Input: `n = 3` → Output: `"111"`
-- Input: `n = 4` → Output: `"100"
-`
-These examples illustrate how positive numbers are expressed using digits `0` and `1` in base `-2`.
+```
+Example 1:
+  Input: n = 2
+  Output: "110"
+  Explanation: (-2)^2 + (-2)^1 = 2
+```
+```
+Example 2:
+  Input: n = 3
+  Output: "111"
+  Explanation: (-2)^2 + (-2)^1 + (-2)^0 = 3
+```
+```
+Example 3:
+  Input: n = 4
+  Output: "100"
+  Explanation: (-2)^2 = 4
+```
 
 ## Approach
 Use repeated division by `-2`, adjusting remainders to be non‑negative. When a negative remainder occurs, add `2` to it and increment the quotient.

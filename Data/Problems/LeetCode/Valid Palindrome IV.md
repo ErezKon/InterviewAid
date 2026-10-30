@@ -7,20 +7,43 @@
 ---
 
 ## Problem Description
-Given a string `s` and an integer `k`, determine whether it is possible to make `s` a palindrome by **removing at most `k` characters**. The remaining characters must retain their original order.
+
+> *Note: premium problem (statement checked against the official text with verify.py). The original description (and the Approach/Walkthrough below) treat this as "remove at most k characters" (that is #1216). Correct idea: count mismatched pairs `s[i] != s[n−1−i]` with two pointers; return `true` iff the count is `≤ 2`. O(n).*
+
+You are given a **0-indexed** string `s` consisting of only lowercase English letters. In one operation, you can change **any** character of `s` to any **other** character.
+
+Return `true` *if you can make* `s` *a palindrome after performing **exactly** one or two operations, or return* `false` *otherwise.*
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists only of lowercase English letters.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: s = "abca", k = 1
+Input: s = "abcdba"
 Output: true
-Explanation: Remove 'b' to obtain "aca", which is a palindrome.
+Explanation: One way to make s a palindrome using 1 operation is:
+- Change s[2] to 'd'. Now, s = "abddba".
+One operation could be performed to make s a palindrome so return true.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: s = "abcdef", k = 2
+Input: s = "aa"
+Output: true
+Explanation: One way to make s a palindrome using 2 operations is:
+- Change s[0] to 'b'. Now, s = "ba".
+- Change s[1] to 'b'. Now, s = "bb".
+Two operations could be performed to make s a palindrome so return true.
+```
+
+**Example 3:**
+```
+Input: s = "abcdef"
 Output: false
-Explanation: At least three deletions are required to form a palindrome.
+Explanation: It is not possible to make s a palindrome using one or two operations so return false.
 ```
 
 ## Approach

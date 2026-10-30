@@ -7,13 +7,29 @@
 ---
 
 ## Problem Description
-Given an array of distinct integers `arr`, you can form binary trees where each node's value is an element of `arr`. For any non‑leaf node with value `v`, there must exist two child nodes with values `a` and `b` such that `a * b = v`. Each integer may be used multiple times. Return the total number of different binary trees that can be formed, modulo `10^9 + 7`.
+Given an array of unique integers, `arr`, where each integer `arr[i]` is strictly greater than `1`.
+
+We make a binary tree using these integers, and each number may be used for any number of times. Each non-leaf node's value should be equal to the product of the values of its children.
+
+Return *the number of binary trees we can make*. The answer may be too large so return the answer **modulo** `10⁹ + 7`.
+
+**Constraints:**
+- `1 ≤ arr.length ≤ 1000`
+- `2 ≤ arr[i] ≤ 10⁹`
+- All the values of `arr` are **unique**.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[2,4]` | `3` | Trees: `[2]`, `[4]`, `[4]` with children `2` and `2` (since `2*2=4`). |
-| `[2,4,5,10]` | `7` | Possible trees include single nodes and trees like `10` with children `2` and `5`, `10` with children `5` and `2`, and `10` with children `2` and `5` where each `2` and `5` may themselves be roots of sub‑trees. |
+```
+Example 1:
+  Input: arr = [2,4]
+  Output: 3
+  Explanation: We can make these trees: [2], [4], [4, 2, 2]
+
+Example 2:
+  Input: arr = [2,4,5,10]
+  Output: 7
+  Explanation: We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
+```
 
 ## Approach
 Sort the array. Use dynamic programming: for each number, consider all smaller numbers that divide it. If `num % left == 0` and `right = num / left` exists in the array, add `dp[left] * dp[right]` to `dp[num]`. The answer is the sum of all `dp` values modulo `10^9+7`.

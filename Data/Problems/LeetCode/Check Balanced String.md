@@ -8,16 +8,33 @@
 
 ## Problem Description
 
-Given a string of digits, check if the sum of digits at even indices equals the sum at odd indices.
+You are given a string `num` consisting of only digits. A string of digits is called **balanced** if the sum of the digits at even indices is equal to the sum of digits at odd indices.
+
+Return `true` if `num` is **balanced**, otherwise return `false`.
+
+**Constraints:**
+- `2 <= num.length <= 100`
+- `num` consists of digits only
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| "1234" | false |
-| "1212" | true |
+```
+Example 1:
+  Input: num = "1234"
+  Output: false
+  Explanation:
+  - The sum of digits at even indices is 1 + 3 == 4, and the sum of digits at odd indices is 2 + 4 == 6.
+  - Since 4 is not equal to 6, num is not balanced.
+```
 
-*Explanation*: For "1212", even index digits are 1 and 1 (sum 2), odd index digits are 2 and 2 (sum 4) → not equal, so false. For "1212" actually even indices 0,2 => 1+1=2, odd indices 1,3 => 2+2=4, not equal, so false. Adjust example: Use "1230" where even sum 1+3=4, odd sum 2+0=2 → false. Use "1122" where even sum 1+2=3, odd sum 1+2=3 → true.
+```
+Example 2:
+  Input: num = "24123"
+  Output: true
+  Explanation:
+  - The sum of digits at even indices is 2 + 1 + 3 == 6, and the sum of digits at odd indices is 4 + 2 == 6.
+  - Since both are equal the num is balanced.
+```
 
 ## Approach: Single Pass — O(n) ✅
 

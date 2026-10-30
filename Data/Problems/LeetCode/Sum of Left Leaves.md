@@ -7,19 +7,29 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, return the sum of all left leaves.
-A leaf is a node with no children. A left leaf is a leaf that is also a left child of its parent.
+
+Given the `root` of a binary tree, return *the sum of all left leaves.*
+
+A **leaf** is a node with no children. A **left leaf** is a leaf that is the left child of another node.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 1000]`.
+- `-1000 <= Node.val <= 1000`
 
 ## Examples
+
 **Example 1:**
+```
 Input: root = [3,9,20,null,null,15,7]
-Output: 9
-Explanation: The only left leaf is the node with value 9.
+Output: 24
+Explanation: There are two left leaves in the binary tree, with values 9 and 15 respectively.
+```
 
 **Example 2:**
+```
 Input: root = [1]
 Output: 0
-Explanation: There are no left leaves.
+```
 
 ## Approach
 Use a depth‑first traversal. For each node, check if its left child is a leaf; if so, add its value to the sum.

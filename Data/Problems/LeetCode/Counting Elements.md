@@ -8,7 +8,11 @@
 
 ## Problem Description
 
-Given an array `arr`, count elements `x` such that `x + 1` also exists in `arr`.
+Given an integer array `arr`, count how many elements `x` there are, such that `x + 1` is also in `arr`. If there are duplicates in `arr`, count them separately.
+
+**Constraints:**
+- `1 <= arr.length <= 1000`
+- `0 <= arr[i] <= 1000`
 
 ---
 
@@ -24,11 +28,19 @@ FUNCTION countElements(arr):
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `arr = [1,2,3]` | `2` | Elements `1` and `2` have `+1` present (`2` and `3`). |
-| `arr = [1,1,3,3,5,5,7,7]` | `0` | No element's successor exists. |
-| `arr = [1,3,2,3,5,0]` | `3` | Elements `0`, `1`, `2` each have `+1` present.
+```
+Example 1:
+  Input: arr = [1,2,3]
+  Output: 2
+  Explanation: 1 and 2 are counted cause 2 and 3 are in arr.
+```
+
+```
+Example 2:
+  Input: arr = [1,1,3,3,5,5,7,7]
+  Output: 0
+  Explanation: No numbers are counted, cause there is no 2, 4, 6, or 8 in arr.
+```
 
 ---
 

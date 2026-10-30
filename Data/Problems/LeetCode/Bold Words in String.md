@@ -8,17 +8,32 @@
 
 ## 1. Problem Description
 
-Given a string `s` and a list of `words`, bold all substrings of `s` that match any word. Merge overlapping/adjacent bold regions and wrap them with `<b>` and `</b>` tags.
+Given an array of keywords `words` and a string `s`, make all appearances of all keywords `words[i]` in `s` bold. Any letters between `<b>` and `</b>` tags become bold.
+
+Return `s` *after adding the bold tags*. The returned string should use the least number of tags possible, and the tags should form a valid combination.
+
+**Constraints:**
+- `1 ≤ s.length ≤ 500`
+- `0 ≤ words.length ≤ 50`
+- `1 ≤ words[i].length ≤ 10`
+- `s` and `words[i]` consist of lowercase English letters.
+
+**Note:** This question is the same as 616. Add Bold Tag in String.
 
 ---
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `s = "abcxyz123"`, `words = ["abc","123"]` | `<b>abc</b>xyz<b>123</b>` |
-| `s = "aaabbcc"`, `words = ["aaa","aab","bc"]` | `<b>aaabbc</b>c` |
-| `s = "abcd"`, `words = ["ef"]` | `abcd` |
+```
+Example 1:
+  Input: words = ["ab","bc"], s = "aabcd"
+  Output: "a<b>abc</b>d"
+  Explanation: Note that returning "a<b>a<b>b</b>c</b>d" would use more tags, so it is incorrect.
+
+Example 2:
+  Input: words = ["ab","cb"], s = "aabcd"
+  Output: "a<b>ab</b>cd"
+```
 
 ---
 

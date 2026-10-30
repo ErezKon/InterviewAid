@@ -7,14 +7,25 @@
 ---
 
 ## Problem Description
-Given two non‑negative integers `left` and `right` where `left ≤ right`, compute the bitwise AND of all numbers in the inclusive range `[left, right]`. The result is the common high‑order bits of `left` and `right`.
+Given two integers `left` and `right` that represent the range `[left, right]`, return *the bitwise AND of all numbers in this range, inclusive*.
+
+**Constraints:**
+- `0 ≤ left ≤ right ≤ 2³¹ - 1`
 
 ## Examples
-| left | right | Output | Explanation |
-|------|-------|--------|-------------|
-| 5 | 7 | 4 | Binary: 101, 110, 111 → AND = 100 (4).
-| 0 | 1 | 0 | Any range containing 0 yields 0.
-| 12 | 15 | 12 | 1100‑1111 → common prefix `1100` (12).
+```
+Example 1:
+  Input: left = 5, right = 7
+  Output: 4
+
+Example 2:
+  Input: left = 0, right = 0
+  Output: 0
+
+Example 3:
+  Input: left = 1, right = 2147483647
+  Output: 0
+```
 
 ## Approach
 Repeatedly right‑shift both numbers until they become equal; count the shifts. The common prefix (now equal) is the answer; left‑shift it back by the shift count.

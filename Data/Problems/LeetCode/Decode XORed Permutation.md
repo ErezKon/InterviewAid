@@ -8,16 +8,32 @@
 
 ## Problem Description
 
-Given `encoded[i] = perm[i] XOR perm[i+1]` for a permutation of `[1..n]` (n is odd), decode the original permutation.
+There is an integer array `perm` that is a permutation of the first `n` positive integers, where `n` is always **odd**.
+
+It was encoded into another integer array `encoded` of length `n - 1`, such that `encoded[i] = perm[i] XOR perm[i + 1]`. For example, if `perm = [1,3,2]`, then `encoded = [2,1]`.
+
+Given the `encoded` array, return *the original array* `perm`. It is guaranteed that the answer exists and is unique.
+
+**Constraints:**
+
+- `3 <= n < 10^5`
+- `n` is odd.
+- `encoded.length == n - 1`
 
 ## Examples
 
-| encoded | Expected perm |
-|---|---|
-| `[3,1]` | `[1,2,3]` |
-| `[6,5,4,6]` | `[2,4,1,5,3]` |
+```
+Example 1:
+  Input: encoded = [3,1]
+  Output: [1,2,3]
+  Explanation: If perm = [1,2,3], then encoded = [1 XOR 2,2 XOR 3] = [3,1]
+```
 
-*Explanation*: For the first example, `perm[0] XOR perm[1] = 3` and `perm[1] XOR perm[2] = 1`. Solving yields the original permutation `[1,2,3]`.
+```
+Example 2:
+  Input: encoded = [6,5,4,6]
+  Output: [2,4,1,5,3]
+```
 
 ---
 

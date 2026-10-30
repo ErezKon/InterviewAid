@@ -6,6 +6,9 @@
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Surrounded Regions.md](Surrounded%20Regions.md) for the official statement and constraints of #130.*
+
 This document aggregates common grid traversal patterns used in LeetCode problems such as counting islands, measuring component size, multi‑source BFS, border DFS, shortest path, and flood fill. Each pattern provides a reusable template for exploring 2‑D grids via depth‑first or breadth‑first search.
 
 ## Examples

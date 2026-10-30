@@ -7,23 +7,81 @@
 ---
 
 ## Problem Description
-Given a table `Sales(product_id, store_id, sale_date, units_sold)`, return the `product_id`s of products that were sold in **exactly two distinct stores** on **at least three different dates**. The result should be ordered by `product_id` ascending.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Sales`
+
+```
++-------------+-------+
+| Column Name | Type  |
++-------------+-------+
+| sale_id     | int   |
+| product_id  | int   |
+| user_id     | int   |
+| quantity    | int   |
++-------------+-------+
+sale_id contains unique values.
+product_id is a foreign key (column with unique values) to `Product` table.
+Each row of this table shows the ID of the product and the quantity purchased by a user.
+```
+
+Table: `Product`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| product_id  | int  |
+| price       | int  |
++-------------+------+
+product_id contains unique values.
+Each row of this table indicates the price of each product.
+```
+
+Write a solution to report the spending of each user.
+
+Return the resulting table ordered by `spending` in **descending order**. In case of a tie, order them by `user_id` in ascending order.
+
+The result format is in the following example.
 
 ## Examples
-**Example**
-Assume the table contains:
-| product_id | store_id | sale_date | units_sold |
-|------------|----------|-----------|------------|
-| 1 | 10 | 2021-01-01 | 5 |
-| 1 | 10 | 2021-01-02 | 3 |
-| 1 | 20 | 2021-01-01 | 2 |
-| 1 | 20 | 2021-01-03 | 4 |
-| 2 | 30 | 2021-02-01 | 7 |
-| 2 | 30 | 2021-02-02 | 6 |
-| 2 | 40 | 2021-02-01 | 1 |
-| 2 | 40 | 2021-02-03 | 2 |
-| 2 | 40 | 2021-02-04 | 3 |
-The query should return `product_id = 2` because product 2 appears in exactly two stores (30 and 40) and has sales on three distinct dates (2021‑02‑01, 2021‑02‑03, 2021‑02‑04). Product 1 also appears in two stores but only on three dates total (2021‑01‑01, 2021‑01‑02, 2021‑01‑03) – actually that meets the requirement, so both 1 and 2 would be returned. Adjust example accordingly.
+
+**Example 1:**
+```
+Input:
+Sales table:
++---------+------------+---------+----------+
+| sale_id | product_id | user_id | quantity |
++---------+------------+---------+----------+
+| 1       | 1          | 101     | 10       |
+| 2       | 2          | 101     | 1        |
+| 3       | 3          | 102     | 3        |
+| 4       | 3          | 102     | 2        |
+| 5       | 2          | 103     | 3        |
++---------+------------+---------+----------+
+Product table:
++------------+-------+
+| product_id | price |
++------------+-------+
+| 1          | 10    |
+| 2          | 25    |
+| 3          | 15    |
++------------+-------+
+Output:
++---------+----------+
+| user_id | spending |
++---------+----------+
+| 101     | 125      |
+| 102     | 75       |
+| 103     | 75       |
++---------+----------+
+Explanation:
+User 101 spent 10 * 10 + 1 * 25 = 125.
+User 102 spent 3 * 15 + 2 * 15 = 75.
+User 103 spent 3 * 25 = 75.
+Users 102 and 103 spent the same amount and we break the tie by their ID while user 101 is on the top.
+```
 
 ## Approach
 Group rows by `product_id` and `store_id` to count distinct dates per product. Then filter products that have exactly two distinct `store_id`s and at least three distinct `sale_date`s across those stores.

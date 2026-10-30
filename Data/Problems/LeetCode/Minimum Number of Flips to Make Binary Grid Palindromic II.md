@@ -8,7 +8,19 @@
 
 ## Problem Description
 
-Given an `m × n` binary grid, you may flip any cell (change `0` to `1` or `1` to `0`). A grid is *palindromic* if each row reads the same forwards and backwards and each column reads the same top‑to‑bottom and bottom‑to‑top. Return the minimum number of flips required to make the grid palindromic.
+You are given an `m x n` binary matrix `grid`.
+
+A row or column is considered **palindromic** if its values read the same forward and backward.
+
+You can **flip** any number of cells in `grid` from `0` to `1`, or from `1` to `0`.
+
+Return the **minimum** number of cells that need to be flipped to make **all** rows and columns **palindromic**, and the total number of `1`'s in `grid` **divisible** by `4`.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m * n <= 2 * 10^5`
+- `0 <= grid[i][j] <= 1`
 
 ---
 
@@ -16,16 +28,23 @@ Given an `m × n` binary grid, you may flip any cell (change `0` to `1` or `1` t
 
 **Example 1:**
 ```
-Input: grid = [[0,1,0],[1,0,1],[0,1,0]]
-Output: 0
-Explanation: The grid is already palindromic in both rows and columns.
+Input: grid = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+Explanation:
 ```
 
 **Example 2:**
 ```
-Input: grid = [[0,0,1],[1,0,0],[0,1,1]]
+Input: grid = [[0,1],[0,1],[0,0]]
 Output: 2
-Explanation: Flip cells (0,2) and (2,0) to obtain a palindromic grid.
+Explanation:
+```
+
+**Example 3:**
+```
+Input: grid = [[1],[1]]
+Output: 2
+Explanation:
 ```
 
 ---

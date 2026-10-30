@@ -1,18 +1,40 @@
 # 318. Maximum Product of Word Lengths
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/maximum-product-of-word-lengths](https://leetcode.com/problems/maximum-product-of-word-lengths)
 **Companies:** Amazon, Google
 ---
 
 ## Problem Description
-Return the maximum product of lengths of two words that share **no common letters**.
+Given a string array `words`, return *the maximum value of* `length(word[i]) * length(word[j])` *where the two words do not share common letters*. If no such two words exist, return `0`.
+
+**Constraints:**
+- `2 <= words.length <= 1000`
+- `1 <= words[i].length <= 1000`
+- `words[i]` consists only of lowercase English letters.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `["abc","def","ghij"]` | `12` | "abc" (len 3) and "ghij" (len 4) share no letters → 3×4=12 |
-| `["a","aa","aaa","aaaa"]` | `0` | Every pair shares the letter 'a', so product is 0 |
-| `["abcd","efgh","abef","cdef"]` | `16` | "abcd" (4) and "efgh" (4) are disjoint → 4×4=16 |
+
+```
+Example 1:
+  Input: words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+  Output: 16
+  Explanation: The two words can be "abcw", "xtfn".
+```
+
+```
+Example 2:
+  Input: words = ["a","ab","abc","d","cd","bcd","abcd"]
+  Output: 4
+  Explanation: The two words can be "ab", "cd".
+```
+
+```
+Example 3:
+  Input: words = ["a","aa","aaa","aaaa"]
+  Output: 0
+  Explanation: No such pair of words.
+```
 
 ## Approach
 **Algorithm:** Represent each word as a 26‑bit mask. For every pair of masks that have `AND == 0`, compute the product of word lengths and keep the maximum.

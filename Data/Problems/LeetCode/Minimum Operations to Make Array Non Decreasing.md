@@ -7,18 +7,38 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may perform the following operation any number of times: choose an index `i` and increment `nums[i]` by `1`. Return the minimum number of operations required to make the array non‑decreasing (i.e., `nums[i] ≤ nums[i+1]` for all `i`).
+You are given an integer array `nums` of length `n`.
+
+In one operation, you may choose any **subarray** `nums[l..r]` and **increase** each element in that **subarray** by `x`, where `x` is any **positive** integer.
+
+Return the **minimum** possible **sum** of the values of `x` across all operations required to make the array **non-decreasing**.
+
+An array is **non-decreasing** if `nums[i] <= nums[i + 1]` for all `0 <= i < n - 1`.
+
+**Constraints:**
+- `1 <= n == nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ## Examples
-**Example 1:**
-Input: `nums = [3,2,5,1,7]`
-Output: `5`
-Explanation: Increment `nums[1]` three times to `5` and `nums[3]` twice to `3`, resulting in `[3,5,5,3,7] → [3,5,5,5,7]`.
 
-**Example 2:**
-Input: `nums = [1,2,3]`
-Output: `0`
-Explanation: The array is already non‑decreasing.
+```
+Example 1:
+  Input: nums = [3,3,2,1]
+  Output: 2
+  Explanation: One optimal set of operations:
+  - Choose subarray [2..3] and add x = 1 resulting in [3, 3, 3, 2]
+  - Choose subarray [3..3] and add x = 1 resulting in [3, 3, 3, 3]
+  The array becomes non-decreasing, and the total sum of chosen x values is 1 + 1 = 2.
+```
+
+```
+Example 2:
+  Input: nums = [5,1,2,3]
+  Output: 4
+  Explanation: One optimal set of operations:
+  - Choose subarray [1..3] and add x = 4 resulting in [5, 5, 6, 7]
+  The array becomes non-decreasing, and the total sum of chosen x values is 4.
+```
 
 ## Approach
 Traverse the array while tracking the maximum value seen so far. If the current element is smaller than this maximum, we must raise it to the maximum, costing `maxSoFar - nums[i]` operations. Accumulate these costs.

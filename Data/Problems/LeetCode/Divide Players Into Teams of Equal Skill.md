@@ -20,29 +20,42 @@
 
 ## Problem Description
 
-Given an array `skill` of **even** length, divide players into teams of 2 such that every team has the **same total skill**. The **chemistry** of a team is `skill[i] * skill[j]`. Return the sum of chemistry of all teams, or `-1` if equal division is impossible.
+You are given a positive integer array `skill` of **even** length `n` where `skill[i]` denotes the skill of the `i^th` player. Divide the players into `n / 2` teams of size `2` such that the total skill of each team is **equal**.
+
+The **chemistry** of a team is equal to the **product** of the skills of the players on that team.
+
+Return *the sum of the **chemistry** of all the teams, or return *`-1`* if there is no way to divide the players into teams such that the total skill of each team is equal.*
 
 **Constraints:**
-- `2 <= skill.length <= 10^5` (always even)
+- `2 <= skill.length <= 10^5`
+- `skill.length` is even.
 - `1 <= skill[i] <= 1000`
 
 ---
 
 ## Examples
 
+**Example 1:**
 ```
 Input: skill = [3,2,5,1,3,4]
 Output: 22
-Explanation: Sort → [1,2,3,3,4,5]. Target = 1+5 = 6.
-  (1,5)→5  (2,4)→8  (3,3)→9  → total = 22
+Explanation: Divide the players into the following teams: (1, 5), (2, 4), (3, 3), where each team has a total skill of 6.
+The sum of the chemistry of all the teams is: 1 * 5 + 2 * 4 + 3 * 3 = 5 + 8 + 9 = 22.
+```
 
+**Example 2:**
+```
 Input: skill = [3,4]
 Output: 12
-Explanation: One team (3,4), chemistry = 12.
+Explanation: The two players form a team with a total skill of 7.
+The chemistry of the team is 3 * 4 = 12.
+```
 
+**Example 3:**
+```
 Input: skill = [1,1,2,3]
 Output: -1
-Explanation: No way to pair them with equal team sums.
+Explanation: There is no way to divide the players into teams such that the total skill of each team is equal.
 ```
 
 ---

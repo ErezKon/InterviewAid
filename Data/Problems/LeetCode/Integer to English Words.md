@@ -21,20 +21,31 @@
 
 ## 1. Problem Description
 
-Convert a non-negative integer to its English words representation. The input is guaranteed to be less than 2³¹ - 1.
+Convert a non-negative integer `num` to its English words representation.
 
 **Constraints:**
-- `0 <= num <= 2³¹ - 1`
+- `0 <= num <= 2^31 - 1`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Input: 123     → "One Hundred Twenty Three"
-Input: 12345   → "Twelve Thousand Three Hundred Forty Five"
-Input: 1234567 → "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
-Input: 0       → "Zero"
+Input: num = 123
+Output: "One Hundred Twenty Three"
+```
+
+**Example 2:**
+```
+Input: num = 12345
+Output: "Twelve Thousand Three Hundred Forty Five"
+```
+
+**Example 3:**
+```
+Input: num = 1234567
+Output: "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
 ```
 
 ---

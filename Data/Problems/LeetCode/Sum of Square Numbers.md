@@ -7,21 +7,25 @@
 ---
 
 ## Problem Description
-Given a non‑negative integer `c`, determine whether there exist two integers `a` and `b` such that `a² + b² = c`. Return `true` if such a pair exists, otherwise return `false`.
+
+Given a non-negative integer `c`, decide whether there're two integers `a` and `b` such that `a^2 + b^2 = c`.
+
+**Constraints:**
+- `0 <= c <= 2^31 - 1`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: c = 5
 Output: true
-Explanation: 1² + 2² = 5.
+Explanation: 1 * 1 + 2 * 2 = 5
 ```
 
 **Example 2:**
 ```
 Input: c = 3
 Output: false
-Explanation: No pair of squares sums to 3.
 ```
 
 ## Approach

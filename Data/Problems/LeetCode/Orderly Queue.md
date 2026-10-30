@@ -7,20 +7,31 @@
 ---
 
 ## Problem Description
-Given a string `s` and an integer `k`, you may perform the following operation any number of times: choose one of the first `k` characters of `s` and move it to the end of the string. Return the lexicographically smallest string that can be obtained.
+
+You are given a string `s` and an integer `k`. You can choose one of the first `k` letters of `s` and append it at the end of the string.
+
+Return *the lexicographically smallest string you could have after applying the mentioned step any number of moves*.
+
+**Constraints:**
+- `1 <= k <= s.length <= 1000`
+- `s` consist of lowercase English letters.
 
 ## Examples
+
 **Example 1:**
 ```
 Input: s = "cba", k = 1
 Output: "acb"
-Explanation: With k = 1 only rotations are allowed. The smallest rotation of "cba" is "acb".
+Explanation: In the first move, we move the 1^st character 'c' to the end, obtaining the string "bac".
+In the second move, we move the 1^st character 'b' to the end, obtaining the final result "acb".
 ```
+
 **Example 2:**
 ```
 Input: s = "baaca", k = 3
 Output: "aaabc"
-Explanation: When k > 1 any permutation of the characters can be achieved, so the answer is the sorted string.
+Explanation: In the first move, we move the 1^st character 'b' to the end, obtaining the string "aacab".
+In the second move, we move the 3^rd character 'c' to the end, obtaining the final result "aaabc".
 ```
 
 ## Approach

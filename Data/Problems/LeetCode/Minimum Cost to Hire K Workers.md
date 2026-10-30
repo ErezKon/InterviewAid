@@ -8,16 +8,35 @@
 
 ## Problem Description
 
-You are given two integer arrays `quality` and `wage` where `quality[i]` is the quality of the i‑th worker and `wage[i]` is the minimum wage expectation for that worker. To hire a group of workers, you must pay them all the same **hourly wage rate** `r`. A worker with quality `q` will then be paid `r × q`. The rate `r` must be at least `wage[i] / quality[i]` for every hired worker. Choose exactly `k` workers and determine the minimum total wage needed to hire them.
+There are `n` workers. You are given two integer arrays `quality` and `wage` where `quality[i]` is the quality of the `i^th` worker and `wage[i]` is the minimum wage expectation for the `i^th` worker.
+
+We want to hire exactly `k` workers to form a **paid group**. To hire a group of `k` workers, we must pay them according to the following rules:
+
+- Every worker in the paid group must be paid at least their minimum wage expectation.
+- In the group, each worker's pay must be directly proportional to their quality. This means if a worker’s quality is double that of another worker in the group, then they must be paid twice as much as the other worker.
+
+Given the integer `k`, return *the least amount of money needed to form a paid group satisfying the above conditions*. Answers within `10^-5` of the actual answer will be accepted.
+
+**Constraints:**
+- `n == quality.length == wage.length`
+- `1 <= k <= n <= 10^4`
+- `1 <= quality[i], wage[i] <= 10^4`
 
 ## Examples
 
-1. **Input:** `quality = [10,20,5]`, `wage = [70,50,30]`, `k = 2`
-   **Output:** `105.0`
-   **Explanation:** Hire workers 0 and 2. Their rate must be at least `max(70/10, 30/5) = 7`. Total cost = `7 × (10+5) = 105`.
-2. **Input:** `quality = [3,1,10,10,1]`, `wage = [4,8,2,2,7]`, `k = 3`
-   **Output:** `30.666667`
-   **Explanation:** Hire workers 0, 2, 3 with rate `3/3 = 1`. Total cost = `1 × (3+10+10) = 23` (optimal rate is higher, yielding the shown minimum).
+**Example 1:**
+```
+Input: quality = [10,20,5], wage = [70,50,30], k = 2
+Output: 105.00000
+Explanation: We pay 70 to 0^th worker and 35 to 2^nd worker.
+```
+
+**Example 2:**
+```
+Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3
+Output: 30.66667
+Explanation: We pay 4 to 0^th worker, 13.33333 to 2^nd and 3^rd workers separately.
+```
 
 ## Approach
 
@@ -56,10 +75,10 @@ Consider `quality = [10,20,5]`, `wage = [70,50,30]`, `k = 2`.
 | Step | Worker (ratio, q) | Heap (max‑top) | sumQual | Cost (if size=2) |
 |------|-------------------|----------------|---------|-------------------|
 | 1    | (3.0, 10)         | [10]           | 10      | – |
-| 2    | (2.5, 20)         | [20,10]        | 30      | 2.5 × 30 = 75 |
-| 3    | (6.0, 5)          | [20,10,5] → pop 20 → [10,5] | 15 | 6.0 × 15 = 90 |
+| 2    | (2.5, 20)         | [20,10]        | 30      | 2.5 × 30 = 75 |
+| 3    | (6.0, 5)          | [20,10,5] → pop 20 → [10,5] | 15 | 6.0 × 15 = 90 |
 
-The minimum observed cost is `105` after processing all workers (using ratio = 7 from worker 0 and 2).
+The minimum observed cost is `105` after processing all workers (using ratio = 7 from worker 0 and 2).
 
 ## Complexity Analysis
 

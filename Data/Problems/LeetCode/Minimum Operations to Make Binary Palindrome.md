@@ -7,16 +7,46 @@
 ---
 
 ## Problem Description
-Given a binary string `s` (consisting of characters `'0'` and `'1'`), you may perform an operation that flips a single character (changing `'0'` to `'1'` or `'1'` to `'0'`). Determine the minimum number of flips required to make `s` a palindrome. Return that minimum count.
+You are given an integer array `nums`.
 
-Constraints typically include `1 ≤ s.length ≤ 10⁵`.
+For each element `nums[i]`, you may perform the following operations **any** number of times (including zero):
+
+- Increase `nums[i]` by 1, or
+- Decrease `nums[i]` by 1.
+
+A number is called a **binary palindrome** if its binary representation without leading zeros reads the same forward and backward.
+
+Your task is to return an integer array `ans`, where `ans[i]` represents the **minimum** number of operations required to convert `nums[i]` into a **binary palindrome**.
+
+**Constraints:**
+- `1 ≤ nums.length ≤ 5000`
+- `1 ≤ nums[i] ≤ 5000`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"1010"` | `1` | Flip the second character to obtain `"1110"`, then the string reads the same forwards and backwards after flipping the third character as well, but the optimal is flipping the third character to get `"1011"` which is not palindrome. Actually the minimal flips is `1` by flipping the second character to `"1110"` and then the string is not palindrome; correct minimal flips is `1` by flipping the second character to `"1110"`? Let's provide a clear example: `"1001"` needs `0` flips; `"1100"` needs `2` flips (positions 1 and 4). |
-| `"111"` | `0` | Already a palindrome.
-| `"0101"` | `2` | Flip positions 2 and 3 to get `"0110"` which is palindrome.
+
+```
+Example 1:
+  Input: nums = [1,2,4]
+  Output: [0,1,1]
+  Explanation: One optimal set of operations:
+  nums[i] | Binary | Nearest Palindrome | Binary (Palindrome) | Operations Required | ans[i]
+  1       | 1      | 1                  | 1                   | Already palindrome  | 0
+  2       | 10     | 3                  | 11                  | Increase by 1       | 1
+  4       | 100    | 3                  | 11                  | Decrease by 1       | 1
+  Thus, ans = [0, 1, 1].
+```
+
+```
+Example 2:
+  Input: nums = [6,7,12]
+  Output: [1,0,3]
+  Explanation: One optimal set of operations:
+  nums[i] | Binary | Nearest Palindrome | Binary (Palindrome) | Operations Required | ans[i]
+  6       | 110    | 5                  | 101                 | Decrease by 1       | 1
+  7       | 111    | 7                  | 111                 | Already palindrome  | 0
+  12      | 1100   | 15                 | 1111                | Increase by 3       | 3
+  Thus, ans = [1, 0, 3].
+```
 
 ## Approach
 A palindrome reads the same from both ends, so for each symmetric pair of indices `(i, n‑1‑i)` we only need to ensure the characters match. If they differ, one flip is sufficient to make them equal. Thus the answer is the count of mismatched pairs.

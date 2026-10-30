@@ -7,21 +7,32 @@
 ---
 
 ## Problem Description
-You are given two strings `start` and `end` of equal length consisting of characters `'L'`, `'R'`, and `'X'`. In one move you can swap any occurrence of "XL" with "LX" or "RX" with "XR" (i.e., move `'L'` left or `'R'` right by swapping with an adjacent `'X'`). Determine whether it is possible to transform `start` into `end` using any number of such moves.
+
+In a string composed of `'L'`, `'R'`, and `'X'` characters, like `"RXXLRXRXL"`, a move consists of either replacing one occurrence of `"XL"` with `"LX"`, or replacing one occurrence of `"RX"` with `"XR"`. Given the starting string `start` and the ending string `result`, return `True` if and only if there exists a sequence of moves to transform `start` to `result`.
+
+**Constraints:**
+- `1 <= start.length <= 10^4`
+- `start.length == result.length`
+- Both `start` and `result` will only consist of characters in `'L'`, `'R'`, and `'X'`.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
+Input: start = "RXXLRXRXL", result = "XRLXXRRLX"
 Output: true
-Explanation: Perform a sequence of swaps to reach `end`.
+Explanation: We can transform start to result following these steps:
+RXXLRXRXL ->
+XRXLRXRXL ->
+XRLXRXRXL ->
+XRLXXRRXL ->
+XRLXXRRLX
 ```
 
 **Example 2:**
 ```
-Input: start = "XRL", end = "LRX"
+Input: start = "X", result = "L"
 Output: false
-Explanation: `'L'` cannot move right and `'R'` cannot move left.
 ```
 
 ## Approach

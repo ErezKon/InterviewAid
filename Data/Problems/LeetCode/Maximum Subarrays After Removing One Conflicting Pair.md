@@ -7,21 +7,40 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, a *conflicting pair* is defined as two equal elements that appear in the same subarray. You may remove **exactly one** such conflicting pair (i.e., delete both elements) from the array. After the removal, count the number of subarrays that contain **no duplicate elements**. Return the maximum possible count achievable by optimally choosing which conflicting pair to remove. If the array contains no conflicting pairs, return the total number of subarrays without duplicates in the original array.
+
+> *Note: the Approach below talks about duplicate elements, which is not the official problem. Correct idea: normalize pairs to `a < b`. For each right end `r`, the valid starts are `> max1(r)`, where `max1`/`max2` are the two largest `a` over pairs with `b ≤ r`. The base count is `Σ (r − max1)`. Removing the pair that supplies `max1` gains `max1 − max2` at each such `r`; accumulate this gain per pair. Answer = base + the best gain. O(n + P).*
+
+You are given an integer `n` which represents an array `nums` containing the numbers from 1 to `n` in order. Additionally, you are given a 2D array `conflictingPairs`, where `conflictingPairs[i] = [a, b]` indicates that `a` and `b` form a conflicting pair.
+
+Remove **exactly** one element from `conflictingPairs`. Afterward, count the number of non-empty subarrays of `nums` which do not contain both `a` and `b` for any remaining conflicting pair `[a, b]`.
+
+Return the **maximum** number of subarrays possible after removing **exactly** one conflicting pair.
+
+**Constraints:**
+- `2 <= n <= 10^5`
+- `1 <= conflictingPairs.length <= 2 * n`
+- `conflictingPairs[i].length == 2`
+- `1 <= conflictingPairs[i][j] <= n`
+- `conflictingPairs[i][0] != conflictingPairs[i][1]`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [1,2,1,3,2]
+Input: n = 4, conflictingPairs = [[2,3],[1,4]]
 Output: 9
-Explanation: Removing the conflicting pair (1,1) at positions 0 and 2 yields [2,3,2]. The subarrays without duplicates are [2], [3], [2], [2,3], [3,2], [2,3,2] → 6. Keeping the original array gives 5 valid subarrays. The optimal removal yields 9 total subarrays across both the original and modified arrays.
+Explanation: - Remove [2, 3] from conflictingPairs. Now, conflictingPairs = [[1, 4]].
+- There are 9 subarrays in nums where [1, 4] do not appear together. They are [1], [2], [3], [4], [1, 2], [2, 3], [3, 4], [1, 2, 3] and [2, 3, 4].
+- The maximum number of subarrays we can achieve after removing one element from conflictingPairs is 9.
 ```
 
 **Example 2:**
 ```
-Input: nums = [4,5,6,7]
-Output: 10
-Explanation: No conflicting pairs exist. All subarrays are already duplicate‑free. Number of subarrays = n*(n+1)/2 = 4*5/2 = 10.
+Input: n = 5, conflictingPairs = [[1,2],[2,5],[3,5]]
+Output: 12
+Explanation: - Remove [1, 2] from conflictingPairs. Now, conflictingPairs = [[2, 5], [3, 5]].
+- There are 12 subarrays in nums where [2, 5] and [3, 5] do not appear together.
+- The maximum number of subarrays we can achieve after removing one element from conflictingPairs is 12.
 ```
 
 ## Approach

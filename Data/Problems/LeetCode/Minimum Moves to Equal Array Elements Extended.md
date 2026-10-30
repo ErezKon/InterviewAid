@@ -7,6 +7,8 @@
 
 ## Problem Description
 
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Minimum Moves to Equal Array Elements](Minimum%20Moves%20to%20Equal%20Array%20Elements.md) for the official #453 statement, examples and constraints.*
+
 This file summarizes a family of array‑equalization problems on LeetCode. Each problem asks for the minimum number of operations (or total cost) to make all elements of an array equal under a specific set of allowed operations.
 
 The table below lists the related problems, the operation allowed, and the formula for the answer.

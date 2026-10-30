@@ -21,17 +21,28 @@
 
 ## 1. Problem Description
 
-Count the total number of digit `1` appearing in all non‑negative integers less than or equal to `n`.
+Given an integer `n`, count *the total number of digit* `1` *appearing in all non-negative integers less than or equal to* `n`.
+
+**Constraints:**
+
+- `0 <= n <= 10^9`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 13` | `6` | Numbers with a `1`: 1, 10, 11, 12, 13 → total six `1`s.
-| `n = 0` | `0` | No numbers contain the digit `1`.
-| `n = 100` | `21` | Count `1`s in 1‑100 inclusive.
+```
+Example 1:
+  Input: n = 13
+  Output: 6
+  Explanation: The digit 1 appears in 1, 10, 11 (twice), 12, 13 → six 1s in total.
+```
+
+```
+Example 2:
+  Input: n = 0
+  Output: 0
+```
 
 ---
 

@@ -19,10 +19,17 @@
 
 ## 1. Problem Description
 
-Given a binary string `s`, find the length of the **longest balanced substring** — a substring of consecutive 0s followed by an equal number of consecutive 1s (e.g., "0011", "000111").
+You are given a binary string `s` consisting only of zeroes and ones.
+
+A substring of `s` is considered balanced if **all zeroes are before ones** and the number of zeroes is equal to the number of ones inside the substring. Notice that the empty substring is considered a balanced substring.
+
+Return *the length of the longest balanced substring of* `s`.
+
+A **substring** is a contiguous sequence of characters within a string.
 
 **Constraints:**
 - `1 <= s.length <= 50`
+- `'0' <= s[i] <= '1'`
 
 ---
 
@@ -30,14 +37,19 @@ Given a binary string `s`, find the length of the **longest balanced substring**
 
 ```
 Example 1:
-  Input:  s = "01000111"
+  Input: s = "01000111"
   Output: 6
-  Reason: "000111" is balanced with 3 zeros and 3 ones.
+  Explanation: The longest balanced substring is "000111", which has length 6.
 
 Example 2:
-  Input:  s = "00111"
+  Input: s = "00111"
   Output: 4
-  Reason: "0011" is balanced.
+  Explanation: The longest balanced substring is "0011", which has length 4.
+
+Example 3:
+  Input: s = "111"
+  Output: 0
+  Explanation: There is no balanced substring except the empty substring, so the answer is 0.
 ```
 
 ---

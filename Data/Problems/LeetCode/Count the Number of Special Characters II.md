@@ -8,24 +8,37 @@
 
 ## Problem Description
 
-A letter is **special** if it appears in both lowercase and uppercase in `word`, AND every occurrence of the lowercase letter comes before every occurrence of the uppercase letter. Count special letters.
+You are given a string `word`. A letter `c` is called **special** if it appears **both** in lowercase and uppercase in `word`, and **every** lowercase occurrence of `c` appears before the **first** uppercase occurrence of `c`.
+
+Return the number of **special** letters in `word`.
+
+**Constraints:**
+- `1 <= word.length <= 2 * 10^5`
+- `word` consists of only lowercase and uppercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: word = "abBA"
-Output: 2
-Explanation: 'a' and 'b' both appear in lower‑case before their upper‑case counterparts.
+Example 1:
+  Input: word = "aaAbcBC"
+  Output: 3
+  Explanation: The special characters are 'a', 'b', and 'c'.
 ```
 
-**Example 2:**
 ```
-Input: word = "aAa"
-Output: 1
-Explanation: Only 'a' satisfies the ordering constraint (lower‑case at index 0, upper‑case at index 1).
+Example 2:
+  Input: word = "abc"
+  Output: 0
+  Explanation: There are no special characters in word.
+```
+
+```
+Example 3:
+  Input: word = "AbBCab"
+  Output: 0
+  Explanation: There are no special characters in word.
 ```
 
 ---
@@ -55,19 +68,19 @@ FUNCTION numberOfSpecialChars(word):
 
 ## Walkthrough
 
-Consider **Example 1** (`word = "abBA"`).
+Consider `word = "abBA"`.
 
 1. Scan the string:
-   - Index 0, `'a'` (lower) → `lastLower['a'] = 0`.
-   - Index 1, `'b'` (lower) → `lastLower['b'] = 1`.
-   - Index 2, `'B'` (upper) → `firstUpper['b'] = 2`.
-   - Index 3, `'A'` (upper) → `firstUpper['a'] = 3`.
+   - Index 0, `'a'` (lower) → `lastLower['a'] = 0`.
+   - Index 1, `'b'` (lower) → `lastLower['b'] = 1`.
+   - Index 2, `'B'` (upper) → `firstUpper['b'] = 2`.
+   - Index 3, `'A'` (upper) → `firstUpper['a'] = 3`.
 2. After the pass we have:
    - `lastLower = {'a':0, 'b':1}`
    - `firstUpper = {'b':2, 'a':3}`
 3. Evaluate each letter:
-   - `'a'`: `0 < 3` → count = 1.
-   - `'b'`: `1 < 2` → count = 2.
+   - `'a'`: `0 < 3` → count = 1.
+   - `'b'`: `1 < 2` → count = 2.
    - All other letters lack both cases.
 4. Return `2`.
 

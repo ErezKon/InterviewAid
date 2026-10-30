@@ -7,11 +7,53 @@
 ---
 
 ## Problem Description
-You are given an array `lights` where each element is a pair `[position, range]`. A light at `position` illuminates every integer point from `position - range` to `position + range` inclusive. Return the integer position that receives illumination from the maximum number of lights. If multiple positions have the same maximum brightness, return the smallest such position.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+A perfectly straight street is represented by a number line. The street has street lamp(s) on it and is represented by a 2D integer array `lights`. Each `lights[i] = [position_i, range_i]` indicates that there is a street lamp at position `position_i` that lights up the area from `[position_i - range_i, position_i + range_i]` (**inclusive**).
+
+The **brightness** of a position `p` is defined as the number of street lamp that light up the position `p`.
+
+Given `lights`, return *the **brightest** position on the** street. If there are multiple brightest positions, return the **smallest** one.*
+
+**Constraints:**
+- `1 <= lights.length <= 10^5`
+- `lights[i].length == 2`
+- `-10^8 <= position_i <= 10^8`
+- `0 <= range_i <= 10^8`
 
 ## Examples
-- Input: `lights = [[0,1],[2,2]]` → Output: `1`. Position `1` is covered by both lights, while other positions are covered by at most one.
-- Input: `lights = [[-2,3],[4,1]]` → Output: `-2`. The first light covers `[-5,1]` and the second covers `[3,5]`; the maximum overlap is 1, and the smallest position with that overlap is `-5`, but the algorithm returns the first position where the count reaches the maximum, which is `-2` in this sweep implementation.
+
+**Example 1:**
+```
+Input: lights = [[-3,2],[1,2],[3,3]]
+Output: -1
+Explanation: The first street lamp lights up the area from [(-3) - 2, (-3) + 2] = [-5, -1].
+The second street lamp lights up the area from [1 - 2, 1 + 2] = [-1, 3].
+The third street lamp lights up the area from [3 - 3, 3 + 3] = [0, 6].
+Position -1 has a brightness of 2, illuminated by the first and second street light.
+Positions 0, 1, 2, and 3 have a brightness of 2, illuminated by the second and third street light.
+Out of all these positions, -1 is the smallest, so return it.
+```
+
+**Example 2:**
+```
+Input: lights = [[1,0],[0,1]]
+Output: 1
+Explanation: The first street lamp lights up the area from [1 - 0, 1 + 0] = [1, 1].
+The second street lamp lights up the area from [0 - 1, 0 + 1] = [-1, 1].
+Position 1 has a brightness of 2, illuminated by the first and second street light.
+Return 1 because it is the brightest position on the street.
+```
+
+**Example 3:**
+```
+Input: lights = [[1,2]]
+Output: -1
+Explanation: The first street lamp lights up the area from [1 - 2, 1 + 2] = [-1, 3].
+Positions -1, 0, 1, 2, and 3 have a brightness of 1, illuminated by the first street light.
+Out of all these positions, -1 is the smallest, so return it.
+```
 
 ## Approach
 **Line Sweep** – Transform each light into two events: a `+1` at `position - range` (start of illumination) and a `-1` at `position + range + 1` (end). Sort all events by coordinate, then sweep left to right, maintaining a running count of active lights. Track the maximum count and the earliest coordinate where it occurs.

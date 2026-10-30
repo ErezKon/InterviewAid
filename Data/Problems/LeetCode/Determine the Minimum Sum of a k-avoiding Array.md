@@ -20,11 +20,14 @@
 
 ## Problem Description
 
-Given two integers `n` and `k`, construct an array of `n` **distinct positive integers** such that no two elements sum to `k`. Return the **minimum possible sum** of such an array.
+You are given two integers, `n` and `k`.
+
+An array of **distinct** positive integers is called a **k-avoiding** array if there does not exist any pair of distinct elements that sum to `k`.
+
+Return *the **minimum** possible sum of a k-avoiding array of length *`n`.
 
 **Constraints:**
-- `1 <= n <= 50`
-- `1 <= k <= 50`
+- `1 <= n, k <= 50`
 
 ---
 
@@ -34,15 +37,16 @@ Given two integers `n` and `k`, construct an array of `n` **distinct positive in
 ```
 Input: n = 5, k = 4
 Output: 18
-Explanation: k-avoiding array = [1, 2, 4, 5, 6]. Sum = 18.
-  Can't use both 1 and 3 (sum to 4), so skip 3.
+Explanation: Consider the k-avoiding array [1,2,4,5,6], which has a sum of 18.
+It can be proven that there is no k-avoiding array with a sum less than 18.
 ```
 
 **Example 2:**
 ```
 Input: n = 2, k = 6
 Output: 3
-Explanation: [1, 2]. Sum = 3. No pair sums to 6.
+Explanation: We can construct the array [1,2], which has a sum of 3.
+It can be proven that there is no k-avoiding array with a sum less than 3.
 ```
 
 ---

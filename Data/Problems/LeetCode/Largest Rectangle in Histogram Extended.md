@@ -5,19 +5,35 @@ Related: #84, #85, #42, #739, #496, #503, #907, #1944
 ---
 
 ## Problem Description
-Given an array of bar heights representing a histogram, find the area of the largest rectangle that can be formed by contiguous bars. The rectangle's height is limited by the shortest bar in the chosen range.
+Given an array of bar heights representing a histogram, find the area of the largest rectangle that can be formed by contiguous bars. The rectangle's height is limited by the shortest bar in the chosen range. Each bar has width `1`.
+
+**Constraints:**
+- `1 <= heights.length <= 10^5`
+- `0 <= heights[i] <= 10^4`
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
 
 ## Examples
-**Example 1:**
 ```
-Input: heights = [2,1,5,6,2,3]
-Output: 10
-Explanation: The rectangle spanning indices 2‑3 (heights 5 and 6) has area 5*2 = 10.
+Example 1:
+  Input: heights = [2,1,5,6,2,3]
+  Output: 10
+  Explanation: The rectangle spanning indices 2-3 (heights 5 and 6) has area min(5,6) * 2 = 10.
 ```
-**Example 2:**
+
 ```
-Input: heights = [2,4]
-Output: 4
+Example 2:
+  Input: heights = [2,4]
+  Output: 4
+  Explanation: Either the single bar of height 4 (area 4) or both bars at height 2 (area 2 * 2 = 4).
+```
+
+```
+Example 3:
+  Input: heights = [2,1,2]
+  Output: 3
+  Explanation: Using all three bars, the limiting height is 1, so the area is 1 * 3 = 3,
+  which beats either single bar of height 2.
 ```
 
 ## Approach

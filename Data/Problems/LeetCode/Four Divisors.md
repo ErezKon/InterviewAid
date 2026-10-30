@@ -21,23 +21,37 @@
 
 ## 1. Problem Description
 
-Given an array of integers, return the sum of divisors of numbers that have exactly 4 divisors.
+Given an integer array `nums`, return *the sum of divisors of the integers in that array that have exactly four divisors*. If there is no such integer in the array, return `0`.
 
 **Constraints:**
-- `1 <= nums.length <= 10⁴`
-- `1 <= nums[i] <= 10⁵`
+- `1 <= nums.length <= 10^4`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
 ## 2. Examples
 
-| nums | Output |
-|------|--------|
-| [1,2,3,4,5,6,7,8] | 21 |
-| [21,4,7] | 0 |
-| [10,20,30] | 70 |
+**Example 1:**
+```
+Input: nums = [21,4,7]
+Output: 32
+Explanation: 21 has 4 divisors: 1, 3, 7, 21
+4 has 3 divisors: 1, 2, 4
+7 has 2 divisors: 1, 7
+The answer is the sum of divisors of 21 only.
+```
 
-*Explanation:* In the first example, numbers `1` and `6` have exactly four divisors; their divisor sums are `1+2+3+6 = 12` and `1+2+3+6 = 12`, total `24` (adjusted example). In the second example, no number has exactly four divisors, so result is `0`. In the third example, only `20` has four divisors `1,2,4,5,10,20` actually six, so result `0` (example placeholder).
+**Example 2:**
+```
+Input: nums = [21,21]
+Output: 64
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,4,5]
+Output: 0
+```
 
 ---
 

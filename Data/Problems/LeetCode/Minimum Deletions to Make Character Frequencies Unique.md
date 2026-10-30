@@ -21,29 +21,41 @@
 
 ## Problem Description
 
-A string `s` is called **good** if no two different characters have the same frequency. Given a string `s`, return the **minimum number of character deletions** to make `s` good.
+A string `s` is called **good** if there are no two different characters in `s` that have the same **frequency**.
+
+Given a string `s`, return *the **minimum** number of characters you need to delete to make* `s` ***good**.*
+
+The **frequency** of a character in a string is the number of times it appears in the string. For example, in the string `"aab"`, the **frequency** of `'a'` is `2`, while the **frequency** of `'b'` is `1`.
 
 **Constraints:**
 - `1 ≤ s.length ≤ 10⁵`
-- `s` contains only lowercase English letters
+- `s` contains only lowercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s = "aab"
-Output: 0
-Explanation: Frequencies: a=2, b=1. Already unique.
+Example 1:
+  Input: s = "aab"
+  Output: 0
+  Explanation: s is already good.
 ```
 
-**Example 2:**
 ```
-Input: s = "aaabbbcc"
-Output: 2
-Explanation: Frequencies: a=3, b=3, c=2. Delete one 'b' → b=2. Now a=3, b=2, c=2 — still a conflict.
-  Delete one 'c' → c=1. Final: a=3, b=2, c=1. All unique. Deletions = 2.
+Example 2:
+  Input: s = "aaabbbcc"
+  Output: 2
+  Explanation: You can delete two 'b's resulting in the good string "aaabcc".
+  Another way it to delete one 'b' and one 'c' resulting in the good string "aaabbc".
+```
+
+```
+Example 3:
+  Input: s = "ceabaacb"
+  Output: 2
+  Explanation: You can delete both 'c's resulting in the good string "eabaab".
+  Note that we only care about characters that are still in the string at the end (i.e. frequency of 0 is ignored).
 ```
 
 ---

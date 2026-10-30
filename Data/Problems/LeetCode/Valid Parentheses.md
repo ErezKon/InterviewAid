@@ -22,23 +22,50 @@
 
 ## 1. Problem Description
 
-Given a string `s` containing just the characters `(`, `)`, `{`, `}`, `[` and `]`, determine if the input string is **valid**.
+Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
 
-A string is valid if:
-1. Open brackets are closed by the **same type** of brackets.
-2. Open brackets are closed in the **correct order**.
-3. Every close bracket has a corresponding open bracket.
+An input string is valid if:
+
+- Open brackets must be closed by the same type of brackets.
+- Open brackets must be closed in the correct order.
+- Every close bracket has a corresponding open bracket of the same type.
+
+**Constraints:**
+- `1 <= s.length <= 10^4`
+- `s` consists of parentheses only `'()[]{}'`.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:  s = "()"       → true
-Example 2:  s = "()[]{}"   → true
-Example 3:  s = "(]"       → false
-Example 4:  s = "([])"     → true
-Example 5:  s = "([)]"     → false
+Input: s = "()"
+Output: true
+```
+
+**Example 2:**
+```
+Input: s = "()[]{}"
+Output: true
+```
+
+**Example 3:**
+```
+Input: s = "(]"
+Output: false
+```
+
+**Example 4:**
+```
+Input: s = "([])"
+Output: true
+```
+
+**Example 5:**
+```
+Input: s = "([)]"
+Output: false
 ```
 
 ---

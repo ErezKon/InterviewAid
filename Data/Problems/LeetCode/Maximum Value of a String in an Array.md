@@ -21,16 +21,17 @@
 
 ## Problem Description
 
-The **value** of a string is:
-- Its **numeric value** if it consists only of digits
-- Its **length** otherwise
+The **value** of an alphanumeric string can be defined as:
 
-Given an array of strings `strs`, return the **maximum value** among all strings.
+- The **numeric** representation of the string in base `10`, if it comprises of digits **only**.
+- The **length** of the string, otherwise.
+
+Given an array `strs` of alphanumeric strings, return *the **maximum value** of any string in *`strs`.
 
 **Constraints:**
-- `1 ≤ strs.length ≤ 100`
-- `1 ≤ strs[i].length ≤ 9`
-- `strs[i]` consists of lowercase letters and/or digits
+- `1 <= strs.length <= 100`
+- `1 <= strs[i].length <= 9`
+- `strs[i]` consists of only lowercase English letters and digits.
 
 ---
 
@@ -38,17 +39,21 @@ Given an array of strings `strs`, return the **maximum value** among all strings
 
 **Example 1:**
 ```
-Input:  strs = ["alic3", "bob", "3", "4", "00300"]
-Output: 300
-Explanation: "alic3"→5 (length), "bob"→3, "3"→3, "4"→4, "00300"→300. Max = 300.
+Input: strs = ["alic3","bob","3","4","00000"]
+Output: 5
+Explanation: - "alic3" consists of both letters and digits, so its value is its length, i.e. 5.
+- "bob" consists only of letters, so its value is also its length, i.e. 3.
+- "3" consists only of digits, so its value is its numeric equivalent, i.e. 3.
+- "4" also consists only of digits, so its value is 4.
+- "00000" consists only of digits, so its value is 0.
+Hence, the maximum value is 5, of "alic3".
 ```
 
 **Example 2:**
 ```
-Input:  strs = ["1", "01", "001", "0001"]
-Output: 4
-Explanation: All are numeric: 1, 1, 1, 1. But wait — "0001"=1. Max by length: 4. 
-Actually all are purely digits, so values are 1,1,1,1. Max = 1.
+Input: strs = ["1","01","001","0001"]
+Output: 1
+Explanation: Each string in the array has value 1. Hence, we return 1.
 ```
 
 ---

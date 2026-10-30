@@ -7,17 +7,37 @@
 ---
 
 ## Problem Description
-You are given a series of queries on a one‑dimensional line of length `x`. There are two types of queries:
-1. **Place** an obstacle at position `p` (0 ≤ p ≤ x). Obstacles are permanent.
-2. **Check** whether a block of size `sz` can be placed somewhere in the interval `[0, p]` without overlapping any obstacle.
-For each type‑2 query, output `true` if such a placement exists, otherwise `false`.
+There exists an infinite number line, with its origin at 0 and extending towards the **positive** x-axis.
+
+You are given a 2D array `queries`, which contains two types of queries:
+
+- For a query of type 1, `queries[i] = [1, x]`. Build an obstacle at distance `x` from the origin. It is guaranteed that there is **no** obstacle at distance `x` when the query is asked.
+- For a query of type 2, `queries[i] = [2, x, sz]`. Check if it is possible to place a block of size `sz` *anywhere* in the range `[0, x]` on the line, such that the block **entirely** lies in the range `[0, x]`. A block **cannot** be placed if it intersects with any obstacle, but it may touch it. Note that you do **not** actually place the block. Queries are separate.
+
+Return a boolean array `results`, where `results[i]` is `true` if you can place the block specified in the `iᵗʰ` query of type 2, and `false` otherwise.
+
+**Constraints:**
+- `1 ≤ queries.length ≤ 15 * 10⁴`
+- `2 ≤ queries[i].length ≤ 3`
+- `1 ≤ queries[i][0] ≤ 2`
+- `1 ≤ x, sz ≤ min(5 * 10⁴, 3 * queries.length)`
+- The input is generated such that for queries of type 1, no obstacle exists at distance `x` when the query is asked.
+- The input is generated such that there is at least one query of type 2.
 
 ## Examples
-- Queries: `[[1,5], [2,10,3], [1,2], [2,7,2]]`
-  - Place obstacle at 5.
-  - Check if a block of size 3 fits in `[0,10]` → `true` (gap `[0,5]` length 5).
-  - Place obstacle at 2.
-  - Check if block size 2 fits in `[0,7]` → `false` (gaps are `[0,2]` length 2 and `[2,5]` length 3, but the second gap ends at 5 < 7, and the first gap is exactly size 2 but blocked by obstacle at 2). 
+```
+Example 1:
+  Input: queries = [[1,2],[2,3,3],[2,3,1],[2,2,2]]
+  Output: [false,true,true]
+  Explanation: For query 0, place an obstacle at x = 2. A block of size at most 2 can be placed before x = 3.
+
+Example 2:
+  Input: queries = [[1,7],[2,7,6],[1,2],[2,7,5],[2,7,6]]
+  Output: [true,true,false]
+  Explanation:
+  - Place an obstacle at x = 7 for query 0. A block of size at most 7 can be placed before x = 7.
+  - Place an obstacle at x = 2 for query 2. Now, a block of size at most 5 can be placed before x = 7, and a block of size at most 2 before x = 2.
+```
 
 ## Approach
 **Segment Tree + Sorted Set** – Maintain a sorted set of obstacle positions (including sentinel `0` and `x`). The gaps between consecutive obstacles are stored in a segment tree that supports range‑maximum queries. When inserting a new obstacle, locate its left and right neighbors, split the existing gap into two new gaps, and update the segment tree. For a type‑2 query, query the maximum gap within the prefix up to position `p`; if it is ≥ `sz`, answer `true`.

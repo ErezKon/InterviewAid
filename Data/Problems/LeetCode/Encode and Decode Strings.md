@@ -20,25 +20,74 @@
 
 ## Problem Description
 
-Design an algorithm to encode a list of strings into a single string and decode it back. The strings can contain **any** character (including delimiters).
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Design an algorithm to encode **a list of strings** to **a string**. The encoded string is then sent over the network and is decoded back to the original list of strings.
+
+Machine 1 (sender) has the function:
+
+```
+string encode(vector<string> strs) {
+  // ... your code
+  return encoded_string;
+}
+```
+
+Machine 2 (receiver) has the function:
+
+```
+vector<string> decode(string s) {
+  //... your code
+  return strs;
+}
+```
+
+So Machine 1 does:
+
+```
+string encoded_string = encode(strs);
+```
+
+and Machine 2 does:
+
+```
+vector<string> strs2 = decode(encoded_string);
+```
+
+`strs2` in Machine 2 should be the same as `strs` in Machine 1.
+
+Implement the `encode` and `decode` methods.
+
+You are not allowed to solve the problem using any serialize methods (such as `eval`).
+
+**Follow up: **Could you write a generalized algorithm to work on any possible set of characters?
 
 **Constraints:**
-- `0 <= strs.length <= 200`
+- `1 <= strs.length <= 200`
 - `0 <= strs[i].length <= 200`
-- `strs[i]` can contain any 256 valid ASCII characters
+- `strs[i]` contains any possible characters out of `256` valid ASCII characters.
 
 ---
 
 ## Examples
 
+**Example 1:**
 ```
-Input: ["hello","world"]
-Encoded: "5#hello5#world"
-Decoded: ["hello","world"]
+Input: dummy_input = ["Hello","World"]
+Output: ["Hello","World"]
+Explanation: Machine 1:
+Codec encoder = new Codec();
+String msg = encoder.encode(strs);
+Machine 1 ---msg---> Machine 2
+Machine 2:
+Codec decoder = new Codec();
+String[] strs = decoder.decode(msg);
+```
 
-Input: ["we","say","#","yes"]
-Encoded: "2#we3#say1##3#yes"
-Decoded: ["we","say","#","yes"]  ← "#" inside string handled correctly
+**Example 2:**
+```
+Input: dummy_input = [""]
+Output: [""]
 ```
 
 ---

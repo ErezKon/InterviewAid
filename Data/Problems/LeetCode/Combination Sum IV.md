@@ -7,21 +7,40 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` of distinct positive numbers and a target integer `target`, return the number of possible **ordered** combinations that add up to `target`. You may use each number in `nums` an unlimited number of times. The answer may be large; return it modulo 10⁹ + 7 if required.
+Given an array of **distinct** integers `nums` and a target integer `target`, return *the number of possible combinations that add up to* `target`.
+
+The test cases are generated so that the answer can fit in a **32-bit** integer.
+
+**Constraints:**
+- `1 <= nums.length <= 200`
+- `1 <= nums[i] <= 1000`
+- All the elements of `nums` are **unique**.
+- `1 <= target <= 1000`
+
+**Follow up:** What if negative numbers are allowed in the given array? How does it change the problem? What limitation we need to add to the question to allow negative numbers?
+
+*(Note: unlike some counting problems, no modulo such as 10^9 + 7 is needed.)*
 
 ## Examples
-**Example 1**
 ```
-Input: nums = [1,2,3], target = 4
-Output: 7
-Explanation: The possible sequences are:
-[1,1,1,1], [1,1,2], [1,2,1], [2,1,1], [2,2], [1,3], [3,1]
+Example 1:
+  Input: nums = [1,2,3], target = 4
+  Output: 7
+  Explanation:
+    The possible combination ways are:
+    (1, 1, 1, 1)
+    (1, 1, 2)
+    (1, 2, 1)
+    (1, 3)
+    (2, 1, 1)
+    (2, 2)
+    (3, 1)
+    Note that different sequences are counted as different combinations.
 ```
-**Example 2**
 ```
-Input: nums = [9], target = 3
-Output: 0
-Explanation: No combination can sum to 3.
+Example 2:
+  Input: nums = [9], target = 3
+  Output: 0
 ```
 
 ## Approach

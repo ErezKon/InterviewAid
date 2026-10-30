@@ -8,24 +8,41 @@
 
 ## Problem Description
 
-Given a string `s`, remove all characters whose frequency is strictly less than the average frequency of all distinct characters. Return the filtered string maintaining original order.
+You are given a string `s` consisting of lowercase English letters and an integer `k`.
+
+Your task is to construct a new string that contains only those characters from `s` which appear **fewer** than `k` times in the entire string. The order of characters in the new string must be the **same** as their **order** in `s`.
+
+Return the resulting string. If no characters qualify, return an empty string.
+
+Note: **Every occurrence** of a character that occurs fewer than `k` times is kept.
+
+**Constraints:**
+
+- `1 <= s.length <= 100`
+- `s` consists of lowercase English letters.
+- `1 <= k <= s.length`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s = "aabccc"
-Average frequency = (2 + 1 + 3) / 3 = 2
-Output: "aabccc" (characters with frequency ≥ 2 are kept: 'a' and 'c')
+Example 1:
+  Input: s = "aadbbcccca", k = 3
+  Output: "dbb"
+  Explanation: Character frequencies in s:
+  - 'a' appears 3 times
+  - 'd' appears 1 time
+  - 'b' appears 2 times
+  - 'c' appears 4 times
+  Only 'd' and 'b' appear fewer than 3 times. Preserving their order, the result is "dbb".
 ```
 
-**Example 2:**
 ```
-Input: s = "abcde"
-Average frequency = (1+1+1+1+1)/5 = 1
-Output: "abcde" (all characters have frequency equal to average)
+Example 2:
+  Input: s = "xyz", k = 2
+  Output: "xyz"
+  Explanation: All characters ('x', 'y', 'z') appear exactly once, which is fewer than 2. Thus the whole string is returned.
 ```
 
 ---

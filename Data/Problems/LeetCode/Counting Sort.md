@@ -3,13 +3,30 @@
 ---
 
 ## Problem Description
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 Counting sort is a non‑comparison sorting technique useful when the range of input values is limited (e.g., all numbers are between 0 and *k*). It counts the occurrences of each value and then reconstructs the sorted array in linear time.
 
+Given an integer array `nums` whose values all lie in `[0, maxVal]`, sort it in non-decreasing order using counting sort.
+
+**Constraints (derived):**
+- `1 <= nums.length <= 10^5`
+- `0 <= maxVal <= 10^5`
+- `0 <= nums[i] <= maxVal`
+
 ## Examples
-```text
-Input: nums = [4,2,2,8,3,3,1], maxVal = 8
-Output: [1,2,2,3,3,4,8]
-Explanation: Count each value, then write them back in order.
+```
+Example 1:
+  Input: nums = [4,2,2,8,3,3,1], maxVal = 8
+  Output: [1,2,2,3,3,4,8]
+  Explanation: Count each value, then write them back in order.
+```
+
+```
+Example 2:
+  Input: nums = [0,0,0], maxVal = 0
+  Output: [0,0,0]
+  Explanation: Only one distinct value; the count array has a single slot.
 ```
 
 ## Approach

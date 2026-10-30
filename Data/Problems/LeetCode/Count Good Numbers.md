@@ -7,20 +7,38 @@
 ---
 
 ## Problem Description
-Given an integer `n`, count how many `n`‑digit numbers are **good**. A good number has the following property: for every pair of adjacent digits, the absolute difference between them is either 0 or 1. Return the count modulo `10^9 + 7`.
+A digit string is **good** if the digits **(0-indexed)** at **even** indices are **even** and the digits at **odd** indices are **prime** (`2`, `3`, `5`, or `7`).
+
+- For example, `"2582"` is good because the digits (`2` and `8`) at even positions are even and the digits (`5` and `2`) at odd positions are prime. However, `"3245"` is **not** good because `3` is at an even index but is not even.
+
+Given an integer `n`, return *the **total** number of good digit strings of length* `n`. Since the answer may be large, **return it modulo** `10^9 + 7`.
+
+A **digit string** is a string consisting of digits `0` through `9` that may contain leading zeros.
+
+(In other words, we count good `n`‑digit strings, leading zeros allowed.)
+
+**Constraints:**
+- `1 <= n <= 10^15`
 
 ## Examples
-**Example 1:**
 ```
-Input: n = 1
-Output: 10
-Explanation: All single‑digit numbers (0‑9) are good.
+Example 1:
+  Input: n = 1
+  Output: 5
+  Explanation: The good numbers of length 1 are "0", "2", "4", "6", "8".
+  (All other single‑digit strings from the range 0‑9 are odd and therefore not good.)
 ```
-**Example 2:**
+
 ```
-Input: n = 2
-Output: 55
-Explanation: Good numbers include 00,01,10,11,12,…,98,99.
+Example 2:
+  Input: n = 4
+  Output: 400
+```
+
+```
+Example 3:
+  Input: n = 50
+  Output: 564908303
 ```
 
 ## Approach

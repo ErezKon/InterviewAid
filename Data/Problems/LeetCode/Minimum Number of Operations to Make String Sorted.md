@@ -8,7 +8,20 @@
 
 ## Problem Description
 
-You are given a string `s` consisting of lowercase English letters. In one operation you may choose any index `i` and replace `s[i]` with any **greater** character (i.e., a character with a higher alphabetical order). The goal is to transform `s` into a non‑decreasing (sorted) string. Return the minimum number of operations required.
+> *Note: the Approach below counts descents. Officially each operation turns `s` into its previous permutation, so the answer is the number of distinct permutations of `s` that are lexicographically smaller than `s`. Count them from the right with multiset factorials (`(len−1)! / Π cnt!` per smaller character) mod 10^9+7.*
+
+You are given a string `s` (**0-indexed**). You are asked to perform the following operation on `s` until you get a sorted string:
+
+- Find **the largest index** `i` such that `1 <= i < s.length` and `s[i] < s[i - 1]`.
+- Find **the largest index** `j` such that `i <= j < s.length` and `s[k] < s[i - 1]` for all the possible values of `k` in the range `[i, j]` inclusive.
+- Swap the two characters at indices `i - 1` and `j`.
+- Reverse the suffix starting at index `i`.
+
+Return *the number of operations needed to make the string sorted.* Since the answer can be too large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= s.length <= 3000`
+- `s` consists only of lowercase English letters.
 
 ---
 
@@ -16,16 +29,23 @@ You are given a string `s` consisting of lowercase English letters. In one opera
 
 **Example 1:**
 ```
-Input: s = "abc"
-Output: 0
-Explanation: The string is already sorted.
+Input: s = "cba"
+Output: 5
+Explanation: The simulation goes as follows:
+Operation 1: i=2, j=2. Swap s[1] and s[2] to get s="cab", then reverse the suffix starting at 2. Now, s="cab".
+Operation 2: i=1, j=2. Swap s[0] and s[2] to get s="bac", then reverse the suffix starting at 1. Now, s="bca".
+Operation 3: i=2, j=2. Swap s[1] and s[2] to get s="bac", then reverse the suffix starting at 2. Now, s="bac".
+Operation 4: i=1, j=1. Swap s[0] and s[1] to get s="abc", then reverse the suffix starting at 1. Now, s="acb".
+Operation 5: i=2, j=2. Swap s[1] and s[2] to get s="abc", then reverse the suffix starting at 2. Now, s="abc".
 ```
 
 **Example 2:**
 ```
-Input: s = "cba"
+Input: s = "aabaa"
 Output: 2
-Explanation: Change 'c' → 'd' and 'b' → 'c' to obtain "dca", then change 'a' → 'a' (no change). Minimum two operations achieve a sorted string such as "ddd".
+Explanation: The simulation goes as follows:
+Operation 1: i=3, j=4. Swap s[2] and s[4] to get s="aaaab", then reverse the substring starting at 3. Now, s="aaaba".
+Operation 2: i=4, j=4. Swap s[3] and s[4] to get s="aaaab", then reverse the substring starting at 4. Now, s="aaaab".
 ```
 
 ---

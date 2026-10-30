@@ -8,24 +8,29 @@
 
 ## 1. Problem Description
 
-Remove exactly `k` elements from the array to minimize the number of unique integers remaining. Return the smallest possible count of distinct numbers after the removals.
+Given an array of integers `arr` and an integer `k`. Find the *least number of unique integers* after removing **exactly** `k` elements.
+
+**Constraints:**
+- `1 <= arr.length <= 10^5`
+- `1 <= arr[i] <= 10^9`
+- `0 <= k <= arr.length`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: arr = [5,5,4], k = 1
-Output: 1
-Explanation: Remove the element `4`. The array becomes [5,5] with only one unique integer.
+Example 1:
+  Input: arr = [5,5,4], k = 1
+  Output: 1
+  Explanation: Remove the single 4, only 5 is left.
 ```
 
-**Example 2:**
 ```
-Input: arr = [4,3,1,1,3,3,2], k = 3
-Output: 2
-Explanation: Remove three occurrences of `1` (or any three elements with smallest frequencies). Remaining unique integers are {2,3,4} but after optimal removals only two distinct values stay.
+Example 2:
+  Input: arr = [4,3,1,1,3,3,2], k = 3
+  Output: 2
+  Explanation: Remove 4, 2 and either one of the two 1s or three 3s. 1 and 3 will be left.
 ```
 
 ---

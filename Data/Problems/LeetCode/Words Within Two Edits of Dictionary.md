@@ -7,18 +7,38 @@
 ---
 
 ## Problem Description
-Given an array `queries` of strings and a `dictionary` of valid words (all strings have the same length), return an array where each element is the first dictionary word that differs from the corresponding query by at most two characters. If no such word exists, keep the query unchanged.
+
+You are given two string arrays, `queries` and `dictionary`. All words in each array comprise of lowercase English letters and have the same length.
+
+In one **edit** you can take a word from `queries`, and change any letter in it to any other letter. Find all words from `queries` that, after a **maximum** of two edits, equal some word from `dictionary`.
+
+Return* a list of all words from *`queries`*, **that match with some word from *`dictionary`* after a maximum of **two edits***. Return the words in the **same order** they appear in `queries`.
+
+**Constraints:**
+- `1 <= queries.length, dictionary.length <= 100`
+- `n == queries[i].length == dictionary[j].length`
+- `1 <= n <= 100`
+- All `queries[i]` and `dictionary[j]` are composed of lowercase English letters.
 
 ## Examples
+
 **Example 1:**
-Input: `queries = ["hello","world"], dictionary = ["hhllo","world","wrrld"]`
-Output: `["hhllo","world"]`
-Explanation: "hello" differs from "hhllo" by one character; "world" matches exactly.
+```
+Input: queries = ["word","note","ants","wood"], dictionary = ["wood","joke","moat"]
+Output: ["word","note","wood"]
+Explanation: - Changing the 'r' in "word" to 'o' allows it to equal the dictionary word "wood".
+- Changing the 'n' to 'j' and the 't' to 'k' in "note" changes it to "joke".
+- It would take more than 2 edits for "ants" to equal a dictionary word.
+- "wood" can remain unchanged (0 edits) and match the corresponding dictionary word.
+Thus, we return ["word","note","wood"].
+```
 
 **Example 2:**
-Input: `queries = ["abcd"], dictionary = ["abcf","abef","abdd"]`
-Output: `["abcf"]`
-Explanation: "abcf" differs by one character, which is ≤2, and is the first such match.
+```
+Input: queries = ["yes"], dictionary = ["not"]
+Output: []
+Explanation: Applying any two edits to "yes" cannot make it equal to "not". Thus, we return an empty array.
+```
 
 ## Approach
 Iterate each query and compare it with dictionary words, counting mismatched positions. Stop at the first word with ≤2 mismatches.

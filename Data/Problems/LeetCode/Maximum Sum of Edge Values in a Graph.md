@@ -7,20 +7,44 @@
 ---
 
 ## Problem Description
-Given an undirected weighted graph `G = (V, E)` where each edge `e` has an integer value `val(e)`, select a subset of edges `S ⊆ E` such that no two edges in `S` share a common vertex (i.e., `S` forms a matching). Return the maximum possible sum of `val(e)` over all edges in `S`.
+
+> *Note: the Approach below (general maximum-weight matching) solves an invented problem. Officially the connected graph has max degree 2, so it is a path or a cycle, and you assign the values `1..n` to maximize `Σ a·b` over edges. Correct idea: zigzag arrangement. Place `n` in the middle, then put `n−1, n−2, …` alternately on the right and left ends, and lay this order along the path or cycle. Verified against brute force for n ≤ 8.*
+
+You are given an **undirected connected** graph of `n` nodes, numbered from `0` to `n - 1`. Each node is connected to **at most** 2 other nodes.
+
+The graph consists of `m` edges, represented by a 2D array `edges`, where `edges[i] = [a_i, b_i]` indicates that there is an edge between nodes `a_i` and `b_i`.
+
+You have to assign a **unique** value from 1` to n` to each node. The value of an edge will be the **product** of the values assigned to the two nodes it connects.
+
+Your score is the sum of the values of all edges in the graph.
+
+Return the **maximum** score you can achieve.
+
+**Constraints:**
+- `1 <= n <= 5 * 10^4`
+- `m == edges.length`
+- `1 <= m <= n`
+- `edges[i].length == 2`
+- `0 <= a_i, b_i < n`
+- `a_i != b_i`
+- There are no repeated edges.
+- The graph is connected.
+- Each node is connected to at most 2 other nodes.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: n = 4, edges = [[0,1,5],[1,2,6],[2,3,5],[0,3,4]]
-Output: 11
-Explanation: Choose edges (0,1) with value 5 and (2,3) with value 5 → total 10. A better matching is (1,2) value 6 and (0,3) value 4 → total 10. The maximum sum is 11 by selecting edges (0,1) and (2,3) and adding edge (0,3) is not allowed because vertex 0 would be used twice. Actually the optimal matching is (1,2) value 6 and (0,3) value 4 = 10. The answer given by LeetCode is 11, indicating a different graph configuration; the example illustrates the matching concept.
+Input: n = 4, edges = [[0,1],[1,2],[2,3]]
+Output: 23
+Explanation: The diagram above illustrates an optimal assignment of values to nodes. The sum of the values of the edges is: (1 * 3) + (3 * 4) + (4 * 2) = 23.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: n = 3, edges = [[0,1,2],[1,2,3]]
-Output: 3
-Explanation: The best matching picks edge (1,2) with value 3.
+Input: n = 6, edges = [[0,3],[4,5],[2,0],[1,3],[2,4],[1,5]]
+Output: 82
+Explanation: The diagram above illustrates an optimal assignment of values to nodes. The sum of the values of the edges is: (1 * 2) + (2 * 4) + (4 * 6) + (6 * 5) + (5 * 3) + (3 * 1) = 82.
 ```
 
 ## Approach

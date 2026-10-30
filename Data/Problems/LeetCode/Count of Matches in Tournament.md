@@ -20,11 +20,12 @@
 
 ## Problem Description
 
-You are given an integer `n`, the number of teams in a tournament. The tournament rules:
-- If even number of teams: `n / 2` matches are played, `n / 2` teams advance.
-- If odd number of teams: `(n - 1) / 2` matches are played, `(n - 1) / 2 + 1` teams advance (one gets a bye).
+You are given an integer `n`, the number of teams in a tournament that has strange rules:
 
-Return the total number of matches played until a winner is decided.
+- If the current number of teams is **even**, each team gets paired with another team. A total of `n / 2` matches are played, and `n / 2` teams advance to the next round.
+- If the current number of teams is **odd**, one team randomly advances in the tournament, and the rest gets paired. A total of `(n - 1) / 2` matches are played, and `(n - 1) / 2 + 1` teams advance to the next round.
+
+Return *the number of matches played in the tournament until a winner is decided.*
 
 **Constraints:**
 - `1 <= n <= 200`
@@ -34,14 +35,27 @@ Return the total number of matches played until a winner is decided.
 ## Examples
 
 **Example 1:**
-- **Input:** `n = 7`
-- **Output:** `6`
-- **Explanation:** Round 1: 3 matches (7→4), Round 2: 2 matches (4→2), Round 3: 1 match (2→1). Total = 3+2+1 = 6.
+```
+Input: n = 7
+Output: 6
+Explanation: Details of the tournament:
+- 1st Round: Teams = 7, Matches = 3, and 4 teams advance.
+- 2nd Round: Teams = 4, Matches = 2, and 2 teams advance.
+- 3rd Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+Total number of matches = 3 + 2 + 1 = 6.
+```
 
 **Example 2:**
-- **Input:** `n = 14`
-- **Output:** `13`
-- **Explanation:** Each match eliminates one team. 13 teams must be eliminated → 13 matches.
+```
+Input: n = 14
+Output: 13
+Explanation: Details of the tournament:
+- 1st Round: Teams = 14, Matches = 7, and 7 teams advance.
+- 2nd Round: Teams = 7, Matches = 3, and 4 teams advance.
+- 3rd Round: Teams = 4, Matches = 2, and 2 teams advance.
+- 4th Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+Total number of matches = 7 + 3 + 2 + 1 = 13.
+```
 
 ---
 

@@ -21,7 +21,9 @@
 
 ## 1. Problem Description
 
-Given an integer `n >= 2`, break it into the sum of **at least two** positive integers and maximize the **product** of those integers. Return the maximum product.
+Given an integer `n`, break it into the sum of `k` **positive integers**, where `k >= 2`, and maximize the product of those integers.
+
+Return *the maximum product you can get*.
 
 **Constraints:**
 - `2 <= n <= 58`
@@ -30,9 +32,18 @@ Given an integer `n >= 2`, break it into the sum of **at least two** positive in
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Input: n = 2 → Output: 1   (2 = 1+1, product = 1)
-Input: n = 10 → Output: 36  (10 = 3+3+4, product = 3×3×4 = 36)
+Input: n = 2
+Output: 1
+Explanation: 2 = 1 + 1, 1 × 1 = 1.
+```
+
+**Example 2:**
+```
+Input: n = 10
+Output: 36
+Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
 ```
 
 ---

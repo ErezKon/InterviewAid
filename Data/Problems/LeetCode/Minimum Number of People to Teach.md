@@ -7,20 +7,43 @@
 ---
 
 ## Problem Description
-Given `n` people numbered from `1` to `n`, each person knows a set of languages. You are also given a list of friendships where each friendship is a pair `[u, v]`. Two friends can communicate if they share at least one common language. Determine the minimum number of people that need to be taught a single new language so that every pair of friends can communicate.
+
+On a social network consisting of `m` users and some friendships between users, two users can communicate with each other if they know a common language.
+
+You are given an integer `n`, an array `languages`, and an array `friendships` where:
+
+- There are `n` languages numbered `1` through `n`,
+- `languages[i]` is the set of languages the `i^th` user knows, and
+- `friendships[i] = [u_i, v_i]` denotes a friendship between the users `u^_i` and `v_i`.
+
+You can choose **one** language and teach it to some users so that all friends can communicate with each other. Return the* ***minimum** *number of users you need to teach.*
+Note that friendships are not transitive, meaning if `x` is a friend of `y` and `y` is a friend of `z`, this doesn't guarantee that `x` is a friend of `z`.
+
+**Constraints:**
+- `2 <= n <= 500`
+- `languages.length == m`
+- `1 <= m <= 500`
+- `1 <= languages[i].length <= n`
+- `1 <= languages[i][j] <= n`
+- `1 <= u_i < v_i <= languages.length`
+- `1 <= friendships.length <= 500`
+- All tuples `(u_i, v_i)` are unique
+- `languages[i]` contains only unique values
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: n = 3, languages = [[1],[2,3],[1,2]], friendships = [[1,2],[1,3],[2,3]]
+Input: n = 2, languages = [[1],[2],[1,2]], friendships = [[1,2],[1,3],[2,3]]
 Output: 1
-Explanation: Teaching person 2 language 1 makes all friendships communicable.
+Explanation: You can either teach user 1 the second language or user 2 the first language.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: n = 2, languages = [[2],[1,2]], friendships = [[1,2]]
-Output: 0
-Explanation: They already share language 2.
+Input: n = 3, languages = [[2],[1,3],[1,2],[3]], friendships = [[1,4],[1,2],[3,4],[2,3]]
+Output: 2
+Explanation: Teach the third language to users 1 and 3, yielding two users to teach.
 ```
 
 ## Approach

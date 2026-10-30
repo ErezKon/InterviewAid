@@ -1,6 +1,7 @@
 # 2269. Find the K-Beauty of a Number
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/find-the-k-beauty-of-a-number](https://leetcode.com/problems/find-the-k-beauty-of-a-number)
 
 **Companies:** Google, Postmates, Quora
 ---
@@ -18,11 +19,22 @@
 
 ## 1. Problem Description
 
-Given an integer `num` and integer `k`, return the number of substrings of `num` (of length `k`) that divide `num` evenly. These are called the **k-beauties** of the number.
+The **k-beauty** of an integer `num` is defined as the number of **substrings** of `num` when it is read as a string that meet the following conditions:
+
+- It has a length of `k`.
+- It is a divisor of `num`.
+
+Given integers `num` and `k`, return *the k-beauty of* `num`.
+
+Note:
+- **Leading zeros** are allowed.
+- `0` is not a divisor of any value.
+
+A **substring** is a contiguous sequence of characters in a string.
 
 **Constraints:**
 - `1 <= num <= 10⁹`
-- `1 <= k <= num.length`
+- `1 <= k <= num.length` (taking `num` as a string)
 
 ---
 
@@ -30,14 +42,23 @@ Given an integer `num` and integer `k`, return the number of substrings of `num`
 
 ```
 Example 1:
-  Input:  num = 240, k = 2
+  Input: num = 240, k = 2
   Output: 2
-  Reason: Substrings: "24" (240%24=0 ✓), "40" (240%40=0 ✓). Count=2.
+  Explanation: The following are the substrings of num of length k:
+  - "24" from "240": 24 is a divisor of 240.
+  - "40" from "240": 40 is a divisor of 240.
+  Therefore, the k-beauty is 2.
 
 Example 2:
-  Input:  num = 430043, k = 2
+  Input: num = 430043, k = 2
   Output: 2
-  Reason: "43" divides 430043. "04"=4, "00"=0 (skip). "04"=4, "43".
+  Explanation: The following are the substrings of num of length k:
+  - "43" from "430043": 43 is a divisor of 430043.
+  - "30" from "430043": 30 is not a divisor of 430043.
+  - "00" from "430043": 0 is not a divisor of 430043.
+  - "04" from "430043": 4 is not a divisor of 430043.
+  - "43" from "430043": 43 is a divisor of 430043.
+  Therefore, the k-beauty is 2.
 ```
 
 ---

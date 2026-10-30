@@ -18,11 +18,14 @@
 
 ## 1. Problem Description
 
-Same as Part I but with larger constraints: `n` up to 5 × 10⁴ and `k` up to min(50, n‑1). Requires a more efficient DP approach.
+You are given an integer array `nums` and a **non-negative** integer `k`. A sequence of integers `seq` is called **good** if there are **at most** `k` indices `i` in the range `[0, seq.length - 2]` such that `seq[i] != seq[i + 1]`.
+
+Return the **maximum** possible length of a **good** subsequence of `nums`.
 
 **Constraints:**
-- `1 <= n <= 5 × 10⁴`
-- `1 <= k <= min(50, n-1)`
+- `1 <= nums.length <= 5 × 10³`
+- `1 <= nums[i] <= 10⁹`
+- `0 <= k <= min(50, nums.length)`
 
 ---
 
@@ -59,18 +62,16 @@ FUNCTION maximumLength(nums, k):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: nums = [1,2,1,2,1], k = 2
-Output: 5
-Explanation: The whole array can be taken because it uses only two bad transitions (1→2 and 2→1).
-```
+Example 1:
+  Input: nums = [1,2,1,1,3], k = 2
+  Output: 4
+  Explanation: The maximum length subsequence is [1,2,1,1] (taken from [1,2,1,1,3]).
 
-**Example 2:**
-```
-Input: nums = [3,1,4,1,5,9,2,6,5], k = 1
-Output: 3
-Explanation: The longest good subsequence with at most one bad transition is [1,1,1] (using the two 1s and the 1 at index 3) or any length‑3 subsequence with a single transition.
+Example 2:
+  Input: nums = [1,2,3,4,5,1], k = 0
+  Output: 2
+  Explanation: The maximum length subsequence is [1,1] (the first and last elements of [1,2,3,4,5,1]).
 ```
 
 ---

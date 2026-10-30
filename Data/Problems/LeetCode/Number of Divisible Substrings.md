@@ -20,19 +20,103 @@
 
 ## 1. Problem Description
 
-Map each character to a digit (a‑c→1, d‑f→2, …, y‑z→9). Count substrings where the sum of mapped digits is divisible by the substring length.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Each character of the English alphabet has been mapped to a digit as shown below.
+
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/2900-2999/2950.Number%20of%20Divisible%20Substrings/images/old_phone_digits.png)
+
+A string is **divisible** if the sum of the mapped values of its characters is divisible by its length.
+
+Given a string `s`, return *the number of **divisible substrings** of* `s`.
+
+A **substring** is a contiguous non-empty sequence of characters within a string.
+
+**Constraints:**
+- `1 <= word.length <= 2000`
+- `word` consists only of lowercase English letters.
 
 ---
 
 ## 2. Examples
 
-| word | Output |
-|------|--------|
-| "abc" | 3 |
-| "aaaa" | 10 |
-| "az" | 2 |
+**Example 1:**
+```
+Substring
+  Mapped
+  Sum
+  Length
+  Divisible?
+  a
+  1
+  1
+  1
+  Yes
+  s
+  7
+  7
+  1
+  Yes
+  d
+  2
+  2
+  1
+  Yes
+  f
+  3
+  3
+  1
+  Yes
+  as
+  1, 7
+  8
+  2
+  Yes
+  sd
+  7, 2
+  9
+  2
+  No
+  df
+  2, 3
+  5
+  2
+  No
+  asd
+  1, 7, 2
+  10
+  3
+  No
+  sdf
+  7, 2, 3
+  12
+  3
+  Yes
+  asdf
+  1, 7, 2, 3
+  13
+  4
+  No
+Input: word = "asdf"
+Output: 6
+Explanation: The table above contains the details about every substring of word, and we can see that 6 of them are divisible.
+```
 
-*Explanation*: For "abc", the substrings are `a(1)`, `b(2)`, `c(3)`, `ab(3)`, `bc(5)`, `abc(6)`. Only `a`, `b`, and `abc` have sums divisible by their lengths.
+**Example 2:**
+```
+Input: word = "bdh"
+Output: 4
+Explanation: The 4 divisible substrings are: "b", "d", "h", "bdh".
+It can be shown that there are no other substrings of word that are divisible.
+```
+
+**Example 3:**
+```
+Input: word = "abcd"
+Output: 6
+Explanation: The 6 divisible substrings are: "a", "b", "c", "d", "ab", "cd".
+It can be shown that there are no other substrings of word that are divisible.
+```
 
 ---
 

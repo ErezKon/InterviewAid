@@ -7,14 +7,30 @@
 ---
 
 ## Problem Description
-Given the `root` of a binary tree, find the length of the longest path where each pair of adjacent nodes in the path has values that differ by exactly 1. The path may go **upwards or downwards** (i.e., it can change direction at a node) but must be contiguous.
+Given the `root` of a binary tree, return *the length of the longest consecutive path in the tree*.
+
+A consecutive path is a path where the values of the consecutive nodes in the path differ by one. This path can be either increasing or decreasing.
+
+- For example, `[1,2,3,4]` and `[4,3,2,1]` are both considered valid, but the path `[1,2,4,3]` is not valid.
+
+On the other hand, the path can be in the child-Parent-child order, where not necessarily be parent-child order.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 3 * 10⁴]`.
+- `-3 * 10⁴ ≤ Node.val ≤ 3 * 10⁴`
 
 ## Examples
-| Tree (level order) | Output | Explanation |
-|--------------------|--------|-------------|
-| `[2,1,3]` | 3 | Path `1‑2‑3` (increasing then decreasing) length 3.
-| `[1,null,2,null,3]` | 3 | Straight increasing chain `1‑2‑3`.
-| `[1,2,3,4,null,null,5]` | 4 | Longest consecutive path `4‑3‑2‑1` (decreasing).
+```
+Example 1:
+  Input: root = [1,2,3]
+  Output: 2
+  Explanation: The longest consecutive path is [1, 2] or [2, 1].
+
+Example 2:
+  Input: root = [2,1,3]
+  Output: 3
+  Explanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].
+```
 
 ## Approach
 Use a post‑order **DFS** that returns for each node a pair `(inc, dec)`:

@@ -5,29 +5,41 @@
 ## Problem Description
 Many array problems ask for the minimum number of removals from the **ends** of the array to achieve a target sum. Instead of reasoning about two‑sided deletions, consider the **complement**: the subarray that remains in the middle. If the total sum of the array is `total` and we need to remove elements summing to `x`, the middle subarray must sum to `total - x`. Finding the longest such middle subarray minimizes the number of removals.
 
+Canonical instance (LeetCode #1658): given an integer array `nums` and an integer `x`, in one operation remove either the leftmost or the rightmost element of `nums` and subtract its value from `x`. Return the **minimum number of operations** to reduce `x` to **exactly** `0`, or `-1` if it is not possible.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^4`
+- `1 <= x <= 10^9`
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 ## Examples
 
 ```
 Example 1:
   Input: nums = [1,1,4,2,3], x = 5
-  total = 11, target = 6
-  Longest subarray with sum 6: [1,1,4] (length 3)
-  Answer: 5 - 3 = 2
+  Output: 2
+  Explanation: total = 11, target = 6.
+  Longest middle subarray with sum 6: [1,1,4] (length 3).
+  Answer: 5 - 3 = 2 (remove the last two elements, 3 + 2 = 5).
 ```
 
 ```
 Example 2:
   Input: nums = [5,6,7,8,9], x = 4
-  total = 35, target = 31
-  No subarray sums to 31 → Answer: -1
+  Output: -1
+  Explanation: total = 35, target = 31.
+  No subarray sums to 31, so x cannot be reduced to 0.
 ```
 
 ```
 Example 3:
   Input: nums = [3,2,20,1,1,3], x = 10
-  total = 30, target = 20
-  Longest subarray with sum 20: [20] (length 1)
-  Answer: 6 - 1 = 5
+  Output: 5
+  Explanation: total = 30, target = 20.
+  Longest middle subarray with sum 20: [20] (length 1).
+  Answer: 6 - 1 = 5 (remove 3, 2 from the left and 1, 1, 3 from the right).
 ```
 
 ## Approach

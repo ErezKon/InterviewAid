@@ -21,24 +21,51 @@
 
 ## 1. Problem Description
 
-Count substrings where every character that appears has the same frequency `count`.
+You are given a **0-indexed** string `s` consisting of only lowercase English letters, and an integer `count`. A **substring** of `s` is said to be an **equal count substring** if, for each **unique** letter in the substring, it appears exactly `count` times in the substring.
+
+Return *the number of **equal count substrings** in* `s`.
+
+A **substring** is a contiguous non-empty sequence of characters within a string.
+
+**Constraints:**
+
+- `1 <= s.length <= 3 * 10^4`
+- `1 <= count <= 3 * 10^4`
+- `s` consists only of lowercase English letters.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: s = "aaabbb", count = 3
-Output: 2
-Explanation: The substrings "aaabbb" (the whole string) and "aaabbb" (the same) each have 2 distinct characters each appearing 3 times.
+Example 1:
+  Input: s = "aaabcbbcc", count = 3
+  Output: 3
+  Explanation:
+  The substring that starts at index 0 and ends at index 2 is "aaa".
+  The letter 'a' in the substring appears exactly 3 times.
+  The substring that starts at index 3 and ends at index 8 is "bcbbcc".
+  The letters 'b' and 'c' in the substring appear exactly 3 times.
+  The substring that starts at index 0 and ends at index 8 is "aaabcbbcc".
+  The letters 'a', 'b', and 'c' in the substring appear exactly 3 times.
 ```
 
-**Example 2:**
 ```
-Input: s = "abcabc", count = 2
-Output: 4
-Explanation: Substrings "abca", "bcab", "cabc", and "abcabc" all have each distinct character appearing exactly twice.
+Example 2:
+  Input: s = "abcd", count = 2
+  Output: 0
+  Explanation:
+  The number of times each letter appears in s is less than count.
+  Therefore, no substrings in s are equal count substrings, so return 0.
+```
+
+```
+Example 3:
+  Input: s = "a", count = 5
+  Output: 0
+  Explanation:
+  The number of times each letter appears in s is less than count.
+  Therefore, no substrings in s are equal count substrings, so return 0.
 ```
 
 ---

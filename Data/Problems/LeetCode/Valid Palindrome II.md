@@ -9,7 +9,11 @@
 
 ## 1. Problem Description
 
-Given a string `s`, return `true` if it can be a palindrome after deleting **at most one** character.
+Given a string `s`, return `true` *if the* `s` *can be palindrome after deleting **at most one** character from it*.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of lowercase English letters.
 
 ---
 
@@ -39,11 +43,24 @@ FUNCTION isPalin(s, lo, hi):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aba"` | `true` | Already a palindrome. |
-| `"abca"` | `true` | Delete `'c'` to get `"aba"`. |
-| `"abc"` | `false` | No single deletion makes it a palindrome. |
+**Example 1:**
+```
+Input: s = "aba"
+Output: true
+```
+
+**Example 2:**
+```
+Input: s = "abca"
+Output: true
+Explanation: You could delete the character 'c'.
+```
+
+**Example 3:**
+```
+Input: s = "abc"
+Output: false
+```
 
 ---
 

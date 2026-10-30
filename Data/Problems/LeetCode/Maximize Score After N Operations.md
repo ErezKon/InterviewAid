@@ -19,11 +19,22 @@
 
 ## Problem Description
 
-Given an array `nums` of `2n` integers, perform `n` operations. In the i-th operation (1-indexed), pick any two remaining elements, compute `i × gcd(a, b)`, and add it to your score. Return the **maximum score**.
+You are given `nums`, an array of positive integers of size `2 * n`. You must perform `n` operations on this array.
+
+In the `i^th` operation **(1-indexed)**, you will:
+
+- Choose two elements, `x` and `y`.
+- Receive a score of `i * gcd(x, y)`.
+- Remove `x` and `y` from `nums`.
+
+Return *the maximum score you can receive after performing *`n`* operations.*
+
+The function `gcd(x, y)` is the greatest common divisor of `x` and `y`.
 
 **Constraints:**
-- `1 ≤ n ≤ 7` (so `nums.length ≤ 14`)
-- `1 ≤ nums[i] ≤ 10⁶`
+- `1 <= n <= 7`
+- `nums.length == 2 * n`
+- `1 <= nums[i] <= 10^6`
 
 ---
 
@@ -31,16 +42,26 @@ Given an array `nums` of `2n` integers, perform `n` operations. In the i-th oper
 
 **Example 1:**
 ```
-Input:  nums = [1,2]
+Input: nums = [1,2]
 Output: 1
-Explanation: Only one operation: 1 × gcd(1,2) = 1.
+Explanation: The optimal choice of operations is:
+(1 * gcd(1, 2)) = 1
 ```
 
 **Example 2:**
 ```
-Input:  nums = [3,4,6,8]
+Input: nums = [3,4,6,8]
 Output: 11
-Explanation: Op1: 1 × gcd(3,6)=3, Op2: 2 × gcd(4,8)=8 → total = 11.
+Explanation: The optimal choice of operations is:
+(1 * gcd(3, 6)) + (2 * gcd(4, 8)) = 3 + 8 = 11
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,4,5,6]
+Output: 14
+Explanation: The optimal choice of operations is:
+(1 * gcd(1, 5)) + (2 * gcd(2, 4)) + (3 * gcd(3, 6)) = 1 + 4 + 9 = 14
 ```
 
 ---

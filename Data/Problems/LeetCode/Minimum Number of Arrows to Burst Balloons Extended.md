@@ -7,6 +7,8 @@
 
 ## Problem Description
 
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Minimum Number of Arrows to Burst Balloons](Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons.md) for the official #452 statement, examples and constraints.*
+
 This file summarizes a family of interval‑selection problems on LeetCode. Each problem asks for the maximum number of non‑overlapping intervals (or the minimum number of resources such as arrows) given a set of intervals represented as `[start, end]`.
 
 The core task is to select a subset of intervals that satisfy a greedy condition, often by sorting on the interval end point and iteratively picking the next interval whose start is not earlier than the end of the previously chosen interval.

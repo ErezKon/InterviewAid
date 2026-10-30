@@ -8,16 +8,33 @@
 
 ## Problem Description
 
-Count triplets `(a, b, c)` from three arrays where `popcount(a XOR b XOR c)` is even.
+Given three integer arrays `a`, `b`, and `c`, return the number of triplets `(a[i], b[j], c[k])`, such that the bitwise `XOR` between the elements of each triplet has an **even** number of set bits.
+
+**Constraints:**
+- `1 <= a.length, b.length, c.length <= 10^5`
+- `0 <= a[i], b[i], c[i] <= 10^9`
 
 ---
 
 ## Examples
 
-| Input Arrays | Output | Explanation |
-|--------------|--------|-------------|
-| `a = [1,2]`, `b = [3,4]`, `c = [5,6]` | `4` | Parities: a odd, odd; b even, odd; c even, odd. Using formula yields 4 valid triplets.
-| `a = [0]`, `b = [0]`, `c = [0]` | `1` | All popcounts are 0 (even), only one triplet.
+```
+Example 1:
+  Input: a = [1], b = [2], c = [3]
+  Output: 1
+  Explanation: The only triplet is (a[0], b[0], c[0]) and their XOR is: 1 XOR 2 XOR 3 = 00 (binary).
+```
+
+```
+Example 2:
+  Input: a = [1,1], b = [2,3], c = [1,5]
+  Output: 4
+  Explanation: Consider these four triplets:
+  - (a[0], b[1], c[0]): 1 XOR 3 XOR 1 = 011 (binary)
+  - (a[1], b[1], c[0]): 1 XOR 3 XOR 1 = 011 (binary)
+  - (a[0], b[0], c[1]): 1 XOR 2 XOR 5 = 110 (binary)
+  - (a[1], b[0], c[1]): 1 XOR 2 XOR 5 = 110 (binary)
+```
 
 ---
 

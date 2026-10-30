@@ -7,26 +7,42 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, consider all contiguous subarrays of length `k`. Among those subarrays whose `k` elements are all distinct, return the maximum possible sum of the elements. If no such subarray exists, return `0`.
+
+You are given an integer array `nums` and an integer `k`. Find the maximum subarray sum of all the subarrays of `nums` that meet the following conditions:
+
+- The length of the subarray is `k`, and
+- All the elements of the subarray are **distinct**.
+
+Return *the maximum subarray sum of all the subarrays that meet the conditions**.* If no subarray meets the conditions, return `0`.
+
+*A **subarray** is a contiguous non-empty sequence of elements within an array.*
+
+**Constraints:**
+- `1 <= k <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: nums = [1,2,3,4,5], k = 3
-Output: 12
-Explanation: Subarrays of length 3 are [1,2,3], [2,3,4], [3,4,5]; all have distinct elements. Their sums are 6, 9, and 12. The maximum is 12.
+Input: nums = [1,5,4,2,9,9,9], k = 3
+Output: 15
+Explanation: The subarrays of nums with length 3 are:
+- [1,5,4] which meets the requirements and has a sum of 10.
+- [5,4,2] which meets the requirements and has a sum of 11.
+- [4,2,9] which meets the requirements and has a sum of 15.
+- [2,9,9] which does not meet the requirements because the element 9 is repeated.
+- [9,9,9] which does not meet the requirements because the element 9 is repeated.
+We return 15 because it is the maximum subarray sum of all the subarrays that meet the conditions
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: nums = [1,2,2,3,4], k = 3
-Output: 9
-Explanation: Valid subarrays are [2,3,4] (sum 9). Subarray [1,2,2] is invalid because of duplicate `2`.
-```
-**Example 3**
-```
-Input: nums = [5,5,5], k = 2
+Input: nums = [4,4,4], k = 3
 Output: 0
-Explanation: No length‑2 subarray contains distinct elements.
+Explanation: The subarrays of nums with length 3 are:
+- [4,4,4] which does not meet the requirements because the element 4 is repeated.
+We return 0 because no subarrays meet the conditions.
 ```
 
 ## Approach

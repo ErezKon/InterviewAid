@@ -7,6 +7,24 @@ Related: #155 Min Stack, #232 Queue using Stacks, #225 Stack using Queues, #895 
 ## Problem Description
 Design a stack data structure that supports the standard operations `push`, `pop`, and `top`, along with an additional operation `getMin` that returns the minimum element in the stack in **O(1)** time. Extend this design to also support `getMax` for the maximum element, and optionally `getMedian` for the median value.
 
+Implement the `MinMaxStack` class:
+
+- `MinMaxStack()` initializes the stack object.
+- `void push(int val)` pushes the element `val` onto the stack.
+- `int pop()` removes and returns the element on the top of the stack.
+- `int top()` returns the top element of the stack.
+- `int getMin()` retrieves the minimum element in the stack.
+- `int getMax()` retrieves the maximum element in the stack.
+
+Every operation (except the optional `getMedian`) must run in `O(1)` time.
+
+**Constraints:**
+- `-2^31 <= val <= 2^31 - 1`
+- `pop`, `top`, `getMin` and `getMax` are always called on **non-empty** stacks.
+- At most `3 * 10^4` calls in total will be made to `push`, `pop`, `top`, `getMin` and `getMax`.
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 ## Examples
 **Example 1:**
 ```text
@@ -18,6 +36,9 @@ push(1)
 getMin() → 1
 pop() → 1
 getMin() → 2
+
+Explanation: minStack tracks [3,3,2,1]; after popping 1 the minimum
+reverts to the previous level's min, 2.
 ```
 
 **Example 2 (Max Extension):**
@@ -29,6 +50,24 @@ push(9)
 getMax() → 9
 pop() → 9
 getMax() → 7
+
+Explanation: maxStack tracks [7,7,9]; popping 9 restores the max 7.
+```
+
+**Example 3 (Duplicates):**
+```text
+push(4)
+push(4)
+push(6)
+getMin() → 4
+getMax() → 6
+pop() → 6
+pop() → 4
+getMin() → 4
+top() → 4
+
+Explanation: Duplicate minimums are stored at every level, so popping one
+copy of 4 still leaves 4 as the minimum.
 ```
 
 ## Approach

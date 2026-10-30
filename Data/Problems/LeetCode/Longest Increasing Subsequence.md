@@ -22,28 +22,35 @@
 
 ## 1. Problem Description
 
-Given an integer array `nums`, return the length of the **longest strictly increasing subsequence**.
+Given an integer array `nums`, return *the length of the longest **strictly increasing ******subsequence***.
 
-A **subsequence** is derived by deleting some or no elements without changing the order of remaining elements.
+**Follow up:** Can you come up with an algorithm that runs in `O(n log(n))` time complexity?
+
+**Constraints:**
+- `1 <= nums.length <= 2500`
+- `-10^4 <= nums[i] <= 10^4`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input:  [10, 9, 2, 5, 3, 7, 101, 18]
-  Output: 4
-  Reason: [2, 3, 7, 101] or [2, 3, 7, 18] or [2, 5, 7, 101] etc.
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+```
 
-Example 2:
-  Input:  [0, 1, 0, 3, 2, 3]
-  Output: 4
-  Reason: [0, 1, 2, 3]
+**Example 2:**
+```
+Input: nums = [0,1,0,3,2,3]
+Output: 4
+```
 
-Example 3:
-  Input:  [7, 7, 7, 7, 7]
-  Output: 1
+**Example 3:**
+```
+Input: nums = [7,7,7,7,7,7,7]
+Output: 1
 ```
 
 ---

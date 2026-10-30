@@ -1,6 +1,7 @@
 # 3085. Minimum Deletions to Make String K-Special
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/minimum-deletions-to-make-string-k-special](https://leetcode.com/problems/minimum-deletions-to-make-string-k-special)
 **Companies:** Bloomberg, De Shaw, Google
 
 ---
@@ -19,12 +20,18 @@
 
 ## Problem Description
 
-A string is **k-special** if the difference between any two character frequencies is at most `k`. Given a string `s` and integer `k`, return the **minimum number of deletions** to make `s` k-special.
+You are given a string `word` and an integer `k`.
+
+We consider `word` to be **k-special** if `|freq(word[i]) - freq(word[j])| <= k` for all indices `i` and `j` in the string.
+
+Here, `freq(x)` denotes the frequency of the character `x` in `word`, and `|y|` denotes the absolute value of `y`.
+
+Return *the **minimum** number of characters you need to delete to make* `word` ***k-special***.
 
 **Constraints:**
-- `1 ≤ s.length ≤ 10⁵`
-- `0 ≤ k ≤ 10⁵`
-- `s` consists of lowercase English letters
+- `1 <= word.length <= 10^5`
+- `0 <= k <= 10^5`
+- `word` consists only of lowercase English letters.
 
 ---
 
@@ -32,19 +39,23 @@ A string is **k-special** if the difference between any two character frequencie
 
 **Example 1:**
 ```
-Input: s = "aabcaba", k = 0
+Input: word = "aabcaba", k = 0
 Output: 3
-Explanation: Frequencies: a=4, b=2, c=1. For k=0, all freqs must be equal.
-  Delete 2 a's and 1 c → a=2, b=2. Deletions = 3.
+Explanation: We can make word 0-special by deleting 2 occurrences of "a" and 1 occurrence of "c". Therefore, word becomes equal to "baba" where freq('a') == freq('b') == 2.
 ```
 
 **Example 2:**
 ```
-Input: s = "dabdcbdcdcd", k = 2
+Input: word = "dabdcbdcdcd", k = 2
 Output: 2
-Explanation: Frequencies: d=4, c=3, b=2, a=1. Delete 'a' (1 del) → freqs {4,3,2}. 
-  Max-min=2 ≤ k=2. But also need to check: delete 'a' entirely (1 del) + nothing else. Total = 1? 
-  Actually a=1: if we set min=2, delete a entirely (1) and done. Max diff = 4-2=2 ≤ k. Deletions=1.
+Explanation: We can make word 2-special by deleting 1 occurrence of "a" and 1 occurrence of "d". Therefore, word becomes equal to "bdcbdcdcd" where freq('b') == 2, freq('c') == 3, and freq('d') == 4.
+```
+
+**Example 3:**
+```
+Input: word = "aaabaaa", k = 2
+Output: 1
+Explanation: We can make word 2-special by deleting 1 occurrence of "b". Therefore, word becomes equal to "aaaaaa" where each letter's frequency is now uniformly 6.
 ```
 
 ---

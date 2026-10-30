@@ -7,14 +7,26 @@
 ---
 
 ## Problem Description
-Given the `root` of a binary tree, return all root‑to‑leaf paths as strings. Each path should list node values separated by `"->"`. A leaf is a node with no children.
+You are given the `root` of a binary tree.
+
+Return all **root-to-leaf** paths in **any order**.
+
+A **leaf** is a node with no children.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 100]`.
+- `-100 ≤ Node.val ≤ 100`
 
 ## Examples
-| Tree (level order) | Output |
-|--------------------|--------|
-| `[1,2,3,null,5]` | `["1->2->5","1->3"]` |
-| `[1]` | `["1"]` |
-| `[]` | `[]` |
+```
+Example 1:
+  Input: root = [1,2,3,null,5]
+  Output: ["1->2->5","1->3"]
+
+Example 2:
+  Input: root = [1]
+  Output: ["1"]
+```
 
 ## Approach
 Use a depth‑first search (DFS) that builds the path string as it traverses. When a leaf is reached, add the accumulated path to the result list.

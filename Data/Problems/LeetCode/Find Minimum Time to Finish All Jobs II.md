@@ -7,22 +7,43 @@
 ---
 
 ## Problem Description
-Given an array `jobs` where `jobs[i]` is the time required to complete the *i*‑th job, and an integer `k` representing the number of workers, assign each job to exactly one worker. The **finish time** of a worker is the sum of times of jobs assigned to them. Return the minimum possible value of the maximum finish time among all workers.
 
-Constraints typically include `1 ≤ k ≤ jobs.length ≤ 12` and `1 ≤ jobs[i] ≤ 10⁷`.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given two **0-indexed** integer arrays `jobs` and `workers` of **equal** length, where `jobs[i]` is the amount of time needed to complete the `i^th` job, and `workers[j]` is the amount of time the `j^th` worker can work each day.
+
+Each job should be assigned to **exactly** one worker, such that each worker completes **exactly** one job.
+
+Return *the **minimum** number of days needed to complete all the jobs after assignment.*
+
+**Constraints:**
+- `n == jobs.length == workers.length`
+- `1 <= n <= 10^5`
+- `1 <= jobs[i], workers[i] <= 10^5`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: jobs = [3,2,3], k = 3
+Input: jobs = [5,2,4], workers = [1,7,5]
+Output: 2
+Explanation: - Assign the 2^nd worker to the 0^th job. It takes them 1 day to finish the job.
+- Assign the 0^th worker to the 1^st job. It takes them 2 days to finish the job.
+- Assign the 1^st worker to the 2^nd job. It takes them 1 day to finish the job.
+It takes 2 days for all the jobs to be completed, so return 2.
+It can be proven that 2 days is the minimum number of days needed.
+```
+
+**Example 2:**
+```
+Input: jobs = [3,18,15,9], workers = [6,5,1,3]
 Output: 3
-Explanation: Assign each job to a different worker. The maximum workload is 3.
-```
-**Example 2**
-```
-Input: jobs = [1,2,4,7,8], k = 2
-Output: 11
-Explanation: One optimal assignment is {8,1,2} → 11 and {7,4} → 11. The maximum workload is 11.
+Explanation: - Assign the 2^nd worker to the 0^th job. It takes them 3 days to finish the job.
+- Assign the 0^th worker to the 1^st job. It takes them 3 days to finish the job.
+- Assign the 1^st worker to the 2^nd job. It takes them 3 days to finish the job.
+- Assign the 3^rd worker to the 3^rd job. It takes them 3 days to finish the job.
+It takes 3 days for all the jobs to be completed, so return 3.
+It can be proven that 3 days is the minimum number of days needed.
 ```
 
 ## Approach

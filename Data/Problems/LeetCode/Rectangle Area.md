@@ -7,22 +7,33 @@
 ---
 
 ## Problem Description
-Given the coordinates of two axis-aligned rectangles in a 2D plane, compute the total area covered by the two rectangles. Each rectangle is defined by its bottom-left corner `(ax1, ay1)` and top-right corner `(ax2, ay2)` for the first rectangle, and similarly `(bx1, by1)` and `(bx2, by2)` for the second. Overlapping area should be counted only once.
+Given the coordinates of two **rectilinear** rectangles in a 2D plane, return *the total area covered by the two rectangles*.
+
+The first rectangle is defined by its **bottom-left** corner `(ax1, ay1)` and its **top-right** corner `(ax2, ay2)`.
+
+The second rectangle is defined by its **bottom-left** corner `(bx1, by1)` and its **top-right** corner `(bx2, by2)`.
+
+**Constraints:**
+
+- `-10⁴ <= ax1 <= ax2 <= 10⁴`
+- `-10⁴ <= ay1 <= ay2 <= 10⁴`
+- `-10⁴ <= bx1 <= bx2 <= 10⁴`
+- `-10⁴ <= by1 <= by2 <= 10⁴`
 
 ## Examples
-**Example 1:**
+
 ```
-Input: ax1 = -3, ay1 = 0, ax2 = 3, ay2 = 4,
-       bx1 = 0, by1 = -1, bx2 = 9, by2 = 2
-Output: 45
-Explanation: The first rectangle area is 24, the second is 27, and the overlapping area is 6. Total = 24 + 27 - 6 = 45.
+Example 1:
+  Input: ax1 = -3, ay1 = 0, ax2 = 3, ay2 = 4, bx1 = 0, by1 = -1, bx2 = 9, by2 = 2
+  Output: 45
+  Explanation: The first rectangle area is 24, the second is 27, and the overlapping area is 6. Total = 24 + 27 - 6 = 45.
 ```
-**Example 2:**
+
 ```
-Input: ax1 = -2, ay1 = -2, ax2 = 2, ay2 = 2,
-       bx1 = -1, by1 = -1, bx2 = 1, by2 = 1
-Output: 16
-Explanation: The second rectangle lies completely inside the first, so the total area equals the area of the first rectangle.
+Example 2:
+  Input: ax1 = -2, ay1 = -2, ax2 = 2, ay2 = 2, bx1 = -2, by1 = -2, bx2 = 2, by2 = 2
+  Output: 16
+  Explanation: Both rectangles are identical, so the total area equals the area of one rectangle (4 * 4 = 16).
 ```
 
 ## Approach

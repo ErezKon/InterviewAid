@@ -3,6 +3,8 @@
 ---
 
 ## Problem Description
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Minimum Path Sum](Minimum%20Path%20Sum.md) for the official #64 statement, examples and constraints.*
+
 Grid dynamic programming problems share a common structure: compute an optimal value for each cell based on previously computed neighboring cells. The direction of iteration (forward from top‑left or reverse from bottom‑right) and the aggregation operation (min, max, sum, count) define the specific variant, such as unique paths, minimum path sum, or dungeon game.
 
 ## Examples

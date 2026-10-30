@@ -5,6 +5,9 @@ Related: #48 Rotate Image, #54 Spiral Matrix, #73 Set Matrix Zeroes, #289 Game o
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Rotate Image.md](Rotate%20Image.md) for the official statement and constraints of #48.*
+
 This reference summarizes common matrix rotation and transformation operations that appear in several LeetCode problems (e.g., Rotate Image, Spiral Matrix). Understanding these patterns helps design in‑place algorithms for rotating or reflecting a square matrix.
 
 ## Examples

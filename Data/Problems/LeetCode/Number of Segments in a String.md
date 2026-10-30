@@ -19,7 +19,14 @@
 
 ## 1. Problem Description
 
-Count the number of non-empty segments (contiguous non-space characters) in a string.
+Given a string `s`, return *the number of segments in the string*.
+
+A **segment** is defined to be a contiguous sequence of **non-space characters**.
+
+**Constraints:**
+- `0 <= s.length <= 300`
+- `s` consists of lowercase and uppercase English letters, digits, or one of the following characters `"!@#$%^&*()_+-=',.:"`.
+- The only space character in `s` is `' '`.
 
 ---
 
@@ -29,15 +36,15 @@ Count the number of non-empty segments (contiguous non-space characters) in a st
 ```
 Input: s = "Hello, my name is John"
 Output: 5
-Explanation: The segments are ["Hello,", "my", "name", "is", "John"].
+Explanation: The five segments are ["Hello,", "my", "name", "is", "John"]
 ```
 
 **Example 2:**
 ```
-Input: s = "   "
-Output: 0
-Explanation: No non‑empty segments exist.
+Input: s = "Hello"
+Output: 1
 ```
+
 ---
 
 ## Walkthrough

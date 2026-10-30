@@ -7,11 +7,38 @@
 ---
 
 ## Problem Description
-Given an `m x n` matrix of non‑negative integers, you may increase any element by 1 in one operation. Determine the minimum number of operations required so that each column of the matrix becomes strictly increasing from top to bottom.
+You are given a `m x n` matrix `grid` consisting of **non-negative** integers.
+
+In one operation, you can increment the value of any `grid[i][j]` by 1.
+
+Return the **minimum** number of operations needed to make all columns of `grid` **strictly increasing**.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 50`
+- `0 <= grid[i][j] < 2500`
 
 ## Examples
-- **Input:** `[[1,2],[2,3],[3,4]]` → **Output:** `0` – every column already strictly increases.
-- **Input:** `[[3,1],[2,2],[1,3]]` → **Output:** `3` – increase column 0 values to `[1,2,3]` (2 ops) and column 1 values to `[1,2,3]` (1 op).
+
+```
+Example 1:
+  Input: grid = [[3,2],[1,3],[3,4],[0,1]]
+  Output: 15
+  Explanation:
+  - To make the 0th column strictly increasing, we can apply 3 operations on grid[1][0], 2 operations on grid[2][0], and 6 operations on grid[3][0].
+  - To make the 1st column strictly increasing, we can apply 4 operations on grid[3][1].
+```
+
+```
+Example 2:
+  Input: grid = [[3,2,1],[2,1,0],[1,2,3]]
+  Output: 12
+  Explanation:
+  - To make the 0th column strictly increasing, we can apply 2 operations on grid[1][0], and 4 operations on grid[2][0].
+  - To make the 1st column strictly increasing, we can apply 2 operations on grid[1][1], and 2 operations on grid[2][1].
+  - To make the 2nd column strictly increasing, we can apply 2 operations on grid[1][2].
+```
 
 ## Approach
 Process each column independently. For a column, iterate from the second row downwards, ensuring the current value is greater than the previous value. If not, compute the needed increment (`prev + 1 - current`) and add it to the operation count, then set the current value to `prev + 1`. Sum operations across all columns.

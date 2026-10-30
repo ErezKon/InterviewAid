@@ -7,14 +7,42 @@
 ---
 
 ## Problem Description
-Given a string `s` of lowercase letters and an integer `k`, repeatedly delete any group of `k` adjacent identical characters. Continue until no such group exists and return the final string.
+You are given a string `s` and an integer `k`, a `k` **duplicate removal** consists of choosing `k` adjacent and equal letters from `s` and removing them, causing the left and the right side of the deleted substring to concatenate together.
+
+We repeatedly make `k` **duplicate removals** on `s` until we no longer can.
+
+Return *the final string after all such duplicate removals have been made*. It is guaranteed that the answer is **unique**.
+
+**Constraints:**
+
+- `1 <= s.length <= 10⁵`
+- `2 <= k <= 10⁴`
+- `s` only contains lowercase English letters.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| "deeedbbcccbdaa", k=3 | "aa" | Delete `eee` → `ddbbcccbdaa`; delete `bbb` → `ddcccbdaa`; delete `ccc` → `ddbaa`; delete `ddd` → `baa`; delete `bbb` not present; finally delete `aaa` → `aa`. |
-| "pbbcggttciiippooaais", k=2 | "ps" | Remove pairs `bb`, `gg`, `tt`, `ii`, `pp`, `oo`, `aa` sequentially, leaving `ps`. |
-| "abcd", k=2 | "abcd" | No group of size 2, string unchanged.
+
+```
+Example 1:
+  Input: s = "abcd", k = 2
+  Output: "abcd"
+  Explanation: There's nothing to delete.
+```
+
+```
+Example 2:
+  Input: s = "deeedbbcccbdaa", k = 3
+  Output: "aa"
+  Explanation:
+    First delete "eee" and "ccc", get "ddbbbdaa"
+    Then delete "bbb", get "dddaa"
+    Finally delete "ddd", get "aa"
+```
+
+```
+Example 3:
+  Input: s = "pbbcggttciiippooaais", k = 2
+  Output: "ps"
+```
 
 ## Approach
 **Stack of (char, count) Greedy** – Iterate through `s`, maintaining a stack where each entry stores a character and its consecutive count. Increment count when the same character repeats; when count reaches `k`, pop the entry to delete the group.

@@ -19,20 +19,42 @@
 
 ## Problem Description
 
-Given `n` data centers with `count[i]` servers, `upgrade[i]` cost per server, `sell[i]` income per sold server, and a `money[i]` budget, return the **maximum number of servers** that can be upgraded in each data center. You can sell servers to fund upgrades.
+You have `n` data centers and need to upgrade their servers.
+
+You are given four arrays `count`, `upgrade`, `sell`, and `money` of length `n`, which show:
+
+- The number of servers
+- The cost of upgrading a single server
+- The money you get by selling a server
+- The money you initially have
+
+for each data center respectively.
+
+Return an array `answer`, where for each data center, the corresponding element in `answer` represents the **maximum** number of servers that can be upgraded.
+
+Note that the money from one data center **cannot** be used for another data center.
 
 **Constraints:**
-- `1 <= n <= 10^5`
+- `1 <= count.length == upgrade.length == sell.length == money.length <= 10^5`
+- `1 <= count[i], upgrade[i], sell[i], money[i] <= 10^5`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  count=[4], upgrade=[3], sell=[1], money=[2]
-Output: [2]
-Explanation: Sell 2 servers (earn 2), budget=4. Upgrade 2 servers (cost 6)? Actually floor((money+count*sell)/(upgrade+sell)).
+Example 1:
+  Input: count = [4,3], upgrade = [3,5], sell = [4,2], money = [8,9]
+  Output: [3,2]
+  Explanation:
+    For the first data center, if we sell one server, we'll have 8 + 4 = 12 units of money and we can upgrade the remaining 3 servers.
+    For the second data center, if we sell one server, we'll have 9 + 2 = 11 units of money and we can upgrade the remaining 2 servers.
+```
+
+```
+Example 2:
+  Input: count = [1], upgrade = [2], sell = [1], money = [1]
+  Output: [0]
 ```
 
 ---

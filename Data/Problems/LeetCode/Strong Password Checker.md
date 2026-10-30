@@ -1,22 +1,50 @@
 # 420. Strong Password Checker
 
 **Difficulty:** 🔴 Hard
-**LeetCode:** https://leetcode.com/problems/strong-password-checker
+**LeetCode:** [https://leetcode.com/problems/strong-password-checker](https://leetcode.com/problems/strong-password-checker)
 **Companies:** Amazon, Google, Microsoft, Siemens, Wix, Zoho
+
 ---
+
 ## Problem Description
-Given a string `password` (length `n`) consisting of ASCII letters, digits, and symbols, determine the **minimum number of steps** to make it a strong password. A strong password satisfies:
-1. Length between 6 and 20 inclusive.
-2. Contains at least one lowercase letter, one uppercase letter, and one digit.
-3. Does not contain three repeating characters in a row (e.g., "aaa").
-In one step you may insert, delete, or replace a character. Return the minimum steps required.
+
+A password is considered strong if the below conditions are all met:
+
+- It has at least `6` characters and at most `20` characters.
+- It contains at least **one lowercase** letter, at least **one uppercase** letter, and at least **one digit**.
+- It does not contain three repeating characters in a row (i.e., `"Baaabb0"` is weak, but `"Baaba0"` is strong).
+
+Given a string `password`, return *the minimum number of steps required to make* `password` *strong. if* `password` *is already strong, return* `0`.
+
+In one step, you can:
+
+- Insert one character to `password`,
+- Delete one character from `password`, or
+- Replace one character of `password` with another character.
+
+**Constraints:**
+- `1 <= password.length <= 50`
+- `password` consists of letters, digits, dot `'.'` or exclamation mark `'!'`.
 
 ## Examples
-| password | Output | Explanation |
-|----------|--------|-------------|
-| "a" | 5 | Need 5 insertions to reach length 6 and include missing types. |
-| "aA1" | 3 | Insert three characters to reach length 6. |
-| "1337C0d3" | 0 | Already strong. |
+
+**Example 1:**
+```
+Input: password = "a"
+Output: 5
+```
+
+**Example 2:**
+```
+Input: password = "aA1"
+Output: 3
+```
+
+**Example 3:**
+```
+Input: password = "1337C0d3"
+Output: 0
+```
 
 ## Approach
 Use a greedy strategy that first handles length constraints, then fixes repeating sequences while satisfying missing character types. The key insight is to prioritize deletions on repeating groups where `len % 3 == 0`, then `len % 3 == 1`, then others, because each deletion reduces a required replacement.

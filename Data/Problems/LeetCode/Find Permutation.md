@@ -21,35 +21,35 @@
 
 ## 1. Problem Description
 
-Given a string `s` of length `n` consisting only of characters `'D'` (decrease) and `'I'` (increase), find any permutation of integers `[1, 2, ..., n+1]` such that for every `i`:
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
-- If `s[i] == 'D'`, then `perm[i] > perm[i+1]`
-- If `s[i] == 'I'`, then `perm[i] < perm[i+1]`
+A permutation `perm` of `n` integers of all the integers in the range `[1, n]` can be represented as a string `s` of length `n - 1` where:
 
-Return the **lexicographically smallest** such permutation.
+- `s[i] == 'I'` if `perm[i] < perm[i + 1]`, and
+- `s[i] == 'D'` if `perm[i] > perm[i + 1]`.
+
+Given a string `s`, reconstruct the lexicographically smallest permutation `perm` and return it.
 
 **Constraints:**
-- `1 <= s.length <= 10⁵`
-- `s[i]` is either `'D'` or `'I'`
+- `1 <= s.length <= 10^5`
+- `s[i]` is either `'I'` or `'D'`.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input:  s = "I"
-  Output: [1, 2]
-  Reason: 1 < 2 satisfies 'I'.
+Input: s = "I"
+Output: [1,2]
+Explanation: [1,2] is the only legal permutation that can represented by s, where the number 1 and 2 construct an increasing relationship.
+```
 
-Example 2:
-  Input:  s = "DI"
-  Output: [2, 1, 3]
-  Reason: 2 > 1 satisfies 'D', 1 < 3 satisfies 'I'.
-
-Example 3:
-  Input:  s = "DDIID"
-  Output: [3, 2, 1, 4, 6, 5]
+**Example 2:**
+```
+Input: s = "DI"
+Output: [2,1,3]
+Explanation: Both [2,1,3] and [3,1,2] can be represented as "DI", but since we want to find the smallest lexicographical permutation, you should return [2,1,3]
 ```
 
 ---

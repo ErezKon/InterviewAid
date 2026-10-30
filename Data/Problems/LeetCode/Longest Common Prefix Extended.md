@@ -8,6 +8,13 @@ See also: [Longest Common Prefix.md](Longest%20Common%20Prefix.md)
 ## Problem Description
 Given an array of strings, return the longest common prefix (LCP) shared by all strings. If there is no common prefix, return an empty string.
 
+> *Note: companion "pattern" file for LeetCode #14 — the official statement and examples are in [Longest Common Prefix.md](Longest%20Common%20Prefix.md) (verified session 4).*
+
+**Constraints (official #14):**
+- `1 <= strs.length <= 200`
+- `0 <= strs[i].length <= 200`
+- `strs[i]` consists of only lowercase English letters if it is non-empty.
+
 ## Examples
 **Example 1:**
 ```

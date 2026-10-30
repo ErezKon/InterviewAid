@@ -8,7 +8,13 @@
 
 ## 1. Problem Description
 
-Delete exactly one element from a binary array. Return the longest subarray consisting solely of 1s.
+You are given a binary array `nums`, you should delete **one** element from it.
+
+Return the size of the **longest non-empty subarray** containing only 1's in the resulting array. Return 0 if there is no such **subarray**.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `nums[i]` is either 0 or 1.
 
 ---
 
@@ -39,11 +45,26 @@ FUNCTION longestSubarray(nums):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,1,0,1,1,1,0,1,1]` | `5` | Delete the zero at index 2; longest block of 1s becomes length 5. |
-| `[0,0,0]` | `0` | After deleting one zero, no 1s remain. |
-| `[1,1,1,1]` | `3` | Must delete one element, so longest remaining block is 3.
+**Example 1:**
+```
+Input: nums = [1,1,0,1]
+Output: 3
+Explanation: After deleting the number in position 2, [1,1,1] contains 3 numbers with value of 1's.
+```
+
+**Example 2:**
+```
+Input: nums = [0,1,1,1,0,1,1,0,1]
+Output: 5
+Explanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1] longest subarray with value of 1's is [1,1,1,1,1].
+```
+
+**Example 3:**
+```
+Input: nums = [1,1,1]
+Output: 2
+Explanation: You must delete one element.
+```
 
 ---
 

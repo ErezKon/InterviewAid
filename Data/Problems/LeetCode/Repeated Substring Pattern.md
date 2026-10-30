@@ -7,14 +7,34 @@
 ---
 
 ## Problem Description
-Given a non‑empty string `s`, determine whether it can be constructed by taking a substring of `s` and appending multiple copies of that substring together.
+
+Given a string `s`, check if it can be constructed by taking a substring of it and appending multiple copies of the substring together.
+
+**Constraints:**
+- `1 <= s.length <= 10^4`
+- `s` consists of lowercase English letters.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"abab"` | `true` | `"ab"` repeated twice forms `"abab"`. |
-| `"aba"` | `false` | No substring can be repeated to form `"aba"`. |
-| `"abcabcabc"` | `true` | `"abc"` repeated three times.
+
+**Example 1:**
+```
+Input: s = "abab"
+Output: true
+Explanation: It is the substring "ab" twice.
+```
+
+**Example 2:**
+```
+Input: s = "aba"
+Output: false
+```
+
+**Example 3:**
+```
+Input: s = "abcabcabcabc"
+Output: true
+Explanation: It is the substring "abc" four times or the substring "abcabc" twice.
+```
 
 ## Approach
 If `s` can be formed by repeating a substring, then `s` will appear in the string `(s + s)` after removing the first and last characters. This works because the concatenated string contains two copies of the repeated pattern, and cutting off the ends eliminates the original `s`.

@@ -18,7 +18,20 @@
 
 ## Problem Description
 
-Given pairs `(x, y)`, pick exactly 3 pairs with **distinct x-values** to maximize the sum of their y-values.
+You are given two integer arrays `x` and `y`, each of length `n`. You must choose three **distinct** indices `i`, `j`, and `k` such that:
+
+- `x[i] != x[j]`
+- `x[j] != x[k]`
+- `x[k] != x[i]`
+
+Your goal is to **maximize** the value of `y[i] + y[j] + y[k]` under these conditions. Return the **maximum** possible sum that can be obtained by choosing such a triplet of indices.
+
+If no such triplet exists, return -1.
+
+**Constraints:**
+- `n == x.length == y.length`
+- `3 <= n <= 10^5`
+- `1 <= x[i], y[i] <= 10^6`
 
 ---
 
@@ -47,16 +60,17 @@ FUNCTION maxYSum(points):
 
 **Example 1:**
 ```
-points = [[1,5],[2,3],[3,4],[1,2]]
-Output: 12
-Explanation: Choose (1,5), (2,3), (3,4). Their x-values are distinct and the sum is 5+3+4 = 12.
+Input: x = [1,2,1,3,2], y = [5,3,4,6,2]
+Output: 14
+Explanation: - Choose i = 0 (x[i] = 1, y[i] = 5), j = 1 (x[j] = 2, y[j] = 3), k = 3 (x[k] = 3, y[k] = 6).
+- All three values chosen from x are distinct. 5 + 3 + 6 = 14 is the maximum we can obtain. Hence, the output is 14.
 ```
 
 **Example 2:**
 ```
-points = [[1,10],[1,8],[2,7],[3,6]]
-Output: 23
-Explanation: The best y for x=1 is 10. Pick (1,10), (2,7), (3,6) → sum = 23.
+Input: x = [1,2,1,2], y = [4,5,6,7]
+Output: -1
+Explanation: - There are only two distinct values in x. Hence, the output is -1.
 ```
 
 ---

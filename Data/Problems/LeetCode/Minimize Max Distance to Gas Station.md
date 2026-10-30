@@ -1,6 +1,7 @@
 # 774. Minimize Max Distance to Gas Station
 
 **Difficulty:** 🔴 Hard
+**LeetCode:** [https://leetcode.com/problems/minimize-max-distance-to-gas-station](https://leetcode.com/problems/minimize-max-distance-to-gas-station)
 **Companies:** Amazon, Google
 ---
 
@@ -19,29 +20,37 @@
 
 ## Problem Description
 
-Given existing gas stations at positions along a highway and `k` new stations to add, minimize the **maximum distance** between any two adjacent stations.
+You are given an integer array `stations` that represents the positions of the gas stations on the **x-axis**. You are also given an integer `k`.
+
+You should add `k` new gas stations. You can add the stations anywhere on the **x-axis**, and not necessarily on an integer position.
+
+Let `penalty()` be the maximum distance between **adjacent** gas stations after adding the `k` new stations.
+
+Return *the smallest possible value of* `penalty()`. Answers within `10⁻⁶` of the actual answer will be accepted.
 
 **Constraints:**
-- `2 ≤ stations.length ≤ 10⁵`
-- `0 ≤ k ≤ 10⁸`
+- `10 ≤ stations.length ≤ 2000`
+- `0 ≤ stations[i] ≤ 10⁸`
+- `stations` is sorted in a **strictly increasing** order.
+- `1 ≤ k ≤ 10⁶`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-stations = [0, 10, 20, 30, 40, 50]
-k = 1
+Example 1:
+  Input: stations = [1,2,3,4,5,6,7,8,9,10], k = 9
+  Output: 0.50000
+  Explanation: Adding one station in the middle of each of the 9 unit gaps yields a maximum distance of 0.5.
 ```
-Placing a new station at position `25` reduces the largest gap from `10` to `5`.
 
-**Example 2:**
 ```
-stations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-k = 9
+Example 2:
+  Input: stations = [23,24,36,39,46,56,57,65,84,98], k = 1
+  Output: 14.00000
+  Explanation: The largest gap is 84 - 65 = 19; splitting it leaves the gap 98 - 84 = 14 as the maximum.
 ```
-Adding one station in each unit interval yields a maximum distance of `0.5`.
 
 ---
 

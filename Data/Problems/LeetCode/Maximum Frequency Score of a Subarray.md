@@ -8,7 +8,21 @@
 
 ## Problem Description
 
-Given an integer array `nums` and an integer `k`, find the contiguous subarray of length `k` that maximizes the **frequency score**, defined as the sum of each distinct value raised to the power of its frequency within the subarray.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an integer array `nums` and a **positive** integer `k`.
+
+The **frequency score** of an array is the sum of the **distinct** values in the array raised to the power of their **frequencies**, taking the sum **modulo** `10^9 + 7`.
+
+- For example, the frequency score of the array `[5,4,5,7,4,4]` is `(4^3 + 5^2 + 7^1) modulo (10^9 + 7) = 96`.
+
+Return *the **maximum** frequency score of a **subarray** of size *`k`* in *`nums`. You should maximize the value under the modulo and not the actual value.
+
+A **subarray** is a contiguous part of an array.
+
+**Constraints:**
+- `1 <= k <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^6`
 
 ---
 
@@ -16,16 +30,16 @@ Given an integer array `nums` and an integer `k`, find the contiguous subarray o
 
 **Example 1:**
 ```
-Input: nums = [1,2,2,3,3,3], k = 3
-Output: 27
-Explanation: Subarray [3,3,3] has frequencies {3:3}. Score = 3^3 = 27, which is maximal.
+Input: nums = [1,1,1,2,1,2], k = 3
+Output: 5
+Explanation: The subarray [2,1,2] has a frequency score equal to 5. It can be shown that it is the maximum frequency score we can have.
 ```
 
 **Example 2:**
 ```
-Input: nums = [2,2,2,2], k = 2
-Output: 4
-Explanation: Any length‑2 subarray has frequencies {2:2}. Score = 2^2 = 4.
+Input: nums = [1,1,1,1,1,1], k = 4
+Output: 1
+Explanation: All the subarrays of length 4 have a frequency score equal to 1.
 ```
 
 ---

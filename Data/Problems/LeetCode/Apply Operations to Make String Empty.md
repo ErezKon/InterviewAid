@@ -8,7 +8,23 @@
 
 ## 1. Problem Description
 
-Given a string `s`, repeatedly remove one occurrence of every character that appears in `s` (in alphabetical order). Return the string just before it becomes empty — i.e., the last non-empty state.
+You are given a string `s`.
+
+Consider performing the following operation until `s` becomes **empty**:
+
+- For **every** alphabet character from `'a'` to `'z'`, remove the **first** occurrence of that character in `s` (if it exists).
+
+For example, let initially `s = "aabcbbca"`. We do the following operations:
+
+- Remove the underlined characters `s = "aabcbbca"` (the first `a`, `b`, and `c`). The resulting string is `s = "abbca"`.
+- Remove the underlined characters `s = "abbca"` (the first `a`, `b`, and `c`). The resulting string is `s = "ba"`.
+- Remove the underlined characters `s = "ba"`. The resulting string is `s = ""`.
+
+Return *the value of the string* `s` *right **before** applying the **last** operation*. In the example above, answer is `"ba"`.
+
+**Constraints:**
+- `1 ≤ s.length ≤ 5 × 10⁵`
+- `s` consists only of lowercase English letters.
 
 ---
 
@@ -52,24 +68,18 @@ FUNCTION lastNonEmptyString(s):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s = "abac"
-Output: "ac"
-Explanation:
-- Frequencies: a→2, b→1, c→1. Max frequency = 2 (character 'a').
-- Last occurrence of 'a' is at index 2.
-- The last non‑empty string consists of 'a' (at index 2) and 'c' (last remaining character).
-```
+Example 1:
+  Input: s = "aabcbbca"
+  Output: "ba"
+  Explanation: Explained in the statement.
 
-**Example 2:**
-```
-Input: s = "zzxy"
-Output: "z"
-Explanation:
-- Frequencies: z→2, x→1, y→1. Max frequency = 2 (character 'z').
-- Last occurrence of 'z' is at index 1.
-- After removals, only 'z' remains just before the string becomes empty.
+Example 2:
+  Input: s = "abcd"
+  Output: "abcd"
+  Explanation: We do the following operation:
+  - Remove the underlined characters s = "abcd". The resulting string is s = "".
+  The string just before the last operation is "abcd".
 ```
 
 ---

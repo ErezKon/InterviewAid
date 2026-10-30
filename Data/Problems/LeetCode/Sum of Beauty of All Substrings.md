@@ -7,18 +7,31 @@
 ---
 
 ## Problem Description
-Given a lowercase string `s`, the *beauty* of a substring is defined as the difference between the maximum and minimum frequencies of any character in that substring. Compute the sum of beauties for all possible substrings of `s`.
+
+The **beauty** of a string is the difference in frequencies between the most frequent and least frequent characters.
+
+- For example, the beauty of `"abaacc"` is `3 - 1 = 2`.
+
+Given a string `s`, return *the sum of **beauty** of all of its substrings.*
+
+**Constraints:**
+- `1 <= s.length <= 500`
+- `s` consists of only lowercase English letters.
 
 ## Examples
+
 **Example 1:**
-Input: `s = "aabcb"`
-Output: `5`
-Explanation: Substrings and beauties: "a"(0), "aa"(0), "aab"(1), "aabc"(1), "aabcb"(2), … total = 5.
+```
+Input: s = "aabcb"
+Output: 5
+Explanation: The substrings with non-zero beauty are ["aab","aabc","aabcb","abcb","bcb"], each with beauty equal to 1.
+```
 
 **Example 2:**
-Input: `s = "abc"`
-Output: `0`
-Explanation: All substrings have each character occurring once, so max‑min = 0.
+```
+Input: s = "aabcbaa"
+Output: 17
+```
 
 ## Approach
 Iterate over each start index `i`. Maintain a frequency array of size 26 while extending the end index `j`. After each extension, compute `maxFreq` and `minFreq` among characters with non‑zero count and add `maxFreq - minFreq` to the answer.

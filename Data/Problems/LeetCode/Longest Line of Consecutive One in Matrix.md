@@ -8,7 +8,18 @@
 
 ## 1. Problem Description
 
-Find the longest line of consecutive 1s in a binary matrix (horizontal, vertical, diagonal, or anti-diagonal).
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an `m x n` binary matrix `mat`, return *the length of the longest line of consecutive one in the matrix*.
+
+The line could be horizontal, vertical, diagonal, or anti-diagonal.
+
+**Constraints:**
+- `m == mat.length`
+- `n == mat[i].length`
+- `1 <= m, n <= 10^4`
+- `1 <= m * n <= 10^4`
+- `mat[i][j]` is either `0` or `1`.
 
 ---
 
@@ -40,20 +51,14 @@ FUNCTION longestLine(mat):
 
 **Example 1:**
 ```
-Input: mat = [[0,1,1,0],
-              [0,1,1,0],
-              [0,1,1,0]]
+Input: mat = [[0,1,1,0],[0,1,1,0],[0,0,0,1]]
 Output: 3
-Explanation: The longest line of 1s is vertical in the second column.
 ```
 
 **Example 2:**
 ```
-Input: mat = [[1,1,0,0],
-              [0,1,1,0],
-              [0,0,1,1]]
-Output: 3
-Explanation: The longest line is the diagonal from (0,0) to (2,2).
+Input: mat = [[1,1,1,1],[0,1,1,0],[0,0,0,1]]
+Output: 4
 ```
 
 ---

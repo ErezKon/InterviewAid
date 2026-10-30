@@ -8,21 +8,54 @@
 
 ## Problem Description
 
-Given an `m × n` matrix, pick exactly one element from each row. Minimize `|sum - target|`.
+You are given an `m x n` integer matrix `mat` and an integer `target`.
+
+Choose one integer from **each row** in the matrix such that the **absolute difference** between `target` and the **sum** of the chosen elements is **minimized**.
+
+Return *the **minimum absolute difference***.
+
+The **absolute difference** between two numbers `a` and `b` is the absolute value of `a - b`.
 
 **Constraints:**
+- `m == mat.length`
+- `n == mat[i].length`
 - `1 ≤ m, n ≤ 70`
-- `1 ≤ matrix[i][j] ≤ 70`
+- `1 ≤ mat[i][j] ≤ 70`
+- `1 ≤ target ≤ 800`
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `matrix = [[1,2,3],[4,5,6]], target = 7` | `0` | Choose 3 from first row and 4 from second row, sum = 7, difference = 0. |
-| `matrix = [[1,2],[3,4]], target = 10` | `4` | Best sum is 6 (2+4), difference = |6-10| = 4. |
-| `matrix = [[5]], target = 3` | `2` | Only one choice, sum = 5, difference = 2.
+```
+Example 1:
+  Input: mat = [[1,2,3],[4,5,6],[7,8,9]], target = 13
+  Output: 0
+  Explanation: One possible choice is to:
+  - Choose 1 from the first row.
+  - Choose 5 from the second row.
+  - Choose 7 from the third row.
+  The sum of the chosen elements is 13, which equals the target, so the absolute difference is 0.
+```
+
+```
+Example 2:
+  Input: mat = [[1],[2],[3]], target = 100
+  Output: 94
+  Explanation: The best possible choice is to:
+  - Choose 1 from the first row.
+  - Choose 2 from the second row.
+  - Choose 3 from the third row.
+  The sum of the chosen elements is 6, and the absolute difference is 94.
+```
+
+```
+Example 3:
+  Input: mat = [[1,2,9,8,7]], target = 6
+  Output: 1
+  Explanation: The best choice is to choose 7 from the first row.
+  The absolute difference is 1.
+```
 
 ---
 

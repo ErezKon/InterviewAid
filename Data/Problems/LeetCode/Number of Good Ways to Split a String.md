@@ -21,7 +21,15 @@
 
 ## 1. Problem Description
 
-Split string `s` into left and right non-empty parts. A split is "good" if both parts have the same number of **distinct** characters. Count good splits.
+You are given a string `s`.
+
+A split is called **good** if you can split `s` into two non-empty strings `s_left` and `s_right` where their concatenation is equal to `s` (i.e., `s_left + s_right = s`) and the number of distinct letters in `s_left` and `s_right` is the same.
+
+Return *the number of **good splits** you can make in `s`*.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of only lowercase English letters.
 
 ---
 
@@ -58,11 +66,24 @@ FUNCTION numSplits(s):
 
 ## 4. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aacaba"` | `2` | Splits after index 1 (`"a"|"acaba"`) and after index 3 (`"aac"|"aba"`) have equal distinct counts. |
-| `"abcd"` | `1` | Only split after index 1 (`"a"|"bcd"`) yields 1 distinct on each side. |
-| `"aaaa"` | `3` | Every split results in 1 distinct on both sides.
+**Example 1:**
+```
+Input: s = "aacaba"
+Output: 2
+Explanation: There are 5 ways to split "aacaba" and 2 of them are good.
+("a", "acaba") Left string and right string contains 1 and 3 different letters respectively.
+("aa", "caba") Left string and right string contains 1 and 3 different letters respectively.
+("aac", "aba") Left string and right string contains 2 and 2 different letters respectively (good split).
+("aaca", "ba") Left string and right string contains 2 and 2 different letters respectively (good split).
+("aacab", "a") Left string and right string contains 3 and 1 different letters respectively.
+```
+
+**Example 2:**
+```
+Input: s = "abcd"
+Output: 1
+Explanation: Split the string as follows ("ab", "cd").
+```
 
 ---
 

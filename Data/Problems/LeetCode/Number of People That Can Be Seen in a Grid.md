@@ -21,7 +21,21 @@
 
 ## 1. Problem Description
 
-Given a grid of heights, for each person count how many people they can see looking right and down (visibility blocked by taller people).
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an `m x n` **0-indexed** 2D array of positive integers `heights` where `heights[i][j]` is the height of the person standing at position `(i, j)`.
+
+A person standing at position `(row_1, col_1)` can see a person standing at position `(row_2, col_2)` if:
+
+- The person at `(row_2, col_2)` is to the right **or** below the person at `(row_1, col_1)`. More formally, this means that either `row_1 == row_2` and `col_1 < col_2` **or** `row_1 < row_2` and `col_1 == col_2`.
+- Everyone in between them is shorter than **both** of them.
+
+Return* an *`m x n`* 2D array of integers *`answer`* where *`answer[i][j]`* is the number of people that the person at position *`(i, j)`* can see.*
+
+**Constraints:**
+- `1 <= heights.length <= 400`
+- `1 <= heights[i].length <= 400`
+- `1 <= heights[i][j] <= 10^5`
 
 ---
 
@@ -73,21 +87,28 @@ FUNCTION seePeople(heights):
 
 ## 4. Examples
 
-**Example 1**
+**Example 1:**
 ```
-Input: heights = [[3,1,4],[2,5,1]]
-Output: [[2,1,1],[1,2,0]]
-Explanation:
-- Cell (0,0) sees (0,1) to the right and (1,0) down → 2 people.
-- Cell (0,1) sees (0,2) to the right only → 1 person.
-- Cell (1,1) sees (1,2) to the right and (0,1) up (treated as down from its perspective) → 2 people.
+Input: heights = [[3,1,4,2,5]]
+Output: [[2,1,2,1,0]]
+Explanation: - The person at (0, 0) can see the people at (0, 1) and (0, 2).
+  Note that he cannot see the person at (0, 4) because the person at (0, 2) is taller than him.
+- The person at (0, 1) can see the person at (0, 2).
+- The person at (0, 2) can see the people at (0, 3) and (0, 4).
+- The person at (0, 3) can see the person at (0, 4).
+- The person at (0, 4) cannot see anybody.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: heights = [[1,2,3],[4,5,6]]
-Output: [[2,2,1],[2,2,1]]
-Explanation: Each interior cell can see the next taller person in both directions.
+Input: heights = [[5,1],[3,1],[4,1]]
+Output: [[3,1],[2,1],[1,0]]
+Explanation: - The person at (0, 0) can see the people at (0, 1), (1, 0) and (2, 0).
+- The person at (0, 1) can see the person at (1, 1).
+- The person at (1, 0) can see the people at (1, 1) and (2, 0).
+- The person at (1, 1) can see the person at (2, 1).
+- The person at (2, 0) can see the person at (2, 1).
+- The person at (2, 1) cannot see anybody.
 ```
 
 ---

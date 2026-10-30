@@ -8,17 +8,34 @@
 
 ## Problem Description
 
-Write a function that returns a new function which always returns `"Hello World"`, regardless of arguments.
+Write a function `createHelloWorld`. It should return a new function that always returns `"Hello World"`.
+
+**Constraints:**
+- `0 <= args.length <= 10`
 
 ---
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| N/A   | `function(){ return "Hello World"; }` |
+```
+Example 1:
+  Input: args = []
+  Output: "Hello World"
+  Explanation:
+  const f = createHelloWorld();
+  f(); // "Hello World"
+  The function returned by createHelloWorld should always return "Hello World".
+```
 
-*Explanation*: Calling the returned function yields the string `"Hello World"`.
+```
+Example 2:
+  Input: args = [{},null,42]
+  Output: "Hello World"
+  Explanation:
+  const f = createHelloWorld();
+  f({}, null, 42); // "Hello World"
+  Any arguments could be passed to the function but it should still always return "Hello World".
+```
 
 ---
 

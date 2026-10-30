@@ -7,11 +7,30 @@
 ---
 
 ## Problem Description
-You are given an array `nums` of `n` balloons, where each balloon `i` has a number `nums[i]`. When you burst balloon `i`, you earn `nums[left] * nums[i] * nums[right]` coins, where `left` and `right` are the nearest unburst balloons to the left and right of `i` (treat out‑of‑bounds as `1`). After bursting, the balloon disappears and its neighbors become adjacent. Return the maximum total coins you can collect by bursting all balloons in an optimal order.
+You are given `n` balloons, indexed from `0` to `n - 1`. Each balloon is painted with a number on it represented by an array `nums`. You are asked to burst all the balloons.
+
+If you burst the `iᵗʰ` balloon, you will get `nums[i - 1] * nums[i] * nums[i + 1]` coins. If `i - 1` or `i + 1` goes out of bounds of the array, then treat it as if there is a balloon with a `1` painted on it.
+
+Return *the maximum coins you can collect by bursting the balloons wisely*.
+
+**Constraints:**
+- `n == nums.length`
+- `1 ≤ n ≤ 300`
+- `0 ≤ nums[i] ≤ 100`
 
 ## Examples
-- Input: `nums = [3,1,5,8]` → Output: `167`. Burst order `1,5,3,8` yields maximum coins.
-- Input: `nums = [1,5]` → Output: `10`. Burst `1` then `5` (or vice‑versa) gives `1*1*5 + 1*5*1 = 10`.
+```
+Example 1:
+  Input: nums = [3,1,5,8]
+  Output: 167
+  Explanation:
+  nums = [3,1,5,8] --> [3,5,8] --> [3,8] --> [8] --> []
+  coins =  3*1*5    +   3*5*8   +  1*3*8  + 1*8*1 = 167
+
+Example 2:
+  Input: nums = [1,5]
+  Output: 10
+```
 
 ## Approach
 **Interval Dynamic Programming** – Consider which balloon is burst **last** in a sub‑interval `(left, right)`. If balloon `k` is the last to burst in this interval, the coins gained are `nums[left] * nums[k] * nums[right]` plus the optimal results of the two sub‑intervals `(left, k)` and `(k, right)`.

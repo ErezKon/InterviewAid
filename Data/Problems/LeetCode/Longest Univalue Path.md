@@ -8,7 +8,14 @@
 
 ## 1. Problem Description
 
-Find the longest path in a binary tree where all nodes have the same value. Path length = number of edges.
+Given the `root` of a binary tree, return *the length of the longest path, where each node in the path has the same value*. This path may or may not pass through the root.
+
+**The length of the path** between two nodes is represented by the number of edges between them.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[0, 10^4]`.
+- `-1000 <= Node.val <= 1000`
+- The depth of the tree will not exceed `1000`.
 
 ---
 
@@ -44,14 +51,14 @@ FUNCTION longestUnivaluePath(root):
 ```
 Input: root = [5,4,5,1,1,null,5]
 Output: 2
-Explanation: The longest univalue path is the two edges connecting the three nodes with value 5.
+Explanation: The shown image shows that the longest path of the same value (i.e. 5).
 ```
 
 **Example 2:**
 ```
 Input: root = [1,4,5,4,4,null,5]
 Output: 2
-Explanation: The longest path with the same value (4) has length 2.
+Explanation: The shown image shows that the longest path of the same value (i.e. 4).
 ```
 
 ---

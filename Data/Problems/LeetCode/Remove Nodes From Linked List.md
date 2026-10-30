@@ -7,22 +7,35 @@
 ---
 
 ## Problem Description
-Given the head of a singly linked list, remove every node that has a node with a strictly greater value to its right. Return the head of the modified list. The relative order of the remaining nodes must be preserved.
+
+You are given the `head` of a linked list.
+
+Remove every node which has a node with a greater value anywhere to the right side of it.
+
+Return *the* `head` *of the modified linked list.*
+
+**Constraints:**
+- The number of the nodes in the given list is in the range `[1, 10^5]`.
+- `1 <= Node.val <= 10^5`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: head = [5,2,13,3,8]
 Output: [13,8]
+Explanation: The nodes that should be removed are 5, 2 and 3.
+- Node 13 is to the right of node 5.
+- Node 13 is to the right of node 2.
+- Node 8 is to the right of node 3.
 ```
-**Explanation:** Nodes 5,2,3 are removed because a greater node exists to their right.
 
 **Example 2:**
 ```
 Input: head = [1,1,1,1]
 Output: [1,1,1,1]
+Explanation: Every node has value 1, so no nodes are removed.
 ```
-**Explanation:** No node has a greater value to its right, so the list stays unchanged.
 
 ## Approach
 Traverse the list from right to left using a monotonic decreasing stack (store nodes). While iterating, pop nodes from the stack that have smaller values than the current node, because they will be removed. Push the current node onto the stack. After processing all nodes, reconstruct the list by linking the nodes in stack order (which is from left to right after reversal).

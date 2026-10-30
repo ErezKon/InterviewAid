@@ -7,17 +7,34 @@
 ---
 
 ## Problem Description
-Given a string `s`, determine whether there exists a non‑empty substring of `s` that also appears in the reverse of `s`. Return `true` if such a substring exists, otherwise `false`.
+Given a **string** `s`, find any substring of length `2` which is also present in the reverse of `s`.
+
+Return `true` *if such a substring exists, and* `false` *otherwise.*
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s` consists only of lowercase English letters.
 
 ## Examples
-```text
-Input: s = "abc"
-Output: true
-Explanation: Substring "a" appears in "cba" as "a".
+```
+Example 1:
+  Input: s = "leetcode"
+  Output: true
+  Explanation: Substring "ee" is of length 2 which is also present in reverse(s) == "edocteel".
+```
 
-Input: s = "ab"
-Output: false
-Explanation: No substring of "ab" appears in "ba".
+```
+Example 2:
+  Input: s = "abcba"
+  Output: true
+  Explanation: All of the substrings of length 2 "ab", "bc", "cb", "ba" are also present in reverse(s) == "abcba".
+```
+
+```
+Example 3:
+  Input: s = "abcd"
+  Output: false
+  Explanation: There is no substring of length 2 in s, which is also present in the reverse of s.
 ```
 
 ## Approach

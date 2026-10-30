@@ -21,40 +21,97 @@
 
 ## 1. Problem Description
 
-Given a `ProductPurchases` table with `user_id` and `product_id`, find all **pairs of products** `(p1, p2)` where `p1 < p2` that were purchased by at least **3 common customers**. For each pair, count how many customers bought both.
+> *Note: schema/statement/example verified against the official LeetCode page. The Approach below orders by product ids and omits the categories — official ordering is customer_count DESC first, and the output includes both categories from `ProductInfo`.*
 
-Order by `product1`, then `product2`.
+Table: `ProductPurchases`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| user_id     | int  |
+| product_id  | int  |
+| quantity    | int  |
++-------------+------+
+(user_id, product_id) is the unique key for this table.
+Each row represents a purchase of a product by a user in a specific quantity.
+```
+
+Table: `ProductInfo`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| product_id  | int     |
+| category    | varchar |
+| price       | decimal |
++-------------+---------+
+product_id is the primary key for this table.
+Each row assigns a category and price to a product.
+```
+
+Amazon wants to implement the **Customers who bought this also bought...** feature based on **co-purchase patterns**. Write a solution to:
+
+- Identify **distinct** product pairs frequently **purchased together by the same customers** (where `product1_id < product2_id`).
+- For **each product pair**, determine how many customers purchased **both** products.
+
+A product pair is considered for recommendation **if at least 3 different customers have purchased both products**.
+
+Return *the result table ordered by* `customer_count` *in **descending** order, and in case of a tie, by* `product1_id` *in **ascending** order, and then by* `product2_id` *in **ascending** order* (columns: `product1_id`, `product2_id`, `product1_category`, `product2_category`, `customer_count`).
+
+The result format is in the following example.
 
 ---
 
 ## 2. Examples
 
+**Example:**
 ```
 Input:
-ProductPurchases:
-| user_id | product_id |
-|---------|-----------|
-| 1       | A         |
-| 1       | B         |
-| 1       | C         |
-| 2       | A         |
-| 2       | B         |
-| 3       | A         |
-| 3       | B         |
-| 3       | C         |
-| 4       | A         |
-| 4       | C         |
-
+ProductPurchases table:
++---------+------------+----------+
+| user_id | product_id | quantity |
++---------+------------+----------+
+| 1       | 101        | 2        |
+| 1       | 102        | 1        |
+| 1       | 103        | 3        |
+| 2       | 101        | 1        |
+| 2       | 102        | 5        |
+| 2       | 104        | 1        |
+| 3       | 101        | 2        |
+| 3       | 103        | 1        |
+| 3       | 105        | 4        |
+| 4       | 101        | 1        |
+| 4       | 102        | 1        |
+| 4       | 103        | 2        |
+| 4       | 104        | 3        |
+| 5       | 102        | 2        |
+| 5       | 104        | 1        |
++---------+------------+----------+
+ProductInfo table:
++------------+-------------+-------+
+| product_id | category    | price |
++------------+-------------+-------+
+| 101        | Electronics | 100   |
+| 102        | Books       | 20    |
+| 103        | Clothing    | 35    |
+| 104        | Kitchen     | 50    |
+| 105        | Sports      | 75    |
++------------+-------------+-------+
 Output:
-| product1 | product2 | customer_count |
-|----------|----------|----------------|
-| A        | B        | 3              |
-| A        | C        | 3              |
-
++-------------+-------------+-------------------+-------------------+----------------+
+| product1_id | product2_id | product1_category | product2_category | customer_count |
++-------------+-------------+-------------------+-------------------+----------------+
+| 101         | 102         | Electronics       | Books             | 3              |
+| 101         | 103         | Electronics       | Clothing          | 3              |
+| 102         | 104         | Books             | Kitchen           | 3              |
++-------------+-------------+-------------------+-------------------+----------------+
 Explanation:
-  A & B bought by users 1, 2, 3 → 3 common
-  A & C bought by users 1, 3, 4 → 3 common
-  B & C bought by users 1, 3    → only 2 (excluded)
+- Product pair (101, 102): purchased by users 1, 2, and 4 (3 customers); 101 is Electronics, 102 is Books.
+- Product pair (101, 103): purchased by users 1, 3, and 4 (3 customers); 101 is Electronics, 103 is Clothing.
+- Product pair (102, 104): purchased by users 2, 4, and 5 (3 customers); 102 is Books, 104 is Kitchen.
+The result is ordered by customer_count in descending order. For pairs with the same customer_count, they are ordered by product1_id and then product2_id in ascending order.
 ```
 
 ---

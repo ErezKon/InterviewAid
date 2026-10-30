@@ -8,18 +8,39 @@
 
 ## Problem Description
 
-Given two strings `s` and `t`, count pairs of substrings `(s[i..i+len], t[j..j+len])` of the same length that differ in **exactly one** position.
+Given two strings `s` and `t`, find the number of ways you can choose a non-empty substring of `s` and replace a **single character** by a different character such that the resulting substring is a substring of `t`. In other words, find the number of substrings in `s` that differ from some substring in `t` by **exactly** one character.
+
+For example, the substrings `"compute"` in `"computer"` and `"computa"` in `"computation"` only differ by the `'e'`/`'a'`, so this is a valid way.
+
+Return *the number of substrings that satisfy the condition above.*
+
+A **substring** is a contiguous sequence of characters within a string.
+
+**Constraints:**
+- `1 <= s.length, t.length <= 100`
+- `s` and `t` consist of lowercase English letters only.
 
 ---
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `s = "aba", t = "baba"` | `6` |
-| `s = "abcd", t = "abcd"` | `0` |
+```
+Example 1:
+  Input: s = "aba", t = "baba"
+  Output: 6
+  Explanation: The pairs of substrings from s and t that differ by exactly 1 character are:
+  ("a" at s[0], "b" at t[0]), ("a" at s[0], "b" at t[2]),
+  ("a" at s[2], "b" at t[0]), ("a" at s[2], "b" at t[2]),
+  ("b" at s[1], "a" at t[1]), ("b" at s[1], "a" at t[3]).
+```
 
-*Explanation*: For the first case, the valid pairs are `(s[0..0], t[0..0]) = ("a","b")`, `(s[0..1], t[0..1]) = ("ab","ba")`, `(s[1..1], t[1..1]) = ("b","a")`, `(s[1..2], t[1..2]) = ("ba","ab")`, `(s[2..2], t[2..2]) = ("a","b")`, and `(s[0..2], t[0..2]) = ("aba","bab")`.
+```
+Example 2:
+  Input: s = "ab", t = "bb"
+  Output: 3
+  Explanation: The pairs of substrings from s and t that differ by 1 character are:
+  ("a" at s[0], "b" at t[0]), ("a" at s[0], "b" at t[1]), ("ab", "bb").
+```
 
 ---
 

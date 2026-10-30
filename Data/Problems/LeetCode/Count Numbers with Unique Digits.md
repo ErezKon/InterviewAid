@@ -20,7 +20,7 @@
 
 ## Problem Description
 
-Given a non-negative integer `n`, count all numbers `x` where `0 <= x < 10^n` such that every digit in `x` is unique (no repeated digits).
+Given an integer `n`, return the count of all numbers with unique digits, `x`, where `0 <= x < 10^n`.
 
 **Constraints:**
 - `0 <= n <= 8`
@@ -30,19 +30,17 @@ Given a non-negative integer `n`, count all numbers `x` where `0 <= x < 10^n` su
 ## Examples
 
 **Example 1:**
-- **Input:** `n = 2`
-- **Output:** `91`
-- **Explanation:** Numbers from 0 to 99 with all unique digits. Exclude 11, 22, 33, 44, 55, 66, 77, 88, 99 → 100 - 9 = 91.
+```
+Input: n = 2
+Output: 91
+Explanation: The answer should be the total numbers in the range of 0 ≤ x < 100, excluding 11,22,33,44,55,66,77,88,99
+```
 
 **Example 2:**
-- **Input:** `n = 0`
-- **Output:** `1`
-- **Explanation:** Only `0` is in range `[0, 1)`.
-
-**Example 3:**
-- **Input:** `n = 3`
-- **Output:** `739`
-- **Explanation:** 1-digit: 10, 2-digit unique: 81, 3-digit unique: 648 → 10 + 81 + 648 = 739.
+```
+Input: n = 0
+Output: 1
+```
 
 ---
 

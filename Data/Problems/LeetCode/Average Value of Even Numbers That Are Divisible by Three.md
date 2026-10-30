@@ -8,32 +8,29 @@
 
 ## 1. Problem Description
 
-Given an integer array `nums`, compute the average of all elements that are both even and divisible by three (i.e., divisible by six). If no such element exists, return 0.
+Given an integer array `nums` of **positive** integers, return *the average value of all even integers that are divisible by* `3`*.*
+
+Note that the **average** of `n` elements is the **sum** of the `n` elements divided by `n` and **rounded down** to the nearest integer.
+
+**Constraints:**
+- `1 ≤ nums.length ≤ 1000`
+- `1 ≤ nums[i] ≤ 1000`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-nums = [1,2,3,4,5,6]
-output = 6
-```
-*Explanation:* Only `6` satisfies the condition, so the average is `6`.
+Example 1:
+  Input: nums = [1,3,6,10,12,15]
+  Output: 9
+  Explanation: 6 and 12 are even numbers that are divisible by 3. (6 + 12) / 2 = 9.
 
-**Example 2:**
+Example 2:
+  Input: nums = [1,2,4,7,10]
+  Output: 0
+  Explanation: There is no single number that satisfies the requirement, so return 0.
 ```
-nums = [12,18,24]
-output = 18
-```
-*Explanation:* All numbers are divisible by six; average = (12+18+24)/3 = 18.
-
-**Example 3:**
-```
-nums = [1,3,5]
-output = 0
-```
-*Explanation:* No qualifying numbers, return `0`.
 
 ---
 

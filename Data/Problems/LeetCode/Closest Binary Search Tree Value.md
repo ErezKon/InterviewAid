@@ -6,11 +6,25 @@
 ---
 
 ## Problem Description
-Given the root of a Binary Search Tree (BST) and a target value (real number), find the value in the BST that is numerically closest to the target.
+Given the `root` of a binary search tree and a `target` value, return *the value in the BST that is closest to the* `target`. If there are multiple answers, print the smallest.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `0 <= Node.val <= 10^9`
+- `-10^9 <= target <= 10^9`
 
 ## Examples
-- **Example 1:** `root = [4,2,5,1,3]`, `target = 3.714286` → Output: `4`.
-- **Example 2:** `root = [1]`, `target = 2.5` → Output: `1`.
+```
+Example 1:
+  Input: root = [4,2,5,1,3], target = 3.714286
+  Output: 4
+```
+
+```
+Example 2:
+  Input: root = [1], target = 4.428571
+  Output: 1
+```
 
 ## Approach
 Traverse the BST from the root, keeping track of the closest value seen so far. At each node, move left if the target is smaller than the node value, otherwise move right. This leverages the BST ordering to prune the search.

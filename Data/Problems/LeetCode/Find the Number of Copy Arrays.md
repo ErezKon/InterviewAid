@@ -18,10 +18,21 @@
 
 ## 1. Problem Description
 
-Given an original array and bounds `[lo, hi]` for each element of a "copy array" where consecutive differences match the original, count how many valid copy arrays exist.
+You are given an array `original` of length `n` and a 2D array `bounds` of length `n x 2`, where `bounds[i] = [u_i, v_i]`.
+
+You need to find the number of **possible** arrays `copy` of length `n` such that:
+
+- `(copy[i] - copy[i - 1]) == (original[i] - original[i - 1])` for `1 <= i <= n - 1`.
+- `u_i <= copy[i] <= v_i` for `0 <= i <= n - 1`.
+
+Return the number of such arrays.
 
 **Constraints:**
-- `1 <= n <= 10⁵`
+- `2 <= n == original.length <= 10^5`
+- `1 <= original[i] <= 10^9`
+- `bounds.length == n`
+- `bounds[i].length == 2`
+- `1 <= bounds[i][0] <= bounds[i][1] <= 10^9`
 
 ---
 
@@ -53,12 +64,32 @@ FUNCTION countCopyArrays(original, bounds):
 
 ## Examples
 
-| Example | original | bounds | Output |
-|---------|----------|--------|--------|
-| 1 | [2,3,5] | [[1,5],[2,6],[3,7]] | 3 |
-| 2 | [1,1,1] | [[0,2],[0,2],[0,2]] | 3 |
+**Example 1:**
+```
+Input: original = [1,2,3,4], bounds = [[1,2],[2,3],[3,4],[4,5]]
+Output: 2
+Explanation: The possible arrays are:
+- [1, 2, 3, 4]
+- [2, 3, 4, 5]
+```
 
-*Explanation*: For the first example, the feasible range for `copy[0]` after propagation is `[1,3]`, giving three possible copy arrays.
+**Example 2:**
+```
+Input: original = [1,2,3,4], bounds = [[1,10],[2,9],[3,8],[4,7]]
+Output: 4
+Explanation: The possible arrays are:
+- [1, 2, 3, 4]
+- [2, 3, 4, 5]
+- [3, 4, 5, 6]
+- [4, 5, 6, 7]
+```
+
+**Example 3:**
+```
+Input: original = [1,2,1,2], bounds = [[1,1],[2,3],[3,3],[2,3]]
+Output: 0
+Explanation: No array is possible.
+```
 
 ---
 

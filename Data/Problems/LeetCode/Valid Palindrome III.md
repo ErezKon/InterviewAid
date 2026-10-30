@@ -7,20 +7,31 @@
 ---
 
 ## Problem Description
-Given a string `s` and an integer `k`, determine whether it is possible to make `s` a palindrome by removing at most `k` characters. The order of remaining characters must stay the same.
+
+> *Note: premium problem (statement checked against the official text with verify.py).*
+
+Given a string `s` and an integer `k`, return `true` if `s` is a `k`**-palindrome**.
+
+A string is `k`**-palindrome** if it can be transformed into a palindrome by removing at most `k` characters from it.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s` consists of only lowercase English letters.
+- `1 <= k <= s.length`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
 Input: s = "abcdeca", k = 2
 Output: true
-Explanation: Remove 'b' and 'e' to get "acdca", which is a palindrome.
+Explanation: Remove 'b' and 'e' characters.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: s = "abcd", k = 1
-Output: false
-Explanation: At least two deletions are required.
+Input: s = "abbababa", k = 1
+Output: true
 ```
 
 ## Approach

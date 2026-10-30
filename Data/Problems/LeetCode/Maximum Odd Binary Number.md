@@ -1,6 +1,7 @@
 # 2864. Maximum Odd Binary Number
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/maximum-odd-binary-number](https://leetcode.com/problems/maximum-odd-binary-number)
 
 **Companies:** Amazon, Google, Meta
 ---
@@ -18,28 +19,35 @@
 
 ## Problem Description
 
-Given a binary string `s` with at least one `'1'`, rearrange it to form the **maximum odd binary number**. A binary number is odd if its last digit is `'1'`.
+You are given a **binary** string `s` that contains at least one `'1'`.
+
+You have to **rearrange** the bits in such a way that the resulting binary number is the **maximum odd binary number** that can be created from this combination.
+
+Return *a string representing the maximum odd binary number that can be created from the given combination.*
+
+**Note** that the resulting string **can** have leading zeros.
 
 **Constraints:**
 - `1 <= s.length <= 100`
-- `s` consists of `'0'` and `'1'` with at least one `'1'`.
+- `s` consists only of `'0'` and `'1'`.
+- `s` contains at least one `'1'`.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  s = "010"
-Output: "001"
-Explanation: Only one '1', must go last for odd. Result: "001" = 1.
+Example 1:
+  Input: s = "010"
+  Output: "001"
+  Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
 ```
 
-**Example 2:**
 ```
-Input:  s = "0101"
-Output: "1001"
-Explanation: Two 1s: one at front for max value, one at end for odd.
+Example 2:
+  Input: s = "0101"
+  Output: "1001"
+  Explanation: One of the '1's must be in the last position. The maximum number that can be made with the remaining digits is "100". So the answer is "1001".
 ```
 
 ---

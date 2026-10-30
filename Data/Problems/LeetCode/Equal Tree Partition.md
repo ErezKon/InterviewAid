@@ -7,16 +7,25 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, determine if it is possible to remove exactly one edge such that the resulting two subtrees have equal sums of node values. Return `true` if such an edge exists, otherwise `false`.
+Given the `root` of a binary tree, return `true` *if you can partition the tree into two trees with equal sums of values after removing exactly one edge on the original tree*.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `-10^5 <= Node.val <= 10^5`
 
 ## Examples
-```text
-Input: root = [5,10,10,null,2,2,null]
-Output: true
-Explanation: Removing the edge between the root and its left child yields two trees with sums 17 each.
+```
+Example 1:
+  Input: root = [5,10,10,null,null,2,3]
+  Output: true
+  Explanation: Removing the edge between the root and its right child (subtree 10 → 2, 3, sum 15) leaves two trees each with sum 15.
+```
 
-Input: root = [1,2,3,4,5,6]
-Output: false
+```
+Example 2:
+  Input: root = [1,2,10,null,null,2,20]
+  Output: false
+  Explanation: You cannot split the tree into two trees with equal sums after removing exactly one edge on the tree.
 ```
 
 ## Approach

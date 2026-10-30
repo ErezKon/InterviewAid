@@ -1,28 +1,42 @@
 # 2666. Allow One Function Call
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/allow-one-function-call](https://leetcode.com/problems/allow-one-function-call)
 
 **Companies:** Amazon, Google, Yandex
 ---
 
 ## Problem Description
-Implement a higher‑order function `once(fn)` that returns a new function which invokes the original function `fn` at most once. Subsequent calls to the returned function should have no effect and return `undefined`.
+Given a function `fn`, return a new function that is identical to the original function except that it ensures `fn` is called at most once.
+
+- The first time the returned function is called, it should return the same result as `fn`.
+- Every subsequent time it is called, it should return `undefined`.
+
+**Constraints:**
+- `calls` is a valid JSON array
+- `1 <= calls.length <= 10`
+- `1 <= calls[i].length <= 100`
+- `2 <= JSON.stringify(calls).length <= 1000`
 
 ## Examples
-**Example 1:**
 ```
-const add = (a, b) => a + b;
-const onceAdd = once(add);
-onceAdd(2, 3); // returns 5
-onceAdd(4, 5); // returns undefined
+Example 1:
+  Input: fn = (a,b,c) => (a + b + c), calls = [[1,2,3],[2,3,6]]
+  Output: [{"calls":1,"value":6}]
+  Explanation:
+  const onceFn = once(fn);
+  onceFn(1, 2, 3); // 6
+  onceFn(2, 3, 6); // undefined, fn was not called
 ```
-**Example 2:**
 ```
-let count = 0;
-const inc = () => ++count;
-const onceInc = once(inc);
-onceInc(); // returns 1
-onceInc(); // returns undefined
+Example 2:
+  Input: fn = (a,b,c) => (a * b * c), calls = [[5,7,4],[2,3,6],[4,6,8]]
+  Output: [{"calls":1,"value":140}]
+  Explanation:
+  const onceFn = once(fn);
+  onceFn(5, 7, 4); // 140
+  onceFn(2, 3, 6); // undefined, fn was not called
+  onceFn(4, 6, 8); // undefined, fn was not called
 ```
 
 ## Approach

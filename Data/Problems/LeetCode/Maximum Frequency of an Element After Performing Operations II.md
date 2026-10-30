@@ -1,6 +1,7 @@
 # 3347. Maximum Frequency of an Element After Performing Operations II
 
 **Difficulty:** 🔴 Hard
+**LeetCode:** [https://leetcode.com/problems/maximum-frequency-of-an-element-after-performing-operations-ii](https://leetcode.com/problems/maximum-frequency-of-an-element-after-performing-operations-ii)
 **Companies:** Amazon, Bloomberg, Google
 
 ---
@@ -19,19 +20,41 @@
 
 ## Problem Description
 
-Each element in the array can be increased or decreased by at most `k`. Additionally, you may perform at most `numOperations` changes across the entire array. After applying any number of such operations (subject to the limit), determine the maximum possible frequency of any single value.
+You are given an integer array `nums` and two integers `k` and `numOperations`.
+
+You must perform an **operation** `numOperations` times on `nums`, where in each operation you:
+
+- Select an index `i` that was **not** selected in any previous operations.
+- Add an integer in the range `[-k, k]` to `nums[i]`.
+
+Return the **maximum** possible frequency of any element in `nums` after performing the **operations**.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
+- `0 <= k <= 10^9`
+- `0 <= numOperations <= nums.length`
 
 ---
 
 ## Examples
 
-| nums | k | numOperations | Output |
-|------|---|---------------|--------|
-| [1,2,4] | 1 | 2 | 2 |
-| [3,3,3] | 0 | 0 | 3 |
-| [1,5,9] | 3 | 1 | 1 |
+**Example 1:**
+```
+Input: nums = [1,4,5], k = 1, numOperations = 2
+Output: 2
+Explanation: We can achieve a maximum frequency of two by:
+- Adding 0 to nums[1], after which nums becomes [1, 4, 5].
+- Adding -1 to nums[2], after which nums becomes [1, 4, 4].
+```
 
-*Explanation*: In the first example, we can change `1` to `2` (cost 1) and `4` to `3` (cost 1) using two operations, achieving two `2`s. The second example already has all elements equal. In the third example, the allowed range for each element does not overlap enough to create a duplicate within a single operation.
+**Example 2:**
+```
+Input: nums = [5,11,20,20], k = 5, numOperations = 1
+Output: 2
+Explanation: We can achieve a maximum frequency of two by:
+- Adding 0 to nums[1].
+```
 
 ---
 

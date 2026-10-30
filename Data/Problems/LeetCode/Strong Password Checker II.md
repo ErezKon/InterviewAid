@@ -1,22 +1,50 @@
 # 2299. Strong Password Checker II
 
 **Difficulty:** 🟢 Easy
-**LeetCode:** https://leetcode.com/problems/strong-password-checker-ii
+**LeetCode:** [https://leetcode.com/problems/strong-password-checker-ii](https://leetcode.com/problems/strong-password-checker-ii)
 **Companies:** Microsoft
+
 ---
+
 ## Problem Description
-Given a string `password` consisting of English letters, digits, and symbols, determine whether it is a **strong** password. A strong password must satisfy all of the following:
-1. Length is at least 8 characters.
-2. Contains at least one lowercase letter, one uppercase letter, one digit, and one special character from `!@#$%^&*()-+`.
-3. No two identical characters are adjacent.
-Return `true` if the password is strong, otherwise `false`.
+
+A password is said to be **strong** if it satisfies all the following criteria:
+
+- It has at least `8` characters.
+- It contains at least **one lowercase** letter.
+- It contains at least **one uppercase** letter.
+- It contains at least **one digit**.
+- It contains at least **one special character**. The special characters are the characters in the following string: `"!@#$%^&*()-+"`.
+- It does **not** contain `2` of the same character in adjacent positions (i.e., `"aab"` violates this condition, but `"aba"` does not).
+
+Given a string `password`, return `true` *if it is a **strong** password*. Otherwise, return `false`.
+
+**Constraints:**
+- `1 <= password.length <= 100`
+- `password` consists of letters, digits, and special characters: `"!@#$%^&*()-+"`.
 
 ## Examples
-| password | Output | Explanation |
-|----------|--------|-------------|
-| "IloveLe3tcode!" | true | Meets length, contains lower, upper, digit, special, and no repeated adjacent chars. |
-| "Me+You--" | false | Contains adjacent '-' characters. |
-| "1234567" | false | Too short and missing required character types. |
+
+**Example 1:**
+```
+Input: password = "IloveLe3tcode!"
+Output: true
+Explanation: The password meets all the requirements. Therefore, we return true.
+```
+
+**Example 2:**
+```
+Input: password = "Me+You--IsMyDream"
+Output: false
+Explanation: The password does not contain a digit and also contains 2 of the same character in adjacent positions. Therefore, we return false.
+```
+
+**Example 3:**
+```
+Input: password = "1aB!"
+Output: false
+Explanation: The password does not meet the length requirement. Therefore, we return false.
+```
 
 ## Approach
 Check each requirement in a single pass using flags for character categories and a previous‑character tracker.

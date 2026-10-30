@@ -21,7 +21,25 @@
 
 ## 1. Problem Description
 
-Count pairs `(i, j)` where `i < j` satisfying the "perfect pair" condition based on specific bitwise or arithmetic constraints.
+> *Note: the Approach below is a placeholder. With `x = |a|`, `y = |b|` and `x ≤ y`, both conditions reduce to `y ≤ 2x`. Sort the absolute values and, for each `i`, count the later values `≤ 2·b[i]` (two pointers or binary search). Checked against brute force.*
+
+You are given an integer array `nums`.
+
+A pair of indices `(i, j)` is called **perfect** if the following conditions are satisfied:
+
+- `i < j`
+- Let `a = nums[i]`, `b = nums[j]`. Then:
+
+- `min(|a - b|, |a + b|) <= min(|a|, |b|)`
+- `max(|a - b|, |a + b|) >= max(|a|, |b|)`
+
+Return the number of **distinct** perfect pairs.
+
+**Note:** The absolute value `|x|` refers to the **non-negative** value of `x`.
+
+**Constraints:**
+- `2 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
 
 ---
 
@@ -57,18 +75,73 @@ FUNCTION countPerfectPairs(arr):
 
 ## 4. Examples
 
-**Example 1**
+**Example 1:**
 ```
-Input: arr = [1,2,3,4,5], k = 3
-Output: 4
-Explanation: Valid pairs are (1,2), (1,5), (2,4), (3,6) … (depending on exact rule).
+Input: nums = [0,1,2,3]
+Output: 2
+Explanation: There are 2 perfect pairs:
+  (i, j)
+  (a, b)
+  min(|a − b|, |a + b|)
+  min(|a|, |b|)
+  max(|a − b|, |a + b|)
+  max(|a|, |b|)
+  (1, 2)
+  (1, 2)
+  min(|1 − 2|, |1 + 2|) = 1
+  1
+  max(|1 − 2|, |1 + 2|) = 3
+  2
+  (2, 3)
+  (2, 3)
+  min(|2 − 3|, |2 + 3|) = 1
+  2
+  max(|2 − 3|, |2 + 3|) = 5
+  3
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: arr = [2,2,2,2], k = 4
-Output: 6
-Explanation: Every pair sums to 4, which is divisible by 4. Number of pairs = C(4,2) = 6.
+Input: nums = [-3,2,-1,4]
+Output: 4
+Explanation: There are 4 perfect pairs:
+  (i, j)
+  (a, b)
+  min(|a − b|, |a + b|)
+  min(|a|, |b|)
+  max(|a − b|, |a + b|)
+  max(|a|, |b|)
+  (0, 1)
+  (-3, 2)
+  min(|-3 - 2|, |-3 + 2|) = 1
+  2
+  max(|-3 - 2|, |-3 + 2|) = 5
+  3
+  (0, 3)
+  (-3, 4)
+  min(|-3 - 4|, |-3 + 4|) = 1
+  3
+  max(|-3 - 4|, |-3 + 4|) = 7
+  4
+  (1, 2)
+  (2, -1)
+  min(|2 - (-1)|, |2 + (-1)|) = 1
+  1
+  max(|2 - (-1)|, |2 + (-1)|) = 3
+  2
+  (1, 3)
+  (2, 4)
+  min(|2 - 4|, |2 + 4|) = 2
+  2
+  max(|2 - 4|, |2 + 4|) = 6
+  4
+```
+
+**Example 3:**
+```
+Input: nums = [1,10,100,1000]
+Output: 0
+Explanation: There are no perfect pairs. Thus, the answer is 0.
 ```
 
 ---

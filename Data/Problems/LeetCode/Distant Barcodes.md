@@ -20,7 +20,9 @@
 
 ## Problem Description
 
-Given an array of integers `barcodes`, rearrange them so that no two **adjacent** elements are the same. A valid arrangement is guaranteed to exist.
+In a warehouse, there is a row of barcodes, where the `i^th` barcode is `barcodes[i]`.
+
+Rearrange the barcodes so that no two adjacent barcodes are equal. You may return any answer, and it is guaranteed an answer exists.
 
 **Constraints:**
 - `1 <= barcodes.length <= 10000`
@@ -32,14 +34,14 @@ Given an array of integers `barcodes`, rearrange them so that no two **adjacent*
 
 **Example 1:**
 ```
-Input: [1,1,1,2,2,2]
-Output: [2,1,2,1,2,1] (or any valid arrangement)
+Input: barcodes = [1,1,1,2,2,2]
+Output: [2,1,2,1,2,1]
 ```
 
 **Example 2:**
 ```
-Input: [1,1,1,1,2,2,3,3]
-Output: [1,3,1,2,1,3,1,2] (or any valid arrangement)
+Input: barcodes = [1,1,1,1,2,2,3,3]
+Output: [1,3,1,3,1,2,1,2]
 ```
 
 ---

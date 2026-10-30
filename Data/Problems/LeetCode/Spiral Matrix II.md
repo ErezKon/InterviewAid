@@ -9,7 +9,10 @@
 
 ## 1. Problem Description
 
-Given a positive integer `n`, generate an `n×n` matrix filled with elements from 1 to n² in spiral order.
+Given a positive integer `n`, generate an `n x n` `matrix` filled with elements from `1` to `n²` in spiral order.
+
+**Constraints:**
+- `1 <= n <= 20`
 
 ---
 
@@ -44,10 +47,21 @@ FUNCTION generateMatrix(n):
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `3` | `[[1,2,3],[8,9,4],[7,6,5]]` |
-| `4` | `[[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]` |
+```
+Example 1:
+  Input: n = 3
+  Output: [[1,2,3],[8,9,4],[7,6,5]]
+  Explanation (grid):
+    1 2 3
+    8 9 4
+    7 6 5
+```
+
+```
+Example 2:
+  Input: n = 1
+  Output: [[1]]
+```
 
 ## Walkthrough
 

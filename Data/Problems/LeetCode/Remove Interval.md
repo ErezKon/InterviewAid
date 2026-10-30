@@ -7,24 +7,38 @@
 ---
 
 ## Problem Description
-Given a closed interval `toBeRemoved` and a sorted list of non‑overlapping closed intervals `intervals`, remove the portion of each interval that overlaps with `toBeRemoved`. Return the resulting list of intervals after removal, preserving the original order.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+A set of real numbers can be represented as the union of several disjoint intervals, where each interval is in the form `[a, b)`. A real number `x` is in the set if one of its intervals `[a, b)` contains `x` (i.e. `a <= x < b`).
+
+You are given a **sorted** list of disjoint intervals `intervals` representing a set of real numbers as described above, where `intervals[i] = [a_i, b_i]` represents the interval `[a_i, b_i)`. You are also given another interval `toBeRemoved`.
+
+Return *the set of real numbers with the interval *`toBeRemoved`* **removed** from** *`intervals`*. In other words, return the set of real numbers such that every *`x`* in the set is in *`intervals`* but **not** in *`toBeRemoved`*. Your answer should be a **sorted** list of disjoint intervals as described above.*
+
+**Constraints:**
+- `1 <= intervals.length <= 10^4`
+- `-10^9 <= a_i < b_i <= 10^9`
 
 ## Examples
+
 **Example 1:**
 ```
-intervals = [[0,2],[3,4],[5,7]]
-toBeRemoved = [1,6]
-output = [[0,1],[6,7]]
+Input: intervals = [[0,2],[3,4],[5,7]], toBeRemoved = [1,6]
+Output: [[0,1],[6,7]]
 ```
-**Explanation:** The first interval is trimmed to `[0,1]`; the second interval is completely removed; the third interval is trimmed to `[6,7]`.
 
 **Example 2:**
 ```
-intervals = [[0,5]]
-toBeRemoved = [2,3]
-output = [[0,2],[3,5]]
+Input: intervals = [[0,5]], toBeRemoved = [2,3]
+Output: [[0,2],[3,5]]
 ```
-**Explanation:** The original interval is split into two parts around the removed segment.
+
+**Example 3:**
+```
+Input: intervals = [[-5,-4],[-3,-2],[1,2],[3,5],[8,9]], toBeRemoved = [-1,4]
+Output: [[-5,-4],[-3,-2],[4,5],[8,9]]
+```
 
 ## Approach
 Iterate through `intervals` and handle each case based on its relation to `toBeRemoved`:

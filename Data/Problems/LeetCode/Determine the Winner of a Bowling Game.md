@@ -19,14 +19,22 @@
 
 ## Problem Description
 
-Two players play a bowling game with `n` turns. Player 1's pins knocked in turn `i` is `player1[i]`, and similarly for player 2.
+You are given two **0-indexed** integer arrays `player1` and `player2`, representing the number of pins that player 1 and player 2 hit in a bowling game, respectively.
 
-**Scoring rule:** If a player knocked down **10 pins** in any of the **previous two turns**, the pins in the current turn are worth **double**. Otherwise, they're worth face value.
+The bowling game consists of `n` turns, and the number of pins in each turn is exactly 10.
 
-Return:
-- `1` if player 1's total score > player 2's
-- `2` if player 2's total score > player 1's
-- `0` if it's a tie
+Assume a player hits `x_i` pins in the i^th turn. The value of the i^th turn for the player is:
+
+- `2x_i` if the player hits 10 pins **in either (i - 1)^th or (i - 2)^th turn**.
+- Otherwise, it is `x_i`.
+
+The **score** of the player is the sum of the values of their `n` turns.
+
+Return
+
+- 1 if the score of player 1 is more than the score of player 2,
+- 2 if the score of player 2 is more than the score of player 1, and
+- 0 in case of a draw.
 
 **Constraints:**
 - `n == player1.length == player2.length`
@@ -39,21 +47,34 @@ Return:
 
 **Example 1:**
 ```
-Input: player1 = [4,10,7,9], player2 = [6,5,2,3]
+Input: player1 = [5,10,3,2], player2 = [6,5,7,3]
 Output: 1
-Explanation:
-  Player 1: 4 + 10 + 2×7 + 2×9 = 4+10+14+18 = 46
-  Player 2: 6 + 5 + 2 + 3 = 16
-  46 > 16 → Player 1 wins.
+Explanation: The score of player 1 is 5 + 10 + 2*3 + 2*2 = 25.
+The score of player 2 is 6 + 5 + 7 + 3 = 21.
 ```
 
 **Example 2:**
 ```
 Input: player1 = [3,5,7,6], player2 = [8,10,10,2]
 Output: 2
-Explanation:
-  Player 1: 3+5+7+6 = 21
-  Player 2: 8+10+2×10+2×2 = 8+10+20+4 = 42
+Explanation: The score of player 1 is 3 + 5 + 7 + 6 = 21.
+The score of player 2 is 8 + 10 + 2*10 + 2*2 = 42.
+```
+
+**Example 3:**
+```
+Input: player1 = [2,3], player2 = [4,1]
+Output: 0
+Explanation: The score of player1 is 2 + 3 = 5.
+The score of player2 is 4 + 1 = 5.
+```
+
+**Example 4:**
+```
+Input: player1 = [1,1,1,10,10,10,10], player2 = [10,10,10,10,1,1,1]
+Output: 2
+Explanation: The score of player1 is 1 + 1 + 1 + 10 + 2*10 + 2*10 + 2*10 = 73.
+The score of player2 is 10 + 2*10 + 2*10 + 2*10 + 2*1 + 2*1 + 1 = 75.
 ```
 
 ---

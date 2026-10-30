@@ -7,22 +7,33 @@
 ---
 
 ## Problem Description
-On an 8×8 chessboard, you are given the coordinates of a black king and a list of white queens. Each queen can move any number of squares horizontally, vertically, or diagonally until blocked by the board edge. Determine which queens can attack the king directly (i.e., there is no other queen between the king and that queen). Return the positions of those attacking queens.
+
+On a **0-indexed** `8 x 8` chessboard, there can be multiple black queens and one white king.
+
+You are given a 2D integer array `queens` where `queens[i] = [xQueen_i, yQueen_i]` represents the position of the `i`th black queen on the chessboard. You are also given an integer array `king` of length `2` where `king = [xKing, yKing]` represents the position of the white king.
+
+Return *the coordinates of the black queens that can directly attack the king*. You may return the answer in **any order**.
+
+**Constraints:**
+- `1 <= queens.length < 64`
+- `queens[i].length == king.length == 2`
+- `0 <= xQueen_i, yQueen_i, xKing, yKing < 8`
+- All the given positions are **unique**.
 
 ## Examples
+
 **Example 1:**
 ```
-queens = [[0,1],[1,0],[4,0],[0,4],[3,3],[2,4]]
-king   = [0,0]
+Input: queens = [[0,1],[1,0],[4,0],[0,4],[3,3],[2,4]], king = [0,0]
 Output: [[0,1],[1,0],[3,3]]
+Explanation: The diagram above shows the three queens that can directly attack the king and the three queens that cannot attack the king (i.e., marked with red dashes).
 ```
-The queens at (0,1), (1,0) and (3,3) are the closest in the north, west and diagonal directions.
 
 **Example 2:**
 ```
-queens = [[5,6],[7,7],[2,1],[0,7],[1,6],[5,1],[3,7],[0,3],[4,0],[1,2],[6,3],[5,0],[0,4],[2,2],[1,1],[6,4],[5,4],[0,0],[2,6],[4,5],[5,2],[1,4],[7,5],[2,3],[0,5],[4,2],[1,0],[2,7],[0,1],[4,6],[6,1],[0,2],[5,3],[6,0],[7,4],[5,7],[1,7],[1,5],[2,0],[0,6],[4,7],[6,2],[7,6],[5,5],[3,0],[6,5],[5,6],[4,3]]
-king   = [3,4]
-Output: [[2,3],[1,4],[1,6],[3,7],[4,3],[5,4],[4,5]]
+Input: queens = [[0,0],[1,1],[2,2],[3,4],[3,5],[4,4],[4,5]], king = [3,3]
+Output: [[2,2],[3,4],[4,4]]
+Explanation: The diagram above shows the three queens that can directly attack the king and the three queens that cannot attack the king (i.e., marked with red dashes).
 ```
 
 ## Approach

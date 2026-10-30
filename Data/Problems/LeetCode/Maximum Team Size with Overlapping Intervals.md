@@ -7,20 +7,54 @@
 ---
 
 ## Problem Description
-You are given an array `intervals` where each element is a pair `[start, end]` representing the availability of a person. A team can be formed if there exists a time point that lies within **all** intervals of its members (i.e., the intervals overlap). Return the maximum possible size of such a team.
+
+> *Note: the Approach below counts intervals sharing a common point, but officially a team only needs **one** member who overlaps every other member. Correct idea: for each employee `i`, the employees overlapping `i` number `n − #(end < start_i) − #(start > end_i)`. Compute both counts with binary search on the sorted end and start arrays, and take the max. O(n log n).*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given two integer arrays `startTime` and `endTime` of length `n`.
+
+- `startTime[i]` represents the start time of the `i^th` employee.
+- `endTime[i]` represents the end time of the `i^th` employee.
+
+Two employees `i` and `j` can interact if their time intervals **overlap**. Two intervals are considered overlapping if they share **at least one** common time point.
+
+A team is **valid** if there exists **at least one** employee in the team who can interact with every other member of the team.
+
+Return an integer denoting the **maximum** possible size of such a team.
+
+**Constraints:**
+- `1 <= n == startTime.length == endTime.length <= 10^5`
+- `0 <= startTime[i] <= endTime[i] <= 10^9`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: intervals = [[1,4],[2,5],[3,6]]
+Input: startTime = [1,2,3], endTime = [4,5,6]
 Output: 3
-Explanation: All three intervals overlap at time 3‑4, so a team of size 3 is possible.
+Explanation: - For i = 0 with interval [1, 4].
+- It overlaps with i = 1 having interval [2, 5] and i = 2 having interval [3, 6].
+- Thus, index 0 can interact with all other indices, so the team size is 3.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: intervals = [[1,2],[3,4],[5,6]]
+Input: startTime = [2,5,8], endTime = [3,7,9]
 Output: 1
-Explanation: No two intervals overlap; the best we can do is a single‑person team.
+Explanation: - For i = 0, interval [2, 3] does not overlap with [5, 7] or [8, 9].
+- For i = 1, interval [5, 7] does not overlap with [2, 3] or [8, 9].
+- For i = 2, interval [8, 9] does not overlap with [2, 3] or [5, 7].
+- Thus, no index can interact with others, so the maximum team size is 1.
+```
+
+**Example 3:**
+```
+Input: startTime = [3,4,6], endTime = [8,5,7]
+Output: 3
+Explanation: - For i = 0 with interval [3, 8].
+- It overlaps with i = 1 having interval [4, 5] and i = 2 having interval [6, 7].
+- Thus, index 0 can interact with all other indices, so the team size is 3.
 ```
 
 ## Approach

@@ -7,24 +7,35 @@
 ---
 
 ## Problem Description
-Given an integer `n`, return the count of all non‑negative integers less than `10^n` where each digit is unique (no repeated digits). Leading zeros are allowed only for the number zero itself.
+Given two **positive** integers `a` and `b`, return *the count of numbers having **unique** digits in the range* `[a, b]` ***(inclusive)***.
+
+**Constraints:**
+- `1 <= a <= b <= 1000`
 
 ## Examples
-**Example 1**
 ```
-Input: n = 2
-Output: 91
-Explanation: The numbers are 0‑9 and 10‑98 excluding 11,22,…,99.
+Example 1:
+  Input: a = 1, b = 20
+  Output: 19
+  Explanation: All the numbers in the range [1, 20] have unique digits except 11. Hence, the answer is 19.
 ```
-**Example 2**
+
 ```
-Input: n = 1
-Output: 10
-Explanation: All single‑digit numbers 0‑9 are valid.
+Example 2:
+  Input: a = 9, b = 19
+  Output: 10
+  Explanation: All the numbers in the range [9, 19] have unique digits except 11. Hence, the answer is 10.
+```
+
+```
+Example 3:
+  Input: a = 80, b = 120
+  Output: 27
+  Explanation: There are 41 numbers in the range [80, 120], 27 of which have unique digits.
 ```
 
 ## Approach
-Count numbers by length. For length `len` (1 ≤ len ≤ n):
+Count numbers by length. For length `len` (1 ≤ len ≤ n):
 - First digit: 9 choices (1‑9) if len>1, otherwise 10 choices (0‑9).
 - Subsequent digits: choose from remaining 9,8,… options.
 Sum these counts for all lengths.
@@ -46,8 +57,8 @@ FUNCTION countNumbersWithUniqueDigits(n):
 
 ## Walkthrough
 For `n = 2`:
-- Length 1: 10 numbers (0‑9) → total = 10.
-- Length 2: first digit 9 choices (1‑9), second digit 9 choices (0‑9 except first) → 9 × 9 = 81.
+- Length 1: 10 numbers (0‑9) → total = 10.
+- Length 2: first digit 9 choices (1‑9), second digit 9 choices (0‑9 except first) → 9 × 9 = 81.
 - Sum = 10 + 81 = 91.
 
 ## Complexity Analysis
@@ -55,7 +66,7 @@ For `n = 2`:
 - **Space:** O(1) – only a few integer variables.
 
 ## Follow-Up Questions
-1. How would you adapt the solution for base b numbers instead of decimal?
+1. How would you adapt the solution for base b numbers instead of decimal?
 2. Can you compute the result modulo a large prime for very large `n`?
 3. What changes if leading zeros are allowed for all numbers?
 

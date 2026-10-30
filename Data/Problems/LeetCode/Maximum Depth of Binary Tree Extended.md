@@ -3,6 +3,8 @@
 ---
 
 ## Problem Description
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Maximum Depth of Binary Tree.md](Maximum%20Depth%20of%20Binary%20Tree.md) for the official #104 statement, examples and constraints.*
+
 These notes summarize common patterns for computing depth, height, and related metrics in binary trees. The patterns apply to classic LeetCode problems such as Maximum Depth (#104), Minimum Depth (#111), Balanced Binary Tree (#110), Diameter of Binary Tree (#543), and Maximum Path Sum (#124). Each problem can be solved with a bottom‑up depth‑first traversal that returns a value for each subtree and updates a global answer.
 
 ## Examples

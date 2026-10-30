@@ -21,26 +21,45 @@
 
 ## 1. Problem Description
 
-Given an array `arr`, starting at index 0, you can jump to:
-- `i + 1`, `i - 1` (adjacent indices), or
-- Any index `j` where `arr[j] == arr[i]` (same value).
+Given an array of integers `arr`, you are initially positioned at the first index of the array.
 
-Return the **minimum number of steps** to reach the last index.
+In one step you can jump from index `i` to index:
+
+- `i + 1` where: `i + 1 < arr.length`.
+- `i - 1` where: `i - 1 >= 0`.
+- `j` where: `arr[i] == arr[j]` and `i != j`.
+
+Return *the minimum number of steps* to reach the **last index** of the array.
+
+Notice that you can not jump outside of the array at any time.
 
 **Constraints:**
-- `1 <= arr.length <= 5 × 10⁴`
-- `-10⁸ <= arr[i] <= 10⁸`
+- `1 <= arr.length <= 5 * 10^4`
+- `-10^8 <= arr[i] <= 10^8`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Input:  arr = [100,-23,-23,404,100,23,23,23,3,404]
-Output: 3  (0 → 4 → 3 → 9)
+Input: arr = [100,-23,-23,404,100,23,23,23,3,404]
+Output: 3
+Explanation: You need three jumps from index 0 --> 4 --> 3 --> 9. Note that index 9 is the last index of the array.
+```
 
-Input:  arr = [7]
+**Example 2:**
+```
+Input: arr = [7]
 Output: 0
+Explanation: Start index is the last index. You do not need to jump.
+```
+
+**Example 3:**
+```
+Input: arr = [7,6,9,6,9,6,9,7]
+Output: 1
+Explanation: You can jump directly from index 0 to index 7 which is last index of the array.
 ```
 
 ---

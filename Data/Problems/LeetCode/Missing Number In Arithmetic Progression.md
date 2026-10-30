@@ -21,22 +21,36 @@
 
 ## 1. Problem Description
 
-Given an arithmetic progression with one missing element, return the **missing** value.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+In some array `arr`, the values were in arithmetic progression: the values `arr[i + 1] - arr[i]` are all equal for every `0 <= i < arr.length - 1`.
+
+A value from `arr` was removed that **was not the first or last value in the array**.
+
+Given `arr`, return *the removed value*.
 
 **Constraints:**
 - `3 <= arr.length <= 1000`
-- Array is sorted
+- `0 <= arr[i] <= 10^5`
+- The given array is **guaranteed** to be a valid array.
 
 ---
 
 ## 2. Examples
 
-| arr | Output |
-|-----|--------|
-| [1,3,5,9,11] | 7 |
-| [2,4,8,10] | 6 |
+**Example 1:**
+```
+Input: arr = [5,7,11,13]
+Output: 9
+Explanation: The previous array was [5,7,9,11,13].
+```
 
-*Explanation:* The true common difference is `(11-1)/4 = 2`. The gap where the difference deviates reveals the missing number.
+**Example 2:**
+```
+Input: arr = [15,13,12]
+Output: 14
+Explanation: The previous array was [15,14,13,12].
+```
 
 ---
 

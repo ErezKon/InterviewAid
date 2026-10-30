@@ -7,21 +7,44 @@
 ---
 
 ## Problem Description
-Given a rectangular grid of characters, each cell contains a lowercase English letter. A printer can print a solid rectangle of any size, turning all cells inside it to the same character in one turn. The printer can only print a rectangle if all cells inside already contain that character or are empty. Determine the minimum number of turns required to print the entire grid.
+
+> *Note: the Approach/Walkthrough below solve an invented "minimum turns" problem; the official problem is a feasibility check. Correct idea: for each color take its bounding rectangle; every other color found inside that rectangle must be printed **after** it → add a dependency edge; return `true` iff the dependency graph over ≤ 60 colors is acyclic (topological sort / DFS cycle check). O(C·m·n).*
+
+There is a strange printer with the following two special requirements:
+
+- On each turn, the printer will print a solid rectangular pattern of a single color on the grid. This will cover up the existing colors in the rectangle.
+- Once the printer has used a color for the above operation, **the same color cannot be used again**.
+
+You are given a `m x n` matrix `targetGrid`, where `targetGrid[row][col]` is the color in the position `(row, col)` of the grid.
+
+Return `true` *if it is possible to print the matrix* `targetGrid`*,* *otherwise, return* `false`.
+
+**Constraints:**
+- `m == targetGrid.length`
+- `n == targetGrid[i].length`
+- `1 <= m, n <= 60`
+- `1 <= targetGrid[row][col] <= 60`
 
 ## Examples
-- **Input:**
-  ```
-  grid = [
-    ["a","a","b"],
-    ["a","c","b"],
-    ["d","c","c"]
-  ]
-  ```
-  **Output:** `4`
-  // One possible sequence: print all "a" cells, then "b", then "c", then "d".
-- **Input:** `grid = [["a","b"],["b","a"]]` **Output:** `3`
-  // Need separate prints for each distinct region.
+
+**Example 1:**
+```
+Input: targetGrid = [[1,1,1,1],[1,2,2,1],[1,2,2,1],[1,1,1,1]]
+Output: true
+```
+
+**Example 2:**
+```
+Input: targetGrid = [[1,1,1,1],[1,1,3,3],[1,1,3,4],[5,5,1,4]]
+Output: true
+```
+
+**Example 3:**
+```
+Input: targetGrid = [[1,2,1],[2,1,2],[1,2,1]]
+Output: false
+Explanation: It is impossible to form targetGrid because it is not allowed to print the same color in different turns.
+```
 
 ## Approach
 **Algorithm:** Topological ordering of dependency graph (Greedy + DFS).

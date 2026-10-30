@@ -9,7 +9,13 @@
 
 ## 1. Problem Description
 
-Given a string `s`, rearrange characters so that no two adjacent characters are the same. Return `""` if impossible.
+Given a string `s`, rearrange the characters of `s` so that any two adjacent characters are not the same.
+
+Return *any possible rearrangement of* `s` *or return* `""` *if not possible*.
+
+**Constraints:**
+- `1 <= s.length <= 500`
+- `s` consists of lowercase English letters.
 
 ---
 
@@ -47,11 +53,17 @@ FUNCTION reorganizeString(s):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aab"` | `"aba"` | The most frequent `a` is placed with `b` between them. |
-| `"aaab"` | `""` | No arrangement can avoid adjacent `a`s. |
-| `"abc"` | `"abc"` (or any permutation) | All characters are already distinct.
+**Example 1:**
+```
+Input: s = "aab"
+Output: "aba"
+```
+
+**Example 2:**
+```
+Input: s = "aaab"
+Output: ""
+```
 
 ---
 

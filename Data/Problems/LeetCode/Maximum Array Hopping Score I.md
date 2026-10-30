@@ -21,10 +21,17 @@
 
 ## Problem Description
 
-Given an array `nums`, start at index 0 and hop to index `n-1`. Each hop from `i` to `j` (j > i) scores `(j - i) * nums[j]`. Maximize the total score.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an array `nums`, you have to get the **maximum** score starting from index 0 and **hopping** until you reach the last element of the array.
+
+In each **hop**, you can jump from index `i` to an index `j > i`, and you get a **score** of `(j - i) * nums[j]`.
+
+Return the *maximum score* you can get.
 
 **Constraints:**
-- `2 ≤ n ≤ 10³`
+- `2 <= nums.length <= 10^3`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
@@ -32,16 +39,18 @@ Given an array `nums`, start at index 0 and hop to index `n-1`. Each hop from `i
 
 **Example 1:**
 ```
-Input: nums = [1,2,3]
-Output: 5
-Explanation: Hop 0→2 scores (2-0)*3 = 6, but you must also include hop 0→1 then 1→2: (1-0)*2 + (2-1)*3 = 2+3=5 which is maximal under DP.
+Input: nums = [1,5,8]
+Output: 16
+Explanation: There are two possible ways to reach the last element:
+- 0 -> 1 -> 2 with a score of (1 - 0) * 5 + (2 - 1) * 8 = 13.
+- 0 -> 2 with a score of (2 - 0) * 8 = 16.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,1,2,4]
-Output: 13
-Explanation: Optimal hops: 0→3 (3*4=12) then 3→3 (0) gives 12, but DP finds 0→1 (1*1=1) + 1→3 (2*4=8) = 9, so best is 0→2 (2*2=4) + 2→3 (1*4=4) = 8. Actually the maximum is 0→3 directly = 12, plus no further hops, total 12.
+Input: nums = [4,5,2,8,9,1,3]
+Output: 42
+Explanation: We can do the hopping 0 -> 4 -> 6 with a score of (4 - 0) * 9 + (6 - 4) * 3 = 42.
 ```
 
 ---

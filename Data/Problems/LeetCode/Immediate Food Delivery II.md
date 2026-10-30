@@ -8,36 +8,59 @@
 
 ## Problem Description
 
-Find the percentage of first orders that are immediate, i.e., the delivery date equals the order date, for each customer. This is an SQL query problem.
+Table: `Delivery`
+
+```
++-----------------------------+---------+
+| Column Name                 | Type    |
++-----------------------------+---------+
+| delivery_id                 | int     |
+| customer_id                 | int     |
+| order_date                  | date    |
+| customer_pref_delivery_date | date    |
++-----------------------------+---------+
+delivery_id is the column of unique values of this table.
+The table holds information about food delivery to customers that make orders at some date and specify a preferred delivery date (on the same order date or after it).
+```
+
+If the customer's preferred delivery date is the same as the order date, then the order is called **immediate;** otherwise, it is called **scheduled**.
+
+The **first order** of a customer is the order with the earliest order date that the customer made. It is guaranteed that a customer has precisely one first order.
+
+Write a solution to find the percentage of immediate orders in the first orders of all customers, **rounded to 2 decimal places**.
+
+The result format is in the following example.
 
 ## Examples
 
 **Example 1:**
 ```
-Delivery Table:
-+----+------------+--------------------------+------------+
-| id | customer_id| order_date               | customer_pref_delivery_date |
-+----+------------+--------------------------+------------+
-| 1  | 101        | 2021-01-01               | 2021-01-01 |
-| 2  | 101        | 2021-01-05               | 2021-01-06 |
-| 3  | 102        | 2021-02-01               | 2021-02-01 |
-+----+------------+--------------------------+------------+
+Input:
+Delivery table:
++-------------+-------------+------------+-----------------------------+
+| delivery_id | customer_id | order_date | customer_pref_delivery_date |
++-------------+-------------+------------+-----------------------------+
+| 1           | 1           | 2019-08-01 | 2019-08-02                  |
+| 2           | 2           | 2019-08-02 | 2019-08-02                  |
+| 3           | 1           | 2019-08-11 | 2019-08-12                  |
+| 4           | 3           | 2019-08-24 | 2019-08-24                  |
+| 5           | 3           | 2019-08-21 | 2019-08-22                  |
+| 6           | 2           | 2019-08-11 | 2019-08-13                  |
+| 7           | 4           | 2019-08-09 | 2019-08-09                  |
++-------------+-------------+------------+-----------------------------+
+Output:
++----------------------+
+| immediate_percentage |
++----------------------+
+| 50.00                |
++----------------------+
+Explanation:
+The customer id 1 has a first order with delivery id 1 and it is scheduled.
+The customer id 2 has a first order with delivery id 2 and it is immediate.
+The customer id 3 has a first order with delivery id 5 and it is scheduled.
+The customer id 4 has a first order with delivery id 7 and it is immediate.
+Hence, half the customers have immediate first orders.
 ```
-Output: `50.00`
-Explanation: For customer 101, the first order (2021-01-01) is immediate. For customer 102, the first order is also immediate. Two immediate first orders out of four total first orders → (2/4)*100 = 50.00.
-
-**Example 2:**
-```
-Delivery Table:
-+----+------------+------------+--------------------------+
-| id | customer_id| order_date | customer_pref_delivery_date |
-+----+------------+------------+--------------------------+
-| 1  | 200        | 2022-03-10 | 2022-03-11 |
-| 2  | 200        | 2022-04-01 | 2022-04-01 |
-+----+------------+------------+--------------------------+
-```
-Output: `0.00`
-Explanation: Only the first order for customer 200 (2022-03-10) is not immediate, so 0% immediate first orders.
 
 ## Approach
 

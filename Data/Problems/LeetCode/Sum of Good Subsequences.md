@@ -7,20 +7,39 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, a **good subsequence** is defined as a non‑empty subsequence whose bitwise OR equals the maximum element of that subsequence. Return the sum of the values of all good subsequences modulo `10^9 + 7`. A subsequence is a sequence that can be derived from the array by deleting some (or none) elements without changing the order of the remaining elements.
+
+> *Note: the Approach/Walkthrough below solve an invented OR-based problem. Correct idea: DP keyed by value — `cnt[v]` = number of good subsequences ending with value `v`, `sum[v]` = total of their element sums. For each `x`: `c = 1 + cnt[x−1] + cnt[x+1]`, `s = sum[x−1] + sum[x+1] + c·x`; then `cnt[x] += c`, `sum[x] += s`. Answer = `Σ sum[v]` mod 10⁹+7. O(n).*
+
+You are given an integer array `nums`. A **good subsequence** is defined as a subsequence of `nums` where the absolute difference between any **two** consecutive elements in the subsequence is **exactly** 1.
+
+Return the **sum** of all *possible* **good subsequences** of `nums`.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Note** that a subsequence of size 1 is considered good by definition.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 10^5`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: nums = [1,2,3]
-Output: 6
-Explanation: Good subsequences are [1], [2], [3], [1,3], [2,3], [1,2,3] with sums 1+2+3+4+5+6 = 21, but only those where OR equals max are counted, resulting in sum 6.
+Input: nums = [1,2,1]
+Output: 14
+Explanation:
+- Good subsequences are: [1], [2], [1], [1,2], [2,1], [1,2,1].
+- The sum of elements in these subsequences is 14.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: nums = [0,0]
-Output: 0
-Explanation: All subsequences have OR 0 which equals max 0, sum is 0.
+Input: nums = [3,4,5]
+Output: 40
+Explanation:
+- Good subsequences are: [3], [4], [5], [3,4], [4,5], [3,4,5].
+- The sum of elements in these subsequences is 40.
 ```
 
 ## Approach

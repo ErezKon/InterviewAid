@@ -20,23 +20,44 @@
 
 ## Problem Description
 
-Given an `m × n` grid of positive integers and an array `queries`, for each `queries[k]` start at `(0,0)` and count how many cells you can visit where **all cells on the path from (0,0) have values strictly less than `queries[k]`**.
+You are given an `m x n` integer matrix `grid` and an array `queries` of size `k`.
 
-Return an array of answers.
+Find an array `answer` of size `k` such that for each integer `queries[i]` you start in the **top left** cell of the matrix and repeat the following process:
+
+- If `queries[i]` is **strictly** greater than the value of the current cell that you are in, then you get one point if it is your first time visiting this cell, and you can move to any **adjacent** cell in all `4` directions: up, down, left, and right.
+- Otherwise, you do not get any points, and you end this process.
+
+After the process, `answer[i]` is the **maximum** number of points you can get. **Note** that for each query you are allowed to visit the same cell **multiple** times.
+
+Return *the resulting array* `answer`.
 
 **Constraints:**
-- `m, n <= 1000`
-- `queries.length <= 10^4`
-- `1 <= grid[i][j], queries[k] <= 10^6`
+- `m == grid.length`
+- `n == grid[i].length`
+- `2 <= m, n <= 1000`
+- `4 <= m * n <= 10^5`
+- `k == queries.length`
+- `1 <= k <= 10^4`
+- `1 <= grid[i][j], queries[i] <= 10^6`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  grid = [[1,2,3],[2,5,7],[3,5,1]], queries = [5,6,2]
-Output: [5,8,1]
+Example 1:
+  Input: grid = [[1,2,3],[2,5,7],[3,5,1]], queries = [5,6,2]
+  Output: [5,8,1]
+  Explanation: The official diagrams show which cells we visit to get points for each query
+    (query 5 -> cells with values 1,2,3,2,3 reachable = 5 points;
+     query 6 -> all cells except 7 = 8 points; query 2 -> only the top-left cell = 1 point)
+```
+
+```
+Example 2:
+  Input: grid = [[5,2,1],[1,1,2]], queries = [3]
+  Output: [0]
+  Explanation: We can not get any points because the value of the top left cell is already greater than or equal to 3.
 ```
 
 ---

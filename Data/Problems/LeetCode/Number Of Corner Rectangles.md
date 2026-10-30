@@ -21,18 +21,42 @@
 
 ## 1. Problem Description
 
-Given a binary grid, count the number of axis‑aligned rectangles where all four corners are `1`.
+Given an `m x n` integer matrix `grid` where each entry is only `0` or `1`, return *the number of **corner rectangles***.
+
+A **corner rectangle** is four distinct `1`'s on the grid that forms an axis-aligned rectangle. Note that only the corners need to have the value `1`. Also, all four `1`'s used must be distinct.
+
+**Constraints:**
+
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 200`
+- `grid[i][j]` is either `0` or `1`.
+- The number of `1`'s in the grid is in the range `[1, 6000]`.
 
 ---
 
 ## 2. Examples
 
-| grid | rectangles |
-|------|------------|
-| `[[1,0,1,0],[0,1,0,1],[1,0,1,0]]` | 1 |
-| `[[1,1,1],[1,1,1]]` | 9 |
+```
+Example 1:
+  Input: grid = [[1,0,0,1,0],[0,0,1,0,1],[0,0,0,1,0],[1,0,1,0,1]]
+  Output: 1
+  Explanation: There is only one corner rectangle, with corners grid[1][2], grid[1][4], grid[3][2], grid[3][4].
+```
 
-*Explanation*: In the first example, the only rectangle uses the `1`s at positions `(0,0)`, `(0,2)`, `(2,0)`, `(2,2)`. In the second example, any pair of rows combined with any pair of columns forms a rectangle, yielding `C(2,2) * C(3,2) = 1 * 3 = 3` per row pair, total `9`.
+```
+Example 2:
+  Input: grid = [[1,1,1],[1,1,1],[1,1,1]]
+  Output: 9
+  Explanation: There are four 2x2 rectangles, four 2x3 and 3x2 rectangles, and one 3x3 rectangle.
+```
+
+```
+Example 3:
+  Input: grid = [[1,1,1,1]]
+  Output: 0
+  Explanation: Rectangles must have four distinct corners.
+```
 
 ---
 

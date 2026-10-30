@@ -7,14 +7,41 @@
 ---
 
 ## Problem Description
-Given a **sorted** array `nums` of distinct integers and two integers `lower` and `upper` representing a closed interval `[lower, upper]`, return all the numbers in the interval that are **missing** from `nums`. The result should be returned as a list of integers in ascending order.
+> *Note: statement verified against the official LeetCode page. Official input is an unsorted array whose min and max define the range (no `lower`/`upper` parameters) — the Approach/Walkthrough below use a lower/upper variant.*
+
+You are given an integer array `nums` consisting of **unique** integers.
+
+Originally, `nums` contained **every integer** within a certain range. However, some integers might have gone **missing** from the array.
+
+The **smallest** and **largest** integers of the original range are still present in `nums`.
+
+Return a **sorted** list of all the missing integers in this range. If no integers are missing, return an **empty** list.
+
+**Constraints:**
+- `2 <= nums.length <= 100`
+- `1 <= nums[i] <= 100`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `nums = [2,5,7]`, `lower = 1`, `upper = 8` | `[1,3,4,6,8]` | Numbers 1,3,4,6,8 are not present in `nums`.
-| `nums = []`, `lower = 3`, `upper = 5` | `[3,4,5]` | All numbers in the interval are missing.
-| `nums = [1,2,3]`, `lower = 1`, `upper = 3` | `[]` | No missing numbers.
+```
+Example 1:
+  Input: nums = [1,4,2,5]
+  Output: [3]
+  Explanation: The smallest integer is 1 and the largest is 5, so the full range should be [1,2,3,4,5]. Among these, only 3 is missing.
+```
+
+```
+Example 2:
+  Input: nums = [7,8,6,9]
+  Output: []
+  Explanation: The smallest integer is 6 and the largest is 9, so the full range is [6,7,8,9]. All integers are already present, so no integer is missing.
+```
+
+```
+Example 3:
+  Input: nums = [5,1]
+  Output: [2,3,4]
+  Explanation: The smallest integer is 1 and the largest is 5, so the full range should be [1,2,3,4,5]. The missing integers are 2, 3, and 4.
+```
 
 ## Approach
 Iterate through the interval from `lower` to `upper` while maintaining an index into `nums`. For each value `v`:

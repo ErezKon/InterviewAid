@@ -6,11 +6,35 @@
 ---
 
 ## Problem Description
-Given an array of strings `words`, you may reorder the characters of any string arbitrarily. Determine whether it is possible to make all strings identical after such redistributions. Return `true` if possible, otherwise `false`.
+You are given an array of strings `words` (**0-indexed**).
+
+In one operation, pick two **distinct** indices `i` and `j`, where `words[i]` is a non-empty string, and move **any** character from `words[i]` to **any** position in `words[j]`.
+
+Return `true` *if you can make **every** string in* `words` ***equal** using **any** number of operations, and* `false` *otherwise*.
+
+**Constraints:**
+
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `words[i]` consists of lowercase English letters.
 
 ## Examples
-- **Example 1:** `words = ["abc","aabc","bc"]` → `true`. The total character counts are `{a:2, b:2, c:2}`; each string can be rearranged to "abc".
-- **Example 2:** `words = ["ab","a"]` → `false`. Total counts `{a:2, b:1}` cannot be evenly divided among 2 strings.
+
+```
+Example 1:
+  Input: words = ["abc","aabc","bc"]
+  Output: true
+  Explanation: Move the first 'a' in words[1] to the front of words[2],
+    to make words[1] = "abc" and words[2] = "abc".
+    All the strings are now equal to "abc", so return true.
+```
+
+```
+Example 2:
+  Input: words = ["ab","a"]
+  Output: false
+  Explanation: It is impossible to make all the strings equal using the operation.
+```
 
 ## Approach
 The characters across all strings must be divisible by the number of strings. Count frequencies of each character using a hash map, then verify each count modulo `len(words)` equals zero.

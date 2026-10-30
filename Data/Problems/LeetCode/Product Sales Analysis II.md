@@ -7,38 +7,75 @@
 ---
 
 ## Problem Description
-Given two tables `Product(product_id, product_name)` and `Sales(product_id, year, price)`, return the `product_id`, `year`, and total sales amount (`SUM(price)`) for each product-year pair where the total sales amount is **strictly greater than 100**. The result should be ordered by `product_id` ascending and then `year` ascending.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Sales`
+
+```
++-------------+-------+
+| Column Name | Type  |
++-------------+-------+
+| sale_id     | int   |
+| product_id  | int   |
+| year        | int   |
+| quantity    | int   |
+| price       | int   |
++-------------+-------+
+(sale_id, year) is the primary key (combination of columns with unique values) of this table.
+product_id is a foreign key (reference column) to `Product` table.
+Each row of this table shows a sale on the product product_id in a certain year.
+Note that the price is per unit.
+```
+
+Table: `Product`
+
+```
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| product_id   | int     |
+| product_name | varchar |
++--------------+---------+
+product_id is the primary key (column with unique values) of this table.
+Each row of this table indicates the product name of each product.
+```
+
+Write a solution that reports the total quantity sold for every product id.
+
+Return the resulting table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
+
 **Example 1:**
 ```
+Input:
+Sales table:
++---------+------------+------+----------+-------+
+| sale_id | product_id | year | quantity | price |
++---------+------------+------+----------+-------+
+| 1       | 100        | 2008 | 10       | 5000  |
+| 2       | 100        | 2009 | 12       | 5000  |
+| 7       | 200        | 2011 | 15       | 9000  |
++---------+------------+------+----------+-------+
 Product table:
 +------------+--------------+
 | product_id | product_name |
 +------------+--------------+
-| 1          | 'Laptop'     |
-| 2          | 'Phone'      |
+| 100        | Nokia        |
+| 200        | Apple        |
+| 300        | Samsung      |
 +------------+--------------+
-
-Sales table:
-+------------+------+-------+
-| product_id | year | price |
-+------------+------+-------+
-| 1          | 2020 | 60    |
-| 1          | 2020 | 50    |
-| 2          | 2021 | 30    |
-| 2          | 2021 | 80    |
-+------------+------+-------+
-
-Result:
-+------------+------+-----------+
-| product_id | year | total_sum |
-+------------+------+-----------+
-| 1          | 2020 | 110       |
-| 2          | 2021 | 110       |
-+------------+------+-----------+
+Output:
++--------------+----------------+
+| product_id   | total_quantity |
++--------------+----------------+
+| 100          | 22             |
+| 200          | 15             |
++--------------+----------------+
 ```
-*Explanation:* For product 1 in 2020 the sum is 110 (>100); similarly for product 2 in 2021.
 
 ## Approach
 Use a `GROUP BY` on `product_id` and `year` to compute the sum of `price`. Then filter with `HAVING SUM(price) > 100` and order the result.

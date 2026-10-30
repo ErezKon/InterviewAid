@@ -7,18 +7,53 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of digits, signs, decimal points, and exponent symbols (`e`/`E`), determine whether it represents a valid decimal number. The string may contain leading/trailing spaces (which should be ignored). Valid numbers follow typical scientific notation rules: optional sign, optional integer part, optional fractional part, optional exponent with its own optional sign and integer part.
+
+> *Note: the current official version contains no spaces (the old description's whitespace trimming in the Approach is harmless but unnecessary).*
+
+Given a string `s`, return whether `s` is a **valid number**.
+
+For example, all the following are valid numbers: `"2", "0089", "-0.1", "+3.14", "4.", "-.9", "2e10", "-90E3", "3e+7", "+6e-1", "53.5e93", "-123.456e789"`, while the following are not valid numbers: `"abc", "1a", "1e", "e3", "99e2.5", "--6", "-+3", "95a54e53"`.
+
+Formally, a **valid number** is defined using one of the following definitions:
+
+1. An **integer number** followed by an **optional exponent**.
+2. A **decimal number** followed by an **optional exponent**.
+
+An **integer number** is defined with an **optional sign** `'-'` or `'+'` followed by **digits**.
+
+A **decimal number** is defined with an **optional sign** `'-'` or `'+'` followed by one of the following definitions:
+
+1. **Digits** followed by a **dot** `'.'`.
+2. **Digits** followed by a **dot** `'.'` followed by **digits**.
+3. A **dot** `'.'` followed by **digits**.
+
+An **exponent** is defined with an **exponent notation** `'e'` or `'E'` followed by an **integer number**.
+
+The **digits** are defined as one or more digits.
+
+**Constraints:**
+- `1 <= s.length <= 20`
+- `s` consists of only English letters (both uppercase and lowercase), digits (`0-9`), plus `'+'`, minus `'-'`, or dot `'.'`.
 
 ## Examples
-| s | Output |
-|---|--------|
-| "0" | true |
-| " 0.1 " | true |
-| "abc" | false |
-| "1 a" | false |
-| "2e10" | true |
-| "." | false |
-*The function must accept numbers with optional decimal and exponent parts, and reject malformed strings.*
+
+**Example 1:**
+```
+Input: s = "0"
+Output: true
+```
+
+**Example 2:**
+```
+Input: s = "e"
+Output: false
+```
+
+**Example 3:**
+```
+Input: s = "."
+Output: false
+```
 
 ## Approach
 Implement a deterministic finite automaton (DFA) that tracks which components have been seen (digit, dot, exponent, sign). Process the trimmed string character by character, updating state flags and validating transitions.

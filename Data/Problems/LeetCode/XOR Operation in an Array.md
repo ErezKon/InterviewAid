@@ -7,11 +7,34 @@
 ---
 
 ## Problem Description
-Given two integers `n` and `start`, generate an array where the i-th element is `start + 2*i` for `0 ≤ i < n`. Return the bitwise XOR of all elements in the array.
+
+You are given an integer `n` and an integer `start`.
+
+Define an array `nums` where `nums[i] = start + 2 * i` (**0-indexed**) and `n == nums.length`.
+
+Return *the bitwise XOR of all elements of* `nums`.
+
+**Constraints:**
+- `1 <= n <= 1000`
+- `0 <= start <= 1000`
+- `n == nums.length`
 
 ## Examples
-- **Example 1:** `n = 5, start = 0` → array `[0,2,4,6,8]`, XOR = `8`.
-- **Example 2:** `n = 4, start = 3` → array `[3,5,7,9]`, XOR = `8`.
+
+**Example 1:**
+```
+Input: n = 5, start = 0
+Output: 8
+Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
+Where "^" corresponds to bitwise XOR operator.
+```
+
+**Example 2:**
+```
+Input: n = 4, start = 3
+Output: 8
+Explanation: Array nums is equal to [3, 5, 7, 9] where (3 ^ 5 ^ 7 ^ 9) = 8.
+```
 
 ## Approach
 The XOR of a sequence with a constant step of 2 can be derived from patterns of XOR over consecutive integers. Compute XOR of numbers from `start` to `start + 2*(n-1)` stepping by 2 using properties of XOR on even/odd positions.

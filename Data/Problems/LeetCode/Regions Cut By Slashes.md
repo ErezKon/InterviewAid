@@ -7,25 +7,37 @@
 ---
 
 ## Problem Description
-Given an `n x n` grid where each cell contains either `'/'`, `'\\'`, or a blank space, the slashes divide the cell into regions. Treat the entire grid as a continuous canvas and determine the total number of distinct regions formed after drawing all slashes.
+An `n x n` grid is composed of `1 x 1` squares where each `1 x 1` square consists of a `'/'`, `'\'`, or blank space `' '`. These characters divide the square into contiguous regions.
 
-Constraints:
+Given the grid `grid` represented as a string array, return *the number of regions*.
+
+Note that backslash characters are escaped, so a `'\'` is represented as `'\\'`.
+
+**Constraints:**
+
+- `n == grid.length == grid[i].length`
 - `1 <= n <= 30`
-- `grid[i][j]` is `'/'`, `'\\'`, or `' '`.
+- `grid[i][j]` is either `'/'`, `'\'`, or `' '`.
 
 ## Examples
-**Example 1**
+
 ```
-Input: [" /","/ "]
-Output: 2
-Explanation: The two slashes create two separate regions.
+Example 1:
+  Input: grid = [" /","/ "]
+  Output: 2
 ```
 
-**Example 2**
 ```
-Input: ["\\/","/\\"]
-Output: 4
-Explanation: The intersecting slashes partition the grid into four regions.
+Example 2:
+  Input: grid = [" /","  "]
+  Output: 1
+```
+
+```
+Example 3:
+  Input: grid = ["/\\","\\/"]
+  Output: 5
+  Explanation: Recall that because \ characters are escaped, "\\/" refers to \/, and "/\\" refers to /\.
 ```
 
 ## Approach

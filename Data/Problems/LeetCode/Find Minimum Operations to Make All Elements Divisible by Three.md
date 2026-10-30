@@ -7,18 +7,29 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may repeatedly add or subtract 1 from any element. Each operation changes a number by exactly one. Determine the minimum total number of operations required so that every element becomes divisible by three.
+You are given an integer array `nums`. In one operation, you can add or subtract 1 from **any** element of `nums`.
+
+Return the **minimum** number of operations to make all elements of `nums` divisible by 3.
+
+**Constraints:**
+- `1 <= nums.length <= 50`
+- `1 <= nums[i] <= 50`
 
 ## Examples
-**Example 1**
 ```
-nums = [2, 5, 6]
-Operations needed: (2→3) 1, (5→6) 1, (6 already divisible) 0 → total 2
+Example 1:
+  Input: nums = [1,2,3,4]
+  Output: 3
+  Explanation: All array elements can be made divisible by 3 using 3 operations:
+  - Subtract 1 from 1.
+  - Add 1 to 2.
+  - Subtract 1 from 4.
 ```
-**Example 2**
+
 ```
-nums = [1, 2, 3, 4]
-Adjust 1→0 (1), 2→3 (1), 3→3 (0), 4→3 (1) → total 3
+Example 2:
+  Input: nums = [3,6,9]
+  Output: 0
 ```
 
 ## Approach

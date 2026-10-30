@@ -8,27 +8,41 @@
 
 ## 1. Problem Description
 
-Given an `m × n` matrix initialized to 0 and a list of `indices` where each `[r, c]` increments all cells in row `r` and column `c`, return the number of cells with **odd** values after applying all increments.
+There is an `m x n` matrix that is initialized to all `0`'s. There is also a 2D array `indices` where each `indices[i] = [r_i, c_i]` represents a **0-indexed location** to perform some increment operations on the matrix.
+
+For each location `indices[i]`, do **both** of the following:
+
+1. Increment **all** the cells on row `r_i`.
+2. Increment **all** the cells on column `c_i`.
+
+Given `m`, `n`, and `indices`, return *the **number of odd-valued cells** in the matrix after applying the increment to all locations in* `indices`.
+
+**Constraints:**
+- `1 <= m, n <= 50`
+- `1 <= indices.length <= 100`
+- `0 <= r_i < m`
+- `0 <= c_i < n`
+
+**Follow up:** Could you solve this in `O(n + m + indices.length)` time with only `O(n + m)` extra space?
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: m = 2, n = 3, indices = [[0,1],[1,1]]
-Output: 6
-Explanation:
-Initial matrix = [[0,0,0],[0,0,0]]
-After [0,1]: [[1,1,1],[0,1,0]]
-After [1,1]: [[1,2,1],[1,2,1]]
-All 6 cells are odd.
+Example 1:
+  Input: m = 2, n = 3, indices = [[0,1],[1,1]]
+  Output: 6
+  Explanation: Initial matrix = [[0,0,0],[0,0,0]].
+  After applying first increment it becomes [[1,2,1],[0,1,0]].
+  The final matrix is [[1,3,1],[1,3,1]], which contains 6 odd numbers.
 ```
 
-**Example 2:**
 ```
-Input: m = 1, n = 1, indices = [[0,0]]
-Output: 1
+Example 2:
+  Input: m = 2, n = 2, indices = [[1,1],[0,0]]
+  Output: 0
+  Explanation: Final matrix = [[2,2],[2,2]]. There are no odd numbers in the final matrix.
 ```
 
 ---

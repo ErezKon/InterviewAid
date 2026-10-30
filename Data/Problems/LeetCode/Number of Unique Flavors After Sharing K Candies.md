@@ -18,7 +18,16 @@
 
 ## 1. Problem Description
 
-Share exactly `k` consecutive candies. Maximize the number of unique flavors in the remaining `n - k` candies.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given a **0-indexed** integer array `candies`, where `candies[i]` represents the flavor of the `i^th` candy. Your mom wants you to share these candies with your little sister by giving her `k` **consecutive** candies, but you want to keep as many flavors of candies as possible.
+
+Return *the **maximum** number of **unique** flavors of candy you can keep after sharing ** with your sister.*
+
+**Constraints:**
+- `0 <= candies.length <= 10^5`
+- `1 <= candies[i] <= 10^5`
+- `0 <= k <= candies.length`
 
 ---
 
@@ -26,16 +35,30 @@ Share exactly `k` consecutive candies. Maximize the number of unique flavors in 
 
 **Example 1:**
 ```
-Input: candies = [1,2,1,3,4,2,3], k = 3
-Output: 4
-Explanation: Share candies at positions 2‑4 (flavors 2,1,3). Remaining flavors are {1,4,2,3} → 4 unique.
+Input: candies = [1,2,2,3,4,3], k = 3
+Output: 3
+Explanation: Give the candies in the range [1, 3] (inclusive) with flavors [2,2,3].
+You can eat candies with flavors [1,4,3].
+There are 3 unique flavors, so return 3.
 ```
 
 **Example 2:**
 ```
-Input: candies = [5,5,5,5], k = 2
-Output: 1
-Explanation: No matter which two candies are shared, only flavor 5 remains.
+Input: candies = [2,2,2,2,3,3], k = 2
+Output: 2
+Explanation: Give the candies in the range [3, 4] (inclusive) with flavors [2,3].
+You can eat candies with flavors [2,2,2,3].
+There are 2 unique flavors, so return 2.
+Note that you can also share the candies with flavors [2,2] and eat the candies with flavors [2,2,3,3].
+```
+
+**Example 3:**
+```
+Input: candies = [2,4,5], k = 0
+Output: 3
+Explanation: You do not have to give any candies.
+You can eat the candies with flavors [2,4,5].
+There are 3 unique flavors, so return 3.
 ```
 
 ---

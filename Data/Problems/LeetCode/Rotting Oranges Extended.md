@@ -5,6 +5,9 @@ Related: #994, #542, #286, #1162
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Rotting Oranges.md](Rotting%20Oranges.md) for the official statement and constraints of #994.*
+
 Given a 2D grid of cells where `0` represents an empty cell, `1` a fresh orange, and `2` a rotten orange, each minute all fresh oranges adjacent (4‑directionally) to a rotten orange become rotten. Return the minimum number of minutes required until no fresh orange remains. If it is impossible, return `-1`.
 
 ## Examples

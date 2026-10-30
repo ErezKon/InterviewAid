@@ -7,14 +7,32 @@
 ---
 
 ## Problem Description
-Given a string `path` consisting of characters `'N'`, `'S'`, `'E'`, and `'W'` representing moves north, south, east, and west respectively, determine whether the path crosses itself (i.e., visits a location more than once). Return `true` if it does, otherwise `false`.
+Given a string `path`, where `path[i] = 'N'`, `'S'`, `'E'` or `'W'`, each representing moving one unit north, south, east, or west, respectively. You start at the origin `(0, 0)` on a 2D plane and walk on the path specified by `path`.
+
+Return `true` *if the path crosses itself at any point, that is, if at any time you are on a location you have previously visited*. Return `false` otherwise.
+
+**Constraints:**
+
+- `1 <= path.length <= 10^4`
+- `path[i]` is either `'N'`, `'S'`, `'E'`, or `'W'`.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"NES"` | `false` | Moves to (0,1) → (1,1) → (1,0); no revisit. |
-| `"NESWW"` | `true` | After moves, the path returns to (0,0) which was visited initially. |
-| `"N"` | `false` | Single step cannot cross.
+
+```
+Example 1:
+  Input: path = "NES"
+  Output: false
+  Explanation: Notice that the path doesn't cross any point more than once.
+  (0,0) -> (0,1) -> (1,1) -> (1,0)
+```
+
+```
+Example 2:
+  Input: path = "NESWW"
+  Output: true
+  Explanation: Notice that the path visits the origin twice.
+  (0,0) -> (0,1) -> (1,1) -> (1,0) -> (0,0) -> (-1,0)
+```
 
 ## Approach
 Track visited coordinates in a set. Start at the origin `(0,0)`. For each direction, update the current `(x,y)` position. If the new position already exists in the set, a crossing is detected.

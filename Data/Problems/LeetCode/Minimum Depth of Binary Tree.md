@@ -20,11 +20,15 @@
 
 ## Problem Description
 
-Given a binary tree, find its **minimum depth** — the number of nodes along the shortest path from the root to the nearest **leaf** node.
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+
+**Note:** A leaf is a node with no children.
 
 **Constraints:**
-- `0 ≤ number of nodes ≤ 10⁵`
-- `-1000 ≤ Node.val ≤ 1000`
+- The number of nodes in the tree is in the range `[0, 10^5]`.
+- `-1000 <= Node.val <= 1000`
 
 ---
 
@@ -33,20 +37,13 @@ Given a binary tree, find its **minimum depth** — the number of nodes along th
 **Example 1:**
 ```
 Input: root = [3,9,20,null,null,15,7]
-        3
-       / \
-      9   20
-         /  \
-        15   7
 Output: 2
-Explanation: Shortest path is 3→9 (depth 2). Node 9 is a leaf.
 ```
 
 **Example 2:**
 ```
 Input: root = [2,null,3,null,4,null,5,null,6]
 Output: 5
-Explanation: Tree is a skewed line. Only leaf is at depth 5.
 ```
 
 ---

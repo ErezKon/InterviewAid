@@ -7,14 +7,26 @@
 ---
 
 ## Problem Description
-Given an integer `n`, return the `n`‑th digit of the infinite sequence formed by concatenating the decimal representations of all positive integers ("123456789101112..."). `n` is 1‑indexed.
+Given an integer `n`, return the `n^th` digit of the infinite integer sequence `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...]`.
+
+**Constraints:**
+
+- `1 <= n <= 2^31 - 1`
 
 ## Examples
-| n | Sequence up to n | n-th digit |
-|---|-------------------|------------|
-| 3 | 123 | **3** |
-| 11 | 12345678910**1** | **1** |
-| 15 | 12345678910111213**1** | **1** |
+
+```
+Example 1:
+  Input: n = 3
+  Output: 3
+```
+
+```
+Example 2:
+  Input: n = 11
+  Output: 0
+  Explanation: The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of the number 10.
+```
 
 ## Approach
 **Algorithm:** Determine the length block (1‑digit, 2‑digit, …) that contains the `n`‑th digit, then locate the exact number and digit within it.

@@ -1,25 +1,31 @@
 # 361. Bomb Enemy
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/bomb-enemy](https://leetcode.com/problems/bomb-enemy)
 
 **Companies:** Google, Uber
 ---
 
 ## Problem Description
-Given a 2D grid of characters where `'W'` represents a wall, `'E'` an enemy, and `'0'` an empty cell, you may place a bomb on any empty cell. The bomb kills all enemies in the same row and column until a wall blocks the blast. Return the maximum number of enemies that can be killed with a single bomb.
+Given an `m x n` matrix `grid` where each cell is either a wall `'W'`, an enemy `'E'` or empty `'0'`, return *the maximum enemies you can kill using one bomb*. You can only place the bomb in an empty cell.
+
+The bomb kills all the enemies in the same row and column from the planted point until it hits the wall since it is too strong to be destroyed.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 ≤ m, n ≤ 500`
+- `grid[i][j]` is either `'W'`, `'E'`, or `'0'`.
 
 ## Examples
-**Example 1**
 ```
-Input: grid = [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
-Output: 3
-Explanation: Placing a bomb at grid[1][1] kills three enemies.
-```
-**Example 2**
-```
-Input: grid = [["W","W"],["0","0"]]
-Output: 0
-Explanation: No enemies can be killed.
+Example 1:
+  Input: grid = [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
+  Output: 3
+
+Example 2:
+  Input: grid = [["W","W","W"],["0","0","0"],["E","E","E"]]
+  Output: 1
 ```
 
 ## Approach

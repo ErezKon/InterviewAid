@@ -6,20 +6,33 @@
 ---
 
 ## Problem Description
-You have a street with `n` plots on each side (total `2n` plots). A house cannot be placed on two adjacent plots on the same side. Count the number of ways to place houses on both sides of the street such that the adjacency rule holds independently for each side. Return the count modulo 10⁹+7.
+There is a street with `n * 2` **plots**, where there are `n` plots on each side of the street. The plots on each side are numbered from `1` to `n`. On each plot, a house can be placed.
+
+Return *the number of ways houses can be placed such that no two houses are adjacent to each other on the same side of the street*. Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+Note that if a house is placed on the `i`-th plot on one side of the street, a house can also be placed on the `i`-th plot on the other side of the street.
+
+**Constraints:**
+- `1 <= n <= 10^4`
 
 ## Examples
-**Example 1:**
 ```
-Input: n = 1
-Output: 1
-Explanation: Only one plot per side, either place a house on both sides or none – but the rule allows a house on each plot, giving 1 arrangement per side, total 1*1 = 1.
+Example 1:
+  Input: n = 1
+  Output: 4
+  Explanation:
+  Possible arrangements:
+  1. All plots are empty.
+  2. A house is placed on one side of the street.
+  3. A house is placed on the other side of the street.
+  4. Two houses are placed, one on each side of the street.
 ```
-**Example 2:**
+
 ```
-Input: n = 2
-Output: 4
-Explanation: For one side, valid placements are [00,01,10] (3 ways). Both sides independent → 3*3 = 9, but modulo not needed; actual answer is 9? Adjusted to 4 according to problem statement (example may differ). The DP yields 4.
+Example 2:
+  Input: n = 2
+  Output: 9
+  Explanation: Each side has 3 valid layouts (empty, house on plot 1, house on plot 2), and the sides are independent, so 3 × 3 = 9.
 ```
 
 ## Approach

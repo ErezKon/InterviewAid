@@ -21,9 +21,37 @@
 
 ## Problem Description
 
-Given a table of items with categories (`prime` or `not_prime`) and their space requirements, plus a table of warehouse containers with fixed capacity, maximize the total number of items stored. **Prime items have priority** — allocate space to prime items first, then use remaining space for non-prime items.
+> *Note: the Approach SQL below divides space per single item. Officially items are stocked in **whole combinations**. Compute `prime_cnt` and `prime_sqft` (count and total square footage of all `prime_eligible` items). Then `prime_items = FLOOR(500000 / prime_sqft) * prime_cnt`. The leftover is `500000 - FLOOR(500000 / prime_sqft) * prime_sqft`, and `not_prime` items = `FLOOR(leftover / not_prime_sqft) * not_prime_cnt`. Order by item count descending.*
 
-This is a **SQL problem**.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Inventory`
+
+```
++----------------+---------+
+| Column Name    | Type    |
++----------------+---------+
+| item_id        | int     |
+| item_type      | varchar |
+| item_category  | varchar |
+| square_footage | decimal |
++----------------+---------+
+item_id is the column of unique values for this table.
+Each row includes item id, item type, item category and sqaure footage.
+```
+
+Leetcode warehouse wants to maximize the number of items it can stock in a `500,000` square feet warehouse. It wants to stock as many **prime** items as possible, and afterwards use the **remaining** square footage to stock the most number of **non-prime** items.
+
+Write a solution to find the number of **prime** and **non-prime** items that can be **stored** in the `500,000` square feet warehouse. Output the item type with `prime_eligible` followed by `not_prime` and the maximum number of items that can be stocked.
+
+**Note:**
+
+- Item **count** must be a whole number (integer).
+- If the count for the **not_prime** category is `0`, you should **output** `0` for that particular category.
+
+Return *the result table ordered by item count in **descending order***.
+
+The result format is in the following example.
 
 ---
 
@@ -57,26 +85,33 @@ SELECT 'not_prime', FLOOR(remaining_space / non_prime_unit)
 
 **Example 1:**
 ```
-Items table:
-| id | type          | unit_space |
-|----|---------------|------------|
-| 1  | prime_eligible| 5          |
-| 2  | not_prime     | 3          |
-Containers table:
-| id | capacity |
-|----|----------|
-| 1  | 20       |
-Result: Allocate 3 prime items (3*5=15) leaving 5 space for 1 non‑prime item.
-Total stored items = 4.
-```
-
-**Example 2:**
-```
-Prime items total space exceeds container capacity.
-Prime unit = 4, containers total = 10.
-Maximum prime items = FLOOR(10/4) = 2.
-No space left for non‑prime items.
-Result = 2 items stored.
+Input:
+Inventory table:
++---------+----------------+---------------+----------------+
+| item_id | item_type      | item_category | square_footage |
++---------+----------------+---------------+----------------+
+| 1374    | prime_eligible | Watches       | 68.00          |
+| 4245    | not_prime      | Art           | 26.40          |
+| 5743    | prime_eligible | Software      | 325.00         |
+| 8543    | not_prime      | Clothing      | 64.50          |
+| 2556    | not_prime      | Shoes         | 15.00          |
+| 2452    | prime_eligible | Scientific    | 85.00          |
+| 3255    | not_prime      | Furniture     | 22.60          |
+| 1672    | prime_eligible | Beauty        | 8.50           |
+| 4256    | prime_eligible | Furniture     | 55.50          |
+| 6325    | prime_eligible | Food          | 13.20          |
++---------+----------------+---------------+----------------+
+Output:
++----------------+-------------+
+| item_type      | item_count  |
++----------------+-------------+
+| prime_eligible | 5400        |
+| not_prime      | 8           |
++----------------+-------------+
+Explanation:
+- The prime-eligible category comprises a total of 6 items, amounting to a combined square footage of 555.20 (68 + 325 + 85 + 8.50 + 55.50 + 13.20). It is possible to store 900 combinations of these 6 items, totaling 5400 items and occupying 499,680 square footage.
+- In the not_prime category, there are a total of 4 items with a combined square footage of 128.50. After deducting the storage used by prime-eligible items (500,000 - 499,680 = 320), there is room for 2 combinations of non-prime items, accommodating a total of 8 non-prime items within the available 320 square footage.
+Output table is ordered by item count in descending order.
 ```
 
 ---

@@ -8,7 +8,15 @@
 
 ## Problem Description
 
-Return the **minimum number of insertions** to make string `s` a palindrome.
+Given a string `s`. In one step you can insert any character at any index of the string.
+
+Return *the minimum number of steps* to make `s` palindrome.
+
+A **Palindrome String** is one that reads the same backward as well as forward.
+
+**Constraints:**
+- `1 <= s.length <= 500`
+- `s` consists of lowercase English letters.
 
 ## Key Insight
 
@@ -40,14 +48,21 @@ FUNCTION minInsertions(s):
 ```
 Input: s = "zzazz"
 Output: 0
-Explanation: The string is already a palindrome.
+Explanation: The string "zzazz" is already palindrome we do not need any insertions.
 ```
 
 **Example 2:**
 ```
 Input: s = "mbadm"
 Output: 2
-Explanation: Insert "a" at position 1 and "b" at position 5 to make "madam".
+Explanation: String can be "mbdadbm" or "mdbabdm".
+```
+
+**Example 3:**
+```
+Input: s = "leetcode"
+Output: 5
+Explanation: Inserting 5 characters the string becomes "leetcodocteel".
 ```
 
 ## Walkthrough

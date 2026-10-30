@@ -7,14 +7,33 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, determine if it can be partitioned into two non‑empty subsets `A` and `B` such that the average of `A` equals the average of `B`. Return `true` if such a partition exists, otherwise `false`.
+
+You are given an integer array `nums`.
+
+You should move each element of `nums` into one of the two arrays `A` and `B` such that `A` and `B` are non-empty, and `average(A) == average(B)`.
+
+Return `true` if it is possible to achieve that and `false` otherwise.
+
+**Note** that for an array `arr`, `average(arr)` is the sum of all the elements of `arr` over the length of `arr`.
+
+**Constraints:**
+- `1 <= nums.length <= 30`
+- `0 <= nums[i] <= 10^4`
 
 ## Examples
-- **Input:** `nums = [1,2,3,4,5,6,7,8]`
-  **Output:** `true`
-  *Explanation:* Subset `A = [1,4,7,8]` and `B = [2,3,5,6]` both have average `5`.
-- **Input:** `nums = [3,1]`
-  **Output:** `false`
+
+**Example 1:**
+```
+Input: nums = [1,2,3,4,5,6,7,8]
+Output: true
+Explanation: We can split the array into [1,4,5,8] and [2,3,6,7], and both of them have an average of 4.5.
+```
+
+**Example 2:**
+```
+Input: nums = [3,1]
+Output: false
+```
 
 ## Approach
 Use a meet‑in‑the‑middle technique. For each possible subset size `k` (1 ≤ k < n), the required subset sum is `k * total / n`. Enumerate all subset sums of the first half and store them by subset size. Then enumerate subsets of the second half and check if a complementary sum exists that satisfies the target.

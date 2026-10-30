@@ -7,14 +7,30 @@
 ---
 
 ## Problem Description
-Given a non‑negative integer `num`, determine the digit (0‑9) that appears the fewest times in its decimal representation. If multiple digits share the minimum frequency, return the smallest such digit.
+Given an integer `n`, find the digit that occurs **least** frequently in its decimal representation. If multiple digits have the same frequency, choose the **smallest** digit.
+
+Return the chosen digit as an integer.
+
+The **frequency** of a digit `x` is the number of times it appears in the decimal representation of `n`.
+
+> *Note: only digits that actually appear in `n` are candidates. The Approach/Walkthrough below also consider digits with count 0 (and would return 0 for most inputs) — skip digits with `count[d] == 0` when taking the minimum.*
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `123452` | `0` | Digits `0` and `6‑9` appear 0 times; the smallest is `0`. |
-| `112233` | `0` | Digits `0,4,5,6,7,8,9` appear 0 times; return `0`. |
-| `9876543210` | `0` | All digits appear once; the smallest digit with minimum frequency is `0`. |
+**Example 1:**
+```
+Input: n = 1553322
+Output: 1
+Explanation: The least frequent digit in n is 1, which appears only once. All other digits appear twice.
+```
+**Example 2:**
+```
+Input: n = 723344511
+Output: 2
+Explanation: The least frequent digits in n are 7, 2, and 5; each appears only once.
+```
+
+## Constraints
+- `1 <= n <= 2^31 - 1`
 
 ## Approach
 Count occurrences of each digit using an array of size 10. After scanning, find the minimum count and return the smallest digit with that count.

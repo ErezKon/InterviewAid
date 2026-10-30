@@ -3,6 +3,8 @@
 ---
 
 ## Problem Description
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design); constraints and examples are derived, not from an official LeetCode source.*
+
 A Minimum Spanning Tree (MST) connects all `n` vertices of an undirected weighted graph with exactly `n‑1` edges such that the total edge weight is minimized. Two classic algorithms solve this: **Kruskal** (edge‑centric) and **Prim** (vertex‑centric). The problem may ask for the total weight of the MST or to construct the edge set.
 
 ## Examples

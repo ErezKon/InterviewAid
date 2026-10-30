@@ -6,27 +6,61 @@
 ---
 
 ## Problem Description
-You are given an array `prices` where `prices[i]` is the price of the `i`‑th item. You have a budget `B`. You may buy any subset of items such that the total cost does not exceed `B`. After buying, you receive a cashback equal to the minimum price among the purchased items. Return the maximum possible amount of money you can spend (including the cashback) while staying within the budget.
+
+> *Note: the Approach below solves an invented budget problem. Correct idea: on day `d` you pay `value · d`, and each shop sells from its cheapest (rightmost) item, so it is optimal to buy all `m·n` items in increasing order of value. Sort all values ascending and return `Σ sorted[d−1] · d`.*
+
+You are given a **0-indexed** `m * n` integer matrix `values`, representing the values of `m * n` different items in `m` different shops. Each shop has `n` items where the `j^th` item in the `i^th` shop has a value of `values[i][j]`. Additionally, the items in the `i^th` shop are sorted in non-increasing order of value. That is, `values[i][j] >= values[i][j + 1]` for all `0 <= j < n - 1`.
+
+On each day, you would like to buy a single item from one of the shops. Specifically, On the `d^th` day you can:
+
+- Pick any shop `i`.
+- Buy the rightmost available item `j` for the price of `values[i][j] * d`. That is, find the greatest index `j` such that item `j` was never bought before, and buy it for the price of `values[i][j] * d`.
+
+**Note** that all items are pairwise different. For example, if you have bought item `0` from shop `1`, you can still buy item `0` from any other shop.
+
+Return *the **maximum amount of money that can be spent** on buying all * `m * n` *products*.
+
+**Constraints:**
+- `1 <= m == values.length <= 10`
+- `1 <= n == values[i].length <= 10^4`
+- `1 <= values[i][j] <= 10^6`
+- `values[i]` are sorted in non-increasing order.
 
 ## Examples
+
 **Example 1:**
 ```
-prices = [2,3,5,7], B = 10
-Buy items {3,5,7} → sum = 15, exceeds budget.
-Buy items {2,3,5} → sum = 10, min = 2, cashback = 2 → total spent = 12 (exceeds B, not allowed).
-Optimal purchase {2,7} → sum = 9, min = 2, cashback = 2 → total = 11 (exceeds B).
-Best feasible is {5,7} → sum = 12 > B, not allowed.
-Result = 0 (no purchase satisfies condition).
+Input: values = [[8,5,2],[6,4,1],[9,7,3]]
+Output: 285
+Explanation: On the first day, we buy product 2 from shop 1 for a price of values[1][2] * 1 = 1.
+On the second day, we buy product 2 from shop 0 for a price of values[0][2] * 2 = 4.
+On the third day, we buy product 2 from shop 2 for a price of values[2][2] * 3 = 9.
+On the fourth day, we buy product 1 from shop 1 for a price of values[1][1] * 4 = 16.
+On the fifth day, we buy product 1 from shop 0 for a price of values[0][1] * 5 = 25.
+On the sixth day, we buy product 0 from shop 1 for a price of values[1][0] * 6 = 36.
+On the seventh day, we buy product 1 from shop 2 for a price of values[2][1] * 7 = 49.
+On the eighth day, we buy product 0 from shop 0 for a price of values[0][0] * 8 = 64.
+On the ninth day, we buy product 0 from shop 2 for a price of values[2][0] * 9 = 81.
+Hence, our total spending is equal to 285.
+It can be shown that 285 is the maximum amount of money that can be spent buying all m * n products.
 ```
-*In this case no subset meets the constraint.
 
 **Example 2:**
 ```
-prices = [1,2,3,4], B = 7
-Buy {3,4} → sum = 7, min = 3, cashback = 3 → total = 10 (exceeds B).
-Buy {2,4} → sum = 6, min = 2, cashback = 2 → total = 8 (exceeds B).
-Buy {1,4} → sum = 5, min = 1, cashback = 1 → total = 6 (≤ B).
-Result = 6.
+Input: values = [[10,8,6,4,2],[9,7,5,3,2]]
+Output: 386
+Explanation: On the first day, we buy product 4 from shop 0 for a price of values[0][4] * 1 = 2.
+On the second day, we buy product 4 from shop 1 for a price of values[1][4] * 2 = 4.
+On the third day, we buy product 3 from shop 1 for a price of values[1][3] * 3 = 9.
+On the fourth day, we buy product 3 from shop 0 for a price of values[0][3] * 4 = 16.
+On the fifth day, we buy product 2 from shop 1 for a price of values[1][2] * 5 = 25.
+On the sixth day, we buy product 2 from shop 0 for a price of values[0][2] * 6 = 36.
+On the seventh day, we buy product 1 from shop 1 for a price of values[1][1] * 7 = 49.
+On the eighth day, we buy product 1 from shop 0 for a price of values[0][1] * 8 = 64
+On the ninth day, we buy product 0 from shop 1 for a price of values[1][0] * 9 = 81.
+On the tenth day, we buy product 0 from shop 0 for a price of values[0][0] * 10 = 100.
+Hence, our total spending is equal to 386.
+It can be shown that 386 is the maximum amount of money that can be spent buying all m * n products.
 ```
 
 ## Approach

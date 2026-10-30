@@ -7,18 +7,39 @@
 ---
 
 ## Problem Description
-Given an integer array `arr` of length `n`, you will receive a stream of queries. Each query provides a subarray range `[l, r]` (0‑based inclusive) and asks for an element that appears more than `(r‑l+1)/2` times in that subarray, i.e., the majority element. If no such element exists, return `-1`. Queries must be answered online – you cannot reorder them.
+
+Design a data structure that efficiently finds the **majority element** of a given subarray.
+
+The **majority element** of a subarray is an element that occurs `threshold` times or more in the subarray.
+
+Implementing the `MajorityChecker` class:
+
+- `MajorityChecker(int[] arr)` Initializes the instance of the class with the given array `arr`.
+- `int query(int left, int right, int threshold)` returns the element in the subarray `arr[left...right]` that occurs at least `threshold` times, or `-1` if no such element exists.
+
+**Constraints:**
+- `1 <= arr.length <= 2 * 10^4`
+- `1 <= arr[i] <= 2 * 10^4`
+- `0 <= left <= right < arr.length`
+- `threshold <= right - left + 1`
+- `2 * threshold > right - left + 1`
+- At most `10^4` calls will be made to `query`.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-arr = [1,2,1,1,3]
-queries = [[0,2],[1,4],[0,4]]
-output = [1,-1,1]
+Input
+["MajorityChecker", "query", "query", "query"]
+[[[1, 1, 2, 2, 1, 1]], [0, 5, 4], [0, 3, 3], [2, 3, 2]]
+Output:
+[null, 1, -1, 2]
+Explanation:
+MajorityChecker majorityChecker = new MajorityChecker([1, 1, 2, 2, 1, 1]);
+majorityChecker.query(0, 5, 4); // return 1
+majorityChecker.query(0, 3, 3); // return -1
+majorityChecker.query(2, 3, 2); // return 2
 ```
-- Subarray `[0,2]` → `[1,2,1]` has majority `1`.
-- Subarray `[1,4]` → `[2,1,1,3]` has no majority.
-- Subarray `[0,4]` → `[1,2,1,1,3]` majority is `1`.
 
 ## Approach
 Use a **Segment Tree** where each node stores a candidate majority element and its relative count using the Boyer‑Moore voting principle. Merging two nodes combines candidates to produce a new candidate for the union interval. To answer a query, retrieve the candidate from the segment tree for `[l, r]` and then verify its actual frequency with a prefix‑sum map.

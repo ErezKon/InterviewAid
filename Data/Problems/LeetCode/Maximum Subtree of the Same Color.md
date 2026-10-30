@@ -7,21 +7,52 @@
 ---
 
 ## Problem Description
-Given an undirected tree with `n` nodes numbered `0 … n-1`. Each node `i` has a color `color[i]`. A *subtree* is any connected set of nodes (also a tree). The **score** of a subtree is the number of nodes it contains **provided all nodes share the same color**; otherwise its score is 0. Return the maximum possible score among all subtrees.
+
+> *Note: the Approach below finds connected monochromatic components. Officially the **entire** subtree rooted at `v` must have one color. Correct idea: post-order DFS. `v` is valid iff every child is valid and has `colors[v]`; its size is `1 + Σ child sizes`. Return the largest valid size.*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given a 2D integer array `edges` representing a tree with `n` nodes, numbered from `0` to `n - 1`, rooted at node `0`, where `edges[i] = [u_i, v_i]` means there is an edge between the nodes `v_i` and `u_i`.
+
+You are also given a **0-indexed** integer array `colors` of size `n`, where `colors[i]` is the color assigned to node `i`.
+
+We want to find a node `v` such that every node in the subtree of `v` has the **same** color.
+
+Return *the size of such subtree with the **maximum** number of nodes possible.*
+
+**![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/3000-3099/3004.Maximum%20Subtree%20of%20the%20Same%20Color/images/20231216-134026.png)**
+
+**Constraints:**
+- `n == edges.length + 1`
+- `1 <= n <= 5 * 10^4`
+- `edges[i] == [u_i, v_i]`
+- `0 <= u_i, v_i < n`
+- `colors.length == n`
+- `1 <= colors[i] <= 10^5`
+- The input is generated such that the graph represented by `edges` is a tree.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: n = 7, edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], color = [1,1,2,1,1,2,2]
-Output: 3
-Explanation: The subtree formed by nodes {0,1,3,4} is not valid because node 2 has a different color. The largest monochromatic subtree is {1,3,4} (all color 1) with size 3.
+Input: edges = [[0,1],[0,2],[0,3]], colors = [1,1,2,3]
+Output: 1
+Explanation: Each color is represented as: 1 -> Red, 2 -> Green, 3 -> Blue. We can see that the subtree rooted at node 0 has children with different colors. Any other subtree is of the same color and has a size of 1. Hence, we return 1.
 ```
 
 **Example 2:**
 ```
-Input: n = 4, edges = [[0,1],[1,2],[2,3]], color = [5,5,5,5]
+Input: edges = [[0,1],[0,2],[0,3]], colors = [1,1,1,1]
 Output: 4
-Explanation: All nodes share the same color, so the whole tree is the optimal subtree.
+Explanation: The whole tree has the same color, and the subtree rooted at node 0 has the most number of nodes which is 4. Hence, we return 4.
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/3000-3099/3004.Maximum%20Subtree%20of%20the%20Same%20Color/images/20231216-134017.png)
+```
+
+**Example 3:**
+```
+Input: edges = [[0,1],[0,2],[2,3],[2,4]], colors = [1,2,3,3,3]
+Output: 3
+Explanation: Each color is represented as: 1 -> Red, 2 -> Green, 3 -> Blue. We can see that the subtree rooted at node 0 has children with different colors. Any other subtree is of the same color, but the subtree rooted at node 2 has a size of 3 which is the maximum. Hence, we return 3.
 ```
 
 ## Approach

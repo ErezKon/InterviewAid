@@ -20,17 +20,36 @@
 
 ## 1. Problem Description
 
-Find the next **special palindrome** greater than `n`. A special palindrome has at most 2 distinct digits and is a palindrome.
+You are given an integer `n`.
+
+A number is called **special** if:
+
+- It is a **palindrome**.
+- Every digit `k` in the number appears **exactly** `k` times.
+
+Return the **smallest** special number **strictly** greater than `n`.
+
+**Constraints:**
+
+- `0 <= n <= 10^15`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 123` | `131` | `131` is a palindrome using digits `1` and `3` only, and it is the smallest such number > 123. |
-| `n = 999` | `1001` | `1001` uses digits `0` and `1` and is the next palindrome after 999. |
-| `n = 8080` | `8088` | `8088` contains digits `0` and `8` and is the minimal special palindrome greater than 8080. |
+```
+Example 1:
+  Input: n = 2
+  Output: 22
+  Explanation: 22 is the smallest special number greater than 2, as it is a palindrome and the digit 2 appears exactly 2 times.
+```
+
+```
+Example 2:
+  Input: n = 33
+  Output: 212
+  Explanation: 212 is the smallest special number greater than 33, as it is a palindrome and the digits 1 and 2 appear exactly 1 and 2 times respectively.
+```
 
 ---
 

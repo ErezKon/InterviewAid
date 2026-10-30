@@ -7,12 +7,33 @@
 ---
 
 ## Problem Description
-Given an integer `n`, determine whether it can be expressed as a sum of distinct powers of three (i.e., each power `3^k` may be used at most once). Return `true` if such a representation exists, otherwise `false`.
+Given an integer `n`, return `true` *if it is possible to represent* `n` *as the sum of distinct powers of three.* Otherwise, return `false`.
+
+An integer `y` is a power of three if there exists an integer `x` such that `y == 3^x`.
+
+**Constraints:**
+- `1 <= n <= 10^7`
 
 ## Examples
-- Input: `n = 12` → Output: `true` (`12 = 3^1 + 3^2`)
-- Input: `n = 91` → Output: `true` (`91 = 3^0 + 3^2 + 3^4`)
-- Input: `n = 2` → Output: `false` (cannot represent using distinct powers of three)
+```
+Example 1:
+  Input: n = 12
+  Output: true
+  Explanation: 12 = 3^1 + 3^2
+```
+
+```
+Example 2:
+  Input: n = 91
+  Output: true
+  Explanation: 91 = 3^0 + 3^2 + 3^4
+```
+
+```
+Example 3:
+  Input: n = 21
+  Output: false
+```
 
 ## Approach
 **Algorithm:** Base‑3 digit check (greedy)

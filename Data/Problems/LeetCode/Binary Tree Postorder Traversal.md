@@ -7,13 +7,32 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, return the values of its nodes obtained from a postorder traversal (left subtree, right subtree, then node itself). The number of nodes is in the range `[0, 10^4]` and each node's value is an integer.
+Given the `root` of a binary tree, return *the postorder traversal of its nodes' values*.
+
+**Constraints:**
+- The number of the nodes in the tree is in the range `[0, 100]`.
+- `-100 ≤ Node.val ≤ 100`
+
+**Follow up:** Recursive solution is trivial, could you do it iteratively?
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,null,2,3]` | `[3,2,1]` | The tree is `1 → 2 → 3`. Postorder visits left (none), right subtree `2` (which visits left `3`), then root.
-| `[]` | `[]` | Empty tree yields empty list.
+```
+Example 1:
+  Input: root = [1,null,2,3]
+  Output: [3,2,1]
+
+Example 2:
+  Input: root = [1,2,3,4,5,null,8,null,null,6,7,9]
+  Output: [4,6,7,5,2,9,8,3,1]
+
+Example 3:
+  Input: root = []
+  Output: []
+
+Example 4:
+  Input: root = [1]
+  Output: [1]
+```
 
 ## Approach
 Use an iterative depth‑first search with a stack. Perform a modified preorder traversal (node → right → left) and reverse the collected order to obtain postorder.

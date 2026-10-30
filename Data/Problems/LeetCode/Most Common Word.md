@@ -21,11 +21,18 @@
 
 ## 1. Problem Description
 
-Given a paragraph and a list of banned words, return the **most frequent** word that is not banned. The comparison is case‑insensitive and punctuation should be treated as word separators.
+Given a string `paragraph` and a string array of the banned words `banned`, return *the most frequent word that is not banned*. It is **guaranteed** there is **at least one word** that is not banned, and that the answer is **unique**.
+
+The words in `paragraph` are **case-insensitive** and the answer should be returned in **lowercase**.
+
+**Note** that words can not contain punctuation symbols.
 
 **Constraints:**
 - `1 <= paragraph.length <= 1000`
+- `paragraph` consists of English letters, space `' '`, or one of the symbols: `"!?',;."`.
 - `0 <= banned.length <= 100`
+- `1 <= banned[i].length <= 10`
+- `banned[i]` consists of only lowercase English letters.
 
 ---
 
@@ -55,22 +62,23 @@ FUNCTION mostCommonWord(paragraph, banned):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
-banned = ["hit"]
+Example 1:
+  Input: paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.", banned = ["hit"]
+  Output: "ball"
+  Explanation:
+  "hit" occurs 3 times, but it is a banned word.
+  "ball" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph.
+  Note that words in the paragraph are not case sensitive,
+  that punctuation is ignored (even if adjacent to words, such as "ball,"),
+  and that "hit" isn't the answer even though it occurs more because it is banned.
 ```
-- After cleaning and lowercasing, words are `[bob, a, ball, the, ball, flew, far, after, it, was, hit]`.
-- Excluding "hit", "ball" appears twice, which is the highest frequency.
-**Output:** `"ball"`
 
-**Example 2:**
 ```
-paragraph = "Jack and Jill went up the hill."
-banned = []
+Example 2:
+  Input: paragraph = "a.", banned = []
+  Output: "a"
 ```
-- All words appear once; the first word alphabetically after processing is returned.
-**Output:** `"jack"`
 
 ---
 

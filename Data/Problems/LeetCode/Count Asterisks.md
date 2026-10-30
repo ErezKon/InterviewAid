@@ -8,7 +8,16 @@
 
 ## 1. Problem Description
 
-Given a string `s` with `|` (pipe) characters forming pairs, count the `*` characters that are **not** between any pair of pipes.
+You are given a string `s`, where every **two** consecutive vertical bars `'|'` are grouped into a **pair**. In other words, the 1st and 2nd `'|'` make a pair, the 3rd and 4th `'|'` make a pair, and so forth.
+
+Return *the number of* `'*'` *in* `s`*, **excluding** the* `'*'` *between each pair of* `'|'`.
+
+**Note** that each `'|'` will belong to **exactly** one pair.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s` consists of lowercase English letters, vertical bars `'|'`, and asterisks `'*'`.
+- `s` contains an **even** number of vertical bars `'|'`.
 
 ---
 
@@ -34,18 +43,29 @@ FUNCTION countAsterisks(s):
 
 ## 3. Examples
 
-**Example 1:**
 ```
-Input: s = "l|*e*et|c**o|*de|"
-Output: 2
-Explanation: The asterisks between the first and second `|` and between the third and fourth `|` are ignored. The remaining two asterisks are counted.
+Example 1:
+  Input: s = "l|*e*et|c**o|*de|"
+  Output: 2
+  Explanation: The considered characters are: "l|*e*et|c**o|*de|" -> "l" and "c**o" (outside pairs).
+  The characters between the first and second '|' are excluded from the answer.
+  Also, the characters between the third and fourth '|' are excluded from the answer.
+  There are 2 asterisks considered. Therefore, we return 2.
 ```
 
-**Example 2:**
 ```
-Input: s = "*|**|*"
-Output: 2
-Explanation: Only the first and last asterisks are outside any pipe pair.
+Example 2:
+  Input: s = "iamprogrammer"
+  Output: 0
+  Explanation: In this example, there are no asterisks in s. Therefore, we return 0.
+```
+
+```
+Example 3:
+  Input: s = "yo|uar|e**|b|e***au|tifu|l"
+  Output: 5
+  Explanation: The considered characters are "yo", "e**", "e***au" and "l" (outside pairs).
+  There are 5 asterisks considered. Therefore, we return 5.
 ```
 
 ---

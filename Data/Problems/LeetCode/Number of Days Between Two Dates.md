@@ -8,24 +8,28 @@
 
 ## 1. Problem Description
 
-Return the number of days between two dates in `YYYY-MM-DD` format.
+Write a program to count the number of days between two dates.
+
+The two dates are given as strings, their format is `YYYY-MM-DD` as shown in the examples.
+
+**Constraints:**
+
+- The given dates are valid dates between the years `1971` and `2100`.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: date1 = "2020-01-15", date2 = "2020-01-20"
-Output: 5
-Explanation: There are five days from Jan 15 to Jan 20 inclusive of the start date.
+Example 1:
+  Input: date1 = "2019-06-29", date2 = "2019-06-30"
+  Output: 1
 ```
 
-**Example 2:**
 ```
-Input: date1 = "2019-12-31", date2 = "2020-01-01"
-Output: 1
-Explanation: The dates span the new‑year boundary, yielding a single day difference.
+Example 2:
+  Input: date1 = "2020-01-15", date2 = "2019-12-31"
+  Output: 15
 ```
 
 ---

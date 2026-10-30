@@ -8,7 +8,13 @@
 
 ## 1. Problem Description
 
-Given an array of digits, return the largest number (as a string) that is divisible by 3, using any subset of digits. Return `""` if impossible.
+Given an array of digits `digits`, return *the largest multiple of **three** that can be formed by concatenating some of the given digits in **any order***. If there is no answer return an empty string.
+
+Since the answer may not fit in an integer data type, return the answer as a string. Note that the returning answer must not contain unnecessary leading zeros.
+
+**Constraints:**
+- `1 <= digits.length <= 10^4`
+- `0 <= digits[i] <= 9`
 
 ---
 
@@ -62,13 +68,23 @@ FUNCTION largestMultipleOfThree(digits):
 
 ## Examples
 
-| digits | output |
-|--------|--------|
-| [8,1,9] | "981" |
-| [8,6,7,1,0] | "8760" |
-| [1] | "" |
+**Example 1:**
+```
+Input: digits = [8,1,9]
+Output: "981"
+```
 
-*Explanation*: In the second example the sum is 22 (mod 3 = 1). Removing the smallest digit with remainder 1 (the `1`) yields `[8,6,7,0]` which forms `8760`.
+**Example 2:**
+```
+Input: digits = [8,6,7,1,0]
+Output: "8760"
+```
+
+**Example 3:**
+```
+Input: digits = [1]
+Output: ""
+```
 
 ---
 

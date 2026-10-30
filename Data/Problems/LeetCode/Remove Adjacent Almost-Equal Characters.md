@@ -7,14 +7,44 @@
 ---
 
 ## Problem Description
-Given a string `s`, repeatedly delete any two adjacent characters whose ASCII codes differ by at most one. Perform deletions until no such adjacent pair exists and return the resulting string.
+You are given a **0-indexed** string `word`.
+
+In one operation, you can pick any index `i` of `word` and change `word[i]` to any lowercase English letter.
+
+Return *the **minimum** number of operations needed to remove all adjacent **almost-equal** characters from* `word`.
+
+Two characters `a` and `b` are **almost-equal** if `a == b` or `a` and `b` are adjacent in the alphabet.
+
+**Constraints:**
+
+- `1 <= word.length <= 100`
+- `word` consists only of lowercase English letters.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| "abccba" | "" | Delete `a`‑`b`, then `c`‑`c`, then `b`‑`a`, ending with an empty string. |
-| "abc" | "a" | Delete `b`‑`c` (difference 1), left with `a`. |
-| "a" | "a" | No adjacent pair to delete.
+
+```
+Example 1:
+  Input: word = "aaaaa"
+  Output: 2
+  Explanation: We can change word into "acaca" which does not have any adjacent almost-equal characters.
+    It can be shown that the minimum number of operations needed to remove all adjacent almost-equal characters from word is 2.
+```
+
+```
+Example 2:
+  Input: word = "abddez"
+  Output: 2
+  Explanation: We can change word into "ybdoez" which does not have any adjacent almost-equal characters.
+    It can be shown that the minimum number of operations needed to remove all adjacent almost-equal characters from word is 2.
+```
+
+```
+Example 3:
+  Input: word = "zyxyxyz"
+  Output: 3
+  Explanation: We can change word into "zaxaxaz" which does not have any adjacent almost-equal characters.
+    It can be shown that the minimum number of operations needed to remove all adjacent almost-equal characters from word is 3.
+```
 
 ## Approach
 **Two‑Pointers Greedy** – Use a stack‑like pointer to build the result. For each character, if it forms an almost‑equal pair with the previous kept character, discard both; otherwise, keep the character.

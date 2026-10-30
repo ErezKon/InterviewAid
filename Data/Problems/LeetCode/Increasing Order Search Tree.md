@@ -1,12 +1,17 @@
 # 897. Increasing Order Search Tree
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/increasing-order-search-tree](https://leetcode.com/problems/increasing-order-search-tree)
 **Companies:** Amazon, Google
 ---
 
 ## Problem Description
 
-Given the root of a binary search tree (BST), rearrange the tree so that it becomes an increasing order search tree where the left child of every node is null and the right child points to the next node in the in-order traversal order.
+Given the `root` of a binary search tree, rearrange the tree in **in-order** so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only one right child.
+
+**Constraints:**
+- The number of nodes in the given tree will be in the range `[1, 100]`.
+- `0 <= Node.val <= 1000`
 
 ## Examples
 

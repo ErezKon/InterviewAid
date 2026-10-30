@@ -8,19 +8,39 @@
 
 ## Problem Description
 
-Given a date (day, month, year), return the day of the week as a string.
+Given a date, return the corresponding day of the week for that date.
+
+The input is given as three integers representing the `day`, `month` and `year` respectively.
+
+Return the answer as one of the following values `{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}`.
+
+**Note:** January 1, 1971 was a Friday.
+
+**Constraints:**
+
+- The given dates are valid dates between the years `1971` and `2100`.
 
 ---
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `day = 31, month = 8, year = 2019` | `"Saturday"` |
-| `day = 18, month = 7, year = 1999` | `"Sunday"` |
-| `day = 15, month = 8, year = 1993` | `"Sunday"` |
+```
+Example 1:
+  Input: day = 31, month = 8, year = 2019
+  Output: "Saturday"
+```
 
-*Explanation:* Using the Gregorian calendar, these dates correspond to the shown weekdays.
+```
+Example 2:
+  Input: day = 18, month = 7, year = 1999
+  Output: "Sunday"
+```
+
+```
+Example 3:
+  Input: day = 15, month = 8, year = 1993
+  Output: "Sunday"
+```
 
 ---
 

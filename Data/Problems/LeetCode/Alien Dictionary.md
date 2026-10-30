@@ -9,7 +9,18 @@
 
 ## 1. Problem Description
 
-Given a sorted list of words in an alien language, derive the order of characters. Return any valid ordering, or `""` if no valid order exists.
+There is a new alien language that uses the English alphabet. However, the order of the letters is unknown to you.
+
+You are given a list of strings `words` from the alien language's dictionary. Now it is claimed that the strings in `words` are **sorted lexicographically** by the rules of this new language.
+
+If this claim is incorrect, and the given arrangement of string in `words` cannot correspond to any order of letters, return `""`.
+
+Otherwise, return *a string of the unique letters in the new alien language sorted in **lexicographically increasing order** by the new language's rules*. If there are multiple solutions, return ***any of them***.
+
+**Constraints:**
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `words[i]` consists of only lowercase English letters.
 
 ---
 
@@ -60,13 +71,21 @@ FUNCTION alienOrder(words):
 
 ## 3. Examples
 
-| words | Output |
-|-------|--------|
-| ["wrt","wrf","er","ett","rftt"] | "wertf" |
-| ["z","x"] | "zx" |
-| ["z","z"] | "" |
+```
+Example 1:
+  Input: words = ["wrt","wrf","er","ett","rftt"]
+  Output: "wertf"
+  Explanation: The adjacent pairs yield the ordering w → e → r → t → f.
 
-**Explanation:** The first example yields ordering w → e → r → t → f.
+Example 2:
+  Input: words = ["z","x"]
+  Output: "zx"
+
+Example 3:
+  Input: words = ["z","x","z"]
+  Output: ""
+  Explanation: The order is invalid, so return "".
+```
 
 ---
 

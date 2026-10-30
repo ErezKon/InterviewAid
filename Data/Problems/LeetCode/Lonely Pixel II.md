@@ -8,7 +8,21 @@
 
 ## 1. Problem Description
 
-Count black pixels in a grid that are in a row with exactly `target` black pixels, and all rows containing a black pixel in that column are identical.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an `m x n` `picture` consisting of black `'B'` and white `'W'` pixels and an integer target, return *the number of **black** lonely pixels*.
+
+A black lonely pixel is a character `'B'` that located at a specific position `(r, c)` where:
+
+- Row `r` and column `c` both contain exactly `target` black pixels.
+- For all rows that have a black pixel at column `c`, they should be exactly the same as row `r`.
+
+**Constraints:**
+- `m == picture.length`
+- `n == picture[i].length`
+- `1 <= m, n <= 200`
+- `picture[i][j]` is `'W'` or `'B'`.
+- `1 <= target <= min(m, n)`
 
 ---
 
@@ -16,16 +30,18 @@ Count black pixels in a grid that are in a row with exactly `target` black pixel
 
 **Example 1:**
 ```
-Input: picture = [["W","B","W","B"],["W","B","W","B"],["W","B","W","B"]], target = 3
-Output: 2
-Explanation: The black pixels at (0,1) and (0,3) satisfy the conditions.
+Input: picture = [["W","B","W","B","B","W"],["W","B","W","B","B","W"],["W","B","W","B","B","W"],["W","W","B","W","B","W"]], target = 3
+Output: 6
+Explanation: All the green 'B' are the black pixels we need (all 'B's at column 1 and 3).
+Take 'B' at row r = 0 and column c = 1 as an example:
+ - Rule 1, row r = 0 and column c = 1 both have exactly target = 3 black pixels.
+ - Rule 2, the rows have black pixel at column c = 1 are row 0, row 1 and row 2. They are exactly the same as row r = 0.
 ```
 
 **Example 2:**
 ```
-Input: picture = [["W","B","W"],["B","W","B"],["W","B","W"]], target = 2
+Input: picture = [["W","W","B"],["W","W","B"],["W","W","B"]], target = 1
 Output: 0
-Explanation: No column has exactly 2 black pixels with identical rows.
 ```
 
 ---

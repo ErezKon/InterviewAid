@@ -7,22 +7,44 @@
 ---
 
 ## Problem Description
-There are `n` courses labeled from `1` to `n`. Some courses have prerequisites given as pairs `[prev, next]` meaning `prev` must be taken before `next`. In each semester you can take up to `k` courses as long as all their prerequisites have been completed. Return the minimum number of semesters needed to finish all courses. If it is impossible, return `-1`.
+You are given an integer `n`, which indicates that there are `n` courses labeled from `1` to `n`. You are also given an array `relations` where `relations[i] = [prevCourse_i, nextCourse_i]`, representing a prerequisite relationship between course `prevCourse_i` and course `nextCourse_i`: course `prevCourse_i` has to be taken before course `nextCourse_i`. Also, you are given the integer `k`.
+
+In one semester, you can take **at most** `k` courses as long as you have taken all the prerequisites in the **previous** semesters for the courses you are taking.
+
+Return *the **minimum** number of semesters needed to take all courses*. The testcases will be generated such that it is possible to take every course.
+
+**Constraints:**
+
+- `1 <= n <= 15`
+- `1 <= k <= n`
+- `0 <= relations.length <= n * (n-1) / 2`
+- `relations[i].length == 2`
+- `1 <= prevCourse_i, nextCourse_i <= n`
+- `prevCourse_i != nextCourse_i`
+- All the pairs `[prevCourse_i, nextCourse_i]` are **unique**.
+- The given graph is a directed acyclic graph.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: n = 4, relations = [[2,1],[3,1],[1,4]], k = 2
-Output: 3
-Explanation: Semester 1: take courses 2 and 3.
-Semester 2: take course 1.
-Semester 3: take course 4.
+Example 1:
+  Input: n = 4, relations = [[2,1],[3,1],[1,4]], k = 2
+  Output: 3
+  Explanation: The graph has edges 2->1, 3->1, 1->4.
+  In the first semester, you can take courses 2 and 3.
+  In the second semester, you can take course 1.
+  In the third semester, you can take course 4.
 ```
-**Example 2:**
+
 ```
-Input: n = 5, relations = [[1,5],[2,5],[3,5],[4,5]], k = 2
-Output: 3
-Explanation: Take courses 1&2, then 3&4, then 5.
+Example 2:
+  Input: n = 5, relations = [[2,1],[3,1],[4,1],[1,5]], k = 2
+  Output: 4
+  Explanation: The graph has edges 2->1, 3->1, 4->1, 1->5.
+  In the first semester, you can only take courses 2 and 3 since you cannot take more than two per semester.
+  In the second semester, you can take course 4.
+  In the third semester, you can take course 1.
+  In the fourth semester, you can take course 5.
 ```
 
 ## Approach

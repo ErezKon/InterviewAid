@@ -8,7 +8,27 @@
 
 ## Problem Description
 
-Design a memory allocator over `n` units: `allocate(size, mID)` finds the leftmost block of `size` free units, `freeMemory(mID)` frees all units with that ID.
+You are given an integer `n` representing the size of a **0-indexed** memory array. All memory units are initially free.
+
+You have a memory allocator with the following functionalities:
+
+1. **Allocate** a block of `size` consecutive free memory units and assign it the id `mID`.
+2. **Free** all memory units with the given id `mID`.
+
+**Note** that:
+
+- Multiple blocks can be allocated to the same `mID`.
+- You should free all the memory units with `mID`, even if they were allocated in different blocks.
+
+Implement the `Allocator` class:
+
+- `Allocator(int n)` Initializes an `Allocator` object with a memory array of size `n`.
+- `int allocate(int size, int mID)` Find the **leftmost** block of `size` **consecutive** free memory units and allocate it with the id `mID`. Return the block's first index. If such a block does not exist, return `-1`.
+- `int freeMemory(int mID)` Free all memory units with the id `mID`. Return the number of memory units you have freed.
+
+**Constraints:**
+- `1 <= n, size, mID <= 1000`
+- At most `1000` calls will be made to `allocate` and `freeMemory`.
 
 ---
 
@@ -45,13 +65,26 @@ CLASS Allocator:
 
 ## Examples
 
-| Operation | Result |
-|-----------|--------|
-| `Allocator(10)` | — |
-| `allocate(3, 1)` | Returns **0** (allocates units 0‑2) |
-| `allocate(4, 2)` | Returns **3** (allocates units 3‑6) |
-| `freeMemory(1)` | Returns **3** (frees units 0‑2) |
-| `allocate(5, 3)` | Returns **-1** (no contiguous block of 5) |
+```
+Example 1:
+  Input:
+  ["Allocator", "allocate", "allocate", "allocate", "freeMemory", "allocate", "allocate", "allocate", "freeMemory", "allocate", "freeMemory"]
+  [[10], [1, 1], [1, 2], [1, 3], [2], [3, 4], [1, 1], [1, 1], [1], [10, 2], [7]]
+  Output:
+  [null, 0, 1, 2, 1, 3, 1, 6, 3, -1, 0]
+  Explanation:
+  Allocator loc = new Allocator(10); // Initialize a memory array of size 10. All memory units are initially free.
+  loc.allocate(1, 1);   // The leftmost block's first index is 0. Memory: [1,_,_,_,_,_,_,_,_,_]. Return 0.
+  loc.allocate(1, 2);   // The leftmost block's first index is 1. Memory: [1,2,_,_,_,_,_,_,_,_]. Return 1.
+  loc.allocate(1, 3);   // The leftmost block's first index is 2. Memory: [1,2,3,_,_,_,_,_,_,_]. Return 2.
+  loc.freeMemory(2);    // Free all memory units with mID 2. Memory: [1,_,3,_,_,_,_,_,_,_]. Return 1.
+  loc.allocate(3, 4);   // The leftmost block's first index is 3. Memory: [1,_,3,4,4,4,_,_,_,_]. Return 3.
+  loc.allocate(1, 1);   // The leftmost block's first index is 1. Memory: [1,1,3,4,4,4,_,_,_,_]. Return 1.
+  loc.allocate(1, 1);   // The leftmost block's first index is 6. Memory: [1,1,3,4,4,4,1,_,_,_]. Return 6.
+  loc.freeMemory(1);    // Free all memory units with mID 1. Memory: [_,_,3,4,4,4,_,_,_,_]. Return 3.
+  loc.allocate(10, 2);  // No block of 10 consecutive free units can be found. Return -1.
+  loc.freeMemory(7);    // Free all memory units with mID 7. Memory unchanged. Return 0.
+```
 
 ---
 

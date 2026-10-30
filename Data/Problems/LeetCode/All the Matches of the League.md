@@ -8,49 +8,52 @@
 
 ## 1. Problem Description
 
-**SQL Problem.** Given a `Teams` table, generate all possible matches where each team plays against every other team (home and away).
+**SQL Problem.**
+
+Table: `Teams`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| team_name   | varchar |
++-------------+---------+
+team_name is the column with unique values of this table.
+Each row of this table shows the name of a team.
+```
+
+Write a solution to report all the possible matches of the league. Note that every two teams play two matches with each other, with one team being the `home_team` once and the other time being the `away_team`.
+
+Return the result table in **any order**.
 
 ---
 
 ## 2. Examples
 
-**Example 1**
 ```
-Teams:
-| team_name |
-|-----------|
-| A |
-| B |
-| C |
+Example 1:
+  Input:
+  Teams table:
+  +-------------+
+  | team_name   |
+  +-------------+
+  | Leetcode FC |
+  | Ahly SC     |
+  | Real Madrid |
+  +-------------+
+  Output:
+  +-------------+-------------+
+  | home_team   | away_team   |
+  +-------------+-------------+
+  | Real Madrid | Leetcode FC |
+  | Real Madrid | Ahly SC     |
+  | Leetcode FC | Real Madrid |
+  | Leetcode FC | Ahly SC     |
+  | Ahly SC     | Real Madrid |
+  | Ahly SC     | Leetcode FC |
+  +-------------+-------------+
+  Explanation: All the matches of the league are shown in the table.
 ```
-**Output**
-```
-| home_team | away_team |
-|-----------|-----------|
-| A | B |
-| A | C |
-| B | A |
-| B | C |
-| C | A |
-| C | B |
-```
-*Explanation*: Every ordered pair of distinct teams appears.
-
-**Example 2**
-```
-Teams:
-| team_name |
-|-----------|
-| X |
-| Y |
-```
-**Output**
-```
-| home_team | away_team |
-| X | Y |
-| Y | X |
-```
-*Explanation*: With two teams, each plays the other once at home.
 
 ---
 

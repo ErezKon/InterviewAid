@@ -8,7 +8,13 @@
 
 ## 1. Problem Description
 
-Find the longest substring containing at most 2 distinct characters.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given a string `s`, return *the length of the longest **substring** that contains at most **two distinct characters***.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of English letters.
 
 ---
 
@@ -36,11 +42,19 @@ FUNCTION lengthOfLongestSubstringTwoDistinct(s):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"eceba"` | 3 | Substring `"ece"` uses only `e` and `c`.
-| `"ccaabbb"` | 5 | Substring `"aabbb"` contains `a` and `b`.
-| `"abc"` | 2 | Any two‑character substring is valid; longest length is 2.
+**Example 1:**
+```
+Input: s = "eceba"
+Output: 3
+Explanation: The substring is "ece" which its length is 3.
+```
+
+**Example 2:**
+```
+Input: s = "ccaabbb"
+Output: 5
+Explanation: The substring is "aabbb" which its length is 5.
+```
 
 ---
 

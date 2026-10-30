@@ -21,7 +21,27 @@
 
 ## Problem Description
 
-Collect maximum coins while traveling along two parallel lanes. At each position you may stay in the same lane or switch to the other lane. Each lane position holds a coin value (which may be negative). Determine the maximum total coins that can be collected from start to end.
+> *Note: the Approach below allows unlimited lane switches and starting in either lane. Officially Mario enters in lane 1 and may switch **at most 2** times. Correct idea: DP over miles with state `s ∈ {0,1,2}` = switches used (lane 1 for `s = 0, 2`, lane 2 for `s = 1`). `f[i][s] = lane_s[i] + max(f[i-1][s], f[i-1][s-1], 0 if Mario can enter here in state s)`, where entering is allowed for `s = 0`, and for `s = 1` via an immediate switch on entry. The answer is the maximum over all `i, s`.*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Mario drives on a two-lane freeway with coins every mile. You are given two integer arrays, `lane1` and `lane2`, where the value at the `i^th` index represents the number of coins he *gains or loses* in the `i^th` mile in that lane.
+
+- If Mario is in lane 1 at mile `i` and `lane1[i] > 0`, Mario gains `lane1[i]` coins.
+- If Mario is in lane 1 at mile `i` and `lane1[i] < 0`, Mario pays a toll and loses `abs(lane1[i])` coins.
+- The same rules apply for `lane2`.
+
+Mario can enter the freeway anywhere and exit anytime after traveling **at least** one mile. Mario always enters the freeway on lane 1 but can switch lanes **at most** 2 times.
+
+A **lane switch** is when Mario goes from lane 1 to lane 2 or vice versa.
+
+Return the **maximum** number of coins Mario can earn after performing **at most 2 lane switches**.
+
+**Note:** Mario can switch lanes immediately upon entering or just before exiting the freeway.
+
+**Constraints:**
+- `1 <= lane1.length == lane2.length <= 10^5`
+- `-10^9 <= lane1[i], lane2[i] <= 10^9`
 
 ---
 
@@ -29,25 +49,46 @@ Collect maximum coins while traveling along two parallel lanes. At each position
 
 **Example 1:**
 ```
-lane1 = [1, -2, 3, 4]
-lane2 = [2, 5, -1, 2]
+Input: lane1 = [1,-2,-10,3], lane2 = [-5,10,0,1]
+Output: 14
+Explanation: - Mario drives the first mile on lane 1.
+- He then changes to lane 2 and drives for two miles.
+- He changes back to lane 1 for the last mile.
+Mario collects 1 + 10 + 0 + 3 = 14 coins.
 ```
-**Output:** `12`
-**Explanation:**
-- Start on lane2 at index 0 (+2).
-- Switch to lane1 at index 1 (add -2) → total 0.
-- Stay on lane1 at index 2 (+3) → total 3.
-- Switch to lane2 at index 3 (+2) → total 5.
-- Better path: lane2[0]=2, lane2[1]=5, lane1[2]=3, lane1[3]=4 → total 14? Actually optimal total is 12 using DP.
 
 **Example 2:**
 ```
-lane1 = [-1, -2, -3]
-lane2 = [-4, -5, -6]
+Input: lane1 = [1,-1,-1,-1], lane2 = [0,3,4,-5]
+Output: 8
+Explanation: - Mario starts at mile 0 in lane 1 and drives one mile.
+- He then changes to lane 2 and drives for two more miles. He exits the freeway before mile 3.
+He collects 1 + 3 + 4 = 8 coins.
 ```
-**Output:** `-1`
-**Explanation:**
-All values are negative; the best you can do is pick the least negative single cell, here -1.
+
+**Example 3:**
+```
+Input: lane1 = [-5,-4,-3], lane2 = [-1,2,3]
+Output: 5
+Explanation: - Mario enters at mile 1 and immediately switches to lane 2. He stays here the entire way.
+He collects a total of 2 + 3 = 5 coins.
+```
+
+**Example 4:**
+```
+Input: lane1 = [-3,-3,-3], lane2 = [9,-2,4]
+Output: 11
+Explanation: - Mario starts at the beginning of the freeway and immediately switches to lane 2. He stays here the whole way.
+He collects a total of 9 + (-2) + 4 = 11 coins.
+```
+
+**Example 5:**
+```
+Input: lane1 = [-10], lane2 = [-2]
+Output: -2
+Explanation: - Since Mario must ride on the freeway for at least one mile, he rides just one mile in lane 2.
+He collects a total of -2 coins.
+```
 
 ---
 

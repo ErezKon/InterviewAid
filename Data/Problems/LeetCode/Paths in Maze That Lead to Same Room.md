@@ -7,13 +7,44 @@
 ---
 
 ## Problem Description
-You are given a directed graph representing a maze: `rooms` are vertices numbered `0 … n-1` and `edges` are one‑way passages. For each room you may have multiple outgoing edges to other rooms. Determine the number of distinct starting rooms from which there exists **at least one** path that leads to the same destination room (the destination is not given; you must count rooms that share a common reachable room). Return that count.
+A maze consists of `n` rooms numbered from `1` to `n`, and some rooms are connected by corridors. You are given a 2D integer array `corridors` where `corridors[i] = [room1_i, room2_i]` indicates that there is a corridor connecting `room1_i` and `room2_i`, allowing a person in the maze to go from `room1_i` to `room2_i` **and vice versa**.
+
+The designer of the maze wants to know how confusing the maze is. The **confusion score** of the maze is the number of different cycles of **length 3**.
+
+- For example, `1 → 2 → 3 → 1` is a cycle of length 3, but `1 → 2 → 3 → 4` and `1 → 2 → 3 → 2 → 1` are not.
+
+Two cycles are considered to be **different** if one or more of the rooms visited in the first cycle is **not** in the second cycle.
+
+Return *the* ***confusion score*** *of the maze.*
+
+**Constraints:**
+
+- `2 <= n <= 1000`
+- `1 <= corridors.length <= 5 * 10^4`
+- `corridors[i].length == 2`
+- `1 <= room1_i, room2_i <= n`
+- `room1_i != room2_i`
+- There are no duplicate corridors.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 4`, `edges = [[0,1],[1,2],[2,3],[0,2]]` | `2` | Rooms `0` and `1` can both reach room `2`; they share a common destination. |
-| `n = 3`, `edges = [[0,1],[1,2]]` | `0` | No two different rooms converge to the same room.
+
+```
+Example 1:
+  Input: n = 5, corridors = [[1,2],[5,2],[4,1],[2,4],[3,1],[3,4]]
+  Output: 2
+  Explanation:
+  One cycle of length 3 is 4 -> 1 -> 3 -> 4.
+  Note that this is the same cycle as 3 -> 4 -> 1 -> 3 or 1 -> 3 -> 4 -> 1 because the rooms are the same.
+  Another cycle of length 3 is 1 -> 2 -> 4 -> 1.
+  Thus, there are two different cycles of length 3.
+```
+
+```
+Example 2:
+  Input: n = 4, corridors = [[1,2],[3,4]]
+  Output: 0
+  Explanation: There are no cycles of length 3.
+```
 
 ## Approach
 Perform a reverse graph traversal to compute, for each node, the set of sources that can reach it. Use a BFS/DFS from each node in the reversed graph, counting how many distinct sources arrive at each destination. Any destination with a source count ≥ 2 contributes that many source rooms to the answer.

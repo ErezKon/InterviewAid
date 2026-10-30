@@ -1,33 +1,45 @@
 # 170. Two Sum III - Data structure design
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/two-sum-iii-data-structure-design](https://leetcode.com/problems/two-sum-iii-data-structure-design)
 **Companies:** Amazon, Linkedin
 
 ---
 
 ## Problem Description
-Design a class `TwoSum` that supports two operations:
-1. `add(number)`: Add the integer `number` to an internal data structure.
-2. `find(value)`: Return `true` if there exists any pair of numbers whose sum equals `value`, otherwise return `false`.
-Both operations may be called multiple times.
+
+> *Note: premium problem (statement checked against the official text with verify.py).*
+
+Design a data structure that accepts a stream of integers and checks if it has a pair of integers that sum up to a particular value.
+
+Implement the `TwoSum` class:
+
+- `TwoSum()` Initializes the `TwoSum` object, with an empty array initially.
+- `void add(int number)` Adds `number` to the data structure.
+- `boolean find(int value)` Returns `true` if there exists any pair of numbers whose sum is equal to `value`, otherwise, it returns `false`.
+
+**Constraints:**
+- `-10^5 <= number <= 10^5`
+- `-2^31 <= value <= 2^31 - 1`
+- At most `10^4` calls will be made to `add` and `find`.
 
 ## Examples
+
 **Example 1:**
 ```
-TwoSum ts = new TwoSum();
-ts.add(1);
-ts.add(3);
-ts.add(5);
-ts.find(4); // returns true (1 + 3)
-ts.find(7); // returns false
-```
+Input
+["TwoSum", "add", "add", "add", "find", "find"]
+[[], [1], [3], [5], [4], [7]]
+Output
+[null, null, null, null, true, false]
 
-**Example 2:**
-```
-TwoSum ts = new TwoSum();
-ts.add(2);
-ts.add(2);
-ts.find(4); // returns true (2 + 2)
+Explanation
+TwoSum twoSum = new TwoSum();
+twoSum.add(1);   // [] --> [1]
+twoSum.add(3);   // [1] --> [1,3]
+twoSum.add(5);   // [1,3] --> [1,3,5]
+twoSum.find(4);  // 1 + 3 = 4, return true
+twoSum.find(7);  // No two integers sum up to 7, return false
 ```
 
 ## Approach

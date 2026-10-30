@@ -7,18 +7,28 @@
 ---
 
 ## Problem Description
-Given the root of a Binary Search Tree (BST) and an integer `k`, determine whether there exist two distinct nodes in the BST such that the sum of their values equals `k`. Return `true` if such a pair exists, otherwise `false`.
+
+Given the `root` of a binary search tree and an integer `k`, return `true` *if there exist two elements in the BST such that their sum is equal to* `k`, *or* `false` *otherwise*.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `-10^4 <= Node.val <= 10^4`
+- `root` is guaranteed to be a **valid** binary search tree.
+- `-10^5 <= k <= 10^5`
 
 ## Examples
+
 **Example 1:**
-Input: `root = [5,3,6,2,4,null,7]`, `k = 9`
-Output: `true`
-Explanation: Nodes with values `2` and `7` sum to `9`.
+```
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
+```
 
 **Example 2:**
-Input: `root = [5,3,6,2,4,null,7]`, `k = 28`
-Output: `false`
-Explanation: No pair of nodes sums to `28`.
+```
+Input: root = [5,3,6,2,4,null,7], k = 28
+Output: false
+```
 
 ## Approach
 Perform an in‑order traversal of the BST to obtain a sorted list of node values. Then apply the two‑pointer technique on this sorted list to find a pair that sums to `k`.

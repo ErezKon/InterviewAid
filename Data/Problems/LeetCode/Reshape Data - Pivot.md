@@ -8,20 +8,57 @@
 
 ## Problem Description
 
-Given a DataFrame `weather` with columns `city`, `month`, `temperature`, **pivot** it so each city is a row, each month is a column, and values are temperatures.
+```
+DataFrame `weather`
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| city        | object |
+| month       | object |
+| temperature | int    |
++-------------+--------+
+```
+
+Write a solution to **pivot** the data so that each row represents temperatures for a specific month, and each city is a separate column.
+
+The result format is in the following example.
+
+```
 
 ---
 
 ## Examples
 
-| Input DataFrame | Output DataFrame |
-|---|---|
-| `city`, `month`, `temperature` rows | `city` rows, `month` columns |
-| `('NY', 'Jan', 30)` | `NY` row with `Jan` column = 30 |
-| `('NY', 'Feb', 28)` | `NY` row with `Feb` column = 28 |
-| `('LA', 'Jan', 60)` | `LA` row with `Jan` column = 60 |
-
-*Explanation:* Each unique `city` becomes a row, each `month` becomes a column, and the intersecting cell holds the temperature.
+**Example 1:**
+```
+Input:
++--------------+----------+-------------+
+| city         | month    | temperature |
++--------------+----------+-------------+
+| Jacksonville | January  | 13          |
+| Jacksonville | February | 23          |
+| Jacksonville | March    | 38          |
+| Jacksonville | April    | 5           |
+| Jacksonville | May      | 34          |
+| ElPaso       | January  | 20          |
+| ElPaso       | February | 6           |
+| ElPaso       | March    | 26          |
+| ElPaso       | April    | 2           |
+| ElPaso       | May      | 43          |
++--------------+----------+-------------+
+Output:
++----------+--------+--------------+
+| month    | ElPaso | Jacksonville |
++----------+--------+--------------+
+| April    | 2      | 5            |
+| February | 6      | 23           |
+| January  | 20     | 13           |
+| March    | 26     | 38           |
+| May      | 43     | 34           |
++----------+--------+--------------+
+Explanation:
+The table is pivoted, each column represents a city, and each row represents a specific month.
+```
 
 ---
 

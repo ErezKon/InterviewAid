@@ -7,6 +7,8 @@
 ---
 
 ## Problem Description
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Minimum Window Substring](Minimum%20Window%20Substring.md) for the official #76 statement, examples and constraints.*
+
 This collection expands on the classic *Minimum Window Substring* problem, presenting variations that require finding substrings meeting additional constraints such as character frequency limits, multiple target strings, or weighted costs. The goal is to locate the smallest contiguous segment of a source string that satisfies the given condition.
 
 ## Examples

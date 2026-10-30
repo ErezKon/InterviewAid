@@ -18,10 +18,11 @@
 
 ## 1. Problem Description
 
-Count non-negative integers ≤ `n` whose binary representation has **no consecutive ones**.
+Given a positive integer `n`, return the number of the integers in the range `[0, n]` whose binary representations **do not** contain consecutive ones.
 
 **Constraints:**
-- `0 <= n <= 10⁹`
+
+- `1 <= n <= 10⁹`
 
 ---
 
@@ -68,11 +69,32 @@ FUNCTION findIntegers(n):
 
 ## 5. Examples
 
-| Input | Output |
-|-------|--------|
-| `5`   | `5` (numbers: 0,1,2,4,5) |
-| `1`   | `2` (0 and 1) |
-| `10`  | `8` |
+```
+Example 1:
+  Input: n = 5
+  Output: 5
+  Explanation:
+  Here are the non-negative integers <= 5 with their corresponding binary representations:
+  0 : 0
+  1 : 1
+  2 : 10
+  3 : 11
+  4 : 100
+  5 : 101
+  Among them, only integer 3 disobeys the rule (two consecutive ones) and the other 5 satisfy the rule.
+```
+
+```
+Example 2:
+  Input: n = 1
+  Output: 2
+```
+
+```
+Example 3:
+  Input: n = 2
+  Output: 3
+```
 
 ---
 

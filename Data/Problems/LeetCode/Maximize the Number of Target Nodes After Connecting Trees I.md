@@ -21,19 +21,49 @@
 
 ## Problem Description
 
-Given two trees and an integer `k`, for each node `i` in tree1, you may connect it to any node `j` in tree2 with one edge. A **target node** of node `i` is any node reachable within distance `k`. Maximize the number of target nodes for each node in tree1.
+There exist two **undirected **trees with `n` and `m` nodes, with **distinct** labels in ranges `[0, n - 1]` and `[0, m - 1]`, respectively.
+
+You are given two 2D integer arrays `edges1` and `edges2` of lengths `n - 1` and `m - 1`, respectively, where `edges1[i] = [a_i, b_i]` indicates that there is an edge between nodes `a_i` and `b_i` in the first tree and `edges2[i] = [u_i, v_i]` indicates that there is an edge between nodes `u_i` and `v_i` in the second tree. You are also given an integer `k`.
+
+Node `u` is **target** to node `v` if the number of edges on the path from `u` to `v` is less than or equal to `k`. **Note** that a node is *always* **target** to itself.
+
+Return an array of `n` integers `answer`, where `answer[i]` is the **maximum** possible number of nodes **target** to node `i` of the first tree if you have to connect one node from the first tree to another node in the second tree.
+
+**Note** that queries are independent from each other. That is, for every query you will remove the added edge before proceeding to the next query.
 
 **Constraints:**
-- Trees have up to 1000 nodes.
+- `2 <= n, m <= 1000`
+- `edges1.length == n - 1`
+- `edges2.length == m - 1`
+- `edges1[i].length == edges2[i].length == 2`
+- `edges1[i] = [a_i, b_i]`
+- `0 <= a_i, b_i < n`
+- `edges2[i] = [u_i, v_i]`
+- `0 <= u_i, v_i < m`
+- The input is generated such that `edges1` and `edges2` represent valid trees.
+- `0 <= k <= 1000`
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `tree1 = [[0,1],[1,2]]`, `tree2 = [[0,1]]`, `k = 2` | `[4,4,4]` | Connect node `1` in tree1 to node `0` in tree2. Each node in tree1 can reach its own three nodes plus the two nodes in tree2 within distance 2, total 4 distinct target nodes. |
-| `tree1 = [[0,1],[1,2],[2,3]]`, `tree2 = [[0,1],[1,2]]`, `k = 1` | `[2,2,2,2]` | With distance 1, each node can only reach itself and its immediate neighbor. The best connection adds at most one extra node from tree2, giving 2 target nodes for each. |
+**Example 1:**
+```
+Input: edges1 = [[0,1],[0,2],[2,3],[2,4]], edges2 = [[0,1],[0,2],[0,3],[2,7],[1,4],[4,5],[4,6]], k = 2
+Output: [9,7,9,8,8]
+Explanation: - For i = 0, connect node 0 from the first tree to node 0 from the second tree.
+- For i = 1, connect node 1 from the first tree to node 0 from the second tree.
+- For i = 2, connect node 2 from the first tree to node 4 from the second tree.
+- For i = 3, connect node 3 from the first tree to node 4 from the second tree.
+- For i = 4, connect node 4 from the first tree to node 4 from the second tree.
+```
+
+**Example 2:**
+```
+Input: edges1 = [[0,1],[0,2],[0,3],[0,4]], edges2 = [[0,1],[1,2],[2,3]], k = 1
+Output: [6,3,3,3,3]
+Explanation: For every i, connect node i of the first tree with any node of the second tree.
+```
 
 ---
 

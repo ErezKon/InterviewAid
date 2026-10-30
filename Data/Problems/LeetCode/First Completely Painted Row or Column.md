@@ -21,11 +21,21 @@
 
 ## 1. Problem Description
 
-Given a painting order `arr` and an `m × n` matrix `mat`, find the index in `arr` at which a full row or column is first completely painted.
+You are given a **0-indexed** integer array `arr`, and an `m x n` integer **matrix** `mat`. `arr` and `mat` both contain **all** the integers in the range `[1, m * n]`.
+
+Go through each index `i` in `arr` starting from index `0` and paint the cell in `mat` containing the integer `arr[i]`.
+
+Return *the smallest index* `i` *at which either a row or a column will be completely painted in* `mat`.
 
 **Constraints:**
-- `m · n == arr.length`
-- `1 <= m, n <= 10⁵`
+- `m == mat.length`
+- `n = mat[i].length`
+- `arr.length == m * n`
+- `1 <= m, n <= 10^5`
+- `1 <= m * n <= 10^5`
+- `1 <= arr[i], mat[r][c] <= m * n`
+- All the integers of `arr` are **unique**.
+- All the integers of `mat` are **unique**.
 
 ---
 
@@ -60,18 +70,17 @@ FUNCTION firstCompleteIndex(arr, mat):
 
 **Example 1:**
 ```
-mat = [[1,2],[3,4]]
-arr = [1,3,2,4]
+Input: arr = [1,3,4,2], mat = [[1,4],[2,3]]
+Output: 2
+Explanation: The moves are shown in order, and both the first row and second column of the matrix become fully painted at arr[2].
 ```
-Paint order: paint 1 (row0 col0), rowCount[0]=1, colCount[0]=1.
-Paint 3 (row1 col0), rowCount[1]=1, colCount[0]=2 → column 0 complete (m=2) → return index 1.
 
 **Example 2:**
 ```
-mat = [[5,6,7],[8,9,10]]
-arr = [5,6,8,9,7,10]
+Input: arr = [2,8,7,4,1,3,5,6,9], mat = [[3,2,5],[1,4,6],[8,7,9]]
+Output: 3
+Explanation: The second column becomes fully painted at arr[3].
 ```
-After painting 5,6,8,9, row0 has 2/3 cells, row1 has 2/3 cells, no full row/col yet. Painting 7 completes row0 (3 cells) → return index 4.
 
 ---
 

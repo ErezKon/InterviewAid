@@ -1,24 +1,42 @@
 # 3623. Count Number of Trapezoids I
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/count-number-of-trapezoids-i](https://leetcode.com/problems/count-number-of-trapezoids-i)
 **Companies:** Bloomberg, Google, Meta
 ---
 
 ## Problem Description
-You are given a list of points in the 2‑D plane with integer coordinates. A trapezoid is defined as a set of four points \((x_1,y_1),(x_2,y_2),(x_3,y_3),(x_4,y_4)\) such that one pair of opposite sides is parallel (i.e., they share the same slope) and the other pair is not. Count the number of distinct unordered quadruples of points that form a valid trapezoid.
+
+You are given a 2D integer array `points`, where `points[i] = [x_i, y_i]` represents the coordinates of the `i^th` point on the Cartesian plane.
+
+A **horizontal** **trapezoid** is a convex quadrilateral with **at least one pair** of horizontal sides (i.e. parallel to the x-axis). Two lines are parallel if and only if they have the same slope.
+
+Return the  number of unique ****horizontal* *trapezoids*** that can be formed by choosing any four distinct points from `points`.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `4 <= points.length <= 10^5`
+- `–10^8 <= x_i, y_i <= 10^8`
+- All points are pairwise distinct.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: points = [[0,0],[1,0],[0,1],[1,2],[2,1]]
-Output: 2
-Explanation: The trapezoids are formed by points {(0,0),(1,0),(0,1),(1,2)} and {(1,0),(2,1),(0,1),(1,2)}.
+Input: points = [[1,0],[2,0],[3,0],[2,2],[3,2]]
+Output: 3
+Explanation: There are three distinct ways to pick four points that form a horizontal trapezoid:
+  Using points [1,0], [2,0], [3,2], and [2,2].
+  Using points [2,0], [3,0], [3,2], and [2,2].
+  Using points [1,0], [3,0], [3,2], and [2,2].
 ```
+
 **Example 2:**
 ```
-Input: points = [[0,0],[1,1],[2,2]]
-Output: 0
-Explanation: Fewer than four points, no trapezoid possible.
+Input: points = [[0,0],[1,0],[0,1],[2,1]]
+Output: 1
+Explanation: There is only one horizontal trapezoid that can be formed.
 ```
 
 ## Approach

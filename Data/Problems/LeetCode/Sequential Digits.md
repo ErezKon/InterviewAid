@@ -7,23 +7,28 @@
 
 ## Problem Description
 
-Given two integers `low` and `high`, return a sorted list of all integers in the inclusive range `[low, high]` whose digits form an increasing sequence where each digit is exactly one greater than the previous digit (e.g., 123, 4567).
+An integer has *sequential digits* if and only if each digit in the number is one more than the previous digit.
+
+Return a **sorted** list of all the integers in the range `[low, high]` inclusive that have sequential digits.
+
+**Constraints:**
+
+- `10 <= low <= high <= 10^9`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: low = 100, high = 300
-Output: [123, 234]
-Explanation: The sequential-digit numbers between 100 and 300 are 123 and 234.
+Example 1:
+  Input: low = 100, high = 300
+  Output: [123,234]
 ```
 
-**Example 2:**
 ```
-Input: low = 10, high = 10000
-Output: [12,23,34,45,56,67,78,89,123,234,345,456,567,678,789,1234,2345,3456,4567,5678,6789,12345]
+Example 2:
+  Input: low = 1000, high = 13000
+  Output: [1234,2345,3456,4567,5678,6789,12345]
 ```
 
 ---

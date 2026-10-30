@@ -21,12 +21,16 @@
 
 ## 1. Problem Description
 
-Given the `root` of a binary search tree and a node `p`, return the **in-order successor** of `p` — the node with the smallest key strictly greater than `p.val`. Return `null` if `p` has no successor.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given the `root` of a binary search tree and a node `p` in it, return *the in-order successor of that node in the BST*. If the given node has no in-order successor in the tree, return `null`.
+
+The successor of a node `p` is the node with the smallest key greater than `p.val`.
 
 **Constraints:**
-- The number of nodes is in `[1, 10⁴]`.
-- `-10⁵ <= Node.val <= 10⁵`
-- All values are **unique**.
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `-10^5 <= Node.val <= 10^5`
+- All Nodes will have unique values.
 
 ---
 
@@ -34,22 +38,16 @@ Given the `root` of a binary search tree and a node `p`, return the **in-order s
 
 **Example 1:**
 ```
-      5
-     / \
-    3    6
-   / \
-  2    4
- /
-1
-
-Input: root = [5,3,6,2,4,1], p = 4
-Output: 5
+Input: root = [2,1,3], p = 1
+Output: 2
+Explanation: 1's in-order successor node is 2. Note that both p and the return value is of TreeNode type.
 ```
 
 **Example 2:**
 ```
-Input: root = [5,3,6,2,4,1], p = 6
-Output: null   (6 is the largest node)
+Input: root = [5,3,6,2,4,null,null,1], p = 6
+Output: null
+Explanation: There is no in-order successor of the current node, so the answer is null.
 ```
 
 ---

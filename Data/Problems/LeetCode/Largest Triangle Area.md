@@ -8,7 +8,12 @@
 
 ## 1. Problem Description
 
-Given a list of points on a 2‑dimensional plane, return the area of the largest possible triangle formed by any three of the points.
+Given an array of points on the **X-Y** plane `points` where `points[i] = [x_i, y_i]`, return *the area of the largest triangle that can be formed by any three different points*. Answers within `10^-5` of the actual answer will be accepted.
+
+**Constraints:**
+- `3 <= points.length <= 50`
+- `-50 <= x_i, y_i <= 50`
+- All the given points are **unique**.
 
 ---
 
@@ -37,10 +42,18 @@ FUNCTION largestTriangleArea(points):
 
 ## 3. Examples
 
-| Input | Output |
-|-------|--------|
-| `[[0,0],[0,1],[1,0],[0,2],[2,0]]` | `1.0` |
-| `[[1,0],[0,0],[0,1]]` | `0.5` |
+```
+Example 1:
+  Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]
+  Output: 2.00000
+  Explanation: The largest triangle is formed by (0,0), (0,2), (2,0), with area 0.5 * 2 * 2 = 2.
+```
+
+```
+Example 2:
+  Input: points = [[1,0],[0,0],[0,1]]
+  Output: 0.50000
+```
 
 ---
 

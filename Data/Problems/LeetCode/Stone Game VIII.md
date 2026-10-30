@@ -7,22 +7,55 @@
 ---
 
 ## Problem Description
-Alice and Bob play a game on an array `stones` of integers. At the start of each turn the current player may take the entire array and replace it with a new array whose single element is the sum of all elements of the current array. After this operation, the player scores the sum of the new array (i.e., the total sum before replacement). The game continues with the new array (which now has one fewer element) until only one element remains, at which point the game ends. Return the maximum score difference (Alice’s score minus Bob’s score) Alice can achieve assuming optimal play.
 
-Constraints typically include `1 <= stones.length <= 10^5` and `-10^4 <= stones[i] <= 10^4`.
+Alice and Bob take turns playing a game, with **Alice starting first**.
+
+There are `n` stones arranged in a row. On each player's turn, while the number of stones is **more than one**, they will do the following:
+
+- Choose an integer `x > 1`, and **remove** the leftmost `x` stones from the row.
+- Add the **sum** of the **removed** stones' values to the player's score.
+- Place a **new stone**, whose value is equal to that sum, on the left side of the row.
+
+The game stops when **only** **one** stone is left in the row.
+
+The **score difference** between Alice and Bob is `(Alice's score - Bob's score)`. Alice's goal is to **maximize** the score difference, and Bob's goal is the **minimize** the score difference.
+
+Given an integer array `stones` of length `n` where `stones[i]` represents the value of the `i^th` stone **from the left**, return *the **score difference** between Alice and Bob if they both play **optimally**.*
+
+**Constraints:**
+- `n == stones.length`
+- `2 <= n <= 10^5`
+- `-10^4 <= stones[i] <= 10^4`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: stones = [5,3,1,4,2]
-Output: 6
-Explanation: Alice takes sum=15, array becomes [15,2]; Bob takes sum=17, array becomes [17]; Alice total=15, Bob total=17, difference = -2? Actually optimal play yields difference 6.
+Input: stones = [-1,2,-3,4,-5]
+Output: 5
+Explanation: - Alice removes the first 4 stones, adds (-1) + 2 + (-3) + 4 = 2 to her score, and places a stone of
+  value 2 on the left. stones = [2,-5].
+- Bob removes the first 2 stones, adds 2 + (-5) = -3 to his score, and places a stone of value -3 on
+  the left. stones = [-3].
+The difference between their scores is 2 - (-3) = 5.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: stones = [7,90,5,1,100,10,10,2]
-Output: 122
+Input: stones = [7,-6,5,10,5,-2,-6]
+Output: 13
+Explanation: - Alice removes all stones, adds 7 + (-6) + 5 + 10 + 5 + (-2) + (-6) = 13 to her score, and places a
+  stone of value 13 on the left. stones = [13].
+The difference between their scores is 13 - 0 = 13.
+```
+
+**Example 3:**
+```
+Input: stones = [-10,-12]
+Output: -22
+Explanation: - Alice can only make one move, which is to remove both stones. She adds (-10) + (-12) = -22 to her
+  score and places a stone of value -22 on the left. stones = [-22].
+The difference between their scores is (-22) - 0 = -22.
 ```
 
 ## Approach

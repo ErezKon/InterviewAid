@@ -8,17 +8,33 @@
 
 ## Problem Description
 
-Given a string `s`, return the number of substrings that consist of only one distinct letter.
+Given a string `s`, return *the number of substrings that have only **one distinct** letter*.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s[i]` consists of only lowercase English letters.
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aaabb"` | `9` | Substrings: `"a"` (3 times), `"aa"` (2), `"aaa"` (1), `"b"` (2), `"bb"` (1). Total 9. |
-| `"abcd"` | `4` | Each character forms a single‑character substring. |
-| `""` (empty) | `0` | No substrings exist.
+```
+Example 1:
+  Input: s = "aaaba"
+  Output: 8
+  Explanation: The substrings with one distinct letter are "aaa", "aa", "a", "b".
+  "aaa" occurs 1 time.
+  "aa" occurs 2 times.
+  "a" occurs 4 times.
+  "b" occurs 1 time.
+  So the answer is 1 + 2 + 4 + 1 = 8.
+```
+
+```
+Example 2:
+  Input: s = "aaaaaaaaaa"
+  Output: 55
+```
 
 ---
 

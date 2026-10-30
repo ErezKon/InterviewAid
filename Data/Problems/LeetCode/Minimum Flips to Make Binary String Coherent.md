@@ -8,17 +8,42 @@
 
 ## Problem Description
 
-Given a binary string, a string is **coherent** if all `0`s come before all `1`s (like "000111"). Return the **minimum number of flips** to make it coherent.
+> *Note: the Approach below makes the string sorted (`0*1*`), which is not the official condition. The strings avoiding the subsequences `"011"` and `"110"` are exactly: at most one `1`, all `1`s, or `1 0…0 1` (ones only at both ends). The answer is the minimum of `max(0, ones − 1)`, `zeros`, and `(s[0]=='0') + (s[n−1]=='0') + ones in s[1..n−2]` (n ≥ 2). Checked against brute force.*
+
+You are given a binary string `s`.
+
+A string is considered **coherent** if it does **not** contain `"011"` or `"110"` as subsequences.
+
+In one operation, you can **flip** any character in `s` (`'0'` to `'1'` or `'1'` to `'0'`).
+
+Return an integer denoting the **minimum** number of operations required to make `s` coherent.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s[i]` is either `'0'` or `'1'`.
 
 ## Examples
 
-| s | Minimum flips |
-|---|---------------|
-| `"00110"` | 1 |
-| `"010110"` | 2 |
-| `"111000"` | 3 |
+**Example 1:**
+```
+Input: s = "1010"
+Output: 1
+Explanation: Flip s[0] to get "0010", which contains no "011" or "110" subsequences.
+```
 
-*Explanation*: For `"00110"` flip the third character from `1` to `0` to obtain `"00010"`, then flip the fourth `1` to `0` → `"00000"` (or flip the last `0` to `1`). The optimal count is 1.
+**Example 2:**
+```
+Input: s = "0110"
+Output: 1
+Explanation: Flip s[1] to get "0010", removing all forbidden subsequences "011" and "110".
+```
+
+**Example 3:**
+```
+Input: s = "1000"
+Output: 0
+Explanation: The string already has no "011" or "110" subsequences, so no flips are needed.
+```
 
 ## Approach
 

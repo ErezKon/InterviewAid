@@ -1,20 +1,53 @@
 # 3429. Paint House IV
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/paint-house-iv](https://leetcode.com/problems/paint-house-iv)
 **Companies:** Amazon, Bloomberg, Chargebee
 
 ---
 
 ## Problem Description
-Given `m` houses in a line and `n` possible colors, each house may already be painted with a fixed color or be unpainted (represented by 0). You must repaint the houses so that no two adjacent houses share the same color while minimizing the total repaint cost. The cost of painting house `i` with color `c` is provided in a matrix `cost[i][c]`. Return the minimum possible total cost.
+You are given an **even** integer `n` representing the number of houses arranged in a straight line, and a 2D array `cost` of size `n x 3`, where `cost[i][j]` represents the cost of painting house `i` with color `j + 1`.
+
+The houses will look **beautiful** if they satisfy the following conditions:
+
+- No **two** adjacent houses are painted the same color.
+- Houses **equidistant** from the ends of the row are **not** painted the same color. For example, if `n = 6`, houses at positions `(0, 5)`, `(1, 4)`, and `(2, 3)` are considered equidistant.
+
+Return the **minimum** cost to paint the houses such that they look **beautiful**.
+
+**Constraints:**
+
+- `2 <= n <= 10^5`
+- `n` is even.
+- `cost.length == n`
+- `cost[i].length == 3`
+- `0 <= cost[i][j] <= 10^5`
 
 ## Examples
-- **Input:** `houses = [0,0,0]`, `cost = [[1,2],[2,1],[1,2]]`
-  **Output:** `3`
-  **Explanation:** Paint houses as `[1,2,1]` with total cost `1+1+1 = 3`.
-- **Input:** `houses = [1,2,0]`, `cost = [[0,0],[0,0],[5,4]]`
-  **Output:** `4`
-  **Explanation:** Only the last house is unpainted; choose color 2 (cost 4) to avoid matching the previous house.
+```
+Example 1:
+  Input: n = 4, cost = [[3,5,7],[6,2,9],[4,8,1],[7,3,5]]
+  Output: 9
+  Explanation: The optimal painting sequence is [1, 2, 3, 2] with corresponding costs [3, 2, 1, 3]. This satisfies the following conditions:
+    - No adjacent houses have the same color.
+    - Houses at positions 0 and 3 (equidistant from the ends) are not painted the same color (1 != 2).
+    - Houses at positions 1 and 2 (equidistant from the ends) are not painted the same color (2 != 3).
+  The minimum cost to paint the houses so that they look beautiful is 3 + 2 + 1 + 3 = 9.
+```
+
+```
+Example 2:
+  Input: n = 6, cost = [[2,4,6],[5,3,8],[7,1,9],[4,6,2],[3,5,7],[8,2,4]]
+  Output: 18
+  Explanation: The optimal painting sequence is [1, 3, 2, 3, 1, 2] with corresponding costs [2, 8, 1, 2, 3, 2]. This satisfies the following conditions:
+    - No adjacent houses have the same color.
+    - Houses at positions 0 and 5 (equidistant from the ends) are not painted the same color (1 != 2).
+    - Houses at positions 1 and 4 (equidistant from the ends) are not painted the same color (3 != 1).
+    - Houses at positions 2 and 3 (equidistant from the ends) are not painted the same color (2 != 3).
+  The minimum cost to paint the houses so that they look beautiful is 2 + 8 + 1 + 2 + 3 + 2 = 18.
+```
+<!-- choose color 2 (cost 4) to avoid matching the previous house. -->
 
 ## Approach
 Perform two DP passes:

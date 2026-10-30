@@ -1,19 +1,40 @@
 # 2839. Check if Strings Can be Made Equal With Operations I
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-i](https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-i)
 
 **Companies:** Citrix, Google, Microsoft
 ---
 
 ## Problem Description
-You are given two strings `s1` and `s2` of equal length consisting of lowercase English letters. In one operation you can choose any index `i` (0‑based) and swap the characters at positions `i` and `i+2` in `s1` (i.e., swap characters with the same parity). Determine whether it is possible to make `s1` equal to `s2` using any number of such operations.
+You are given two strings `s1` and `s2`, both of length `4`, consisting of **lowercase** English letters.
+
+You can apply the following operation on any of the two strings **any** number of times:
+
+- Choose any two indices `i` and `j` such that `j - i = 2`, then **swap** the two characters at those indices in the string.
+
+Return `true` *if you can make the strings* `s1` *and* `s2` *equal, and* `false` *otherwise*.
+
+**Constraints:**
+- `s1.length == s2.length == 4`
+- `s1` and `s2` consist only of lowercase English letters.
 
 ## Examples
-| s1 | s2 | Output | Explanation |
-|----|----|--------|-------------|
-| "abc" | "cba" | true | Swapping indices 0 and 2 (both even) transforms `s1` to `cba`.
-| "abcd" | "badc" | true | Even‑indexed characters `{a,c}` can be reordered to `{b,d}` and odd‑indexed `{b,d}` to `{a,c}`.
-| "ab" | "ba" | false | Only even‑indexed swap is allowed; cannot swap adjacent characters of different parity.
+```
+Example 1:
+  Input: s1 = "abcd", s2 = "cdab"
+  Output: true
+  Explanation: We can do the following operations on s1:
+  - Choose the indices i = 0, j = 2. The resulting string is s1 = "cbad".
+  - Choose the indices i = 1, j = 3. The resulting string is s1 = "cdab" = s2.
+```
+
+```
+Example 2:
+  Input: s1 = "abcd", s2 = "dacb"
+  Output: false
+  Explanation: It is not possible to make the two strings equal.
+```
 
 ## Approach
 Characters at even positions can only move among even positions, and similarly for odd positions. Therefore, the multiset of characters at even indices in `s1` must match that in `s2`, and the same must hold for odd indices. Sorting each parity group and comparing suffices.

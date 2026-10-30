@@ -7,20 +7,29 @@
 ---
 
 ## Problem Description
-Given an integer `n`, you have to arrange the numbers from `1` to `n` such that prime numbers occupy prime indices (1-indexed) and non‑prime numbers occupy non‑prime indices. Return the number of valid arrangements modulo `10^9 + 7`.
+
+Return the number of permutations of 1 to `n` so that prime numbers are at prime indices (1-indexed.)
+
+*(Recall that an integer is prime if and only if it is greater than 1, and cannot be written as a product of two positive integers both smaller than it.)*
+
+Since the answer may be large, return the answer **modulo `10^9 + 7`**.
+
+**Constraints:**
+- `1 <= n <= 100`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: n = 5
 Output: 12
-Explanation: There are 3 prime numbers (2,3,5) and 2 non‑prime numbers (1,4). The prime indices are 2,3,5. Number of ways = 3! * 2! = 12.
+Explanation: For example [1,2,5,4,3] is a valid permutation, but [5,2,3,4,1] is not because the prime number 5 is at index 1.
 ```
+
 **Example 2:**
 ```
-Input: n = 1
-Output: 1
-Explanation: Only one position which is non‑prime, and the only number 1 is non‑prime.
+Input: n = 100
+Output: 682289015
 ```
 
 ## Approach

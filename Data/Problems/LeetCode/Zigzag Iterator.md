@@ -7,15 +7,55 @@
 ---
 
 ## Problem Description
-Given two vectors `v1` and `v2`, implement an iterator that returns elements alternately from each vector. When one vector is exhausted, continue returning elements from the remaining vector. The iterator must support `next()` to retrieve the next element and `hasNext()` to check if any elements remain.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given two vectors of integers `v1` and `v2`, implement an iterator to return their elements alternately.
+
+Implement the `ZigzagIterator` class:
+
+- `ZigzagIterator(List<int> v1, List<int> v2)` initializes the object with the two vectors `v1` and `v2`.
+- `boolean hasNext()` returns `true` if the iterator still has elements, and `false` otherwise.
+- `int next()` returns the current element of the iterator and moves the iterator to the next element.
+
+**Follow up:** What if you are given `k` vectors? How well can your code be extended to such cases?
+
+**Clarification for the follow-up question:**
+
+The "Zigzag" order is not clearly defined and is ambiguous for `k > 2` cases. If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic".
+
+**Follow-up Example:**
+
+```
+**Input:** v1 = [1,2,3], v2 = [4,5,6,7], v3 = [8,9]
+**Output:** [1,4,8,2,5,9,3,6,7]
+```
+
+**Constraints:**
+- `0 <= v1.length, v2.length <= 1000`
+- `1 <= v1.length + v2.length <= 2000`
+- `-2^31 <= v1[i], v2[i] <= 2^31 - 1`
 
 ## Examples
-- **Input:** `v1 = [1,2]`, `v2 = [3,4,5,6]`
-  **Output:** `[1,3,2,4,5,6]`
-  *Explanation:* Alternate until `v1` is exhausted, then append remaining `v2` elements.
-- **Input:** `v1 = []`, `v2 = [1,2,3]`
-  **Output:** `[1,2,3]`
-  *Explanation:* Only `v2` provides elements.
+
+**Example 1:**
+```
+Input: v1 = [1,2], v2 = [3,4,5,6]
+Output: [1,3,2,4,5,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,3,2,4,5,6].
+```
+
+**Example 2:**
+```
+Input: v1 = [1], v2 = []
+Output: [1]
+```
+
+**Example 3:**
+```
+Input: v1 = [], v2 = [1]
+Output: [1]
+```
 
 ## Approach
 Use a queue to store active iterators. Initially push iterators for any non‑empty input vector. For each `next()` call, pop the front iterator, retrieve its current value, and if it has more elements, push it back. `hasNext()` checks if the queue is non‑empty.

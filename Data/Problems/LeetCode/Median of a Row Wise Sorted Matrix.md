@@ -21,22 +21,34 @@
 
 ## Problem Description
 
-Given an `m × n` matrix where each **row** is sorted in non-decreasing order and `m × n` is odd, find the **median** element of the matrix.
+Given an `m x n` matrix `grid` containing an **odd** number of integers where each row is sorted in **non-decreasing** order, return *the **median** of the matrix*.
+
+You must solve the problem in less than `O(m * n)` time complexity.
 
 **Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
 - `1 ≤ m, n ≤ 500`
-- `m * n` is odd
-- `1 ≤ matrix[i][j] ≤ 10⁶`
+- `m` and `n` are both odd.
+- `1 ≤ grid[i][j] ≤ 10⁶`
+- `grid[i]` is sorted in non-decreasing order.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  matrix = [[1,3,5],[2,6,9],[3,6,9]]
-Output: 5
-Explanation: Sorted: [1,2,3,3,5,6,6,9,9]. Median = 5.
+Example 1:
+  Input: grid = [[1,1,2],[2,3,3],[1,3,4]]
+  Output: 2
+  Explanation: The elements of the matrix in sorted order are 1,1,1,2,2,3,3,3,4. The median is 2.
+```
+
+```
+Example 2:
+  Input: grid = [[1,1,3,3,4]]
+  Output: 3
+  Explanation: The elements of the matrix in sorted order are 1,1,3,3,4. The median is 3.
 ```
 
 ---

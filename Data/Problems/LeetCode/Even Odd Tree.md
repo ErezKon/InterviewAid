@@ -8,21 +8,51 @@
 
 ## Problem Description
 
-A binary tree is **Even-Odd** if:
-- **Even-indexed levels** (0, 2, ...): all values are **odd** and **strictly increasing** left to right.
-- **Odd-indexed levels** (1, 3, ...): all values are **even** and **strictly decreasing** left to right.
+A binary tree is named **Even-Odd** if it meets the following conditions:
 
-Return `true` if the tree satisfies these constraints.
+- The root of the binary tree is at level index `0`, its children are at level index `1`, their children are at level index `2`, etc.
+- For every **even-indexed** level, all nodes at the level have **odd** integer values in **strictly increasing** order (from left to right).
+- For every **odd-indexed** level, all nodes at the level have **even** integer values in **strictly decreasing** order (from left to right).
+
+Given the `root` of a binary tree, *return* `true` *if the binary tree is **Even-Odd**, otherwise return* `false`*.*
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^5]`.
+- `1 <= Node.val <= 10^6`
 
 ---
 
 ## Examples
 
-| Input Tree | Output | Explanation |
-|------------|--------|-------------|
-| `[1,10,4,3,null,7,9,12,8,6,null,null,2]` | `true` | Level 0 (odd, increasing): `1`. Level 1 (even, decreasing): `10 > 4`. Level 2 (odd, increasing): `3 < 7 < 9`. All constraints satisfied. |
-| `[5,4,2,3,3,7]` | `false` | Level 0 has odd `5` (OK). Level 1 should be even and decreasing, but values `4` and `2` are even but `4 < 2` violates decreasing order. |
-| `[1,2,3,4,5,6,7,8,9,10]` | `false` | Level 0 is odd `1` (OK). Level 1 has even values `2,3` where `3` is odd → parity violation. |
+```
+Example 1:
+  Input: root = [1,10,4,3,null,7,9,12,8,6,null,null,2]
+  Output: true
+  Explanation: The node values on each level are:
+  Level 0: [1]
+  Level 1: [10,4]
+  Level 2: [3,7,9]
+  Level 3: [12,8,6,2]
+  Since levels 0 and 2 are all odd and increasing and levels 1 and 3 are all even and decreasing, the tree is Even-Odd.
+```
+
+```
+Example 2:
+  Input: root = [5,4,2,3,3,7]
+  Output: false
+  Explanation: The node values on each level are:
+  Level 0: [5]
+  Level 1: [4,2]
+  Level 2: [3,3,7]
+  Node values in level 2 must be in strictly increasing order, so the tree is not Even-Odd.
+```
+
+```
+Example 3:
+  Input: root = [5,9,1,3,5,7]
+  Output: false
+  Explanation: Node values in the level 1 should be even integers.
+```
 
 ---
 

@@ -7,19 +7,27 @@
 ---
 
 ## Problem Description
-Given the head of a sorted singly‑linked list, delete all duplicate nodes such that each element appears only once. Return the modified list, which should remain sorted.
+Given the `head` of a sorted linked list, *delete all duplicates such that each element appears only once*. Return *the linked list **sorted** as well*.
+
+**Constraints:**
+
+- The number of nodes in the list is in the range `[0, 300]`.
+- `-100 <= Node.val <= 100`
+- The list is guaranteed to be **sorted** in ascending order.
 
 ## Examples
-**Example 1**
+
 ```
-Input: head = [1,1,2]
-Output: [1,2]
-Explanation: The second '1' is removed.
+Example 1:
+  Input: head = [1,1,2]
+  Output: [1,2]
+  Explanation: The second '1' is removed.
 ```
-**Example 2**
+
 ```
-Input: head = [1,1,2,3,3]
-Output: [1,2,3]
+Example 2:
+  Input: head = [1,1,2,3,3]
+  Output: [1,2,3]
 ```
 
 ## Approach

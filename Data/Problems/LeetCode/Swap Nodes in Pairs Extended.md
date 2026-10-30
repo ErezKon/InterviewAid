@@ -5,6 +5,9 @@ Related: #24, #25, #92, #206, #234, #143
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Swap Nodes in Pairs.md](Swap%20Nodes%20in%20Pairs.md) for the official statement and constraints of #24.*
+
 Linked list reversal patterns cover a family of problems where a segment of a singly‑linked list must be reversed in‑place. Typical tasks include swapping every two nodes, reversing a sub‑list between two positions, or reversing nodes in groups of *k*.
 
 ## Examples

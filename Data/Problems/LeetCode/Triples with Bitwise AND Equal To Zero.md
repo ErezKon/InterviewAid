@@ -7,21 +7,45 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, count the number of ordered triples `(i, j, k)` such that `i`, `j`, and `k` are indices of the array (indices may repeat) and the bitwise AND of the three selected numbers is zero: `nums[i] & nums[j] & nums[k] == 0`.
+
+Given an integer array nums, return *the number of **AND triples***.
+
+An **AND triple** is a triple of indices `(i, j, k)` such that:
+
+- `0 <= i < nums.length`
+- `0 <= j < nums.length`
+- `0 <= k < nums.length`
+- `nums[i] & nums[j] & nums[k] == 0`, where `&` represents the bitwise-AND operator.
+
+**Constraints:**
+- `1 <= nums.length <= 1000`
+- `0 <= nums[i] < 2^16`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: nums = [2,1,3]
 Output: 12
-Explanation: All 27 possible triples are considered; 12 of them have AND equal to 0.
+Explanation: We could choose the following i, j, k triples:
+(i=0, j=0, k=1) : 2 & 2 & 1
+(i=0, j=1, k=0) : 2 & 1 & 2
+(i=0, j=1, k=1) : 2 & 1 & 1
+(i=0, j=1, k=2) : 2 & 1 & 3
+(i=0, j=2, k=1) : 2 & 3 & 1
+(i=1, j=0, k=0) : 1 & 2 & 2
+(i=1, j=0, k=1) : 1 & 2 & 1
+(i=1, j=0, k=2) : 1 & 2 & 3
+(i=1, j=1, k=0) : 1 & 1 & 2
+(i=1, j=2, k=0) : 1 & 3 & 2
+(i=2, j=0, k=1) : 3 & 2 & 1
+(i=2, j=1, k=0) : 3 & 1 & 2
 ```
 
 **Example 2:**
 ```
-Input: nums = [0,0]
-Output: 8
-Explanation: Every triple yields 0 because each element is 0.
+Input: nums = [0,0,0]
+Output: 27
 ```
 
 ## Approach

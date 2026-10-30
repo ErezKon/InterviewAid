@@ -7,15 +7,43 @@
 ---
 
 ## Problem Description
-Given two strings `s` and `p`, determine whether `p` occurs as a substring of `s`. Return `true` if `p` is found, otherwise return `false`. The strings consist of lowercase English letters.
+
+> *Note: the Approach/Walkthrough below ignore the `'*'` wildcard. Correct idea: split `p` at `'*'` into `left` and `right`; find the first occurrence `i` of `left` in `s`, then check whether `right` occurs in `s` at or after `i + len(left)`. O(n·m).*
+
+You are given a string `s` and a pattern string `p`, where `p` contains **exactly one** `'*'` character.
+
+The `'*'` in `p` can be replaced with any sequence of zero or more characters.
+
+Return `true` if `p` can be made a substring of `s`, and `false` otherwise.
+
+**Constraints:**
+- `1 <= s.length <= 50`
+- `1 <= p.length <= 50`
+- `s` contains only lowercase English letters.
+- `p` contains only lowercase English letters and exactly one `'*'`
 
 ## Examples
-- **Input:** `s = "leetcode", p = "code"`
-  **Output:** `true`
-  **Explanation:** "code" appears starting at index 4.
-- **Input:** `s = "apple", p = "plea"`
-  **Output:** `false`
-  **Explanation:** No contiguous occurrence of "plea" in "apple".
+
+**Example 1:**
+```
+Input: s = "leetcode", p = "ee*e"
+Output: true
+Explanation: By replacing the '*' with "tcod", the substring "eetcode" matches the pattern.
+```
+
+**Example 2:**
+```
+Input: s = "car", p = "c*v"
+Output: false
+Explanation: There is no substring matching the pattern.
+```
+
+**Example 3:**
+```
+Input: s = "luck", p = "u*"
+Output: true
+Explanation: The substrings "u", "uc", and "uck" match the pattern.
+```
 
 ## Approach
 Iterate through `s` and compare each window of length `len(p)` with `p`. Stop early when a match is found.

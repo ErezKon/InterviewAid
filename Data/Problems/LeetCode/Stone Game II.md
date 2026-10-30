@@ -7,19 +7,33 @@
 ---
 
 ## Problem Description
-Alice and Bob play a game with an array `piles` of positive integers, where `piles[i]` is the number of stones in the i‑th pile. Starting from the first pile, the current player may take the next `X` piles where `1 ≤ X ≤ 2·M` and `M` is the maximum of the previous `M` and `X`. After taking, the player’s score increases by the total stones taken, and `M` becomes `max(M, X)`. The game ends when all piles are taken. Return the maximum number of stones Alice (the first player) can obtain assuming both play optimally.
 
-Constraints: `1 ≤ piles.length ≤ 100`, `1 ≤ piles[i] ≤ 10^4`.
+Alice and Bob continue their games with piles of stones. There are a number of piles **arranged in a row**, and each pile has a positive integer number of stones `piles[i]`. The objective of the game is to end with the most stones.
+
+Alice and Bob take turns, with Alice starting first.
+
+On each player's turn, that player can take **all the stones** in the **first** `X` remaining piles, where `1 <= X <= 2M`. Then, we set `M = max(M, X)`. Initially, M = 1.
+
+The game continues until all the stones have been taken.
+
+Assuming Alice and Bob play optimally, return the maximum number of stones Alice can get.
+
+**Constraints:**
+- `1 <= piles.length <= 100`
+- `1 <= piles[i] <= 10^4`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
 Input: piles = [2,7,9,4,4]
 Output: 10
-Explanation: Alice takes first 2 piles (2+7), M=2. Bob can take next 2 piles (9+4). Alice takes last pile (4). Alice total = 2+7+4 = 13, but optimal play yields 10 for Alice.
+Explanation: - If Alice takes one pile at the beginning, Bob takes two piles, then Alice takes 2 piles again. Alice can get 2 + 4 + 4 = 10 stones in total.
+- If Alice takes two piles at the beginning, then Bob can take all three piles left. In this case, Alice get 2 + 7 = 9 stones in total.
+So we return 10 since it's larger.
 ```
 
-**Example 2**
+**Example 2:**
 ```
 Input: piles = [1,2,3,4,5,100]
 Output: 104

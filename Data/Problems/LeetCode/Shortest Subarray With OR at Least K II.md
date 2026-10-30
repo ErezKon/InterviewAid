@@ -7,14 +7,40 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, find the length of the shortest contiguous subarray whose bitwise OR is greater than or equal to `k`. Return `-1` if no such subarray exists.
+
+You are given an array `nums` of **non-negative** integers and an integer `k`.
+
+An array is called **special** if the bitwise `OR` of all of its elements is **at least** `k`.
+
+Return *the length of the **shortest** **special** **non-empty** subarray of* `nums`, *or return* `-1` *if no special subarray exists*.
+
+**Constraints:**
+- `1 <= nums.length <= 2 * 10^5`
+- `0 <= nums[i] <= 10^9`
+- `0 <= k <= 10^9`
 
 ## Examples
-| nums | k | Output | Explanation |
-|------|---|--------|-------------|
-| `[1,2,4]` | `7` | `3` | OR of the whole array is `7`.
-| `[5,1,2]` | `4` | `1` | Single element `5` already has OR `5 ≥ 4`.
-| `[1,1,1]` | `2` | `-1` | No subarray reaches OR `2`.
+
+**Example 1:**
+```
+Input: nums = [1,2,3], k = 2
+Output: 1
+Explanation: The subarray [3] has OR value of 3. Hence, we return 1.
+```
+
+**Example 2:**
+```
+Input: nums = [2,1,8], k = 10
+Output: 3
+Explanation: The subarray [2,1,8] has OR value of 11. Hence, we return 3.
+```
+
+**Example 3:**
+```
+Input: nums = [1,2], k = 0
+Output: 1
+Explanation: The subarray [1] has OR value of 1. Hence, we return 1.
+```
 
 ## Approach
 **Algorithm:** Sliding Window with bit‑frequency counters.

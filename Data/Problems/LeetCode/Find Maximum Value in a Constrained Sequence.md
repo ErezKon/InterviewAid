@@ -7,21 +7,43 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and a set of constraints that limit which previous elements can be used to extend a subsequence, compute the maximum possible value of a subsequence that satisfies all constraints. Constraints are typically expressed as a maximum allowed index distance or a value bound between consecutive elements.
+You are given an integer `n`, a 2D integer array `restrictions`, and an integer array `diff` of length `n - 1`. Your task is to construct a sequence of length `n`, denoted by `a[0], a[1], ..., a[n - 1]`, such that it satisfies the following conditions:
+
+- `a[0]` is 0.
+- All elements in the sequence are **non-negative**.
+- For every index `i` (`0 <= i <= n - 2`), `abs(a[i] - a[i + 1]) <= diff[i]`.
+- For each `restrictions[i] = [idx, maxVal]`, the value at position `idx` in the sequence must not exceed `maxVal` (i.e., `a[idx] <= maxVal`).
+
+Your goal is to construct a valid sequence that **maximizes** the **largest** value within the sequence while satisfying all the above conditions.
+
+Return an integer denoting the **largest** value present in such an optimal sequence.
+
+> *Note: the Approach / Walkthrough below solve a different (sliding-window subsequence sum) problem. Correct approach: set `cap[i] = maxVal` (or ∞; `cap[0] = 0`), then do a left-to-right pass `cap[i] = min(cap[i], cap[i-1] + diff[i-1])` and a right-to-left pass `cap[i] = min(cap[i], cap[i+1] + diff[i])`; the answer is `max(cap)`. O(n).*
 
 ## Examples
-**Example 1**
+**Example 1:**
 ```
-nums = [1, 5, 2, 4, 6]
-Constraint: each chosen element must be within 2 positions of the previous one.
-Maximum value = 15  // subsequence [5,4,6]
+Input: n = 10, restrictions = [[3,1],[8,1]], diff = [2,2,3,1,4,5,1,1,2]
+Output: 6
+Explanation: The sequence a = [0, 2, 4, 1, 2, 6, 2, 1, 1, 3] satisfies the given constraints (a[3] <= 1 and a[8] <= 1). The maximum value in the sequence is 6.
 ```
-**Example 2**
+**Example 2:**
 ```
-nums = [3, 1, 2, 7, 5]
-Constraint: next element must be greater than previous.
-Maximum value = 12  // subsequence [3,2,7]
+Input: n = 8, restrictions = [[3,2]], diff = [3,5,2,4,2,3,1]
+Output: 12
+Explanation: The sequence a = [0, 3, 3, 2, 6, 8, 11, 12] satisfies the given constraints (a[3] <= 2). The maximum value in the sequence is 12.
 ```
+
+## Constraints
+- `2 <= n <= 10^5`
+- `1 <= restrictions.length <= n - 1`
+- `restrictions[i].length == 2`
+- `restrictions[i] = [idx, maxVal]`
+- `1 <= idx < n`
+- `1 <= maxVal <= 10^6`
+- `diff.length == n - 1`
+- `1 <= diff[i] <= 10`
+- The values of `restrictions[i][0]` are unique.
 
 ## Approach
 Use **dynamic programming** where `dp[i]` stores the best value of a valid subsequence ending at index `i`. For each `i`, look back only at indices that satisfy the constraint (e.g., `i - j ≤ limit`). The transition is:

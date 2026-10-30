@@ -9,7 +9,20 @@
 
 ## Problem Description
 
-Design a stack-like data structure that supports `push(val)` and `pop()`. `push(val)` inserts an integer onto the stack. `pop()` removes and returns the most frequent element in the stack; if multiple elements share the highest frequency, the element closest to the top of the stack is removed and returned.
+Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.
+
+Implement the `FreqStack` class:
+
+- `FreqStack()` constructs an empty frequency stack.
+- `void push(int val)` pushes an integer `val` onto the top of the stack.
+- `int pop()` removes and returns the most frequent element in the stack.
+
+- If there is a tie for the most frequent element, the element closest to the stack's top is removed and returned.
+
+**Constraints:**
+- `0 <= val <= 10^9`
+- At most `2 * 10^4` calls will be made to `push` and `pop`.
+- It is guaranteed that there will be at least one element in the stack before calling `pop`.
 
 ---
 
@@ -17,16 +30,23 @@ Design a stack-like data structure that supports `push(val)` and `pop()`. `push(
 
 **Example 1:**
 ```
-Input: push(5), push(7), push(5), push(7), push(4), push(5)
-pop() → 5   // 5 is the most frequent
-pop() → 7   // 5 and 7 both have frequency 2, but 7 is closest to the top
-pop() → 5
-```
-
-**Example 2:**
-```
-Input: push(1), push(2), push(3), pop()
-Output: 3   // All have frequency 1, return the most recent
+Input
+["FreqStack", "push", "push", "push", "push", "push", "push", "pop", "pop", "pop", "pop"]
+[[], [5], [7], [5], [7], [4], [5], [], [], [], []]
+Output:
+[null, null, null, null, null, null, null, 5, 7, 5, 4]
+Explanation:
+FreqStack freqStack = new FreqStack();
+freqStack.push(5); // The stack is [5]
+freqStack.push(7); // The stack is [5,7]
+freqStack.push(5); // The stack is [5,7,5]
+freqStack.push(7); // The stack is [5,7,5,7]
+freqStack.push(4); // The stack is [5,7,5,7,4]
+freqStack.push(5); // The stack is [5,7,5,7,4,5]
+freqStack.pop();   // return 5, as 5 is the most frequent. The stack becomes [5,7,5,7,4].
+freqStack.pop();   // return 7, as 5 and 7 is the most frequent, but 7 is closest to the top. The stack becomes [5,7,5,4].
+freqStack.pop();   // return 5, as 5 is the most frequent. The stack becomes [5,7,4].
+freqStack.pop();   // return 4, as 4, 5 and 7 is the most frequent, but 4 is closest to the top. The stack becomes [5,7].
 ```
 
 ---

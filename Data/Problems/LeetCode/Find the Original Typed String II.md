@@ -20,23 +20,42 @@
 
 ## 1. Problem Description
 
-Given a typed string `word` and an integer `k`, each maximal block of identical characters of length `L` could have originated from any length between `1` and `L`. Count how many original strings of length **at least** `k` could have produced `word`. Return the answer modulo `10^9 + 7`.
+Alice is attempting to type a specific string on her computer. However, she tends to be clumsy and **may** press a key for too long, resulting in a character being typed **multiple** times.
+
+You are given a string `word`, which represents the **final** output displayed on Alice's screen. You are also given a **positive** integer `k`.
+
+Return the total number of *possible* original strings that Alice *might* have intended to type, if she was trying to type a string of size **at least** `k`.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
 
 **Constraints:**
-- `1 <= word.length <= 5 × 10⁴`
-- `1 <= k <= 2 × 10⁵`
+- `1 <= word.length <= 5 * 10^5`
+- `word` consists only of lowercase English letters.
+- `1 <= k <= 2000`
 
 ---
 
 ## 2. Examples
 
-| word | k | Output |
-|------|---|--------|
-| "aaab" | 3 | 3 |
-| "abc"   | 2 | 1 |
-| "aaaa" | 5 | 0 |
+**Example 1:**
+```
+Input: word = "aabbccdd", k = 7
+Output: 5
+Explanation: The possible strings are: "aabbccdd", "aabbccd", "aabbcdd", "aabccdd", and "abbccdd".
+```
 
-*Explanation*: For `"aaab"` the groups are `[3,1]`. All possible original lengths are `1..3 + 1 = 2..4`. Lengths ≥ 3 are `3` and `4`, giving three strings.
+**Example 2:**
+```
+Input: word = "aabbccdd", k = 8
+Output: 1
+Explanation: The only possible string is "aabbccdd".
+```
+
+**Example 3:**
+```
+Input: word = "aaabbb", k = 3
+Output: 8
+```
 
 ---
 

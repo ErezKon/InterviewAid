@@ -20,11 +20,18 @@
 
 ## 1. Problem Description
 
-Given an array `nums` and an integer `k`, find the maximum length of a subsequence where the sum of every consecutive pair of elements has the same remainder when divided by `k`.
+You are given an integer array `nums` and a **positive** integer `k`.
+
+A subsequence `sub` of `nums` with length `x` is called **valid** if it satisfies:
+
+- `(sub[0] + sub[1]) % k == (sub[1] + sub[2]) % k == ... == (sub[x - 2] + sub[x - 1]) % k`.
+
+Return the length of the **longest valid** subsequence of `nums`.
 
 **Constraints:**
-- `1 <= n <= 10³`
-- `2 <= k <= n`
+- `2 <= nums.length <= 10³`
+- `1 <= nums[i] <= 10⁷`
+- `1 <= k <= 10³`
 
 ---
 
@@ -53,18 +60,16 @@ FUNCTION maximumLength(nums, k):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: nums = [1, 2, 3, 4, 5], k = 2
-Output: 3
-Explanation: Choose subsequence [1,3,5]; each consecutive pair sums to an even number (remainder 0). Length 3 is maximal.
-```
+Example 1:
+  Input: nums = [1,2,3,4,5], k = 2
+  Output: 5
+  Explanation: The longest valid subsequence is [1, 2, 3, 4, 5].
 
-**Example 2:**
-```
-Input: nums = [2, 5, 8, 11], k = 3
-Output: 4
-Explanation: All consecutive pairs sum to 13, which %3 = 1. The whole array is valid, so length 4.
+Example 2:
+  Input: nums = [1,4,2,3,1,4], k = 3
+  Output: 4
+  Explanation: The longest valid subsequence is [1, 4, 1, 4].
 ```
 
 ---

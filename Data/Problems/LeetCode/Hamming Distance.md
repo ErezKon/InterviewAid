@@ -8,7 +8,12 @@
 
 ## 1. Problem Description
 
-Return the Hamming distance between two integers — the number of bit positions where they differ.
+The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+
+Given two integers `x` and `y`, return *the **Hamming distance** between them*.
+
+**Constraints:**
+- `0 <= x, y <= 2^31 - 1`
 
 ---
 
@@ -27,14 +32,20 @@ FUNCTION hammingDistance(x, y):
 ## 3. Examples
 
 **Example 1:**
-- Input: `x = 1, y = 4`
-- Output: `2`
-- Explanation: Binary `1` is `001`, `4` is `100`; they differ at two positions.
+```
+Input: x = 1, y = 4
+Output: 2
+Explanation: 1   (0 0 0 1)
+4   (0 1 0 0)
+       ↑   ↑
+The above arrows point to positions where the corresponding bits are different.
+```
 
 **Example 2:**
-- Input: `x = 3, y = 1`
-- Output: `1`
-- Explanation: `3` is `011`, `1` is `001`; only the second bit differs.
+```
+Input: x = 3, y = 1
+Output: 1
+```
 
 ---
 

@@ -7,18 +7,39 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, a value `val` and an integer `depth`, insert a row of nodes with value `val` at the given depth. The original nodes at that depth become the left and right children of the new nodes. If `depth` is 1, a new root is created.
+Given the `root` of a binary tree and two integers `val` and `depth`, add a row of nodes with value `val` at the given depth `depth`.
+
+Note that the `root` node is at depth `1`.
+
+The adding rule is:
+
+- Given the integer `depth`, for each not null tree node `cur` at the depth `depth - 1`, create two tree nodes with value `val` as `cur`'s left subtree root and right subtree root.
+- `cur`'s original left subtree should be the left subtree of the new left subtree root.
+- `cur`'s original right subtree should be the right subtree of the new right subtree root.
+- If `depth == 1` that means there is no depth `depth - 1` at all, then create a tree node with value `val` as the new root of the whole original tree, and the original tree is the new root's left subtree.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- The depth of the tree is in the range `[1, 10^4]`.
+- `-100 <= Node.val <= 100`
+- `-10^5 <= val <= 10^5`
+- `1 <= depth <= the depth of tree + 1`
 
 ## Examples
-**Example 1**
-Input: `root = [4,2,6,3,1,5]`, `val = 1`, `depth = 2`
-Output: `[4,1,1,2,null,null,6,3,1,5]`
-Explanation: New nodes with value 1 are inserted between the root and its original children.
-
-**Example 2**
-Input: `root = [4,2,null,3,1]`, `val = 1`, `depth = 3`
-Output: `[4,2,null,1,1,3,1]`
-Explanation: Nodes are added at depth 3, pushing existing children down.
+```
+Example 1:
+  Input: root = [4,2,6,3,1,5], val = 1, depth = 2
+  Output: [4,1,1,2,null,null,6,3,1,5]
+  Explanation: New nodes with value 1 are inserted between the root and its original children
+  (2 becomes the left child of the new left node, 6 the right child of the new right node).
+```
+```
+Example 2:
+  Input: root = [4,2,null,3,1], val = 1, depth = 3
+  Output: [4,2,null,1,1,3,null,null,1]
+  Explanation: Node 2 (at depth 2) gets two new children with value 1; its original left child 3
+  hangs under the new left node and its original right child 1 under the new right node.
+```
 
 ## Approach
 **Algorithm:** Breadth‑First Search (level order) or recursion to reach the level just above the target depth, then insert new nodes.

@@ -7,21 +7,42 @@
 ---
 
 ## Problem Description
-You are given `k` eggs and a building with `n` floors. An egg that is dropped from a floor `f` will either break or survive. If it breaks, it will break from any floor above `f`; if it survives, it will survive from any floor below `f`. Determine the minimum number of moves required to guarantee finding the highest floor from which an egg can be dropped without breaking, in the worst case.
+
+You are given `k` identical eggs and you have access to a building with `n` floors labeled from `1` to `n`.
+
+You know that there exists a floor `f` where `0 <= f <= n` such that any egg dropped at a floor **higher** than `f` will **break**, and any egg dropped **at or below** floor `f` will **not break**.
+
+Each move, you may take an unbroken egg and drop it from any floor `x` (where `1 <= x <= n`). If the egg breaks, you can no longer use it. However, if the egg does not break, you may **reuse** it in future moves.
+
+Return *the **minimum number of moves** that you need to determine **with certainty** what the value of* `f` is.
+
+**Constraints:**
+- `1 <= k <= 100`
+- `1 <= n <= 10^4`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: k = 1, n = 2
 Output: 2
-Explanation: With one egg, we must try floor 1 then floor 2.
+Explanation:
+Drop the egg from floor 1. If it breaks, we know that f = 0.
+Otherwise, drop the egg from floor 2. If it breaks, we know that f = 1.
+If it does not break, then we know f = 2.
+Hence, we need at minimum 2 moves to determine with certainty what the value of f is.
 ```
 
 **Example 2:**
 ```
 Input: k = 2, n = 6
 Output: 3
-Explanation: Drop from floor 3 → if breaks, test floors 1‑2; if survives, test floors 4‑6 with one egg left.
+```
+
+**Example 3:**
+```
+Input: k = 3, n = 14
+Output: 4
 ```
 
 ## Approach

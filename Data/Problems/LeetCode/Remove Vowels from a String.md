@@ -7,20 +7,27 @@
 ---
 
 ## Problem Description
-Given a string *s*, return a new string where all vowels ('a', 'e', 'i', 'o', 'u' in both lower‑ and upper‑case) are removed. The order of the remaining characters must stay the same.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given a string `s`, remove the vowels `'a'`, `'e'`, `'i'`, `'o'`, and `'u'` from it, and return the new string.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s` consists of only lowercase English letters.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: s = "leetcode"
-Output: "ltcd"
-Explanation: The vowels 'e', 'e', 'o' are removed.
+Input: s = "leetcodeisacommunityforcoders"
+Output: "ltcdscmmntyfrcdrs"
 ```
+
 **Example 2:**
 ```
-Input: s = "AEIOU"
+Input: s = "aeiou"
 Output: ""
-Explanation: All characters are vowels, so the result is an empty string.
 ```
 
 ## Approach

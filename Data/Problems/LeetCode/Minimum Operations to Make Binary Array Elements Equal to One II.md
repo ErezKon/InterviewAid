@@ -7,16 +7,40 @@
 ---
 
 ## Problem Description
-You are given a binary array `nums`. In one operation you may choose an index `i` ( `0 ≤ i < n‑1` ) and flip the two consecutive bits `nums[i]` and `nums[i+1]` (change `0` to `1` and `1` to `0`). Determine the minimum number of operations required to make **all** elements of the array equal to `1`. If it is impossible, return `-1`.
+You are given a binary array `nums`.
 
-Constraints: `2 ≤ nums.length ≤ 10⁵`; each element is `0` or `1`.
+You can do the following operation on the array **any** number of times (possibly zero):
+
+- Choose **any** index `i` from the array and **flip** **all** the elements from index `i` to the end of the array.
+
+**Flipping** an element means changing its value from 0 to 1, and from 1 to 0.
+
+Return the **minimum** number of operations required to make all elements in `nums` equal to 1.
+
+**Constraints:**
+- `1 ≤ nums.length ≤ 10⁵`
+- `0 ≤ nums[i] ≤ 1`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[0,0,1]` | `1` | Flip at index 0 turns the array into `[1,1,1]`.
-| `[0,1,0,1]` | `2` | Flip at index 0 → `[1,1,0,1]`; flip at index 2 → `[1,1,1,1]`.
-| `[1,0,0]` | `-1` | After any sequence of flips, the first element stays `1` while the parity of the last two cannot both become `1`.
+
+```
+Example 1:
+  Input: nums = [0,1,1,0,1]
+  Output: 4
+  Explanation: We can do the following operations:
+  - Choose the index i = 1. The resulting array will be nums = [0,0,0,1,0].
+  - Choose the index i = 0. The resulting array will be nums = [1,1,1,0,1].
+  - Choose the index i = 4. The resulting array will be nums = [1,1,1,0,0].
+  - Choose the index i = 3. The resulting array will be nums = [1,1,1,1,1].
+```
+
+```
+Example 2:
+  Input: nums = [1,0,0,0]
+  Output: 1
+  Explanation: We can do the following operation:
+  - Choose the index i = 1. The resulting array will be nums = [1,1,1,1].
+```
 
 ## Approach
 Flipping two adjacent bits toggles their parity together. Observe that the parity (odd/even) of the total number of `0`s changes by either `0` or `2` after each operation, so the parity of the count of `0`s is invariant. Therefore, if the initial number of `0`s is odd, reaching all `1`s is impossible.

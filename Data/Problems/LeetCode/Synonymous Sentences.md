@@ -7,22 +7,35 @@
 ---
 
 ## Problem Description
-Given a list of synonym pairs and a sentence, generate all possible sentences by replacing any word with any of its synonyms. Each synonym pair indicates that the two words are interchangeable, and synonym relationships are transitive. The output sentences must be sorted lexicographically.
+
+> *Note: premium problem (statement checked against the official text with verify.py).*
+
+You are given a list of equivalent string pairs `synonyms` where `synonyms[i] = [s_i, t_i]` indicates that `s_i` and `t_i` are equivalent strings. You are also given a sentence `text`.
+
+Return *all possible synonymous sentences **sorted lexicographically***.
+
+**Constraints:**
+- `0 <= synonyms.length <= 10`
+- `synonyms[i].length == 2`
+- `1 <= s_i.length, t_i.length <= 10`
+- `s_i != t_i`
+- `text` consists of at most `10` words.
+- All the pairs of `synonyms` are **unique**.
+- The words of `text` are separated by single spaces.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: synonyms = [["happy","joy"],["sad","sorrow"]], text = "I am happy"
-Output: ["I am happy", "I am joy"]
+Input: synonyms = [["happy","joy"],["sad","sorrow"],["joy","cheerful"]], text = "I am happy today but was sad yesterday"
+Output: ["I am cheerful today but was sad yesterday","I am cheerful today but was sorrow yesterday","I am happy today but was sad yesterday","I am happy today but was sorrow yesterday","I am joy today but was sad yesterday","I am joy today but was sorrow yesterday"]
 ```
-Explanation: "happy" can be replaced with its synonym "joy".
 
 **Example 2:**
 ```
-Input: synonyms = [["great","good"],["good","fine"]], text = "great day"
-Output: ["fine day", "good day", "great day"]
+Input: synonyms = [["happy","joy"],["cheerful","glad"]], text = "I am happy today but was sad yesterday"
+Output: ["I am happy today but was sad yesterday","I am joy today but was sad yesterday"]
 ```
-Explanation: "great", "good", and "fine" form a synonym group.
 
 ## Approach
 Use Union‑Find to group all synonyms into disjoint sets, then perform backtracking to generate every combination.

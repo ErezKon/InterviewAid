@@ -20,11 +20,19 @@
 
 ## Problem Description
 
-Given an array `nums` of length `n` and `numSlots` slots (numbered 1 to numSlots), assign each number to a slot (each slot holds at most 2 numbers). The **AND sum** = sum of `(nums[i] AND slot_number)` for all assignments. Maximize this sum.
+You are given an integer array `nums` of length `n` and an integer `numSlots` such that `2 * numSlots >= n`. There are `numSlots` slots numbered from `1` to `numSlots`.
+
+You have to place all `n` integers into the slots such that each slot contains at **most** two numbers. The **AND sum** of a given placement is the sum of the **bitwise** `AND` of every number with its respective slot number.
+
+- For example, the **AND sum** of placing the numbers `[1, 3]` into slot `1` and `[4, 6]` into slot `2` is equal to `(1 AND 1) + (3 AND 1) + (4 AND 2) + (6 AND 2) = 1 + 1 + 0 + 2 = 4`.
+
+Return *the maximum possible **AND sum** of *`nums`* given *`numSlots`* slots.*
 
 **Constraints:**
-- `n ≤ 2 · numSlots`
-- `1 ≤ numSlots ≤ 9`
+- `n == nums.length`
+- `1 <= numSlots <= 9`
+- `1 <= n <= 2 * numSlots`
+- `1 <= nums[i] <= 15`
 
 ---
 
@@ -76,15 +84,17 @@ With numSlots ≤ 9: 3⁹ = 19683 states.
 ```
 Input: nums = [1,2,3,4,5,6], numSlots = 3
 Output: 9
-Explanation: Assign 1→slot1, 2→slot2, 3→slot3, 4→slot1, 5→slot2, 6→slot3.
-AND sum = (1&1)+(2&2)+(3&3)+(4&1)+(5&2)+(6&3) = 1+2+3+0+0+3 = 9.
+Explanation: One possible placement is [1, 4] into slot 1, [2, 6] into slot 2, and [3, 5] into slot 3.
+This gives the maximum AND sum of (1 AND 1) + (4 AND 1) + (2 AND 2) + (6 AND 2) + (3 AND 3) + (5 AND 3) = 1 + 0 + 2 + 2 + 3 + 1 = 9.
 ```
 
 **Example 2:**
 ```
-Input: nums = [8,8,8,8], numSlots = 2
-Output: 16
-Explanation: Put two 8s in each slot. (8&1)+(8&1)+(8&2)+(8&2) = 0+0+0+0 = 0? Actually best is to place all in slot2: (8&2)=0, still 0. The maximum achievable is 0.
+Input: nums = [1,3,10,4,7,1], numSlots = 9
+Output: 24
+Explanation: One possible placement is [1, 1] into slot 1, [3] into slot 3, [4] into slot 4, [7] into slot 7, and [10] into slot 9.
+This gives the maximum AND sum of (1 AND 1) + (1 AND 1) + (3 AND 3) + (4 AND 4) + (7 AND 7) + (10 AND 9) = 1 + 1 + 3 + 4 + 7 + 8 = 24.
+Note that slots 2, 5, 6, and 8 are empty which is permitted.
 ```
 
 ---

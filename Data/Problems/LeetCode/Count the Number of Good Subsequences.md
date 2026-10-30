@@ -8,31 +8,42 @@
 
 ## Problem Description
 
-A **good** subsequence is one where every distinct character appears the same number of times. Count non-empty good subsequences of string `s`, modulo `10^9 + 7`.
+A **subsequence** of a string is good if it is not empty and the frequency of each one of its characters is the same.
+
+Given a string `s`, return *the number of good subsequences of* `s`. Since the answer may be too large, return it modulo `10^9 + 7`.
+
+A **subsequence** is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
+
+**Constraints:**
+- `1 <= s.length <= 10^4`
+- `s` consists of only lowercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s = "abc"
-Output: 7
-Explanation: All non‑empty subsequences are good because each character appears at most once. There are 2^3‑1 = 7 such subsequences.
-```
-
-**Example 2:**
-```
-Input: s = "aa"
-Output: 2
-Explanation: Good subsequences are "a" (choose either occurrence) and "aa". The empty subsequence is excluded.
+Example 1:
+  Input: s = "aabb"
+  Output: 11
+  Explanation: The total number of subsequences is 2^4. There are five subsequences which are not good:
+  "aab" (indices {0,1,2}), "aab" (indices {0,1,3}), "abb" (indices {0,2,3}), "abb" (indices {1,2,3}), and the empty subsequence.
+  Hence, the number of good subsequences is 2^4 - 5 = 11.
 ```
 
-**Example 3:**
 ```
-Input: s = "aab"
-Output: 5
-Explanation: Good subsequences are "a", "aa", "b", "ab", "aab" (frequency 1 for each character in "ab" and "aab").
+Example 2:
+  Input: s = "leet"
+  Output: 12
+  Explanation: There are four subsequences which are not good: "lee", "eet", "leet" (with 'e' appearing twice alongside a single other letter), and the empty subsequence.
+  Hence, the number of good subsequences is 2^4 - 4 = 12.
+```
+
+```
+Example 3:
+  Input: s = "abcd"
+  Output: 15
+  Explanation: All of the non-empty subsequences are good subsequences. Hence, the number of good subsequences is 2^4 - 1 = 15.
 ```
 
 ---

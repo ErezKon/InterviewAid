@@ -8,24 +8,43 @@
 
 ## 1. Problem Description
 
-Rearrange characters of a given string so that for every index `i`, the character at position `i` differs from the character at the mirrored position `n-1-i`. Return the lexicographically smallest such anti‑palindromic string, or an empty string if it cannot be formed.
+We call a string `s` of **even** length `n` an **anti-palindrome** if for each index `0 <= i < n`, `s[i] != s[n - i - 1]`.
+
+Given a string `s`, your task is to make `s` an **anti-palindrome** by doing **any** number of operations (including zero).
+
+In one operation, you can select two characters from `s` and swap them.
+
+Return *the resulting string. If multiple strings meet the conditions, return the lexicographically smallest one. If it can't be made into an anti-palindrome, return* `"-1"`*.*
+
+**Constraints:**
+
+- `2 <= s.length <= 10^5`
+- `s.length % 2 == 0`
+- `s` consists only of lowercase English letters.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: s = "abccba"
-Output: "abcabc"
-Explanation: After sorting we get "aabbcc". Swapping the second half yields "abcabc", which satisfies s[i] != s[5-i] for all i.
+Example 1:
+  Input: s = "abca"
+  Output: "aabc"
+  Explanation: "aabc" is an anti-palindrome string since s[0] != s[3] and s[1] != s[2]. Also, it is a rearrangement of "abca".
 ```
 
-**Example 2:**
 ```
-Input: s = "aaab"
-Output: ""
-Explanation: The most frequent character 'a' appears 3 times (> n/2 = 2), making an anti‑palindrome impossible.
+Example 2:
+  Input: s = "abba"
+  Output: "aabb"
+  Explanation: "aabb" is an anti-palindrome string since s[0] != s[3] and s[1] != s[2]. Also, it is a rearrangement of "abba".
+```
+
+```
+Example 3:
+  Input: s = "cccd"
+  Output: "-1"
+  Explanation: You can see that no matter how you rearrange the characters of "cccd", either s[0] == s[3] or s[1] == s[2]. So it can not form an anti-palindrome string.
 ```
 
 ---

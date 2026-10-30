@@ -7,26 +7,36 @@
 ---
 
 ## Problem Description
-Given an integer array `arr` that represents a permutation of the first `n` positive integers, modify the array to obtain the lexicographically largest permutation that is **strictly smaller** than the original array, using **at most one swap** of any two elements. If no such permutation exists, return the array unchanged.
+
+Given an array of positive integers `arr` (not necessarily distinct), return *the* *lexicographically* *largest permutation that is smaller than* `arr`, that can be **made with exactly one swap**. If it cannot be done, then return the same array.
+
+**Note** that a *swap* exchanges the positions of two numbers `arr[i]` and `arr[j]`
+
+**Constraints:**
+- `1 <= arr.length <= 10^4`
+- `1 <= arr[i] <= 10^4`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: arr = [3,2,1]
 Output: [3,1,2]
-Explanation: Swapping the last two elements yields the largest permutation smaller than the original.
+Explanation: Swapping 2 and 1.
 ```
+
 **Example 2:**
 ```
 Input: arr = [1,1,5]
 Output: [1,1,5]
-Explanation: The array is already the smallest possible; no swap can make it smaller.
+Explanation: This is already the smallest permutation.
 ```
+
 **Example 3:**
 ```
 Input: arr = [1,9,4,6,7]
 Output: [1,7,4,6,9]
-Explanation: Swap 9 (index 1) with the largest element smaller than 9 to its right (7 at index 4).
+Explanation: Swapping 9 and 7.
 ```
 
 ## Approach

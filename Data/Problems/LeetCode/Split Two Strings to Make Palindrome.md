@@ -1,23 +1,52 @@
 # 1616. Split Two Strings to Make Palindrome
 
 **Difficulty:** 🟡 Medium
-**LeetCode:** https://leetcode.com/problems/split-two-strings-to-make-palindrome
+**LeetCode:** [https://leetcode.com/problems/split-two-strings-to-make-palindrome](https://leetcode.com/problems/split-two-strings-to-make-palindrome)
 **Companies:** Google
+
 ---
 
 ## Problem Description
-Given two strings `a` and `b` of equal length, you may split each string at any index (including 0 or the length) into a left and right part. After splitting, you can concatenate the left part of one string with the right part of the other. Determine whether there exists a split such that the resulting string is a palindrome.
+
+You are given two strings `a` and `b` of the same length. Choose an index and split both strings **at the same index**, splitting `a` into two strings: `a_prefix` and `a_suffix` where `a = a_prefix + a_suffix`, and splitting `b` into two strings: `b_prefix` and `b_suffix` where `b = b_prefix + b_suffix`. Check if `a_prefix + b_suffix` or `b_prefix + a_suffix` forms a palindrome.
+
+When you split a string `s` into `s_prefix` and `s_suffix`, either `s_suffix` or `s_prefix` is allowed to be empty. For example, if `s = "abc"`, then `"" + "abc"`, `"a" + "bc"`, `"ab" + "c"` , and `"abc" + ""` are valid splits.
+
+Return `true` *if it is possible to form a palindrome string, otherwise return* `false`.
+
+**Notice** that `x + y` denotes the concatenation of strings `x` and `y`.
+
+**Constraints:**
+- `1 <= a.length, b.length <= 10^5`
+- `a.length == b.length`
+- `a` and `b` consist of lowercase English letters
 
 ## Examples
+
 **Example 1:**
 ```
-a = "x", b = "y"
-output = false
+Input: a = "x", b = "y"
+Output: true
+Explanation: If either a or b are palindromes the answer is true since you can split in the following way:
+aprefix = "", asuffix = "x"
+bprefix = "", bsuffix = "y"
+Then, aprefix + bsuffix = "" + "y" = "y", which is a palindrome.
 ```
+
 **Example 2:**
 ```
-a = "abdef", b = "fecab"
-output = true   // split a after "ab" and b after "fe" → "ab" + "cab" = "abcab", which is a palindrome
+Input: a = "xbdef", b = "xecab"
+Output: false
+```
+
+**Example 3:**
+```
+Input: a = "ulacfd", b = "jizalu"
+Output: true
+Explanation: Split them at index 3:
+aprefix = "ula", asuffix = "cfd"
+bprefix = "jiz", bsuffix = "alu"
+Then, aprefix + bsuffix = "ula" + "alu" = "ulaalu", which is a palindrome.
 ```
 
 ## Approach

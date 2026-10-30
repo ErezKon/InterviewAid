@@ -7,20 +7,38 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, return the number of pairs `(i, j)` where `i < j` and `|nums[i] - nums[j]| == k`. The array may contain duplicate values.
+Given an integer array `nums` and an integer `k`, return *the number of pairs* `(i, j)` *where* `i < j` *such that* `|nums[i] - nums[j]| == k`.
+
+The value of `|x|` is defined as:
+
+- `x` if `x >= 0`.
+- `-x` if `x < 0`.
+
+**Constraints:**
+- `1 <= nums.length <= 200`
+- `1 <= nums[i] <= 100`
+- `1 <= k <= 99`
 
 ## Examples
-**Example 1**
 ```
-Input: nums = [1,2,2,1], k = 1
-Output: 4
-Explanation: The valid pairs are (0,1), (0,2), (1,3), (2,3).
+Example 1:
+  Input: nums = [1,2,2,1], k = 1
+  Output: 4
+  Explanation: The pairs with an absolute difference of 1 are (by index): (0,1), (0,2), (1,3), (2,3).
 ```
-**Example 2**
+
 ```
-Input: nums = [1,3,5,7], k = 2
-Output: 3
-Explanation: Pairs are (0,1), (1,2), (2,3).
+Example 2:
+  Input: nums = [1,3], k = 3
+  Output: 0
+  Explanation: There are no pairs with an absolute difference of 3.
+```
+
+```
+Example 3:
+  Input: nums = [3,2,1,5,4], k = 2
+  Output: 3
+  Explanation: The pairs with an absolute difference of 2 are (by value): (3,1), (3,5), (2,4).
 ```
 
 ## Approach

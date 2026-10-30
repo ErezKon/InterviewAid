@@ -7,21 +7,36 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of uppercase English letters, you may choose any two characters in the string and swap them (at most once). Return the length of the longest substring consisting of a single repeated character that can be obtained after at most one swap.
+
+You are given a string `text`. You can swap two of the characters in the `text`.
+
+Return *the length of the longest substring with repeated characters*.
+
+**Constraints:**
+- `1 <= text.length <= 2 * 10^4`
+- `text` consist of lowercase English characters only.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: s = "ABAB"
+Input: text = "ababa"
 Output: 3
-Explanation: Swap the last 'B' with the first 'A' to get "BABA"; the longest repeated character substring is "BBB" of length 3.
+Explanation: We can swap the first 'b' with the last 'a', or the last 'b' with the first 'a'. Then, the longest repeated character substring is "aaa" with length 3.
 ```
 
 **Example 2:**
 ```
-Input: s = "AAAA"
-Output: 4
-Explanation: No swap needed; the whole string is already a repeated character substring.
+Input: text = "aaabaaa"
+Output: 6
+Explanation: Swap 'b' with the last 'a' (or the first 'a'), and we get longest repeated character substring "aaaaaa" with length 6.
+```
+
+**Example 3:**
+```
+Input: text = "aaaaa"
+Output: 5
+Explanation: No need to swap, longest repeated character substring is "aaaaa" with length is 5.
 ```
 
 ## Approach

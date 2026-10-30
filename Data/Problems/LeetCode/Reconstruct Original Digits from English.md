@@ -7,20 +7,28 @@
 ---
 
 ## Problem Description
-Given a string `s` containing an unordered collection of English letters that together form the English words for digits zero to nine (e.g., "owoztneoer"), reconstruct the original digits in ascending order. Each digit may appear multiple times, and the letters of each digit word may be shuffled. Return a string of digits representing the original numbers.
+Given a string `s` containing an out-of-order English representation of digits `0-9`, return *the digits in **ascending** order*.
+
+**Constraints:**
+
+- `1 <= s.length <= 10⁵`
+- `s[i]` is one of the characters `["e","g","f","i","h","o","n","s","r","u","t","w","v","x","z"]`.
+- `s` is **guaranteed** to be valid.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: s = "owoztneoer"
-Output: "012"
-Explanation: The letters can be rearranged to form "zero", "one", and "two".
+Example 1:
+  Input: s = "owoztneoer"
+  Output: "012"
+  Explanation: The letters can be rearranged to form "zero", "one", and "two".
 ```
-**Example 2:**
+
 ```
-Input: s = "fviefuro"
-Output: "45"
-Explanation: The letters correspond to "four" and "five".
+Example 2:
+  Input: s = "fviefuro"
+  Output: "45"
+  Explanation: The letters correspond to "four" and "five".
 ```
 
 ## Approach

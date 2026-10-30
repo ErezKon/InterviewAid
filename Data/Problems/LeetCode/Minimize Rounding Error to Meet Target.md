@@ -20,24 +20,38 @@
 
 ## Problem Description
 
-Given an array of price strings with three decimal places (e.g., `"0.700"`) and an integer `target`, round each price either down (floor) or up (ceil) so that the sum of the rounded values equals `target`. Minimize the total rounding error, defined as the sum of absolute differences between each original price and its rounded value. Return `-1` if it is impossible to reach `target`.
+Given an array of `prices` `[p1,p2...,pn]` and a `target`, round each price `pi` to `Roundi(pi)` so that the rounded array `[Round1(p1),Round2(p2)...,Roundn(pn)]` sums to the given `target`. Each operation `Roundi(pi)` could be either `Floor(pi)` or `Ceil(pi)`.
+
+Return the string `"-1"` if the rounded array is impossible to sum to `target`. Otherwise, return the smallest rounding error, which is defined as `Σ |Roundi(pi) - (pi)|` for `i` from `1` to `n`, as a string with three places after the decimal.
+
+**Constraints:**
+- `1 ≤ prices.length ≤ 500`
+- Each string `prices[i]` represents a real number in the range `[0.0, 1000.0]` and has exactly 3 decimal places.
+- `0 ≤ target ≤ 10⁶`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: prices = ["0.700","2.800","4.900"], target = 8
-Output: "1.000"
-Explanation: Floor all values → sum = 7, need 1 more. Round up the price with largest fractional part (0.9) → error = (0.3 + 0.2 + 0.1) = 0.6, formatted as 1.000.
+Example 1:
+  Input: prices = ["0.700","2.800","4.900"], target = 8
+  Output: "1.000"
+  Explanation:
+  Use Floor, Ceil and Ceil operations to get (0.7 - 0) + (3 - 2.8) + (5 - 4.9) = 0.7 + 0.2 + 0.1 = 1.0 .
 ```
 
-**Example 2:**
 ```
-Input: prices = ["1.500","2.500"], target = 5
-Output: "-1"
-Explanation: Floor sum = 3, ceil sum = 5, but we need exactly 5. Rounding both up gives sum 5 but error 1.0, which is acceptable. Actually reachable, so output would be "1.000". (Illustrative.)
+Example 2:
+  Input: prices = ["1.500","2.500","3.500"], target = 10
+  Output: "-1"
+  Explanation: It is impossible to meet the target.
+```
+
+```
+Example 3:
+  Input: prices = ["1.500","2.500","3.500"], target = 9
+  Output: "1.500"
 ```
 
 ---

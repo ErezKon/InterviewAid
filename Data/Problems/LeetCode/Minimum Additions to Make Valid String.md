@@ -7,18 +7,36 @@
 ---
 
 ## Problem Description
-Given a string `word` consisting of lowercase letters, you may insert characters anywhere in the string. Determine the minimum number of insertions required so that the resulting string can be partitioned into a sequence of the substring `"abc"` repeated any number of times (e.g., `"abcabc"`).
+Given a string `word` to which you can insert letters "a", "b" or "c" anywhere and any number of times, return *the minimum number of letters that must be inserted so that `word` becomes **valid**.*
+
+A string is called **valid** if it can be formed by concatenating the string "abc" several times.
+
+**Constraints:**
+- `1 <= word.length <= 50`
+- `word` consists of letters "a", "b" and "c" only.
 
 ## Examples
-**Example 1:**
-Input: `word = "b"`
-Output: `2`
-Explanation: Insert `"a"` before and `"c"` after to obtain `"abc"`.
 
-**Example 2:**
-Input: `word = "abc"`
-Output: `0`
-Explanation: The string already matches the required pattern.
+```
+Example 1:
+  Input: word = "b"
+  Output: 2
+  Explanation: Insert the letter "a" right before "b", and the letter "c" right next to "b" to obtain the valid string "abc".
+```
+
+```
+Example 2:
+  Input: word = "aaa"
+  Output: 6
+  Explanation: Insert letters "b" and "c" next to each "a" to obtain the valid string "abcabcabc".
+```
+
+```
+Example 3:
+  Input: word = "abc"
+  Output: 0
+  Explanation: word is already valid. No modifications are needed.
+```
 
 ## Approach
 **Greedy Cycle Matching** – Iterate through `word` while simultaneously walking through the pattern `"abc"`. For each character in the pattern, if the current `word` character matches, advance the pointer; otherwise, count an insertion for the missing character.

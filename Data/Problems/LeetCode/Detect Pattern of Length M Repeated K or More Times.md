@@ -20,9 +20,11 @@
 
 ## Problem Description
 
-Given an array `arr` of positive integers and two integers `m` and `k`, return `true` if there exists a pattern of length `m` that is repeated `k` or more **consecutive** times in the array.
+Given an array of positive integers `arr`, find a pattern of length `m` that is repeated `k` or more times.
 
-A pattern is a subarray (contiguous) of length `m` that appears `k` times back-to-back. So the total length of the repeated segment is `m * k`.
+A **pattern** is a subarray (consecutive sub-sequence) that consists of one or more values, repeated multiple times **consecutively **without overlapping. A pattern is defined by its length and the number of repetitions.
+
+Return `true` *if there exists a pattern of length* `m` *that is repeated* `k` *or more times, otherwise return* `false`.
 
 **Constraints:**
 - `2 <= arr.length <= 100`
@@ -38,21 +40,21 @@ A pattern is a subarray (contiguous) of length `m` that appears `k` times back-t
 ```
 Input: arr = [1,2,4,4,4,4], m = 1, k = 3
 Output: true
-Explanation: Pattern [4] of length 1 repeats 4 consecutive times.
+Explanation: The pattern (4) of length 1 is repeated 4 consecutive times. Notice that pattern can be repeated k or more times but not less.
 ```
 
 **Example 2:**
 ```
 Input: arr = [1,2,1,2,1,1,1,3], m = 2, k = 2
 Output: true
-Explanation: Pattern [1,2] repeats 2 consecutive times at index 0.
+Explanation: The pattern (1,2) of length 2 is repeated 2 consecutive times. Another valid pattern (2,1) is also repeated 2 times.
 ```
 
 **Example 3:**
 ```
 Input: arr = [1,2,1,2,1,3], m = 2, k = 3
 Output: false
-Explanation: [1,2] repeats only 2 times, not 3.
+Explanation: The pattern (1,2) is of length 2 but is repeated only 2 times. There is no pattern of length 2 that is repeated 3 or more times.
 ```
 
 ---

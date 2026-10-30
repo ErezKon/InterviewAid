@@ -1,19 +1,48 @@
 # 3541. Find Most Frequent Vowel and Consonant
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/find-most-frequent-vowel-and-consonant](https://leetcode.com/problems/find-most-frequent-vowel-and-consonant)
 **Companies:** Amazon, Google, Meta
 
 ---
 
 ## Problem Description
-Given a lowercase alphabetic string `s`, determine the sum of the highest frequency of any vowel and the highest frequency of any consonant in the string. Vowels are `a, e, i, o, u`; all other letters are consonants. Return the computed sum.
+
+You are given a string `s` consisting of lowercase English letters (`'a'` to `'z'`).
+
+Your task is to:
+
+- Find the vowel (one of `'a'`, `'e'`, `'i'`, `'o'`, or `'u'`) with the **maximum** frequency.
+- Find the consonant (all other letters excluding vowels) with the **maximum** frequency.
+
+Return the sum of the two frequencies.
+
+**Note**: If multiple vowels or consonants have the same maximum frequency, you may choose any one of them. If there are no vowels or no consonants in the string, consider their frequency as 0.
+The **frequency** of a letter `x` is the number of times it occurs in the string.
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s` consists of lowercase English letters only.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aabbbcc"` | `5` | Vowel frequencies: `a`→2 (max 2). Consonant frequencies: `b`→3, `c`→2 (max 3). Sum = 2+3=5. |
-| `"aeiou"` | `2` | Each vowel appears once (max 1). No consonants, so consonant max = 0. Sum = 1+0=1? Actually each vowel max 1, consonant max 0, sum = 1+0=1. Adjust example: `"aeiia"` → vowels max 3, consonants 0, sum 3. |
-| `"bcdfg"` | `5` | No vowels (max 0). Consonants: each appears once, max 1. Sum = 0+1=1. |
+
+**Example 1:**
+```
+Input: s = "successes"
+Output: 6
+Explanation: - The vowels are: 'u' (frequency 1), 'e' (frequency 2). The maximum frequency is 2.
+- The consonants are: 's' (frequency 4), 'c' (frequency 2). The maximum frequency is 4.
+- The output is 2 + 4 = 6.
+```
+
+**Example 2:**
+```
+Input: s = "aeiaeia"
+Output: 3
+Explanation: - The vowels are: 'a' (frequency 3), 'e' ( frequency 2), 'i' (frequency 2). The maximum frequency is 3.
+- There are no consonants in s. Hence, maximum consonant frequency = 0.
+- The output is 3 + 0 = 3.
+```
 
 ## Approach
 Count occurrences of each character using a hash map. Separate counts for vowels and consonants. Determine the maximum count in each group (use 0 if a group is empty). Return the sum of the two maxima.

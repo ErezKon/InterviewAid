@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Find the longest subarray with equal count of two distinct elements.
+> *Note: the Approach/Walkthrough below solve a different problem (equal counts of two fixed values). Official #3719 compares the number of **distinct** even values with the number of **distinct** odd values. Since `n <= 1500`, fix each start `i`, extend `j` while maintaining sets of seen evens/odds, and record `j - i + 1` whenever the two set sizes are equal. O(n²).*
+
+You are given an integer array `nums`.
+
+A **subarray** is called **balanced** if the number of **distinct even** numbers in the subarray is equal to the number of **distinct odd** numbers.
+
+Return the length of the **longest** balanced subarray.
+
+**Constraints:**
+- `1 <= nums.length <= 1500`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
@@ -16,16 +26,26 @@ Find the longest subarray with equal count of two distinct elements.
 
 **Example 1:**
 ```
-Input: nums = [1,2,1,2,1,2]
-Output: 6
-Explanation: The whole array has three 1's and three 2's.
+Input: nums = [2,5,4,3]
+Output: 4
+Explanation: - The longest balanced subarray is [2, 5, 4, 3].
+- It has 2 distinct even numbers [2, 4] and 2 distinct odd numbers [5, 3]. Thus, the answer is 4.
 ```
 
 **Example 2:**
 ```
-Input: nums = [1,1,2,2,2,1]
-Output: 4
-Explanation: The subarray from index 2 to 5 (0‑based) is [2,2,2,1] which has two 1's and two 2's after removing the leading 1.
+Input: nums = [3,2,2,5,4]
+Output: 5
+Explanation: - The longest balanced subarray is [3, 2, 2, 5, 4].
+- It has 2 distinct even numbers [2, 4] and 2 distinct odd numbers [3, 5]. Thus, the answer is 5.
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,2]
+Output: 3
+Explanation: - The longest balanced subarray is [2, 3, 2].
+- It has 1 distinct even number [2] and 1 distinct odd number [3]. Thus, the answer is 3.
 ```
 
 ---

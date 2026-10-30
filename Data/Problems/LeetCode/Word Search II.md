@@ -9,7 +9,19 @@
 
 ## 1. Problem Description
 
-Given an m×n board of characters and a list of words, return all words that can be formed by sequentially adjacent cells (horizontally or vertically). Same cell can't be reused in a single word.
+Given an `m x n` `board` of characters and a list of strings `words`, return *all words on the board*.
+
+Each word must be constructed from letters of sequentially adjacent cells, where **adjacent cells** are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+**Constraints:**
+- `m == board.length`
+- `n == board[i].length`
+- `1 <= m, n <= 12`
+- `board[i][j]` is a lowercase English letter.
+- `1 <= words.length <= 3 * 10^4`
+- `1 <= words[i].length <= 10`
+- `words[i]` consists of lowercase English letters.
+- All the strings of `words` are unique.
 
 ---
 
@@ -17,24 +29,15 @@ Given an m×n board of characters and a list of words, return all words that can
 
 **Example 1:**
 ```
-board = [
-  ["o","a","a","n"],
-  ["e","t","a","e"],
-  ["i","h","k","r"],
-  ["i","f","l","v"]
-]
-words = ["oath","pea","eat","rain"]
+Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
 Output: ["eat","oath"]
 ```
-*Explanation:* "oath" can be formed by path (0,0)->(1,0)->(2,0)->(2,1). "eat" uses (1,2)->(1,1)->(1,0).
 
 **Example 2:**
 ```
-board = [["a","b"],["c","d"]]
-words = ["abcb"]
+Input: board = [["a","b"],["c","d"]], words = ["abcb"]
 Output: []
 ```
-*Explanation:* The word requires revisiting cell (0,1), which is not allowed.
 
 ---
 

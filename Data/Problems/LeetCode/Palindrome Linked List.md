@@ -9,17 +9,30 @@
 
 ## 1. Problem Description
 
-Given the head of a singly linked list, return `true` if it is a palindrome.
+Given the `head` of a singly linked list, return `true` *if it is a **palindrome** or* `false` *otherwise*.
+
+**Constraints:**
+
+- The number of nodes in the list is in the range `[1, 10^5]`.
+- `0 <= Node.val <= 9`
+
+**Follow up:** Could you do it in `O(n)` time and `O(1)` space?
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `1 → 2 → 2 → 1` | `true` | The list reads the same forward and backward. |
-| `1 → 2` | `false` | The two nodes differ, so not a palindrome. |
-| `null` (empty list) | `true` | An empty list is trivially a palindrome. |
+```
+Example 1:
+  Input: head = [1,2,2,1]
+  Output: true
+```
+
+```
+Example 2:
+  Input: head = [1,2]
+  Output: false
+```
 
 ---
 

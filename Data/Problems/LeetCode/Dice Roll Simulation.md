@@ -20,9 +20,11 @@
 
 ## Problem Description
 
-A die simulator generates a random number from `1` to `6` for each roll. You have a constraint array `rollMax[i]` meaning the die cannot roll number `i` more than `rollMax[i]` **consecutive** times.
+A die simulator generates a random number from `1` to `6` for each roll. You introduced a constraint to the generator such that it cannot roll the number `i` more than `rollMax[i]` (**1-indexed**) consecutive times.
 
-Given `n` (number of rolls) and `rollMax`, return the number of distinct sequences that can be obtained. Return the answer modulo `10^9 + 7`.
+Given an array of integers `rollMax` and an integer `n`, return *the number of distinct sequences that can be obtained with exact *`n`* rolls*. Since the answer may be too large, return it **modulo** `10^9 + 7`.
+
+Two sequences are considered different if at least one element differs from each other.
 
 **Constraints:**
 - `1 <= n <= 5000`
@@ -37,17 +39,19 @@ Given `n` (number of rolls) and `rollMax`, return the number of distinct sequenc
 ```
 Input: n = 2, rollMax = [1,1,2,2,2,3]
 Output: 34
-Explanation: With 2 rolls and these constraints, there are 34 valid sequences.
-  Face 1 can appear at most 1 time consecutively → can't roll [1,1]
-  Face 2 can appear at most 1 time consecutively → can't roll [2,2]
-  36 total - 2 invalid = 34
+Explanation: There will be 2 rolls of die, if there are no constraints on the die, there are 6 * 6 = 36 possible combinations. In this case, looking at rollMax array, the numbers 1 and 2 appear at most once consecutively, therefore sequences (1,1) and (2,2) cannot occur, so the final answer is 36-2 = 34.
 ```
 
 **Example 2:**
 ```
 Input: n = 2, rollMax = [1,1,1,1,1,1]
 Output: 30
-Explanation: No face can repeat → 6 × 5 = 30
+```
+
+**Example 3:**
+```
+Input: n = 3, rollMax = [1,1,1,2,2,3]
+Output: 181
 ```
 
 ---

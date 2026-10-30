@@ -20,19 +20,39 @@
 
 ## Problem Description
 
-Given a string `s`, find the maximum difference between a character with **odd** frequency and a character with **even** frequency. Return `max(odd freq) - min(even freq)`.
+You are given a string `s` consisting of lowercase English letters.
+
+Your task is to find the **maximum** difference `diff = freq(a_1) - freq(a_2)` between the frequency of characters `a_1` and `a_2` in the string such that:
+
+- `a_1` has an **odd frequency** in the string.
+- `a_2` has an **even frequency** in the string.
+
+Return this **maximum** difference.
+
+**Constraints:**
+- `3 <= s.length <= 100`
+- `s` consists only of lowercase English letters.
+- `s` contains at least one character with an odd frequency and one with an even frequency.
 
 ---
 
 ## Examples
 
-| s | Output |
-|---|--------|
-| `"aabbc"` | `2` |
-| `"abcde"` | `0` |
-| `"aaabbbccc"` | `0` |
+**Example 1:**
+```
+Input: s = "aaaaabbc"
+Output: 3
+Explanation: - The character 'a' has an odd frequency of 5, and 'b' has an even frequency of 2.
+- The maximum difference is 5 - 2 = 3.
+```
 
-*Explanation*: In `"aabbc"`, frequencies are `{a:2, b:2, c:1}` → odd frequencies `[1]`, even `[2,2]` → max odd `1` - min even `2` = `-1`? Actually we take max odd minus min even, result `1-2 = -1` but we want maximum difference, so we consider absolute? For this problem assume result `-1` but example shows `2` maybe they define max odd - min even = 2? We'll keep example as illustrative.
+**Example 2:**
+```
+Input: s = "abcabcab"
+Output: 1
+Explanation: - The character 'a' has an odd frequency of 3, and 'c' has an even frequency of 2.
+- The maximum difference is 3 - 2 = 1.
+```
 
 ---
 

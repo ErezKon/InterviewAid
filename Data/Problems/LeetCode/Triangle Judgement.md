@@ -7,23 +7,47 @@
 ---
 
 ## Problem Description
-Given three integer side lengths `x`, `y`, and `z` stored in a database table `Triangle`, determine for each row whether the three lengths can form a valid triangle. A triangle is valid if the sum of any two sides is strictly greater than the third side. Return a result column containing "Yes" for a valid triangle and "No" otherwise.
+
+Table: `Triangle`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| x           | int  |
+| y           | int  |
+| z           | int  |
++-------------+------+
+In SQL, (x, y, z) is the primary key column for this table.
+Each row of this table contains the lengths of three line segments.
+```
+
+Report for every three line segments whether they can form a triangle.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
+
 **Example 1:**
 ```
-Input table:
-| x | y | z |
-|---|---|---|
-| 3 | 4 | 5 |
-| 1 | 2 | 3 |
+Input:
+Triangle table:
++----+----+----+
+| x  | y  | z  |
++----+----+----+
+| 13 | 15 | 30 |
+| 10 | 20 | 15 |
++----+----+----+
 Output:
-| x | y | z | triangle |
-|---|---|---|----------|
-| 3 | 4 | 5 | Yes |
-| 1 | 2 | 3 | No |
++----+----+----+----------+
+| x  | y  | z  | triangle |
++----+----+----+----------+
+| 13 | 15 | 30 | No       |
+| 10 | 20 | 15 | Yes      |
++----+----+----+----------+
 ```
-Explanation: 3‑4‑5 satisfies triangle inequality; 1‑2‑3 does not because 1+2 = 3.
 
 ## Approach
 The triangle inequality must hold for all three pairs. In SQL, compute the condition directly in a `CASE` expression. The same logic can be expressed in pseudocode for other languages.

@@ -8,7 +8,13 @@
 
 ## 1. Problem Description
 
-Given an `m × n` multiplication table (row i, col j → value i×j), find the k-th smallest number.
+Nearly everyone has used the Multiplication Table. The multiplication table of size `m x n` is an integer matrix `mat` where `mat[i][j] == i * j` (**1-indexed**).
+
+Given three integers `m`, `n`, and `k`, return *the *`k^th`* smallest element in the *`m x n`* multiplication table*.
+
+**Constraints:**
+- `1 <= m, n <= 3 * 10^4`
+- `1 <= k <= m * n`
 
 ---
 
@@ -40,15 +46,19 @@ FUNCTION findKthNumber(m, n, k):
 
 ## Examples
 
-**Example 1:** `m = 3, n = 3, k = 5`
-- Multiplication table: \[1,2,3; 2,4,6; 3,6,9\]
-- Sorted values: \[1,2,2,3,3,4,6,6,9\]
-- 5th smallest is **3**.
+**Example 1:**
+```
+Input: m = 3, n = 3, k = 5
+Output: 3
+Explanation: The 5^th smallest number is 3.
+```
 
-**Example 2:** `m = 2, n = 3, k = 6`
-- Table: \[1,2,3; 2,4,6\]
-- Sorted: \[1,2,2,3,4,6\]
-- 6th smallest is **6**.
+**Example 2:**
+```
+Input: m = 2, n = 3, k = 6
+Output: 6
+Explanation: The 6^th smallest number is 6.
+```
 
 ---
 

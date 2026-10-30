@@ -7,20 +7,51 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` of length `n`, you may permute the array arbitrarily. After permutation, compute the sum `S = Σ_{i=0}^{n-1} |nums[i] - i|`. Return the maximum possible value of `S`.
+
+> *Note: the Approach below solves an invented `Σ |nums[i] - i|` problem. Correct idea: build a difference array from `requests` to count how many requests cover each index. Sort the counts and `nums`, pair largest with largest, and return `Σ count[i] · nums[i] mod (10^9 + 7)`.*
+
+We have an array of integers, `nums`, and an array of `requests` where `requests[i] = [start_i, end_i]`. The `i^th` request asks for the sum of `nums[start_i] + nums[start_i + 1] + ... + nums[end_i - 1] + nums[end_i]`. Both `start_i` and `end_i` are *0-indexed*.
+
+Return *the maximum total sum of all requests **among all permutations** of* `nums`.
+
+Since the answer may be too large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= n <= 10^5`
+- `0 <= nums[i] <= 10^5`
+- `1 <= requests.length <= 10^5`
+- `requests[i].length == 2`
+- `0 <= start_i <= end_i < n`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: nums = [1,2,3]
-Output: 4
-Explanation: Permute to [3,1,2] → |3-0| + |1-1| + |2-2| = 3 + 0 + 0 = 3 (not optimal). The optimal permutation is [2,3,1] → |2-0|+|3-1|+|1-2| = 2+2+1 = 5? Actually maximum is 4 with permutation [2,1,3].
+Input: nums = [1,2,3,4,5], requests = [[1,3],[0,1]]
+Output: 19
+Explanation: One permutation of nums is [2,1,3,4,5] with the following result:
+requests[0] -> nums[1] + nums[2] + nums[3] = 1 + 3 + 4 = 8
+requests[1] -> nums[0] + nums[1] = 2 + 1 = 3
+Total sum: 8 + 3 = 11.
+A permutation with a higher total sum is [3,5,4,2,1] with the following result:
+requests[0] -> nums[1] + nums[2] + nums[3] = 5 + 4 + 2 = 11
+requests[1] -> nums[0] + nums[1] = 3 + 5  = 8
+Total sum: 11 + 8 = 19, which is the best that you can do.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: nums = [2,2,2]
-Output: 0
-Explanation: All elements are equal, any permutation yields zero sum.
+Input: nums = [1,2,3,4,5,6], requests = [[0,1]]
+Output: 11
+Explanation: A permutation with the max total sum is [6,5,4,3,2,1] with request sums [11].
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,4,5,10], requests = [[0,2],[1,3],[1,1]]
+Output: 47
+Explanation: A permutation with the max total sum is [4,10,5,3,2,1] with request sums [19,18,10].
 ```
 
 ## Approach

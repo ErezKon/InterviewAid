@@ -7,24 +7,72 @@
 ---
 
 ## Problem Description
-Given an `n x n` grid of characters, a *twisted mirror* operation reflects the grid over its main diagonal and then swaps each character with its counterpart according to a predefined mirror mapping (e.g., `{'\': '/', '/': '\', '(': ')', ')': '('}`). Count the number of distinct paths from the top‑left to the bottom‑right corner that remain unchanged after applying the twisted mirror operation. Moves are only allowed to the right or down.
+
+> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented "path invariant under a mirror transform" problem. Correct idea: DP with direction — `f[i][j][d]` = number of ways to stand on cell `(i, j)` having arrived moving in direction `d` (right/down). From an empty cell you may step right or down; stepping into a mirror forces a turn (right → down, down → right) and the robot keeps bouncing through consecutive mirrors. Process cells in increasing `i + j`; answer = `Σ_d f[m−1][n−1][d]` mod 10⁹+7. O(m·n).*
+
+Given an `m x n` binary grid `grid` where:
+
+- `grid[i][j] == 0` represents an empty cell, and
+- `grid[i][j] == 1` represents a mirror.
+
+A robot starts at the top-left corner of the grid `(0, 0)` and wants to reach the bottom-right corner `(m - 1, n - 1)`. It can move only **right** or **down**. If the robot attempts to move into a mirror cell, it is **reflected** before entering that cell:
+
+- If it tries to move **right** into a mirror, it is turned **down** and moved into the cell directly below the mirror.
+- If it tries to move **down** into a mirror, it is turned **right** and moved into the cell directly to the right of the mirror.
+
+If this reflection would cause the robot to move outside the `grid` boundaries, the path is considered invalid and should not be counted.
+
+Return the number of unique valid paths from `(0, 0)` to `(m - 1, n - 1)`.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Note**: If a reflection moves the robot into a mirror cell, the robot is immediately reflected again based on the direction it used to enter that mirror: if it entered while moving right, it will be turned down; if it entered while moving down, it will be turned right. This process will continue until either the last cell is reached, the robot moves out of bounds or the robot moves to a non-mirror cell.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `2 <= m, n <= 500`
+- `grid[i][j]` is either `0` or `1`.
+- `grid[0][0] == grid[m - 1][n - 1] == 0`
 
 ## Examples
+
 **Example 1:**
-Input grid:
 ```
-[['\','/'],
- ['/','\']]
+Input: grid = [[0,1,0],[0,0,1],[1,0,0]]
+Output: 5
+Explanation:
+| Number | Full Path                                               |
+|--------|---------------------------------------------------------|
+| 1      | (0, 0) → (0, 1) [M] → (1, 1) → (1, 2) [M] → (2, 2)      |
+| 2      | (0, 0) → (0, 1) [M] → (1, 1) → (2, 1) → (2, 2)          |
+| 3      | (0, 0) → (1, 0) → (1, 1) → (1, 2) [M] → (2, 2)          |
+| 4      | (0, 0) → (1, 0) → (1, 1) → (2, 1) → (2, 2)              |
+| 5      | (0, 0) → (1, 0) → (2, 0) [M] → (2, 1) → (2, 2)          |
+[M] indicates the robot attempted to enter a mirror cell and instead reflected.
 ```
-The only path `\ -> / -> \` is symmetric under the twisted mirror, so the answer is `1`.
 
 **Example 2:**
-Input grid:
 ```
-[['(','('],
- [')',')']]
+Input: grid = [[0,0],[0,0]]
+Output: 2
+Explanation:
+| Number | Full Path                  |
+|--------|----------------------------|
+| 1      | (0, 0) → (0, 1) → (1, 1)   |
+| 2      | (0, 0) → (1, 0) → (1, 1)   |
 ```
-No path stays the same after the transformation, answer `0`.
+
+**Example 3:**
+```
+Input: grid = [[0,1,1],[1,1,0]]
+Output: 1
+Explanation:
+| Number | Full Path                                  |
+|--------|--------------------------------------------|
+| 1      | (0, 0) → (0, 1) [M] → (1, 1) [M] → (1, 2)  |
+(0, 0) → (1, 0) [M] → (1, 1) [M] → (2, 1) goes out of bounds, so it is invalid.
+```
 
 ## Approach
 1. Pre‑compute the mirror of each cell.

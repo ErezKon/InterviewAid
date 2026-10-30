@@ -6,19 +6,25 @@
 ---
 
 ## Problem Description
-Given an integer `n`, construct an array `A` of length `n` containing each integer from `1` to `n` exactly once such that there is no index `i < k < j` with `A[k] * 2 = A[i] + A[j]`. Return any such beautiful array.
+An array `nums` of length `n` is **beautiful** if:
+
+- `nums` is a permutation of the integers in the range `[1, n]`.
+- For every `0 ≤ i < j < n`, there is no index `k` with `i < k < j` where `2 * nums[k] == nums[i] + nums[j]`.
+
+Given the integer `n`, return *any **beautiful** array* `nums` *of length* `n`. There will be at least one valid answer for the given `n`.
+
+**Constraints:**
+- `1 ≤ n ≤ 1000`
 
 ## Examples
-**Example 1**
 ```
-Input: n = 4
-Output: [2,1,4,3]
-Explanation: No three indices satisfy the forbidden condition.
-```
-**Example 2**
-```
-Input: n = 5
-Output: [1,5,3,2,4]
+Example 1:
+  Input: n = 4
+  Output: [2,1,4,3]
+
+Example 2:
+  Input: n = 5
+  Output: [3,1,2,5,4]
 ```
 
 ## Approach

@@ -5,9 +5,38 @@
 ## Problem Description
 Given an integer array `nums`, find the contiguous subarray (containing at least one number) that has the largest product and return its product. The subarray must consist of consecutive elements.
 
+This is a Kadane's-algorithm variant: because multiplying by a negative number flips the sign, you must track both the maximum and the minimum product of a subarray ending at each position.
+
+**Constraints:**
+- `1 <= nums.length <= 2 * 10^4`
+- `-10 <= nums[i] <= 10`
+- The product of any subarray of `nums` is guaranteed to fit in a 32-bit integer.
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 ## Examples
-- **Example 1:** `nums = [2,3,-2,4]` → Output: `6` (subarray `[2,3]`).
-- **Example 2:** `nums = [-2,0,-1]` → Output: `0` (subarray `[0]`).
+
+```
+Example 1:
+  Input: nums = [2,3,-2,4]
+  Output: 6
+  Explanation: The subarray [2,3] has the largest product 6.
+```
+
+```
+Example 2:
+  Input: nums = [-2,0,-1]
+  Output: 0
+  Explanation: The result cannot be 2, because [-2,-1] is not a contiguous subarray. The best is [0] with product 0.
+```
+
+```
+Example 3:
+  Input: nums = [-2,3,-4]
+  Output: 24
+  Explanation: The whole array [-2,3,-4] has product 24; the two negatives cancel out, which is why the
+    running minimum product (-6 after index 1) must be tracked: -6 * -4 = 24.
+```
 
 ## Approach
 **Kadane's Algorithm Variant — O(n)**

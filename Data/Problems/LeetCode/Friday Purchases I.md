@@ -20,26 +20,62 @@
 
 ## 1. Problem Description
 
-Find total purchases made on Fridays. Group by week and return the sum. (SQL problem)
+> *Note: premium SQL problem — schema/statement/example verified via doocs/leetcode. The Approach below does not output the official `purchase_date` column.*
+
+Table: `Purchases`
+
+```
++---------------+------+
+| Column Name   | Type |
++---------------+------+
+| user_id       | int  |
+| purchase_date | date |
+| amount_spend  | int  |
++---------------+------+
+(user_id, purchase_date, amount_spend) is the primary key (combination of columns with unique values) for this table.
+purchase_date will range from November 1, 2023, to November 30, 2023, inclusive of both dates.
+Each row contains user id, purchase date, and amount spend.
+```
+
+Write a solution to calculate the **total spending** by users on **each Friday** of **every week** in **November 2023**. Output only weeks that include **at least one** purchase on a **Friday**.
+
+Return *the result table ordered by week of month in **ascending** order* (columns: `week_of_month`, `purchase_date`, `total_amount`).
+
+The result format is in the following example.
 
 ---
 
 ## 2. Examples
 
-| purchase_date | amount_spend |
-|---------------|--------------|
-| 2023-11-03    | 120          |
-| 2023-11-10    | 80           |
-| 2023-11-17    | 150          |
-| 2023-11-24    | 200          |
-
-**Result:**
+**Example 1:**
 ```
-week_of_month | total_amount
-1             | 120
-2             | 80
-3             | 150
-4             | 200
+Input:
+Purchases table:
++---------+---------------+--------------+
+| user_id | purchase_date | amount_spend |
++---------+---------------+--------------+
+| 11      | 2023-11-07    | 1126         |
+| 15      | 2023-11-30    | 7473         |
+| 17      | 2023-11-14    | 2414         |
+| 12      | 2023-11-24    | 9692         |
+| 8       | 2023-11-03    | 5117         |
+| 1       | 2023-11-16    | 5241         |
+| 10      | 2023-11-12    | 8266         |
+| 13      | 2023-11-24    | 12000        |
++---------+---------------+--------------+
+Output:
++---------------+---------------+--------------+
+| week_of_month | purchase_date | total_amount |
++---------------+---------------+--------------+
+| 1             | 2023-11-03    | 5117         |
+| 4             | 2023-11-24    | 21692        |
++---------------+---------------+--------------+
+Explanation:
+- During the first week of November 2023, transactions amounting to $5,117 occurred on Friday, 2023-11-03.
+- For the second week of November 2023, there were no transactions on Friday, 2023-11-10.
+- Similarly, during the third week of November 2023, there were no transactions on Friday, 2023-11-17.
+- In the fourth week of November 2023, two transactions took place on Friday, 2023-11-24, amounting to $12,000 and $9,692 respectively, summing up to a total of $21,692.
+Output table is ordered by week_of_month in ascending order.
 ```
 
 ---

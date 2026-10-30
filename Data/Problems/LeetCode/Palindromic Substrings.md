@@ -8,17 +8,34 @@
 
 ## 1. Problem Description
 
-Given a string `s`, return the number of palindromic substrings.
+Given a string `s`, return *the number of **palindromic substrings** in it*.
+
+A string is a **palindrome** when it reads the same backward as forward.
+
+A **substring** is a contiguous sequence of characters within the string.
+
+**Constraints:**
+
+- `1 <= s.length <= 1000`
+- `s` consists of lowercase English letters.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"abc"` | `3` | Each character is a palindrome: `"a"`, `"b"`, `"c"`. |
-| `"aaa"` | `6` | Palindromes are `"a"` (3 times), `"aa"` (2 times), and `"aaa"`. |
-| `"aba"` | `4` | `"a"`, `"b"`, `"a"`, and `"aba"`. |
+```
+Example 1:
+  Input: s = "abc"
+  Output: 3
+  Explanation: Three palindromic strings: "a", "b", "c".
+```
+
+```
+Example 2:
+  Input: s = "aaa"
+  Output: 6
+  Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+```
 
 ---
 

@@ -20,31 +20,43 @@
 
 ## 1. Problem Description
 
-Given a string `s` consisting of lowercase English letters, in one operation you can select any character and move it to any position. Return the **minimum** number of operations to sort the string in non-decreasing order.
+> *Note: the Approach below counts characters outside a sorted subsequence (invented). The answer is 0 if `s` is sorted, and -1 if it is unsorted with `n ≤ 2`. It is 1 if `s[0]` is the minimum char or `s[n−1]` is the maximum char. It is 3 if `s[0]` is the unique maximum and `s[n−1]` is the unique minimum, and 2 otherwise. Checked against brute-force BFS on random strings.*
+
+You are given a string `s` consisting of lowercase English letters.
+
+In one operation, you can select any **substring** of `s` that is **not** the entire string and **sort** it in **non-descending alphabetical** order.
+
+Return the **minimum** number of operations required to make `s` sorted in **non-descending** order. If it is not possible, return -1.
 
 **Constraints:**
-- `1 <= s.length <= 10⁵`
-- `s` consists of lowercase English letters
+- `1 <= s.length <= 10^5`
+- `s` consists of only lowercase English letters.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input: s = "ba"
-  Output: 1
-  Explanation: Move 'a' before 'b' → "ab"
+Input: s = "dog"
+Output: 1
+Explanation: - Sort substring "og" to "go".
+- Now, s = "dgo", which is sorted in ascending order. Thus, the answer is 1.
+```
 
-Example 2:
-  Input: s = "abc"
-  Output: 0
-  Explanation: Already sorted.
+**Example 2:**
+```
+Input: s = "card"
+Output: 2
+Explanation: - Sort substring "car" to "acr", so s = "acrd".
+- Sort substring "rd" to "dr", making s = "acdr", which is sorted in ascending order. Thus, the answer is 2.
+```
 
-Example 3:
-  Input: s = "cba"
-  Output: 2
-  Explanation: Move 'a' to front → "acb", move 'b' after 'a' → "abc".
+**Example 3:**
+```
+Input: s = "gf"
+Output: -1
+Explanation: - It is impossible to sort s under the given constraints. Thus, the answer is -1.
 ```
 
 ---

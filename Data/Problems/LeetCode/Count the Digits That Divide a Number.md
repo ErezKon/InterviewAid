@@ -1,6 +1,7 @@
 # 2520. Count the Digits That Divide a Number
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/count-the-digits-that-divide-a-number](https://leetcode.com/problems/count-the-digits-that-divide-a-number)
 
 **Companies:** Amazon, Google, Tcs
 
@@ -8,31 +9,37 @@
 
 ## Problem Description
 
-Given an integer `num`, return the count of digits in `num` that divide `num` evenly.
+Given an integer `num`, return *the number of digits in `num` that divide* `num`.
+
+An integer `val` divides `nums` if `nums % val == 0`.
+
+**Constraints:**
+- `1 <= num <= 10^9`
+- `num` does not contain `0` as one of its digits.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: num = 7
-Output: 1
-Explanation: The only digit is 7, and 7 % 7 == 0.
-```
-
-**Example 2:**
-```
-Input: num = 121
-Output: 3
-Explanation: Digits are 1, 2, 1. Both 1s divide 121, and 2 also divides 121 (121 % 2 == 1? actually 121 % 2 = 1, so not). Wait correct: 121 % 2 != 0, so only the two 1s count → Output 2. Let's correct.
+Example 1:
+  Input: num = 7
+  Output: 1
+  Explanation: 7 divides itself, hence the answer is 1.
 ```
 
-**Correct Example 2:**
 ```
-Input: num = 1248
-Output: 4
-Explanation: Digits 1,2,4,8 all divide 1248.
+Example 2:
+  Input: num = 121
+  Output: 2
+  Explanation: 121 is divisible by 1, but not 2. Since 1 occurs twice as a digit, we return 2.
+```
+
+```
+Example 3:
+  Input: num = 1248
+  Output: 4
+  Explanation: 1248 is divisible by all of its digits, hence the answer is 4.
 ```
 
 ---

@@ -9,7 +9,12 @@
 
 ## 1. Problem Description
 
-Given a positive integer, return the number of set bits (1-bits) in its binary representation (Hamming weight).
+Given a positive integer `n`, write a function that returns the number of set bits in its binary representation (also known as the Hamming weight).
+
+**Follow up:** If this function is called many times, how would you optimize it?
+
+**Constraints:**
+- `1 <= n <= 2^31 - 1`
 
 ---
 
@@ -45,11 +50,26 @@ FUNCTION hammingWeight(n):
 
 ## 4. Examples
 
-| Input | Binary | Output |
-|-------|--------|--------|
-| 7     | 111    | 3 |
-| 16    | 10000  | 1 |
-| 1023  | 1111111111 | 10 |
+**Example 1:**
+```
+Input: n = 11
+Output: 3
+Explanation: The input binary string 1011 has a total of three set bits.
+```
+
+**Example 2:**
+```
+Input: n = 128
+Output: 1
+Explanation: The input binary string 10000000 has a total of one set bit.
+```
+
+**Example 3:**
+```
+Input: n = 2147483645
+Output: 30
+Explanation: The input binary string 1111111111111111111111111111101 has a total of thirty set bits.
+```
 
 ---
 

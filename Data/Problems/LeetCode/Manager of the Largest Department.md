@@ -8,26 +8,60 @@
 
 ## 1. Problem Description
 
-Find the manager of the department that has the highest number of employees.
+Table: `Employees`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| emp_id      | int     |
+| emp_name    | varchar |
+| dep_id      | int     |
+| position    | varchar |
++-------------+---------+
+emp_id is column of unique values for this table.
+This table contains emp_id, emp_name, dep_id, and position.
+```
+
+Write a solution to find the **name** of the **manager** from the **largest department**. There may be multiple largest departments when the number of employees in those departments is the same.
+
+Return *the result table sorted by* `dep_id` *in **ascending** order*.
+
+The result format is in the following example.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Employees Table:
-+----+----------+--------+----------+
-| id | name     | salary | dep_id   |
-+----+----------+--------+----------+
-| 1  | Alice    | 100000 | 10       |
-| 2  | Bob      | 90000  | 10       |
-| 3  | Charlie  | 95000  | 20       |
-| 4  | Diana    | 110000 | 20       |
-| 5  | Eve      | 105000 | 20       |
-+----+----------+--------+----------+
-
-Result: manager of department 20 (e.g., Charlie) because department 20 has 3 employees, more than department 10.
+Example 1:
+  Input:
+  Employees table:
+  +--------+----------+--------+---------------+
+  | emp_id | emp_name | dep_id | position      |
+  +--------+----------+--------+---------------+
+  | 156    | Michael  | 107    | Manager       |
+  | 112    | Lucas    | 107    | Consultant    |
+  | 8      | Isabella | 101    | Manager       |
+  | 160    | Joseph   | 100    | Manager       |
+  | 80     | Aiden    | 100    | Engineer      |
+  | 190    | Skylar   | 100    | Freelancer    |
+  | 196    | Stella   | 101    | Coordinator   |
+  | 167    | Audrey   | 100    | Consultant    |
+  | 97     | Nathan   | 101    | Supervisor    |
+  | 128    | Ian      | 101    | Administrator |
+  | 81     | Ethan    | 107    | Administrator |
+  +--------+----------+--------+---------------+
+  Output:
+  +--------------+--------+
+  | manager_name | dep_id |
+  +--------------+--------+
+  | Joseph       | 100    |
+  | Isabella     | 101    |
+  +--------------+--------+
+  Explanation:
+  - Departments with IDs 100 and 101 each has a total of 4 employees, while department 107 has 3 employees. Since both departments 100 and 101 have an equal number of employees, their respective managers will be included.
+  Output table is ordered by dep_id in ascending order.
 ```
 
 ---

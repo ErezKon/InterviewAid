@@ -7,14 +7,30 @@
 ---
 
 ## Problem Description
-Given an integer `n`, return an array of `n` **unique** integers that sum to `0`. The order of the integers does not matter.
+Given an integer `n`, return **any** array containing `n` **unique** integers such that they add up to `0`.
+
+**Constraints:**
+- `1 <= n <= 1000`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `3` | `[-1,0,1]` | Three numbers that sum to zero and are distinct.
-| `4` | `[-2,-1,1,2]` | Pairing positive and negative numbers.
-| `1` | `[0]` | Single zero satisfies the requirement.
+```
+Example 1:
+  Input: n = 5
+  Output: [-7,-1,1,3,4]
+  Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+```
+
+```
+Example 2:
+  Input: n = 3
+  Output: [-1,0,1]
+```
+
+```
+Example 3:
+  Input: n = 1
+  Output: [0]
+```
 
 ## Approach
 Construct pairs of opposite numbers `i` and `-i` for `i` from `1` to `n/2`. If `n` is odd, include `0` as the middle element. This guarantees uniqueness and a total sum of zero.

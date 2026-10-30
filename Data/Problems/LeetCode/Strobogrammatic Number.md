@@ -1,18 +1,43 @@
 # 246. Strobogrammatic Number
 
 **Difficulty:** 🟢 Easy
-
+**LeetCode:** [https://leetcode.com/problems/strobogrammatic-number](https://leetcode.com/problems/strobogrammatic-number)
 **Companies:** Google, Meta
+
 ---
+
 ## Problem Description
-Given a string `num` representing a non‑negative integer, determine if it is *strobogrammatic*: the number looks the same when rotated 180° (i.e., each digit maps to its rotated counterpart and the order reverses). Valid digit mappings are 0↔0, 1↔1, 6↔9, 8↔8, 9↔6. The string contains only digits and has length 1‑10⁵.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given a string `num` which represents an integer, return `true` *if* `num` *is a **strobogrammatic number***.
+
+A **strobogrammatic number** is a number that looks the same when rotated `180` degrees (looked at upside down).
+
+**Constraints:**
+- `1 <= num.length <= 50`
+- `num` consists of only digits.
+- `num` does not contain any leading zeros except for zero itself.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| "69" | true | 6 becomes 9 and 9 becomes 6, order reverses → same. |
-| "2"  | false| 2 has no valid rotation. |
-| "818"| true | Each digit maps to itself, order unchanged. |
+
+**Example 1:**
+```
+Input: num = "69"
+Output: true
+```
+
+**Example 2:**
+```
+Input: num = "88"
+Output: true
+```
+
+**Example 3:**
+```
+Input: num = "962"
+Output: false
+```
 
 ## Approach
 Use a two‑pointer scan from both ends, checking the mapping at each step.

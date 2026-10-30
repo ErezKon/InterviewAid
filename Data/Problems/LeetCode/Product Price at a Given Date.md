@@ -7,24 +7,54 @@
 ---
 
 ## Problem Description
-You are given a table `Products(product_id, new_price, change_date)` where each row records a price change for a product on a specific date. For every distinct `product_id`, determine the price of the product on **2019‑08‑16**. If a product has no price change on or before that date, its price defaults to `10`.
+
+Table: `Products`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| product_id    | int     |
+| new_price     | int     |
+| change_date   | date    |
++---------------+---------+
+(product_id, change_date) is the primary key (combination of columns with unique values) of this table.
+Each row of this table indicates that the price of some product was changed to a new price at some date.
+```
+
+Initially, all products have price 10.
+
+Write a solution to find the prices of all products on the date `2019-08-16`.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
-**Example**
-Assume the table contains:
+
+**Example 1:**
+```
+Input:
+Products table:
++------------+-----------+-------------+
 | product_id | new_price | change_date |
-|------------|-----------|-------------|
-| 1 | 20 | 2019‑08‑10 |
-| 1 | 30 | 2019‑08‑20 |
-| 2 | 15 | 2019‑08‑15 |
-| 3 | 40 | 2019‑08‑17 |
-The query should return:
++------------+-----------+-------------+
+| 1          | 20        | 2019-08-14  |
+| 2          | 50        | 2019-08-14  |
+| 1          | 30        | 2019-08-15  |
+| 1          | 35        | 2019-08-16  |
+| 2          | 65        | 2019-08-17  |
+| 3          | 20        | 2019-08-18  |
++------------+-----------+-------------+
+Output:
++------------+-------+
 | product_id | price |
-|------------|-------|
-| 1 | 20 |
-| 2 | 15 |
-| 3 | 10 |
-Product 1’s latest price before the target date is 20, product 2’s is 15, and product 3 has no prior price change, so it defaults to 10.
++------------+-------+
+| 2          | 50    |
+| 1          | 35    |
+| 3          | 10    |
++------------+-------+
+```
 
 ## Approach
 The task is a classic “latest‑record‑as‑of‑date” problem. For each `product_id` we need the most recent `new_price` where `change_date` ≤ target date. This can be solved with a correlated subquery or window function. The provided solution uses a correlated subquery that orders rows by `change_date` descending and picks the first matching row. `COALESCE` supplies the default price when no row exists.

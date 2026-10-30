@@ -20,21 +20,27 @@
 
 ## 1. Problem Description
 
-Given `n` and `k`, return the k-th smallest integer in the lexicographical order of `[1, n]`.
+Given two integers `n` and `k`, return *the* `k^th` *lexicographically smallest integer in the range* `[1, n]`.
 
-**Constraints:** `1 <= k <= n <= 10⁹`
+**Constraints:**
+- `1 <= k <= n <= 10^9`
 
 ---
 
 ## 2. Examples
 
-| n | k | Output |
-|---|---|--------|
-| 13 | 2 | 10 |
-| 100 | 10 | 17 |
-| 1000 | 1000 | 999 |
+**Example 1:**
+```
+Input: n = 13, k = 2
+Output: 10
+Explanation: The lexicographical order is [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9], so the second smallest number is 10.
+```
 
-*Explanation:* The lexicographic order of numbers from 1 to 13 is `[1,10,11,12,13,2,3,4,5,6,7,8,9]`. The 2nd element is `10`.
+**Example 2:**
+```
+Input: n = 1, k = 1
+Output: 1
+```
 
 ---
 

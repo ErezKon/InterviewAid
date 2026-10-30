@@ -8,24 +8,37 @@
 
 ## Problem Description
 
-A letter is **special** if it appears in both lowercase and uppercase in `word`. Count special letters (no ordering constraint, unlike version II).
+You are given a string `word`. A letter is called **special** if it appears **both** in lowercase and uppercase in `word`.
+
+Return the number of **special** letters in `word`.
+
+**Constraints:**
+- `1 <= word.length <= 50`
+- `word` consists of only lowercase and uppercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: word = "abBA"
-Output: 2
-Explanation: The letters 'a' and 'b' both appear in lower‑case and upper‑case.
+Example 1:
+  Input: word = "aaAbcBC"
+  Output: 3
+  Explanation: The special characters in word are 'a', 'b', and 'c'.
 ```
 
-**Example 2:**
 ```
-Input: word = "abcDEF"
-Output: 0
-Explanation: No letter appears in both cases.
+Example 2:
+  Input: word = "abc"
+  Output: 0
+  Explanation: No character in word appears in uppercase.
+```
+
+```
+Example 3:
+  Input: word = "abBCab"
+  Output: 1
+  Explanation: The only special character in word is 'b'.
 ```
 
 ---

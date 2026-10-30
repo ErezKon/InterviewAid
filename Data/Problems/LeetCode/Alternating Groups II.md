@@ -6,20 +6,43 @@
 ---
 
 ## Problem Description
-Given a circular array `colors` of length `n` where each element is either `0` or `1`, and an integer `k`, count the number of contiguous subarrays of length `k` that form an alternating pattern (no two adjacent elements are equal). Because the array is circular, subarrays may wrap around the end.
+There is a circle of red and blue tiles. You are given an array of integers `colors` and an integer `k`. The color of tile `i` is represented by `colors[i]`:
+
+- `colors[i] == 0` means that tile `i` is **red**.
+- `colors[i] == 1` means that tile `i` is **blue**.
+
+An **alternating** group is every `k` contiguous tiles in the circle with **alternating** colors (each tile in the group except the first and last one has a different color from its **left** and **right** tiles).
+
+Return the number of **alternating** groups.
+
+**Note** that since `colors` represents a **circle**, the **first** and the **last** tiles are considered to be next to each other.
+
+**Constraints:**
+- `3 <= colors.length <= 10^5`
+- `0 <= colors[i] <= 1`
+- `3 <= k <= colors.length`
 
 ## Examples
-**Example 1:**
 ```
-Input: colors = [0,1,0,1,0], k = 3
-Output: 5
-Explanation: All length‑3 windows are alternating.
+Example 1:
+  Input: colors = [0,1,0,1,0], k = 3
+  Output: 3
+  Explanation: The alternating groups start at indices 0, 1 and 2:
+  [0,1,0], [1,0,1], [0,1,0]. (Tiles 4 and 0 are both red, so no group wraps around.)
 ```
-**Example 2:**
 ```
-Input: colors = [1,1,0,1], k = 2
-Output: 2
-Explanation: Valid windows are [1,0] and [0,1] (wrapping considered).
+Example 2:
+  Input: colors = [0,1,0,0,1,0,1], k = 6
+  Output: 2
+  Explanation: The alternating groups start at indices 3 and 4 (wrapping around):
+  indices 3,4,5,6,0,1 -> [0,1,0,1,0,1] and indices 4,5,6,0,1,2 -> [1,0,1,0,1,0].
+```
+```
+Example 3:
+  Input: colors = [1,1,0,1], k = 4
+  Output: 0
+  Explanation: Every window of 4 tiles contains the two adjacent blue tiles at indices 0 and 1
+  (or 3 and 0), so there is no alternating group.
 ```
 
 ## Approach

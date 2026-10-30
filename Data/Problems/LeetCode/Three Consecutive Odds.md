@@ -7,14 +7,25 @@
 ---
 
 ## Problem Description
-Given an integer array `arr`, return `true` if there exist three **consecutive** elements that are all odd numbers. Otherwise, return `false`. The array length is between 1 and 1000, and each element fits in a 32‑bit signed integer.
+Given an integer array `arr`, return `true` if there are three consecutive odd numbers in the array. Otherwise, return `false`.
+
+**Constraints:**
+- `1 <= arr.length <= 1000`
+- `1 <= arr[i] <= 1000`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,2,3,5,7]` | `true` | The sub‑array `[3,5,7]` consists of three consecutive odd numbers. |
-| `[2,4,6,8]` | `false` | No odd numbers at all. |
-| `[1,3,5,7]` | `true` | The first three elements are odd.
+```
+Example 1:
+  Input: arr = [2,6,4,1]
+  Output: false
+  Explanation: There are no three consecutive odds.
+```
+```
+Example 2:
+  Input: arr = [1,2,34,3,4,5,7,23,12]
+  Output: true
+  Explanation: [5,7,23] are three consecutive odds.
+```
 
 ## Approach
 **Sliding Window (size = 3)** – Scan the array while maintaining a count of consecutive odd numbers. When the count reaches three, the condition is satisfied.

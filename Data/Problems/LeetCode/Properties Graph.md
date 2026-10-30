@@ -7,22 +7,45 @@
 ---
 
 ## Problem Description
-You are given an undirected graph with `n` vertices numbered `1..n` and a list of edges. Each vertex `i` has an associated integer property `p[i]`. Determine whether there exists a simple path (no repeated vertices) whose vertices' properties satisfy a given predicate `P`. The predicate will be provided as a description (e.g., all properties are equal, strictly increasing, or sum to a target). Return `true` if such a path exists, otherwise `false`.
+
+> *Note: the Approach/Walkthrough below solve an invented path-predicate problem, not this one. Correct idea: convert each row to a set (or 100-bit mask); for every pair `i < j` compute `|set_i ∩ set_j|` and union `i`, `j` in a DSU when it is `≥ k`; return the number of components. O(n²·m).*
+
+You are given a 2D integer array `properties` having dimensions `n x m` and an integer `k`.
+
+Define a function `intersect(a, b)` that returns the **number of distinct integers** common to both arrays `a` and `b`.
+
+Construct an **undirected** graph where each index `i` corresponds to `properties[i]`. There is an edge between node `i` and node `j` if and only if `intersect(properties[i], properties[j]) >= k`, where `i` and `j` are in the range `[0, n - 1]` and `i != j`.
+
+Return the number of **connected components** in the resulting graph.
+
+**Constraints:**
+- `1 <= n == properties.length <= 100`
+- `1 <= m == properties[i].length <= 100`
+- `1 <= properties[i][j] <= 100`
+- `1 <= k <= m`
 
 ## Examples
+
 **Example 1:**
 ```
- n = 5, edges = [[1,2],[2,3],[3,4],[4,5]], p = [1,2,3,4,5]
- Predicate: properties strictly increasing
+Input: properties = [[1,2],[1,1],[3,4],[4,5],[5,6],[7,7]], k = 1
+Output: 3
+Explanation: The graph formed has 3 connected components.
 ```
-A path `1‑2‑3‑4‑5` satisfies the predicate, so the answer is `true`.
 
 **Example 2:**
 ```
- n = 4, edges = [[1,2],[2,3],[3,4]], p = [2,2,2,2]
- Predicate: all properties equal to 1
+Input: properties = [[1,2,3],[2,3,4],[4,3,5]], k = 2
+Output: 1
+Explanation: The graph formed has 1 connected component.
 ```
-No vertex has property `1`; answer is `false`.
+
+**Example 3:**
+```
+Input: properties = [[1,1],[1,1]], k = 2
+Output: 2
+Explanation: intersect(properties[0], properties[1]) = 1, which is less than k. This means there is no edge between properties[0] and properties[1] in the graph.
+```
 
 ## Approach
 Perform a depth‑first search (DFS) from each vertex, maintaining the current sequence of properties. At each step, check whether extending the path keeps the predicate satisfied. Use backtracking to explore alternatives and stop early when the predicate cannot be satisfied.

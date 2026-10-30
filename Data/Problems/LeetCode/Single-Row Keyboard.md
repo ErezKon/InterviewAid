@@ -8,25 +8,35 @@
 
 ## Problem Description
 
-A keyboard has all 26 lowercase English letters in a single row. Given the `keyboard` layout (a permutation of the 26 letters) and a string `word`, return the total distance to type the word using only one finger, starting at index 0.
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
-The distance is the sum of `|index_of(current_char) - index_of(previous_char)|` for each character.
+There is a special keyboard with **all keys in a single row**.
 
-### Examples
+Given a string `keyboard` of length `26` indicating the layout of the keyboard (indexed from `0` to `25`). Initially, your finger is at index `0`. To type a character, you have to move your finger to the index of the desired character. The time taken to move your finger from index `i` to index `j` is `|i - j|`.
+
+You want to type a string `word`. Write a function to calculate how much time it takes to type it with one finger.
+
+**Constraints:**
+- `keyboard.length == 26`
+- `keyboard` contains each English lowercase letter exactly once in some order.
+- `1 <= word.length <= 10^4`
+- `word[i]` is an English lowercase letter.
+
+**Examples:**
 
 **Example 1:**
-- **Input:** `keyboard = "abcdefghijklmnopqrstuvwxyz"`, `word = "cba"`
-- **Output:** `4`
-- **Explanation:** Move from `a`(0) to `c`(2) = 2, then `c`(2) to `b`(1) = 1, then `b`(1) to `a`(0) = 1. Total = 4.
+```
+Input: keyboard = "abcdefghijklmnopqrstuvwxyz", word = "cba"
+Output: 4
+Explanation: The index moves from 0 to 2 to write 'c' then to 1 to write 'b' then to 0 again to write 'a'.
+Total time = 2 + 1 + 1 = 4.
+```
 
 **Example 2:**
-- **Input:** `keyboard = "pqrstuvwxyzabcdefghijklmno"`, `word = "leetcode"`
-- **Output:** `73`
-
-### Constraints
-
-- `keyboard` is a permutation of all 26 lowercase letters.
-- `1 <= word.length <= 10⁴`
+```
+Input: keyboard = "pqrstuvwxyzabcdefghijklmno", word = "leetcode"
+Output: 73
+```
 
 ---
 

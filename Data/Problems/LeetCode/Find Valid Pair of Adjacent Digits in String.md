@@ -1,8 +1,9 @@
 # 3438. Find Valid Pair of Adjacent Digits in String
 
 **Difficulty:** 🟢 Easy
-
+**LeetCode:** [https://leetcode.com/problems/find-valid-pair-of-adjacent-digits-in-string](https://leetcode.com/problems/find-valid-pair-of-adjacent-digits-in-string)
 **Companies:** Amazon, Google, Oracle
+
 ---
 
 ## Table of Contents
@@ -18,7 +19,18 @@
 
 ## 1. Problem Description
 
-Given a digit string `s`, find the first adjacent pair `(s[i], s[i+1])` where both digits are different and each digit's frequency in `s` equals its numeric value. Return the pair as a string, or empty if none exists.
+You are given a string `s` consisting only of digits. A **valid pair** is defined as two **adjacent** digits in `s` such that:
+
+- The first digit is **not equal** to the second.
+- Each digit in the pair appears in `s` **exactly** as many times as its numeric value.
+
+Return the first **valid pair** found in the string `s` when traversing from left to right. If no valid pair exists, return an empty string.
+
+**Constraints:**
+- `2 <= s.length <= 100`
+- `s` only consists of digits from `'1'` to `'9'`.
+
+**Official examples:** `s = "2523533"` → `"23"` ('2' appears 2 times, '3' appears 3 times); `s = "221"` → `"21"`; `s = "22"` → `""` (no valid pair — the two digits are equal).
 
 ---
 

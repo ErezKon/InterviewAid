@@ -6,18 +6,45 @@
 
 ---
 ## Problem Description
-Given an `m × n` grid of non‑negative integers, select exactly one element from each column (any row) such that the bitwise OR of the selected elements is minimized. Return the minimum possible OR value.
+You are given a 2D integer array `grid` of size `m x n`.
+
+You must select **exactly one** integer from each row of the grid.
+
+Return an integer denoting the **minimum possible bitwise OR** of the selected integers from each row.
+
+**Constraints:**
+- `1 <= m == grid.length <= 10⁵`
+- `1 <= n == grid[i].length <= 10⁵`
+- `m * n <= 10⁵`
+- `1 <= grid[i][j] <= 10⁵`
 
 ## Examples
-**Example 1**
-Input: grid = [[1,2],[3,4]]
-Output: 5
-Explanation: Choose 1 from column 0 and 4 from column 1 → 1 OR 4 = 5, which is minimal.
 
-**Example 2**
-Input: grid = [[0,1,2],[3,4,5]]
-Output: 0
-Explanation: Selecting 0 from each column yields OR = 0.
+```
+Example 1:
+  Input: grid = [[1,5],[2,4]]
+  Output: 3
+  Explanation:
+  - Choose 1 from the first row and 2 from the second row.
+  - The bitwise OR of 1 | 2 = 3, which is the minimum possible.
+```
+
+```
+Example 2:
+  Input: grid = [[3,5],[6,4]]
+  Output: 5
+  Explanation:
+  - Choose 5 from the first row and 4 from the second row.
+  - The bitwise OR of 5 | 4 = 5, which is the minimum possible.
+```
+
+```
+Example 3:
+  Input: grid = [[7,9,8]]
+  Output: 7
+  Explanation:
+  - Choosing 7 gives the minimum bitwise OR.
+```
 
 ## Approach
 **Algorithm:** Column‑wise DP with OR‑state set

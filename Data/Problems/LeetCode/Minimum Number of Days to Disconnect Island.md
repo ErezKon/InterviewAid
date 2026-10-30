@@ -8,26 +8,35 @@
 
 ## Problem Description
 
-You are given a 2‑D grid `grid` of size `m × n` where `grid[i][j]` is `1` for land and `0` for water. An **island** is a group of adjacent land cells connected horizontally or vertically. In one day you may change any single land cell (`1`) to water (`0`). Return the minimum number of days required to make the grid contain **zero** or **more than one** island.
+You are given an `m x n` binary grid `grid` where `1` represents land and `0` represents water. An **island** is a maximal **4-directionally** (horizontal or vertical) connected group of `1`'s.
 
-Constraints:
-- `1 ≤ m, n ≤ 30`
-- `grid[i][j] ∈ {0,1}`
+The grid is said to be **connected** if we have **exactly one island**, otherwise is said **disconnected**.
+
+In one day, we are allowed to change **any **single land cell `(1)` into a water cell `(0)`.
+
+Return *the minimum number of days to disconnect the grid*.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 30`
+- `grid[i][j]` is either `0` or `1`.
 
 ## Examples
 
-**Example 1**
+**Example 1:**
 ```
-Input: grid = [[1,1],[1,1]]
+Input: grid = [[0,1,1,0],[0,1,1,0],[0,0,0,0]]
 Output: 2
-Explanation: The grid is a single 2×2 island. Removing any one cell leaves a still‑connected island, so at least two removals are needed.
+Explanation: We need at least 2 days to get a disconnected grid.
+Change land grid[1][1] and grid[0][2] to water and get 2 disconnected island.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: grid = [[1,0,1],[0,1,0],[1,0,1]]
-Output: 0
-Explanation: The grid already has four separate islands.
+Input: grid = [[1,1]]
+Output: 2
+Explanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 islands.
 ```
 
 ## Approach
@@ -76,11 +85,20 @@ FUNCTION DFS(r, c, grid, visited):
 
 ## Walkthrough (Example 1)
 
-| Step | Action | Island count |
-|------|--------|--------------|
-| 0 | Original grid | 1 |
-| 1 | Remove cell (0,0) → grid becomes [[0,1],[1,1]] | still 1 |
-| 2 | Remove cell (1,1) (second removal) → grid [[0,1],[1,0]] | 2 islands → answer 2 |
+**Example 1:**
+```
+Input: grid = [[0,1,1,0],[0,1,1,0],[0,0,0,0]]
+Output: 2
+Explanation: We need at least 2 days to get a disconnected grid.
+Change land grid[1][1] and grid[0][2] to water and get 2 disconnected island.
+```
+
+**Example 2:**
+```
+Input: grid = [[1,1]]
+Output: 2
+Explanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 islands.
+```
 
 ## Complexity Analysis
 

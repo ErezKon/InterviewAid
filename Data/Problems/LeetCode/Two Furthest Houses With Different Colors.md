@@ -7,18 +7,47 @@
 ---
 
 ## Problem Description
-You are given an array `colors` where `colors[i]` is the color of the i‑th house on a straight street. Find the maximum distance between two houses that have different colors. The distance is the absolute difference of their indices.
+
+There are `n` houses evenly lined up on the street, and each house is beautifully painted. You are given a **0-indexed** integer array `colors` of length `n`, where `colors[i]` represents the color of the `i`th house.
+
+Return *the **maximum** distance between **two** houses with **different** colors*.
+
+The distance between the `i`th and `j`th houses is `abs(i - j)`, where `abs(x)` is the **absolute value** of `x`.
+
+**Constraints:**
+- `n == colors.length`
+- `2 <= n <= 100`
+- `0 <= colors[i] <= 100`
+- Test data are generated such that **at least** two houses have different colors.
 
 ## Examples
+
 **Example 1:**
-Input: `colors = [1,1,1,6,1,1,1]`
-Output: `3`
-Explanation: The furthest pair of houses with different colors is house 0 (color 1) and house 3 (color 6), distance `3`.
+```
+Input: colors = [1,1,1,6,1,1,1]
+Output: 3
+Explanation: In the above image, color 1 is blue, and color 6 is red.
+The furthest two houses with different colors are house 0 and house 3.
+House 0 has color 1, and house 3 has color 6. The distance between them is abs(0 - 3) = 3.
+Note that houses 3 and 6 can also produce the optimal answer.
+```
 
 **Example 2:**
-Input: `colors = [1,8,3,8,3]`
-Output: `4`
-Explanation: House 0 (color 1) and house 4 (color 3) are the furthest different‑color pair.
+```
+Input: colors = [1,8,3,8,3]
+Output: 4
+Explanation: In the above image, color 1 is blue, color 8 is yellow, and color 3 is green.
+The furthest two houses with different colors are house 0 and house 4.
+House 0 has color 1, and house 4 has color 3. The distance between them is abs(0 - 4) = 4.
+```
+
+**Example 3:**
+```
+Input: colors = [0,1]
+Output: 1
+Explanation: The furthest two houses with different colors are house 0 and house 1.
+House 0 has color 0, and house 1 has color 1. The distance between them is abs(0 - 1) = 1.
+```
 
 ## Approach
 The maximum distance will involve either the leftmost house with a color different from the rightmost house, or vice‑versa. Scan from the left to find the first index `i` where `colors[i] != colors[n-1]`; distance = `n-1-i`. Scan from the right to find the first index `j` where `colors[j] != colors[0]`; distance = `j`. The answer is the maximum of these two distances.

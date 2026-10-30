@@ -18,10 +18,23 @@
 
 ## 1. Problem Description
 
-Given arrays `creators`, `ids`, `views`, find the creator(s) with the **highest total views**. For each, return the id of their **most viewed** video (lexicographically smallest if tie).
+You are given two string arrays `creators` and `ids`, and an integer array `views`, all of length `n`. The `iᵗʰ` video on a platform was created by `creators[i]`, has an id of `ids[i]`, and has `views[i]` views.
+
+The **popularity** of a creator is the **sum** of the number of views on **all** of the creator's videos. Find the creator with the **highest** popularity and the id of their **most** viewed video.
+
+- If multiple creators have the highest popularity, find all of them.
+- If multiple videos have the highest view count for a creator, find the lexicographically **smallest** id.
+
+Note: It is possible for different videos to have the same `id`, meaning that `id`s do not uniquely identify a video. For example, two videos with the same ID are considered as distinct videos with their own viewcount.
+
+Return *a **2D array** of **strings*** `answer` *where* `answer[i] = [creatorsᵢ, idᵢ]` *means that* `creatorsᵢ` *has the **highest** popularity and* `idᵢ` *is the **id** of their most **popular** video.* The answer can be returned in any order.
 
 **Constraints:**
+- `n == creators.length == ids.length == views.length`
 - `1 <= n <= 10⁵`
+- `1 <= creators[i].length, ids[i].length <= 5`
+- `creators[i]` and `ids[i]` consist only of lowercase English letters.
+- `0 <= views[i] <= 10⁵`
 
 ---
 
@@ -52,23 +65,27 @@ FUNCTION mostPopularCreator(creators, ids, views):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-creators = ["alice","bob","alice","chris"]
-ids      = ["one","two","three","four"]
-views    = [5,6,5,7]
+Example 1:
+  Input: creators = ["alice","bob","alice","chris"], ids = ["one","two","three","four"], views = [5,10,5,4]
+  Output: [["alice","one"],["bob","two"]]
+  Explanation:
+  The popularity of alice is 5 + 5 = 10.
+  The popularity of bob is 10.
+  The popularity of chris is 4.
+  alice and bob are the most popular creators.
+  For bob, the video with the highest view count is "two".
+  For alice, the videos with the highest view count are "one" and "three". Since "one" is lexicographically smaller than "three", it is included in the answer.
 ```
-Total views: alice = 10, bob = 6, chris = 7 → max is alice. Most viewed video for alice is "one" (5) vs "three" (5); lexicographically smaller is "one".
-**Output:** `[["alice","one"]]`
 
-**Example 2 (tie):**
 ```
-creators = ["alice","bob","alice","bob"]
-ids      = ["one","two","three","four"]
-views    = [5,5,5,5]
+Example 2:
+  Input: creators = ["alice","alice","alice"], ids = ["a","b","c"], views = [1,2,2]
+  Output: [["alice","b"]]
+  Explanation:
+  The videos with id "b" and "c" have the highest view count.
+  Since "b" is lexicographically smaller than "c", it is included in the answer.
 ```
-Both alice and bob have total 10. Alice's best video is "one", Bob's best is "four" (lexicographically smaller among ties). 
-**Output:** `[["alice","one"],["bob","four"]]`
 
 ---
 

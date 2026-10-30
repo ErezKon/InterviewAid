@@ -21,12 +21,16 @@
 
 ## 1. Problem Description
 
-Given a binary tree `root` and an integer `limit`, delete all **insufficient nodes** simultaneously and return the root. A node is **insufficient** if every root-to-leaf path passing through it has a sum strictly less than `limit`.
+Given the `root` of a binary tree and an integer `limit`, delete all **insufficient nodes** in the tree simultaneously, and return *the root of the resulting binary tree*.
+
+A node is **insufficient** if every root to **leaf** path intersecting this node has a sum strictly less than `limit`.
+
+A **leaf** is a node with no children.
 
 **Constraints:**
-- Number of nodes: `[1, 5000]`
-- `-10⁵ <= Node.val <= 10⁵`
-- `-10⁹ <= limit <= 10⁹`
+- The number of nodes in the tree is in the range `[1, 5000]`.
+- `-10^5 <= Node.val <= 10^5`
+- `-10^9 <= limit <= 10^9`
 
 ---
 
@@ -34,24 +38,20 @@ Given a binary tree `root` and an integer `limit`, delete all **insufficient nod
 
 **Example 1:**
 ```
-Input:  root = [1,2,3,4,-99,-99,7,8,9,-99,-99,12,13,-99,14], limit = 1
-
-         1
-        / \
-       2    3
-      / \  / \
-     4 -99 -99  7
-
+Input: root = [1,2,3,4,-99,-99,7,8,9,-99,-99,12,13,-99,14], limit = 1
 Output: [1,2,3,4,null,null,7,8,9,null,14]
-(Removed nodes whose every path sum < 1)
 ```
 
 **Example 2:**
 ```
-Input:  root = [5,-6,-6], limit = 0
-Output: [5,null,null] → but both children removed → just [5]? 
-Actually: 5+(-6) = -1 < 0 for both paths, so both children removed.
-Output: []  (root itself is insufficient if all paths through it are < limit)
+Input: root = [5,4,8,11,null,17,4,7,1,null,null,5,3], limit = 22
+Output: [5,4,8,11,null,17,4,7,null,null,null,5]
+```
+
+**Example 3:**
+```
+Input: root = [1,2,-3,-5,null,4,null], limit = -1
+Output: [1,null,-3,4]
 ```
 
 ---

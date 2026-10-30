@@ -7,13 +7,28 @@
 ---
 
 ## Problem Description
-Given a positive integer `n`, determine whether its binary representation consists of alternating `0` and `1` bits. Return `true` if the bits alternate, otherwise return `false`. Constraints: `1 <= n <= 10^9`.
+Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.
+
+**Constraints:**
+- `1 ≤ n ≤ 2³¹ - 1`
 
 ## Examples
-| Input | Binary | Output | Explanation |
-|-------|--------|--------|-------------|
-| 5 | 101 | true | Bits alternate `1-0-1` |
-| 7 | 111 | false | Consecutive `1`s break alternation |
+```
+Example 1:
+  Input: n = 5
+  Output: true
+  Explanation: The binary representation of 5 is: 101
+
+Example 2:
+  Input: n = 7
+  Output: false
+  Explanation: The binary representation of 7 is: 111.
+
+Example 3:
+  Input: n = 11
+  Output: false
+  Explanation: The binary representation of 11 is: 1011.
+```
 
 ## Approach
 **Bit Manipulation** – The key insight is that for a number with alternating bits, `n` XOR (`n` right‑shifted by 1) yields a sequence of all `1`s. A number that is all `1`s has the property that `x & (x + 1) == 0`.

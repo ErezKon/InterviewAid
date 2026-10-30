@@ -8,7 +8,21 @@
 
 ## 1. Problem Description
 
-Given a grid of non‑negative integers and an integer `k`, count connected components (islands) of non‑zero cells where the sum of all cell values in the island is divisible by `k`.
+You are given an `m x n` matrix `grid` and a positive integer `k`. An **island** is a group of **positive** integers (representing land) that are **4-directionally** connected (horizontally or vertically).
+
+The **total value** of an island is the sum of the values of all cells in the island.
+
+Return the number of islands with a total value **divisible by** `k`.
+
+(Grid values are non‑negative; islands consist of non‑zero cells.)
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 1000`
+- `1 <= m * n <= 10^5`
+- `0 <= grid[i][j] <= 10^6`
+- `1 <= k <= 10^6`
 
 ---
 
@@ -43,10 +57,24 @@ FUNCTION countIslands(grid, k):
 
 ## 3. Examples
 
-| Grid | k | Output | Explanation |
-|------|---|--------|-------------|
-| `[[1,0,2],[0,3,0],[4,0,5]]` | `3` | `2` | Two islands: `{1,2}` sum = 3 (divisible) and `{3,4,5}` sum = 12 (divisible). |
-| `[[0,0],[0,0]]` | `1` | `0` | No non‑zero cells, thus no islands.
+(The walkthrough below uses a non-official grid `[[1,0,2],[0,3,0],[4,0,5]]`, k = 3, loosely grouping `{1,2}` with sum = 3 (divisible) and `{3,4,5}` sum = 12 (divisible).)
+
+```
+Example 1:
+  Input: grid = [[0,2,1,0,0],[0,5,0,0,5],[0,0,1,0,0],[0,1,4,7,0],[0,2,0,0,8]], k = 5
+  Output: 2
+  Explanation: The grid contains four islands. The islands {5} (at (1,4)) and {1,1,4,7,2} (total 15)
+  have a total value that is divisible by 5, while the islands {2,1,5} (total 8) and {8} do not.
+```
+
+```
+Example 2:
+  Input: grid = [[3,0,3,0], [0,3,0,3], [3,0,3,0]], k = 3
+  Output: 6
+  Explanation: The grid contains six islands, each with a total value that is divisible by 3.
+```
+
+(A grid with no non‑zero cells, e.g. `[[0,0],[0,0]]`, has no islands, so the answer is 0.)
 
 ---
 

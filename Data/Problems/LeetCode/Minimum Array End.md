@@ -8,26 +8,27 @@
 
 ## Problem Description
 
-Given two integers `n` and `x`, construct an array of length `n` consisting of non‑negative integers such that the bitwise AND of all elements equals `x`. Among all possible arrays, return the smallest possible value of the last (largest) element after sorting the array in non‑decreasing order.
+You are given two integers `n` and `x`. You have to construct an array of **positive** integers `nums` of size `n` where for every `0 <= i < n - 1`, `nums[i + 1]` is **greater than** `nums[i]`, and the result of the bitwise `AND` operation between all elements of `nums` is `x`.
 
-Constraints:
-- `1 ≤ n ≤ 10^5`
-- `0 ≤ x < 2^31`
+Return the **minimum** possible value of `nums[n - 1]`.
+
+**Constraints:**
+- `1 ≤ n, x ≤ 10^8`
 
 ## Examples
 
-**Example 1**
 ```
-Input: n = 3, x = 2
-Output: 6
-Explanation: One optimal array is [2,2,6]. All elements have the bits of x (binary 10) set. The last element 6 (binary 110) is minimal.
+Example 1:
+  Input: n = 3, x = 4
+  Output: 6
+  Explanation: nums can be [4,5,6] and its last element is 6.
 ```
 
-**Example 2**
 ```
-Input: n = 1, x = 0
-Output: 0
-Explanation: Single element array [0] satisfies AND = 0 and the last element is 0.
+Example 2:
+  Input: n = 2, x = 7
+  Output: 15
+  Explanation: nums can be [7,15] and its last element is 15.
 ```
 
 ## Approach

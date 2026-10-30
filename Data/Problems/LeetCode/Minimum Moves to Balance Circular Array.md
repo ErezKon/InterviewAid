@@ -8,7 +8,20 @@
 
 ## Problem Description
 
-Given a circular array, balance it (make all elements equal) using minimum moves, where a move transfers 1 unit between adjacent positions.
+> *Note: the Approach below equalizes all elements (invented). Officially at most one index `j` is negative and you only need every balance `≥ 0`. If the total is `< 0` return -1. Otherwise take units greedily from the closest people: at distance `d = 1, 2, …`, the two positions `j ± d (mod n)` give their balance at cost `d` per unit until the deficit is covered.*
+
+You are given a **circular** array `balance` of length `n`, where `balance[i]` is the net balance of person `i`.
+
+In one move, a person can transfer **exactly** 1 unit of balance to either their left or right neighbor.
+
+Return the **minimum** number of moves required so that every person has a **non-negative** balance. If it is impossible, return `-1`.
+
+**Note**: You are guaranteed that **at most** 1 index has a **negative** balance initially.
+
+**Constraints:**
+- `1 <= n == balance.length <= 10^5`
+- `-10^9 <= balance[i] <= 10^9`
+- There is at most one negative value in `balance` initially.
 
 ## Key Insight
 
@@ -38,11 +51,38 @@ FUNCTION minMoves(nums):
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,2,3]` | `2` | Mean = 2. Prefix sums = `[-1, -1, 0]`. Median = -1. Sum of |‑1‑(-1)| + |‑1‑(-1)| + |0‑(-1)| = 2. |
-| `[5,0,0,0]` | `5` | Mean = 1.25. Prefix sums = `[3.75, 2.5, 1.25, 0]`. Median = 1.875 (approx). Total deviation ≈ 5. |
-| `[0,0,0,0]` | `0` | Already balanced, no moves needed. |
+**Example 1:**
+```
+Input: balance = [5,1,-4]
+Output: 4
+Explanation: One optimal sequence of moves is:
+- Move 1 unit from i = 1 to i = 2, resulting in balance = [5, 0, -3]
+- Move 1 unit from i = 0 to i = 2, resulting in balance = [4, 0, -2]
+- Move 1 unit from i = 0 to i = 2, resulting in balance = [3, 0, -1]
+- Move 1 unit from i = 0 to i = 2, resulting in balance = [2, 0, 0]
+Thus, the minimum number of moves required is 4.
+```
+
+**Example 2:**
+```
+Input: balance = [1,2,-5,2]
+Output: 6
+Explanation: One optimal sequence of moves is:
+- Move 1 unit from i = 1 to i = 2, resulting in balance = [1, 1, -4, 2]
+- Move 1 unit from i = 1 to i = 2, resulting in balance = [1, 0, -3, 2]
+- Move 1 unit from i = 3 to i = 2, resulting in balance = [1, 0, -2, 1]
+- Move 1 unit from i = 3 to i = 2, resulting in balance = [1, 0, -1, 0]
+- Move 1 unit from i = 0 to i = 1, resulting in balance = [0, 1, -1, 0]
+- Move 1 unit from i = 1 to i = 2, resulting in balance = [0, 0, 0, 0]
+Thus, the minimum number of moves required is 6.
+```
+
+**Example 3:**
+```
+Input: balance = [-3,2]
+Output: -1
+Explanation: It is impossible to make all balances non-negative for balance = [-3, 2], so the answer is -1.
+```
 
 ## Walkthrough
 

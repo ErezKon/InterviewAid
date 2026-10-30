@@ -20,15 +20,18 @@
 
 ## Problem Description
 
-There are `n` chips at various positions on a number line. You can perform two types of moves:
-- Move a chip by **2** positions (left or right): cost **0**
-- Move a chip by **1** position (left or right): cost **1**
+We have `n` chips, where the position of the `i^th` chip is `position[i]`.
 
-Return the **minimum cost** to move all chips to the same position.
+We need to move all the chips to **the same position**. In one step, we can change the position of the `i^th` chip from `position[i]` to:
+
+- `position[i] + 2` or `position[i] - 2` with `cost = 0`.
+- `position[i] + 1` or `position[i] - 1` with `cost = 1`.
+
+Return *the minimum cost* needed to move all the chips to the same position.
 
 **Constraints:**
-- `1 ≤ n ≤ 100`
-- `1 ≤ position[i] ≤ 10⁹`
+- `1 <= position.length <= 100`
+- `1 <= position[i] <= 10^9`
 
 ---
 
@@ -36,16 +39,24 @@ Return the **minimum cost** to move all chips to the same position.
 
 **Example 1:**
 ```
-Input: position = [1, 2, 3]
+Input: position = [1,2,3]
 Output: 1
-Explanation: Move chip at 3 to 1 (cost 0, move by 2). Move chip at 2 to 1 (cost 1, move by 1). Total = 1.
+Explanation: First step: Move the chip at position 3 to position 1 with cost = 0.
+Second step: Move the chip at position 2 to position 1 with cost = 1.
+Total cost is 1.
 ```
 
 **Example 2:**
 ```
-Input: position = [2, 2, 2, 3, 3]
+Input: position = [2,2,2,3,3]
 Output: 2
-Explanation: Move the two chips at position 3 to position 2 (cost 1 each). Total = 2.
+Explanation: We can move the two chips at position  3 to position 2. Each move has cost = 1. The total cost = 2.
+```
+
+**Example 3:**
+```
+Input: position = [1,1000000000]
+Output: 1
 ```
 
 ---

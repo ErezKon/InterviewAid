@@ -19,29 +19,41 @@
 
 ## Problem Description
 
-Given a string `coordinates` representing a chessboard square (e.g., `"a1"`), return `true` if the square is **white**, and `false` if it is **black**.
+You are given `coordinates`, a string that represents the coordinates of a square of the chessboard. Below is a chessboard for your reference.
 
-The coordinate is given as a letter (`a`–`h`) followed by a digit (`1`–`8`). On a standard chessboard, `"a1"` is black.
+![img](https://assets.leetcode.com/uploads/2021/02/19/screenshot-2021-02-20-at-22159-pm.png)
+
+Return `true`* if the square is white, and *`false`* if the square is black*.
+
+The coordinate will always represent a valid chessboard square. The coordinate will always have the letter first, and the number second.
+
+**Constraints:**
+- `coordinates.length == 2`
+- `'a' <= coordinates[0] <= 'h'`
+- `'1' <= coordinates[1] <= '8'`
 
 ---
 
 ## Examples
 
+**Example 1:**
 ```
-Input: "a1" → false (black)
-Input: "h3" → true  (white)
-Input: "c7" → false (black)
+Input: coordinates = "a1"
+Output: false
+Explanation: From the chessboard above, the square with coordinates "a1" is black, so return false.
 ```
 
-Visual (partial):
+**Example 2:**
 ```
-8  □ ■ □ ■ □ ■ □ ■
-7  ■ □ ■ □ ■ □ ■ □
-6  □ ■ □ ■ □ ■ □ ■
-...
-2  □ ■ □ ■ □ ■ □ ■
-1  ■ □ ■ □ ■ □ ■ □
-   a b c d e f g h
+Input: coordinates = "h3"
+Output: true
+Explanation: From the chessboard above, the square with coordinates "h3" is white, so return true.
+```
+
+**Example 3:**
+```
+Input: coordinates = "c7"
+Output: false
 ```
 
 ---

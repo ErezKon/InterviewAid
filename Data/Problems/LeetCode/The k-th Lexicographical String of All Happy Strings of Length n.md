@@ -7,22 +7,41 @@
 ---
 
 ## Problem Description
-A *happy string* of length `n` consists only of the characters `'a'`, `'b'`, and `'c'` such that no two adjacent characters are equal. Given `n` and an integer `k`, return the `k`‑th happy string in lexicographical order. If fewer than `k` happy strings exist, return an empty string.
+A **happy string** is a string that:
+
+- consists only of letters of the set `['a', 'b', 'c']`.
+- `s[i] != s[i + 1]` for all values of `i` from `1` to `s.length - 1` (string is 1-indexed).
+
+For example, strings **"abc", "ac", "b"** and **"abcbabcbcb"** are all happy strings and strings **"aa", "baa"** and **"ababbc"** are not happy strings.
+
+Given two integers `n` and `k`, consider a list of all happy strings of length `n` sorted in lexicographical order.
+
+Return *the kth string* of this list or return an **empty string** if there are less than `k` happy strings of length `n`.
+
+**Constraints:**
+- `1 <= n <= 10`
+- `1 <= k <= 100`
 
 ## Examples
-**Example 1**
 ```
-Input: n = 1, k = 3
-Output: "c"
+Example 1:
+  Input: n = 1, k = 3
+  Output: "c"
+  Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
 ```
-*Explanation:* Happy strings of length 1 are `["a","b","c"]`; the 3rd is `"c"`.
-
-**Example 2**
 ```
-Input: n = 3, k = 9
-Output: "cab"
+Example 2:
+  Input: n = 1, k = 4
+  Output: ""
+  Explanation: There are only 3 happy strings of length 1.
 ```
-*Explanation:* The 9‑th string in lexicographic order is `"cab"`.
+```
+Example 3:
+  Input: n = 3, k = 9
+  Output: "cab"
+  Explanation: There are 12 different happy string of length 3 ["aba", "abc", "aca", "acb", "bab", "bac",
+  "bca", "bcb", "cab", "cac", "cba", "cbc"]. You will find the 9th string = "cab"
+```
 
 ## Approach
 The total number of happy strings of length `n` is `3 * 2^(n‑1)`. We can construct the answer directly by deciding each character from left to right, skipping whole blocks of strings when `k` is larger than the block size.

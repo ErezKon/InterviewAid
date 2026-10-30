@@ -1,25 +1,44 @@
 # 3203. Find Minimum Diameter After Merging Two Trees
 
 **Difficulty:** 🔴 Hard
+**LeetCode:** [https://leetcode.com/problems/find-minimum-diameter-after-merging-two-trees](https://leetcode.com/problems/find-minimum-diameter-after-merging-two-trees)
 **Companies:** Google, Microsoft, Servicenow
 
 ---
 
 ## Problem Description
-You are given two rooted trees `T1` and `T2`. You may connect any node of `T1` to any node of `T2` with a single new edge, merging the two trees into one. The diameter of a tree is the length (in edges) of the longest shortest path between any two nodes. Determine the minimum possible diameter of the resulting merged tree.
+There exist two **undirected** trees with `n` and `m` nodes, numbered from `0` to `n - 1` and from `0` to `m - 1`, respectively. You are given two 2D integer arrays `edges1` and `edges2` of lengths `n - 1` and `m - 1`, respectively, where `edges1[i] = [a_i, b_i]` indicates that there is an edge between nodes `a_i` and `b_i` in the first tree and `edges2[i] = [u_i, v_i]` indicates that there is an edge between nodes `u_i` and `v_i` in the second tree.
+
+You must connect one node from the first tree with another node from the second tree with an edge.
+
+Return the **minimum** possible **diameter** of the resulting tree.
+
+The **diameter** of a tree is the length of the *longest* path between any two nodes in the tree.
+
+**Constraints:**
+- `1 <= n, m <= 10^5`
+- `edges1.length == n - 1`
+- `edges2.length == m - 1`
+- `edges1[i].length == edges2[i].length == 2`
+- `edges1[i] = [a_i, b_i]`
+- `0 <= a_i, b_i < n`
+- `edges2[i] = [u_i, v_i]`
+- `0 <= u_i, v_i < m`
+- The input is generated such that `edges1` and `edges2` represent valid trees.
 
 ## Examples
-**Example 1**
 ```
-T1: diameter d1 = 4
-T2: diameter d2 = 3
-Connecting the centers yields merged diameter = max(4, 3, ceil(4/2) + ceil(3/2) + 1) = 5
+Example 1:
+  Input: edges1 = [[0,1],[0,2],[0,3]], edges2 = [[0,1]]
+  Output: 3
+  Explanation: We can obtain a tree of diameter 3 by connecting node 0 from the first tree with any node from the second tree.
 ```
-**Example 2**
+
 ```
-T1: a line of 5 nodes (d1 = 4)
-T2: a single node (d2 = 0)
-Connecting the middle of T1 to the lone node gives diameter = max(4, 0, ceil(4/2) + ceil(0/2) + 1) = 3
+Example 2:
+  Input: edges1 = [[0,1],[0,2],[0,3],[2,4],[2,5],[3,6],[2,7]], edges2 = [[0,1],[0,2],[0,3],[2,4],[2,5],[3,6],[2,7]]
+  Output: 5
+  Explanation: We can obtain a tree of diameter 5 by connecting node 0 from the first tree with node 0 from the second tree.
 ```
 
 ## Approach

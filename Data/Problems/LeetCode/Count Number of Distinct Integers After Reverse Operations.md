@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Given an array `nums`, for each element also add its digit‑reversed version. Return the count of distinct integers in the resulting array.
+You are given an array `nums` consisting of **positive** integers.
+
+You have to take each integer in the array, **reverse its digits**, and add it to the end of the array. You should apply this operation to the original integers in `nums`.
+
+Return *the number of **distinct** integers in the final array*.
+
+(Equivalently, for each element also add its digit‑reversed version, then count distinct values.)
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^6`
 
 ---
 
@@ -40,18 +50,22 @@ FUNCTION REVERSE_DIGITS(x):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [1,13,10]
-Output: 6
-Explanation: After adding reversals we have [1,13,10,1,31,1]. Distinct values are {1,10,13,31} → 4.
+Example 1:
+  Input: nums = [1,13,10,12,31]
+  Output: 6
+  Explanation: After including the reverse of each number, the resulting array is [1,13,10,12,31,1,31,1,21,13].
+  The reversed integers that were added to the end of the array are the last five. Note that for the integer 10,
+  after reversing it, it becomes 01 which is just 1.
+  The number of distinct integers in this array is 6 (The numbers 1, 10, 12, 13, 21, and 31).
 ```
 
-**Example 2:**
 ```
-Input: nums = [2,2,2]
-Output: 1
-Explanation: Reversals are also 2, so only one distinct integer.
+Example 2:
+  Input: nums = [2,2,2]
+  Output: 1
+  Explanation: After including the reverse of each number, the resulting array is [2,2,2,2,2,2].
+  The number of distinct integers in this array is 1 (The number 2).
 ```
 
 ---

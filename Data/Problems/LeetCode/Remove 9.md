@@ -7,14 +7,31 @@
 ---
 
 ## Problem Description
-Given a non‑negative integer represented as a string, remove exactly one occurrence of the digit `9` to obtain the largest possible integer. The resulting number should not contain leading zeros.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Start from integer `1`, remove any integer that contains `9` such as `9`, `19`, `29`...
+
+Now, you will have a new integer sequence `[1, 2, 3, 4, 5, 6, 7, 8, 10, 11, ...]`.
+
+Given an integer `n`, return *the* `n^th` (**1-indexed**) integer in the new sequence.
+
+**Constraints:**
+- `1 <= n <= 8 * 10^8`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| "1923" | "923" | Removing the first `9` yields `923`, which is larger than removing any other digit. |
-| "999" | "99" | Any removal of a `9` results in `99`. |
-| "123" | "123" | No `9` present; the number remains unchanged.
+
+**Example 1:**
+```
+Input: n = 9
+Output: 10
+```
+
+**Example 2:**
+```
+Input: n = 10
+Output: 11
+```
 
 ## Approach
 **Greedy** – Scan the string from left to right and remove the first `9` that is followed by a digit smaller than `9`. If no such `9` exists, remove the last `9`.

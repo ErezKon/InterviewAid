@@ -21,10 +21,27 @@
 
 ## Problem Description
 
-Given a set of non-overlapping intervals (groups) on a number line and the ability to insert **one** interval of length `k`, minimize the number of **connected groups** after insertion.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given a 2D array `intervals`, where `intervals[i] = [start_i, end_i]` represents the start and the end of interval `i`. You are also given an integer `k`.
+
+You must add **exactly one** new interval `[start_new, end_new]` to the array such that:
+
+- The length of the new interval, `end_new - start_new`, is at most `k`.
+- After adding, the number of **connected groups** in `intervals` is **minimized**.
+
+A **connected group** of intervals is a maximal collection of intervals that, when considered together, cover a continuous range from the smallest point to the largest point with no gaps between them. Here are some examples:
+
+- A group of intervals `[[1, 2], [2, 5], [3, 3]]` is connected because together they cover the range from 1 to 5 without any gaps.
+- However, a group of intervals `[[1, 2], [3, 4]]` is not connected because the segment `(2, 3)` is not covered.
+
+Return the **minimum** number of connected groups after adding **exactly one** new interval to the array.
 
 **Constraints:**
-- `1 ≤ intervals.length ≤ 10⁵`
+- `1 <= intervals.length <= 10^5`
+- `intervals[i] == [start_i, end_i]`
+- `1 <= start_i <= end_i <= 10^9`
+- `1 <= k <= 10^9`
 
 ---
 
@@ -32,15 +49,17 @@ Given a set of non-overlapping intervals (groups) on a number line and the abili
 
 **Example 1:**
 ```
-intervals = [[1,2],[5,6],[9,10]], k = 3
+Input: intervals = [[1,3],[5,6],[8,10]], k = 3
+Output: 2
+Explanation: After adding the interval [3, 5], we have two connected groups: [[1, 3], [3, 5], [5, 6]] and [[8, 10]].
 ```
-Insert interval `[3,5]` connects the first two groups, resulting in 2 groups.
 
 **Example 2:**
 ```
-intervals = [[1,4],[6,9],[12,15]], k = 2
+Input: intervals = [[5,10],[1,1],[3,3]], k = 1
+Output: 3
+Explanation: After adding the interval [1, 1], we have three connected groups: [[1, 1], [1, 1]], [[3, 3]], and [[5, 10]].
 ```
-No interval of length 2 can bridge any gap, so the answer is 4 (original 3 groups plus the inserted one).
 
 ---
 

@@ -1,23 +1,49 @@
 # 952. Largest Component Size by Common Factor
 
 **Difficulty:** 🔴 Hard
+**LeetCode:** [https://leetcode.com/problems/largest-component-size-by-common-factor](https://leetcode.com/problems/largest-component-size-by-common-factor)
 **Companies:** Google, Microsoft
 
 ---
 
 ## 1. Problem Description
 
-Given an array of integers, connect any two numbers that share a common factor > 1. Return the size of the largest connected component.
+You are given an integer array of unique positive integers `nums`. Consider the following graph:
+
+- There are `nums.length` nodes, labeled `nums[0]` to `nums[nums.length - 1]`,
+- There is an undirected edge between `nums[i]` and `nums[j]` if `nums[i]` and `nums[j]` share a common factor greater than `1`.
+
+Return *the size of the largest connected component in the graph*.
+
+**Constraints:**
+- `1 <= nums.length <= 2 * 10^4`
+- `1 <= nums[i] <= 10^5`
+- All the values of `nums` are **unique**.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `nums = [4,6,15,35]` | `4` | All numbers are connected through common factors: 4‑6 share 2, 6‑15 share 3, 15‑35 share 5, forming one component of size 4. |
-| `nums = [20,50,9,63]` | `2` | `20` and `50` share factor 10, forming a component of size 2; `9` and `63` share factor 9, another component of size 2. Largest size is 2. |
-| `nums = [2,3,5,7,11]` | `1` | No two numbers share a factor > 1, so each number is its own component.
+```
+Example 1:
+  Input: nums = [4,6,15,35]
+  Output: 4
+  Explanation: 4-6 share 2, 6-15 share 3, 15-35 share 5, so all 4 numbers form one component.
+```
+
+```
+Example 2:
+  Input: nums = [20,50,9,63]
+  Output: 2
+  Explanation: {20, 50} (share 10) and {9, 63} (share 9) are two components of size 2.
+```
+
+```
+Example 3:
+  Input: nums = [2,3,6,7,4,12,21,39]
+  Output: 8
+  Explanation: All numbers are connected (e.g. 2-6-3-21-7, 4-2, 12-6, 39-3), forming one component of size 8.
+```
 
 ---
 

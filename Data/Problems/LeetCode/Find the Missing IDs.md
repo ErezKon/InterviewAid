@@ -20,18 +20,56 @@
 
 ## 1. Problem Description
 
-Given a `Customers` table with IDs, find all IDs from 1 to the maximum ID that are **not** in the table. (SQL problem)
+Table: `Customers`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| customer_id   | int     |
+| customer_name | varchar |
++---------------+---------+
+customer_id is the column with unique values for this table.
+Each row of this table contains the name and the id customer.
+```
+
+Write a solution to find the missing customer IDs. The missing IDs are ones that are not in the `Customers` table but are in the range between `1` and the **maximum** `customer_id` present in the table.
+
+**Notice** that the maximum `customer_id` will not exceed `100`.
+
+Return the result table ordered by `ids` in **ascending order**.
+
+The result format is in the following example.
+
+**Constraints:**
+- The maximum `customer_id` will not exceed `100`.
+- `customer_id` values are unique.
 
 ---
 
 ## 2. Examples
 
-| Customers Table (customer_id) | Missing IDs |
-|-------------------------------|-------------|
-| 1, 2, 4, 5                    | 3           |
-| 2, 3, 7, 8                    | 1, 4, 5, 6 |
-
-*Explanation*: For the first row, IDs 1‑5 exist except 3, so the result is `3`. For the second row, the maximum ID is `8`; IDs `1,4,5,6` are absent.
+```
+Example 1:
+  Input:
+  Customers table:
+  +-------------+---------------+
+  | customer_id | customer_name |
+  +-------------+---------------+
+  | 1           | Alice         |
+  | 4           | Bob           |
+  | 5           | Charlie       |
+  +-------------+---------------+
+  Output:
+  +-----+
+  | ids |
+  +-----+
+  | 2   |
+  | 3   |
+  +-----+
+  Explanation: The maximum customer_id present in the table is 5, so in the range [1,5], IDs 2 and 3
+  are missing from the table.
+```
 
 ---
 

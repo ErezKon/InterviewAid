@@ -7,13 +7,32 @@
 ---
 
 ## Problem Description
-Given an array of non‑negative integers `nums`, count how many of them contain an even number of digits. The number of digits of an integer is the length of its decimal representation without leading zeros.
+Given an array `nums` of integers, return how many of them contain an **even number** of digits.
+
+**Constraints:**
+- `1 <= nums.length <= 500`
+- `1 <= nums[i] <= 10^5`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[12,345,2,6,7896]` | `2` | `12` and `7896` have 2 and 4 digits respectively. |
-| `[555,901,482,1771]` | `1` | Only `1771` has 4 digits. |
+```
+Example 1:
+  Input: nums = [12,345,2,6,7896]
+  Output: 2
+  Explanation:
+  12 contains 2 digits (even number of digits).
+  345 contains 3 digits (odd number of digits).
+  2 contains 1 digit (odd number of digits).
+  6 contains 1 digit (odd number of digits).
+  7896 contains 4 digits (even number of digits).
+  Therefore only 12 and 7896 contain an even number of digits.
+```
+
+```
+Example 2:
+  Input: nums = [555,901,482,1771]
+  Output: 1
+  Explanation: Only 1771 contains an even number of digits.
+```
 
 ## Approach
 Iterate through the array and compute the digit count of each number using division or logarithm. Increment a counter when the digit count is even.

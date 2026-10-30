@@ -20,14 +20,23 @@
 
 ## Problem Description
 
-Given two events represented as `event1 = [startTime1, endTime1]` and `event2 = [startTime2, endTime2]`, where times are in `"HH:MM"` format, return `true` if the two events **overlap** (have a conflict).
+You are given two arrays of strings that represent two inclusive events that happened **on the same day**, `event1` and `event2`, where:
 
-Two events conflict if there is some time that is covered by both events (inclusive of endpoints).
+- `event1 = [startTime_1, endTime_1]` and
+- `event2 = [startTime_2, endTime_2]`.
+
+Event times are valid 24 hours format in the form of `HH:MM`.
+
+A **conflict** happens when two events have some non-empty intersection (i.e., some moment is common to both events).
+
+Return `true`* if there is a conflict between two events. Otherwise, return *`false`.
 
 **Constraints:**
 - `event1.length == event2.length == 2`
-- Times are in `"HH:MM"` format, `"00:00"` ≤ time ≤ `"23:59"`.
-- `startTime ≤ endTime` for each event.
+- `event1[i].length == event2[i].length == 5`
+- `startTime_1 <= endTime_1`
+- `startTime_2 <= endTime_2`
+- All the event times follow the `HH:MM` format.
 
 ---
 
@@ -36,19 +45,22 @@ Two events conflict if there is some time that is covered by both events (inclus
 **Example 1:**
 ```
 Input: event1 = ["01:15","02:00"], event2 = ["02:00","03:00"]
-Output: true   → they share the moment "02:00"
+Output: true
+Explanation: The two events intersect at time 2:00.
 ```
 
 **Example 2:**
 ```
-Input: event1 = ["01:00","02:00"], event2 = ["02:01","03:00"]
-Output: false  → no overlap
+Input: event1 = ["01:00","02:00"], event2 = ["01:20","03:00"]
+Output: true
+Explanation: The two events intersect starting from 01:20 to 02:00.
 ```
 
 **Example 3:**
 ```
 Input: event1 = ["10:00","11:00"], event2 = ["14:00","15:00"]
-Output: false  → completely disjoint
+Output: false
+Explanation: The two events do not intersect.
 ```
 
 ---

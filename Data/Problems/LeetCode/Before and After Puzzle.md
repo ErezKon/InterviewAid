@@ -8,24 +8,40 @@
 
 ## 1. Problem Description
 
-Given a list of phrases, find all "Before and After puzzles": merge two phrases where the **last word** of one equals the **first word** of another.
+Given a list of `phrases`, generate a list of Before and After puzzles.
+
+A *phrase* is a string that consists of lowercase English letters and spaces only. No space appears in the start or the end of a phrase. There are no consecutive spaces in a phrase.
+
+*Before and After puzzles* are phrases that are formed by merging two phrases where the **last word of the first phrase** is the same as the **first word of the second phrase**. Note that only the *last word of the first phrase* and the *first word of the second phrase* are merged in this process.
+
+Return the Before and After puzzles that can be formed by every two phrases `phrases[i]` and `phrases[j]` where `i != j`. Note that the order of matching two phrases matters, we want to consider both orders.
+
+You should return a list of **distinct** strings **sorted lexicographically**, after removing all *duplicate* phrases in the generated Before and After puzzles.
+
+**Constraints:**
+- `1 ≤ phrases.length ≤ 100`
+- `1 ≤ phrases[i].length ≤ 100`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: phrases = ["writing code", "code rocks", "rocks and roll"]
-Output: ["writing code rocks", "code rocks and roll"]
-Explanation: "code" is the last word of the first phrase and the first word of the second, so they merge. Similarly for the second and third.
-```
+Example 1:
+  Input: phrases = ["writing code","code rocks"]
+  Output: ["writing code rocks"]
 
-**Example 2:**
-```
-Input: phrases = ["a b", "c d", "e f"]
-Output: []
-Explanation: No adjacent phrases share a matching word.
+Example 2:
+  Input: phrases = ["mission statement","a quick bite to eat","a chip off the old block","chocolate bar","mission impossible","a man on a mission","block party","eat my words","bar of soap"]
+  Output: ["a chip off the old block party","a man on a mission impossible","a man on a mission statement","a quick bite to eat my words","chocolate bar of soap"]
+
+Example 3:
+  Input: phrases = ["a","b","a"]
+  Output: ["a"]
+
+Example 4:
+  Input: phrases = ["ab ba","ba ab","ab ba"]
+  Output: ["ab ba ab","ba ab ba"]
 ```
 
 ---

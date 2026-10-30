@@ -5,12 +5,36 @@ Related: #72 Edit Distance, #1143 LCS, #516 LPS, #115 Distinct Subseq, #10 Regex
 ---
 
 ## Problem Description
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 Many string problems can be expressed as a dynamic programming (DP) table where `dp[i][j]` represents the answer for the prefixes `s1[0..i-1]` and `s2[0..j-1]`. Typical examples include Edit Distance, Longest Common Subsequence, and Distinct Subsequences. The challenge is to define the transition based on character matches and mismatches.
 
+**Constraints (derived, typical for this family):**
+- `0 <= s1.length, s2.length <= 1000`
+- `s1` and `s2` consist of lowercase English letters.
+- The DP table has `(m + 1) x (n + 1)` states, so `O(m·n)` time is expected.
+
 ## Examples
-- **Edit Distance** between "horse" and "ros" → 3 operations.
-- **LCS** of "abcde" and "ace" → length 3.
-- **Distinct Subseq** counting "rabbbit" → 3 ways to form "rabbit".
+```
+Example 1 (Edit Distance, #72):
+  Input: s1 = "horse", s2 = "ros"
+  Output: 3
+  Explanation: horse -> rorse (replace 'h' with 'r') -> rose (remove 'r') -> ros (remove 'e')
+```
+
+```
+Example 2 (LCS, #1143):
+  Input: s1 = "abcde", s2 = "ace"
+  Output: 3
+  Explanation: The longest common subsequence is "ace".
+```
+
+```
+Example 3 (Distinct Subsequences, #115):
+  Input: s = "rabbbit", t = "rabbit"
+  Output: 3
+  Explanation: There are 3 ways to choose which 'b' to drop from "rabbbit" to form "rabbit".
+```
 
 ## Approach
 Use a 2‑D DP table initialized for empty prefixes. Fill row‑wise using the recurrence:

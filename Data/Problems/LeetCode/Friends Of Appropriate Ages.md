@@ -20,28 +20,48 @@
 
 ## 1. Problem Description
 
-Person A will send a friend request to B unless: `age[B] <= 0.5 * age[A] + 7` or `age[B] > age[A]` or `age[B] > 100 && age[A] < 100`. Count total friend requests.
+There are `n` persons on a social media website. You are given an integer array `ages` where `ages[i]` is the age of the `i^th` person.
+
+A Person `x` will not send a friend request to a person `y` (`x != y`) if any of the following conditions is true:
+
+- `age[y] <= 0.5 * age[x] + 7`
+- `age[y] > age[x]`
+- `age[y] > 100 && age[x] < 100`
+
+Otherwise, `x` will send a friend request to `y`.
+
+Note that if `x` sends a request to `y`, `y` will not necessarily send a request to `x`. Also, a person will not send a friend request to themself.
+
+Return *the total number of friend requests made*.
 
 **Constraints:**
-- `1 <= n <= 2 × 10⁴`
+- `n == ages.length`
+- `1 <= n <= 2 * 10^4`
 - `1 <= ages[i] <= 120`
 
 ---
 
 ## 2. Examples
 
-**Example 1**
+**Example 1:**
 ```
-ages = [16,16]
+Input: ages = [16,16]
 Output: 2
-Explanation: Both users can friend each other.
+Explanation: 2 people friend request each other.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-ages = [20,30,100,110,120]
+Input: ages = [16,17,18]
+Output: 2
+Explanation: Friend requests are made 17 -> 16, 18 -> 17.
+```
+
+**Example 3:**
+```
+Input: ages = [20,30,100,110,120]
 Output: 3
-Explanation: Valid pairs are (20,30), (30,20), (110,120).
+Explanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.
 ```
 
 ---

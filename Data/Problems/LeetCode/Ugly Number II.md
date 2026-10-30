@@ -8,18 +8,29 @@
 ---
 
 ## Problem Description
-An *ugly number* is a positive integer whose prime factors are only `2`, `3`, or `5`. Given an integer `n`, return the `n`‑th ugly number in the sequence of ugly numbers sorted in ascending order.
+
+An **ugly number** is a positive integer whose prime factors are limited to `2`, `3`, and `5`.
+
+Given an integer `n`, return *the* `n`th ***ugly number***.
+
+**Constraints:**
+- `1 <= n <= 1690`
 
 ## Examples
+
 **Example 1:**
-Input: `n = 10`
-Output: `12`
-Explanation: The first 10 ugly numbers are `[1,2,3,4,5,6,8,9,10,12]`.
+```
+Input: n = 10
+Output: 12
+Explanation: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12] is the sequence of the first 10 ugly numbers.
+```
 
 **Example 2:**
-Input: `n = 1`
-Output: `1`
-Explanation: `1` is conventionally treated as an ugly number.
+```
+Input: n = 1
+Output: 1
+Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
+```
 
 ## Approach
 Use three pointers `i2`, `i3`, `i5` that track the index of the smallest ugly number that has not yet been multiplied by `2`, `3`, or `5` respectively. At each step compute the next candidates `next2 = ugly[i2] * 2`, `next3 = ugly[i3] * 3`, `next5 = ugly[i5] * 5`. The next ugly number is the minimum of these three. Increment any pointer whose candidate equals the chosen number to avoid duplicates.

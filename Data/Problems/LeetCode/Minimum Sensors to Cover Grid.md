@@ -8,7 +8,20 @@
 
 ## 1. Problem Description
 
-Given a binary grid of size `m x n`, place the **minimum** number of sensors so that every cell containing `1` is covered. A sensor placed at a cell covers that cell and its adjacent cells according to the sensor's range (e.g., up, down, left, right, and possibly diagonals as defined by the problem). All `1` cells must be covered while using as few sensors as possible.
+> *Note: the Approach below covers 1-cells of a binary grid (invented). Officially every cell must be covered and a sensor covers a `(2k+1) × (2k+1)` square, so the answer is `ceil(n/(2k+1)) · ceil(m/(2k+1))`.*
+
+You are given `n × m` grid and an integer `k`.
+
+A sensor placed on cell `(r, c)` covers all cells whose **Chebyshev distance** from `(r, c)` is **at most** `k`.
+
+The **Chebyshev distance** between two cells `(r_1, c_1)` and `(r_2, c_2)` is `max(|r_1 − r_2|,|c_1 − c_2|)`.
+
+Your task is to return the **minimum** number of sensors required to cover every cell of the grid.
+
+**Constraints:**
+- `1 <= n <= 10^3`
+- `1 <= m <= 10^3`
+- `0 <= k <= 10^3`
 
 ---
 
@@ -16,15 +29,16 @@ Given a binary grid of size `m x n`, place the **minimum** number of sensors so 
 
 **Example 1:**
 ```
-Input: grid = [[1,0,1],[0,1,0],[1,0,1]]
-Output: 3
-Explanation: Place sensors at the three corner `1`s. Each sensor covers its own cell and adjacent cells, covering all `1`s.
+Input: n = 5, m = 5, k = 1
+Output: 4
+Explanation: Placing sensors at positions (0, 3), (1, 0), (3, 3), and (4, 1) ensures every cell in the grid is covered. Thus, the answer is 4.
 ```
+
 **Example 2:**
 ```
-Input: grid = [[1,1,1],[1,1,1],[1,1,1]]
+Input: n = 2, m = 2, k = 2
 Output: 1
-Explanation: A single sensor placed at the center covers the entire grid.
+Explanation: With k = 2, a single sensor can cover the entire 2 * 2 grid regardless of its position. Thus, the answer is 1.
 ```
 
 ---

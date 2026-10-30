@@ -21,9 +21,18 @@
 
 ## 1. Problem Description
 
-Given a sorted array of integers `nums` and a target value, find the **starting and ending position** of `target`. If not found, return `[-1, -1]`.
+Given an array of integers `nums` sorted in non-decreasing order, find the starting and ending position of a given `target` value.
 
-You must write an algorithm with **O(log n)** runtime.
+If `target` is not found in the array, return `[-1, -1]`.
+
+You must write an algorithm with `O(log n)` runtime complexity.
+
+**Constraints:**
+
+- `0 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
+- `nums` is a non-decreasing array.
+- `-10^9 <= target <= 10^9`
 
 ---
 

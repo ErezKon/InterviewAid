@@ -21,7 +21,13 @@
 
 ## 1. Problem Description
 
-Count substrings of `s` (containing only 'a', 'b', 'c') that have at least one of each character.
+Given a string `s` consisting only of characters *a*, *b* and *c*.
+
+Return the number of substrings containing **at least** one occurrence of all these characters *a*, *b* and *c*.
+
+**Constraints:**
+- `3 <= s.length <= 5 x 10^4`
+- `s` only consists of `'a'`, `'b'` or `'c'` characters.
 
 ---
 
@@ -52,10 +58,25 @@ FUNCTION numberOfSubstrings(s):
 
 ## 4. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"abcabc"` | `10` | All substrings that contain at least one of each letter. |
-| `"aaacb"` | `3` | Valid substrings: `"aacb"`, `"acb"`, `"aaacb"`. |
+**Example 1:**
+```
+Input: s = "abcabc"
+Output: 10
+Explanation: The substrings containing at least one occurrence of the characters *a*, *b* and *c are "*abc*", "*abca*", "*abcab*", "*abcabc*", "*bca*", "*bcab*", "*bcabc*", "*cab*", "*cabc*" *and* "*abc*" *(again)*. *
+```
+
+**Example 2:**
+```
+Input: s = "aaacb"
+Output: 3
+Explanation: The substrings containing at least one occurrence of the characters *a*, *b* and *c are "*aaacb*", "*aacb*" *and* "*acb*". *
+```
+
+**Example 3:**
+```
+Input: s = "abc"
+Output: 1
+```
 
 ---
 

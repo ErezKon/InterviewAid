@@ -7,14 +7,36 @@
 ---
 
 ## Problem Description
-Given two strings `s1` and `s2` of equal length, determine whether you can make the strings equal by swapping **exactly one** pair of characters in `s1`. You may also choose not to swap any characters. Return `true` if it is possible, otherwise return `false`.
+You are given two strings `s1` and `s2` of equal length. A **string swap** is an operation where you choose two indices in a string (not necessarily different) and swap the characters at these indices.
+
+Return `true` *if it is possible to make both strings equal by performing **at most one string swap** on **exactly one** of the strings.* Otherwise, return `false`.
+
+**Constraints:**
+- `1 <= s1.length, s2.length <= 100`
+- `s1.length == s2.length`
+- `s1` and `s2` consist of only lowercase English letters.
 
 ## Examples
-| s1 | s2 | Output | Explanation |
-|----|----|--------|-------------|
-| "bank" | "kanb" | true | Swapping the first and last characters of `s1` makes it equal to `s2`. |
-| "attack" | "defend" | false | More than two mismatched positions, impossible with a single swap. |
-| "abcd" | "abcd" | true | Strings are already equal; zero swaps are allowed.
+```
+Example 1:
+  Input: s1 = "bank", s2 = "kanb"
+  Output: true
+  Explanation: For example, swap the first character with the last character of s2 to make "bank".
+```
+
+```
+Example 2:
+  Input: s1 = "attack", s2 = "defend"
+  Output: false
+  Explanation: It is impossible to make them equal with one string swap.
+```
+
+```
+Example 3:
+  Input: s1 = "kelb", s2 = "kelb"
+  Output: true
+  Explanation: The two strings are already equal, so no string swap operation is required.
+```
 
 ## Approach
 The strings can only differ at at most two positions. Collect the indices where characters differ. If there are zero differences, return true. If there are exactly two differences, check whether swapping the mismatched characters in `s1` aligns it with `s2`. Any other number of differences makes the task impossible.

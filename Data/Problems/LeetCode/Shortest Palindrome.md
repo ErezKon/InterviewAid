@@ -8,7 +8,13 @@
 
 ## Problem Description
 
-Given string `s`, find the shortest palindrome by adding characters only at the **front**. Equivalent to finding the longest palindromic prefix.
+You are given a string `s`. You can convert `s` to a palindrome by adding characters in front of it.
+
+Return *the shortest palindrome you can find by performing this transformation*.
+
+**Constraints:**
+- `0 <= s.length <= 5 * 10^4`
+- `s` consists of lowercase English letters only.
 
 ---
 
@@ -38,10 +44,17 @@ Find the longest palindrome starting at index 0, then prepend the reverse of the
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aacecaaa"` | `"aaacecaaa"` | The longest palindromic prefix is `"aacecaa"`. The remaining suffix `"a"` is reversed and added to the front. |
-| `"abcd"` | `"dcbabcd"` | No palindromic prefix longer than 1, so the entire string `"bcd"` is reversed and prepended. |
+**Example 1:**
+```
+Input: s = "aacecaaa"
+Output: "aaacecaaa"
+```
+
+**Example 2:**
+```
+Input: s = "abcd"
+Output: "dcbabcd"
+```
 
 ---
 

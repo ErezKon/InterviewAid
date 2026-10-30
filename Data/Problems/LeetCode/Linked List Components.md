@@ -8,17 +8,36 @@
 
 ## Problem Description
 
-Given a singly linked list and an integer array `nums` representing a subset of node values, return the number of connected components formed by nodes whose values appear in `nums`. A component is a maximal sequence of adjacent nodes in the list all belonging to `nums`.
+You are given the `head` of a linked list containing unique integer values and an integer array `nums` that is a subset of the linked list values.
+
+Return the number of **connected** **components** in `nums`. A connected component is a non-empty, maximal sequence of **consecutive** nodes in the linked list such that every node's value belongs to nums.
+
+**Constraints:**
+- The number of nodes in the linked list is `n`.
+- `1 <= n <= 10^4`
+- `0 <= Node.val < n`
+- All the values `Node.val` are **unique**.
+- `1 <= nums.length <= n`
+- `0 <= nums[i] < n`
+- All the values of `nums` are **unique**.
 
 ---
 
 ## Examples
 
-| Input List | `nums` | Output | Explanation |
-|------------|--------|--------|-------------|
-| `0→1→2→3` | `[0,1,3]` | `2` | Components are `[0→1]` and `[3]`. |
-| `0→1→2→3→4` | `[0,3,1,4]` | `2` | Components are `[0→1]` and `[3→4]`. |
-| `1→2→3` | `[4,5]` | `0` | No nodes match, so zero components. |
+**Example 1:**
+```
+Input: head = [0,1,2,3], nums = [0,1,3]
+Output: 2
+Explanation: 0 and 1 are connected, so [0, 1] and [3] are the two connected components.
+```
+
+**Example 2:**
+```
+Input: head = [0,1,2,3,4], nums = [0,3,1,4]
+Output: 2
+Explanation: 0 and 1 are connected, 3 and 4 are connected, so [0, 1] and [3, 4] are the two connected components.
+```
 
 ---
 

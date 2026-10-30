@@ -7,13 +7,34 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, a subarray is **complete** if it contains all distinct values that appear in the entire array. Return the number of complete subarrays.
+You are given an array `nums` consisting of **positive** integers.
+
+We call a subarray of an array **complete** if the following condition is satisfied:
+
+- The number of **distinct** elements in the subarray is equal to the number of distinct elements in the whole array.
+
+Return *the number of **complete** subarrays*.
+
+A **subarray** is a contiguous non-empty part of an array.
+
+**Constraints:**
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 2000`
 
 ## Examples
-| nums | Output | Explanation |
-|------|--------|-------------|
-| [1,3,1,2,2] | 4 | Complete subarrays are `[1,3,1,2]`, `[3,1,2,2]`, `[1,3,1,2,2]`, `[3,1,2]` |
-| [1,2,3] | 1 | Only the whole array is complete |
+```
+Example 1:
+  Input: nums = [1,3,1,2,2]
+  Output: 4
+  Explanation: The complete subarrays are the following: [1,3,1,2], [1,3,1,2,2], [3,1,2] and [3,1,2,2].
+```
+
+```
+Example 2:
+  Input: nums = [5,5,5,5]
+  Output: 10
+  Explanation: The array consists only of the integer 5, so any subarray is complete. The number of subarrays that we can choose is 10.
+```
 
 ## Approach
 Use a sliding window to maintain a count of distinct elements in the current window. Let `total` be the number of distinct values in `nums`. Expand the right pointer, updating the frequency map. When the window contains all `total` distinct values, every extension of the right pointer yields a complete subarray, so add `len(nums) - right` to the answer and shrink from the left until the window is no longer complete.

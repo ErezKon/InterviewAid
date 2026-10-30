@@ -8,28 +8,34 @@
 
 ## Problem Description
 
-Given two strings `s1` and `s2`, you can delete any character from either string. The cost of deleting a character is its ASCII value. Return the minimum total cost required to make the two strings equal.
+Given two strings `s1` and `s2`, return *the lowest **ASCII** sum of deleted characters to make two strings equal*.
 
-Constraints:
+**Constraints:**
 - `1 <= s1.length, s2.length <= 1000`
-- All characters are lowercase English letters.
+- `s1` and `s2` consist of lowercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s1 = "sea", s2 = "eat"
-Output: 231
-Explanation: Delete "s" from s1 (ASCII 115) and "t" from s2 (ASCII 116). The remaining strings "ea" are equal. Total cost = 115 + 116 = 231.
+Example 1:
+  Input: s1 = "sea", s2 = "eat"
+  Output: 231
+  Explanation: Deleting "s" from "sea" adds the ASCII value of "s" (115) to the sum.
+  Deleting "t" from "eat" adds 116 to the sum.
+  At the end, both strings are equal, and 115 + 116 = 231 is the minimum sum possible to achieve this.
 ```
 
-**Example 2:**
 ```
-Input: s1 = "delete", s2 = "leet"
-Output: 403
-Explanation: Delete "d" (100) and "e" (101) from s1, and delete "e" (101) from s2. Remaining "leet" strings match. Total cost = 100+101+101+101 = 403.
+Example 2:
+  Input: s1 = "delete", s2 = "leet"
+  Output: 403
+  Explanation: Deleting "dee" from "delete" to turn the string into "let",
+  adds 100[d] + 101[e] + 101[e] to the sum.
+  Deleting "e" from "leet" adds 101[e] to the sum.
+  At the end, both strings are equal to "let", and the answer is 100+101+101+101 = 403.
+  If instead we turned both strings into "lee" or "eet", we would get answers of 433 or 417, which are higher.
 ```
 
 ---

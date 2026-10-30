@@ -8,7 +8,12 @@
 
 ## 1. Problem Description
 
-Given a positive integer `num`, count how many integers in `[1, num]` have an even digit sum.
+Given a positive integer `num`, return *the number of positive integers **less than or equal to*** `num` *whose digit sums are **even***.
+
+The **digit sum** of a positive integer is the sum of all its digits.
+
+**Constraints:**
+- `1 <= num <= 1000`
 
 ---
 
@@ -49,10 +54,24 @@ FUNCTION countEvenMath(num):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `7`   | `3`    | Numbers with even digit sum: 2, 4, 6 |
-| `10`  | `5`    | Even‑sum numbers: 2,4,6,8,10 |
+```
+Example 1:
+  Input: num = 4
+  Output: 2
+  Explanation:
+  The only integers less than or equal to 4 whose digit sums are even are 2 and 4.
+```
+
+```
+Example 2:
+  Input: num = 30
+  Output: 14
+  Explanation:
+  The 14 integers less than or equal to 30 whose digit sums are even are
+  2, 4, 6, 8, 11, 13, 15, 17, 19, 20, 22, 24, 26, and 28.
+```
+
+(Note: 10 is not an even‑sum number since 1 + 0 = 1, so num = 10 gives 4: 2, 4, 6, 8.)
 
 ---
 

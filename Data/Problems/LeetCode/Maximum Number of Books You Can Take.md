@@ -20,9 +20,11 @@
 
 ## Problem Description
 
-You have `n` shelves of books. Shelf `i` has `books[i]` books. You want to take books from a **contiguous** section of shelves such that the number you take from shelf `i` forms a **strictly increasing** sequence, and you take at most `books[i]` from shelf `i`.
+You are given a **0-indexed** integer array `books` of length `n` where `books[i]` denotes the number of books on the `i`th shelf of a bookshelf.
 
-Return the **maximum total books** you can take.
+You are going to take books from a **contiguous** section of the bookshelf spanning from `l` to `r` where `0 <= l <= r < n`. For each index `i` in the range `l <= i < r`, you must take **strictly fewer** books from shelf `i` than shelf `i + 1`.
+
+Return *the **maximum** number of books you can take from the bookshelf.*
 
 **Constraints:**
 - `1 <= books.length <= 10^5`
@@ -32,22 +34,42 @@ Return the **maximum total books** you can take.
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  books = [8, 5, 2, 7, 9]
-Output: 19
-Explanation: Take [0, 5, 2, 7, 9]? No — must be strictly increasing and ≤ books[i].
-Take from shelves 2-4: take 2, 7, 9 → but 2 < 7 ✓, 7 < 9 ✓. Total = 18.
-Actually take from shelves 1-4: take 4, 5→wait, need strictly increasing ≤ books[i].
-Best: from shelves 1-4: take 4,5,7,9? 4≤5✓ but take[1]=4 < take[2]=5... hmm.
-We need taken[j] < taken[j+1] AND taken[j] ≤ books[j].
+Example 1:
+  Input: books = [8,5,2,7,9]
+  Output: 19
+  Explanation:
+    - Take 1 book from shelf 1.
+    - Take 2 books from shelf 2.
+    - Take 7 books from shelf 3.
+    - Take 9 books from shelf 4.
+    You have taken 19 books, so return 19.
+    It can be proven that 19 is the maximum number of books you can take.
 ```
 
-**Example 2:**
 ```
-Input:  books = [7, 0, 3, 4, 5]
-Output: 12
-Explanation: Take from shelves 2-4: take 3, 4, 5 = 12.
+Example 2:
+  Input: books = [7,0,3,4,5]
+  Output: 12
+  Explanation:
+    - Take 3 books from shelf 2.
+    - Take 4 books from shelf 3.
+    - Take 5 books from shelf 4.
+    You have taken 12 books so return 12.
+    It can be proven that 12 is the maximum number of books you can take.
+```
+
+```
+Example 3:
+  Input: books = [8,2,3,7,3,4,0,1,4,3]
+  Output: 13
+  Explanation:
+    - Take 1 book from shelf 0.
+    - Take 2 books from shelf 1.
+    - Take 3 books from shelf 2.
+    - Take 7 books from shelf 3.
+    You have taken 13 books so return 13.
+    It can be proven that 13 is the maximum number of books you can take.
 ```
 
 ---

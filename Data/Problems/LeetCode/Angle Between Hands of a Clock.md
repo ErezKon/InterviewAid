@@ -7,13 +7,34 @@
 ---
 
 ## Problem Description
-Given an integer `hour` (0 ≤ hour ≤ 23) and an integer `minutes` (0 ≤ minutes < 60), return the smaller angle (in degrees) formed between the hour and minute hands on an analog clock.
+<!-- old description: (0 ≤ hour ≤ 23) and an integer `minutes` (0 ≤ minutes < 60), return the smaller angle (in degrees) formed between the hour and minute hands on an analog clock. -->
+Given two numbers, `hour` and `minutes`, return *the smaller angle (in degrees) formed between the* `hour` *and the* `minute` *hand*.
+
+Answers within `10^-5` of the actual value will be accepted as correct.
+
+**Constraints:**
+- `1 ≤ hour ≤ 12`
+- `0 ≤ minutes ≤ 59`
 
 ## Examples
-- **Input:** `hour = 12, minutes = 30` **Output:** `165`
-  *Explanation:* Minute hand at 180°, hour hand at 15°, difference 165°.
-- **Input:** `hour = 3, minutes = 15` **Output:** `7.5`
-  *Explanation:* Minute hand at 90°, hour hand at 97.5°, difference 7.5°.
+```
+Example 1:
+  Input: hour = 12, minutes = 30
+  Output: 165
+  Explanation: Minute hand at 180°, hour hand at 15°, difference 165°.
+```
+```
+Example 2:
+  Input: hour = 3, minutes = 30
+  Output: 75
+  Explanation: Minute hand at 180°, hour hand at 105°, difference 75°.
+```
+```
+Example 3:
+  Input: hour = 3, minutes = 15
+  Output: 7.5
+  Explanation: Minute hand at 90°, hour hand at 97.5°, difference 7.5°.
+```
 
 ## Approach
 The problem is solved with simple geometry. Compute the absolute positions of both hands and take the minimum of the direct difference and its complement to 360°.

@@ -6,11 +6,57 @@
 ---
 
 ## Problem Description
-Given a table `Scores` with a column `score` (integer), return each score together with its rank when sorted in descending order. Ranks should be dense, i.e., equal scores receive the same rank and the next distinct score gets the immediate next rank.
+Table: `Scores`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| score       | decimal |
++-------------+---------+
+id is the primary key (column with unique values) for this table.
+Each row of this table contains the score of a game. Score is a floating point value with two decimal places.
+```
+
+Write a solution to find the rank of the scores. The ranking should be calculated according to the following rules:
+
+- The scores should be ranked from the highest to the lowest.
+- If there is a tie between two scores, both should have the same ranking.
+- After a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no holes between ranks.
+
+Return the result table ordered by `score` in descending order.
+
+The result format is in the following example.
 
 ## Examples
-- Table: `score` values `[100, 100, 50, 40]` → Result rows: `(100,1)`, `(100,1)`, `(50,2)`, `(40,3)`.
-- Table: `[5,3,5,2]` → Result: `(5,1)`, `(5,1)`, `(3,2)`, `(2,3)`.
+
+```
+Example 1:
+  Input:
+    Scores table:
+    +----+-------+
+    | id | score |
+    +----+-------+
+    | 1  | 3.50  |
+    | 2  | 3.65  |
+    | 3  | 4.00  |
+    | 4  | 3.85  |
+    | 5  | 4.00  |
+    | 6  | 3.65  |
+    +----+-------+
+  Output:
+    +-------+------+
+    | score | rank |
+    +-------+------+
+    | 4.00  | 1    |
+    | 4.00  | 1    |
+    | 3.85  | 2    |
+    | 3.65  | 3    |
+    | 3.65  | 3    |
+    | 3.50  | 4    |
+    +-------+------+
+```
 
 ## Approach
 Use a window function `DENSE_RANK()` ordered by `score DESC`. The query selects `score` and computes the rank, then orders the output by `score` descending.

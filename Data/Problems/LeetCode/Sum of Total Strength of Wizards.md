@@ -7,7 +7,21 @@
 ---
 
 ## Problem Description
-Given an integer array `strength` where `strength[i]` is the strength of the i‑th wizard, consider every non‑empty contiguous subarray. The **total strength** of a subarray is defined as the product of the sum of its elements and the minimum element in that subarray. Return the sum of total strengths of all subarrays modulo `10^9 + 7`.
+
+As the ruler of a kingdom, you have an army of wizards at your command.
+
+You are given a **0-indexed** integer array `strength`, where `strength[i]` denotes the strength of the `i`th wizard. For a **contiguous** group of wizards (i.e. the wizards' strengths form a **subarray** of `strength`), the **total strength** is defined as the **product** of the following two values:
+
+- The strength of the **weakest** wizard in the group.
+- The **total** of all the individual strengths of the wizards in the group.
+
+Return *the **sum** of the total strengths of **all** contiguous groups of wizards*. Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+A **subarray** is a contiguous **non-empty** sequence of elements within an array.
+
+**Constraints:**
+- `1 <= strength.length <= 10^5`
+- `1 <= strength[i] <= 10^9`
 
 ## Examples
 **Example 1:**
@@ -31,8 +45,16 @@ Sum = 44
 
 **Example 2:**
 ```
-Input: strength = [5,8,7]
-Output: 236
+Input: strength = [5,4,6]
+Output: 213
+Explanation: The following are all the contiguous groups of wizards:
+- [5] from [5,4,6] has a total strength of min([5]) * sum([5]) = 5 * 5 = 25
+- [4] from [5,4,6] has a total strength of min([4]) * sum([4]) = 4 * 4 = 16
+- [6] from [5,4,6] has a total strength of min([6]) * sum([6]) = 6 * 6 = 36
+- [5,4] from [5,4,6] has a total strength of min([5,4]) * sum([5,4]) = 4 * 9 = 36
+- [4,6] from [5,4,6] has a total strength of min([4,6]) * sum([4,6]) = 4 * 10 = 40
+- [5,4,6] from [5,4,6] has a total strength of min([5,4,6]) * sum([5,4,6]) = 4 * 15 = 60
+The sum of all the total strengths is 25 + 16 + 36 + 36 + 40 + 60 = 213.
 ```
 
 ## Approach

@@ -6,27 +6,47 @@
 ---
 
 ## Problem Description
-You are given an integer array `nums` of length `n` and an array `removeOrder` of length `n` containing a permutation of indices `0..n-1`. Starting with an empty array, you insert the elements of `nums` back in reverse order of `removeOrder`. After each insertion you consider the contiguous segments formed by inserted elements and compute the sum of each segment. Return an array `answer` where `answer[i]` is the maximum segment sum after the `i`‑th insertion (i.e., after `n‑i` removals).
+
+You are given two **0-indexed** integer arrays `nums` and `removeQueries`, both of length `n`. For the `i^th` query, the element in `nums` at the index `removeQueries[i]` is removed, splitting `nums` into different segments.
+
+A **segment** is a contiguous sequence of **positive** integers in `nums`. A **segment sum** is the sum of every element in a segment.
+
+Return* an integer array *`answer`*, of length *`n`*, where *`answer[i]`* is the **maximum** segment sum after applying the *`i^th` *removal.*
+
+**Note:** The same index will **not** be removed more than once.
+
+**Constraints:**
+- `n == nums.length == removeQueries.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i] <= 10^9`
+- `0 <= removeQueries[i] < n`
+- All the values of `removeQueries` are **unique**.
 
 ## Examples
+
 **Example 1:**
 ```
-nums = [1,2,5,6]
-removeOrder = [3,0,1,2]
-Insert order (reverse) = [2,1,0,3]
-Step 1: insert 5 → segments [5] → max = 5
-Step 2: insert 2 → segments [2,5] → max = 7
-Step 3: insert 1 → segments [1,2,5] → max = 8
-Step 4: insert 6 → segments [1,2,5,6] → max = 14
-answer = [5,7,8,14]
+Input: nums = [1,2,5,6,1], removeQueries = [0,3,2,4,1]
+Output: [14,7,2,2,0]
+Explanation: Using 0 to indicate a removed element, the answer is as follows:
+Query 1: Remove the 0th element, nums becomes [0,2,5,6,1] and the maximum segment sum is 14 for segment [2,5,6,1].
+Query 2: Remove the 3rd element, nums becomes [0,2,5,0,1] and the maximum segment sum is 7 for segment [2,5].
+Query 3: Remove the 2nd element, nums becomes [0,2,0,0,1] and the maximum segment sum is 2 for segment [2].
+Query 4: Remove the 4th element, nums becomes [0,2,0,0,0] and the maximum segment sum is 2 for segment [2].
+Query 5: Remove the 1st element, nums becomes [0,0,0,0,0] and the maximum segment sum is 0, since there are no segments.
+Finally, we return [14,7,2,2,0].
 ```
 
 **Example 2:**
 ```
-nums = [3,1,2]
-removeOrder = [0,1,2]
-Insert order = [2,1,0]
-Step results → answer = [2,3,6]
+Input: nums = [3,2,11,1], removeQueries = [3,2,1,0]
+Output: [16,5,3,0]
+Explanation: Using 0 to indicate a removed element, the answer is as follows:
+Query 1: Remove the 3rd element, nums becomes [3,2,11,0] and the maximum segment sum is 16 for segment [3,2,11].
+Query 2: Remove the 2nd element, nums becomes [3,2,0,0] and the maximum segment sum is 5 for segment [3,2].
+Query 3: Remove the 1st element, nums becomes [3,0,0,0] and the maximum segment sum is 3 for segment [3].
+Query 4: Remove the 0th element, nums becomes [0,0,0,0] and the maximum segment sum is 0, since there are no segments.
+Finally, we return [16,5,3,0].
 ```
 
 ## Approach

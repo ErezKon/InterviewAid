@@ -7,20 +7,41 @@
 ---
 
 ## Problem Description
-Given an array `boxes` of positive integers where each integer represents a color, you may remove any contiguous segment of boxes of the same color. Removing a segment of length `k` yields `k*k` points. After removal, the remaining boxes shift to fill the gap. Return the maximum points achievable.
+You are given several `boxes` with different colors represented by different positive numbers.
+
+You may experience several rounds to remove boxes until there is no box left. Each time you can choose some continuous boxes with the same color (i.e., composed of `k` boxes, `k >= 1`), remove them and get `k * k` points.
+
+Return *the maximum points you can get*.
+
+**Constraints:**
+
+- `1 <= boxes.length <= 100`
+- `1 <= boxes[i] <= 100`
 
 ## Examples
-**Example 1**
+
 ```
-Input: boxes = [1,3,2,2,2,3,4,3,1]
-Output: 23
-Explanation: Remove the three 2's (3*3=9), then the two 3's (2*2=4), then the remaining boxes for a total of 23.
+Example 1:
+  Input: boxes = [1,3,2,2,2,3,4,3,1]
+  Output: 23
+  Explanation:
+    [1, 3, 2, 2, 2, 3, 4, 3, 1]
+    ----> [1, 3, 3, 4, 3, 1] (3*3=9 points)
+    ----> [1, 3, 3, 3, 1] (1*1=1 points)
+    ----> [1, 1] (3*3=9 points)
+    ----> [] (2*2=4 points)
 ```
-**Example 2**
+
 ```
-Input: boxes = [1,1,1]
-Output: 9
-Explanation: Remove all three at once for 3*3=9 points.
+Example 2:
+  Input: boxes = [1,1,1]
+  Output: 9
+```
+
+```
+Example 3:
+  Input: boxes = [1]
+  Output: 1
 ```
 
 ## Approach

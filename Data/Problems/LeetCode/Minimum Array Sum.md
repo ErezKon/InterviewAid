@@ -8,30 +8,45 @@
 
 ## Problem Description
 
-You are given an integer array `nums` and three integers `k`, `op1`, and `op2`. You may apply two types of operations on each element at most `op1` times for halving (rounding up) and `op2` times for subtracting `k` (if the element is at least `k`). Each operation can be used on any element, and the order of applying both operations on the same element matters. Return the minimum possible sum of the array after using at most the given number of each operation.
+You are given an integer array `nums` and three integers `k`, `op1`, and `op2`.
 
-Constraints:
-- `1 <= nums.length <= 10^5`
-- `1 <= nums[i] <= 10^9`
-- `0 <= op1, op2 <= 10`
-- `1 <= k <= 10^9`
+You can perform the following operations on `nums`:
+- **Operation 1**: Choose an index `i` and divide `nums[i]` by 2, **rounding up** to the nearest whole number. You can perform this operation at most `op1` times, and not more than **once** per index.
+- **Operation 2**: Choose an index `i` and subtract `k` from `nums[i]`, but only if `nums[i]` is greater than or equal to `k`. You can perform this operation at most `op2` times, and not more than **once** per index.
+
+**Note:** Both operations can be applied to the same index, but at most once each.
+
+Return the **minimum** possible **sum** of all elements in `nums` after performing any number of operations.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `0 <= nums[i] <= 10^5`
+- `0 <= k <= 10^5`
+- `0 <= op1, op2 <= nums.length`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [10,20,7], k = 5, op1 = 1, op2 = 1
-Output: 22
-Explanation: Apply op1 (halve) on 20 → 10, then op2 (subtract 5) on 10 → 5. Final array [10,5,7] sums to 22.
+Example 1:
+  Input: nums = [2,8,3,19,3], k = 3, op1 = 1, op2 = 1
+  Output: 23
+  Explanation:
+  - Apply Operation 2 to nums[1] = 8, making nums[1] = 5.
+  - Apply Operation 1 to nums[3] = 19, making nums[3] = 10.
+  - The resulting array becomes [2, 5, 3, 10, 3], which has the minimum possible sum of 23 after applying the operations.
 ```
 
-**Example 2:**
 ```
-Input: nums = [3,8,6], k = 2, op1 = 2, op2 = 0
-Output: 9
-Explanation: Halve 8 → 4, then halve 4 → 2. Array becomes [3,2,6] sum = 11, but a better choice is halving 6 twice → 2, sum = 7. Minimum achievable sum is 9.
+Example 2:
+  Input: nums = [2,4,3], k = 3, op1 = 2, op2 = 1
+  Output: 3
+  Explanation:
+  - Apply Operation 1 to nums[0] = 2, making nums[0] = 1.
+  - Apply Operation 1 to nums[1] = 4, making nums[1] = 2.
+  - Apply Operation 2 to nums[2] = 3, making nums[2] = 0.
+  - The resulting array becomes [1, 2, 0], which has the minimum possible sum of 3 after applying the operations.
 ```
 
 ---

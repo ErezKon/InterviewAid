@@ -7,22 +7,46 @@
 ---
 
 ## Problem Description
-A *trionic array* supports three operations on an integer array `arr` of length `n`:
-1. **Update(i, val)** – set `arr[i] = val`.
-2. **Query(l, r)** – return the sum of elements from index `l` to `r` inclusive.
-3. **Reset()** – set all elements of `arr` to `0`.
-In this hard version, you must support an additional operation:
-4. **RangeUpdate(l, r, delta)** – add `delta` to every element in the sub‑array `arr[l..r]`.
-All operations must run in logarithmic time.
+
+> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below implement an invented lazy segment tree. Correct idea: scan maximal rise–fall–rise pieces. For each piece the fixed core is `nums[p−1..q+1]` (last two of the first rise, the whole fall, first step of the last rise); add the best non-negative suffix sum extending left along the first rise and the best non-negative prefix sum extending right along the last rise. Restart from the valley `q`. O(n).*
+
+You are given an integer array `nums` of length `n`.
+
+A **trionic subarray** is a contiguous subarray `nums[l...r]` (with `0 <= l < r < n`) for which there exist indices `l < p < q < r` such that:
+
+- `nums[l...p]` is **strictly** increasing,
+- `nums[p...q]` is **strictly** decreasing,
+- `nums[q...r]` is **strictly** increasing.
+
+Return the **maximum** sum of any trionic subarray in `nums`.
+
+**Constraints:**
+- `4 <= n = nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
+- It is guaranteed that at least one trionic subarray exists.
 
 ## Examples
+
 **Example 1:**
 ```
-TrionicArray obj = new TrionicArray([0,0,0,0])
-obj.update(1,5)            // arr = [0,5,0,0]
-obj.rangeUpdate(0,2,3)     // arr = [3,8,3,0]
-obj.query(1,3)             // returns 8+3+0 = 11
-obj.reset()                // arr = [0,0,0,0]
+Input: nums = [0,-2,-1,-3,0,2,-1]
+Output: -4
+Explanation: Pick l = 1, p = 2, q = 3, r = 5:
+- nums[l...p] = nums[1...2] = [-2, -1] is strictly increasing (-2 < -1).
+- nums[p...q] = nums[2...3] = [-1, -3] is strictly decreasing (-1 > -3)
+- nums[q...r] = nums[3...5] = [-3, 0, 2] is strictly increasing (-3 < 0 < 2).
+- Sum = (-2) + (-1) + (-3) + 0 + 2 = -4.
+```
+
+**Example 2:**
+```
+Input: nums = [1,4,2,7]
+Output: 14
+Explanation: Pick l = 0, p = 1, q = 2, r = 3:
+- nums[l...p] = nums[0...1] = [1, 4] is strictly increasing (1 < 4).
+- nums[p...q] = nums[1...2] = [4, 2] is strictly decreasing (4 > 2).
+- nums[q...r] = nums[2...3] = [2, 7] is strictly increasing (2 < 7).
+- Sum = 1 + 4 + 2 + 7 = 14.
 ```
 
 ## Approach

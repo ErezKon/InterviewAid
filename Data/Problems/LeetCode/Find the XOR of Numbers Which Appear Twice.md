@@ -7,21 +7,34 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, each element appears either once or twice. Return the XOR of all elements that appear exactly twice. The order of elements does not matter.
+You are given an array `nums`, where each number in the array appears **either** once **or** twice.
+
+Return the bitwise `XOR` of all the numbers that appear twice in the array, or 0 if no number appears twice.
 
 ## Examples
 **Example 1:**
 ```
-Input: nums = [1,2,3,2,1]
-Output: 3
-Explanation: 1 and 2 appear twice, 1 XOR 2 XOR 1 XOR 2 = 0, leaving 3.
+Input: nums = [1,2,1,3]
+Output: 1
+Explanation: The only number that appears twice in nums is 1.
 ```
 **Example 2:**
 ```
-Input: nums = [4,5,5,4,6]
+Input: nums = [1,2,3]
 Output: 0
-Explanation: 4 and 5 each appear twice, their XOR cancels out, leaving 0.
+Explanation: No number appears twice in nums.
 ```
+**Example 3:**
+```
+Input: nums = [1,2,2,1]
+Output: 3
+Explanation: Numbers 1 and 2 appeared twice. 1 XOR 2 == 3.
+```
+
+## Constraints
+- `1 <= nums.length <= 50`
+- `1 <= nums[i] <= 50`
+- Each number in `nums` appears either once or twice.
 
 ## Approach
 Use the XOR operation's property that `a XOR a = 0` and `a XOR 0 = a`. Iterate through the array, XORing each element. Elements appearing twice cancel out, leaving the XOR of the remaining elements (which are the ones that appear twice, resulting in 0) – to obtain the XOR of numbers that appear twice, we can XOR all elements and then XOR the result with the XOR of elements that appear once (found via a frequency map). Simpler: count frequencies, XOR numbers with count == 2.

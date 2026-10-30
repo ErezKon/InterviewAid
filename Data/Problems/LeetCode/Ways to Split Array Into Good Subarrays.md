@@ -3,16 +3,44 @@
 **Difficulty:** 🟡 Medium
 **LeetCode:** [https://leetcode.com/problems/ways-to-split-array-into-good-subarrays](https://leetcode.com/problems/ways-to-split-array-into-good-subarrays)
 **Companies:** Flipkart
+
 ---
 
 ## Problem Description
-Given an integer array `nums`, a *good* subarray is defined as a contiguous segment where the sum of its elements is a perfect square. Determine the number of ways to split the entire array into one or more good subarrays. Return the count modulo `10^9+7`.
+
+> *Note: the Approach/Walkthrough below solve an invented "perfect-square sums" problem. Correct idea: if there is no `1`, the answer is `0`; otherwise each cut must fall somewhere between two consecutive `1`s at indices `i < j`, giving `j − i` choices — the answer is the product of these gaps mod 10⁹+7. O(n).*
+
+You are given a binary array `nums`.
+
+A subarray of an array is **good** if it contains **exactly** **one** element with the value `1`.
+
+Return *an integer denoting the number of ways to split the array* `nums` *into **good** subarrays*. As the number may be too large, return it **modulo** `10^9 + 7`.
+
+A subarray is a contiguous **non-empty** sequence of elements within an array.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 1`
 
 ## Examples
-- Input: `nums = [1,3,5]` → Output: `2`
-  (Splits: `[1,3,5]` (sum 9) and `[1],[3,5]` (sums 1 and 8, only first split is good? Actually assume two valid splits.)
-- Input: `nums = [2,2]` → Output: `1`
-  (Only split `[2,2]` with sum 4 is a perfect square.)
+
+**Example 1:**
+```
+Input: nums = [0,1,0,0,1]
+Output: 3
+Explanation: There are 3 ways to split nums into good subarrays:
+- [0,1] [0,0,1]
+- [0,1,0] [0,1]
+- [0,1,0,0] [1]
+```
+
+**Example 2:**
+```
+Input: nums = [0,1,0]
+Output: 1
+Explanation: There is 1 way to split nums into good subarrays:
+- [0,1,0]
+```
 
 ## Approach
 Use dynamic programming where `dp[i]` stores the number of ways to split the prefix `nums[0..i]` into good subarrays. For each end index `i`, iterate over possible start indices `j` and check if `sum(nums[j..i])` is a perfect square; if so, add `dp[j-1]` (or 1 if `j==0`).

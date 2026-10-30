@@ -8,7 +8,14 @@
 
 ## 1. Problem Description
 
-Given a binary string `s` and an integer `n`, return `true` if the binary representation of every integer from `1` to `n` appears as a substring of `s`.
+Given a binary string `s` and a positive integer `n`, return `true` *if the binary representation of all the integers in the range* `[1, n]` *are **substrings** of* `s`*, or* `false` *otherwise*.
+
+A **substring** is a contiguous sequence of characters within a string.
+
+**Constraints:**
+- `1 ≤ s.length ≤ 1000`
+- `s[i]` is either `'0'` or `'1'`.
+- `1 ≤ n ≤ 10⁹`
 
 ---
 
@@ -33,18 +40,14 @@ FUNCTION queryString(s, n):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: s = "0110", n = 3
-Output: true
-Explanation: Binary representations are "1", "10", "11". All appear as substrings.
-```
+Example 1:
+  Input: s = "0110", n = 3
+  Output: true
 
-**Example 2:**
-```
-Input: s = "0110", n = 4
-Output: false
-Explanation: "100" (binary of 4) is not a substring.
+Example 2:
+  Input: s = "0110", n = 4
+  Output: false
 ```
 
 ---

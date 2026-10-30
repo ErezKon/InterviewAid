@@ -18,7 +18,17 @@
 
 ## 1. Problem Description
 
-The **score** of a prefix of length `i` is `nums[i] + max(nums[0..i])`. Return the array of all prefix scores.
+We define the **conversion array** `conver` of an array `arr` as follows:
+
+- `conver[i] = arr[i] + max(arr[0..i])` where `max(arr[0..i])` is the maximum value of `arr[j]` over `0 <= j <= i`.
+
+We also define the **score** of an array `arr` as the sum of the values of the conversion array of `arr`.
+
+Given a **0-indexed** integer array `nums` of length `n`, return *an array* `ans` *of length* `n` *where* `ans[i]` *is the score of the prefix* `nums[0..i]`.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ---
 
@@ -45,17 +55,24 @@ FUNCTION findPrefixScore(nums):
 Input: nums = [2,3,7,5,10]
 Output: [4,10,24,36,56]
 Explanation:
-- Prefix 0: max=2, score=2+2=4
-- Prefix 1: max=3, score=3+3 + previous = 10
-- Prefix 2: max=7, score=7+7 + previous = 24
-- Prefix 3: max=7, score=5+7 + previous = 36
-- Prefix 4: max=10, score=10+10 + previous = 56
+For the prefix [2], the conversion array is [4] hence the score is 4
+For the prefix [2, 3], the conversion array is [4, 6] hence the score is 10
+For the prefix [2, 3, 7], the conversion array is [4, 6, 14] hence the score is 24
+For the prefix [2, 3, 7, 5], the conversion array is [4, 6, 14, 12] hence the score is 36
+For the prefix [2, 3, 7, 5, 10], the conversion array is [4, 6, 14, 12, 20] hence the score is 56
 ```
 
 **Example 2:**
 ```
-Input: nums = [1,1,1]
-Output: [2,5,9]
+Input: nums = [1,1,2,4,8,16]
+Output: [2,4,8,16,32,64]
+Explanation:
+For the prefix [1], the conversion array is [2] hence the score is 2
+For the prefix [1, 1], the conversion array is [2, 2] hence the score is 4
+For the prefix [1, 1, 2], the conversion array is [2, 2, 4] hence the score is 8
+For the prefix [1, 1, 2, 4], the conversion array is [2, 2, 4, 8] hence the score is 16
+For the prefix [1, 1, 2, 4, 8], the conversion array is [2, 2, 4, 8, 16] hence the score is 32
+For the prefix [1, 1, 2, 4, 8, 16], the conversion array is [2, 2, 4, 8, 16, 32] hence the score is 64
 ```
 
 ---

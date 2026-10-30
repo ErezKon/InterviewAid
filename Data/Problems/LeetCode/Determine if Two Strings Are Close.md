@@ -20,12 +20,19 @@
 
 ## Problem Description
 
-Two strings are considered **close** if you can attain one from the other using the following operations (any number of times, in any order):
+Two strings are considered **close** if you can attain one from the other using the following operations:
 
-- **Operation 1:** Swap any two **existing** characters. (e.g., `"abcde" → "aecdb"`)
-- **Operation 2:** Transform every occurrence of one character into another and vice versa. (e.g., `"aacabb" → "bbcbaa"` — all `a`s become `b`s, all `b`s become `a`s)
+- Operation 1: Swap any two **existing** characters.
 
-Return `true` if `word1` and `word2` are close, `false` otherwise.
+- For example, `abcde -> aecdb`
+
+- Operation 2: Transform **every** occurrence of one **existing** character into another **existing** character, and do the same with the other character.
+
+- For example, `aacabb -> bbcbaa` (all `a`'s turn into `b`'s, and all `b`'s turn into `a`'s)
+
+You can use the operations on either string as many times as necessary.
+
+Given two strings, `word1` and `word2`, return `true`* if *`word1`* and *`word2`* are **close**, and *`false`* otherwise.*
 
 **Constraints:**
 - `1 <= word1.length, word2.length <= 10^5`
@@ -39,25 +46,26 @@ Return `true` if `word1` and `word2` are close, `false` otherwise.
 ```
 Input: word1 = "abc", word2 = "bca"
 Output: true
-Explanation: Apply operation 1 (swap) twice: "abc" → "acb" → "bca"
+Explanation: You can attain word2 from word1 in 2 operations.
+Apply Operation 1: "abc" -> "acb"
+Apply Operation 1: "acb" -> "bca"
 ```
 
 **Example 2:**
 ```
 Input: word1 = "a", word2 = "aa"
 Output: false
-Explanation: Different lengths → impossible.
+Explanation: It is impossible to attain word2 from word1, or vice versa, in any number of operations.
 ```
 
 **Example 3:**
 ```
 Input: word1 = "cabbba", word2 = "abbccc"
 Output: true
-Explanation:
-  "cabbba" → freq: {c:1, a:2, b:3}
-  "abbccc" → freq: {a:1, b:2, c:3}
-  Same char set {a,b,c}, same sorted frequencies [1,2,3] → close ✅
-  (Use Op 2 to swap frequency assignments between chars)
+Explanation: You can attain word2 from word1 in 3 operations.
+Apply Operation 1: "cabbba" -> "caabbb"
+Apply Operation 2: "caabbb" -> "baaccc"
+Apply Operation 2: "baaccc" -> "abbccc"
 ```
 
 ---

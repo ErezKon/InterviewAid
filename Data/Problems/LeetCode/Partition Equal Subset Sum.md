@@ -9,17 +9,30 @@
 
 ## 1. Problem Description
 
-Given an integer array `nums`, return `true` if you can partition it into two subsets with equal sum.
+Given an integer array `nums`, return `true` *if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or* `false` *otherwise*.
+
+**Constraints:**
+
+- `1 <= nums.length <= 200`
+- `1 <= nums[i] <= 100`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,5,11,5]` | `true` | Subset `{1,5,5}` sums to 11, the other subset `{11}` also sums to 11. |
-| `[1,2,3,5]` | `false` | No way to split into equal sums. |
-| `[2,2,3,5]` | `true` | Subset `{2,3,5}` sums to 10, the other `{2,8}`? Actually correct subset `{2,3,5}` =10 and `{2,8}` not present; but `{2,2,3,5}` total 12, target 6, subset `{1,5}`? Wait correct example: `[2,2,3,5]` total 12, target 6, subset `{1,5}` not exist. Use `[1,2,5]`? We'll keep two examples only.
+```
+Example 1:
+  Input: nums = [1,5,11,5]
+  Output: true
+  Explanation: The array can be partitioned as [1, 5, 5] and [11].
+```
+
+```
+Example 2:
+  Input: nums = [1,2,3,5]
+  Output: false
+  Explanation: The array cannot be partitioned into equal sum subsets.
+```
 
 ---
 

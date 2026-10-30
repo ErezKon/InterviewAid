@@ -7,15 +7,25 @@
 ---
 
 ## Problem Description
-Given an `m x n` grid, a ball starts at `(startRow, startColumn)`. You may move the ball up, down, left, or right. After at most `maxMove` moves, count the number of ways the ball can move out of the grid boundary. Return the count modulo `10^9 + 7`.
+
+There is an `m x n` grid with a ball. The ball is initially at the position `[startRow, startColumn]`. You are allowed to move the ball to one of the four adjacent cells in the grid (possibly out of the grid crossing the grid boundary). You can apply **at most** `maxMove` moves to the ball.
+
+Given the five integers `m`, `n`, `maxMove`, `startRow`, `startColumn`, return the number of paths to move the ball out of the grid boundary. Since the answer can be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= m, n <= 50`
+- `0 <= maxMove <= 50`
+- `0 <= startRow < m`
+- `0 <= startColumn < n`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
 Output: 6
-Explanation: Six paths lead out of bounds within two moves.
 ```
+
 **Example 2:**
 ```
 Input: m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1

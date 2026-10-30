@@ -18,7 +18,13 @@
 
 ## 1. Problem Description
 
-Paint an n×3 grid with 3 colors such that no two adjacent cells share the same color. Count valid colorings mod 10⁹+7.
+You have a `grid` of size `n x 3` and you want to paint each cell of the grid with exactly one of the three colors: **Red**, **Yellow,** or **Green** while making sure that no two adjacent cells have the same color (i.e., no two cells that share vertical or horizontal sides have the same color).
+
+Given `n` the number of rows of the grid, return *the number of ways* you can paint this `grid`. As the answer may grow large, the answer **must be** computed modulo `10^9 + 7`.
+
+**Constraints:**
+- `n == grid.length`
+- `1 <= n <= 5000`
 
 ---
 
@@ -49,13 +55,18 @@ FUNCTION numOfWays(n):
 
 ## 4. Examples
 
-| n | Output |
-|---|--------|
-| 1 | 6 |
-| 2 | 30 |
-| 3 | 126 |
+**Example 1:**
+```
+Input: n = 1
+Output: 12
+Explanation: There are 12 possible way to paint the grid as shown.
+```
 
-*Explanation*: For n=1, any of the 6 valid row patterns is allowed. For larger n, the DP recurrence computes the count.
+**Example 2:**
+```
+Input: n = 5000
+Output: 30228214
+```
 
 ---
 

@@ -21,16 +21,31 @@
 
 ## 1. Problem Description
 
-Given the root of an N-ary tree, return the level order traversal of its nodes' values as a list of lists. Each inner list contains values of nodes at the same depth from left to right.
+Given an n-ary tree, return the *level order* traversal of its nodes' values.
+
+*Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).*
+
+**Constraints:**
+
+- The height of the n-ary tree is less than or equal to `1000`
+- The total number of nodes is between `[0, 10^4]`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[[1,null],[3,2,4],[5,6]]` | `[[1],[3,2,4],[5,6]]` | Level 0: `[1]`; Level 1: children of 1 are `3,2,4`; Level 2: children of those nodes are `5,6`. |
-| `[[1,null]]` | `[[1]]` | Single node tree yields one level. |
+```
+Example 1:
+  Input: root = [1,null,3,2,4,null,5,6]
+  Output: [[1],[3,2,4],[5,6]]
+  Explanation: Tree: 1 has children 3,2,4; node 3 has children 5,6.
+```
+
+```
+Example 2:
+  Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+  Output: [[1],[2,3,4,5],[6,7,8,9,10],[11,12,13],[14]]
+```
 
 ---
 

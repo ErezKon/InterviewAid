@@ -20,22 +20,29 @@
 
 ## Problem Description
 
-Count subarrays of length 3 `[a, b, c]` where `(a + c) * 2 == b` (the middle element is exactly twice the sum of the first and third).
+Given an integer array `nums`, return the number of subarrays of length 3 such that the sum of the first and third numbers equals *exactly* half of the second number.
+
+**Constraints:**
+- `3 <= nums.length <= 100`
+- `-100 <= nums[i] <= 100`
 
 ---
 
 ## Examples
 
-| nums | Output |
-|------|--------|
-| `[1,2,1,2,1]` | `2` |
-| `[0,0,0]` | `0` |
-| `[2,8,2,8,2]` | `2` |
+```
+Example 1:
+  Input: nums = [1,2,1,4,1]
+  Output: 1
+  Explanation: Only the subarray [1,4,1] contains exactly 3 elements where the sum of the first and third numbers equals half the middle number.
+```
 
-**Explanation:**
-- In `[1,2,1,2,1]`, the qualifying subarrays are `[1,2,1]` at indices 0‑2 and `[1,2,1]` at indices 2‑4.
-- In `[0,0,0]`, `(0+0)*2 != 0` never holds.
-- In `[2,8,2,8,2]`, the subarrays `[2,8,2]` at indices 0‑2 and 2‑4 satisfy the condition.
+```
+Example 2:
+  Input: nums = [1,1,1]
+  Output: 0
+  Explanation: [1,1,1] is the only subarray of length 3. However, its first and third numbers do not add to half the middle number.
+```
 
 ---
 

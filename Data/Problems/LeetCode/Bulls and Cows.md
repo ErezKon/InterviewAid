@@ -7,11 +7,41 @@
 ---
 
 ## Problem Description
-You are given two strings `secret` and `guess` of equal length, consisting of digits `'0'`‑`'9'`. A *bull* is a digit that matches in both value and position. A *cow* is a digit that appears in both strings but in different positions. Return a hint string formatted as `"xAyB"` where `x` is the number of bulls and `y` is the number of cows.
+You are playing the **Bulls and Cows** game with your friend.
+
+You write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:
+
+- The number of "bulls", which are digits in the guess that are in the correct position.
+- The number of "cows", which are digits in the guess that are in your secret number but are located in the wrong position. Specifically, the non-bull digits in the guess that could be rearranged such that they become bulls.
+
+Given the secret number `secret` and your friend's guess `guess`, return *the hint for your friend's guess*.
+
+The hint should be formatted as `"xAyB"`, where `x` is the number of bulls and `y` is the number of cows. Note that both `secret` and `guess` may contain duplicate digits.
+
+**Constraints:**
+- `1 ≤ secret.length, guess.length ≤ 1000`
+- `secret.length == guess.length`
+- `secret` and `guess` consist of digits only.
 
 ## Examples
-- Input: `secret = "1807"`, `guess = "7810"` → Output: `"1A3B"`. One bull (`'8'` at position 2) and three cows (`'1','0','7`).
-- Input: `secret = "1123"`, `guess = "0111"` → Output: `"1A1B"`.
+```
+Example 1:
+  Input: secret = "1807", guess = "7810"
+  Output: "1A3B"
+  Explanation: Bulls are connected with a '|' and cows are underlined:
+  "1807"
+    |
+  "7810"
+
+Example 2:
+  Input: secret = "1123", guess = "0111"
+  Output: "1A1B"
+  Explanation: Bulls are connected with a '|' and cows are underlined:
+  "1123"        "1123"
+    |      or     |
+  "0111"        "0111"
+  Note that only one of the two unmatched 1s is counted as a cow since the non-bull digits can only be rearranged to allow one 1 to be a bull.
+```
 
 ## Approach
 **Two‑Pass Counting** – First pass counts bulls and records the frequency of non‑matching digits for both strings. Second pass sums the minimum of each digit’s counts to obtain cows.

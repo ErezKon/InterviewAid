@@ -7,14 +7,42 @@
 ---
 
 ## Problem Description
-You are given an integer array `rolls` representing the outcomes of some dice rolls, an integer `mean` indicating the desired average value of **all** rolls (including the missing ones), and an integer `n` denoting the number of missing rolls. Return an array of length `n` containing the values of the missing rolls (each between 1 and 6) that achieve the target mean. If it is impossible, return an empty array.
+You have observations of `n + m` **6-sided** dice rolls with each face numbered from `1` to `6`. `n` of the observations went missing, and you only have the observations of `m` rolls. Fortunately, you have also calculated the **average value** of the `n + m` rolls.
+
+You are given an integer array `rolls` of length `m` where `rolls[i]` is the value of the `i`-th observation. You are also given the two integers `mean` and `n`.
+
+Return *an array of length* `n` *containing the missing observations such that the **average value** of the* `n + m` *rolls is **exactly*** `mean`. If there are multiple valid answers, return *any of them*. If no such array exists, return *an empty array*.
+
+The **average value** of a set of `k` numbers is the sum of the numbers divided by `k`.
+
+Note that `mean` is an integer, so the sum of the `n + m` rolls should be divisible by `n + m`.
+
+**Constraints:**
+- `m == rolls.length`
+- `1 <= n, m <= 10^5`
+- `1 <= rolls[i], mean <= 6`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `rolls = [3,2,4,3]`, `mean = 4`, `n = 2` | `[6,6]` | Total required sum = 4 × 6 = 24. Existing sum = 12, remaining = 12 → two rolls of 6. |
-| `rolls = [1,5,6]`, `mean = 3`, `n = 4` | `[]` | Required total = 3 × 7 = 21, existing sum = 12, remaining = 9 which cannot be distributed into 4 rolls (min 4, max 24). |
-| `rolls = []`, `mean = 5`, `n = 3` | `[5,5,5]` | Simple case where all missing rolls equal the mean.
+```
+Example 1:
+  Input: rolls = [3,2,4,3], mean = 4, n = 2
+  Output: [6,6]
+  Explanation: The mean of all n + m rolls is (3 + 2 + 4 + 3 + 6 + 6) / 6 = 4.
+```
+
+```
+Example 2:
+  Input: rolls = [1,5,6], mean = 3, n = 4
+  Output: [2,3,2,2]
+  Explanation: The mean of all n + m rolls is (1 + 5 + 6 + 2 + 3 + 2 + 2) / 7 = 3.
+```
+
+```
+Example 3:
+  Input: rolls = [1,2,3,4], mean = 6, n = 4
+  Output: []
+  Explanation: It is impossible for the mean to be 6 no matter what the 4 missing rolls are.
+```
 
 ## Approach
 Compute the total sum needed for the final array: `total = mean * (len(rolls) + n)`. Subtract the sum of known rolls to get `remaining`. The missing rolls must each be between 1 and 6, so `n ≤ remaining ≤ 6·n`. If the condition fails, return `[]`. Otherwise distribute `remaining` uniformly: `base, extra = divmod(remaining, n)`. Fill the result with `extra` rolls of `base+1` and the rest with `base`.
@@ -23,15 +51,15 @@ Compute the total sum needed for the final array: `total = mean * (len(rolls) + 
 For `rolls = [3,2,4,3]`, `mean = 4`, `n = 2`:
 | Step | Calculation |
 |------|-------------|
-| total needed | 4 × (4 + 2) = 24 |
+| total needed | 4 × (4 + 2) = 24 |
 | sum of known rolls | 3+2+4+3 = 12 |
-| remaining | 24 - 12 = 12 |
-| feasibility | 2 ≤ 12 ≤ 12 → OK |
+| remaining | 24 - 12 = 12 |
+| feasibility | 2 ≤ 12 ≤ 12 → OK |
 | base, extra | divmod(12, 2) → (6, 0) |
 | result | `[6,6]` |
 
 ## Complexity Analysis
-- **Time:** O(1) – only constant‑time arithmetic.
+- **Time:** O(m + n) – sum the known rolls and build the output.
 - **Space:** O(n) for the output array.
 
 ## Follow-Up Questions

@@ -7,18 +7,37 @@
 ---
 
 ## Problem Description
-You are given an array `operations` where each operation is represented as a triplet `[start, end, reward]`. Performing an operation yields `reward` points, but you may only perform operations whose intervals `[start, end]` do not overlap with any other chosen operation. Return the maximum total reward achievable.
+
+> *Note: the Approach below solves an invented interval-scheduling problem. Officially you may add `rewardValues[i]` only if it is **greater** than the current total `x`. Correct idea: sort the distinct values and keep a bitset of reachable totals. For each value `v`, `reach |= (reach & ((1 << v) − 1)) << v`. The answer is the highest set bit.*
+
+You are given an integer array `rewardValues` of length `n`, representing the values of rewards.
+
+Initially, your total reward `x` is 0, and all indices are **unmarked**. You are allowed to perform the following operation **any** number of times:
+
+- Choose an **unmarked** index `i` from the range `[0, n - 1]`.
+- If `rewardValues[i]` is **greater** than your current total reward `x`, then add `rewardValues[i]` to `x` (i.e., `x = x + rewardValues[i]`), and **mark** the index `i`.
+
+Return an integer denoting the **maximum ***total reward* you can collect by performing the operations optimally.
+
+**Constraints:**
+- `1 <= rewardValues.length <= 2000`
+- `1 <= rewardValues[i] <= 2000`
 
 ## Examples
+
 **Example 1:**
-Input: `operations = [[1,3,4],[2,5,6],[4,6,5]]`
-Output: `9`
-Explanation: Choose operations `[1,3,4]` and `[4,6,5]` (non‑overlapping) for total reward `4+5=9`.
+```
+Input: rewardValues = [1,1,3,3]
+Output: 4
+Explanation: During the operations, we can choose to mark the indices 0 and 2 in order, and the total reward will be 4, which is the maximum.
+```
 
 **Example 2:**
-Input: `operations = [[0,2,3],[1,4,5],[5,7,2]]`
-Output: `5`
-Explanation: The best single operation is `[1,4,5]`. The third operation does not overlap with it, but adding it would exceed the interval limit, so total remains `5`.
+```
+Input: rewardValues = [1,6,4,3,2]
+Output: 11
+Explanation: Mark the indices 0, 2, and 1 in order. The total reward will then be 11, which is the maximum.
+```
 
 ## Approach
 **Weighted Interval Scheduling – DP** – Sort operations by their end time, then for each operation compute the best reward by either taking it (adding its reward to the best compatible previous operation) or skipping it.

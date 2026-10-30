@@ -1,12 +1,47 @@
 # 2880. Select Data
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/select-data](https://leetcode.com/problems/select-data)
 **Companies:** Bloomberg, Google, Microsoft
 ---
 
 ## Problem Description
 
-Given a `students` DataFrame, select the `name` and `age` of the student with `student_id = 101`.
+```
+DataFrame students
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| student_id  | int    |
+| name        | object |
+| age         | int    |
++-------------+--------+
+```
+
+Write a solution to select the name and age of the student with `student_id = 101`.
+
+The result format is in the following example.
+
+```
+**Example 1:
+Input:**
++------------+---------+-----+
+| student_id | name    | age |
++------------+---------+-----+
+| 101        | Ulysses | 13  |
+| 53         | William | 10  |
+| 128        | Henry   | 6   |
+| 3          | Henry   | 11  |
++------------+---------+-----+
+**Output:**
++---------+-----+
+| name    | age |
++---------+-----+
+| Ulysses | 13  |
++---------+-----+
+**Explanation:
+**Student Ulysses has student_id = 101, we select the name and age.
+```
 
 ---
 
@@ -25,23 +60,7 @@ FUNCTION selectData(students):
 
 ## Examples
 
-**Example 1:**
-```
-students = DataFrame([
-    {"student_id": 101, "name": "Alice", "age": 20, "grade": "A"},
-    {"student_id": 102, "name": "Bob",   "age": 21, "grade": "B"}
-])
-Output: [{"name": "Alice", "age": 20}]
-```
 
-**Example 2:**
-```
-students = DataFrame([
-    {"student_id": 103, "name": "Carol", "age": 22, "grade": "A"},
-    {"student_id": 101, "name": "Dave",  "age": 23, "grade": "C"}
-])
-Output: [{"name": "Dave", "age": 23}]
-```
 
 ---
 

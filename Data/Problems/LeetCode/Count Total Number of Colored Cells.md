@@ -8,31 +8,34 @@
 
 ## Problem Description
 
-After `n` minutes of expanding a diamond pattern on an infinite grid (starting from 1 cell), return the total number of colored cells. Pattern: 1, 5, 13, 25, ...
+There exists an infinitely large two-dimensional grid of uncolored unit cells. You are given a positive integer `n`, indicating that you must do the following routine for `n` minutes:
+
+- At the first minute, color **any** arbitrary unit cell blue.
+- Every minute thereafter, color blue **every** uncolored cell that touches a blue cell.
+
+(After minutes 1, 2, and 3 the colored region is a diamond of 1, 5, and 13 cells.)
+
+Return *the number of **colored cells** at the end of* `n` *minutes*.
+
+**Constraints:**
+- `1 <= n <= 10^5`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: n = 1
-Output: 1
-Explanation: Only the initial cell is colored.
-```
-
-**Example 2:**
-```
-Input: n = 2
-Output: 5
-Explanation: After the second minute, the diamond adds 4 new cells around the center.
+Example 1:
+  Input: n = 1
+  Output: 1
+  Explanation: After 1 minute, there is only 1 blue cell, so we return 1.
 ```
 
-**Example 3:**
 ```
-Input: n = 3
-Output: 13
-Explanation: Cells added each minute follow 1, 4, 8, ... leading to total 13.
+Example 2:
+  Input: n = 2
+  Output: 5
+  Explanation: After 2 minutes, there are 4 colored cells on the boundary and 1 in the center, so we return 5.
 ```
 
 ---

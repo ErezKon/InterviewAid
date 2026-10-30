@@ -7,20 +7,36 @@
 ---
 
 ## Problem Description
-Given the head of a singly‑linked list, remove every consecutive sequence of nodes that sums to zero. After removal, concatenate the remaining parts and return the head of the resulting list. The list may contain positive, negative, or zero values.
+
+Given the `head` of a linked list, we repeatedly delete consecutive sequences of nodes that sum to `0` until there are no such sequences.
+
+After doing so, return the head of the final linked list. You may return any such answer.
+
+(Note that in the examples below, all sequences are serializations of `ListNode` objects.)
+
+**Constraints:**
+- The given linked list will contain between `1` and `1000` nodes.
+- Each node in the linked list has `-1000 <= node.val <= 1000`.
 
 ## Examples
+
 **Example 1:**
 ```
 Input: head = [1,2,-3,3,1]
 Output: [3,1]
-Explanation: The sequence 1,2,-3 sums to 0 and is removed. The remaining list is 3→1.
+Note: The answer [1,2,1] would also be accepted.
 ```
+
 **Example 2:**
 ```
 Input: head = [1,2,3,-3,4]
 Output: [1,2,4]
-Explanation: The subsequence 3,-3 sums to 0 and is removed.
+```
+
+**Example 3:**
+```
+Input: head = [1,2,3,-3,-2]
+Output: [1]
 ```
 
 ## Approach

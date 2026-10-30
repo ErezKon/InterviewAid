@@ -7,20 +7,30 @@
 ---
 
 ## Problem Description
-Given an `m x n` integer matrix `grid` where each row is sorted in non‑increasing order and each column is also sorted in non‑increasing order, return the total number of negative integers in the matrix.
+Given a `m x n` matrix `grid` which is sorted in non-increasing order both row-wise and column-wise, return *the number of **negative** numbers in* `grid`.
+
+(Each row is sorted in non‑increasing order and each column is also sorted in non‑increasing order.)
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 100`
+- `-100 <= grid[i][j] <= 100`
+
+**Follow up:** Could you find an `O(n + m)` solution?
 
 ## Examples
-**Example 1:**
 ```
-Input: grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
-Output: 8
-Explanation: There are 8 negative numbers in the matrix.
+Example 1:
+  Input: grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+  Output: 8
+  Explanation: There are 8 negatives number in the matrix.
 ```
-**Example 2:**
+
 ```
-Input: grid = [[3,2],[1,0]]
-Output: 0
-Explanation: No negative numbers.
+Example 2:
+  Input: grid = [[3,2],[1,0]]
+  Output: 0
 ```
 
 ## Approach

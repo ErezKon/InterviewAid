@@ -7,15 +7,37 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, find the maximum sum of any subarray whose length is a multiple of `k`. The subarray must be contiguous and can be of any length as long as its size % `k` == 0.
+
+You are given an array of integers `nums` and an integer `k`.
+
+Return the **maximum** sum of a subarray of `nums`, such that the size of the subarray is **divisible** by `k`.
+
+**Constraints:**
+- `1 <= k <= nums.length <= 2 * 10^5`
+- `-10^9 <= nums[i] <= 10^9`
 
 ## Examples
-- **Input:** `nums = [3, -1, 4, -1, 5, -9, 2]`, `k = 3`  
-  **Output:** `12`  
-  **Explanation:** Subarray `[3, -1, 4, -1, 5]` has length 5 (not multiple). The best valid subarray is `[3, -1, 4]` (sum = 6) or `[5, -9, 2]` (sum = ‑2). Actually the optimal is `[3, -1, 4, -1, 5, -9, 2]` length 7 not multiple. The maximum sum with length divisible by 3 is `[3, -1, 4]` + `[5, -9, 2]` = `6 + (-2) = 4`. The answer shown is illustrative.
-- **Input:** `nums = [1,2,3,4,5]`, `k = 2`  
-  **Output:** `14`  
-  **Explanation:** Choose subarray `[2,3,4,5]` (length 4) sum = 14.
+
+**Example 1:**
+```
+Input: nums = [1,2], k = 1
+Output: 3
+Explanation: The subarray [1, 2] with sum 3 has length equal to 2 which is divisible by 1.
+```
+
+**Example 2:**
+```
+Input: nums = [-1,-2,-3,-4,-5], k = 4
+Output: -10
+Explanation: The maximum sum subarray is [-1, -2, -3, -4] which has length equal to 4 which is divisible by 4.
+```
+
+**Example 3:**
+```
+Input: nums = [-5,1,2,-3,4], k = 2
+Output: 4
+Explanation: The maximum sum subarray is [1, 2, -3, 4] which has length equal to 4 which is divisible by 2.
+```
 
 ## Approach
 Use prefix sums modulo `k`. For each index `i`, compute `prefix[i]` = sum of first `i` elements. The remainder `r = i % k` groups indices that can form subarrays of length divisible by `k`. Maintaining the minimum prefix sum seen for each remainder allows computing the maximum subarray sum ending at `i` as `prefix[i] - minPrefix[r]`.

@@ -8,15 +8,26 @@
 ---
 
 ## Problem Description
-Given a non‑decreasing integer array `nums` (which may contain negative numbers), return a new array containing the squares of each element, also sorted in non‑decreasing order.
+
+Given an integer array `nums` sorted in **non-decreasing** order, return *an array of **the squares of each number** sorted in non-decreasing order*.
+
+**Constraints:**
+- `1 <= nums.length <= 10^4`
+- `-10^4 <= nums[i] <= 10^4`
+- `nums` is sorted in **non-decreasing** order.
+
+**Follow up:** Squaring each element and sorting the new array is very trivial, could you find an `O(n)` solution using a different approach?
 
 ## Examples
+
 **Example 1:**
 ```
 Input: nums = [-4,-1,0,3,10]
 Output: [0,1,9,16,100]
-Explanation: Squares are [16,1,0,9,100] and sorting yields the output.
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
 ```
+
 **Example 2:**
 ```
 Input: nums = [-7,-3,2,3,11]

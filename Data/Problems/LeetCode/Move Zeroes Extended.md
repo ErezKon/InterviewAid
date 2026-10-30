@@ -9,12 +9,34 @@
 ## Problem Description
 Given an integer array `nums`, move all `0`s to the end of the array while maintaining the relative order of the non‑zero elements. The operation must be performed **in‑place** with O(1) extra space.
 
+**Constraints:**
+- `1 <= nums.length <= 10^4`
+- `-2^31 <= nums[i] <= 2^31 - 1`
+- Must modify `nums` in-place without making a copy of the array.
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 ## Examples
-| nums | after move |
-|------|------------|
-| [0,1,0,3,12] | [1,3,12,0,0] |
-| [1,2,3] | [1,2,3] |
-| [0,0,0] | [0,0,0] |
+```
+Example 1:
+  Input: nums = [0,1,0,3,12]
+  Output: [1,3,12,0,0]
+  Explanation: Non-zero elements 1, 3, 12 are compacted to the front in their original order; the two zeros fill the tail.
+```
+
+```
+Example 2:
+  Input: nums = [1,2,3]
+  Output: [1,2,3]
+  Explanation: There are no zeros, so every element is written back to its own position and the array is unchanged.
+```
+
+```
+Example 3:
+  Input: nums = [0,0,0]
+  Output: [0,0,0]
+  Explanation: No non-zero element is found, so write stays at 0 and the fill step writes zeros to every position.
+```
 
 ## Approach
 **Algorithm:** Reader‑Writer (slow‑fast) pointer.

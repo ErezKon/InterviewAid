@@ -1,18 +1,41 @@
 # 2550. Count Collisions of Monkeys on a Polygon
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon](https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon)
 **Companies:** Amazon, Goldman Sachs, Microsoft
 
 ---
 
 ## Problem Description
-Given `n` monkeys positioned at the vertices of a regular polygon, each monkey simultaneously jumps to one of the two neighboring vertices. A collision occurs when two or more monkeys land on the same vertex. Compute the number of possible jump configurations that result in at least one collision, modulo `10^9 + 7`.
+There is a regular convex polygon with `n` vertices. The vertices are labeled from `0` to `n - 1` in a clockwise direction, and each vertex has **exactly one monkey**.
+
+Simultaneously, each monkey moves to a neighboring vertex. A **collision** happens if at least two monkeys reside on the same vertex after the movement or intersect on an edge.
+
+Return the number of ways the monkeys can move so that at least **one collision** happens. Since the answer may be very large, return it modulo `10^9 + 7`.
+
+**Constraints:**
+- `3 <= n <= 10^9`
 
 ## Examples
-| n | Output | Explanation |
-|---|--------|-------------|
-| 2 | 2 | Both monkeys can jump to the same vertex in two ways. |
-| 3 | 6 | Total configurations `2^3 = 8`; subtract the 2 collision‑free arrangements where all jump clockwise or all counter‑clockwise. |
+```
+Example 1:
+  Input: n = 3
+  Output: 6
+  Explanation: There are 8 total possible movements.
+  Two ways such that they collide at some point are:
+  - Monkey 1 moves in a clockwise direction; monkey 2 moves in an anticlockwise direction; monkey 3 moves
+    in a clockwise direction. Monkeys 1 and 2 collide.
+  - Monkey 1 moves in an anticlockwise direction; monkey 2 moves in an anticlockwise direction; monkey 3
+    moves in a clockwise direction. Monkeys 1 and 3 collide.
+```
+
+```
+Example 2:
+  Input: n = 4
+  Output: 14
+```
+
+(Of the `2^3 = 8` movements for n = 3, the only 2 collision‑free arrangements are where all move clockwise or all counter‑clockwise.)
 
 ## Approach
 Each monkey has two choices, giving `2^n` total configurations. The only collision‑free configurations are the two where every monkey moves uniformly clockwise or uniformly counter‑clockwise. Subtract these from the total and apply modulo.

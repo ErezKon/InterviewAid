@@ -18,7 +18,16 @@
 
 ## Problem Description
 
-A ship has `n × n` cells. Each container weighs `w` units. The ship has a max weight limit `maxWeight`. Find the maximum number of containers that fit.
+You are given a positive integer `n` representing an `n x n` cargo deck on a ship. Each cell on the deck can hold one container with a weight of **exactly** `w`.
+
+However, the total weight of all containers, if loaded onto the deck, must not exceed the ship's maximum weight capacity, `maxWeight`.
+
+Return the **maximum** number of containers that can be loaded onto the ship.
+
+**Constraints:**
+- `1 <= n <= 1000`
+- `1 <= w <= 1000`
+- `1 <= maxWeight <= 10^9`
 
 ---
 
@@ -44,16 +53,16 @@ FUNCTION maxContainers(n, w, maxWeight):
 
 **Example 1:**
 ```
-Input: n = 3, w = 2, maxWeight = 20
-Output: 9
-Explanation: Ship has 9 cells. Weight limit allows 10 containers, but only 9 cells are available.
+Input: n = 2, w = 3, maxWeight = 15
+Output: 4
+Explanation: The deck has 4 cells, and each container weighs 3. The total weight of loading all containers is 12, which does not exceed maxWeight.
 ```
 
 **Example 2:**
 ```
-Input: n = 4, w = 5, maxWeight = 30
-Output: 6
-Explanation: Space limit = 16, weight limit = 6, so answer is 6.
+Input: n = 3, w = 5, maxWeight = 20
+Output: 4
+Explanation: The deck has 9 cells, and each container weighs 5. The maximum number of containers that can be loaded without exceeding maxWeight is 4.
 ```
 
 ---

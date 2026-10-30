@@ -7,26 +7,45 @@
 ---
 
 ## Problem Description
-Implement a class `ZeroEvenOdd` that prints numbers from `1` to `n` in a specific order using three separate threads:
-- Thread A calls `zero()` and prints `0` before each integer.
-- Thread B calls `even()` and prints the next even integer.
-- Thread C calls `odd()` and prints the next odd integer.
-The output sequence should be `010203…` up to `n` (e.g., for `n = 2` the output is `0102`).
+
+You have a function `printNumber` that can be called with an integer parameter and prints it to the console.
+
+- For example, calling `printNumber(7)` prints `7` to the console.
+
+You are given an instance of the class `ZeroEvenOdd` that has three functions: `zero`, `even`, and `odd`. The same instance of `ZeroEvenOdd` will be passed to three different threads:
+
+- **Thread A:** calls `zero()` that should only output `0`'s.
+- **Thread B:** calls `even()` that should only output even numbers.
+- **Thread C:** calls `odd()` that should only output odd numbers.
+
+Modify the given class to output the series `"010203040506..."` where the length of the series must be `2n`.
+
+Implement the `ZeroEvenOdd` class:
+
+- `ZeroEvenOdd(int n)` Initializes the object with the number `n` that represents the numbers that should be printed.
+- `void zero(printNumber)` Calls `printNumber` to output one zero.
+- `void even(printNumber)` Calls `printNumber` to output one even number.
+- `void odd(printNumber)` Calls `printNumber` to output one odd number.
+
+**Constraints:**
+- `1 <= n <= 1000`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
 Input: n = 2
 Output: "0102"
+Explanation: There are three threads being fired asynchronously.
+One of them calls zero(), the other calls even(), and the last one calls odd().
+"0102" is the correct output.
 ```
-Thread A prints `0`, Thread B prints `1` (odd), Thread A prints `0`, Thread C prints `2` (even).
 
-**Example 2**
+**Example 2:**
 ```
 Input: n = 5
 Output: "0102030405"
 ```
-The pattern `0` + number repeats for each integer from `1` to `n`.
 
 ## Approach
 Use two synchronization primitives (e.g., semaphores or condition variables) to coordinate the three threads:

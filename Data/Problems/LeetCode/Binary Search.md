@@ -9,7 +9,15 @@
 
 ## 1. Problem Description
 
-Given a sorted array `nums` and a `target`, return the index if found, otherwise -1. Must be O(log n).
+Given an array of integers `nums` which is sorted in ascending order, and an integer `target`, write a function to search `target` in `nums`. If `target` exists, then return its index. Otherwise, return `-1`.
+
+You must write an algorithm with `O(log n)` runtime complexity.
+
+**Constraints:**
+- `1 ≤ nums.length ≤ 10⁴`
+- `-10⁴ < nums[i], target < 10⁴`
+- All the integers in `nums` are **unique**.
+- `nums` is sorted in ascending order.
 
 ---
 
@@ -34,18 +42,16 @@ FUNCTION search(nums, target):
 
 ## 3. Examples
 
-**Example 1:**
 ```
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: nums[4] == 9.
-```
+Example 1:
+  Input: nums = [-1,0,3,5,9,12], target = 9
+  Output: 4
+  Explanation: 9 exists in nums and its index is 4
 
-**Example 2:**
-```
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 is not in the array, so return -1.
+Example 2:
+  Input: nums = [-1,0,3,5,9,12], target = 2
+  Output: -1
+  Explanation: 2 does not exist in nums so return -1
 ```
 
 ---

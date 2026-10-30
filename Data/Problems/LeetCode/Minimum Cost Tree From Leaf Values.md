@@ -20,28 +20,39 @@
 
 ## Problem Description
 
-Given an array `arr` of positive integers, build a binary tree where:
-- The leaves (in-order) are exactly `arr`.
-- Each non-leaf node's value = product of the maximum leaf in its left subtree × maximum leaf in its right subtree.
+Given an array `arr` of positive integers, consider all binary trees such that:
+- Each node has either `0` or `2` children;
+- The values of `arr` correspond to the values of each **leaf** in an in-order traversal of the tree.
+- The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree, respectively.
 
-Return the **minimum possible sum** of all non-leaf node values.
+Among all possible binary trees considered, return *the smallest possible sum of the values of each non-leaf node*. It is guaranteed this sum fits into a **32-bit** integer.
+
+A node is a **leaf** if and only if it has zero children.
 
 **Constraints:**
 - `2 ≤ arr.length ≤ 40`
 - `1 ≤ arr[i] ≤ 15`
+- It is guaranteed that the answer fits into a **32-bit** signed integer (i.e., it is less than `2³¹`).
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: arr = [6, 2, 4]
-Output: 32
-Explanation: Two possible trees:
-  Tree 1: (6)*(4) at root=24, (2)*(4) at right child=8 → sum=32
-  Tree 2: (6)*(2) at left child=12, (6)*(4) at root=24 → sum=36
-  Minimum = 32.
+Example 1:
+  Input: arr = [6,2,4]
+  Output: 32
+  Explanation: There are two possible trees shown.
+  The first has a non-leaf node sum 36, and the second has non-leaf node sum 32.
+    Tree 1: (6*2)=12 at left child, (6*4)=24 at root → sum = 36
+    Tree 2: (2*4)=8 at right child, (6*4)=24 at root → sum = 32
+```
+
+```
+Example 2:
+  Input: arr = [4,11]
+  Output: 44
+  Explanation: The only tree has a single non-leaf root with value 4 * 11 = 44.
 ```
 
 ---

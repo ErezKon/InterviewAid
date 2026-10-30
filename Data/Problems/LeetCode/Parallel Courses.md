@@ -7,20 +7,37 @@
 ---
 
 ## Problem Description
-There are `n` courses labeled from `1` to `n`. Some courses have prerequisites given as pairs `[prev, next]` meaning `prev` must be taken before `next`. In each semester you can take any number of courses as long as all their prerequisites have been completed. Return the minimum number of semesters required to finish all courses. If it is impossible (due to a cycle), return `-1`.
+You are given an integer `n`, which indicates that there are `n` courses labeled from `1` to `n`. You are also given an array `relations` where `relations[i] = [prevCourse_i, nextCourse_i]`, representing a prerequisite relationship between course `prevCourse_i` and course `nextCourse_i`: course `prevCourse_i` has to be taken before course `nextCourse_i`.
+
+In one semester, you can take **any number** of courses as long as you have taken all the prerequisites in the **previous** semester for the courses you are taking.
+
+Return *the **minimum** number of semesters needed to take all courses*. If there is no way to take all the courses, return `-1`.
+
+**Constraints:**
+
+- `1 <= n <= 5000`
+- `1 <= relations.length <= 5000`
+- `relations[i].length == 2`
+- `1 <= prevCourse_i, nextCourse_i <= n`
+- `prevCourse_i != nextCourse_i`
+- All the pairs `[prevCourse_i, nextCourse_i]` are **unique**.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: n = 3, relations = [[1,3],[2,3]]
-Output: 2
-Explanation: Semester 1: take courses 1 and 2. Semester 2: take course 3.
+Example 1:
+  Input: n = 3, relations = [[1,3],[2,3]]
+  Output: 2
+  Explanation: The graph has edges 1->3 and 2->3.
+  In the first semester, you can take courses 1 and 2.
+  In the second semester, you can take course 3.
 ```
-**Example 2:**
+
 ```
-Input: n = 3, relations = [[1,2],[2,3],[3,1]]
-Output: -1
-Explanation: Cycle exists, cannot complete all courses.
+Example 2:
+  Input: n = 3, relations = [[1,2],[2,3],[3,1]]
+  Output: -1
+  Explanation: No course can be studied because they are prerequisites of each other.
 ```
 
 ## Approach

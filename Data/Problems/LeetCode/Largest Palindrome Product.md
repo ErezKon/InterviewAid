@@ -8,9 +8,9 @@
 
 ## Problem Description
 
-Given an integer `n`, find the largest palindrome made from the product of two `n`-digit numbers. Return the palindrome modulo 1337.
+Given an integer `n`, return *the **largest palindromic integer** that can be represented as the product of two `n`-digits integers*. Since the answer can be very large, return it **modulo** `1337`.
 
-Constraints:
+**Constraints:**
 - `1 <= n <= 8`
 
 ---
@@ -21,7 +21,8 @@ Constraints:
 ```
 Input: n = 2
 Output: 987
-Explanation: The largest palindrome from the product of two 2‑digit numbers is 9009. 9009 % 1337 = 987.
+Explanation: 99 x 91 = 9009, 9009 % 1337 = 987.
+This is the largest palindrome from the product of two 2‑digit numbers is 9009. 9009 % 1337 = 987.
 ```
 
 **Example 2:**

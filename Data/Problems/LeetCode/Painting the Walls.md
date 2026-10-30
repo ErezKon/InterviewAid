@@ -7,26 +7,34 @@
 ---
 
 ## Problem Description
-You are given two integer arrays `cost` and `time`, each of length `n`. Painting wall `i` with a paid painter costs `cost[i]` and takes `time[i] + 1` total wall units (the paid painter paints wall `i` while a free painter simultaneously paints `time[i]` additional walls). Determine the minimum total cost to have all `n` walls painted.
+You are given two **0-indexed** integer arrays, `cost` and `time`, of size `n` representing the costs and the time taken to paint `n` different walls respectively. There are two painters available:
 
-**Constraints** include:
-- `1 <= n <= 10^3`
-- `0 <= cost[i] <= 10^4`
-- `0 <= time[i] <= n`
+- A **paid painter** that paints the `i`-th wall in `time[i]` units of time and takes `cost[i]` units of money.
+- A **free painter** that paints **any** wall in `1` unit of time at a cost of `0`. But the free painter can only be used if the paid painter is already **occupied**.
+
+Return *the minimum amount of money required to paint the* `n` *walls.*
+
+**Constraints:**
+
+- `1 <= cost.length <= 500`
+- `cost.length == time.length`
+- `1 <= cost[i] <= 10^6`
+- `1 <= time[i] <= 500`
 
 ## Examples
-**Example 1**
+
 ```
-Input: cost = [1,2,3], time = [1,0,1]
-Output: 3
-Explanation: Paint wall 0 (cost 1, covers walls 0 and 1), then paint wall 2 (cost 3). Total cost = 4? Actually optimal cost = 3 by painting walls 0 and 2 with paid painter and free painter covering wall 1.
+Example 1:
+  Input: cost = [1,2,3,2], time = [1,2,3,2]
+  Output: 3
+  Explanation: The walls at index 0 and 1 will be painted by the paid painter, and it will take 3 units of time; meanwhile, the free painter will paint the walls at index 2 and 3, free of cost in 2 units of time. Thus, the total cost is 1 + 2 = 3.
 ```
 
-**Example 2**
 ```
-Input: cost = [5,4,6], time = [0,0,0]
-Output: 15
-Explanation: No free painter benefit; must pay for each wall.
+Example 2:
+  Input: cost = [2,3,4,2], time = [1,1,1,1]
+  Output: 4
+  Explanation: The walls at index 0 and 3 will be painted by the paid painter, and it will take 2 units of time; meanwhile, the free painter will paint the walls at index 1 and 2, free of cost in 2 units of time. Thus, the total cost is 2 + 2 = 4.
 ```
 
 ## Approach

@@ -8,28 +8,37 @@
 
 ## Problem Description
 
-Given an integer array `nums`, find the minimum absolute difference between any two distinct elements in the array.
+You are given an integer array `nums` consisting only of 0, 1, and 2.
 
-Constraints:
-- `2 <= nums.length <= 10^5`
-- `-10^9 <= nums[i] <= 10^9`
+A pair of indices `(i, j)` is called **valid** if `nums[i] == 1` and `nums[j] == 2`.
+
+Return the **minimum** absolute difference between `i` and `j` among all valid pairs. If no valid pair exists, return -1.
+
+The absolute difference between indices `i` and `j` is defined as `abs(i - j)`.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `0 <= nums[i] <= 2`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [3, -7, 0]
-Output: 3
-Explanation: The pairs are (3,0) diff 3, (3,-7) diff 10, (0,-7) diff 7. Minimum is 3.
+Example 1:
+  Input: nums = [1,0,0,2,0,1]
+  Output: 2
+  Explanation: The valid pairs are:
+  - (0, 3) which has absolute difference of abs(0 - 3) = 3.
+  - (5, 3) which has absolute difference of abs(5 - 3) = 2.
+  Thus, the answer is 2.
 ```
 
-**Example 2:**
 ```
-Input: nums = [5, 5, 5]
-Output: 0
-Explanation: Identical values give a difference of 0.
+Example 2:
+  Input: nums = [1,0,1,0]
+  Output: -1
+  Explanation: There are no valid pairs in the array, thus the answer is -1.
 ```
 
 ---

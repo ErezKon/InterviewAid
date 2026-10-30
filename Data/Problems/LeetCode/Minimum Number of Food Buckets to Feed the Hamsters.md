@@ -8,26 +8,41 @@
 
 ## Problem Description
 
-You are given a string `hamsters` consisting of characters `'H'` (hamster), `'.'` (empty spot), and `'F'` (food bucket). Each hamster must have at least one adjacent food bucket (left or right). You may place a food bucket on any empty spot `'.'`. Return the minimum number of buckets needed to feed all hamsters, or `-1` if it is impossible.
+You are given a **0-indexed** string `hamsters` where `hamsters[i]` is either:
 
-Constraints:
-- `1 ≤ len(hamsters) ≤ 10^5`
-- The string contains only `'H'`, `'.'`, and `'F'`.
+- `'H'` indicating that there is a hamster at index `i`, or
+- `'.'` indicating that index `i` is empty.
+
+You will add some number of food buckets at the empty indices in order to feed the hamsters. A hamster can be fed if there is at least one food bucket to its left or to its right. More formally, a hamster at index `i` can be fed if you place a food bucket at index `i - 1` **and/or** at index `i + 1`.
+
+Return *the minimum number of food buckets you should **place at empty indices** to feed all the hamsters or *`-1`* if it is impossible to feed all of them*.
+
+**Constraints:**
+- `1 <= hamsters.length <= 10^5`
+- `hamsters[i]` is either`'H'` or `'.'`.
 
 ## Examples
 
-**Example 1**
+**Example 1:**
 ```
 Input: hamsters = "H..H"
 Output: 2
-Explanation: Place buckets at positions 1 and 2 → "HF.FH" satisfies both hamsters.
+Explanation: We place two food buckets at indices 1 and 2.
+It can be shown that if we place only one food bucket, one of the hamsters will not be fed.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: hamsters = "HHH"
+Input: hamsters = ".H.H."
+Output: 1
+Explanation: We place one food bucket at index 2.
+```
+
+**Example 3:**
+```
+Input: hamsters = ".HHH."
 Output: -1
-Explanation: No empty spot adjacent to the middle hamster, impossible to feed.
+Explanation: If we place a food bucket at every empty index as shown, the hamster at index 2 will not be able to eat.
 ```
 
 ## Approach

@@ -7,30 +7,35 @@
 ---
 
 ## Problem Description
-Given an `m x n` integer matrix, an *hourglass* is a subset of values with indices forming the shape:
-```
-(a b c)
-  d
-(e f g)
-```
-Calculate the maximum sum of all hourglasses in the matrix. If the matrix is smaller than `3 x 3`, the answer is `0`.
+
+You are given an `m x n` integer matrix `grid`.
+
+We define an **hourglass** as a part of the matrix with the following form:
+![img](https://assets.leetcode.com/uploads/2022/08/21/img.jpg)
+Return *the **maximum** sum of the elements of an hourglass*.
+
+**Note** that an hourglass cannot be rotated and must be entirely contained within the matrix.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `3 <= m, n <= 150`
+- `0 <= grid[i][j] <= 10^6`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Input: grid = [[6,2,1,3],[4,2,1,5],[9,2,8,7],[4,1,2,9]]
+Output: 30
+Explanation: The cells shown above represent the hourglass with the maximum sum: 6 + 2 + 1 + 2 + 9 + 2 + 8 = 30.
+```
+
+**Example 2:**
+```
+Input: grid = [[1,2,3],[4,5,6],[7,8,9]]
 Output: 35
-Explanation: The only hourglass sum is 1+2+3+5+7+8+9 = 35.
-```
-**Example 2**
-```
-Input: matrix = [[-9,-9,-9,1,1,1],
-                 [-9,-9,-9,1,1,1],
-                 [-9,-9,-9,1,1,1],
-                 [0,0,0,0,0,0],
-                 [0,0,0,0,0,0]]
-Output: 7
-Explanation: The hourglass with maximum sum is formed by the right‑most 3x3 block.
+Explanation: There is only one hourglass in the matrix, with the sum: 1 + 2 + 3 + 5 + 7 + 8 + 9 = 35.
 ```
 
 ## Approach

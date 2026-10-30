@@ -21,7 +21,13 @@
 
 ## 1. Problem Description
 
-A square room with mirrors. A laser starts from corner 0 at angle toward corner. Given side `p` and offset `q`, determine which receptor (0, 1, or 2) the laser hits first.
+There is a special square room with mirrors on each of the four walls. Except for the southwest corner, there are receptors on each of the remaining corners, numbered `0`, `1`, and `2`.
+
+The square room has walls of length `p` and a laser ray from the southwest corner first meets the east wall at a distance `q` from the `0^th` receptor.
+
+Given the two integers `p` and `q`, return *the number of the receptor that the ray meets first*.
+
+The test cases are guaranteed so that the ray will meet a receptor eventually.
 
 **Constraints:**
 - `1 <= q <= p <= 1000`
@@ -30,13 +36,18 @@ A square room with mirrors. A laser starts from corner 0 at angle toward corner.
 
 ## 2. Examples
 
-| p | q | Output |
-|---|---|--------|
-| 2 | 1 | 2 |
-| 3 | 1 | 1 |
-| 3 | 2 | 0 |
+**Example 1:**
+```
+Input: p = 2, q = 1
+Output: 2
+Explanation: The ray meets receptor 2 the first time it gets reflected back to the left wall.
+```
 
-*Explanation:* For `p = 2, q = 1`, the laser reflects once vertically and twice horizontally, landing at receptor 2.
+**Example 2:**
+```
+Input: p = 3, q = 1
+Output: 1
+```
 
 ---
 

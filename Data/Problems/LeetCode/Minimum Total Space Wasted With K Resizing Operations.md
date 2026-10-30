@@ -21,10 +21,17 @@
 
 ## 1. Problem Description
 
-Given array `nums` (space needed at each time step), allocate a container that can be resized at most `k` times. The container size between resizes = max in that segment. Wasted space = container size - actual need per step. Return **minimum** total wasted space.
+You are currently designing a dynamic array. You are given a **0-indexed** integer array `nums`, where `nums[i]` is the number of elements that will be in the array at time `i`. In addition, you are given an integer `k`, the **maximum** number of times you can **resize** the array (to** any** size).
+
+The size of the array at time `t`, `size_t`, must be at least `nums[t]` because there needs to be enough space in the array to hold all the elements. The **space wasted** at time `t` is defined as `size_t - nums[t]`, and the **total** space wasted is the **sum** of the space wasted across every time `t` where `0 <= t < nums.length`.
+
+Return *the **minimum** **total space wasted** if you can resize the array at most* `k` *times*.
+
+**Note:** The array can have **any size** at the start and does** not **count towards the number of resizing operations.
 
 **Constraints:**
 - `1 <= nums.length <= 200`
+- `1 <= nums[i] <= 10^6`
 - `0 <= k <= nums.length - 1`
 
 ---
@@ -63,16 +70,32 @@ FUNCTION minSpaceWastedKResizing(nums, k):
 
 ## 4. Examples
 
-| nums | k | Minimum Wasted Space |
-|------|---|----------------------|
-| [10,20,30] | 1 | 0 |
-| [10,5,15,20] | 2 | 5 |
-| [5,5,5,5] | 0 | 15 |
+**Example 1:**
+```
+Input: nums = [10,20], k = 0
+Output: 10
+Explanation: size = [20,20].
+We can set the initial size to be 20.
+The total wasted space is (20 - 10) + (20 - 20) = 10.
+```
 
-**Explanation**:
-- In the first example, one resize splits after the first element: segments `[10]` and `[20,30]`. Maxes are `10` and `30`; waste = `(10‑10)+(30‑20)+(30‑30)=0`.
-- In the second example, optimal splits are `[10,5]`, `[15]`, `[20]` giving waste `5`.
-- With `k = 0` no resize, container size = max(`5,5,5,5`) = `5` for all steps, waste = `5*4‑20 = 0`? Actually each step needs `5`, so waste `0`. Wait correction: if container size fixed at max `5`, waste = `5*4‑20 = 0`. The example shows `15` to illustrate a case where max larger than needed; adjust numbers: use `[1,2,3,4]` with `k=0` → waste `4*4‑10 = 6`. We'll keep original for illustration.
+**Example 2:**
+```
+Input: nums = [10,20,30], k = 1
+Output: 10
+Explanation: size = [20,20,30].
+We can set the initial size to be 20 and resize to 30 at time 2.
+The total wasted space is (20 - 10) + (20 - 20) + (30 - 30) = 10.
+```
+
+**Example 3:**
+```
+Input: nums = [10,20,15,30,20], k = 2
+Output: 15
+Explanation: size = [10,20,20,30,30].
+We can set the initial size to 10, resize to 20 at time 1, and resize to 30 at time 3.
+The total wasted space is (10 - 10) + (20 - 20) + (20 - 15) + (30 - 30) + (30 - 20) = 15.
+```
 
 ---
 

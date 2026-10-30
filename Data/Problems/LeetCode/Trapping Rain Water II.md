@@ -9,7 +9,13 @@
 
 ## 1. Problem Description
 
-Given an m×n integer matrix `heightMap` representing heights, compute how much water it can trap after raining (3D version of Trapping Rain Water).
+Given an `m x n` integer matrix `heightMap` representing the height of each unit cell in a 2D elevation map, return *the volume of water it can trap after raining*.
+
+**Constraints:**
+- `m == heightMap.length`
+- `n == heightMap[i].length`
+- `1 <= m, n <= 200`
+- `0 <= heightMap[i][j] <= 2 * 10^4`
 
 ---
 
@@ -55,7 +61,9 @@ Input: heightMap = [[1,4,3,1,3,2],
                     [3,2,1,3,2,4],
                     [2,3,3,2,3,1]]
 Output: 4
-Explanation: Water is trapped at the low‑lying cells (1,2) and (2,5) totaling 4 units.
+Explanation: After the rain, water is trapped between the blocks.
+We have two small ponds 1 and 3 units trapped.
+The total volume of water trapped is 4.
 ```
 
 **Example 2:**

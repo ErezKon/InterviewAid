@@ -3,6 +3,8 @@
 ---
 
 ## Problem Description
+> *Note: custom pattern-collection file (not an official LeetCode problem); see the individual palindrome problem files (e.g. #5, #9, #125, #131, #234, #409, #516, #647) for official statements and constraints.*
+
 The file aggregates a taxonomy of classic palindrome‑related LeetCode problems, grouping them by operation such as checking, finding the longest palindrome, counting substrings, partitioning, linked‑list checks, and constructing palindrome pairs. It serves as a reference guide for developers to locate relevant problems and common solution patterns.
 
 ## Examples

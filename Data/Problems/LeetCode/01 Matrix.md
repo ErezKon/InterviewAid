@@ -22,39 +22,34 @@
 
 ## 1. Problem Description
 
-Given an `m × n` binary matrix `mat`, return a matrix of the same dimensions where each cell contains the **distance to the nearest `0`**.
+Given an `m x n` binary matrix `mat`, return *the distance of the nearest* `0` *for each cell*.
 
-The distance between two adjacent cells (horizontally or vertically) is `1`.
+The distance between two cells sharing a common edge is `1`.
 
 **Constraints:**
-- `m == mat.length`, `n == mat[i].length`
-- `1 ≤ m, n ≤ 10⁴`
-- `1 ≤ m × n ≤ 10⁴`
-- `mat[i][j]` is either `0` or `1`
-- There is at least one `0` in `mat`
+- `m == mat.length`
+- `n == mat[i].length`
+- `1 <= m, n <= 10^4`
+- `1 <= m * n <= 10^4`
+- `mat[i][j]` is either `0` or `1`.
+- There is at least one `0` in `mat`.
+
+**Note:** This question is the same as 1765: [Map of Highest Peak](https://leetcode.com/problems/map-of-highest-peak/)
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input:  [[0,0,0],
-           [0,1,0],
-           [0,0,0]]
-  Output: [[0,0,0],
-           [0,1,0],
-           [0,0,0]]
-  Explanation: The only 1 is at (1,1), nearest 0 is distance 1 away.
+Input: mat = [[0,0,0],[0,1,0],[0,0,0]]
+Output: [[0,0,0],[0,1,0],[0,0,0]]
+```
 
-Example 2:
-  Input:  [[0,0,0],
-           [0,1,0],
-           [1,1,1]]
-  Output: [[0,0,0],
-           [0,1,0],
-           [1,2,1]]
-  Explanation: Cell (2,1) is distance 2 from the nearest 0.
+**Example 2:**
+```
+Input: mat = [[0,0,0],[0,1,0],[1,1,1]]
+Output: [[0,0,0],[0,1,0],[1,2,1]]
 ```
 
 Visual:

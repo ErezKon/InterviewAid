@@ -1,25 +1,44 @@
 # 467. Unique Substrings in Wraparound String
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/unique-substrings-in-wraparound-string](https://leetcode.com/problems/unique-substrings-in-wraparound-string)
 **Companies:** Google, Maq Software
 
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase English letters, consider an infinite wraparound string `"...zabcdefghijklmnopqrstuvwxyzabc..."`. A substring of `s` is **valid** if it appears as a contiguous substring in this infinite wraparound string. Return the number of distinct valid substrings of `s`.
+
+We define the string `base` to be the infinite wraparound string of `"abcdefghijklmnopqrstuvwxyz"`, so `base` will look like this:
+
+- `"...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd...."`.
+
+Given a string `s`, return *the number of **unique non-empty substrings** of* `s` *are present in* `base`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of lowercase English letters.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: s = "zab"
-Output: 6
-Explanation: The valid substrings are "z", "a", "b", "za", "ab", "zab".
+Input: s = "a"
+Output: 1
+Explanation: Only the substring "a" of s is in base.
 ```
-**Example 2**
+
+**Example 2:**
 ```
 Input: s = "cac"
 Output: 2
-Explanation: The valid substrings are "c" and "a". Substrings like "ca" are not consecutive in the wraparound order.
+Explanation: There are two substrings ("a", "c") of s in base.
+```
+
+**Example 3:**
+```
+Input: s = "zab"
+Output: 6
+Explanation: There are six substrings ("z", "a", "b", "za", "ab", and "zab") of s in base.
 ```
 
 ## Approach

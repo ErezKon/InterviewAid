@@ -6,21 +6,39 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree and an integer `start` representing the value of the initially infected node, the infection spreads to adjacent nodes (parent and children) each minute. Return the number of minutes required for the entire tree to become infected.
+You are given the `root` of a binary tree with **unique** values, and an integer `start`. At minute `0`, an **infection** starts from the node with value `start`.
+
+Each minute, a node becomes infected if:
+
+- The node is currently uninfected.
+- The node is adjacent to an infected node.
+
+Return *the number of minutes needed for the entire tree to be infected.*
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^5]`.
+- `1 <= Node.val <= 10^5`
+- Each node has a **unique** value.
+- A node with a value of `start` exists in the tree.
 
 ## Examples
-**Example 1**
 ```
-Input: root = [1,5,3,null,4,10,6], start = 3
-Output: 4
-Explanation: Infection spreads from node 3 to its neighbors each minute until all nodes are infected.
+Example 1:
+  Input: root = [1,5,3,null,4,10,6,9,2], start = 3
+  Output: 4
+  Explanation: The following nodes are infected during:
+  - Minute 0: Node 3
+  - Minute 1: Nodes 1, 10 and 6
+  - Minute 2: Node 5
+  - Minute 3: Node 4
+  - Minute 4: Nodes 9 and 2
+  It takes 4 minutes for the whole tree to be infected so we return 4.
 ```
-
-**Example 2**
 ```
-Input: root = [1,2,3,4,5,6,7], start = 1
-Output: 2
-Explanation: Starting at the root, infection reaches all leaves in two minutes.
+Example 2:
+  Input: root = [1], start = 1
+  Output: 0
+  Explanation: At minute 0, the only node in the tree is infected so we return 0.
 ```
 
 ## Approach

@@ -21,35 +21,34 @@
 
 ## 1. Problem Description
 
-There is only one character `'A'` on the screen. You can perform two operations:
-- **Copy All:** Copy all characters on screen to clipboard.
-- **Paste:** Paste the clipboard content.
+There is only one character `'A'` on the screen of a notepad. You can perform one of two operations on this notepad for each step:
 
-Given an integer `n`, return the **minimum number of operations** to get exactly `n` `'A'`s on screen.
+- Copy All: You can copy all the characters present on the screen (a partial copy is not allowed).
+- Paste: You can paste the characters which are copied last time.
+
+Given an integer `n`, return *the minimum number of operations to get the character* `'A'` *exactly* `n` *times on the screen*.
 
 **Constraints:**
-- `1 ≤ n ≤ 1000`
+- `1 <= n <= 1000`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input:  n = 3
-  Output: 3
-  Explanation: Copy All (1 A on clipboard), Paste (2 A's), Paste (3 A's)
+Input: n = 3
+Output: 3
+Explanation: Initially, we have one character 'A'.
+In step 1, we use Copy All operation.
+In step 2, we use Paste operation to get 'AA'.
+In step 3, we use Paste operation to get 'AAA'.
+```
 
-Example 2:
-  Input:  n = 1
-  Output: 0
-  Explanation: Already have 1 A, no operations needed.
-
-Example 3:
-  Input:  n = 12
-  Output: 7
-  Explanation: Copy, Paste, Paste (3 A's = 3 ops)
-               Copy, Paste, Paste, Paste (12 A's = 3+4 = 7 ops)
+**Example 2:**
+```
+Input: n = 1
+Output: 0
 ```
 
 Visual for n=12:

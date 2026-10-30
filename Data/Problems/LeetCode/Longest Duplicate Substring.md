@@ -8,14 +8,27 @@
 
 ## 1. Problem Description
 
-Given a string `s`, find the longest substring that appears at least twice (the occurrences may overlap). Return the substring; if none exists, return an empty string.
+Given a string `s`, consider all *duplicated substrings*: (contiguous) substrings of s that occur 2 or more times. The occurrences may overlap.
+
+Return **any** duplicated substring that has the longest possible length. If `s` does not have a duplicated substring, the answer is `""`.
+
+**Constraints:**
+- `2 <= s.length <= 3 * 10^4`
+- `s` consists of lowercase English letters.
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"banana"` | `"ana"` | "ana" appears at positions 1‑3 and 3‑5. |
-| `"abcd"` | `""` | No repeated substring.
+**Example 1:**
+```
+Input: s = "banana"
+Output: "ana"
+```
+
+**Example 2:**
+```
+Input: s = "abcd"
+Output: ""
+```
 
 ## 3. Approach: Binary Search + Rabin‑Karp — O(n log n) ✅
 

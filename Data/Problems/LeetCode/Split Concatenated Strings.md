@@ -7,15 +7,41 @@
 ---
 
 ## Problem Description
-You are given a string `s` formed by concatenating several unknown substrings in order. The original substrings are unknown, but you know that each substring appears at least twice in `s`. Determine if `s` can be split into a sequence of substrings such that each substring occurs at least twice in the concatenation. Return `true` if possible, otherwise `false`.
+
+> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented problem. Correct idea: first replace every string by the larger of itself and its reverse; then for each string `i` (both orientations) and each cut position `j` inside it, the candidate is `s_i[j:] + (all strings after i) + (all strings before i) + s_i[:j]`; return the maximum. O(L²).*
+
+You are given an array of strings `strs`. You could concatenate these strings together into a loop, where for each string, you could choose to reverse it or not. Among all the possible loops
+
+Return *the lexicographically largest string after cutting the loop, which will make the looped string into a regular one*.
+
+Specifically, to find the lexicographically largest string, you need to experience two phases:
+
+1. Concatenate all the strings into a loop, where you can reverse some strings or not and connect them in the same order as given.
+2. Cut and make one breakpoint in any place of the loop, which will make the looped string into a regular one starting from the character at the cutpoint.
+
+And your job is to find the lexicographically largest one among all the possible regular strings.
+
+**Constraints:**
+- `1 <= strs.length <= 1000`
+- `1 <= strs[i].length <= 1000`
+- `1 <= sum(strs[i].length) <= 1000`
+- `strs[i]` consists of lowercase English letters.
 
 ## Examples
-- **Input:** `s = "abcabcabc"`
-  **Output:** `true`
-  *Explanation:* Split as `["abc", "abc", "abc"]`; each part appears three times.
-- **Input:** `s = "ababa"`
-  **Output:** `false`
-  *Explanation:* No valid split where every piece appears at least twice.
+
+**Example 1:**
+```
+Input: strs = ["abc","xyz"]
+Output: "zyxcba"
+Explanation: You can get the looped string "-abcxyz-", "-abczyx-", "-cbaxyz-", "-cbazyx-", where '-' represents the looped status.
+The answer string came from the fourth looped one, where you could cut from the middle character 'a' and get "zyxcba".
+```
+
+**Example 2:**
+```
+Input: strs = ["abc"]
+Output: "cba"
+```
 
 ## Approach
 Use dynamic programming. Let `dp[i]` be true if the prefix `s[0:i]` can be split according to the rule. For each position `i`, try all possible substring lengths `len` that end at `i`. A candidate substring `sub = s[i‑len:i]` is valid if it appears at least twice in the prefix `s[0:i]` (including the current occurrence). If `dp[i‑len]` is true and `sub` satisfies the frequency condition, set `dp[i] = true`.

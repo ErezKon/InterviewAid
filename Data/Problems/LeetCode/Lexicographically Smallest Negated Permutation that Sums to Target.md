@@ -8,16 +8,40 @@
 
 ## Problem Description
 
-Given `n` and a target sum, find the lexicographically smallest permutation of the numbers `[1..n]` where you may negate any subset of elements so that the total sum equals `target`. The permutation is compared lexicographically as a sequence of signed integers.
+You are given a positive integer `n` and an integer `target`.
+
+Return the **lexicographically smallest** array of integers of size `n` such that:
+
+- The **sum** of its elements equals `target`.
+- The **absolute values** of its elements form a **permutation** of size `n`.
+
+If no such array exists, return an empty array.
+
+A **permutation** of size `n` is a rearrangement of integers `1, 2, ..., n`.
+
+**Constraints:**
+- `1 <= n <= 10^5`
+- `-10^10 <= target <= 10^10`
 
 ## Examples
 
-| n | target | Output |
-|---|--------|--------|
-| 4 | 2 | `[1, -2, 3, -4]` |
-| 3 | 0 | `[-1, 2, -3]` |
+```
+Example 1:
+  Input: n = 3, target = 0
+  Output: [-3,1,2]
+  Explanation: The arrays that sum to 0 and whose absolute values form a permutation of size 3 are:
+  [-3, 1, 2], [-3, 2, 1], [-2, -1, 3], [-2, 3, -1], [-1, -2, 3], [-1, 3, -2],
+  [1, -3, 2], [1, 2, -3], [2, -3, 1], [2, 1, -3], [3, -2, -1], [3, -1, -2].
+  The lexicographically smallest one is [-3, 1, 2].
+```
 
-*Explanation*: For `n=4`, total sum is 10. Negating `{2,4}` reduces the sum by `2*(2+4)=12`, giving `10-12=-2`. Adjusting to target 2 requires negating `{1,3}` instead, resulting in `[1, -2, 3, -4]` which is the lexicographically smallest valid permutation.
+```
+Example 2:
+  Input: n = 1, target = 10000000000
+  Output: []
+  Explanation: There are no arrays that sum to 10000000000 and whose absolute values form a permutation of size 1.
+  Therefore, the answer is [].
+```
 
 ## Approach
 

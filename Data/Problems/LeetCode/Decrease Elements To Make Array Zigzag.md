@@ -8,24 +8,35 @@
 
 ## Problem Description
 
-Find minimum decrements to make the array zigzag: either even-indexed elements are greater than neighbors, or odd-indexed elements are greater.
+Given an array `nums` of integers, a *move* consists of choosing any element and **decreasing it by 1**.
+
+An array `A` is a *zigzag array* if either:
+
+- Every even-indexed element is greater than adjacent elements, ie. `A[0] > A[1] < A[2] > A[3] < A[4] > ...`
+- OR, every odd-indexed element is greater than adjacent elements, ie. `A[0] < A[1] > A[2] < A[3] > A[4] < ...`
+
+Return the minimum number of moves to transform the given array `nums` into a zigzag array.
+
+**Constraints:**
+
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 1000`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [1,2,3]
-Output: 2
-Explanation: Decrease nums[1] to 0 and nums[2] to 1 to get [1,0,1] which is a zigzag array.
+Example 1:
+  Input: nums = [1,2,3]
+  Output: 2
+  Explanation: We can decrease 2 to 0 or 3 to 1.
 ```
 
-**Example 2:**
 ```
-Input: nums = [9,6,1,6,2]
-Output: 4
-Explanation: Decrease nums[0] to 5, nums[3] to 0 and nums[4] to 1 to obtain [5,6,1,0,1].
+Example 2:
+  Input: nums = [9,6,1,6,2]
+  Output: 4
 ```
 
 ---

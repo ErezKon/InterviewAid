@@ -20,7 +20,16 @@
 
 ## 1. Problem Description
 
-Given integers `n` and `k`, find the **largest** `n`-digit palindrome that is divisible by `k`. Return the palindrome as a string. A palindrome reads the same forwards and backwards.
+You are given two **positive** integers `n` and `k`.
+
+An integer `x` is called **k-palindromic** if:
+
+- `x` is a palindrome.
+- `x` is divisible by `k`.
+
+Return the **largest** integer having `n` digits (as a string) that is **k-palindromic**.
+
+**Note** that the integer must **not** have leading zeros.
 
 **Constraints:**
 - `1 <= n <= 10⁵`
@@ -85,16 +94,20 @@ FUNCTION largestPalindrome(n, k):
 
 ## 4. Examples
 
-```text
-Input: n = 3, k = 2
-Output: "888"
-Explanation: The largest 3‑digit palindrome is 999, which is odd. Replacing the outer digits with 8 yields 888, which is divisible by 2.
 ```
+Example 1:
+  Input: n = 3, k = 5
+  Output: "595"
+  Explanation: 595 is the largest k-palindromic integer with 3 digits.
 
-```text
-Input: n = 4, k = 5
-Output: "5995"
-Explanation: The outermost digits must be 5 to satisfy the divisibility by 5 while keeping the number maximal.
+Example 2:
+  Input: n = 1, k = 4
+  Output: "8"
+  Explanation: 4 and 8 are the only k-palindromic integers with 1 digit.
+
+Example 3:
+  Input: n = 5, k = 6
+  Output: "89898"
 ```
 
 ---

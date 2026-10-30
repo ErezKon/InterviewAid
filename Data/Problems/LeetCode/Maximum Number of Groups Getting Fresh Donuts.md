@@ -20,9 +20,11 @@
 
 ## Problem Description
 
-A donut shop bakes in batches of `batchSize`. Given `groups` where `groups[i]` is the size of the i-th group, each group gets **fresh donuts** if the total donuts served before them is divisible by `batchSize`. You can rearrange the order of groups.
+There is a donuts shop that bakes donuts in batches of `batchSize`. They have a rule where they must serve **all** of the donuts of a batch before serving any donuts of the next batch. You are given an integer `batchSize` and an integer array `groups`, where `groups[i]` denotes that there is a group of `groups[i]` customers that will visit the shop. Each customer will get exactly one donut.
 
-Return the **maximum number of groups** that get fresh donuts.
+When a group visits the shop, all customers of the group must be served before serving any of the following groups. A group will be happy if they all get fresh donuts. That is, the first customer of the group does not receive a donut that was left over from the previous group.
+
+You can freely rearrange the ordering of the groups. Return *the **maximum** possible number of happy groups after rearranging the groups.*
 
 **Constraints:**
 - `1 <= batchSize <= 9`
@@ -33,18 +35,17 @@ Return the **maximum number of groups** that get fresh donuts.
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  batchSize = 3, groups = [1,2,3,4,5,6]
-Output: 4
-Explanation: Groups with size divisible by 3 always get fresh donuts. 
-Remaining groups can be paired to sum to multiples of 3.
+Example 1:
+  Input: batchSize = 3, groups = [1,2,3,4,5,6]
+  Output: 4
+  Explanation: You can arrange the groups as [6,2,4,5,1,3]. Then the 1st, 2nd, 4th, and 6th groups will be happy.
 ```
 
-**Example 2:**
 ```
-Input:  batchSize = 4, groups = [1,3,2,5,2,2,1,6]
-Output: 4
+Example 2:
+  Input: batchSize = 4, groups = [1,3,2,5,2,2,1,6]
+  Output: 4
 ```
 
 ---

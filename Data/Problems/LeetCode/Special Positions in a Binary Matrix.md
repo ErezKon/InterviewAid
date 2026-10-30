@@ -7,15 +7,30 @@
 ---
 
 ## Problem Description
-Given an `m × n` binary matrix `mat`, a *special* position is a cell `(r, c)` where `mat[r][c] == 1` and all other cells in row `r` and column `c` are `0`. Return the number of special positions in the matrix.
+Given an `m x n` binary matrix `mat`, return *the number of special positions in* `mat`*.*
+
+A position `(i, j)` is called **special** if `mat[i][j] == 1` and all other elements in row `i` and column `j` are `0` (rows and columns are **0-indexed**).
+
+**Constraints:**
+- `m == mat.length`
+- `n == mat[i].length`
+- `1 <= m, n <= 100`
+- `mat[i][j]` is either `0` or `1`.
 
 ## Examples
-- **Input:** `[[1,0,0],[0,0,1],[1,0,0]]`
-  **Output:** `2`
-  *Explanation:* Cells `(0,0)` and `(1,2)` are special.
-- **Input:** `[[1,0,1],[0,1,0],[1,0,0]]`
-  **Output:** `1`
-  *Explanation:* Only cell `(1,1)` satisfies the condition.
+```
+Example 1:
+  Input: mat = [[1,0,0],[0,0,1],[1,0,0]]
+  Output: 1
+  Explanation: (1, 2) is a special position because mat[1][2] == 1 and all other elements in row 1 and column 2 are 0.
+```
+
+```
+Example 2:
+  Input: mat = [[1,0,0],[0,1,0],[0,0,1]]
+  Output: 3
+  Explanation: (0, 0), (1, 1) and (2, 2) are special positions.
+```
 
 ## Approach
 Count the number of `1`s in each row and each column. A cell is special if its row count and column count are both exactly `1`.

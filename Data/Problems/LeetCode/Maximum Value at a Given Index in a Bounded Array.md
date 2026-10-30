@@ -21,18 +21,21 @@
 
 ## Problem Description
 
-Construct an array `nums` of length `n` where:
-- `nums[index]` is maximized
-- All elements are **positive integers** (≥ 1)
-- The **sum** of all elements ≤ `maxSum`
-- The **absolute difference** between adjacent elements is ≤ 1
+You are given three positive integers: `n`, `index`, and `maxSum`. You want to construct an array `nums` (**0-indexed**)** **that satisfies the following conditions:
 
-Return the maximum possible value of `nums[index]`.
+- `nums.length == n`
+- `nums[i]` is a **positive** integer where `0 <= i < n`.
+- `abs(nums[i] - nums[i+1]) <= 1` where `0 <= i < n-1`.
+- The sum of all the elements of `nums` does not exceed `maxSum`.
+- `nums[index]` is **maximized**.
+
+Return `nums[index]`* of the constructed array*.
+
+Note that `abs(x)` equals `x` if `x >= 0`, and `-x` otherwise.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁹`
-- `0 ≤ index < n`
-- `1 ≤ maxSum ≤ 10⁹`
+- `1 <= n <= maxSum <= 10^9`
+- `0 <= index < n`
 
 ---
 
@@ -40,16 +43,16 @@ Return the maximum possible value of `nums[index]`.
 
 **Example 1:**
 ```
-Input:  n = 4, index = 2, maxSum = 6
+Input: n = 4, index = 2,  maxSum = 6
 Output: 2
-Explanation: [1, 1, 2, 1] — sum=5 ≤ 6, nums[2]=2.
+Explanation: nums = [1,2,2,1] is one array that satisfies all the conditions.
+There are no arrays that satisfy all the conditions and have nums[2] == 3, so 2 is the maximum nums[2].
 ```
 
 **Example 2:**
 ```
-Input:  n = 6, index = 1, maxSum = 10
+Input: n = 6, index = 1,  maxSum = 10
 Output: 3
-Explanation: [2, 3, 2, 1, 1, 1] — sum=10 ≤ 10, nums[1]=3.
 ```
 
 ---

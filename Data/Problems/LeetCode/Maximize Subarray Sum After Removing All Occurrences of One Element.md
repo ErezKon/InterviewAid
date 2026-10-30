@@ -18,11 +18,18 @@
 
 ## Problem Description
 
-Given an integer array `nums`, you may choose **one** value and remove **all** its occurrences. After removal (remaining elements keep their relative order), find the maximum subarray sum. Return the maximum over all possible value removals (including removing nothing).
+You are given an integer array `nums`.
+
+You can do the following operation on the array **at most** once:
+
+- Choose **any** integer `x` such that `nums` remains **non-empty** on removing all occurrences of `x`.
+- Remove **all** occurrences of `x` from the array.
+
+Return the **maximum** subarray sum across **all** possible resulting arrays.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `-10⁶ ≤ nums[i] ≤ 10⁶`
+- `1 <= nums.length <= 10^5`
+- `-10^6 <= nums[i] <= 10^6`
 
 ---
 
@@ -30,15 +37,23 @@ Given an integer array `nums`, you may choose **one** value and remove **all** i
 
 **Example 1:**
 ```
-nums = [1, -2, 3, -2, 5]
+Input: nums = [-3,2,-2,-1,3,-2,3]
+Output: 7
+Explanation: We can have the following arrays after at most one operation:
+- The original array is nums = [-3, 2, -2, -1, 3, -2, 3]. The maximum subarray sum is 3 + (-2) + 3 = 4.
+- Deleting all occurences of x = -3 results in nums = [2, -2, -1, 3, -2, 3]. The maximum subarray sum is 3 + (-2) + 3 = 4.
+- Deleting all occurences of x = -2 results in nums = [-3, 2, -1, 3, 3]. The maximum subarray sum is 2 + (-1) + 3 + 3 = 7.
+- Deleting all occurences of x = -1 results in nums = [-3, 2, -2, 3, -2, 3]. The maximum subarray sum is 3 + (-2) + 3 = 4.
+- Deleting all occurences of x = 3 results in nums = [-3, 2, -2, -1, -2]. The maximum subarray sum is 2.
+The output is max(4, 4, 7, 4, 2) = 7.
 ```
-Removing `-2` (all occurrences) yields `[1,3,5]` whose maximum subarray sum is `9`. Keeping the array gives max subarray sum `7` (subarray `[3,-2,5]`). The answer is `9`.
 
 **Example 2:**
 ```
-nums = [-1, -2, -3]
+Input: nums = [1,2,3,4]
+Output: 10
+Explanation: It is optimal to not perform any operations.
 ```
-Removing `-1` results in `[-2, -3]` with max subarray sum `-2`. Removing `-2` gives `[-1, -3]` with `-1`. Removing `-3` gives `[-1, -2]` with `-1`. Not removing anything yields `-1`. The best achievable sum is `-1`.
 
 ---
 

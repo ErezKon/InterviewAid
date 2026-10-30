@@ -7,21 +7,36 @@
 ---
 
 ## Problem Description
-A traffic signal cycles through three colors in order: **Green → Yellow → Red → Green**. You are given an integer `n` representing the number of seconds that have elapsed since the signal started at Green at time `0`. Return the color of the signal at second `n`.
+
+> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented "mod 3 cycle" problem. Correct idea: direct checks — `timer == 0` → "Green", `timer == 30` → "Orange", `30 < timer <= 90` → "Red", otherwise "Invalid". O(1).*
+
+You are given an integer `timer` representing the remaining time (in seconds) on a traffic signal.
+
+The signal follows these rules:
+
+- If `timer == 0`, the signal is `"Green"`
+- If `timer == 30`, the signal is `"Orange"`
+- If `30 < timer <= 90`, the signal is `"Red"`
+
+Return the current state of the signal. If none of the above conditions are met, return `"Invalid"`.
+
+**Constraints:**
+- `0 <= timer <= 1000`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: n = 0
-Output: "Green"
-Explanation: At time 0 the signal is Green.
+Input: timer = 60
+Output: "Red"
+Explanation: Since timer = 60, and 30 < timer <= 90, the answer is "Red".
 ```
 
 **Example 2:**
 ```
-Input: n = 5
-Output: "Red"
-Explanation: Cycle length is 3 seconds. 5 mod 3 = 2 → third color Red.
+Input: timer = 5
+Output: "Invalid"
+Explanation: Since timer = 5, it does not satisfy any of the given conditions, the answer is "Invalid".
 ```
 
 ## Approach

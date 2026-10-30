@@ -7,26 +7,40 @@
 ---
 
 ## Problem Description
-Given an integer `n` (1 ≤ n ≤ 10⁸), find the smallest prime number that is also a palindrome and is greater than or equal to `n`.
+
+Given an integer n, return *the smallest **prime palindrome** greater than or equal to* `n`.
+
+An integer is **prime** if it has exactly two divisors: `1` and itself. Note that `1` is not a prime number.
+
+- For example, `2`, `3`, `5`, `7`, `11`, and `13` are all primes.
+
+An integer is a **palindrome** if it reads the same from left to right as it does from right to left.
+
+- For example, `101` and `12321` are palindromes.
+
+The test cases are generated so that the answer always exists and is in the range `[2, 2 * 10^8]`.
+
+**Constraints:**
+- `1 <= n <= 10^8`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: n = 6
 Output: 7
-Explanation: 7 is the first prime palindrome ≥ 6.
 ```
+
 **Example 2:**
 ```
 Input: n = 8
 Output: 11
-Explanation: 11 is the smallest prime palindrome ≥ 8.
 ```
+
 **Example 3:**
 ```
-Input: n = 9989900
-Output: 100030001
-Explanation: The next prime palindrome after 9,989,900 is 100,030,001.
+Input: n = 13
+Output: 101
 ```
 
 ## Approach
@@ -79,7 +93,7 @@ For `n = 130`:
 - Length 1 and 3 palindromes generated (e.g., 131, 151, …). The first palindrome ≥130 that is prime is 131 → return 131.
 
 ## Complexity Analysis
-- Time: Generating at most ~10⁴ palindromes and testing primality up to √pal (≤ 10⁴) → roughly `O(10⁴ * √10⁸)` ≈ `O(10⁶)`, well within limits.
+- Time: Generating at most ~10⁴ palindromes and testing primality up to √pal (≤ 10⁴) → roughly `O(10⁴ * √10⁸)` ≈ `O(10⁶)`, well within limits.
 - Space: `O(1)` extra space.
 
 ## Follow‑Up Questions

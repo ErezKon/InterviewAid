@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Given an array starting as `[1]`, you can perform operations: either increment an element by 1, or duplicate an element. Find the minimum number of operations to make the array sum ≥ `k`.
+You are given a **positive** integer `k`. Initially, you have an array `nums = [1]`.
+
+You can perform **any** of the following operations on the array **any** number of times (**possibly zero**):
+
+- Choose any element in the array and **increase** its value by `1`.
+- Duplicate any element in the array and add it to the end of the array.
+
+Return *the **minimum** number of operations required to make the **sum** of elements of the final array greater than or equal to* `k`.
+
+**Constraints:**
+- `1 ≤ k ≤ 10⁵`
 
 ---
 
@@ -40,26 +50,20 @@ FUNCTION minOperations(k):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: k = 5
-Output: 3
-Explanation:
-- Increment the initial 1 to 2 (1 operation).
-- Duplicate 2 → [2,2] (1 operation), sum = 4.
-- Increment one 2 to 3 (1 operation), sum = 5 ≥ k.
-Total operations = 3.
-```
+Example 1:
+  Input: k = 11
+  Output: 5
+  Explanation: We can do the following operations on the array nums = [1]:
+  - Increase the element by 1 three times. The resulting array is nums = [4].
+  - Duplicate the element two times. The resulting array is nums = [4,4,4].
+  The sum of the final array is 4 + 4 + 4 = 12 which is greater than or equal to k = 11.
+  The total number of operations performed is 3 + 2 = 5.
 
-**Example 2:**
-```
-Input: k = 10
-Output: 5
-Explanation:
-- Increment 1 to 3 (2 operations).
-- Duplicate 3 twice: [3,3,3] (2 operations), sum = 9.
-- Increment one 3 to 4 (1 operation), sum = 10.
-Total operations = 5.
+Example 2:
+  Input: k = 1
+  Output: 0
+  Explanation: The sum of the original array is already greater than or equal to 1, so no operations are needed.
 ```
 
 ---

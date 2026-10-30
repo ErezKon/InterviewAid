@@ -7,13 +7,41 @@
 ---
 
 ## Problem Description
-Given an array of strings `words` where each string has the same length, determine if there exist two distinct strings that differ by exactly one character at the same position. Return `true` if such a pair exists, otherwise `false`.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given a list of strings `dict` where all the strings are of the same length.
+
+Return `true` if there are 2 strings that only differ by 1 character in the same index, otherwise return `false`.
+
+**Constraints:**
+- The number of characters in `dict <= 10^5`
+- `dict[i].length == dict[j].length`
+- `dict[i]` should be unique.
+- `dict[i]` contains only lowercase English letters.
+
+**Follow up:** Could you solve this problem in `O(n * m)` where n is the length of `dict` and `m` is the length of each string.
 
 ## Examples
-- **Input:** `words = ["abcd","acbd","aacd"]` **Output:** `true`
-  // "abcd" and "acbd" differ at the second character.
-- **Input:** `words = ["abc","def","ghi"]` **Output:** `false`
-- **Input:** `words = ["aaa","aba","aab"]` **Output:** `true`
+
+**Example 1:**
+```
+Input: dict = ["abcd","acbd", "aacd"]
+Output: true
+Explanation: Strings "abcd" and "aacd" differ only by one character in the index 1.
+```
+
+**Example 2:**
+```
+Input: dict = ["ab","cd","yz"]
+Output: false
+```
+
+**Example 3:**
+```
+Input: dict = ["abcd","cccc","abyd","abab"]
+Output: true
+```
 
 ## Approach
 **Algorithm:** Use a hash set of masked strings.

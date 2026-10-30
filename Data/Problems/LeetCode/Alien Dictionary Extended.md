@@ -5,17 +5,45 @@ Related: #207 Course Schedule, #210 Course Schedule II, #269 Alien Dictionary, #
 ---
 
 ## Problem Description
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 Given a list of words sorted lexicographically according to an alien language, derive a possible order of characters in that language. The order must be consistent with the given word sequence.
 
-## Examples
-**Example 1**
-Input: `words = ["wrt","wrf","er","ett","rftt"]`
-Output: `"wertf"`
-Explanation: The derived order satisfies all precedence constraints.
+Return a string of the unique letters in the alien language sorted in lexicographically increasing order by the new language's rules. If there is no valid ordering (a cycle exists, or a word appears before its own proper prefix), return `""`. If there are multiple valid orders, return any of them.
 
-**Example 2**
-Input: `words = ["z","x"]`
-Output: `"zx"`
+This file also serves as a template for the general Topological Sort pattern (#207, #210, #269, #310).
+
+**Constraints:**
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 100`
+- `words[i]` consists of only lowercase English letters.
+
+## Examples
+```
+Example 1:
+  Input: words = ["wrt","wrf","er","ett","rftt"]
+  Output: "wertf"
+  Explanation: Comparing adjacent words gives the edges t→f ("wrt" vs "wrf"), w→e ("wrf" vs "er"),
+  r→t ("er" vs "ett") and e→r ("ett" vs "rftt"). The only order consistent with w→e→r→t→f is "wertf".
+```
+```
+Example 2:
+  Input: words = ["z","x"]
+  Output: "zx"
+  Explanation: From "z" vs "x" we get z→x, so 'z' comes before 'x'.
+```
+```
+Example 3:
+  Input: words = ["z","x","z"]
+  Output: ""
+  Explanation: The edges z→x and x→z form a cycle, so no valid order exists.
+```
+```
+Example 4:
+  Input: words = ["abc","ab"]
+  Output: ""
+  Explanation: "abc" appears before its own prefix "ab", which is invalid in any lexicographic order.
+```
 
 ## Approach
 **Algorithm:** Build a directed graph of character precedence and perform topological sort (Kahn's algorithm).

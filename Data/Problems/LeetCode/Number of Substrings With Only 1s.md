@@ -20,7 +20,11 @@
 
 ## 1. Problem Description
 
-Count substrings consisting entirely of '1's in a binary string. Return the count modulo 10⁹+7.
+Given a binary string `s`, return *the number of substrings with all characters* `1`*'s*. Since the answer may be too large, return it modulo `10^9 + 7`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s[i]` is either `'0'` or `'1'`.
 
 ---
 
@@ -30,14 +34,24 @@ Count substrings consisting entirely of '1's in a binary string. Return the coun
 ```
 Input: s = "0110111"
 Output: 9
-Explanation: Substrings of only '1's are "1", "1", "11", "1", "1", "11", "111", "1", "1" (9 total).
+Explanation: There are 9 substring in total with only 1's characters.
+"1" -> 5 times.
+"11" -> 3 times.
+"111" -> 1 time.
 ```
 
 **Example 2:**
 ```
-Input: s = "0000"
-Output: 0
-Explanation: No '1' characters, so no valid substrings.
+Input: s = "101"
+Output: 2
+Explanation: Substring "1" is shown 2 times in s.
+```
+
+**Example 3:**
+```
+Input: s = "111111"
+Output: 21
+Explanation: Each substring contains only 1's characters.
 ```
 
 ---

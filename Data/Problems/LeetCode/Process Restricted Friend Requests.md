@@ -7,26 +7,60 @@
 ---
 
 ## Problem Description
-You are given an integer `n` representing `n` people (0-indexed) and a list of friend requests `requests`, where each request is a pair `[a, b]` meaning person `a` wants to befriend person `b`. Additionally, you are given a list of restricted pairs `restrictions`, where each pair `[x, y]` indicates that `x` and `y` must never end up in the same friend group. Process each request in order: if accepting the request would violate any restriction (i.e., cause two restricted people to become connected), reject it; otherwise, accept it and merge the two groups. Return a list of booleans indicating acceptance of each request.
+
+You are given an integer `n` indicating the number of people in a network. Each person is labeled from `0` to `n - 1`.
+
+You are also given a **0-indexed** 2D integer array `restrictions`, where `restrictions[i] = [x_i, y_i]` means that person `x_i` and person `y_i` **cannot** become **friends**, either **directly** or **indirectly** through other people.
+
+Initially, no one is friends with each other. You are given a list of friend requests as a **0-indexed** 2D integer array `requests`, where `requests[j] = [u_j, v_j]` is a friend request between person `u_j` and person `v_j`.
+
+A friend request is **successful** if `u_j` and `v_j` can be **friends**. Each friend request is processed in the given order (i.e., `requests[j]` occurs before `requests[j + 1]`), and upon a successful request, `u_j` and `v_j` **become direct friends** for all future friend requests.
+
+Return *a **boolean array*** `result`, *where each* `result[j]` *is* `true` *if the* `j`th *friend request is **successful** or* `false` *if it is not*.
+
+**Note:** If `u_j` and `v_j` are already direct friends, the request is still **successful**.
+
+**Constraints:**
+- `2 <= n <= 1000`
+- `0 <= restrictions.length <= 1000`
+- `restrictions[i].length == 2`
+- `0 <= x_i, y_i <= n - 1`
+- `x_i != y_i`
+- `1 <= requests.length <= 1000`
+- `requests[j].length == 2`
+- `0 <= u_j, v_j <= n - 1`
+- `u_j != v_j`
 
 ## Examples
-**Example 1**
-```
-Input: n = 3,
-       requests = [[0,1],[1,2],[0,2]],
-       restrictions = [[0,2]]
-Output: [true,true,false]
-```
-After the first two requests, 0 and 2 become indirectly connected, so the third request must be rejected.
 
-**Example 2**
+**Example 1:**
 ```
-Input: n = 4,
-       requests = [[0,1],[2,3],[1,2]],
-       restrictions = [[0,2],[1,3]]
-Output: [true,true,false]
+Input: n = 3, restrictions = [[0,1]], requests = [[0,2],[2,1]]
+Output: [true,false]
+Explanation:
+Request 0: Person 0 and person 2 can be friends, so they become direct friends.
+Request 1: Person 2 and person 1 cannot be friends since person 0 and person 1 would be indirect friends (1--2--0).
 ```
-The third request would connect 0 with 2 (restricted) and 1 with 3 (restricted).
+
+**Example 2:**
+```
+Input: n = 3, restrictions = [[0,1]], requests = [[1,2],[0,2]]
+Output: [true,false]
+Explanation:
+Request 0: Person 1 and person 2 can be friends, so they become direct friends.
+Request 1: Person 0 and person 2 cannot be friends since person 0 and person 1 would be indirect friends (0--2--1).
+```
+
+**Example 3:**
+```
+Input: n = 5, restrictions = [[0,1],[1,2],[2,3]], requests = [[0,4],[1,2],[3,1],[3,4]]
+Output: [true,false,true,false]
+Explanation:
+Request 0: Person 0 and person 4 can be friends, so they become direct friends.
+Request 1: Person 1 and person 2 cannot be friends since they are directly restricted.
+Request 2: Person 3 and person 1 can be friends, so they become direct friends.
+Request 3: Person 3 and person 4 cannot be friends since person 0 and person 1 would be indirect friends (0--4--3--1).
+```
 
 ## Approach
 Use a Union‑Find (Disjoint Set Union) data structure to maintain friend groups. For each request `[a,b]`:

@@ -1,27 +1,45 @@
 # 2975. Maximum Square Area by Removing Fences From a Field
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/maximum-square-area-by-removing-fences-from-a-field](https://leetcode.com/problems/maximum-square-area-by-removing-fences-from-a-field)
 **Companies:** Atlassian, Bloomberg, Google
 ---
 
 ## Problem Description
-You are given two sorted integer arrays `horizontal` and `vertical` representing the positions of existing horizontal and vertical fences on a rectangular field. The field’s borders are at `0` and `W` (width) for vertical fences and `0` and `H` (height) for horizontal fences. You may remove any number of fences. After removals, the remaining fences (including the borders) define rectangular cells. Determine the maximum possible area of a square that can be formed by the gaps between consecutive remaining fences.
+
+> *Note: the Approach below only uses gaps between **adjacent** fences and ignores the borders. Removing fences allows any pair of fences. Correct idea: add the borders (`1, m` to `hFences`, `1, n` to `vFences`), put every pairwise difference of horizontal positions in a set, then check every pairwise vertical difference against it. Return `side² mod (10^9 + 7)`, or `-1` if there is no common difference.*
+
+There is a large `(m - 1) x (n - 1)` rectangular field with corners at `(1, 1)` and `(m, n)` containing some horizontal and vertical fences given in arrays `hFences` and `vFences` respectively.
+
+Horizontal fences are from the coordinates `(hFences[i], 1)` to `(hFences[i], n)` and vertical fences are from the coordinates `(1, vFences[i])` to `(m, vFences[i])`.
+
+Return *the **maximum** area of a **square** field that can be formed by **removing** some fences (**possibly none**) or *`-1` *if it is impossible to make a square field*.
+
+Since the answer may be large, return it **modulo** `10^9 + 7`.
+
+**Note: **The field is surrounded by two horizontal fences from the coordinates `(1, 1)` to `(1, n)` and `(m, 1)` to `(m, n)` and two vertical fences from the coordinates `(1, 1)` to `(m, 1)` and `(1, n)` to `(m, n)`. These fences **cannot** be removed.
+
+**Constraints:**
+- `3 <= m, n <= 10^9`
+- `1 <= hFences.length, vFences.length <= 600`
+- `1 < hFences[i] < m`
+- `1 < vFences[i] < n`
+- `hFences` and `vFences` are unique.
 
 ## Examples
+
 **Example 1:**
 ```
-W = 8, H = 8
-vertical = [0,2,5,8]
-horizontal = [0,3,8]
-Removing fence at 5 (vertical) and 3 (horizontal) yields gaps of size 4 in both dimensions → square area = 4×4 = 16.
+Input: m = 4, n = 3, hFences = [2,3], vFences = [2]
+Output: 4
+Explanation: Removing the horizontal fence at 2 and the vertical fence at 2 will give a square field of area 4.
 ```
 
 **Example 2:**
 ```
-W = 10, H = 6
-vertical = [0,2,4,6,8,10]
-horizontal = [0,1,3,6]
-Keeping fences at 0,4,8 (vertical) and 0,3,6 (horizontal) gives gaps of 4 → square area = 16.
+Input: m = 6, n = 7, hFences = [2], vFences = [4]
+Output: -1
+Explanation: It can be proved that there is no way to create a square field by removing fences.
 ```
 
 ## Approach

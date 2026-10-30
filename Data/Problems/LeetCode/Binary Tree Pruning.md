@@ -7,13 +7,30 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree where each node's value is either `0` or `1`, prune (remove) every subtree that does not contain a `1`. Return the pruned tree's root. The tree may contain up to `10^4` nodes.
+Given the `root` of a binary tree, return *the same tree where every subtree (of the given tree) not containing a* `1` *has been removed*.
+
+A subtree of a node `node` is `node` plus every node that is a descendant of `node`.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 200]`.
+- `Node.val` is either `0` or `1`.
 
 ## Examples
-| Input Tree | Output Tree | Explanation |
-|------------|-------------|-------------|
-| `[[1,0,1],[0,0,0],[0,0,1]]` | `[[1,null,1],[null,null,1]]` | Subtrees rooted at the left child of the root and its descendants contain only `0`s and are removed. |
-| `[]` | `[]` | Empty tree remains empty. |
+```
+Example 1:
+  Input: root = [1,null,0,0,1]
+  Output: [1,null,0,null,1]
+  Explanation: Only the red nodes satisfy the property "every subtree not containing a 1".
+  The diagram on the right represents the answer.
+
+Example 2:
+  Input: root = [1,0,1,0,0,0,1]
+  Output: [1,null,1,null,1]
+
+Example 3:
+  Input: root = [1,1,0,1,1,0,1,0]
+  Output: [1,1,0,1,1,null,1]
+```
 
 ## Approach
 Perform a postorder DFS. Recursively prune left and right subtrees first, then decide whether to keep the current node: keep it if its value is `1` or if any child remains.

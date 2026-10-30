@@ -18,11 +18,22 @@
 
 ## Problem Description
 
-Given an array `nums`, find a contiguous subarray whose **GCD score** (GCD of all elements × length of subarray) is maximized. Return that maximum score.
+You are given an array of positive integers `nums` and an integer `k`.
+
+You may perform at most `k` operations. In each operation, you can choose one element in the array and **double** its value. Each element can be doubled **at most** once.
+
+The **score** of a contiguous **subarray** is defined as the **product** of its length and the *greatest common divisor (GCD)* of all its elements.
+
+Your task is to return the **maximum** **score** that can be achieved by selecting a contiguous subarray from the modified array.
+
+**Note:**
+
+- The **greatest common divisor (GCD)** of an array is the largest integer that evenly divides all the array elements.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `1 ≤ nums[i] ≤ 10⁶`
+- `1 <= n == nums.length <= 1500`
+- `1 <= nums[i] <= 10^9`
+- `1 <= k <= n`
 
 ---
 
@@ -30,21 +41,29 @@ Given an array `nums`, find a contiguous subarray whose **GCD score** (GCD of al
 
 **Example 1:**
 ```
-nums = [12, 15, 18]
+Input: nums = [2,4], k = 1
+Output: 8
+Explanation: - Double nums[0] to 4 using one operation. The modified array becomes [4, 4].
+- The GCD of the subarray [4, 4] is 4, and the length is 2.
+- Thus, the maximum possible score is 2 × 4 = 8.
 ```
-Possible subarrays and their GCD scores:
-- `[12]` → GCD=12, length=1, score=12
-- `[12,15]` → GCD=3, length=2, score=6
-- `[12,15,18]` → GCD=3, length=3, score=9
-- `[15,18]` → GCD=3, length=2, score=6
-- `[18]` → GCD=18, length=1, score=18
-The maximum score is **18** from subarray `[18]`.
 
 **Example 2:**
 ```
-nums = [2,4,6,8]
+Input: nums = [3,5,7], k = 2
+Output: 14
+Explanation: - Double nums[2] to 14 using one operation. The modified array becomes [3, 5, 14].
+- The GCD of the subarray [14] is 14, and the length is 1.
+- Thus, the maximum possible score is 1 × 14 = 14.
 ```
-All numbers share GCD=2. The longest subarray is the whole array, giving score `2 * 4 = 8`. No other subarray yields a higher product, so answer is **8**.
+
+**Example 3:**
+```
+Input: nums = [5,5,5], k = 1
+Output: 15
+Explanation: - The subarray [5, 5, 5] has a GCD of 5, and its length is 3.
+- Since doubling any element doesn't improve the score, the maximum score is 3 × 5 = 15.
+```
 
 ---
 

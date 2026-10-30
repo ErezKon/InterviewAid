@@ -7,20 +7,40 @@
 ---
 
 ## Problem Description
-Given the root of a binary tree, a node is considered **good** if every node on the path from the root to that node has a value less than or equal to the node's value. Return the number of good nodes in the tree.
+Given a binary tree `root`, a node *X* in the tree is named **good** if in the path from root to *X* there are no nodes with a value *greater than* X.
+
+Return the number of **good** nodes in the binary tree.
+
+**Constraints:**
+- The number of nodes in the binary tree is in the range `[1, 10^5]`.
+- Each node's value is between `[-10^4, 10^4]`.
 
 ## Examples
-**Example 1:**
 ```
-Input: root = [3,1,4,3,null,1,5]
-Output: 4
-Explanation: The good nodes are the root (3), the right child (4), the left grand‑child (3) and the right‑most leaf (5).
+Example 1:
+  Input: root = [3,1,4,3,null,1,5]
+  Output: 4
+  Explanation: Nodes in blue are good.
+  Root Node (3) is always a good node.
+  Node 4 -> (3,4) is the maximum value in the path starting from the root.
+  Node 5 -> (3,4,5) is the maximum value in the path
+  Node 3 -> (3,1,3) is the maximum value in the path.
+  (Good nodes: the root (3), the right child (4), the left grand‑child (3) and the right‑most leaf (5).)
 ```
-**Example 2:**
+
 ```
-Input: root = [3,3,null,4,2]
-Output: 3
-Explanation: The good nodes are the root (3), its left child (3) and the left‑most leaf (4).
+Example 2:
+  Input: root = [3,3,null,4,2]
+  Output: 3
+  Explanation: Node 2 -> (3, 3, 2) is not good, because "3" is higher than it.
+  (Good nodes: the root (3), its left child (3) and the left‑most leaf (4).)
+```
+
+```
+Example 3:
+  Input: root = [1]
+  Output: 1
+  Explanation: Root is considered as good.
 ```
 
 ## Approach

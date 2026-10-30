@@ -20,11 +20,15 @@
 
 ## Problem Description
 
-Given an array `nums`, you can change at most 3 elements to any value. Return the **minimum difference** between the largest and smallest values after the changes.
+You are given an integer array `nums`.
+
+In one move, you can choose one element of `nums` and change it to **any value**.
+
+Return *the minimum difference between the largest and smallest value of `nums` **after performing at most three moves***.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `-10⁹ ≤ nums[i] ≤ 10⁹`
+- `1 <= nums.length <= 10^5`
+- `-10^9 <= nums[i] <= 10^9`
 
 ---
 
@@ -32,19 +36,36 @@ Given an array `nums`, you can change at most 3 elements to any value. Return th
 
 **Example 1:**
 ```
-Input: nums = [5, 3, 2, 4]
+Input: nums = [5,3,2,4]
 Output: 0
-Explanation: Change at most 3 of 4 elements → can make all equal.
+Explanation: We can make at most 3 moves.
+In the first move, change 2 to 3. nums becomes [5,3,3,4].
+In the second move, change 4 to 3. nums becomes [5,3,3,3].
+In the third move, change 5 to 3. nums becomes [3,3,3,3].
+After performing 3 moves, the difference between the minimum and maximum is 3 - 3 = 0.
 ```
 
 **Example 2:**
 ```
-Input: nums = [1, 5, 0, 10, 14]
+Input: nums = [1,5,0,10,14]
 Output: 1
-Explanation: Change 0, 10, 14 → [1, 5, 1, 1, 1]. Diff = 5-1 = 4? 
-  Better: change 0, 10, 14 to 5 → diff = 5-1 = 4. Or change 14, 10, 0 → [1,5,5,5,5] → diff 4.
-  Actually: remove 3 largest → diff = nums[4]-nums[3] after sort = 5-1 = 4? 
-  Sort: [0,1,5,10,14]. Remove 3 largest: diff = 1-0 = 1. ✓
+Explanation: We can make at most 3 moves.
+In the first move, change 5 to 0. nums becomes [1,0,0,10,14].
+In the second move, change 10 to 0. nums becomes [1,0,0,0,14].
+In the third move, change 14 to 1. nums becomes [1,0,0,0,1].
+After performing 3 moves, the difference between the minimum and maximum is 1 - 0 = 1.
+It can be shown that there is no way to make the difference 0 in 3 moves.
+```
+
+**Example 3:**
+```
+Input: nums = [3,100,20]
+Output: 0
+Explanation: We can make at most 3 moves.
+In the first move, change 100 to 7. nums becomes [3,7,20].
+In the second move, change 20 to 7. nums becomes [3,7,7].
+In the third move, change 3 to 7. nums becomes [7,7,7].
+After performing 3 moves, the difference between the minimum and maximum is 7 - 7 = 0.
 ```
 
 ---

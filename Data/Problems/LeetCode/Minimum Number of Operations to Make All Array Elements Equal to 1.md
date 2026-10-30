@@ -8,7 +8,19 @@
 
 ## Problem Description
 
-You are given an integer array `nums` of length `n`. In one operation you may choose any element `x > 1` and replace it with any of its proper divisors (a divisor `d` such that `1 < d < x`). The operation can be applied repeatedly. Return the minimum number of operations required to make every element of `nums` equal to `1`. It is guaranteed that the answer exists.
+> *Note: the Approach below counts prime factors (invented). Officially the operation replaces an adjacent element with their gcd. If `c > 0` ones exist, the answer is `n − c`. Otherwise find the shortest subarray with gcd 1 (length `L`, O(n²)); the answer is `(L − 1) + (n − 1)`, or -1 if the overall gcd > 1.*
+
+You are given a **0-indexed** array `nums` consisting of **positive** integers. You can do the following operation on the array **any** number of times:
+
+- Select an index `i` such that `0 <= i < n - 1` and replace either of `nums[i]` or `nums[i+1]` with their gcd value.
+
+Return *the **minimum** number of operations to make all elements of *`nums`* equal to *`1`. If it is impossible, return `-1`.
+
+The gcd of two integers is the greatest common divisor of the two integers.
+
+**Constraints:**
+- `2 <= nums.length <= 50`
+- `1 <= nums[i] <= 10^6`
 
 ---
 
@@ -16,23 +28,20 @@ You are given an integer array `nums` of length `n`. In one operation you may ch
 
 **Example 1:**
 ```
-Input: nums = [2,3,4]
+Input: nums = [2,6,3,4]
 Output: 4
-Explanation:
-2 → 1 (1 operation)
-3 → 1 (1 operation)
-4 → 2 → 1 (2 operations)
-Total = 4.
+Explanation: We can do the following operations:
+- Choose index i = 2 and replace nums[2] with gcd(3,4) = 1. Now we have nums = [2,6,1,4].
+- Choose index i = 1 and replace nums[1] with gcd(6,1) = 1. Now we have nums = [2,1,1,4].
+- Choose index i = 0 and replace nums[0] with gcd(2,1) = 1. Now we have nums = [1,1,1,4].
+- Choose index i = 2 and replace nums[3] with gcd(1,4) = 1. Now we have nums = [1,1,1,1].
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,6]
-Output: 5
-Explanation:
-5 → 1 (1 operation)
-6 → 3 → 1 (2 operations)
-Total = 3 operations for 6 + 1 for 5 = 4? Actually 6 → 2 → 1 (2 ops) gives total 3. The minimal count is 3.
+Input: nums = [2,10,6,14]
+Output: -1
+Explanation: It can be shown that it is impossible to make all the elements equal to 1.
 ```
 
 ---

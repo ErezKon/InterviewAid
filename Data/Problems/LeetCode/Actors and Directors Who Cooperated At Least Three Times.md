@@ -7,28 +7,47 @@
 ---
 
 ## Problem Description
-You are given a table `ActorDirector` with two columns:
-- `actor_id` – the ID of an actor.
-- `director_id` – the ID of a director.
-Each row represents a collaboration between the actor and the director on a movie.
+Table: `ActorDirector`
 
-Return all pairs `(actor_id, director_id)` where the actor and director have worked together **at least three times**. The result can be in any order.
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| actor_id    | int     |
+| director_id | int     |
+| timestamp   | int     |
++-------------+---------+
+timestamp is the primary key (column with unique values) for this table.
+```
+
+Write a solution to find all the pairs `(actor_id, director_id)` where the actor has cooperated with the director at least three times.
+
+Return the result table in **any order**.
 
 ## Examples
-| actor_id | director_id |
-|----------|-------------|
-| 1        | 1 |
-| 1        | 2 |
-| 1        | 1 |
-| 1        | 1 |
-| 2        | 2 |
-| 2        | 2 |
-| 2        | 2 |
-| 3        | 3 |
-
-**Output:** `[(1,1), (2,2)]`
-
-Explanation: Actor 1 and Director 1 appear three times, and Actor 2 and Director 2 also appear three times. The pair (3,3) appears only once.
+```
+Example 1:
+  Input:
+  ActorDirector table:
+  +-------------+-------------+-------------+
+  | actor_id    | director_id | timestamp   |
+  +-------------+-------------+-------------+
+  | 1           | 1           | 0           |
+  | 1           | 1           | 1           |
+  | 1           | 1           | 2           |
+  | 1           | 2           | 3           |
+  | 1           | 2           | 4           |
+  | 2           | 1           | 5           |
+  | 2           | 1           | 6           |
+  +-------------+-------------+-------------+
+  Output:
+  +-------------+-------------+
+  | actor_id    | director_id |
+  +-------------+-------------+
+  | 1           | 1           |
+  +-------------+-------------+
+  Explanation: The only pair is (1, 1) where they cooperated exactly 3 times.
+```
 
 ## Approach
 The query groups rows by `actor_id` and `director_id` and keeps only those groups whose count is ≥ 3.

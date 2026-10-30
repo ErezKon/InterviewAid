@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Given multiple sorted arrays, find the longest common subsequence across all of them.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an array of integer arrays `arrays` where each `arrays[i]` is sorted in **strictly increasing** order, return *an integer array representing the **longest common subsequence** among **all** the arrays*.
+
+A **subsequence** is a sequence that can be derived from another sequence by deleting some elements (possibly none) without changing the order of the remaining elements.
+
+**Constraints:**
+- `2 <= arrays.length <= 100`
+- `1 <= arrays[i].length <= 100`
+- `1 <= arrays[i][j] <= 100`
+- `arrays[i]` is sorted in **strictly increasing** order.
 
 ---
 
@@ -37,16 +47,27 @@ FUNCTION longestCommonSubseq(arrays):
 
 **Example 1:**
 ```
-Input: arrays = [[1,2,3,4],[2,3,5,6],[2,3,7,8]]
-Output: [2,3]
-Explanation: 2 and 3 appear in all three arrays, forming the longest common subsequence.
+Input: arrays = [[1,3,4],
+                 [1,4,7,9]]
+Output: [1,4]
+Explanation: The longest common subsequence in the two arrays is [1,4].
 ```
 
 **Example 2:**
 ```
-Input: arrays = [[1,5,9],[2,6,10],[3,7,11]]
+Input: arrays = [[2,3,6,8],
+                 [1,2,3,5,6,7,10],
+                 [2,3,4,6,9]]
+Output: [2,3,6]
+Explanation: The longest common subsequence in all three arrays is [2,3,6].
+```
+
+**Example 3:**
+```
+Input: arrays = [[1,2,3,4,5],
+                 [6,7,8]]
 Output: []
-Explanation: No element is common to all arrays.
+Explanation: There is no common subsequence between the two arrays.
 ```
 
 ---

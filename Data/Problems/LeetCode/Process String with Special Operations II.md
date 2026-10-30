@@ -7,29 +7,72 @@
 ---
 
 ## Problem Description
-You are given a string `s` consisting of lowercase letters and the special character `*`. The string must be processed from left to right with the following rule applied repeatedly:
-- When a `*` is encountered, delete the character immediately before it (if any) **and** delete the `*` itself.
-- After deletion, the processing continues from the position following the removed `*` (i.e., the next character in the original string).
-If multiple `*` characters appear consecutively, each operates on the current state of the string. Return the final string after all characters have been processed.
+
+> *Note: the Approach/Walkthrough below only handle a backspace character and build the whole string. Correct idea: the result can reach 10^15 characters, so only track lengths. Forward pass: record `len_i` after each operation. Backward pass from the end with index `k`: for `#` (len doubled) map `k ← k − len/2` if `k ≥ len/2`; for `%` map `k ← len − 1 − k`; for `*` nothing changes (k < shorter length); for a letter, if `k == len − 1` that letter is the answer. Return `'.'` if `k ≥` final length. O(n).*
+
+You are given a string `s` consisting of lowercase English letters and the special characters: `'*'`, `'#'`, and `'%'`.
+
+You are also given an integer `k`.
+
+Build a new string `result` by processing `s` according to the following rules from left to right:
+
+- If the letter is a **lowercase** English letter append it to `result`.
+- A `'*'` **removes** the last character from `result`, if it exists.
+- A `'#'` **duplicates** the current `result` and **appends** it to itself.
+- A `'%'` **reverses** the current `result`.
+
+Return the `k`th character of the final string `result`. If `k` is out of the bounds of `result`, return `'.'`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of only lowercase English letters and special characters `'*'`, `'#'`, and `'%'`.
+- `0 <= k <= 10^15`
+- The length of `result` after processing `s` will not exceed `10^15`.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: "ab*c*"
+Input: s = "a#b%*", k = 1
 Output: "a"
 Explanation:
-- `*` after `b` deletes `b` → "a*c*".
-- Next `*` after `c` deletes `c` → "a*".
-- Final `*` deletes `a` → "" (empty string).
+| i | s[i] | Operation                 | Current result |
+|---|------|---------------------------|----------------|
+| 0 | 'a'  | Append 'a'                | "a"            |
+| 1 | '#'  | Duplicate result          | "aa"           |
+| 2 | 'b'  | Append 'b'                | "aab"          |
+| 3 | '%'  | Reverse result            | "baa"          |
+| 4 | '*'  | Remove the last character | "ba"           |
+The final result is "ba". The character at index k = 1 is 'a'.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: "a**b"
-Output: "b"
+Input: s = "cd%#*#", k = 3
+Output: "d"
 Explanation:
-- First `*` deletes `a` → "*b".
-- Second `*` has no preceding character, so it is simply removed → "b".
+| i | s[i] | Operation                 | Current result |
+|---|------|---------------------------|----------------|
+| 0 | 'c'  | Append 'c'                | "c"            |
+| 1 | 'd'  | Append 'd'                | "cd"           |
+| 2 | '%'  | Reverse result            | "dc"           |
+| 3 | '#'  | Duplicate result          | "dcdc"         |
+| 4 | '*'  | Remove the last character | "dcd"          |
+| 5 | '#'  | Duplicate result          | "dcddcd"       |
+The final result is "dcddcd". The character at index k = 3 is 'd'.
+```
+
+**Example 3:**
+```
+Input: s = "z*#", k = 0
+Output: "."
+Explanation:
+| i | s[i] | Operation                 | Current result |
+|---|------|---------------------------|----------------|
+| 0 | 'z'  | Append 'z'                | "z"            |
+| 1 | '*'  | Remove the last character | ""             |
+| 2 | '#'  | Duplicate the string      | ""             |
+The final result is "". Since index k = 0 is out of bounds, the output is '.'.
 ```
 
 ## Approach

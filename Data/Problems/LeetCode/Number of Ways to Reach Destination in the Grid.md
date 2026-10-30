@@ -20,7 +20,27 @@
 
 ## 1. Problem Description
 
-Count ways to reach a destination cell in a grid with movement constraints. Return mod 10⁹+7.
+> *Note: the Approach below is a placeholder. Officially each move goes to any other cell in the same row or column, using exactly `k` moves. Correct idea: DP over 4 states (same row as `dest`? same column as `dest`?) with transition counts based on `n − 1`, `m − 1`, `n − 2`, `m − 2`; iterate `k` times mod 10^9+7 (O(k)).*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given two integers `n` and `m` which represent the size of a **1-indexed **grid. You are also given an integer `k`, a **1-indexed** integer array `source` and a **1-indexed** integer array `dest`, where `source` and `dest` are in the form `[x, y]` representing a cell on the given grid.
+
+You can move through the grid in the following way:
+
+- You can go from cell `[x_1, y_1]` to cell `[x_2, y_2]` if either `x_1 == x_2` or `y_1 == y_2`.
+- Note that you **can't** move to the cell you are already in e.g. `x_1 == x_2` and `y_1 == y_2`.
+
+Return *the number of ways you can reach* `dest` *from* `source` *by moving through the grid* **exactly** `k` *times.*
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `2 <= n, m <= 10^9`
+- `1 <= k <= 10^5`
+- `source.length == dest.length == 2`
+- `1 <= source[1], dest[1] <= n`
+- `1 <= source[2], dest[2] <= m`
 
 ---
 
@@ -44,16 +64,27 @@ Count ways to reach a destination cell in a grid with movement constraints. Retu
 
 **Example 1:**
 ```
-Input: m = 3, n = 3, obstacles = []
-Output: 6
-Explanation: Standard 2‑right and 2‑down moves → C(4,2) = 6.
+Input: n = 3, m = 2, k = 2, source = [1,1], dest = [2,2]
+Output: 2
+Explanation: There are 2 possible sequences of reaching [2,2] from [1,1]:
+- [1,1] -> [1,2] -> [2,2]
+- [1,1] -> [2,1] -> [2,2]
 ```
 
 **Example 2:**
 ```
-Input: m = 3, n = 3, obstacles = [(1,1)]
-Output: 2
-Explanation: Paths that pass through (1,1) are excluded, leaving 2 valid routes.
+Input: n = 3, m = 4, k = 3, source = [1,2], dest = [2,3]
+Output: 9
+Explanation: There are 9 possible sequences of reaching [2,3] from [1,2]:
+- [1,2] -> [1,1] -> [1,3] -> [2,3]
+- [1,2] -> [1,1] -> [2,1] -> [2,3]
+- [1,2] -> [1,3] -> [3,3] -> [2,3]
+- [1,2] -> [1,4] -> [1,3] -> [2,3]
+- [1,2] -> [1,4] -> [2,4] -> [2,3]
+- [1,2] -> [2,2] -> [2,1] -> [2,3]
+- [1,2] -> [2,2] -> [2,4] -> [2,3]
+- [1,2] -> [3,2] -> [2,2] -> [2,3]
+- [1,2] -> [3,2] -> [3,3] -> [2,3]
 ```
 
 ---

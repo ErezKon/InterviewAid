@@ -7,18 +7,33 @@
 ---
 
 ## Problem Description
-Given a list of car intervals represented by their start and end positions on a number line, and a list of query points, determine for each point how many cars intersect that point. Return an array of counts corresponding to the query points.
+
+> *Note: the Approach/Walkthrough below answer per-point coverage queries, a different problem. Correct idea: mark every integer point in `[start_i, end_i]` (or use a difference array over `1..100`) and count points with coverage > 0.*
+
+You are given a **0-indexed** 2D integer array `nums` representing the coordinates of the cars parking on a number line. For any index `i`, `nums[i] = [start_i, end_i]` where `start_i` is the starting point of the `i`th car and `end_i` is the ending point of the `i`th car.
+
+Return *the number of integer points on the line that are covered with **any part** of a car.*
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `nums[i].length == 2`
+- `1 <= start_i <= end_i <= 100`
 
 ## Examples
+
 **Example 1:**
-Input: `cars = [[1,5],[2,6],[4,8]], points = [2,4,7]`
-Output: `[2,3,1]`
-Explanation: Point 2 lies in intervals [1,5] and [2,6]; point 4 lies in all three intervals; point 7 lies only in [4,8].
+```
+Input: nums = [[3,6],[1,5],[4,7]]
+Output: 7
+Explanation: All the points from 1 to 7 intersect at least one car, therefore the answer would be 7.
+```
 
 **Example 2:**
-Input: `cars = [[0,0]], points = [0]`
-Output: `[1]`
-Explanation: Single point interval intersects the query point.
+```
+Input: nums = [[1,3],[5,8]]
+Output: 7
+Explanation: Points intersecting at least one car are 1, 2, 3, 5, 6, 7, 8. There are a total of 7 points, therefore the answer would be 7.
+```
 
 ## Approach
 Use a sweep line (difference array) technique:

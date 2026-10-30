@@ -7,7 +7,17 @@
 ---
 
 ## Problem Description
-Given an array of distinct integers `preorder` representing the preorder traversal of a binary search tree (BST), determine whether it could be the preorder traversal of **some** BST. Return `true` if possible, otherwise `false`.
+
+> *Note: premium problem (statement checked against the official text with verify.py).*
+
+Given an array of **unique** integers `preorder`, return `true` *if it is the correct preorder traversal sequence of a binary search tree*.
+
+**Constraints:**
+- `1 <= preorder.length <= 10^4`
+- `1 <= preorder[i] <= 10^4`
+- All the elements of `preorder` are **unique**.
+
+**Follow up:** Could you do it using only constant space complexity?
 
 ## Examples
 **Example 1:**

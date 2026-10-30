@@ -8,14 +8,35 @@
 
 ## Problem Description
 
-Given a positive integer `n`, find the smallest positive integer `x` such that the product of the digits of `x` equals `n`. If no such integer exists, return `"-1"`.
+You are given a **positive** integer `n`.
+
+Return a string representing the **smallest positive** integer such that the product of its digits is equal to `n`, or `"-1"` if no such number exists.
+
+**Constraints:**
+- `1 <= n <= 10^15`
 
 ## Examples
 
-- **Input:** `n = 48`
-  - **Output:** `"68"`. The digits 6 and 8 multiply to 48, and 68 is the smallest such number.
-- **Input:** `n = 13`
-  - **Output:** `"-1"`. 13 is prime, so no combination of single digits (2-9) can multiply to it.
+```
+Example 1:
+  Input: n = 105
+  Output: "357"
+  Explanation: 3 * 5 * 7 = 105. It can be shown that 357 is the smallest number with a product of digits equal to 105. So the answer would be "357".
+```
+
+```
+Example 2:
+  Input: n = 7
+  Output: "7"
+  Explanation: Since 7 has only one digit, its product of digits would be 7. We will show that 7 is the smallest number with a product of digits equal to 7. Since the product of numbers 1 to 6 is 1 to 6 respectively, so "7" would be the answer.
+```
+
+```
+Example 3:
+  Input: n = 44
+  Output: "-1"
+  Explanation: It can be shown that there is no number such that its product of digits is equal to 44. So the answer would be "-1".
+```
 
 ## Approach: Greedy Factorization [Time: O(log n), Space: O(log n)]
 

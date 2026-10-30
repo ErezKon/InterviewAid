@@ -1,17 +1,44 @@
 # 879. Profitable Schemes
 
 **Difficulty:** 🔴 Hard
+**LeetCode:** [https://leetcode.com/problems/profitable-schemes](https://leetcode.com/problems/profitable-schemes)
 **Companies:** Amazon, Google
+
 ---
 
 ## Problem Description
-Given `n` members, a minimum profit `minProfit`, and two arrays `group` and `profit` where `group[i]` is the number of members required for the `i`‑th crime and `profit[i]` is the profit earned, return the number of schemes that generate at least `minProfit` profit using at most `n` members. The answer should be modulo `10^9 + 7`.
+
+There is a group of `n` members, and a list of various crimes they could commit. The `i`th crime generates a `profit[i]` and requires `group[i]` members to participate in it. If a member participates in one crime, that member can't participate in another crime.
+
+Let's call a **profitable scheme** any subset of these crimes that generates at least `minProfit` profit, and the total number of members participating in that subset of crimes is at most `n`.
+
+Return the number of schemes that can be chosen. Since the answer may be very large, **return it modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= n <= 100`
+- `0 <= minProfit <= 100`
+- `1 <= group.length <= 100`
+- `1 <= group[i] <= 100`
+- `profit.length == group.length`
+- `0 <= profit[i] <= 100`
 
 ## Examples
-| n | minProfit | group | profit | Output |
-|---|-----------|-------|--------|--------|
-| 5 | 3 | [2,2] | [2,3] | 2 |
-| 10 | 5 | [2,3,5] | [6,7,8] | 7 |
+
+**Example 1:**
+```
+Input: n = 5, minProfit = 3, group = [2,2], profit = [2,3]
+Output: 2
+Explanation: To make a profit of at least 3, the group could either commit crimes 0 and 1, or just crime 1.
+In total, there are 2 schemes.
+```
+
+**Example 2:**
+```
+Input: n = 10, minProfit = 5, group = [2,3,5], profit = [6,7,8]
+Output: 7
+Explanation: To make a profit of at least 5, the group could commit any crimes, as long as they commit one.
+There are 7 possible schemes: (0), (1), (2), (0,1), (0,2), (1,2), and (0,1,2).
+```
 
 ## Approach
 Use dynamic programming where `dp[j][k]` stores the number of ways to achieve profit `k` (capped at `minProfit`) using `j` members.

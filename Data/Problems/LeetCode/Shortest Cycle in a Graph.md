@@ -1,13 +1,27 @@
 # 2608. Shortest Cycle in a Graph
 
 **Difficulty:** 🔴 Hard
+**LeetCode:** [https://leetcode.com/problems/shortest-cycle-in-a-graph](https://leetcode.com/problems/shortest-cycle-in-a-graph)
 
 **Companies:** Meta, Phonepe, Zomato
 ---
 
 ## Problem Description
 
-Given an undirected graph with `n` nodes and `edges`, find the length of the **shortest cycle**. Return `-1` if no cycle exists.
+There is a **bi-directional** graph with `n` vertices, where each vertex is labeled from `0` to `n - 1`. The edges in the graph are represented by a given 2D integer array `edges`, where `edges[i] = [ui, vi]` denotes an edge between vertex `ui` and vertex `vi`. Every vertex pair is connected by at most one edge, and no vertex has an edge to itself.
+
+Return *the length of the **shortest** cycle in the graph*. If no cycle exists, return `-1`.
+
+A cycle is a path that starts and ends at the same node, and each edge in the path is used only once.
+
+**Constraints:**
+
+- `2 <= n <= 1000`
+- `1 <= edges.length <= 1000`
+- `edges[i].length == 2`
+- `0 <= ui, vi < n`
+- `ui != vi`
+- There are no repeated edges.
 
 ---
 
@@ -41,18 +55,18 @@ FUNCTION findShortestCycle(n, edges):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: n = 7, edges = [[0,1],[1,2],[2,0],[3,4],[4,5],[5,3]]
-Output: 3
-Explanation: The triangle formed by nodes 0‑1‑2 is the shortest cycle.
+Example 1:
+  Input: n = 7, edges = [[0,1],[1,2],[2,0],[3,4],[4,5],[5,6],[6,3]]
+  Output: 3
+  Explanation: The cycle with the smallest length is : 0 -> 1 -> 2 -> 0
 ```
 
-**Example 2:**
 ```
-Input: n = 4, edges = [[0,1],[2,3]]
-Output: -1
-Explanation: The graph consists of two disconnected edges, no cycles exist.
+Example 2:
+  Input: n = 4, edges = [[0,1],[0,2]]
+  Output: -1
+  Explanation: There are no cycles in this graph.
 ```
 
 ---

@@ -21,11 +21,20 @@
 
 ## 1. Problem Description
 
-Given an array `arr` of `n` positive integers and an integer `k`, the array is called **K-increasing** if `arr[i] <= arr[i + k]` for every index `i` where `i + k < n`.
+You are given a **0-indexed** array `arr` consisting of `n` positive integers, and a positive integer `k`.
 
-In one operation, you can pick any index `i` and change `arr[i]` to **any** positive integer.
+The array `arr` is called **K-increasing** if `arr[i-k] <= arr[i]` holds for every index `i`, where `k <= i <= n-1`.
 
-Return the **minimum** number of operations needed to make the array K-increasing.
+- For example, `arr = [4, 1, 5, 2, 6, 2]` is K-increasing for `k = 2` because:
+  - `arr[0] <= arr[2] (4 <= 5)`
+  - `arr[1] <= arr[3] (1 <= 2)`
+  - `arr[2] <= arr[4] (5 <= 6)`
+  - `arr[3] <= arr[5] (2 <= 2)`
+- However, the same `arr` is not K-increasing for `k = 1` (because `arr[0] > arr[1]`) or `k = 3` (because `arr[0] > arr[3]`).
+
+In one **operation**, you can choose an index `i` and **change** `arr[i]` into **any** positive integer.
+
+Return *the **minimum number of operations** required to make the array K-increasing for the given* `k`.
 
 **Constraints:**
 - `1 <= arr.length <= 10⁵`

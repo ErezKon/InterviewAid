@@ -7,15 +7,36 @@
 ---
 
 ## Problem Description
-Given an integer `k`, find the length of the smallest positive integer that consists only of the digit `1` and is divisible by `k`. If no such integer exists, return `-1`. The integer can be extremely large, so you must work with remainders instead of constructing the number directly.
+Given a positive integer `k`, you need to find the **length** of the **smallest** positive integer `n` such that `n` is divisible by `k`, and `n` only contains the digit `1`.
+
+Return *the **length** of* `n`. If there is no such `n`, return -1.
+
+**Note:** `n` may not fit in a 64-bit signed integer.
+
+**Constraints:**
+- `1 <= k <= 10^5`
 
 ## Examples
-- **Input:** `k = 3`  
-  **Output:** `3`  
-  **Explanation:** The numbers `1`, `11`, `111` are examined; `111` is divisible by `3`.
-- **Input:** `k = 2`  
-  **Output:** `-1`  
-  **Explanation:** Any number consisting only of `1`s is odd, so it can never be divisible by an even `k`.
+```
+Example 1:
+  Input: k = 1
+  Output: 1
+  Explanation: The smallest answer is n = 1, which has length 1.
+```
+
+```
+Example 2:
+  Input: k = 2
+  Output: -1
+  Explanation: There is no such positive integer n divisible by 2.
+```
+
+```
+Example 3:
+  Input: k = 3
+  Output: 3
+  Explanation: The smallest answer is n = 111, which has length 3.
+```
 
 ## Approach
 The problem can be solved using the **Pigeonhole Principle** and modular arithmetic. We iteratively build the number `111…1` while keeping only its remainder modulo `k`. If the remainder becomes `0`, the current length is the answer. Because there are only `k` possible remainders (0 to k‑1), the process must terminate within `k` steps; otherwise a cycle occurs and no solution exists.

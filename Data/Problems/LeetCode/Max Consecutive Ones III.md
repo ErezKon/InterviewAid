@@ -21,12 +21,12 @@
 
 ## Problem Description
 
-Given a binary array `nums` and an integer `k`, return the maximum number of consecutive `1`'s in the array if you can flip at most `k` `0`'s.
+Given a binary array `nums` and an integer `k`, return *the maximum number of consecutive *`1`*'s in the array if you can flip at most* `k` `0`'s.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `nums[i]` is either `0` or `1`
-- `0 ≤ k ≤ nums.length`
+- `1 <= nums.length <= 10^5`
+- `nums[i]` is either 0 or 1.
+- `0 <= k <= nums.length`
 
 ---
 
@@ -34,17 +34,18 @@ Given a binary array `nums` and an integer `k`, return the maximum number of con
 
 **Example 1:**
 ```
-Input:  nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
 Output: 6
-Explanation: Flip the two 0's at indices 5 and 10 (or 3 and 4, etc.)
-             → [1,1,1,0,0,1,1,1,1,1,1]  ← window of 6 ones
+Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 ```
 
 **Example 2:**
 ```
-Input:  nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
+Input: nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
 Output: 10
-Explanation: Flip 0's at indices 4, 5, 9 → window covers indices 2..11
+Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 ```
 
 ---

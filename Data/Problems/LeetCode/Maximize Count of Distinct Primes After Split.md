@@ -8,11 +8,23 @@
 
 ## Problem Description
 
-Given an array `nums`, split it into two non‑empty contiguous parts. For each part, count the number of **distinct prime** values. Maximize the **sum** of distinct prime counts across both parts.
+You are given an integer array `nums` having length `n` and a 2D integer array `queries` where `queries[i] = [idx, val]`.
+
+For each query:
+
+- Update `nums[idx] = val`.
+- Choose an integer `k` with `1 <= k < n` to split the array into the non-empty prefix `nums[0..k-1]` and suffix `nums[k..n-1]` such that the sum of the counts of **distinct** prime values in each part is **maximum**.
+
+**Note:** The changes made to the array in one query persist into the next query.
+
+Return an array containing the result for each query, in the order they are given.
 
 **Constraints:**
-- `2 ≤ nums.length ≤ 10⁵`
-- `1 ≤ nums[i] ≤ 10⁵`
+- `2 <= n == nums.length <= 5 * 10^4`
+- `1 <= queries.length <= 5 * 10^4`
+- `1 <= nums[i] <= 10^5`
+- `0 <= queries[i][0] < nums.length`
+- `1 <= queries[i][1] <= 10^5`
 
 ---
 
@@ -20,16 +32,21 @@ Given an array `nums`, split it into two non‑empty contiguous parts. For each 
 
 **Example 1:**
 ```
-Input: nums = [2,3,4,5,6]
-Output: 3
-Explanation: Split after index 2 → left = [2,3,4] (primes {2,3}), right = [5,6] (primes {5}); total = 2+1 = 3.
+Input: nums = [2,1,3,1,2], queries = [[1,2],[3,3]]
+Output: [3,4]
+Explanation: - Initially nums = [2, 1, 3, 1, 2].
+- After 1^st query, nums = [2, 2, 3, 1, 2]. Split nums into [2] and [2, 3, 1, 2]. [2] consists of 1 distinct prime and [2, 3, 1, 2] consists of 2 distinct primes. Hence, the answer for this query is 1 + 2 = 3.
+- After 2^nd query, nums = [2, 2, 3, 3, 2]. Split nums into [2, 2, 3] and [3, 2] with an answer of 2 + 2 = 4.
+- The output is [3, 4].
 ```
 
 **Example 2:**
 ```
-Input: nums = [4,6,8,9]
-Output: 0
-Explanation: No prime numbers exist, so any split yields 0.
+Input: nums = [2,1,4], queries = [[0,1]]
+Output: [0]
+Explanation: - Initially nums = [2, 1, 4].
+- After 1^st query, nums = [1, 1, 4]. There are no prime numbers in nums, hence the answer for this query is 0.
+- The output is [0].
 ```
 
 ---

@@ -8,26 +8,42 @@
 
 ## Problem Description
 
-Given an integer array `nums` and an integer `k`, a subset of `nums` is **k‑free** if no two elements in the subset have an absolute difference exactly equal to `k`. Count the number of non‑empty k‑free subsets of `nums`. Return the count modulo `10^9 + 7`.
+You are given an integer array `nums`, which contains **distinct** elements and an integer `k`.
+
+A subset is called a **k-Free** subset if it contains **no** two elements with an absolute difference equal to `k`. Notice that the empty set is a **k-Free** subset.
+
+Return *the number of **k-Free** subsets of* `nums`.
+
+A **subset** of an array is a selection of elements (possibly none) of the array.
+
+**Constraints:**
+- `1 <= nums.length <= 50`
+- `1 <= nums[i] <= 1000`
+- `1 <= k <= 1000`
 
 ---
 
 ## Examples
 
-**Example 1**
 ```
-Input: nums = [1,2,3], k = 1
-Output: 3
-Explanation:
-The k‑free subsets are: [1], [3], [1,3]. Subsets [1,2], [2,3], [1,2,3] are invalid because they contain elements with difference 1.
+Example 1:
+  Input: nums = [5,4,6], k = 1
+  Output: 5
+  Explanation: There are 5 valid subsets: {}, {5}, {4}, {6} and {4, 6}.
 ```
 
-**Example 2**
 ```
-Input: nums = [5,10,15], k = 5
-Output: 7
-Explanation:
-All subsets except the empty set are k‑free because any two numbers differ by 5, which is exactly k, so they cannot appear together. The valid subsets are the 7 non‑empty subsets.
+Example 2:
+  Input: nums = [2,3,5,8], k = 5
+  Output: 12
+  Explanation: There are 12 valid subsets: {}, {2}, {3}, {5}, {8}, {2, 3}, {2, 3, 5}, {2, 5}, {2, 5, 8}, {2, 8}, {5, 8} and {3, 5}.
+```
+
+```
+Example 3:
+  Input: nums = [10,5,9,11], k = 20
+  Output: 16
+  Explanation: All subsets are valid. Since the total count of subsets is 2^4 = 16, so the answer is 16.
 ```
 
 ---

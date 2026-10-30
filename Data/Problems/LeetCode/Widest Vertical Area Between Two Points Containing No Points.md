@@ -3,16 +3,37 @@
 **Difficulty:** 🟡 Medium
 **LeetCode:** [https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points](https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points)
 **Companies:** Amazon, General Motors, Google, Microsoft
+
 ---
 
 ## Problem Description
-Given a list of points `points` on a 2‑D plane, each represented as `[x, y]`, find the maximum width of a vertical area that contains no points. A vertical area is defined by two x‑coordinates `x1 < x2`; its width is `x2 - x1`. Return the largest such width.
+
+Given `n` `points` on a 2D plane where `points[i] = [x_i, y_i]`, Return *the **widest vertical area** between two points such that no points are inside the area.*
+
+A **vertical area** is an area of fixed-width extending infinitely along the y-axis (i.e., infinite height). The **widest vertical area** is the one with the maximum width.
+
+Note that points **on the edge** of a vertical area **are not** considered included in the area.
+
+**Constraints:**
+- `n == points.length`
+- `2 <= n <= 10^5`
+- `points[i].length == 2`
+- `0 <= x_i, y_i <= 10^9`
 
 ## Examples
-- Input: `[[8,7],[9,9],[7,4],[9,7]]` → Output: `1`
-  (Sorted x‑coordinates: 7,8,9 → max gap = 1.)
-- Input: `[[3,1],[9,2],[6,1],[9,0],[4,0]]` → Output: `3`
-  (Sorted x‑coordinates: 3,4,6,9 → max gap = 3.)
+
+**Example 1:**
+```
+Input: points = [[8,7],[9,9],[7,4],[9,7]]
+Output: 1
+Explanation: Both the red and the blue area are optimal.
+```
+
+**Example 2:**
+```
+Input: points = [[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]]
+Output: 3
+```
 
 ## Approach
 Extract all x‑coordinates, sort them, and compute the maximum difference between consecutive x values.

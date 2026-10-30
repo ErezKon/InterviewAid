@@ -20,18 +20,35 @@
 
 ## 1. Problem Description
 
-Alice and Bob take turns. Each turn requires picking specific coin combinations. The player who cannot make a move loses. Determine the winner.
+You are given two **positive** integers `x` and `y`, denoting the number of coins with values 75 and 10 *respectively*.
+
+Alice and Bob are playing a game. Each turn, starting with **Alice**, the player must pick up coins with a **total** value 115. If the player is unable to do so, they **lose** the game.
+
+Return the *name* of the player who wins the game if both players play **optimally**.
+
+**Constraints:**
+- `1 <= x, y <= 100`
 
 ---
 
 ## 2. Examples
 
-| x | y | Winner |
-|---|---|--------|
-| 2 | 8 | Alice |
-| 3 | 12 | Bob |
+**Example 1:**
+```
+Input: x = 2, y = 7
+Output: "Alice"
+Explanation: The game ends in a single turn:
+- Alice picks 1 coin with a value of 75 and 4 coins with a value of 10.
+```
 
-*Explanation*: In the first case, the maximum number of full rounds is odd, so Alice (the first player) wins. In the second case, the number of rounds is even, so Bob wins.
+**Example 2:**
+```
+Input: x = 4, y = 11
+Output: "Bob"
+Explanation: The game ends in 2 turns:
+- Alice picks 1 coin with a value of 75 and 4 coins with a value of 10.
+- Bob picks 1 coin with a value of 75 and 4 coins with a value of 10.
+```
 
 ---
 

@@ -21,12 +21,18 @@
 
 ## Problem Description
 
-Given an integer array `nums` and an integer `k`, you must negate one element exactly `k` times (you can negate the same element multiple times). Return the **maximum sum** of the array.
+Given an integer array `nums` and an integer `k`, modify the array in the following way:
+
+- choose an index `i` and replace `nums[i]` with `-nums[i]`.
+
+You should apply this process exactly `k` times. You may choose the same index `i` multiple times.
+
+Return *the largest possible sum of the array after modifying it in this way*.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁴`
-- `-100 ≤ nums[i] ≤ 100`
-- `1 ≤ k ≤ 10⁴`
+- `1 <= nums.length <= 10^4`
+- `-100 <= nums[i] <= 100`
+- `1 <= k <= 10^4`
 
 ---
 
@@ -34,18 +40,23 @@ Given an integer array `nums` and an integer `k`, you must negate one element ex
 
 **Example 1:**
 ```
-Input:  nums = [4,2,3], k = 1
+Input: nums = [4,2,3], k = 1
 Output: 5
-Explanation: Negate 2 → [-4,2,3]? No — negate to get max sum: negate nothing useful.
-             Actually: negate index 0: [-4,2,3] sum=1. Better: negate nothing isn't an option.
-             Must negate once: negate 2 → [4,-2,3] sum=5.
+Explanation: Choose index 1 and nums becomes [4,-2,3].
 ```
 
 **Example 2:**
 ```
-Input:  nums = [3,-1,0,2], k = 3
+Input: nums = [3,-1,0,2], k = 3
 Output: 6
-Explanation: Negate -1 → [3,1,0,2], then negate 0 twice → no change. Sum = 6.
+Explanation: Choose indices (1, 2, 2) and nums becomes [3,1,0,2].
+```
+
+**Example 3:**
+```
+Input: nums = [2,-3,-1,5,-4], k = 2
+Output: 13
+Explanation: Choose indices (1, 4) and nums becomes [2,3,-1,5,4].
 ```
 
 ---

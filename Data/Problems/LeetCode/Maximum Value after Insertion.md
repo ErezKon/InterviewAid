@@ -21,12 +21,21 @@
 
 ## Problem Description
 
-Given a string `n` representing a very large integer (possibly negative) and a digit `x` (0–9), insert `x` at any position to **maximize** the resulting integer value. Return the result as a string.
+You are given a very large integer `n`, represented as a string, and an integer digit `x`. The digits in `n` and the digit `x` are in the **inclusive** range `[1, 9]`, and `n` may represent a **negative** number.
+
+You want to **maximize **`n`**'s numerical value** by inserting `x` anywhere in the decimal representation of `n`. You **cannot** insert `x` to the left of the negative sign.
+
+- For example, if `n = 73` and `x = 6`, it would be best to insert it between `7` and `3`, making `n = 763`.
+- If `n = -55` and `x = 2`, it would be best to insert it before the first `5`, making `n = -255`.
+
+Return *a string representing the **maximum** value of *`n`* after the insertion*.
 
 **Constraints:**
-- `1 ≤ n.length ≤ 10⁵`
-- `n` is a valid integer (may start with `-`)
-- `1 ≤ x ≤ 9`
+- `1 <= n.length <= 10^5`
+- `1 <= x <= 9`
+- The digits in `n` are in the range `[1, 9]`.
+- `n` is a valid representation of an integer.
+- In the case of a negative `n`, it will begin with `'-'`.
 
 ---
 
@@ -34,16 +43,16 @@ Given a string `n` representing a very large integer (possibly negative) and a d
 
 **Example 1:**
 ```
-Input:  n = "99", x = 9
+Input: n = "99", x = 9
 Output: "999"
-Explanation: Insert 9 anywhere — all positions give "999".
+Explanation: The result is the same regardless of where you insert 9.
 ```
 
 **Example 2:**
 ```
-Input:  n = "-13", x = 2
+Input: n = "-13", x = 2
 Output: "-123"
-Explanation: Insert 2 between 1 and 3 to get -123 (greater than -213 or -132).
+Explanation: You can make n one of {-213, -123, -132}, and the largest of those three is -123.
 ```
 
 ---

@@ -21,7 +21,18 @@
 
 ## 1. Problem Description
 
-Given integers `n` and `k`, count the number of `n`-digit integers that are "good" — meaning some permutation of their digits forms a palindrome divisible by `k`. No leading zeros allowed.
+You are given two **positive** integers `n` and `k`.
+
+An integer `x` is called **k-palindromic** if:
+
+- `x` is a palindrome.
+- `x` is divisible by `k`.
+
+An integer is called **good** if its digits can be *rearranged* to form a **k-palindromic** integer. For example, for `k = 2`, 2020 can be rearranged to form the *k-palindromic* integer 2002, whereas 1010 cannot be rearranged to form a *k-palindromic* integer.
+
+Return the count of **good** integers containing `n` digits.
+
+**Note** that *any* integer must **not** have leading zeros, **neither** before **nor** after rearrangement. For example, 1010 *cannot* be rearranged to form 101.
 
 **Constraints:**
 - `1 <= n <= 10`
@@ -66,18 +77,22 @@ FUNCTION countGoodIntegers(n, k):
 
 ## 5. Examples
 
-**Example 1:**
 ```
-Input: n = 2, k = 1
-Output: 9
-Explanation: All 2‑digit numbers from 10 to 99 are good because any palindrome of length 2 is divisible by 1. Each number’s digits can be permuted to form a palindrome (e.g., 12 → 21, which is not a palindrome, but 11 is). The count is 9 (11,22,…,99).
-```
+Example 1:
+  Input: n = 3, k = 5
+  Output: 27
+  Explanation: Some of the good integers are:
+    - 551 because it can be rearranged to form 515.
+    - 525 because it is already k-palindromic.
 
-**Example 2:**
-```
-Input: n = 3, k = 2
-Output: 4
-Explanation: Good 3‑digit numbers are 101, 111, 121, 131. Their digit permutations can form palindromes divisible by 2.
+Example 2:
+  Input: n = 1, k = 4
+  Output: 2
+  Explanation: The two good integers are 4 and 8.
+
+Example 3:
+  Input: n = 5, k = 6
+  Output: 2468
 ```
 
 ---

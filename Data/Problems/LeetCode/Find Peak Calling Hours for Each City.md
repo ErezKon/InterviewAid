@@ -21,36 +21,61 @@
 
 ## 1. Problem Description
 
-You are given a table `Calls` with columns `caller_id`, `recipient_id`, `call_time`, and `city`. Write a SQL query to find the **peak calling hour(s)** for each city — the hour(s) with the highest number of calls.
+> *Note: premium SQL problem — schema/statement/example verified via doocs/leetcode. Official ordering is **descending** (by peak calling hour, then city) — check the Approach's ORDER BY.*
 
-If there is a tie, return all tied hours. Order the result by `city` and `peak_calling_hour`.
+Table: `Calls`
+
+```
++--------------+----------+
+| Column Name  | Type     |
++--------------+----------+
+| caller_id    | int      |
+| recipient_id | int      |
+| call_time    | datetime |
+| city         | varchar  |
++--------------+----------+
+(caller_id, recipient_id, call_time) is the primary key (combination of columns with unique values) for this table.
+Each row contains caller id, recipient id, call time, and city.
+```
+
+Write a solution to find the **peak** calling **hour** for each `city`. If **multiple hours** have the **same** number of calls, all of those hours will be recognized as **peak hours** for that specific city.
+
+Return *the result table ordered by **peak calling hour** and* `city` *in **descending** order* (columns: `city`, `peak_calling_hour`, `number_of_calls`).
+
+The result format is in the following example.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
 Input:
 Calls table:
++-----------+--------------+---------------------+----------+
 | caller_id | recipient_id | call_time           | city     |
-|-----------|-------------|---------------------|----------|
-| 1         | 2           | 2021-01-01 09:12:00 | Houston  |
-| 2         | 3           | 2021-01-01 09:45:00 | Houston  |
-| 3         | 4           | 2021-01-01 15:30:00 | Houston  |
-| 1         | 5           | 2021-01-02 09:20:00 | Houston  |
-| 4         | 5           | 2021-01-01 10:00:00 | Chicago  |
-| 5         | 6           | 2021-01-01 10:15:00 | Chicago  |
-| 6         | 7           | 2021-01-01 14:00:00 | Chicago  |
-
++-----------+--------------+---------------------+----------+
+| 8         | 4            | 2021-08-24 22:46:07 | Houston  |
+| 4         | 8            | 2021-08-24 22:57:13 | Houston  |
+| 5         | 1            | 2021-08-11 21:28:44 | Houston  |
+| 8         | 3            | 2021-08-17 22:04:15 | Houston  |
+| 11        | 3            | 2021-08-17 13:07:00 | New York |
+| 8         | 11           | 2021-08-17 14:22:22 | New York |
++-----------+--------------+---------------------+----------+
 Output:
-| city    | peak_calling_hour | number_of_calls |
-|---------|-------------------|-----------------|
-| Chicago | 10                | 2               |
-| Houston | 9                 | 3               |
-
++----------+-------------------+-----------------+
+| city     | peak_calling_hour | number_of_calls |
++----------+-------------------+-----------------+
+| Houston  | 22                | 3               |
+| New York | 14                | 1               |
+| New York | 13                | 1               |
++----------+-------------------+-----------------+
 Explanation:
-  Houston had 3 calls at hour 9 (two on Jan 1, one on Jan 2), which is the most.
-  Chicago had 2 calls at hour 10, which is the most.
+For Houston:
+  - The peak time is 22:00, with a total of 3 calls recorded.
+For New York:
+  - Both 13:00 and 14:00 hours have equal call counts of 1, so both times are considered peak hours.
+Output table is ordered by peak_calling_hour and city in descending order.
 ```
 
 ---

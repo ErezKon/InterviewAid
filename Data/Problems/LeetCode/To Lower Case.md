@@ -7,14 +7,32 @@
 ---
 
 ## Problem Description
-Given an ASCII string `s`, return a new string where all uppercase letters are converted to their lowercase equivalents. Non‑alphabetic characters remain unchanged.
+
+Given a string `s`, return *the string after replacing every uppercase letter with the same lowercase letter*.
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s` consists of printable ASCII characters.
 
 ## Examples
-| s | Output |
-|---|--------|
-| `"Hello"` | `"hello"` |
-| `"LOVELY"` | `"lovely"` |
-| `"123_ABC"` | `"123_abc"` |
+
+**Example 1:**
+```
+Input: s = "Hello"
+Output: "hello"
+```
+
+**Example 2:**
+```
+Input: s = "here"
+Output: "here"
+```
+
+**Example 3:**
+```
+Input: s = "LOVELY"
+Output: "lovely"
+```
 
 ## Approach
 Iterate over each character, checking if it lies between `'A'` and `'Z'`. If so, add 32 to its ASCII code to obtain the lowercase character; otherwise, keep the character as is.

@@ -21,10 +21,18 @@
 
 ## 1. Problem Description
 
-Given a string `word` and integer `numFriends`, split the string into `numFriends` non‑empty contiguous substrings. Return the lexicographically largest possible substring that any friend receives.
+You are given a string `word`, and an integer `numFriends`.
+
+Alice is organizing a game for her `numFriends` friends. There are multiple rounds in the game, where in each round:
+
+- `word` is split into `numFriends` **non-empty** strings, such that no previous round has had the **exact** same split.
+- All the split words are put into a box.
+
+Find the lexicographically largest string from the box after all the rounds are finished.
 
 **Constraints:**
 - `1 <= word.length <= 5 × 10³`
+- `word` consists only of lowercase English letters.
 - `1 <= numFriends <= word.length`
 
 ---
@@ -55,13 +63,20 @@ FUNCTION answerString(word, numFriends):
 
 ## 4. Examples
 
-| word | numFriends | Output |
-|------|------------|--------|
-| "abcde" | 2 | "bcd" |
-| "zzabc" | 3 | "zz" |
-| "a" | 1 | "a" |
+```
+Example 1:
+  Input: word = "dbca", numFriends = 2
+  Output: "dbc"
+  Explanation: All possible splits are:
+    - "d" and "bca".
+    - "db" and "ca".
+    - "dbc" and "a".
 
-*Explanation:* For the first example, the longest possible substring length is `5‑2+1 = 4`. The lexicographically largest 4‑character substring is "bcde", but each friend must receive at least one character, so the best substring a friend can get is the 3‑character "bcd".
+Example 2:
+  Input: word = "gggg", numFriends = 4
+  Output: "g"
+  Explanation: The only possible split is: "g", "g", "g", and "g".
+```
 
 ---
 

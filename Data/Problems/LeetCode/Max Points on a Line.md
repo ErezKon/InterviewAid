@@ -21,12 +21,13 @@
 
 ## Problem Description
 
-Given an array of `points` where `points[i] = [xᵢ, yᵢ]` represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.
+Given an array of `points` where `points[i] = [x_i, y_i]` represents a point on the **X-Y** plane, return *the maximum number of points that lie on the same straight line*.
 
 **Constraints:**
-- `1 ≤ points.length ≤ 300`
-- `-10⁴ ≤ xᵢ, yᵢ ≤ 10⁴`
-- All points are unique.
+- `1 <= points.length <= 300`
+- `points[i].length == 2`
+- `-10^4 <= x_i, y_i <= 10^4`
+- All the `points` are **unique**.
 
 ---
 
@@ -34,17 +35,14 @@ Given an array of `points` where `points[i] = [xᵢ, yᵢ]` represents a point o
 
 **Example 1:**
 ```
-Input:  points = [[1,1],[2,2],[3,3]]
+Input: points = [[1,1],[2,2],[3,3]]
 Output: 3
-Explanation: All three points are collinear (slope = 1).
 ```
 
 **Example 2:**
 ```
-Input:  points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 Output: 4
-Explanation: Points [1,1],[3,2],[5,3] lie on y = x/2 + 1/2 — but actually
-             [1,1],[2,3],[1,4] etc. The best line passes through 4 points.
 ```
 
 ---

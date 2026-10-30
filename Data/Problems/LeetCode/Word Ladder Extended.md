@@ -5,6 +5,9 @@ Related: #127 Word Ladder, #433 Min Genetic Mutation, #752 Open the Lock, #773 S
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Word Ladder.md](Word%20Ladder.md) for the official statement and constraints of #127.*
+
 Given a start state, a target state, and a function that generates neighboring states, find the minimum number of moves to transform the start into the target. The state space is implicit and potentially huge, so an explicit graph cannot be built.
 
 ## Examples

@@ -6,11 +6,34 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, return a new array that is the concatenation of `nums` with itself (i.e., `nums` followed by `nums`).
+Given an integer array `nums` of length `n`, you want to create an array `ans` of length `2n` where `ans[i] == nums[i]` and `ans[i + n] == nums[i]` for `0 <= i < n` (**0-indexed**).
+
+Specifically, `ans` is the **concatenation** of two `nums` arrays.
+
+Return *the array* `ans`.
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= n <= 1000`
+- `1 <= nums[i] <= 1000`
 
 ## Examples
-- **Example 1:** `nums = [1,2,1]` → output `[1,2,1,1,2,1]`.
-- **Example 2:** `nums = [1,3,2,1]` → output `[1,3,2,1,1,3,2,1]`.
+```
+Example 1:
+  Input: nums = [1,2,1]
+  Output: [1,2,1,1,2,1]
+  Explanation: The array ans is formed as follows:
+    - ans = [nums[0],nums[1],nums[2],nums[0],nums[1],nums[2]]
+    - ans = [1,2,1,1,2,1]
+```
+```
+Example 2:
+  Input: nums = [1,3,2,1]
+  Output: [1,3,2,1,1,3,2,1]
+  Explanation: The array ans is formed as follows:
+    - ans = [nums[0],nums[1],nums[2],nums[3],nums[0],nums[1],nums[2],nums[3]]
+    - ans = [1,3,2,1,1,3,2,1]
+```
 
 ## Approach
 Create a new array of size `2 * len(nums)` and copy the original elements twice, or simply return the result of appending the array to itself.

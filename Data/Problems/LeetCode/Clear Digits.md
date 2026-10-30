@@ -7,20 +7,35 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase letters and digits, process the string from left to right. Whenever a digit `d` is encountered, delete the character immediately before it (if any) and also discard the digit itself. Return the final string after all deletions.
+You are given a string `s`.
+
+Your task is to remove **all** digits by doing this operation repeatedly:
+
+- Delete the *first* digit and the **closest** **non-digit** character to its *left*.
+
+Return the resulting string after removing all digits.
+
+**Note** that the operation *cannot* be performed on a digit that does not have any non-digit character to its left.
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s` consists only of lowercase English letters and digits.
+- The input is generated such that it is possible to delete all digits.
 
 ## Examples
-**Example 1:**
 ```
-Input: "abc1d2"
-Output: "ad"
-Explanation: '1' removes 'c', resulting in "abd"; then '2' removes 'b', leaving "ad".
+Example 1:
+  Input: s = "abc"
+  Output: "abc"
+  Explanation: There is no digit in the string.
 ```
-**Example 2:**
+
 ```
-Input: "a1b2c3"
-Output: ""
-Explanation: Each digit removes the preceding character, ultimately deleting all letters.
+Example 2:
+  Input: s = "cb34"
+  Output: ""
+  Explanation: First, we apply the operation on s[2], and s becomes "c4".
+  Then we apply the operation on s[1], and s becomes "".
 ```
 
 ## Approach

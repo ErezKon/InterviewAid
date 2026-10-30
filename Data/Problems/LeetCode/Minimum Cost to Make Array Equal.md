@@ -8,27 +8,40 @@
 
 ## Problem Description
 
-Given two integer arrays `nums` and `cost` of the same length `n`, you may increase or decrease `nums[i]` by `1` at a cost of `cost[i]` per unit change. Find the minimum total cost required to make all elements of `nums` equal to the same integer value.
+You are given two **0-indexed** arrays `nums` and `cost` consisting each of `n` **positive** integers.
 
-Constraints:
+You can do the following operation **any** number of times:
+- Increase or decrease **any** element of the array `nums` by `1`.
+
+The cost of doing one operation on the `i-th` element is `cost[i]`.
+
+Return *the **minimum** total cost such that all the elements of the array* `nums` *become **equal***.
+
+**Constraints:**
+- `n == nums.length == cost.length`
 - `1 ≤ n ≤ 10^5`
-- `1 ≤ nums[i] ≤ 10^9`
-- `1 ≤ cost[i] ≤ 10^9`
+- `1 ≤ nums[i], cost[i] ≤ 10^6`
+- Test cases are generated in a way that the output doesn't exceed `2^53 - 1`
 
 ## Examples
 
-**Example 1**
 ```
-Input: nums = [1,3,5,2], cost = [2,3,1,14]
-Output: 8
-Explanation: Choose target = 3. Total cost = |1-3|*2 + |3-3|*3 + |5-3|*1 + |2-3|*14 = 4 + 0 + 2 + 14 = 20? Actually optimal target is 2 with cost 8.
+Example 1:
+  Input: nums = [1,3,5,2], cost = [2,3,1,14]
+  Output: 8
+  Explanation: We can make all the elements equal to 2 in the following way:
+  - Increase the 0th element one time. The cost is 2.
+  - Decrease the 1st element one time. The cost is 3.
+  - Decrease the 2nd element three times. The cost is 1 + 1 + 1 = 3.
+  The total cost is 2 + 3 + 3 = 8.
+  It can be shown that we cannot make the array equal with a smaller cost.
 ```
 
-**Example 2**
 ```
-Input: nums = [2,2,2], cost = [5,6,1]
-Output: 0
-Explanation: All elements already equal; no cost.
+Example 2:
+  Input: nums = [2,2,2,2,2], cost = [4,2,8,1,3]
+  Output: 0
+  Explanation: All the elements are already equal, so no operations are needed.
 ```
 
 ## Approach

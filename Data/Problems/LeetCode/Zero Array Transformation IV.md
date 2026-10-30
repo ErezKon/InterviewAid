@@ -7,18 +7,70 @@
 ---
 
 ## Problem Description
-You are given an integer array `nums` and a list of queries `queries`, where each query is `[l, r, val]`. Applying a query adds `val` to every element in the sub‑array `nums[l..r]`. Determine the minimum total sum of `val` values you need to add (using any subset of queries, each at most once) so that every element of `nums` becomes non‑negative. Return that minimum sum, or `-1` if it is impossible even after using all queries.
+
+You are given an integer array `nums` of length `n` and a 2D array `queries`, where `queries[i] = [l_i, r_i, val_i]`.
+
+Each `queries[i]` represents the following action on `nums`:
+
+- Select a subset of indices in the range `[l_i, r_i]` from `nums`.
+- Decrement the value at each selected index by **exactly** `val_i`.
+
+A **Zero Array** is an array with all its elements equal to 0.
+
+Return the **minimum** possible **non-negative** value of `k`, such that after processing the first `k` queries in **sequence**, `nums` becomes a **Zero Array**. If no such `k` exists, return -1.
+
+**Constraints:**
+- `1 <= nums.length <= 10`
+- `0 <= nums[i] <= 1000`
+- `1 <= queries.length <= 1000`
+- `queries[i] = [l_i, r_i, val_i]`
+- `0 <= l_i <= r_i < nums.length`
+- `1 <= val_i <= 10`
 
 ## Examples
+
 **Example 1:**
-Input: `nums = [3,0,1]`, `queries = [[0,1,2],[1,2,1]]`
-Output: `3`
-Explanation: Use both queries. Total added value = 2 + 1 = 3. After applying, array becomes `[5,3,2]` ≥ 0.
+```
+Input: nums = [2,0,2], queries = [[0,2,1],[0,2,1],[1,1,3]]
+Output: 2
+Explanation: - For query 0 (l = 0, r = 2, val = 1):
+- Decrement the values at indices [0, 2] by 1.
+- The array will become [1, 0, 1].
+- For query 1 (l = 0, r = 2, val = 1):
+- Decrement the values at indices [0, 2] by 1.
+- The array will become [0, 0, 0], which is a Zero Array. Therefore, the minimum value of k is 2.
+```
 
 **Example 2:**
-Input: `nums = [5,5,5]`, `queries = [[0,0,1]]`
-Output: `-1`
-Explanation: Even after using the only query, positions 1 and 2 remain 5, which cannot be reduced to non‑negative by adding positive values only.
+```
+Input: nums = [4,3,2,1], queries = [[1,3,2],[0,2,1]]
+Output: -1
+Explanation: It is impossible to make nums a Zero Array even after all the queries.
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,2,1], queries = [[0,1,1],[1,2,1],[2,3,2],[3,4,1],[4,4,1]]
+Output: 4
+Explanation: - For query 0 (l = 0, r = 1, val = 1):
+- Decrement the values at indices [0, 1] by 1.
+- The array will become [0, 1, 3, 2, 1].
+- For query 1 (l = 1, r = 2, val = 1):
+- Decrement the values at indices [1, 2] by 1.
+- The array will become [0, 0, 2, 2, 1].
+- For query 2 (l = 2, r = 3, val = 2):
+- Decrement the values at indices [2, 3] by 2.
+- The array will become [0, 0, 0, 0, 1].
+- For query 3 (l = 3, r = 4, val = 1):
+- Decrement the value at index 4 by 1.
+- The array will become [0, 0, 0, 0, 0]. Therefore, the minimum value of k is 4.
+```
+
+**Example 4:**
+```
+Input: nums = [1,2,3,2,6], queries = [[0,1,1],[0,2,1],[1,4,2],[4,4,4],[3,4,1],[4,4,5]]
+Output: 4
+```
 
 ## Approach
 Treat each query as a resource that contributes `val` to a range. The goal is to pick a subset with minimum total `val` that satisfies the per‑index requirement `required[i] = max(0, -nums[i])` (here nums are already non‑negative, so requirement is 0; but the problem statement expects making them non‑negative, so we consider deficits if any). Since all `val` are positive, the optimal strategy is to use a **minimum‑cost flow** like greedy: repeatedly select the query with the smallest `val` that covers the most uncovered deficit.

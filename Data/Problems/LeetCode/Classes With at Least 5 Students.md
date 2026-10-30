@@ -7,28 +7,53 @@
 ---
 
 ## Problem Description
-Given a table `Courses(class, student)` where each row represents a student enrolled in a class, return the names of all classes that have **at least five** distinct students. The result should be a list of class identifiers.
+Table: `Courses`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| student     | varchar |
+| class       | varchar |
++-------------+---------+
+(student, class) is the primary key (combination of columns with unique values) for this table.
+Each row of this table indicates the name of a student and the class in which they are enrolled.
+```
+
+Write a solution to find all the classes that have **at least five students**.
+
+Return the result table in **any order**.
 
 ## Examples
-**Example 1:**
 ```
-Courses table:
-+-------+----------+
-| class | student  |
-+-------+----------+
-| CS101 | Alice    |
-| CS101 | Bob      |
-| CS101 | Carol    |
-| CS101 | Dave     |
-| CS101 | Eve      |
-| CS101 | Frank    |
-| MATH1 | Grace    |
-| MATH1 | Heidi    |
-| MATH1 | Ivan     |
-+-------+----------+
-Result: ["CS101"]
+Example 1:
+  Input:
+  Courses table:
+  +---------+----------+
+  | student | class    |
+  +---------+----------+
+  | A       | Math     |
+  | B       | English  |
+  | C       | Math     |
+  | D       | Biology  |
+  | E       | Math     |
+  | F       | Computer |
+  | G       | Math     |
+  | H       | Math     |
+  | I       | Math     |
+  +---------+----------+
+  Output:
+  +---------+
+  | class   |
+  +---------+
+  | Math    |
+  +---------+
+  Explanation:
+  - Math has 6 students, so we include it.
+  - English has 1 student, so we do not include it.
+  - Biology has 1 student, so we do not include it.
+  - Computer has 1 student, so we do not include it.
 ```
-Explanation: `CS101` has six students (≥5) while `MATH1` has only three.
 
 ## Approach
 **SQL Aggregation** – Group rows by `class`, count distinct `student` values, and filter groups with a count ≥ 5 using the `HAVING` clause.

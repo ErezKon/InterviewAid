@@ -21,29 +21,43 @@
 
 ## 1. Problem Description
 
-A transaction is invalid if:
-- The amount exceeds $1000, **or**
-- It occurs within 60 minutes of another transaction with the **same name** but a **different city**.
+A transaction is possibly invalid if:
 
-Given a list of transaction strings `"name,time,amount,city"`, return all invalid transactions.
+- the amount exceeds `$1000`, or;
+- if it occurs within (and including) `60` minutes of another transaction with the **same name** in a **different city**.
+
+You are given an array of strings `transaction` where `transactions[i]` consists of comma-separated values representing the name, time (in minutes), amount, and city of the transaction.
+
+Return a list of `transactions` that are possibly invalid. You may return the answer in **any order**.
 
 **Constraints:**
 - `transactions.length <= 1000`
-- Each transaction: `name,time,amount,city`
-- `0 <= time <= 1000`, `0 <= amount <= 2000`
+- Each `transactions[i]` takes the form `"{name},{time},{amount},{city}"`
+- Each `{name}` and `{city}` consist of lowercase English letters, and have lengths between `1` and `10`.
+- Each `{time}` consist of digits, and represent an integer between `0` and `1000`.
+- Each `{amount}` consist of digits, and represent an integer between `0` and `2000`.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Input: ["alice,20,800,mtv","alice,50,100,beijing"]
+Input: transactions = ["alice,20,800,mtv","alice,50,100,beijing"]
 Output: ["alice,20,800,mtv","alice,50,100,beijing"]
-Explanation: Both invalid — same name, |20-50|=30 ≤ 60, different cities.
+Explanation: The first transaction is invalid because the second transaction occurs within a difference of 60 minutes, have the same name and is in a different city. Similarly the second one is invalid too.
+```
 
-Input: ["alice,20,800,mtv","alice,50,1200,mtv"]
+**Example 2:**
+```
+Input: transactions = ["alice,20,800,mtv","alice,50,1200,mtv"]
 Output: ["alice,50,1200,mtv"]
-Explanation: Second one invalid due to amount > 1000.
+```
+
+**Example 3:**
+```
+Input: transactions = ["alice,20,800,mtv","bob,50,1200,mtv"]
+Output: ["bob,50,1200,mtv"]
 ```
 
 ---

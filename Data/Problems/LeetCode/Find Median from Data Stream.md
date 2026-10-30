@@ -20,35 +20,45 @@
 
 ## 1. Problem Description
 
-The **median** is the middle value in an ordered integer list. If the list size is even, the median is the average of the two middle values.
+The **median** is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.
 
-Implement the `MedianFinder` class:
-- `MedianFinder()` — initializes the object.
-- `addNum(num)` — adds the integer `num` to the data structure.
-- `findMedian()` — returns the median of all elements so far.
+- For example, for `arr = [2,3,4]`, the median is `3`.
+- For example, for `arr = [2,3]`, the median is `(2 + 3) / 2 = 2.5`.
+
+Implement the MedianFinder class:
+
+- `MedianFinder()` initializes the `MedianFinder` object.
+- `void addNum(int num)` adds the integer `num` from the data stream to the data structure.
+- `double findMedian()` returns the median of all elements so far. Answers within `10^-5` of the actual answer will be accepted.
+
+**Follow up:**
+
+- If all integer numbers from the stream are in the range `[0, 100]`, how would you optimize your solution?
+- If `99%` of all integer numbers from the stream are in the range `[0, 100]`, how would you optimize your solution?
 
 **Constraints:**
-- `-10⁵ <= num <= 10⁵`
-- There will be at least one element before calling `findMedian`.
-- At most `5 × 10⁴` calls total.
+- `-10^5 <= num <= 10^5`
+- There will be at least one element in the data structure before calling `findMedian`.
+- At most `5 * 10^4` calls will be made to `addNum` and `findMedian`.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Input:
-  ["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"]
-  [[], [1], [2], [], [3], []]
-
-Output: [null, null, null, 1.5, null, 2.0]
-
+Input
+["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"]
+[[], [1], [2], [], [3], []]
+Output:
+[null, null, null, 1.5, null, 2.0]
 Explanation:
-  addNum(1)    → [1]
-  addNum(2)    → [1, 2]
-  findMedian() → (1 + 2) / 2 = 1.5
-  addNum(3)    → [1, 2, 3]
-  findMedian() → 2.0
+MedianFinder medianFinder = new MedianFinder();
+medianFinder.addNum(1);    // arr = [1]
+medianFinder.addNum(2);    // arr = [1, 2]
+medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+medianFinder.addNum(3);    // arr[1, 2, 3]
+medianFinder.findMedian(); // return 2.0
 ```
 
 ---

@@ -7,20 +7,48 @@
 ---
 
 ## Problem Description
-You are given two integer arrays `values` and `freq` of the same length. `values[i]` is a distinct integer and `freq[i]` is the frequency of `values[i]` in a multiset. The multiset contains `freq[i]` copies of each `values[i]`. Return the median of the multiset. If the multiset size is even, return the average of the two middle numbers.
+> *Note: #571 is a **SQL** problem (premium; statement verified via doocs/leetcode). The Approach/Walkthrough below describe an array version of the same idea; the SQL solution uses cumulative `SUM(frequency)` window functions and keeps rows whose running range covers the middle position(s).*
+
+Table: `Numbers`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| num         | int  |
+| frequency   | int  |
++-------------+------+
+num is the primary key (column with unique values) for this table.
+Each row of this table shows the frequency of a number in the database.
+```
+
+The **median** is the value separating the higher half from the lower half of a data sample.
+
+Write a solution to report the **median** of all the numbers in the database after decompressing the `Numbers` table. Round the median to **one decimal point**.
+
+The result format is in the following example.
 
 ## Examples
-**Example 1**
+**Example 1:**
 ```
-Input: values = [1,2,3], freq = [2,2,1]
-Output: 2.0
-Explanation: The multiset expands to [1,1,2,2,3]; median is 2.
-```
-**Example 2**
-```
-Input: values = [1,3,5], freq = [1,2,1]
-Output: 3.5
-Explanation: Expanded multiset = [1,3,3,5]; median = (3+3)/2 = 3.0? Actually middle two are 3 and 3, average 3.0.
+Input:
+Numbers table:
++-----+-----------+
+| num | frequency |
++-----+-----------+
+| 0   | 7         |
+| 1   | 1         |
+| 2   | 3         |
+| 3   | 1         |
++-----+-----------+
+Output:
++--------+
+| median |
++--------+
+| 0.0    |
++--------+
+Explanation:
+If we decompress the Numbers table, we will get [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 3], so the median is (0 + 0) / 2 = 0.
 ```
 
 ## Approach

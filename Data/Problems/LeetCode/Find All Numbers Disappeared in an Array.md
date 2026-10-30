@@ -7,20 +7,28 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` of length `n` where each element is in the range `[1, n]`, some numbers appear twice and others once. Return all the numbers in the range `[1, n]` that do **not** appear in `nums`.
+Given an array `nums` of `n` integers where `nums[i]` is in the range `[1, n]`, return *an array of all the integers in the range* `[1, n]` *that do not appear in* `nums`.
+
+**Constraints:**
+
+- `n == nums.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i] <= n`
+
+**Follow up:** Could you do it without extra space and in `O(n)` runtime? You may assume the returned list does not count as extra space.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: nums = [4,3,2,7,8,2,3,1]
-Output: [5,6]
-Explanation: Numbers 5 and 6 are missing from the array.
+Example 1:
+  Input: nums = [4,3,2,7,8,2,3,1]
+  Output: [5,6]
 ```
-**Example 2:**
+
 ```
-Input: nums = [1,1]
-Output: [2]
-Explanation: The array should contain numbers 1 and 2; 2 is missing.
+Example 2:
+  Input: nums = [1,1]
+  Output: [2]
 ```
 
 ## Approach

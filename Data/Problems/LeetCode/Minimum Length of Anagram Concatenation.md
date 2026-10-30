@@ -8,17 +8,37 @@
 
 ## Problem Description
 
-Given string `s`, find the **minimum length** `k` such that `s` can be formed by concatenating anagrams of some string of length `k`.
+You are given a string `s`, which is known to be a concatenation of **anagrams** of some string `t`.
+
+Return the **minimum** possible length of the string `t`.
+
+An **anagram** is formed by rearranging the letters of a string. For example, "aab", "aba", and, "baa" are anagrams of "aab".
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consist only of lowercase English letters.
 
 ## Examples
 
-| s | Output |
-|---|--------|
-| "abcabc" | 3 |
-| "aaaa" | 1 |
-| "abacabadabacaba" | 7 |
+**Example 1:**
+```
+Input: s = "abba"
+Output: 2
+Explanation: One possible string t could be "ba".
+```
 
-*Explanation*: In the first example, `s` can be split into `"abc"` + `"abc"`, both anagrams of `"abc"`. The smallest possible `k` is 3.
+**Example 2:**
+```
+Input: s = "cdef"
+Output: 4
+Explanation: One possible string t could be "cdef", notice that t can be equal to s.
+```
+
+**Example 3:**
+```
+Input: s = "abcbcacabbaccba"
+Output: 3
+```
 
 ## Approach
 

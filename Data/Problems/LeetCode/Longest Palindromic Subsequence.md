@@ -7,13 +7,30 @@
 ---
 
 ## Problem Description
-Given a string `s`, find the length of the longest subsequence of `s` that is also a palindrome. A subsequence is derived by deleting zero or more characters without changing the order of the remaining characters.
+
+Given a string `s`, find *the longest palindromic **subsequence**'s length in* `s`.
+
+A **subsequence** is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s` consists only of lowercase English letters.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| "bbbab" | 4 | The longest palindromic subsequence is "bbbb". |
-| "cbbd" | 2 | The longest palindromic subsequence is "bb". |
+
+**Example 1:**
+```
+Input: s = "bbbab"
+Output: 4
+Explanation: One possible longest palindromic subsequence is "bbbb".
+```
+
+**Example 2:**
+```
+Input: s = "cbbd"
+Output: 2
+Explanation: One possible longest palindromic subsequence is "bb".
+```
 
 ## Approach
 Use **Dynamic Programming** on intervals. `dp[i][j]` stores the length of the longest palindromic subsequence within `s[i..j]`.

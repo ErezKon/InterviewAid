@@ -7,15 +7,43 @@
 ---
 
 ## Problem Description
-You are given a binary matrix `grid` of size `m × n` and a stamp shape defined by a binary matrix `stamp` of size `p × q`. In one operation you may place the stamp anywhere on the grid such that the stamp fits entirely within the grid boundaries. When placed, every cell of the grid that aligns with a `1` in the stamp is set to `0`. The goal is to turn **all** cells of `grid` to `0` using the minimum number of stamp operations. Return that minimum count, or `-1` if it is impossible.
 
-Constraints: `1 ≤ m, n ≤ 50`, `1 ≤ p ≤ m`, `1 ≤ q ≤ n`; both matrices contain only `0` or `1`.
+You are given an `m x n` binary matrix `grid` where each cell is either `0` (empty) or `1` (occupied).
+
+You are then given stamps of size `stampHeight x stampWidth`. We want to fit the stamps such that they follow the given **restrictions** and **requirements**:
+
+- Cover all the **empty** cells.
+- Do not cover any of the **occupied** cells.
+- We can put as **many** stamps as we want.
+- Stamps can **overlap** with each other.
+- Stamps are not allowed to be **rotated**.
+- Stamps must stay completely **inside** the grid.
+
+Return `true` *if it is possible to fit the stamps while following the given restrictions and requirements. Otherwise, return* `false`.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[r].length`
+- `1 <= m, n <= 10^5`
+- `1 <= m * n <= 2 * 10^5`
+- `grid[r][c]` is either `0` or `1`.
+- `1 <= stampHeight, stampWidth <= 10^5`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `grid = [[1,1,1],[1,1,1],[1,1,1]]`, `stamp = [[1,0],[0,1]]` | `5` | One optimal sequence uses five stamp placements to clear all cells. |
-| `grid = [[1,0],[0,1]]`, `stamp = [[1,1],[1,1]]` | `-1` | No placement can turn the isolated `1`s to `0` because the stamp always flips a `0` to `1` as well. |
+
+**Example 1:**
+```
+Input: grid = [[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0],[1,0,0,0]], stampHeight = 4, stampWidth = 3
+Output: true
+Explanation: We have two overlapping stamps (labeled 1 and 2 in the image) that are able to cover all the empty cells.
+```
+
+**Example 2:**
+```
+Input: grid = [[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]], stampHeight = 2, stampWidth = 2
+Output: false
+Explanation: There is no way to fit the stamps onto all the empty cells without the stamps going outside the grid.
+```
 
 ## Approach
 Treat each possible stamp placement as a **candidate** that can clear a set of `1`s. Build a dependency graph where a placement is usable only after all cells it would set to `0` are still `1`. Use a greedy reverse process: repeatedly find a placement whose covered `1`s are all still present, apply it (set those cells to `0`), and record the position. Continue until the grid is all `0` or no placement can be applied. The recorded positions reversed give a valid forward sequence and the count.

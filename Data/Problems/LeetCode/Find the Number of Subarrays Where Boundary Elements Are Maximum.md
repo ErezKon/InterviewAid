@@ -18,10 +18,13 @@
 
 ## 1. Problem Description
 
-Count subarrays where the first and last elements are both equal to the maximum element in that subarray.
+You are given an array of **positive** integers `nums`.
+
+Return the number of subarrays of `nums`, where the **first** and the **last** elements of the subarray are *equal* to the **largest** element in the subarray.
 
 **Constraints:**
-- `1 <= n <= 10⁵`
+- `1 <= nums.length <= 10⁵`
+- `1 <= nums[i] <= 10⁹`
 
 ---
 
@@ -59,12 +62,36 @@ FUNCTION numberOfSubarrays(nums):
 
 ## Examples
 
-| nums | Output |
-|------|--------|
-| `[3,1,3,2,3]` | `4` |
-| `[1,2,3,4]`   | `0` |
+```
+Example 1:
+  Input: nums = [1,4,3,3,2]
+  Output: 6
+  Explanation: There are 6 subarrays which have the first and the last elements equal to the
+  largest element of the subarray:
+    - subarray [(1),4,3,3,2], with its largest element 1. The first element is 1 and the last element is also 1.
+    - subarray [1,(4),3,3,2], with its largest element 4. The first element is 4 and the last element is also 4.
+    - subarray [1,4,(3),3,2], with its largest element 3. The first element is 3 and the last element is also 3.
+    - subarray [1,4,3,(3),2], with its largest element 3. The first element is 3 and the last element is also 3.
+    - subarray [1,4,3,3,(2)], with its largest element 2. The first element is 2 and the last element is also 2.
+    - subarray [1,4,(3,3),2], with its largest element 3. The first element is 3 and the last element is also 3.
+  Hence, we return 6.
 
-*Explanation:* In the first array, the valid subarrays are `[3]` (at each index), `[3,1,3]`, and `[3,2,3]` where the boundary elements equal the maximum.
+Example 2:
+  Input: nums = [3,3,3]
+  Output: 6
+  Explanation: There are 6 subarrays which have the first and the last elements equal to the
+  largest element of the subarray:
+    - subarray [(3),3,3], [3,(3),3], [3,3,(3)], [(3,3),3], [3,(3,3)], [(3,3,3)] — each with largest
+      element 3, and first and last elements both 3.
+  Hence, we return 6.
+
+Example 3:
+  Input: nums = [1]
+  Output: 1
+  Explanation: There is a single subarray of nums which is [1], with its largest element 1. The
+  first element is 1 and the last element is also 1.
+  Hence, we return 1.
+```
 
 ---
 

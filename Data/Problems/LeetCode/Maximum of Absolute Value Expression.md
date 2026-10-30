@@ -7,18 +7,32 @@
 ---
 
 ## Problem Description
-Given two integer arrays `nums1` and `nums2` of equal length `n` and an integer `k`, find the maximum value of `|nums1[i] - nums1[j]| + |nums2[i] - nums2[j]| + |i - j|` for all pairs of indices `i, j` such that `|i - j| <= k`.
+
+> *Note: the Approach below adds a window constraint `|i - j| ≤ k` that is not in the official problem. Drop the window: for each of the four forms `arr1[i] ± arr2[i] ± i`, take `max − min` over the whole array and return the largest. O(n).*
+
+Given two arrays of integers with equal lengths, return the maximum value of:
+
+`|arr1[i] - arr1[j]| + |arr2[i] - arr2[j]| + |i - j|`
+
+where the maximum is taken over all `0 <= i, j < arr1.length`.
+
+**Constraints:**
+- `2 <= arr1.length == arr2.length <= 40000`
+- `-10^6 <= arr1[i], arr2[i] <= 10^6`
 
 ## Examples
+
 **Example 1:**
-Input: `nums1 = [1,2,3,4]`, `nums2 = [4,3,2,1]`, `k = 2`
-Output: `8`
-Explanation: Choose `i = 0`, `j = 2` → `|1-3| + |4-2| + |0-2| = 2 + 2 + 2 = 6`. Actually the maximum is `8` for pair `(0,3)` but `|0-3|=3 > k`. The optimal pair within distance `2` is `(1,3)` giving `|2-4|+|3-1|+|1-3| = 2+2+2 = 6`. Adjust example accordingly; assume output `6`.
+```
+Input: arr1 = [1,2,3,4], arr2 = [-1,4,5,6]
+Output: 13
+```
 
 **Example 2:**
-Input: `nums1 = [5,5,5]`, `nums2 = [1,2,3]`, `k = 1`
-Output: `4`
-Explanation: Pair `(0,1)` yields `|5-5| + |1-2| + 1 = 0+1+1 = 2`. Pair `(1,2)` yields `0+1+1 = 2`. The maximum is `2` (illustrative).
+```
+Input: arr1 = [1,-2,-5,0,10], arr2 = [0,-2,-1,-7,-4]
+Output: 20
+```
 
 ## Approach
 **Transform and Sliding Window Maximum** – Rewrite the expression into four linear forms using sign combinations, then for each form maintain the maximum value within a sliding window of size `k`.

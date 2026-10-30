@@ -20,11 +20,15 @@
 
 ## Problem Description
 
-An array is **beautiful** if:
-1. Its length is even.
-2. For every pair at even index `i`, `nums[i] != nums[i+1]`.
+You are given a **0-indexed** integer array `nums`. The array `nums` is **beautiful** if:
+- `nums.length` is even.
+- `nums[i] != nums[i + 1]` for all `i % 2 == 0`.
 
-Given an array `nums`, return the **minimum number of deletions** to make it beautiful.
+Note that an empty array is considered beautiful.
+
+You can delete any number of elements from `nums`. When you delete an element, all the elements to the right of the deleted element will be **shifted one unit to the left** to fill the gap created and all the elements to the left of the deleted element will remain **unchanged**.
+
+Return *the **minimum** number of elements to delete from* `nums` *to make it **beautiful**.*
 
 **Constraints:**
 - `1 ≤ nums.length ≤ 10⁵`
@@ -34,20 +38,18 @@ Given an array `nums`, return the **minimum number of deletions** to make it bea
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [1,1,2,3,5]
-Output: 1
-Explanation: Delete nums[0] → [1,2,3,5]. Pairs: (1,2) and (3,5) — all different. Length 4 (even).
+Example 1:
+  Input: nums = [1,1,2,3,5]
+  Output: 1
+  Explanation: You can delete either nums[0] or nums[1] to make nums = [1,2,3,5] which is beautiful. It can be proven you need at least 1 deletion to make nums beautiful.
 ```
 
-**Example 2:**
 ```
-Input: nums = [1,1,2,2,3,3]
-Output: 2
-Explanation: Delete nums[0] and nums[2] → [1,2,3,3] then another del... 
-Actually: [1,1,2,2,3,3] → delete first 1 → [1,2,2,3,3] → delete first 2 → [1,2,3,3] → pairs (1,2),(3,3) bad.
-Better approach: greedily skip equal pairs.
+Example 2:
+  Input: nums = [1,1,2,2,3,3]
+  Output: 2
+  Explanation: You can delete nums[0] and nums[5] to make nums = [1,2,2,3] which is beautiful. It can be proven you need at least 2 deletions to make nums beautiful.
 ```
 
 ---

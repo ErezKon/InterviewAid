@@ -6,18 +6,30 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, find the length of the longest contiguous subarray whose elements sum to exactly `k`. If no such subarray exists, return `0`.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an integer array `nums` and an integer `k`, return *the maximum length of a **subarray** that sums to* `k`. If there is not one, return `0` instead.
+
+**Constraints:**
+- `1 <= nums.length <= 2 * 10^5`
+- `-10^4 <= nums[i] <= 10^4`
+- `-10^9 <= k <= 10^9`
 
 ## Examples
+
 **Example 1:**
 ```
-nums = [1, -1, 5, -2, 3], k = 3
-Longest subarray = [1, -1, 5, -2] (length 4)
+Input: nums = [1,-1,5,-2,3], k = 3
+Output: 4
+Explanation: The subarray [1, -1, 5, -2] sums to 3 and is the longest.
 ```
+
 **Example 2:**
 ```
-nums = [-2, -1, 2, 1], k = 1
-Longest subarray = [2, -1] (length 2)
+Input: nums = [-2,-1,2,1], k = 1
+Output: 2
+Explanation: The subarray [-1, 2] sums to 1 and is the longest.
 ```
 
 ## Approach

@@ -8,18 +8,52 @@
 
 ## Problem Description
 
-SQL: Find the customer who placed the most orders.
+Table: `Orders`
+
+```
++-----------------+----------+
+| Column Name     | Type     |
++-----------------+----------+
+| order_number    | int      |
+| customer_number | int      |
++-----------------+----------+
+order_number is the primary key (column with unique values) for this table.
+This table contains information about the order ID and the customer ID.
+```
+
+Write a solution to find the `customer_number` for the customer who has placed **the largest number of orders**.
+
+The test cases are generated so that **exactly one customer** will have placed more orders than any other customer.
+
+The result format is in the following example.
 
 ---
 
 ## Examples
 
-| Orders Table | Description |
-|---|---|
-| customer_number | Identifier of the customer |
-| order_id | Unique order identifier |
-
-**Example 1**: If the `Orders` table contains three orders for customer `101` and one order for customer `102`, the query should return `101` as the customer with the most orders.
+**Example 1:**
+```
+Input:
+Orders table:
++--------------+-----------------+
+| order_number | customer_number |
++--------------+-----------------+
+| 1            | 1               |
+| 2            | 2               |
+| 3            | 3               |
+| 4            | 3               |
++--------------+-----------------+
+Output:
++-----------------+
+| customer_number |
++-----------------+
+| 3               |
++-----------------+
+Explanation:
+The customer with number 3 has two orders, which is greater than either customer 1 or 2 because each of them only has one order.
+So the result is customer_number 3.
+Follow up: What if more than one customer has the largest number of orders, can you find all the customer_number in this case?
+```
 
 ---
 

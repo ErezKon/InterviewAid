@@ -8,19 +8,56 @@
 
 ## 1. Problem Description
 
-**SQL Problem.** Given a `Views` table (`article_id`, `author_id`, `viewer_id`, `view_date`), find the IDs of viewers who have viewed **more than one distinct article** on the **same day**.
+**SQL Problem.**
+
+Table: `Views`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| article_id    | int     |
+| author_id     | int     |
+| viewer_id     | int     |
+| view_date     | date    |
++---------------+---------+
+This table may have duplicate rows.
+Each row of this table indicates that some viewer viewed an article (written by some author) on some date.
+Note that equal author_id and viewer_id indicate the same person.
+```
+
+Write a solution to find all the people who viewed more than one article on the same date.
+
+Return the result table sorted by `id` in ascending order.
+
+The result format is in the following example.
 
 ## 2. Examples
 
-| Views Table (sample) |
-|----------------------|
-| article_id | viewer_id | view_date |
-| 1 | 101 | 2023-01-01 |
-| 2 | 101 | 2023-01-01 |
-| 3 | 102 | 2023-01-01 |
-| 4 | 101 | 2023-01-02 |
-
-**Result:** `101` (viewer 101 viewed two articles on 2023‑01‑01).
+```
+Example 1:
+  Input:
+  Views table:
+  +------------+-----------+-----------+------------+
+  | article_id | author_id | viewer_id | view_date  |
+  +------------+-----------+-----------+------------+
+  | 1          | 3         | 5         | 2019-08-01 |
+  | 3          | 4         | 5         | 2019-08-01 |
+  | 1          | 3         | 6         | 2019-08-02 |
+  | 2          | 7         | 7         | 2019-08-01 |
+  | 2          | 7         | 6         | 2019-08-02 |
+  | 4          | 7         | 1         | 2019-07-22 |
+  | 3          | 4         | 4         | 2019-07-21 |
+  | 3          | 4         | 4         | 2019-07-21 |
+  +------------+-----------+-----------+------------+
+  Output:
+  +------+
+  | id   |
+  +------+
+  | 5    |
+  | 6    |
+  +------+
+```
 
 ## 3. Approach
 

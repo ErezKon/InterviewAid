@@ -7,25 +7,29 @@
 ---
 
 ## Problem Description
-Given a string *s* and an integer *k*, determine whether *s* can be partitioned into exactly *k* non‑empty substrings such that each substring is a palindrome. Return `true` if possible, otherwise `false`.
+Given a string `s`, return `true` *if it is possible to split the string* `s` *into three **non-empty** palindromic substrings. Otherwise, return* `false`.
+
+A string is said to be palindrome if it the same string when reversed.
+
+**Constraints:**
+
+- `3 <= s.length <= 2000`
+- `s` consists only of lowercase English letters.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: s = "abcba", k = 2
-Output: true
-Explanation: Partition as "a" | "bcba" ("bcba" is not a palindrome) → not valid. However, "abcba" itself is a palindrome, but we need exactly 2 parts. The valid partition is "a" | "bcb" | "a" (3 parts) → not valid. Hence false.
+Example 1:
+  Input: s = "abcbdd"
+  Output: true
+  Explanation: "abcbdd" = "a" + "bcb" + "dd", and all three substrings are palindromes.
 ```
-**Example 2:**
+
 ```
-Input: s = "aab", k = 2
-Output: true
-Explanation: Partition as "aa" | "b" where both parts are palindromes.
-```
-**Example 3:**
-```
-Input: s = "a", k = 1
-Output: true
+Example 2:
+  Input: s = "bcbddxy"
+  Output: false
+  Explanation: s cannot be split into 3 palindromes.
 ```
 
 ## Approach

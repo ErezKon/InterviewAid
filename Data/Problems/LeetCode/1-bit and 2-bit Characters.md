@@ -22,30 +22,34 @@
 ## 1. Problem Description
 
 We have two special characters:
-- **1-bit character:** represented by `0`
-- **2-bit character:** represented by `10` or `11`
 
-Given a binary array `bits` that always ends with `0`, determine if the **last character** must be a 1-bit character.
+- The first character can be represented by one bit `0`.
+- The second character can be represented by two bits (`10` or `11`).
+
+Given a binary array `bits` that ends with `0`, return `true` if the last character must be a one-bit character.
 
 **Constraints:**
-- `1 ≤ bits.length ≤ 1000`
-- `bits[i]` is `0` or `1`
-- `bits[bits.length - 1] == 0`
+- `1 <= bits.length <= 1000`
+- `bits[i]` is either `0` or `1`.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input:  [1, 0, 0]
-  Output: true
-  Explanation: Decoding: [10, 0] → last char is "0" (1-bit) ✓
+Input: bits = [1,0,0]
+Output: true
+Explanation: The only way to decode it is two-bit character and one-bit character.
+So the last character is one-bit character.
+```
 
-Example 2:
-  Input:  [1, 1, 1, 0]
-  Output: false
-  Explanation: Decoding: [11, 10] → last char is "10" (2-bit), not 1-bit
+**Example 2:**
+```
+Input: bits = [1,1,1,0]
+Output: false
+Explanation: The only way to decode it is two-bit character and two-bit character.
+So the last character is not one-bit character.
 ```
 
 Visual:

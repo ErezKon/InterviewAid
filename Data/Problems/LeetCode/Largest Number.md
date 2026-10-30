@@ -9,9 +9,11 @@
 
 ## Problem Description
 
-Given a list of non‑negative integers `nums`, arrange them such that they form the largest possible number when concatenated. Return the result as a string.
+Given a list of non-negative integers `nums`, arrange them such that they form the largest number and return it.
 
-Constraints:
+Since the result may be very large, so you need to return a string instead of an integer.
+
+**Constraints:**
 - `1 <= nums.length <= 100`
 - `0 <= nums[i] <= 10^9`
 

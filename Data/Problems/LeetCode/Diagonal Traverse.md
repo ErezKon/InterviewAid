@@ -20,20 +20,14 @@
 
 ## Problem Description
 
-Given an `m × n` matrix `mat`, return all elements in **diagonal order** — alternating between going up-right and down-left.
-
-```
-Example traversal for 3×3:
-  1 → 2   4
-      ↑ ↙ ↑ ↙
-      3   5   7
-        ↗   ↗ ↓
-      6 → 8   9
-```
+Given an `m x n` matrix `mat`, return *an array of all the elements of the array in a diagonal order*.
 
 **Constraints:**
+- `m == mat.length`
+- `n == mat[i].length`
 - `1 <= m, n <= 10^4`
-- `1 <= m × n <= 10^4`
+- `1 <= m * n <= 10^4`
+- `-10^5 <= mat[i][j] <= 10^5`
 
 ---
 
@@ -41,16 +35,14 @@ Example traversal for 3×3:
 
 **Example 1:**
 ```
-Input: mat = [[1,2,3],
-              [4,5,6],
-              [7,8,9]]
-Output: [1, 2, 4, 7, 5, 3, 6, 8, 9]
+Input: mat = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,4,7,5,3,6,8,9]
 ```
 
 **Example 2:**
 ```
 Input: mat = [[1,2],[3,4]]
-Output: [1, 2, 3, 4]
+Output: [1,2,3,4]
 ```
 
 ---

@@ -7,15 +7,38 @@
 ---
 
 ## Problem Description
-Given an integer array `arr` that is guaranteed to be a mountain array (strictly increasing then strictly decreasing), return the index of the peak element—the element that is greater than its neighbors.
+You are given an integer **mountain** array `arr` of length `n` where the values increase to a **peak element** and then decrease.
 
-Constraints: `3 ≤ arr.length ≤ 10⁵`; `0 ≤ arr[i] ≤ 10⁹`; there exists exactly one peak.
+Return the index of the peak element.
+
+Your task is to solve it in `O(log(n))` time complexity.
+
+**Constraints:**
+
+- `3 <= arr.length <= 10^5`
+- `0 <= arr[i] <= 10^6`
+- `arr` is **guaranteed** to be a mountain array.
 
 ## Examples
-| arr | Output | Explanation |
-|-----|--------|-------------|
-| [1,3,5,4,2] | 2 | `arr[2]=5` is greater than `arr[1]=3` and `arr[3]=4`.
-| [0,2,1,0] | 1 | Peak at index 1 with value 2.
+
+```
+Example 1:
+  Input: arr = [0,1,0]
+  Output: 1
+```
+
+```
+Example 2:
+  Input: arr = [0,2,1,0]
+  Output: 1
+```
+
+```
+Example 3:
+  Input: arr = [0,10,5,2]
+  Output: 1
+```
+<!-- Peak at index 1 with value 2. -->
 
 ## Approach
 Use binary search on the slope direction.

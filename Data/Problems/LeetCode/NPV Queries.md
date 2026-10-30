@@ -7,13 +7,85 @@
 ---
 
 ## Problem Description
-You are given an array `cashFlows` of length `n`, where `cashFlows[i]` represents the cash flow at year `i+1`. For each query `(l, r, k)` you must compute the Net Present Value (NPV) of the sub‑array `cashFlows[l..r]` using a discount rate `k`. The NPV is defined as `sum_{i=l}^{r} cashFlows[i] / (1 + k)^{i-l+1}`. Return the result for each query.
+Table: `NPV`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| year          | int     |
+| npv           | int     |
++---------------+---------+
+(id, year) is the primary key (combination of columns with unique values) of this table.
+The table has information about the id and the year of each inventory and the corresponding net present value.
+```
+
+Table: `Queries`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| year          | int     |
++---------------+---------+
+(id, year) is the primary key (combination of columns with unique values) of this table.
+The table has information about the id and the year of each inventory query.
+```
+
+Write a solution to find the `npv` of each query of the `Queries` table.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
-| cashFlows | Query `(l,r,k)` | NPV |
-|-----------|----------------|-----|
-| [100,200,300] | (1,3,0.1) | 100/1.1 + 200/1.1² + 300/1.1³ ≈ 527.5 |
-| [5,5,5,5] | (2,4,0) | 5 + 5 + 5 = 15 |
+
+```
+Example 1:
+  Input:
+  NPV table:
+  +------+--------+--------+
+  | id   | year   | npv    |
+  +------+--------+--------+
+  | 1    | 2018   | 100    |
+  | 7    | 2020   | 30     |
+  | 13   | 2019   | 40     |
+  | 1    | 2019   | 113    |
+  | 2    | 2008   | 121    |
+  | 3    | 2009   | 12     |
+  | 11   | 2020   | 99     |
+  | 7    | 2019   | 0      |
+  +------+--------+--------+
+  Queries table:
+  +------+--------+
+  | id   | year   |
+  +------+--------+
+  | 1    | 2019   |
+  | 2    | 2008   |
+  | 3    | 2009   |
+  | 7    | 2018   |
+  | 7    | 2019   |
+  | 7    | 2020   |
+  | 13   | 2019   |
+  +------+--------+
+  Output:
+  +------+--------+--------+
+  | id   | year   | npv    |
+  +------+--------+--------+
+  | 1    | 2019   | 113    |
+  | 2    | 2008   | 121    |
+  | 3    | 2009   | 12     |
+  | 7    | 2018   | 0      |
+  | 7    | 2019   | 0      |
+  | 7    | 2020   | 30     |
+  | 13   | 2019   | 40     |
+  +------+--------+--------+
+  Explanation:
+  The npv value of (7, 2018) is not present in the NPV table, we consider it 0.
+  The npv values of all other queries can be found in the NPV table.
+```
 
 ## Approach
 **Algorithm:** Prefix sums of discounted cash flows.

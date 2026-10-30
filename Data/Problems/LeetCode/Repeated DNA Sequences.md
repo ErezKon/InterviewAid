@@ -7,13 +7,32 @@
 ---
 
 ## Problem Description
-Given a DNA string `s` consisting of characters `'A'`, `'C'`, `'G'`, and `'T'`, return all the 10-letter-long substrings that occur more than once in the string. The substrings can be returned in any order.
+
+The **DNA sequence** is composed of a series of nucleotides abbreviated as `'A'`, `'C'`, `'G'`, and `'T'`.
+
+- For example, `"ACGAATTCCG"` is a **DNA sequence**.
+
+When studying **DNA**, it is useful to identify repeated sequences within the DNA.
+
+Given a string `s` that represents a **DNA sequence**, return all the **`10`-letter-long** sequences (substrings) that occur more than once in a DNA molecule. You may return the answer in **any order**.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s[i]` is either `'A'`, `'C'`, `'G'`, or `'T'`.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"` | `["AAAAACCCCC","CCCCCAAAAA"]` | Both 10‑letter sequences appear at least twice. |
-| `"AAAAAAAAAAA"` | `["AAAAAAAAAA"]` | The 10‑letter sequence `"AAAAAAAAAA"` repeats. |
+
+**Example 1:**
+```
+Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+Output: ["AAAAACCCCC","CCCCCAAAAA"]
+```
+
+**Example 2:**
+```
+Input: s = "AAAAAAAAAAAAA"
+Output: ["AAAAAAAAAA"]
+```
 
 ## Approach
 Use a sliding window of fixed length 10 and a hash set to record seen substrings. When a substring is encountered a second time, add it to a result set.

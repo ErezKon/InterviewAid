@@ -8,37 +8,59 @@
 
 ## Problem Description
 
-You are given two groups of points. `cost[i][j]` represents the cost to connect point `i` from group 1 with point `j` from group 2. Every point in both groups must be connected to at least one point in the opposite group. Find the minimum total cost to achieve this.
+You are given two groups of points where the first group has `size1` points, the second group has `size2` points, and `size1 >= size2`.
 
-Constraints:
-- `1 ≤ m, n ≤ 12` where `m = len(cost)` and `n = len(cost[0])`
-- `0 ≤ cost[i][j] ≤ 10^5`
+The `cost` of the connection between any two points are given in an `size1 x size2` matrix where `cost[i][j]` is the cost of connecting point `i` of the first group and point `j` of the second group. The groups are connected if **each point in both groups is connected to one or more points in the opposite group**. In other words, each point in the first group must be connected to at least one point in the second group, and each point in the second group must be connected to at least one point in the first group.
+
+Return *the minimum cost it takes to connect the two groups*.
+
+**Constraints:**
+- `size1 == cost.length`
+- `size2 == cost[i].length`
+- `1 ≤ size1, size2 ≤ 12`
+- `size1 >= size2`
+- `0 ≤ cost[i][j] ≤ 100`
 
 ## Examples
 
-**Example 1**
 ```
-Input: cost = [[15,96],[36,2]]
-Output: 17
-Explanation: Connect point 0 (group1) to point 1 (group2) with cost 96 and point 1 (group1) to point 1 (group2) with cost 2. Total = 98? Actually optimal is connect 0→0 (15) and 1→1 (2) = 17.
+Example 1:
+  Input: cost = [[15, 96], [36, 2]]
+  Output: 17
+  Explanation: The optimal way of connecting the groups is:
+  1--A
+  2--B
+  This results in a total cost of 17.
 ```
 
-**Example 2**
 ```
-Input: cost = [[1,3,5],[4,1,1],[1,5,3]]
-Output: 4
-Explanation: Connect group1 point 0 to group2 point 0 (1), point 1 to group2 point 1 (1), point 2 to group2 point 0 (1) and also connect remaining group2 point 2 via cheapest edge (1). Total = 4.
+Example 2:
+  Input: cost = [[1, 3, 5], [4, 1, 1], [1, 5, 3]]
+  Output: 4
+  Explanation: The optimal way of connecting the groups is:
+  1--A
+  2--B
+  2--C
+  3--A
+  This results in a total cost of 4.
+  Note that there are multiple points connected to point 2 in the first group and point A in the second group. This does not matter as there is no limit to the number of points that can be connected. We only care about the minimum total cost.
+```
+
+```
+Example 3:
+  Input: cost = [[2, 5, 1], [3, 4, 7], [8, 1, 2], [6, 2, 4], [3, 8, 8]]
+  Output: 10
 ```
 
 ## Approach
 
 **Algorithm:** Bitmask Dynamic Programming on the smaller group
 
-We iterate over points of the first group, maintaining a DP map from a bitmask of already connected points in group 2 to the minimum cost incurred so far.
+We iterate over points of the first group, maintaining a DP map from a bitmask of already connected points in group 2 to the minimum cost incurred so far.
 
-For each point `i` in group 1 we consider connecting it to every point `j` in group 2, updating the mask `mask | (1 << j)` with the new cost `dp[mask] + cost[i][j]`.
+For each point `i` in group 1 we consider connecting it to every point `j` in group 2, updating the mask `mask | (1 << j)` with the new cost `dp[mask] + cost[i][j]`.
 
-After processing all points of group 1, some points of group 2 may still be unconnected. For each such point we add its cheapest possible connection (pre‑computed `minCost2[j]`). The final answer is the minimum over all masks.
+After processing all points of group 1, some points of group 2 may still be unconnected. For each such point we add its cheapest possible connection (pre‑computed `minCost2[j]`). The final answer is the minimum over all masks.
 
 ```text
 FUNCTION connectTwoGroups(cost):

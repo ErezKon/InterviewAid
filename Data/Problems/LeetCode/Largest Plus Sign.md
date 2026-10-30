@@ -1,23 +1,43 @@
 # 764. Largest Plus Sign
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/largest-plus-sign](https://leetcode.com/problems/largest-plus-sign)
 **Companies:** Meta, Twitter
 
 ---
 
 ## 1. Problem Description
 
-Given an `n × n` grid with some mines, find the order (arm length) of the largest axis‑aligned plus sign (+) consisting solely of 1s. Return 0 if none exists.
+You are given an integer `n`. You have an `n x n` binary grid `grid` with all values initially `1`'s except for some indices given in the array `mines`. The `i`-th element of the array `mines` is defined as `mines[i] = [x_i, y_i]` where `grid[x_i][y_i] == 0`.
+
+Return *the order of the largest **axis-aligned** plus sign of* 1*'s contained in* `grid`. If there is none, return `0`.
+
+An **axis-aligned plus sign** of `1`'s of order `k` has some center `grid[r][c] == 1` along with four arms of length `k - 1` going up, down, left, and right, and made of `1`'s. Note that there could be `0`'s or `1`'s beyond the arms of the plus sign, only the relevant area of the plus sign is checked for `1`'s.
+
+**Constraints:**
+- `1 <= n <= 500`
+- `1 <= mines.length <= 5000`
+- `0 <= x_i, y_i < n`
+- All the pairs `(x_i, y_i)` are **unique**.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 5, mines = [[4,2]]` | `2` | The largest plus sign has arms of length 2 centered at (2,2). |
-| `n = 2, mines = []` | `1` | A 2×2 grid without mines yields a plus sign of order 1 at any cell. |
-| `n = 1, mines = [[0,0]]` | `0` | The only cell is a mine, so no plus sign.
+```
+Example 1:
+  Input: n = 5, mines = [[4,2]]
+  Output: 2
+  Explanation: In the 5x5 grid (only cell (4,2) is 0), the largest plus sign can only be of order 2.
+  One of them is centered at (2,2) with arms of length 1.
+```
+
+```
+Example 2:
+  Input: n = 1, mines = [[0,0]]
+  Output: 0
+  Explanation: There is no plus sign, so return 0.
+```
 
 ---
 

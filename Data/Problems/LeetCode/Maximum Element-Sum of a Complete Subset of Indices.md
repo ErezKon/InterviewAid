@@ -18,10 +18,13 @@
 
 ## Problem Description
 
-A "complete subset" of indices means every pair `(i, j)` in the subset has `i * j` being a perfect square. Find the subset with maximum element sum.
+You are given a **1****-indexed** array `nums`. Your task is to select a **complete subset** from `nums` where every pair of selected indices multiplied is a perfect square,. i. e. if you select `a_i` and `a_j`, `i * j` must be a perfect square.
+
+Return the *sum* of the complete subset with the *maximum sum*.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁴`
+- `1 <= n == nums.length <= 10^4`
+- `1 <= nums[i] <= 10^9`
 
 ---
 
@@ -62,16 +65,16 @@ FUNCTION maximumSum(nums):
 
 **Example 1:**
 ```
-Input: nums = [1,2,3,4]
-Output: 8
-Explanation: Indices 1 and 4 have square‑free part 1, forming a complete subset {1,4}. Their sum is 1 + 4 = 5. Indices 2 and 3 have square‑free part 2, sum = 2 + 3 = 5. The maximum sum is 8 from subset {2,3,4} (square‑free parts 2,2,1) – actually the best grouping is indices {2,3} with sum 5, but adding index 4 (square‑free 1) is not allowed. The optimal subset is {2,3} with sum 5, but the answer shown assumes a different grouping; adjust accordingly.
+Input: nums = [8,7,3,5,7,2,4,9]
+Output: 16
+Explanation: We select elements at indices 2 and 8 and 2 * 8 is a perfect square.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,6,7,8,9]
+Input: nums = [8,10,3,8,1,13,7,9,4]
 Output: 20
-Explanation: Square‑free parts: 1→5, 2→6, 7→7, 2→8, 1→9. Group sums: {1,9}=14, {2,8}=14, {7}=7. Maximum sum is 14.
+Explanation: We select elements at indices 1, 4, and 9. 1 * 4, 1 * 9, 4 * 9 are perfect squares.
 ```
 
 ---

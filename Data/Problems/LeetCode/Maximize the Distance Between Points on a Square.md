@@ -18,11 +18,24 @@
 
 ## Problem Description
 
-Given points on the perimeter of a square and an integer `k`, select `k` points to **maximize the minimum distance** between any two selected points (using perimeter distance, not Euclidean).
+You are given an integer `side`, representing the edge length of a square with corners at `(0, 0)`, `(0, side)`, `(side, 0)`, and `(side, side)` on a Cartesian plane.
+
+You are also given a **positive** integer `k` and a 2D integer array `points`, where `points[i] = [x_i, y_i]` represents the coordinate of a point lying on the **boundary** of the square.
+
+You need to select `k` elements among `points` such that the **minimum** Manhattan distance between any two points is **maximized**.
+
+Return the **maximum** possible **minimum** Manhattan distance between the selected `k` points.
+
+The Manhattan Distance between two cells `(x_i, y_i)` and `(x_j, y_j)` is `|x_i - x_j| + |y_i - y_j|`.
 
 **Constraints:**
-- Points lie on the perimeter of a square.
-- Select exactly `k` points.
+- `1 <= side <= 10^9`
+- `4 <= points.length <= min(4 * side, 15 * 10^3)`
+- `points[i] == [x_i, y_i]`
+- The input is generated such that:
+- `points[i]` lies on the boundary of the square.
+- All `points[i]` are **unique**.
+- `4 <= k <= min(25, points.length)`
 
 ---
 
@@ -60,18 +73,23 @@ FUNCTION maxDistance(points, k, sideLength):
 
 **Example 1:**
 ```
-points = [(0,0), (0,2), (2,2), (2,0)]   // square side = 2
-k = 2
-Output: 8
-Explanation: Choose opposite corners; perimeter distance = 8.
+Input: side = 2, points = [[0,2],[2,0],[2,2],[0,0]], k = 4
+Output: 2
+Explanation: Select all four points.
 ```
 
 **Example 2:**
 ```
-points = [(0,1), (1,2), (2,1), (1,0)]
-sideLength = 2, k = 3
-Output: 4
-Explanation: Selecting three points equally spaced gives minimum gap 4 along the perimeter.
+Input: side = 2, points = [[0,0],[1,2],[2,0],[2,2],[2,1]], k = 4
+Output: 1
+Explanation: Select the points (0, 0), (2, 0), (2, 2), and (2, 1).
+```
+
+**Example 3:**
+```
+Input: side = 2, points = [[0,0],[0,1],[0,2],[1,2],[2,0],[2,2],[2,1]], k = 5
+Output: 1
+Explanation: Select the points (0, 0), (0, 1), (0, 2), (1, 2), and (2, 2).
 ```
 
 ---

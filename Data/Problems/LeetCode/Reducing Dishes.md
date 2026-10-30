@@ -6,11 +6,43 @@
 ---
 
 ## Problem Description
-You are given an integer array `satisfaction` where `satisfaction[i]` is the satisfaction level of the i‑th dish. You can cook any number of dishes in any order. Cooking a dish at time `t` (starting from 1) gives a total satisfaction of `t * satisfaction[i]`. The goal is to select a subset of dishes and an order to maximize the total satisfaction sum. Return the maximum possible sum.
+A chef has collected data on the `satisfaction` level of his `n` dishes. Chef can cook any dish in 1 unit of time.
+
+**Like-time coefficient** of a dish is defined as the time taken to cook that dish including previous dishes multiplied by its satisfaction level i.e. `time[i] * satisfaction[i]`.
+
+Return the maximum sum of **like-time coefficient** that the chef can obtain after preparing some amount of dishes.
+
+Dishes can be prepared in **any** order and the chef can discard some dishes to get this maximum value.
+
+**Constraints:**
+
+- `n == satisfaction.length`
+- `1 <= n <= 500`
+- `-1000 <= satisfaction[i] <= 1000`
 
 ## Examples
-- **Example 1:** `satisfaction = [-1,-8,0,5,-9]` → `output = 14`. Cook dishes with satisfaction `[5,0,-1]` in that order: total = `1*5 + 2*0 + 3*(-1) = 5 + 0 - 3 = 2`? Actually optimal is to cook `[5,0,-1]` after discarding negatives? Standard solution yields 14.
-- **Example 2:** `satisfaction = [4,3,2]` → `output = 20`. Cook all dishes in order `[2,3,4]` giving `1*2 + 2*3 + 3*4 = 2 + 6 + 12 = 20`.
+
+```
+Example 1:
+  Input: satisfaction = [-1,-8,0,5,-9]
+  Output: 14
+  Explanation: After Removing the second and last dish, the maximum total like-time coefficient will be equal to (-1*1 + 0*2 + 5*3 = 14).
+    Each dish is prepared in one unit of time.
+```
+
+```
+Example 2:
+  Input: satisfaction = [4,3,2]
+  Output: 20
+  Explanation: Dishes can be prepared in any order, (2*1 + 3*2 + 4*3 = 20)
+```
+
+```
+Example 3:
+  Input: satisfaction = [-1,-4,-5]
+  Output: 0
+  Explanation: People do not like the dishes. No dish is prepared.
+```
 
 ## Approach
 Sort the satisfaction values in descending order and greedily add dishes while the cumulative prefix sum remains positive. Each added dish increases the contribution of previously selected dishes by its value.

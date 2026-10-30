@@ -7,14 +7,22 @@
 ---
 
 ## Problem Description
-Given the head of a singly‑linked list and an integer `k`, swap the values of the `k`‑th node from the beginning with the `k`‑th node from the end (the list is 1‑indexed). Return the head of the modified list.
+
+You are given the `head` of a linked list, and an integer `k`.
+
+Return *the head of the linked list after **swapping** the values of the* `k`th *node from the beginning and the* `k`th *node from the end (the list is **1-indexed**).*
+
+**Constraints:**
+- The number of nodes in the list is `n`.
+- `1 <= k <= n <= 10^5`
+- `0 <= Node.val <= 100`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: head = [1,2,3,4,5], k = 2
 Output: [1,4,3,2,5]
-Explanation: The 2nd node from the start is 2, the 2nd node from the end is 4. Their values are swapped.
 ```
 
 **Example 2:**

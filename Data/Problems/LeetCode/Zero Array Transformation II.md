@@ -7,18 +7,51 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and a list of queries `queries` where each query is `[l, r, val]` meaning you can add `val` to every element in `nums[l..r]`. Determine the minimum number of queries (taken in order) required to make every element of `nums` non‑negative. Return that minimum count, or `-1` if impossible even after all queries.
+
+You are given an integer array `nums` of length `n` and a 2D array `queries` where `queries[i] = [l_i, r_i, val_i]`.
+
+Each `queries[i]` represents the following action on `nums`:
+
+- Decrement the value at each index in the range `[l_i, r_i]` in `nums` by **at most** `val_i`.
+- The amount by which each value is decremented can be chosen **independently** for each index.
+
+A **Zero Array** is an array with all its elements equal to 0.
+
+Return the **minimum** possible **non-negative** value of `k`, such that after processing the first `k` queries in **sequence**, `nums` becomes a **Zero Array**. If no such `k` exists, return -1.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 5 * 10^5`
+- `1 <= queries.length <= 10^5`
+- `queries[i].length == 3`
+- `0 <= l_i <= r_i < nums.length`
+- `1 <= val_i <= 5`
 
 ## Examples
+
 **Example 1:**
-Input: `nums = [3,1,2]`, `queries = [[0,1,2],[1,2,1],[0,2,1]]`
-Output: `2`
-Explanation: Applying the first two queries yields `[5,4,3]` which is all ≥ 0. No single query suffices.
+```
+Input: nums = [2,0,2], queries = [[0,2,1],[0,2,1],[1,1,3]]
+Output: 2
+Explanation: - For i = 0 (l = 0, r = 2, val = 1):
+- Decrement values at indices [0, 1, 2] by [1, 0, 1] respectively.
+- The array will become [1, 0, 1].
+- For i = 1 (l = 0, r = 2, val = 1):
+- Decrement values at indices [0, 1, 2] by [1, 0, 1] respectively.
+- The array will become [0, 0, 0], which is a Zero Array. Therefore, the minimum value of k is 2.
+```
 
 **Example 2:**
-Input: `nums = [5,0,0]`, `queries = [[1,2,1]]`
-Output: `-1`
-Explanation: Even after the only query the first element remains 5 > 0, but we need to ensure all positions meet their required non‑negative threshold; here the condition is that each position must receive at least its initial value in increments, which cannot be satisfied.
+```
+Input: nums = [4,3,2,1], queries = [[1,3,2],[0,2,1]]
+Output: -1
+Explanation: - For i = 0 (l = 1, r = 3, val = 2):
+- Decrement values at indices [1, 2, 3] by [2, 2, 1] respectively.
+- The array will become [4, 1, 0, 0].
+- For i = 1 (l = 0, r = 2, val = 1):
+- Decrement values at indices [0, 1, 2] by [1, 1, 0] respectively.
+- The array will become [3, 0, 0, 0], which is not a Zero Array.
+```
 
 ## Approach
 Binary search on the answer `k` (number of prefix queries) and check feasibility with a difference array.

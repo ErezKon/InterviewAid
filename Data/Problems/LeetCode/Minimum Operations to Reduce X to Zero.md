@@ -22,34 +22,37 @@
 
 ## 1. Problem Description
 
-Given an integer array `nums` and an integer `x`, in one operation you remove either the **leftmost** or **rightmost** element and subtract its value from `x`.
+You are given an integer array `nums` and an integer `x`. In one operation, you can either remove the leftmost or the rightmost element from the array `nums` and subtract its value from `x`. Note that this **modifies** the array for future operations.
 
-Return the **minimum number of operations** to reduce `x` to exactly `0`, or `-1` if not possible.
+Return *the **minimum number** of operations to reduce *`x` *to **exactly*** `0` *if it is possible**, otherwise, return *`-1`.
 
 **Constraints:**
-- `1 <= nums.length <= 10⁵`
-- `1 <= nums[i] <= 10⁴`
-- `1 <= x <= 10⁹`
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^4`
+- `1 <= x <= 10^9`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input: nums = [1,1,4,2,3], x = 5
-  Output: 2
-  Explanation: Remove 3 (right), remove 2 (right) → 5-3-2 = 0.
+Input: nums = [1,1,4,2,3], x = 5
+Output: 2
+Explanation: The optimal solution is to remove the last two elements to reduce x to zero.
+```
 
-Example 2:
-  Input: nums = [5,6,7,8,9], x = 4
-  Output: -1
-  Explanation: No combination of end elements sums to 4.
+**Example 2:**
+```
+Input: nums = [5,6,7,8,9], x = 4
+Output: -1
+```
 
-Example 3:
-  Input: nums = [3,2,20,1,1,3], x = 10
-  Output: 5
-  Explanation: Remove 3,2 from left and 1,1,3 from right → 3+2+1+1+3=10.
+**Example 3:**
+```
+Input: nums = [3,2,20,1,1,3], x = 10
+Output: 5
+Explanation: The optimal solution is to remove the last three elements and the first two elements (5 operations in total) to reduce x to zero.
 ```
 
 ---

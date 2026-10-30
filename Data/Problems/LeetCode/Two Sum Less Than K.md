@@ -7,18 +7,31 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, find the maximum sum of a pair of distinct elements such that the sum is strictly less than `k`. Return the maximum possible sum, or `-1` if no such pair exists.
+
+> *Note: premium problem (statement checked against the official text with verify.py).*
+
+Given an array `nums` of integers and integer `k`, return the maximum `sum` such that there exists `i < j` with `nums[i] + nums[j] = sum` and `sum < k`. If no `i`, `j` exist satisfying this equation, return `-1`.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `1 <= nums[i] <= 1000`
+- `1 <= k <= 2000`
 
 ## Examples
+
 **Example 1:**
-Input: `nums = [34,23,1,24,75,33,54,8]`, `k = 60`
-Output: `58`
-Explanation: The pair `(34,24)` yields the largest sum less than `60`.
+```
+Input: nums = [34,23,1,24,75,33,54,8], k = 60
+Output: 58
+Explanation: We can use 34 and 24 to sum 58 which is less than 60.
+```
 
 **Example 2:**
-Input: `nums = [10,20,30]`, `k = 15`
-Output: `-1`
-Explanation: No pair sums to less than `15`.
+```
+Input: nums = [10,20,30], k = 15
+Output: -1
+Explanation: In this case it is not possible to get a pair sum less that 15.
+```
 
 ## Approach
 Sort the array in ascending order. Use two pointers, `left` at the start and `right` at the end. While `left < right`, compute `sum = nums[left] + nums[right]`. If `sum < k`, update the answer with `max(answer, sum)` and move `left` forward to try a larger sum. If `sum >= k`, move `right` backward to reduce the sum.

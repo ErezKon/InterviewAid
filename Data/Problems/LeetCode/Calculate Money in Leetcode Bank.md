@@ -7,15 +7,36 @@
 ---
 
 ## Problem Description
-You are given an integer `n` representing the number of days the LeetCode bank has been operating. The bank starts with $1 on day 1. Each subsequent day, the amount deposited increases by $1 compared to the previous day. Additionally, at the start of each new week (every 7 days), the daily deposit amount resets to the previous week's starting amount plus $1. Compute the total amount of money in the bank after `n` days.
+Hercy wants to save money for his first car. He puts money in the Leetcode bank **every day**.
+
+He starts by putting in `$1` on Monday, the first day. Every day from Tuesday to Sunday, he will put in `$1` more than the day before. On every subsequent Monday, he will put in `$1` more than the **previous Monday**.
+
+Given `n`, return *the total amount of money he will have in the Leetcode bank at the end of the `n`-th day.*
+
+**Constraints:**
+- `1 <= n <= 1000`
 
 ## Examples
-- Input: `n = 4`
-  Output: `10`
-  Explanation: Deposits are [1,2,3,4]; sum = 10.
-- Input: `n = 10`
-  Output: `37`
-  Explanation: Week 1 deposits = [1,2,3,4,5,6,7]; Week 2 starts at 2 → deposits = [2,3]; total = 28 + 9 = 37.
+```
+Example 1:
+  Input: n = 4
+  Output: 10
+  Explanation: After the 4th day, the total is 1 + 2 + 3 + 4 = 10.
+```
+
+```
+Example 2:
+  Input: n = 10
+  Output: 37
+  Explanation: After the 10th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4) = 37. Notice that on the 2nd Monday, Hercy only puts in $2.
+```
+
+```
+Example 3:
+  Input: n = 20
+  Output: 96
+  Explanation: After the 20th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4 + 5 + 6 + 7 + 8) + (3 + 4 + 5 + 6 + 7 + 8) = 96.
+```
 
 ## Approach: Math Formula — O(1) ✅
 

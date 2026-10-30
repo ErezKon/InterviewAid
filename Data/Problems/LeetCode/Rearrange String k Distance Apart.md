@@ -7,13 +7,36 @@
 ---
 
 ## Problem Description
-Given a string `s` and an integer `k`, rearrange the characters of `s` so that the same character appears at least `k` distance apart. If such an arrangement is impossible, return an empty string.
+Given a string `s` and an integer `k`, rearrange `s` such that the same characters are **at least** distance `k` from each other. If it is not possible to rearrange the string, return an empty string `""`.
+
+**Constraints:**
+
+- `1 <= s.length <= 3 * 10⁵`
+- `s` consists of only lowercase English letters.
+- `0 <= k <= s.length`
 
 ## Examples
-| s | k | Output | Explanation |
-|---|---|--------|-------------|
-| "aabbcc" | 3 | "abcabc" | Each identical character is spaced by 3 positions. |
-| "aaabc" | 3 | "" | No valid arrangement exists because there are too many `a`s.
+
+```
+Example 1:
+  Input: s = "aabbcc", k = 3
+  Output: "abcabc"
+  Explanation: The same letters are at least a distance of 3 from each other.
+```
+
+```
+Example 2:
+  Input: s = "aaabc", k = 3
+  Output: ""
+  Explanation: It is not possible to rearrange the string.
+```
+
+```
+Example 3:
+  Input: s = "aaadbbcc", k = 2
+  Output: "abacabcd"
+  Explanation: The same letters are at least a distance of 2 from each other.
+```
 
 ## Approach
 Use a max‑heap to always pick the character with the highest remaining count. After placing a character, put it into a waiting queue for `k` steps before it can be used again. When the waiting period expires, push it back into the heap if it still has remaining occurrences.

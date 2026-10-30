@@ -7,16 +7,38 @@
 ---
 
 ## Problem Description
-Given an array of strings `words`, return all strings that appear as a substring of another string in the array. The order of the output does not matter.
+
+Given an array of string `words`, return *all strings in* `words` *that are a **substring** of another word*. You can return the answer in **any order**.
+
+**Constraints:**
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 30`
+- `words[i]` contains only lowercase English letters.
+- All the strings of `words` are **unique**.
 
 ## Examples
-- **Input:** `words = ["mass","as","hero","superhero"]`
-  **Output:** `["as","hero"]`
-  // "as" is a substring of "mass" and "hero" is a substring of "superhero".
-- **Input:** `words = ["leetcode","et","code"]`
-  **Output:** `["et","code"]`
-- **Input:** `words = ["blue","green","bu"]`
-  **Output:** `[]`
+
+**Example 1:**
+```
+Input: words = ["mass","as","hero","superhero"]
+Output: ["as","hero"]
+Explanation: "as" is substring of "mass" and "hero" is substring of "superhero".
+["hero","as"] is also a valid answer.
+```
+
+**Example 2:**
+```
+Input: words = ["leetcode","et","code"]
+Output: ["et","code"]
+Explanation: "et", "code" are substring of "leetcode".
+```
+
+**Example 3:**
+```
+Input: words = ["blue","green","bu"]
+Output: []
+Explanation: No string of words is substring of another string.
+```
 
 ## Approach
 **Algorithm:** Brute‑force pairwise check (Easy due to small constraints).

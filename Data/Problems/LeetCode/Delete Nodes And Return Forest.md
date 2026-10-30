@@ -8,16 +8,34 @@
 
 ## Problem Description
 
-Given a binary tree and a list of node values to delete, remove those nodes and return a list of the roots of the resulting forest (the remaining disconnected trees).
+Given the `root` of a binary tree, each node in the tree has a distinct value.
+
+After deleting all nodes with a value in `to_delete`, we are left with a forest (a disjoint union of trees).
+
+Return the roots of the trees in the remaining forest. You may return the result in any order.
+
+**Constraints:**
+
+- The number of nodes in the given tree is at most `1000`.
+- Each node has a distinct value between `1` and `1000`.
+- `to_delete.length <= 1000`
+- `to_delete` contains distinct values between `1` and `1000`.
 
 ## Examples
 
-| Input Tree | to_delete | Output Forest |
-|------------|-----------|---------------|
-| `[1,2,3,4,5,6,7]` | `[3,5]` | `[[1,2,4],[6],[7]]` |
-| `[1,2,null,3]` | `[2]` | `[[1],[3]]` |
+```
+Example 1:
+  Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
+  Output: [[1,2,null,4],[6],[7]]
+  Explanation: Deleting node 3 detaches its children 6 and 7 as new roots.
+  Deleting node 5 simply removes it from under node 2, leaving 1 -> 2 -> 4.
+```
 
-*Explanation:* Deleting node `3` detaches its children `6` and `7` as new roots. Deleting node `5` detaches its child `4` as a new root.
+```
+Example 2:
+  Input: root = [1,2,4,null,3], to_delete = [3]
+  Output: [[1,2,4]]
+```
 
 ## Approach
 

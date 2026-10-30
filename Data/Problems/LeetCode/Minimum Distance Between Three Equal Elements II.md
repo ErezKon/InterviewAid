@@ -1,6 +1,7 @@
 # 3741. Minimum Distance Between Three Equal Elements II
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/minimum-distance-between-three-equal-elements-ii](https://leetcode.com/problems/minimum-distance-between-three-equal-elements-ii)
 **Companies:** Amazon, Google, Microsoft
 
 ---
@@ -19,11 +20,19 @@
 
 ## Problem Description
 
-Given an integer array `nums`, find the **minimum** value of `max(|i-j|, |j-k|, |i-k|)` among all triples `(i, j, k)` where `nums[i] == nums[j] == nums[k]` and `i < j < k`. Return `-1` if no such triple exists.
+> *Note: the Approach below returns the span `idx[t] − idx[t−2]`, but the official distance `|i−j| + |j−k| + |k−i|` equals **twice** the span for sorted indices. Return `2 · min span` (or -1).*
+
+You are given an integer array `nums`.
+
+A tuple `(i, j, k)` of 3 **distinct** indices is **good** if `nums[i] == nums[j] == nums[k]`.
+
+The **distance** of a **good** tuple is `abs(i - j) + abs(j - k) + abs(k - i)`, where `abs(x)` denotes the **absolute value** of `x`.
+
+Return an integer denoting the **minimum** possible **distance** of a **good** tuple. If no **good** tuples exist, return `-1`.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `1 ≤ nums[i] ≤ 10⁵`
+- `1 <= n == nums.length <= 10^5`
+- `1 <= nums[i] <= n`
 
 ---
 
@@ -31,9 +40,25 @@ Given an integer array `nums`, find the **minimum** value of `max(|i-j|, |j-k|, 
 
 **Example 1:**
 ```
-Input: nums = [1,2,1,3,1,2]
-Output: 4
-Explanation: Triple (0,2,4) for value 1. max(|0-2|,|2-4|,|0-4|) = max(2,2,4) = 4.
+Input: nums = [1,2,1,1,3]
+Output: 6
+Explanation: The minimum distance is achieved by the good tuple (0, 2, 3).
+(0, 2, 3) is a good tuple because nums[0] == nums[2] == nums[3] == 1. Its distance is abs(0 - 2) + abs(2 - 3) + abs(3 - 0) = 2 + 1 + 3 = 6.
+```
+
+**Example 2:**
+```
+Input: nums = [1,1,2,3,2,1,2]
+Output: 8
+Explanation: The minimum distance is achieved by the good tuple (2, 4, 6).
+(2, 4, 6) is a good tuple because nums[2] == nums[4] == nums[6] == 2. Its distance is abs(2 - 4) + abs(4 - 6) + abs(6 - 2) = 2 + 2 + 4 = 8.
+```
+
+**Example 3:**
+```
+Input: nums = [1]
+Output: -1
+Explanation: There are no good tuples. Therefore, the answer is -1.
 ```
 
 ---

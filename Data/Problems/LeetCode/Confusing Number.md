@@ -8,7 +8,21 @@
 
 ## 1. Problem Description
 
-A confusing number is one that, when rotated 180°, becomes a **different** valid number. Valid rotated digits: 0→0, 1→1, 6→9, 8→8, 9→6. Digits 2,3,4,5,7 are invalid. Return whether `n` is confusing.
+A **confusing number** is a number that when rotated `180` degrees becomes a different number with **each digit valid**.
+
+We can rotate digits of a number by `180` degrees to form new digits.
+
+- When `0`, `1`, `6`, `8`, and `9` are rotated `180` degrees, they become `0`, `1`, `9`, `8`, and `6` respectively.
+- When `2`, `3`, `4`, `5`, and `7` are rotated `180` degrees, they become **invalid**.
+
+Note that after rotating a number, we can ignore leading zeros.
+
+- For example, after rotating `8000`, we have `0008` which is considered as just `8`.
+
+Given an integer `n`, return `true` *if it is a **confusing number**, or* `false` *otherwise*.
+
+**Constraints:**
+- `0 <= n <= 10^9`
 
 ---
 
@@ -36,18 +50,23 @@ FUNCTION confusingNumber(n):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: n = 6
-Output: true
-Explanation: 6 rotates to 9, which is different.
+Example 1:
+  Input: n = 6
+  Output: true
+  Explanation: We get 9 after rotating 6, 9 is a valid number, and 9 != 6.
 ```
-
-**Example 2:**
 ```
-Input: n = 11
-Output: false
-Explanation: 11 rotates to 11, same as original.
+Example 2:
+  Input: n = 89
+  Output: true
+  Explanation: We get 68 after rotating 89, 68 is a valid number and 68 != 89.
+```
+```
+Example 3:
+  Input: n = 11
+  Output: false
+  Explanation: We get 11 after rotating 11, 11 is a valid number but the value remains the same, thus 11 is not a confusing number
 ```
 
 ---

@@ -8,7 +8,20 @@
 
 ## 1. Problem Description
 
-A word chain is a sequence where each word differs from the previous by exactly one added character. Find the longest chain.
+You are given an array of `words` where each word consists of lowercase English letters.
+
+`word_A` is a **predecessor** of `word_B` if and only if we can insert **exactly one** letter anywhere in `word_A` **without changing the order of the other characters** to make it equal to `word_B`.
+
+- For example, `"abc"` is a **predecessor** of `"abac"`, while `"cba"` is not a **predecessor** of `"bcad"`.
+
+A **word chain*** *is a sequence of words `[word_1, word_2, ..., word_k]` with `k >= 1`, where `word_1` is a **predecessor** of `word_2`, `word_2` is a **predecessor** of `word_3`, and so on. A single word is trivially a **word chain** with `k == 1`.
+
+Return *the **length** of the **longest possible word chain** with words chosen from the given list of *`words`.
+
+**Constraints:**
+- `1 <= words.length <= 1000`
+- `1 <= words[i].length <= 16`
+- `words[i]` only consists of lowercase English letters.
 
 ---
 
@@ -18,14 +31,22 @@ A word chain is a sequence where each word differs from the previous by exactly 
 ```
 Input: words = ["a","b","ba","bca","bda","bdca"]
 Output: 4
-Explanation: One of the longest chains is ["a","ba","bda","bdca"].
+Explanation: One of the longest word chains is ["a","ba","bda","bdca"].
 ```
 
 **Example 2:**
 ```
-Input: words = ["xbc","pc","qc","ib","tc"]
+Input: words = ["xbc","pcxbcf","xb","cxbc","pcxbc"]
+Output: 5
+Explanation: All the words can be put in a word chain ["xb", "xbc", "cxbc", "pcxbc", "pcxbcf"].
+```
+
+**Example 3:**
+```
+Input: words = ["abcd","dbqca"]
 Output: 1
-Explanation: No word can be formed from another, so the longest chain length is 1.
+Explanation: The trivial word chain ["abcd"] is one of the longest word chains.
+["abcd","dbqca"] is not a valid word chain because the ordering of the letters is changed.
 ```
 
 ---

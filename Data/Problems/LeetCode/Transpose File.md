@@ -1,38 +1,29 @@
 # 194. Transpose File
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/transpose-file](https://leetcode.com/problems/transpose-file)
 **Companies:** Google, Meta
 
 ---
 
 ## Problem Description
-Given a text file where each line contains space‑separated values (forming a matrix), output its transpose: rows become columns and columns become rows. Preserve the original order of elements within each row/column.
+
+Given a text file `file.txt`, transpose its content.
+
+You may assume that each row has the same number of columns, and each field is separated by the `' '` character.
 
 ## Examples
-- **Example 1:**
-  Input file:
-  ```
-  a b c
-  d e f
-  ```
-  Output:
-  ```
-  a d
-  b e
-  c f
-  ```
-- **Example 2:**
-  Input file:
-  ```
-  1 2
-  3 4
-  5 6
-  ```
-  Output:
-  ```
-  1 3 5
-  2 4 6
-  ```
+
+**Example 1:**
+```
+If file.txt has the following content:
+name age
+alice 21
+ryan 30
+Output the following:
+name alice ryan
+age 21 30
+```
 
 ## Approach
 Read each line, split into fields, and build an array where each column accumulates its values. After processing all lines, print each column as a space‑separated line.

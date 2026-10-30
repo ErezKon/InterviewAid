@@ -6,11 +6,37 @@
 ---
 
 ## Problem Description
-In a directed graph of `n` nodes labeled from `1` to `n`, you are given a list of `edges` where each edge is a pair `[u, v]` indicating a directed edge from node `u` to node `v`. The graph started as a rooted tree (a directed tree with exactly one node having no incoming edges) but one extra edge was added, causing either a node to have two parents, a cycle, or both. Return the edge that can be removed to restore the graph to a rooted tree. If multiple answers exist, return the edge that occurs last in the input list.
+In this problem, a rooted tree is a **directed** graph such that, there is exactly one node (the root) for which all other nodes are descendants of this node, plus every node has exactly one parent, except for the root node which has no parents.
+
+The given input is a directed graph that started as a rooted tree with `n` nodes (with distinct values from `1` to `n`), with one additional directed edge added. The added edge has two different vertices chosen from `1` to `n`, and was not an edge that already existed.
+
+The resulting graph is given as a 2D-array of `edges`. Each element of `edges` is a pair `[ui, vi]` that represents a **directed** edge connecting nodes `ui` and `vi`, where `ui` is a parent of child `vi`.
+
+Return *an edge that can be removed so that the resulting graph is a rooted tree of* `n` *nodes*. If there are multiple answers, return the answer that occurs last in the given 2D-array.
+
+**Constraints:**
+
+- `n == edges.length`
+- `3 <= n <= 1000`
+- `edges[i].length == 2`
+- `1 <= ui, vi <= n`
+- `ui != vi`
 
 ## Examples
-- **Example 1:** `edges = [[1,2],[1,3],[2,3]]` → `[[2,3]]`. Node `3` has two parents; removing `[2,3]` restores a valid tree.
-- **Example 2:** `edges = [[1,2],[2,3],[3,4],[4,1],[1,5]]` → `[[4,1]]`. The graph contains a cycle; removing the last edge in the cycle fixes it.
+
+```
+Example 1:
+  Input: edges = [[1,2],[1,3],[2,3]]
+  Output: [2,3]
+  Explanation: Node 3 has two parents (1 and 2); removing [2,3], the later one, restores a valid rooted tree.
+```
+
+```
+Example 2:
+  Input: edges = [[1,2],[2,3],[3,4],[4,1],[1,5]]
+  Output: [4,1]
+  Explanation: Edges 1->2->3->4->1 form a cycle; removing [4,1] restores a rooted tree with root 1.
+```
 
 ## Approach
 Use Union‑Find (Disjoint Set Union) while tracking nodes with two parents.

@@ -8,7 +8,9 @@
 
 ## 1. Problem Description
 
-Given a 5×5 alphabet board (`a`-`y` in rows 0-4, `z` alone on row 5), and a target string, return the sequence of moves (`U`, `D`, `L`, `R`, `!`) to spell the target starting from `a` at (0,0).
+On an alphabet board, we start at position `(0, 0)`, corresponding to character `board[0][0]`.
+
+Here, `board = ["abcde", "fghij", "klmno", "pqrst", "uvwxy", "z"]`, as shown in the diagram below.
 
 ```
 a b c d e
@@ -18,6 +20,22 @@ p q r s t
 u v w x y
 z
 ```
+
+We may make the following moves:
+
+- `'U'` moves our position up one row, if the position exists on the board;
+- `'D'` moves our position down one row, if the position exists on the board;
+- `'L'` moves our position left one column, if the position exists on the board;
+- `'R'` moves our position right one column, if the position exists on the board;
+- `'!'` adds the character `board[r][c]` at our current position `(r, c)` to the answer.
+
+(Here, the only positions that exist on the board are positions with letters on them.)
+
+Return a sequence of moves that makes our answer equal to `target` in the minimum number of moves. You may return any path that does so.
+
+**Constraints:**
+- `1 <= target.length <= 100`
+- `target` consists only of English lowercase letters.
 
 ---
 
@@ -54,12 +72,16 @@ FUNCTION alphabetBoardPath(target):
 
 ## Examples
 
-| target | output |
-|--------|--------|
-| "leet" | "DDR!UURRR!!DDD!" |
-| "code" | "RR!DDRR!UUL!R!" |
+```
+Example 1:
+  Input: target = "leet"
+  Output: "DDR!UURRR!!DDD!"
+  Explanation: The moves navigate the board to each character, appending '!' after reaching it.
 
-*Explanation*: The moves navigate the board to each character, appending `!` after reaching it.
+Example 2:
+  Input: target = "code"
+  Output: "RR!DDRR!UUL!R!"
+```
 
 ---
 

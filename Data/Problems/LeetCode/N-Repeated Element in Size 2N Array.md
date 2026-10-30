@@ -21,16 +21,42 @@
 
 ## 1. Problem Description
 
-Array of size `2n` has `n+1` unique elements, one of which appears `n` times. Return the element that appears `n` times.
+You are given an integer array `nums` with the following properties:
+
+- `nums.length == 2 * n`.
+- `nums` contains `n + 1` **unique** values, `n` of which occur **exactly once** in the array.
+- Exactly one element of `nums` is repeated `n` times.
+
+Return *the element that is repeated* `n` *times*.
+
+**Constraints:**
+
+- `2 <= n <= 5000`
+- `nums.length == 2 * n`
+- `0 <= nums[i] <= 10^4`
+- `nums` contains `n + 1` **unique** elements and one of them is repeated exactly `n` times.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[5,1,5,2,5,3,5,4]` | `5` | `5` appears 4 times (`n = 4`) while all other numbers appear once. |
-| `[1,2,3,1,4,5,6,1]` | `1` | Array length is 8 (`2n`), `n = 4`. `1` appears 4 times. |
+```
+Example 1:
+  Input: nums = [1,2,3,3]
+  Output: 3
+```
+
+```
+Example 2:
+  Input: nums = [2,1,2,5,3,2]
+  Output: 2
+```
+
+```
+Example 3:
+  Input: nums = [5,1,5,2,5,3,5,4]
+  Output: 5
+```
 
 ---
 

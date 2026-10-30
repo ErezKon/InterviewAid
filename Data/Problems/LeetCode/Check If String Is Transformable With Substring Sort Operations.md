@@ -8,24 +8,46 @@
 
 ## Problem Description
 
-Given two strings `s` and `t` of equal length consisting of digits, you may repeatedly choose any substring of `s` and sort its characters in non‑decreasing order. Determine whether it is possible to transform `s` into `t` using any number of such operations.
+Given two strings `s` and `t`, transform string `s` into string `t` using the following operation any number of times:
+
+- Choose a **non-empty** substring in `s` and sort it in place so the characters are in **ascending order**.
+  - For example, applying the operation on the underlined substring `"423"` in `"14234"` results in `"12344"`.
+
+Return `true` if *it is possible to transform `s` into `t`*. Otherwise, return `false`.
+
+A **substring** is a contiguous sequence of characters within a string.
+
+**Constraints:**
+- `s.length == t.length`
+- `1 <= s.length <= 10^5`
+- `s` and `t` consist of only digits.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s = "84532", t = "34852"
-Output: true
-Explanation: Sort the substring "8453" → "3458" resulting in "34582"; then sort the substring "58" → "58" (no change). Finally sort "3458" → "3458" giving "34852".
+Example 1:
+  Input: s = "84532", t = "34852"
+  Output: true
+  Explanation: You can transform s into t using the following sort operations:
+  "84532" (from index 2 to 3) -> "84352"
+  "84352" (from index 0 to 2) -> "34852"
 ```
 
-**Example 2:**
 ```
-Input: s = "12345", t = "54321"
-Output: false
-Explanation: Sorting can only move smaller digits left; the largest digit cannot move past smaller ones.
+Example 2:
+  Input: s = "34521", t = "23415"
+  Output: true
+  Explanation: You can transform s into t using the following sort operations:
+  "34521" -> "23451"
+  "23451" -> "23415"
+```
+
+```
+Example 3:
+  Input: s = "12345", t = "12435"
+  Output: false
 ```
 
 ---

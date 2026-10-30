@@ -8,15 +8,46 @@
 
 ## Problem Description
 
-Given an array of integers `nums`, find the pair of numbers `(x, y)` such that `x` and `y` have different frequencies in the array, and the sum `x + y` is minimized. Return this minimum sum.
+You are given an integer array `nums`.
+
+Consider all pairs of **distinct** values `x` and `y` from `nums` such that:
+
+- `x < y`
+- `x` and `y` have different frequencies in `nums`.
+
+Among all such pairs:
+
+- Choose the pair with the smallest possible value of `x`.
+- If multiple pairs have the same `x`, choose the one with the smallest possible value of `y`.
+
+Return an integer array `[x, y]`. If no valid pair exists, return `[-1, -1]`.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `1 <= nums[i] <= 100`
 
 ## Examples
 
-- **Input:** `nums = [1, 1, 2, 2, 2, 3]`
-  - **Frequencies:** `1:2`, `2:3`, `3:1`.
-  - **Pairs with different frequencies:** `(1, 2)`, `(1, 3)`, `(2, 3)`.
-  - **Sums:** `1+2=3`, `1+3=4`, `2+3=5`.
-  - **Output:** `3`.
+```
+Example 1:
+  Input: nums = [1,1,2,2,3,4]
+  Output: [1,3]
+  Explanation: The smallest value is 1 with a frequency of 2, and the smallest value greater than 1 that has a different frequency from 1 is 3 with a frequency of 1. Thus, the answer is [1, 3].
+```
+
+```
+Example 2:
+  Input: nums = [1,5]
+  Output: [-1,-1]
+  Explanation: Both values have the same frequency, so no valid pair exists. Return [-1, -1].
+```
+
+```
+Example 3:
+  Input: nums = [7]
+  Output: [-1,-1]
+  Explanation: There is only one value in the array, so no valid pair exists. Return [-1, -1].
+```
 
 ## Approach: Frequency Map and Grouping [Time: O(N), Space: O(U)]
 

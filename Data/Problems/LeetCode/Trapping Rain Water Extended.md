@@ -5,6 +5,9 @@ Related: #11, #42, #167, #15, #16, #75
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Trapping Rain Water.md](Trapping%20Rain%20Water.md) for the official statement and constraints of #42.*
+
 This document summarizes common **two‑pointer** techniques used in array problems. The patterns describe how to move one or more pointers through a data structure to achieve linear‑time solutions for tasks such as finding pairs, removing duplicates, or maintaining sliding windows.
 
 ## Examples

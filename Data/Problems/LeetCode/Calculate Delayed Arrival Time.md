@@ -8,19 +8,33 @@
 
 ## 1. Problem Description
 
-Given `arrivalTime` (0–23) and `delayedTime` (1–24), return the actual arrival time in 24-hour format.
+You are given a positive integer `arrivalTime` denoting the arrival time of a train in hours, and another positive integer `delayedTime` denoting the amount of delay in hours.
+
+Return *the time when the train will arrive at the station.*
+
+Note that the time in this problem is in 24-hours format.
+
+**Constraints:**
+- `1 <= arrivaltime < 24`
+- `1 <= delayedTime <= 24`
 
 ---
 
 ## Examples
 
-| arrivalTime | delayedTime | output |
-|-------------|-------------|--------|
-| 23          | 2           | 1 |
-| 0           | 24          | 0 |
-| 12          | 5           | 17 |
+```
+Example 1:
+  Input: arrivalTime = 15, delayedTime = 5
+  Output: 20
+  Explanation: Arrival time of the train was 15:00 hours. It is delayed by 5 hours. Now it will reach at 15+5 = 20 (20:00 hours).
+```
 
-*Explanation:* The time wraps around after 23, so `(23 + 2) % 24 = 1`.
+```
+Example 2:
+  Input: arrivalTime = 13, delayedTime = 11
+  Output: 0
+  Explanation: Arrival time of the train was 13:00 hours. It is delayed by 11 hours. Now it will reach at 13+11=24 (Which is denoted by 00:00 in 24 hours format so return 0).
+```
 
 ---
 

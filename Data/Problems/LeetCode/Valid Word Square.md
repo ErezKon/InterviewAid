@@ -7,14 +7,52 @@
 ---
 
 ## Problem Description
-Given a list of strings `words`, determine if they form a valid word square. A word square is valid when the k-th row and k-th column read the same string for all valid indices `k`. Each string's length equals the number of strings, and characters at position `i` in the `j`-th word must equal the character at position `j` in the `i`-th word.
+
+> *Note: premium problem (statement checked against the official text with verify.py). Rows may have different lengths — the old description's "each string's length equals the number of strings" is not required.*
+
+Given an array of strings `words`, return `true` *if it forms a valid **word square***.
+
+A sequence of strings forms a valid **word square** if the `k`th row and column read the same string, where `0 <= k < max(numRows, numColumns)`.
+
+**Constraints:**
+- `1 <= words.length <= 500`
+- `1 <= words[i].length <= 500`
+- `words[i]` consists of only lowercase English letters.
 
 ## Examples
-| words | output |
-|-------|--------|
-| ["ball","area","lead","lady"] | true |
-| ["abcd","bnrt","crmy","dtye"] | false |
-| ["abc","b"] | false |
+
+**Example 1:**
+```
+Input: words = ["abcd","bnrt","crmy","dtye"]
+Output: true
+Explanation:
+The 1st row and 1st column both read "abcd".
+The 2nd row and 2nd column both read "bnrt".
+The 3rd row and 3rd column both read "crmy".
+The 4th row and 4th column both read "dtye".
+Therefore, it is a valid word square.
+```
+
+**Example 2:**
+```
+Input: words = ["abcd","bnrt","crm","dt"]
+Output: true
+Explanation:
+The 1st row and 1st column both read "abcd".
+The 2nd row and 2nd column both read "bnrt".
+The 3rd row and 3rd column both read "crm".
+The 4th row and 4th column both read "dt".
+Therefore, it is a valid word square.
+```
+
+**Example 3:**
+```
+Input: words = ["ball","area","read","lady"]
+Output: false
+Explanation:
+The 3rd row reads "read" while the 3rd column reads "lead".
+Therefore, it is NOT a valid word square.
+```
 
 ## Approach
 Iterate over each position `(i, j)` where `i` is the row index and `j` is the column index. For a valid square, `words[i][j]` must exist and equal `words[j][i]`. If any mismatch or out‑of‑bounds access occurs, the square is invalid.

@@ -8,7 +8,24 @@
 
 ## Problem Description
 
-Given an array `nums`, an index `i` is **special** if `nums[i] > nums[i-1]` (for i > 0). You can increase elements. Find the **minimum total increase** to maximize the number of special indices.
+> *Note: the Approach below makes the array strictly increasing (invented). Officially special indices are local peaks, the maximum count is `(n − 1) // 2`, and making index `i` a peak costs `max(0, max(nums[i−1], nums[i+1]) + 1 − nums[i])`. For odd `n` the peaks are forced to be the odd indices; sum their costs. For even `n`, the chosen peaks have exactly one gap of 3 instead of 2. Take the minimum over where the gap goes, using prefix sums of odd-index costs and suffix sums of even-index costs (or a small DP with a "gap used" flag).*
+
+You are given an integer array `nums` of length `n`.
+
+An index `i` (`0 < i < n - 1`) is **special** if `nums[i] > nums[i - 1]` and `nums[i] > nums[i + 1]`.
+
+You may perform operations where you choose **any** index `i` and **increase** `nums[i]` by 1.
+
+Your goal is to:
+
+- **Maximize** the number of **special** indices.
+- **Minimize** the total number of **operations** required to achieve that **maximum**.
+
+Return an integer denoting the **minimum** total number of operations required.
+
+**Constraints:**
+- `3 <= n <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ## Key Insight
 
@@ -29,13 +46,33 @@ FUNCTION minIncrease(nums):
 
 ## Examples
 
-| nums | Output |
-|------|--------|
-| [1,1,2,2] | 2 |
-| [3,2,1] | 3 |
-| [5,5,5,5] | 6 |
+**Example 1:**
+```
+Input: nums = [1,2,2]
+Output: 1
+Explanation: - Start with nums = [1, 2, 2].
+- Increase nums[1] by 1, array becomes [1, 3, 2].
+- The final array is [1, 3, 2] has 1 special index, which is the maximum achievable.
+- It is impossible to achieve this number of special indices with fewer operations. Thus, the answer is 1.
+```
 
-*Explanation*: In the first example, increase `nums[1]` to `2` (cost 1) and `nums[3]` to `3` (cost 1) to make indices 1 and 3 special.
+**Example 2:**
+```
+Input: nums = [2,1,1,3]
+Output: 2
+Explanation: - Start with nums = [2, 1, 1, 3].
+- Perform 2 operations at index 1, array becomes [2, 3, 1, 3].
+- The final array is [2, 3, 1, 3] has 1 special index, which is the maximum achievable. Thus, the answer is 2.
+```
+
+**Example 3:**
+```
+Input: nums = [5,2,1,4,3]
+Output: 4
+Explanation: - Start with nums = [5, 2, 1, 4, 3].
+- Perform 4 operations at index 1, array becomes [5, 6, 1, 4, 3].
+- The final array is [5, 6, 1, 4, 3] has 2 special indices, which is the maximum achievable. Thus, the answer is 4.
+```
 
 ## Walkthrough
 

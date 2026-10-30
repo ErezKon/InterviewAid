@@ -19,7 +19,15 @@ FUNCTION validateStackSequences(pushed, popped):
 ```
 
 ## Problem Description
-Given two integer arrays `pushed` and `popped` representing the order of push and pop operations on a stack, determine if the `popped` sequence could be the result of performing the pushes in order and interleaving pops. All elements are distinct.
+
+Given two integer arrays `pushed` and `popped` each with distinct values, return `true` *if this could have been the result of a sequence of push and pop operations on an initially empty stack, or* `false` *otherwise.*
+
+**Constraints:**
+- `1 <= pushed.length <= 1000`
+- `0 <= pushed[i] <= 1000`
+- All the elements of `pushed` are **unique**.
+- `popped.length == pushed.length`
+- `popped` is a permutation of `pushed`.
 
 ## Examples
 **Example 1:**

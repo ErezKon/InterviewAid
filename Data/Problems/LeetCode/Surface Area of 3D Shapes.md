@@ -7,21 +7,38 @@
 ---
 
 ## Problem Description
-Given an `m x n` grid where `grid[i][j]` represents the height of stacked unit cubes on that cell, compute the total surface area of the 3‑D shape formed by all cubes. The surface includes the top, bottom, and all four sides of each cube, but shared faces between adjacent cubes are not counted.
+
+You are given an `n x n` `grid` where you have placed some `1 x 1 x 1` cubes. Each value `v = grid[i][j]` represents a tower of `v` cubes placed on top of cell `(i, j)`.
+
+After placing these cubes, you have decided to glue any directly adjacent cubes to each other, forming several irregular 3D shapes.
+
+Return *the total surface area of the resulting shapes*.
+
+**Note:** The bottom face of each shape counts toward its surface area.
+
+**Constraints:**
+- `n == grid.length == grid[i].length`
+- `1 <= n <= 50`
+- `0 <= grid[i][j] <= 50`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
 Input: grid = [[1,2],[3,4]]
 Output: 34
-Explanation: The shape consists of 1+2+3+4 = 10 cubes. Adding top and bottom faces (2*4) and side contributions yields 34.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: grid = [[2]]
-Output: 10
-Explanation: A single stack of height 2 has surface area 4*2 (sides) + 2 (top & bottom) = 10.
+Input: grid = [[1,1,1],[1,0,1],[1,1,1]]
+Output: 32
+```
+
+**Example 3:**
+```
+Input: grid = [[2,2,2],[2,1,2],[2,2,2]]
+Output: 46
 ```
 
 ## Approach

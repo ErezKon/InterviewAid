@@ -7,15 +7,31 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase English letters and a character `letter`, return the percentage of characters in `s` that equal `letter`. The answer should be a string formatted as a floating‑point number with exactly two decimal places followed by a `%` sign.
+Given a string `s` and a character `letter`, return *the **percentage** of characters in* `s` *that equal* `letter` ***rounded down** to the nearest whole percent.*
 
-Constraints: `1 ≤ s.length ≤ 100`; `s` contains only lowercase letters; `letter` is a single lowercase letter.
+**Constraints:**
+
+- `1 <= s.length <= 100`
+- `s` consists of lowercase English letters.
+- `letter` is a lowercase English letter.
 
 ## Examples
-| s | letter | Output | Explanation |
-|---|--------|--------|-------------|
-| "foobar" | 'o' | "33.33%" | Two out of six characters are 'o' → 2/6 = 33.33%.
-| "abcde" | 'f' | "0.00%" | No occurrence of 'f'.
+
+```
+Example 1:
+  Input: s = "foobar", letter = "o"
+  Output: 33
+  Explanation:
+  The percentage of characters in s that equal the letter 'o' is 2 / 6 * 100% = 33% when rounded down, so we return 33.
+```
+
+```
+Example 2:
+  Input: s = "jjjj", letter = "k"
+  Output: 0
+  Explanation:
+  The percentage of characters in s that equal the letter 'k' is 0%, so we return 0.
+```
 
 ## Approach
 Count occurrences of `letter` and compute the percentage.

@@ -7,14 +7,46 @@
 ---
 
 ## Problem Description
-Given a number `num`, return the **maximum product** of any two of its digits.
+You are given a positive integer `n`.
+
+Return the **maximum** product of any two digits in `n`.
+
+**Note:** You may use the **same** digit twice if it appears more than once in `n`.
+
+**Constraints:**
+- `10 <= n <= 10^9`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `123` | `6` | Digits are 1, 2, 3. Largest two are 2 and 3 → 2×3 = 6 |
-| `991` | `81` | Digits are 9, 9, 1. Largest two are 9 and 9 → 9×9 = 81 |
-| `5`   | `0` | Only one digit, product is 0 by definition |
+
+```
+Example 1:
+  Input: n = 31
+  Output: 3
+  Explanation:
+    - The digits of n are [3, 1].
+    - The possible products of any two digits are: 3 * 1 = 3.
+    - The maximum product is 3.
+```
+
+```
+Example 2:
+  Input: n = 22
+  Output: 4
+  Explanation:
+    - The digits of n are [2, 2].
+    - The possible products of any two digits are: 2 * 2 = 4.
+    - The maximum product is 4.
+```
+
+```
+Example 3:
+  Input: n = 124
+  Output: 8
+  Explanation:
+    - The digits of n are [1, 2, 4].
+    - The possible products of any two digits are: 1 * 2 = 2, 1 * 4 = 4, 2 * 4 = 8.
+    - The maximum product is 8.
+```
 
 ## Approach
 **Algorithm:** Find the two largest digits and multiply them.

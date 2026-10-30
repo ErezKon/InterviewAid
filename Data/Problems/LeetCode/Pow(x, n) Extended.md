@@ -6,6 +6,9 @@ See also: [Pow(x, n).md](Pow%28x,%20n%29.md)
 ---
 
 ## Problem Description
+
+> *Note: companion file — see [Pow(x, n).md](Pow%28x,%20n%29.md) for the official statement and constraints.*
+
 Implement a function `myPow(x, n)` that calculates `x` raised to the power `n` (`xⁿ`). The exponent `n` can be a negative integer, zero, or positive. Return the result as a double-precision floating‑point number. The algorithm must run in logarithmic time.
 
 ## Examples

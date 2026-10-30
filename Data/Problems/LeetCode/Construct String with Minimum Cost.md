@@ -8,7 +8,25 @@
 
 ## 1. Problem Description
 
-Given a target string and an array of `words` with `costs`, find the minimum cost to construct `target` by concatenating words (each word can be used multiple times). Return -1 if impossible.
+You are given a string `target`, an array of strings `words`, and an integer array `costs`, both arrays of the same length.
+
+Imagine an empty string `s`.
+
+You can perform the following operation any number of times (including **zero**):
+
+- Choose an index `i` in the range `[0, words.length - 1]`.
+- Append `words[i]` to `s`.
+- The cost of operation is `costs[i]`.
+
+Return the **minimum** cost to make `s` equal to `target`. If it's not possible, return `-1`.
+
+**Constraints:**
+- `1 <= target.length <= 5 * 10^4`
+- `1 <= words.length == costs.length <= 5 * 10^4`
+- `1 <= words[i].length <= target.length`
+- The total sum of `words[i].length` is less than or equal to `5 * 10^4`.
+- `target` and `words[i]` consist only of lowercase English letters.
+- `1 <= costs[i] <= 10^4`
 
 ---
 
@@ -47,13 +65,21 @@ FUNCTION minimumCost(target, words, costs):
 
 ## 4. Examples
 
-| target | words | costs | Output |
-|--------|-------|-------|--------|
-| "leetcode" | ["leet","code","leetcode"] | [1,1,5] | 2 |
-| "apple" | ["app","le","p"] | [2,3,1] | 5 |
-| "abcd" | ["ab","cd","abc"] | [2,2,3] | 4 |
-
-*Explanation*: In the first example, using "leet" + "code" costs 1+1=2, cheaper than the single word "leetcode" costing 5.
+```
+Example 1:
+  Input: target = "abcdef", words = ["abdef","abc","d","def","ef"], costs = [100,1,1,10,5]
+  Output: 7
+  Explanation: The minimum cost can be achieved by performing the following operations:
+    - Select index 1 and append "abc" to s at a cost of 1, resulting in s = "abc".
+    - Select index 2 and append "d" to s at a cost of 1, resulting in s = "abcd".
+    - Select index 4 and append "ef" to s at a cost of 5, resulting in s = "abcdef".
+```
+```
+Example 2:
+  Input: target = "aaaa", words = ["z","zz","zzz"], costs = [1,10,100]
+  Output: -1
+  Explanation: It is impossible to make s equal to target, so we return -1.
+```
 
 ---
 

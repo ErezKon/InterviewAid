@@ -8,15 +8,29 @@
 
 ## 1. Problem Description
 
-Given a string `s`, find the longest non‑empty proper prefix of `s` that is also a suffix of `s`. The prefix and suffix must not be the entire string.
+A string is called a **happy prefix** if it is a **non-empty** prefix which is also a suffix (excluding itself).
+
+Given a string `s`, return *the **longest happy prefix** of* `s`. Return an empty string `""` if no such prefix exists.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` contains only lowercase English letters.
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"level"` | `"l"` | Prefix `"l"` equals suffix `"l"`. |
-| `"ababab"` | `"abab"` | The longest prefix that is also a suffix is `"abab"`. |
-| `"abc"` | `""` | No non‑empty prefix matches a suffix.
+**Example 1:**
+```
+Input: s = "level"
+Output: "l"
+Explanation: s contains 4 prefix excluding itself ("l", "le", "lev", "leve"), and suffix ("l", "el", "vel", "evel"). The largest prefix which is also suffix is given by "l".
+```
+
+**Example 2:**
+```
+Input: s = "ababab"
+Output: "abab"
+Explanation: "abab" is the largest prefix which is also suffix. They can overlap in the original string.
+```
 
 ## 3. Approach: KMP Failure Function — O(n) ✅
 

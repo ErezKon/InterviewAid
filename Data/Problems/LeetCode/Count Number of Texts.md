@@ -6,20 +6,43 @@
 ---
 
 ## Problem Description
-Given a string `pressedKeys` consisting of digits from 2 to 9, each digit maps to a set of letters on a classic phone keypad (e.g., 2 → "abc", 7 → "pqrs"). A user may press a key multiple times to type a letter; however, a key can be pressed at most 4 times consecutively for digits 7 and 9, and at most 3 times for the others. Return the number of possible text messages that could result from the sequence of key presses, modulo 10⁹+7.
+Alice is texting Bob using her phone. The **mapping** of digits to letters is the classic phone keypad (`2 → "abc"`, `3 → "def"`, `4 → "ghi"`, `5 → "jkl"`, `6 → "mno"`, `7 → "pqrs"`, `8 → "tuv"`, `9 → "wxyz"`).
+
+In order to **add** a letter, Alice has to **press** the key of the corresponding digit `i` times, where `i` is the position of the letter in the key.
+
+- For example, to add the letter `'s'`, Alice has to press `'7'` four times. Similarly, to add the letter `'k'`, Alice has to press `'5'` twice.
+- Note that the digits `'0'` and `'1'` do not map to any letters, so Alice **does not** use them.
+
+However, due to an error in transmission, Bob did not receive Alice's text message but received a **string of pressed keys** instead.
+
+- For example, when Alice sent the message `"bob"`, Bob received the string `"2266622"`.
+
+Given a string `pressedKeys` representing the string received by Bob, return *the **total number of possible text messages** Alice could have sent*.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= pressedKeys.length <= 10^5`
+- `pressedKeys` only consists of digits from `'2'` - `'9'`.
 
 ## Examples
-**Example 1:**
 ```
-Input: pressedKeys = "22233"
-Output: 8
-Explanation: Possible texts include "aaadd", "aabdd", "abadd", "abbdd", "cadd", "cbd", etc.
+Example 1:
+  Input: pressedKeys = "22233"
+  Output: 8
+  Explanation:
+  The possible text messages Alice could have sent are:
+  "aaadd", "abdd", "badd", "cdd", "aaae", "abe", "bae", and "ce".
+  Since there are 8 possible messages, we return 8.
 ```
-**Example 2:**
+
 ```
-Input: pressedKeys = "79"
-Output: 4
-Explanation: Digit 7 maps to 4 letters, digit 9 maps to 4 letters, each can be typed with a single press.
+Example 2:
+  Input: pressedKeys = "222222222222222222222222222222222222"
+  Output: 82876089
+  Explanation:
+  There are 2082876103 possible text messages Alice could have sent.
+  Since we need to return the answer modulo 10^9 + 7, we return 2082876103 % (10^9 + 7) = 82876089.
 ```
 
 ## Approach

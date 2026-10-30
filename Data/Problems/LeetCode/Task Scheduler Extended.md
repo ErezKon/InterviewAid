@@ -6,24 +6,39 @@ Related: #621, #358, #767, #1405
 ## Problem Description
 This article collects a family of greedy scheduling problems that share a common *cool‑down* or *spacing* constraint. The goal in each problem is to arrange tasks (or characters) so that certain patterns are avoided, typically by ensuring a minimum distance between identical items.
 
+- **Task Scheduler (#621):** given a list of CPU `tasks` (uppercase letters) and a cooldown `n`, identical tasks must be separated by at least `n` intervals (idle slots allowed). Return the minimum number of intervals needed to finish all tasks.
+- **Rearrange String k Distance Apart (#358):** given a string `s` and integer `k`, rearrange `s` so that identical characters are at least distance `k` apart; return `""` if impossible.
+- **Reorganize String (#767):** rearrange `s` so that no two adjacent characters are equal (the `k = 2` special case); return `""` if impossible.
+- **Longest Happy String (#1405):** given counts `a`, `b`, `c`, build the longest string using at most those many `'a'`, `'b'`, `'c'` letters that never contains `"aaa"`, `"bbb"` or `"ccc"`.
+
+**Constraints:**
+- `1 <= tasks.length <= 10^4`, `tasks[i]` is an uppercase English letter, `0 <= n <= 100` (#621)
+- `1 <= s.length <= 3 * 10^5`, `s` consists of lowercase English letters, `0 <= k <= s.length` (#358)
+- `1 <= s.length <= 500` (#767)
+- `0 <= a, b, c <= 100`, `a + b + c > 0` (#1405)
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 ## Examples
-**Example 1 – Task Scheduler (#621):**
 ```
-Input: tasks = ["A","A","A","B","B","B"], n = 2
-Output: 8
-Explanation: One possible order is A B idle A B idle A B.
+Example 1 – Task Scheduler (#621):
+  Input: tasks = ["A","A","A","B","B","B"], n = 2
+  Output: 8
+  Explanation: One possible order is A -> B -> idle -> A -> B -> idle -> A -> B.
+  There are at least 2 intervals between two identical tasks.
 ```
-**Example 2 – Rearrange String (#358):**
 ```
-Input: s = "aaabc"
-Output: "abaca"
-Explanation: No two adjacent characters are the same.
+Example 2 – Rearrange String k Distance Apart (#358):
+  Input: s = "aabbcc", k = 3
+  Output: "abcabc"
+  Explanation: The same letters are at least a distance of 3 from each other.
 ```
-**Example 3 – Longest Happy String (#1405):**
 ```
-Input: a = 1, b = 1, c = 7
-Output: "ccccccc"
-Explanation: The string contains at most two consecutive identical characters.
+Example 3 – Longest Happy String (#1405):
+  Input: a = 1, b = 1, c = 7
+  Output: "ccaccbcc"
+  Explanation: The greedy always takes the most frequent letter unless it would create three in a row,
+  in which case it uses the next most frequent one. "ccbccacc" is also a correct answer.
 ```
 
 ## Approach

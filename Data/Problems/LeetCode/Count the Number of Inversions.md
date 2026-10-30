@@ -8,33 +8,57 @@
 
 ## Problem Description
 
-Given an integer `n` and an array `requirements` where each element is a pair `[end_i, cnt_i]`, you must construct a permutation of the numbers `0 … n‑1`. For each requirement, the prefix `perm[0..end_i]` must contain exactly `cnt_i` inversions (an inversion is a pair `(i, j)` with `i < j` and `perm[i] > perm[j]`). Return the number of such permutations modulo `10^9 + 7`.
+You are given an integer `n` and a 2D array `requirements`, where `requirements[i] = [end_i, cnt_i]` represents the end index and the **inversion** count of each requirement.
 
----
+A pair of indices `(i, j)` from an integer array `nums` is called an **inversion** if:
+
+- `i < j` and `nums[i] > nums[j]`
+
+Return *the number of permutations* `perm` *of* `[0, 1, 2, ..., n - 1]` *such that for **all*** `requirements[i]`, `perm[0..end_i]` *has exactly* `cnt_i` *inversions*.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `2 <= n <= 300`
+- `1 <= requirements.length <= n`
+- `requirements[i] = [end_i, cnt_i]`
+- `0 <= end_i <= n - 1`
+- `0 <= cnt_i <= 400`
+- The input is generated such that there is at least one `i` such that `end_i == n - 1`.
+- The input is generated such that all `end_i` are unique.
 
 ## Examples
 
-**Example 1**
 ```
-Input: n = 3, requirements = [[1, 1]]
-Output: 2
-Explanation:
-All permutations of [0,1,2] are:
-[0,1,2] – prefix [0,1] has 0 inversions (invalid)
-[0,2,1] – prefix [0,2] has 0 inversions (invalid)
-[1,0,2] – prefix [1,0] has 1 inversion (valid)
-[1,2,0] – prefix [1,2] has 0 inversions (invalid)
-[2,0,1] – prefix [2,0] has 1 inversion (valid)
-[2,1,0] – prefix [2,1] has 1 inversion (valid but exceeds requirement for end=1)
-Only two permutations satisfy the requirement, so the answer is 2.
+Example 1:
+  Input: n = 3, requirements = [[2,2],[0,0]]
+  Output: 2
+  Explanation: The two permutations are:
+  - [2, 0, 1]
+    Prefix [2, 0, 1] has inversions (0, 1) and (0, 2).
+    Prefix [2] has 0 inversions.
+  - [1, 2, 0]
+    Prefix [1, 2, 0] has inversions (0, 2) and (1, 2).
+    Prefix [1] has 0 inversions.
 ```
 
-**Example 2**
 ```
-Input: n = 4, requirements = [[2, 2], [3, 4]]
-Output: 3
-Explanation:
-Valid permutations are those whose first three elements contain exactly 2 inversions and the whole array contains 4 inversions.
+Example 2:
+  Input: n = 3, requirements = [[2,2],[1,1],[0,0]]
+  Output: 1
+  Explanation: The only satisfying permutation is [2, 0, 1]:
+  - Prefix [2, 0, 1] has inversions (0, 1) and (0, 2).
+  - Prefix [2, 0] has an inversion (0, 1).
+  - Prefix [2] has 0 inversions.
+```
+
+```
+Example 3:
+  Input: n = 2, requirements = [[0,0],[1,0]]
+  Output: 1
+  Explanation: The only satisfying permutation is [0, 1]:
+  - Prefix [0] has 0 inversions.
+  - Prefix [0, 1] has 0 inversions.
 ```
 
 ---

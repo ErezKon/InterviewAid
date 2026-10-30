@@ -20,16 +20,31 @@
 
 ## Problem Description
 
-Given the root of a BST, return the minimum absolute difference between values of any two nodes.
+Given the `root` of a Binary Search Tree (BST), return *the minimum absolute difference between the values of any two different nodes in the tree*.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[2, 10⁴]`.
+- `0 <= Node.val <= 10⁵`
+
+**Note:** This question is the same as 783: [Minimum Distance Between BST Nodes](https://leetcode.com/problems/minimum-distance-between-bst-nodes/)
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `root = [4,2,5,1,3]` | `1` | Inorder traversal yields `[1,2,3,4,5]`. Minimum difference is between `1` and `2` (or any consecutive pair) → `1`.
-| `root = [1,null,3,2]` | `1` | Sorted values `[1,2,3]`; smallest gap is `1` between `1` and `2`.
+```
+Example 1:
+  Input: root = [4,2,6,1,3]
+  Output: 1
+  Explanation: Inorder traversal yields [1,2,3,4,6]; the smallest gap between consecutive values is 1.
+```
+
+```
+Example 2:
+  Input: root = [1,0,48,null,null,12,49]
+  Output: 1
+  Explanation: Inorder traversal yields [0,1,12,48,49]; the smallest gap is 1 (0→1 or 48→49).
+```
 
 ---
 

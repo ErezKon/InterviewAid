@@ -7,12 +7,25 @@
 ---
 
 ## Problem Description
-Given a string `phoneNumber`, determine if it matches one of the two valid US phone number formats: `XXX-XXX-XXXX` or `(XXX) XXX-XXXX`, where `X` is a digit from `0` to `9`. Return `true` if the format is valid, otherwise return `false`.
+
+Given a text file `file.txt` that contains a list of phone numbers (one per line), write a one-liner bash script to print all valid phone numbers.
+
+You may assume that a valid phone number must appear in one of the following two formats: (xxx) xxx-xxxx or xxx-xxx-xxxx. (x means a digit)
+
+You may also assume each line in the text file must not contain leading or trailing white spaces.
 
 ## Examples
-- Input: `"123-456-7890"` → Output: `true` // matches first format.
-- Input: `"(123) 456-7890"` → Output: `true` // matches second format.
-- Input: `"1234567890"` → Output: `false` // missing separators.
+
+**Example 1:**
+```
+Assume that file.txt has the following content:
+987-123-4567
+123 456 7890
+(123) 456-7890
+Your script should output the following valid phone numbers:
+987-123-4567
+(123) 456-7890
+```
 
 ## Approach
 Use a regular expression to capture the two allowed patterns. The regex checks for either three digits followed by a hyphen, three digits, another hyphen, and four digits, **or** an opening parenthesis, three digits, a closing parenthesis, a space, three digits, a hyphen, and four digits.

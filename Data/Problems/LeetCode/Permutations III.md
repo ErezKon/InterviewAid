@@ -7,14 +7,35 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` (which may contain duplicates), return all **unique** permutations of the array.
+
+> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve LC 47 (unique permutations of an array with duplicates), not this problem. Correct idea: backtrack over values `1..n` in increasing order, only placing `j` if it is unused and has a different parity from the previous element — results are produced in lexicographic order automatically, O(n·n!).*
+
+Given an integer `n`, an **alternating permutation** is a permutation of the first `n` positive integers such that no **two** adjacent elements are **both** odd or **both** even.
+
+Return *all such* **alternating permutations** sorted in lexicographical order.
+
+**Constraints:**
+- `1 <= n <= 10`
 
 ## Examples
-| nums | Output |
-|------|--------|
-| [1,1,2] | [[1,1,2],[1,2,1],[2,1,1]] |
-| [1,2,3] | [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] |
-| [] | [] |
+
+**Example 1:**
+```
+Input: n = 4
+Output: [[1,2,3,4],[1,4,3,2],[2,1,4,3],[2,3,4,1],[3,2,1,4],[3,4,1,2],[4,1,2,3],[4,3,2,1]]
+```
+
+**Example 2:**
+```
+Input: n = 2
+Output: [[1,2],[2,1]]
+```
+
+**Example 3:**
+```
+Input: n = 3
+Output: [[1,2,3],[3,2,1]]
+```
 
 ## Approach
 Backtrack while sorting the array first; skip over duplicate values unless the previous duplicate has been used in the current recursion level.

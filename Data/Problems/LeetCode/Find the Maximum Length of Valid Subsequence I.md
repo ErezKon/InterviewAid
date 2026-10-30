@@ -20,10 +20,17 @@
 
 ## 1. Problem Description
 
-Given an array `nums`, find the maximum length of a subsequence where consecutive pairs all have the **same sum mod 2**. The valid patterns are: all even, all odd, alternating even‑odd, or alternating odd‑even.
+You are given an integer array `nums`.
+
+A subsequence `sub` of `nums` with length `x` is called **valid** if it satisfies:
+
+- `(sub[0] + sub[1]) % 2 == (sub[1] + sub[2]) % 2 == ... == (sub[x - 2] + sub[x - 1]) % 2`.
+
+Return the length of the **longest valid** subsequence of `nums`.
 
 **Constraints:**
-- `1 <= nums.length <= 2 × 10⁵`
+- `2 <= nums.length <= 2 × 10⁵`
+- `1 <= nums[i] <= 10⁷`
 
 ---
 
@@ -59,18 +66,21 @@ FUNCTION maximumLength(nums):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: nums = [1,2,3,4,5]
-Output: 5
-Explanation: The subsequence [1,3,5] (all odd) has length 3, but the alternating pattern starting with odd yields [1,2,3,4,5] length 5, which is maximal.
-```
+Example 1:
+  Input: nums = [1,2,3,4]
+  Output: 4
+  Explanation: The longest valid subsequence is [1, 2, 3, 4].
 
-**Example 2:**
-```
-Input: nums = [2,4,6,8]
-Output: 4
-Explanation: All numbers are even, so the "all even" pattern gives length 4.
+Example 2:
+  Input: nums = [1,2,1,1,2,1,2]
+  Output: 6
+  Explanation: The longest valid subsequence is [1, 2, 1, 2, 1, 2].
+
+Example 3:
+  Input: nums = [1,3]
+  Output: 2
+  Explanation: The longest valid subsequence is [1, 3].
 ```
 
 ---

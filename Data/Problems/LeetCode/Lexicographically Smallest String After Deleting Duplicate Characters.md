@@ -8,16 +8,38 @@
 
 ## 1. Problem Description
 
-Remove duplicate characters so each appears at most once, producing the lexicographically smallest result while preserving relative order.
+> *Note: the Approach below is LC 316 (Remove Duplicate Letters), which forces every letter to appear exactly once — wrong for #3816, where keeping duplicates can be smaller (e.g. `"aab"` stays `"aab"`, which is smaller than `"ab"`). Correct greedy: do not skip letters already on the stack; pop the top while `top > c` and the top still has another copy (on the stack or later in `s`); at the end, pop trailing letters while they still have another copy on the stack (a prefix is smaller). O(n). Checked against brute force on 3,000 random strings.*
+
+You are given a string `s` that consists of lowercase English letters.
+
+You can perform the following operation any number of times (possibly zero times):
+
+- Choose any letter that appears **at least twice** in the current string `s` and delete any **one** occurrence.
+
+Return the **lexicographically smallest** resulting string that can be formed this way.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` contains lowercase English letters only.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"cbacdcbc"` | `"acdb"` | The smallest string containing each character once is "acdb". |
-| `"bcabc"` | `"abc"` | Remove the first `b` and `c` to obtain the minimal ordering. |
+**Example 1:**
+```
+Input: s = "aaccb"
+Output: "aacb"
+Explanation: We can form the strings "acb", "aacb", "accb", and "aaccb". "aacb" is the lexicographically smallest one.
+For example, we can obtain "aacb" by choosing 'c' and deleting its first occurrence.
+```
+
+**Example 2:**
+```
+Input: s = "z"
+Output: "z"
+Explanation: We cannot perform any operations. The only string we can form is "z".
+```
 
 ---
 

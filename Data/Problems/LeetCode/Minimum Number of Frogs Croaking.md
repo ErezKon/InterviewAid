@@ -8,26 +8,39 @@
 
 ## Problem Description
 
-You are given a string `croakOfFrogs` that represents the sequence of sounds made by a group of frogs. Each frog must croak the characters in the exact order `"c" → "r" → "o" → "a" → "k"`. Multiple frogs can croak simultaneously, and their sounds may interleave. Return the minimum number of frogs that must be present to produce the given sequence. If the sequence is invalid (cannot be formed by any combination of frogs), return `-1`.
+You are given the string `croakOfFrogs`, which represents a combination of the string `"croak"` from different frogs, that is, multiple frogs can croak at the same time, so multiple `"croak"` are mixed.
 
-Constraints:
-- `1 ≤ croakOfFrogs.length ≤ 10^5`
-- `croakOfFrogs` consists only of the characters `'c', 'r', 'o', 'a', 'k'`.
+*Return the minimum number of *different* frogs to finish all the croaks in the given string.*
+
+A valid `"croak"` means a frog is printing five letters `'c'`, `'r'`, `'o'`, `'a'`, and `'k'` **sequentially**. The frogs have to print all five letters to finish a croak. If the given string is not a combination of a valid `"croak"` return `-1`.
+
+**Constraints:**
+- `1 <= croakOfFrogs.length <= 10^5`
+- `croakOfFrogs` is either `'c'`, `'r'`, `'o'`, `'a'`, or `'k'`.
 
 ## Examples
 
-**Example 1**
+**Example 1:**
 ```
 Input: croakOfFrogs = "croakcroak"
 Output: 1
-Explanation: One frog can croak twice sequentially.
+Explanation: One frog yelling "croak" twice.
 ```
 
-**Example 2**
+**Example 2:**
 ```
 Input: croakOfFrogs = "crcoakroak"
 Output: 2
-Explanation: Two frogs are needed; their croaks interleave.
+Explanation: The minimum number of frogs is two.
+The first frog could yell "crcoakroak".
+The second frog could yell later "crcoakroak".
+```
+
+**Example 3:**
+```
+Input: croakOfFrogs = "croakcrook"
+Output: -1
+Explanation: The given string is an invalid combination of "croak" from different frogs.
 ```
 
 ## Approach
@@ -70,19 +83,28 @@ FUNCTION minNumberOfFrogs(croak):
 
 ## Walkthrough (Example 2)
 
-| Char | c | r | o | a | Active frogs (c+r+o+a) | maxFrogs |
-|------|---|---|---|---|-----------------------|----------|
-| c    | 1 | 0 | 0 | 0 | 1 | 1 |
-| r    | 0 | 1 | 0 | 0 | 1 | 1 |
-| c    | 1 | 1 | 0 | 0 | 2 | 2 |
-| o    | 1 | 0 | 1 | 0 | 2 | 2 |
-| a    | 1 | 0 | 0 | 1 | 2 | 2 |
-| k    | 1 | 0 | 0 | 0 | 1 | 2 |
-| r    | 0 | 1 | 0 | 0 | 1 | 2 |
-| o    | 0 | 0 | 1 | 0 | 1 | 2 |
-| a    | 0 | 0 | 0 | 1 | 1 | 2 |
-| k    | 0 | 0 | 0 | 0 | 0 | 2 |
-The maximum simultaneous active frogs is 2.
+**Example 1:**
+```
+Input: croakOfFrogs = "croakcroak"
+Output: 1
+Explanation: One frog yelling "croak" twice.
+```
+
+**Example 2:**
+```
+Input: croakOfFrogs = "crcoakroak"
+Output: 2
+Explanation: The minimum number of frogs is two.
+The first frog could yell "crcoakroak".
+The second frog could yell later "crcoakroak".
+```
+
+**Example 3:**
+```
+Input: croakOfFrogs = "croakcrook"
+Output: -1
+Explanation: The given string is an invalid combination of "croak" from different frogs.
+```
 
 ## Complexity Analysis
 

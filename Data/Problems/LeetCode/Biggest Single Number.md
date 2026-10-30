@@ -7,20 +7,69 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, find the largest integer that appears exactly once in the array. If no such element exists, return `-1`.
+Table: `MyNumbers`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| num         | int  |
++-------------+------+
+This table may contain duplicates (In other words, there is no primary key for this table in SQL).
+Each row of this table contains an integer.
+```
+
+A **single number** is a number that appeared only once in the `MyNumbers` table.
+
+Find the largest **single number**. If there is no **single number**, report `null`.
 
 ## Examples
-**Example 1**
 ```
-Input: nums = [4,5,7,5,4,8]
-Output: 8
-Explanation: 8 appears only once and is the largest such number.
-```
-**Example 2**
-```
-Input: nums = [1,2,2,1]
-Output: -1
-Explanation: No number appears exactly once.
+Example 1:
+  Input:
+  MyNumbers table:
+  +-----+
+  | num |
+  +-----+
+  | 8   |
+  | 8   |
+  | 3   |
+  | 3   |
+  | 1   |
+  | 4   |
+  | 5   |
+  | 6   |
+  +-----+
+  Output:
+  +-----+
+  | num |
+  +-----+
+  | 6   |
+  +-----+
+  Explanation: The single numbers are 1, 4, 5, and 6.
+  Since 6 is the largest single number, we return it.
+
+Example 2:
+  Input:
+  MyNumbers table:
+  +-----+
+  | num |
+  +-----+
+  | 8   |
+  | 8   |
+  | 7   |
+  | 7   |
+  | 3   |
+  | 3   |
+  | 3   |
+  +-----+
+  Output:
+  +------+
+  | num  |
+  +------+
+  | null |
+  +------+
+  Explanation: There are no single numbers in the input table so we return null.
 ```
 
 ## Approach

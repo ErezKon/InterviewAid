@@ -1,26 +1,40 @@
 # 3206. Alternating Groups I
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/alternating-groups-i](https://leetcode.com/problems/alternating-groups-i)
 
 **Companies:** Amazon, Google, Samsara
 ---
 
 ## Problem Description
-Given an array `colors` representing colors arranged in a circle, a position `i` is considered *alternating* if its color differs from both its immediate left and right neighbors (with wrap‑around at the ends). Return the number of alternating positions in the array.
+There is a circle of red and blue tiles. You are given an array of integers `colors`. The color of tile `i` is represented by `colors[i]`:
+
+- `colors[i] == 0` means that tile `i` is **red**.
+- `colors[i] == 1` means that tile `i` is **blue**.
+
+Every 3 contiguous tiles in the circle with **alternating** colors (the middle tile has a different color from its **left** and **right** tiles) is called an **alternating** group.
+
+Return the number of **alternating** groups.
+
+**Note** that since `colors` represents a **circle**, the **first** and the **last** tiles are considered to be next to each other.
+
+**Constraints:**
+- `3 <= colors.length <= 100`
+- `0 <= colors[i] <= 1`
 
 ## Examples
-**Example 1**
 ```
-Input: colors = [1,2,1,2]
-Output: 4
-Explanation: Every position has a different color from its two neighbors.
+Example 1:
+  Input: colors = [1,1,1]
+  Output: 0
+  Explanation: All tiles have the same color, so no tile differs from both of its neighbors.
 ```
-
-**Example 2**
 ```
-Input: colors = [3,3,3]
-Output: 0
-Explanation: No position differs from both neighbors.
+Example 2:
+  Input: colors = [0,1,0,0,1]
+  Output: 3
+  Explanation: The alternating groups (as index triples, circular) are:
+  (4,0,1) -> [1,0,1], (0,1,2) -> [0,1,0], (3,4,0) -> [0,1,0].
 ```
 
 ## Approach

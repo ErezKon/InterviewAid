@@ -20,7 +20,11 @@
 
 ## Problem Description
 
-Given two integer arrays `nums1` and `nums2` of equal length `n`, count the number of pairs `(i, j)` where `i < j` and `nums1[i] + nums1[j] > nums2[i] + nums2[j]`.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given two integer arrays `nums1` and `nums2` of length `n`, count the pairs of indices `(i, j)` such that `i < j` and `nums1[i] + nums1[j] > nums2[i] + nums2[j]`.
+
+Return *the **number of pairs** satisfying the condition.*
 
 **Constraints:**
 - `n == nums1.length == nums2.length`
@@ -32,13 +36,24 @@ Given two integer arrays `nums1` and `nums2` of equal length `n`, count the numb
 ## Examples
 
 **Example 1:**
-- **Input:** `nums1 = [2,1,2,1], nums2 = [1,2,1,2]`
-- **Output:** `1`
-- **Explanation:** Only pair (0,2): nums1[0]+nums1[2]=4 > nums2[0]+nums2[2]=2.
+```
+Input: nums1 = [2,1,2,1], nums2 = [1,2,1,2]
+Output: 1
+Explanation: The pairs satisfying the condition are:
+- (0, 2) where 2 + 2 > 1 + 1.
+```
 
 **Example 2:**
-- **Input:** `nums1 = [1,10,6,2], nums2 = [1,4,1,5]`
-- **Output:** `5`
+```
+Input: nums1 = [1,10,6,2], nums2 = [1,4,1,5]
+Output: 5
+Explanation: The pairs satisfying the condition are:
+- (0, 1) where 1 + 10 > 1 + 4.
+- (0, 2) where 1 + 6 > 1 + 1.
+- (1, 2) where 10 + 6 > 4 + 1.
+- (1, 3) where 10 + 2 > 4 + 5.
+- (2, 3) where 6 + 2 > 1 + 5.
+```
 
 ---
 

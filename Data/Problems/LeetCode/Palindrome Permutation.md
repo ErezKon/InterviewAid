@@ -7,19 +7,31 @@
 ---
 
 ## Problem Description
-Given a string *s*, determine if any permutation of *s* can form a palindrome. Return `true` if possible, otherwise `false`.
+Given a string `s`, return `true` *if a permutation of the string could form a* ***palindrome*** *and* `false` *otherwise*.
+
+**Constraints:**
+
+- `1 <= s.length <= 5000`
+- `s` consists of only lowercase English letters.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: "code"
-Output: false
+Example 1:
+  Input: s = "code"
+  Output: false
 ```
-**Example 2:**
+
 ```
-Input: "aab"
-Output: true
-Explanation: Rearrange to "aba" which is a palindrome.
+Example 2:
+  Input: s = "aab"
+  Output: true
+```
+
+```
+Example 3:
+  Input: s = "carerac"
+  Output: true
 ```
 
 ## Approach

@@ -7,20 +7,53 @@
 ---
 
 ## Problem Description
-Given an `n × 2` matrix where each row contains two integers, you may reorder the rows arbitrarily and independently sort each column. Determine the minimum possible sum of absolute differences between the two columns after such operations.
+
+> *Note: the Approach below solves an invented matrix-pairing problem. This is SQL: number `first_col` ascending and `second_col` descending separately with `ROW_NUMBER()`, then join the two numbered lists on the row number (ordered by it).*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Data`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| first_col   | int  |
+| second_col  | int  |
++-------------+------+
+This table may contain duplicate rows.
+```
+
+Write a solution to independently:
+
+- order `first_col` in **ascending order**.
+- order `second_col` in **descending order**.
+
+The result format is in the following example.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: [[1,3],[2,2],[3,1]]
-Output: 2
-Explanation: Sort column 1 as [1,2,3] and column 2 as [1,2,3]; sum of |col1[i]-col2[i]| = 0+0+0 = 0 (after optimal row pairing).
-```
-**Example 2:**
-```
-Input: [[5,1],[4,2],[3,3]]
-Output: 4
-Explanation: After sorting columns independently you get col1=[3,4,5], col2=[1,2,3]; sum = |3-1|+|4-2|+|5-3| = 2+2+2 = 6, but a better row pairing reduces it to 4.
+Input:
+Data table:
++-----------+------------+
+| first_col | second_col |
++-----------+------------+
+| 4         | 2          |
+| 2         | 3          |
+| 3         | 1          |
+| 1         | 4          |
++-----------+------------+
+Output:
++-----------+------------+
+| first_col | second_col |
++-----------+------------+
+| 1         | 4          |
+| 2         | 3          |
+| 3         | 2          |
+| 4         | 1          |
++-----------+------------+
 ```
 
 ## Approach

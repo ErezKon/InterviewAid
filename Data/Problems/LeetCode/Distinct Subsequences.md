@@ -20,9 +20,9 @@
 
 ## Problem Description
 
-Given two strings `s` and `t`, return the number of **distinct subsequences** of `s` which equals `t`.
+Given two strings s and t, return *the number of distinct* ***subsequences**** of *s* which equals *t.
 
-A subsequence is formed by deleting some (or no) characters from `s` without changing the relative order.
+The test cases are generated so that the answer fits on a 32-bit signed integer.
 
 **Constraints:**
 - `1 <= s.length, t.length <= 1000`
@@ -36,14 +36,22 @@ A subsequence is formed by deleting some (or no) characters from `s` without cha
 ```
 Input: s = "rabbbit", t = "rabbit"
 Output: 3
-Explanation: 3 ways to choose which 'b' to skip:
-  ra[b]bbit, rab[b]bit, rabb[b]it
+Explanation: As shown below, there are 3 ways you can generate "rabbit" from s.
+rabbbit
+rabbbit
+rabbbit
 ```
 
 **Example 2:**
 ```
 Input: s = "babgbag", t = "bag"
 Output: 5
+Explanation: As shown below, there are 5 ways you can generate "bag" from s.
+babgbag
+babgbag
+babgbag
+babgbag
+babgbag
 ```
 
 ---

@@ -20,16 +20,18 @@
 
 ## Problem Description
 
-You are given a list of bombs where `bombs[i] = [xi, yi, ri]` — the bomb is at `(xi, yi)` with blast radius `ri`.
+You are given a list of bombs. The **range** of a bomb is defined as the area where its effect can be felt. This area is in the shape of a **circle** with the center as the location of the bomb.
 
-Detonating a bomb triggers **chain reactions**: if bomb `i` detonates, it detonates every bomb `j` whose center is **within or on** the blast circle of `i` (distance ≤ `ri`). Chain reactions continue recursively.
+The bombs are represented by a **0-indexed** 2D integer array `bombs` where `bombs[i] = [x_i, y_i, r_i]`. `x_i` and `y_i` denote the X-coordinate and Y-coordinate of the location of the `i^th` bomb, whereas `r_i` denotes the **radius** of its range.
 
-Return the **maximum** number of bombs that can be detonated by detonating **one** bomb.
+You may choose to detonate a **single** bomb. When a bomb is detonated, it will detonate **all bombs** that lie in its range. These bombs will further detonate the bombs that lie in their ranges.
+
+Given the list of `bombs`, return *the **maximum** number of bombs that can be detonated if you are allowed to detonate **only one** bomb*.
 
 **Constraints:**
-- `1 <= n <= 100`
-- `bombs[i] = [xi, yi, ri]`
-- `1 <= xi, yi, ri <= 10^5`
+- `1 <= bombs.length <= 100`
+- `bombs[i].length == 3`
+- `1 <= x_i, y_i, r_i <= 10^5`
 
 ---
 
@@ -39,16 +41,28 @@ Return the **maximum** number of bombs that can be detonated by detonating **one
 ```
 Input: bombs = [[2,1,3],[6,1,4]]
 Output: 2
-Explanation: Bomb 0 (radius 3) reaches bomb 1 (distance=4, 4>3 → no).
-             Bomb 1 (radius 4) reaches bomb 0 (distance=4, 4≤4 → yes).
-             Detonate bomb 1 → both explode.
+Explanation: The above figure shows the positions and ranges of the 2 bombs.
+If we detonate the left bomb, the right bomb will not be affected.
+But if we detonate the right bomb, both bombs will be detonated.
+So the maximum bombs that can be detonated is max(1, 2) = 2.
 ```
 
 **Example 2:**
 ```
 Input: bombs = [[1,1,5],[10,10,5]]
 Output: 1
-Explanation: Neither bomb can reach the other (distance ≈ 12.7 > 5).
+Explanation: Detonating either bomb will not detonate the other bomb, so the maximum number of bombs that can be detonated is 1.
+```
+
+**Example 3:**
+```
+Input: bombs = [[1,2,3],[2,3,1],[3,4,2],[4,5,3],[5,6,4]]
+Output: 5
+Explanation: The best bomb to detonate is bomb 0 because:
+- Bomb 0 detonates bombs 1 and 2. The red circle denotes the range of bomb 0.
+- Bomb 2 detonates bomb 3. The blue circle denotes the range of bomb 2.
+- Bomb 3 detonates bomb 4. The green circle denotes the range of bomb 3.
+Thus all 5 bombs are detonated.
 ```
 
 ---

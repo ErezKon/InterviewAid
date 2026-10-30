@@ -8,16 +8,48 @@
 
 ## Problem Description
 
-Given a Pandas `DataFrame` named `products` with columns `name` (string) and `quantity` (numeric, may contain missing values), replace every missing entry in the `quantity` column with `0` and return the updated DataFrame.
+```
+DataFrame products
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| name        | object |
+| quantity    | int    |
+| price       | int    |
++-------------+--------+
+```
+
+Write a solution to fill in the missing value as **`0`** in the `quantity` column.
+
+The result format is in the following example.
 
 ---
 
 ## Examples
 
-| Input `products` DataFrame | Output `products` DataFrame |
-|----------------------------|----------------------------|
-| `name: ["A","B","C"]`<br>`quantity: [5, NaN, 2]` | `name: ["A","B","C"]`<br>`quantity: [5, 0, 2]` |
-| `name: ["X","Y"]`<br>`quantity: [NaN, NaN]` | `name: ["X","Y"]`<br>`quantity: [0, 0]` |
+```
+Example 1:
+  Input:
+  +-----------------+----------+-------+
+  | name            | quantity | price |
+  +-----------------+----------+-------+
+  | Wristwatch      | None     | 135   |
+  | WirelessEarbuds | None     | 821   |
+  | GolfClubs       | 779      | 9319  |
+  | Printer         | 849      | 3051  |
+  +-----------------+----------+-------+
+  Output:
+  +-----------------+----------+-------+
+  | name            | quantity | price |
+  +-----------------+----------+-------+
+  | Wristwatch      | 0        | 135   |
+  | WirelessEarbuds | 0        | 821   |
+  | GolfClubs       | 779      | 9319  |
+  | Printer         | 849      | 3051  |
+  +-----------------+----------+-------+
+  Explanation:
+  The quantity for Wristwatch and WirelessEarbuds are filled by 0.
+```
 
 ---
 

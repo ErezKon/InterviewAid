@@ -7,13 +7,38 @@
 ---
 
 ## Problem Description
-Given a set of points in the 2D plane, return the points that lie on the **convex hull** of the set. The convex hull is the smallest convex polygon that contains all points. The output should be the hull vertices in counter‑clockwise order, starting from the point with the lowest x‑coordinate (and lowest y if tie).
+
+> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below (convex hull, Monotone Chain) belong to #587 Erect the Fence — this problem asks for the **minimum enclosing circle** (e.g. Welzl's algorithm).*
+
+You are given a 2D integer array `trees` where `trees[i] = [x_i, y_i]` represents the location of the `i^th` tree in the garden.
+
+You are asked to fence the entire garden using the minimum length of rope possible. The garden is well-fenced only if **all the trees are enclosed** and the rope used **forms a perfect circle**. A tree is considered enclosed if it is inside or on the border of the circle.
+
+More formally, you must form a circle using the rope with a center `(x, y)` and radius `r` where all trees lie inside or on the circle and `r` is **minimum**.
+
+Return *the center and radius of the circle as a length 3 array *`[x, y, r]`*.* Answers within `10^-5` of the actual answer will be accepted.
+
+**Constraints:**
+- `1 <= trees.length <= 3000`
+- `trees[i].length == 2`
+- `0 <= x_i, y_i <= 3000`
 
 ## Examples
-```text
-Input: points = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]
-Output: [[1,1],[2,0],[4,2],[2,4]]
-Explanation: These points form the convex hull polygon.
+
+**Example 1:**
+```
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1900-1999/1924.Erect%20the%20Fence%20II/images/trees1.png)
+Input: trees = [[1,1],[2,2],[2,0],[2,4],[3,3],[4,2]]
+Output: [2.00000,2.00000,2.00000]
+Explanation: The fence will have center = (2, 2) and radius = 2
+```
+
+**Example 2:**
+```
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1900-1999/1924.Erect%20the%20Fence%20II/images/trees2.png)
+Input: trees = [[1,2],[2,2],[4,2]]
+Output: [2.50000,2.00000,1.50000]
+Explanation: The fence will have center = (2.5, 2) and radius = 1.5
 ```
 
 ## Approach

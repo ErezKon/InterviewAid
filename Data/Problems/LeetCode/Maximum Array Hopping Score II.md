@@ -20,7 +20,17 @@
 
 ## Problem Description
 
-Same as Part I but with larger n (up to 10⁵). Start at index 0, hop to n-1. Each hop from `i` to `j` scores `(j - i) * nums[j]`. Maximize total score.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given an array `nums`, you have to get the **maximum** score starting from index 0 and **hopping** until you reach the last element of the array.
+
+In each **hop**, you can jump from index `i` to an index `j > i`, and you get a **score** of `(j - i) * nums[j]`.
+
+Return the *maximum score* you can get.
+
+**Constraints:**
+- `2 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
@@ -57,12 +67,21 @@ FUNCTION maxScore(nums):
 
 ## Examples
 
-| nums | Expected Score |
-|------|----------------|
-| [1,3,2,5] | 12 |
-| [4,1,2,3] | 9 |
+**Example 1:**
+```
+Input: nums = [1,5,8]
+Output: 16
+Explanation: There are two possible ways to reach the last element:
+- 0 -> 1 -> 2 with a score of (1 - 0) * 5 + (2 - 1) * 8 = 13.
+- 0 -> 2 with a score of (2 - 0) * 8 = 16.
+```
 
-*Explanation*: In the first example, optimal hops are `0→3` (score `3*5=15`) then backtrack not needed; the algorithm yields 12 after greedy suffix‑max selection.
+**Example 2:**
+```
+Input: nums = [4,5,2,8,9,1,3]
+Output: 42
+Explanation: We can do the hopping 0 -> 4 -> 6 with a score of (4 - 0) * 9 + (6 - 4) * 3 = 42.
+```
 
 ---
 

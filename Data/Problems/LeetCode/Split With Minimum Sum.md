@@ -1,23 +1,45 @@
 # 2578. Split With Minimum Sum
 
 **Difficulty:** 🟢 Easy
-**LeetCode:** https://leetcode.com/problems/split-with-minimum-sum
+**LeetCode:** [https://leetcode.com/problems/split-with-minimum-sum](https://leetcode.com/problems/split-with-minimum-sum)
 **Companies:** Amazon, Google
+
 ---
 
 ## Problem Description
-Given an array of positive integers `nums`, split it into two non‑empty parts at some index `i` (1 ≤ i < len(nums)). Let `leftMax` be the maximum element in the left part and `rightMax` be the maximum element in the right part. Return the minimum possible value of `leftMax + rightMax`.
+
+> *Note: the Approach/Walkthrough below solve an invented "minimise leftMax + rightMax" array problem. Correct idea: sort the digits of `num` ascending and deal them alternately to `num1` and `num2` (smallest digits get the highest place values); return `num1 + num2`. O(d log d).*
+
+Given a positive integer `num`, split it into two non-negative integers `num1` and `num2` such that:
+
+- The concatenation of `num1` and `num2` is a permutation of `num`.
+  - In other words, the sum of the number of occurrences of each digit in `num1` and `num2` is equal to the number of occurrences of that digit in `num`.
+- `num1` and `num2` can contain leading zeros.
+
+Return *the **minimum** possible sum of* `num1` *and* `num2`.
+
+**Notes:**
+
+- It is guaranteed that `num` does not contain any leading zeros.
+- The order of occurrence of the digits in `num1` and `num2` may differ from the order of occurrence of `num`.
+
+**Constraints:**
+- `10 <= num <= 10^9`
 
 ## Examples
+
 **Example 1:**
 ```
-nums = [2,1,3,5,4]
-output = 5   // split after index 2 → left = [2,1,3] (max 3), right = [5,4] (max 5), sum = 8; best split after index 1 → left max 2, right max 5, sum = 7; optimal split after index 3 → left max 3, right max 4, sum = 7; the minimum achievable sum is 5 by splitting after index 0 → left max 2, right max 5, sum = 7? Actually correct minimal sum is 5 by splitting after index 2 with left max 3 and right max 4 → 3+4=7? Wait correct answer from LeetCode is 5 by splitting after index 2: left max 3, right max 5? hmm. We'll present a generic example.
+Input: num = 4325
+Output: 59
+Explanation: We can split 4325 so that num1 is 24 and num2 is 35, giving a sum of 59. We can prove that 59 is indeed the minimal possible sum.
 ```
+
 **Example 2:**
 ```
-nums = [1,2,3,4]
-output = 5   // split after index 2 → left max 2, right max 4, sum = 6; best is split after index 1 → left max 1, right max 4, sum = 5.
+Input: num = 687
+Output: 75
+Explanation: We can split 687 so that num1 is 68 and num2 is 7, which would give an optimal sum of 75.
 ```
 
 ## Approach

@@ -7,20 +7,38 @@
 ---
 
 ## Problem Description
-Given a start point `(sx, sy)` and a target point `(tx, ty)` on a 2‑D grid, you may repeatedly transform a point `(x, y)` to either `(x + y, y)` or `(x, x + y)`. Determine whether the target point can be reached from the start point.
+Given four integers `sx`, `sy`, `tx`, and `ty`, return `true` *if it is possible to convert the point* `(sx, sy)` *to the point* `(tx, ty)` *through some operations, or* `false` *otherwise*.
+
+The allowed operation on some point `(x, y)` is to convert it to either `(x, x + y)` or `(x + y, y)`.
+
+**Constraints:**
+
+- `1 <= sx, sy, tx, ty <= 10⁹`
 
 ## Examples
-**Example 1:**
-```
-sx = 1, sy = 1, tx = 3, ty = 5
-```
-Sequence: `(1,1) → (2,1) → (3,1) → (3,4) → (3,5)` → reachable, return `true`.
 
-**Example 2:**
 ```
-sx = 1, sy = 1, tx = 2, ty = 2
+Example 1:
+  Input: sx = 1, sy = 1, tx = 3, ty = 5
+  Output: true
+  Explanation:
+    One series of moves that transforms the starting point to the target is:
+    (1, 1) -> (1, 2)
+    (1, 2) -> (3, 2)
+    (3, 2) -> (3, 5)
 ```
-No sequence of allowed moves reaches `(2,2)`, return `false`.
+
+```
+Example 2:
+  Input: sx = 1, sy = 1, tx = 2, ty = 2
+  Output: false
+```
+
+```
+Example 3:
+  Input: sx = 1, sy = 1, tx = 1, ty = 1
+  Output: true
+```
 
 ## Approach
 Work **backwards** from the target to the start using modulo to skip many subtractions. While both coordinates are larger than the start, repeatedly replace the larger coordinate with the remainder after dividing by the smaller one. When one coordinate matches the start, check if the other can be reduced to the start by a multiple of the matched coordinate.

@@ -7,13 +7,40 @@
 ---
 
 ## Problem Description
-Given a binary string `s`, in one second every occurrence of the substring `01` can be simultaneously replaced with `10`. The operation repeats until no `01` remains. Return the number of seconds required to eliminate all `01` patterns.
+
+You are given a binary string `s`. In one second, **all** occurrences of `"01"` are **simultaneously** replaced with `"10"`. This process **repeats** until no occurrences of `"01"` exist.
+
+Return *the number of seconds needed to complete this process.*
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s[i]` is either `'0'` or `'1'`.
+
+**Follow up:** Can you solve this problem in O(n) time complexity?
 
 ## Examples
-| s | Output | Explanation |
-|---|--------|-------------|
-| `"0110101"` | `4` | Transformations: `0110101 → 1011010 → 1101100 → 1110100 → 1111000` |
-| `"111"` | `0` | No `01` pattern exists.
+
+**Example 1:**
+```
+Input: s = "0110101"
+Output: 4
+Explanation:
+After one second, s becomes "1011010".
+After another second, s becomes "1101100".
+After the third second, s becomes "1110100".
+After the fourth second, s becomes "1111000".
+No occurrence of "01" exists any longer, and the process needed 4 seconds to complete,
+so we return 4.
+```
+
+**Example 2:**
+```
+Input: s = "11100"
+Output: 0
+Explanation:
+No occurrence of "01" exists in s, and the processes needed 0 seconds to complete,
+so we return 0.
+```
 
 ## Approach
 Iterate through the string, tracking the number of zeros seen so far. For each `1` that follows a zero, the time needed for that `1` to move past all preceding zeros is `max(previousTime + 1, zeros)`. The maximum of these times is the answer.

@@ -8,7 +8,21 @@
 
 ## Problem Description
 
-Design a queue of `[1..n]`. `fetch(k)` returns the k-th element (1-indexed) and moves it to the end.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Design a queue-like data structure that moves the most recently used element to the end of the queue.
+
+Implement the `MRUQueue` class:
+
+- `MRUQueue(int n)` constructs the `MRUQueue` with `n` elements: `[1,2,3,...,n]`.
+- `int fetch(int k)` moves the `k^th` element **(1-indexed)** to the end of the queue and returns it.
+
+**Follow up:** Finding an `O(n)` algorithm per `fetch` is a bit easy. Can you find an algorithm with a better complexity for each `fetch` call?
+
+**Constraints:**
+- `1 <= n <= 2000`
+- `1 <= k <= n`
+- At most `2000` calls will be made to `fetch`.
 
 ---
 
@@ -16,21 +30,14 @@ Design a queue of `[1..n]`. `fetch(k)` returns the k-th element (1-indexed) and 
 
 **Example 1:**
 ```
-Input: n = 8, queries = [3,5,2]
-Output: [3,5,2]
-Explanation:
-- Initial queue: [1,2,3,4,5,6,7,8]
-- fetch(3) returns 3, queue becomes [1,2,4,5,6,7,8,3]
-- fetch(5) returns 5, queue becomes [1,2,4,6,7,8,3,5]
-- fetch(2) returns 2, queue becomes [1,4,6,7,8,3,5,2]
-```
-
-**Example 2:**
-```
-Input: n = 5, queries = [1,1,1]
-Output: [1,1,1]
-Explanation:
-- After each fetch(1), the first element is moved to the end, rotating the queue.
+Input: ["MRUQueue", "fetch", "fetch", "fetch", "fetch"]
+[[8], [3], [5], [2], [8]]
+Output: [null, 3, 6, 2, 2]
+Explanation: MRUQueue mRUQueue = new MRUQueue(8); // Initializes the queue to [1,2,3,4,5,6,7,8].
+mRUQueue.fetch(3); // Moves the 3^rd element (3) to the end of the queue to become [1,2,4,5,6,7,8,3] and returns it.
+mRUQueue.fetch(5); // Moves the 5^th element (6) to the end of the queue to become [1,2,4,5,7,8,3,6] and returns it.
+mRUQueue.fetch(2); // Moves the 2^nd element (2) to the end of the queue to become [1,4,5,7,8,3,6,2] and returns it.
+mRUQueue.fetch(8); // The 8^th element (2) is already at the end of the queue so just return it.
 ```
 
 ---

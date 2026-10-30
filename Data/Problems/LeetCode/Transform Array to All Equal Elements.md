@@ -1,26 +1,48 @@
 # 3576. Transform Array to All Equal Elements
 
 **Difficulty:** 🟡 Medium
-
+**LeetCode:** [https://leetcode.com/problems/transform-array-to-all-equal-elements](https://leetcode.com/problems/transform-array-to-all-equal-elements)
 **Companies:** Flipkart, Meta, Microsoft
+
 ---
 
 ## Problem Description
-You are given an integer array `nums` consisting only of `1` and `-1`. In one operation you may select any two **adjacent** elements and flip both of them (multiply each by `-1`). Determine whether it is possible to make all elements equal (either all `1` or all `-1`). Return `true` if possible, otherwise `false`.
+
+> *Note: statement checked against the official text with verify.py. The original description omitted the operation limit `k`; the parity argument alone is insufficient. Correct idea: for each target `t ∈ {1, −1}`, greedily scan left to right — whenever `nums[i] != t`, flip `i` and `i+1` and count one operation; target is reachable if the last element ends equal to `t` and the count `≤ k`. O(n).*
+
+You are given an integer array `nums` of size `n` containing only `1` and `-1`, and an integer `k`.
+
+You can perform the following operation at most `k` times:
+
+- Choose an index `i` (`0 <= i < n - 1`), and **multiply** both `nums[i]` and `nums[i + 1]` by `-1`.
+
+**Note** that you can choose the same index `i` more than once in **different** operations.
+
+Return `true` if it is possible to make all elements of the array **equal** after at most `k` operations, and `false` otherwise.
+
+**Constraints:**
+- `1 <= n == nums.length <= 10^5`
+- `nums[i]` is either `-1` or `1`.
+- `1 <= k <= n`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [1, -1, 1, -1]
+Input: nums = [1,-1,1,-1,1], k = 3
 Output: true
-Explanation: Flip positions (2,3) → [1,1,-1,-1]; then flip (3,4) → [1,1,1,1].
+Explanation:
+We can make all elements in the array equal in 2 operations as follows:
+- Choose index i = 1, and multiply both nums[1] and nums[2] by -1. Now nums = [1,1,-1,-1,1].
+- Choose index i = 2, and multiply both nums[2] and nums[3] by -1. Now nums = [1,1,1,1,1].
 ```
 
 **Example 2:**
 ```
-Input: nums = [1, 1, -1]
+Input: nums = [-1,-1,-1,1,1,1], k = 5
 Output: false
-Explanation: The number of `-1` is odd, so parity cannot be fixed using adjacent flips.
+Explanation:
+It is not possible to make all array elements equal in at most 5 operations.
 ```
 
 ## Approach

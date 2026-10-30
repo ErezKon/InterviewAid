@@ -1,25 +1,39 @@
 # 2587. Rearrange Array to Maximize Prefix Score
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/rearrange-array-to-maximize-prefix-score](https://leetcode.com/problems/rearrange-array-to-maximize-prefix-score)
 
 **Companies:** Amazon, Ibm, Jpmorgan
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may rearrange its elements in any order. After rearrangement, compute the prefix sums of the array. The *prefix score* is defined as the number of prefix sums that are strictly positive. Return the maximum possible prefix score achievable by any rearrangement of `nums`.
+You are given a **0-indexed** integer array `nums`. You can rearrange the elements of `nums` to **any order** (including the given order).
+
+Let `prefix` be the array containing the prefix sums of `nums` after rearranging it. In other words, `prefix[i]` is the sum of the elements from `0` to `i` in `nums` after rearranging it. The **score** of `nums` is the number of positive integers in the array `prefix`.
+
+Return *the maximum score you can achieve*.
+
+**Constraints:**
+
+- `1 <= nums.length <= 10⁵`
+- `-10⁶ <= nums[i] <= 10⁶`
 
 ## Examples
-**Example 1:**
+
 ```
-Input: nums = [2, -1, -2, 3]
-Output: 3
-Explanation: Rearrange to [3, 2, -1, -2]. Prefix sums are [3,5,4,2]; all four are positive, so the score is 4. However, the maximum achievable score is 3 because the last element must be negative to keep the sum positive as long as possible.
+Example 1:
+  Input: nums = [2,-1,0,1,-3,3,-3]
+  Output: 6
+  Explanation: We can rearrange the array into nums = [2,3,1,-1,-3,0,-3].
+    prefix = [2,5,6,5,2,2,-1], so the score is 6.
+    It can be shown that 6 is the maximum score we can obtain.
 ```
-**Example 2:**
+
 ```
-Input: nums = [-1, -2, -3]
-Output: 0
-Explanation: No rearrangement can produce a positive prefix sum.
+Example 2:
+  Input: nums = [-2,-3,0]
+  Output: 0
+  Explanation: Any rearrangement of the array will result in a score of 0.
 ```
 
 ## Approach

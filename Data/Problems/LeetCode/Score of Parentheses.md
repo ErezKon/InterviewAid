@@ -8,9 +8,19 @@
 
 ## Problem Description
 
-Given a balanced parentheses string, compute its score: `()` = 1, `(A)` = 2×A, `AB` = A+B.
+Given a balanced parentheses string `s`, return *the **score** of the string*.
 
-- **Example:** `"(()(()))"` → `2*(1 + 2*1)` = `6`
+The **score** of a balanced parentheses string is based on the following rule:
+
+- `"()"` has score `1`.
+- `AB` has score `A + B`, where `A` and `B` are balanced parentheses strings.
+- `(A)` has score `2 * A`, where `A` is a balanced parentheses string.
+
+**Constraints:**
+
+- `2 <= s.length <= 50`
+- `s` consists of only `'('` and `')'`.
+- `s` is a balanced parentheses string.
 
 ---
 
@@ -37,12 +47,30 @@ The stack bottom accumulates the total score while each new '(' starts a new sco
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"()"` | `1` | Simple pair scores 1. |
-| `"()()"` | `2` | Two independent pairs add up. |
-| `"(())"` | `2` | Inner `()` scores 1, doubled by outer parentheses. |
-| `"(()(()))"` | `6` | Combines nesting and concatenation. |
+```
+Example 1:
+  Input: s = "()"
+  Output: 1
+```
+
+```
+Example 2:
+  Input: s = "(())"
+  Output: 2
+```
+
+```
+Example 3:
+  Input: s = "()()"
+  Output: 2
+```
+
+```
+Additional example (used in the walkthrough):
+  Input: s = "(()(()))"
+  Output: 6
+  Explanation: 2 * (1 + 2 * 1) = 6
+```
 
 ---
 

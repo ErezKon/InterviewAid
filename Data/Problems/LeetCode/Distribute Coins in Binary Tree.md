@@ -20,11 +20,17 @@
 
 ## Problem Description
 
-Given a binary tree with `n` nodes where each node has `node.val` coins and total coins = `n`, distribute coins so every node has exactly **1 coin**. A move transfers one coin between adjacent (parent-child) nodes. Return the **minimum number of moves**.
+You are given the `root` of a binary tree with `n` nodes where each `node` in the tree has `node.val` coins. There are `n` coins in total throughout the whole tree.
+
+In one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.
+
+Return *the **minimum** number of moves required to make every node have **exactly** one coin*.
 
 **Constraints:**
-- `n` nodes, `n` total coins.
+- The number of nodes in the tree is `n`.
+- `1 <= n <= 100`
 - `0 <= Node.val <= n`
+- The sum of all `Node.val` is `n`.
 
 ---
 
@@ -32,22 +38,16 @@ Given a binary tree with `n` nodes where each node has `node.val` coins and tota
 
 **Example 1:**
 ```
-      3
-     / \
-    0   0
-
+Input: root = [3,0,0]
 Output: 2
-Explanation: Root has 2 excess coins. Move 1 to left, 1 to right.
+Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
 ```
 
 **Example 2:**
 ```
-      0
-     / \
-    3   0
-
+Input: root = [0,3,0]
 Output: 3
-Explanation: Left child sends 2 coins up to root (2 moves), root sends 1 down to right (1 move).
+Explanation: From the left child of the root, we move two coins to the root [taking two moves]. Then, we move one coin from the root of the tree to the right child.
 ```
 
 ---

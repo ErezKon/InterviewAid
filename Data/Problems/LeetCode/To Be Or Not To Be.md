@@ -7,18 +7,36 @@
 ---
 
 ## Problem Description
-Implement a minimal assertion utility `expect` that provides two methods:
-- `toBe(expected)`: throws an error if the received value is not strictly equal to `expected`.
-- `notToBe(expected)`: throws an error if the received value is strictly equal to `expected`.
-The utility should return `true` when the assertion passes, enabling chaining in test code.
+
+Write a function `expect` that helps developers test their code. It should take in any value `val` and return an object with the following two functions.
+
+- `toBe(val)` accepts another value and returns `true` if the two values `===` each other. If they are not equal, it should throw an error `"Not Equal"`.
+- `notToBe(val)` accepts another value and returns `true` if the two values `!==` each other. If they are equal, it should throw an error `"Equal"`.
+
+**Constraints:** none specified (JavaScript closure problem).
 
 ## Examples
-| Code | Result |
-|------|--------|
-| `expect(5).toBe(5)` | `true` (passes) |
-| `expect(5).toBe(3)` | throws `Not Equal` error |
-| `expect('a').notToBe('b')` | `true` (passes) |
-| `expect('a').notToBe('a')` | throws `Equal` error |
+
+**Example 1:**
+```
+Input: func = () => expect(5).toBe(5)
+Output: {"value": true}
+Explanation: 5 === 5 so this expression returns true.
+```
+
+**Example 2:**
+```
+Input: func = () => expect(5).toBe(null)
+Output: {"error": "Not Equal"}
+Explanation: 5 !== null so this expression throw the error "Not Equal".
+```
+
+**Example 3:**
+```
+Input: func = () => expect(5).notToBe(null)
+Output: {"value": true}
+Explanation: 5 !== null so this expression returns true.
+```
 
 ## Approach
 Create a function `expect` that captures the received value in a closure. Return an object with `toBe` and `notToBe` methods that compare the captured value with the expected argument and throw descriptive errors when the condition fails.

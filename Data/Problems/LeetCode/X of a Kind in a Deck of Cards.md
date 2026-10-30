@@ -7,18 +7,35 @@
 ---
 
 ## Problem Description
-Given an integer array `deck` representing a deck of cards, return the largest integer `X` such that the deck can be partitioned into groups of exactly `X` cards, where each group contains cards of the same integer value. If no such `X` exists, return `-1`.
+
+You are given an integer array `deck` where `deck[i]` represents the number written on the `i^th` card.
+
+Partition the cards into **one or more groups** such that:
+
+- Each group has **exactly** `x` cards where `x > 1`, and
+- All the cards in one group have the same integer written on them.
+
+Return `true`* if such partition is possible, or *`false`* otherwise*.
+
+**Constraints:**
+- `1 <= deck.length <= 10^4`
+- `0 <= deck[i] < 10^4`
 
 ## Examples
+
 **Example 1:**
-Input: `deck = [1,2,3,4,4,3,2,1]`
-Output: `2`
-Explanation: The deck can be split into groups `{1,1}`, `{2,2}`, `{3,3}`, `{4,4}`.
+```
+Input: deck = [1,2,3,4,4,3,2,1]
+Output: true
+Explanation: Possible partition [1,1],[2,2],[3,3],[4,4].
+```
 
 **Example 2:**
-Input: `deck = [1,1,1,2,2,2,3,3]`
-Output: `-1`
-Explanation: No integer `X > 1` divides all card frequencies.
+```
+Input: deck = [1,1,1,2,2,2,3,3]
+Output: false
+Explanation: No possible partition.
+```
 
 ## Approach
 1. Count the frequency of each distinct card.

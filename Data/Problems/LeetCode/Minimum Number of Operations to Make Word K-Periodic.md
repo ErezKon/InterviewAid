@@ -7,20 +7,49 @@
 ---
 
 ## Problem Description
-Given a string `s` of length `n` and an integer `k` (1 ≤ k ≤ n), you may change any character to any other lowercase letter. An operation counts as one character change. A string is **k‑periodic** if for every index `i` (0‑based) the characters at positions `i` and `i + k` are equal whenever `i + k < n`. Return the minimum number of operations required to transform `s` into a k‑periodic string.
+
+> *Note: the Approach below changes single characters. Officially one operation copies a whole length-`k` block. The answer is `n/k − (max frequency of any block word[i..i+k−1], i % k == 0)`.*
+
+You are given a string `word` of size `n`, and an integer `k` such that `k` divides `n`.
+
+In one operation, you can pick any two indices `i` and `j`, that are divisible by `k`, then replace the substring of length `k` starting at `i` with the substring of length `k` starting at `j`. That is, replace the substring `word[i..i + k - 1]` with the substring `word[j..j + k - 1]`.
+
+Return *the **minimum** number of operations required to make* `word` ***k-periodic***.
+
+We say that `word` is **k-periodic** if there is some string `s` of length `k` such that `word` can be obtained by concatenating `s` an arbitrary number of times. For example, if `word == “ababab”`, then `word` is 2-periodic for `s = "ab"`.
+
+**Constraints:**
+- `1 <= n == word.length <= 10^5`
+- `1 <= k <= word.length`
+- `k` divides `word.length`.
+- `word` consists only of lowercase English letters.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: s = "abcabc", k = 3
-Output: 0
-Explanation: The string is already 3‑periodic because s[i] == s[i+3] for all i.
+Input: word = "leetcodeleet", k = 4
+Output: 1
+Explanation: We can obtain a 4-periodic string by picking i = 4 and j = 0. After this operation, word becomes equal to "leetleetleet".
 ```
+
 **Example 2:**
 ```
-Input: s = "abac", k = 2
-Output: 1
-Explanation: Change the last character to 'b' → "abab", which is 2‑periodic.
+Input: word = "leetcoleet", k = 2
+Output: 3
+Explanation: We can obtain a 2-periodic string by applying the operations in the table below.
+  i
+  j
+  word
+  0
+  2
+  etetcoleet
+  4
+  0
+  etetetleet
+  6
+  0
+  etetetetet
 ```
 
 ## Approach

@@ -7,14 +7,28 @@
 ---
 
 ## Problem Description
-Given an integer `num`, determine whether there exist three consecutive integers `x, x+1, x+2` such that `x + (x+1) + (x+2) = num`. Return `true` if such a triple exists, otherwise `false`.
+Given an integer `num`, return *three consecutive integers (as a sorted array)* *that **sum** to* `num`. If `num` cannot be expressed as the sum of three consecutive integers, return *an **empty** array.*
+
+> Note: the official problem returns the array (or `[]`), not a boolean as the old description/Approach below assumed.
+
+**Constraints:**
+- `0 <= num <= 10^15`
 
 ## Examples
-| num | Output | Explanation |
-|-----|--------|-------------|
-| `9` | `true` | `2 + 3 + 4 = 9`.
-| `10` | `false` | No three consecutive integers sum to 10.
-| `15` | `true` | `4 + 5 + 6 = 15`.
+```
+Example 1:
+  Input: num = 33
+  Output: [10,11,12]
+  Explanation: 33 can be expressed as 10 + 11 + 12 = 33.
+  10, 11, 12 are 3 consecutive integers, so we return [10, 11, 12].
+```
+
+```
+Example 2:
+  Input: num = 4
+  Output: []
+  Explanation: There is no way to express 4 as the sum of 3 consecutive integers.
+```
 
 ## Approach
 The sum of three consecutive integers starting at `x` is `3x + 3`. Solve `3x + 3 = num` → `x = (num - 3) / 3`. The triple exists if `(num - 3)` is divisible by `3` and the resulting `x` is an integer (which it will be) and non‑negative (if required).

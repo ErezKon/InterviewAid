@@ -20,9 +20,31 @@
 
 ## Problem Description
 
-Given arrays of fruit prices, tastiness values, a budget `maxAmount`, and `maxCoupons` (each coupon halves a fruit's price), maximize total tastiness within budget.
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
-This is a **0/1 Knapsack with coupons** variant.
+You are given two non-negative integer arrays `price` and `tastiness`, both arrays have the same length `n`. You are also given two non-negative integers `maxAmount` and `maxCoupons`.
+
+For every integer `i` in range `[0, n - 1]`:
+
+- `price[i]` describes the price of `i^th` fruit.
+- `tastiness[i]` describes the tastiness of `i^th` fruit.
+
+You want to purchase some fruits such that total tastiness is maximized and the total price does not exceed `maxAmount`.
+
+Additionally, you can use a coupon to purchase fruit for **half of its price** (rounded down to the closest integer). You can use at most `maxCoupons` of such coupons.
+
+Return *the maximum total tastiness that can be purchased*.
+
+**Note that:**
+
+- You can purchase each fruit at most once.
+- You can use coupons on some fruit at most once.
+
+**Constraints:**
+- `n == price.length == tastiness.length`
+- `1 <= n <= 100`
+- `0 <= price[i], tastiness[i], maxAmount <= 1000`
+- `0 <= maxCoupons <= 5`
 
 ---
 
@@ -61,20 +83,24 @@ FUNCTION maxTastiness(price, tastiness, maxAmount, maxCoupons):
 
 **Example 1:**
 ```
-Input: price = [2,3,5], tastiness = [5,6,8], maxAmount = 5, maxCoupons = 1
-Output: 11
-Explanation:
-- Use coupon on fruit with price 5 (half price = 2) and buy fruit with price 2.
-- Total cost = 2 (coupon fruit) + 2 = 4 ≤ 5.
-- Total tastiness = 8 + 5 = 13, but we exceed budget if we also buy the 3‑price fruit.
-- Best achievable tastiness is 11 by buying fruit 0 (price 2, tastiness 5) and fruit 1 with coupon (price 1, tastiness 6).
+Input: price = [10,20,20], tastiness = [5,8,8], maxAmount = 20, maxCoupons = 1
+Output: 13
+Explanation: It is possible to make total tastiness 13 in following way:
+- Buy first fruit without coupon, so that total price = 0 + 10 and total tastiness = 0 + 5.
+- Buy second fruit with coupon, so that total price = 10 + 10 and total tastiness = 5 + 8.
+- Do not buy third fruit, so that total price = 20 and total tastiness = 13.
+It can be proven that 13 is the maximum total tastiness that can be obtained.
 ```
 
 **Example 2:**
 ```
-Input: price = [4,4,4], tastiness = [10,10,10], maxAmount = 8, maxCoupons = 2
-Output: 20
-Explanation: Use coupons on any two fruits (cost 2 each) and buy them, total cost 4, tastiness 20.
+Input: price = [10,15,7], tastiness = [5,8,20], maxAmount = 10, maxCoupons = 2
+Output: 28
+Explanation: It is possible to make total tastiness 20 in following way:
+- Do not buy first fruit, so that total price = 0 and total tastiness = 0.
+- Buy second fruit with coupon, so that total price = 0 + 7 and total tastiness = 0 + 8.
+- Buy third fruit with coupon, so that total price = 7 + 3 and total tastiness = 8 + 20.
+It can be proven that 28 is the maximum total tastiness that can be obtained.
 ```
 
 ---

@@ -7,20 +7,39 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and a target array `target` of the same length, you may repeatedly perform the following operation: choose any subarray of `nums`, split it into two non‑empty parts, and then merge the two parts back together in reversed order. Determine whether it is possible to transform `nums` into `target` using any number of such operations.
+
+> *Note: the Approach/Walkthrough below solve an invented yes/no problem. Correct idea: `n ≤ 6`, so BFS over array states (tuples) — from each state try every subarray `[l..r]` and every re-insertion position; the BFS depth at which `nums2` is reached is the answer. O(n!·n⁴).*
+
+You are given two integer arrays `nums1` and `nums2`, each of length `n`. You may perform the following **split-and-merge operation** on `nums1` any number of times:
+
+- Choose a subarray `nums1[L..R]`.
+- Remove that subarray, leaving the prefix `nums1[0..L-1]` (empty if `L = 0`) and the suffix `nums1[R+1..n-1]` (empty if `R = n - 1`).
+- Re-insert the removed subarray (in its original order) at **any** position in the remaining array (i.e., between any two elements, at the very start, or at the very end).
+
+Return the **minimum** number of **split-and-merge operations** needed to transform `nums1` into `nums2`.
+
+**Constraints:**
+- `2 <= n == nums1.length == nums2.length <= 6`
+- `-10^5 <= nums1[i], nums2[i] <= 10^5`
+- `nums2` is a **permutation** of `nums1`.
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [1,2,3,4], target = [2,1,4,3]
-Output: true
-Explanation: Split the whole array into [1,2] and [3,4], reverse the order of the parts and merge → [3,4,1,2]. Then split the first part [3,4] into [3] and [4] and reverse → [4,3,1,2]. Finally split the last part [1,2] and reverse → [2,1,4,3] which matches target.
+Input: nums1 = [3,1,2], nums2 = [1,2,3]
+Output: 1
+Explanation: - Split out the subarray [3] (L = 0, R = 0); the remaining array is [1,2].
+- Insert [3] at the end; the array becomes [1,2,3].
 ```
+
 **Example 2:**
 ```
-Input: nums = [1,2,3], target = [3,2,1]
-Output: false
-Explanation: No sequence of split‑and‑merge operations can reverse the whole array because each operation preserves the relative order inside each split part.
+Input: nums1 = [1,1,2,3,4,5], nums2 = [5,4,3,2,1,1]
+Output: 3
+Explanation: - Remove [1,1,2] at indices 0 - 2; remaining is [3,4,5]; insert [1,1,2] at position 2, resulting in [3,4,1,1,2,5].
+- Remove [4,1,1] at indices 1 - 3; remaining is [3,2,5]; insert [4,1,1] at position 3, resulting in [3,2,5,4,1,1].
+- Remove [3,2] at indices 0 - 1; remaining is [5,4,1,1]; insert [3,2] at position 2, resulting in [5,4,3,2,1,1].
 ```
 
 ## Approach

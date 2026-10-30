@@ -7,14 +7,28 @@
 ---
 
 ## Problem Description
-Given the `root` of a binary tree, find the length of the longest **downward** path where each child node’s value is exactly one greater than its parent’s value. The path must move from parent to child only.
+Given the `root` of a binary tree, return *the length of the longest **consecutive sequence path***.
+
+A **consecutive sequence path** is a path where the values **increase by one** along the path.
+
+Note that the path can start **at any node** in the tree, and you cannot go from a node to its parent in the path.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 3 * 10⁴]`.
+- `-3 * 10⁴ ≤ Node.val ≤ 3 * 10⁴`
 
 ## Examples
-| Tree (level order) | Output | Explanation |
-|--------------------|--------|-------------|
-| `[1,2,3,4,null,null,5]` | 3 | Path `1‑2‑3` (or `1‑2‑4`) length 3.
-| `[2,null,3,4,null,5]` | 4 | Path `2‑3‑4‑5` length 4.
-| `[]` | 0 | Empty tree has length 0.
+```
+Example 1:
+  Input: root = [1,null,3,2,4,null,null,null,5]
+  Output: 3
+  Explanation: Longest consecutive sequence path is 3-4-5, so return 3.
+
+Example 2:
+  Input: root = [2,null,3,2,null,1]
+  Output: 2
+  Explanation: Longest consecutive sequence path is 2-3, not 3-2-1, so return 2.
+```
 
 ## Approach
 Perform a **DFS** that carries the current consecutive length from the parent. If the current node continues the sequence (`node.val == parent.val + 1`), increment the length; otherwise reset to 1. Update a global maximum at each node.

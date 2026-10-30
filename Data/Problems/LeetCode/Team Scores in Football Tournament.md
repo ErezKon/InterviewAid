@@ -6,21 +6,82 @@
 ---
 
 ## Problem Description
-You are given an array `matches` where each element is a pair `[teamA, teamB]` representing a match between two football teams. For each match, the winning team receives 3 points, the losing team 0 points, and in case of a draw each team receives 1 point. The result of each match is provided as a string `result` with values "win", "loss", or "draw" for `teamA`. Compute the total points for every team and return a list of teams sorted by descending points; if two teams have the same points, sort them alphabetically.
+Table: `Teams`
+
+```
++---------------+----------+
+| Column Name   | Type     |
++---------------+----------+
+| team_id       | int      |
+| team_name     | varchar  |
++---------------+----------+
+team_id is the column with unique values of this table.
+Each row of this table represents a single football team.
+```
+
+Table: `Matches`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| match_id      | int     |
+| host_team     | int     |
+| guest_team    | int     |
+| host_goals    | int     |
+| guest_goals   | int     |
++---------------+---------+
+match_id is the column of unique values of this table.
+Each row is a record of a finished match between two different teams.
+Teams host_team and guest_team are represented by their IDs in the Teams table (team_id), and they scored host_goals and guest_goals goals, respectively.
+```
+
+You would like to compute the scores of all teams after all matches. Points are awarded as follows:
+
+- A team receives **three points** if they win a match (i.e., Scored more goals than the opponent team).
+- A team receives **one point** if they draw a match (i.e., Scored the same number of goals as the opponent team).
+- A team receives **no points** if they lose a match (i.e., Scored fewer goals than the opponent team).
+
+Write a solution that selects the `team_id`, `team_name` and `num_points` of each team in the tournament after all described matches.
+
+Return the result table ordered by `num_points` **in decreasing order**. In case of a tie, order the records by `team_id` **in increasing order**.
+
+The result format is in the following example.
 
 ## Examples
-**Example 1:**
 ```
-Input: matches = [["A","B"],["C","A"]], results = ["win","draw"]
-Output: ["A","C","B"]
-Explanation: Match1: A wins → A+3, B+0. Match2: C draws with A → C+1, A+1. Totals: A=4, C=1, B=0.
-```
-
-**Example 2:**
-```
-Input: matches = [["X","Y"]], results = ["draw"]
-Output: ["X","Y"]
-Explanation: Both teams receive 1 point.
+Example 1:
+  Input:
+  Teams table:
+  +-----------+--------------+
+  | team_id   | team_name    |
+  +-----------+--------------+
+  | 10        | Leetcode FC  |
+  | 20        | NewYork FC   |
+  | 30        | Atlanta FC   |
+  | 40        | Chicago FC   |
+  | 50        | Toronto FC   |
+  +-----------+--------------+
+  Matches table:
+  +------------+--------------+---------------+-------------+--------------+
+  | match_id   | host_team    | guest_team    | host_goals  | guest_goals  |
+  +------------+--------------+---------------+-------------+--------------+
+  | 1          | 10           | 20            | 3           | 0            |
+  | 2          | 30           | 10            | 2           | 2            |
+  | 3          | 10           | 50            | 5           | 1            |
+  | 4          | 20           | 30            | 1           | 0            |
+  | 5          | 50           | 30            | 1           | 0            |
+  +------------+--------------+---------------+-------------+--------------+
+  Output:
+  +------------+--------------+---------------+
+  | team_id    | team_name    | num_points    |
+  +------------+--------------+---------------+
+  | 10         | Leetcode FC  | 7             |
+  | 20         | NewYork FC   | 3             |
+  | 50         | Toronto FC   | 3             |
+  | 30         | Atlanta FC   | 1             |
+  | 40         | Chicago FC   | 0             |
+  +------------+--------------+---------------+
 ```
 
 ## Approach

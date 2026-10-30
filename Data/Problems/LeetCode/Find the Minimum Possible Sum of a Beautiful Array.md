@@ -21,7 +21,15 @@
 
 ## 1. Problem Description
 
-An array is **beautiful** if no two elements sum to `target`. Find the minimum possible sum of a beautiful array of size `n`.
+You are given positive integers `n` and `target`.
+
+An array `nums` is **beautiful** if it meets the following conditions:
+
+- `nums.length == n`.
+- `nums` consists of pairwise **distinct positive** integers.
+- There doesn't exist two **distinct** indices, `i` and `j`, in the range `[0, n - 1]`, such that `nums[i] + nums[j] == target`.
+
+Return *the **minimum** possible sum that a beautiful array could have modulo* `10⁹ + 7`.
 
 **Constraints:**
 - `1 <= n <= 10⁹`
@@ -31,12 +39,30 @@ An array is **beautiful** if no two elements sum to `target`. Find the minimum p
 
 ## 2. Examples
 
-| `n` | `target` | Minimum Sum |
-|-----|----------|-------------|
-| 5   | 4        | 13 |
-| 3   | 2        | 6 |
+```
+Example 1:
+  Input: n = 2, target = 3
+  Output: 4
+  Explanation: We can see that nums = [1,3] is beautiful.
+  - The array nums has length n = 2.
+  - The array nums consists of pairwise distinct positive integers.
+  - There doesn't exist two distinct indices, i and j, with nums[i] + nums[j] == 3.
+  It can be proven that 4 is the minimum possible sum that a beautiful array could have.
 
-*Explanation:* For `n=5, target=4`, the optimal beautiful array is `[1,2,4,5,6]` (skip `3` because `1+3=4`). The sum is `1+2+4+5+6 = 18` but after applying the greedy formula the minimal sum modulo `10⁹+7` is `13` (illustrative). Adjust numbers accordingly.
+Example 2:
+  Input: n = 3, target = 3
+  Output: 8
+  Explanation: We can see that nums = [1,3,4] is beautiful.
+  - The array nums has length n = 3.
+  - The array nums consists of pairwise distinct positive integers.
+  - There doesn't exist two distinct indices, i and j, with nums[i] + nums[j] == 3.
+  It can be proven that 8 is the minimum possible sum that a beautiful array could have.
+
+Example 3:
+  Input: n = 1, target = 1
+  Output: 1
+  Explanation: We can see, that nums = [1] is beautiful.
+```
 
 ---
 

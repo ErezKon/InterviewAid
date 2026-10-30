@@ -7,14 +7,26 @@
 ---
 
 ## Problem Description
-Given the `root` of a binary tree, return the node values **level by level from bottom to top**. Within each level, values should be ordered from left to right.
+Given the `root` of a binary tree, return *the bottom-up level order traversal of its nodes' values*. (i.e., from left to right, level by level from leaf to root).
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[0, 2000]`.
+- `-1000 ≤ Node.val ≤ 1000`
 
 ## Examples
-| Tree (level order) | Output |
-|--------------------|--------|
-| `[3,9,20,null,null,15,7]` | `[[15,7],[9,20],[3]]` |
-| `[]` | `[]` |
-| `[1,2,3,4,5,null,6]` | `[[4,5,6],[2,3],[1]]` |
+```
+Example 1:
+  Input: root = [3,9,20,null,null,15,7]
+  Output: [[15,7],[9,20],[3]]
+
+Example 2:
+  Input: root = [1]
+  Output: [[1]]
+
+Example 3:
+  Input: root = []
+  Output: []
+```
 
 ## Approach
 Perform a standard breadth‑first search (BFS) to collect nodes level by level, then reverse the list of levels.

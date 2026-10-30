@@ -7,33 +7,63 @@
 ---
 
 ## Problem Description
-Given an `Employee` table with columns `employee_id`, `department_id`, and `primary_flag` (which is `'Y'` for the primary department), return each employee's primary department. If an employee belongs to only one department, that department is considered primary even if the flag is not set.
+
+Table: `Employee`
+
+```
++---------------+---------+
+| Column Name   |  Type   |
++---------------+---------+
+| employee_id   | int     |
+| department_id | int     |
+| primary_flag  | varchar |
++---------------+---------+
+(employee_id, department_id) is the primary key (combination of columns with unique values) for this table.
+employee_id is the id of the employee.
+department_id is the id of the department to which the employee belongs.
+primary_flag is an ENUM (category) of type ('Y', 'N'). If the flag is 'Y', the department is the primary department for the employee. If the flag is 'N', the department is not the primary.
+```
+
+Employees can belong to multiple departments. When the employee joins other departments, they need to decide which department is their primary department. Note that when an employee belongs to only one department, their primary column is `'N'`.
+
+Write a solution to report all the employees with their primary department. For employees who belong to one department, report their only department.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
+
 **Example 1:**
-```sql
+```
+Input:
 Employee table:
-+-------------+--------------+--------------+
-| employee_id | department_id| primary_flag |
-+-------------+--------------+--------------+
-| 1           | 10           | Y            |
-| 1           | 12           | N            |
-| 2           | 20           | N            |
-| 2           | 21           | N            |
-| 3           | 30           | N            |
-+-------------+--------------+--------------+
-```
++-------------+---------------+--------------+
+| employee_id | department_id | primary_flag |
++-------------+---------------+--------------+
+| 1           | 1             | N            |
+| 2           | 1             | Y            |
+| 2           | 2             | N            |
+| 3           | 3             | N            |
+| 4           | 2             | N            |
+| 4           | 3             | Y            |
+| 4           | 4             | N            |
++-------------+---------------+--------------+
 Output:
++-------------+---------------+
+| employee_id | department_id |
++-------------+---------------+
+| 1           | 1             |
+| 2           | 1             |
+| 3           | 3             |
+| 4           | 3             |
++-------------+---------------+
+Explanation:
+- The Primary department for employee 1 is 1.
+- The Primary department for employee 2 is 1.
+- The Primary department for employee 3 is 3.
+- The Primary department for employee 4 is 3.
 ```
-+-------------+--------------+
-| employee_id | department_id|
-+-------------+--------------+
-| 1           | 10           |
-| 2           | 20           |
-| 3           | 30           |
-+-------------+--------------+
-```
-Explanation: Employee 1 has a primary flag, employee 2 has only one department, employee 3 also has a single department.
 
 ## Approach
 Use a single SQL query:

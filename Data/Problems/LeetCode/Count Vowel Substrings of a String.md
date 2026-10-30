@@ -8,17 +8,40 @@
 
 ## Problem Description
 
-Count substrings that contain **only vowels** and include **all five** vowels (a, e, i, o, u).
+A **substring** is a contiguous (non-empty) sequence of characters within a string.
+
+A **vowel substring** is a substring that **only** consists of vowels (`'a'`, `'e'`, `'i'`, `'o'`, and `'u'`) and has **all five** vowels present in it.
+
+Given a string `word`, return *the number of **vowel substrings** in* `word`.
+
+**Constraints:**
+- `1 <= word.length <= 100`
+- `word` consists of lowercase English letters only.
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aeiouu"` | `2` | Substrings `"aeiou"` and `"aeiouu"` both contain all five vowels. |
-| `"unicornarihan"` | `0` | No substring contains all five vowels. |
-| `"cuaeio"` | `1` | Only substring `"aeio"` (starting at index 2) contains all five vowels. |
+```
+Example 1:
+  Input: word = "aeiouu"
+  Output: 2
+  Explanation: The vowel substrings of word are "aeiou" (indices 0-4) and "aeiouu" (indices 0-5).
+```
+
+```
+Example 2:
+  Input: word = "unicornarihan"
+  Output: 0
+  Explanation: Not all 5 vowels are present, so there are no vowel substrings.
+```
+
+```
+Example 3:
+  Input: word = "cuaieuouac"
+  Output: 7
+  Explanation: The vowel substrings of word are the 7 substrings of "uaieuoua" (indices 1-8) that contain all five vowels.
+```
 
 ---
 

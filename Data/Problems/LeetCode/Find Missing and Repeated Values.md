@@ -7,14 +7,31 @@
 ---
 
 ## Problem Description
-You are given an `n × n` integer matrix `grid` containing all numbers from `1` to `n²` exactly once, except that one number appears twice and another number is missing. Return an array `[repeated, missing]` where `repeated` is the duplicated value and `missing` is the absent value.
+You are given a **0-indexed** 2D integer matrix `grid` of size `n * n` with values in the range `[1, n^2]`. Each integer appears **exactly once** except `a` which appears **twice** and `b` which is **missing**. The task is to find the repeating and missing numbers `a` and `b`.
+
+Return *a **0-indexed** integer array* `ans` *of size* `2` *where* `ans[0]` *equals to* `a` *and* `ans[1]` *equals to* `b`*.*
+
+**Constraints:**
+- `2 <= n == grid.length == grid[i].length <= 50`
+- `1 <= grid[i][j] <= n * n`
+- For all `x` that `1 <= x <= n * n` there is exactly one `x` that is not equal to any of the grid members.
+- For all `x` that `1 <= x <= n * n` there is exactly one `x` that is equal to exactly two of the grid members.
+- For all `x` that `1 <= x <= n * n` except two of them there is exactly one pair of `i, j` that `0 <= i, j <= n - 1` and `grid[i][j] == x`.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[[1,2],[2,4]]` | `[2,3]` | `2` appears twice, `3` is missing. |
-| `[[9,2,3],[4,5,6],[7,8,9]]` | `[9,1]` | `9` duplicated, `1` missing. |
-| `[[1,1]]` | `[1,2]` | Smallest grid, `1` repeated, `2` missing.
+```
+Example 1:
+  Input: grid = [[1,3],[2,2]]
+  Output: [2,4]
+  Explanation: Number 2 is repeated and number 4 is missing so the answer is [2,4].
+```
+
+```
+Example 2:
+  Input: grid = [[9,1,7],[8,9,2],[3,4,6]]
+  Output: [9,5]
+  Explanation: Number 9 is repeated and number 5 is missing so the answer is [9,5].
+```
 
 ## Approach
 Count occurrences of each value using a hash table (or an array of size `n² + 1`). Iterate over the grid, incrementing the count for each cell. After counting, scan the count array to locate the value with count `2` (repeated) and the value with count `0` (missing).

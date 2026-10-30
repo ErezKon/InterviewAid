@@ -8,7 +8,25 @@
 
 ## 1. Problem Description
 
-Given a `Sales` table with `sale_date`, `fruit` (`'apples'` or `'oranges'`), and `sold_num`, report the difference (apples - oranges) sold on each date. *(SQL problem)*
+*(SQL problem)*
+
+Table: `Sales`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| sale_date     | date    |
+| fruit         | enum    |
+| sold_num      | int     |
++---------------+---------+
+(sale_date, fruit) is the primary key (combination of columns with unique values) of this table.
+This table contains the sales of "apples" and "oranges" sold each day.
+```
+
+Write a solution to report the difference between the number of **apples** and **oranges** sold each day.
+
+Return the result table **ordered** by `sale_date`.
 
 ---
 
@@ -26,28 +44,37 @@ ORDER BY sale_date;
 
 ## 3. Examples
 
-**Example 1:**
 ```
-Sales Table:
-+------------+--------+----------+
-| sale_date  | fruit  | sold_num |
-+------------+--------+----------+
-| 2023-01-01 | apples | 10       |
-| 2023-01-01 | oranges| 4        |
-| 2023-01-02 | apples | 5        |
-| 2023-01-02 | oranges| 7        |
-+------------+--------+----------+
+Example 1:
+  Input:
+  Sales table:
+  +------------+------------+-------------+
+  | sale_date  | fruit      | sold_num    |
+  +------------+------------+-------------+
+  | 2020-05-01 | apples     | 10          |
+  | 2020-05-01 | oranges    | 8           |
+  | 2020-05-02 | apples     | 15          |
+  | 2020-05-02 | oranges    | 15          |
+  | 2020-05-03 | apples     | 20          |
+  | 2020-05-03 | oranges    | 0           |
+  | 2020-05-04 | apples     | 15          |
+  | 2020-05-04 | oranges    | 16          |
+  +------------+------------+-------------+
+  Output:
+  +------------+--------------+
+  | sale_date  | diff         |
+  +------------+--------------+
+  | 2020-05-01 | 2            |
+  | 2020-05-02 | 0            |
+  | 2020-05-03 | 20           |
+  | 2020-05-04 | -1           |
+  +------------+--------------+
+  Explanation:
+  Day 2020-05-01, 10 apples and 8 oranges were sold (Difference 10 - 8 = 2).
+  Day 2020-05-02, 15 apples and 15 oranges were sold (Difference 15 - 15 = 0).
+  Day 2020-05-03, 20 apples and 0 oranges were sold (Difference 20 - 0 = 20).
+  Day 2020-05-04, 15 apples and 16 oranges were sold (Difference 15 - 16 = -1).
 ```
-Result:
-```
-+------------+------+
-| sale_date  | diff |
-+------------+------+
-| 2023-01-01 | 6    |
-| 2023-01-02 | -2   |
-+------------+------+
-```
-Explanation: On 2023‑01‑01, 10‑4 = 6 more apples; on 2023‑01‑02, 5‑7 = -2 (more oranges).
 
 ---
 

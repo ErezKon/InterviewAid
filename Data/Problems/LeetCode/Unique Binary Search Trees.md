@@ -7,7 +7,11 @@
 ---
 
 ## Problem Description
-Given an integer `n`, determine how many structurally unique binary search trees (BSTs) can be formed that store values `1` to `n`. Each BST must satisfy the BST property: left subtree nodes are less than the root, and right subtree nodes are greater.
+
+Given an integer `n`, return *the number of structurally unique **BST'**s (binary search trees) which has exactly* `n` *nodes of unique values from* `1` *to* `n`.
+
+**Constraints:**
+- `1 <= n <= 19`
 
 ## Examples
 **Example 1:**

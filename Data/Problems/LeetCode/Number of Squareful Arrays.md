@@ -20,17 +20,32 @@
 
 ## 1. Problem Description
 
-Count permutations of `nums` where every pair of adjacent elements sums to a perfect square. Return the total number of such permutations modulo 10⁹+7.
+An array is **squareful** if the sum of every pair of adjacent elements is a **perfect square**.
+
+Given an integer array nums, return *the number of permutations of *`nums`* that are **squareful***.
+
+Two permutations `perm1` and `perm2` are different if there is some index `i` such that `perm1[i] != perm2[i]`.
+
+**Constraints:**
+- `1 <= nums.length <= 12`
+- `0 <= nums[i] <= 10^9`
 
 ---
 
 ## 2. Examples
 
-| nums | Output | Explanation |
-|------|--------|-------------|
-| `[1,17,8]` | `2` | Valid permutations: `[1,8,17]` and `[17,8,1]` (1+8=9, 8+17=25). |
-| `[2,2,2]` | `1` | All elements are identical; only one unique permutation satisfies the condition. |
-| `[5,6,25]` | `0` | No ordering yields adjacent perfect‑square sums.
+**Example 1:**
+```
+Input: nums = [1,17,8]
+Output: 2
+Explanation: [1,8,17] and [17,8,1] are the valid permutations.
+```
+
+**Example 2:**
+```
+Input: nums = [2,2,2]
+Output: 1
+```
 
 ---
 

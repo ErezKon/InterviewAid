@@ -7,13 +7,45 @@
 ---
 
 ## Problem Description
-Design an iterator over a binary search tree (BST) that returns the next smallest element on each call. Implement `next()` and `hasNext()` with average O(1) time and O(h) memory, where h is the tree height.
+Implement the `BSTIterator` class that represents an iterator over the **in-order traversal** of a binary search tree (BST):
+
+- `BSTIterator(TreeNode root)` Initializes an object of the `BSTIterator` class. The `root` of the BST is given as part of the constructor. The pointer should be initialized to a non-existent number smaller than any element in the BST.
+- `boolean hasNext()` Returns `true` if there exists a number in the traversal to the right of the pointer, otherwise returns `false`.
+- `int next()` Moves the pointer to the right, then returns the number at the pointer.
+
+Notice that by initializing the pointer to a non-existent smallest number, the first call to `next()` will return the smallest element in the BST.
+
+You may assume that `next()` calls will always be valid. That is, there will be at least a next number in the in-order traversal when `next()` is called.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10⁵]`.
+- `0 ≤ Node.val ≤ 10⁶`
+- At most `10⁵` calls will be made to `hasNext`, and `next`.
+
+**Follow up:**
+- Could you implement `next()` and `hasNext()` to run in average `O(1)` time and use `O(h)` memory, where `h` is the height of the tree?
 
 ## Examples
-| BST (inorder) | Operations | Output |
-|---------------|------------|--------|
-| 3 /\\ 1 4 | `next()` → 1, `next()` → 3, `hasNext()` → true, `next()` → 4, `hasNext()` → false | 1,3,true,4,false |
-| Single node 5 | `hasNext()` → true, `next()` → 5, `hasNext()` → false | true,5,false |
+```
+Example 1:
+  Input
+  ["BSTIterator", "next", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext"]
+  [[[7, 3, 15, null, null, 9, 20]], [], [], [], [], [], [], [], [], []]
+  Output
+  [null, 3, 7, true, 9, true, 15, true, 20, false]
+
+  Explanation
+  BSTIterator bSTIterator = new BSTIterator([7, 3, 15, null, null, 9, 20]);
+  bSTIterator.next();    // return 3
+  bSTIterator.next();    // return 7
+  bSTIterator.hasNext(); // return True
+  bSTIterator.next();    // return 9
+  bSTIterator.hasNext(); // return True
+  bSTIterator.next();    // return 15
+  bSTIterator.hasNext(); // return True
+  bSTIterator.next();    // return 20
+  bSTIterator.hasNext(); // return False
+```
 
 ## Approach
 **Controlled Inorder with Stack** – Push all left descendants of the current node onto a stack. `next()` pops the top node, processes its value, then pushes the left chain of its right child. This yields the next in‑order element.

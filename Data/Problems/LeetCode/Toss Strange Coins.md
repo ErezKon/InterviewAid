@@ -7,14 +7,32 @@
 ---
 
 ## Problem Description
-You are given an integer `n`. You have a bag containing `n` identical coins, each showing heads. You repeatedly toss all coins that are currently heads. After each toss, a coin that lands tails is removed from the bag. The process continues until no coins remain. Return the expected number of tosses required to remove all coins.
+
+> *Note: premium problem (statement checked against the official text with verify.py). The Approach/Walkthrough below solve an invented harmonic-series problem. Correct idea: DP over coins — `dp[j]` = probability of exactly `j` heads so far; for each coin `p`, update `j` from high to low: `dp[j] = dp[j]·(1−p) + dp[j−1]·p`. Answer `dp[target]`. O(n·target).*
+
+You have some coins. The `i`-th coin has a probability `prob[i]` of facing heads when tossed.
+
+Return the probability that the number of coins facing heads equals `target` if you toss every coin exactly once.
+
+**Constraints:**
+- `1 <= prob.length <= 1000`
+- `0 <= prob[i] <= 1`
+- `0 <= target <= prob.length`
+- Answers will be accepted as correct if they are within `10^-5` of the correct answer.
 
 ## Examples
-| n | Output | Explanation |
-|---|--------|-------------|
-| 1 | 1.0 | One coin, one toss needed on average. |
-| 2 | 1.5 | Expected tosses = 1 + 1/2. |
-| 3 | 1.833333 | Sum of harmonic series up to 3. |
+
+**Example 1:**
+```
+Input: prob = [0.4], target = 1
+Output: 0.40000
+```
+
+**Example 2:**
+```
+Input: prob = [0.5,0.5,0.5,0.5,0.5], target = 0
+Output: 0.03125
+```
 
 ## Approach
 Each toss removes each remaining coin with probability `1/2`. The expected number of tosses for `k` coins equals `1 + 1/2 + 1/3 + … + 1/k`, i.e., the `k`‑th harmonic number `H_k`. Compute the sum iteratively.

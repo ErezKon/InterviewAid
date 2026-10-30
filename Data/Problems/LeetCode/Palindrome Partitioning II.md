@@ -7,20 +7,34 @@
 ---
 
 ## Problem Description
-Given a string *s*, partition it into the fewest possible substrings such that each substring is a palindrome. Return the minimum number of cuts needed to achieve this.
+Given a string `s`, partition `s` such that every substring of the partition is a palindrome.
+
+Return *the **minimum** cuts needed for a palindrome partitioning of* `s`.
+
+**Constraints:**
+
+- `1 <= s.length <= 2000`
+- `s` consists of lowercase English letters only.
 
 ## Examples
-**Example 1:**
+
 ```
-Input: "aab"
-Output: 1
-Explanation: Split into "aa" | "b", one cut.
+Example 1:
+  Input: s = "aab"
+  Output: 1
+  Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
 ```
-**Example 2:**
+
 ```
-Input: "a"
-Output: 0
-Explanation: The string is already a palindrome; no cuts needed.
+Example 2:
+  Input: s = "a"
+  Output: 0
+```
+
+```
+Example 3:
+  Input: s = "ab"
+  Output: 1
 ```
 
 ## Approach

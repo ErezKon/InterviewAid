@@ -8,12 +8,27 @@
 
 ## Problem Description
 
-Given a string `s`, return the lexicographically smallest subsequence that contains all distinct characters of `s` exactly once. Identical to problem 316 (Remove Duplicate Letters).
+Given a string `s`, return *the **lexicographically smallest subsequence** of* `s` *that contains all the distinct characters of* `s` *exactly once*.
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s` consists of lowercase English letters.
+
+**Note:** This question is the same as 316: [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/).
 
 ### Examples
 
-- **Input:** `s = "bcabc"` → **Output:** `"abc"`
-- **Input:** `s = "cbacdcbc"` → **Output:** `"acdb"`
+```
+Example 1:
+  Input: s = "bcabc"
+  Output: "abc"
+```
+
+```
+Example 2:
+  Input: s = "cbacdcbc"
+  Output: "acdb"
+```
 
 ## Approach: Monotonic Stack — O(n) ✅
 

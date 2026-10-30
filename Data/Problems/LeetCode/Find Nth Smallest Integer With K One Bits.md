@@ -7,14 +7,39 @@
 ---
 
 ## Problem Description
-Given two integers `n` and `k`, return the `n`‑th smallest positive integer that contains exactly `k` bits set to `1` in its binary representation. The sequence is ordered by increasing integer value.
+
+You are given two positive integers `n` and `k`.
+
+Return an integer denoting the `n^th` smallest positive integer that has **exactly** `k` ones in its binary representation. It is guaranteed that the answer is **strictly less** than `2^50`.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 1, k = 1` | `1` | Binary `1` has one set bit. |
-| `n = 3, k = 2` | `5` | Numbers with two set bits: `3 (011)`, `5 (101)`, `6 (110)`. The third is `5`. |
-| `n = 5, k = 3` | `13` | Sequence: `7 (111)`, `11 (1011)`, `13 (1101)`, `14 (1110)`, `19 (10011)`. Fifth is `13`? Actually fifth is `19`; adjust example: `n=4` gives `14`. |
+
+**Example 1:**
+```
+Input: n = 4, k = 2
+Output: 9
+Explanation: The 4 smallest positive integers that have exactly k = 2 ones in their binary representations are:
+- 3 = 11_2
+- 5 = 101_2
+- 6 = 110_2
+- 9 = 1001_2
+```
+
+**Example 2:**
+```
+Input: n = 3, k = 1
+Output: 4
+Explanation: The 3 smallest positive integers that have exactly k = 1 one in their binary representations are:
+- 1 = 1_2
+- 2 = 10_2
+- 4 = 100_2
+```
+
+## Constraints
+
+- `1 <= n <= 2^50`
+- `1 <= k <= 50`
+- The answer is strictly less than `2^50`.
 
 ## Approach
 Generate numbers with exactly `k` set bits in increasing order using a min‑heap (priority queue). Start with the smallest such number ` (1 << k) - 1`. Repeatedly pop the smallest number, push its next larger candidate by moving the rightmost non‑trailing zero one position left and resetting lower bits. Continue until the `n`‑th number is popped.

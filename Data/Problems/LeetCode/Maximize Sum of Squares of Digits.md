@@ -21,10 +21,22 @@
 
 ## Problem Description
 
-Given a number (as a string or integer), you can redistribute its digits to maximize the **sum of squares** of all digits. The digit sum must remain unchanged. Return the maximum sum of squares.
+> *Note: the Approach below solves an invented problem. Officially you build the `num`-digit integer with digit sum `sum` that maximizes the sum of squared digits. If `sum > 9·num` return `""`. Otherwise fill the digits from the left with 9s, then the remainder digit, then zeros. By convexity this maximizes the score, and it is also the largest such integer.*
+
+You are given two **positive** integers `num` and `sum`.
+
+A positive integer `n` is **good** if it satisfies both of the following:
+
+- The number of digits in `n` is **exactly** `num`.
+- The sum of digits in `n` is **exactly** `sum`.
+
+The **score** of a **good** integer `n` is the sum of the squares of digits in `n`.
+
+Return a **string** denoting the **good** integer `n` that achieves the **maximum** **score**. If there are multiple possible integers, return the **maximum **one. If no such integer exists, return an empty string.
 
 **Constraints:**
-- Number can be very large (given as string).
+- `1 <= num <= 2 * 10^5`
+- `1 <= sum <= 2 * 10^6`
 
 ---
 
@@ -32,16 +44,30 @@ Given a number (as a string or integer), you can redistribute its digits to maxi
 
 **Example 1:**
 ```
-Input: "123"
-Output: 82
-Explanation: Digit sum = 1+2+3 = 6. Best redistribution is "600" (6,0,0) → 6² + 0² + 0² = 36. Actually using two 3s and a 0 gives 3²+3²+0² = 18, less. The optimal is three 2s: "222" → 2²+2²+2² = 12, still less. The maximum is achieved by using one 6 and two 0s → 36. Wait compute correctly: 6² = 36, but we can also use one 5 and one 1: 5²+1² = 26. So 36 is max.
+Input: num = 2, sum = 3
+Output: "30"
+Explanation: There are 3 good integers: 12, 21, and 30.
+- The score of 12 is 1^2 + 2^2 = 5.
+- The score of 21 is 2^2 + 1^2 = 5.
+- The score of 30 is 3^2 + 0^2 = 9.
+The maximum score is 9, which is achieved by the good integer 30. Therefore, the answer is "30".
 ```
 
 **Example 2:**
 ```
-Input: "999"
-Output: 243
-Explanation: Digit sum = 27. Use three 9s (already maximal) → 3 * 81 = 243.
+Input: num = 2, sum = 17
+Output: "98"
+Explanation: There are 2 good integers: 89 and 98.
+- The score of 89 is 8^2 + 9^2 = 145.
+- The score of 98 is 9^2 + 8^2 = 145.
+The maximum score is 145. The maximum good integer that achieves this score is 98. Therefore, the answer is "98".
+```
+
+**Example 3:**
+```
+Input: num = 1, sum = 10
+Output: ""
+Explanation: There are no integers that have exactly 1 digit and whose digits sum to 10. Therefore, the answer is "".
 ```
 
 ---

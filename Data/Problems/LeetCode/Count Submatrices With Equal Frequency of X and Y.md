@@ -1,6 +1,7 @@
 # 3212. Count Submatrices With Equal Frequency of X and Y
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/count-submatrices-with-equal-frequency-of-x-and-y](https://leetcode.com/problems/count-submatrices-with-equal-frequency-of-x-and-y)
 **Companies:** Amazon, Google, Microsoft
 
 ---
@@ -19,25 +20,40 @@
 
 ## Problem Description
 
-Given a 2D grid containing characters `'X'`, `'Y'`, and `'.'`, count submatrices anchored at `(0, 0)` (i.e., top‑left corner) ending at `(i, j)` where the count of `'X'` equals the count of `'Y'` and both are > 0.
+Given a 2D character matrix `grid`, where `grid[i][j]` is either `'X'`, `'Y'`, or `'.'`, return the number of submatrices that contain:
+
+- `grid[0][0]`
+- an **equal** frequency of `'X'` and `'Y'`.
+- **at least** one `'X'`.
 
 **Constraints:**
-- `1 <= m, n <= 1000`
+- `1 <= grid.length, grid[i].length <= 1000`
+- `grid[i][j]` is either `'X'`, `'Y'`, or `'.'`.
 
 ---
 
 ## Examples
 
-| grid | Output |
-|------|--------|
-| `[["X","Y"],["Y","X"]]` | `2` |
-| `[["X",".","Y"],[".","X","Y"]]` | `1` |
-| `[[".","."] ,[".","."]]` | `0` |
+**Example 1:**
+```
+Input: grid = [["X","Y","."],["Y",".","."]]
+Output: 3
+Explanation: ![img](https://assets.leetcode.com/uploads/2024/06/07/examplems.png)
+```
 
-**Explanation:**
-- In the first grid, submatrices `(0,0)-(0,1)` and `(0,0)-(1,1)` have equal positive counts of X and Y.
-- In the second grid, only the full matrix `(0,0)-(1,2)` satisfies the condition.
-- The third grid contains no X or Y, so result is 0.
+**Example 2:**
+```
+Input: grid = [["X","X"],["X","Y"]]
+Output: 0
+Explanation: No submatrix has an equal frequency of 'X' and 'Y'.
+```
+
+**Example 3:**
+```
+Input: grid = [[".","."],[".","."]]
+Output: 0
+Explanation: No submatrix has at least one 'X'.
+```
 
 ---
 

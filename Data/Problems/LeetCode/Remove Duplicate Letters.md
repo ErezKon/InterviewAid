@@ -7,20 +7,25 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase English letters, remove duplicate letters so that every letter appears once and the resulting string is the smallest in lexicographic order among all possible results. Return the resulting string.
+
+Given a string `s`, remove duplicate letters so that every letter appears once and only once. The relative order of the letters that were not removed must be preserved. You must make sure your result is **the smallest in lexicographical order** among all possible results.
+
+**Constraints:**
+- `1 <= s.length <= 10^4`
+- `s` consists of lowercase English letters.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
 Input: s = "bcabc"
 Output: "abc"
-Explanation: The string "abc" is the smallest lexicographic result after removing duplicates.
 ```
-**Example 2**
+
+**Example 2:**
 ```
 Input: s = "cbacdcbc"
 Output: "acdb"
-Explanation: Removing duplicates while keeping the smallest lexicographic order yields "acdb".
 ```
 
 ## Approach

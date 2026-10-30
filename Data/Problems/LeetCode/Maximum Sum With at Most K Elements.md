@@ -7,21 +7,40 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` of length `n` and an integer `k` (1 ≤ k ≤ n), you may select **any number of elements up to `k`** (the selection does not need to be contiguous). Return the maximum possible sum of the chosen elements.
+
+> *Note: the Approach below ignores the grid and the per-row `limits`. Correct idea: from row `i` keep its `limits[i]` largest values, merge these candidates, and sum the `k` largest (sort or heap; values are non-negative).*
+
+You are given a 2D integer matrix `grid` of size `n x m`, an integer array `limits` of length `n`, and an integer `k`. The task is to find the **maximum sum** of **at most** `k` elements from the matrix `grid` such that:
+
+- The number of elements taken from the `i^th` row of `grid` does not exceed `limits[i]`.
+
+Return the **maximum sum**.
+
+**Constraints:**
+- `n == grid.length == limits.length`
+- `m == grid[i].length`
+- `1 <= n, m <= 500`
+- `0 <= grid[i][j] <= 10^5`
+- `0 <= limits[i] <= m`
+- `0 <= k <= min(n * m, sum(limits))`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [4, -1, 2, 1], k = 3
+Input: grid = [[1,2],[3,4]], limits = [1,2], k = 2
 Output: 7
-Explanation: Choose elements 4, 2, and 1 → sum = 7.
+Explanation: - From the second row, we can take at most 2 elements. The elements taken are 4 and 3.
+- The maximum possible sum of at most 2 selected elements is 4 + 3 = 7.
 ```
 
 **Example 2:**
 ```
-Input: nums = [-5, -2, -3], k = 2
-Output: -2
-Explanation: The best choice is the single element -2 (choosing fewer than k elements is allowed).
+Input: grid = [[5,3,7],[8,2,6]], limits = [2,2], k = 3
+Output: 21
+Explanation: - From the first row, we can take at most 2 elements. The element taken is 7.
+- From the second row, we can take at most 2 elements. The elements taken are 8 and 6.
+- The maximum possible sum of at most 3 selected elements is 7 + 8 + 6 = 21.
 ```
 
 ## Approach

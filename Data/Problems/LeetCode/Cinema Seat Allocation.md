@@ -7,20 +7,50 @@
 ---
 
 ## Problem Description
-Given a cinema with `n` rows of 10 seats each, a family of four members needs to sit together in one of the three possible blocks of seats: seats 2‑5 (left), 4‑7 (middle), or 6‑9 (right). Some seats are already reserved. Return the maximum number of families that can be seated.
+
+![img](https://assets.leetcode.com/uploads/2020/02/14/cinema_seats_1.png)
+
+A cinema has `n` rows of seats, numbered from 1 to `n`. Each row has 10 seats, numbered from 1 to 10.
+
+You are given a 2D integer array reservedSeats`, where reservedSeats[i] = [row_i, seat_i]` means that seat seat_i` in row row_i` is already reserved.
+
+A four-person group must be assigned to four seats in the **same** row. The group can be seated in one of the following seat blocks:
+
+- seats 2, 3, 4, 5`
+- seats 4, 5, 6, 7`
+- seats 6, 7, 8, 9`
+
+A block can be used only if **none** of its seats are reserved. Each seat can be assigned to **at most **one group.
+
+Return an integer denoting the **maximum** number of four-person groups that can be assigned.
+
+**Constraints:**
+- `1 <= n <= 10^9`
+- `1 <= reservedSeats.length <= min(10 * n, 10^4)`
+- `reservedSeats[i] == [row_i, seat_i]`
+- `1 <= row_i <= n`
+- `1 <= seat_i <= 10`
+- All `reservedSeats[i]` are distinct.
 
 ## Examples
+
 **Example 1:**
 ```
 Input: n = 3, reservedSeats = [[1,2],[1,3],[1,8],[2,6],[3,1],[3,10]]
 Output: 4
-Explanation: Row 1 can seat one family in seats 4‑7, row 2 in seats 2‑5, and row 3 in seats 6‑9. Row 1 also has space for a second family on the right side.
+Explanation: The figure above shows an optimal allocation of four groups. Seats marked in blue are already reserved, and each set of four contiguous seats marked in orange is assigned to one group.
 ```
+
 **Example 2:**
 ```
-Input: n = 2, reservedSeats = [[2,1],[1,8]]
+Input: n = 2, reservedSeats = [[2,1],[1,8],[2,6]]
 Output: 2
-Explanation: Both rows have one free block each.
+```
+
+**Example 3:**
+```
+Input: n = 4, reservedSeats = [[4,3],[1,4],[4,6],[1,7]]
+Output: 4
 ```
 
 ## Approach

@@ -7,37 +7,46 @@
 ---
 
 ## Problem Description
-Given a table `Logs(id, num)` where `id` is a strictly increasing timestamp, return all distinct `num` values that appear **at least three times consecutively** (i.e., with consecutive `id`s).
+Table: `Logs`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| num         | varchar |
++-------------+---------+
+In SQL, id is the primary key for this table.
+id is an autoincrement column starting from 1.
+```
+
+Find all numbers that appear at least three times consecutively.
+
+Return the result table in **any order**.
 
 ## Examples
-**Example 1:**
 ```
-Logs
-+----+------+
-| id | num |
-+----+------+
-| 1  | 1   |
-| 2  | 1   |
-| 3  | 1   |
-| 4  | 2   |
-| 5  | 1   |
-+----+------+
-Result: [1]
-```
-**Example 2:**
-```
-Logs
-+----+------+
-| id | num |
-+----+------+
-| 1  | 2   |
-| 2  | 2   |
-| 3  | 3   |
-| 4  | 2   |
-| 5  | 2   |
-| 6  | 2   |
-+----+------+
-Result: [2]
+Example 1:
+  Input:
+    Logs table:
+    +----+-----+
+    | id | num |
+    +----+-----+
+    | 1  | 1   |
+    | 2  | 1   |
+    | 3  | 1   |
+    | 4  | 2   |
+    | 5  | 1   |
+    | 6  | 2   |
+    | 7  | 2   |
+    +----+-----+
+  Output:
+    +-----------------+
+    | ConsecutiveNums |
+    +-----------------+
+    | 1               |
+    +-----------------+
+  Explanation: 1 is the only number that appears consecutively for at least three times.
 ```
 
 ## Approach

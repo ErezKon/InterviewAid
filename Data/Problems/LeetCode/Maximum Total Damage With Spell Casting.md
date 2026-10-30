@@ -7,18 +7,38 @@
 ---
 
 ## Problem Description
-Given an array `power` where `power[i]` is the damage of the i‑th spell, you may cast any subset of spells such that no two selected spells have damage values that differ by at most 1 (i.e., you cannot pick both `d` and `d‑1` or `d+1`). Maximize the total damage of the selected spells.
+
+> *Note: the Approach below only excludes `dmg − 1`, but officially casting `d` forbids `d ± 1` **and** `d ± 2`. Fix: when taking `uniqueVals[i]`, combine with the last index `j` where `uniqueVals[j] < dmg − 2`.*
+
+A magician has various spells.
+
+You are given an array `power`, where each element represents the damage of a spell. Multiple spells can have the same damage value.
+
+It is a known fact that if a magician decides to cast a spell with a damage of `power[i]`, they **cannot** cast any spell with a damage of `power[i] - 2`, `power[i] - 1`, `power[i] + 1`, or `power[i] + 2`.
+
+Each spell can be cast **only once**.
+
+Return the **maximum** possible *total damage* that a magician can cast.
+
+**Constraints:**
+- `1 <= power.length <= 10^5`
+- `1 <= power[i] <= 10^9`
 
 ## Examples
+
 **Example 1:**
-Input: `power = [1,2,3,4,5]`
-Output: `9`
-Explanation: Choose spells with damages 1, 3, and 5 → total 9. Any pair of chosen damages differs by at least 2.
+```
+Input: power = [1,1,3,4]
+Output: 6
+Explanation: The maximum possible damage of 6 is produced by casting spells 0, 1, 3 with damage 1, 1, 4.
+```
 
 **Example 2:**
-Input: `power = [2,2,3,3,3,4]`
-Output: `9`
-Explanation: Pick all three spells of damage 3 (3 × 3) = 9. Selecting damage 2 or 4 would conflict with 3.
+```
+Input: power = [7,1,6,6]
+Output: 13
+Explanation: The maximum possible damage of 13 is produced by casting spells 1, 2, 3 with damage 1, 6, 6.
+```
 
 ## Approach
 **Dynamic Programming with Value Compression** – Group spells by damage, sort unique damages, and apply a DP similar to the House Robber problem where adjacent damage values cannot both be taken.

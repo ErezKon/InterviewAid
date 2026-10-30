@@ -20,9 +20,11 @@
 
 ## Problem Description
 
-Given an array of integers `nums`, find the **maximum length of a subarray** where the product of all its elements is **positive**.
+Given an array of integers `nums`, find the maximum length of a subarray where the product of all its elements is positive.
 
-A product is positive when there is an **even number of negative numbers** (or zero negatives) and **no zeros** in the subarray.
+A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
+
+Return *the maximum length of a subarray with positive product*.
 
 **Constraints:**
 - `1 <= nums.length <= 10^5`
@@ -34,23 +36,24 @@ A product is positive when there is an **even number of negative numbers** (or z
 
 **Example 1:**
 ```
-Input:  nums = [1, -2, -3, 4]
+Input: nums = [1,-2,-3,4]
 Output: 4
-Explanation: Product of entire array = 1×(-2)×(-3)×4 = 24 > 0.
+Explanation: The array nums already has a positive product of 24.
 ```
 
 **Example 2:**
 ```
-Input:  nums = [0, 1, -2, -3, -4]
+Input: nums = [0,1,-2,-3,-4]
 Output: 3
-Explanation: Subarray [1,-2,-3] has product 6 > 0. Length = 3.
+Explanation: The longest subarray with positive product is [1,-2,-3] which has a product of 6.
+Notice that we cannot include 0 in the subarray since that'll make the product 0 which is not positive.
 ```
 
 **Example 3:**
 ```
-Input:  nums = [-1, -2, -3, 0, 1]
+Input: nums = [-1,-2,-3,0,1]
 Output: 2
-Explanation: Subarray [-1,-2] has product 2 > 0. Length = 2.
+Explanation: The longest subarray with positive product is [-1,-2] or [-2,-3].
 ```
 
 ---

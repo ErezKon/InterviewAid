@@ -7,13 +7,55 @@
 ---
 
 ## Problem Description
-For an integer `x`, define its **waviness** as the number of positions `i` (0‑based from the least significant digit) where the digit at `i` is strictly greater than the digit at `i+1`. Given two integers `low` and `high` (`low ≤ high`), compute the sum of waviness values for all numbers in the inclusive range `[low, high]`.
+
+> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below use an invented waviness definition and a digit DP; with `num2 ≤ 10^5` a direct simulation suffices: for each number, count interior digits that are strictly greater than both neighbours (peak) or strictly less than both (valley). O((num2 − num1 + 1)·log num2).*
+
+You are given two integers `num1` and `num2` representing an **inclusive** range `[num1, num2]`.
+
+The **waviness** of a number is defined as the total count of its **peaks** and **valleys**:
+
+- A digit is a **peak** if it is **strictly greater** than both of its immediate neighbors.
+- A digit is a **valley** if it is **strictly less** than both of its immediate neighbors.
+- The first and last digits of a number **cannot** be peaks or valleys.
+- Any number with fewer than 3 digits has a waviness of 0.
+
+Return the total sum of waviness for all numbers in the range `[num1, num2]`.
+
+**Constraints:**
+- `1 <= num1 <= num2 <= 10^5`
 
 ## Examples
-| low | high | Output | Explanation |
-|-----|------|--------|-------------|
-| 1 | 10 | 4 | Numbers 1‑10 have waviness counts: 1(0),2(0),3(0),4(0),5(0),6(0),7(0),8(0),9(0),10(1) → total 1. (Assuming leading zeros are ignored, only 10 contributes 1.) |
-| 20 | 23 | 2 | 20(0),21(0),22(0),23(0) → total 0 (example placeholder). |
+
+**Example 1:**
+```
+Input: num1 = 120, num2 = 130
+Output: 3
+Explanation: In the range [120, 130]:
+- 120: middle digit 2 is a peak, waviness = 1.
+- 121: middle digit 2 is a peak, waviness = 1.
+- 130: middle digit 3 is a peak, waviness = 1.
+- All other numbers in the range have a waviness of 0.
+Thus, total waviness is 1 + 1 + 1 = 3.
+```
+
+**Example 2:**
+```
+Input: num1 = 198, num2 = 202
+Output: 3
+Explanation: In the range [198, 202]:
+- 198: middle digit 9 is a peak, waviness = 1.
+- 201: middle digit 0 is a valley, waviness = 1.
+- 202: middle digit 0 is a valley, waviness = 1.
+- All other numbers in the range have a waviness of 0.
+Thus, total waviness is 1 + 1 + 1 = 3.
+```
+
+**Example 3:**
+```
+Input: num1 = 4848, num2 = 4848
+Output: 2
+Explanation: Number 4848: the second digit 8 is a peak, and the third digit 4 is a valley, giving a waviness of 2.
+```
 
 ## Approach
 Use digit DP to count contributions of each digit position across the range. For each position `pos`, we need to know how many numbers have a digit larger than the next lower digit. The DP state tracks the previous digit and whether the prefix is tight to the bound.

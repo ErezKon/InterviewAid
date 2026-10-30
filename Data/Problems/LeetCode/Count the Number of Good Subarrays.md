@@ -8,7 +8,11 @@
 
 ## Problem Description
 
-A subarray is **good** if it has at least `k` pairs of equal elements `(i, j)` where `i < j`. Return the count of good subarrays.
+Given an integer array `nums` and an integer `k`, return *the number of **good** subarrays of* `nums`.
+
+A subarray `arr` is **good** if there are **at least **`k` pairs of indices `(i, j)` such that `i < j` and `arr[i] == arr[j]`.
+
+A **subarray** is a contiguous **non-empty** sequence of elements within an array.
 
 **Constraints:**
 - `1 <= nums.length <= 10^5`
@@ -22,15 +26,18 @@ A subarray is **good** if it has at least `k` pairs of equal elements `(i, j)` w
 ```
 Input: nums = [1,1,1,1,1], k = 10
 Output: 1
-Explanation: Only the full array contains 10 equal‑element pairs.
+Explanation: The only good subarray is the array nums itself.
 ```
 
 **Example 2:**
 ```
-Input: nums = [1,2,1,2,3], k = 2
+Input: nums = [3,1,4,3,2,2,4], k = 2
 Output: 4
-Explanation:
-Good subarrays are [1,2,1], [2,1,2], [1,2,1,2], and [1,2,1,2,3].
+Explanation: There are 4 different good subarrays:
+- [3,1,4,3,2,2] that has 2 pairs.
+- [3,1,4,3,2,2,4] that has 3 pairs.
+- [1,4,3,2,2,4] that has 2 pairs.
+- [4,3,2,2,4] that has 2 pairs.
 ```
 
 ---

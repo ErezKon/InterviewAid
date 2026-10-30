@@ -7,18 +7,38 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may perform the following operation any number of times: choose two distinct indices `i` and `j`, increment `nums[i]` by `2` and decrement `nums[j]` by `1`. Return the minimum number of operations required to make all elements of the array equal.
+You are given two integer arrays `nums1` and `nums2` of equal length `n` and an integer `k`. You can perform the following operation on `nums1`:
+
+- Choose two indexes `i` and `j` and increment `nums1[i]` by `k` and decrement `nums1[j]` by `k`. In other words, `nums1[i] = nums1[i] + k` and `nums1[j] = nums1[j] - k`.
+
+`nums1` is said to be **equal** to `nums2` if for all indices `i` such that `0 <= i < n`, `nums1[i] == nums2[i]`.
+
+Return *the **minimum** number of operations required to make* `nums1` *equal to* `nums2`. If it is impossible to make them equal, return `-1`.
+
+**Constraints:**
+- `n == nums1.length == nums2.length`
+- `2 <= n <= 10^5`
+- `0 <= nums1[i], nums2[j] <= 10^9`
+- `0 <= k <= 10^5`
 
 ## Examples
-**Example 1:**
-Input: `nums = [2,5,6]`
-Output: `3`
-Explanation: One optimal sequence is: \( [2,5,6] → [4,4,6] → [6,4,4] → [6,6,6] \).
 
-**Example 2:**
-Input: `nums = [3,3,3]`
-Output: `0`
-Explanation: The array is already equal.
+```
+Example 1:
+  Input: nums1 = [4,3,1,4], nums2 = [1,3,7,1], k = 3
+  Output: 2
+  Explanation: In 2 operations, we can transform nums1 to nums2.
+  1st operation: i = 2, j = 0. After applying the operation, nums1 = [1,3,4,4].
+  2nd operation: i = 2, j = 3. After applying the operation, nums1 = [1,3,7,1].
+  One can prove that it is impossible to make arrays equal in fewer operations.
+```
+
+```
+Example 2:
+  Input: nums1 = [3,8,5,2], nums2 = [2,4,1,6], k = 1
+  Output: -1
+  Explanation: It can be proved that it is impossible to make the two arrays equal.
+```
 
 ## Approach
 The operation increases the total sum by `1` ( +2 and -1 ). To make all elements equal to a target `t`, the total sum must become `n * t`. The minimal `t` is the ceiling of the average of the array. The number of operations equals `t * n - sum(nums)`. This follows a greedy insight that we always push the array toward the smallest feasible equal value.

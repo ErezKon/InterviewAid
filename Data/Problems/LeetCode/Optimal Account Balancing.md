@@ -7,20 +7,40 @@
 ---
 
 ## Problem Description
-Given a list of transactions where `transactions[i] = [from_i, to_i, amount_i]` indicates that person `from_i` gave `amount_i` dollars to person `to_i`, settle all debts with the minimum number of transactions. Each transaction can transfer any amount between two people. Return the smallest possible number of transactions required to balance all accounts.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an array of transactions `transactions` where `transactions[i] = [from_i, to_i, amount_i]` indicates that the person with `ID = from_i` gave `amount_i $` to the person with `ID = to_i`.
+
+Return *the minimum number of transactions required to settle the debt*.
+
+**Constraints:**
+- `1 <= transactions.length <= 8`
+- `transactions[i].length == 3`
+- `0 <= from_i, to_i < 12`
+- `from_i != to_i`
+- `1 <= amount_i <= 100`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-transactions = [[0,1,10],[2,0,5]]
+Input: transactions = [[0,1,10],[2,0,5]]
 Output: 2
-Explanation: One way is 0→1 (10), 2→0 (5). Two transactions are needed.
+Explanation: Person #0 gave person #1 $10.
+Person #2 gave person #0 $5.
+Two transactions are needed. One way to settle the debt is person #1 pays person #0 and #2 $5 each.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-transactions = [[0,1,10],[1,0,1],[1,2,5],[2,0,5]]
+Input: transactions = [[0,1,10],[1,0,1],[1,2,5],[2,0,5]]
 Output: 1
-Explanation: Net balances are [−4, +4, 0]; a single transaction 1→0 (4) settles all.
+Explanation: Person #0 gave person #1 $10.
+Person #1 gave person #0 $1.
+Person #1 gave person #2 $5.
+Person #2 gave person #0 $5.
+Therefore, person #1 only need to give person #0 $4, and all debt is settled.
 ```
 
 ## Approach

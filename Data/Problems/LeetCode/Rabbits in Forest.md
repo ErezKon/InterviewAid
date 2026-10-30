@@ -7,20 +7,32 @@
 ---
 
 ## Problem Description
-You are given an integer array `answers` where `answers[i]` is the response of the i‑th rabbit to the question “How many other rabbits have the same color as you?”. If a rabbit says `k`, it implies there are exactly `k+1` rabbits of that color. Determine the minimum total number of rabbits that could be present in the forest consistent with all answers.
+
+There is a forest with an unknown number of rabbits. We asked n rabbits **"How many other rabbits have the same color as you?"** and collected the answers in an integer array `answers` where `answers[i]` is the answer of the `i^th` rabbit.
+
+Given the array `answers`, return *the minimum number of rabbits that could be in the forest*.
+
+**Constraints:**
+- `1 <= answers.length <= 1000`
+- `0 <= answers[i] < 1000`
 
 ## Examples
+
 **Example 1:**
 ```
-answers = [1,1,2]
+Input: answers = [1,1,2]
 Output: 5
-Explanation: Two rabbits say "1" → they belong to a group of 2 (size 2). The rabbit saying "2" indicates a group of 3. Total = 2 + 3 = 5.
+Explanation: The two rabbits that answered "1" could both be the same color, say red.
+The rabbit that answered "2" can't be red or the answers would be inconsistent.
+Say the rabbit that answered "2" was blue.
+Then there should be 2 other blue rabbits in the forest that didn't answer into the array.
+The smallest possible number of rabbits in the forest is therefore 5: 3 that answered plus 2 that didn't.
 ```
+
 **Example 2:**
 ```
-answers = [10,10,10]
-Output: 33
-Explanation: Each "10" means a group of 11 rabbits. Three answers can belong to the same group of 11, but we need three groups because a group of 11 can contain at most 11 rabbits. Hence 3 * 11 = 33.
+Input: answers = [10,10,10]
+Output: 11
 ```
 
 ## Approach

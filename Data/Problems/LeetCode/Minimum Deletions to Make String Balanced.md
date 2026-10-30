@@ -20,11 +20,15 @@
 
 ## Problem Description
 
-Given a string `s` consisting only of characters `'a'` and `'b'`, return the **minimum number of deletions** to make `s` **balanced** — meaning no `'b'` comes before an `'a'` in the result (all `'a'`s before all `'b'`s).
+You are given a string `s` consisting only of characters `'a'` and `'b'`.
+
+You can delete any number of characters in `s` to make `s` **balanced**. `s` is **balanced** if there is no pair of indices `(i,j)` such that `i < j` and `s[i] = 'b'` and `s[j]= 'a'`.
+
+Return *the **minimum** number of deletions needed to make *`s`* **balanced***.
 
 **Constraints:**
-- `1 ≤ s.length ≤ 10⁵`
-- `s[i]` is `'a'` or `'b'`
+- `1 <= s.length <= 10^5`
+- `s[i]` is `'a'` or `'b'`.
 
 ---
 
@@ -34,14 +38,16 @@ Given a string `s` consisting only of characters `'a'` and `'b'`, return the **m
 ```
 Input: s = "aababbab"
 Output: 2
-Explanation: Delete s[2]='b' and s[6]='a' → "aaabbb" (balanced).
+Explanation: You can either:
+Delete the characters at 0-indexed positions 2 and 6 ("aababbab" -> "aaabbb"), or
+Delete the characters at 0-indexed positions 3 and 6 ("aababbab" -> "aabbbb").
 ```
 
 **Example 2:**
 ```
-Input: s = "bbaaaaab"
+Input: s = "bbaaaaabb"
 Output: 2
-Explanation: Delete the two leading 'b's → "aaaaab" (balanced).
+Explanation: The only solution is to delete the first two characters.
 ```
 
 ---

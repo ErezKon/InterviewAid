@@ -7,20 +7,40 @@
 ---
 
 ## Problem Description
-A *trionic array* is a data structure that supports three operations on an integer array `arr` of length `n`:
-1. **Update(i, val)** – set `arr[i] = val`.
-2. **Query(l, r)** – return the sum of elements from index `l` to `r` inclusive.
-3. **Reset()** – set all elements of `arr` to `0`.
-Implement the class with these operations. All indices are `0`‑based.
+
+> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below implement an invented update/query/reset data structure. Correct idea: single pass — advance `p` while strictly increasing (fail if `p == 0`), advance `q` from `p` while strictly decreasing (fail if `q == p` or `q == n−1`), then advance while strictly increasing and require reaching `n−1`. O(n).*
+
+You are given an integer array `nums` of length `n`.
+
+An array is **trionic** if there exist indices `0 < p < q < n − 1` such that:
+
+- `nums[0...p]` is **strictly** increasing,
+- `nums[p...q]` is **strictly** decreasing,
+- `nums[q...n − 1]` is **strictly** increasing.
+
+Return `true` if `nums` is trionic, otherwise return `false`.
+
+**Constraints:**
+- `3 <= n <= 100`
+- `-1000 <= nums[i] <= 1000`
 
 ## Examples
+
 **Example 1:**
 ```
-TrionicArray obj = new TrionicArray([1,2,3])
-obj.update(1,5)      // arr becomes [1,5,3]
-obj.query(0,2)       // returns 9
-obj.reset()          // arr becomes [0,0,0]
-obj.query(0,1)       // returns 0
+Input: nums = [1,3,5,4,2,6]
+Output: true
+Explanation: Pick p = 2, q = 4:
+- nums[0...2] = [1, 3, 5] is strictly increasing (1 < 3 < 5).
+- nums[2...4] = [5, 4, 2] is strictly decreasing (5 > 4 > 2).
+- nums[4...5] = [2, 6] is strictly increasing (2 < 6).
+```
+
+**Example 2:**
+```
+Input: nums = [2,1,3]
+Output: false
+Explanation: There is no way to pick p and q to form the required three segments.
 ```
 
 ## Approach

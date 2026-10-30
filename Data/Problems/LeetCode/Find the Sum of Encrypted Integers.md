@@ -19,10 +19,12 @@
 
 ## 1. Problem Description
 
-"Encrypt" each number by replacing every digit with the maximum digit in that number. Return the sum of all encrypted numbers.
+You are given an integer array `nums` containing **positive** integers. We define a function `encrypt` such that `encrypt(x)` replaces **every** digit in `x` with the **largest** digit in `x`. For example, `encrypt(523) = 555` and `encrypt(213) = 333`.
+
+Return *the **sum **of encrypted elements*.
 
 **Constraints:**
-- `1 <= nums.length <= 100`
+- `1 <= nums.length <= 50`
 - `1 <= nums[i] <= 1000`
 
 ---
@@ -47,22 +49,16 @@ FUNCTION sumOfEncryptedInt(nums):
 
 **Example 1:**
 ```
-Input: nums = [12, 23]
-Output: 55
-Explanation:
-- 12 → max digit 2 → "22" = 22
-- 23 → max digit 3 → "33" = 33
-Sum = 22 + 33 = 55
+Input: nums = [1,2,3]
+Output: 6
+Explanation: The encrypted elements are [1,2,3]. The sum of encrypted elements is 1 + 2 + 3 == 6.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5, 999]
-Output: 1004
-Explanation:
-- 5 → "5" = 5
-- 999 → max digit 9 → "999" = 999
-Sum = 5 + 999 = 1004
+Input: nums = [10,21,31]
+Output: 66
+Explanation: The encrypted elements are [11,22,33]. The sum of encrypted elements is 11 + 22 + 33 == 66.
 ```
 
 ---

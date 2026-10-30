@@ -7,26 +7,48 @@
 ---
 
 ## Problem Description
-You are given an array `buckets` where `buckets[i]` represents the amount of water in the *i*‑th bucket. In one operation you may choose two different buckets `i` and `j` and pour one unit of water from bucket `i` to bucket `j` (the source bucket must have at least one unit). The operation can be performed any number of times. Return the minimum number of operations required to make all bucket levels equal. If it is impossible, return `-1`.
+
+> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve a different (integer-moves) problem. Correct idea: binary search the final level `t` in `[0, max(buckets)]`; `t` is feasible iff `Σ_{b>t}(b − t) · (100 − loss)/100 ≥ Σ_{b<t}(t − b)`. O(n log(max/ε)).*
+
+You have `n` buckets each containing some gallons of water in it, represented by a **0-indexed** integer array `buckets`, where the `i`th bucket contains `buckets[i]` gallons of water. You are also given an integer `loss`.
+
+You want to make the amount of water in each bucket equal. You can pour any amount of water from one bucket to another bucket (not necessarily an integer). However, every time you pour `k` gallons of water, you spill `loss` **percent** of `k`.
+
+Return *the **maximum** amount of water in each bucket after making the amount of water equal.* Answers within `10^-5` of the actual answer will be accepted.
+
+**Constraints:**
+- `1 <= buckets.length <= 10^5`
+- `0 <= buckets[i] <= 10^5`
+- `0 <= loss <= 99`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: buckets = [5,1,2]
-Output: 3
-Explanation: Transfer 1 unit from bucket 0 to bucket 1 (→ [4,2,2]), then 1 unit from bucket 0 to bucket 2 (→ [3,2,3]), finally 1 unit from bucket 0 to bucket 2 (→ [2,2,4]) and one more from bucket 2 to bucket 0 (→ [3,2,3]) … after 3 moves we can reach [3,3,3].
+Input: buckets = [1,2,7], loss = 80
+Output: 2.00000
+Explanation: Pour 5 gallons of water from buckets[2] to buckets[0].
+5 * 80% = 4 gallons are spilled and buckets[0] only receives 5 - 4 = 1 gallon.
+All buckets have 2 gallons of water in them so return 2.
 ```
+
 **Example 2:**
 ```
-Input: buckets = [2,2,2]
-Output: 0
-Explanation: All buckets already have equal water.
+Input: buckets = [2,4,6], loss = 50
+Output: 3.50000
+Explanation: Pour 0.5 gallons of water from buckets[1] to buckets[0].
+0.5 * 50% = 0.25 gallons are spilled and buckets[0] only receives 0.5 - 0.25 = 0.25 gallons.
+Now, buckets = [2.25, 3.5, 6].
+Pour 2.5 gallons of water from buckets[2] to buckets[0].
+2.5 * 50% = 1.25 gallons are spilled and buckets[0] only receives 2.5 - 1.25 = 1.25 gallons.
+All buckets have 3.5 gallons of water in them so return 3.5.
 ```
+
 **Example 3:**
 ```
-Input: buckets = [1,2,3]
-Output: -1
-Explanation: Total water (6) is not divisible by 3, so equal levels are impossible.
+Input: buckets = [3,3,3,3], loss = 40
+Output: 3.00000
+Explanation: All buckets already have the same amount of water in them.
 ```
 
 ## Approach

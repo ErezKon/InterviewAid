@@ -21,11 +21,13 @@
 
 ## 1. Problem Description
 
-Given two integer arrays `nums1` and `nums2` of equal length, return a **permutation** of `nums1` that **maximizes its advantage** over `nums2`. The advantage is the number of indices `i` where `nums1[i] > nums2[i]`.
+You are given two integer arrays `nums1` and `nums2` both of the same length. The **advantage** of `nums1` with respect to `nums2` is the number of indices `i` for which `nums1[i] > nums2[i]`.
+
+Return *any permutation of* `nums1` *that maximizes its **advantage** with respect to* `nums2`.
 
 **Constraints:**
 - `1 ≤ nums1.length ≤ 10⁵`
-- `nums1.length == nums2.length`
+- `nums2.length == nums1.length`
 - `0 ≤ nums1[i], nums2[i] ≤ 10⁹`
 
 ---

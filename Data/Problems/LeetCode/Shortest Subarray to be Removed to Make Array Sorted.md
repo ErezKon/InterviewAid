@@ -7,7 +7,15 @@
 
 ## Problem Description
 
-Given an integer array, remove a contiguous subarray (possibly empty) such that the remaining elements are in non‑decreasing order. Return the length of the shortest subarray that can be removed.
+Given an integer array `arr`, remove a subarray (can be empty) from `arr` such that the remaining elements in `arr` are **non-decreasing**.
+
+Return *the length of the shortest subarray to remove*.
+
+A **subarray** is a contiguous subsequence of the array.
+
+**Constraints:**
+- `1 <= arr.length <= 10^5`
+- `0 <= arr[i] <= 10^9`
 
 ---
 
@@ -54,14 +62,22 @@ FUNCTION findLengthOfShortestSubarray(arr):
 ```
 Input: arr = [1,2,3,10,4,2,3,5]
 Output: 3
-Explanation: Remove the subarray [10,4,2] to obtain [1,2,3,3,5] which is non‑decreasing.
+Explanation: The shortest subarray we can remove is [10,4,2] of length 3. The remaining elements after that will be [1,2,3,3,5] which are sorted.
+Another correct solution is to remove the subarray [3,10,4].
 ```
 
 **Example 2:**
 ```
 Input: arr = [5,4,3,2,1]
 Output: 4
-Explanation: Remove the first four elements, leaving [1].
+Explanation: Since the array is strictly decreasing, we can only keep a single element. Therefore we need to remove a subarray of length 4, either [5,4,3,2] or [4,3,2,1].
+```
+
+**Example 3:**
+```
+Input: arr = [1,2,3]
+Output: 0
+Explanation: The array is already non-decreasing. We do not need to remove any elements.
 ```
 
 ---

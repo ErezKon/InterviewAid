@@ -7,15 +7,34 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may choose a non‑empty subarray and multiply each of its elements by `2` exactly once. Return the maximum possible sum of the array after this operation. The subarray can be the whole array or a single element.
+
+> *Note: the Approach below doubles a subarray. Officially exactly one element is **squared**. Correct idea: DP with `no[i] = max(no[i−1] + x, x)` and `sq[i] = max(sq[i−1] + x, no[i−1] + x², x²)`; the answer is `max(sq[i])`.*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an integer array `nums`. You must perform **exactly one** operation where you can **replace** one element `nums[i]` with `nums[i] * nums[i]`.
+
+Return *the **maximum** possible subarray sum after **exactly one** operation*. The subarray must be non-empty.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `-10^4 <= nums[i] <= 10^4`
 
 ## Examples
-- **Input:** `nums = [1, -2, 3, -4, 5]`  
-  **Output:** `15`  
-  **Explanation:** Double the subarray `[3, -4, 5]` → `[6, -8, 10]`. New array sum = `1 + (-2) + 6 + (-8) + 10 = 7`. Actually better to double `[5]` → sum = `1-2+3-4+10 = 8`. The optimal is to double `[1, -2, 3, -4, 5]` → sum = `2-4+6-8+10 = 6`. The maximum achievable is `15` by doubling `[1, -2, 3]` then adding remaining elements.
-- **Input:** `nums = [-1, -2, -3]`  
-  **Output:** `-1`  
-  **Explanation:** Doubling any subarray makes the sum more negative; best is to double the least negative element `-1`.
+
+**Example 1:**
+```
+Input: nums = [2,-1,-4,-3]
+Output: 17
+Explanation: You can perform the operation on index 2 (0-indexed) to make nums = [2,-1,16,-3]. Now, the maximum subarray sum is 2 + -1 + 16 = 17.
+```
+
+**Example 2:**
+```
+Input: nums = [1,-1,1,1,-1,-1,1]
+Output: 4
+Explanation: You can perform the operation on index 1 (0-indexed) to make nums = [1,1,1,1,-1,-1,1]. Now, the maximum subarray sum is 1 + 1 + 1 + 1 = 4.
+```
 
 ## Approach
 Use Kadane’s algorithm to compute maximum subarray sums from the left and right. For each possible split, consider the gain of doubling a subarray between the split points. The gain equals the sum of the chosen subarray (since doubling adds the same sum again). Combine left max, right max, and the best gain to obtain the answer.

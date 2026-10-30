@@ -8,24 +8,35 @@
 
 ## 1. Problem Description
 
-Given a temperature in Celsius, convert it to Kelvin and Fahrenheit. Return `[kelvin, fahrenheit]`.
+You are given a non-negative floating point number rounded to two decimal places `celsius`, that denotes the **temperature in Celsius**.
+
+You should convert Celsius into **Kelvin** and **Fahrenheit** and return it as an array `ans = [kelvin, fahrenheit]`.
+
+Return *the array* `ans`. Answers within `10^-5` of the actual answer will be accepted.
+
+**Note that:**
+
+- `Kelvin = Celsius + 273.15`
+- `Fahrenheit = Celsius * 1.80 + 32.00`
+
+**Constraints:**
+- `0 <= celsius <= 1000`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: celsius = 0
-Output: [273.15, 32.0]
-Explanation: 0°C = 273.15K and 0°C = 32°F.
+Example 1:
+  Input: celsius = 36.50
+  Output: [309.65000,97.70000]
+  Explanation: Temperature at 36.50 Celsius converted in Kelvin is 309.65 and converted in Fahrenheit is 97.70.
 ```
-
-**Example 2:**
 ```
-Input: celsius = 100
-Output: [373.15, 212.0]
-Explanation: 100°C = 373.15K and 100°C = 212°F.
+Example 2:
+  Input: celsius = 122.11
+  Output: [395.26000,251.79800]
+  Explanation: Temperature at 122.11 Celsius converted in Kelvin is 395.26 and converted in Fahrenheit is 251.798.
 ```
 
 ---

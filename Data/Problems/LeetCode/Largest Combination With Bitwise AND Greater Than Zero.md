@@ -8,7 +8,18 @@
 
 ## 1. Problem Description
 
-Find the largest subset of `candidates` whose bitwise AND is greater than 0.
+The **bitwise AND** of an array `nums` is the bitwise AND of all integers in `nums`.
+
+- For example, for `nums = [1, 5, 3]`, the bitwise AND is equal to `1 & 5 & 3 = 1`.
+- Also, for `nums = [7]`, the bitwise AND is `7`.
+
+You are given an array of positive integers `candidates`. Compute the **bitwise AND** for all possible **combinations** of elements in the `candidates` array.
+
+Return *the size of the **largest** combination of* `candidates` *with a bitwise AND **greater** than* `0`.
+
+**Constraints:**
+- `1 <= candidates.length <= 10^5`
+- `1 <= candidates[i] <= 10^7`
 
 ---
 
@@ -38,20 +49,23 @@ FUNCTION largestCombination(candidates):
 
 **Example 1:**
 ```
-Input: candidates = [2,3,4,5]
-Output: 3
-Explanation: The binary representations are 0010, 0011, 0100, 0101.
-The bit position 0 (least‑significant) is set in 2,3,5 → count = 3.
-The bit position 2 is set in 4,5 → count = 2.
-Maximum count is 3, so the largest combination size is 3.
+Input: candidates = [16,17,71,62,12,24,14]
+Output: 4
+Explanation: The combination [16,17,62,24] has a bitwise AND of 16 & 17 & 62 & 24 = 16 > 0 (non‑zero).
+The size of the combination is 4 (combination size = 4).
+It can be shown that no combination with a size greater than 4 has a bitwise AND greater than 0
+(the maximum number of candidates sharing any single set bit, here bit 4, is count = 4).
+Note that more than one combination may have the largest size.
+For example, the combination [62,12,24,14] has a bitwise AND of 62 & 12 & 24 & 14 = 8 > 0.
 ```
 
 **Example 2:**
 ```
-Input: candidates = [1,2,3]
+Input: candidates = [8,8]
 Output: 2
-Explanation: Bit 0 is set in 1 and 3 (count = 2). Bit 1 is set in 2 and 3 (count = 2).
-Thus the answer is 2.
+Explanation: The largest combination [8,8] has a bitwise AND of 8 & 8 = 8 > 0.
+(Bit 3 is set in both numbers: count = 2, so the max bit frequency is also count = 2).
+The size of the combination is 2, so we return 2.
 ```
 
 ---

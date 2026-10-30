@@ -20,28 +20,56 @@
 
 ## 1. Problem Description
 
-Given an array of positive integers, transform it so that elements at **even indices are prime** and elements at **odd indices are not prime** (or vice versa — alternating pattern). Each operation increments or decrements an element by 1. Return the **minimum** total operations.
+> *Note: the Approach below tries two patterns and moves to the *nearest* prime or non-prime. Officially the only pattern is even index = prime, odd index = non-prime, and you can only **increment**. Use the distance to the next prime `≥ x` (even indices) or the next non-prime `≥ x` (odd indices) and sum them.*
+
+You are given an integer array `nums`.
+
+An array is considered **alternating prime** if:
+
+- Elements at **even** indices (0-based) are **prime** numbers.
+- Elements at **odd** indices are **non-prime** numbers.
+
+In one operation, you may **increment** any element by 1.
+
+Return the **minimum** number of operations required to transform `nums` into an **alternating prime** array.
+
+A **prime** number is a natural number greater than 1 with only two factors, 1 and itself.
 
 **Constraints:**
-- `1 <= nums.length <= 10⁵`
-- `1 <= nums[i] <= 10⁶`
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input: nums = [4, 7, 3, 5]
-  Output: 3
-  Explanation: Pattern "prime, non-prime, prime, non-prime":
-    4→3 (1 op, prime), 7→8 (1 op, non-prime), 3 stays (prime), 5→4 (1 op, non-prime)
-    Total = 3
+Input: nums = [1,2,3,4]
+Output: 3
+Explanation: - The element at index 0 must be prime. Increment nums[0] = 1 to 2, using 1 operation.
+- The element at index 1 must be non-prime. Increment nums[1] = 2 to 4, using 2 operations.
+- The element at index 2 is already prime.
+- The element at index 3 is already non-prime.
+Total operations = 1 + 2 = 3.
+```
 
-Example 2:
-  Input: nums = [2, 3]
-  Output: 1
-  Explanation: Either 3→4 (non-prime at odd) or swap pattern. Min = 1.
+**Example 2:**
+```
+Input: nums = [5,6,7,8]
+Output: 0
+Explanation: - The elements at indices 0 and 2 are already prime.
+- The elements at indices 1 and 3 are already non-prime.
+No operations are needed.
+```
+
+**Example 3:**
+```
+Input: nums = [4,4]
+Output: 1
+Explanation: - The element at index 0 must be prime. Increment nums[0] = 4 to 5, using 1 operation.
+- The element at index 1 is already non-prime.
+Total operations = 1.
 ```
 
 ---

@@ -25,13 +25,36 @@ FOR i ← 0 TO n-1:
 The condition determines monotonicity: increasing stack finds "next greater," decreasing stack finds "next smaller."
 ---
 ## Problem Description
-Given an array of daily temperatures `T`, return an array `answer` such that `answer[i]` is the number of days you have to wait after day `i` to encounter a warmer temperature. If there is no future day with a higher temperature, set `answer[i] = 0`. Constraints: `1 <= T.length <= 10^5`, `30 <= T[i] <= 100`.
+> *Note: companion file of #739 Daily Temperatures (no LeetCode URL by design) — the official statement, examples and constraints are in [Daily Temperatures.md](Daily%20Temperatures.md).*
+
+Given an array of integers `temperatures` represents the daily temperatures, return *an array* `answer` *such that* `answer[i]` *is the number of days you have to wait after the* `i`<sup>th</sup> *day to get a warmer temperature*. If there is no future day for which this is possible, keep `answer[i] == 0` instead.
+
+(The pseudocode below uses `T` as shorthand for `temperatures`.)
+
+**Constraints:**
+
+- `1 <= temperatures.length <= 10^5`
+- `30 <= temperatures[i] <= 100`
 
 ## Examples
-- Input: `T = [73,74,75,71,69,72,76,73]`
-  Output: `[1,1,4,2,1,1,0,0]` // each value shows days until a warmer temperature.
-- Input: `T = [30,40,50,60]`
-  Output: `[1,1,1,0]`
+
+```
+Example 1:
+  Input: temperatures = [73,74,75,71,69,72,76,73]
+  Output: [1,1,4,2,1,1,0,0]
+```
+
+```
+Example 2:
+  Input: temperatures = [30,40,50,60]
+  Output: [1,1,1,0]
+```
+
+```
+Example 3:
+  Input: temperatures = [30,60,90]
+  Output: [1,1,0]
+```
 
 ## Approach
 Use a **Monotonic Decreasing Stack** to keep indices of temperatures that have not yet found a warmer day. Iterate through the array; while the current temperature is higher than the temperature at the stack's top, pop the index and compute the distance.

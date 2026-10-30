@@ -1,6 +1,7 @@
 # 2521. Distinct Prime Factors of Product of Array
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/distinct-prime-factors-of-product-of-array](https://leetcode.com/problems/distinct-prime-factors-of-product-of-array)
 **Companies:** Google, Meta, Microsoft
 
 ---
@@ -17,9 +18,12 @@
 
 ## Problem Description
 
-Given an array of positive integers `nums`, return the number of **distinct prime factors** in the product of all elements.
+Given an array of positive integers `nums`, return *the number of **distinct prime factors** in the product of the elements of* `nums`.
 
-You don't need to compute the product — just collect all prime factors from each number.
+**Note** that:
+
+- A number greater than `1` is called **prime** if it is divisible by only `1` and itself.
+- An integer `val1` is a factor of another integer `val2` if `val2 / val1` is an integer.
 
 **Constraints:**
 - `1 <= nums.length <= 10^4`
@@ -31,17 +35,18 @@ You don't need to compute the product — just collect all prime factors from ea
 
 **Example 1:**
 ```
-Input: nums = [2, 4, 3, 7, 10, 6]
+Input: nums = [2,4,3,7,10,6]
 Output: 4
-Explanation: Product = 2×4×3×7×10×6 = 10080 = 2^5 × 3^2 × 5 × 7
-  Distinct primes: {2, 3, 5, 7} → 4
+Explanation: The product of all the elements in nums is: 2 * 4 * 3 * 7 * 10 * 6 = 10080 = 2^5 * 3^2 * 5 * 7.
+There are 4 distinct prime factors so we return 4.
 ```
 
 **Example 2:**
 ```
-Input: nums = [2, 4, 8, 16]
+Input: nums = [2,4,8,16]
 Output: 1
-Explanation: All powers of 2 → only prime factor is 2.
+Explanation: The product of all the elements in nums is: 2 * 4 * 8 * 16 = 1024 = 2^10.
+There is 1 distinct prime factor so we return 1.
 ```
 
 ---

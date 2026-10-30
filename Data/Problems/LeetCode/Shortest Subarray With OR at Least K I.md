@@ -8,34 +8,40 @@
 
 ## Problem Description
 
-You are given an array `nums` of non-negative integers and an integer `k`.
+You are given an array `nums` of **non-negative** integers and an integer `k`.
 
-Return the length of the **shortest non-empty subarray** of `nums` such that the bitwise OR of all its elements is **at least** `k`. Return `-1` if no such subarray exists.
+An array is called **special** if the bitwise `OR` of all of its elements is **at least** `k`.
 
-A **subarray** is a contiguous non-empty sequence of elements within an array.
+Return *the length of the **shortest** **special** **non-empty** subarray of* `nums`, *or return* `-1` *if no special subarray exists*.
 
-### Examples
-
-**Example 1:**
-- **Input:** `nums = [1,2,3]`, `k = 2`
-- **Output:** `1`
-- **Explanation:** The subarray `[3]` has OR value `3 >= 2`.
-
-**Example 2:**
-- **Input:** `nums = [2,1,8]`, `k = 10`
-- **Output:** `3`
-- **Explanation:** The subarray `[2,1,8]` has OR value `2 | 1 | 8 = 11 >= 10`.
-
-**Example 3:**
-- **Input:** `nums = [1,2]`, `k = 0`
-- **Output:** `1`
-- **Explanation:** Any single-element subarray has OR >= 0.
-
-### Constraints
-
+**Constraints:**
 - `1 <= nums.length <= 50`
 - `0 <= nums[i] <= 50`
-- `0 <= k <= 64`
+- `0 <= k < 64`
+
+**Examples:**
+
+**Example 1:**
+```
+Input: nums = [1,2,3], k = 2
+Output: 1
+Explanation: The subarray [3] has OR value of 3. Hence, we return 1.
+Note that [2] is also a special subarray.
+```
+
+**Example 2:**
+```
+Input: nums = [2,1,8], k = 10
+Output: 3
+Explanation: The subarray [2,1,8] has OR value of 11. Hence, we return 3.
+```
+
+**Example 3:**
+```
+Input: nums = [1,2], k = 0
+Output: 1
+Explanation: The subarray [1] has OR value of 1. Hence, we return 1.
+```
 
 ---
 

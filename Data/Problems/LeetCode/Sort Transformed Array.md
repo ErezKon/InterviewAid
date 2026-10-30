@@ -7,15 +7,27 @@
 ---
 
 ## Problem Description
-Given a sorted integer array `nums` and three integers `a`, `b`, `c`, apply the quadratic function `f(x) = a*x*x + b*x + c` to each element and return the resulting array in non‑decreasing order.
+Given a **sorted** integer array `nums` and three integers `a`, `b` and `c`, apply a quadratic function of the form `f(x) = ax^2 + bx + c` to each element `nums[i]` in the array, and return *the array in a sorted order*.
+
+**Constraints:**
+- `1 <= nums.length <= 200`
+- `-100 <= nums[i], a, b, c <= 100`
+- `nums` is sorted in **ascending** order.
+
+**Follow up:** Could you solve it in `O(n)` time?
 
 ## Examples
-- **Input:** `nums = [-4,-2,2,4]`, `a = 1`, `b = 3`, `c = 5`  
-  **Output:** `[3,9,15,33]`  
-  **Explanation:** Applying `f` yields `[9,5,15,33]`; after sorting the result is `[3,9,15,33]`.
-- **Input:** `nums = [0,1,2]`, `a = -1`, `b = 3`, `c = 0`  
-  **Output:** `[0,2,4]`  
-  **Explanation:** The transformed values are `[0,2,4]` already sorted.
+```
+Example 1:
+  Input: nums = [-4,-2,2,4], a = 1, b = 3, c = 5
+  Output: [3,9,15,33]
+```
+
+```
+Example 2:
+  Input: nums = [-4,-2,2,4], a = -1, b = 3, c = 5
+  Output: [-23,-5,1,7]
+```
 
 ## Approach
 The original array is sorted. Depending on the sign of `a`, the transformed values are monotonic from the ends towards the center. Use a two‑pointer technique to fill the result array from the appropriate end.

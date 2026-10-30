@@ -8,28 +8,62 @@
 
 ## 1. Problem Description
 
-Given arrays `instructions` (strings `"add"` or `"jump"`) and `values`, start at index 0 with score 0. If `instructions[i]` is `"add"`, add `values[i]` to score and move to `i+1`. If `"jump"`, jump to `i + values[i]`. Stop when out of bounds. Return the final score.
+You are given two arrays, `instructions` and `values`, both of size `n`.
+
+You need to simulate a process based on the following rules:
+
+- You start at the first instruction at index `i = 0` with an initial score of 0.
+- If `instructions[i]` is `"add"`:
+  - Add `values[i]` to your score.
+  - Move to the next instruction `(i + 1)`.
+- If `instructions[i]` is `"jump"`:
+  - Move to the instruction at index `(i + values[i])` without modifying your score.
+
+The process ends when you either:
+
+- Go out of bounds (i.e., `i < 0 or i >= n`), or
+- Attempt to revisit an instruction that has been previously executed. The revisited instruction is not executed.
+
+Return your score at the end of the process.
+
+**Constraints:**
+- `n == instructions.length == values.length`
+- `1 <= n <= 10^5`
+- `instructions[i]` is either `"add"` or `"jump"`.
+- `-10^5 <= values[i] <= 10^5`
 
 ## 2. Examples
 
-**Example 1:**
 ```
-instructions = ["add", "jump", "add"]
-values = [5, 2, 3]
+Example 1:
+  Input: instructions = ["jump","add","add","jump","add","jump"], values = [2,1,3,1,-2,-3]
+  Output: 1
+  Explanation: Simulate the process starting at instruction 0:
+  - At index 0: Instruction is "jump", move to index 0 + 2 = 2.
+  - At index 2: Instruction is "add", add values[2] = 3 to your score and move to index 3. Your score becomes 3.
+  - At index 3: Instruction is "jump", move to index 3 + 1 = 4.
+  - At index 4: Instruction is "add", add values[4] = -2 to your score and move to index 5. Your score becomes 1.
+  - At index 5: Instruction is "jump", move to index 5 + (-3) = 2.
+  - At index 2: Already visited. The process ends.
 ```
-- Start at index 0, add 5 → score=5, move to 1.
-- Index 1 is "jump" with value 2 → jump to index 3 (out of bounds).
-- Final score = 5.
 
-**Example 2:**
 ```
-instructions = ["add", "add", "jump"]
-values = [1, 2, 1]
+Example 2:
+  Input: instructions = ["jump","add","add"], values = [3,1,1]
+  Output: 0
+  Explanation: Simulate the process starting at instruction 0:
+  - At index 0: Instruction is "jump", move to index 0 + 3 = 3.
+  - At index 3: Out of bounds. The process ends.
 ```
-- Add 1 (score=1) → i=1.
-- Add 2 (score=3) → i=2.
-- Jump 1 → i=3 (out of bounds).
-- Final score = 3.
+
+```
+Example 3:
+  Input: instructions = ["jump"], values = [0]
+  Output: 0
+  Explanation: Simulate the process starting at instruction 0:
+  - At index 0: Instruction is "jump", move to index 0 + 0 = 0.
+  - At index 0: Already visited. The process ends.
+```
 
 ## 3. Approach: Simulation — O(n) ✅
 

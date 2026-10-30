@@ -8,7 +8,22 @@
 
 ## 1. Problem Description
 
-**Online version** of Edge Length Limited Paths. Given a weighted tree and online queries `[u, v, limit]`, determine if there's a path from `u` to `v` using only edges with weight < `limit`.
+An undirected graph of `n` nodes is defined by `edgeList`, where `edgeList[i] = [u_i, v_i, dis_i]` denotes an edge between nodes `u_i` and `v_i` with distance `dis_i`. Note that there may be **multiple** edges between two nodes, and the graph may not be connected.
+
+Implement the `DistanceLimitedPathsExist` class:
+
+- `DistanceLimitedPathsExist(int n, int[][] edgeList)` Initializes the class with an undirected graph.
+- `boolean query(int p, int q, int limit)` Returns `true` if there exists a path from `p` to `q` such that each edge on the path has a distance **strictly less than** `limit`, and otherwise `false`.
+
+**Constraints:**
+- `2 <= n <= 10^4`
+- `0 <= edgeList.length <= 10^4`
+- `edgeList[i].length == 3`
+- `0 <= u_i, v_i, p, q <= n - 1`
+- `u_i != v_i`
+- `p != q`
+- `1 <= dis_i, limit <= 10^9`
+- At most `10^4` calls will be made to `query`.
 
 ---
 
@@ -50,18 +65,19 @@ FUNCTION query(u, v, limit, lcaStructure, nodeWeight):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: n = 5, edges = [[0,1,2],[1,2,4],[2,3,6],[3,4,8]], queries = [[0,4,5],[1,3,7]]
-Output: [true,false]
-Explanation: For limit 5, the path 0‑1‑2 uses edges 2 and 4 (<5) so true. For limit 7, edge 2‑3 weight 6 is okay but 3‑4 weight 8 exceeds limit, so 1 and 3 are not connected.
-```
-
-**Example 2:**
-```
-Input: n = 3, edges = [[0,1,1],[1,2,2]], queries = [[0,2,2]]
-Output: [false]
-Explanation: The only path 0‑1‑2 contains edge weight 2 which is not < limit 2.
+Example 1:
+  Input:
+  ["DistanceLimitedPathsExist", "query", "query", "query", "query"]
+  [[6, [[0, 2, 4], [0, 3, 2], [1, 2, 3], [2, 3, 1], [4, 5, 5]]], [2, 3, 2], [1, 3, 3], [2, 0, 3], [0, 5, 6]]
+  Output:
+  [null, true, false, true, false]
+  Explanation:
+  DistanceLimitedPathsExist distanceLimitedPathsExist = new DistanceLimitedPathsExist(6, [[0, 2, 4], [0, 3, 2], [1, 2, 3], [2, 3, 1], [4, 5, 5]]);
+  distanceLimitedPathsExist.query(2, 3, 2); // return true. There is an edge from 2 to 3 of distance 1, which is less than 2.
+  distanceLimitedPathsExist.query(1, 3, 3); // return false. There is no way to go from 1 to 3 with distances strictly less than 3.
+  distanceLimitedPathsExist.query(2, 0, 3); // return true. There is a way to go from 2 to 0 with distance < 3: travel from 2 to 3 to 0.
+  distanceLimitedPathsExist.query(0, 5, 6); // return false. There are no paths from 0 to 5.
 ```
 
 ---

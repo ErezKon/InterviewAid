@@ -18,7 +18,15 @@
 
 ## 1. Problem Description
 
-Create a playlist of `goal` songs from `n` unique songs. Every song must be played at least once. A song can be replayed only after `k` other songs have been played. Count valid playlists mod 10⁹+7.
+Your music player contains `n` different songs. You want to listen to `goal` songs (not necessarily different) during your trip. To avoid boredom, you will create a playlist so that:
+
+- Every song is played **at least once**.
+- A song can only be played again only if `k` other songs have been played.
+
+Given `n`, `goal`, and `k`, return *the number of possible playlists that you can create*. Since the answer can be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `0 <= k < n <= goal <= 100`
 
 ---
 
@@ -65,12 +73,26 @@ FUNCTION numMusicPlaylists(n, goal, k):
 
 ## Examples
 
-1. **Input:** `n = 2, goal = 3, k = 0`
-   **Output:** `6`
-   **Explanation:** All permutations of length 3 using songs `{A,B}` are allowed because `k = 0` permits immediate repeats.
-2. **Input:** `n = 2, goal = 3, k = 1`
-   **Output:** `2`
-   **Explanation:** Valid playlists are `[A, B, A]` and `[B, A, B]`. A song cannot be repeated consecutively.
+**Example 1:**
+```
+Input: n = 3, goal = 3, k = 1
+Output: 6
+Explanation: There are 6 possible playlists: [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], and [3, 2, 1].
+```
+
+**Example 2:**
+```
+Input: n = 2, goal = 3, k = 0
+Output: 6
+Explanation: There are 6 possible playlists: [1, 1, 2], [1, 2, 1], [2, 1, 1], [2, 2, 1], [2, 1, 2], and [1, 2, 2].
+```
+
+**Example 3:**
+```
+Input: n = 2, goal = 3, k = 1
+Output: 2
+Explanation: There are 2 possible playlists: [1, 2, 1] and [2, 1, 2].
+```
 
 ---
 

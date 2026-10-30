@@ -7,20 +7,41 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may change any element to any integer value. An array is *alternating* if all elements at even indices are equal and all elements at odd indices are equal (the two values may be the same or different). Compute the minimum number of element changes required to transform `nums` into an alternating array.
+You are given a **0-indexed** array `nums` consisting of `n` positive integers.
+
+The array `nums` is called **alternating** if:
+
+- `nums[i - 2] == nums[i]`, where `2 <= i <= n - 1`.
+- `nums[i - 1] != nums[i]`, where `1 <= i <= n - 1`.
+
+In one **operation**, you can choose an index `i` and **change** `nums[i]` into **any** positive integer.
+
+Return *the **minimum number of operations** required to make the array alternating*.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ## Examples
-**Example 1:**
+
 ```
-nums = [3,1,3,2,4,3]
-Output: 3
-Explanation: Change the odd‑index values to `3` and the even‑index values to `4` → [4,3,4,3,4,3]. Three changes are needed.
+Example 1:
+  Input: nums = [3,1,3,2,4,3]
+  Output: 3
+  Explanation:
+  One way to make the array alternating is by converting it to [3,1,3,1,3,1].
+  The number of operations required in this case is 3.
+  It can be proven that it is not possible to make the array alternating in less than 3 operations.
 ```
-**Example 2:**
+
 ```
-nums = [1,2,2,2,2]
-Output: 1
-Explanation: Change the first element to `2` → [2,2,2,2,2]. Only one operation.
+Example 2:
+  Input: nums = [1,2,2,2,2]
+  Output: 2
+  Explanation:
+  One way to make the array alternating is by converting it to [1,2,1,2,1].
+  The number of operations required in this case is 2.
+  Note that the array cannot be converted to [2,2,2,2,2] because in this case nums[0] == nums[1] which violates the conditions of an alternating array.
 ```
 
 ## Approach

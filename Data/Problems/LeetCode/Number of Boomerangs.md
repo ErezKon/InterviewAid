@@ -20,7 +20,17 @@
 
 ## 1. Problem Description
 
-Given `n` points in the plane, count all ordered tuples `(i, j, k)` such that the distance between point `i` and point `j` equals the distance between point `i` and point `k`, and `j ≠ k`.
+You are given `n` `points` in the plane that are all **distinct**, where `points[i] = [x_i, y_i]`. A **boomerang** is a tuple of points `(i, j, k)` such that the distance between `i` and `j` equals the distance between `i` and `k` **(the order of the tuple matters)**.
+
+Return *the number of boomerangs*.
+
+**Constraints:**
+
+- `n == points.length`
+- `1 <= n <= 500`
+- `points[i].length == 2`
+- `-10^4 <= x_i, y_i <= 10^4`
+- All the points are **unique**.
 
 ---
 
@@ -51,10 +61,24 @@ FUNCTION numberOfBoomerangs(points):
 
 ## 4. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[[0,0],[1,0],[2,0]]` | `2` | Anchor at `(1,0)` has two points at distance `1`, yielding `2` ordered boomerangs. |
-| `[[1,1],[2,2],[3,3],[4,4]]` | `8` | Each middle point sees two equidistant neighbors, contributing `2` each; total `8`.
+```
+Example 1:
+  Input: points = [[0,0],[1,0],[2,0]]
+  Output: 2
+  Explanation: The two boomerangs are [[1,0],[0,0],[2,0]] and [[1,0],[2,0],[0,0]].
+```
+
+```
+Example 2:
+  Input: points = [[1,1],[2,2],[3,3]]
+  Output: 2
+```
+
+```
+Example 3:
+  Input: points = [[1,1]]
+  Output: 0
+```
 
 ---
 

@@ -1,22 +1,45 @@
 # 356. Line Reflection
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/line-reflection](https://leetcode.com/problems/line-reflection)
 **Companies:** Google, Yandex
 
 ---
 
 ## Problem Description
 
-Given a set of 2D points, determine if there exists a vertical line `x = c` such that reflecting all points across it maps each point to another point in the set.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given `n` points on a 2D plane, find if there is such a line parallel to the y-axis that reflects the given points symmetrically.
+
+In other words, answer whether or not if there exists a line that after reflecting all points over the given line, the original points' set is the same as the reflected ones.
+
+**Note** that there can be repeated points.
+
+**Follow up:** Could you do better than `O(n^2)`?
+
+**Constraints:**
+- `n == points.length`
+- `1 <= n <= 10^4`
+- `-10^8 <= points[i][j] <= 10^8`
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[[1,1],[-1,1]]` | `true` | The line `x = 0` reflects `(1,1)` to `(-1,1)` and vice‑versa. |
-| `[[1,1],[2,2]]` | `false` | No single vertical line can map both points to each other. |
+**Example 1:**
+```
+Input: points = [[1,1],[-1,1]]
+Output: true
+Explanation: We can choose the line x = 0.
+```
+
+**Example 2:**
+```
+Input: points = [[1,1],[-1,-1]]
+Output: false
+Explanation: We can't choose a line.
+```
 
 ---
 

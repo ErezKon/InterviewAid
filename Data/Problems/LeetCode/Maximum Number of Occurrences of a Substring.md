@@ -20,22 +20,34 @@
 
 ## Problem Description
 
-Given a string `s`, return the maximum frequency of any substring that has at most `maxLetters` unique characters and length between `minSize` and `maxSize`.
+Given a string `s`, return the maximum number of occurrences of **any** substring under the following rules:
+
+- The number of unique characters in the substring must be less than or equal to `maxLetters`.
+- The substring size must be between `minSize` and `maxSize` inclusive.
 
 **Constraints:**
 - `1 <= s.length <= 10^5`
-- `1 <= minSize <= maxSize <= min(26, s.length)`
 - `1 <= maxLetters <= 26`
+- `1 <= minSize <= maxSize <= min(26, s.length)`
+- `s` consists of only lowercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  s = "aababcaab", maxLetters = 2, minSize = 3, maxSize = 4
-Output: 2
-Explanation: "aab" appears twice and has 2 unique letters.
+Example 1:
+  Input: s = "aababcaab", maxLetters = 2, minSize = 3, maxSize = 4
+  Output: 2
+  Explanation: Substring "aab" has 2 occurrences in the original string.
+    It satisfies the conditions, 2 unique letters and size 3 (between minSize and maxSize).
+```
+
+```
+Example 2:
+  Input: s = "aaaa", maxLetters = 1, minSize = 3, maxSize = 3
+  Output: 2
+  Explanation: Substring "aaa" occur 2 times in the string. It can overlap.
 ```
 
 ---

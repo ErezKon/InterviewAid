@@ -1,23 +1,53 @@
 # 842. Split Array into Fibonacci Sequence
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/split-array-into-fibonacci-sequence](https://leetcode.com/problems/split-array-into-fibonacci-sequence)
 **Companies:** Amazon, Google
 
 ---
 
 ## Problem Description
-Given an array of non‑negative integers `nums`, determine if it can be split into a sequence of at least three numbers such that each number is the sum of the two preceding numbers (a Fibonacci‑like sequence). The sequence must use the original order of the array and each element can be used at most once. Return `true` if such a split exists, otherwise `false`.
+
+> *Note: the Approach/Walkthrough below work on an integer array; the official input is a **digit string**. Correct idea: backtrack over the lengths of the first two numbers (no leading zeros, each `< 2^31`), then greedily check that the string continues with `f[i] + f[i+1]`; return the first full split found. O(n²·n).*
+
+You are given a string of digits `num`, such as `"123456579"`. We can split it into a Fibonacci-like sequence `[123, 456, 579]`.
+
+Formally, a **Fibonacci-like** sequence is a list `f` of non-negative integers such that:
+
+- `0 <= f[i] < 2^31`, (that is, each integer fits in a **32-bit** signed integer type),
+- `f.length >= 3`, and
+- `f[i] + f[i + 1] == f[i + 2]` for all `0 <= i < f.length - 2`.
+
+Note that when splitting the string into pieces, each piece must not have extra leading zeroes, except if the piece is the number `0` itself.
+
+Return any Fibonacci-like sequence split from `num`, or return `[]` if it cannot be done.
+
+**Constraints:**
+- `1 <= num.length <= 200`
+- `num` contains only digits.
 
 ## Examples
-- **Input:** `nums = [1,2,3,5,8]`
-  **Output:** `true`
-  *Explanation:* The whole array forms a Fibonacci sequence.
-- **Input:** `nums = [1,3,7,11,12,14,18]`
-  **Output:** `true`
-  *Explanation:* Split as `[1,3,4]` (invalid) → actual split `[1,3,4]` not possible, but `[1,3,4]` not in array; correct split `[1,3,4]` doesn't exist. The valid split is `[1,3,4]`? Wait adjust: Real example: `[1,3,4,7,11,18]` forms `[1,3,4,7,11,18]`.
-- **Input:** `nums = [1,2,4,7]`
-  **Output:** `false`
-  *Explanation:* No Fibonacci‑like split satisfies the condition.
+
+**Example 1:**
+```
+Input: num = "1101111"
+Output: [11,0,11,11]
+Explanation: The output [110, 1, 111] would also be accepted.
+```
+
+**Example 2:**
+```
+Input: num = "112358130"
+Output: []
+Explanation: The task is impossible.
+```
+
+**Example 3:**
+```
+Input: num = "0123"
+Output: []
+Explanation: Leading zeroes are not allowed, so "01", "2", "3" is not valid.
+```
 
 ## Approach
 Use backtracking to try every pair of starting numbers. After fixing the first two numbers, iteratively compute the expected next value and check if it appears later in the array. Continue until the end of the array is reached or a mismatch occurs.

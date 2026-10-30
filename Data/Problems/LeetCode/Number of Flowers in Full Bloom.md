@@ -21,16 +21,37 @@
 
 ## 1. Problem Description
 
-Given `n` flower intervals `flowers[i] = [start_i, end_i]` and `m` arrival times `people`, return an array where each element is the number of flowers in bloom at the corresponding arrival time.
+You are given a **0-indexed** 2D integer array `flowers`, where `flowers[i] = [start_i, end_i]` means the `i^th` flower will be in **full bloom** from `start_i` to `end_i` (**inclusive**). You are also given a **0-indexed** integer array `people` of size `n`, where `people[i]` is the time that the `i^th` person will arrive to see the flowers.
+
+Return *an integer array* `answer` *of size* `n`*, where* `answer[i]` *is the **number** of flowers that are in full bloom when the* `i^th` *person arrives.*
+
+**Constraints:**
+
+- `1 <= flowers.length <= 5 * 10^4`
+- `flowers[i].length == 2`
+- `1 <= start_i <= end_i <= 10^9`
+- `1 <= people.length <= 5 * 10^4`
+- `1 <= people[i] <= 10^9`
 
 ---
 
 ## 2. Examples
 
-| flowers | people | Output | Explanation |
-|---------|--------|--------|-------------|
-| `[[1,6],[3,7],[9,12],[4,13]]` | `[2,3,7,11]` | `[1,3,2,2]` | At time 2 only the first flower is active. At time 3 three flowers are active, etc. |
-| `[[1,10]]` | `[5,10,11]` | `[1,1,0]` | Single interval covers 5 and 10 but not 11. |
+```
+Example 1:
+  Input: flowers = [[1,6],[3,7],[9,12],[4,13]], people = [2,3,7,11]
+  Output: [1,2,2,2]
+  Explanation: The times when the flowers are in full bloom are [1,6], [3,7], [9,12], [4,13],
+  and the people arrive at times 2, 3, 7, 11.
+  For each person, we return the number of flowers in full bloom during their arrival.
+```
+
+```
+Example 2:
+  Input: flowers = [[1,10],[3,3]], people = [3,3,2]
+  Output: [2,2,1]
+  Explanation: For each person, we return the number of flowers in full bloom during their arrival.
+```
 
 ---
 

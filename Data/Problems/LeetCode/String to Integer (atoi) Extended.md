@@ -3,6 +3,9 @@
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [String to Integer (atoi).md](String%20to%20Integer%20%28atoi%29.md) for the official statement and constraints of #8.*
+
 Implement a function that converts a string representing a signed integer into the corresponding 32‑bit signed integer value, following the same rules as the C/C++ `atoi` function. The function must handle leading whitespace, an optional sign, overflow/underflow, and stop parsing at the first non‑digit character.
 
 ## Examples

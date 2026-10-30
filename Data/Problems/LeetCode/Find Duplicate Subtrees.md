@@ -8,24 +8,36 @@
 
 ## Problem Description
 
-Return the root of all duplicate subtrees in a binary tree. Two subtrees are duplicates if they have the same structure and node values.
+Given the `root` of a binary tree, return all **duplicate subtrees**.
+
+For each kind of duplicate subtrees, you only need to return the root node of any **one** of them.
+
+Two trees are **duplicate** if they have the **same structure** with the **same node values**.
+
+**Constraints:**
+
+- The number of the nodes in the tree will be in the range `[1, 5000]`
+- `-200 <= Node.val <= 200`
 
 ## Examples
 
-**Example 1:**
 ```
-Input: root = [1,2,3,4,null,2,4,null,null,4]
-Output: [[2,4],[4]]
-Explanation: The duplicate subtrees are:
-- Subtree rooted at node with value 2 having left child 4.
-- Subtree consisting of a single node with value 4.
+Example 1:
+  Input: root = [1,2,3,4,null,2,4,null,null,4]
+  Output: [[2,4],[4]]
+  Explanation: The subtree rooted at 2 with left child 4 appears twice, and the single-node subtree 4 appears three times.
 ```
 
-**Example 2:**
 ```
-Input: root = [2,1,1]
-Output: [[1]]
-Explanation: Two leaf nodes with value 1 are duplicate subtrees.
+Example 2:
+  Input: root = [2,1,1]
+  Output: [[1]]
+```
+
+```
+Example 3:
+  Input: root = [2,2,2,3,null,3,null]
+  Output: [[2,3],[3]]
 ```
 
 ## Approach: Serialize + Hash Map — O(n) ✅

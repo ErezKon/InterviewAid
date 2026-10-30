@@ -7,14 +7,34 @@
 ---
 
 ## Problem Description
-You are given two strings `s` and `t` of equal length consisting of lowercase English letters. In one operation you may choose a character `c` that appears in `s` and replace **all** its occurrences with any other lowercase letter `d` (`c ≠ d`). You may perform any number of operations. Determine whether it is possible to transform `s` into `t`.
+
+> *Note: premium problem — statement verified via doocs/leetcode. Correct criterion (the Approach below is close but checks the wrong set): if `str1 == str2` return `true`; otherwise every character of `str1` must map to a single character of `str2` (consistent mapping), and `str2` must use **fewer than 26** distinct letters (so a free letter exists to break cycles).*
+
+Given two strings `str1` and `str2` of the same length, determine whether you can transform `str1` into `str2` by doing **zero or more** *conversions*.
+
+In one conversion you can convert **all** occurrences of one character in `str1` to **any** other lowercase English character.
+
+Return `true` if and only if you can transform `str1` into `str2`.
+
+**Constraints:**
+- `1 <= str1.length == str2.length <= 10^4`
+- `str1` and `str2` contain only lowercase English letters.
 
 ## Examples
-- **Input:** `s = "ab", t = "ba"` **Output:** `true`
-  // Use a temporary character, e.g., replace `a`→`c`, then `b`→`a`, then `c`→`b`.
-- **Input:** `s = "aabcc", t = "ccdee"` **Output:** `false`
-  // No unused character to break the cycle `a→c→e→a`.
-- **Input:** `s = "leetcode", t = "codeleet"` **Output:** `true`
+
+**Example 1:**
+```
+Input: str1 = "aabcc", str2 = "ccdee"
+Output: true
+Explanation: Convert 'c' to 'e' then 'b' to 'd' then 'a' to 'c'. Note that the order of conversions matter.
+```
+
+**Example 2:**
+```
+Input: str1 = "leetcode", str2 = "codeleet"
+Output: false
+Explanation: There is no way to transform str1 to str2.
+```
 
 ## Approach
 **Algorithm:** Build a directed graph of character dependencies and check for cycles, using an extra unused character as a buffer.

@@ -3,14 +3,38 @@
 **Difficulty:** 🟢 Easy
 **LeetCode:** [https://leetcode.com/problems/water-bottles](https://leetcode.com/problems/water-bottles)
 **Companies:** Accenture, Amazon, Bloomberg, Google, Hilabs, Ibm, Meta, Microsoft, Tcs
+
 ---
 
 ## Problem Description
-You have `numBottles` full water bottles. You can exchange `numExchange` empty bottles for one additional full bottle. After drinking a bottle it becomes empty. Compute the maximum total number of bottles you can drink.
+
+There are `numBottles` water bottles that are initially full of water. You can exchange `numExchange` empty water bottles from the market with one full water bottle.
+
+The operation of drinking a full water bottle turns it into an empty bottle.
+
+Given the two integers `numBottles` and `numExchange`, return *the **maximum** number of water bottles you can drink*.
+
+**Constraints:**
+- `1 <= numBottles <= 100`
+- `2 <= numExchange <= 100`
 
 ## Examples
-- Input: `numBottles = 9`, `numExchange = 3` → Output: `13`
-- Input: `numBottles = 5`, `numExchange = 5` → Output: `6`
+
+**Example 1:**
+```
+Input: numBottles = 9, numExchange = 3
+Output: 13
+Explanation: You can exchange 3 empty bottles to get 1 full water bottle.
+Number of water bottles you can drink: 9 + 3 + 1 = 13.
+```
+
+**Example 2:**
+```
+Input: numBottles = 15, numExchange = 4
+Output: 19
+Explanation: You can exchange 4 empty bottles to get 1 full water bottle.
+Number of water bottles you can drink: 15 + 3 + 1 = 19.
+```
 
 ## Approach
 Iteratively exchange empties for new bottles while possible. Keep a running total of bottles drunk.

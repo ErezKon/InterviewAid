@@ -7,13 +7,21 @@
 ---
 
 ## Problem Description
-Given an integer `num`, convert it to its base‑7 representation as a string. If `num` is negative, the result should start with a `'-'` sign.
+Given an integer `num`, return *a string of its **base 7** representation*.
+
+**Constraints:**
+- `-10⁷ ≤ num ≤ 10⁷`
 
 ## Examples
-- **Input:** `num = 100` **Output:** `"202"`
-  *Explanation:* 100 = 2·7² + 0·7¹ + 2·7⁰.
-- **Input:** `num = -7` **Output:** `"-10"`
-  *Explanation:* -7 in base‑7 is -10.
+```
+Example 1:
+  Input: num = 100
+  Output: "202"
+
+Example 2:
+  Input: num = -7
+  Output: "-10"
+```
 
 ## Approach
 Repeatedly divide the absolute value by 7, collecting remainders. The remainders form the digits in reverse order. Add a leading `'-'` if the original number was negative.

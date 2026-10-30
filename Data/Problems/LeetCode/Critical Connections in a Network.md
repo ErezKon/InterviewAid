@@ -8,16 +8,35 @@
 
 ## Problem Description
 
-Find all **bridges** (critical connections) in an undirected graph — edges whose removal disconnects the graph.
+There are `n` servers numbered from `0` to `n - 1` connected by undirected server-to-server `connections` forming a network where `connections[i] = [a_i, b_i]` represents a connection between servers `a_i` and `b_i`. Any server can reach other servers directly or indirectly through the network.
+
+A *critical connection* is a connection that, if removed, will make some servers unable to reach some other server.
+
+Return all critical connections in the network in any order.
+
+**Constraints:**
+- `2 <= n <= 10^5`
+- `n - 1 <= connections.length <= 10^5`
+- `0 <= a_i, b_i <= n - 1`
+- `a_i != b_i`
+- There are no repeated connections.
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 4`<br>`connections = [[0,1],[1,2],[2,0],[1,3]]` | `[[1,3]]` | Edge `[1,3]` is the only bridge; removing it separates node 3 from the rest.
-| `n = 5`<br>`connections = [[0,1],[0,2],[1,2],[1,3],[3,4]]` | `[[1,3],[3,4]]` | Edges `[1,3]` and `[3,4]` are bridges; each removal increases the number of connected components.
+```
+Example 1:
+  Input: n = 4, connections = [[0,1],[1,2],[2,0],[1,3]]
+  Output: [[1,3]]
+  Explanation: [[3,1]] is also accepted.
+```
+
+```
+Example 2:
+  Input: n = 2, connections = [[0,1]]
+  Output: [[0,1]]
+```
 
 ---
 
@@ -56,7 +75,7 @@ FUNCTION criticalConnections(n, connections):
 
 | Step | Action | `disc` | `low` | Bridges |
 |------|--------|--------|------|---------|
-| 1 | Start DFS at node 0 | `[0,-1,-1,-1]` | `[0,0,0,0]` | – |
+| 1 | Start DFS at node 0 | `[0,-1,-1,-1]` | `[0,0,0,0]` | – |
 | 2 | Visit 1 from 0 | `[0,1,-1,-1]` | `[0,1,0,0]` | – |
 | 3 | Visit 2 from 1 | `[0,1,2,-1]` | `[0,1,2,0]` | – |
 | 4 | Edge 2‑0 is back edge → update `low[2]` to `0` | – | `low[2]=0` | – |

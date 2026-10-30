@@ -18,24 +18,34 @@
 
 ## 1. Problem Description
 
-Count the number of **distinct island shapes** in a binary grid. Two islands are the same if one can be translated to match the other.
+You are given an `m x n` binary matrix `grid`. An island is a group of `1`'s (representing land) connected **4-directionally** (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+
+An island is considered to be the same as another if and only if one island can be translated (and not rotated or reflected) to equal the other.
+
+Return *the number of **distinct** islands*.
+
+**Constraints:**
+
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 50`
+- `grid[i][j]` is either `0` or `1`.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: grid = [[1,1,0,0,0],[1,0,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]
-Output: 1
-Explanation: The two islands have the same shape after translation.
+Example 1:
+  Input: grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]
+  Output: 1
+  Explanation: The two 2x2 islands have the same shape after translation.
 ```
 
-**Example 2:**
 ```
-Input: grid = [[1,1,0,1,1],[1,0,0,0,1],[0,0,0,0,0],[1,1,0,1,1]]
-Output: 2
-Explanation: There are two distinct island shapes.
+Example 2:
+  Input: grid = [[1,1,0,1,1],[1,0,0,0,0],[0,0,0,0,1],[1,1,0,1,1]]
+  Output: 3
 ```
 
 ---

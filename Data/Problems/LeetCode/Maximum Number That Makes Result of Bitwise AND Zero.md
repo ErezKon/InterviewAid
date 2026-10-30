@@ -7,14 +7,37 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may remove any number of elements (possibly none). After removal, compute the bitwise AND of the remaining elements. Return the maximum possible size of the remaining array such that the resulting AND equals `0`. If it is impossible to achieve an AND of `0`, return `0`.
+Given an integer `n`, return the **maximum** integer `x` such that `x <= n`, and the bitwise `AND` of all the numbers in the range `[x, n]` is 0.
+
+**Constraints:**
+- `1 <= n <= 10^15`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,2,3]` | `3` | `1 & 2 & 3 = 0`, so all three can be kept. |
-| `[4,5,6]` | `2` | Removing `4` leaves `[5,6]` with `5 & 6 = 4` (not zero). Keeping `[4,5]` gives `4 & 5 = 4`. The best we can do is keep any two numbers that include `6` and `5`? Actually `[4,6]` gives `4 & 6 = 4`. No pair yields `0`, so the maximum size is `1` (any single element). |
-| `[0,7,8]` | `3` | Presence of `0` forces the AND to `0` regardless of other numbers.
+
+```
+Example 1:
+  Input: n = 7
+  Output: 3
+  Explanation:
+    The bitwise AND of [6, 7] is 6.
+    The bitwise AND of [5, 6, 7] is 4.
+    The bitwise AND of [4, 5, 6, 7] is 4.
+    The bitwise AND of [3, 4, 5, 6, 7] is 0.
+```
+
+```
+Example 2:
+  Input: n = 9
+  Output: 7
+  Explanation: The bitwise AND of [7, 8, 9] is 0.
+```
+
+```
+Example 3:
+  Input: n = 17
+  Output: 15
+  Explanation: The bitwise AND of [15, 16, 17] is 0.
+```
 
 ## Approach
 The bitwise AND of a set is `0` iff for every bit position there exists at least one element with that bit cleared. Therefore, we need to select the largest subset where the union of zero‑bits covers all 32 (or 64) bit positions.

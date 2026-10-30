@@ -7,15 +7,35 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, split the array into `k` non‑empty continuous subarrays. The goal is to minimize the largest sum among these subarrays and return that minimized largest sum.
+
+Given an integer array `nums` and an integer `k`, split `nums` into `k` non-empty subarrays such that the largest sum of any subarray is **minimized**.
+
+Return *the minimized largest sum of the split*.
+
+A **subarray** is a contiguous part of the array.
+
+**Constraints:**
+- `1 <= nums.length <= 1000`
+- `0 <= nums[i] <= 10^6`
+- `1 <= k <= min(50, nums.length)`
 
 ## Examples
-- **Input:** `nums = [7,2,5,10,8]`, `k = 2`
-  **Output:** `18`
-  *Explanation:* Split into `[7,2,5]` and `[10,8]`; the largest sum is `18`.
-- **Input:** `nums = [1,2,3,4,5]`, `k = 3`
-  **Output:** `6`
-  *Explanation:* Split into `[1,2,3]`, `[4]`, `[5]`; the largest sum is `6`.
+
+**Example 1:**
+```
+Input: nums = [7,2,5,10,8], k = 2
+Output: 18
+Explanation: There are four ways to split nums into two subarrays.
+The best way is to split it into [7,2,5] and [10,8], where the largest sum among the two subarrays is only 18.
+```
+
+**Example 2:**
+```
+Input: nums = [1,2,3,4,5], k = 2
+Output: 9
+Explanation: There are four ways to split nums into two subarrays.
+The best way is to split it into [1,2,3] and [4,5], where the largest sum among the two subarrays is only 9.
+```
 
 ## Approach
 The answer lies between the maximum single element and the total sum of the array. Perform binary search on this range and use a greedy check to see if the array can be split into at most `k` subarrays without exceeding a candidate maximum sum.

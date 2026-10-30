@@ -8,7 +8,14 @@
 
 ## 1. Problem Description
 
-Convert a decimal string to a hexadecimal representation, then replace every '0' with 'O' and every '1' with 'I'. If any other digit (2‑9) appears after conversion, return "ERROR".
+A decimal number can be converted to its **Hexspeak representation** by first converting it to an uppercase hexadecimal string, then replacing all occurrences of the digit `'0'` with the letter `'O'`, and the digit `'1'` with the letter `'I'`. Such a representation is valid if and only if it consists only of the letters in the set `{'A', 'B', 'C', 'D', 'E', 'F', 'I', 'O'}`.
+
+Given a string `num` representing a decimal integer `n`, *return the **Hexspeak representation** of* `n` *if it is valid, otherwise return* `"ERROR"`.
+
+**Constraints:**
+- `1 <= num.length <= 12`
+- `num` does not contain leading zeros.
+- `num` represents an integer in the range `[1, 10^12]`.
 
 ## 2. Approach: Hex Conversion + Replace — O(n) ✅
 
@@ -26,12 +33,17 @@ FUNCTION toHexspeak(numStr):
 
 ## 3. Examples
 
-| Input | Output |
-|-------|--------|
-| "257" | "ERROR" |
-| "3"   | "3" |
-| "15"  | "F" |
-| "16"  | "10" → "IO" |
+```
+Example 1:
+  Input: num = "257"
+  Output: "IOI"
+  Explanation: 257 is 101 in hexadecimal.
+```
+```
+Example 2:
+  Input: num = "3"
+  Output: "ERROR"
+```
 
 ## 4. Walkthrough
 

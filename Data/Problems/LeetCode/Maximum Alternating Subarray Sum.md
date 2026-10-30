@@ -21,19 +21,47 @@
 
 ## Problem Description
 
-Find a contiguous subarray with maximum **alternating sum**: `a[0] - a[1] + a[2] - a[3] + ...`. The first element always has a `+` sign.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+A **subarray** of a **0-indexed** integer array is a contiguous **non-empty** sequence of elements within an array.
+
+The **alternating subarray sum** of a subarray that ranges from index `i` to `j` (**inclusive**, `0 <= i <= j < nums.length`) is `nums[i] - nums[i+1] + nums[i+2] - ... +/- nums[j]`.
+
+Given a **0-indexed** integer array `nums`, return *the **maximum alternating subarray sum** of any subarray of *`nums`.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
+- `1 <= nums.length <= 10^5`
+- `-10^5 <= nums[i] <= 10^5`
 
 ---
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,2,3,4]` | `4` | Best subarray is `[4]` → `4`.
-| `[4,2,5,3]` | `10` | Subarray `[4,2,5]` → `4 - 2 + 5 = 7`; subarray `[5,3]` → `5 - 3 = 2`. The maximum alternating sum is `10` from `[4,2,5,3]` → `4 - 2 + 5 - 3 = 4`? Actually optimal is `[4,2,5]` giving `7` and then adding `-3` reduces, so best is `[4,2,5]` = `7`. Wait correct answer from LeetCode is `10` using subarray `[4,2,5,3]` with alternating signs `+4 -2 +5 -3 = 4`. Hmm need correct example; use official example: Input `[4,2,5,3]` Output `10` (subarray `[4,2,5,3]` with signs `+4 -2 +5 -3 = 4`? Actually LeetCode expects `10` by taking subarray `[4,2,5,3]` and starting with `+4` then `-2` then `+5` then `-3` gives `4`. The correct interpretation is you can choose any starting sign? For simplicity use example from problem statement: Input `[4,2,5,3]` Output `10` (subarray `[4,2,5,3]` with alternating sum `4 - 2 + 5 - 3 = 4`, but the maximum alternating sum is `10` by taking subarray `[4,2,5]` → `4 - 2 + 5 = 7` and then adding `+3`? We'll keep the official example as given by LeetCode.)
+**Example 1:**
+```
+Input: nums = [3,-1,1,2]
+Output: 5
+Explanation: The subarray [3,-1,1] has the largest alternating subarray sum.
+The alternating subarray sum is 3 - (-1) + 1 = 5.
+```
+
+**Example 2:**
+```
+Input: nums = [2,2,2,2,2]
+Output: 2
+Explanation: The subarrays [2], [2,2,2], and [2,2,2,2,2] have the largest alternating subarray sum.
+The alternating subarray sum of [2] is 2.
+The alternating subarray sum of [2,2,2] is 2 - 2 + 2 = 2.
+The alternating subarray sum of [2,2,2,2,2] is 2 - 2 + 2 - 2 + 2 = 2.
+```
+
+**Example 3:**
+```
+Input: nums = [1]
+Output: 1
+Explanation: There is only one non-empty subarray, which is [1].
+The alternating subarray sum is 1.
+```
 
 ---
 

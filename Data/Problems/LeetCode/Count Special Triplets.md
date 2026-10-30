@@ -1,6 +1,7 @@
 # 3583. Count Special Triplets
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/count-special-triplets](https://leetcode.com/problems/count-special-triplets)
 
 **Companies:** Bloomberg, Google, Meta
 
@@ -18,20 +19,60 @@
 
 ## Problem Description
 
-Count triplets `(i, j, k)` where `i < j < k` and `nums[i] * nums[j] == nums[k]`. Return the total count.
+You are given an integer array `nums`.
+
+A **special triplet** is defined as a triplet of indices `(i, j, k)` such that:
+
+- `0 <= i < j < k < n`, where `n = nums.length`
+- `nums[i] == nums[j] * 2`
+- `nums[k] == nums[j] * 2`
+
+Return the total number of **special triplets** in the array.
+
+Since the answer may be large, return it **modulo** `10^9 + 7`.
 
 **Constraints:**
-- `3 <= nums.length <= 1000`
-- `1 <= nums[i] <= 10^6`
+- `3 <= n == nums.length <= 10^5`
+- `0 <= nums[i] <= 10^5`
 
 ---
 
 ## Examples
 
 **Example 1:**
-- **Input:** `nums = [1, 2, 3, 6]`
-- **Output:** `1`
-- **Explanation:** (0,1,3): 1×2 = 2? No. (0,2,3): 1×3 = 3? No. (1,2,3): 2×3 = 6 ✅.
+```
+Input: nums = [6,3,6]
+Output: 1
+Explanation: The only special triplet is (i, j, k) = (0, 1, 2), where:
+- nums[0] = 6, nums[1] = 3, nums[2] = 6
+- nums[0] = nums[1] * 2 = 3 * 2 = 6
+- nums[2] = nums[1] * 2 = 3 * 2 = 6
+```
+
+**Example 2:**
+```
+Input: nums = [0,1,0,0]
+Output: 1
+Explanation: The only special triplet is (i, j, k) = (0, 2, 3), where:
+- nums[0] = 0, nums[2] = 0, nums[3] = 0
+- nums[0] = nums[2] * 2 = 0 * 2 = 0
+- nums[3] = nums[2] * 2 = 0 * 2 = 0
+```
+
+**Example 3:**
+```
+Input: nums = [8,4,2,8,4]
+Output: 2
+Explanation: There are exactly two special triplets:
+- (i, j, k) = (0, 1, 3)
+- nums[0] = 8, nums[1] = 4, nums[3] = 8
+- nums[0] = nums[1] * 2 = 4 * 2 = 8
+- nums[3] = nums[1] * 2 = 4 * 2 = 8
+- (i, j, k) = (1, 2, 4)
+- nums[1] = 4, nums[2] = 2, nums[4] = 4
+- nums[1] = nums[2] * 2 = 2 * 2 = 4
+- nums[4] = nums[2] * 2 = 2 * 2 = 4
+```
 
 ---
 

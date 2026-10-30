@@ -7,18 +7,39 @@
 ---
 
 ## Problem Description
-Given an integer array `arr` and an integer `target`, you may repeatedly replace any element `arr[i]` with `arr[i] XOR x` for any non‑negative integer `x`. Find the minimum possible absolute difference between the sum of the array after any number of such mutations and `target`.
+
+> *Note: the Approach/Walkthrough below solve an invented XOR problem. Correct idea: the capped sum `f(v) = Σ min(arr[i], v)` is non-decreasing in `v`; sort `arr` with prefix sums (or binary search `v ∈ [0, max(arr)]`) to find the smallest `v` with `f(v) ≥ target`, then compare `v` and `v − 1` and return the one with smaller `|f − target|` (ties → smaller). O(n log n).*
+
+Given an integer array `arr` and a target value `target`, return the integer `value` such that when we change all the integers larger than `value` in the given array to be equal to `value`, the sum of the array gets as close as possible (in absolute difference) to `target`.
+
+In case of a tie, return the minimum such integer.
+
+Notice that the answer is not neccesarilly a number from `arr`.
+
+**Constraints:**
+- `1 <= arr.length <= 10^4`
+- `1 <= arr[i], target <= 10^5`
 
 ## Examples
+
 **Example 1:**
-Input: arr = [1,2,3], target = 10
-Output: 0
-Explanation: Mutate 1 → 9 (1 XOR 8) and 2 → 9 (2 XOR 11) to get array [9,9,3] whose sum is 21, then 21‑10 = 11? Actually better: mutate 3 → 7 (3 XOR 4) to get [1,2,7] sum 10, diff 0.
+```
+Input: arr = [4,9,3], target = 10
+Output: 3
+Explanation: When using 3 arr converts to [3, 3, 3] which sums 9 and that's the optimal answer.
+```
 
 **Example 2:**
-Input: arr = [5,5,5], target = 1
-Output: 4
-Explanation: The smallest achievable sum is 5 (no mutation), diff = |5‑1| = 4.
+```
+Input: arr = [2,3,5], target = 10
+Output: 5
+```
+
+**Example 3:**
+```
+Input: arr = [60864,25176,27249,21296,20204], target = 56803
+Output: 11361
+```
 
 ## Approach
 The XOR operation can toggle bits independently. The set of achievable values for each element forms a linear subspace over GF(2). The problem reduces to finding the subset‑xor basis of all numbers and then using it to get the sum closest to `target`.

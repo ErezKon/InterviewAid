@@ -21,11 +21,15 @@
 
 ## 1. Problem Description
 
-Given a string `n` representing an integer, find the **closest palindrome** (as a string) to `n`. "Closest" means smallest absolute difference; if tied, return the smaller one. The answer cannot be `n` itself.
+Given a string `n` representing an integer, return *the closest integer (not including itself), which is a palindrome*. If there is a tie, return ***the smaller one***.
+
+The closest is defined as the absolute difference minimized between two integers.
 
 **Constraints:**
 - `1 <= n.length <= 18`
-- `n` does not have leading zeros (except "0" itself).
+- `n` consists of only digits.
+- `n` does not have leading zeros.
+- `n` is representing an integer in the range `[1, 10¹⁸ - 1]`.
 
 ---
 
@@ -33,14 +37,13 @@ Given a string `n` representing an integer, find the **closest palindrome** (as 
 
 ```
 Example 1:
-  Input:  n = "123"
+  Input: n = "123"
   Output: "121"
-  Reason: |121 - 123| = 2, closest palindrome.
 
 Example 2:
-  Input:  n = "1"
+  Input: n = "1"
   Output: "0"
-  Reason: |0 - 1| = 1, the closest palindrome to 1.
+  Explanation: 0 and 2 are the closest palindromes but we return the smallest which is 0.
 ```
 
 ---

@@ -7,26 +7,37 @@
 ---
 
 ## Problem Description
-Given an integer `n`, determine whether it is a power of three. Return `true` if there exists an integer `k` such that `3^k == n`; otherwise, return `false`. The solution must run in O(1) time.
+
+Given an integer `n`, return *`true` if it is a power of three. Otherwise, return `false`*.
+
+An integer `n` is a power of three, if there exists an integer `x` such that `n == 3^x`.
+
+**Follow up:** Could you solve it without loops/recursion?
+
+**Constraints:**
+- `-2^31 <= n <= 2^31 - 1`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: n = 27
 Output: true
-Explanation: 27 = 3^3.
+Explanation: 27 = 3^3
 ```
+
 **Example 2:**
 ```
 Input: n = 0
 Output: false
-Explanation: No power of three equals 0.
+Explanation: There is no x where 3^x = 0.
 ```
+
 **Example 3:**
 ```
-Input: n = 45
+Input: n = -1
 Output: false
-Explanation: 45 is not a power of three.
+Explanation: There is no x where 3^x = (-1).
 ```
 
 ## Approach

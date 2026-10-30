@@ -18,10 +18,17 @@
 
 ## Problem Description
 
-Given a permutation `nums` of `[0, n-1]`, you can delete some elements. After deletion, the remaining elements are re-indexed `0, 1, 2, ...`. A **fixed point** is an index `i` where `nums[i] == i` (after re-indexing). Maximize the number of fixed points.
+You are given an integer array `nums`.
+
+A position `i` is called a **fixed point** if `nums[i] == i`.
+
+You are allowed to delete **any** number of elements (including zero) from the array. After each deletion, the remaining elements **shift left**, and indices are reassigned starting from 0.
+
+Return an integer denoting the **maximum** number of fixed points that can be achieved after performing any number of deletions.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁵`
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 10^5`
 
 ---
 
@@ -59,14 +66,27 @@ FUNCTION maxFixedPoints(nums):
 ```
 Input: nums = [0,2,1]
 Output: 2
-Explanation: Delete element at index 1 (value 2). Remaining array [0,1] has fixed points at both indices.
+Explanation: - Delete nums[1] = 2. The array becomes [0, 1].
+- Now, nums[0] = 0 and nums[1] = 1, so both indices are fixed points.
+- Thus, the answer is 2.
 ```
 
 **Example 2:**
 ```
-Input: nums = [3,0,1,2]
-Output: 1
-Explanation: No deletions needed; only index 0 becomes a fixed point after re-indexing.
+Input: nums = [3,1,2]
+Output: 2
+Explanation: - Do not delete any elements. The array remains [3, 1, 2].
+- Here, nums[1] = 1 and nums[2] = 2, so these indices are fixed points.
+- Thus, the answer is 2.
+```
+
+**Example 3:**
+```
+Input: nums = [1,0,1,2]
+Output: 3
+Explanation: - Delete nums[0] = 1. The array becomes [0, 1, 2].
+- Now, nums[0] = 0, nums[1] = 1, and nums[2] = 2, so all indices are fixed points.
+- Thus, the answer is 3.
 ```
 
 ---

@@ -7,23 +7,48 @@
 ---
 
 ## Problem Description
-Given an integer array `customers` where `customers[i]` represents the wealth of the i-th customer, and an integer `k` representing the wealth threshold, return the number of customers whose wealth is **greater than or equal to** `k`.
+Table: `Store`
 
-Constraints: `1 <= customers.length <= 10^5`, `0 <= customers[i], k <= 10^9`.
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| bill_id     | int  |
+| customer_id | int  |
+| amount      | int  |
++-------------+------+
+bill_id is the primary key (column with unique values) for this table.
+Each row contains information about the amount of one bill and the customer associated with it.
+```
+
+Write a solution to report the number of customers who had **at least one** bill with an amount **strictly greater** than `500`.
+
+The result format is in the following example.
 
 ## Examples
-**Example 1:**
 ```
-Input: customers = [1,2,3,4,5], k = 3
-Output: 3
-Explanation: Customers with wealth 3,4,5 meet the threshold.
-```
-
-**Example 2:**
-```
-Input: customers = [10,20,30], k = 25
-Output: 1
-Explanation: Only the customer with wealth 30 is rich.
+Example 1:
+  Input:
+  Store table:
+  +---------+-------------+--------+
+  | bill_id | customer_id | amount |
+  +---------+-------------+--------+
+  | 6       | 1           | 549    |
+  | 8       | 1           | 834    |
+  | 4       | 2           | 394    |
+  | 11      | 3           | 657    |
+  | 13      | 3           | 257    |
+  +---------+-------------+--------+
+  Output:
+  +------------+
+  | rich_count |
+  +------------+
+  | 2          |
+  +------------+
+  Explanation:
+  Customer 1 has two bills with amounts strictly greater than 500.
+  Customer 2 does not have any bills with an amount strictly greater than 500.
+  Customer 3 has one bill with an amount strictly greater than 500.
 ```
 
 ## Approach

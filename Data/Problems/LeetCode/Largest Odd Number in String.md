@@ -8,28 +8,37 @@
 
 ## Problem Description
 
-Given a numeric string `num`, return the largest‑valued odd number that can be obtained as a non‑empty substring of `num`. If no odd digit exists, return an empty string.
+You are given a string `num`, representing a large integer. Return *the **largest-valued odd** integer (as a string) that is a **non-empty substring** of* `num`*, or an empty string* `""` *if no odd integer exists*.
 
-Constraints:
-- `1 <= num.length <= 1000`
-- `num` consists only of digits `'0'‑'9'`.
+A **substring** is a contiguous sequence of characters within a string.
+
+**Constraints:**
+- `1 <= num.length <= 10^5`
+- `num` only consists of digits and does not contain any leading zeros.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: "52"
-Output: "5"
-Explanation: The substrings are "5", "2", "52". The odd ones are "5" and "52" (which is even). The largest odd substring is "5".
+Example 1:
+  Input: num = "52"
+  Output: "5"
+  Explanation: The only non-empty substrings are "5", "2", and "52". "5" is the only odd number.
 ```
 
-**Example 2:**
 ```
-Input: "4206"
-Output: ""
-Explanation: No odd digit appears, so no odd substring exists.
+Example 2:
+  Input: num = "4206"
+  Output: ""
+  Explanation: There are no odd numbers in "4206".
+```
+
+```
+Example 3:
+  Input: num = "35427"
+  Output: "35427"
+  Explanation: "35427" is already an odd number.
 ```
 
 ---

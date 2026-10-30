@@ -7,15 +7,29 @@
 ---
 
 ## Problem Description
-Given an array `coordinates` where each element is a point `[x, y]` on a 2‑D plane, determine whether all points lie on a single straight line.
+
+You are given an integer array `coordinates`, `coordinates[i] = [x, y]`, where `[x, y]` represents the coordinate of a point. Check if these points make a straight line in the XY plane.
+
+**Constraints:**
+- `2 <= coordinates.length <= 1000`
+- `coordinates[i].length == 2`
+- `-10^4 <= coordinates[i][0], coordinates[i][1] <= 10^4`
+- `coordinates` contains no duplicate point.
 
 ## Examples
-- **Input:** `[[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]`  
-  **Output:** `true`  
-  *Explanation:* All points have the same slope of `1`.
-- **Input:** `[[1,1],[2,2],[3,4]]`  
-  **Output:** `false`  
-  *Explanation:* The third point deviates from the line formed by the first two.
+
+**Example 1:**
+```
+Input: coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]
+Output: true
+```
+
+**Example 2:**
+```
+![img](https://assets.leetcode.com/uploads/2019/10/09/untitled-diagram-1.jpg)
+Input: coordinates = [[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]
+Output: false
+```
 
 ## Approach
 Compute the slope between the first two points using the difference in `x` and `y`. For each subsequent point, the cross‑product `(y_i - y_0) * dx` should equal `(x_i - x_0) * dy`. If any point violates this, the points are not collinear.

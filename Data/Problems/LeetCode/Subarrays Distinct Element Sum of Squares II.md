@@ -7,27 +7,50 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, for each subarray compute the sum of squares of its distinct elements. Return the sum of these values over all possible subarrays, modulo `10^9 + 7`.
+
+> *Note: the Approach/Walkthrough below sum the squares of distinct **values**; the official problem sums the squares of the distinct **counts**. Correct idea: sweep the right end `j`; let `p` = previous index of `nums[j]`. The distinct count of every subarray starting in `(p, j]` grows by 1. Keep a segment tree over start indices with range-add and range-sum; since `Σ(c+1)² = Σc² + 2·Σc + len`, maintain the running sum of squares and add it to the answer after each `j`. O(n log n).*
+
+You are given a **0-indexed** integer array `nums`.
+
+The **distinct count** of a subarray of `nums` is defined as:
+
+- Let `nums[i..j]` be a subarray of `nums` consisting of all the indices from `i` to `j` such that `0 <= i <= j < nums.length`. Then the number of distinct values in `nums[i..j]` is called the distinct count of `nums[i..j]`.
+
+Return *the sum of the **squares** of **distinct counts** of all subarrays of* `nums`.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+A **subarray** is a contiguous **non-empty** sequence of elements within an array.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: nums = [1,2,1]
-Output: 23
-Explanation: Subarrays and their distinct‑element‑square sums:
-[1] → 1² = 1
-[1,2] → 1²+2² = 5
-[1,2,1] → 1²+2² = 5
-[2] → 2² = 4
-[2,1] → 1²+2² = 5
-[1] → 1² = 1
-Total = 1+5+5+4+5+1 = 21 (mod 1e9+7 = 21)
+Output: 15
+Explanation: Six possible subarrays are:
+[1]: 1 distinct value
+[2]: 1 distinct value
+[1]: 1 distinct value
+[1,2]: 2 distinct values
+[2,1]: 2 distinct values
+[1,2,1]: 2 distinct values
+The sum of the squares of the distinct counts in all subarrays is equal to 1^2 + 1^2 + 1^2 + 2^2 + 2^2 + 2^2 = 15.
 ```
+
 **Example 2:**
 ```
-Input: nums = [3,3,3]
-Output: 27
-Explanation: Each subarray contains only the distinct element 3, contribution 3² = 9. There are 6 subarrays, total 54, modulo gives 54.
+Input: nums = [2,2]
+Output: 3
+Explanation: Three possible subarrays are:
+[2]: 1 distinct value
+[2]: 1 distinct value
+[2,2]: 1 distinct value
+The sum of the squares of the distinct counts in all subarrays is equal to 1^2 + 1^2 + 1^2 = 3.
 ```
 
 ## Approach

@@ -1,16 +1,49 @@
 # 497. Random Point in Non-overlapping Rectangles
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/random-point-in-non-overlapping-rectangles](https://leetcode.com/problems/random-point-in-non-overlapping-rectangles)
 
 **Companies:** Google, Uber
 ---
 
 ## Problem Description
-Given a list of axis‑aligned, non‑overlapping rectangles, design a system that returns a random point such that each point inside the union of rectangles is chosen with equal probability. The rectangles are defined by their bottom‑left and top‑right coordinates.
+You are given an array of non-overlapping axis-aligned rectangles `rects` where `rects[i] = [ai, bi, xi, yi]` indicates that `(ai, bi)` is the bottom-left corner point of the `iᵗʰ` rectangle and `(xi, yi)` is the top-right corner point of the `iᵗʰ` rectangle. Design an algorithm to pick a random integer point inside the space covered by one of the given rectangles. A point on the perimeter of a rectangle is included in the space covered by the rectangle.
+
+Any integer point inside the space covered by one of the given rectangles should be equally likely to be returned.
+
+**Note** that an integer point is a point that has integer coordinates.
+
+Implement the `Solution` class:
+
+- `Solution(int[][] rects)` Initializes the object with the given rectangles `rects`.
+- `int[] pick()` Returns a random integer point `[u, v]` inside the space covered by one of the given rectangles.
+
+**Constraints:**
+
+- `1 <= rects.length <= 100`
+- `rects[i].length == 4`
+- `-10⁹ <= ai < xi <= 10⁹`
+- `-10⁹ <= bi < yi <= 10⁹`
+- `xi - ai <= 2000`
+- `yi - bi <= 2000`
+- All the rectangles do not overlap.
+- At most `10⁴` calls will be made to `pick`.
 
 ## Examples
-- Input: rectangles = [[1,1,2,2],[3,3,5,5]] → possible output: (1.5,1.8) or (4.2,4.7)
-- Input: rectangles = [[-2,0,0,2]] → output: any point within the single rectangle, e.g., (-1,1.5)
+
+```
+Example 1:
+  Input: ["Solution", "pick", "pick", "pick", "pick", "pick"]
+         [[[[-2, -2, 1, 1], [2, 2, 4, 6]]], [], [], [], [], []]
+  Output: [null, [1, -2], [1, -1], [-1, -2], [-2, -2], [0, 0]]
+  Explanation:
+    Solution solution = new Solution([[-2, -2, 1, 1], [2, 2, 4, 6]]);
+    solution.pick(); // return [1, -2]
+    solution.pick(); // return [1, -1]
+    solution.pick(); // return [-1, -2]
+    solution.pick(); // return [-2, -2]
+    solution.pick(); // return [0, 0]
+```
 
 ## Approach
 Use area‑weighted selection. Compute each rectangle's area, build a prefix‑sum array, and binary‑search a random value to pick a rectangle. Then generate a uniform point inside the chosen rectangle.

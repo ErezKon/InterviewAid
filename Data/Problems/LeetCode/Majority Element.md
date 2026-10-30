@@ -9,7 +9,17 @@
 
 ## 1. Problem Description
 
-Given an array `nums`, return the majority element (appears more than ⌊n/2⌋ times). Guaranteed to exist.
+Given an array `nums` of size `n`, return *the majority element*.
+
+The majority element is the element that appears more than `⌊n / 2⌋` times. You may assume that the majority element always exists in the array.
+
+**Follow-up:** Could you solve the problem in linear time and in `O(1)` space?
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= n <= 5 * 10^4`
+- `-10^9 <= nums[i] <= 10^9`
+- The input is generated such that a majority element will exist in the array.
 
 ---
 
@@ -38,10 +48,17 @@ The majority element appears > n/2 times. Pairing it with different elements can
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[3,2,3]` | `3` | `3` appears twice, which is > 3/2.
-| `[2,2,1,1,1,2,2]` | `2` | `2` appears four times, > 7/2.
+**Example 1:**
+```
+Input: nums = [3,2,3]
+Output: 3
+```
+
+**Example 2:**
+```
+Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+```
 
 ---
 

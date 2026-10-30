@@ -5,6 +5,9 @@ Related: #778 Swim in Rising Water, #1631 Path With Minimum Effort, #1102 Path W
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Swim in Rising Water.md](Swim%20in%20Rising%20Water.md) for the official statement and constraints of #778.*
+
 Given an `n × n` grid of non‑negative integers representing elevations, you start at the top‑left cell and must reach the bottom‑right cell. At time `t` you can enter any cell with elevation ≤ `t`. The goal is to find the minimum time `t` such that a path exists, i.e., minimize the maximum elevation encountered along the path (min‑max). Variants include minimizing the maximum difference between adjacent cells or maximizing the minimum value along a path.
 
 ## Examples

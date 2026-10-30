@@ -8,28 +8,38 @@
 
 ## Problem Description
 
-Given an `m × n` grid with guards and walls, guards can see in 4 cardinal directions until blocked by a wall or another guard. Count cells that are **not** guarded, not a guard, and not a wall.
+You are given two integers `m` and `n` representing a **0-indexed** `m x n` grid. You are also given two 2D integer arrays `guards` and `walls` where `guards[i] = [row_i, col_i]` and `walls[j] = [row_j, col_j]` represent the positions of the `i`-th guard and `j`-th wall respectively.
+
+A guard can see **every** cell in the four cardinal directions (north, east, south, or west) starting from their position unless **obstructed** by a wall or another guard. A cell is **guarded** if there is **at least** one guard that can see it.
+
+Return *the number of unoccupied cells that are **not** **guarded**.*
+
+**Constraints:**
+- `1 <= m, n <= 10^5`
+- `2 <= m * n <= 10^5`
+- `1 <= guards.length, walls.length <= 5 * 10^4`
+- `2 <= guards.length + walls.length <= m * n`
+- `guards[i].length == walls[j].length == 2`
+- `0 <= row_i, row_j < m`
+- `0 <= col_i, col_j < n`
+- All the positions in `guards` and `walls` are **unique**.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: m = 4, n = 6,
-       guards = [[0,0],[1,1],[2,3]],
-       walls = [[0,1],[2,2],[1,4]]
-Output: 7
-Explanation: The grid cells that remain unguarded are marked with 'U'.
+Example 1:
+  Input: m = 4, n = 6, guards = [[0,0],[1,1],[2,3]], walls = [[0,1],[2,2],[1,4]]
+  Output: 7
+  Explanation: There are a total of 7 unguarded cells, so we return 7.
 ```
 
-**Example 2:**
 ```
-Input: m = 3, n = 3,
-       guards = [[0,0]],
-       walls = []
-Output: 4
-Explanation: Guard at (0,0) watches its row and column until the grid edge.
+Example 2:
+  Input: m = 3, n = 3, guards = [[1,1]], walls = [[0,1],[1,0],[2,1],[1,2]]
+  Output: 4
+  Explanation: The guard is boxed in by the four walls, so the four corner cells are unguarded. We return 4.
 ```
 
 ---

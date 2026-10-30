@@ -20,12 +20,19 @@
 
 ## Problem Description
 
-Given an integer array `nums` and an integer `budget` representing the total number of increment operations you may perform (each operation adds 1 to any element), maximize the **bitwise AND** of all array elements after at most `budget` increments.
+> *Note: the Approach below raises **all** elements and spends the budget cumulatively across bits. Officially you need the best AND of a subset of size `m` using at most `k` increments in total. Correct idea: build the answer greedily from the high bit. For a candidate `target = res | (1 << b)`, compute for each `num` the minimal increment that reaches the smallest value `≥ num` containing all bits of `target`. Sum the `m` smallest costs and keep the bit if the total is `≤ k`. Recompute the costs from scratch for each candidate.*
+
+You are given an integer array `nums` and two integers `k` and `m`.
+
+You may perform **at most** `k` operations. In one operation, you may choose any index `i` and **increase** `nums[i]` by 1.
+
+Return an integer denoting the **maximum** possible **bitwise AND** of any **subset** of size `m` after performing up to `k` operations optimally.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `0 ≤ nums[i] ≤ 10⁹`
-- `0 ≤ budget ≤ 10⁹`
+- `1 <= n == nums.length <= 5 * 10^4`
+- `1 <= nums[i] <= 10^9`
+- `1 <= k <= 10^9`
+- `1 <= m <= n`
 
 ---
 
@@ -61,19 +68,32 @@ FUNCTION maxBitwiseAND(nums, budget):
 
 **Example 1:**
 ```
-Input: nums = [2,3,4], budget = 3
-Output: 4
-Explanation:
-- Binary: 2(010), 3(011), 4(100)
-- Set the 3rd bit (value 4) for all numbers: need increments 2→4 (+2), 3→4 (+1), 4 already has it.
-- Total cost = 3 ≤ budget, result = 4.
+Input: nums = [3,1,2], k = 8, m = 2
+Output: 6
+Explanation: - We need a subset of size m = 2. Choose indices [0, 2].
+- Increase nums[0] = 3 to 6 using 3 operations, and increase nums[2] = 2 to 6 using 4 operations.
+- The total number of operations used is 7, which is not greater than k = 8.
+- The two chosen values become [6, 6], and their bitwise AND is 6, which is the maximum possible.
 ```
 
 **Example 2:**
 ```
-Input: nums = [1,2,3], budget = 0
-Output: 0
-Explanation: No increments allowed; the AND of 1,2,3 is 0.
+Input: nums = [1,2,8,4], k = 7, m = 3
+Output: 4
+Explanation: - We need a subset of size m = 3. Choose indices [0, 1, 3].
+- Increase nums[0] = 1 to 4 using 3 operations, increase nums[1] = 2 to 4 using 2 operations, and keep nums[3] = 4.
+- The total number of operations used is 5, which is not greater than k = 7.
+- The three chosen values become [4, 4, 4], and their bitwise AND is 4, which is the maximum possible.
+```
+
+**Example 3:**
+```
+Input: nums = [1,1], k = 3, m = 2
+Output: 2
+Explanation: - We need a subset of size m = 2. Choose indices [0, 1].
+- Increase both values from 1 to 2 using 1 operation each.
+- The total number of operations used is 2, which is not greater than k = 3.
+- The two chosen values become [2, 2], and their bitwise AND is 2, which is the maximum possible.
 ```
 
 ---

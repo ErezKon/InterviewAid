@@ -20,7 +20,15 @@
 
 ## 1. Problem Description
 
-Return a list where for each `i` from 1 to n: "FizzBuzz" if divisible by 15, "Fizz" if by 3, "Buzz" if by 5, else the number as string.
+Given an integer `n`, return *a string array* `answer` *(**1-indexed**) where*:
+
+- `answer[i] == "FizzBuzz"` if `i` is divisible by `3` and `5`.
+- `answer[i] == "Fizz"` if `i` is divisible by `3`.
+- `answer[i] == "Buzz"` if `i` is divisible by `5`.
+- `answer[i] == i` (as a string) if none of the above conditions are true.
+
+**Constraints:**
+- `1 <= n <= 10^4`
 
 ---
 

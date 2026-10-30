@@ -7,25 +7,54 @@
 
 ## 1. Problem Description
 
-Given a table `Enrollments(student_id, course_id, grade)`, return for each `student_id` the `course_id` with the highest `grade`. If multiple courses share the top grade, choose the smallest `course_id`.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Enrollments`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| student_id    | int     |
+| course_id     | int     |
+| grade         | int     |
++---------------+---------+
+(student_id, course_id) is the primary key (combination of columns with unique values) of this table.
+grade is never NULL.
+```
+
+Write a solution to find the highest grade with its corresponding course for each student. In case of a tie, you should find the course with the smallest `course_id`.
+
+Return the result table ordered by `student_id` in **ascending order**.
+
+The result format is in the following example.
 
 ## 2. Examples
 
+**Example 1:**
+```
+Input:
+Enrollments table:
++------------+-------------------+
 | student_id | course_id | grade |
-|------------|-----------|-------|
-| 1 | 101 | 85 |
-| 1 | 102 | 92 |
-| 1 | 103 | 92 |
-| 2 | 201 | 78 |
-| 2 | 202 | 88 |
-
-**Output**
++------------+-----------+-------+
+| 2          | 2         | 95    |
+| 2          | 3         | 95    |
+| 1          | 1         | 90    |
+| 1          | 2         | 99    |
+| 3          | 1         | 80    |
+| 3          | 2         | 75    |
+| 3          | 3         | 82    |
++------------+-----------+-------+
+Output:
++------------+-------------------+
 | student_id | course_id | grade |
-|------------|-----------|-------|
-| 1 | 102 | 92 |
-| 2 | 202 | 88 |
-
-*Explanation*: Student 1 has two courses with grade 92; the smaller `course_id` 102 is chosen.
++------------+-----------+-------+
+| 1          | 2         | 99    |
+| 2          | 2         | 95    |
+| 3          | 3         | 82    |
++------------+-----------+-------+
+```
 
 ## 3. Approach: Window Function — O(N log N) ✅
 

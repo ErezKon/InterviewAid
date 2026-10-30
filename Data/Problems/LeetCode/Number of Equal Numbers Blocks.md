@@ -21,24 +21,55 @@
 
 ## 1. Problem Description
 
-Given a "Big Array" accessible only via an API that returns the value at index `i`, count the number of **blocks** of consecutive equal numbers.
+You are given a **0-indexed** array of integers, `nums`. The following property holds for `nums`:
+
+- All occurrences of a value are adjacent. In other words, if there are two indices `i < j` such that `nums[i] == nums[j]`, then for every index `k` that `i < k < j`, `nums[k] == nums[i]`.
+
+Since `nums` is a very large array, you are given an instance of the class `BigArray` which has the following functions:
+
+- `int at(long long index)`: Returns the value of `nums[i]`.
+- `void size()`: Returns `nums.length`.
+
+Let's partition the array into **maximal** blocks such that each block contains **equal values**. Return *the number of these blocks.*
+
+**Note** that if you want to test your solution using a custom test, behavior for tests with `nums.length > 10` is undefined.
+
+**Constraints:**
+
+- `1 <= nums.length <= 10^15`
+- `1 <= nums[i] <= 10^9`
+- The input is generated such that all equal values are adjacent.
+- The sum of the elements of `nums` is at most `10^15`.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: arr = [1,1,2,2,2,3]
-Output: 3
-Explanation: The blocks are [1,1], [2,2,2], and [3].
+Example 1:
+  Input: nums = [3,3,3,3,3]
+  Output: 1
+  Explanation: There is only one block here which is the whole array (because all numbers are equal) and that is: [3,3,3,3,3]. So the answer would be 1.
 ```
 
-**Example 2:**
 ```
-Input: arr = [5,5,5,5]
-Output: 1
-Explanation: All elements form a single block.
+Example 2:
+  Input: nums = [1,1,1,3,9,9,9,2,10,10]
+  Output: 5
+  Explanation: There are 5 blocks here:
+  Block number 1: [1,1,1]
+  Block number 2: [3]
+  Block number 3: [9,9,9]
+  Block number 4: [2]
+  Block number 5: [10,10]
+  So the answer would be 5.
+```
+
+```
+Example 3:
+  Input: nums = [1,2,3,4,5,6,7]
+  Output: 7
+  Explanation: Since all numbers are distinct, there are 7 blocks here and each element representing one block. So the answer would be 7.
 ```
 
 ---

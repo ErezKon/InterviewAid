@@ -7,27 +7,40 @@
 ---
 
 ## Problem Description
-Alice and Bob play a game on an array `stones` of positive integers. The game proceeds as follows:
-1. The current player chooses an index `i` (0 ≤ i < len(stones) - 1) and splits the array into two non‑empty parts: `left = stones[0..i]` and `right = stones[i+1..]`.
-2. The player receives points equal to `min(sum(left), sum(right))`.
-3. The array for the next turn becomes the part with the larger sum (if equal, either part may be chosen).
-Alice moves first. Return the maximum total points Alice can obtain assuming both play optimally.
 
-Constraints: `1 ≤ stones.length ≤ 1000`, `1 ≤ stones[i] ≤ 10^5`.
+There are several stones **arranged in a row**, and each stone has an associated value which is an integer given in the array `stoneValue`.
+
+In each round of the game, Alice divides the row into **two non-empty rows** (i.e. left row and right row), then Bob calculates the value of each row which is the sum of the values of all the stones in this row. Bob throws away the row which has the maximum value, and Alice's score increases by the value of the remaining row. If the value of the two rows are equal, Bob lets Alice decide which row will be thrown away. The next round starts with the remaining row.
+
+The game ends when there is only **one stone remaining**. Alice's score is initially **zero**.
+
+Return *the maximum score that Alice can obtain*.
+
+**Constraints:**
+- `1 <= stoneValue.length <= 500`
+- `1 <= stoneValue[i] <= 10^6`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: stones = [6,2,3,4,5,5]
+Input: stoneValue = [6,2,3,4,5,5]
 Output: 18
-Explanation: Alice splits after index 2 → left sum=11, right sum=19, gains 11 points, keeps right part.
-Bob then splits the remaining part optimally, etc. Total Alice points = 18.
+Explanation: In the first round, Alice divides the row to [6,2,3], [4,5,5]. The left row has the value 11 and the right row has value 14. Bob throws away the right row and Alice's score is now 11.
+In the second round Alice divides the row to [6], [2,3]. This time Bob throws away the left row and Alice's score becomes 16 (11 + 5).
+The last round Alice has only one choice to divide the row which is [2], [3]. Bob throws away the right row and Alice's score is now 18 (16 + 2). The game ends because only one stone is remaining in the row.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: stones = [7,7,7,7,7,7,7]
+Input: stoneValue = [7,7,7,7,7,7,7]
 Output: 28
+```
+
+**Example 3:**
+```
+Input: stoneValue = [4]
+Output: 0
 ```
 
 ## Approach

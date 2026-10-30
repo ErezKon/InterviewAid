@@ -20,10 +20,11 @@
 
 ## Problem Description
 
-Given two `n × n` binary matrices `mat` and `target`, return `true` if it is possible to make `mat` equal to `target` by rotating `mat` by **0°, 90°, 180°, or 270°** clockwise.
+Given two `n x n` binary matrices `mat` and `target`, return `true`* if it is possible to make *`mat`* equal to *`target`* by **rotating** *`mat`* in **90-degree increments**, or *`false`* otherwise.*
 
 **Constraints:**
 - `n == mat.length == target.length`
+- `n == mat[i].length == target[i].length`
 - `1 <= n <= 10`
 - `mat[i][j]` and `target[i][j]` are either `0` or `1`.
 
@@ -33,18 +34,23 @@ Given two `n × n` binary matrices `mat` and `target`, return `true` if it is po
 
 **Example 1:**
 ```
-mat =    [[0,1],    target = [[1,0],
-          [1,0]]               [0,1]]
-
-Output: true (90° clockwise rotation)
+Input: mat = [[0,1],[1,0]], target = [[1,0],[0,1]]
+Output: true
+Explanation: We can rotate mat 90 degrees clockwise to make mat equal target.
 ```
 
 **Example 2:**
 ```
-mat =    [[0,1],    target = [[1,0],
-          [1,1]]               [0,1]]
+Input: mat = [[0,1],[1,1]], target = [[1,0],[0,1]]
+Output: false
+Explanation: It is impossible to make mat equal to target by rotating mat.
+```
 
-Output: false (no rotation matches)
+**Example 3:**
+```
+Input: mat = [[0,0,0],[0,1,0],[1,1,1]], target = [[1,1,1],[0,1,0],[0,0,0]]
+Output: true
+Explanation: We can rotate mat 90 degrees clockwise two times to make mat equal target.
 ```
 
 ---

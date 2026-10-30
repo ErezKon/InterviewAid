@@ -21,17 +21,19 @@
 
 ## Problem Description
 
-Given an array of points `points` sorted by x-coordinate where `points[i] = [xᵢ, yᵢ]`, and an integer `k`, find the maximum value of `yᵢ + yⱼ + |xᵢ - xⱼ|` where `|xᵢ - xⱼ| ≤ k` and `i < j`.
+You are given an array `points` containing the coordinates of points on a 2D plane, sorted by the x-values, where `points[i] = [x_i, y_i]` such that `x_i < x_j` for all `1 <= i < j <= points.length`. You are also given an integer `k`.
 
-Since points are sorted by x and `i < j`, `xⱼ ≥ xᵢ`, so `|xᵢ - xⱼ| = xⱼ - xᵢ`.
+Return *the maximum value of the equation *`y_i + y_j + |x_i - x_j|` where `|x_i - x_j| <= k` and `1 <= i < j <= points.length`.
 
-The equation becomes: **maximize `(yⱼ + xⱼ) + (yᵢ - xᵢ)`** subject to `xⱼ - xᵢ ≤ k`.
+It is guaranteed that there exists at least one pair of points that satisfy the constraint `|x_i - x_j| <= k`.
 
 **Constraints:**
-- `2 ≤ points.length ≤ 10⁵`
-- `|xᵢ|, |yᵢ| ≤ 10⁸`
-- `0 ≤ k ≤ 2 × 10⁸`
-- Points sorted by `xᵢ` ascending.
+- `2 <= points.length <= 10^5`
+- `points[i].length == 2`
+- `-10^8 <= x_i, y_i <= 10^8`
+- `0 <= k <= 2 * 10^8`
+- `x_i < x_j` for all `1 <= i < j <= points.length`
+- `x_i` form a strictly increasing sequence.
 
 ---
 
@@ -39,16 +41,17 @@ The equation becomes: **maximize `(yⱼ + xⱼ) + (yᵢ - xᵢ)`** subject to `x
 
 **Example 1:**
 ```
-Input:  points = [[1,3],[2,0],[5,10],[6,-10]], k = 1
+Input: points = [[1,3],[2,0],[5,10],[6,-10]], k = 1
 Output: 4
-Explanation: Points [1,3] and [2,0]: 3 + 0 + |1-2| = 4 (|x diff| = 1 ≤ k)
+Explanation: The first two points satisfy the condition |x_i - x_j| <= 1 and if we calculate the equation we get 3 + 0 + |1 - 2| = 4. Third and fourth points also satisfy the condition and give a value of 10 + -10 + |5 - 6| = 1.
+No other pairs satisfy the condition, so we return the max of 4 and 1.
 ```
 
 **Example 2:**
 ```
-Input:  points = [[0,0],[3,0],[9,2]], k = 3
+Input: points = [[0,0],[3,0],[9,2]], k = 3
 Output: 3
-Explanation: Points [0,0] and [3,0]: 0 + 0 + 3 = 3
+Explanation: Only the first two points have an absolute difference of 3 or less in the x-values, and give the value of 0 + 0 + |0 - 3| = 3.
 ```
 
 ---

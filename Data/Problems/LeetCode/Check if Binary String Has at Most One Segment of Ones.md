@@ -7,12 +7,26 @@
 ---
 
 ## Problem Description
-Given a binary string `s`, determine whether all the `1` characters form at most one contiguous segment. In other words, there should be no occurrence of `01` after a `1` has appeared.
+Given a binary string `s` **without leading zeros**, return `true` *if* `s` *contains **at most one contiguous segment of ones***. Otherwise, return `false`.
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s[i]` is either `'0'` or `'1'`.
+- `s[0]` is `'1'`.
 
 ## Examples
-- Input: `"1001"` → Output: `false` (two separate `1` segments)
-- Input: `"110"` → Output: `true` (single segment of `1`s)
-- Input: `"0"` → Output: `true` (no `1`s at all)
+```
+Example 1:
+  Input: s = "1001"
+  Output: false
+  Explanation: The ones do not form a contiguous segment.
+```
+
+```
+Example 2:
+  Input: s = "110"
+  Output: true
+```
 
 ## Approach
 **Algorithm:** Simple Scan

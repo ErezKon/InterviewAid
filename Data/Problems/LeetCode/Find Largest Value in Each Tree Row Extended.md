@@ -7,17 +7,36 @@ Related: #102, #103, #107, #199, #515, #637, #993
 ## Problem Description
 Given the root of a binary tree, return an array `largestValues` where `largestValues[i]` is the maximum node value among all nodes at depth `i` (0‑indexed). The tree may be empty.
 
+This file covers the general BFS level-order pattern used by related problems (#102 level order, #103 zigzag, #107 bottom-up, #199 right side view, #515 largest value per row, #637 average per level, #993 cousins): process the queue one level at a time and aggregate per level.
+
+**Constraints:**
+
+- The number of nodes in the tree is in the range `[0, 10^4]`.
+- `-2^31 <= Node.val <= 2^31 - 1`
+
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 ## Examples
-**Example 1**
+
 ```
-Input: root = [1,3,2,5,3,null,9]
-Output: [1,3,9]
-Explanation: Level 0 → [1] max = 1; Level 1 → [3,2] max = 3; Level 2 → [5,3,9] max = 9.
+Example 1:
+  Input: root = [1,3,2,5,3,null,9]
+  Output: [1,3,9]
+  Explanation: Level 0 → [1] max = 1; Level 1 → [3,2] max = 3; Level 2 → [5,3,9] max = 9.
 ```
-**Example 2**
+
 ```
-Input: root = [1,2,3]
-Output: [1,3]
+Example 2:
+  Input: root = [1,2,3]
+  Output: [1,3]
+  Explanation: Level 0 → [1] max = 1; Level 1 → [2,3] max = 3.
+```
+
+```
+Example 3:
+  Input: root = []
+  Output: []
+  Explanation: The tree is empty, so there are no levels and the result is an empty array.
 ```
 
 ## Approach

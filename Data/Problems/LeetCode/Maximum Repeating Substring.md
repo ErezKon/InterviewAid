@@ -7,20 +7,37 @@
 ---
 
 ## Problem Description
-Given two strings `sequence` and `word`, determine the maximum integer `k` such that the string formed by concatenating `word` to itself `k` times (`word` repeated `k` times) is a substring of `sequence`. If `word` does not appear in `sequence`, the answer is `0`.
+
+For a string `sequence`, a string `word` is **`k`-repeating** if `word` concatenated `k` times is a substring of `sequence`. The `word`'s **maximum `k`-repeating value** is the highest value `k` where `word` is `k`-repeating in `sequence`. If `word` is not a substring of `sequence`, `word`'s maximum `k`-repeating value is `0`.
+
+Given strings `sequence` and `word`, return *the **maximum `k`-repeating value** of `word` in `sequence`*.
+
+**Constraints:**
+- `1 <= sequence.length <= 100`
+- `1 <= word.length <= 100`
+- `sequence` and `word` contains only lowercase English letters.
 
 ## Examples
+
 **Example 1:**
 ```
 Input: sequence = "ababc", word = "ab"
 Output: 2
-Explanation: "ab" repeated twice is "abab", which appears starting at index 0.
+Explanation: "abab" is a substring in "ababc".
 ```
+
 **Example 2:**
 ```
-Input: sequence = "abcd", word = "abc"
+Input: sequence = "ababc", word = "ba"
 Output: 1
-Explanation: "abc" appears once; repeating it twice would be "abcabc" which is not a substring.
+Explanation: "ba" is a substring in "ababc". "baba" is not a substring in "ababc".
+```
+
+**Example 3:**
+```
+Input: sequence = "ababc", word = "ac"
+Output: 0
+Explanation: "ac" is not a substring in "ababc".
 ```
 
 ## Approach

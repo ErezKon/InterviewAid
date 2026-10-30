@@ -7,21 +7,45 @@
 ---
 
 ## Problem Description
-Given `present[i]` (buy price), `future[i]` (sell price), and a `budget`, buy stocks today and sell tomorrow. Each stock bought at most once. Maximize **total profit**.
+You are given two **0-indexed** integer arrays of the same length `present` and `future` where `present[i]` is the current price of the `i`th stock and `future[i]` is the price of the `i`th stock a year in the future. You may buy each stock at most **once**. You are also given an integer `budget` representing the amount of money you currently have.
+
+Return *the maximum amount of profit you can make.*
+
+**Constraints:**
+- `n == present.length == future.length`
+- `1 <= n <= 1000`
+- `0 <= present[i], future[i] <= 100`
+- `0 <= budget <= 1000`
 
 ## Examples
-**Example 1:**
+
 ```
-Input: present = [3,5,2], future = [4,6,5], budget = 5
-Output: 3
-Explanation: Buy stock 0 (cost 3, profit 1) and stock 2 (cost 2, profit 3). Total profit = 1 + 3 = 4, but budget 5 allows both, profit 4.
+Example 1:
+  Input: present = [5,4,6,2,3], future = [8,5,4,3,5], budget = 10
+  Output: 6
+  Explanation: One possible way to maximize your profit is to:
+    Buy the 0th, 3rd, and 4th stocks for a total of 5 + 2 + 3 = 10.
+    Next year, sell all three stocks for a total of 8 + 3 + 5 = 16.
+    The profit you made is 16 - 10 = 6.
+    It can be shown that the maximum profit you can make is 6.
 ```
 
-**Example 2:**
 ```
-Input: present = [10,20], future = [5,15], budget = 10
-Output: 0
-Explanation: Both stocks would lose money, so best profit is 0.
+Example 2:
+  Input: present = [2,2,5], future = [3,4,10], budget = 6
+  Output: 5
+  Explanation: The only possible way to maximize your profit is to:
+    Buy the 2nd stock, and make a profit of 10 - 5 = 5.
+    It can be shown that the maximum profit you can make is 5.
+```
+
+```
+Example 3:
+  Input: present = [3,3,12], future = [0,3,15], budget = 10
+  Output: 0
+  Explanation: One possible way to maximize your profit is to:
+    Buy the 1st stock, and make a profit of 3 - 3 = 0.
+    It can be shown that the maximum profit you can make is 0.
 ```
 
 ## Approach

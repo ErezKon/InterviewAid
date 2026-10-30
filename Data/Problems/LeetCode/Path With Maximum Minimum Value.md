@@ -7,13 +7,39 @@
 ---
 
 ## Problem Description
-Given an `m × n` grid of integers, you start at the top‑left cell `(0,0)` and want to reach the bottom‑right cell `(m‑1,n‑1)`. The score of a path is the minimum value among all cells on that path. Return the maximum possible score among all such paths.
+Given an `m x n` integer matrix `grid`, return *the maximum **score** of a path starting at* `(0, 0)` *and ending at* `(m - 1, n - 1)` moving in the 4 cardinal directions.
+
+The **score** of a path is the minimum value in that path.
+
+- For example, the score of the path `8 → 4 → 5 → 9` is `4`.
+
+**Constraints:**
+
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 100`
+- `0 <= grid[i][j] <= 10^9`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `grid = [[5,4,5],[1,2,6],[7,4,6]]` | `4` | The optimal path `5→4→5→6→6` has minimum value `4`. |
-| `grid = [[2,2,1,2,2,2],[1,2,1,2,1,2]]` | `2` | Any path must include a `1`, but the best we can do is achieve a minimum of `2`. |
+
+```
+Example 1:
+  Input: grid = [[5,4,5],[1,2,6],[7,4,6]]
+  Output: 4
+  Explanation: The path with the maximum score is 5 -> 4 -> 5 -> 6 -> 6 (minimum value 4).
+```
+
+```
+Example 2:
+  Input: grid = [[2,2,1,2,2,2],[1,2,2,2,1,2]]
+  Output: 2
+```
+
+```
+Example 3:
+  Input: grid = [[3,4,6,3,4],[0,2,1,1,7],[8,8,3,2,7],[3,2,4,9,8],[4,1,2,0,0],[4,6,5,4,3]]
+  Output: 3
+```
 
 ## Approach
 Use a variant of Dijkstra where the priority is the **maximum** of the path‑minimum so far. A max‑heap stores `(currentMin, row, col)`. For each neighbor, the new path minimum is `min(currentMin, grid[nr][nc])`. If this value improves the best known for that cell, push it onto the heap. The first time we pop the target cell, we have the optimal answer.

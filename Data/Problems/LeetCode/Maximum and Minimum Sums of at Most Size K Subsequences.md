@@ -1,6 +1,7 @@
 # 3428. Maximum and Minimum Sums of at Most Size K Subsequences
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/maximum-and-minimum-sums-of-at-most-size-k-subsequences](https://leetcode.com/problems/maximum-and-minimum-sums-of-at-most-size-k-subsequences)
 **Companies:** Amazon, Bloomberg, Meta
 
 ---
@@ -17,11 +18,14 @@
 
 ## Problem Description
 
-Given an array `nums` and integer `k`, compute the sum over all subsequences of size ≤ k of `(max(subseq) + min(subseq))`. Return the result modulo 10⁹+7.
+You are given an integer array `nums` and a positive integer `k`. Return the sum of the **maximum** and **minimum** elements of all **subsequences** of `nums` with **at most** `k` elements.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁵`
-- `1 ≤ k ≤ n`
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 10^9`
+- `1 <= k <= min(70, nums.length)`
 
 ---
 
@@ -59,28 +63,53 @@ Optimize partial sums of binomial coefficients using prefix sums or recurrence.
 **Example 1:**
 ```
 Input: nums = [1,2,3], k = 2
-Output: 16
-Explanation:
-Subsequences of size ≤2:
-- Size 1: [1], [2], [3] → (1+1)+(2+2)+(3+3)=12
-- Size 2: [1,2], [1,3], [2,3]
-  * max+min for [1,2] = 2+1 = 3
-  * max+min for [1,3] = 3+1 = 4
-  * max+min for [2,3] = 3+2 = 5
-  Sum = 3+4+5 = 12
-Total = 12 + 12 = 24 → modulo 1e9+7 = 24
+Output: 24
+Explanation: The subsequences of nums with at most 2 elements are:
+  Subsequence
+  Minimum
+  Maximum
+  Sum
+  [1]
+  1
+  1
+  2
+  [2]
+  2
+  2
+  4
+  [3]
+  3
+  3
+  6
+  [1, 2]
+  1
+  2
+  3
+  [1, 3]
+  1
+  3
+  4
+  [2, 3]
+  2
+  3
+  5
+  Final Total
+  24
+The output would be 24.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,1,2], k = 3
-Output: 30
-Explanation:
-All subsequences (size ≤3) and their max+min:
-[5]=10, [1]=2, [2]=4,
-[5,1]=6, [5,2]=7, [1,2]=3,
-[5,1,2]=7
-Sum = 10+2+4+6+7+3+7 = 39 → 39 mod 1e9+7 = 39
+Input: nums = [5,0,6], k = 1
+Output: 22
+Explanation: For subsequences with exactly 1 element, the minimum and maximum values are the element itself. Therefore, the total is 5 + 5 + 0 + 0 + 6 + 6 = 22.
+```
+
+**Example 3:**
+```
+Input: nums = [1,1,1], k = 2
+Output: 12
+Explanation: The subsequences [1, 1] and [1] each appear 3 times. For all of them, the minimum and maximum are both 1. Thus, the total is 12.
 ```
 
 ---

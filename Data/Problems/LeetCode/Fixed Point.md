@@ -7,7 +7,13 @@
 ---
 
 ## Problem Description
-Given a sorted array of distinct integers `arr`, a *fixed point* is an index `i` such that `arr[i] == i`. Return any fixed point if it exists, otherwise return `-1`.
+Given an array of distinct integers `arr`, where `arr` is sorted in **ascending order**, return the smallest index `i` that satisfies `arr[i] == i`. If there is no such index, return `-1`.
+
+**Constraints:**
+- `1 <= arr.length < 10^4`
+- `-10^9 <= arr[i] <= 10^9`
+
+**Follow up:** The `O(n)` solution is very straightforward. Can we do better?
 
 ## Examples
 **Example 1:**

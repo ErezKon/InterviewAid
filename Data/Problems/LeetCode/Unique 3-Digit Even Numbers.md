@@ -7,20 +7,43 @@
 ---
 
 ## Problem Description
-Given an integer array `digits` containing digits from 0 to 9, return the number of **distinct** three‑digit even numbers that can be formed using **exactly three** digits from the array. Each digit from the array may be used at most once in each number. Leading zeros are not allowed.
+
+You are given an array of digits called `digits`. Your task is to determine the number of **distinct** three-digit even numbers that can be formed using these digits.
+
+**Note**: Each *copy* of a digit can only be used **once per number**, and there may **not** be leading zeros.
+
+**Constraints:**
+- `3 <= digits.length <= 10`
+- `0 <= digits[i] <= 9`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: digits = [2,2,8,8,2]
+Input: digits = [1,2,3,4]
+Output: 12
+Explanation: The 12 distinct 3-digit even numbers that can be formed are 124, 132, 134, 142, 214, 234, 312, 314, 324, 342, 412, and 432. Note that 222 cannot be formed because there is only 1 copy of the digit 2.
+```
+
+**Example 2:**
+```
+Input: digits = [0,2,2]
 Output: 2
-Explanation: The possible even numbers are 228 and 282. 222 is not counted because it uses the digit 2 three times, which exceeds its frequency.
+Explanation: The only 3-digit even numbers that can be formed are 202 and 220. Note that the digit 2 can be used twice because it appears twice in the array.
 ```
-**Example 2**
+
+**Example 3:**
 ```
-Input: digits = [3,7,5]
+Input: digits = [6,6,6]
+Output: 1
+Explanation: Only 666 can be formed.
+```
+
+**Example 4:**
+```
+Input: digits = [1,3,5]
 Output: 0
-Explanation: No even digit is available, so no even number can be formed.
+Explanation: No even 3-digit numbers can be formed.
 ```
 
 ## Approach

@@ -7,21 +7,45 @@
 ---
 
 ## Problem Description
-You are given an integer array `nums` of length `n`. For each index `i` (0‑based), define the **score** of the prefix `nums[0..i]` as `prefixSum(i) * (i + 1)`, where `prefixSum(i)` is the sum of the first `i+1` elements. The **maximum sum score** of the array is the maximum score among all prefixes. Return this maximum value.
+
+> *Note: the Approach below uses `prefix · (i+1)`. Officially the score at `i` is `max(prefix sum of nums[0..i], suffix sum of nums[i..n−1])`. Compute the total, scan once and take the max. O(n).*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given a **0-indexed** integer array `nums` of length `n`.
+
+The **sum ****score** of `nums` at an index `i` where `0 <= i < n` is the **maximum** of:
+
+- The sum of the **first** `i + 1` elements of `nums`.
+- The sum of the **last** `n - i` elements of `nums`.
+
+Return *the **maximum** **sum ****score** of *`nums`* at any index.*
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= n <= 10^5`
+- `-10^5 <= nums[i] <= 10^5`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [1,2,3,4]
-Output: 20
-Explanation: Prefix sums are [1,3,6,10]. Scores are [1*1, 3*2, 6*3, 10*4] = [1,6,18,40]. The maximum is 40.
+Input: nums = [4,3,-2,5]
+Output: 10
+Explanation: The sum score at index 0 is max(4, 4 + 3 + -2 + 5) = max(4, 10) = 10.
+The sum score at index 1 is max(4 + 3, 3 + -2 + 5) = max(7, 6) = 7.
+The sum score at index 2 is max(4 + 3 + -2, -2 + 5) = max(5, 3) = 5.
+The sum score at index 3 is max(4 + 3 + -2 + 5, 5) = max(10, 5) = 10.
+The maximum sum score of nums is 10.
 ```
 
 **Example 2:**
 ```
-Input: nums = [-5,2,3]
-Output: 0
-Explanation: Prefix sums are [-5,-3,0]. Scores are [-5*1,-3*2,0*3] = [-5,-6,0]. The maximum is 0.
+Input: nums = [-3,-5]
+Output: -3
+Explanation: The sum score at index 0 is max(-3, -3 + -5) = max(-3, -8) = -3.
+The sum score at index 1 is max(-3 + -5, -5) = max(-8, -5) = -5.
+The maximum sum score of nums is -3.
 ```
 
 ## Approach

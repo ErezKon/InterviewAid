@@ -7,14 +7,30 @@
 ---
 
 ## Problem Description
-Given the `root` of a binary tree and an integer `u` representing the value of a target node, return the value of the node that is the nearest neighbor to the right of the target node on the same depth level. If the target node is the rightmost node on its level, return `-1`.
+> *Note: statement verified against the official problem text (premium; via doocs/leetcode). Official returns the node (or `null`), not `-1` as the Approach below says.*
+
+Given the `root` of a binary tree and a node `u` in the tree, return *the **nearest** node on the **same level** that is to the **right** of* `u`*, or return* `null` *if* `u` *is the rightmost node in its level*.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[1, 10^5]`.
+- `1 <= Node.val <= 10^5`
+- All values in the tree are **distinct**.
+- `u` is a node in the binary tree rooted at `root`.
 
 ## Examples
-| Input (tree) | u | Output | Explanation |
-|---------------|---|--------|-------------|
-| `[1,2,3,4,5,null,7]` | `2` | `3` | Nodes `2` and `3` are on the same level; `3` is to the right of `2`. |
-| `[1,2,3,4,5,null,7]` | `5` | `7` | `5` and `7` share depth 2; `7` is right of `5`. |
-| `[1,2,3]` | `3` | `-1` | `3` is the rightmost node on its level.
+```
+Example 1:
+  Input: root = [1,2,3,null,4,5,6], u = 4
+  Output: 5
+  Explanation: The nearest node on the same level to the right of node 4 is node 5.
+```
+
+```
+Example 2:
+  Input: root = [3,null,4,2], u = 2
+  Output: null
+  Explanation: There are no nodes to the right of 2.
+```
 
 ## Approach
 Perform a breadth‑first search (BFS) level by level. For each level, iterate through its nodes while keeping track of the previous node's value. When the current node’s value equals `u`, the previously visited node (if any) is the left neighbor; the next node in the same level (if it exists) is the right neighbor. Return the right neighbor’s value or `-1` if none.

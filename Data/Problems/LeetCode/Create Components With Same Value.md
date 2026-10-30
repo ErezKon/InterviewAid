@@ -8,18 +8,38 @@
 
 ## Problem Description
 
-Given a tree where each node has a value, remove the maximum number of edges so that every remaining connected component has the same total sum of node values.
+There is an undirected tree with `n` nodes labeled from `0` to `n - 1`.
+
+You are given a **0-indexed** integer array `nums` of length `n` where `nums[i]` represents the value of the `i`-th node. You are also given a 2D integer array `edges` of length `n - 1` where `edges[i] = [a_i, b_i]` indicates that there is an edge between nodes `a_i` and `b_i` in the tree.
+
+You are allowed to **delete** some edges, splitting the tree into multiple connected components. Let the **value** of a component be the sum of **all** `nums[i]` for which node `i` is in the component.
+
+Return *the **maximum** number of edges you can delete, such that every connected component in the tree has the same value.*
+
+**Constraints:**
+- `1 <= n <= 2 * 10^4`
+- `nums.length == n`
+- `1 <= nums[i] <= 50`
+- `edges.length == n - 1`
+- `edges[i].length == 2`
+- `0 <= edges[i][0], edges[i][1] <= n - 1`
+- `edges` represents a valid tree.
 
 ## Examples
 
-```text
-Input: nums = [6,2,2,2,6], edges = [[0,1],[1,2],[1,3],[3,4]]
-Output: 2
-Explanation: Remove edges (1,2) and (3,4). The remaining components each sum to 6.
+```
+Example 1:
+  Input: nums = [6,2,2,2,6], edges = [[0,1],[1,2],[1,3],[3,4]]
+  Output: 2
+  Explanation: Delete the edges [0,1] and [3,4]. The created components are nodes [0], [1,2,3] and [4].
+  The sum of the values in each component equals 6. It can be proven that no better deletion exists, so the answer is 2.
+```
 
-Input: nums = [1,2,3,4,5,6], edges = [[0,1],[1,2],[2,3],[3,4],[4,5]]
-Output: 0
-Explanation: No removal can make all components have equal sum.
+```
+Example 2:
+  Input: nums = [2], edges = []
+  Output: 0
+  Explanation: There are no edges to be deleted.
 ```
 
 ---

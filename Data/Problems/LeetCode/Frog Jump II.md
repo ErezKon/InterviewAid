@@ -1,8 +1,9 @@
 # 2498. Frog Jump II
 
 **Difficulty:** 🟡 Medium
-
+**LeetCode:** [https://leetcode.com/problems/frog-jump-ii](https://leetcode.com/problems/frog-jump-ii)
 **Companies:** Amazon, Google, Microsoft
+
 ---
 
 ## Table of Contents
@@ -20,7 +21,25 @@
 
 ## 1. Problem Description
 
-A frog jumps from stone 0 to the last stone and back. On each trip it must use a different set of intermediate stones. Minimize the maximum jump distance across both trips.
+You are given a **0-indexed** integer array `stones` sorted in **strictly increasing order** representing the positions of stones in a river.
+
+A frog, initially on the first stone, wants to travel to the last stone and then return to the first stone. However, it can jump to any stone **at most once**.
+
+The **length** of a jump is the absolute difference between the position of the stone the frog is currently on and the position of the stone to which the frog jumps.
+
+- More formally, if the frog is at `stones[i]` and is jumping to `stones[j]`, the length of the jump is `|stones[i] - stones[j]|`.
+
+The **cost** of a path is the **maximum length of a jump** among all jumps in the path.
+
+Return *the **minimum** cost of a path for the frog*.
+
+**Constraints:**
+- `2 <= stones.length <= 10^5`
+- `0 <= stones[i] <= 10^9`
+- `stones[0] == 0`
+- `stones` is sorted in a strictly increasing order.
+
+**Official examples:** `stones = [0,2,5,6,7]` → `5`; `stones = [0,3,9]` → `9` (the frog can jump directly to the last stone and come back; cost 9).
 
 ---
 

@@ -8,7 +8,23 @@
 
 ## Problem Description
 
-Same as Part I but with very large `k` (up to 10⁹) and results modulo 10⁹+7. Repeatedly multiply the minimum element by `multiplier`.
+You are given an integer array `nums`, an integer `k`, and an integer `multiplier`.
+
+You need to perform `k` operations on `nums`. In each operation:
+
+- Find the **minimum** value `x` in `nums`. If there are multiple occurrences of the minimum value, select the one that appears **first**.
+- Replace the selected minimum value `x` with `x * multiplier`.
+
+After the `k` operations, apply **modulo** `10⁹ + 7` to every value in `nums`.
+
+Return an integer array denoting the *final state* of `nums` after performing all `k` operations and then applying the modulo.
+
+**Constraints:**
+
+- `1 <= nums.length <= 10⁴`
+- `1 <= nums[i] <= 10⁹`
+- `1 <= k <= 10⁹`
+- `1 <= multiplier <= 10⁶`
 
 ---
 
@@ -44,19 +60,30 @@ FUNCTION getFinalState(nums, k, multiplier):
 
 ## Examples
 
-**Example 1:**
 ```
-nums = [1,2,3], k = 5, multiplier = 2
-Final array = [32, 64, 96]
+Example 1:
+  Input: nums = [2,1,3,5,6], k = 5, multiplier = 2
+  Output: [8,4,6,5,6]
+  Explanation:
+  Operation              | Result
+  After operation 1      | [2, 2, 3, 5, 6]
+  After operation 2      | [4, 2, 3, 5, 6]
+  After operation 3      | [4, 4, 3, 5, 6]
+  After operation 4      | [4, 4, 6, 5, 6]
+  After operation 5      | [8, 4, 6, 5, 6]
+  After applying modulo  | [8, 4, 6, 5, 6]
 ```
-*Explanation:* Heap operations multiply the smallest element repeatedly until all values are comparable, then remaining multiplications are batched.
 
-**Example 2:**
 ```
-nums = [5,5,5], k = 3, multiplier = 3
-Final array = [135, 135, 135]
+Example 2:
+  Input: nums = [100000,2000], k = 2, multiplier = 1000000
+  Output: [999999307,999999993]
+  Explanation:
+  Operation              | Result
+  After operation 1      | [100000, 2000000000]
+  After operation 2      | [100000000000, 2000000000]
+  After applying modulo  | [999999307, 999999993]
 ```
-*Explanation:* All elements are equal, so each receives one multiplication; modular exponentiation handles large `k` efficiently.
 
 ---
 

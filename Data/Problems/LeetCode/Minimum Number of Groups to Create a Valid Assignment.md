@@ -8,25 +8,56 @@
 
 ## Problem Description
 
-You are given an array `tasks` where `tasks[i]` is the difficulty of the *i*‑th task. You need to assign each task to a group such that within each group the difficulties are strictly increasing. Return the minimum number of groups required to assign all tasks.
+> *Note: the Approach below (Dilworth / chains) solves an invented problem. Correct idea: count each value's frequency. Try box sizes `s` from `min(freq)` down to 1. A frequency `c` fits into boxes of size `s` or `s+1` iff `ceil(c/(s+1)) · s ≤ c`. The first `s` that works for every value gives `Σ ceil(c/(s+1))`.*
+
+You are given a collection of numbered `balls` and instructed to sort them into boxes for a nearly balanced distribution. There are two rules you must follow:
+
+- Balls with the same box must have the same value. But, if you have more than one ball with the same number, you can put them in different boxes.
+- The biggest box can only have one more ball than the smallest box.
+
+Return the *fewest number of boxes* to sort these balls following these rules.
+
+**Example 1: **
+
+**Input: **  balls = [3,2,3,2,3]
+
+**Output: **  2
+
+**Explanation:**
+
+We can sort `balls` into boxes as follows:
+
+- `[3,3,3]`
+- `[2,2]`
+
+The size difference between the two boxes doesn't exceed one.
+
+**Example 2: **
+
+**Input: **  balls = [10,10,10,3,1,1]
+
+**Output: **  4
+
+**Explanation:**
+
+We can sort `balls` into boxes as follows:
+
+- `[10]`
+- `[10,10]`
+- `[3]`
+- `[1,1]`
+
+You can't use fewer than four boxes while still following the rules. For example, putting all three balls numbered 10 in one box would break the rule about the maximum size difference between boxes.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ---
 
 ## Examples
 
-**Example 1:**
-```
-Input: tasks = [1,3,2,4,5]
-Output: 2
-Explanation: One possible grouping is {1,2,4,5} and {3}. Both groups have strictly increasing difficulties.
-```
 
-**Example 2:**
-```
-Input: tasks = [5,4,3,2,1]
-Output: 5
-Explanation: No two tasks can be placed in the same group because the sequence is decreasing. Each task forms its own group.
-```
 
 ---
 

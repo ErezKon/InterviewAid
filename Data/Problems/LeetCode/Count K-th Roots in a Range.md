@@ -8,7 +8,15 @@
 
 ## 1. Problem Description
 
-Count integers in `[lo, hi]` that are perfect k-th powers (i.e., `x = y^k` for some integer `y ≥ 1`).
+You are given three integers `l`, `r`, and `k`.
+
+An integer `y` is said to be a **perfect k^th power** if there exists an integer `x` such that `y = x^k`.
+
+Return the number of integers `y` in the range `[l, r]` (inclusive) that are **perfect k^th powers**.
+
+**Constraints:**
+- `0 <= l <= r <= 10^9`
+- `1 <= k <= 30`
 
 ---
 
@@ -44,16 +52,23 @@ FUNCTION countKthRoots(lo, hi, k):
 
 **Example 1:**
 ```
-Input: lo = 1, hi = 10, k = 2
-Output: 3
-Explanation: Perfect squares in [1,10] are 1,4,9 → 3 numbers.
+Input: l = 1, r = 9, k = 3
+Output: 2
+Explanation: The perfect cubes in the range [1, 9] are:
+- 1 = 1^3
+- 8 = 2^3
+Hence, the answer is 2.
 ```
 
 **Example 2:**
 ```
-Input: lo = 5, hi = 100, k = 3
-Output: 2
-Explanation: Perfect cubes in [5,100] are 8 (2³) and 27 (3³).
+Input: l = 8, r = 30, k = 2
+Output: 3
+Explanation: The perfect squares in the range [8, 30] are:
+- 9 = 3^2
+- 16 = 4^2
+- 25 = 5^2
+Hence, the answer is 3.
 ```
 
 ---

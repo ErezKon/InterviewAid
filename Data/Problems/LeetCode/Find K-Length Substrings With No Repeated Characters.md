@@ -8,26 +8,30 @@
 
 ## Problem Description
 
-Given a string `s` and an integer `k`, count the number of substrings of length `k` where all characters are distinct. Return the total count.
+Given a string `s` and an integer `k`, return *the number of substrings in* `s` *of length* `k` *with no repeated characters*.
+
+**Constraints:**
+
+- `1 <= s.length <= 10^4`
+- `s` consists of lowercase English letters.
+- `1 <= k <= 10^4`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-s = "abcabc"
-k = 3
-Output: 4
-Explanation: Substrings of length 3 with unique chars are "abc", "bca", "cab", "abc".
+Example 1:
+  Input: s = "havefunonleetcode", k = 5
+  Output: 6
+  Explanation: There are 6 substrings they are: 'havef','avefu','vefun','efuno','etcod','tcode'.
 ```
 
-**Example 2:**
 ```
-s = "aaaaa"
-k = 2
-Output: 0
-Explanation: No length‑2 substring has distinct characters.
+Example 2:
+  Input: s = "home", k = 5
+  Output: 0
+  Explanation: Notice k can be larger than the length of s. In this case, it is not possible to find any substring.
 ```
 
 ---

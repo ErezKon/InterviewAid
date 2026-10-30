@@ -8,7 +8,18 @@
 
 ## 1. Problem Description
 
-Given a string `s` of words, count the total number of distinct strings that are anagrams of `s` (rearranging characters within each word independently). Return modulo 10^9+7.
+You are given a string `s` containing one or more words. Every consecutive pair of words is separated by a single space `' '`.
+
+A string `t` is an **anagram** of string `s` if the `i`-th word of `t` is a **permutation** of the `i`-th word of `s`.
+
+- For example, `"acb dfe"` is an anagram of `"abc def"`, but `"def cab"` and `"adc bef"` are not.
+
+Return *the number of **distinct anagrams** of* `s`. Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of lowercase English letters and spaces `' '`.
+- There is single space between consecutive words.
 
 ---
 
@@ -42,18 +53,18 @@ Precompute factorials and inverse factorials up to max word length.
 
 ## Examples
 
-**Example 1:**
 ```
-Input: s = "cat dog"
-Output: 12
-Explanation: "cat" has 3! = 6 anagrams, "dog" also has 3! = 6. Total = 6 × 6 = 36, but modulo 1e9+7 remains 36.
+Example 1:
+  Input: s = "too hot"
+  Output: 18
+  Explanation: Some of the anagrams of the given string are "too hot", "oot hot", "oto toh", "too toh", and "too oht".
 ```
 
-**Example 2:**
 ```
-Input: s = "aab aa"
-Output: 3
-Explanation: For "aab", permutations = 3! / 2! = 3. For "aa", permutations = 2! / 2! = 1. Total = 3 × 1 = 3.
+Example 2:
+  Input: s = "aa"
+  Output: 1
+  Explanation: There is only one anagram possible for the given string.
 ```
 
 ---

@@ -21,9 +21,13 @@
 
 ## 1. Problem Description
 
-Given two integers `num1` and `num2`, in one operation you choose an integer `i` in range `[0, 60]` and subtract `2^i + num2` from `num1`.
+You are given two integers `num1` and `num2`.
 
-Return the **minimum** number of operations to make `num1` equal to `0`, or `-1` if impossible.
+In one operation, you can choose integer `i` in the range `[0, 60]` and subtract `2^i + num2` from `num1`.
+
+Return *the integer denoting the **minimum** number of operations needed to make* `num1` *equal to* `0`.
+
+If it is impossible to make `num1` equal to `0`, return `-1`.
 
 **Constraints:**
 - `1 <= num1 <= 10⁹`
@@ -37,18 +41,18 @@ Return the **minimum** number of operations to make `num1` equal to `0`, or `-1`
 Example 1:
   Input: num1 = 3, num2 = -2
   Output: 3
-  Explanation: Choose i=1: 3 - (2+(-2)) = 3 - 0... Actually:
-    Op1: i=1 → 3 - (2¹ + (-2)) = 3 - 0 = 3 (not helpful).
-    Better: i=1,i=1,i=0 → subtract (2+(-2)), (2+(-2)), (1+(-2))
-    = 3 - 0 - 0 - (-1) = 4. Need proper choices:
-    Op1: i=0 → 3 - (1-2) = 4; Op2: i=0 → 4 - (1-2) = 5; Op3: i=2 → 5 - (4-2) = 3...
-    Actual: 3 operations with i=1,1,1 → target = 3 - 3*(-2) = 9, popcount(9)=2 ≤ 3 ≤ 9 ✅
+  Explanation: We can make 3 equal to 0 with the following operations:
+  - We choose i = 2 and subtract 2² + (-2) from 3, 3 - (4 + (-2)) = 1.
+  - We choose i = 2 and subtract 2² + (-2) from 1, 1 - (4 + (-2)) = -1.
+  - We choose i = 0 and subtract 2⁰ + (-2) from -1, (-1) - (1 + (-2)) = 0.
+  It can be proven, that 3 is the minimum number of operations that we need to perform.
+```
 
+```
 Example 2:
   Input: num1 = 5, num2 = 7
   Output: -1
-  Explanation: After each operation, num1 decreases by at least 7
-               (since 2^i ≥ 1), so it goes negative before reaching 0.
+  Explanation: It can be proven, that it is impossible to make 5 equal to 0 with the given operation.
 ```
 
 ---

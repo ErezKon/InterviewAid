@@ -19,18 +19,38 @@
 
 ## 1. Problem Description
 
-Given a list of rectangles represented as `[length, width]`, the side length of the largest square that can be formed from a rectangle `i` is `min(length_i, width_i)`. Return the count of rectangles that can form a square of the maximum possible side length among all rectangles.
+You are given an array `rectangles` where `rectangles[i] = [l_i, w_i]` represents the `i^th` rectangle of length `l_i` and width `w_i`.
+
+You can cut the `i^th` rectangle to form a square with a side length of `k` if both `k <= l_i` and `k <= w_i`. For example, if you have a rectangle `[4,6]`, you can cut it to get a square with a side length of at most `4`.
+
+Let `maxLen` be the side length of the **largest** square you can obtain from any of the given rectangles.
+
+Return *the **number** of rectangles that can make a square with a side length of* `maxLen`.
+
+**Constraints:**
+
+- `1 <= rectangles.length <= 1000`
+- `rectangles[i].length == 2`
+- `1 <= l_i, w_i <= 10^9`
+- `l_i != w_i`
 
 ---
 
 ## 2. Examples
 
-| rectangles | output |
-|------------|--------|
-| `[[4,3],[2,5],[3,3]]` | 2 |
-| `[[1,2],[2,1],[2,2]]` | 1 |
+```
+Example 1:
+  Input: rectangles = [[5,8],[3,9],[5,12],[16,5]]
+  Output: 3
+  Explanation: The largest squares you can get from each rectangle are of lengths [5,3,5,5].
+  The largest possible square is of length 5, and you can get it out of 3 rectangles.
+```
 
-*Explanation*: In the first example, the maximum square side is `3` (from rectangles `[4,3]` and `[3,3]`), and two rectangles achieve it. In the second example, the maximum side is `2` from rectangle `[2,2]` only.
+```
+Example 2:
+  Input: rectangles = [[2,3],[3,7],[4,3],[3,7]]
+  Output: 3
+```
 
 ---
 

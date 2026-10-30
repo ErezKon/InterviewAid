@@ -8,16 +8,37 @@
 
 ## Problem Description
 
-Recursively remove leaf nodes with a given `target` value. After removal, new leaves may also match and should be removed.
+Given a binary tree `root` and an integer `target`, delete all the **leaf nodes** with value `target`.
+
+Note that once you delete a leaf node with value `target`, if its parent node becomes a leaf node and has the value `target`, it should also be deleted (you need to continue doing that until you cannot).
+
+**Constraints:**
+
+- The number of nodes in the tree is in the range `[1, 3000]`.
+- `1 <= Node.val, target <= 1000`
 
 ## Examples
 
-| Input Tree | Target | Output Tree |
-|------------|--------|-------------|
-| `[1,2,3,2,null,2,4]` | `2` | `[1,3,4]` |
-| `[1,3,3,3,2]` | `3` | `[1,2]` |
+```
+Example 1:
+  Input: root = [1,2,3,2,null,2,4], target = 2
+  Output: [1,null,3,null,4]
+  Explanation: Leaf nodes with value (target = 2) are removed.
+  After removing, new nodes become leaf nodes with value (target = 2), and they are removed too.
+```
 
-*Explanation:* In the first example, all leaf nodes equal to `2` are removed, causing their parents to become new leaves and also be removed.
+```
+Example 2:
+  Input: root = [1,3,3,3,2], target = 3
+  Output: [1,3,null,null,2]
+```
+
+```
+Example 3:
+  Input: root = [1,2,null,2,null,2], target = 2
+  Output: [1]
+  Explanation: Leaf nodes with value (target = 2) are removed at each step.
+```
 
 ## Approach
 

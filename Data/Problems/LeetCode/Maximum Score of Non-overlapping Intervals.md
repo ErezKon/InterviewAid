@@ -7,20 +7,36 @@
 ---
 
 ## Problem Description
-Given an array `intervals` where each interval is represented as `[start, end, score]`, select a subset of non‑overlapping intervals such that the sum of their scores is maximized. Two intervals overlap if they share any common point. Return the maximum total score achievable.
+
+> *Note: the Approach below is unlimited weighted interval scheduling. Officially you may pick **at most 4** non-overlapping intervals (sharing an endpoint counts as overlapping) and must return the **lexicographically smallest index array** among the max-weight choices. Correct idea: sort by start time and run a DP over (position, intervals left ≤ 4). Store (best score, sorted index list) and break ties by lexicographic comparison of the lists. Use binary search for the next compatible interval.*
+
+You are given a 2D integer array `intervals`, where `intervals[i] = [l_i, r_i, weight_i]`. Interval `i` starts at position `l_i` and ends at `r_i`, and has a weight of `weight_i`. You can choose *up to* 4 **non-overlapping** intervals. The **score** of the chosen intervals is defined as the total sum of their weights.
+
+Return the lexicographically smallest array of at most 4 indices from `intervals` with **maximum** score, representing your choice of non-overlapping intervals.
+
+Two intervals are said to be **non-overlapping** if they do not share any points. In particular, intervals sharing a left or right boundary are considered overlapping.
+
+**Constraints:**
+- `1 <= intevals.length <= 5 * 10^4`
+- `intervals[i].length == 3`
+- `intervals[i] = [l_i, r_i, weight_i]`
+- `1 <= l_i <= r_i <= 10^9`
+- `1 <= weight_i <= 10^9`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: intervals = [[1,3,4],[2,5,2],[4,6,4]]
-Output: 8
-Explanation: Choose intervals [1,3,4] and [4,6,4]; they do not overlap and total score = 8.
+Input: intervals = [[1,3,2],[4,5,2],[1,5,5],[6,9,3],[6,7,1],[8,9,1]]
+Output: [2,3]
+Explanation: You can choose the intervals with indices 2, and 3 with respective weights of 5, and 3.
 ```
+
 **Example 2:**
 ```
-Input: intervals = [[1,2,3],[2,3,4],[3,4,5]]
-Output: 12
-Explanation: All intervals can be taken because each ends where the next begins (no overlap).
+Input: intervals = [[5,8,1],[6,7,7],[4,7,3],[9,10,6],[7,8,2],[11,14,3],[3,5,5]]
+Output: [1,3,5,6]
+Explanation: You can choose the intervals with indices 1, 3, 5, and 6 with respective weights of 7, 6, 3, and 5.
 ```
 
 ## Approach

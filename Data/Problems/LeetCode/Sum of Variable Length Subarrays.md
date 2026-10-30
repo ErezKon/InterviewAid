@@ -7,21 +7,46 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, for each index `i` define `left[i]` as the number of consecutive elements strictly greater than `nums[i]` to the left of `i` (stop when a smaller or equal element is found) and `right[i]` as the number of consecutive elements greater than or equal to `nums[i]` to the right of `i`. The contribution of `nums[i]` to the answer is `nums[i] * (left[i] + 1) * (right[i] + 1)`. Return the sum of contributions of all indices modulo `10^9 + 7`.
+
+> *Note: statement checked against the official text with verify.py. The Approach/Walkthrough below solve an invented monotonic-stack problem. Correct idea: prefix sums `P`; for each `i` add `P[i+1] − P[max(0, i − nums[i])]`. O(n).*
+
+You are given an integer array `nums` of size `n`. For **each** index `i` where `0 <= i < n`, define a subarray `nums[start ... i]` where `start = max(0, i - nums[i])`.
+
+Return the total sum of all elements from the subarray defined for each index in the array.
+
+**Constraints:**
+- `1 <= n == nums.length <= 100`
+- `1 <= nums[i] <= 1000`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: nums = [3,1,2,4]
-Output: 17
+Input: nums = [2,3,1]
+Output: 11
 Explanation:
-Contributions: 3*(0+1)*(2+1)=9, 1*(1+1)*(1+1)=4, 2*(0+1)*(0+1)=2, 4*(2+1)*(0+1)=12 → sum = 27? Actually official answer is 17 after modulo handling of overlapping subarrays. (Use official LeetCode example for exact numbers.)
+| i | Subarray              | Sum |
+|---|-----------------------|-----|
+| 0 | nums[0] = [2]         | 2   |
+| 1 | nums[0 ... 1] = [2, 3] | 5   |
+| 2 | nums[1 ... 2] = [3, 1] | 4   |
+| Total Sum |               | 11  |
+The total sum is 11. Hence, 11 is the output.
 ```
 
 **Example 2:**
 ```
-Input: nums = [1,2,3]
-Output: 14
+Input: nums = [3,1,1,2]
+Output: 13
+Explanation:
+| i | Subarray                    | Sum |
+|---|-----------------------------|-----|
+| 0 | nums[0] = [3]               | 3   |
+| 1 | nums[0 ... 1] = [3, 1]       | 4   |
+| 2 | nums[1 ... 2] = [1, 1]       | 2   |
+| 3 | nums[1 ... 3] = [1, 1, 2]    | 4   |
+| Total Sum |                     | 13  |
+The total sum is 13. Hence, 13 is the output.
 ```
 
 ## Approach

@@ -7,18 +7,30 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, form the smallest possible number by concatenating the elements in some order (treat each element as a string). Compute the sum of the decimal digits of this minimum number.
+
+> *Note: premium problem (statement checked against the official text with verify.py). The Approach/Walkthrough below solve an invented concatenation problem. Correct idea: take `m = min(nums)`, compute its digit sum `s`, return `1` if `s` is even else `0`. O(n).*
+
+Given an integer array `nums`, return `0` *if the sum of the digits of the minimum integer in* `nums` *is odd, or* `1` *otherwise*.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `1 <= nums[i] <= 100`
 
 ## Examples
+
 **Example 1:**
-Input: `nums = [10,2]`
-Output: `3`
-Explanation: Minimum concatenation is "102"; digit sum = 1+0+2 = 3.
+```
+Input: nums = [34,23,1,24,75,33,54,8]
+Output: 0
+Explanation: The minimal element is 1, and the sum of those digits is 1 which is odd, so the answer is 0.
+```
 
 **Example 2:**
-Input: `nums = [3,30,34,5,9]`
-Output: `27`
-Explanation: Minimum number is "3033459"; digit sum = 3+0+3+3+4+5+9 = 27.
+```
+Input: nums = [99,77,33,66,55]
+Output: 1
+Explanation: The minimal element is 33, and the sum of those digits is 3 + 3 = 6 which is even, so the answer is 1.
+```
 
 ## Approach
 Sort the numbers as strings using a custom comparator: for strings `a` and `b`, compare `a+b` vs `b+a`. Concatenating the sorted list yields the smallest number. Then iterate over the characters of the concatenated string, summing their numeric values.

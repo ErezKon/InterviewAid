@@ -6,11 +6,30 @@
 ---
 
 ## Problem Description
-Given two strings `num1` and `num2` representing complex numbers in the form `"a+bi"` where `a` and `b` are integers, return a string representing their product, also in the form `"c+di"`.
+A [complex number](https://en.wikipedia.org/wiki/Complex_number) can be represented as a string on the form `"real+imaginaryi"` where:
+
+- `real` is the real part and is an integer in the range `[-100, 100]`.
+- `imaginary` is the imaginary part and is an integer in the range `[-100, 100]`.
+- `i^2 == -1`.
+
+Given two complex numbers `num1` and `num2` as strings, return *a string of the complex number that represents their multiplications*.
+
+**Constraints:**
+- `num1` and `num2` are valid complex numbers.
 
 ## Examples
-- **Example 1:** `num1 = "1+1i"`, `num2 = "1+1i"` → output `"0+2i"`.
-- **Example 2:** `num1 = "1+-1i"`, `num2 = "1+-1i"` → output `"0+-2i"`.
+```
+Example 1:
+  Input: num1 = "1+1i", num2 = "1+1i"
+  Output: "0+2i"
+  Explanation: (1 + i) * (1 + i) = 1 + i^2 + 2 * i = 2i, and you need convert it to the form of 0+2i.
+```
+```
+Example 2:
+  Input: num1 = "1+-1i", num2 = "1+-1i"
+  Output: "0+-2i"
+  Explanation: (1 - i) * (1 - i) = 1 + i^2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.
+```
 
 ## Approach
 Parse each string to extract real and imaginary parts, then apply the formula:

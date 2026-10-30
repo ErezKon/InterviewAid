@@ -9,21 +9,43 @@
 
 ## Problem Description
 
-Reverse the bits of a given 32‑bit unsigned integer and return the resulting integer.
+Reverse bits of a given 32 bits signed integer.
+
+**Follow up:** If this function is called many times, how would you optimize it?
 
 **Constraints:**
-- Input fits in a 32‑bit unsigned integer.
-- You must treat the integer as exactly 32 bits, including leading zeros.
+- `0 <= n <= 2^31 - 2`
+- `n` is even.
 
 ---
 
 ## Examples
 
-| Input (decimal) | Binary Input                | Output (decimal) | Binary Output               |
-|-----------------|-----------------------------|------------------|-----------------------------|
-| `43261596`      | `00000010100101000001111010011100` | `964176192`      | `00111001011110000010100101000000` |
-| `4294967295`    | `11111111111111111111111111111111` | `4294967295`    | `11111111111111111111111111111111` |
-| `0`             | `00000000000000000000000000000000` | `0`             | `00000000000000000000000000000000` |
+**Example 1:**
+```
+Input: n = 43261596
+Output: 964176192
+Explanation:
+  Integer
+  Binary
+  43261596
+  00000010100101000001111010011100
+  964176192
+  00111001011110000010100101000000
+```
+
+**Example 2:**
+```
+Input: n = 2147483644
+Output: 1073741822
+Explanation:
+  Integer
+  Binary
+  2147483644
+  01111111111111111111111111111100
+  1073741822
+  00111111111111111111111111111110
+```
 
 ---
 

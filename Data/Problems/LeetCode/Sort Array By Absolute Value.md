@@ -8,12 +8,42 @@
 
 ## Problem Description
 
-Given an array of integers, sort it by absolute value in ascending order. If two elements have the same absolute value, the negative one comes first.
+You are given an integer array `nums`.
+
+Rearrange elements of `nums` in **non-decreasing** order of their absolute value.
+
+Return **any** rearranged array that satisfies this condition.
+
+**Note**: The absolute value of an integer x is defined as:
+
+- `x` if `x >= 0`
+- `-x` if `x < 0`
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `-100 <= nums[i] <= 100`
 
 ### Examples
 
-- **Input:** `nums = [-3,2,1,-1]` → **Output:** `[-1,1,2,-3]`
-- **Input:** `nums = [5,-5,3,-3]` → **Output:** `[-3,3,-5,5]`
+```
+Example 1:
+  Input: nums = [3,-1,-4,1,5]
+  Output: [-1,1,3,-4,5]
+  Explanation:
+    - The absolute values of elements in nums are 3, 1, 4, 1, 5 respectively.
+    - Rearranging them in increasing order, we get 1, 1, 3, 4, 5.
+    - This corresponds to [-1, 1, 3, -4, 5]. Another possible rearrangement is [1, -1, 3, -4, 5].
+```
+
+```
+Example 2:
+  Input: nums = [-100,100]
+  Output: [-100,100]
+  Explanation:
+    - The absolute values of elements in nums are 100, 100 respectively.
+    - Rearranging them in increasing order, we get 100, 100.
+    - This corresponds to [-100, 100]. Another possible rearrangement is [100, -100].
+```
 
 ## Approach: Custom Sort — O(n log n) ✅
 

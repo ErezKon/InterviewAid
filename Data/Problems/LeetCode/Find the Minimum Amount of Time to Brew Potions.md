@@ -21,30 +21,51 @@
 
 ## 1. Problem Description
 
-Given `n` wizards with skills and `m` potions requiring mana, wizards process potions in order. Wizard `i` takes `skill[i] * mana[j]` time for potion `j`. Each wizard must finish before the next starts on the same potion. Minimize total time.
+You are given two integer arrays, `skill` and `mana`, of length `n` and `m`, respectively.
+
+In a laboratory, `n` wizards must brew `m` potions *in order*. Each potion has a mana capacity `mana[j]` and **must** pass through **all** the wizards sequentially to be brewed properly. The time taken by the `i`-th wizard on the `j`-th potion is `time_ij = skill[i] * mana[j]`.
+
+Since the brewing process is delicate, a potion **must** be passed to the next wizard immediately after the current wizard completes their work. This means the timing must be *synchronized* so that each wizard begins working on a potion **exactly** when it arrives.
+
+Return the **minimum** amount of time required for the potions to be brewed properly.
 
 **Constraints:**
-- `n, m <= 1000`
+- `n == skill.length`
+- `m == mana.length`
+- `1 <= n, m <= 5000`
+- `1 <= mana[i], skill[i] <= 5000`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-skill = [2, 3]
-mana  = [4, 5]
-Output: 46
-```
-*Explanation:* Wizard 0 processes potion 0 in `2*4=8` time, then potion 1 in `2*5=10`. Wizard 1 can start potion 0 after wizard 0 finishes it (`8`), taking `3*4=12` (finishes at `20`). Then potion 1 starts after both wizard 0 (`18`) and wizard 1 (`20`) are done, taking `3*5=15` (finishes at `35`). Total time = `35`.
+Example 1:
+  Input: skill = [1,5,2,4], mana = [5,1,4,2]
+  Output: 110
+  Explanation:
+    Potion | Start time | Wizard 0 done by | Wizard 1 done by | Wizard 2 done by | Wizard 3 done by
+    0      | 0          | 5                | 30               | 40               | 60
+    1      | 52         | 53               | 58               | 60               | 64
+    2      | 54         | 58               | 78               | 86               | 102
+    3      | 86         | 88               | 98               | 102              | 110
+  As an example for why wizard 0 cannot start working on the 1st potion before time t = 52,
+  consider the case where the wizards started preparing the 1st potion at time t = 50. At time
+  t = 58, wizard 2 is done with the 1st potion, but wizard 3 will still be working on the 0th
+  potion till time t = 60.
 
-**Example 2:**
+Example 2:
+  Input: skill = [1,1,1], mana = [1,1,1]
+  Output: 5
+  Explanation:
+    1. Preparation of the 0th potion begins at time t = 0, and is completed by time t = 3.
+    2. Preparation of the 1st potion begins at time t = 1, and is completed by time t = 4.
+    3. Preparation of the 2nd potion begins at time t = 2, and is completed by time t = 5.
+
+Example 3:
+  Input: skill = [1,2,3,4], mana = [1,2]
+  Output: 21
 ```
-skill = [1, 2, 3]
-mana  = [1, 2]
-Output: 14
-```
-*Explanation:* Simulate pipeline; final wizard finishes at time `14`.
 
 ---
 

@@ -20,7 +20,9 @@
 
 ## 1. Problem Description
 
-A biker starts at altitude 0 and goes through `n+1` points. Given an array `gain` where `gain[i]` is the altitude change between point `i` and `i+1`, return the **highest altitude** reached.
+There is a biker going on a road trip. The road trip consists of `n + 1` points at different altitudes. The biker starts his trip on point `0` with altitude equal `0`.
+
+You are given an integer array `gain` of length `n` where `gain[i]` is the **net gain in altitude** between points `i` and `i + 1` for all (`0 <= i < n`). Return *the **highest altitude** of a point.*
 
 **Constraints:**
 - `n == gain.length`
@@ -33,14 +35,14 @@ A biker starts at altitude 0 and goes through `n+1` points. Given an array `gain
 
 ```
 Example 1:
-  Input:  gain = [-5, 1, 5, 0, -7]
+  Input: gain = [-5,1,5,0,-7]
   Output: 1
-  Reason: Altitudes: [0, -5, -4, 1, 1, -6]. Max = 1.
+  Explanation: The altitudes are [0,-5,-4,1,1,-6]. The highest is 1.
 
 Example 2:
-  Input:  gain = [-4, -3, -2, -1, 4, 3, 2]
+  Input: gain = [-4,-3,-2,-1,4,3,2]
   Output: 0
-  Reason: Starting altitude 0 is the highest.
+  Explanation: The altitudes are [0,-4,-7,-9,-10,-6,-3,-1]. The highest is 0.
 ```
 
 ---

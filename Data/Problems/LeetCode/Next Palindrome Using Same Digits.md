@@ -20,20 +20,41 @@
 
 ## 1. Problem Description
 
-Given a palindrome string of digits, find the **next** palindrome using the same digits. Return empty string if not possible.
+You are given a numeric string `num`, representing a very large **palindrome**.
+
+Return *the **smallest palindrome larger than*** `num` *that can be created by rearranging its digits. If no such palindrome exists, return an empty string* `""`.
+
+A **palindrome** is a number that reads the same backward as forward.
 
 **Constraints:**
+
 - `1 <= num.length <= 10⁵`
+- `num` is a **palindrome**.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"12321"` | `"12421"` | Increment the first half `12` to `13`, mirror to get `12421`. |
-| `"999"` | `""` | No higher permutation of the half exists; cannot form a larger palindrome. |
-| `"1221"` | `"2112"` | Half `12` → next permutation `21`, mirror yields `2112`. |
+```
+Example 1:
+  Input: num = "1221"
+  Output: "2112"
+  Explanation: The next palindrome larger than "1221" is "2112".
+```
+
+```
+Example 2:
+  Input: num = "32123"
+  Output: ""
+  Explanation: No palindromes larger than "32123" can be made by rearranging the digits.
+```
+
+```
+Example 3:
+  Input: num = "45544554"
+  Output: "54455445"
+  Explanation: The next palindrome larger than "45544554" is "54455445".
+```
 
 ---
 

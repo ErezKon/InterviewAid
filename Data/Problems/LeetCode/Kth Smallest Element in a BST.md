@@ -9,7 +9,14 @@
 
 ## 1. Problem Description
 
-Given the root of a Binary Search Tree (BST) and an integer `k`, return the k‑th smallest value in the BST.
+Given the `root` of a binary search tree, and an integer `k`, return *the* `k^th` *smallest value (**1-indexed**) of all the values of the nodes in the tree*.
+
+**Follow up:** If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth smallest frequently, how would you optimize?
+
+**Constraints:**
+- The number of nodes in the tree is `n`.
+- `1 <= k <= n <= 10^4`
+- `0 <= Node.val <= 10^4`
 
 ---
 
@@ -40,13 +47,17 @@ FUNCTION kthSmallest(root, k):
 
 ## 3. Examples
 
-| BST (inorder) | k | Output |
-|---------------|---|--------|
-| [1,2,3,4,5]   | 3 | 3 |
-| [2,1,3]       | 2 | 2 |
-| [5,3,6,2,4,null,null,1] | 4 | 4 |
+**Example 1:**
+```
+Input: root = [3,1,4,null,2], k = 1
+Output: 1
+```
 
-*Explanation:* Inorder traversal of a BST yields sorted values; the k‑th element in that order is the answer.
+**Example 2:**
+```
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+Output: 3
+```
 
 ---
 

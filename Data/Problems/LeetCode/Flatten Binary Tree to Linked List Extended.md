@@ -2,6 +2,18 @@
 
 Related: #114, #426, #897, #116, #117
 
+> *Note: custom pattern file (not an official LeetCode problem); the constraints and example below are derived from the related official problems.*
+
+**Constraints (derived, typical for this family):**
+- The number of nodes in the tree is in the range `[0, 2000]` (#114) / `[0, 10^4]` (#116, #117) / `[1, 100]` (#897).
+- Node values fit in a 32-bit signed integer; modifications must be done in-place.
+
+**Example (from #114):**
+```
+Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+```
+
 ---
 
 | Problem | What to Do | Technique |

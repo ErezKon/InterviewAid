@@ -7,13 +7,34 @@
 ---
 
 ## Problem Description
-Given an `n × m` rectangle, tile it completely with the fewest number of integer‑sided squares. Each placed square must lie entirely inside the rectangle and cannot overlap another square. Return the minimum count of squares needed.
+
+Given a rectangle of size `n` x `m`, return *the minimum number of integer-sided squares that tile the rectangle*.
+
+**Constraints:**
+- `1 <= n, m <= 13`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 2, m = 3` | `3` | Tile with three `1×1` squares or one `2×2` and two `1×1` squares; the minimum is 3. |
-| `n = 5, m = 8` | `5` | An optimal tiling uses squares of sizes `5,3,2,2,1`. |
+
+**Example 1:**
+```
+Input: n = 2, m = 3
+Output: 3
+Explanation: 3 squares are necessary to cover the rectangle.
+2 (squares of 1x1)
+1 (square of 2x2)
+```
+
+**Example 2:**
+```
+Input: n = 5, m = 8
+Output: 5
+```
+
+**Example 3:**
+```
+Input: n = 11, m = 13
+Output: 6
+```
 
 ## Approach
 Apply backtracking with aggressive pruning:

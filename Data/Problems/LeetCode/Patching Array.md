@@ -7,14 +7,42 @@
 ---
 
 ## Problem Description
-Given a sorted array of positive integers `nums` and an integer `n`, add the minimum number of patches (positive integers) to `nums` such that every number in the range `[1, n]` can be formed as the sum of some subset of the resulting array.
+Given a sorted integer array `nums` and an integer `n`, add/patch elements to the array such that any number in the range `[1, n]` inclusive can be formed by the sum of some elements in the array.
+
+Return *the minimum number of patches required*.
+
+**Constraints:**
+
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 10^4`
+- `nums` is sorted in **ascending order**.
+- `1 <= n <= 2^31 - 1`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `nums = [1,3]`, `n = 6` | `1` | Adding `2` allows forming all numbers 1‑6.
-| `nums = [1,5,10]`, `n = 20` | `2` | Adding `2` and `4` covers the range.
-| `nums = [1,2,2]`, `n = 5` | `0` | No patches needed; range already covered.
+
+```
+Example 1:
+  Input: nums = [1,3], n = 6
+  Output: 1
+  Explanation:
+  Combinations of nums are [1], [3], [1,3], which form possible sums of: 1, 3, 4.
+  Now if we add/patch 2 to nums, the combinations are: [1], [2], [3], [1,3], [2,3], [1,2,3].
+  Possible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1, 6].
+  So we only need 1 patch.
+```
+
+```
+Example 2:
+  Input: nums = [1,5,10], n = 20
+  Output: 2
+  Explanation: The two patches can be [2, 4].
+```
+
+```
+Example 3:
+  Input: nums = [1,2,2], n = 5
+  Output: 0
+```
 
 ## Approach
 Maintain the smallest missing value `reach` such that all numbers `[1, reach]` are representable. Iterate through `nums`; if the current number is ≤ `reach+1`, extend `reach`. Otherwise, patch with `reach+1` (which doubles the reachable range). Continue until `reach ≥ n`.

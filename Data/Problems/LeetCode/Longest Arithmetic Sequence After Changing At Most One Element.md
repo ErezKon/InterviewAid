@@ -8,7 +8,17 @@
 
 ## 1. Problem Description
 
-Find the longest arithmetic (contiguous) subarray, where you may change at most one element to any value.
+You are given an integer array `nums`.
+
+A subarray is **arithmetic** if the difference between consecutive elements in the subarray is constant.
+
+You can replace **at most one** element in `nums` with any **integer**. Then, you select an arithmetic subarray from `nums`.
+
+Return an integer denoting the **maximum** length of the arithmetic subarray you can select.
+
+**Constraints:**
+- `4 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
@@ -29,11 +39,21 @@ Find the longest arithmetic (contiguous) subarray, where you may change at most 
 
 ## 3. Examples
 
-| nums | Output |
-|------|--------|
-| [1,3,5,7,9] | 5 (already arithmetic) |
-| [1,2,4,7,10] | 5 (change the third element to 3) |
-| [5,5,5,5] | 4 (any change keeps arithmetic) |
+**Example 1:**
+```
+Input: nums = [9,7,5,10,1]
+Output: 5
+Explanation: - Replace nums[3] = 10 with 3. The array becomes [9, 7, 5, 3, 1].
+- Select the subarray [9, 7, 5, 3, 1], which is arithmetic because consecutive elements have a common difference of -2.
+```
+
+**Example 2:**
+```
+Input: nums = [1,2,6,7]
+Output: 3
+Explanation: - Replace nums[0] = 1 with -2. The array becomes [-2, 2, 6, 7].
+- Select the subarray [-2, 2, 6, 7], which is arithmetic because consecutive elements have a common difference of 4.
+```
 
 ---
 

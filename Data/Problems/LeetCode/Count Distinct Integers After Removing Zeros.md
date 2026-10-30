@@ -8,7 +8,14 @@
 
 ## 1. Problem Description
 
-Given an array of positive integers, for each number remove all zeros from its digits, then count the total number of distinct resulting integers.
+You are given a **positive** integer `n`.
+
+For every integer `x` from 1 to `n`, we write down the integer obtained by removing all zeros from the decimal representation of `x`.
+
+Return an integer denoting the number of **distinct** integers written down.
+
+**Constraints:**
+- `1 <= n <= 10^15`
 
 ---
 
@@ -34,18 +41,18 @@ FUNCTION countDistinct(nums):
 
 ## Examples
 
-**Example 1:**
 ```
-Input: nums = [101, 10, 100]
-Output: 2
-Explanation: Removing zeros yields [11, 1, 1]; the distinct integers are {11, 1}.
+Example 1:
+  Input: n = 10
+  Output: 9
+  Explanation: The integers we wrote down are 1, 2, 3, 4, 5, 6, 7, 8, 9, 1. There are 9 distinct integers (1, 2, 3, 4, 5, 6, 7, 8, 9).
 ```
 
-**Example 2:**
 ```
-Input: nums = [5, 500, 50]
-Output: 2
-Explanation: After stripping zeros we get [5, 5, 5]; only one distinct value {5}.
+Example 2:
+  Input: n = 3
+  Output: 3
+  Explanation: The integers we wrote down are 1, 2, 3. There are 3 distinct integers (1, 2, 3).
 ```
 
 ---

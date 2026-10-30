@@ -7,21 +7,30 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting only of the characters `'a'`, `'b'`, and `'c'`, and an integer `k`, you may delete characters from the **prefix** and/or **suffix** of `s`. After deletions, the remaining substring must contain at least `k` occurrences of each character. Return the minimum total number of deletions required, or `-1` if it is impossible.
+You are given a string `s` consisting of the characters `'a'`, `'b'`, and `'c'` and a non-negative integer `k`. Each minute, you may take either the **leftmost** character of `s`, or the **rightmost** character of `s`.
+
+Return *the **minimum** number of minutes needed for you to take **at least*** `k` *of each character, or return* `-1` *if it is not possible to take* `k` *of each character.*
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of only the letters `'a'`, `'b'`, and `'c'`.
+- `0 <= k <= s.length`
 
 ## Examples
-**Example 1:**
 ```
-Input: s = "aabaaaacaabc", k = 2
-Output: 8
-Explanation: Delete the first 5 characters and the last 3 characters, leaving "aaac" which has at least 2 'a's, 2 'b's, and 2 'c's after further deletions.
+Example 1:
+  Input: s = "aabaaaacaabc", k = 2
+  Output: 8
+  Explanation: Take three characters from the left of s. You now have two 'a' characters, and one 'b' character.
+  Take five characters from the right of s. You now have four 'a' characters, two 'b' characters, and two 'c' characters.
+  A total of 3 + 5 = 8 minutes is needed.
+  It can be proven that 8 is the minimum number of minutes needed.
 ```
-
-**Example 2:**
 ```
-Input: s = "abc", k = 1
-Output: 0
-Explanation: The original string already satisfies the requirement.
+Example 2:
+  Input: s = "a", k = 1
+  Output: -1
+  Explanation: It is not possible to take one 'b' or 'c' so return -1.
 ```
 
 ## Approach

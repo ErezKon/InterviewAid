@@ -7,18 +7,44 @@
 ---
 
 ## Problem Description
-Given a string representing the preorder traversal of a binary tree where null nodes are denoted by "#" and values are separated by commas, determine if it is a valid serialization of a binary tree.
+
+One way to serialize a binary tree is to use **preorder traversal**. When we encounter a non-null node, we record the node's value. If it is a null node, we record using a sentinel value such as `'#'`.
+
+For example, the above binary tree can be serialized to the string `"9,3,4,#,#,1,#,#,2,#,6,#,#"`, where `'#'` represents a null node.
+
+Given a string of comma-separated values `preorder`, return `true` if it is a correct preorder traversal serialization of a binary tree.
+
+It is **guaranteed** that each comma-separated value in the string must be either an integer or a character `'#'` representing null pointer.
+
+You may assume that the input format is always valid.
+
+- For example, it could never contain two consecutive commas, such as `"1,,3"`.
+
+**Note:** You are not allowed to reconstruct the tree.
+
+**Constraints:**
+- `1 <= preorder.length <= 10^4`
+- `preorder` consist of integers in the range `[0, 100]` and `'#'` separated by commas `','`.
 
 ## Examples
-- Input: `"9,3,4,#,#,1,#,#,2,#,6,#,#"`
-  Output: `true`
-  Explanation: The string corresponds to a proper binary tree.
-- Input: `"1,#"`
-  Output: `false`
-  Explanation: A single non‑null node must have two children.
-- Input: `"9,#,#,1"`
-  Output: `false`
-  Explanation: Extra nodes after a complete tree invalidate the serialization.
+
+**Example 1:**
+```
+Input: preorder = "9,3,4,#,#,1,#,#,2,#,6,#,#"
+Output: true
+```
+
+**Example 2:**
+```
+Input: preorder = "1,#"
+Output: false
+```
+
+**Example 3:**
+```
+Input: preorder = "9,#,#,1"
+Output: false
+```
 
 ## Approach
 Slot Counting (Greedy) — each node consumes a slot; non‑null nodes generate two new slots.

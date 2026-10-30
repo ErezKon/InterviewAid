@@ -7,14 +7,49 @@
 ---
 
 ## Problem Description
-You are given a lowercase string `s` and an integer `t`. In one transformation, each character `c` in the string is replaced by the next character in the alphabet (`'a'→'b'`, …, `'z'→'a'`). After performing the transformation `t` times, return the total number of characters in the resulting string modulo `10^9+7`. (The length stays the same; the task is to compute the sum of character frequencies after `t` shifts.)
+
+> *Note: the original description said `'z' → 'a'` (length unchanged); officially `'z'` becomes `"ab"`, so the length grows. The frequency-shift Approach below (count of `'z'` feeds both `'a'` and `'b'`) matches the official rule.*
+
+You are given a string `s` and an integer `t`, representing the number of **transformations** to perform. In one **transformation**, every character in `s` is replaced according to the following rules:
+
+- If the character is `'z'`, replace it with the string `"ab"`.
+- Otherwise, replace it with the **next** character in the alphabet. For example, `'a'` is replaced with `'b'`, `'b'` is replaced with `'c'`, and so on.
+
+Return the **length** of the resulting string after **exactly** `t` transformations.
+
+Since the answer may be very large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists only of lowercase English letters.
+- `1 <= t <= 10^5`
 
 ## Examples
-| s | t | Output |
-|---|---|--------|
-| `"abc"` | `1` | `3` (string becomes `"bcd"`) |
-| `"az"` | `2` | `2` (string becomes `"ba"`) |
-| `"zzz"` | `3` | `3` (string cycles back to `"zzz"`) |
+
+**Example 1:**
+```
+Input: s = "abcyy", t = 2
+Output: 7
+Explanation:
+First Transformation (t = 1):
+'a' becomes 'b', 'b' becomes 'c', 'c' becomes 'd', 'y' becomes 'z', 'y' becomes 'z'
+String after the first transformation: "bcdzz"
+Second Transformation (t = 2):
+'b' becomes 'c', 'c' becomes 'd', 'd' becomes 'e', 'z' becomes "ab", 'z' becomes "ab"
+String after the second transformation: "cdeabab"
+Final Length of the string: The string is "cdeabab", which has 7 characters.
+```
+
+**Example 2:**
+```
+Input: s = "azbk", t = 1
+Output: 5
+Explanation:
+First Transformation (t = 1):
+'a' becomes 'b', 'z' becomes "ab", 'b' becomes 'c', 'k' becomes 'l'
+String after the first transformation: "babcl"
+Final Length of the string: The string is "babcl", which has 5 characters.
+```
 
 ## Approach
 Maintain a frequency array `count[26]` for characters in `s`. Each transformation shifts the frequencies one position to the right, with the count of `'z'` added to both `'a'` and `'b'` (since `'z'` becomes `'a'` and also contributes to `'b'` after the next shift). Perform this shift `t` times, applying modulo at each step.

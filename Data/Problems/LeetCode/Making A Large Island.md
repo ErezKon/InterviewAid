@@ -7,13 +7,41 @@
 ---
 
 ## Problem Description
-Given an `n × n` binary grid `grid` where `1` represents land and `0` represents water, you may change at most one `0` to `1`. Return the size of the largest island possible after this operation. An island is a group of `1`s connected 4‑directionally.
+You are given an `n x n` binary matrix `grid`. You are allowed to change **at most one** `0` to be `1`.
+
+Return *the size of the largest **island** in* `grid` *after applying this operation*.
+
+An **island** is a 4-directionally connected group of `1`s.
+
+**Constraints:**
+
+- `n == grid.length`
+- `n == grid[i].length`
+- `1 <= n <= 500`
+- `grid[i][j]` is either `0` or `1`.
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[[1,0],[0,1]]` | `3` | Flipping the top‑right `0` connects the two islands into one of size 3. |
-| `[[1,1],[1,0]]` | `4` | Flipping the bottom‑right `0` yields a full 2×2 island. |
+
+```
+Example 1:
+  Input: grid = [[1,0],[0,1]]
+  Output: 3
+  Explanation: Change one 0 to 1 and connect two 1s, then we get an island with area = 3.
+```
+
+```
+Example 2:
+  Input: grid = [[1,1],[1,0]]
+  Output: 4
+  Explanation: Change the 0 to 1 and make the island bigger, only one island with area = 4.
+```
+
+```
+Example 3:
+  Input: grid = [[1,1],[1,1]]
+  Output: 4
+  Explanation: Can't change any 0 to 1, only one island with area = 4.
+```
 
 ## Approach
 Label each existing island with a unique ID and record its area (Component Labeling). Then, for every water cell, look at the distinct neighboring island IDs, sum their areas, add one for the flipped cell, and track the maximum.

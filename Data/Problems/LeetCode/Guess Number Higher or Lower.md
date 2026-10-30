@@ -8,7 +8,23 @@
 
 ## 1. Problem Description
 
-Guess a number between 1 and `n`. Use a provided `guess(num)` API that returns -1 (lower), 1 (higher), or 0 (correct).
+We are playing the Guess Game. The game is as follows:
+
+I pick a number from `1` to `n`. You have to guess which number I picked (the number I picked stays the same throughout the game).
+
+Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.
+
+You call a pre-defined API `int guess(int num)`, which returns three possible results:
+
+- `-1`: Your guess is higher than the number I picked (i.e. `num > pick`).
+- `1`: Your guess is lower than the number I picked (i.e. `num < pick`).
+- `0`: your guess is equal to the number I picked (i.e. `num == pick`).
+
+Return *the number that I picked*.
+
+**Constraints:**
+- `1 <= n <= 2^31 - 1`
+- `1 <= pick <= n`
 
 ## 2. Approach
 
@@ -27,11 +43,21 @@ FUNCTION guessNumber(n):
 
 ## 3. Examples
 
-| n | Output |
-|---|--------|
-| 10 | 6 |
-| 1 | 1 |
-| 2 | 1 |
+```
+Example 1:
+  Input: n = 10, pick = 6
+  Output: 6
+```
+```
+Example 2:
+  Input: n = 1, pick = 1
+  Output: 1
+```
+```
+Example 3:
+  Input: n = 2, pick = 1
+  Output: 1
+```
 
 **Explanation:** For `n = 10`, the algorithm guesses `5`, then `8`, then `6` and finds the target.
 

@@ -19,26 +19,46 @@
 
 ## Problem Description
 
-Given an array `nums` and an array `quantity` of length `m` (m ≤ 10), determine if it's possible to distribute `nums` such that the `i-th` customer gets exactly `quantity[i]` copies of **one** value (all same number).
+You are given an array of `n` integers, `nums`, where there are at most `50` unique values in the array. You are also given an array of `m` customer order quantities, `quantity`, where `quantity[i]` is the amount of integers the `i^th` customer ordered. Determine if it is possible to distribute `nums` such that:
+
+- The `i^th` customer gets **exactly** `quantity[i]` integers,
+- The integers the `i^th` customer gets are **all equal**, and
+- Every customer is satisfied.
+
+Return `true`* if it is possible to distribute *`nums`* according to the above conditions*.
 
 **Constraints:**
-- `n <= 10^5`, `m <= 10`
+- `n == nums.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i] <= 1000`
+- `m == quantity.length`
+- `1 <= m <= 10`
 - `1 <= quantity[i] <= 10^5`
-- At most 50 unique values in `nums`
+- There are at most `50` unique values in `nums`.
 
 ---
 
 ## Examples
 
+**Example 1:**
+```
+Input: nums = [1,2,3,4], quantity = [2]
+Output: false
+Explanation: The 0^th customer cannot be given two different integers.
+```
+
+**Example 2:**
+```
+Input: nums = [1,2,3,3], quantity = [2]
+Output: true
+Explanation: The 0^th customer is given [3,3]. The integers [1,2] are not used.
+```
+
+**Example 3:**
 ```
 Input: nums = [1,1,2,2], quantity = [2,2]
 Output: true
-Explanation: Customer 1 gets two 1's, customer 2 gets two 2's.
-```
-
-```
-Input: nums = [1,1,2,3], quantity = [2,2]
-Output: false
+Explanation: The 0^th customer is given [1,1], and the 1st customer is given [2,2].
 ```
 
 ---

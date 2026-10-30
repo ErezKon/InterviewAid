@@ -7,20 +7,37 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of digits, consider every contiguous substring of `s`. For each substring, interpret it as a decimal integer (leading zeros are allowed). Find the **largest prime number** that appears among all these integer values. Return the sum of all occurrences of this largest prime substring in the original string. If no prime substring exists, return `0`.
+
+> *Note: statement checked against the official text with verify.py. The Approach/Walkthrough below look for a single largest prime. Correct idea: `|s| ≤ 10`, so enumerate all O(n²) substrings, convert to integers, test primality by trial division up to `√v`, keep the **distinct** primes in a set, and return the sum of the three largest (or all if fewer than three).*
+
+Given a string `s`, find the sum of the **3 largest unique prime numbers** that can be formed using any of its **substrings**.
+
+Return the **sum** of the three largest unique prime numbers that can be formed. If fewer than three exist, return the sum of **all** available primes. If no prime numbers can be formed, return 0.
+
+**Note:** Each prime number should be counted only **once**, even if it appears in **multiple** substrings. Additionally, when converting a substring to an integer, any leading zeros are ignored.
+
+**Constraints:**
+- `1 <= s.length <= 10`
+- `s` consists of only digits.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: s = "11373"
-Output: 5
-Explanation: Prime substrings are 11, 13, 37, 73, 113, 137, 373. The largest prime is 373, which occurs once. Sum = 3+7+3 = 13? Actually we sum the digits of the substring? The problem asks for sum of the substring's numeric value occurrences, so answer is 373.
+Input: s = "12234"
+Output: 1469
+Explanation:
+- The unique prime numbers formed from the substrings of "12234" are 2, 3, 23, 223, and 1223.
+- The 3 largest primes are 1223, 223, and 23. Their sum is 1469.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: s = "102030"
-Output: 0
-Explanation: No prime substrings exist.
+Input: s = "111"
+Output: 11
+Explanation:
+- The unique prime number formed from the substrings of "111" is 11.
+- Since there is only one prime number, the sum is 11.
 ```
 
 ## Approach

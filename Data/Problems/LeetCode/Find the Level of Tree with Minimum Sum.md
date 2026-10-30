@@ -18,10 +18,12 @@
 
 ## 1. Problem Description
 
-Given the root of a binary tree, return the **1-indexed level** with the minimum sum. If multiple levels have the same minimum sum, return the smallest level.
+Given the root of a binary tree `root` where each node has a value, return the level of the tree that has the **minimum** sum of values among all the levels (in case of a tie, return the **lowest** level).
+
+**Note** that the root of the tree is at level 1 and the level of any other node is its distance from the root + 1.
 
 **Constraints:**
-- `1 <= n <= 10⁵`
+- The number of nodes in the tree is in the range `[1, 10⁵]`.
 - `1 <= Node.val <= 10⁹`
 
 ---
@@ -63,12 +65,24 @@ FUNCTION minimumLevel(root):
 
 ## 4. Examples
 
-| Input Tree | Minimum Sum Level |
-|------------|-------------------|
-| `[[1],[2,3],[4,5,6,7]]` (root=1, level2=2+3, level3=4+5+6+7) | Level 1 (sum=1) |
-| `[[5],[1,2],[3,4]]` | Level 2 (sum=3) |
+```
+Example 1:
+  Input: root = [50,6,2,30,80,7]
+  Output: 2
+  Explanation: Level sums are: level 1 = 50, level 2 = 6 + 2 = 8, level 3 = 30 + 80 + 7 = 117.
+  The minimum sum is at level 2.
 
-*Explanation:* In the first example, level 1 sum is 1, level 2 sum is 5, level 3 sum is 22. Minimum is level 1.
+Example 2:
+  Input: root = [36,17,10,null,null,24]
+  Output: 3
+  Explanation: Level sums are: level 1 = 36, level 2 = 17 + 10 = 27, level 3 = 24.
+  The minimum sum is at level 3.
+
+Example 3:
+  Input: root = [5,null,5,null,5]
+  Output: 1
+  Explanation: Every level has sum 5; in case of a tie the lowest level (1) is returned.
+```
 
 ---
 

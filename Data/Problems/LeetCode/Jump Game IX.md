@@ -18,7 +18,22 @@
 
 ## 1. Problem Description
 
-From index `i`, you can jump to the **next greater element** (cost `costs[0]`) or the **next smaller or equal element** (cost `costs[1]`). Find the minimum cost to reach the last index from index 0.
+> *Note: the Key Insight / Approach below solve a different problem (min-cost jumps to next greater / next smaller-or-equal element, close to #2297 Jump Game VIII). Correct idea for the official problem: let `pre[i] = max(nums[0..i])` and `suf[i] = min(nums[i..n-1])`. Indices `i` and `i+1` are in the same reachable group iff `pre[i] > suf[i+1]`; split the array where `pre[i] <= suf[i+1]` and every index in a segment gets that segment's maximum. O(n).*
+
+You are given an integer array `nums`.
+
+From any index `i`, you can jump to another index `j` under the following rules:
+
+- Jump to index `j` where `j > i` is allowed only if `nums[j] < nums[i]`.
+- Jump to index `j` where `j < i` is allowed only if `nums[j] > nums[i]`.
+
+For each index `i`, find the **maximum** **value** in `nums` that can be reached by following **any** sequence of valid jumps starting at `i`.
+
+Return an array `ans` where `ans[i]` is the **maximum** **value** reachable starting from index `i`.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ---
 
@@ -62,10 +77,25 @@ FUNCTION minCost(nums, costs):
 
 ## 4. Examples
 
-| nums               | costs          | Output |
-|--------------------|----------------|--------|
-| `[5,1,3,4,2]`      | `[2,3]`        | `5`    |
-| `[1,2,3,4]`        | `[1,1]`        | `3`    |
+**Example 1:**
+```
+Input: nums = [2,1,3]
+Output: [2,2,3]
+Explanation: - For i = 0: No jump increases the value.
+- For i = 1: Jump to j = 0 as nums[j] = 2 is greater than nums[i].
+- For i = 2: Since nums[2] = 3 is the maximum value in nums, no jump increases the value.
+Thus, ans = [2, 2, 3].
+```
+
+**Example 2:**
+```
+Input: nums = [2,3,1]
+Output: [3,3,3]
+Explanation: - For i = 0: Jump forward to j = 2 as nums[j] = 1 is less than nums[i] = 2, then from i = 2 jump to j = 1 as nums[j] = 3 is greater than nums[2].
+- For i = 1: Since nums[1] = 3 is the maximum value in nums, no jump increases the value.
+- For i = 2: Jump to j = 1 as nums[j] = 3 is greater than nums[2] = 1.
+Thus, ans = [3, 3, 3].
+```
 
 ---
 

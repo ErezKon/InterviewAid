@@ -7,24 +7,57 @@
 ---
 
 ## Problem Description
-You are given an integer array `votes` where `votes[i]` is the number of votes received by the i‑th candidate in an election. For each candidate `i`, determine the size of the smallest team that includes candidate `i` and any other candidates such that the total votes of the team is **strictly greater** than the total votes of all remaining candidates combined. Return an array `answer` where `answer[i]` is the minimal team size for candidate `i`.
+> *Note: #1303 is a premium **SQL** problem — schema/statement/example verified via doocs/leetcode. The Approach/Walkthrough below solve an invented array "votes / smallest team" problem — wrong. Correct SQL: `SELECT employee_id, COUNT(*) OVER (PARTITION BY team_id) AS team_size FROM Employee;` (or join with a `GROUP BY team_id` subquery).*
+
+Table: `Employee`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| employee_id   | int     |
+| team_id       | int     |
++---------------+---------+
+employee_id is the primary key (column with unique values) for this table.
+Each row of this table contains the ID of each employee and their respective team.
+```
+
+Write a solution to find the team size of each of the employees.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
-**Example 1**
+**Example 1:**
 ```
-Input: votes = [3,1,2]
-Output: [1,3,2]
+Input:
+Employee Table:
++-------------+------------+
+| employee_id | team_id    |
++-------------+------------+
+|     1       |     8      |
+|     2       |     8      |
+|     3       |     8      |
+|     4       |     7      |
+|     5       |     9      |
+|     6       |     9      |
++-------------+------------+
+Output:
++-------------+------------+
+| employee_id | team_size  |
++-------------+------------+
+|     1       |     3      |
+|     2       |     3      |
+|     3       |     3      |
+|     4       |     1      |
+|     5       |     2      |
+|     6       |     2      |
++-------------+------------+
 Explanation:
-- Candidate 0 (3 votes) already has > half of total (6), so team size 1.
-- Candidate 1 (1 vote) needs to join with both others to exceed half, so size 3.
-- Candidate 2 (2 votes) can team with candidate 0 (3+2=5 > 3), so size 2.
-```
-
-**Example 2**
-```
-Input: votes = [1,1,1,1]
-Output: [2,2,2,2]
-Explanation: Any candidate needs at least one other to have majority.
+Employees with Id 1,2,3 are part of a team with team_id = 8.
+Employee with Id 4 is part of a team with team_id = 7.
+Employees with Id 5,6 are part of a team with team_id = 9.
 ```
 
 ## Approach

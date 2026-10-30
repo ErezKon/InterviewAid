@@ -8,25 +8,30 @@
 
 ## Problem Description
 
-Given an array of strings `wordsDict` and two different strings `word1` and `word2` that both exist in the array, return the shortest distance between these two words in the array.
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
-The distance between two words at indices `i` and `j` is `|i - j|`.
+Given an array of strings `wordsDict` and two different strings that already exist in the array `word1` and `word2`, return *the shortest distance between these two words in the list*.
 
-### Examples
+**Constraints:**
+- `2 <= wordsDict.length <= 3 * 10^4`
+- `1 <= wordsDict[i].length <= 10`
+- `wordsDict[i]` consists of lowercase English letters.
+- `word1` and `word2` are in `wordsDict`.
+- `word1 != word2`
+
+**Examples:**
 
 **Example 1:**
-- **Input:** `wordsDict = ["practice","makes","perfect","coding","makes"]`, `word1 = "coding"`, `word2 = "practice"`
-- **Output:** `3`
+```
+Input: wordsDict = ["practice", "makes", "perfect", "coding", "makes"], word1 = "coding", word2 = "practice"
+Output: 3
+```
 
 **Example 2:**
-- **Input:** `wordsDict = ["practice","makes","perfect","coding","makes"]`, `word1 = "makes"`, `word2 = "coding"`
-- **Output:** `1`
-
-### Constraints
-
-- `2 <= wordsDict.length <= 3 × 10⁴`
-- `word1 != word2`
-- `word1` and `word2` are both in `wordsDict`
+```
+Input: wordsDict = ["practice", "makes", "perfect", "coding", "makes"], word1 = "makes", word2 = "coding"
+Output: 1
+```
 
 ---
 

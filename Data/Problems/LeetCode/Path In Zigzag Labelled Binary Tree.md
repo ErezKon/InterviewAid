@@ -7,15 +7,36 @@
 ---
 
 ## Problem Description
-Given a perfect binary tree where the nodes on each level are labelled from left to right in alternating order (left‑to‑right for odd levels, right‑to‑left for even levels), return the sequence of labels on the path from the root to a given node `label`.
+In an infinite binary tree where every node has two children, the nodes are labelled in row order.
 
-Constraints: `label` is a positive integer that exists in the tree (1 ≤ label ≤ 10⁹).
+In the odd numbered rows (ie., the first, third, fifth,...), the labelling is left to right, while in the even numbered rows (second, fourth, sixth,...), the labelling is right to left.
+
+```
+Row 1:                 1
+Row 2:          3             2
+Row 3:      4      5      6      7
+Row 4:    15 14  13 12  11 10   9  8
+```
+
+Given the `label` of a node in this tree, return the labels in the path from the root of the tree to the node with that `label`.
+
+**Constraints:**
+
+- `1 <= label <= 10^6`
 
 ## Examples
-| label | Output | Explanation |
-|-------|--------|-------------|
-| 14    | [1,3,4,14] | Path goes 1 → 3 → 4 → 14 following the zig‑zag labeling. |
-| 26    | [1,2,6,10,26] | Labels on the path after accounting for reversed ordering on even levels. |
+
+```
+Example 1:
+  Input: label = 14
+  Output: [1,3,4,14]
+```
+
+```
+Example 2:
+  Input: label = 26
+  Output: [1,2,6,10,26]
+```
 
 ## Approach
 The key insight is that the parent of a node can be computed by mapping its label to the corresponding label in a normal (left‑to‑right) binary tree, moving up one level, then mapping back.

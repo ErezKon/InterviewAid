@@ -8,18 +8,34 @@
 
 ## Problem Description
 
-Count submatrices anchored at `(0, 0)` ending at `(i, j)` whose sum is ≤ `k`.
+You are given a **0-indexed** integer matrix `grid` and an integer `k`.
+
+Return *the **number** of submatrices that contain the top-left element of the* `grid`, *and have a sum less than or equal to* `k`.
+
+**Constraints:**
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= n, m <= 1000`
+- `0 <= grid[i][j] <= 1000`
+- `1 <= k <= 10^9`
 
 ---
 
 ## Examples
 
-| Input | Output |
-|-------|--------|
-| `grid = [[1,2],[3,4]], k = 4` | `2` |
-| `grid = [[2,2,2],[2,2,2]], k = 8` | `5` |
+```
+Example 1:
+  Input: grid = [[7,6,3],[6,6,1]], k = 18
+  Output: 4
+  Explanation: There are only 4 submatrices that contain the top-left element of grid, and have a sum less than or equal to 18.
+```
 
-*Explanation*: For the first grid, the submatrices `(0,0)-(0,0)` and `(0,0)-(0,1)` have sums `1` and `3` respectively, both ≤ 4.
+```
+Example 2:
+  Input: grid = [[7,2,9],[1,5,0],[2,6,6]], k = 20
+  Output: 6
+  Explanation: There are only 6 submatrices that contain the top-left element of grid, and have a sum less than or equal to 20.
+```
 
 ---
 
@@ -51,11 +67,11 @@ Consider `grid = [[1,2],[3,4]]`, `k = 4`.
    - `prefix[2][1] = 1+3 = 4`
    - `prefix[2][2] = 1+2+3+4 = 10`
 2. Compare each prefix with `k`:
-   - `(1,1)` → 1 ≤ 4 ⇒ count = 1
-   - `(1,2)` → 3 ≤ 4 ⇒ count = 2
-   - `(2,1)` → 4 ≤ 4 ⇒ count = 3
+   - `(1,1)` → 1 ≤ 4 ⇒ count = 1
+   - `(1,2)` → 3 ≤ 4 ⇒ count = 2
+   - `(2,1)` → 4 ≤ 4 ⇒ count = 3
    - `(2,2)` → 10 > 4 ⇒ no increment
-3. Result = 3 anchored submatrices, but only those ending at `(i,j)` with sum ≤ k are counted; the answer reported in examples reflects the problem’s specific definition.
+3. Result = 3 anchored submatrices, but only those ending at `(i,j)` with sum ≤ k are counted; the answer reported in examples reflects the problem’s specific definition.
 
 ---
 
@@ -70,7 +86,7 @@ Consider `grid = [[1,2],[3,4]]`, `k = 4`.
 
 ## Follow-Up Questions
 
-1. How would you extend the solution to count **all** submatrices (not just anchored at `(0,0)`) with sum ≤ k?
+1. How would you extend the solution to count **all** submatrices (not just anchored at `(0,0)`) with sum ≤ k?
 2. Can the algorithm be adapted for a sliding‑window approach on rows to achieve O(m·n) time with O(n) space?
 3. What changes are needed if the constraint becomes `sum ≥ k`?
 

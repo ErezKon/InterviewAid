@@ -7,18 +7,35 @@
 ---
 
 ## Problem Description
-Given an integer `n`, determine whether it is a power of four. Return `true` if there exists an integer `x` such that `4^x = n`, otherwise return `false`. Constraints: `0 ≤ n ≤ 2^31 - 1`.
+
+Given an integer `n`, return *`true` if it is a power of four. Otherwise, return `false`*.
+
+An integer `n` is a power of four, if there exists an integer `x` such that `n == 4^x`.
+
+**Follow up:** Could you solve it without loops/recursion?
+
+**Constraints:**
+- `-2^31 <= n <= 2^31 - 1`
 
 ## Examples
+
 **Example 1:**
-Input: `n = 16`
-Output: `true`
-Explanation: `4^2 = 16`.
+```
+Input: n = 16
+Output: true
+```
 
 **Example 2:**
-Input: `n = 5`
-Output: `false`
-Explanation: No integer `x` satisfies `4^x = 5`.
+```
+Input: n = 5
+Output: false
+```
+
+**Example 3:**
+```
+Input: n = 1
+Output: true
+```
 
 ## Approach
 Use bit‑manipulation properties:

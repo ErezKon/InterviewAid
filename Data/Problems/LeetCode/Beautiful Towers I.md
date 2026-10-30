@@ -8,25 +8,34 @@
 
 ## 1. Problem Description
 
-Given an array `maxHeights`, choose heights `h[i] ≤ maxHeights[i]` forming a **mountain** shape to maximize total sum. Same as Beautiful Towers II but with smaller constraints allowing O(n²).
+You are given an array `heights` of `n` integers representing the number of bricks in `n` consecutive towers. Your task is to remove some bricks to form a **mountain-shaped** tower arrangement. In this arrangement, the tower heights are non-decreasing, reaching a maximum peak value with one or multiple consecutive towers and then non-increasing.
+
+Return the **maximum possible sum** of heights of a mountain-shaped tower arrangement.
+
+**Constraints:**
+- `1 ≤ n == heights.length ≤ 10³`
+- `1 ≤ heights[i] ≤ 10⁹`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-maxHeights = [5,3,4,1,1]
-Output: 13
-```
-*Explanation:* Choose heights `[5,3,3,1,1]` forming a mountain with peak at index 0.
+Example 1:
+  Input: heights = [5,3,4,1,1]
+  Output: 13
+  Explanation: We remove some bricks to make heights = [5,3,3,1,1], the peak is at index 0.
 
-**Example 2:**
+Example 2:
+  Input: heights = [6,5,3,9,2,7]
+  Output: 22
+  Explanation: We remove some bricks to make heights = [3,3,3,9,2,2], the peak is at index 3.
+
+Example 3:
+  Input: heights = [3,2,5,5,2,3]
+  Output: 18
+  Explanation: We remove some bricks to make heights = [2,2,5,5,2,2], the peak is at index 2 or 3.
 ```
-maxHeights = [6,5,3,9,2,7]
-Output: 35
-```
-*Explanation:* Optimal heights `[6,5,5,9,2,2]` give sum 35.
 
 ---
 

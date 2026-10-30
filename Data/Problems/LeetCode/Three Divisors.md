@@ -7,14 +7,26 @@
 ---
 
 ## Problem Description
-Given an integer `n` (1 ≤ n ≤ 10⁹), determine whether `n` has exactly three positive divisors. Return `true` if it does, otherwise `false`. A divisor of `n` is a positive integer that divides `n` without remainder.
+Given an integer `n`, return `true` *if* `n` *has **exactly three positive divisors**. Otherwise, return* `false`.
+
+An integer `m` is a **divisor** of `n` if there exists an integer `k` such that `n = k * m`.
+
+**Constraints:**
+- `1 ≤ n ≤ 10⁴`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `4` | `true` | Divisors are {1, 2, 4}. |
-| `5` | `false` | Divisors are {1, 5}. |
-| `9` | `true` | Divisors are {1, 3, 9} (3 is prime, 3² = 9). |
+```
+Example 1:
+  Input: n = 2
+  Output: false
+  Explanation: 2 has only two divisors: 1 and 2, so the answer is false.
+```
+```
+Example 2:
+  Input: n = 4
+  Output: true
+  Explanation: 4 has three divisors: 1, 2, and 4.
+```
 
 ## Approach
 **Mathematical Insight – Perfect Square of a Prime** – A number has exactly three divisors iff it is the square of a prime (`p²`). Thus we need to check whether `n` is a perfect square and whether its square root is prime.

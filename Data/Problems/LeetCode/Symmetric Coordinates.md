@@ -7,20 +7,58 @@
 ---
 
 ## Problem Description
-Given an array of integer coordinate pairs `points`, a line `x = k` is called a line of symmetry if for every point `(x, y)` in the set there exists another point `(2*k - x, y)` also in the set. Determine whether such a line of symmetry exists for the given points.
+
+> *Note: #2978 "Symmetric Coordinates" is a premium **SQL** problem (table `Coordinates(X, Y)`: find pairs `(X1, Y1)`, `(X2, Y2)` with `X1 = Y2` and `X2 = Y1`, output distinct pairs with `X ≤ Y`, ordered by X, Y). The statement below is the official one (via doocs); the Approach/Walkthrough further down still solve an invented algorithmic problem and need an SQL rewrite.*
+
+Table: `Coordinates`
+
+```
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| X           | int  |
+| Y           | int  |
++-------------+------+
+Each row includes X and Y, where both are integers. Table may contain duplicate values.
+```
+
+Two coordindates `(X1, Y1)` and `(X2, Y2)` are said to be **symmetric** coordintes if `X1 == Y2` and `X2 == Y1`.
+
+Write a solution that outputs, among all these **symmetric** **coordintes**, only those **unique** coordinates that satisfy the condition `X1 <= Y1`.
+
+Return *the result table ordered by *`X` *and * `Y` *(respectively)* *in **ascending order***.
+
+The result format is in the following example.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: points = [[1,1],[-1,1]]
-Output: true
-Explanation: The line x = 0 is a symmetry line.
-```
-**Example 2**
-```
-Input: points = [[1,2],[2,2],[3,2]]
-Output: false
-Explanation: No vertical line can reflect all points.
+Input:
+Coordinates table:
++----+----+
+| X  | Y  |
++----+----+
+| 20 | 20 |
+| 20 | 20 |
+| 20 | 21 |
+| 23 | 22 |
+| 22 | 23 |
+| 21 | 20 |
++----+----+
+Output:
++----+----+
+| x  | y  |
++----+----+
+| 20 | 20 |
+| 20 | 21 |
+| 22 | 23 |
++----+----+
+Explanation:
+- (20, 20) and (20, 20) are symmetric coordinates because, X1 == Y2 and X2 == Y1. This results in displaying (20, 20) as a distinctive coordinates.
+- (20, 21) and (21, 20) are symmetric coordinates because, X1 == Y2 and X2 == Y1. However, only (20, 21) will be displayed because X1 <= Y1.
+- (23, 22) and (22, 23) are symmetric coordinates because, X1 == Y2 and X2 == Y1. However, only (22, 23) will be displayed because X1 <= Y1.
+The output table is sorted by X and Y in ascending order.
 ```
 
 ## Approach

@@ -20,11 +20,21 @@
 
 ## Problem Description
 
-Given a functional graph where each node `i` has exactly one outgoing edge to `receiver[i]`, pass the ball `k` times starting from each node. The **value** = sum of all node IDs visited (including start). Find the starting node that maximizes this value.
+You are given an integer array `receiver` of length `n` and an integer `k`. `n` players are playing a ball-passing game.
+
+You choose the starting player, `i`. The game proceeds as follows: player `i` passes the ball to player `receiver[i]`, who then passes it to `receiver[receiver[i]]`, and so on, for `k` passes in total. The game's score is the sum of the indices of the players who touched the ball, including repetitions, i.e. `i + receiver[i] + receiver[receiver[i]] + ... + receiver^(k)[i]`.
+
+Return the **maximum** possible score.
+
+**Notes:**
+
+- `receiver` may contain duplicates.
+- `receiver[i]` may be equal to `i`.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁵`
-- `1 ≤ k ≤ 10¹⁰`
+- `1 <= receiver.length == n <= 10^5`
+- `0 <= receiver[i] <= n - 1`
+- `1 <= k <= 10^10`
 
 ---
 
@@ -32,19 +42,52 @@ Given a functional graph where each node `i` has exactly one outgoing edge to `r
 
 **Example 1:**
 ```
-Input: receiver = [1,2,0], k = 4
+Input: receiver = [2,0,1], k = 4
 Output: 6
-Explanation:
-- Starting at node 0: path 0→1→2→0→1, sum = 0+1+2+0+1 = 4
-- Starting at node 1: 1→2→0→1→2, sum = 1+2+0+1+2 = 6 (maximum)
-- Starting at node 2: 2→0→1→2→0, sum = 2+0+1+2+0 = 5
+Explanation: Starting with player i = 2 the initial score is 2:
+  Pass
+  Sender Index
+  Receiver Index
+  Score
+  1
+  2
+  1
+  3
+  2
+  1
+  0
+  3
+  3
+  0
+  2
+  5
+  4
+  2
+  1
+  6
 ```
 
 **Example 2:**
 ```
-Input: receiver = [2,2,2], k = 3
-Output: 6
-Explanation: Starting at any node reaches node 2 three times, sum = start + 2 + 2 + 2. Starting at node 2 gives 2+2+2+2 = 8, which is maximum.
+Input: receiver = [1,1,1,2,3], k = 3
+Output: 10
+Explanation: Starting with player i = 4 the initial score is 4:
+  Pass
+  Sender Index
+  Receiver Index
+  Score
+  1
+  4
+  3
+  7
+  2
+  3
+  2
+  9
+  3
+  2
+  1
+  10
 ```
 
 ---

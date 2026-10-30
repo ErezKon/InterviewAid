@@ -8,29 +8,68 @@
 
 ## Problem Description
 
-You are given an undirected weighted graph with `n` cities (0‑indexed) and a list of roads `edges` where each edge is `[u, v, w]` representing a bidirectional road of travel cost `w`. Each city `i` sells apples at price `appleCost[i]`. Starting from any city, you may travel to a city, buy one apple, and return to the start city. The travel cost for a round‑trip is twice the shortest‑path distance. Compute, for every city `i`, the minimum total cost to obtain an apple and return home.
+You are given an integer `n` and an integer array `prices` of length `n`, where `prices[i]` is the price of apples at shop `i`.
 
-Constraints:
-- `1 ≤ n ≤ 10^5`
-- `0 ≤ w, appleCost[i] ≤ 10^9`
-- The graph is connected.
+You are also given a 2D integer array `roads`, where `roads[i] = [ui, vi, costi, taxi]` represents a **bidirectional** road:
+- `ui` and `vi` are the shops connected by the road.
+- `costi` is the cost to travel the road **without** carrying apples.
+- `taxi` is the multiplier applied to `costi` when traveling **with** apples.
+
+For each shop `i`, you can either:
+- Buy apples locally at shop `i` for `prices[i]`.
+- Travel **empty** to any shop `j` using **any** number of roads, buy apples for `prices[j]`, and return to shop `i` while carrying apples, paying `cost * tax` on each road used for the return trip.
+
+The forward path, where you travel empty, and the return path may be **different**.
+
+Return an integer array `ans` of length `n`, where `ans[i]` is the **minimum** total cost to buy apples starting from shop `i`.
+
+**Constraints:**
+- `1 ≤ n ≤ 1000`
+- `prices.length == n`
+- `1 ≤ prices[i] ≤ 10^9`
+- `0 ≤ roads.length ≤ min(n × (n - 1) / 2, 2000)`
+- `roads[i] = [ui, vi, costi, taxi]`
+- `0 ≤ ui, vi ≤ n - 1`
+- `ui != vi`
+- `1 ≤ costi ≤ 10^9`
+- `1 ≤ taxi ≤ 100`
+- There are no **repeated** edges.
 
 ## Examples
 
-**Example 1**
 ```
-Input: n = 3, edges = [[0,1,2],[1,2,2]], appleCost = [5,1,4]
-Output: [5,1,5]
-Explanation:
-- City 0: buying locally costs 5 (no travel). Buying from city 1 costs 2*2 + 1 = 5, same.
-- City 1: cheapest is buying locally for 1.
-- City 2: buying from city 1 costs 2*2 + 1 = 5, cheaper than local 4 + 0 travel? actually local 4 < 5, so answer 4. (adjusted) 
+Example 1:
+  Input: n = 2, prices = [8,3], roads = [[0,1,1,2]]
+  Output: [6,3]
+  Explanation:
+  Shop i | prices[i] | Shop j | prices[j] | costi | taxi | Travel | Return    | Total          | Minimum
+  0      | 8         | 1      | 3         | 1     | 2    | 1      | 1 * 2 = 2 | 1 + 2 + 3 = 6  | min(8, 6) = 6
+  1      | 3         | 0      | 8         | 1     | 2    | 1      | 1 * 2 = 2 | 1 + 2 + 8 = 11 | min(3, 11) = 3
+  Thus, the answer is [6, 3].
 ```
 
-**Example 2**
 ```
-Input: n = 4, edges = [[0,1,3],[1,2,1],[2,3,4]], appleCost = [10,2,8,3]
-Output: [8,2,6,5]
+Example 2:
+  Input: n = 3, prices = [9,4,6], roads = [[0,1,1,3],[1,2,4,2]]
+  Output: [8,4,6]
+  Explanation:
+  Shop i | prices[i] | Shop j | prices[j] | costi | taxi | Travel | Return    | Total          | Minimum
+  0      | 9         | 1      | 4         | 1     | 3    | 1      | 1 * 3 = 3 | 1 + 3 + 4 = 8  | min(9, 8) = 8
+  1      | 4         | 2      | 6         | 4     | 2    | 4      | 4 * 2 = 8 | 4 + 8 + 6 = 18 | min(4, 18) = 4
+  2      | 6         | 1      | 4         | 4     | 2    | 4      | 4 * 2 = 8 | 4 + 8 + 4 = 16 | min(6, 16) = 6
+  Thus, the answer is [8, 4, 6].
+```
+
+```
+Example 3:
+  Input: n = 3, prices = [10,11,1], roads = [[0,2,1,3],[1,2,3,4],[0,1,5,2]]
+  Output: [5,11,1]
+  Explanation:
+  Shop i | prices[i] | Shop j | prices[j] | costi | taxi | Travel | Return     | Total           | Minimum
+  0      | 10        | 2      | 1         | 1     | 3    | 1      | 1 * 3 = 3  | 1 + 3 + 1 = 5   | min(10, 5) = 5
+  1      | 11        | 2      | 1         | 3     | 4    | 3      | 3 * 4 = 12 | 3 + 12 + 1 = 16 | min(11, 16) = 11
+  2      | 1         | 0      | 10        | 1     | 3    | 1      | 1 * 3 = 3  | 1 + 3 + 10 = 14 | min(1, 14) = 1
+  Thus, the answer is [5, 11, 1].
 ```
 
 ## Approach

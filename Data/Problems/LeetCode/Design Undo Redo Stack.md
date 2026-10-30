@@ -3,17 +3,38 @@
 ---
 
 ## Problem Description
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
 Implement an undo/redo system that supports executing commands, undoing the most recent command, and redoing a previously undone command. The system should maintain two stacks: one for undo history and one for redo history. Executing a new command clears the redo stack.
 
+- `execute(command)` runs the command and records it for undo; clears the redo history.
+- `undo()` reverts the most recently executed (or redone) command. Does nothing if there is nothing to undo.
+- `redo()` re-applies the most recently undone command. Does nothing if there is nothing to redo.
+
+**Constraints (derived):**
+- At most `10^4` calls in total to `execute`, `undo`, and `redo`.
+- Each command's `execute()` and `undo()` run in `O(1)`.
+
 ## Examples
-```text
-undoRedo = UndoRedoStack()
-undoRedo.execute(AddCommand(5))   // state: 5
-undoRedo.execute(AddCommand(3))   // state: 8
-undoRedo.undo()                   // state: 5
-undoRedo.redo()                   // state: 8
 ```
-Explanation: After two adds, undo reverts the last add, redo reapplies it.
+Example 1:
+  undoRedo = UndoRedoStack()
+  undoRedo.execute(AddCommand(5))   // state: 5
+  undoRedo.execute(AddCommand(3))   // state: 8
+  undoRedo.undo()                   // state: 5
+  undoRedo.redo()                   // state: 8
+  Explanation: After two adds, undo reverts the last add, redo reapplies it.
+```
+
+```
+Example 2:
+  undoRedo = UndoRedoStack()
+  undoRedo.execute(AddCommand(5))   // state: 5
+  undoRedo.undo()                   // state: 0
+  undoRedo.execute(AddCommand(2))   // state: 2, redo history cleared
+  undoRedo.redo()                   // state: 2 (nothing to redo)
+  Explanation: Executing a new command after an undo discards the redo history.
+```
 
 ## Approach
 Use the Command pattern. Each command implements `execute()` and `undo()`. The `UndoRedoStack` stores executed commands on `undoStack`. `undo()` pops from `undoStack`, calls `undo()`, and pushes onto `redoStack`. `redo()` does the opposite. Executing a new command clears `redoStack`.

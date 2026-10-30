@@ -20,11 +20,11 @@
 
 ## Problem Description
 
-Given the root of a BST, return the **minimum difference** between values of any two different nodes.
+Given the `root` of a Binary Search Tree (BST), return *the minimum difference between the values of any two different nodes in the tree*.
 
 **Constraints:**
-- `2 ≤ number of nodes ≤ 100`
-- `0 ≤ Node.val ≤ 10⁵`
+- The number of nodes in the tree is in the range `[2, 100]`.
+- `0 <= Node.val <= 10^5`
 
 ---
 
@@ -33,13 +33,13 @@ Given the root of a BST, return the **minimum difference** between values of any
 **Example 1:**
 ```
 Input: root = [4,2,6,1,3]
-        4
-       / \
-      2   6
-     / \
-    1   3
 Output: 1
-Explanation: Min difference is between 2 and 3 (or 3 and 4) = 1.
+```
+
+**Example 2:**
+```
+Input: root = [1,0,48,null,null,12,49]
+Output: 1
 ```
 
 ---

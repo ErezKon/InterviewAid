@@ -18,7 +18,18 @@
 
 ## Problem Description
 
-Two drink arrays `energyDrinkA` and `energyDrinkB` of length n. At each hour, drink from one. Switching drinks costs one hour (skip that hour). Maximize total energy.
+You are given two integer arrays `energyDrinkA` and `energyDrinkB` of the same length `n` by a futuristic sports scientist. These arrays represent the energy boosts per hour provided by two different energy drinks, A and B, respectively.
+
+You want to *maximize* your total energy boost by drinking one energy drink *per hour*. However, if you want to switch from consuming one energy drink to the other, you need to wait for *one hour* to cleanse your system (meaning you won't get any energy boost in that hour).
+
+Return the **maximum** total energy boost you can gain in the next `n` hours.
+
+**Note** that you can start consuming *either* of the two energy drinks.
+
+**Constraints:**
+- `n == energyDrinkA.length == energyDrinkB.length`
+- `3 <= n <= 10^5`
+- `1 <= energyDrinkA[i], energyDrinkB[i] <= 10^5`
 
 ---
 
@@ -56,16 +67,19 @@ FUNCTION maxEnergyBoost(A, B):
 
 **Example 1:**
 ```
-Input: A = [1,2,3], B = [2,1,4]
-Output: 9
-Explanation: Drink B at hour 0 (2), switch to A at hour 2 (skip hour 1), drink A at hour 2 (3). Total = 2 + 3 + 4 (from B at hour 2?) Actually optimal schedule yields 9.
+Input: energyDrinkA = [1,3,1], energyDrinkB = [3,1,1]
+Output: 5
+Explanation: To gain an energy boost of 5, drink only the energy drink A (or only B).
 ```
 
 **Example 2:**
 ```
-Input: A = [5,1,3,1], B = [2,6,4,2]
-Output: 16
-Explanation: Choose A at hour 0 (5), stay A hour 1 (1), switch to B hour 3 (skip hour 2), drink B at hour 3 (2). Total = 5+1+6+2 = 14? Adjusted for optimal DP result 16.
+Input: energyDrinkA = [4,1,1], energyDrinkB = [1,1,3]
+Output: 7
+Explanation: To gain an energy boost of 7:
+- Drink the energy drink A for the first hour.
+- Switch to the energy drink B and we lose the energy boost of the second hour.
+- Gain the energy boost of the drink B in the third hour.
 ```
 
 ---

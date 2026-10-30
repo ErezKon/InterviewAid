@@ -20,16 +20,39 @@
 
 ## 1. Problem Description
 
-Count subsequences satisfying the "stable" condition based on element ordering and value constraints. Return mod 10⁹+7.
+> *Note: the Approach below tracks values. Officially only parity matters (no three consecutive equal parities). Keep `e[p][r]` = count of subsequences ending with parity `p` and a run length of `r+1`. For `x` with parity `p` (other parity `q`): `e[p][0] += e[q][0] + e[q][1] + 1` and `e[p][1] += e[p][0]` (using the old value). The answer is the sum mod 10^9+7. Checked against brute force.*
+
+You are given an integer array `nums`.
+
+A **subsequence** is **stable** if it does not contain **three consecutive** elements with the **same** parity when the subsequence is read **in order** (i.e., consecutive **inside the subsequence**).
+
+Return the number of stable subsequences.
+
+Since the answer may be too large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[1,2,2,3]` | `5` | The stable subsequences are `[1]`, `[2]`, `[2]`, `[3]`, `[1,2,3]`.
-| `[4,4,4]` | `3` | Only the single‑element subsequences are stable because any longer subsequence violates the ordering rule.
+**Example 1:**
+```
+Input: nums = [1,3,5]
+Output: 6
+Explanation: - Stable subsequences are [1], [3], [5], [1, 3], [1, 5], and [3, 5].
+- Subsequence [1, 3, 5] is not stable because it contains three consecutive odd numbers. Thus, the answer is 6.
+```
+
+**Example 2:**
+```
+Input: nums = [2,3,4,2]
+Output: 14
+Explanation: - The only subsequence that is not stable is [2, 4, 2], which contains three consecutive even numbers.
+- All other subsequences are stable. Thus, the answer is 14.
+```
 
 ---
 

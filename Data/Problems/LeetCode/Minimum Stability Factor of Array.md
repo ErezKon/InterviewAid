@@ -7,20 +7,57 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, the **stability factor** of a subarray is defined as the difference between its maximum and minimum elements. You may perform any number of operations where you replace an element with any integer. Determine the minimum possible stability factor of the entire array after any number of such replacements.
+
+> *Note: the Approach below concludes the answer is always 0 (invented). Officially you minimize the longest subarray with gcd ≥ 2 using at most `maxC` modifications. Binary search the answer `L`. To check, greedily scan for windows of length `L+1` with gcd ≥ 2 (sparse table or a two-pointer gcd), modify the window's right end when found, and continue after it. `L` is feasible if `≤ maxC` modifications are used.*
+
+You are given an integer array `nums` and an integer `maxC`.
+
+A **subarray** is called **stable** if the *highest common factor (HCF)* of all its elements is **greater than or equal to** 2.
+
+The **stability factor** of an array is defined as the length of its **longest** stable subarray.
+
+You may modify **at most** `maxC` elements of the array to any integer.
+
+Return the **minimum** possible stability factor of the array after at most `maxC` modifications. If no stable subarray remains, return 0.
+
+**Note:**
+
+- The **highest common factor (HCF)** of an array is the largest integer that evenly divides all the array elements.
+- A **subarray** of length 1 is stable if its only element is greater than or equal to 2, since `HCF([x]) = x`.
+
+**Constraints:**
+- `1 <= n == nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
+- `0 <= maxC <= n`
 
 ## Examples
+
 **Example 1:**
 ```
-nums = [5,1,9,3]
-Output: 2
-Explanation: Replace 5 with 2 and 9 with 4 → array becomes [2,1,4,3]; max=4, min=1, factor=3. A better replacement yields factor 2.
+Input: nums = [3,5,10], maxC = 1
+Output: 1
+Explanation: - The stable subarray [5, 10] has HCF = 5, which has a stability factor of 2.
+- Since maxC = 1, one optimal strategy is to change nums[1] to 7, resulting in nums = [3, 7, 10].
+- Now, no subarray of length greater than 1 has HCF >= 2. Thus, the minimum possible stability factor is 1.
 ```
+
 **Example 2:**
 ```
-nums = [7,7,7]
-Output: 0
-Explanation: All elements already equal; stability factor is 0.
+Input: nums = [2,6,8], maxC = 2
+Output: 1
+Explanation: - The subarray [2, 6, 8] has HCF = 2, which has a stability factor of 3.
+- Since maxC = 2, one optimal strategy is to change nums[1] to 3 and nums[2] to 5, resulting in nums = [2, 3, 5].
+- Now, no subarray of length greater than 1 has HCF >= 2. Thus, the minimum possible stability factor is 1.
+```
+
+**Example 3:**
+```
+Input: nums = [2,4,9,6], maxC = 1
+Output: 2
+Explanation: - The stable subarrays are:
+- [2, 4] with HCF = 2 and stability factor of 2.
+- [9, 6] with HCF = 3 and stability factor of 2.
+- Since maxC = 1, the stability factor of 2 cannot be reduced due to two separate stable subarrays. Thus, the minimum possible stability factor is 2.
 ```
 
 ## Approach

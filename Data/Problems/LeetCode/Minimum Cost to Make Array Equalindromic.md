@@ -6,18 +6,41 @@
 
 ---
 ## Problem Description
-Given an integer array `nums`, you may increase or decrease any element by 1 at a cost of 1 per unit change. Find the minimum total cost to transform the entire array so that all elements become the same palindromic number (a number that reads the same forward and backward). Return the minimal cost.
+You are given an integer array `nums`.
+
+In one **operation**, you may choose an index `i` and either increment or decrement `nums[i]` by 1.
+
+Return the **minimum** number of operations required to make every element in `nums` **equal** to the **same** positive palindromic integer.
+
+**Constraints:**
+- `1 <= n <= 10⁵`
+- `1 <= nums[i] <= 10⁹`
 
 ## Examples
-**Example 1**
-Input: nums = [12, 34, 56]
-Output: 30
-Explanation: The median is 34. The nearest palindromes are 33 and 44. Cost to 33: |12-33|+|34-33|+|56-33| = 21+1+23 = 45. Cost to 44: |12-44|+|34-44|+|56-44| = 32+10+12 = 54. The optimal target is 33 with cost 45 (adjusted example). 
 
-**Example 2**
-Input: nums = [101, 111, 121]
-Output: 0
-Explanation: All numbers are already palindromic and equal, so no cost.
+```
+Example 1:
+  Input: nums = [1,2,3,4,5]
+  Output: 6
+  Explanation: Increment nums[0] twice and nums[1] once, then decrement nums[3] once and nums[4] twice. After 6 operations, nums becomes [3,3,3,3,3], and 3 is a positive palindromic integer.
+  It can be shown that this is the minimum number of operations required.
+```
+
+```
+Example 2:
+  Input: nums = [10,12,13,14,15]
+  Output: 11
+  Explanation: Increment nums[0] once, then decrement nums[1], nums[2], nums[3], and nums[4] by 1, 2, 3, and 4, respectively. After 11 operations, nums becomes [11,11,11,11,11], and 11 is a positive palindromic integer.
+  It can be shown that this is the minimum number of operations required.
+```
+
+```
+Example 3:
+  Input: nums = [22,33,22,33,22]
+  Output: 22
+  Explanation: Decrement nums[1] and nums[3] by 11 each. After 22 operations, nums becomes [22,22,22,22,22], and 22 is a positive palindromic integer.
+  It can be shown that this is the minimum number of operations required.
+```
 
 ## Approach
 **Algorithm:** Median‑based target selection with nearest palindrome search

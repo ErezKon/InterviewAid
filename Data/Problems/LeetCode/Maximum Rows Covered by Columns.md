@@ -7,15 +7,51 @@
 ---
 
 ## Problem Description
-You are given a binary matrix `grid` of size `m × n`. You may select any subset of columns and flip all bits in those columns (0↔1). After flipping, a row is considered *covered* if it contains at least one `1`. Return the maximum possible number of covered rows.
 
-Constraints: `1 ≤ m, n ≤ 60`; each `grid[i][j]` is `0` or `1`.
+> *Note: the Approach below flips columns, which is not the official operation. Correct idea: encode each row as a bitmask. Enumerate every column subset `sel` with `popcount(sel) == numSelect` (n ≤ 12), count the rows with `rowMask & ~sel == 0`, and take the max.*
+
+You are given an `m x n` binary matrix `matrix` and an integer `numSelect`.
+
+Your goal is to select exactly `numSelect` **distinct **columns from `matrix` such that you cover as many rows as possible.
+
+A row is considered **covered** if all the `1`'s in that row are also part of a column that you have selected. If a row does not have any `1`s, it is also considered covered.
+
+More formally, let us consider `selected = {c_1, c_2, ...., c_numSelect}` as the set of columns selected by you. A row `i` is **covered** by `selected` if:
+
+- For each cell where `matrix[i][j] == 1`, the column `j` is in `selected`.
+- Or, no cell in row `i` has a value of `1`.
+
+Return the **maximum** number of rows that can be **covered** by a set of `numSelect` columns.
+
+**Constraints:**
+- `m == matrix.length`
+- `n == matrix[i].length`
+- `1 <= m, n <= 12`
+- `matrix[i][j]` is either `0` or `1`.
+- `1 <= numSelect <= n`
 
 ## Examples
-| grid | Output | Explanation |
-|------|--------|-------------|
-| [[1,0],[0,1]] | 2 | Flip column 1 → rows become `[0,1]` and `[1,0]`, both have a `1` |
-| [[0,0],[0,0]] | 0 | No column flips can create a `1` in any row |
+
+**Example 1:**
+```
+Input: matrix = [[0,0,0],[1,0,1],[0,1,1],[0,0,1]], numSelect = 2
+Output: 3
+Explanation: One possible way to cover 3 rows is shown in the diagram above.
+We choose s = {0, 2}.
+- Row 0 is covered because it has no occurrences of 1.
+- Row 1 is covered because the columns with value 1, i.e. 0 and 2 are present in s.
+- Row 2 is not covered because matrix[2][1] == 1 but 1 is not present in s.
+- Row 3 is covered because matrix[2][2] == 1 and 2 is present in s.
+Thus, we can cover three rows.
+Note that s = {1, 2} will also cover 3 rows, but it can be shown that no more than three rows can be covered.
+```
+
+**Example 2:**
+```
+Input: matrix = [[1],[0]], numSelect = 1
+Output: 2
+Explanation: Selecting the only column will result in both rows being covered since the entire matrix is selected.
+```
 
 ## Approach
 **Bitmask grouping** – Rows with identical patterns become interchangeable. Flipping a set of columns toggles bits uniformly; a row becomes covered iff its pattern after XOR with the chosen mask contains a `1`. The optimal mask is the one that matches the most frequent row pattern, because rows identical to the mask become all `1`s.

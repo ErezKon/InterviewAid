@@ -7,6 +7,8 @@
 ---
 
 ## Problem Description
+> *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Odd Even Linked List](Odd%20Even%20Linked%20List.md) for the official #328 statement, examples and constraints.*
+
 Given the head of a singly‑linked list, rearrange the nodes such that all nodes at odd positions come first followed by all nodes at even positions, preserving their original relative order. The transformation must be done in‑place with O(1) extra space.
 
 ## Examples

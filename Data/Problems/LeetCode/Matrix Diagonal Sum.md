@@ -8,19 +8,44 @@
 
 ## 1. Problem Description
 
-Return the sum of both diagonals of a square matrix (without double-counting the center).
+Given a square matrix `mat`, return the sum of the matrix diagonals.
+
+Only include the sum of all the elements on the primary diagonal and all the elements on the secondary diagonal that are not part of the primary diagonal.
+
+**Constraints:**
+
+- `n == mat.length == mat[i].length`
+- `1 <= n <= 100`
+- `1 <= mat[i][j] <= 100`
 
 ---
 
 ## 2. Examples
 
-| Input matrix | Output |
-|--------------|--------|
-| `[[1,2,3],[4,5,6],[7,8,9]]` | `25` |
-| `[[1,2],[3,4]]` | `10` |
-| `[[5]]` | `5` |
+```
+Example 1:
+  Input: mat = [[1,2,3],
+                [4,5,6],
+                [7,8,9]]
+  Output: 25
+  Explanation: Diagonals sum: 1 + 5 + 9 + 3 + 7 = 25
+  Notice that element mat[1][1] = 5 is counted only once.
+```
 
-*Explanation*: For the 3×3 matrix, primary diagonal = 1+5+9 = 15, secondary = 3+5+7 = 15, center 5 counted twice → subtract once → 25.
+```
+Example 2:
+  Input: mat = [[1,1,1,1],
+                [1,1,1,1],
+                [1,1,1,1],
+                [1,1,1,1]]
+  Output: 8
+```
+
+```
+Example 3:
+  Input: mat = [[5]]
+  Output: 5
+```
 
 ---
 

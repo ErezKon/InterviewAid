@@ -20,7 +20,17 @@
 
 ## 1. Problem Description
 
-Flatten a multilevel doubly linked list where each node may have a `child` pointer to another doubly linked list. All child lists should be inserted into the main list at the position of their parent node, preserving the original order. Return the head of the flattened list.
+You are given a doubly linked list, which contains nodes that have a next pointer, a previous pointer, and an additional **child pointer**. This child pointer may or may not point to a separate doubly linked list, also containing these special nodes. These child lists may have one or more children of their own, and so on, to produce a **multilevel data structure**.
+
+Given the `head` of the first level of the list, **flatten** the list so that all the nodes appear in a single-level, doubly linked list. Let `curr` be a node with a child list. The nodes in the child list should appear **after** `curr` and **before** `curr.next` in the flattened list.
+
+Return *the* `head` *of the flattened list. The nodes in the list must have **all** of their child pointers set to* `null`.
+
+**Constraints:**
+- The number of Nodes will not exceed `1000`.
+- `1 <= Node.val <= 10^5`
+
+**Official examples:** `head = [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]` → `[1,2,3,7,8,11,12,9,10,4,5,6]`; `head = [1,2,null,3]` → `[1,3,2]`; `head = []` → `[]`.
 
 ---
 

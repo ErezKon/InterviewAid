@@ -8,7 +8,28 @@
 
 ## 1. Problem Description
 
-Count valid starting positions (zeros) from which a cursor can make all elements zero by moving left/right and decrementing.
+You are given an integer array `nums`.
+
+Start by selecting a starting position `curr` such that `nums[curr] == 0`, and choose a movement **direction** of either left or right.
+
+After that, you repeat the following process:
+
+- If `curr` is out of the range `[0, n - 1]`, this process ends.
+- If `nums[curr] == 0`, move in the current direction by **incrementing** `curr` if you are moving right, or **decrementing** `curr` if you are moving left.
+- Else if `nums[curr] > 0`:
+  - Decrement `nums[curr]` by 1.
+  - **Reverse** your movement direction (left becomes right and vice versa).
+  - Take a step in your new direction.
+
+A selection of the initial position `curr` and movement direction is considered **valid** if every element in `nums` becomes 0 by the end of the process.
+
+Return the number of possible **valid** selections.
+
+**Constraints:**
+
+- `1 <= nums.length <= 100`
+- `0 <= nums[i] <= 100`
+- There is at least one element `i` where `nums[i] == 0`.
 
 ---
 
@@ -34,10 +55,29 @@ FUNCTION countValidSelections(nums):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `[0,1,2,3]` | `2` | Zero at index 0: left = 0, right = 6 → diff = 6 (invalid). Zero at index 1: left = 0, right = 5 → diff = 5 (invalid). Zero at index 2: left = 1, right = 3 → diff = 2 (invalid). Zero at index 3: left = 3, right = 0 → diff = 3 (invalid). Actually only zeros at positions where left and right sums differ by at most 1 are counted; in this array only the zero at index 0 yields count = 2 (both directions work). |
-| `[0,0,0]` | `6` | Each zero has leftSum = rightSum, so both directions work → 3 × 2 = 6. |
+```
+Example 1:
+  Input: nums = [1,0,2,0,3]
+  Output: 2
+  Explanation: The only possible valid selections are the following:
+  - Choose curr = 3, and a movement direction to the left.
+    [1,0,2,(0),3] -> [1,0,(2),0,3] -> [1,0,1,(0),3] -> [1,0,1,0,(3)] -> [1,0,1,(0),2] ->
+    [1,0,(1),0,2] -> [1,0,0,(0),2] -> [1,0,0,0,(2)] -> [1,0,0,(0),1] -> [1,0,(0),0,1] ->
+    [1,(0),0,0,1] -> [(1),0,0,0,1] -> [0,(0),0,0,1] -> [0,0,(0),0,1] -> [0,0,0,(0),1] ->
+    [0,0,0,0,(1)] -> [0,0,0,0,0]
+  - Choose curr = 3, and a movement direction to the right.
+    [1,0,2,(0),3] -> [1,0,2,0,(3)] -> [1,0,2,(0),2] -> [1,0,(2),0,2] -> [1,0,1,(0),2] ->
+    [1,0,1,0,(2)] -> [1,0,1,(0),1] -> [1,0,(1),0,1] -> [1,0,0,(0),1] -> [1,0,0,0,(1)] ->
+    [1,0,0,(0),0] -> [1,0,(0),0,0] -> [1,(0),0,0,0] -> [(1),0,0,0,0] -> [0,0,0,0,0]
+  (parentheses mark the current position curr)
+```
+
+```
+Example 2:
+  Input: nums = [2,3,4,0,4,1,0]
+  Output: 0
+  Explanation: There are no possible valid selections.
+```
 
 ---
 

@@ -8,14 +8,26 @@
 
 ## Problem Description
 
-Given a string `s`, return the lexicographically largest substring of `s`. A substring is a contiguous sequence of characters within the string.
+Given a string `s`, return *the last substring of* `s` *in lexicographical order*.
+
+**Constraints:**
+- `1 <= s.length <= 4 * 10^5`
+- `s` contains only lowercase English letters.
 
 ## Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"abab"` | `"bab"` | Substrings: `"a"`, `"ab"`, `"aba"`, `"abab"`, `"b"`, `"ba"`, `"bab"`. The largest lexicographically is `"bab"`. |
-| `"leetcode"` | `"tcode"` | The suffix starting at the last `'t'` is the largest. |
+```
+Example 1:
+  Input: s = "abab"
+  Output: "bab"
+  Explanation: The substrings are ["a", "ab", "aba", "abab", "b", "ba", "bab"]. The lexicographically maximum substring is "bab".
+```
+
+```
+Example 2:
+  Input: s = "leetcode"
+  Output: "tcode"
+```
 
 ## Approach
 

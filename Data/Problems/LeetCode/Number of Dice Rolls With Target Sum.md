@@ -21,17 +21,41 @@
 
 ## 1. Problem Description
 
-Given `n` dice each with `k` faces (1..k), count the number of ways to roll a sum equal to `target`. Return modulo 10⁹+7.
+You have `n` dice, and each dice has `k` faces numbered from `1` to `k`.
+
+Given three integers `n`, `k`, and `target`, return *the number of possible ways (out of the* `k^n` *total ways) to roll the dice, so the sum of the face-up numbers equals* `target`. Since the answer may be too large, return it **modulo** `10⁹ + 7`.
+
+**Constraints:**
+
+- `1 <= n, k <= 30`
+- `1 <= target <= 1000`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `n = 1, k = 6, target = 3` | `1` | Only one die, only one way to get sum 3 (roll a 3). |
-| `n = 2, k = 6, target = 7` | `6` | Pairs that sum to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1). |
-| `n = 2, k = 5, target = 10` | `0` | Maximum sum with two 5‑faced dice is 10, but only (5,5) yields 10, which is one way; however modulo 10⁹+7 still `1`. |
+```
+Example 1:
+  Input: n = 1, k = 6, target = 3
+  Output: 1
+  Explanation: You throw one die with 6 faces.
+  There is only one way to get a sum of 3.
+```
+
+```
+Example 2:
+  Input: n = 2, k = 6, target = 7
+  Output: 6
+  Explanation: You throw two dice, each with 6 faces.
+  There are 6 ways to get a sum of 7: 1+6, 2+5, 3+4, 4+3, 5+2, 6+1.
+```
+
+```
+Example 3:
+  Input: n = 30, k = 30, target = 500
+  Output: 222616187
+  Explanation: The answer must be returned modulo 10^9 + 7.
+```
 
 ---
 

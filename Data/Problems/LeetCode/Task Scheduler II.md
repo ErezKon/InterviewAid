@@ -7,20 +7,51 @@
 ---
 
 ## Problem Description
-Given an array `tasks` where `tasks[i]` is the type of the i‑th task, and an integer `space` representing the required cooldown days between two identical tasks, determine the minimum number of days needed to finish all tasks. Each day you can perform at most one task, and you may idle on a day.
+You are given a **0-indexed** array of positive integers `tasks`, representing tasks that need to be completed **in order**, where `tasks[i]` represents the **type** of the `i`-th task.
+
+You are also given a positive integer `space`, which represents the **minimum** number of days that must pass **after** the completion of a task before another task of the **same** type can be performed.
+
+Each day, until all tasks have been completed, you must either:
+
+- Complete the next task from `tasks`, or
+- Take a break.
+
+Return *the **minimum** number of days needed to complete all tasks*.
+
+**Constraints:**
+- `1 <= tasks.length <= 10^5`
+- `1 <= tasks[i] <= 10^9`
+- `1 <= space <= tasks.length`
 
 ## Examples
-**Example 1:**
 ```
-Input: tasks = ["a","b","a"], space = 3
-Output: 7
-Explanation: One optimal schedule is day1:a, day2:b, day3:idle, day4:idle, day5:idle, day6:a.
+Example 1:
+  Input: tasks = [1,2,1,2,3,1], space = 3
+  Output: 9
+  Explanation: One way to complete all tasks in 9 days is as follows:
+  Day 1: Complete the 0th task.
+  Day 2: Complete the 1st task.
+  Day 3: Take a break.
+  Day 4: Take a break.
+  Day 5: Complete the 2nd task.
+  Day 6: Complete the 3rd task.
+  Day 7: Take a break.
+  Day 8: Complete the 4th task.
+  Day 9: Complete the 5th task.
+  It can be shown that the tasks cannot be completed in less than 9 days.
 ```
-**Example 2:**
 ```
-Input: tasks = ["a","a","a","b","b","b"], space = 2
-Output: 8
-Explanation: Schedule: a b idle a b idle a b.
+Example 2:
+  Input: tasks = [5,8,8,5], space = 2
+  Output: 6
+  Explanation: One way to complete all tasks in 6 days is as follows:
+  Day 1: Complete the 0th task.
+  Day 2: Complete the 1st task.
+  Day 3: Take a break.
+  Day 4: Take a break.
+  Day 5: Complete the 2nd task.
+  Day 6: Complete the 3rd task.
+  It can be shown that the tasks cannot be completed in less than 6 days.
 ```
 
 ## Approach

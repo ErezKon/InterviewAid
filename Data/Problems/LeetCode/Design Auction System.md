@@ -8,34 +8,46 @@
 
 ## Problem Description
 
-Design an auction system that allows creating auctions with an end time, placing bids from users, and ending auctions to determine the winning bid.
+You are asked to design an auction system that manages bids from multiple users in real time.
+
+Each bid is associated with a `userId`, an `itemId`, and a `bidAmount`.
+
+Implement the `AuctionSystem` class:
+
+- `AuctionSystem()`: Initializes the `AuctionSystem` object.
+- `void addBid(int userId, int itemId, int bidAmount)`: Adds a new bid for `itemId` by `userId` with `bidAmount`. If the same `userId` **already** has a bid on `itemId`, **replace** it with the new `bidAmount`.
+- `void updateBid(int userId, int itemId, int newAmount)`: Updates the existing bid of `userId` for `itemId` to `newAmount`. It is **guaranteed** that this bid *exists*.
+- `void removeBid(int userId, int itemId)`: Removes the bid of `userId` for `itemId`. It is **guaranteed** that this bid *exists*.
+- `int getHighestBidder(int itemId)`: Returns the `userId` of the **highest** bidder for `itemId`. If multiple users have the **same highest** `bidAmount`, return the user with the **highest** `userId`. If no bids exist for the item, return -1.
+
+**Constraints:**
+
+- `1 <= userId, itemId <= 5 * 10^4`
+- `1 <= bidAmount, newAmount <= 10^9`
+- At most `5 * 10^4` total calls to `addBid`, `updateBid`, `removeBid`, and `getHighestBidder`.
+- The input is generated such that for `updateBid` and `removeBid`, the bid from the given `userId` for the given `itemId` will be valid.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: ["AuctionSystem","createAuction","placeBid","placeBid","endAuction"],
-       [[],[10],[1,100,5],[2,150,5],[1]]
-Output: [null,1,null,null,2]
-Explanation:
-AuctionSystem as = new AuctionSystem();
-int id = as.createAuction(10); // auction ends at time 10, id = 1
-as.placeBid(1, 100, 5); // user 100 bids $5 at time 5
-as.placeBid(1, 150, 7); // user 150 bids $7 at time 7
-int winner = as.endAuction(1); // returns 150 (highest bid)
-```
-
-**Example 2:**
-```
-Input: ["AuctionSystem","createAuction","placeBid","endAuction"],
-       [[],[5],[1,200,3],[1]]
-Output: [null,1,null,1]
-Explanation:
-as.createAuction(5) creates auction id 1 ending at time 5.
-as.placeBid(1,200,3) places a $3 bid.
-as.endAuction(1) returns user 200 as winner.
+Example 1:
+  Input:
+  ["AuctionSystem", "addBid", "addBid", "getHighestBidder", "updateBid", "getHighestBidder", "removeBid", "getHighestBidder", "getHighestBidder"]
+  [[], [1, 7, 5], [2, 7, 6], [7], [1, 7, 8], [7], [2, 7], [7], [3]]
+  Output:
+  [null, null, null, 2, null, 1, null, 1, -1]
+  Explanation:
+  AuctionSystem auctionSystem = new AuctionSystem(); // Initialize the Auction system
+  auctionSystem.addBid(1, 7, 5); // User 1 bids 5 on item 7
+  auctionSystem.addBid(2, 7, 6); // User 2 bids 6 on item 7
+  auctionSystem.getHighestBidder(7); // return 2 as User 2 has the highest bid
+  auctionSystem.updateBid(1, 7, 8); // User 1 updates bid to 8 on item 7
+  auctionSystem.getHighestBidder(7); // return 1 as User 1 now has the highest bid
+  auctionSystem.removeBid(2, 7); // Remove User 2's bid on item 7
+  auctionSystem.getHighestBidder(7); // return 1 as User 1 is the current highest bidder
+  auctionSystem.getHighestBidder(3); // return -1 as no bids exist for item 3
 ```
 
 ---

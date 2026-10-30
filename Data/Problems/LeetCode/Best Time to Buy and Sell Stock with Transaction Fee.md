@@ -7,13 +7,35 @@
 ---
 
 ## Problem Description
-Given an array `prices` where `prices[i]` is the price of a stock on day `i` and an integer `fee` representing a transaction fee, you may complete as many transactions as you like (buy one and sell one share of the stock multiple times). Each time you sell, you must pay the fee. Return the maximum profit you can achieve.
+You are given an array `prices` where `prices[i]` is the price of a given stock on the `iᵗʰ` day, and an integer `fee` representing a transaction fee.
+
+Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.
+
+**Note:**
+- You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+- The transaction fee is only charged once for each stock purchase and sale.
+
+**Constraints:**
+- `1 ≤ prices.length ≤ 5 * 10⁴`
+- `1 ≤ prices[i] < 5 * 10⁴`
+- `0 ≤ fee < 5 * 10⁴`
 
 ## Examples
-- **Input:** `prices = [1,3,2,8,4,9]`, `fee = 2` **Output:** `8`
-  *Explanation:* Buy on day 0, sell on day 3 (profit 7‑2=5). Buy on day 4, sell on day 5 (profit 5‑2=3). Total = 8.
-- **Input:** `prices = [1,3,7,5,10,3]`, `fee = 3` **Output:** `6`
-  *Explanation:* Buy on day 0, sell on day 2 (profit 6‑3=3). Buy on day 3, sell on day 4 (profit 5‑3=2). Total = 5? Actually optimal profit = 6.
+```
+Example 1:
+  Input: prices = [1,3,2,8,4,9], fee = 2
+  Output: 8
+  Explanation: The maximum profit can be achieved by:
+  - Buying at prices[0] = 1
+  - Selling at prices[3] = 8
+  - Buying at prices[4] = 4
+  - Selling at prices[5] = 9
+  The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
+
+Example 2:
+  Input: prices = [1,3,7,5,10,3], fee = 3
+  Output: 6
+```
 
 ## Approach
 Maintain two DP states:

@@ -9,7 +9,13 @@
 
 ## 1. Problem Description
 
-Write a function that reverses a character array in-place with O(1) extra memory.
+Write a function that reverses a string. The input string is given as an array of characters `s`.
+
+You must do this by modifying the input array in-place with `O(1)` extra memory.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s[i]` is a printable ascii character.
 
 ---
 
@@ -35,10 +41,17 @@ FUNCTION reverseString(s):
 
 ## 3. Examples
 
-| Input | Output |
-|-------|--------|
-| ['h','e','l','l','o'] | ['o','l','l','e','h'] |
-| ['H','a','n','n','a','h'] | ['h','a','n','n','a','H'] |
+**Example 1:**
+```
+Input: s = ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+```
+
+**Example 2:**
+```
+Input: s = ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+```
 
 ---
 

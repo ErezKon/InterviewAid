@@ -21,17 +21,40 @@
 
 ## 1. Problem Description
 
-Return the number of **distinct** greatest common divisors (GCDs) among all non‑empty subsequences of the integer array `nums`.
+You are given an array `nums` that consists of positive integers.
+
+The **GCD** of a sequence of numbers is defined as the greatest integer that divides **all** the numbers in the sequence evenly.
+
+- For example, the GCD of the sequence `[4,6,16]` is `2`.
+
+A **subsequence** of an array is a sequence that can be formed by removing some elements (possibly none) of the array.
+
+- For example, `[2,5,10]` is a subsequence of `[1,2,1,2,4,1,5,10]`.
+
+Return *the **number** of **different** GCDs among all **non-empty** subsequences of* `nums`.
+
+**Constraints:**
+
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 2 * 10^5`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `nums = [6,10,15]` | `3` | Possible GCDs are `{1,2,5}` from subsequences like `[6,10] → 2`, `[10,15] → 5`, `[6,10,15] → 1`.
-| `nums = [2,4,6,8]` | `3` | GCDs `{2,4,8}` are achievable.
-| `nums = [1,2,3]` | `3` | Every integer 1,2,3 can appear as a GCD.
+```
+Example 1:
+  Input: nums = [6,10,3]
+  Output: 5
+  Explanation: Considering all the non-empty subsequences and their GCDs,
+  the different GCDs are 6, 10, 3, 2, and 1.
+```
+
+```
+Example 2:
+  Input: nums = [5,15,40,5,6]
+  Output: 7
+```
 
 ---
 

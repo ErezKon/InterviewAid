@@ -1,25 +1,46 @@
 # 3469. Find Minimum Cost to Remove Array Elements
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/find-minimum-cost-to-remove-array-elements](https://leetcode.com/problems/find-minimum-cost-to-remove-array-elements)
 **Companies:** Bloomberg, De Shaw, Google
 
 ---
 
 ## Problem Description
-Given an integer array `arr`, you may repeatedly remove exactly three elements and pay a cost equal to the value of the largest of the three removed elements. The operation continues until fewer than three elements remain. Determine the minimum total cost required to remove elements so that the array is empty (or contains fewer than three elements).
+> *Note: the previous description in this file (remove any three elements, pay the max) was a different problem. The Approach/Walkthrough below may still follow it — the official solution is a DP over (index of the "kept" element, next position).*
+
+You are given an integer array `nums`. Your task is to remove **all elements** from the array by performing one of the following operations at each step until `nums` is empty:
+
+- Choose any two elements from the first three elements of `nums` and remove them. The cost of this operation is the **maximum** of the two elements removed.
+- If fewer than three elements remain in `nums`, remove all the remaining elements in a single operation. The cost of this operation is the **maximum** of the remaining elements.
+
+Return the **minimum** cost required to remove all the elements.
+
+**Constraints:**
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 10^6`
 
 ## Examples
-**Example 1**
 ```
-arr = [4, 2, 1, 3]
-Remove (4,2,1) → cost 4, remaining [3]
-Total cost = 4
+Example 1:
+  Input: nums = [6,2,8,4]
+  Output: 12
+  Explanation:
+  Initially, nums = [6, 2, 8, 4].
+  - In the first operation, remove nums[0] = 6 and nums[2] = 8 with a cost of max(6, 8) = 8. Now, nums = [2, 4].
+  - In the second operation, remove the remaining elements with a cost of max(2, 4) = 4.
+  The cost to remove all elements is 8 + 4 = 12. This is the minimum cost to remove all elements in nums. Hence, the output is 12.
 ```
-**Example 2**
+
 ```
-arr = [5,5,5,5,5]
-First remove (5,5,5) → cost 5, remaining [5,5]
-No further removals possible, total cost = 5
+Example 2:
+  Input: nums = [2,1,3,3]
+  Output: 5
+  Explanation:
+  Initially, nums = [2, 1, 3, 3].
+  - In the first operation, remove nums[0] = 2 and nums[1] = 1 with a cost of max(2, 1) = 2. Now, nums = [3, 3].
+  - In the second operation remove the remaining elements with a cost of max(3, 3) = 3.
+  The cost to remove all elements is 2 + 3 = 5. This is the minimum cost to remove all elements in nums. Hence, the output is 5.
 ```
 
 ## Approach

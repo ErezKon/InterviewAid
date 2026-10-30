@@ -5,6 +5,9 @@
 ---
 
 ## Problem Description
+
+> *Note: companion pattern file (not an official LeetCode problem) — see [Word Break.md](Word%20Break.md) and [Word Break II.md](Word%20Break%20II.md) for the official statements and constraints of #139 and #140.*
+
 The *word break* family of problems asks whether a string `s` can be segmented into a sequence of dictionary words, and if so, to enumerate possible segmentations. Variants include:
 - **Word Break I (#139):** Return a boolean indicating if at least one segmentation exists.
 - **Word Break II (#140):** Return all possible segmentations.

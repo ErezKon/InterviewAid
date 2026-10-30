@@ -7,17 +7,30 @@
 ---
 
 ## Problem Description
-Given a directed acyclic graph (DAG) represented as an adjacency list `graph`, return all possible paths from node `0` (source) to node `n-1` (target). Each path should be a list of node indices.
+Given a directed acyclic graph (**DAG**) of `n` nodes labeled from `0` to `n - 1`, find all possible paths from node `0` to node `n - 1` and return them in **any order**.
+
+The graph is given as follows: `graph[i]` is a list of all nodes you can visit from node `i` (i.e., there is a directed edge from node `i` to node `graph[i][j]`).
+
+**Constraints:**
+- `n == graph.length`
+- `2 <= n <= 15`
+- `0 <= graph[i][j] < n`
+- `graph[i][j] != i` (i.e., there will be no self-loops).
+- All the elements of `graph[i]` are **unique**.
+- The input graph is **guaranteed** to be a **DAG**.
 
 ## Examples
-**Example 1**
-Input: `graph = [[1,2],[3],[3],[]]`
-Output: `[[0,1,3],[0,2,3]]`
-Explanation: Two paths exist: 0→1→3 and 0→2→3.
-
-**Example 2**
-Input: `graph = [[4,3,1],[3,2,4],[3],[4],[]]`
-Output: `[[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]`
+```
+Example 1:
+  Input: graph = [[1,2],[3],[3],[]]
+  Output: [[0,1,3],[0,2,3]]
+  Explanation: There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
+```
+```
+Example 2:
+  Input: graph = [[4,3,1],[3,2,4],[3],[4],[]]
+  Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
+```
 
 ## Approach
 **Algorithm:** Depth‑First Search (DFS) with backtracking.

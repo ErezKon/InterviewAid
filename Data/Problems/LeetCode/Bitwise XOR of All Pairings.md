@@ -1,16 +1,38 @@
 # 2425. Bitwise XOR of All Pairings
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/bitwise-xor-of-all-pairings](https://leetcode.com/problems/bitwise-xor-of-all-pairings)
 **Companies:** Google, Meta, Trilogy
 
 ---
 
 ## Problem Description
-Given two integer arrays `nums1` and `nums2`, compute the XOR of all possible pairwise XORs between an element from `nums1` and an element from `nums2`. Formally, return the value of \(\bigoplus_{a \in nums1}\bigoplus_{b \in nums2} (a \oplus b)\).
+You are given two **0-indexed** arrays, `nums1` and `nums2`, consisting of non-negative integers. Let there be another array, `nums3`, which contains the bitwise XOR of **all pairings** of integers between `nums1` and `nums2` (every integer in `nums1` is paired with every integer in `nums2` **exactly once**).
+
+Return *the **bitwise XOR** of all integers in* `nums3`.
+
+**Constraints:**
+- `1 ≤ nums1.length, nums2.length ≤ 10⁵`
+- `0 ≤ nums1[i], nums2[j] ≤ 10⁹`
 
 ## Examples
-- Input: `nums1 = [1,2]`, `nums2 = [3,4]` → Output: `0`. Explanation: Pairwise XORs are `1⊕3=2`, `1⊕4=5`, `2⊕3=1`, `2⊕4=6`; XOR of all these values is `2⊕5⊕1⊕6 = 0`.
-- Input: `nums1 = [5]`, `nums2 = [1,2,3]` → Output: `5`. Explanation: XORs are `5⊕1=4`, `5⊕2=7`, `5⊕3=6`; XOR of all is `4⊕7⊕6 = 5`.
+```
+Example 1:
+  Input: nums1 = [2,1,3], nums2 = [10,2,5,0]
+  Output: 13
+  Explanation:
+  A possible nums3 array is [8,0,7,2,11,3,4,1,9,1,6,3].
+  The bitwise XOR of all these numbers is 13, so we return 13.
+
+Example 2:
+  Input: nums1 = [1,2], nums2 = [3,4]
+  Output: 0
+  Explanation:
+  All possible pairs of bitwise XORs are nums1[0] ^ nums2[0], nums1[0] ^ nums2[1], nums1[1] ^ nums2[0],
+  and nums1[1] ^ nums2[1].
+  Thus, one possible nums3 array is [2,5,1,6].
+  2 ^ 5 ^ 1 ^ 6 = 0, so we return 0.
+```
 
 ## Approach
 **Parity Observation** – The final XOR depends only on the parity (odd/even) of the lengths of the two arrays. If `len(nums2)` is odd, XOR all elements of `nums1` into the result; similarly, if `len(nums1)` is odd, XOR all elements of `nums2`.

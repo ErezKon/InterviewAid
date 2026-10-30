@@ -8,24 +8,41 @@
 
 ## Problem Description
 
-Same as Separate Squares I but squares can **overlap**. Find a horizontal line that divides the **union area** equally. Requires computing union area below a given y.
+You are given a 2D integer array `squares`. Each `squares[i] = [xi, yi, li]` represents the coordinates of the bottom-left point and the side length of a square parallel to the x-axis.
+
+Find the **minimum** y-coordinate value of a horizontal line such that the total area covered by squares above the line *equals* the total area covered by squares below the line.
+
+Answers within `10^-5` of the actual answer will be accepted.
+
+**Note**: Squares **may** overlap. Overlapping areas should be counted **only once** in this version.
+
+**Constraints:**
+
+- `1 <= squares.length <= 5 * 10^4`
+- `squares[i] = [xi, yi, li]`
+- `squares[i].length == 3`
+- `0 <= xi, yi <= 10^9`
+- `1 <= li <= 10^9`
+- The total area of all the squares will not exceed `10^15`.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: squares = [[0,0,2],[1,1,3]]
-Output: 1.5
-Explanation: The union area of the two overlapping squares is 13. The line y = 1.5 splits the union area into 6.5 above and 6.5 below.
+Example 1:
+  Input: squares = [[0,0,1],[2,2,1]]
+  Output: 1.00000
+  Explanation: Any horizontal line between y = 1 and y = 2 results in an equal split, with 1 square unit above and 1 square unit below.
+  The minimum y-value is 1.
 ```
 
-**Example 2:**
 ```
-Input: squares = [[-2,-2,4], [0,0,2]]
-Output: 0.0
-Explanation: The larger square covers the smaller one. The line through its center y = 0 splits the total union area equally.
+Example 2:
+  Input: squares = [[0,0,2],[1,1,1]]
+  Output: 1.00000
+  Explanation: Since the blue square (the 1x1 square at (1,1)) overlaps with the red square (the 2x2 square at (0,0)), it will not be counted again.
+  Thus, the line y = 1 splits the squares into two equal parts.
 ```
 
 ---

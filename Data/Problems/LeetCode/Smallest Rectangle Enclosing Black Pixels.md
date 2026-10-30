@@ -8,15 +8,42 @@
 
 ## Problem Description
 
-You are given a 2D binary matrix `image` where `'1'` represents a black pixel and `'0'` represents a white pixel. All the black pixels are connected. You are also given the coordinates `(x, y)` of one of the black pixels. Find the area of the smallest axis-aligned rectangle that encloses all black pixels.
+You are given an `m x n` binary matrix `image` where `0` represents a white pixel and `1` represents a black pixel.
+
+The black pixels are connected (i.e., there is only one black region). Pixels are connected horizontally and vertically.
+
+Given two integers `x` and `y` that represents the location of one of the black pixels, return *the area of the smallest (axis-aligned) rectangle that encloses all black pixels*.
+
+You must write an algorithm with less than `O(mn)` runtime complexity.
+
+**Constraints:**
+- `m == image.length`
+- `n == image[i].length`
+- `1 <= m, n <= 100`
+- `image[i][j]` is either `'0'` or `'1'`.
+- `0 <= x < m`
+- `0 <= y < n`
+- `image[x][y] == '1'.`
+- The black pixels in the `image` only form **one component**.
 
 ## Examples
 
-- **Input:** `image = ["0010", "0110", "0100"]`, `x = 0`, `y = 2`
-  - **Black pixels:** `(0,2), (1,1), (1,2)`.
-  - **Bounding box:** `top=0, bottom=1, left=1, right=2`.
-  - **Area:** `(bottom - top + 1) * (right - left + 1) = (1-0+1) * (2-1+1) = 2 * 2 = 4`.
-  - **Output:** `4`.
+```
+Example 1:
+  Input: image = [["0","0","1","0"],["0","1","1","0"],["0","1","0","0"]], x = 0, y = 2
+  Output: 6
+  Explanation (grid):
+    0 0 1 0
+    0 1 1 0
+    0 1 0 0
+    Black pixels span rows 0..2 and columns 1..2 -> area = 3 * 2 = 6.
+```
+
+```
+Example 2:
+  Input: image = [["1"]], x = 0, y = 0
+  Output: 1
+```
 
 ## Approach: Binary Search (or DFS/BFS) [Time: O(M log N + N log M), Space: O(1)]
 

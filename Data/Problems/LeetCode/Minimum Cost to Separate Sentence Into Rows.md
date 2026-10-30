@@ -20,37 +20,56 @@
 
 ## Problem Description
 
-Given a sentence (string of words) and a row width `k`, split the sentence into rows where each row has at most `k` characters (words separated by single spaces). The cost of a row (except the last) is `(k - row_length)²`. The last row has zero cost. Return the **minimum total cost**.
+You are given a string `sentence` containing words separated by spaces, and an integer `k`. Your task is to separate `sentence` into **rows** where the number of characters in each row is **at most** `k`. You may assume that `sentence` does not begin or end with a space, and the words in `sentence` are separated by a single space.
+
+You can split `sentence` into rows by inserting line breaks between words in `sentence`. A word **cannot** be split between two rows. Each word must be used exactly once, and the word order cannot be rearranged. Adjacent words in a row should be separated by a single space, and rows should not begin or end with spaces.
+
+The **cost** of a row with length `n` is `(k - n)²`, and the **total cost** is the sum of the **costs** for all rows **except** the last one.
+- For example if `sentence = "i love leetcode"` and `k = 12`:
+  - Separating `sentence` into `"i"`, `"love"`, and `"leetcode"` has a cost of `(12 - 1)² + (12 - 4)² = 185`.
+  - Separating `sentence` into `"i love"`, and `"leetcode"` has a cost of `(12 - 6)² = 36`.
+  - Separating `sentence` into `"i"`, and `"love leetcode"` is not possible because the length of `"love leetcode"` is greater than `k`.
+
+Return *the **minimum** possible total cost of separating* `sentence` *into rows.*
 
 **Constraints:**
 - `1 ≤ sentence.length ≤ 5000`
 - `1 ≤ k ≤ 5000`
-- Each word length ≤ `k`
+- The length of each word in `sentence` is at most `k`.
+- `sentence` consists of only lowercase English letters and spaces.
+- `sentence` does not begin or end with a space.
+- Words in `sentence` are separated by a single space.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: sentence = "i love leetcode", k = 12
-Output: 1
-Explanation: 
-  Row 1: "i love" (length 6) → cost = (12-6)² = 36? 
-  Actually: "i love" = 6, but try "i love leetcode" won't fit (15 > 12).
-  Row 1: "i love" → cost (12-6)²=36, Row 2: "leetcode" → last row, cost 0. Total = 36.
-  Better: Row 1: "i" → cost (12-1)²=121, Row 2: "love leetcode" = 13 > 12. No.
-  Row 1: "i love" (6), cost 36; Row 2: "leetcode" (8), cost 0. Total = 36.
-  Hmm, or Row 1: "i" cost 121; Row 2: "love" cost 64; Row 3: "leetcode" cost 0 = 185.
-  Min = 36.
+Example 1:
+  Input: sentence = "i love leetcode", k = 12
+  Output: 36
+  Explanation:
+  Separating sentence into "i", "love", and "leetcode" has a cost of (12 - 1)² + (12 - 4)² = 185.
+  Separating sentence into "i love", and "leetcode" has a cost of (12 - 6)² = 36.
+  Separating sentence into "i", "love leetcode" is not possible because "love leetcode" has length 13.
+  36 is the minimum possible total cost so return it.
 ```
 
-**Example 2:**
 ```
-Input: sentence = "apples and bananas", k = 7
-Output: 21
-Explanation: "apples" (6) cost=(7-6)²=1, "and" (3) cost=(7-3)²=16, "bananas" last row cost=0. Total=17.
-Or "apples" cost 1, "and bananas" = 11 > 7. So: "apples"→1, "and"→16, "bananas"→0 = 17.
+Example 2:
+  Input: sentence = "apples and bananas taste great", k = 7
+  Output: 21
+  Explanation:
+  Separating sentence into "apples", "and", "bananas", "taste", and "great" has a cost of (7 - 6)² + (7 - 3)² + (7 - 7)² + (7 - 5)² = 21.
+  21 is the minimum possible total cost so return it.
+```
+
+```
+Example 3:
+  Input: sentence = "a", k = 5
+  Output: 0
+  Explanation:
+  The cost of the last row is not included in the total cost, and since there is only one row, return 0.
 ```
 
 ---

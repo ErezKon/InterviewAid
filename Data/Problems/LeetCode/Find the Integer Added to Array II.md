@@ -20,11 +20,19 @@
 
 ## 1. Problem Description
 
-Given `nums1` (length n) and `nums2` (length n-2), find the minimum integer `x` such that after removing 2 elements from `nums1` and adding `x` to each remaining element, the result equals `nums2` (in some order).
+You are given two integer arrays `nums1` and `nums2`.
+
+We say that `nums2` is reachable from `nums1` with an integer `x` if there exist two elements in `nums1` that, when removed, and `x` is added to all the remaining elements of `nums1` (or subtracted in the case of a negative `x`), the resulting array becomes equal to `nums2`. Two arrays are considered **equal** when they contain the same integers with the same frequencies.
+
+Return the **minimum** possible integer `x` that makes `nums2` reachable from `nums1`.
+
+It is guaranteed that `nums2` is reachable from `nums1` with at least one `x`.
 
 **Constraints:**
 - `3 <= nums1.length <= 200`
-- `1 <= nums1[i], nums2[i] <= 1000`
+- `nums2.length == nums1.length - 2`
+- `0 <= nums1[i], nums2[i] <= 1000`
+- It is guaranteed that `nums2` is reachable from `nums1` with at least one `x`.
 
 ---
 
@@ -32,9 +40,14 @@ Given `nums1` (length n) and `nums2` (length n-2), find the minimum integer `x` 
 
 ```
 Example 1:
-  Input:  nums1 = [4, 20, 16, 12, 8], nums2 = [14, 18, 10]
+  Input: nums1 = [4,20,16,12,8], nums2 = [14,18,10]
   Output: -2
-  Reason: Remove 4 and 20, add -2: [16-2, 12-2, 8-2] = [14, 10, 6]... (sorted match)
+  Explanation: After removing elements at indices [0,4] and adding -2, nums1 becomes [18,14,10].
+
+Example 2:
+  Input: nums1 = [3,5,5,3], nums2 = [7,7]
+  Output: 2
+  Explanation: After removing elements at indices [0,3] and adding 2, nums1 becomes [7,7].
 ```
 
 ---

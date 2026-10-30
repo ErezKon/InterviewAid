@@ -8,16 +8,42 @@
 
 ## 1. Problem Description
 
-Find the longest substring with balanced character distribution (each character appears equally).
+> *Note: the Approach below normalizes all 26 counts against `freq['a']`, so it only finds substrings where **every** letter (including absent ones) is balanced — it misses substrings that use only one or two of the letters. Correct approach for #3714: handle three cases separately — (1) longest run of a single character; (2) for each pair of letters, prefix-difference hash map that is reset whenever the third letter appears; (3) all three letters, hash map keyed by `(cnt_b − cnt_a, cnt_c − cnt_a)`. O(n).*
+
+You are given a string `s` consisting only of the characters `'a'`, `'b'`, and `'c'`.
+
+A **substring** of `s` is called **balanced** if all **distinct** characters in the **substring** appear the **same** number of times.
+
+Return the **length of the longest balanced substring** of `s`.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` contains only the characters `'a'`, `'b'`, and `'c'`.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"aabb"` | `4` | The whole string has two `a` and two `b`.
-| `"abcabcab"` | `6` | Substring `"abcabc"` balances three characters each appearing twice.
+**Example 1:**
+```
+Input: s = "abbac"
+Output: 4
+Explanation: The longest balanced substring is "abba" because both distinct characters 'a' and 'b' each appear exactly 2 times.
+```
+
+**Example 2:**
+```
+Input: s = "aabcc"
+Output: 3
+Explanation: The longest balanced substring is "abc" because all distinct characters 'a', 'b' and 'c' each appear exactly 1 time.
+```
+
+**Example 3:**
+```
+Input: s = "aba"
+Output: 2
+Explanation: One of the longest balanced substrings is "ab" because both distinct characters 'a' and 'b' each appear exactly 1 time. Another longest balanced substring is "ba".
+```
 
 ---
 

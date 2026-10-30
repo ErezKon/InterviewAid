@@ -7,15 +7,54 @@
 ---
 
 ## Problem Description
-Given a tree with `n` nodes (rooted arbitrarily) where each node `i` has an integer value `val[i]`. You may perform the following operation any number of times: select an edge `(u, v)`, remove it, and add `val[u] * val[v]` to your score, then merge the two components by treating one node as the new root (its value becomes `val[u] + val[v]`). The operation continues until only one node remains. Return the maximum possible total score.
 
-Constraints: `2 ≤ n ≤ 10^5`; `-10^4 ≤ val[i] ≤ 10^4`; the tree is given as an edge list.
+> *Note: the Approach below (leaf-merging heap) solves an invented problem. Officially you collect node values but every root-to-leaf path must keep a non-zero node. Correct idea: `answer = Σ values − cost(0)`, where `cost(v) = values[v]` for a leaf and `min(values[v], Σ cost(child))` otherwise (one DFS).*
+
+There is an undirected tree with `n` nodes labeled from 0 to `n - 1`, and rooted at node 0. You are given a 2D integer array `edges` of length `n - 1`, where `edges[i] = [a_i, b_i]` indicates that there is an edge between nodes `a_i` and `b_i` in the tree.
+
+You are also given a **0-indexed** integer array `values` of length `n`, where `values[i]` is the **value** associated with the `i^th` node.
+
+You start with a score of 0. In one operation, you choose a node `i`, **add** `values[i]` to your score, and then **set** `values[i]` to 0. All three steps happen together as a single operation.
+
+A tree is **healthy** if, for **every** leaf node, the sum of the **current** values on the path from the root to that leaf is **not equal** to 0.
+
+Return the **maximum score** you can obtain by performing this operation on the tree any number of times, so that the tree remains **healthy** at the end.
+
+**Constraints:**
+- `2 <= n <= 2 * 10^4`
+- `edges.length == n - 1`
+- `edges[i].length == 2`
+- `0 <= a_i, b_i < n`
+- `values.length == n`
+- `1 <= values[i] <= 10^9`
+- The input is generated such that `edges` represents a valid tree.
 
 ## Examples
-| vals | edges | Output | Explanation |
-|------|-------|--------|-------------|
-| [1,2,3] | [[0,1],[1,2]] | 11 | Merge (1,2): score+=2*3=6, new val=5; then merge (0,5): score+=1*5=5; total=11 |
-| [4, -2, 1] | [[0,1],[0,2]] | 2 | Best order merges negative with positive first to minimize loss.
+
+**Example 1:**
+```
+Input: edges = [[0,1],[0,2],[0,3],[2,4],[4,5]], values = [5,2,5,2,1,1]
+Output: 11
+Explanation: We apply the operation to nodes 1, 2, 3, 4, and 5, so the values become [5,0,0,0,0,0]. The leaves are nodes 1, 3, and 5.
+- The sum of values on the path from 0 to 1 is equal to 5.
+- The sum of values on the path from 0 to 3 is equal to 5.
+- The sum of values on the path from 0 to 5 is equal to 5.
+Every leaf has a non-zero path sum, so the tree is healthy. The score is the sum of the original values of the chosen nodes: 2 + 5 + 2 + 1 + 1 = 11.
+It can be shown that 11 is the maximum score obtainable by performing any number of operations on the tree.
+```
+
+**Example 2:**
+```
+Input: edges = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], values = [20,10,9,7,4,3,5]
+Output: 40
+Explanation: We apply the operation to nodes 0, 2, 3, and 4, so the values become [0,10,0,0,0,3,5]. The leaves are nodes 3, 4, 5, and 6.
+- The sum of values on the path from 0 to 3 is equal to 10.
+- The sum of values on the path from 0 to 4 is equal to 10.
+- The sum of values on the path from 0 to 5 is equal to 3.
+- The sum of values on the path from 0 to 6 is equal to 5.
+Every leaf has a non-zero path sum, so the tree is healthy. The score is the sum of the original values of the chosen nodes: 20 + 9 + 7 + 4 = 40.
+It can be shown that 40 is the maximum score obtainable by performing any number of operations on the tree.
+```
 
 ## Approach
 **Greedy on leaf values – treat the tree as a forest of sub‑trees**

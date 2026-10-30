@@ -1,21 +1,59 @@
 # 2139. Minimum Moves to Reach Target Score
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/minimum-moves-to-reach-target-score](https://leetcode.com/problems/minimum-moves-to-reach-target-score)
 **Companies:** Amazon, Meta, Wayfair
 
 ---
 
 ## Problem Description
 
-Starting from 1, you can +1 or double (at most `maxDoubles` times). Reach `target` with **minimum moves**.
+You are playing a game with integers. You start with the integer `1` and you want to reach the integer `target`.
+
+In one move, you can either:
+
+- **Increment** the current integer by one (i.e., `x = x + 1`).
+- **Double** the current integer (i.e., `x = 2 * x`).
+
+You can use the **increment** operation **any** number of times, however, you can only use the **double** operation **at most** `maxDoubles` times.
+
+Given the two integers `target` and `maxDoubles`, return *the minimum number of moves needed to reach *`target`* starting with *`1`.
+
+**Constraints:**
+- `1 <= target <= 10^9`
+- `0 <= maxDoubles <= 100`
 
 ## Examples
 
-| target | maxDoubles | Output | Explanation |
-|--------|------------|--------|-------------|
-| 10 | 4 | 4 | 1 → 2 (double), 2 → 4 (double), 4 → 8 (double), 8 → 9 (+1), 9 → 10 (+1): 5 moves, but using only 3 doubles: 1 → 2, 2 → 4, 4 → 5 (+1), 5 → 10 (double) gives 4 moves. |
-| 5 | 1 | 4 | Only one double allowed: 1 → 2 (double), then three +1 operations to reach 5. |
-| 3 | 0 | 2 | No doubles, just two +1 operations.
+**Example 1:**
+```
+Input: target = 5, maxDoubles = 0
+Output: 4
+Explanation: Keep incrementing by 1 until you reach target.
+```
+
+**Example 2:**
+```
+Input: target = 19, maxDoubles = 2
+Output: 7
+Explanation: Initially, x = 1
+Increment 3 times so x = 4
+Double once so x = 8
+Increment once so x = 9
+Double again so x = 18
+Increment once so x = 19
+```
+
+**Example 3:**
+```
+Input: target = 10, maxDoubles = 4
+Output: 4
+Explanation: Initially, x = 1
+Increment once so x = 2
+Double once so x = 4
+Increment once so x = 5
+Double again so x = 10
+```
 
 ## Approach
 

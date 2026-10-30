@@ -7,12 +7,41 @@
 ---
 
 ## Problem Description
-Implement a calculator to evaluate a string expression `s` containing non‑negative integers, the operators `+`, `-`, `*`, `/`, and parentheses `(`, `)`. The expression may contain spaces. Division should truncate toward zero.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Implement a basic calculator to evaluate a simple expression string.
+
+The expression string contains only non-negative integers, `'+'`, `'-'`, `'*'`, `'/'` operators, and open `'('` and closing parentheses `')'`. The integer division should **truncate toward zero**.
+
+You may assume that the given expression is always valid. All intermediate results will be in the range of `[-2^31, 2^31 - 1]`.
+
+**Note:** You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as `eval()`.
+
+**Constraints:**
+- `1 <= s <= 10^4`
+- `s` consists of digits, `'+'`, `'-'`, `'*'`, `'/'`, `'('`, and `')'`.
+- `s` is a **valid** expression.
 
 ## Examples
-- **Input:** `s = "3+2*2"` **Output:** `7`
-- **Input:** `s = " 3/2 "` **Output:** `1`
-- **Input:** `s = "(1+(4+5+2)-3)+(6+8)"` **Output:** `23`
+
+**Example 1:**
+```
+Input: s = "1+1"
+Output: 2
+```
+
+**Example 2:**
+```
+Input: s = "6-4/2"
+Output: 4
+```
+
+**Example 3:**
+```
+Input: s = "2*(5+5*2)/3+(6/2+8)"
+Output: 21
+```
 
 ## Approach
 Use a recursive descent parser (or explicit stack) that respects operator precedence. The parser evaluates sub‑expressions inside parentheses recursively. Multiplication and division are applied immediately, while addition and subtraction are deferred using a stack.

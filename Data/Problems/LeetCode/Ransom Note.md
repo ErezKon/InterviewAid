@@ -6,11 +6,34 @@
 ---
 
 ## Problem Description
-Given two strings `ransomNote` and `magazine`, determine if you can construct the `ransomNote` by cutting letters from `magazine`. Each letter in `magazine` can be used at most once.
+Given two strings `ransomNote` and `magazine`, return `true` *if* `ransomNote` *can be constructed by using the letters from* `magazine` *and* `false` *otherwise*.
+
+Each letter in `magazine` can only be used once in `ransomNote`.
+
+**Constraints:**
+
+- `1 <= ransomNote.length, magazine.length <= 10⁵`
+- `ransomNote` and `magazine` consist of lowercase English letters.
 
 ## Examples
-- Input: `ransomNote = "aab"`, `magazine = "baa"` → Output: `true` (use two `a`s and one `b`).
-- Input: `ransomNote = "aa"`, `magazine = "ab"` → Output: `false` (only one `a` available).
+
+```
+Example 1:
+  Input: ransomNote = "a", magazine = "b"
+  Output: false
+```
+
+```
+Example 2:
+  Input: ransomNote = "aa", magazine = "ab"
+  Output: false
+```
+
+```
+Example 3:
+  Input: ransomNote = "aa", magazine = "aab"
+  Output: true
+```
 
 ## Approach
 Count the frequency of each character in `magazine`. Then iterate over `ransomNote`, decrement the corresponding count. If any count becomes negative, construction is impossible.

@@ -8,10 +8,20 @@
 
 ## Problem Description
 
-Given a circular array `nums`, partition it into contiguous segments. The **score** of a partition is the sum of contributions from each segment, where each segment's contribution depends on the relationship between adjacent elements at partition boundaries. Maximize the total score.
+> *Note: the Approach below sums positive per-boundary contributions, which is not the official problem (at most `k` cyclic subarrays, score = sum of max − min). Possible approach: rotate so the array starts at the global maximum (and also try starting just after it), then run a linear DP for at most `k` segments where each segment picks one element with `+` sign and one with `−` sign (states: segments used × phase). O(n·k).*
+
+You are given a **cyclic** array `nums` and an integer `k`.
+
+**Partition** `nums` into **at most** `k`** **subarrays. As `nums` is cyclic, these subarrays may wrap around from the end of the array back to the beginning.
+
+The **range** of a subarray is the difference between its **maximum** and **minimum** values. The **score** of a partition is the sum of subarray **ranges**.
+
+Return the **maximum** possible **score** among all cyclic partitions.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
+- `1 <= nums.length <= 1000`
+- `1 <= nums[i] <= 10^9`
+- `1 <= k <= nums.length`
 
 ---
 
@@ -19,16 +29,28 @@ Given a circular array `nums`, partition it into contiguous segments. The **scor
 
 **Example 1:**
 ```
-Input: nums = [1,3,2,4]
-Output: 5
-Explanation: Cutting after indices 0 and 2 yields segments [1] and [3,2,4]; contributions sum to 5.
+Input: nums = [1,2,3,3], k = 2
+Output: 3
+Explanation: - Partition nums into [2, 3] and [3, 1] (wrapped around).
+- The range of [2, 3] is max(2, 3) - min(2, 3) = 3 - 2 = 1.
+- The range of [3, 1] is max(3, 1) - min(3, 1) = 3 - 1 = 2.
+- The score is 1 + 2 = 3.
 ```
 
 **Example 2:**
 ```
-Input: nums = [5,5,5]
-Output: 0
-Explanation: No positive boundary contributions, best to make a single segment.
+Input: nums = [1,2,3,3], k = 1
+Output: 2
+Explanation: - Partition nums into [1, 2, 3, 3].
+- The range of [1, 2, 3, 3] is max(1, 2, 3, 3) - min(1, 2, 3, 3) = 3 - 1 = 2.
+- The score is 2.
+```
+
+**Example 3:**
+```
+Input: nums = [1,2,3,3], k = 4
+Output: 3
+Explanation: Identical to Example 1, we partition nums into [2, 3] and [3, 1]. Note that nums may be partitioned into fewer than k subarrays.
 ```
 
 ---

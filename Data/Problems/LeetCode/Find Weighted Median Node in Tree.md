@@ -7,13 +7,53 @@
 ---
 
 ## Problem Description
-Given a rooted binary tree where each node has an integer `weight`, find a node (the weighted median) such that the sum of weights in its left subtree, the sum of weights in its right subtree, and the node's own weight are each at most half of the total weight of the entire tree.
+You are given an integer `n` and an **undirected, weighted** tree rooted at node 0 with `n` nodes numbered from 0 to `n - 1`. This is represented by a 2D array `edges` of length `n - 1`, where `edges[i] = [u_i, v_i, w_i]` indicates an edge from node `u_i` to `v_i` with weight `w_i`.
+
+The **weighted median node** is defined as the **first** node `x` on the path from `u_i` to `v_i` such that the sum of edge weights from `u_i` to `x` is **greater than or equal to half** of the total path weight.
+
+You are given a 2D integer array `queries`. For each `queries[j] = [u_j, v_j]`, determine the weighted median node along the path from `u_j` to `v_j`.
+
+Return an array `ans`, where `ans[j]` is the node index of the weighted median for `queries[j]`.
+
+> *Note: the Approach / Walkthrough below solve a different (node-weight subtree median) problem. Correct approach: root the tree, precompute depth, weighted distance from root and binary-lifting ancestors; for each query find the LCA and path weight `D`, then binary-lift from `u` (if the median lies on the `u → LCA` segment) or from `v` (otherwise) to locate the first node with prefix sum `>= D/2`. O((n + q) log n).*
 
 ## Examples
-| Tree (pre‑order) | Weighted Median |
-|------------------|-----------------|
-| `[5, left=3, right=2]` | Node with weight `5` |
-| `[1, left=10, right=1]` | Node with weight `10` (left subtree) |
+**Example 1:**
+```
+Input: n = 2, edges = [[0,1,7]], queries = [[1,0],[0,1]]
+Output: [0,1]
+Explanation:
+- [1,0]: path 1 → 0, weights [7], total 7, half 3.5. Sum from 1 → 0 = 7 >= 3.5, median is node 0.
+- [0,1]: path 0 → 1, weights [7], total 7, half 3.5. Sum from 0 → 1 = 7 >= 3.5, median is node 1.
+```
+**Example 2:**
+```
+Input: n = 3, edges = [[0,1,2],[2,0,4]], queries = [[0,1],[2,0],[1,2]]
+Output: [1,0,2]
+Explanation:
+- [0,1]: path 0 → 1, weights [2], total 2, half 1. Sum 2 >= 1, median is node 1.
+- [2,0]: path 2 → 0, weights [4], total 4, half 2. Sum 4 >= 2, median is node 0.
+- [1,2]: path 1 → 0 → 2, weights [2,4], total 6, half 3. Sum 1 → 0 = 2 < 3; sum 1 → 2 = 6 >= 3, median is node 2.
+```
+**Example 3:**
+```
+Input: n = 5, edges = [[0,1,2],[0,2,5],[1,3,1],[2,4,3]], queries = [[3,4],[1,2]]
+Output: [2,2]
+Explanation:
+- [3,4]: path 3 → 1 → 0 → 2 → 4, weights [1,2,5,3], total 11, half 5.5. Prefix sums 1, 3 < 5.5; at node 2 the sum is 8 >= 5.5, median is node 2.
+- [1,2]: path 1 → 0 → 2, weights [2,5], total 7, half 3.5. Sum 1 → 0 = 2 < 3.5; sum 1 → 2 = 7 >= 3.5, median is node 2.
+```
+
+## Constraints
+- `2 <= n <= 10^5`
+- `edges.length == n - 1`
+- `edges[i] == [u_i, v_i, w_i]`
+- `0 <= u_i, v_i < n`
+- `1 <= w_i <= 10^9`
+- `1 <= queries.length <= 10^5`
+- `queries[j] == [u_j, v_j]`
+- `0 <= u_j, v_j < n`
+- The input is generated such that `edges` represents a valid tree.
 
 ## Approach
 Perform a post‑order traversal to compute the total weight of each subtree. Then, in a second pass, locate the first node where both left and right subtree weights are ≤ totalWeight/2.

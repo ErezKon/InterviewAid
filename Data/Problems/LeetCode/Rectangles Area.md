@@ -6,11 +6,56 @@
 ---
 
 ## Problem Description
-Given a list of axis-aligned rectangles, each defined by `[x1, y1, x2, y2]` where `(x1, y1)` is the bottom‑left corner and `(x2, y2)` is the top‑right corner, compute the total area covered by the union of all rectangles. Overlapping regions must be counted only once.
+Table: `Points`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| x_value       | int     |
+| y_value       | int     |
++---------------+---------+
+id is the column with unique values for this table.
+Each point is represented as a 2D coordinate (x_value, y_value).
+```
+
+Write a solution to report all possible **axis-aligned** rectangles with a **non-zero area** that can be formed by any two points from the `Points` table.
+
+Each row in the result should contain three columns `(p1, p2, area)` where:
+
+- `p1` and `p2` are the `id`'s of the two points that determine the opposite corners of a rectangle.
+- `area` is the area of the rectangle and must be **non-zero**.
+
+Return the result table **ordered** by `area` **in descending order**. If there is a tie, order them by `p1` **in ascending order**. If there is still a tie, order them by `p2` **in ascending order**.
+
+The result format is in the following table.
 
 ## Examples
-- **Example 1:** `rectangles = [[0,0,2,2],[1,0,3,1]]` → total area `5`. The first rectangle contributes area 4, the second adds 2 but overlaps a 1‑unit strip.
-- **Example 2:** `rectangles = [[0,0,1,1],[1,0,2,1],[0,1,1,2],[1,1,2,2]]` → total area `4`. Four unit squares form a 2×2 block without overlap.
+
+```
+Example 1:
+  Input:
+    Points table:
+    +----------+-------------+-------------+
+    | id       | x_value     | y_value     |
+    +----------+-------------+-------------+
+    | 1        | 2           | 7           |
+    | 2        | 4           | 8           |
+    | 3        | 2           | 10          |
+    +----------+-------------+-------------+
+  Output:
+    +----------+-------------+-------------+
+    | p1       | p2          | area        |
+    +----------+-------------+-------------+
+    | 2        | 3           | 4           |
+    | 1        | 2           | 2           |
+    +----------+-------------+-------------+
+  Explanation:
+    The rectangle formed by p1 = 2 and p2 = 3 has an area equal to |4-2| * |8-10| = 4.
+    The rectangle formed by p1 = 1 and p2 = 2 has an area equal to |2-4| * |7-8| = 2.
+    Note that the rectangle formed by p1 = 1 and p2 = 3 is invalid because the area is 0.
+```
 
 ## Approach
 Apply a sweep line algorithm similar to Rectangle Area II. Sweep vertically, maintaining active horizontal intervals to compute covered width at each y‑step. Use coordinate compression and a segment tree (or multiset) to track interval coverage counts.

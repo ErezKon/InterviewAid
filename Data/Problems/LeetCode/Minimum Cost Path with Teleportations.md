@@ -8,30 +8,45 @@
 
 ## Problem Description
 
-You are given a directed weighted graph with `n` nodes labeled `0 … n-1`. Each edge `(u, v, w)` has a non‑negative weight `w`. Additionally, every node has a color (an integer). You may teleport from any node to any other node of the same color at a fixed cost `teleportCost`. Find the minimum total cost to travel from a given `source` node to a `target` node.
+You are given a `m x n` 2D integer array `grid` and an integer `k`. You start at the top-left cell `(0, 0)` and your goal is to reach the bottom‑right cell `(m - 1, n - 1)`.
 
-Constraints:
-- `1 ≤ n ≤ 10^5`
-- `0 ≤ w, teleportCost ≤ 10^9`
-- The graph may contain multiple edges and self‑loops.
-- Colors are in the range `0 … C-1` where `C` ≤ `n`.
+There are two types of moves available:
+- **Normal move**: You can move right or down from your current cell `(i, j)`, i.e. you can move to `(i, j + 1)` (right) or `(i + 1, j)` (down). The cost is the value of the destination cell.
+- **Teleportation**: You can teleport from any cell `(i, j)`, to any cell `(x, y)` such that `grid[x][y] <= grid[i][j]`; the cost of this move is 0. You may teleport at most `k` times.
+
+Return the **minimum** total cost to reach cell `(m - 1, n - 1)` from `(0, 0)`.
+
+**Constraints:**
+- `2 ≤ m, n ≤ 80`
+- `m == grid.length`
+- `n == grid[i].length`
+- `0 ≤ grid[i][j] ≤ 10^4`
+- `0 ≤ k ≤ 10`
 
 ## Examples
 
-**Example 1**
 ```
-Input: n = 5, edges = [[0,1,2],[1,2,2],[2,3,2],[3,4,2]], colors = [0,1,0,1,0], teleportCost = 3,
-       source = 0, target = 4
-Output: 7
-Explanation: Path 0→1 (2) → teleport from 1 (color 1) to 3 (cost 3) → 3→4 (2) = 7.
+Example 1:
+  Input: grid = [[1,3,3],[2,5,4],[4,3,5]], k = 2
+  Output: 7
+  Explanation: Initially we are at (0, 0) and cost is 0.
+  Current Position | Move               | New Position | Total Cost
+  (0, 0)           | Move Down          | (1, 0)       | 0 + 2 = 2
+  (1, 0)           | Move Right         | (1, 1)       | 2 + 5 = 7
+  (1, 1)           | Teleport to (2, 2) | (2, 2)       | 7 + 0 = 7
+  The minimum cost to reach bottom-right cell is 7.
 ```
 
-**Example 2**
 ```
-Input: n = 3, edges = [[0,1,5],[1,2,5]], colors = [0,0,0], teleportCost = 1,
-       source = 0, target = 2
-Output: 2
-Explanation: Teleport directly from 0 to 2 using color 0 costs 1, plus no other edges needed (0→2 via supernode costs 1+0 = 1, plus initial move 0 cost) total 2.
+Example 2:
+  Input: grid = [[1,2],[2,3],[3,4]], k = 1
+  Output: 9
+  Explanation: Initially we are at (0, 0) and cost is 0.
+  Current Position | Move       | New Position | Total Cost
+  (0, 0)           | Move Down  | (1, 0)       | 0 + 2 = 2
+  (1, 0)           | Move Right | (1, 1)       | 2 + 3 = 5
+  (1, 1)           | Move Down  | (2, 1)       | 5 + 4 = 9
+  The minimum cost to reach bottom-right cell is 9.
 ```
 
 ## Approach

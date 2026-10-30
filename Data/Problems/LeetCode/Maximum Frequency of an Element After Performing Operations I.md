@@ -20,19 +20,41 @@
 
 ## Problem Description
 
-Each element in the array can be increased or decreased by at most `k`. After performing any number of such operations, determine the maximum possible frequency of any single value in the array.
+You are given an integer array `nums` and two integers `k` and `numOperations`.
+
+You must perform an **operation** `numOperations` times on `nums`, where in each operation you:
+
+- Select an index `i` that was **not** selected in any previous operations.
+- Add an integer in the range `[-k, k]` to `nums[i]`.
+
+Return the **maximum** possible frequency of any element in `nums` after performing the **operations**.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
+- `0 <= k <= 10^5`
+- `0 <= numOperations <= nums.length`
 
 ---
 
 ## Examples
 
-| nums | k | Output |
-|------|---|--------|
-| [1,2,4] | 1 | 2 |
-| [3,3,3] | 0 | 3 |
-| [1,5,9] | 3 | 1 |
+**Example 1:**
+```
+Input: nums = [1,4,5], k = 1, numOperations = 2
+Output: 2
+Explanation: We can achieve a maximum frequency of two by:
+- Adding 0 to nums[1]. nums becomes [1, 4, 5].
+- Adding -1 to nums[2]. nums becomes [1, 4, 4].
+```
 
-*Explanation*: In the first example, we can change `1` to `2` (cost 1) and obtain two `2`s. In the second example, all elements are already equal. In the third example, the range of each element after ±3 does not overlap, so no two elements can become the same.
+**Example 2:**
+```
+Input: nums = [5,11,20,20], k = 5, numOperations = 1
+Output: 2
+Explanation: We can achieve a maximum frequency of two by:
+- Adding 0 to nums[1].
+```
 
 ---
 

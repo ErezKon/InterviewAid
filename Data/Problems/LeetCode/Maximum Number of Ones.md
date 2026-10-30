@@ -19,21 +19,39 @@
 
 ## Problem Description
 
-Given a matrix of size `width × height`, a `sideLength × sideLength` square that tiles the matrix (repeating), and `maxOnes` — the maximum number of 1s allowed in any such square — return the **maximum total number of 1s** in the matrix.
+Consider a matrix `M` with dimensions `width * height`, such that every cell has value `0` or `1`, and any **square** sub-matrix of `M` of size `sideLength * sideLength` has at most `maxOnes` ones.
+
+Return the maximum possible number of ones that the matrix `M` can have.
 
 **Constraints:**
-- `1 <= sideLength <= width, height <= 100`
+- `1 <= width, height <= 100`
+- `1 <= sideLength <= width, height`
 - `0 <= maxOnes <= sideLength * sideLength`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  width=3, height=3, sideLength=2, maxOnes=1
-Output: 4
-Explanation: Place 1 at position (0,0) in the tile pattern. It repeats across 4 tiles → 4 ones.
+Example 1:
+  Input: width = 3, height = 3, sideLength = 2, maxOnes = 1
+  Output: 4
+  Explanation:
+    In a 3*3 matrix, no 2*2 sub-matrix can have more than 1 one.
+    The best solution that has 4 ones is:
+    [1,0,1]
+    [0,0,0]
+    [1,0,1]
+```
+
+```
+Example 2:
+  Input: width = 3, height = 3, sideLength = 2, maxOnes = 2
+  Output: 6
+  Explanation:
+    [1,0,1]
+    [1,0,1]
+    [1,0,1]
 ```
 
 ---

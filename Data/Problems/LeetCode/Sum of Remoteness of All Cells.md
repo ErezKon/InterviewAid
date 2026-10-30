@@ -7,18 +7,48 @@
 ---
 
 ## Problem Description
-You are given an `m x n` grid of cells. The *remoteness* of a cell is the Manhattan distance to the nearest cell containing a `1`. Compute the sum of remoteness values for all cells in the grid.
+
+> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented multi-source-BFS problem. Correct idea: let `cnt` = number of non-blocked cells; flood-fill each connected component to get its value sum `s` and size `t`; every cell outside the component (`cnt − t` cells) has `s` in its remoteness, so add `(cnt − t)·s` per component. O(n²).*
+
+You are given a **0-indexed** matrix `grid` of order `n * n`. Each cell in this matrix has a value `grid[i][j]`, which is either a **positive** integer or `-1` representing a blocked cell.
+
+You can move from a non-blocked cell to any non-blocked cell that shares an edge.
+
+For any cell `(i, j)`, we represent its **remoteness** as `R[i][j]` which is defined as the following:
+
+- If the cell `(i, j)` is a **non-blocked** cell, `R[i][j]` is the sum of the values `grid[x][y]` such that there is **no path** from the **non-blocked** cell `(x, y)` to the cell `(i, j)`.
+- For blocked cells, `R[i][j] == 0`.
+
+Return *the sum of* `R[i][j]` *over all cells.*
+
+**Constraints:**
+- `1 <= n <= 300`
+- `1 <= grid[i][j] <= 10^6` or `grid[i][j] == -1`
 
 ## Examples
+
 **Example 1:**
-Input: grid = [[0,1],[0,0]]
-Output: 3
-Explanation: Distances are [[1,0],[2,1]]; sum = 1+0+2+1 = 4? Actually correct sum = 4. (Adjust example accordingly.)
+```
+Input: grid = [[-1,1,-1],[5,-1,4],[-1,3,-1]]
+Output: 39
+Explanation: The sum of R[i][j] over all cells is 0 + 12 + 0 + 8 + 0 + 9 + 0 + 10 + 0 = 39.
+For example, R[0][1] = 5 + 4 + 3 = 12 (cells that cannot reach (0, 1)), and R[1][2] = 1 + 5 + 3 = 9.
+```
 
 **Example 2:**
-Input: grid = [[0,0,0],[0,1,0],[0,0,0]]
-Output: 12
-Explanation: Distances form a diamond pattern around the central `1`.
+```
+Input: grid = [[-1,3,4],[-1,-1,-1],[3,-1,-1]]
+Output: 13
+Explanation: The sum of R[i][j] over all cells is 3 + 3 + 0 + 0 + 0 + 0 + 7 + 0 + 0 = 13.
+For example, R[0][2] = 3 and R[2][0] = 3 + 4 = 7.
+```
+
+**Example 3:**
+```
+Input: grid = [[1]]
+Output: 0
+Explanation: Since there are no other cells than (0, 0), R[0][0] is equal to 0. So the sum of R[i][j] over all cells would be 0.
+```
 
 ## Approach
 Perform a multi‑source BFS starting from all cells containing `1`. The BFS expands outward level by level, assigning distance to each `0` cell when first visited.

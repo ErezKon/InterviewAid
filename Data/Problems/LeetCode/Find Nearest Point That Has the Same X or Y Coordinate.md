@@ -7,14 +7,38 @@
 ---
 
 ## Problem Description
-Given your location `(x, y)` on a 2‑D plane and an array `points` where `points[i] = [px_i, py_i]` represents the coordinates of the *i*‑th point, return the index of the point that shares **either** the same `x` **or** the same `y` coordinate with you and has the smallest Manhattan distance. If there are multiple such points, return the smallest index. If no point shares an `x` or `y` coordinate, return `-1`.
+You are given two integers, `x` and `y`, which represent your current location on a Cartesian grid: `(x, y)`. You are also given an array `points` where each `points[i] = [a_i, b_i]` represents that a point exists at `(a_i, b_i)`. A point is **valid** if it shares the same x-coordinate or the same y-coordinate as your location.
+
+Return *the index **(0-indexed)** of the **valid** point with the smallest **Manhattan distance** from your current location*. If there are multiple, return *the valid point with the **smallest** index*. If there are no valid points, return `-1`.
+
+The **Manhattan distance** between two points `(x1, y1)` and `(x2, y2)` is `abs(x1 - x2) + abs(y1 - y2)`.
+
+**Constraints:**
+- `1 <= points.length <= 10^4`
+- `points[i].length == 2`
+- `1 <= x, y, a_i, b_i <= 10^4`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `x=3, y=4, points=[[1,2],[3,1],[2,4],[2,3]]` | `1` | Point `[3,1]` shares `x=3` with distance `|3-3|+|1-4|=3`. Point `[2,4]` shares `y=4` with distance `|2-3|+|4-4|=1` → index `2` is closer, but index `2` is larger than `1`? Actually distance 1 is smallest, so answer `2`. Adjust example: use points `[[1,2],[3,1],[2,4],[3,4]]` → both index `1` and `3` share `x=3` or `y=4` with distance `3` and `0` respectively, answer `3`.
-| `x=1, y=1, points=[[2,2],[3,3]]` | `-1` | No point shares `x` or `y`.
-| `x=0, y=0, points=[[0,5],[5,0],[0,0]]` | `0` | Multiple points share a coordinate; index `0` has distance `5`, index `1` distance `5`, index `2` distance `0` (smallest).
+```
+Example 1:
+  Input: x = 3, y = 4, points = [[1,2],[3,1],[2,4],[2,3],[4,4]]
+  Output: 2
+  Explanation: Of all the points, only [3,1], [2,4] and [4,4] are valid. Of the valid points, [2,4] and [4,4] have the smallest Manhattan distance from your current location, with a distance of 1. [2,4] has the smallest index, so return 2.
+```
+
+```
+Example 2:
+  Input: x = 3, y = 4, points = [[3,4]]
+  Output: 0
+  Explanation: The answer is allowed to be on the same location as your current location.
+```
+
+```
+Example 3:
+  Input: x = 3, y = 4, points = [[2,3]]
+  Output: -1
+  Explanation: There are no valid points.
+```
 
 ## Approach
 Iterate through `points` while tracking the best candidate:

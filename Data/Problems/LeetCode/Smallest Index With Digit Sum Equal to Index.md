@@ -7,14 +7,40 @@
 ---
 
 ## Problem Description
-Given a non‑negative integer array `nums`, find the smallest index `i` such that the sum of the decimal digits of `i` equals `nums[i]`. It is guaranteed that such an index exists. Return the index `i`.
+You are given an integer array `nums`.
+
+Return the **smallest** index `i` such that the sum of the digits of `nums[i]` is equal to `i`.
+
+If no such index exists, return `-1`.
+
+**Constraints:**
+- `1 <= nums.length <= 100`
+- `0 <= nums[i] <= 1000`
 
 ## Examples
-| nums | Output | Explanation |
-|------|--------|-------------|
-| `[0,1,2,3,4]` | `0` | Digit sum of `0` is `0`, which matches `nums[0]`.
-| `[5,2,1,0,5,6]` | `3` | Digit sum of `3` is `3`, and `nums[3] = 0`? Actually need matching; assume example where index `3` works.
-| `[10,1,2,3]` | `1` | Digit sum of `1` is `1`, matching `nums[1]`.
+```
+Example 1:
+  Input: nums = [1,3,2]
+  Output: 2
+  Explanation: For nums[2] = 2, the sum of digits is 2, which is equal to index i = 2. Thus, the output is 2.
+```
+
+```
+Example 2:
+  Input: nums = [1,10,11]
+  Output: 1
+  Explanation:
+    - For nums[1] = 10, the sum of digits is 1 + 0 = 1, which is equal to index i = 1.
+    - For nums[2] = 11, the sum of digits is 1 + 1 = 2, which is equal to index i = 2.
+    - Since index 1 is the smallest, the output is 1.
+```
+
+```
+Example 3:
+  Input: nums = [1,2,3]
+  Output: -1
+  Explanation: Since no index satisfies the condition, the output is -1.
+```
 
 ## Approach
 **Algorithm:** Linear scan with digit‑sum computation.

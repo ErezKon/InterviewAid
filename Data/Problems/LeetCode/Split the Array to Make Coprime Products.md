@@ -7,28 +7,38 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, split it into two non‑empty parts at index `i` (0 < i < n) such that the product of the left part and the product of the right part are coprime (their greatest common divisor is 1). Return the smallest possible index `i`. If no such split exists, return `-1`.
+
+You are given a **0-indexed** integer array `nums` of length `n`.
+
+A **split** at an index `i` where `0 <= i <= n - 2` is called **valid** if the product of the first `i + 1` elements and the product of the remaining elements are coprime.
+
+- For example, if `nums = [2, 3, 3]`, then a split at the index `i = 0` is valid because `2` and `9` are coprime, while a split at the index `i = 1` is not valid because `6` and `3` are not coprime. A split at the index `i = 2` is not valid because `i == n - 1`.
+
+Return *the smallest index* `i` *at which the array can be split validly or* `-1` *if there is no such split*.
+
+Two values `val1` and `val2` are coprime if `gcd(val1, val2) == 1` where `gcd(val1, val2)` is the greatest common divisor of `val1` and `val2`.
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= n <= 10^4`
+- `1 <= nums[i] <= 10^6`
 
 ## Examples
+
 **Example 1:**
-```
-Input: nums = [2,3,7,5,4,6]
-Output: 3
-Explanation: Split after index 3 → left = [2,3,7,5], right = [4,6].
-GCD(product(left), product(right)) = GCD(210, 24) = 1.
-```
-**Example 2:**
 ```
 Input: nums = [4,7,8,15,3,5]
 Output: 2
-Explanation: Split after index 2 → left = [4,7,8], right = [15,3,5].
-GCD(224, 225) = 1.
+Explanation: The table above shows the values of the product of the first i + 1 elements, the remaining elements, and their gcd at each index i.
+The only valid split is at index 2.
 ```
-**Example 3:**
+
+**Example 2:**
 ```
-Input: nums = [5,5,5]
+Input: nums = [4,7,15,8,3,5]
 Output: -1
-Explanation: Any split leaves a common factor 5.
+Explanation: The table above shows the values of the product of the first i + 1 elements, the remaining elements, and their gcd at each index i.
+There is no valid split.
 ```
 
 ## Approach
@@ -37,7 +47,7 @@ The product of a segment can be represented by the multiset of its prime factors
 1. Factor each number into its distinct primes using trial division up to √num.
 2. Sweep from left to right, maintaining a hash set `prefixSet` of all primes seen so far.
 3. Simultaneously compute `suffixSet[i]` – the set of primes appearing in the suffix starting at i.
-4. For each split i (1 ≤ i < n), check `prefixSet ∩ suffixSet[i]` is empty.
+4. For each split i (1 ≤ i < n), check `prefixSet ∩ suffixSet[i]` is empty.
 5. Return the first i that satisfies; otherwise -1.
 
 ```text
@@ -93,8 +103,8 @@ Consider `nums = [2,3,7,5,4,6]`.
 Thus answer 3 (0‑based) or 4 (1‑based) as required.
 
 ## Complexity Analysis
-- **Time:** Factoring each number costs O(√max(nums[i])) total; the sweep is O(n). Overall roughly O(n √A) where A is max element.
-- **Space:** O(n p) for storing prime factor sets, where p is average number of distinct primes per element (usually small).
+- **Time:** Factoring each number costs O(√max(nums[i])) total; the sweep is O(n). Overall roughly O(n √A) where A is max element.
+- **Space:** O(n p) for storing prime factor sets, where p is average number of distinct primes per element (usually small).
 
 ## Follow‑Up Questions
 1. How would the solution change if numbers could be up to 10⁹, requiring faster factorisation?

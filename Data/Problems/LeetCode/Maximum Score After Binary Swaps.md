@@ -7,20 +7,40 @@
 ---
 
 ## Problem Description
-You are given a binary string `s` of length `n`. You may perform any number of swaps between any two characters of `s`. After all swaps, you obtain a new string `t`. The **score** of `t` is defined as the number of positions `i` (0‑indexed) such that `t[i] = '1'` and `i` is a multiple of 3 (i.e., `i % 3 == 0`). Return the maximum possible score achievable by rearranging the characters of `s`.
+
+> *Note: the Approach below solves an invented "multiples of 3" problem. Officially the swap `"01" → "10"` moves a `1` to the left, and 1s cannot pass each other. Correct greedy: scan left to right, pushing `nums[i]` into a max-heap. At each `s[i] = '1'`, pop the max and add it to the score. Checked against brute force.*
+
+You are given an integer array `nums` of length `n` and a binary string `s` of the same length.
+
+Initially, your score is 0. Each index `i` where `s[i] = '1'` contributes `nums[i]` to the score.
+
+You may perform **any** number of operations (including zero). In one operation, you may choose an index `i` such that `0 <= i < n - 1`, where `s[i] = '0'`, and `s[i + 1] = '1'`, and swap these two characters.
+
+Return an integer denoting the **maximum possible score** you can achieve.
+
+**Constraints:**
+- `n == nums.length == s.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i] <= 10^9`
+- `s[i]` is either `'0'` or `'1'`
 
 ## Examples
+
 **Example 1:**
 ```
-Input: s = "10101"
-Output: 2
-Explanation: Rearrange to "11001". Positions 0 and 3 are multiples of 3 and contain '1'.
+Input: nums = [2,1,5,2,3], s = "01010"
+Output: 7
+Explanation: We can perform the following swaps:
+- Swap at index i = 0: "01010" changes to "10010"
+- Swap at index i = 2: "10010" changes to "10100"
+Positions 0 and 2 contain '1', contributing nums[0] + nums[2] = 2 + 5 = 7. This is maximum score achievable.
 ```
+
 **Example 2:**
 ```
-Input: s = "0000"
+Input: nums = [4,7,2,9], s = "0000"
 Output: 0
-Explanation: No '1's exist, so score is 0 regardless of arrangement.
+Explanation: There are no '1' characters in s, so no swaps can be performed. The score remains 0.
 ```
 
 ## Approach

@@ -8,35 +8,105 @@
 
 ## 1. Problem Description
 
-**SQL Problem.** Given three tables `SchoolA`, `SchoolB`, `SchoolC` each with `student_name` and `student_id`, find all triplets (one from each school) where all three names are different.
+**SQL Problem.**
+
+Table: `SchoolA`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| student_id    | int     |
+| student_name  | varchar |
++---------------+---------+
+student_id is the column with unique values for this table.
+Each row of this table contains the name and the id of a student in school A.
+All student_name are distinct.
+```
+
+Table: `SchoolB`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| student_id    | int     |
+| student_name  | varchar |
++---------------+---------+
+student_id is the column with unique values for this table.
+Each row of this table contains the name and the id of a student in school B.
+All student_name are distinct.
+```
+
+Table: `SchoolC`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| student_id    | int     |
+| student_name  | varchar |
++---------------+---------+
+student_id is the column with unique values for this table.
+Each row of this table contains the name and the id of a student in school C.
+All student_name are distinct.
+```
+
+There is a country with three schools, where each student is enrolled in **exactly one** school. The country is joining a competition and wants to select one student from each school to represent the country such that:
+
+- `member_A` is selected from `SchoolA`,
+- `member_B` is selected from `SchoolB`,
+- `member_C` is selected from `SchoolC`, and
+- The selected students' names and IDs are pairwise distinct (i.e. no two students share the same name, and no two students share the same ID).
+
+Write a solution to find all the possible triplets representing the country under the given constraints.
+
+Return the result table in **any order**.
 
 ---
 
 ## 2. Examples
 
-**Example 1**
 ```
-SchoolA: [("Alice", 1), ("Bob", 2)]
-SchoolB: [("Charlie", 3), ("Alice", 4)]
-SchoolC: [("David", 5), ("Bob", 6)]
+Example 1:
+  Input:
+  SchoolA table:
+  +------------+--------------+
+  | student_id | student_name |
+  +------------+--------------+
+  | 1          | Alice        |
+  | 2          | Bob          |
+  +------------+--------------+
+  SchoolB table:
+  +------------+--------------+
+  | student_id | student_name |
+  +------------+--------------+
+  | 3          | Tom          |
+  +------------+--------------+
+  SchoolC table:
+  +------------+--------------+
+  | student_id | student_name |
+  +------------+--------------+
+  | 3          | Tom          |
+  | 2          | Jerry        |
+  | 10         | Alice        |
+  +------------+--------------+
+  Output:
+  +----------+----------+----------+
+  | member_A | member_B | member_C |
+  +----------+----------+----------+
+  | Alice    | Tom      | Jerry    |
+  | Bob      | Tom      | Alice    |
+  +----------+----------+----------+
+  Explanation:
+  Let us see all the possible triplets.
+  - (Alice, Tom, Tom) --> Rejected because member_B and member_C have the same name and the same ID.
+  - (Alice, Tom, Jerry) --> Valid triplet.
+  - (Alice, Tom, Alice) --> Rejected because member_A and member_C have the same name.
+  - (Bob, Tom, Tom) --> Rejected because member_B and member_C have the same name and the same ID.
+  - (Bob, Tom, Jerry) --> Rejected because member_A and member_C have the same ID.
+  - (Bob, Tom, Alice) --> Valid triplet.
 ```
-**Output**
-```
-[("Alice", "Charlie", "David"), ("Bob", "Charlie", "David"), ("Bob", "Alice", "David")]
-```
-*Explanation*: All three names in each triplet are distinct.
-
-**Example 2**
-```
-SchoolA: [("Eve", 7)]
-SchoolB: [("Eve", 8)]
-SchoolC: [("Eve", 9)]
-```
-**Output**
-```
-[]
-```
-*Explanation*: No valid triplet because every name repeats.
 
 ---
 

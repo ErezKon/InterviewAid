@@ -7,15 +7,37 @@
 ---
 
 ## Problem Description
-Given an integer array `arr`, you may delete **at most one** element from the array. Return the maximum possible sum of a non‑empty subarray after this optional deletion.
+
+Given an array of integers, return the maximum sum for a **non-empty** subarray (contiguous elements) with at most one element deletion. In other words, you want to choose a subarray and optionally delete one element from it so that there is still at least one element left and the sum of the remaining elements is maximum possible.
+
+Note that the subarray needs to be **non-empty** after deleting one element.
+
+**Constraints:**
+- `1 <= arr.length <= 10^5`
+- `-10^4 <= arr[i] <= 10^4`
 
 ## Examples
-- **Input:** `arr = [1, -2, 0, 3]`  
-  **Output:** `4`  
-  **Explanation:** Delete `-2` and take subarray `[1,0,3]` sum = 4.
-- **Input:** `arr = [1, -2, -2, 3]`  
-  **Output:** `3`  
-  **Explanation:** Best is subarray `[3]` without any deletion.
+
+**Example 1:**
+```
+Input: arr = [1,-2,0,3]
+Output: 4
+Explanation: Because we can choose [1, -2, 0, 3] and drop -2, thus the subarray [1, 0, 3] becomes the maximum value.
+```
+
+**Example 2:**
+```
+Input: arr = [1,-2,-2,3]
+Output: 3
+Explanation: We just choose [3] and it's the maximum sum.
+```
+
+**Example 3:**
+```
+Input: arr = [-1,-1,-1,-1]
+Output: -1
+Explanation: The final subarray needs to be non-empty. You can't choose [-1] and delete -1 from it, then get an empty subarray to make the sum equals to 0.
+```
 
 ## Approach
 Apply a two‑state Kadane DP: `noDel[i]` – max subarray sum ending at `i` with no deletion, `oneDel[i]` – max sum ending at `i` with one deletion already used. Transition:

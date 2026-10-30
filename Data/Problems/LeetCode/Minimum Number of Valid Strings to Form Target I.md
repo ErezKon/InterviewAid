@@ -7,14 +7,47 @@
 ---
 
 ## Problem Description
-You are given a target string `target` and an array `words` of strings. Each word can be used any number of times. Determine the minimum number of words required to concatenate (in any order) to exactly form `target`. If it is impossible, return `-1`.
+
+You are given an array of strings `words` and a string `target`.
+
+A string `x` is called **valid** if `x` is a prefix of **any** string in `words`.
+
+Return the **minimum** number of **valid** strings that can be *concatenated* to form `target`. If it is **not** possible to form `target`, return `-1`.
+
+**Constraints:**
+- `1 <= words.length <= 100`
+- `1 <= words[i].length <= 5 * 10^3`
+- The input is generated such that `sum(words[i].length) <= 10^5`.
+- `words[i]` consists only of lowercase English letters.
+- `1 <= target.length <= 5 * 10^3`
+- `target` consists only of lowercase English letters.
 
 ## Examples
-| target | words | Output | Explanation |
-|---|---|---|---|
-| "leetcode" | ["leet","code","co","de"] | 2 | Use "leet" + "code".
-| "apple" | ["ap","p","le","ple"] | 3 | "ap" + "p" + "le".
-| "abc" | ["ab","bc"] | -1 | No combination forms "abc" exactly.
+
+**Example 1:**
+```
+Input: words = ["abc","aaaaa","bcdef"], target = "aabcdabc"
+Output: 3
+Explanation: The target string can be formed by concatenating:
+- Prefix of length 2 of words[1], i.e. "aa".
+- Prefix of length 3 of words[2], i.e. "bcd".
+- Prefix of length 3 of words[0], i.e. "abc".
+```
+
+**Example 2:**
+```
+Input: words = ["abababab","ab"], target = "ababaababa"
+Output: 2
+Explanation: The target string can be formed by concatenating:
+- Prefix of length 5 of words[0], i.e. "ababa".
+- Prefix of length 5 of words[0], i.e. "ababa".
+```
+
+**Example 3:**
+```
+Input: words = ["abcdef"], target = "xyz"
+Output: -1
+```
 
 ## Approach
 Treat the problem as a shortest‑path (DP) over the prefix of `target`. For each position `i`, try every word that matches the substring starting at `i`; if it matches, update `dp[i+len(word)]` with `dp[i] + 1`. The answer is `dp[n]` where `n` is `target` length.

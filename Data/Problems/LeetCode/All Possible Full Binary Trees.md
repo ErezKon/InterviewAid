@@ -7,16 +7,27 @@
 ---
 
 ## Problem Description
-Given an odd integer `n`, return all possible full binary trees with `n` nodes. A full binary tree is a binary tree where each node has either 0 or 2 children. Each tree node's value should be `0`.
+Given an integer `n`, return *a list of all possible **full binary trees** with* `n` *nodes*. Each node of each tree in the answer must have `Node.val == 0`.
+
+Each element of the answer is the root node of one possible tree. You may return the final list of trees in **any order**.
+
+A **full binary tree** is a binary tree where each node has exactly `0` or `2` children.
+
+**Constraints:**
+- `1 <= n <= 20`
 
 ## Examples
-**Example 1**
-Input: `n = 7`
-Output: A list of 5 distinct full binary trees (shown as root structures).
-
-**Example 2**
-Input: `n = 3`
-Output: `[TreeNode(0, left=TreeNode(0), right=TreeNode(0))]`
+```
+Example 1:
+  Input: n = 7
+  Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
+  Explanation: There are 5 distinct full binary trees with 7 nodes (shown in level-order).
+```
+```
+Example 2:
+  Input: n = 3
+  Output: [[0,0,0]]
+```
 
 ## Approach
 **Algorithm:** Recursive construction with memoization.

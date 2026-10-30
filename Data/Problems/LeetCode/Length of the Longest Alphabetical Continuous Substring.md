@@ -8,24 +8,33 @@
 
 ## 1. Problem Description
 
-Find the longest substring of consecutive alphabetical characters (e.g., "abc", "xyz").
+An **alphabetical continuous string** is a string consisting of consecutive letters in the alphabet. In other words, it is any substring of the string `"abcdefghijklmnopqrstuvwxyz"`.
+
+- For example, `"abc"` is an alphabetical continuous string, while `"acb"` and `"za"` are not.
+
+Given a string `s` consisting of lowercase letters only, return the *length of the **longest** alphabetical continuous substring.*
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of only English lowercase letters.
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: s = "abczabc"
-Output: 3
-Explanation: The longest alphabetical continuous substrings are "abc" and "xyz" (if present). The length is 3.
+Example 1:
+  Input: s = "abacaba"
+  Output: 2
+  Explanation: There are 4 distinct continuous substrings: "a", "b", "c" and "ab".
+  "ab" is the longest continuous substring.
 ```
 
-**Example 2:**
 ```
-Input: s = "a"
-Output: 1
-Explanation: Single character is trivially a continuous alphabetical substring.
+Example 2:
+  Input: s = "abcde"
+  Output: 5
+  Explanation: "abcde" is the longest continuous substring.
 ```
 
 ---

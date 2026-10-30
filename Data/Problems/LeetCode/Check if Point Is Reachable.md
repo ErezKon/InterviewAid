@@ -8,7 +8,19 @@
 
 ## 1. Problem Description
 
-Starting from `(1, 1)`, you can move to `(x+y, y)`, `(x, x+y)`, `(2x, y)`, or `(x, 2y)`. Determine if you can reach a target point `(targetX, targetY)` using any sequence of these moves.
+There exists an infinitely large grid. You are currently at point `(1, 1)`, and you need to reach the point `(targetX, targetY)` using a **finite** number of steps.
+
+In one **step**, you can move from point `(x, y)` to any one of the following points:
+
+- `(x, y - x)`
+- `(x - y, y)`
+- `(2 * x, y)`
+- `(x, 2 * y)`
+
+Given two integers `targetX` and `targetY` representing the X-coordinate and Y-coordinate of your final position, return `true` *if you can reach the point from* `(1, 1)` *using some number of steps, and* `false` *otherwise*.
+
+**Constraints:**
+- `1 <= targetX, targetY <= 10^9`
 
 ---
 
@@ -37,13 +49,19 @@ FUNCTION isReachable(targetX, targetY):
 
 ## 4. Examples
 
-| targetX | targetY | Reachable |
-|---------|---------|-----------|
-| 3 | 5 | true |
-| 6 | 10 | false |
-| 1 | 1 | true |
+```
+Example 1:
+  Input: targetX = 6, targetY = 9
+  Output: false
+  Explanation: It is impossible to reach (6,9) from (1,1) using any sequence of moves, so false is returned.
+```
 
-*Explanation*: For `(3,5)`, after removing factors of two the numbers stay `(3,5)` and `gcd(3,5)=1`. For `(6,10)`, stripping powers of two yields `(3,5)`? Actually 6→3,10→5, gcd=1, but original both had factor 2, still reachable? Wait correct answer false because after removing all 2s both become odd and gcd=1, but original reachable? Might be false due to extra constraints. Assume example as typical.
+```
+Example 2:
+  Input: targetX = 4, targetY = 7
+  Output: true
+  Explanation: You can follow the path (1,1) -> (1,2) -> (1,4) -> (1,8) -> (1,7) -> (2,7) -> (4,7).
+```
 
 ---
 

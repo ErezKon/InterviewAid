@@ -8,24 +8,34 @@
 
 ## 1. Problem Description
 
-Find the maximum length of the resulting array after repeatedly removing elements that violate non-decreasing order.
+You are given an integer array `nums`. In one operation, you can select a subarray and replace it with a single element equal to its **maximum** value.
+
+Return the **maximum possible size** of the array after performing zero or more operations such that the resulting array is **non-decreasing**.
+
+**Constraints:**
+
+- `1 <= nums.length <= 2 * 10^5`
+- `1 <= nums[i] <= 2 * 10^5`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
 ```
-Input: nums = [5,3,4,2,1]
-Output: 2
-Explanation: Remove 5,4,2,1 to keep [3] or remove 5,3,2,1 to keep [4]. The longest possible non‑decreasing array has length 2.
+Example 1:
+  Input: nums = [4,2,5,3,5]
+  Output: 3
+  Explanation: One way to achieve the maximum size is:
+  1. Replace subarray nums[1..2] = [2, 5] with 5 → [4, 5, 3, 5].
+  2. Replace subarray nums[2..3] = [3, 5] with 5 → [4, 5, 5].
+  The final array [4, 5, 5] is non-decreasing with size 3.
 ```
 
-**Example 2:**
 ```
-Input: nums = [1,2,3,4]
-Output: 4
-Explanation: The array is already non‑decreasing, so no removal is needed.
+Example 2:
+  Input: nums = [1,2,3]
+  Output: 3
+  Explanation: No operation is needed as the array [1,2,3] is already non-decreasing.
 ```
 
 ---

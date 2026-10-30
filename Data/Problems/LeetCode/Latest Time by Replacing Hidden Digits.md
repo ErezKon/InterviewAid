@@ -8,16 +8,38 @@
 
 ## 1. Problem Description
 
-Given time string `"HH:MM"` with some `?` digits, replace `?`s to maximize the time (24-hour format).
+You are given a string `time` in the form of `hh:mm`, where some of the digits in the string are hidden (represented by `?`).
+
+The valid times are those inclusively between `00:00` and `23:59`.
+
+Return *the latest valid time you can get from* `time` *by replacing the hidden digits*.
+
+**Constraints:**
+- `time` is in the format `hh:mm`.
+- It is guaranteed that you can produce a valid time from the given string.
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"?4:5?"` | `"14:59"` | First `?` can be `1` (since hour tens cannot exceed `2`). Second `?` becomes `9` for max minutes.
-| `"2?:?0"` | `"23:50"` | Hour tens is `2`, so hour units max `3`. Minute tens can be `5`, minute units already `0`.
+```
+Example 1:
+  Input: time = "2?:?0"
+  Output: "23:50"
+  Explanation: The latest hour beginning with the digit '2' is 23 and the latest minute ending with the digit '0' is 50.
+```
+
+```
+Example 2:
+  Input: time = "0?:3?"
+  Output: "09:39"
+```
+
+```
+Example 3:
+  Input: time = "1?:22"
+  Output: "19:22"
+```
 
 ---
 

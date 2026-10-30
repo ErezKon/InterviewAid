@@ -20,10 +20,13 @@
 
 ## 1. Problem Description
 
-Given a binary tree, return the **most frequent** subtree sum(s). The subtree sum of a node = sum of all values in its subtree.
+Given the `root` of a binary tree, return the most frequent **subtree sum**. If there is a tie, return all the values with the highest frequency in any order.
+
+The **subtree sum** of a node is defined as the sum of all the node values formed by the subtree rooted at that node (including the node itself).
 
 **Constraints:**
-- `1 <= n <= 10⁴`
+- The number of nodes in the tree is in the range `[1, 10⁴]`.
+- `-10⁵ <= Node.val <= 10⁵`
 
 ---
 
@@ -65,18 +68,18 @@ FUNCTION findFrequentTreeSum(root):
 
 ## 4. Examples
 
-**Example 1:**
 ```
-Input: root = [5,2,-3]
-Output: [2,-3,5]
-Explanation: Subtree sums are {5,2,-3}. All appear once, so all are most frequent.
+Example 1:
+  Input: root = [5,2,-3]
+  Output: [2,-3,4]
+  Explanation: Subtree sums are 2 (left leaf), -3 (right leaf) and 5 + 2 - 3 = 4 (root). All appear once.
 ```
 
-**Example 2:**
 ```
-Input: root = [5,2,-5]
-Output: [2]
-Explanation: Subtree sums are {5,2,-5,2}. The sum 2 appears twice, more than others.
+Example 2:
+  Input: root = [5,2,-5]
+  Output: [2]
+  Explanation: Subtree sums are 2, -5 and 5 + 2 - 5 = 2. The sum 2 appears twice.
 ```
 
 ---

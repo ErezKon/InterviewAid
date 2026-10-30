@@ -21,10 +21,18 @@
 
 ## 1. Problem Description
 
-Given an `n × n` binary grid, rearrange rows using adjacent row swaps so all cells **above the main diagonal** are 0. Return minimum swaps, or `-1`.
+Given an `n x n` binary `grid`, in one step you can choose two **adjacent rows** of the grid and swap them.
+
+A grid is said to be **valid** if all the cells above the main diagonal are **zeros**.
+
+Return *the minimum number of steps* needed to make the grid valid, or **-1** if the grid cannot be valid.
+
+The main diagonal of a grid is the diagonal that starts at cell `(1, 1)` and ends at cell `(n, n)`.
 
 **Constraints:**
+- `n == grid.length` `== grid[i].length`
 - `1 <= n <= 200`
+- `grid[i][j]` is either `0` or `1`
 
 ---
 
@@ -32,15 +40,22 @@ Given an `n × n` binary grid, rearrange rows using adjacent row swaps so all ce
 
 **Example 1:**
 ```
-grid = [[0,0,1],[1,1,0],[0,0,0]]
+Input: grid = [[0,0,1],[1,1,0],[1,0,0]]
+Output: 3
 ```
-*Row 1 needs 1 trailing zero, Row 2 needs 0, Row 3 needs 2. Swapping row 1 down one position yields a valid grid. Minimum swaps = 1.*
 
 **Example 2:**
 ```
-grid = [[1,0,0],[0,1,0],[0,0,1]]
+Input: grid = [[0,1,1,0],[0,1,1,0],[0,1,1,0],[0,1,1,0]]
+Output: -1
+Explanation: All rows are similar, swaps have no effect on the grid.
 ```
-*No row has the required trailing zeros for the first position, so the answer is -1.*
+
+**Example 3:**
+```
+Input: grid = [[1,0,0],[1,1,0],[1,1,1]]
+Output: 0
+```
 
 ---
 

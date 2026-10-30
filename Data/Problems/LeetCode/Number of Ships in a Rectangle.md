@@ -20,25 +20,46 @@
 
 ## 1. Problem Description
 
-You are given an API `hasShips(topRight, bottomLeft)` that returns `true` if there is at least one ship inside the axis‑aligned rectangle defined by the two points `topRight` and `bottomLeft`. The board is a 2‑D grid of size `10⁹ × 10⁹` and contains at most 10 ships. Implement a function that returns the exact number of ships inside a given rectangle while making as few API calls as possible.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+*(This problem is an **interactive problem**.)*
+
+Each ship is located at an integer point on the sea represented by a cartesian plane, and each integer point may contain at most 1 ship.
+
+You have a function `Sea.hasShips(topRight, bottomLeft)` which takes two points as arguments and returns `true` If there is at least one ship in the rectangle represented by the two points, including on the boundary.
+
+Given two points: the top right and bottom left corners of a rectangle, return the number of ships present in that rectangle. It is guaranteed that there are **at most 10 ships** in that rectangle.
+
+Submissions making **more than 400 calls** to `hasShips` will be judged *Wrong Answer*. Also, any solutions that attempt to circumvent the judge will result in disqualification.
+
+**Example :**
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1274.Number%20of%20Ships%20in%20a%20Rectangle/images/1445_example_1.png)
+
+```
+**Input:**
+ships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]
+**Output:** 3
+**Explanation:** From [0,0] to [4,4] we can count 3 ships within the range.
+```
+
+**Example 2:**
+
+```
+**Input:** ans = [[1,1],[2,2],[3,3]], topRight = [1000,1000], bottomLeft = [0,0]
+**Output:** 3
+```
+
+**Constraints:**
+- On the input `ships` is only given to initialize the map internally. You must solve this problem "blindfolded". In other words, you must find the answer using the given `hasShips` API, without knowing the `ships` position.
+- `0 <= bottomLeft[0] <= topRight[0] <= 1000`
+- `0 <= bottomLeft[1] <= topRight[1] <= 1000`
+- `topRight != bottomLeft`
 
 ---
 
 ## 2. Examples
 
-**Example 1:**
-```
-Input: topRight = (2, 2), bottomLeft = (0, 0)
-Output: 1
-Explanation: There is exactly one ship in the rectangle.
-```
 
-**Example 2:**
-```
-Input: topRight = (5, 5), bottomLeft = (0, 0)
-Output: 3
-Explanation: Three ships are located within the larger rectangle.
-```
 
 ---
 

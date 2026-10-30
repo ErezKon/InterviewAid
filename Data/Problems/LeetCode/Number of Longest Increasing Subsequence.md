@@ -21,7 +21,14 @@
 
 ## 1. Problem Description
 
-Return the number of longest increasing subsequences. There may be multiple LIS of the same maximum length.
+Given an integer array `nums`, return *the number of longest increasing subsequences.*
+
+**Notice** that the sequence has to be **strictly** increasing.
+
+**Constraints:**
+- `1 <= nums.length <= 2000`
+- `-10^6 <= nums[i] <= 10^6`
+- The answer is guaranteed to fit inside a 32-bit integer.
 
 ---
 
@@ -58,16 +65,16 @@ FUNCTION findNumberOfLIS(nums):
 
 **Example 1:**
 ```
-nums = [1,3,5,4,7]
+Input: nums = [1,3,5,4,7]
 Output: 2
-Explanation: The LIS length is 4. The two LIS are [1,3,4,7] and [1,3,5,7].
+Explanation: The two longest increasing subsequences are [1, 3, 4, 7] and [1, 3, 5, 7].
 ```
 
 **Example 2:**
 ```
-nums = [2,2,2,2,2]
+Input: nums = [2,2,2,2,2]
 Output: 5
-Explanation: The LIS length is 1. Each element forms an LIS of length 1.
+Explanation: The length of the longest increasing subsequence is 1, and there are 5 increasing subsequences of length 1, so output 5.
 ```
 
 ---

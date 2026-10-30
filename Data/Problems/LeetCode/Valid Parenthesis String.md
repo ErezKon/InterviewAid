@@ -9,7 +9,18 @@
 
 ## 1. Problem Description
 
-Given a string containing `(`, `)`, and `*` (which can be `(`, `)`, or empty), determine if the string is valid.
+Given a string `s` containing only three types of characters: `'('`, `')'` and `'*'`, return `true` *if* `s` *is **valid***.
+
+The following rules define a **valid** string:
+
+- Any left parenthesis `'('` must have a corresponding right parenthesis `')'`.
+- Any right parenthesis `')'` must have a corresponding left parenthesis `'('`.
+- Left parenthesis `'('` must go before the corresponding right parenthesis `')'`.
+- `'*'` could be treated as a single right parenthesis `')'` or a single left parenthesis `'('` or an empty string `""`.
+
+**Constraints:**
+- `1 <= s.length <= 100`
+- `s[i]` is `'('`, `')'` or `'*'`.
 
 ---
 
@@ -48,11 +59,29 @@ FUNCTION checkValidString(s):
 
 ## 3. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `"(*))"` | true | `*` can be treated as `(`, making the string "(()))" which balances. |
-| `"(*)"`   | true | `*` can be empty, resulting in "()". |
-| `"())*"`  | false| No assignment of `*` can balance the extra `)`. |
+**Example 1:**
+```
+Input: s = "()"
+Output: true
+```
+
+**Example 2:**
+```
+Input: s = "(*)"
+Output: true
+```
+
+**Example 3:**
+```
+Input: s = "(*))"
+Output: true
+```
+
+**Example 4:**
+```
+Input: s = "("
+Output: false
+```
 
 ---
 

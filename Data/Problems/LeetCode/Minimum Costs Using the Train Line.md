@@ -6,18 +6,52 @@
 
 ---
 ## Problem Description
-You are given `n` stations numbered from `0` to `n-1` on a train line. For each station `i` you have a list of direct train connections to other stations `j` with an associated travel cost `cost[i][j]`. Additionally, you may choose to walk between any two stations `i` and `j` at a cost equal to the Manhattan distance `|i-j|`. Starting from station `0`, compute the minimum total cost to reach station `n-1`.
+A train line going through a city has two routes, the regular route and the express route. Both routes go through the **same** `n + 1` stops labeled from `0` to `n`. Initially, you start on the regular route at stop `0`.
+
+You are given two **1-indexed** integer arrays `regular` and `express`, both of length `n`. `regular[i]` describes the cost it takes to go from stop `i - 1` to stop `i` using the regular route, and `express[i]` describes the cost it takes to go from stop `i - 1` to stop `i` using the express route.
+
+You are also given an integer `expressCost` which represents the cost to transfer from the regular route to the express route.
+
+Note that:
+- There is no cost to transfer from the express route back to the regular route.
+- You pay `expressCost` **every** time you transfer from the regular route to the express route.
+- There is no extra cost to stay on the express route.
+
+Return *a **1-indexed** array* `costs` *of length* `n`*, where* `costs[i]` *is the **minimum** cost to reach stop* `i` *from stop* `0`.
+
+Note that a stop can be counted as **reached** from either route.
+
+**Constraints:**
+- `n == regular.length == express.length`
+- `1 <= n <= 10^5`
+- `1 <= regular[i], express[i], expressCost <= 10^5`
 
 ## Examples
-**Example 1**
-Input: `n = 5`, `train = [[0,2,5],[2,0,3],[5,3,0,1],[0,1,0,0,4],[0,0,4,0,0]]`
-Output: `7`
-Explanation: Take train from `0→1` (cost 2), walk `1→3` (cost |1-3|=2), then train `3→4` (cost 4). Total = 2+2+4 = 8, but a cheaper route is `0→2` (5), walk `2→4` (2) = 7.
 
-**Example 2**
-Input: `n = 3`, `train = [[0,0,0],[0,0,0],[0,0,0]]`
-Output: `2`
-Explanation: No train connections, so you must walk from `0→2` costing |0-2| = 2.
+```
+Example 1:
+  Input: regular = [1,6,9,5], express = [5,2,3,10], expressCost = 8
+  Output: [1,7,14,19]
+  Explanation: The diagram shows how to reach stop 4 from stop 0 with minimum cost.
+  - Take the regular route from stop 0 to stop 1, costing 1.
+  - Take the express route from stop 1 to stop 2, costing 8 + 2 = 10.
+  - Take the express route from stop 2 to stop 3, costing 3.
+  - Take the regular route from stop 3 to stop 4, costing 5.
+  The total cost is 1 + 10 + 3 + 5 = 19.
+  Note that a different route could be taken to reach the other stops with minimum cost.
+```
+
+```
+Example 2:
+  Input: regular = [11,5,13], express = [7,10,6], expressCost = 3
+  Output: [10,15,24]
+  Explanation: The diagram shows how to reach stop 3 from stop 0 with minimum cost.
+  - Take the express route from stop 0 to stop 1, costing 3 + 7 = 10.
+  - Take the regular route from stop 1 to stop 2, costing 5.
+  - Take the express route from stop 2 to stop 3, costing 3 + 6 = 9.
+  The total cost is 10 + 5 + 9 = 24.
+  Note that the expressCost is paid again to transfer back to the express route.
+```
 
 ## Approach
 **Algorithm:** Dijkstra on an implicit graph

@@ -21,17 +21,21 @@
 
 ## Problem Description
 
-Given a 0-indexed integer array `nums` and an integer `k`, apply exactly `k` operations. In each operation:
-1. Pick any element `nums[i]`.
-2. Add `nums[i]` to your score.
-3. Replace `nums[i]` with `⌈nums[i] / 3⌉`.
+You are given a **0-indexed** integer array `nums` and an integer `k`. You have a **starting score** of `0`.
 
-Return the **maximum possible score**.
+In one **operation**:
+
+- choose an index `i` such that `0 <= i < nums.length`,
+- increase your **score** by `nums[i]`, and
+- replace `nums[i]` with `ceil(nums[i] / 3)`.
+
+Return *the maximum possible **score** you can attain after applying **exactly*** `k` *operations*.
+
+The ceiling function `ceil(val)` is the least integer greater than or equal to `val`.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `1 ≤ nums[i] ≤ 10⁹`
-- `1 ≤ k ≤ 10⁵`
+- `1 <= nums.length, k <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ---
 
@@ -39,16 +43,20 @@ Return the **maximum possible score**.
 
 **Example 1:**
 ```
-Input:  nums = [10,10,10,10,10], k = 5
+Input: nums = [10,10,10,10,10], k = 5
 Output: 50
-Explanation: Pick each 10 once → score = 50. Each becomes ceil(10/3)=4.
+Explanation: Apply the operation to each array element exactly once. The final score is 10 + 10 + 10 + 10 + 10 = 50.
 ```
 
 **Example 2:**
 ```
-Input:  nums = [1,10,3,3,3], k = 3
+Input: nums = [1,10,3,3,3], k = 3
 Output: 17
-Explanation: Pick 10 → score=10, becomes 4. Pick 4 → score=14, becomes 2. Pick 3 → score=17.
+Explanation: You can do the following operations:
+Operation 1: Select i = 1, so nums becomes [1,4,3,3,3]. Your score increases by 10.
+Operation 2: Select i = 1, so nums becomes [1,2,3,3,3]. Your score increases by 4.
+Operation 3: Select i = 2, so nums becomes [1,2,1,3,3]. Your score increases by 3.
+The final score is 10 + 4 + 3 = 17.
 ```
 
 ---

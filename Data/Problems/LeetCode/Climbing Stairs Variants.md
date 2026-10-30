@@ -6,11 +6,42 @@ See also: [Climbing Stairs.md](Climbing%20Stairs.md) for the basic solution.
 ---
 
 ## Problem Description
-Given a staircase with `n` steps, you can climb the stairs using various step-size rules or incur costs/obstacles. Compute the number of distinct ways to reach the top under each variant.
+> *Note: constraints and examples are derived, not from an official LeetCode source.*
+
+Given a staircase with `n` steps, you can climb the stairs using various step-size rules or incur costs/obstacles. Compute the number of distinct ways (or the minimum cost) to reach the top under each variant:
+
+- **Variant 1 (k steps):** each move climbs between `1` and `k` steps. Count distinct ways to reach step `n`.
+- **Variant 2 (min cost, LeetCode #746):** `cost[i]` is paid when stepping on stair `i`; you may start at index `0` or `1` and climb 1 or 2 steps. Return the minimum cost to reach the top (index `n`).
+- **Variant 3 (obstacles):** some steps are blocked and cannot be stepped on. Count distinct ways using 1 or 2 steps.
+- **Variant 4 (modulo):** same as the basic problem but `n` is large; return the count modulo `10^9 + 7`.
+
+**Constraints (derived):**
+- `1 <= n <= 10^5` (Variants 1, 3, 4); `1 <= n <= 45` without modulo
+- `1 <= k <= n`
+- `2 <= cost.length <= 1000`, `0 <= cost[i] <= 999`
+- Blocked steps are given as a set of indices in `[1, n - 1]`
 
 ## Examples
-- Variant 1 (k steps): `n = 3, k = 2` → ways: 3 (1+1+1, 1+2, 2+1).
-- Variant 2 (min cost): `cost = [10,15,20]` → minimum cost to reach top: 15.
+```
+Example 1 (Variant 1):
+  Input: n = 3, k = 2
+  Output: 3
+  Explanation: 1+1+1, 1+2, 2+1.
+```
+
+```
+Example 2 (Variant 2):
+  Input: cost = [10,15,20]
+  Output: 15
+  Explanation: Start at index 1, pay 15, and climb two steps to reach the top.
+```
+
+```
+Example 3 (Variant 3):
+  Input: n = 4, blocked = {2}
+  Output: 1
+  Explanation: Step 2 cannot be used, so the only way is 1 -> 3 -> 4 (moves 1, 2, 1).
+```
 
 ## Approach
 Use dynamic programming where `dp[i]` stores the number of ways (or minimum cost) to reach step `i`. Transition depends on the variant.

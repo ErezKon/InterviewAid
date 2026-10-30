@@ -20,27 +20,36 @@
 
 ## Problem Description
 
-Given a string `text`, return the **maximum number of times** you can form the word `"balloon"` using the characters in `text`. Each character can only be used once.
+Given a string `text`, you want to use the characters of `text` to form as many instances of the word **"balloon"** as possible.
+
+You can use each character in `text` **at most once**. Return the maximum number of instances that can be formed.
 
 **Constraints:**
 - `1 <= text.length <= 10^4`
-- `text` consists of lowercase English letters only.
+- `text` consists of lower case English letters only.
+
+**Note:** This question is the same as 2287: Rearrange Characters to Make Target String.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  text = "nlaebolko"
-Output: 1
-Explanation: "balloon" uses b,a,l,l,o,o,n. We have exactly one of each needed.
+Example 1:
+  Input: text = "nlaebolko"
+  Output: 1
 ```
 
-**Example 2:**
 ```
-Input:  text = "loonbalxballpoon"
-Output: 2
+Example 2:
+  Input: text = "loonbalxballpoon"
+  Output: 2
+```
+
+```
+Example 3:
+  Input: text = "leetcode"
+  Output: 0
 ```
 
 ---

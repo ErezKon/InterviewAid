@@ -20,15 +20,22 @@
 
 ## Problem Description
 
-You are given an undirected tree with `n` nodes rooted at node `0`, with edges and a `price` array where `price[i]` is the cost of node `i`.
+There exists an undirected and initially unrooted tree with `n` nodes indexed from `0` to `n - 1`. You are given the integer `n` and a 2D integer array `edges` of length `n - 1`, where `edges[i] = [a_i, b_i]` indicates that there is an edge between nodes `a_i` and `b_i` in the tree.
 
-A **path's price** is the sum of prices of all nodes on that path. For each node, the **max price path** starting from it is the costliest root-to-leaf or root-to-any-node path, and the **min price path** is just the node itself (a single node path = its own price).
+Each node has an associated price. You are given an integer array `price`, where `price[i]` is the price of the `i^th` node.
 
-Return the maximum `maxPricePath - minPricePath` over all nodes. Since the min price path from any node is just `price[node]`, this reduces to: find the path starting at some node with the maximum sum, minus that starting node's price. Equivalently, find the **longest weighted path in the tree minus one endpoint**.
+The **price sum** of a given path is the sum of the prices of all nodes lying on that path.
+
+The tree can be rooted at any node `root` of your choice. The incurred **cost** after choosing `root` is the difference between the maximum and minimum **price sum** amongst all paths starting at `root`.
+
+Return *the **maximum** possible **cost*** *amongst all possible root choices*.
 
 **Constraints:**
 - `1 <= n <= 10^5`
 - `edges.length == n - 1`
+- `0 <= a_i, b_i <= n - 1`
+- `edges` represents a valid tree.
+- `price.length == n`
 - `1 <= price[i] <= 10^5`
 
 ---
@@ -37,17 +44,22 @@ Return the maximum `maxPricePath - minPricePath` over all nodes. Since the min p
 
 **Example 1:**
 ```
-Input: n=4, edges=[[0,1],[1,2],[1,3]], price=[1,4,2,3]
-        0(1)
-        |
-        1(4)
-       / \
-      2(2) 3(3)
+Input: n = 6, edges = [[0,1],[1,2],[1,3],[3,4],[3,5]], price = [9,8,7,6,10,5]
+Output: 24
+Explanation: The diagram above denotes the tree after rooting it at node 2. The first part (colored in red) shows the path with the maximum price sum. The second part (colored in blue) shows the path with the minimum price sum.
+- The first path contains nodes [2,1,3,4]: the prices are [7,8,6,10], and the sum of the prices is 31.
+- The second path contains the node [2] with the price [7].
+The difference between the maximum and minimum price sum is 24. It can be proved that 24 is the maximum cost.
+```
 
-Output: 6
-Explanation: Max cost path = 0→1→3 (sum=1+4+3=8), minus endpoint 0's price (1) = 7?
-  Actually: for node 1, max path sum going through children = 4+max(2,3)+1 = 8.
-  The answer is the max (path sum - one endpoint) = 6.
+**Example 2:**
+```
+Input: n = 3, edges = [[0,1],[1,2]], price = [1,1,1]
+Output: 2
+Explanation: The diagram above denotes the tree after rooting it at node 0. The first part (colored in red) shows the path with the maximum price sum. The second part (colored in blue) shows the path with the minimum price sum.
+- The first path contains nodes [0,1,2]: the prices are [1,1,1], and the sum of the prices is 3.
+- The second path contains node [0] with a price [1].
+The difference between the maximum and minimum price sum is 2. It can be proved that 2 is the maximum cost.
 ```
 
 ---

@@ -7,12 +7,33 @@
 ---
 
 ## Problem Description
-Given a non‑negative integer `num`, encode it into a string using a base‑26 alphabetic representation where `0 → 'a'`, `1 → 'b'`, …, `25 → 'z'`. The most significant digit appears first. Constraints: `0 <= num <= 2^31 - 1`.
+
+> *Note: the Approach below (base-26 letters) solves an invented problem. The official encoding is the binary representation of `num + 1` with its leading `1` removed (e.g. `23 → 24 = 11000₂ → "1000"`).*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Given a non-negative integer `num`, Return its *encoding* string.
+
+The encoding is done by converting the integer to a string using a secret function that you should deduce from the following table:
+
+![img](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1256.Encode%20Number/images/encode_number.png)
+
+**Constraints:**
+- `0 <= num <= 10^9`
 
 ## Examples
-- Input: `num = 0` → Output: `"a"`
-- Input: `num = 25` → Output: `"z"`
-- Input: `num = 26` → Output: `"ba"` (26 = 1·26 + 0 → 'b''a')
+
+**Example 1:**
+```
+Input: num = 23
+Output: "1000"
+```
+
+**Example 2:**
+```
+Input: num = 107
+Output: "101100"
+```
 
 ## Approach
 Repeatedly divide the number by 26, recording the remainder as a character, and build the string in reverse order.

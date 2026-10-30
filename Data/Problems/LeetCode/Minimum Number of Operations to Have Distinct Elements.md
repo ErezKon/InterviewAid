@@ -8,7 +8,19 @@
 
 ## Problem Description
 
-Given an integer array `nums`, you may perform the following operation any number of times: choose an element `x` and replace it with `x + 1`. Return the minimum number of operations required to make all elements of `nums` distinct.
+> *Note: the Approach below (sort and increment) solves a different problem. Officially each operation removes the first three elements. Scan from the right to find the last index `i` whose value already appears to its right; the answer is `ceil((i + 1) / 3)`, or 0 if none.*
+
+You are given an integer array `nums`.
+
+In one operation, you remove the **first three elements** of the current array. If there are fewer than three elements remaining, **all** remaining elements are removed.
+
+Repeat this operation until the array is empty or contains no duplicate values.
+
+Return an integer denoting the number of operations required.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
 
 ---
 
@@ -16,16 +28,23 @@ Given an integer array `nums`, you may perform the following operation any numbe
 
 **Example 1:**
 ```
-Input: nums = [1,2,2]
+Input: nums = [3,8,3,6,5,8]
 Output: 1
-Explanation: Increment the second `2` to `3`.
+Explanation: In the first operation, we remove the first three elements. The remaining elements [6, 5, 8] are all distinct, so we stop. Only one operation is needed.
 ```
 
 **Example 2:**
 ```
-Input: nums = [3,2,1,2,1,7]
-Output: 6
-Explanation: One optimal sequence of increments results in [3,4,1,5,2,7].
+Input: nums = [2,2]
+Output: 1
+Explanation: After one operation, the array becomes empty, which meets the stopping condition.
+```
+
+**Example 3:**
+```
+Input: nums = [4,3,5,1,2]
+Output: 0
+Explanation: All elements in the array are distinct, therefore no operations are needed.
 ```
 
 ---

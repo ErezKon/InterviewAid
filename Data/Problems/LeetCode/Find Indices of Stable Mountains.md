@@ -7,20 +7,39 @@
 ---
 
 ## Problem Description
-Given an integer array `heights`, an index `i` is called a *stable mountain* if there exists a left index `l < i` and a right index `r > i` such that `heights[l] < heights[i]` and `heights[r] < heights[i]`. Return all indices that are stable mountains. The array length is up to 10⁵.
+There are `n` mountains in a row, and each mountain has a height. You are given an integer array `height` where `height[i]` represents the height of mountain `i`, and an integer `threshold`.
+
+A mountain is called **stable** if the mountain just before it (**if it exists**) has a height **strictly greater** than `threshold`. **Note** that mountain 0 is **not** stable.
+
+Return an array containing the indices of *all* **stable** mountains in **any** order.
+
+**Constraints:**
+
+- `2 <= n == height.length <= 100`
+- `1 <= height[i] <= 100`
+- `1 <= threshold <= 100`
 
 ## Examples
-**Example 1**
+
 ```
-Input: heights = [1,3,2,4,1]
-Output: [1,3]
-Explanation: Index 1 (value 3) has left 0 (1) and right 2 (2) lower than it. Index 3 (value 4) has left 2 (2) and right 4 (1) lower than it.
+Example 1:
+  Input: height = [1,2,3,4,5], threshold = 2
+  Output: [3,4]
+  Explanation:
+  - Mountain 3 is stable because height[2] == 3 is greater than threshold == 2.
+  - Mountain 4 is stable because height[3] == 4 is greater than threshold == 2.
 ```
-**Example 2**
+
 ```
-Input: heights = [5,4,3,2,1]
-Output: []
-Explanation: No index has a higher value than both a left and a right neighbor.
+Example 2:
+  Input: height = [10,1,10,1,10], threshold = 3
+  Output: [1,3]
+```
+
+```
+Example 3:
+  Input: height = [10,1,10,1,10], threshold = 10
+  Output: []
 ```
 
 ## Approach

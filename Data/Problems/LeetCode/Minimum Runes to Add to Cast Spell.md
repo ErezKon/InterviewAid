@@ -18,11 +18,29 @@
 
 ## 1. Problem Description
 
-Given a directed graph representing spell dependencies, find the **minimum** number of runes (edges) to add so that every node is reachable from at least one "source" node (node with no incoming edges from outside its SCC). This is essentially making every node reachable in the DAG of strongly connected components.
+> *Note: the Approach below counts all source SCCs and ignores the crystals. Accepted solutions BFS from every crystal first. Then they process the unreached nodes in Kosaraju finish order, and each new BFS start costs one rune. Equivalently, count the source SCCs of the condensation that cannot be reached from a crystal.*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Alice has just graduated from wizard school, and wishes to cast a magic spell to celebrate. The magic spell contains certain **focus points** where magic needs to be concentrated, and some of these focus points contain **magic crystals** which serve as the spell's energy source. Focus points can be linked through **directed runes**, which channel magic flow from one focus point to another.
+
+You are given a integer `n` denoting the *number* of focus points and an array of integers `crystals` where `crystals[i]` indicates a focus point which holds a magic crystal. You are also given two integer arrays `flowFrom` and `flowTo`, which represent the existing **directed runes**. The `i^th` rune allows magic to freely flow from focus point `flowFrom[i]` to focus point `flowTo[i]`.
+
+You need to find the number of directed runes Alice must add to her spell, such that *each* focus point either:
+
+- **Contains** a magic crystal.
+- **Receives** magic flow *from* another focus point.
+
+Return the **minimum** number of directed runes that she should add.
 
 **Constraints:**
-- `1 <= n <= 10⁵`
-- `0 <= edges <= 2 × 10⁵`
+- `2 <= n <= 10^5`
+- `1 <= crystals.length <= n`
+- `0 <= crystals[i] <= n - 1`
+- `1 <= flowFrom.length == flowTo.length <= min(2 * 10^5, (n * (n - 1)) / 2)`
+- `0 <= flowFrom[i], flowTo[i] <= n - 1`
+- `flowFrom[i] != flowTo[i]`
+- All pre-existing directed runes are **distinct**.
 
 ---
 
@@ -58,15 +76,18 @@ FUNCTION minRunesToAdd(n, edges):
 
 **Example 1:**
 ```
-Input: n = 5, edges = [[0,1],[1,2],[3,4]]
-Output: 1
-Explanation: SCCs are {0},{1},{2},{3},{4}. The condensed DAG has two source components (0 and 3). Adding one rune from component 0 to 3 makes all nodes reachable.
+Input: n = 6, crystals = [0], flowFrom = [0,1,2,3], flowTo = [1,2,3,0]
+Output: 2
+Explanation: Add two directed runes:
+- From focus point 0 to focus point 4.
+- From focus point 0 to focus point 5.
 ```
+
 **Example 2:**
 ```
-Input: n = 3, edges = []
-Output: 2
-Explanation: Three isolated nodes form three source SCCs. Need 2 runes to connect them into a single reachable component.
+Input: n = 7, crystals = [3,5], flowFrom = [0,1,2,3,5], flowTo = [1,2,0,4,6]
+Output: 1
+Explanation: Add a directed rune from focus point 4 to focus point 2.
 ```
 
 ---

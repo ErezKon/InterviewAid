@@ -1,20 +1,42 @@
 # 3370. Smallest Number With All Set Bits
 
 **Difficulty:** 🟢 Easy
+**LeetCode:** [https://leetcode.com/problems/smallest-number-with-all-set-bits](https://leetcode.com/problems/smallest-number-with-all-set-bits)
 
 **Companies:** Amazon, Google, Microsoft
 ---
 
 ## Problem Description
 
-Given an integer `n`, find the smallest integer that has the same number of set bits (1s in its binary representation) as `n` and is greater than or equal to `n`. The problem statement is slightly ambiguous, a more direct interpretation is to find the smallest number that has *at least* as many set bits as `n`'s bit length suggests.
+You are given a *positive* number `n`.
+
+Return the **smallest** number `x` **greater than** or **equal to** `n`, such that the binary representation of `x` contains only set bits.
+
+**Constraints:**
+- `1 <= n <= 1000`
 
 ## Examples
 
-- **Input:** `n = 2` (binary `10`, length 2)
-  - **Output:** `3` (binary `11`). The smallest number with 2 set bits.
-- **Input:** `n = 13` (binary `1101`, length 4)
-  - **Output:** `15` (binary `1111`). The smallest number with 4 set bits.
+```
+Example 1:
+  Input: n = 5
+  Output: 7
+  Explanation: The binary representation of 7 is "111".
+```
+
+```
+Example 2:
+  Input: n = 10
+  Output: 15
+  Explanation: The binary representation of 15 is "1111".
+```
+
+```
+Example 3:
+  Input: n = 3
+  Output: 3
+  Explanation: The binary representation of 3 is "11".
+```
 
 ## Approach: Bit Manipulation [Time: O(1), Space: O(1)]
 

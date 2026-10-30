@@ -8,7 +8,25 @@
 
 ## 1. Problem Description
 
-A number is k-reducible if, after repeatedly replacing it with its popcount (number of set bits), it reaches 1 in at most `k` steps. Count numbers less than `n` (given in binary) that are k-reducible.
+You are given a **binary** string `s` representing a number `n` in its binary form.
+
+You are also given an integer `k`.
+
+An integer `x` is called **k-reducible** if performing the following operation **at most** `k` times reduces it to 1:
+
+- Replace `x` with the **count** of set bits in its binary representation.
+
+For example, the binary representation of 6 is `"110"`. Applying the operation once reduces it to 2 (since `"110"` has two set bits). Applying the operation again to 2 (binary `"10"`) reduces it to 1 (since `"10"` has one set bit).
+
+Return an integer denoting the number of positive integers **less** than `n` that are **k-reducible**.
+
+Since the answer may be too large, return it **modulo** `10^9 + 7`.
+
+**Constraints:**
+- `1 <= s.length <= 800`
+- `s` has no leading zeros.
+- `s` consists only of the characters `'0'` and `'1'`.
+- `1 <= k <= 5`
 
 ---
 
@@ -40,10 +58,26 @@ FUNCTION countKReducible(s, k):
 
 ## 4. Examples
 
-| `n` (binary) | `k` | Output | Explanation |
-|--------------|-----|--------|-------------|
-| `"1010"` (10) | 2 | 4 | Numbers < 10 that become 1 within 2 popcount steps: 1,2,3,5 |
-| `"111"` (7) | 1 | 2 | Only 1 and 2 reduce to 1 in a single step.
+```
+Example 1:
+  Input: s = "111", k = 1
+  Output: 3
+  Explanation: n = 7. The 1-reducible integers less than 7 are 1, 2, and 4.
+```
+
+```
+Example 2:
+  Input: s = "1000", k = 2
+  Output: 6
+  Explanation: n = 8. The 2-reducible integers less than 8 are 1, 2, 3, 4, 5, and 6.
+```
+
+```
+Example 3:
+  Input: s = "1", k = 3
+  Output: 0
+  Explanation: There are no positive integers less than n = 1, so the answer is 0.
+```
 
 ---
 

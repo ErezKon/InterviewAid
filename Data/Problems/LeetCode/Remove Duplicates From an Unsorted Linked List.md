@@ -7,22 +7,37 @@
 ---
 
 ## Problem Description
-Given the head of a singly linked list, delete all nodes that have duplicate values, keeping only the first occurrence of each value. The list is unsorted, and you must preserve the original relative order of the remaining nodes.
+Given the `head` of a linked list, find all the values that appear **more than once** in the list and delete the nodes that have any of those values.
+
+Return *the linked list after the deletions.*
+
+**Constraints:**
+
+- The number of nodes in the list is in the range `[1, 10⁵]`
+- `1 <= Node.val <= 10⁵`
 
 ## Examples
-**Example 1:**
-```
-Input: head = [1,2,3,2,4,1]
-Output: [1,2,3,4]
-```
-**Explanation:** The second `2` and the second `1` are removed.
 
-**Example 2:**
 ```
-Input: head = [5,5,5]
-Output: [5]
+Example 1:
+  Input: head = [1,2,3,2]
+  Output: [1,3]
+  Explanation: 2 appears twice in the linked list, so all 2's should be deleted. After deleting all 2's, we are left with [1,3].
 ```
-**Explanation:** Only the first `5` is kept.
+
+```
+Example 2:
+  Input: head = [2,1,1,2]
+  Output: []
+  Explanation: 2 and 1 both appear twice. All the elements should be deleted.
+```
+
+```
+Example 3:
+  Input: head = [3,2,2,1,3,2,4]
+  Output: [1,4]
+  Explanation: 3 appears twice and 2 appears three times. After deleting all 3's and 2's, we are left with [1,4].
+```
 
 ## Approach
 Traverse the list while maintaining a hash set of seen values. For each node, if its value is already in the set, bypass it; otherwise, add the value to the set and keep the node.

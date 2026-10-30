@@ -7,15 +7,39 @@
 ---
 
 ## Problem Description
-Given a list of axis‑aligned rectangles represented as `[x1, y1, x2, y2]` (bottom‑left and top‑right coordinates), determine whether they together form an exact cover of a rectangular region with no overlaps and no gaps.
+Given an array `rectangles` where `rectangles[i] = [x_i, y_i, a_i, b_i]` represents an axis-aligned rectangle. The bottom-left point of the rectangle is `(x_i, y_i)` and the top-right point of it is `(a_i, b_i)`.
 
-Constraints: `1 ≤ rectangles.length ≤ 10⁴`; coordinates are integers in the range `[-10⁴, 10⁴]`.
+Return `true` *if all the rectangles together form an exact cover of a rectangular region*.
+
+**Constraints:**
+
+- `1 <= rectangles.length <= 2 * 10^4`
+- `rectangles[i].length == 4`
+- `-10^5 <= x_i < a_i <= 10^5`
+- `-10^5 <= y_i < b_i <= 10^5`
 
 ## Examples
-| rectangles | Output | Explanation |
-|------------|--------|-------------|
-| [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]] | true | The five small rectangles exactly cover the region `[1,1,4,4]` without overlap.
-| [[1,1,2,3],[1,3,2,4],[3,1,4,2],[3,2,4,4]] | false | Gaps exist between the groups of rectangles.
+
+```
+Example 1:
+  Input: rectangles = [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]]
+  Output: true
+  Explanation: All 5 rectangles together form an exact cover of a rectangular region.
+```
+
+```
+Example 2:
+  Input: rectangles = [[1,1,2,3],[1,3,2,4],[3,1,4,2],[3,2,4,4]]
+  Output: false
+  Explanation: Because there is a gap between the two rectangular regions.
+```
+
+```
+Example 3:
+  Input: rectangles = [[1,1,3,3],[3,1,4,2],[1,3,2,4],[2,2,4,4]]
+  Output: false
+  Explanation: Because two of the rectangles overlap with each other.
+```
 
 ## Approach
 Use area summation and corner‑point tracking.

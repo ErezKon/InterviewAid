@@ -1,27 +1,46 @@
 # 2055. Plates Between Candles
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/plates-between-candles](https://leetcode.com/problems/plates-between-candles)
 **Companies:** Adobe, Amazon, Oracle
 
 ---
 
 ## Problem Description
-Given a string `s` consisting of characters `'|'` (candles) and `'*'` (plates), and an array of queries `queries` where each query is a pair `[left, right]` representing indices in `s`, return an array where each element is the number of plates between the closest pair of candles that lie within the query interval. If a query does not contain two candles, the answer is `0`.
+
+There is a long table with a line of plates and candles arranged on top of it. You are given a **0-indexed** string `s` consisting of characters `'*'` and `'|'` only, where a `'*'` represents a **plate** and a `'|'` represents a **candle**.
+
+You are also given a **0-indexed** 2D integer array `queries` where `queries[i] = [left_i, right_i]` denotes the **substring** `s[left_i...right_i]` (**inclusive**). For each query, you need to find the **number** of plates **between candles** that are **in the substring**. A plate is considered **between candles** if there is at least one candle to its left **and** at least one candle to its right **in the substring**.
+
+- For example, `s = "||**||**|*"`, and a query `[3, 8]` denotes the substring `"*||**|"`. The number of plates between candles in this substring is `2`, as each of the two plates has at least one candle **in the substring** to its left **and** right.
+
+Return *an integer array* `answer` *where* `answer[i]` *is the answer to the* `i`th *query*.
+
+**Constraints:**
+- `3 <= s.length <= 10^5`
+- `s` consists of `'*'` and `'|'` characters.
+- `1 <= queries.length <= 10^5`
+- `queries[i].length == 2`
+- `0 <= left_i <= right_i < s.length`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: s = "**|**|***|", queries = [[2,5],[5,9]]
 Output: [2,3]
 Explanation:
-- For query [2,5], the substring is "|**|"; plates between the two candles are 2.
-- For query [5,9], the substring is "|***|"; plates between the candles are 3.
+- queries[0] has two plates between candles.
+- queries[1] has three plates between candles.
 ```
+
 **Example 2:**
 ```
-Input: s = "*****", queries = [[0,4]]
-Output: [0]
-Explanation: No candles in the interval, so result is 0.
+Input: s = "***|**|*****|**||**|*", queries = [[1,17],[4,5],[14,17],[5,11],[15,16]]
+Output: [9,0,0,0,0]
+Explanation:
+- queries[0] has nine plates between candles.
+- The other queries have zero plates between candles.
 ```
 
 ## Approach

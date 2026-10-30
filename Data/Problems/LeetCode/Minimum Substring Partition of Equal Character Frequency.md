@@ -1,6 +1,7 @@
 # 3144. Minimum Substring Partition of Equal Character Frequency
 
 **Difficulty:** 🟡 Medium
+**LeetCode:** [https://leetcode.com/problems/minimum-substring-partition-of-equal-character-frequency](https://leetcode.com/problems/minimum-substring-partition-of-equal-character-frequency)
 
 **Companies:** Microsoft, Mitsogo, Morgan Stanley
 
@@ -20,23 +21,32 @@
 
 ## 1. Problem Description
 
-Given a string `s`, partition it into the **minimum** number of substrings such that each substring has **equal frequency** of all characters present in it (e.g., `"aabb"` is valid, `"aab"` is not).
+Given a string `s`, you need to partition it into one or more **balanced** substrings. For example, if `s == "ababcc"` then `("abab", "c", "c")`, `("ab", "abc", "c")`, and `("ababcc")` are all valid partitions, but `("a", **"bab"**, "cc")`, `(**"aba"**, "bc", "c")`, and `("ab", **"abcc"**)` are not. The unbalanced substrings are bolded.
+
+Return the **minimum** number of substrings that you can partition `s` into.
+
+**Note:** A **balanced** string is a string where each character in the string occurs the same number of times.
 
 **Constraints:**
 - `1 <= s.length <= 1000`
-- `s` consists of lowercase English letters
+- `s` consists only of English lowercase letters.
 
 ---
 
 ## 2. Examples
 
+**Example 1:**
 ```
-Example 1:
-  Input: s = "fabccddg"
-  Output: 3
-  Explanation: "fab" (invalid) — try "f" + "abccdd" + "g" = 3 partitions.
-    Actually: "f" | "abccdd" | "g" — "f" has f:1 (ok), "abccdd" has a:1,b:1,c:2,d:2 (not equal).
-    Better: "f" | "ab" | "ccdd" | "g" = 4. Need to find optimal.
+Input: s = "fabccddg"
+Output: 3
+Explanation: We can partition the string s into 3 substrings in one of the following ways: ("fab, "ccdd", "g"), or ("fabc", "cd", "dg").
+```
+
+**Example 2:**
+```
+Input: s = "abababaccddb"
+Output: 2
+Explanation: We can partition the string s into 2 substrings like so: ("abab", "abaccddb").
 ```
 
 ---

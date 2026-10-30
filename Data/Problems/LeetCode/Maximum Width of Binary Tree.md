@@ -22,11 +22,17 @@
 
 ## Problem Description
 
-Given a binary tree, return the **maximum width** — the maximum number of nodes between the leftmost and rightmost non-null nodes at any level (including nulls between them).
+Given the `root` of a binary tree, return *the **maximum width** of the given tree*.
+
+The **maximum width** of a tree is the maximum **width** among all levels.
+
+The **width** of one level is defined as the length between the end-nodes (the leftmost and rightmost non-null nodes), where the null nodes between the end-nodes that would be present in a complete binary tree extending down to that level are also counted into the length calculation.
+
+It is **guaranteed** that the answer will in the range of a **32-bit** signed integer.
 
 **Constraints:**
-- Number of nodes in range `[1, 3000]`
-- `-100 ≤ Node.val ≤ 100`
+- The number of nodes in the tree is in the range `[1, 3000]`.
+- `-100 <= Node.val <= 100`
 
 ---
 
@@ -34,26 +40,23 @@ Given a binary tree, return the **maximum width** — the maximum number of node
 
 **Example 1:**
 ```
-Input:       1
-           /   \
-          3     2
-         / \     \
-        5   3     9
-
+Input: root = [1,3,2,5,3,null,9]
 Output: 4
-Explanation: Level 2 has width 4 (positions 0–3: nodes 5, 3, null, 9).
+Explanation: The maximum width exists in the third level with length 4 (5,3,null,9).
 ```
 
 **Example 2:**
 ```
-Input:       1
-           /
-          3
-         / \
-        5   3
+Input: root = [1,3,2,5,null,null,9,6,null,7]
+Output: 7
+Explanation: The maximum width exists in the fourth level with length 7 (6,null,null,null,null,null,7).
+```
 
+**Example 3:**
+```
+Input: root = [1,3,2,5]
 Output: 2
-Explanation: Level 2 has width 2 (nodes 5 and 3).
+Explanation: The maximum width exists in the second level with length 2 (3,2).
 ```
 
 ---

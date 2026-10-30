@@ -7,14 +7,32 @@
 ---
 
 ## Problem Description
-Given the `root` of a binary tree, return the values of its nodes following an **inorder** traversal (left subtree → node → right subtree). The tree may be empty.
+Given the `root` of a binary tree, return *the inorder traversal of its nodes' values*.
+
+**Constraints:**
+- The number of nodes in the tree is in the range `[0, 100]`.
+- `-100 ≤ Node.val ≤ 100`
+
+**Follow up:** Recursive solution is trivial, could you do it iteratively?
 
 ## Examples
-| Tree (level order) | Output |
-|--------------------|--------|
-| `[1,null,2,3]` | `[1,3,2]` |
-| `[]` | `[]` |
-| `[1,2,3,4,5,6,7]` | `[4,2,5,1,6,3,7]` |
+```
+Example 1:
+  Input: root = [1,null,2,3]
+  Output: [1,3,2]
+
+Example 2:
+  Input: root = [1,2,3,4,5,null,8,null,null,6,7,9]
+  Output: [4,2,6,5,7,1,3,9,8]
+
+Example 3:
+  Input: root = []
+  Output: []
+
+Example 4:
+  Input: root = [1]
+  Output: [1]
+```
 
 ## Approach
 Perform a depth‑first search in **inorder** order. The recursive version is straightforward; the iterative version uses a stack to simulate the call stack.

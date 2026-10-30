@@ -7,23 +7,33 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you can increment any element by 1 in one step. Return the minimum number of steps required to make the array non‑decreasing, i.e., `nums[i] <= nums[i+1]` for all valid `i`.
 
-Constraints typically include `1 <= nums.length <= 10^5` and `0 <= nums[i] <= 10^9`.
+You are given a **0-indexed** integer array `nums`. In one step, **remove** all elements `nums[i]` where `nums[i - 1] > nums[i]` for all `0 < i < nums.length`.
+
+Return *the number of steps performed until *`nums`* becomes a **non-decreasing** array*.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^9`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: nums = [3,2,5,1,7]
-Output: 5
-Explanation: Increment nums[1] by 1 (to 3) and nums[3] by 4 (to 5). Total steps = 1 + 4 = 5.
+Input: nums = [5,3,4,4,7,3,6,11,8,5,11]
+Output: 3
+Explanation: The following are the steps performed:
+- Step 1: [5,3,4,4,7,3,6,11,8,5,11] becomes [5,4,4,7,6,11,11]
+- Step 2: [5,4,4,7,6,11,11] becomes [5,4,7,11,11]
+- Step 3: [5,4,7,11,11] becomes [5,7,11,11]
+[5,7,11,11] is a non-decreasing array. Therefore, we return 3.
 ```
 
-**Example 2**
+**Example 2:**
 ```
-Input: nums = [0,1,2,3]
+Input: nums = [4,5,7,7,13]
 Output: 0
-Explanation: The array is already non‑decreasing.
+Explanation: nums is already a non-decreasing array. Therefore, we return 0.
 ```
 
 ## Approach

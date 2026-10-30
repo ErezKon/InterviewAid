@@ -7,24 +7,36 @@
 ---
 
 ## Problem Description
-Given an integer array `arr` and a series of queries, each query either updates an element at a given index or asks for the frequency of a target value within a sub‑array `[left, right]`. The data structure must support both operations efficiently.
+Design a data structure to find the **frequency** of a given value in a given subarray.
+
+The **frequency** of a value in a subarray is the number of occurrences of that value in the subarray.
+
+Implement the `RangeFreqQuery` class:
+
+- `RangeFreqQuery(int[] arr)` Constructs an instance of the class with the given **0-indexed** integer array `arr`.
+- `int query(int left, int right, int value)` Returns the **frequency** of `value` in the subarray `arr[left...right]`.
+
+A **subarray** is a contiguous sequence of elements within an array. `arr[left...right]` denotes the subarray that contains the elements of `nums` between indices `left` and `right` (**inclusive**).
+
+**Constraints:**
+
+- `1 <= arr.length <= 10⁵`
+- `1 <= arr[i], value <= 10⁴`
+- `0 <= left <= right < arr.length`
+- At most `10⁵` calls will be made to `query`
 
 ## Examples
-**Example 1:**
-```
-arr = [1,2,1,3,2]
-queries = [[1,1,2], [2,0,4,2], [1,0,4,2]]
-```
-- Query type 1 asks for frequency of `2` in `arr[1..2]` → returns `1`.
-- Query type 2 updates `arr[0]` to `2`.
-- Query type 1 now asks for frequency of `2` in `arr[0..4]` → returns `3`.
 
-**Example 2:**
 ```
-arr = [5,5,5]
-queries = [[1,0,2,5]]
+Example 1:
+  Input: ["RangeFreqQuery", "query", "query"]
+         [[[12, 33, 4, 56, 22, 2, 34, 33, 22, 12, 34, 56]], [1, 2, 4], [0, 11, 33]]
+  Output: [null, 1, 2]
+  Explanation:
+    RangeFreqQuery rangeFreqQuery = new RangeFreqQuery([12, 33, 4, 56, 22, 2, 34, 33, 22, 12, 34, 56]);
+    rangeFreqQuery.query(1, 2, 4);   // return 1. The value 4 occurs 1 time in the subarray [33, 4]
+    rangeFreqQuery.query(0, 11, 33); // return 2. The value 33 occurs 2 times in the whole array.
 ```
-Returns `3`.
 
 ## Approach
 Use a **Binary Indexed Tree (Fenwick Tree)** for each distinct value to store prefix counts. On update, decrement the count tree of the old value and increment the tree of the new value. Frequency query becomes `prefix(right) - prefix(left-1)` on the tree of the target value.

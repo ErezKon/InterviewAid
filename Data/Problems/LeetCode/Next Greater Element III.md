@@ -21,17 +21,29 @@
 
 ## 1. Problem Description
 
-Given a positive integer `n`, find the **smallest** integer with the **same digits** that is greater than `n`. Return `-1` if no such number exists or it exceeds 32-bit integer range.
+Given a positive integer `n`, find *the smallest integer which has exactly the same digits existing in the integer* `n` *and is greater in value than* `n`. If no such positive integer exists, return `-1`.
+
+**Note** that the returned integer should fit in **32-bit integer**, if there is a valid answer but it does not fit in **32-bit integer**, return `-1`.
+
+**Constraints:**
+
+- `1 <= n <= 2^31 - 1`
 
 ---
 
 ## 2. Examples
 
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `12` | `21` | Swapping the digits yields the next greater number. |
-| `21` | `-1` | No larger permutation exists. |
-| `1234` | `1243` | Swap `3` with `4` and reverse the suffix. |
+```
+Example 1:
+  Input: n = 12
+  Output: 21
+```
+
+```
+Example 2:
+  Input: n = 21
+  Output: -1
+```
 
 ---
 

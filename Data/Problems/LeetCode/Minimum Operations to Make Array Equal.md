@@ -7,18 +7,31 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, you may perform the following operation any number of times: choose two distinct indices `i` and `j`, increment `nums[i]` by `2` and decrement `nums[j]` by `1`. Return the minimum number of operations required to make all elements of the array equal.
+You have an array `arr` of length `n` where `arr[i] = (2 * i) + 1` for all valid values of `i` (i.e., `0 <= i < n`).
+
+In one operation, you can select two indices `x` and `y` where `0 <= x, y < n` and subtract `1` from `arr[x]` and add `1` to `arr[y]` (i.e., perform `arr[x] -= 1` and `arr[y] += 1`). The goal is to make all the elements of the array **equal**. It is **guaranteed** that all the elements of the array can be made equal using some operations.
+
+Given an integer `n`, the length of the array, return *the minimum number of operations* needed to make all the elements of arr equal.
+
+**Constraints:**
+- `1 <= n <= 10^4`
 
 ## Examples
-**Example 1:**
-Input: `nums = [2,5,6]`
-Output: `3`
-Explanation: One optimal sequence is: \( [2,5,6] → [4,4,6] → [6,4,4] → [6,6,6] \).
 
-**Example 2:**
-Input: `nums = [3,3,3]`
-Output: `0`
-Explanation: The array is already equal.
+```
+Example 1:
+  Input: n = 3
+  Output: 2
+  Explanation: arr = [1, 3, 5]
+  First operation choose x = 2 and y = 0, this leads arr to be [2, 3, 4]
+  In the second operation choose x = 2 and y = 0 again, thus arr = [3, 3, 3].
+```
+
+```
+Example 2:
+  Input: n = 6
+  Output: 9
+```
 
 ## Approach
 The operation increases the total sum by `1`. To make all elements equal to a target `t`, the total sum must become `n * t`. The smallest feasible `t` is the ceiling of the average of the array. The required number of operations equals `t * n - sum(nums)`.

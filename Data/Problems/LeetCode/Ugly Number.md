@@ -8,20 +8,35 @@
 ---
 
 ## Problem Description
-Given a positive integer `n`, determine if it is an *ugly number*. An ugly number is a positive integer whose prime factors are limited to `2`, `3`, and `5` only. Return `true` if `n` is ugly, otherwise `false`.
+
+An **ugly number** is a *positive* integer which does not have a prime factor other than 2, 3, and 5.
+
+Given an integer `n`, return `true` *if* `n` *is an **ugly number***.
+
+**Constraints:**
+- `-2^31 <= n <= 2^31 - 1`
 
 ## Examples
+
 **Example 1:**
 ```
 Input: n = 6
 Output: true
-Explanation: 6 = 2 × 3, both prime factors are allowed.
+Explanation: 6 = 2 × 3
 ```
+
 **Example 2:**
+```
+Input: n = 1
+Output: true
+Explanation: 1 has no prime factors.
+```
+
+**Example 3:**
 ```
 Input: n = 14
 Output: false
-Explanation: 14 = 2 × 7, factor 7 is not allowed.
+Explanation: 14 is not ugly since it includes the prime factor 7.
 ```
 
 ## Approach

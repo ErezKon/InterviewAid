@@ -8,34 +8,56 @@
 
 ## 1. Problem Description
 
-Given an `Employees` table, calculate a bonus for each employee: salary if `employee_id` is odd AND name doesn't start with 'M', otherwise 0. *(SQL problem)*
+Table: `Employees`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| employee_id | int     |
+| name        | varchar |
+| salary      | int     |
++-------------+---------+
+employee_id is the primary key (column with unique values) for this table.
+Each row of this table indicates the employee ID, employee name, and salary.
+```
+
+Write a solution to calculate the bonus of each employee. The bonus of an employee is `100%` of their salary if the ID of the employee is **an odd number** and **the employee's name does not start with the character `'M'`**. The bonus of an employee is `0` otherwise.
+
+Return the result table ordered by `employee_id`.
+
+The result format is in the following example.
 
 ## 2. Examples
 
-**Example 1:**
-```sql
-Employees
-+------------+----------+--------+
-| employee_id| name     | salary |
-+------------+----------+--------+
-| 1          | Alice    | 1000   |
-| 2          | Michael  | 1500   |
-| 3          | Bob      | 2000   |
-+------------+----------+--------+
 ```
-Result:
+Example 1:
+  Input:
+  Employees table:
+  +-------------+---------+--------+
+  | employee_id | name    | salary |
+  +-------------+---------+--------+
+  | 2           | Meir    | 3000   |
+  | 3           | Michael | 3800   |
+  | 7           | Addilyn | 7400   |
+  | 8           | Juan    | 6100   |
+  | 9           | Kannon  | 7700   |
+  +-------------+---------+--------+
+  Output:
+  +-------------+-------+
+  | employee_id | bonus |
+  +-------------+-------+
+  | 2           | 0     |
+  | 3           | 0     |
+  | 7           | 7400  |
+  | 8           | 0     |
+  | 9           | 7700  |
+  +-------------+-------+
+  Explanation:
+  The employees with IDs 2 and 8 get 0 bonus because they have an even employee_id.
+  The employee with ID 3 gets 0 bonus because their name starts with 'M'.
+  The rest of the employees get a 100% bonus.
 ```
-+------------+-------+
-| employee_id| bonus |
-+------------+-------+
-| 1          | 1000 |
-| 2          | 0    |
-| 3          | 2000 |
-+------------+-------+
-```
-- Employee 1: odd ID and name does not start with M → salary.
-- Employee 2: even ID → 0.
-- Employee 3: odd ID, name does not start with M → salary.
 
 ## 3. Walkthrough
 

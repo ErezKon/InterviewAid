@@ -21,7 +21,25 @@
 
 ## Problem Description
 
-Find a subarray that maximizes `GCD(subarray) × SUM(subarray)`.
+> *Note: the Approach below ignores the official requirement that the subarray has **at least `k`** elements. Fix: for each right end `r`, keep the distinct gcd values of subarrays ending at `r` together with the **leftmost** start that gives each gcd. All numbers are positive, so the longest subarray with a given gcd also has the largest sum. Use it (`sum = P[r+1] - P[start]`) only when `r - start + 1 ≥ k`.*
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an array of integers `nums` and an integer `k`.
+
+The **gcd-sum** of an array `a` is calculated as follows:
+
+- Let `s` be the sum of all the elements of `a`.
+- Let `g` be the **greatest common divisor** of all the elements of `a`.
+- The gcd-sum of `a` is equal to `s * g`.
+
+Return *the **maximum gcd-sum** of a subarray of* `nums` *with at least* `k` *elements.*
+
+**Constraints:**
+- `n == nums.length`
+- `1 <= n <= 10^5`
+- `1 <= nums[i] <= 10^6`
+- `1 <= k <= n`
 
 ---
 
@@ -29,16 +47,18 @@ Find a subarray that maximizes `GCD(subarray) × SUM(subarray)`.
 
 **Example 1:**
 ```
-Input: nums = [2,6,3,9,5]
-Output: 30
-Explanation: Subarray [6,3,9] has GCD = 3 and SUM = 18, product = 54. The maximum product is achieved by subarray [2,6] where GCD = 2 and SUM = 8, product = 16? Actually the optimal subarray is [6,3,9] → 3*18 = 54, which is the maximum.
+Input: nums = [2,1,4,4,4,2], k = 2
+Output: 48
+Explanation: We take the subarray [4,4,4], the gcd-sum of this array is 4 * (4 + 4 + 4) = 48.
+It can be shown that we can not select any other subarray with a gcd-sum greater than 48.
 ```
 
 **Example 2:**
 ```
-Input: nums = [4,8,16]
-Output: 48
-Explanation: Whole array GCD = 4, SUM = 28, product = 112. Subarray [8,16] gives GCD = 8, SUM = 24, product = 192, which is larger.
+Input: nums = [7,3,9,4], k = 1
+Output: 81
+Explanation: We take the subarray [9], the gcd-sum of this array is 9 * 9 = 81.
+It can be shown that we can not select any other subarray with a gcd-sum greater than 81.
 ```
 
 ---

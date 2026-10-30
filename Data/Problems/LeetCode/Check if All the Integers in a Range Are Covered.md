@@ -7,20 +7,33 @@
 ---
 
 ## Problem Description
-You are given an array `ranges` where each element is a two‑element array `[l, r]` representing an inclusive interval of integers. Also given two integers `left` and `right`. Return `true` if every integer in the closed interval `[left, right]` is covered by at least one of the intervals in `ranges`; otherwise return `false`. Constraints: `1 ≤ ranges.length ≤ 50`, `0 ≤ l_i ≤ r_i ≤ 50`, `0 ≤ left ≤ right ≤ 50`.
+You are given a 2D integer array `ranges` and two integers `left` and `right`. Each `ranges[i] = [start_i, end_i]` represents an **inclusive** interval between `start_i` and `end_i`.
+
+Return `true` *if each integer in the inclusive range* `[left, right]` *is covered by **at least one** interval in* `ranges`. Return `false` *otherwise*.
+
+An integer `x` is covered by an interval `ranges[i] = [start_i, end_i]` if `start_i <= x <= end_i`.
+
+**Constraints:**
+- `1 <= ranges.length <= 50`
+- `1 <= start_i <= end_i <= 50`
+- `1 <= left <= right <= 50`
 
 ## Examples
-**Example 1**
 ```
-Input: ranges = [[1,2],[3,4],[5,6]], left = 2, right = 5
-Output: true
-Explanation: Integers 2,3,4,5 are each covered by at least one range.
+Example 1:
+  Input: ranges = [[1,2],[3,4],[5,6]], left = 2, right = 5
+  Output: true
+  Explanation: Every integer between 2 and 5 is covered:
+  - 2 is covered by the first range.
+  - 3 and 4 are covered by the second range.
+  - 5 is covered by the third range.
 ```
-**Example 2**
+
 ```
-Input: ranges = [[1,10],[10,20]], left = 21, right = 21
-Output: false
-Explanation: 21 is not covered by any range.
+Example 2:
+  Input: ranges = [[1,10],[10,20]], left = 21, right = 21
+  Output: false
+  Explanation: 21 is not covered by any range.
 ```
 
 ## Approach

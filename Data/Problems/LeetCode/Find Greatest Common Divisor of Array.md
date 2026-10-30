@@ -7,20 +7,45 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, return the greatest common divisor (GCD) of all the elements in the array. The GCD of a set of numbers is the largest positive integer that divides each of the numbers without leaving a remainder.
+Given an integer array `nums`, return ***the greatest common divisor** of the smallest number and largest number in* `nums`.
+
+The **greatest common divisor** of two numbers is the largest positive integer that evenly divides both numbers.
+
+**Constraints:**
+
+- `2 <= nums.length <= 1000`
+- `1 <= nums[i] <= 1000`
 
 ## Examples
-**Example 1**
+
 ```
-Input: nums = [2,4,6,8,10]
-Output: 2
-Explanation: The GCD of all numbers is 2.
+Example 1:
+  Input: nums = [2,5,6,9,10]
+  Output: 2
+  Explanation:
+  The smallest number in nums is 2.
+  The largest number in nums is 10.
+  The greatest common divisor of 2 and 10 is 2.
 ```
-**Example 2**
+
 ```
-Input: nums = [3,9,27]
-Output: 3
-Explanation: 3 divides all numbers and is the largest such integer.
+Example 2:
+  Input: nums = [7,5,6,8,3]
+  Output: 1
+  Explanation:
+  The smallest number in nums is 3.
+  The largest number in nums is 8.
+  The greatest common divisor of 3 and 8 is 1.
+```
+
+```
+Example 3:
+  Input: nums = [3,3]
+  Output: 3
+  Explanation:
+  The smallest number in nums is 3.
+  The largest number in nums is 3.
+  The greatest common divisor of 3 and 3 is 3.
 ```
 
 ## Approach

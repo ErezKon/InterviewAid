@@ -7,22 +7,43 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of words separated by single spaces, return a list of strings where each string represents a vertical reading of the words. The i‑th string contains the i‑th character of each word (or a space if the word is shorter). Trailing spaces in each vertical string should be omitted.
+
+Given a string `s`. Return all the words vertically in the same order in which they appear in `s`.
+Words are returned as a list of strings, complete with spaces when is necessary. (Trailing spaces are not allowed).
+Each word would be put on only one column and that in one column there will be only one word.
+
+**Constraints:**
+- `1 <= s.length <= 200`
+- `s` contains only upper case English letters.
+- It's guaranteed that there is only one space between 2 words.
 
 ## Examples
-**Example 1**
-```
-Input: "HOW ARE YOU"
-Output: ["HAY","OR ","WEU"]
-```
-Characters are read column‑wise; the second column has a trailing space which is kept because a later column has a character.
 
-**Example 2**
+**Example 1:**
 ```
-Input: "TO BE OR NOT TO BE"
+Input: s = "HOW ARE YOU"
+Output: ["HAY","ORO","WEU"]
+Explanation: Each word is printed vertically.
+ "HAY"
+ "ORO"
+ "WEU"
+```
+
+**Example 2:**
+```
+Input: s = "TO BE OR NOT TO BE"
 Output: ["TBONTB","OEROOE","   T"]
+Explanation: Trailing spaces is not allowed.
+"TBONTB"
+"OEROOE"
+"   T"
 ```
-Spaces are inserted when a word is shorter than the current column.
+
+**Example 3:**
+```
+Input: s = "CONTEST IS COMING"
+Output: ["CIC","OSO","N M","T I","E N","S G","T"]
+```
 
 ## Approach
 1. **Split** the input string into an array of words.

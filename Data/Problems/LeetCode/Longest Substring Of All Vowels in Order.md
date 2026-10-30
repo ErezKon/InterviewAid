@@ -8,7 +8,20 @@
 
 ## 1. Problem Description
 
-Find the longest "beautiful" substring: contains all 5 vowels (a, e, i, o, u) in non-decreasing order.
+A string is considered **beautiful** if it satisfies the following conditions:
+
+- Each of the 5 English vowels (`'a'`, `'e'`, `'i'`, `'o'`, `'u'`) must appear **at least once** in it.
+- The letters must be sorted in **alphabetical order** (i.e. all `'a'`s before `'e'`s, all `'e'`s before `'i'`s, etc.).
+
+For example, strings `"aeiou"` and `"aaaaaaeiiiioou"` are considered **beautiful**, but `"uaeio"`, `"aeoiu"`, and `"aaaeeeooo"` are **not beautiful**.
+
+Given a string `word` consisting of English vowels, return *the **length of the longest beautiful substring** of *`word`*. If no such substring exists, return *`0`.
+
+A **substring** is a contiguous sequence of characters in a string.
+
+**Constraints:**
+- `1 <= word.length <= 5 * 10^5`
+- `word` consists of characters `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`.
 
 ---
 
@@ -43,17 +56,24 @@ FUNCTION longestBeautifulSubstring(word):
 
 **Example 1:**
 ```
-word = "aeiouae"
-output = 5
+Input: word = "aeiaaioaaaaeiiiiouuuooaauuaeiu"
+Output: 13
+Explanation: The longest beautiful substring in word is "aaaaeiiiiouuu" of length 13.
 ```
-*Explanation:* The substring "aeiou" contains all five vowels in order, length 5. The trailing "ae" does not form a longer beautiful substring.
 
 **Example 2:**
 ```
-word = "aeeeiiiioooouuuuaeiou"
-output = 13
+Input: word = "aeeeiiiioooauuuaeiou"
+Output: 5
+Explanation: The longest beautiful substring in word is "aeiou" of length 5.
 ```
-*Explanation:* The longest beautiful substring is "aeiiiioooouuuu" (13 characters) where vowels appear in non‑decreasing order and all five distinct vowels are present.
+
+**Example 3:**
+```
+Input: word = "a"
+Output: 0
+Explanation: There is no beautiful substring, so return 0.
+```
 
 ---
 

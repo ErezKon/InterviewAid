@@ -7,16 +7,46 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `k`, you may perform the following operation any number of times: choose an element `x` such that `x > k` and replace it with any integer `y` where `y ≤ k`. Return the minimum number of operations required to make **every** element of the array equal to `k`. If it is impossible, return `-1`.
+You are given an integer array `nums` and an integer `k`.
 
-Constraints typically include `1 ≤ nums.length ≤ 10⁵` and `1 ≤ nums[i], k ≤ 10⁹`.
+An integer `h` is called **valid** if all values in the array that are **strictly greater** than `h` are *identical*.
+
+For example, if `nums = [10, 8, 10, 8]`, a **valid** integer is `h = 9` because all `nums[i] > 9` are equal to 10, but 5 is not a **valid** integer.
+
+You are allowed to perform the following operation on `nums`:
+
+- Select an integer `h` that is *valid* for the **current** values in `nums`.
+- For each index `i` where `nums[i] > h`, set `nums[i]` to `h`.
+
+Return the **minimum** number of operations required to make every element in `nums` **equal** to `k`. If it is impossible to make all elements equal to `k`, return `-1`.
+
+**Constraints:**
+- `1 ≤ nums.length ≤ 100`
+- `1 ≤ nums[i] ≤ 100`
+- `1 ≤ k ≤ 100`
 
 ## Examples
-| Input | Output | Explanation |
-|-------|--------|-------------|
-| `nums = [3,2,2,4,5]`, `k = 2` | `2` | Elements greater than `2` are `{3,4,5}` – three distinct values. Each distinct value requires one operation, so answer is `3`. However, the element `2` is already equal to `k`, and we can change all `3,4,5` to `2` in two operations by first converting `3` → `2` and `4` → `2`, then `5` → `2`. The minimal distinct count is `2`. |
-| `nums = [1,2,3]`, `k = 2` | `-1` | The element `1` is less than `k`; we can never increase it, so making all values `2` is impossible. |
-| `nums = [2,2,2]`, `k = 2` | `0` | All elements already equal `k`; no operations needed. |
+
+```
+Example 1:
+  Input: nums = [5,2,5,4,5], k = 2
+  Output: 2
+  Explanation: The operations can be performed in order using valid integers 4 and then 2.
+```
+
+```
+Example 2:
+  Input: nums = [2,1,2], k = 2
+  Output: -1
+  Explanation: It is impossible to make all the values equal to 2.
+```
+
+```
+Example 3:
+  Input: nums = [9,7,5,3], k = 1
+  Output: 4
+  Explanation: The operations can be performed using valid integers in the order 7, 5, 3, and 1.
+```
 
 ## Approach
 The key insight is that any element larger than `k` can be turned into `k` in a single operation, regardless of its original value. Therefore, the number of required operations equals the count of **distinct** values greater than `k`. If any element is smaller than `k`, the task is impossible.

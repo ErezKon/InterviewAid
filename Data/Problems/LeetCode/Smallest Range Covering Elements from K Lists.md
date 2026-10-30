@@ -8,12 +8,34 @@
 
 ## Problem Description
 
-You are given `k` sorted lists of integers. Find the smallest range `[min, max]` that includes at least one number from each of the `k` lists. The smallest range is defined by the one with the minimum difference `max - min`. If there is a tie, choose the one with the smaller `min` value.
+You have `k` lists of sorted integers in **non-decreasing order**. Find the **smallest** range that includes at least one number from each of the `k` lists.
+
+We define the range `[a, b]` is smaller than range `[c, d]` if `b - a < d - c` **or** `a < c` if `b - a == d - c`.
+
+**Constraints:**
+- `nums.length == k`
+- `1 <= k <= 3500`
+- `1 <= nums[i].length <= 50`
+- `-10^5 <= nums[i][j] <= 10^5`
+- `nums[i]` is sorted in **non-decreasing** order.
 
 ## Examples
 
-- **Input:** `nums = [[4,10,15,24,26], [0,9,12,20], [5,18,22,30]]`
-  - **Output:** `[20, 24]`. The range `[20, 24]` contains `24` from list 1, `20` from list 2, and `22` from list 3.
+```
+Example 1:
+  Input: nums = [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]
+  Output: [20,24]
+  Explanation:
+    List 1: [4, 10, 15, 24,26], 24 is in range [20,24].
+    List 2: [0, 9, 12, 20], 20 is in range [20,24].
+    List 3: [5, 18, 22, 30], 22 is in range [20,24].
+```
+
+```
+Example 2:
+  Input: nums = [[1,2,3],[1,2,3],[1,2,3]]
+  Output: [1,1]
+```
 
 ## Approach: Min-Heap + Sliding Window [Time: O(N log k), Space: O(k)]
 

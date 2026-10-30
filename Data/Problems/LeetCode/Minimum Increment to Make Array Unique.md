@@ -8,7 +8,15 @@
 
 ## Problem Description
 
-Given an integer array `nums`, in one move you can increment any element by 1. Return the **minimum number of moves** to make every value unique.
+You are given an integer array `nums`. In one move, you can pick an index `i` where `0 <= i < nums.length` and increment `nums[i]` by `1`.
+
+Return *the minimum number of moves to make every value in *`nums`* **unique***.
+
+The test cases are generated so that the answer fits in a 32-bit integer.
+
+**Constraints:**
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 10^5`
 
 ## Key Insight
 
@@ -36,14 +44,15 @@ FUNCTION minIncrementForUnique(nums):
 ```
 Input: nums = [1,2,2]
 Output: 1
-Explanation: Increment the second `2` to `3`.
+Explanation: After 1 move, the array could be [1, 2, 3].
 ```
 
 **Example 2:**
 ```
 Input: nums = [3,2,1,2,1,7]
 Output: 6
-Explanation: After sorting -> [1,1,2,2,3,7]; increments needed: (1→2), (2→3), (2→4) total 6.
+Explanation: After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
+It can be shown that it is impossible for the array to have all unique values with 5 or less moves.
 ```
 
 ## Walkthrough

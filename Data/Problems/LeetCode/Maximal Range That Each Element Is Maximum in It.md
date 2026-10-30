@@ -21,12 +21,22 @@
 
 ## Problem Description
 
-Given a 0-indexed array `nums` of **distinct** integers, for each element `nums[i]`, find the length of the maximal contiguous subarray in which `nums[i]` is the maximum element. Return an array `ans` where `ans[i]` is that length.
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given a **0-indexed** array `nums` of **distinct **integers.
+
+Let us define a **0-indexed **array `ans` of the same length as `nums` in the following way:
+
+- `ans[i]` is the **maximum** length of a subarray `nums[l..r]`, such that the maximum element in that subarray is equal to `nums[i]`.
+
+Return* the array *`ans`.
+
+**Note** that a **subarray** is a contiguous part of the array.
 
 **Constraints:**
-- `1 ≤ nums.length ≤ 10⁵`
-- `1 ≤ nums[i] ≤ 10⁵`
-- All elements are distinct.
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= 10^5`
+- All elements in `nums` are distinct.
 
 ---
 
@@ -34,13 +44,20 @@ Given a 0-indexed array `nums` of **distinct** integers, for each element `nums[
 
 **Example 1:**
 ```
-Input:  nums = [1, 5, 4, 3, 6]
-Output: [1, 4, 3, 2, 5]
-Explanation:
-  nums[0]=1: max in [1] only → 1
-  nums[1]=5: max in [1,5,4,3] → 4
-  nums[2]=4: max in [5,4,3] — no, [4,3] and [5,4,3]? Actually [4,3] → 2... 
-  Need left/right boundaries via next greater element.
+Input: nums = [1,5,4,3,6]
+Output: [1,4,2,1,5]
+Explanation: For nums[0] the longest subarray in which 1 is the maximum is nums[0..0] so ans[0] = 1.
+For nums[1] the longest subarray in which 5 is the maximum is nums[0..3] so ans[1] = 4.
+For nums[2] the longest subarray in which 4 is the maximum is nums[2..3] so ans[2] = 2.
+For nums[3] the longest subarray in which 3 is the maximum is nums[3..3] so ans[3] = 1.
+For nums[4] the longest subarray in which 6 is the maximum is nums[0..4] so ans[4] = 5.
+```
+
+**Example 2:**
+```
+Input: nums = [1,2,3,4,5]
+Output: [1,2,3,4,5]
+Explanation: For nums[i] the longest subarray in which it's the maximum is nums[0..i] so ans[i] = i + 1.
 ```
 
 ---

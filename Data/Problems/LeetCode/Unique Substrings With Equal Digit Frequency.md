@@ -7,20 +7,30 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of digits `'0'‑'9'`, a substring is **good** if each distinct digit that appears in the substring occurs the same number of times. Return the number of distinct good substrings of `s`.
+
+> *Note: premium problem (statement checked against the official text with verify.py).*
+
+Given a digit string `s`, return *the number of **unique substrings** of* `s` *where every digit appears the same number of times.*
+
+**Constraints:**
+- `1 <= s.length <= 1000`
+- `s` consists of digits.
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
-Input: s = "1122"
+Input: s = "1212"
 Output: 5
-Explanation: The good substrings are "1", "2", "11", "22", "1122".
+Explanation: The substrings that meet the requirements are "1", "2", "12", "21", "1212".
+Note that although the substring "12" appears twice, it is only counted once.
 ```
-**Example 2**
+
+**Example 2:**
 ```
-Input: s = "123"
-Output: 3
-Explanation: Only the single‑character substrings are good.
+Input: s = "12321"
+Output: 9
+Explanation: The substrings that meet the requirements are "1", "2", "3", "12", "23", "32", "21", "123", "321".
 ```
 
 ## Approach

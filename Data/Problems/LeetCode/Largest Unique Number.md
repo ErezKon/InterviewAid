@@ -8,7 +8,11 @@
 
 ## 1. Problem Description
 
-Return the largest integer that appears exactly once in `nums`. Return -1 if none.
+Given an integer array `nums`, return *the largest integer that only occurs once*. If no integer occurs once, return `-1`.
+
+**Constraints:**
+- `1 <= nums.length <= 2000`
+- `0 <= nums[i] <= 1000`
 
 ---
 
@@ -33,10 +37,19 @@ FUNCTION largestUniqueNumber(nums):
 
 ## 3. Examples
 
-| Input | Output |
-|-------|--------|
-| `[5,7,3,9,4,9,8,5,4]` | `8` |
-| `[9,9,8,8]` | `-1` |
+```
+Example 1:
+  Input: nums = [5,7,3,9,4,9,8,3,1]
+  Output: 8
+  Explanation: The maximum integer in the array is 9 but it is repeated. The number 8 occurs only once, so it is the answer.
+```
+
+```
+Example 2:
+  Input: nums = [9,9,8,8]
+  Output: -1
+  Explanation: There is no number that occurs only once.
+```
 
 ---
 

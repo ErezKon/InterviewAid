@@ -20,10 +20,19 @@
 
 ## 1. Problem Description
 
-Given a permutation and a set of forbidden values for each position, find the **minimum** number of adjacent swaps to rearrange so no position holds a forbidden value.
+> *Note: the Approach below is only a placeholder. Correct idea: return -1 if `cnt_nums[v] + cnt_forbidden[v] > n` for some value `v`. Otherwise, with `B` = number of indices where `nums[i] == forbidden[i]` and `bad[v]` the count of those with value `v`, the answer is `max(ceil(B/2), max_v bad[v])`. Checked against brute force.*
+
+You are given two integer arrays, `nums` and `forbidden`, each of length `n`.
+
+You may perform the following operation any number of times (including zero):
+
+- Choose two **distinct** indices `i` and `j`, and swap `nums[i]` with `nums[j]`.
+
+Return the **minimum** number of swaps required such that, for every index `i`, the value of `nums[i]` is **not equal** to `forbidden[i]`. If no amount of swaps can ensure that every index avoids its forbidden value, return -1.
 
 **Constraints:**
-- `1 <= n <= 10⁵`
+- `1 <= n == nums.length == forbidden.length <= 10^5`
+- `1 <= nums[i], forbidden[i] <= 10^9`
 
 ---
 
@@ -37,17 +46,36 @@ Given a permutation and a set of forbidden values for each position, find the **
 
 **Example 1:**
 ```
-nums = [1, 2, 3, 4]
-forbidden = {0: [2], 1: [1], 2: [], 3: []}
+Input: nums = [1,2,3], forbidden = [3,2,1]
+Output: 1
+Explanation: One optimal set of swaps:
+- Select indices i = 0 and j = 1 in nums and swap them, resulting in nums = [2, 1, 3].
+- After this swap, for every index i, nums[i] is not equal to forbidden[i].
 ```
-*Position 0 cannot contain `2` and position 1 cannot contain `1`. Swapping positions 0 and 1 yields `[2,1,3,4]`, which satisfies all constraints with 1 swap.
 
 **Example 2:**
 ```
-nums = [5, 1, 3, 2, 4]
-forbidden = {0: [5], 2: [3], 4: [4]}
+Input: nums = [4,6,6,5], forbidden = [4,6,5,5]
+Output: 2
+Explanation: One optimal set of swaps:
+- Select indices i = 0 and j = 2 in nums and swap them, resulting in nums = [6, 6, 4, 5].
+- Select indices i = 1 and j = 3 in nums and swap them, resulting in nums = [6, 5, 4, 6].
+- After these swaps, for every index i, nums[i] is not equal to forbidden[i].
 ```
-*Multiple positions start with forbidden values. The optimal sequence of adjacent swaps resolves all conflicts in 4 swaps.
+
+**Example 3:**
+```
+Input: nums = [7,7], forbidden = [8,7]
+Output: -1
+Explanation: It is not possible to make nums[i] different from forbidden[i] for all indices.
+```
+
+**Example 4:**
+```
+Input: nums = [1,2], forbidden = [2,1]
+Output: 0
+Explanation: No swaps are required because nums[i] is already different from forbidden[i] for all indices, so the answer is 0.
+```
 
 ---
 

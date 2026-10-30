@@ -20,38 +20,39 @@
 
 ## Problem Description
 
-Given two integer arrays `arr` and `brr` of length `n`, and an integer `k`, you can rearrange the elements of `brr` in any order. The cost of making the arrays identical is:
+You are given two integer arrays `arr` and `brr` of length `n`, and an integer `k`. You can perform the following operations on `arr` *any* number of times:
+- Split `arr` into *any* number of **contiguous** subarrays and rearrange these subarrays in *any order*. This operation has a fixed cost of `k`.
+- Choose any element in `arr` and add or subtract a positive integer `x` to it. The cost of this operation is `x`.
 
-- If you choose **not** to rearrange `brr`: cost = sum of `|arr[i] - brr[i]|` for all `i`.
-- If you choose to rearrange `brr`: cost = `k` + sum of `|arr[i] - brr[i]|` for the optimal rearrangement.
-
-Return the **minimum cost** to make both arrays identical element-wise (after optionally rearranging `brr`).
+Return the **minimum** total cost to make `arr` **equal** to `brr`.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁵`
-- `1 ≤ arr[i], brr[i] ≤ 10⁵`
-- `0 ≤ k ≤ 10⁹`
+- `1 ≤ arr.length == brr.length ≤ 10⁵`
+- `0 ≤ k ≤ 2 * 10¹⁰`
+- `-10⁵ ≤ arr[i] ≤ 10⁵`
+- `-10⁵ ≤ brr[i] ≤ 10⁵`
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input: arr = [2, 1, 4], brr = [4, 2, 1], k = 5
-Output: 3
-Explanation: Without rearranging: |2-4| + |1-2| + |4-1| = 2 + 1 + 3 = 6.
-With rearranging brr to [2, 1, 4]: cost = 5 + 0 = 5.
-With rearranging brr to [1, 2, 4]: cost = 5 + |2-1| + |1-2| + |4-4| = 5 + 1 + 1 + 0 = 7.
-Best is no rearrangement cost = 6? Actually sort both and match: sorted arr=[1,2,4], sorted brr=[1,2,4] → cost = 5 + 0 = 5. But without rearranging cost = 6. Minimum = 5.
-Wait — better: rearrange brr=[2,1,4] → cost = 5 + 0 = 5. Without: 6. Answer = 5.
+Example 1:
+  Input: arr = [-7,9,5], brr = [7,-2,-5], k = 2
+  Output: 13
+  Explanation:
+  - Split arr into two contiguous subarrays: [-7] and [9, 5] and rearrange them as [9, 5, -7], with a cost of 2.
+  - Subtract 2 from element arr[0]. The array becomes [7, 5, -7]. The cost of this operation is 2.
+  - Subtract 7 from element arr[1]. The array becomes [7, -2, -7]. The cost of this operation is 7.
+  - Add 2 to element arr[2]. The array becomes [7, -2, -5]. The cost of this operation is 2.
+  The total cost to make the arrays equal is 2 + 2 + 7 + 2 = 13.
 ```
 
-**Example 2:**
 ```
-Input: arr = [1, 1, 1], brr = [1, 1, 1], k = 0
-Output: 0
-Explanation: Arrays already identical, cost = 0.
+Example 2:
+  Input: arr = [2,1], brr = [2,1], k = 0
+  Output: 0
+  Explanation: Since the arrays are already equal, no operations are needed, and the total cost is 0.
 ```
 
 ---

@@ -6,11 +6,34 @@
 ---
 
 ## Problem Description
-Given an integer `length` and a list of `updates`, where each update is a triple `[start, end, inc]`, increment every element of the array `arr` (initially all zeros) from index `start` to `end` (inclusive) by `inc`. Return the final array after all updates have been applied.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given an integer `length` and an array `updates` where `updates[i] = [startIdx_i, endIdx_i, inc_i]`.
+
+You have an array `arr` of length `length` with all zeros, and you have some operation to apply on `arr`. In the `i^th` operation, you should increment all the elements `arr[startIdx_i], arr[startIdx_i + 1], ..., arr[endIdx_i]` by `inc_i`.
+
+Return `arr` *after applying all the* `updates`.
+
+**Constraints:**
+- `1 <= length <= 10^5`
+- `0 <= updates.length <= 10^4`
+- `0 <= startIdx_i <= endIdx_i < length`
+- `-1000 <= inc_i <= 1000`
 
 ## Examples
-- Input: `length = 5, updates = [[1,3,2],[2,4,3],[0,2,1]]` → Output: `[1,3,6,5,3]`
-- Input: `length = 2, updates = []` → Output: `[0,0]`
+
+**Example 1:**
+```
+Input: length = 5, updates = [[1,3,2],[2,4,3],[0,2,-2]]
+Output: [-2,0,3,5,3]
+```
+
+**Example 2:**
+```
+Input: length = 10, updates = [[2,4,6],[5,6,8],[1,9,-4]]
+Output: [0,-4,2,2,2,4,4,-4,-4,-4]
+```
 
 ## Approach
 Use a difference array to record the net change at each index. For each update, add `inc` at `start` and subtract `inc` at `end+1` (if within bounds). Finally compute the prefix sum of the difference array to obtain the resulting values.

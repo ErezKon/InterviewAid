@@ -6,13 +6,82 @@
 ---
 
 ## Problem Description
-Given two tables `Students(student_id, student_name, department_id)` and `Departments(department_id, department_name)`, return the names of students whose `department_id` does **not** exist in the `Departments` table. The result should be ordered by `student_id` ascending.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+Table: `Departments`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| name          | varchar |
++---------------+---------+
+In SQL, id is the primary key of this table.
+The table has information about the id of each department of a university.
+```
+
+Table: `Students`
+
+```
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| name          | varchar |
+| department_id | int     |
++---------------+---------+
+In SQL, id is the primary key of this table.
+The table has information about the id of each student at a university and the id of the department he/she studies at.
+```
+
+Find the id and the name of all students who are enrolled in departments that no longer exist.
+
+Return the result table in **any order**.
+
+The result format is in the following example.
 
 ## Examples
-| Students Table | Departments Table | Output |
-|----------------|-------------------|--------|
-| `1, Alice, 10`<br>`2, Bob, 20`<br>`3, Carol, 30` | `10, CS`<br>`30, Math` | `Bob` |
-| `1, Dave, 5` | *(empty)* | `Dave` |
+
+**Example 1:**
+```
+Input:
+Departments table:
++------+--------------------------+
+| id   | name                     |
++------+--------------------------+
+| 1    | Electrical Engineering   |
+| 7    | Computer Engineering     |
+| 13   | Bussiness Administration |
++------+--------------------------+
+Students table:
++------+----------+---------------+
+| id   | name     | department_id |
++------+----------+---------------+
+| 23   | Alice    | 1             |
+| 1    | Bob      | 7             |
+| 5    | Jennifer | 13            |
+| 2    | John     | 14            |
+| 4    | Jasmine  | 77            |
+| 3    | Steve    | 74            |
+| 6    | Luis     | 1             |
+| 8    | Jonathan | 7             |
+| 7    | Daiana   | 33            |
+| 11   | Madelynn | 1             |
++------+----------+---------------+
+Output:
++------+----------+
+| id   | name     |
++------+----------+
+| 2    | John     |
+| 7    | Daiana   |
+| 4    | Jasmine  |
+| 3    | Steve    |
++------+----------+
+Explanation:
+John, Daiana, Steve, and Jasmine are enrolled in departments 14, 33, 74, and 77 respectively. department 14, 33, 74, and 77 do not exist in the Departments table.
+```
 
 ## Approach
 The task is a classic anti‑join: select rows from `Students` where no matching `department_id` exists in `Departments`. This can be expressed using a `LEFT JOIN` with a `WHERE` filter on `NULL` or using `NOT EXISTS`.

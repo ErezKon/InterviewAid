@@ -7,19 +7,35 @@
 ---
 
 ## Problem Description
-Alice and Bob play a game on an array `stones` of positive integers. On each turn a player removes either the leftmost or rightmost stone and gains points equal to the sum of the remaining stones (i.e., the total after removal). The removed stone is discarded. The game ends when no stones remain. Return the maximum difference in scores (Alice’s score minus Bob’s score) that Alice can achieve assuming both play optimally.
 
-Constraints typically include `1 <= stones.length <= 10^5` and `1 <= stones[i] <= 10^4`.
+Alice and Bob take turns playing a game, with **Alice starting first**.
+
+There are `n` stones arranged in a row. On each player's turn, they can **remove** either the leftmost stone or the rightmost stone from the row and receive points equal to the **sum** of the remaining stones' values in the row. The winner is the one with the higher score when there are no stones left to remove.
+
+Bob found that he will always lose this game (poor Bob, he always loses), so he decided to **minimize the score's difference**. Alice's goal is to **maximize the difference** in the score.
+
+Given an array of integers `stones` where `stones[i]` represents the value of the `i^th` stone **from the left**, return *the **difference** in Alice and Bob's score if they both play **optimally**.*
+
+**Constraints:**
+- `n == stones.length`
+- `2 <= n <= 1000`
+- `1 <= stones[i] <= 1000`
 
 ## Examples
-**Example 1**
+
+**Example 1:**
 ```
 Input: stones = [5,3,1,4,2]
 Output: 6
-Explanation: Alice removes 5 (remaining sum=10), Bob removes 2 (remaining sum=8), Alice removes 4 (remaining sum=4), Bob removes 1 (remaining sum=3), Alice removes 3 (remaining sum=0). Alice total = 10+4+3 = 17, Bob total = 8+0 = 8, difference = 9? Actually optimal play yields difference 6.
+Explanation: - Alice removes 2 and gets 5 + 3 + 1 + 4 = 13 points. Alice = 13, Bob = 0, stones = [5,3,1,4].
+- Bob removes 5 and gets 3 + 1 + 4 = 8 points. Alice = 13, Bob = 8, stones = [3,1,4].
+- Alice removes 3 and gets 1 + 4 = 5 points. Alice = 18, Bob = 8, stones = [1,4].
+- Bob removes 1 and gets 4 points. Alice = 18, Bob = 12, stones = [4].
+- Alice removes 4 and gets 0 points. Alice = 18, Bob = 12, stones = [].
+The score difference is 18 - 12 = 6.
 ```
 
-**Example 2**
+**Example 2:**
 ```
 Input: stones = [7,90,5,1,100,10,10,2]
 Output: 122

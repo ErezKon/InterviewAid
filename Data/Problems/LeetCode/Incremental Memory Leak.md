@@ -7,26 +7,38 @@
 
 ## 1. Problem Description
 
-Two memory sticks with `memory1` and `memory2` bytes. At second `i`, allocate `i` bytes from the stick with more memory (ties go to stick 1). Return the crash second and remaining memory.
+You are given two integers `memory1` and `memory2` representing the available memory in bits on two memory sticks. There is currently a faulty program running that consumes an increasing amount of memory every second.
+
+At the `i^th` second (starting from 1), `i` bits of memory are allocated to the stick with **more available memory** (or from the first memory stick if both have the same available memory). If neither stick has at least `i` bits of available memory, the program **crashes**.
+
+Return *an array containing *`[crashTime, memory1_crash, memory2_crash]`*, where *`crashTime`* is the time (in seconds) when the program crashed and *`memory1_crash`* and *`memory2_crash`* are the available bits of memory in the first and second sticks respectively*.
+
+**Constraints:**
+- `0 <= memory1, memory2 <= 2^31 - 1`
 
 ## 2. Examples
 
 **Example 1:**
 ```
-Input: memory1 = 2, memory2 = 1
-Output: [2, 0, 0]
-Explanation:
-- Second 1: allocate 1 byte from stick1 (memory1=1, memory2=1)
-- Second 2: tie → allocate from stick1 (memory1=0, memory2=1)
-- Second 3: cannot allocate 3 bytes, crash at second 2, remaining [0,0]
+Input: memory1 = 2, memory2 = 2
+Output: [3,1,0]
+Explanation: The memory is allocated as follows:
+- At the 1^st second, 1 bit of memory is allocated to stick 1. The first stick now has 1 bit of available memory.
+- At the 2^nd second, 2 bits of memory are allocated to stick 2. The second stick now has 0 bits of available memory.
+- At the 3^rd second, the program crashes. The sticks have 1 and 0 bits available respectively.
 ```
 
 **Example 2:**
 ```
 Input: memory1 = 8, memory2 = 11
-Output: [5, 0, 1]
-Explanation:
-Allocate sequentially until second 5, then stick1 runs out, stick2 has 1 byte left.
+Output: [6,0,4]
+Explanation: The memory is allocated as follows:
+- At the 1^st second, 1 bit of memory is allocated to stick 2. The second stick now has 10 bit of available memory.
+- At the 2^nd second, 2 bits of memory are allocated to stick 2. The second stick now has 8 bits of available memory.
+- At the 3^rd second, 3 bits of memory are allocated to stick 1. The first stick now has 5 bits of available memory.
+- At the 4^th second, 4 bits of memory are allocated to stick 2. The second stick now has 4 bits of available memory.
+- At the 5^th second, 5 bits of memory are allocated to stick 1. The first stick now has 0 bits of available memory.
+- At the 6^th second, the program crashes. The sticks have 0 and 4 bits available respectively.
 ```
 
 ## 3. Approach: Simulation — O(√n) ✅

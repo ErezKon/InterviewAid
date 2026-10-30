@@ -7,22 +7,53 @@
 ---
 
 ## Problem Description
-You are given two integer arrays `boxes` and `warehouse`. `boxes[i]` is the height of the i‑th box, and `warehouse[j]` is the height of the j‑th segment of a warehouse corridor (from left to right). A box can be placed in a segment if its height does not exceed the segment's height. Boxes are placed one by one from the rightmost segment moving left; a box cannot pass through a segment that is lower than its height. Return the maximum number of boxes that can be placed.
+
+> *Note: premium problem — statement verified via doocs/leetcode.*
+
+You are given two arrays of positive integers, `boxes` and `warehouse`, representing the heights of some boxes of unit width and the heights of `n` rooms in a warehouse respectively. The warehouse's rooms are labelled from `0` to `n - 1` from left to right where `warehouse[i]` (0-indexed) is the height of the `i`th room.
+
+Boxes are put into the warehouse by the following rules:
+
+- Boxes cannot be stacked.
+- You can rearrange the insertion order of the boxes.
+- Boxes can only be pushed into the warehouse from left to right only.
+- If the height of some room in the warehouse is less than the height of a box, then that box and all other boxes behind it will be stopped before that room.
+
+Return *the maximum number of boxes you can put into the warehouse.*
+
+**Constraints:**
+- `n == warehouse.length`
+- `1 <= boxes.length, warehouse.length <= 10^5`
+- `1 <= boxes[i], warehouse[i] <= 10^9`
 
 ## Examples
+
 **Example 1:**
 ```
-boxes = [4,3,4,1]
-warehouse = [5,3,3,4,1]
+Input: boxes = [4,3,4,1], warehouse = [5,3,3,4,1]
+Output: 3
+Explanation:
+We can first put the box of height 1 in room 4. Then we can put the box of height 3 in either of the 3 rooms 1, 2, or 3. Lastly, we can put one box of height 4 in room 0.
+There is no way we can fit all 4 boxes in the warehouse.
 ```
-After preprocessing the warehouse heights to be non‑increasing from left to right, the effective heights become `[5,3,3,3,1]`. Placing boxes in descending order yields 3 boxes placed.
 
 **Example 2:**
 ```
-boxes = [1,2,2,3,4]
-warehouse = [1,2,3,4,5]
+Input: boxes = [1,2,2,3,4], warehouse = [3,4,1,2]
+Output: 3
+Explanation:
+Notice that it's not possible to put the box of height 4 into the warehouse since it cannot pass the first room of height 3.
+Also, for the last two rooms, 2 and 3, only boxes of height 1 can fit.
+We can fit 3 boxes maximum as shown above. The yellow box can also be put in room 2 instead.
+Swapping the orange and green boxes is also valid, or swapping one of them with the red box.
 ```
-All 5 boxes fit.
+
+**Example 3:**
+```
+Input: boxes = [1,2,3], warehouse = [1,2,3,4]
+Output: 1
+Explanation: Since the first room in the warehouse is of height 1, we can only put boxes of height 1.
+```
 
 ## Approach
 1. Convert the warehouse heights to a non‑increasing sequence from left to right by taking a running minimum.

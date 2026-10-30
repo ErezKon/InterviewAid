@@ -7,25 +7,32 @@
 ---
 
 ## Problem Description
-Given a string `s` consisting of lowercase English letters and an integer `k`, determine whether it is possible to rearrange the characters of `s` to form **exactly** `k` non‑empty palindrome strings. Return `true` if possible, otherwise `false`.
+Given a string `s` and an integer `k`, return `true` if you can use all the characters in `s` to construct **non-empty** `k` palindrome strings or `false` otherwise.
+
+**Constraints:**
+- `1 <= s.length <= 10^5`
+- `s` consists of lowercase English letters.
+- `1 <= k <= 10^5`
 
 ## Examples
-**Example 1:**
 ```
-s = "annabelle", k = 2
-Output: true
-Explanation: One possible split is "anna" and "belle", both palindromes.
+Example 1:
+  Input: s = "annabelle", k = 2
+  Output: true
+  Explanation: You can construct two palindromes using all characters in s.
+    Some possible constructions "anna" + "elble", "anbna" + "elle", "anellena" + "b"
 ```
-**Example 2:**
 ```
-s = "leetcode", k = 3
-Output: false
-Explanation: At least 4 odd‑count characters are needed, which exceeds k.
+Example 2:
+  Input: s = "leetcode", k = 3
+  Output: false
+  Explanation: It is impossible to construct 3 palindromes using all the characters of s.
 ```
-**Example 3:**
 ```
-s = "a", k = 1
-Output: true
+Example 3:
+  Input: s = "true", k = 4
+  Output: true
+  Explanation: The only possible solution is to put each character in a separate string.
 ```
 
 ## Approach

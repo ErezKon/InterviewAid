@@ -19,21 +19,41 @@
 
 ## Problem Description
 
-Given a string `text` and a string `pattern` of length 2, insert **exactly one** character (either `pattern[0]` or `pattern[1]`) anywhere in `text` to maximize the number of subsequences equal to `pattern`.
+You are given a string `s` consisting of uppercase English letters.
+
+You are allowed to insert **at most one** uppercase English letter at **any** position (including the beginning or end) of the string.
+
+Return the **maximum** number of `"LCT"` subsequences that can be formed in the resulting string after **at most one insertion**.
 
 **Constraints:**
-- `1 <= text.length <= 10^5`
-- `pattern.length = 2`
+- `1 <= s.length <= 10^5`
+- `s` consists of uppercase English letters.
 
 ---
 
 ## Examples
 
-**Example 1:**
 ```
-Input:  text = "abdcdbc", pattern = "ac"
-Output: 4
-Explanation: Insert 'a' at the beginning → "aabdcdbc". Subsequences "ac": 4.
+Example 1:
+  Input: s = "LMCT"
+  Output: 2
+  Explanation: We can insert a "L" at the beginning of the string s to make "LLMCT", which has 2 subsequences,
+    at indices [0, 3, 4] and [1, 3, 4].
+```
+
+```
+Example 2:
+  Input: s = "LCCT"
+  Output: 4
+  Explanation: We can insert a "L" at the beginning of the string s to make "LLCCT", which has 4 subsequences,
+    at indices [0, 2, 4], [0, 3, 4], [1, 2, 4] and [1, 3, 4].
+```
+
+```
+Example 3:
+  Input: s = "L"
+  Output: 0
+  Explanation: Since it is not possible to obtain the subsequence "LCT" by inserting a single letter, the result is 0.
 ```
 
 ---
