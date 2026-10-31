@@ -48,7 +48,7 @@ No subsequence of nums with length 1 has an even sum.
 ```
 
 ## Approach
-Sort the array in descending order and take the first `k` elements. If their sum is even, it is optimal. If the sum is odd, we need to swap the smallest odd element inside the chosen `k` with the largest even element outside (or vice‑versa) to flip parity while minimizing loss of total value.
+Sort the array in descending order and take the first `k` elements. If their sum is even, it is optimal. If the sum is odd, we need to swap the smallest odd element inside the chosen `k` with the largest even element outside (or vice-versa) to flip parity while minimizing loss of total value.
 
 ```text
 FUNCTION LargestEvenSum(nums, k):
@@ -78,7 +78,7 @@ FUNCTION LargestEvenSum(nums, k):
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting; subsequent steps are O(n).
-- **Space:** O(1) extra beyond the input array (in‑place sort possible).
+- **Space:** O(1) extra beyond the input array (in-place sort possible).
 
 ## Follow-Up Questions
 - How would you adapt the algorithm if the array could contain negative numbers?
@@ -86,4 +86,4 @@ FUNCTION LargestEvenSum(nums, k):
 - What changes are needed if you must return the actual subsequence, not just the sum?
 
 ## Key Takeaway
-Sorting and a single parity‑fixing swap yields the maximum even sum for a fixed‑size subsequence.
+Sorting and a single parity-fixing swap yields the maximum even sum for a fixed-size subsequence.

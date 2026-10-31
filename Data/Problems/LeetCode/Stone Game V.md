@@ -94,7 +94,7 @@ The DP fills smaller intervals first, enabling the final answer.
 - **Time:** O(n³) – three nested loops over interval length, start, and split.
 - **Space:** O(n²) for the DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. Can the time be improved using monotonic properties of prefix sums?
 2. How would the solution change if the player could keep either side regardless of sum?
 3. What if the score awarded was `max(leftSum, rightSum)` instead of `min`?

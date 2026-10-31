@@ -76,7 +76,7 @@ Output table is ordered by country in ascending order.
 ```
 
 ## Approach
-Maintain a min‑heap of size three while iterating over the wineries. For each winery, push it onto the heap; if the heap exceeds size three, remove the smallest rating. At the end, extract the heap contents and sort them descending.
+Maintain a min-heap of size three while iterating over the wineries. For each winery, push it onto the heap; if the heap exceeds size three, remove the smallest rating. At the end, extract the heap contents and sort them descending.
 
 ```text
 FUNCTION TopThreeWineries(wineries):
@@ -99,7 +99,7 @@ For the list `[A4.5, B4.7, C4.2, D4.9]`:
 5. Extract all and sort descending → `[D4.9, B4.7, A4.5]`.
 
 ## Complexity Analysis
-Time: O(n log k) where *k* = 3 (effectively O(n)). Space: O(k) = O(1) extra heap space.
+Time: O(n log k) where *k* = 3 (effectively O(n)). Space: O(k) = O(1) extra heap space.
 
 ## Follow-Up Questions
 * How would you modify the algorithm to return the top *k* wineries for an arbitrary *k*?
@@ -107,4 +107,4 @@ Time: O(n log k) where *k* = 3 (effectively O(n)). Space: O(k) = O(1) extra 
 * How would you handle ties in ratings while preserving original order?
 
 ## Key Takeaway
-A fixed‑size min‑heap lets you keep only the best *k* elements while scanning the entire list, giving an efficient O(n) solution for top‑k selection.
+A fixed-size min-heap lets you keep only the best *k* elements while scanning the entire list, giving an efficient O(n) solution for top-k selection.

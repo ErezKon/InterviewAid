@@ -81,4 +81,4 @@ Consider `s = "111"`:
 3. Extend the operation to use a different modulus or a custom binary operation.
 
 ## Key Takeaway
-Repeated pairwise modulo‑10 summations eventually reduce the string to two digits whose equality can be checked directly; the process is governed by modular arithmetic properties.
+Repeated pairwise modulo-10 summations eventually reduce the string to two digits whose equality can be checked directly; the process is governed by modular arithmetic properties.

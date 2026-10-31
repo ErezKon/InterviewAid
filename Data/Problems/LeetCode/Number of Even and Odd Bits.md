@@ -105,7 +105,7 @@ Result `[2,1]` matches the expected output.
 
 1. How would you modify the algorithm to count bits in groups of three (ternary positions)?
 2. Can you compute the result for a range of numbers `[L, R]` efficiently?
-3. How would you adapt the solution for a 64‑bit integer representation?
+3. How would you adapt the solution for a 64-bit integer representation?
 
 ---
 

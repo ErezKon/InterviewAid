@@ -97,10 +97,10 @@ Consider `parent = [0,0,0,1,2]`, `s = "abaca"`.
 
 1. How would you modify the solution if the path must be a *simple* path (no repeated nodes) in an undirected tree?
 2. Can the algorithm be extended to handle weighted edges where the goal is to maximize total weight under the character constraint?
-3. What changes are needed if the character constraint is relaxed to allow at most `k` equal‑adjacent pairs?
+3. What changes are needed if the character constraint is relaxed to allow at most `k` equal-adjacent pairs?
 
 ---
 
 ## Key Takeaway
 
-> The problem reduces to a tree‑diameter computation where only child branches with a different character can be combined. DFS collects the two longest valid branches at each node.
+> The problem reduces to a tree-diameter computation where only child branches with a different character can be combined. DFS collects the two longest valid branches at each node.

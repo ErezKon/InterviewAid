@@ -34,7 +34,7 @@ Output: 17
 ```
 
 ## Approach
-Iterate over each start index `i`. Maintain a frequency array of size 26 while extending the end index `j`. After each extension, compute `maxFreq` and `minFreq` among characters with non‑zero count and add `maxFreq - minFreq` to the answer.
+Iterate over each start index `i`. Maintain a frequency array of size 26 while extending the end index `j`. After each extension, compute `maxFreq` and `minFreq` among characters with non-zero count and add `maxFreq - minFreq` to the answer.
 
 ## Walkthrough
 | i | j | freq a | freq b | freq c | max | min | beauty |
@@ -47,7 +47,7 @@ The table shows incremental updates and accumulated sum.
 
 ## Complexity Analysis
 Time: O(n²) – two nested loops over string length.
-Space: O(1) – fixed 26‑element frequency array.
+Space: O(1) – fixed 26-element frequency array.
 
 ## Follow-Up Questions
 * Can you reduce the time complexity using prefix frequency arrays or segment trees?

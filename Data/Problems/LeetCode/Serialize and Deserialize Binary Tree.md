@@ -199,8 +199,10 @@ Deserialize:
         idx=9: "#" → NULL
         idx=10: "#" → NULL
 
-Reconstructed tree matches original ✅
+Reconstructed tree matches original ✅  → output [1,2,3,null,null,4,5]
 ```
+
+Example 2 (`root = []`): serialize produces `"#"`, and deserialize reads `"#"` at index 0 and returns NULL → output `[]`.
 
 ---
 

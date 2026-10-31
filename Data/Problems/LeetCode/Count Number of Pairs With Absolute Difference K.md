@@ -72,7 +72,7 @@ Consider `nums = [1,2,2,1]`, `k = 1`.
 
 ## Follow-Up Questions
 1. How would you modify the solution to return the actual pairs instead of the count?
-2. Can you solve the problem without extra space using sorting and two‑pointers?
+2. Can you solve the problem without extra space using sorting and two-pointers?
 3. What if `k` can be negative?
 
 ## Key Takeaway

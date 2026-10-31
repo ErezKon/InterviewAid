@@ -96,7 +96,7 @@ The 4th element after 3 seconds is `20`, matching `C(4+3-1,3) = C(6,3) = 20`.
 
 1. How would you extend the solution to support queries asking for any index `i` after `k` seconds?
 2. Can the approach be adapted for an initial array with arbitrary values instead of all ones?
-3. What if the modulo were a non‑prime number—how would you compute the binomial efficiently?
+3. What if the modulo were a non-prime number—how would you compute the binomial efficiently?
 
 ---
 

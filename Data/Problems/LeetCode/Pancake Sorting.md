@@ -80,7 +80,7 @@ Result flips: [3,4,2,3,2]
 ## Follow-Up Questions
 1. Can you achieve O(n log n) flips using a different strategy?
 2. How would the algorithm change if duplicate values were allowed?
-3. What is the minimum number of flips required for a reverse‑sorted array?
+3. What is the minimum number of flips required for a reverse-sorted array?
 
 ## Key Takeaway
 By repeatedly moving the current largest unsorted element to its correct position using at most two flips, pancake sorting sorts the array with a simple, deterministic process.

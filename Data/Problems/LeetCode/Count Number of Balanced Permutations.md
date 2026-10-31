@@ -39,7 +39,7 @@ FUNCTION countBalancedPermutations(num):
         RETURN 0
     target ← total / 2
     n ← LENGTH(digits)
-    evenSlots ← (n + 1) / 2   // number of even indices (0‑based)
+    evenSlots ← (n + 1) / 2   // number of even indices (0-based)
     oddSlots ← n / 2
     
     // freq[d] = count of digit d in the input
@@ -98,7 +98,7 @@ Example 3:
   - None of the permutations of num are balanced, so the answer is 0.
 ```
 
-(For example, "132" has even‑index sum = odd‑index sum = 3.)
+(For example, "132" has even-index sum = odd-index sum = 3.)
 
 ---
 

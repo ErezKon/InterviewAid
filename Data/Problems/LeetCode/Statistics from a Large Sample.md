@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below take the raw sample as input; the official input is the **count array** `count[0..255]` (already the frequency table), so skip the counting pass and compute min/max/mean/median/mode directly from `count`.*
-
 You are given a large sample of integers in the range `[0, 255]`. Since the sample is so large, it is represented by an array `count` where `count[k]` is the **number of times** that `k` appears in the sample.
 
 Calculate the following statistics:
@@ -57,70 +55,63 @@ The mode is 1 as it appears the most in the sample.
 ```
 
 ## Approach
-Because the value range is limited (0‑10⁴), we can count frequencies in a fixed‑size array (`cnt[0..10000]`). A single pass computes min, max, total sum, and fills the frequency array. The median is found by scanning the counts until reaching the middle position(s). The mode is the smallest value with the highest frequency.
+The input `count[0..255]` is already the frequency table, so we never materialize the sample (it can have up to 10⁹ elements). One pass over the 256 buckets gives the minimum (first non-zero index), maximum (last non-zero index), the weighted sum `Σ k·count[k]` (use 64-bit / Python int), the total `n = Σ count[k]`, and the mode (index with largest count). The median is found by a second scan of cumulative counts until reaching the middle position(s): position `(n+1)/2` if `n` is odd, otherwise the average of positions `n/2` and `n/2 + 1` (1-based).
 
+**Pseudocode**
 ```text
-FUNCTION sampleStats(sample):
-    SET minVal ← INF
-    SET maxVal ← -INF
+FUNCTION sampleStats(count):
+    SET minVal ← -1
+    SET maxVal ← -1
     SET total ← 0
-    SET n ← LENGTH(sample)
-    CREATE array cnt[0..10000] initialized to 0
-    FOR x IN sample:
-        SET minVal ← MIN(minVal, x)
-        SET maxVal ← MAX(maxVal, x)
-        SET total ← total + x
-        INCREMENT cnt[x]
-    // mean
-    SET mean ← total / n
-    // mode
-    SET modeFreq ← 0
+    SET n ← 0
     SET modeVal ← 0
-    FOR i FROM 0 TO 10000:
-        IF cnt[i] > modeFreq:
-            SET modeFreq ← cnt[i]
-            SET modeVal ← i
-    // median
-    SET prefix ← 0
+    FOR k FROM 0 TO 255:
+        IF count[k] > 0:
+            IF minVal == -1:
+                SET minVal ← k
+            SET maxVal ← k
+            SET total ← total + k * count[k]
+            SET n ← n + count[k]
+            IF count[k] > count[modeVal]:
+                SET modeVal ← k
+    SET mean ← total / n
+
+    FUNCTION kth(pos):            // value at 1-based sorted position pos
+        SET prefix ← 0
+        FOR k FROM 0 TO 255:
+            SET prefix ← prefix + count[k]
+            IF prefix >= pos:
+                RETURN k
+
     IF n MOD 2 == 1:
-        SET medianPos ← (n + 1) / 2
-        FOR i FROM 0 TO 10000:
-            SET prefix ← prefix + cnt[i]
-            IF prefix >= medianPos:
-                SET median ← i
-                BREAK
+        SET median ← kth((n + 1) / 2)
     ELSE:
-        SET leftPos ← n / 2
-        SET rightPos ← leftPos + 1
-        SET leftVal ← -1
-        SET rightVal ← -1
-        FOR i FROM 0 TO 10000:
-            SET prefix ← prefix + cnt[i]
-            IF leftVal == -1 AND prefix >= leftPos:
-                SET leftVal ← i
-            IF rightVal == -1 AND prefix >= rightPos:
-                SET rightVal ← i
-                BREAK
-        SET median ← (leftVal + rightVal) / 2
+        SET median ← (kth(n / 2) + kth(n / 2 + 1)) / 2
     RETURN [minVal, maxVal, mean, median, modeVal]
 ```
 
 ## Walkthrough
-For `sample = [1,2,2,3,4]`:
-1. After counting: `cnt[1]=1, cnt[2]=2, cnt[3]=1, cnt[4]=1`.
-2. `min=1`, `max=4`, `total=12`, `mean=2.4`.
-3. Mode: highest count is 2 at value 2 → `mode=2`.
-4. Median (odd length 5): target position 3 → scanning counts reaches cumulative 3 at value 2 → `median=2`.
-Result `[1,4,2.4,2,2]`.
+Example 1: non-zero counts are `count[1]=1, count[2]=3, count[3]=4` (sample `[1,2,2,2,3,3,3,3]`).
+
+| k | count[k] | prefix | running total | mode so far |
+|---|----------|--------|---------------|-------------|
+| 1 | 1 | 1 | 1 | 1 |
+| 2 | 3 | 4 | 1 + 6 = 7 | 2 |
+| 3 | 4 | 8 | 7 + 12 = 19 | 3 |
+
+- `minimum = 1`, `maximum = 3`, `n = 8`, `mean = 19 / 8 = 2.375`, `mode = 3`.
+- `n` is even: positions 4 and 5. Prefix reaches 4 at `k=2`, and reaches 5 at `k=3` → `median = (2 + 3) / 2 = 2.5`.
+
+Result: `[1.00000, 3.00000, 2.37500, 2.50000, 3.00000]`.
 
 ## Complexity Analysis
-- **Time:** O(n + R) where R = 10⁴ (range size), effectively linear in input size.
-- **Space:** O(R) for the frequency array.
+- **Time:** O(R) with R = 256 buckets - independent of the sample size.
+- **Space:** O(1) extra.
 
-## Follow‑Up Questions
-1. How would you adapt the solution if the value range were unbounded?
-2. Can you compute the statistics in a streaming fashion with limited memory?
-3. What changes are needed to return the percentile values (e.g., 25th, 75th) as well?
+## Follow-Up Questions
+1. How would you compute an arbitrary percentile (e.g. 90th) from the same count array?
+2. What if the value range were large (e.g. 10⁹) and only a sparse map of counts were given?
+3. How would you maintain the median under a stream of updates to `count`?
 
 ## Key Takeaway
-Using a fixed‑size frequency array leverages the bounded value range to compute all required statistics in linear time.
+When data arrives as a histogram, work directly on the buckets: all order statistics come from cumulative counts, so cost depends on the value range, not on the (huge) sample size.

@@ -180,7 +180,7 @@ The second LEFT JOIN checks whether each contact’s email exists in the Custome
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(N + M + K) where N is invoices, M contacts, K customers (joins) |
+| **Time** | O(N + M + K) where N is invoices, M contacts, K customers (joins) |
 | **Space** | O(N) for result set |
 
 ---

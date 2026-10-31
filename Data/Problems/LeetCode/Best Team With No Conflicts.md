@@ -38,7 +38,7 @@ Example 3:
 ```
 
 ## Approach
-**LIS‑style DP after sorting — O(n²)**
+**LIS-style DP after sorting — O(n²)**
 1. Pair each player as `(age, score)` and sort the list primarily by age and secondarily by score.
 2. Let `dp[i]` be the best team score ending with player `i`.
 3. For each `i`, consider all previous players `j < i`. If `score[j] ≤ score[i]` (the age condition is already satisfied by sorting), we can extend the team: `dp[i] = max(dp[i], dp[j] + score[i])`.
@@ -70,10 +70,10 @@ Result `max(dp)=16`.
 - **Time:** O(n²) due to the double loop over players.
 - **Space:** O(n) for the `dp` array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can the DP be optimized to O(n log n) using a Fenwick or Segment Tree?
 2. What changes are needed if the age condition is strict (`ages[i] < ages[j]` ⇒ `scores[i] < scores[j]`)?
 3. Can you solve the problem when the number of players is up to 10⁵?
 
 ## Key Takeaway
-Sorting by age converts the conflict condition into a simple non‑decreasing score check, allowing a longest‑increasing‑subsequence style DP to compute the optimal team score.
+Sorting by age converts the conflict condition into a simple non-decreasing score check, allowing a longest-increasing-subsequence style DP to compute the optimal team score.

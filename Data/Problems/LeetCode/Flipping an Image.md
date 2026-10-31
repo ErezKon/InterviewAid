@@ -42,7 +42,7 @@ To invert an image means that each `0` is replaced by `1`, and each `1` is repla
 ```text
 FUNCTION flipAndInvertImage(image):
     FOR row IN image:
-        // reverse the row in‑place
+        // reverse the row in-place
         row.REVERSE()
         // invert each bit
         FOR i ← 0 TO len(row) - 1:
@@ -87,10 +87,10 @@ Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(m·n) – each element is visited once |
-| **Space** | O(1) extra – modifications are in‑place |
+| **Space** | O(1) extra – modifications are in-place |
 
 ---
 
 ## 6. Key Takeaway
 
-> Reverse each row then invert bits. In‑place operations give O(m·n) time and O(1) extra space.
+> Reverse each row then invert bits. In-place operations give O(m·n) time and O(1) extra space.

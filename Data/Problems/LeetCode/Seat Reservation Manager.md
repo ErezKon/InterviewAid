@@ -54,7 +54,7 @@ Example 1:
 ```
 CLASS SeatManager:
     CONSTRUCTOR(n):
-        // Initialize a min‑heap with all seat numbers
+        // Initialize a min-heap with all seat numbers
         self.heap ← MinHeap(1 .. n)
 
     FUNCTION reserve():
@@ -79,7 +79,7 @@ CLASS SeatManager:
 1. Initialize heap with `[1,2,3,4,5]`.
 2. `reserve()` → POP returns `1`; heap becomes `[2,3,4,5]`.
 3. `reserve()` → POP returns `2`; heap becomes `[3,4,5]`.
-4. `unreserve(2)` → PUSH `2`; heap becomes `[2,3,4,5]` (heap re‑orders).
+4. `unreserve(2)` → PUSH `2`; heap becomes `[2,3,4,5]` (heap re-orders).
 5. `reserve()` → POP returns `2`; heap becomes `[3,4,5]`.
 
 ---
@@ -101,4 +101,4 @@ CLASS SeatManager:
 
 ## Key Takeaway
 
-> Min‑heap naturally gives the smallest available seat. Reserve = pop min, unreserve = push back.
+> Min-heap naturally gives the smallest available seat. Reserve = pop min, unreserve = push back.

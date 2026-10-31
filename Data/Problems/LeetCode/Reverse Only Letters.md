@@ -70,9 +70,9 @@ FUNCTION reverseOnlyLetters(s):
 Take `s = "a-bC-dEf-ghIj"`:
 | Step | lo char | hi char | Action |
 |------|---------|---------|--------|
-| 1 | 'a' (letter) | 'j' (letter) | swap → "j‑bC‑dEf‑ghIa" |
-| 2 | '-' (skip) | 'I' (letter) | lo moves to 'b', hi moves to 'I' → swap → "j‑I C‑dEf‑ghab" |
-| 3 | 'b' (letter) | 'h' (letter) | swap → "j‑I h‑dEf‑gbab" |
+| 1 | 'a' (letter) | 'j' (letter) | swap → "j-bC-dEf-ghIa" |
+| 2 | '-' (skip) | 'I' (letter) | lo moves to 'b', hi moves to 'I' → swap → "j-I C-dEf-ghab" |
+| 3 | 'b' (letter) | 'h' (letter) | swap → "j-I h-dEf-gbab" |
 | … | … | … | continue until pointers cross |
 Resulting string: `"j-Ih-gfE-dCba"`.
 
@@ -83,7 +83,7 @@ Resulting string: `"j-Ih-gfE-dCba"`.
 | Aspect | Complexity |
 |--------|-----------|
 | Time   | O(n) — each character visited at most once |
-| Space  | O(n) — array of characters (in‑place if mutable) |
+| Space  | O(n) — array of characters (in-place if mutable) |
 
 ---
 
@@ -96,4 +96,4 @@ Resulting string: `"j-Ih-gfE-dCba"`.
 
 ## Key Takeaway
 
-> Two‑pointer with skip — advance pointers past non‑letter characters, then swap. The classic pattern for "reverse only elements matching a predicate."
+> Two-pointer with skip — advance pointers past non-letter characters, then swap. The classic pattern for "reverse only elements matching a predicate."

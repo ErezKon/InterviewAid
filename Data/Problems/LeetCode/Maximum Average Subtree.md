@@ -85,9 +85,9 @@ Output: 1.00000
 ## Walkthrough
 
 Consider the tree `[[5],[1,8]]`.
-1. DFS visits leaf 1 → returns (1,1).
-2. DFS visits leaf 8 → returns (8,1).
-3. At root 5: leftSum=1, leftCnt=1, rightSum=8, rightCnt=1 → totalSum=14, totalCnt=3, avg≈4.67.
+1. DFS visits leaf 1 → returns (1,1).
+2. DFS visits leaf 8 → returns (8,1).
+3. At root 5: leftSum=1, leftCnt=1, rightSum=8, rightCnt=1 → totalSum=14, totalCnt=3, avg≈4.67.
 4. Compare averages: 1, 8, 4.67 → maximum is 8.
 
 ---

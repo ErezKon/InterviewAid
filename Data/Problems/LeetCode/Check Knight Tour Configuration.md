@@ -75,7 +75,7 @@ The algorithm checks each consecutive pair and returns `false` at the first viol
 
 ## Follow-Up Questions
 1. How would you modify the solution to also return the first invalid step index?
-2. Can the verification be done in‑place without extra O(n²) space?
+2. Can the verification be done in-place without extra O(n²) space?
 3. How would you extend the check for a toroidal board where edges wrap around?
 
 ## Key Takeaway

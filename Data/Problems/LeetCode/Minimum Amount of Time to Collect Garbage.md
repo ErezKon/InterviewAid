@@ -111,7 +111,7 @@ Total = 13 + 8 = 21.
 | Single pass per truck | O(n) | O(n) for prefix array |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you handle the case where trucks can move backwards?
 2. Can the solution be extended to support more than three garbage types dynamically?
@@ -120,4 +120,4 @@ Total = 13 + 8 = 21.
 
 ## Key Takeaway
 
-> Each truck’s optimal route ends at its last required house; summing piece‑wise pick‑up time and travel distance yields a linear‑time solution.
+> Each truck’s optimal route ends at its last required house; summing piece-wise pick-up time and travel distance yields a linear-time solution.

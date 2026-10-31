@@ -84,12 +84,12 @@ FUNCTION sortString(s):
 
 ## Complexity Analysis
 
-- **Time:** O(n) where n is the length of the string (26‑letter alphabet constant).
-- **Space:** O(1) extra space for the 26‑size count array plus output string.
+- **Time:** O(n) where n is the length of the string (26-letter alphabet constant).
+- **Space:** O(1) extra space for the 26-size count array plus output string.
 
 ## Follow-Up Questions
 
-- How would you modify the algorithm for Unicode characters beyond 'a'‑'z'?
+- How would you modify the algorithm for Unicode characters beyond 'a'-'z'?
 - Can this approach be adapted to sort characters based on custom ordering rules?
 - What is the complexity if the alphabet size is not constant?
 

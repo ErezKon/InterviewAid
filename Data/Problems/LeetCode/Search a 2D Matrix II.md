@@ -80,7 +80,7 @@ Example 2:
 
 ## Walkthrough
 
-Consider Example 1 with target = 5.
+Consider Example 1 with target = 5.
 | Step | (r,c) | Value | Action | New (r,c) |
 |------|-------|-------|--------|-----------|
 | 1 | (0,4) | 15 | >5 → move left | (0,3) |
@@ -89,17 +89,17 @@ Consider Example 1 with target = 5.
 | 4 | (0,1) | 4  | <5 → move down | (1,1) |
 | 5 | (1,1) | 5  | == target → return true |
 
-The algorithm eliminates one row or column each step, guaranteeing at most m + n steps.
+The algorithm eliminates one row or column each step, guaranteeing at most m + n steps.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(m + n) – each iteration discards a row or a column.
+- **Time:** O(m + n) – each iteration discards a row or a column.
 - **Space:** O(1) – only a few index variables are used.
 
 ---
 
 ## Key Takeaway
 
-> Staircase search from the top‑right corner eliminates a row or column at each step, providing a linear‑time solution for a matrix sorted both row‑wise and column‑wise.
+> Staircase search from the top-right corner eliminates a row or column at each step, providing a linear-time solution for a matrix sorted both row-wise and column-wise.

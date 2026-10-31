@@ -109,9 +109,9 @@ Example 3:
 
 1. Build adjacency sets: `1:{2}`, `2:{1,3}`, `3:{2}`.
 2. Degrees: `2` (2), `1` (1), `3` (1). Root is node `2` (highest degree).
-3. For node `1`, the only higher‑degree neighbor is `2`; parent = `2`.
-4. For node `3`, the only higher‑degree neighbor is `2`; parent = `2`.
-5. No equal‑degree siblings, so the reconstruction is unique → return `1`.
+3. For node `1`, the only higher-degree neighbor is `2`; parent = `2`.
+4. For node `3`, the only higher-degree neighbor is `2`; parent = `2`.
+5. No equal-degree siblings, so the reconstruction is unique → return `1`.
 
 ---
 
@@ -127,11 +127,11 @@ Example 3:
 ## 7. Follow-Up Questions
 
 1. How would the solution change if the input were given as preorder and inorder traversals?
-2. Can the algorithm be optimized to O(n log n) using hash maps for subset checks?
+2. Can the algorithm be optimized to O(n log n) using hash maps for subset checks?
 3. How would you handle reconstruction when the tree is not guaranteed to be binary?
 
 ---
 
 ## 5. Key Takeaway
 
-> **Degree ordering determines parent‑child relationships.** A node's parent has the smallest degree strictly greater. Equal degrees indicate interchangeable nodes → multiple trees possible.
+> **Degree ordering determines parent-child relationships.** A node's parent has the smallest degree strictly greater. Equal degrees indicate interchangeable nodes → multiple trees possible.

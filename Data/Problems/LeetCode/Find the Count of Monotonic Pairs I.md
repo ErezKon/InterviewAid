@@ -100,7 +100,7 @@ Example 2:
 
 Take `nums = [2,2]`.
 1. Initialise `dp` for first element: `dp[0]=dp[1]=dp[2]=1`.
-2. For `i = 1` (second element), consider each possible `v` (0‑2):
+2. For `i = 1` (second element), consider each possible `v` (0-2):
    - `v = 0`: previous `prev` can only be 0 (since `prev ≤ v`). Check `nums[0]-prev >= nums[1]-v` → `2-0 >= 2-0` true → `newDp[0] = 1`.
    - `v = 1`: `prev` can be 0 or 1. Both satisfy the constraint, adding 1+1 → `newDp[1] = 2`.
    - `v = 2`: `prev` can be 0,1,2. All satisfy, adding 1+1+1 → `newDp[2] = 3`.
@@ -110,4 +110,4 @@ Take `nums = [2,2]`.
 
 ## 7. Key Takeaway
 
-> **Reduce to a single‑array DP**: once `arr1` is chosen, `arr2` is forced, turning the problem into counting non‑decreasing sequences under a simple inequality.
+> **Reduce to a single-array DP**: once `arr1` is chosen, `arr2` is forced, turning the problem into counting non-decreasing sequences under a simple inequality.

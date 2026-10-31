@@ -67,7 +67,7 @@ FUNCTION maxProfit(prices, fee):
 - **Time:** O(n) – single pass over `prices`.
 - **Space:** O(1) – only two scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to include a cooldown day after selling?
 2. What changes are needed if a fixed transaction fee is applied on both buy and sell?
 3. Can you extend the solution to handle multiple stocks simultaneously?

@@ -102,4 +102,4 @@ After processing all pairs we compute the prefix sums of `diff`. The minimum pre
 
 ## Key Takeaway
 
-Using a difference array to encode range‑based change costs lets us evaluate every possible target difference in linear time, turning a seemingly quadratic search into an efficient `O(n + k)` solution.
+Using a difference array to encode range-based change costs lets us evaluate every possible target difference in linear time, turning a seemingly quadratic search into an efficient `O(n + k)` solution.

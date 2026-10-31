@@ -50,7 +50,7 @@ Explanation: We can take clips [0,4], [4,7], and [6,9].
 ```
 
 ## Approach
-Greedy interval covering — always extend the current reachable end with the farthest‑reaching clip whose start is ≤ current end.
+Greedy interval covering — always extend the current reachable end with the farthest-reaching clip whose start is ≤ current end.
 
 ```text
 FUNCTION videoStitching(clips, time):
@@ -88,4 +88,4 @@ Coverage reaches `time` → return 3.
 3. How would you handle overlapping clips with weights (e.g., cost) to minimize total cost?
 
 ## Key Takeaway
-A greedy scan that always picks the farthest‑reaching clip among those starting before the current coverage yields the minimal number of clips.
+A greedy scan that always picks the farthest-reaching clip among those starting before the current coverage yields the minimal number of clips.

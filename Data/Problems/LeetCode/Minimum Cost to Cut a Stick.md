@@ -54,7 +54,7 @@ Example 2:
 
 1. Append the stick boundaries `0` and `n` to the `cuts` array and sort it.
 2. Let `dp[i][j]` be the minimum cost to cut the segment between `cuts[i]` and `cuts[j]` (exclusive). If there is no cut between them (`j = i+1`), the cost is `0`.
-3. For increasing segment lengths, try every possible first cut `k` inside the segment and combine the costs of the left and right sub‑segments plus the cost of cutting the current segment (`cuts[j] - cuts[i]`).
+3. For increasing segment lengths, try every possible first cut `k` inside the segment and combine the costs of the left and right sub-segments plus the cost of cutting the current segment (`cuts[j] - cuts[i]`).
 
 ```text
 FUNCTION minCostToCutStick(n, cuts):
@@ -88,7 +88,7 @@ The DP fills smaller intervals first, then builds up to the whole stick, yieldin
 - **Time:** `O(m³)` where `m = len(cuts) + 2` (all interval pairs and inner cuts).
 - **Space:** `O(m²)` for the DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if each cut had a different individual cost?
 - Can the problem be solved in `O(m²)` using Knuth optimization?
@@ -96,4 +96,4 @@ The DP fills smaller intervals first, then builds up to the whole stick, yieldin
 
 ## Key Takeaway
 
-Interval DP solves problems where the cost of an operation depends on the current segment length; by breaking the problem into sub‑segments and trying every possible first cut, we obtain the optimal total cost.
+Interval DP solves problems where the cost of an operation depends on the current segment length; by breaking the problem into sub-segments and trying every possible first cut, we obtain the optimal total cost.

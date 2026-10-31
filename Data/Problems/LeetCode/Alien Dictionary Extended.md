@@ -49,7 +49,7 @@ Example 4:
 **Algorithm:** Build a directed graph of character precedence and perform topological sort (Kahn's algorithm).
 1. Initialize adjacency list and indegree map for all unique characters.
 2. Compare each adjacent pair of words; the first differing character defines an edge `c1 → c2`.
-3. Apply Kahn's algorithm: enqueue all nodes with indegree 0, repeatedly dequeue, append to result, and decrease indegrees of neighbors.
+3. Apply Kahn's algorithm: enqueue all nodes with indegree 0, repeatedly dequeue, append to result, and decrease indegrees of neighbors.
 4. If the result length differs from the number of unique characters, a cycle exists → return empty string.
 
 ## Walkthrough
@@ -63,7 +63,7 @@ Example 4:
 - **Time:** O(C + E) where C is number of unique characters and E is number of precedence edges.
 - **Space:** O(C + E) for the graph and indegree map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return all possible valid orders?
 2. Can you detect and report the exact cycle causing an invalid ordering?
 3. How would you handle duplicate words or words that are prefixes of each other?

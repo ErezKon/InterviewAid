@@ -114,4 +114,4 @@ Final result `[5,5,0]`.
 
 ## 8. Key Takeaway
 
-> **Linked list → array → monotonic stack.** Convert to an array for index‑based processing, then reuse the classic next‑greater‑element pattern.
+> **Linked list → array → monotonic stack.** Convert to an array for index-based processing, then reuse the classic next-greater-element pattern.

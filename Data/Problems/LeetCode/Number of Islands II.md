@@ -45,7 +45,7 @@ An **island** is surrounded by water and is formed by connecting adjacent lands 
 
 ## 2. Key Insight
 
-> Treat each newly added land cell as a new component (+1 island). Then union it with any adjacent land cells, decreasing the count for each successful merge. Union‑Find efficiently maintains component connectivity in an online fashion.
+> Treat each newly added land cell as a new component (+1 island). Then union it with any adjacent land cells, decreasing the count for each successful merge. Union-Find efficiently maintains component connectivity in an online fashion.
 
 ---
 
@@ -136,7 +136,7 @@ The `result` list `[1,1,2,3]` matches the output.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(L·α(m·n)) — near‑linear per addition |
+| **Time** | O(L·α(m·n)) — near-linear per addition |
 | **Space** | O(m·n) for parent and rank maps |
 
 ---
@@ -151,4 +151,4 @@ The `result` list `[1,1,2,3]` matches the output.
 
 ## 8. Key Takeaway
 
-> **Union‑Find for dynamic connectivity.** Each land addition creates a component, then merges with neighboring components, giving an online island count.
+> **Union-Find for dynamic connectivity.** Each land addition creates a component, then merges with neighboring components, giving an online island count.

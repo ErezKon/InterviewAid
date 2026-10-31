@@ -81,12 +81,12 @@ Time: O(N) – one pass over all rows.
 Space: O(K) – storage for each department (`K` distinct ids) plus constant columns.
 
 ## Follow-Up Questions
-* How would you handle dynamic month columns without hard‑coding each month?
+* How would you handle dynamic month columns without hard-coding each month?
 * Can you write a solution that works for any number of categorical columns?
 * How would you modify the query to fill missing values with `0` instead of `NULL`?
 
 ## Key Takeaway
-Conditional aggregation with `CASE` statements lets you pivot row‑wise data into columnar format efficiently.
+Conditional aggregation with `CASE` statements lets you pivot row-wise data into columnar format efficiently.
 
 ```sql
 SELECT id,

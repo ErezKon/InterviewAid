@@ -18,7 +18,7 @@ Return *the **total number** of ways to distribute *`n` *candies among *`3`* chi
 
 ---
 
-## Approach: Brute‑Force Enumeration ✅
+## Approach: Brute-Force Enumeration ✅
 
 ```text
 FUNCTION countWays(n, limit):
@@ -77,4 +77,4 @@ Explanation: There are 10 ways to distribute 3 candies such that no child gets m
 
 ## Key Takeaway
 
-> **When constraints are tiny, enumerate possible allocations for two children and derive the third; this simple brute‑force runs in constant‑ish time for the given limits.**
+> **When constraints are tiny, enumerate possible allocations for two children and derive the third; this simple brute-force runs in constant-ish time for the given limits.**

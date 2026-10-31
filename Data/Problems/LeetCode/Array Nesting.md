@@ -38,7 +38,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a depth‑first traversal from each unvisited index, marking visited nodes to avoid recomputation. Track the count of nodes visited in the current chain and update the global maximum.
+Perform a depth-first traversal from each unvisited index, marking visited nodes to avoid recomputation. Track the count of nodes visited in the current chain and update the global maximum.
 
 ```text
 FUNCTION arrayNesting(nums):
@@ -64,12 +64,12 @@ For `nums = [5,4,0,3,1,6,2]`:
 
 ## Complexity Analysis
 *Time*: O(n) – each element is visited at most once.
-*Space*: O(n) for the visited array (can be O(1) by modifying `nums` in‑place).
+*Space*: O(n) for the visited array (can be O(1) by modifying `nums` in-place).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem without extra space?
 2. Can you adapt the algorithm to return the actual longest nesting set?
 3. What changes are needed if the array may contain duplicate values pointing to the same index?
 
 ## Key Takeaway
-Marking visited nodes ensures a linear‑time solution by preventing repeated traversals of already explored cycles.
+Marking visited nodes ensures a linear-time solution by preventing repeated traversals of already explored cycles.

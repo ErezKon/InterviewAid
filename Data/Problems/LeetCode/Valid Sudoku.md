@@ -99,7 +99,7 @@ Consider the invalid board where the first column contains two `8`s:
 1. Process cell (0,0) = `8` → add to `rows[0]`, `cols[0]`, `boxes[0]`.
 2. Process cell (1,0) = `6` → add to `rows[1]`, `cols[0]`, `boxes[0]`.
 3. … continue until reaching cell (3,0) = `8`.
-4. `8` is already present in `cols[0]` (from step 1), so the function returns **false** immediately.
+4. `8` is already present in `cols[0]` (from step 1), so the function returns **false** immediately.
 
 ---
 
@@ -114,10 +114,10 @@ Consider the invalid board where the first column contains two `8`s:
 
 - How would you adapt the algorithm to solve a partially filled board (i.e., actually solve Sudoku)?
 - Can you extend this validation to support larger Sudoku variants (e.g., 16×16) while preserving O(N²) time?
-- What data structures could replace the sets to improve constant‑factor performance?
+- What data structures could replace the sets to improve constant-factor performance?
 
 ---
 
 ## Key Takeaway
 
-> Use three groups of hash sets (rows, columns, boxes) and a simple index formula `(r/3)*3 + (c/3)` to detect duplicates in O(1) time for a fixed‑size Sudoku board.
+> Use three groups of hash sets (rows, columns, boxes) and a simple index formula `(r/3)*3 + (c/3)` to detect duplicates in O(1) time for a fixed-size Sudoku board.

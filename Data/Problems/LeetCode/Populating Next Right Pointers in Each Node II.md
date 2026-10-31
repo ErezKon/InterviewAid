@@ -47,7 +47,7 @@ Output: []
 ```
 
 ## Approach
-**Algorithm:** Level‑order traversal using already‑established `next` pointers (Dummy‑head technique)
+**Algorithm:** Level-order traversal using already-established `next` pointers (Dummy-head technique)
 **Key Insight:** While traversing a level, use a dummy node to build the `next` chain for the next level, requiring only O(1) extra pointers.
 
 ```text
@@ -83,10 +83,10 @@ After processing, each node's `next` points to its right neighbor.
 - **Time:** O(n) – each node is visited once.
 - **Space:** O(1) extra space (ignoring the recursion stack, which is not used).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return a list of values for each level instead of linking nodes?
 2. Can you solve the problem using recursion while still achieving O(1) auxiliary space?
 3. How would the solution change if the tree were a perfect binary tree?
 
 ## Key Takeaway
-By iterating level‑by‑level using the already‑built `next` pointers and a dummy head, we can connect the next level in constant extra space.
+By iterating level-by-level using the already-built `next` pointers and a dummy head, we can connect the next level in constant extra space.

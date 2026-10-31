@@ -77,7 +77,7 @@ FUNCTION numberOfPairs(nums1, nums2, k):
 
 ## 5. Walkthrough
 
-Take Example 1:
+Take Example 1:
 
 | a (nums1) | a % k | target = a/k | Divisors of target | Matching nums2 values |
 |-----------|-------|--------------|--------------------|-----------------------|
@@ -108,4 +108,4 @@ The algorithm builds `freq2` = {2:1,3:1,4:1}. For each `a`, it enumerates diviso
 
 ## 8. Key Takeaway
 
-> Enumerating divisors of `nums1[i]/k` and looking them up in a `nums2` frequency map turns a potential O(n·m) brute‑force into near‑linear time.
+> Enumerating divisors of `nums1[i]/k` and looking them up in a `nums2` frequency map turns a potential O(n·m) brute-force into near-linear time.

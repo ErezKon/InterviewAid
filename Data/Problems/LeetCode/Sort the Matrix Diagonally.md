@@ -61,7 +61,7 @@ FUNCTION diagonalSort(mat):
 For the first example matrix:
 1. Collect diagonals: key `0` → `[3,2,1]`, key `-1` → `[3,1]`, key `-2` → `[1]`, etc.
 2. Sort each list: key `0` becomes `[1,2,3]`, key `-1` becomes `[1,3]`.
-3. Re‑populate matrix using the sorted lists, yielding the output matrix shown.
+3. Re-populate matrix using the sorted lists, yielding the output matrix shown.
 
 ## Complexity Analysis
 - **Time:** `O(m·n·log(min(m,n)))` – each diagonal of length ≤ min(m,n) is sorted.
@@ -69,7 +69,7 @@ For the first example matrix:
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to sort diagonals in decreasing order?
-2. Can the solution be implemented in‑place with `O(1)` extra space?
+2. Can the solution be implemented in-place with `O(1)` extra space?
 3. What is the complexity if the matrix is extremely sparse (mostly zeros)?
 
 ## Key Takeaway

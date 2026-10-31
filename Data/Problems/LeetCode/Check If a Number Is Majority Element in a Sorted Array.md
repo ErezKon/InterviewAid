@@ -58,8 +58,8 @@ Because the array is sorted, `lowerBound` and `upperBound` can be implemented wi
 ## 4. Walkthrough
 
 For `nums = [1,2,2,2,3,4,5]`, `target = 2`:
-1. `lowerBound` finds index 1 (first `2`).
-2. `upperBound` finds index 4 (position after last `2`).
+1. `lowerBound` finds index 1 (first `2`).
+2. `upperBound` finds index 4 (position after last `2`).
 3. `count = 4 - 1 = 3`.
 4. Length `n = 7`; `3 > 7/2` → return `true`.
 

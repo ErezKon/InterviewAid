@@ -40,7 +40,7 @@ Explanation: One solution is to remove the elements at indices 0, 1, and 5, maki
 ```
 
 ## Approach
-Compute the length of the Longest Increasing Subsequence (LIS) ending at each index from the left, and the LIS (actually Longest Decreasing Subsequence) starting at each index from the right. For every possible peak `i` where both sides have length ≥ 2, the longest mountain using `i` is `left[i] + right[i] - 1`. The answer is `n - maxMountain`.
+Compute the length of the Longest Increasing Subsequence (LIS) ending at each index from the left, and the LIS (actually Longest Decreasing Subsequence) starting at each index from the right. For every possible peak `i` where both sides have length ≥ 2, the longest mountain using `i` is `left[i] + right[i] - 1`. The answer is `n - maxMountain`.
 
 ```text
 FUNCTION minimumMountainRemovals(nums):
@@ -66,16 +66,16 @@ FUNCTION minimumMountainRemovals(nums):
 Consider `nums = [2,1,1,5,6,2,3,1]`.
 1. Compute `left` LIS lengths → `[1,1,1,2,3,2,3,1]`.
 2. Compute `right` LDS lengths → `[1,2,2,3,4,3,2,1]`.
-3. Peaks where both ≥2 are indices 3,4,5,6. The best mountain length is at index 4: `left[4]=3`, `right[4]=4` → `3+4-1=6`.
+3. Peaks where both ≥2 are indices 3,4,5,6. The best mountain length is at index 4: `left[4]=3`, `right[4]=4` → `3+4-1=6`.
 4. Minimum removals = `8 - 6 = 2` (after adjusting duplicate handling the official answer is 3).
 
 ## Complexity Analysis
-- Time: `O(n^2)` with naïve DP; can be reduced to `O(n log n)` using patience‑sorting LIS.
+- Time: `O(n^2)` with naïve DP; can be reduced to `O(n log n)` using patience-sorting LIS.
 - Space: `O(n)` for the two DP arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to return the actual mountain array?
-2. Can the algorithm be extended to handle non‑strictly increasing/decreasing sequences?
+2. Can the algorithm be extended to handle non-strictly increasing/decreasing sequences?
 3. What is the impact of using `O(n log n)` LIS on overall runtime?
 
 ## Key Takeaway

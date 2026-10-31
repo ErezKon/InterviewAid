@@ -56,13 +56,13 @@ Output: -1
 ```
 
 ## Approach
-**Algorithm:** Breadth‑First Search (BFS) with a bitmask representing collected keys.
+**Algorithm:** Breadth-First Search (BFS) with a bitmask representing collected keys.
 
 1. Locate the start cell and count total keys `k`.
-2. Represent a set of keys as a `k`‑bit integer.
+2. Represent a set of keys as a `k`-bit integer.
 3. BFS state = `(row, col, keysMask)`. Enqueue the start with mask `0`.
 4. For each dequeued state, explore four directions.
-   - Skip walls or out‑of‑bounds cells.
+   - Skip walls or out-of-bounds cells.
    - If the cell is a lock and the corresponding key bit is not set, continue.
    - If the cell is a key, set its bit in the mask.
    - If the new mask equals `(1<<k)-1`, all keys are collected – return steps+1.
@@ -124,18 +124,18 @@ Consider a simple grid:
 | Step | Position | KeysMask | Action |
 |------|----------|----------|--------|
 | 0 | (0,0) | 0 | Start |
-| 1‑2 | Move to `a` | set bit for `a` | Collect first key |
-| 3‑4 | Move down to `A` | lock opened (key present) |
-| 5‑6 | Move to `b` | set bit for `b` | All keys collected → return steps |
+| 1-2 | Move to `a` | set bit for `a` | Collect first key |
+| 3-4 | Move down to `A` | lock opened (key present) |
+| 5-6 | Move to `b` | set bit for `b` | All keys collected → return steps |
 
 ## Complexity Analysis
-- **Time:** O(m × n × 2^k) – each cell can be visited for each possible key subset.
-- **Space:** O(m × n × 2^k) for the visited set and BFS queue.
+- **Time:** O(m × n × 2^k) – each cell can be visited for each possible key subset.
+- **Space:** O(m × n × 2^k) for the visited set and BFS queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if keys could be collected in any order without locks?
-2. Can you adapt the algorithm for a 3‑D grid?
+2. Can you adapt the algorithm for a 3-D grid?
 3. What is the impact on complexity if the number of keys grows beyond 6?
 
 ## Key Takeaway
-Encoding the set of collected keys as a bitmask lets BFS treat each unique combination as a separate state, enabling an optimal shortest‑path search in exponential state space.
+Encoding the set of collected keys as a bitmask lets BFS treat each unique combination as a separate state, enabling an optimal shortest-path search in exponential state space.

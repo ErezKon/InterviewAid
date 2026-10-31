@@ -84,18 +84,18 @@ Standard Dijkstra doesn't handle the "at most k stops" constraint well. Modified
 1. **Initialize** `prices` with ∞ except `src` = 0.
 2. **Iteration 0** (allow 0 stops): copy `prices` to `tempPrices`. Relax each edge; only direct flights from `src` update their destinations.
 3. **Iteration 1** (allow 1 stop): use `prices` from previous iteration to relax edges again, now paths with one intermediate node are considered.
-4. Continue until `k` iterations. The final `prices[dst]` holds the cheapest cost using ≤ k stops because each iteration adds the possibility of one more stop.
+4. Continue until `k` iterations. The final `prices[dst]` holds the cheapest cost using ≤ k stops because each iteration adds the possibility of one more stop.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(k · E) – each of the `k+1` passes scans all edges.
+- **Time:** O(k · E) – each of the `k+1` passes scans all edges.
 - **Space:** O(V) – distance array for each vertex.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you adapt the solution to also return the actual flight path?
 - Can you improve the runtime using a priority queue with stop count tracking?
@@ -105,4 +105,4 @@ Standard Dijkstra doesn't handle the "at most k stops" constraint well. Modified
 
 ## Key Takeaway
 
-> Bellman‑Ford with exactly `k+1` relaxation rounds naturally handles the "at most k stops" constraint. Copy prices before each round to prevent cascading updates within the same round.
+> Bellman-Ford with exactly `k+1` relaxation rounds naturally handles the "at most k stops" constraint. Copy prices before each round to prevent cascading updates within the same round.

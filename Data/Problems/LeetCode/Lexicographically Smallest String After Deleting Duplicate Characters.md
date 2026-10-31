@@ -94,7 +94,7 @@ Result: `"acdb"`.
 ## 6. Follow-Up Questions
 
 - How would the solution change for Unicode characters?
-- Can the algorithm be adapted to return the k‑th smallest string?
+- Can the algorithm be adapted to return the k-th smallest string?
 - What if characters may appear more than once but with a limited count?
 
 ---

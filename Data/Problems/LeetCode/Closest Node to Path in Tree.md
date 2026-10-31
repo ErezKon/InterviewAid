@@ -107,14 +107,14 @@ Since 0 is the only node on the path, the answer to the first query is 0.
 | 1 | Build tree | Convert edge list to adjacency list and run DFS to compute depth of each node. |
 | 2 | Preprocess LCA | Use binary lifting to fill `up[node][k]` for ancestors at 2^k distance. |
 | 3 | Process query `(3,5,4)` | Compute `lca_se = LCA(3,5) = 0`, `lca_sn = LCA(3,4) = 1`, `lca_en = LCA(5,4) = 0`. |
-| 4 | Filter candidates | `{0,1}` lie on path 3‑5; distances to node 4 are `dist(0,4)=2`, `dist(1,4)=1`. |
+| 4 | Filter candidates | `{0,1}` lie on path 3-5; distances to node 4 are `dist(0,4)=2`, `dist(1,4)=1`. |
 | 5 | Choose answer | Node `1` has minimum distance, so output `1`. |
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time:** Preprocessing O(n log n). Each query O(log n) for LCA computations and constant‑time distance checks.
+- **Time:** Preprocessing O(n log n). Each query O(log n) for LCA computations and constant-time distance checks.
 - **Space:** O(n log n) for ancestor tables and O(n) for adjacency list.
 
 ---

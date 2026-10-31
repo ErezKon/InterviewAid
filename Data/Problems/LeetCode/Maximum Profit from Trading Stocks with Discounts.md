@@ -102,17 +102,17 @@ The two states capture whether we currently hold a stock. When selling, we subtr
 | Day | price | dp0 (no stock) | dp1 (holding) | Action |
 |-----|-------|----------------|---------------|--------|
 | 0   | 1     | 0              | -1            | buy
-| 1   | 3     | MAX(0, -1+3‑2)=0 | MAX(-1, 0‑3)=-1 | sell (pay discount) → profit 0
-| 2   | 2     | 0              | MAX(-1, 0‑2)=-2 | buy
-| 3   | 8     | MAX(0, -2+8‑2)=4 | MAX(-2, 0‑8)=-2 | sell → profit 4
-| 4   | 4     | 4              | MAX(-2, 4‑4)=0  | buy
-| 5   | 9     | MAX(4, 0+9‑2)=7 | MAX(0, 4‑9)=-5 | sell → profit 7 (total 8 overall)
+| 1   | 3     | MAX(0, -1+3-2)=0 | MAX(-1, 0-3)=-1 | sell (pay discount) → profit 0
+| 2   | 2     | 0              | MAX(-1, 0-2)=-2 | buy
+| 3   | 8     | MAX(0, -2+8-2)=4 | MAX(-2, 0-8)=-2 | sell → profit 4
+| 4   | 4     | 4              | MAX(-2, 4-4)=0  | buy
+| 5   | 9     | MAX(4, 0+9-2)=7 | MAX(0, 4-9)=-5 | sell → profit 7 (total 8 overall)
 
 ## Complexity Analysis
 - **Time:** O(n) – single pass through `prices`.
-- **Space:** O(1) – only constant‑size DP variables.
+- **Space:** O(1) – only constant-size DP variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the discount `d` varied per transaction?
 2. Can you extend the DP to handle a cooldown period (no buying on the next day after a sell) in addition to the discount?
 3. What is the impact on the algorithm if there is a limit on the number of transactions?

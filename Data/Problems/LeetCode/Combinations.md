@@ -30,7 +30,7 @@ Example 2:
 ```
 
 ## Approach
-Use backtracking (depth‑first search) to build combinations incrementally:
+Use backtracking (depth-first search) to build combinations incrementally:
 1. Start with an empty path and a starting number `start`.
 2. At each step, add a number `i` from `start` to `n` (pruned so enough numbers remain to fill the combination).
 3. Recurse with `i+1` as the new start.
@@ -64,7 +64,7 @@ For `n = 4, k = 2`:
 Time: O(C(n,k) * k) – each combination of size `k` is generated.
 Space: O(k) recursion stack plus O(C(n,k) * k) for output.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to return combinations in lexicographic order without sorting?
 - Can you generate combinations iteratively using a stack instead of recursion?
 - What changes are needed to produce combinations of characters from a string?
@@ -73,4 +73,4 @@ Space: O(k) recursion stack plus O(C(n,k) * k) for output.
 
 ## Key Takeaway
 
-> Backtracking with careful pruning (`n - (k - path.length) + 1`) efficiently enumerates all `k`‑element subsets of `[1, n]`.
+> Backtracking with careful pruning (`n - (k - path.length) + 1`) efficiently enumerates all `k`-element subsets of `[1, n]`.

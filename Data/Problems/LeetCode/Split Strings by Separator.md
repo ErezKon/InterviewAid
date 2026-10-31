@@ -59,7 +59,7 @@ Explanation: In this example the resulting split of "|||" will contain only empt
 ```
 
 ## Approach
-Iterate through each word, split it using the separator, and collect each non‑empty part into the result list.
+Iterate through each word, split it using the separator, and collect each non-empty part into the result list.
 
 ```text
 FUNCTION SplitStringsBySeparator(words, separator):
@@ -79,13 +79,13 @@ FUNCTION SplitStringsBySeparator(words, separator):
 | 2 | "three" | ["three"] | ["one", "two", "three"] |
 
 ## Complexity Analysis
-*Time:* O(N + L) where N is the total number of characters across all words and L is the total number of produced substrings.
+*Time:* O(N + L) where N is the total number of characters across all words and L is the total number of produced substrings.
 *Space:* O(L) for the output list.
 
 ## Follow-Up Questions
 1. How would you handle multiple different separators in one call?
-2. Can you perform the operation in‑place if the input list can be modified?
+2. Can you perform the operation in-place if the input list can be modified?
 3. How would you adapt the solution for very large inputs that do not fit in memory?
 
 ## Key Takeaway
-A straightforward linear scan combined with string splitting yields an optimal O(N) solution for extracting non‑empty substrings.
+A straightforward linear scan combined with string splitting yields an optimal O(N) solution for extracting non-empty substrings.

@@ -66,13 +66,13 @@ FUNCTION reverseWords(s):
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you handle punctuation attached to words?
-- Can you solve it without using built‑in split/join functions?
+- Can you solve it without using built-in split/join functions?
 
 ---
 
 ## Key Takeaway
 
-> Split → reverse each word → join. Contrast with #151 (reverse word order) and #186 (in‑place word order reversal).
+> Split → reverse each word → join. Contrast with #151 (reverse word order) and #186 (in-place word order reversal).

@@ -54,10 +54,10 @@ Example 3:
 ```text
 FUNCTION allCellsDistOrder(rows, cols, rCenter, cCenter):
     cells ← []
-    FOR r ← 0 TO rows‑1:
-        FOR c ← 0 TO cols‑1:
+    FOR r ← 0 TO rows-1:
+        FOR c ← 0 TO cols-1:
             APPEND (r, c) TO cells
-    SORT cells BY ABS(r‑rCenter) + ABS(c‑cCenter)
+    SORT cells BY ABS(r-rCenter) + ABS(c-cCenter)
     RETURN cells
 ```
 
@@ -88,7 +88,7 @@ The algorithm first generates all nine coordinate pairs, then sorts them by Manh
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return cells in **spiral order** around the center?
 - Can you generate the ordering **without sorting**, using a BFS expansion from the center?

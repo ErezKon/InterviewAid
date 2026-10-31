@@ -43,7 +43,7 @@ Explanation: There is no path from vertex 0 to vertex 5.
 ```
 
 ## Approach
-Use a **Union‑Find (Disjoint Set Union)** data structure to merge nodes that share an edge. After processing all edges, two nodes are connected iff they belong to the same set.
+Use a **Union-Find (Disjoint Set Union)** data structure to merge nodes that share an edge. After processing all edges, two nodes are connected iff they belong to the same set.
 
 ```text
 FUNCTION validPath(n, edges, source, destination):
@@ -52,10 +52,10 @@ FUNCTION validPath(n, edges, source, destination):
         uf.union(u, v)
     RETURN uf.find(source) == uf.find(destination)
 ```
-The `UnionFind` supports `find` with path compression and `union` by rank for near‑constant amortized time.
+The `UnionFind` supports `find` with path compression and `union` by rank for near-constant amortized time.
 
 ## Walkthrough
-| Step | Action | Union‑Find Sets |
+| Step | Action | Union-Find Sets |
 |------|--------|-----------------|
 | 1 | Initialize 6 singletons | {0},{1},{2},{3},{4},{5} |
 | 2 | Union(0,1) | {0,1},{2},{3},{4},{5} |
@@ -69,10 +69,10 @@ The `UnionFind` supports `find` with path compression and `union` by rank for ne
 - **Time:** `O(n + m α(n))` where `m` is the number of edges and `α` is the inverse Ackermann function (practically constant).
 - **Space:** `O(n)` for the parent and rank arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to count the number of connected components?
 2. If the graph were directed, which algorithm would you use to check reachability?
 3. Can you answer multiple connectivity queries efficiently after a single preprocessing step?
 
 ## Key Takeaway
-Union‑Find quickly merges connected nodes and determines connectivity in near‑constant time, making it ideal for static graph reachability queries.
+Union-Find quickly merges connected nodes and determines connectivity in near-constant time, making it ideal for static graph reachability queries.

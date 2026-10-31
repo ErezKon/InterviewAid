@@ -56,22 +56,27 @@ FUNCTION paintWalls(cost, time):
 The inner loop iterates backwards to avoid reusing the same paid painter multiple times.
 
 ## Walkthrough
-Consider `cost = [1,2,3]`, `time = [1,0,1]`:
-| i | cost[i] | time[i] | Covers (including free) |
-|---|---------|---------|--------------------------|
-|0|1|1|2 walls (0 and 1)
-|1|2|0|1 wall (1)
-|2|3|1|2 walls (2 and maybe beyond) |
-Processing backwards updates `dp` so that after wall 0, `dp[2] = 1` (paint 2 walls for cost 1). After wall 2, `dp[3] = 3`.
+Example 1: `cost = [1,2,3,2]`, `time = [1,2,3,2]`, `n = 4`. Start `dp = [0,INF,INF,INF,INF]`.
+
+| i | cost[i] | time[i] | Covers (1 + time[i]) | dp after processing |
+|---|---------|---------|----------------------|---------------------|
+| 0 | 1 | 1 | 2 | `[0,1,1,INF,INF]` |
+| 1 | 2 | 2 | 3 | `[0,1,1,2,3]` |
+| 2 | 3 | 3 | 4 | `[0,1,1,2,3]` |
+| 3 | 2 | 2 | 3 | `[0,1,1,2,3]` |
+
+- At `i = 1`: `dp[4] = dp[max(0, 4-3)] + 2 = dp[1] + 2 = 3`, `dp[3] = dp[0] + 2 = 2`.
+- Later walls cannot beat these (e.g. `i = 2` gives `dp[4] = dp[0] + 3 = 3`, a tie).
+- Answer `dp[4] = 3`: pay for walls 0 and 1 (3 time units), free painter does walls 2 and 3.
 
 ## Complexity Analysis
 - **Time:** O(n²) – nested loops over `n` walls and up to `n` painted count.
 - **Space:** O(n) – the `dp` array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can the solution be optimized for larger `n` (e.g., using monotonic queues)?
 2. What changes if the free painter can only paint immediately adjacent walls?
 3. Can you extend the DP to output the actual sequence of walls paid for?
 
 ## Key Takeaway
-Modeling the problem as a knapsack‑style DP where each paid painter contributes a variable coverage allows us to compute the minimal total cost efficiently.
+Modeling the problem as a knapsack-style DP where each paid painter contributes a variable coverage allows us to compute the minimal total cost efficiently.

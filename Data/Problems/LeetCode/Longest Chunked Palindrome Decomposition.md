@@ -101,7 +101,7 @@ The algorithm scans the string once and uses only a few pointers and temporary s
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would the solution change if the chunks must have a minimum length?
 2. Can the algorithm be adapted to return the actual chunks, not just the count?

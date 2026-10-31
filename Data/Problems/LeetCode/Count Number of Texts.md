@@ -46,10 +46,10 @@ Example 2:
 ```
 
 ## Approach
-Dynamic programming where `dp[i]` is the number of ways to interpret the first `i` characters. For each position `i`, look back up to `maxLen` (3 or 4) characters as long as they are the same digit, and add `dp[i‑j]` to `dp[i]`. Use modulo at each addition.
+Dynamic programming where `dp[i]` is the number of ways to interpret the first `i` characters. For each position `i`, look back up to `maxLen` (3 or 4) characters as long as they are the same digit, and add `dp[i-j]` to `dp[i]`. Use modulo at each addition.
 
 ## Walkthrough
-| i | pressedKeys[i‑1] | maxLen | j values considered | dp[i] calculation |
+| i | pressedKeys[i-1] | maxLen | j values considered | dp[i] calculation |
 |---|------------------|--------|--------------------|-------------------|
 | 1 | 2                | 3      | 1                  | dp[1] = dp[0] = 1 |
 | 2 | 2                | 3      | 1,2                | dp[2] = dp[1] + dp[0] = 2 |
@@ -59,7 +59,7 @@ Dynamic programming where `dp[i]` is the number of ways to interpret the first `
 Result `dp[n] = 8`.
 
 ## Complexity Analysis
-- **Time:** O(n · maxLen) ≤ O(4n) – linear in the length of the input.
+- **Time:** O(n · maxLen) ≤ O(4n) – linear in the length of the input.
 - **Space:** O(n) for the DP array (can be reduced to O(1) with rolling variables).
 
 ## Follow-Up Questions

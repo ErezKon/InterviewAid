@@ -17,7 +17,7 @@ This collection groups classic interval manipulation problems. Each problem asks
 ## Approach
 
 1. **Sort by start time** – Most interval problems begin by sorting intervals ascending on their start.
-2. **Greedy selection** – For non‑overlapping selections (e.g., minimum arrows), iterate sorted intervals and keep the interval with the smallest end that does not conflict.
+2. **Greedy selection** – For non-overlapping selections (e.g., minimum arrows), iterate sorted intervals and keep the interval with the smallest end that does not conflict.
 3. **Line sweep** – Transform each interval into two events `(start, +1)` and `(end, -1)`, sort all events, then sweep to count concurrent intervals.
 
 ```text
@@ -47,15 +47,15 @@ FUNCTION lineSweep(intervals):
 
 ## Complexity Analysis
 
-- **Time:** O(n log n) for sorting (or O(n) if intervals are pre‑sorted).
+- **Time:** O(n log n) for sorting (or O(n) if intervals are pre-sorted).
 - **Space:** O(n) for the events list or merged output.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you support dynamic insertions and deletions of intervals?
 2. Can you answer range count queries efficiently using a segment tree or binary indexed tree?
-3. Extend the problem to 2‑D rectangles—what additional challenges arise?
+3. Extend the problem to 2-D rectangles—what additional challenges arise?
 
 ## Key Takeaway
 
-Sorting by start time and applying a greedy or line‑sweep strategy solves the majority of interval problems efficiently.
+Sorting by start time and applying a greedy or line-sweep strategy solves the majority of interval problems efficiently.

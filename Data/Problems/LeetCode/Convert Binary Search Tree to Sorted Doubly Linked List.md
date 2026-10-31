@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-Perform an in‑order traversal, linking each visited node with its predecessor. Keep track of the first (smallest) and last (largest) nodes to close the circular list.
+Perform an in-order traversal, linking each visited node with its predecessor. Keep track of the first (smallest) and last (largest) nodes to close the circular list.
 
 **Pseudocode**
 ```text
@@ -59,16 +59,16 @@ FUNCTION treeToDoublyList(root):
 ```
 
 ## Walkthrough
-For BST `[4,2,5,1,3]` the in‑order sequence is 1 → 2 → 3 → 4 → 5. The algorithm links each node to its predecessor, then connects 5 back to 1.
+For BST `[4,2,5,1,3]` the in-order sequence is 1 → 2 → 3 → 4 → 5. The algorithm links each node to its predecessor, then connects 5 back to 1.
 
 ## Complexity Analysis
 - **Time:** O(n) – each node visited once.
 - **Space:** O(h) – recursion stack, where h is tree height (O(log n) balanced, O(n) worst).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement the conversion iteratively using a stack?
-2. Can the list be made non‑circular while preserving order?
+2. Can the list be made non-circular while preserving order?
 3. What modifications are needed if the input tree is not a BST?
 
 ## Key Takeaway
-In‑order traversal naturally yields nodes in sorted order, allowing straightforward linking into a doubly‑linked list.
+In-order traversal naturally yields nodes in sorted order, allowing straightforward linking into a doubly-linked list.

@@ -67,11 +67,11 @@ FUNCTION takeCharacters(s, k):
 
 ## Complexity Analysis
 - Time: O(n) where n = |s|, each character is visited at most twice.
-- Space: O(1) – only constant‑size counters for three characters.
+- Space: O(1) – only constant-size counters for three characters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the string could contain any lowercase letters?
-2. Can you solve the problem using a two‑pointer technique without an explicit counter map?
+2. Can you solve the problem using a two-pointer technique without an explicit counter map?
 3. What if deletions could be performed from anywhere in the string, not just the ends?
 
 ## Key Takeaway

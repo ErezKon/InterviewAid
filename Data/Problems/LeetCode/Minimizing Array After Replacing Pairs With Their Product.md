@@ -104,7 +104,7 @@ Resulting groups = 2, matching the minimal length.
 
 ## Follow-Up Questions
 
-- How would the algorithm change if you could merge non‑adjacent elements?
+- How would the algorithm change if you could merge non-adjacent elements?
 - What if the merge condition depended on the sum instead of the product?
 - Can you extend the approach to minimize the **sum** of the final array elements?
 

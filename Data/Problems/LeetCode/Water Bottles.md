@@ -57,11 +57,11 @@ FUNCTION maxBottles(numBottles, numExchange):
 | Exchange| 1        | 0            | 13 |
 
 ## Complexity Analysis
-- Time: O(log n) – each loop reduces the number of bottles.
+- Time: O(log n) – each loop reduces the number of bottles.
 - Space: O(1).
 
 ## Follow-Up Questions
-- Derive a closed‑form formula for the result.
+- Derive a closed-form formula for the result.
 - How would the algorithm change if each exchange gave `k` bottles?
 - What if you could borrow bottles temporarily?
 

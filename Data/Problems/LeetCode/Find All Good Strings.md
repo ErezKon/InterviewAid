@@ -49,9 +49,9 @@ Example 3:
 
 ## Approach
 
-**Digit DP + KMP** — O(n × |evil| × 26) ✅
+**Digit DP + KMP** — O(n × |evil| × 26) ✅
 
-We perform a digit‑DP over each position, tracking the current KMP state of the `evil` pattern and whether the prefix is tight to the upper bound. A second DP counts strings ≤ `s1` (after decrementing `s1`). The answer is the difference.
+We perform a digit-DP over each position, tracking the current KMP state of the `evil` pattern and whether the prefix is tight to the upper bound. A second DP counts strings ≤ `s1` (after decrementing `s1`). The answer is the difference.
 
 ```text
 FUNCTION findGoodStrings(n, s1, s2, evil):
@@ -85,7 +85,7 @@ FUNCTION findGoodStrings(n, s1, s2, evil):
 
 Consider `n=2, s1="aa", s2="da", evil="b"`.
 
-1. `count("da")` enumerates all 2‑letter strings up to "da" while avoiding "b".
+1. `count("da")` enumerates all 2-letter strings up to "da" while avoiding "b".
 2. `decrement("aa")` yields "`?`" (empty) so `count` returns 0.
 3. Subtracting gives the total of 51 valid strings.
 
@@ -93,12 +93,12 @@ Consider `n=2, s1="aa", s2="da", evil="b"`.
 
 ## Complexity Analysis
 
-- **Time:** O(n × |evil| × 26) – each DP state processes up to 26 letters.
-- **Space:** O(n × |evil|) for memoization of DP states.
+- **Time:** O(n × |evil| × 26) – each DP state processes up to 26 letters.
+- **Space:** O(n × |evil|) for memoization of DP states.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if the alphabet were larger (e.g., all ASCII characters)?
 - Can the approach be adapted to count strings that contain `evil` at most *k* times?
@@ -108,4 +108,4 @@ Consider `n=2, s1="aa", s2="da", evil="b"`.
 
 ## Key Takeaway
 
-> Combining digit‑DP with a KMP automaton efficiently counts strings in a range while enforcing a substring‑avoidance constraint.
+> Combining digit-DP with a KMP automaton efficiently counts strings in a range while enforcing a substring-avoidance constraint.

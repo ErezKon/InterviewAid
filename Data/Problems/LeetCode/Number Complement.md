@@ -94,4 +94,4 @@ Take `num = 10`:
 
 ## 7. Key Takeaway
 
-> **XOR with an all‑ones mask flips bits.** `(1 << bitLength) - 1` creates the appropriate mask for any positive integer.
+> **XOR with an all-ones mask flips bits.** `(1 << bitLength) - 1` creates the appropriate mask for any positive integer.

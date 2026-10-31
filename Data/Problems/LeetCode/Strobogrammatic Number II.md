@@ -66,10 +66,10 @@ For `n = 3`:
 - **Time:** O(5^{n/2}) – each level adds up to 5 choices (4 for outermost).
 - **Space:** O(5^{n/2}) for storing all generated numbers plus recursion stack O(n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to count the numbers instead of listing them?
 - Can you generate the numbers in lexicographic order efficiently?
 - What changes are needed if the allowed digit pairs are different (e.g., include "2"↔"5")?
 
 ## Key Takeaway
-Building strobogrammatic numbers recursively from the outside in, while respecting the leading‑zero rule, yields all valid strings of length `n`.
+Building strobogrammatic numbers recursively from the outside in, while respecting the leading-zero rule, yields all valid strings of length `n`.

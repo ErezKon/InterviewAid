@@ -70,9 +70,9 @@ FUNCTION generatePossibleNextMoves(currentState):
 
 | Index | Substring | Action |
 |-------|-----------|--------|
-| 0‑1   | "++"     | Flip → "--" resulting in "--++" |
-| 1‑2   | "++"     | Flip → "--" resulting in "+--+" |
-| 2‑3   | "++"     | Flip → "--" resulting in "++--" |
+| 0-1   | "++"     | Flip → "--" resulting in "--++" |
+| 1-2   | "++"     | Flip → "--" resulting in "+--+" |
+| 2-3   | "++"     | Flip → "--" resulting in "++--" |
 
 The algorithm scans once, creates a new string for each valid flip, and collects them.
 

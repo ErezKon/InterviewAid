@@ -58,49 +58,39 @@ Example 1:
 ```
 
 ## Approach
-Apply a sweep line algorithm similar to Rectangle Area II. Sweep vertically, maintaining active horizontal intervals to compute covered width at each y‑step. Use coordinate compression and a segment tree (or multiset) to track interval coverage counts.
+Self-join `Points` with itself so that every unordered pair of points appears once (`p1.id < p2.id`). Two points are opposite corners of an axis-aligned rectangle with non-zero area exactly when their x-values differ **and** their y-values differ. The area is `|x1 - x2| * |y1 - y2|`. Finally sort by `area DESC, p1 ASC, p2 ASC`.
 
-```text
-FUNCTION UnionRectanglesArea(rectangles):
-    // 1. Collect and compress x-coordinates
-    SET xs ← sorted unique list of all x1 and x2 from rectangles
-    CREATE map xIdx ← map each x to its index in xs
-    // 2. Build sweep events: (y, type, x1, x2)
-    SET events ← []
-    FOR each [x1, y1, x2, y2] IN rectangles:
-        APPEND (y1, +1, x1, x2) TO events   // rectangle enters
-        APPEND (y2, -1, x1, x2) TO events   // rectangle leaves
-    SORT events BY y ASCENDING
-    // 3. Segment tree over compressed x intervals
-    INITIALIZE segTree over range 0..len(xs)-2 with count ← 0, coveredLength ← 0
-    SET prevY ← events[0].y
-    SET area ← 0
-    FOR each (y, type, x1, x2) IN events:
-        SET dy ← y - prevY
-        SET coveredWidth ← segTree.root.coveredLength
-        SET area ← area + coveredWidth * dy
-        // Update coverage for current event interval
-        SET left ← xIdx[x1]
-        SET right ← xIdx[x2] - 1
-        segTree.UPDATE(left, right, type) // increment or decrement count
-        SET prevY ← y
-    RETURN area
+```sql
+SELECT a.id AS p1,
+       b.id AS p2,
+       ABS(a.x_value - b.x_value) * ABS(a.y_value - b.y_value) AS area
+FROM Points a
+JOIN Points b
+  ON a.id < b.id
+ AND a.x_value <> b.x_value
+ AND a.y_value <> b.y_value
+ORDER BY area DESC, p1 ASC, p2 ASC;
 ```
 
 ## Walkthrough
-For `rectangles = [[0,0,2,2],[1,0,3,1]]`:
-1. Unique x: `[0,1,2,3]` → intervals `[0-1],[1-2],[2-3]`.
-2. Events: `(0,+1,0,2)`, `(0,+1,1,3)`, `(1,-1,1,3)`, `(2,-1,0,2)`.
-3. Sweep steps compute covered width 3 between y=0 and y=1, then width 2 between y=1 and y=2, yielding area `3*1 + 2*1 = 5`.
+Example 1: points `1:(2,7)`, `2:(4,8)`, `3:(2,10)`.
+
+| pair (a.id < b.id) | dx | dy | kept? | area |
+|--------------------|----|----|-------|------|
+| (1,2) | 2 | 1 | yes | 2 |
+| (1,3) | 0 | 3 | no (same x, zero area) | - |
+| (2,3) | 2 | 2 | yes | 4 |
+
+Sorted by area descending: `(2,3,4)`, `(1,2,2)` -- matches the expected output.
 
 ## Complexity Analysis
-- **Time:** `O(N log N)` where `N` is the number of rectangles (sorting and segment‑tree updates).
-- **Space:** `O(N)` for events, compressed coordinates, and the segment tree.
+- **Time:** `O(N^2 + K log K)` where `N` is the number of points and `K <= N(N-1)/2` is the number of valid pairs (self-join plus sort).
+- **Space:** `O(K)` for the result set.
 
 ## Follow-Up Questions
-1. How would you modify the algorithm to also return the exact union polygon?
-2. Can the method be adapted for rectangles with rotation (non‑axis aligned)?
-3. What are the trade‑offs between using a segment tree versus a balanced BST for active intervals?
+1. How would you also return the rectangles formed by four points from the table (all four corners present)?
+2. Why is `a.id < b.id` used instead of `a.id <> b.id`?
+3. How could an index on `(x_value, y_value)` help if the table is large?
 
 ## Key Takeaway
-Sweeping a line while maintaining active horizontal coverage via a segment tree efficiently computes the union area of many overlapping rectangles.
+A self-join with `a.id < b.id` enumerates each pair of points once; filtering out equal x or y coordinates removes zero-area rectangles before computing and sorting the areas.

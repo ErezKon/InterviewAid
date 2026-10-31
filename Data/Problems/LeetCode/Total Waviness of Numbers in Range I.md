@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below use an invented waviness definition and a digit DP; with `num2 ≤ 10^5` a direct simulation suffices: for each number, count interior digits that are strictly greater than both neighbours (peak) or strictly less than both (valley). O((num2 − num1 + 1)·log num2).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given two integers `num1` and `num2` representing an **inclusive** range `[num1, num2]`.
 
@@ -58,50 +58,40 @@ Explanation: Number 4848: the second digit 8 is a peak, and the third digit 4 is
 ```
 
 ## Approach
-Use digit DP to count contributions of each digit position across the range. For each position `pos`, we need to know how many numbers have a digit larger than the next lower digit. The DP state tracks the previous digit and whether the prefix is tight to the bound.
+With `num2 ≤ 10^5` the range holds at most 10^5 numbers of at most 6 digits each, so direct simulation is fast. For each number, extract its digits and check every interior position `i` (not the first or last): it counts if `d[i]` is strictly greater than both `d[i-1]` and `d[i+1]` (peak) or strictly less than both (valley). Numbers with fewer than 3 digits have no interior positions and contribute 0 automatically.
 
 ```text
-FUNCTION totalWaviness(low, high):
-    RETURN wavinessUpTo(high) - wavinessUpTo(low - 1)
-
-FUNCTION wavinessUpTo(limit):
-    CONVERT limit to digit array digits (most‑significant first)
-    DEFINE memo[pos][prev][tight] = -1
-    RETURN dfs(0, -1, TRUE)
-
-FUNCTION dfs(pos, prev, tight):
-    IF pos = LENGTH(digits):
-        RETURN 0
-    IF memo[pos][prev][tight] ≠ -1:
-        RETURN memo[pos][prev][tight]
-    SET maxDigit ← tight ? digits[pos] : 9
-    SET total ← 0
-    FOR d FROM 0 TO maxDigit:
-        SET newTight ← tight AND (d = maxDigit)
-        SET add ← 0
-        IF prev ≠ -1 AND prev > d:
-            SET add ← 1
-        SET total ← total + add + dfs(pos + 1, d, newTight)
-    SET memo[pos][prev][tight] ← total
+FUNCTION totalWaviness(num1, num2):
+    total ← 0
+    FOR x ← num1 TO num2
+        d ← digits of x (most-significant first)
+        FOR i ← 1 TO LENGTH(d) - 2
+            IF (d[i] > d[i-1] AND d[i] > d[i+1]) OR (d[i] < d[i-1] AND d[i] < d[i+1])
+                total ← total + 1          // peak or valley
     RETURN total
 ```
 
 ## Walkthrough
-For `limit = 13` (digits `[1,3]`):
-1. At `pos=0`, `prev=-1`, `tight=true`, `maxDigit=1`.
-   - Choose `d=0` → recurse with `prev=0`, `tight=false`.
-   - Choose `d=1` → recurse with `prev=1`, `tight=true`.
-2. The recursion accumulates a `+1` whenever a higher digit precedes a lower one, e.g., the pair `1` (prev) and `0` (next) contributes.
-Summing all branches yields the total waviness for numbers `0…13`.
+Example 2: `num1 = 198`, `num2 = 202` (only the middle digit can count):
+
+| x | Digits | Middle digit vs neighbours | Waviness | Running total |
+|---|--------|----------------------------|----------|---------------|
+| 198 | 1,9,8 | 9 > 1 and 9 > 8 → peak | 1 | 1 |
+| 199 | 1,9,9 | 9 not > 9 | 0 | 1 |
+| 200 | 2,0,0 | 0 not < 0 | 0 | 1 |
+| 201 | 2,0,1 | 0 < 2 and 0 < 1 → valley | 1 | 2 |
+| 202 | 2,0,2 | 0 < 2 and 0 < 2 → valley | 1 | 3 |
+
+Result = **3**, matching the expected output.
 
 ## Complexity Analysis
-*Time*: O(number of digits × 10 × 2) ≈ O(10·log₁₀(limit)) because each state is visited once.
-*Space*: O(number of digits × 11 × 2) for memoization.
+*Time*: O((num2 − num1 + 1) · log₁₀ num2) — at most ~6 digit checks per number.
+*Space*: O(log₁₀ num2) for the digit array of one number.
 
-## Follow‑Up Questions
-1. How would the solution change if waviness were defined using non‑adjacent digit comparisons?
-2. Can you extend the DP to handle a different base (e.g., hexadecimal) efficiently?
-3. What is the impact on performance for ranges up to `10^18`?
+## Follow-Up Questions
+1. For ranges up to 10^15 (Part II), how would a digit DP with state (position, previous two digits, tight, started) count peaks and valleys?
+2. How would you handle leading zeros correctly in such a digit DP?
+3. Can you generalize to an arbitrary base `b`?
 
 ## Key Takeaway
-Digit DP enables counting positional properties like waviness over a numeric range by exploring all digit combinations under tight constraints.
+When the range is small, a direct per-number scan of interior digits is the simplest correct solution; save digit DP for when the range becomes huge.

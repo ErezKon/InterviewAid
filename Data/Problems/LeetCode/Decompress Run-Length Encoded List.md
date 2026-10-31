@@ -83,4 +83,4 @@ FUNCTION decompressRLElist(nums):
 
 ## Key Takeaway
 
-> **RLE decompression: iterate over frequency‑value pairs and append the value the specified number of times. Simple simulation yields the full list.**
+> **RLE decompression: iterate over frequency-value pairs and append the value the specified number of times. Simple simulation yields the full list.**

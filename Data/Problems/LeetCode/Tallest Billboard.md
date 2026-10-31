@@ -71,12 +71,12 @@ FUNCTION tallestBillboard(rods):
 | Final | – | … | – | dp[0] = 10 |
 
 ## Complexity Analysis
-- Time: O(n · S) where `S` is the range of possible differences (bounded by sum of rods). Practically O(n · sum(rods)).
+- Time: O(n · S) where `S` is the range of possible differences (bounded by sum of rods). Practically O(n · sum(rods)).
 - Space: O(S) for the DP map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the number of sides were three instead of two?
-2. Can you solve the problem using a meet‑in‑the‑middle approach to reduce memory?
+2. Can you solve the problem using a meet-in-the-middle approach to reduce memory?
 3. What if each rod could be used at most once but you could also discard rods without penalty?
 
 ## Key Takeaway

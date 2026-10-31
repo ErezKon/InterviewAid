@@ -79,11 +79,11 @@ FUNCTION lowestCommonAncestor(root, p, q):
 ## Walkthrough
 
 Consider Example 1. The DFS traverses the tree:
-- Visits node 3, recurses left to 5 and right to 1.
-- Sub‑tree rooted at 5 finds `p` (5) → `foundP` true, returns 5.
-- Sub‑tree rooted at 1 finds `q` (1) → `foundQ` true, returns 1.
-- At node 3 both left and right calls returned non‑null, so node 3 is returned as LCA.
-Since both flags are true, the final answer is node 3.
+- Visits node 3, recurses left to 5 and right to 1.
+- Sub-tree rooted at 5 finds `p` (5) → `foundP` true, returns 5.
+- Sub-tree rooted at 1 finds `q` (1) → `foundQ` true, returns 1.
+- At node 3 both left and right calls returned non-null, so node 3 is returned as LCA.
+Since both flags are true, the final answer is node 3.
 
 ---
 
@@ -104,4 +104,4 @@ Since both flags are true, the final answer is node 3.
 
 ## Key Takeaway
 
-> Same DFS as LCA I but must traverse the entire tree (don't short‑circuit) to confirm both nodes exist. Return null if either is missing.
+> Same DFS as LCA I but must traverse the entire tree (don't short-circuit) to confirm both nodes exist. Return null if either is missing.

@@ -63,7 +63,7 @@ Example 1:
 
 ## Walkthrough
 
-1. Perform a self‑join of `Point2D` to generate every pair of distinct points.
+1. Perform a self-join of `Point2D` to generate every pair of distinct points.
 2. For each pair, compute the Euclidean distance using `SQRT(POW(dx,2) + POW(dy,2))`.
 3. Use `MIN` to keep the smallest distance across all pairs.
 4. Round the result to two decimal places for readability.
@@ -72,11 +72,11 @@ Example 1:
 
 ## Complexity Analysis
 
-- **Time:** O(n²) due to the self‑join generating all point pairs.
+- **Time:** O(n²) due to the self-join generating all point pairs.
 - **Space:** O(1) extra space besides the input table.
 
 ---
 
 ## Key Takeaway
 
-> Self‑join on the points table and exclude same‑point pairs. Apply the Euclidean distance formula and take the minimum.
+> Self-join on the points table and exclude same-point pairs. Apply the Euclidean distance formula and take the minimum.

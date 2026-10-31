@@ -71,7 +71,7 @@ Example 2:
   2, 4, 6, 8, 11, 13, 15, 17, 19, 20, 22, 24, 26, and 28.
 ```
 
-(Note: 10 is not an even‑sum number since 1 + 0 = 1, so num = 10 gives 4: 2, 4, 6, 8.)
+(Note: 10 is not an even-sum number since 1 + 0 = 1, so num = 10 gives 4: 2, 4, 6, 8.)
 
 ---
 

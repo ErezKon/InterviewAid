@@ -41,8 +41,8 @@ Explanation: No string of words is substring of another string.
 ```
 
 ## Approach
-**Algorithm:** Brute‑force pairwise check (Easy due to small constraints).
-- **Insight:** For each word, check if it is a substring of any other word using the built‑in substring operation.
+**Algorithm:** Brute-force pairwise check (Easy due to small constraints).
+- **Insight:** For each word, check if it is a substring of any other word using the built-in substring operation.
 - **Optimization:** Sort words by length descending; a shorter word only needs to be checked against longer words.
 
 ### Pseudocode
@@ -71,8 +71,8 @@ Result `["hero","as"]`.
 
 ## Follow-Up Questions
 - How would you improve the runtime if the list contained up to 10⁵ words?
-- Can a suffix‑tree or Trie be used to achieve O(total length) time?
+- Can a suffix-tree or Trie be used to achieve O(total length) time?
 - What changes are needed if you must return the substrings in the original order?
 
 ## Key Takeaway
-A simple double loop with length‑based ordering efficiently finds all words that are substrings of others for modest input sizes.
+A simple double loop with length-based ordering efficiently finds all words that are substrings of others for modest input sizes.

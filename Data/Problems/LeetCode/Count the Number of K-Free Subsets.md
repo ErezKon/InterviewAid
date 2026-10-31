@@ -58,7 +58,7 @@ Group elements by their value modulo `k`. Within each group, sort the numbers �
 
 1. **Group by modulo** – `groups[value % k]` collects numbers sharing the same remainder.
 2. **Sort each group** – ensures that potential conflicts appear as adjacent elements.
-3. **DP on each chain** – for a sorted chain, use a house‑robber style DP to count subsets that avoid picking adjacent elements (difference `k`).
+3. **DP on each chain** – for a sorted chain, use a house-robber style DP to count subsets that avoid picking adjacent elements (difference `k`).
 4. **Combine groups** – because groups are independent, multiply their counts together and subtract one to exclude the empty subset.
 
 ---
@@ -73,7 +73,7 @@ Consider `nums = [1,2,3,4]`, `k = 1`.
    - i=1 (value 2): difference = 1 → cannot take both 1 and 2 → `prev, curr = curr, prev + curr` → `prev=2`, `curr=3`.
    - i=2 (value 3): difference = 1 → `prev, curr = curr, prev + curr` → `prev=3`, `curr=5`.
    - i=3 (value 4): difference = 1 → `prev, curr = curr, prev + curr` → `prev=5`, `curr=8`.
-4. Result for the group = `curr = 8`. Subtract empty subset → `7` k‑free subsets.
+4. Result for the group = `curr = 8`. Subtract empty subset → `7` k-free subsets.
 
 ---
 
@@ -89,11 +89,11 @@ Consider `nums = [1,2,3,4]`, `k = 1`.
 ## Follow-Up Questions
 
 1. How would the solution change if the constraint were “no two elements have a difference **less than or equal to** `k`”?
-2. Can you solve the problem in O(n) time without sorting by using a hash‑set based greedy approach?
+2. Can you solve the problem in O(n) time without sorting by using a hash-set based greedy approach?
 3. How would you extend the algorithm to handle duplicate values in `nums`?
 
 ---
 
 ## Key Takeaway
 
-> **K‑free subsets can be solved by grouping numbers by modulo `k`, sorting each group, and applying a house‑robber DP on each independent chain. Multiplying the group results yields the total count.**
+> **K-free subsets can be solved by grouping numbers by modulo `k`, sorting each group, and applying a house-robber DP on each independent chain. Multiplying the group results yields the total count.**

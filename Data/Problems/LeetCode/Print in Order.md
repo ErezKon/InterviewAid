@@ -85,10 +85,10 @@ For the call order `[second, first, third]`:
 The final output respects the required order.
 
 ## Complexity Analysis
-- **Time:** `O(1)` per method call – only semaphore operations and a constant‑time print.
+- **Time:** `O(1)` per method call – only semaphore operations and a constant-time print.
 - **Space:** `O(1)` – only three semaphores are stored.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement the same ordering using locks and condition variables?
 2. Can the pattern be extended to `k` methods that must execute in a specific sequence?
 3. What changes are needed if the methods must return values instead of printing?

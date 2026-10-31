@@ -66,7 +66,7 @@ Example 3:
 ```
 
 ## Approach
-Process the operations offline using a Union‑Find (Disjoint Set Union) with *rollback* or *divide‑and‑conquer* on time, but a simpler method is to handle queries **after each edge** by performing unions for all edges seen so far and then answering the batch of queries.
+Process the operations offline using a Union-Find (Disjoint Set Union) with *rollback* or *divide-and-conquer* on time, but a simpler method is to handle queries **after each edge** by performing unions for all edges seen so far and then answering the batch of queries.
 
 ```text
 FUNCTION pathExistenceQueriesII(n, edges, queryBatches):
@@ -116,14 +116,14 @@ For the first example:
 | Step | Edge added | DSU parent after union | Queries answered |
 |------|------------|------------------------|------------------|
 | Init | – | `[0,1,2]` | – |
-| Batch 1 (time after first edge) | (0,1) | `[0,0,2]` | `(0,2)` → false |
-| Batch 2 (after second edge) | (1,2) → union(0,2) | `[0,0,0]` | `(0,2)` → true, `(1,0)` → true |
+| Batch 1 (time after first edge) | (0,1) | `[0,0,2]` | `(0,2)` → false |
+| Batch 2 (after second edge) | (1,2) → union(0,2) | `[0,0,0]` | `(0,2)` → true, `(1,0)` → true |
 
 ## Complexity Analysis
-- **Time:** O((m + q) α(n)) where `m` is number of edges, `q` total queries, `α` inverse Ackermann.
+- **Time:** O((m + q) α(n)) where `m` is number of edges, `q` total queries, `α` inverse Ackermann.
 - **Space:** O(n) for DSU structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you support edge deletions?
 2. Can you answer queries online without storing all future edges?
 3. What changes are needed for a directed graph?

@@ -59,8 +59,8 @@ Example 2:
 
 ## 6. Follow-Up Questions
 
-- How would you handle extremely large numbers that cannot fit in built‑in integer types?
-- Can you perform the conversion without using built‑in base conversion functions?
+- How would you handle extremely large numbers that cannot fit in built-in integer types?
+- Can you perform the conversion without using built-in base conversion functions?
 - How to adapt the algorithm for a different custom digit mapping?
 
 ## Key Takeaway

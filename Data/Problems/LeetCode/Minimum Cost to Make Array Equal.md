@@ -98,7 +98,7 @@ After selecting target = 2, compute total cost: `|1-2|*2 + |3-2|*3 + |5-2|*1 + |
 | Time   | **O(n log n)** – sorting the pairs |
 | Space  | **O(n)** – array of pairs |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the cost to increase and decrease were different?
 2. Can we find the optimal target without sorting, e.g., using a selection algorithm?
@@ -106,4 +106,4 @@ After selecting target = 2, compute total cost: `|1-2|*2 + |3-2|*3 + |5-2|*1 + |
 
 ## Key Takeaway
 
-The weighted median of the numbers, weighted by their per‑unit change costs, yields the minimal total cost for equalizing the array.
+The weighted median of the numbers, weighted by their per-unit change costs, yields the minimal total cost for equalizing the array.

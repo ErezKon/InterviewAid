@@ -93,15 +93,15 @@ Output: 0
 
 ## 5. Walkthrough
 
-Consider `s = "aaaaa"`, `pattern = "aaaba"` (length 5).
+Consider `s = "aaaaa"`, `pattern = "aaaba"` (length 5).
 
 1. Compute Z on `"aaaba#aaaaa"` → forward matches give longest prefix lengths for each position.
 2. Compute Z on reversed strings → backward matches give longest suffix lengths.
-3. For each start `i` (0‑4):
-   - `i = 0`: `fwd = 3`, `bwd = 0` → total 3 < 4 → not valid.
-   - `i = 1`: `fwd = 4`, `bwd = 0` → total 4 ≥ 4 → valid, return 1.
+3. For each start `i` (0-4):
+   - `i = 0`: `fwd = 3`, `bwd = 0` → total 3 < 4 → not valid.
+   - `i = 1`: `fwd = 4`, `bwd = 0` → total 4 ≥ 4 → valid, return 1.
 
-Thus the algorithm returns index 1.
+Thus the algorithm returns index 1.
 
 ---
 
@@ -118,7 +118,7 @@ Thus the algorithm returns index 1.
 
 1. How would you modify the solution to allow up to `k` mismatches?
 2. Can the approach be adapted for streaming input where `s` is received character by character?
-3. What if the alphabet size is extremely large—does it affect the Z‑function computation?
+3. What if the alphabet size is extremely large—does it affect the Z-function computation?
 
 ---
 

@@ -164,10 +164,10 @@ The maximum occupancy is 2, so 2 chairs are needed.
 | Time   | **O(|s|)** – one pass over the string |
 | Space  | **O(1)** – only a few integer variables |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the input could contain invalid sequences where a leave occurs before an entry?
-2. What if each person stays for a known duration; can we compute the peak occupancy using a sweep‑line?
+2. What if each person stays for a known duration; can we compute the peak occupancy using a sweep-line?
 3. Can we extend the method to handle multiple rooms with separate entry/exit logs?
 
 ## Key Takeaway

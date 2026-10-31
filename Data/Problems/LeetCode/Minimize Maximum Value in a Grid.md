@@ -64,7 +64,7 @@ Example 2:
 
 ## Approach
 
-**Algorithm:** Sort + Row/Column Tracking (Greedy)
+**Algorithm:** Sort + Row/Column Tracking (Greedy)
 
 The cells are processed in increasing order of their original values. For each cell, the smallest assignable rank that is larger than any rank already placed in its row or column is chosen. This ensures the ordering constraints while keeping the overall maximum as low as possible.
 
@@ -91,7 +91,7 @@ FUNCTION MinimizeMaximum(grid):
 
 ## Walkthrough
 
-Consider **Example 1** `[[1,3],[2,4]]`.
+Consider **Example 1** `[[1,3],[2,4]]`.
 
 | Step | Cell (value, r, c) | rowMax before | colMax before | assign | rowMax after | colMax after |
 |------|--------------------|---------------|---------------|--------|--------------|--------------|
@@ -100,7 +100,7 @@ Consider **Example 1** `[[1,3],[2,4]]`.
 | 3    | (3,0,1)            | [1,2]         | [1,0]         | 2      | [2,2]        | [1,2]        |
 | 4    | (4,1,1)            | [2,2]         | [1,2]         | 3      | [2,3]        | [1,3]        |
 
-The final grid `[[1,2],[2,3]]` has maximum 3.
+The final grid `[[1,2],[2,3]]` has maximum 3.
 
 ---
 
@@ -108,7 +108,7 @@ The final grid `[[1,2],[2,3]]` has maximum 3.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sort + greedy assign | **O(m·n log(m·n))** | **O(m·n)** |
+| Sort + greedy assign | **O(m·n log(m·n))** | **O(m·n)** |
 
 ---
 

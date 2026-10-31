@@ -64,7 +64,7 @@ FUNCTION lastStoneWeight(stones):
 
 ## 4. Walkthrough
 
-1. Insert all stone weights into a max‑heap.
+1. Insert all stone weights into a max-heap.
 2. Pop the two largest stones `first` and `second`.
 3. If they differ, push the difference back (the remaining weight).
 4. Repeat until at most one stone remains; return its weight or 0.
@@ -73,7 +73,7 @@ FUNCTION lastStoneWeight(stones):
 
 ## 5. Complexity Analysis
 
-Time: **O(n log n)** – each heap operation costs log n and we perform at most n pops/pushes.
+Time: **O(n log n)** – each heap operation costs log n and we perform at most n pops/pushes.
 Space: **O(n)** for storing the heap.
 
 ---
@@ -88,4 +88,4 @@ Space: **O(n)** for storing the heap.
 
 ## Key Takeaway
 
-> Max‑heap naturally gives the two heaviest stones. Pop both, push the difference if non‑zero. Simple simulation problem.
+> Max-heap naturally gives the two heaviest stones. Pop both, push the difference if non-zero. Simple simulation problem.

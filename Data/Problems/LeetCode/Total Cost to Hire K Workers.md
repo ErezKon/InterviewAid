@@ -51,7 +51,7 @@ The total hiring cost is 4.
 ```
 
 ## Approach
-Use two min‑heaps to store the current candidate workers from the left and right sides. At each step, pop the smaller top element, add its cost to the total, and replace it with the next worker from the same side if any remain.
+Use two min-heaps to store the current candidate workers from the left and right sides. At each step, pop the smaller top element, add its cost to the total, and replace it with the next worker from the same side if any remain.
 
 **Pseudocode**
 ```text
@@ -84,7 +84,7 @@ FUNCTION totalCost(costs, k, candidates):
 | 3 | Left  | 7 | 11 | 5 | 5 |
 
 ## Complexity Analysis
-- Time: O(k log c) where c = candidates (heap operations).
+- Time: O(k log c) where c = candidates (heap operations).
 - Space: O(c) for the two heaps.
 
 ## Follow-Up Questions
@@ -93,4 +93,4 @@ FUNCTION totalCost(costs, k, candidates):
 3. What if each hire incurs an additional fixed overhead cost?
 
 ## Key Takeaway
-Maintaining two min‑heaps for the selectable front and back candidates enables greedy selection of the cheapest available worker at each step, achieving optimal total cost.
+Maintaining two min-heaps for the selectable front and back candidates enables greedy selection of the cheapest available worker at each step, achieving optimal total cost.

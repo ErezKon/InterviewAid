@@ -57,9 +57,9 @@ FUNCTION minSteps(nums):
 | Index | nums[i] | maxSoFar (before) | Action | steps (cumulative) |
 |-------|---------|-------------------|--------|--------------------|
 | 0     | 3       | -                 | set maxSoFar = 3 | 0 |
-| 1     | 2       | 3                 | add 1 (3‑2)       | 1 |
+| 1     | 2       | 3                 | add 1 (3-2)       | 1 |
 | 2     | 5       | 3                 | set maxSoFar = 5 | 1 |
-| 3     | 1       | 5                 | add 4 (5‑1)       | 5 |
+| 3     | 1       | 5                 | add 4 (5-1)       | 5 |
 | 4     | 7       | 5                 | set maxSoFar = 7 | 5 |
 
 The final step count is 5.
@@ -68,10 +68,10 @@ The final step count is 5.
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – only a few variables are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could also decrement elements?
-2. Can you extend the approach to return the transformed non‑decreasing array?
+2. Can you extend the approach to return the transformed non-decreasing array?
 3. What if the array is extremely large and stored on disk? How would you process it in chunks?
 
 ## Key Takeaway
-A simple greedy scan that keeps track of the running maximum yields the minimal number of increments needed to make an array non‑decreasing.
+A simple greedy scan that keeps track of the running maximum yields the minimal number of increments needed to make an array non-decreasing.

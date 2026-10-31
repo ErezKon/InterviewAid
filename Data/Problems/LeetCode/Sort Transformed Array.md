@@ -30,7 +30,7 @@ Example 2:
 ```
 
 ## Approach
-The original array is sorted. Depending on the sign of `a`, the transformed values are monotonic from the ends towards the center. Use a two‑pointer technique to fill the result array from the appropriate end.
+The original array is sorted. Depending on the sign of `a`, the transformed values are monotonic from the ends towards the center. Use a two-pointer technique to fill the result array from the appropriate end.
 
 ```text
 FUNCTION sortTransformedArray(nums, a, b, c):
@@ -57,7 +57,7 @@ FUNCTION sortTransformedArray(nums, a, b, c):
 ```
 
 ## Walkthrough
-For `nums = [-4,-2,2,4]`, `a = 1` (non‑negative):
+For `nums = [-4,-2,2,4]`, `a = 1` (non-negative):
 | step | lo | hi | leftVal | rightVal | placed at idx |
 |------|----|----|---------|----------|---------------|
 | 1 | -4 | 4 | 9 | 33 | result[3]=33 |

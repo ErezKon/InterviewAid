@@ -19,7 +19,7 @@ The test cases are generated so that the answer can fit in a **32-bit** integer.
 
 **Follow up:** What if negative numbers are allowed in the given array? How does it change the problem? What limitation we need to add to the question to allow negative numbers?
 
-*(Note: unlike some counting problems, no modulo such as 10^9 + 7 is needed.)*
+*(Note: unlike some counting problems, no modulo such as 10^9 + 7 is needed.)*
 
 ## Examples
 ```
@@ -44,7 +44,7 @@ Example 2:
 ```
 
 ## Approach
-Use dynamic programming where `dp[i]` stores the number of ordered combinations that sum to `i`. Iterate `i` from 1 to `target` and for each `num` in `nums` add `dp[i‑num]` to `dp[i]` when `i ≥ num`.
+Use dynamic programming where `dp[i]` stores the number of ordered combinations that sum to `i`. Iterate `i` from 1 to `target` and for each `num` in `nums` add `dp[i-num]` to `dp[i]` when `i ≥ num`.
 
 ### Pseudocode
 ```text
@@ -68,7 +68,7 @@ Consider `nums = [1,2,3]`, `target = 4`.
 |4| dp[4] += dp[3] (1) →4; dp[4] += dp[2] (2) →6; dp[4] += dp[1] (3) →7|7|
 
 ## Complexity Analysis
-- **Time:** O(target × n) where n = length of `nums`.
+- **Time:** O(target × n) where n = length of `nums`.
 - **Space:** O(target) for the DP array.
 
 ## Follow-Up Questions

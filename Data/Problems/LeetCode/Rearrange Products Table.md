@@ -68,11 +68,11 @@ SELECT product_id, 'store3' AS store, store3 FROM Products WHERE store3 IS NOT N
 ```
 
 ## Walkthrough
-For product 1, the first SELECT yields `(1, 'store1', 10)`. The second SELECT is skipped because `store2` is `NULL`. The third SELECT yields `(1, 'store3', 12)`. Repeating for product 2 produces `(2, 'store2', 8)`.
+For product 1, the first SELECT yields `(1, 'store1', 10)`. The second SELECT is skipped because `store2` is `NULL`. The third SELECT yields `(1, 'store3', 12)`. Repeating for product 2 produces `(2, 'store2', 8)`.
 
 ## Complexity Analysis
 - **Time:** O(N) – each row is examined once per store column.
-- **Space:** O(N) – output size proportional to the number of non‑NULL entries.
+- **Space:** O(N) – output size proportional to the number of non-NULL entries.
 
 ## Follow-Up Questions
 1. How would you write the query if the number of store columns is dynamic?

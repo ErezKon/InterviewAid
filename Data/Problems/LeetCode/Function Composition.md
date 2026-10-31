@@ -71,7 +71,7 @@ compose(functions)(2) // (2 + 3)^2 = 25
 
 ## 4. Walkthrough
 
-Take Example 1:
+Take Example 1:
 1. Start with input `5`.
 2. Apply the rightmost function `x => x * 2` → `10`.
 3. Apply the next function `x => x + 1` → `11`.

@@ -84,7 +84,7 @@ n = 100
 
 ## Follow-Up Questions
 
-- How would you compute trailing zeros for factorials of very large numbers (beyond 64‑bit)?
+- How would you compute trailing zeros for factorials of very large numbers (beyond 64-bit)?
 - Can you extend the method to count trailing zeros in other bases?
 
 ---

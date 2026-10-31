@@ -81,7 +81,7 @@ Both time and space are constant because the computation involves a few arithmet
 ## 6. Follow-Up Questions
 
 - How would you handle temperature conversion for an array of Celsius values efficiently?
-- What if the input temperature could be a floating‑point number with high precision?
+- What if the input temperature could be a floating-point number with high precision?
 - Can you extend the function to support conversion to Rankine as well?
 
 ---

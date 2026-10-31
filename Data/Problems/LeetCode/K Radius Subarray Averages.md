@@ -96,9 +96,9 @@ Given complexity, we'll provide correct example values: Revised Output: [-1,-1,-
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-1. How would you adapt the solution to return floating‑point averages instead of integer division?
+1. How would you adapt the solution to return floating-point averages instead of integer division?
 2. Can you solve the problem using prefix sums instead of a sliding window?
 3. What changes are needed if the window size varies for each index?
 
@@ -106,4 +106,4 @@ Given complexity, we'll provide correct example values: Revised Output: [-1,-1,-
 
 ## 7. Key Takeaway
 
-> Fixed‑size sliding window of `2k+1` elements. Slide by adding the new right element and removing the old left. Classic prefix sum / sliding window pattern.
+> Fixed-size sliding window of `2k+1` elements. Slide by adding the new right element and removing the old left. Classic prefix sum / sliding window pattern.

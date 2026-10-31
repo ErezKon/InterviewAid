@@ -53,19 +53,19 @@ Iterate over the characters of `s`, counting spaces. When the count of spaces re
 ## Walkthrough
 | Index | Char | Space Count | Action |
 |-------|------|-------------|--------|
-| 0‑4   | H e l l o | 0 | continue |
+| 0-4   | H e l l o | 0 | continue |
 | 5     | space | 1 | continue |
 | ...   | ... | ... | ... |
-| when space count = k‑1 (3) at position 19, slice `s[0:19]` → `"Hello how are you"` |
+| when space count = k-1 (3) at position 19, slice `s[0:19]` → `"Hello how are you"` |
 
 ## Complexity Analysis
 - **Time:** `O(n)` where `n` is the length of `s`.
 - **Space:** `O(1)` additional space (output string shares original characters).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle multiple consecutive spaces?
 2. Can the solution be adapted to return the last `k` words?
 3. What if the input is a stream of characters rather than a full string?
 
 ## Key Takeaway
-Counting spaces while scanning the string lets you locate the cut‑off point for the first `k` words in a single linear pass.
+Counting spaces while scanning the string lets you locate the cut-off point for the first `k` words in a single linear pass.

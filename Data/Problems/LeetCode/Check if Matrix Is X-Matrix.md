@@ -65,10 +65,10 @@ FUNCTION checkXMatrix(grid):
 
 Consider `grid = [[2,0,0],[0,3,0],[0,0,4]]`:
 1. `n = 3`. Loop over each cell.
-2. Cells (0,0), (1,1), (2,2) and (0,2), (2,0) are on a diagonal; all contain non‑zero values.
-3. All other cells are off‑diagonal and contain `0`.
+2. Cells (0,0), (1,1), (2,2) and (0,2), (2,0) are on a diagonal; all contain non-zero values.
+3. All other cells are off-diagonal and contain `0`.
 4. No rule is violated, so the function returns `true`.
-If we change `grid[0][2]` to `2`, step 3 fails because an off‑diagonal cell is non‑zero, leading to `false`.
+If we change `grid[0][2]` to `2`, step 3 fails because an off-diagonal cell is non-zero, leading to `false`.
 
 ---
 
@@ -81,14 +81,14 @@ If we change `grid[0][2]` to `2`, step 3 fails because an off‑diagonal cell is
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm to handle a rectangular matrix and check for a similar “cross” pattern?
-- Can you solve the problem in O(n) time by only examining the two diagonals and counting non‑zero off‑diagonal elements?
+- Can you solve the problem in O(n) time by only examining the two diagonals and counting non-zero off-diagonal elements?
 - What if the matrix is extremely large and stored in a sparse format? Discuss an efficient representation.
 
 ---
 
 ## Key Takeaway
 
-> A cell belongs to an X‑Matrix diagonal if `i == j` or `i + j == n‑1`. Verify non‑zero on diagonals and zero elsewhere.
+> A cell belongs to an X-Matrix diagonal if `i == j` or `i + j == n-1`. Verify non-zero on diagonals and zero elsewhere.

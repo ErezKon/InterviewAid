@@ -72,12 +72,12 @@ The same logic applies to arrays using `Object.keys` (which yields indices) or b
 
 ## 5. Complexity Analysis
 
-- **Time:** O(1) – retrieving keys and checking length are constant‑time operations.
+- **Time:** O(1) – retrieving keys and checking length are constant-time operations.
 - **Space:** O(1) – no additional data structures proportional to input size are created.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the solution to differentiate between empty objects and empty arrays?
 - Can you implement the check without using `Object.keys`?

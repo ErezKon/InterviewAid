@@ -90,4 +90,4 @@ Consider `s = "aaabb"`:
 
 ## Key Takeaway
 
-> **Count single‑character substrings by grouping runs. Each run of length L contributes L(L+1)/2 substrings — the triangular number formula.**
+> **Count single-character substrings by grouping runs. Each run of length L contributes L(L+1)/2 substrings — the triangular number formula.**

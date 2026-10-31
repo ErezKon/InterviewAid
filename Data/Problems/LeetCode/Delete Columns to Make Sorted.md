@@ -93,7 +93,7 @@ Consider the first example `strs = ["cba","daf","ghi"]`.
 | 1 | b, a, h | ❌ (b > a) |
 | 2 | a, f, i | ✅ |
 
-The algorithm scans each column `c`. For column 1 it finds `a < b` at rows 1 and 0, increments `count` and breaks early. After scanning all columns, `count = 1`.
+The algorithm scans each column `c`. For column 1 it finds `a < b` at rows 1 and 0, increments `count` and breaks early. After scanning all columns, `count = 1`.
 
 ---
 

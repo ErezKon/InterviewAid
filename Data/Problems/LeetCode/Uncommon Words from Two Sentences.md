@@ -67,7 +67,7 @@ FUNCTION UncommonWords(s1, s2):
 ## Follow-Up Questions
 1. How would you modify the solution if the sentences could contain punctuation?
 2. Can you return the result in the order the words appear in the original sentences?
-3. How would you handle case‑insensitive comparisons?
+3. How would you handle case-insensitive comparisons?
 
 ## Key Takeaway
 Counting word frequencies with a hash map lets you identify uniquely occurring words in linear time.

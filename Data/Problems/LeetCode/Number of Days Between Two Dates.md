@@ -73,7 +73,7 @@ The function returns `5`.
 
 ## 6. Follow-Up Questions
 
-1. How would you implement the solution without using built‑in date libraries?
+1. How would you implement the solution without using built-in date libraries?
 2. How do you handle leap years and different month lengths when calculating manually?
 3. Can you extend the function to support time zones or timestamps?
 

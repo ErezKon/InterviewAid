@@ -58,7 +58,7 @@ Consider `arrivalTime = 23`, `delayedTime = 2`.
 
 ## Complexity Analysis
 
-- **Time:** O(1) – constant‑time arithmetic.
+- **Time:** O(1) – constant-time arithmetic.
 - **Space:** O(1) – only a few scalar variables.
 
 ---
@@ -67,10 +67,10 @@ Consider `arrivalTime = 23`, `delayedTime = 2`.
 
 1. How would you handle minutes in addition to hours?
 2. What if the time zone offsets could be negative?
-3. Extend the solution to support a 12‑hour clock with AM/PM.
+3. Extend the solution to support a 12-hour clock with AM/PM.
 
 ---
 
 ## Key Takeaway
 
-> 24‑hour clock wrap‑around is simply modulo 24.
+> 24-hour clock wrap-around is simply modulo 24.

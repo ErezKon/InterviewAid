@@ -107,7 +107,7 @@ Consider the array `[3,1,3,2,3]`.
 | 3    | 3 | `[0,2,3]`      | 1 |
 | 4    | 4 | Pop index 3 (2 < 3), pop index 2 (3 == 3) → add pairs (0,4) and (2,4) → count 3; push 4 → `[0,4]` |
 
-Final count = 4 (including three single‑element subarrays).
+Final count = 4 (including three single-element subarrays).
 
 ---
 

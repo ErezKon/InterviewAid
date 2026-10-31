@@ -102,10 +102,10 @@ CLASS TimeLimitedCache:
 - **Time:** O(1) average for `set` and `get`; `count` is O(k) where k is current number of keys (lazy cleanup).
 - **Space:** O(k) for storing active entries.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the design to support bulk expiration without iterating over all keys?
 2. Can you implement the cache with O(log n) expiration using a priority queue?
-3. How would you make the cache thread‑safe for concurrent access?
+3. How would you make the cache thread-safe for concurrent access?
 
 ## Key Takeaway
-Combining a hash map for constant‑time lookups with stored expiry timestamps provides an efficient time‑limited cache.
+Combining a hash map for constant-time lookups with stored expiry timestamps provides an efficient time-limited cache.

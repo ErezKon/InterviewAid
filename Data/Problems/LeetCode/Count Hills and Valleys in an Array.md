@@ -77,8 +77,8 @@ Result is 3.
 - **Time:** O(n) where n is the length of `nums` (single pass for deduplication and another for counting).
 - **Space:** O(n) in the worst case for the `unique` list.
 
-## Follow‑Up Questions
-1. How would you solve the problem in‑place without extra storage?
+## Follow-Up Questions
+1. How would you solve the problem in-place without extra storage?
 2. Can the algorithm be extended to count plateaus (equal neighbours) as a separate category?
 3. What changes are needed if the input size is extremely large (streaming data)?
 

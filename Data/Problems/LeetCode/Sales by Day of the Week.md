@@ -122,7 +122,7 @@ Example 1:
 
 | Step | Action | Result |
 |------|--------|--------|
-| 1 | Join `Items` with `Orders` on `item_id` | rows of category‑order pairs |
+| 1 | Join `Items` with `Orders` on `item_id` | rows of category-order pairs |
 | 2 | For each row, compute `DAYOFWEEK(order_date)` and add quantity to the appropriate day column via `SUM(CASE …)` |
 | 3 | Group by `item_category` to aggregate quantities per day |
 | 4 | Output one row per category with 7 day columns |

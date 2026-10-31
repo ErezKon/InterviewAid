@@ -90,7 +90,7 @@ FUNCTION DailyTemperatures(T):
 
 ## Follow-Up Questions
 1. How would you modify the solution to return the actual future warmer temperature instead of the distance?
-2. Can you solve the problem using a binary search tree for a different time‑space trade‑off?
+2. Can you solve the problem using a binary search tree for a different time-space trade-off?
 3. How does the solution change if temperatures are streamed in real time?
 
 ## Key Takeaway

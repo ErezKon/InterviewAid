@@ -89,7 +89,7 @@ For the first example:
 - **Time:** O(m + n) where m is number of follow edges.
 - **Space:** O(n) for the indegree array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if each user could follow multiple streamers simultaneously?
 2. Can we minimize the total number of added edges while also minimizing the maximum indegree of any streamer?
 3. What if the graph must remain acyclic after adding edges?

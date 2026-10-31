@@ -53,7 +53,7 @@ Example 3:
 ```
 
 ## Approach
-Process cells in increasing order of their values. For each group of equal values, use **Union‑Find** to connect cells that share a row or column, forming components that must receive the same rank. The rank of a component is `1 + max(previous max rank of its rows and columns)`. After assigning ranks, update the row and column maximums.
+Process cells in increasing order of their values. For each group of equal values, use **Union-Find** to connect cells that share a row or column, forming components that must receive the same rank. The rank of a component is `1 + max(previous max rank of its rows and columns)`. After assigning ranks, update the row and column maximums.
 
 ```text
 FUNCTION rankTransform(matrix):
@@ -69,7 +69,7 @@ FUNCTION rankTransform(matrix):
         WHILE j < LENGTH(cells) AND cells[j].value = cells[i].value:
             j ← j + 1
         group ← cells[i..j-1]
-        // Union‑Find for this group
+        // Union-Find for this group
         UF ← NEW UnionFind()
         FOR each (val, r, c) IN group:
             UF.MAKESET((r,c))
@@ -95,20 +95,20 @@ FUNCTION rankTransform(matrix):
 ## Walkthrough
 Consider `matrix = [[1,2],[3,4]]`.
 1. Sort cells → (1,0,0), (2,0,1), (3,1,0), (4,1,1).
-2. Process value 1: component {(0,0)} → rank 1, update row0/col0 max to 1.
-3. Value 2: component {(0,1)} → max(row0=1, col1=0) → rank 2.
-4. Value 3: component {(1,0)} → max(row1=0, col0=1) → rank 2.
-5. Value 4: component {(1,1)} → max(row1=2, col1=2) → rank 3.
+2. Process value 1: component {(0,0)} → rank 1, update row0/col0 max to 1.
+3. Value 2: component {(0,1)} → max(row0=1, col1=0) → rank 2.
+4. Value 3: component {(1,0)} → max(row1=0, col0=1) → rank 2.
+5. Value 4: component {(1,1)} → max(row1=2, col1=2) → rank 3.
 Resulting rank matrix `[[1,2],[2,3]]`.
 
 ## Complexity Analysis
-- **Time:** Sorting `O(m·n log(m·n))` plus near‑linear Union‑Find operations `≈ O(m·n α(m·n))`.
-- **Space:** `O(m·n)` for storing cells and Union‑Find structures.
+- **Time:** Sorting `O(m·n log(m·n))` plus near-linear Union-Find operations `≈ O(m·n α(m·n))`.
+- **Space:** `O(m·n)` for storing cells and Union-Find structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for streaming updates to the matrix?
 2. Can the approach be modified to minimize the maximum rank assigned?
 3. What changes are needed if ties are broken by column order instead of row order?
 
 ## Key Takeaway
-Processing cells by increasing value and using Union‑Find to group equal‑value cells in the same row/column yields a correct rank assignment while respecting all ordering constraints.
+Processing cells by increasing value and using Union-Find to group equal-value cells in the same row/column yields a correct rank assignment while respecting all ordering constraints.

@@ -102,4 +102,4 @@ Given `sensor1 = [1,2,3,4]`, `sensor2 = [1,2,4,5]`:
 
 ## Key Takeaway
 
-> **Identify the first mismatch and then verify which array exhibits a one‑position shift from that point. This determines the faulty sensor in linear time.**
+> **Identify the first mismatch and then verify which array exhibits a one-position shift from that point. This determines the faulty sensor in linear time.**

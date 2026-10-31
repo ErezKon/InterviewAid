@@ -70,13 +70,13 @@ Example 3:
 
 ## Approach
 
-Use a two‑pass depth‑first search (DFS) flood‑fill.
-1. **First pass:** Flood‑fill all `0`s that are connected to the border and mark them as visited. These cannot be closed islands.
+Use a two-pass depth-first search (DFS) flood-fill.
+1. **First pass:** Flood-fill all `0`s that are connected to the border and mark them as visited. These cannot be closed islands.
 2. **Second pass:** Iterate over the interior cells; whenever an unvisited `0` is found, perform DFS to mark the whole component and increment the count.
 
 ```text
 FUNCTION closedIsland(grid):
-    // Flood fill border‑connected zeros first
+    // Flood fill border-connected zeros first
     FOR each cell (r, c) on the border:
         IF grid[r][c] == 0:
             dfs(grid, r, c)    // mark as visited
@@ -95,11 +95,11 @@ FUNCTION closedIsland(grid):
 
 ## Walkthrough
 
-Consider **Example 1**.
+Consider **Example 1**.
 | Step | Action | Grid State (excerpt) |
 |------|--------|----------------------|
-| 1 | Flood‑fill border zeros (top‑right corner) | Border zeros become visited (marked as `2`). |
-| 2 | Continue flood‑fill on left border zeros | All border‑connected zeros are marked. |
+| 1 | Flood-fill border zeros (top-right corner) | Border zeros become visited (marked as `2`). |
+| 2 | Continue flood-fill on left border zeros | All border-connected zeros are marked. |
 | 3 | Scan interior: first unvisited `0` at (1,1) → start DFS, marks its component. | First closed island counted. |
 | 4 | Continue scanning, find another unvisited `0` at (3,4) → DFS, marks second component. | Second closed island counted. |
 | 5 | No more unvisited zeros. Return count = 2. |
@@ -118,11 +118,11 @@ Consider **Example 1**.
 ## Follow-Up Questions
 
 1. How would you modify the algorithm to return the coordinates of each closed island?
-2. Can you solve the problem using Union‑Find instead of DFS?
+2. Can you solve the problem using Union-Find instead of DFS?
 3. What changes are needed if the grid is extremely large and cannot fit into memory?
 
 ---
 
 ## Key Takeaway
 
-> **Eliminate border‑connected components first.** Two‑pass DFS: first remove border islands, then count interior components. Same pattern as "Number of Enclaves".
+> **Eliminate border-connected components first.** Two-pass DFS: first remove border islands, then count interior components. Same pattern as "Number of Enclaves".

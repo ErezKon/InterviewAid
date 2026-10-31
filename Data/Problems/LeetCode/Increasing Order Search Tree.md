@@ -72,4 +72,4 @@ FUNCTION increasingBST(root):
 
 ## Key Takeaway
 
-> Perform an in-order traversal, detach left children, and rewire nodes as a right‑child chain to obtain an increasing order search tree.
+> Perform an in-order traversal, detach left children, and rewire nodes as a right-child chain to obtain an increasing order search tree.

@@ -80,9 +80,9 @@ FUNCTION minCost(nums, target):
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting.
-- **Space:** O(1) extra (in‑place sort) or O(n) if a copy is made.
+- **Space:** O(1) extra (in-place sort) or O(n) if a copy is made.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where you can also increase elements?
 2. Can the problem be solved in O(n) time using a selection algorithm to find the largest elements needed?
 3. What if each decrement operation had a different cost per element?

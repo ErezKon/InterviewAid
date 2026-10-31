@@ -101,7 +101,7 @@ Sum = 3 + 2 + 2 + 1 + 2 = 10, matching the example.
 
 1. How would the solution change if the transition rules were given dynamically at runtime?
 2. Can you extend the DP to count strings modulo a different prime or without modulo?
-3. What is the space‑optimal version if `n` can be up to 10⁹ (use matrix exponentiation)?
+3. What is the space-optimal version if `n` can be up to 10⁹ (use matrix exponentiation)?
 
 ---
 

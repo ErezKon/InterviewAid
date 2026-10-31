@@ -85,9 +85,9 @@ Take the first example `[1,2,3,4,5]` with predicate `value % 2 == 0`:
 
 ## Follow-Up Questions
 
-- How would you implement the filter in‑place without extra space?
+- How would you implement the filter in-place without extra space?
 - How to handle asynchronous predicates?
 
 ## Key Takeaway
 
-> **Basic functional programming: iterate and collect elements where the predicate returns truthy. Foundation for understanding higher‑order functions.**
+> **Basic functional programming: iterate and collect elements where the predicate returns truthy. Foundation for understanding higher-order functions.**

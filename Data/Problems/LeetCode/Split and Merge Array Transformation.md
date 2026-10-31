@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented yes/no problem. Correct idea: `n ≤ 6`, so BFS over array states (tuples) — from each state try every subarray `[l..r]` and every re-insertion position; the BFS depth at which `nums2` is reached is the answer. O(n!·n⁴).*
-
 You are given two integer arrays `nums1` and `nums2`, each of length `n`. You may perform the following **split-and-merge operation** on `nums1` any number of times:
 
 - Choose a subarray `nums1[L..R]`.
@@ -43,54 +41,51 @@ Explanation: - Remove [1,1,2] at indices 0 - 2; remaining is [3,4,5]; insert [1,
 ```
 
 ## Approach
-The operation only swaps whole contiguous blocks while preserving the internal order of each block. Therefore the relative order of elements inside any block never changes. The transformation is possible iff `target` can be obtained by repeatedly partitioning `nums` into blocks whose internal order matches `target`. This can be checked by a recursive divide‑and‑conquer scan:
-1. Compare the first element of `target` with the first element of `nums`. If they differ, the only way to match is to split `nums` into two parts where the left part ends before that element.
-2. Recursively verify the left and right sub‑segments.
-If at any step the multiset of elements in a segment differs between `nums` and `target`, the transformation is impossible.
+Since `n ≤ 6`, the number of distinct arrangements of `nums1` is at most `6! = 720`. Treat every arrangement as a node of a graph and every split-and-merge operation as an edge of weight 1. The minimum number of operations is then the shortest-path distance from `nums1` to `nums2`, which a plain **BFS** finds.
+
+From a state we generate all neighbours by choosing every subarray `[L..R]`, removing it, and re-inserting it at every position `p` (0 to length of the remainder). States are stored as tuples in a hash map of distances so duplicates (equal values) are handled naturally.
 
 ```text
-FUNCTION canTransform(nums, target, l, r):
-    // l and r define the current segment [l, r) in both arrays
-    IF l == r:
-        RETURN true
-    IF nums[l] == target[l]:
-        // no need to split at the leftmost position
-        RETURN canTransform(nums, target, l+1, r)
-    // try to find a split point k where left block matches target's right block
-    FOR k FROM l+1 TO r-1:
-        IF segmentEqual(nums, l, k, target, k, r) AND
-           segmentEqual(nums, k, r, target, l, k):
-            RETURN canTransform(nums, target, l, k) AND canTransform(nums, target, k, r)
-    RETURN false
-
-FUNCTION segmentEqual(arr1, aStart, aEnd, arr2, bStart, bEnd):
-    IF (aEnd - aStart) != (bEnd - bStart):
-        RETURN false
-    FOR i FROM 0 TO aEnd - aStart - 1:
-        IF arr1[aStart + i] != arr2[bStart + i]:
-            RETURN false
-    RETURN true
+FUNCTION minSplitMerge(nums1, nums2):
+    start ← TUPLE(nums1); goal ← TUPLE(nums2)
+    IF start == goal: RETURN 0
+    dist ← {start: 0}
+    queue ← [start]
+    WHILE queue not empty:
+        s ← POP_FRONT(queue)
+        FOR L ← 0 TO n-1:
+            FOR R ← L TO n-1:
+                block ← s[L..R]
+                rest  ← s[0..L-1] + s[R+1..n-1]
+                FOR p ← 0 TO LENGTH(rest):
+                    t ← rest[0..p-1] + block + rest[p..]
+                    IF t NOT IN dist:
+                        dist[t] ← dist[s] + 1
+                        IF t == goal: RETURN dist[t]
+                        PUSH_BACK(queue, t)
+    RETURN -1   // unreachable: nums2 is a permutation of nums1
 ```
-The top‑level call is `canTransform(nums, target, 0, LENGTH(nums))`.
 
 ## Walkthrough
-Consider `nums = [1,2,3,4]`, `target = [2,1,4,3]`.
-1. `nums[0] != target[0]` → need a split.
-2. Try split at `k=2`:
-   - Left block `nums[0:2] = [1,2]` matches `target[2:4] = [4,3]`? No.
-   - Split at `k=1` fails similarly.
-3. Split at `k=2` after reversing block order yields `[3,4,1,2]`.
-4. Recursively apply the same logic on the new segments until the arrays match.
-The recursion explores valid split points and confirms feasibility.
+Example 1: `nums1 = [3,1,2]`, `nums2 = [1,2,3]`.
+
+| Step | Action | Result |
+|------|--------|--------|
+| 1 | Start BFS at `(3,1,2)`, distance 0 | queue = [(3,1,2)] |
+| 2 | Pop `(3,1,2)`; take `L=0,R=0` → block `[3]`, rest `[1,2]` | |
+| 3 | Insert at `p=0` → `(3,1,2)` (seen); `p=1` → `(1,3,2)` dist 1 | |
+| 4 | Insert at `p=2` → `(1,2,3)` dist 1 = `nums2` | return 1 |
+
+Output: `1`. (For Example 2 the BFS first reaches `[5,4,3,2,1,1]` at depth 3.)
 
 ## Complexity Analysis
-- **Time:** In the worst case, the algorithm tries every possible split point at each recursion level, leading to O(n²) time.
-- **Space:** O(n) recursion stack depth.
+- **Time:** O(n! · n³ · n): at most `n!` states, each with O(n²) subarrays × O(n) insert positions, and building each tuple costs O(n). With `n ≤ 6` this is about 720 · 6⁴ ≈ 10⁶ operations.
+- **Space:** O(n! · n) for the distance map and queue.
 
 ## Follow-Up Questions
-1. Can the algorithm be optimized to O(n log n) using memoization of segment equality?
-2. How would the solution change if reversing the order of the two parts is optional?
-3. What if the operation allowed rotating a subarray instead of swapping two parts?
+1. How would you speed this up with bidirectional BFS from both `nums1` and `nums2`?
+2. Can you compress states by mapping values to ranks (handling duplicates) so the state fits into a single integer?
+3. For a permutation without duplicates, how does this relate to the "sorting by block moves / transpositions" problem, and why is it hard for large `n`?
 
 ## Key Takeaway
-Split‑and‑merge operations only reorder whole contiguous blocks; checking feasibility reduces to recursively matching block structures between the original and target arrays.
+When the array length is tiny, model each arrangement as a graph node and run BFS over the operation; the BFS depth at which the target appears is the minimum number of operations.

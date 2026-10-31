@@ -71,8 +71,8 @@ FUNCTION isValidTriangle(x, y, z):
 - Time: O(1) per row – a constant number of arithmetic checks.
 - Space: O(1) – no additional data structures.
 
-## Follow‑Up Questions
-1. How would you modify the query to handle floating‑point side lengths with tolerance for precision errors?
+## Follow-Up Questions
+1. How would you modify the query to handle floating-point side lengths with tolerance for precision errors?
 2. Can you extend the solution to return the type of triangle (acute, right, obtuse) based on side lengths?
 3. What if the table contains millions of rows—how would you ensure the query scales efficiently?
 

@@ -65,7 +65,7 @@ FUNCTION canMeasureWater(x, y, target):
 | x=2, y=6 | 2 | target 5 ≤ 8 but 5 % 2 ≠ 0 → false |
 
 ## Complexity Analysis
-- Time: O(log min(x, y)) for Euclidean GCD.
+- Time: O(log min(x, y)) for Euclidean GCD.
 - Space: O(1).
 
 ## Follow-Up Questions

@@ -59,7 +59,7 @@ Explanation: No submatrix has at least one 'X'.
 
 ## Key Insight
 
-Since all submatrices start at `(0,0)`, a **2‑D prefix sum** for each character type lets us compute the count of X and Y in any `(0,0)-(i,j)` rectangle in O(1). Comparing the two prefix sums for each cell yields the answer.
+Since all submatrices start at `(0,0)`, a **2-D prefix sum** for each character type lets us compute the count of X and Y in any `(0,0)-(i,j)` rectangle in O(1). Comparing the two prefix sums for each cell yields the answer.
 
 ---
 
@@ -68,7 +68,7 @@ Since all submatrices start at `(0,0)`, a **2‑D prefix sum** for each characte
 ```text
 FUNCTION countSubmatrices(grid):
     m, n ← DIMENSIONS(grid)
-    // Prefix sums for X and Y, 1‑based indexing
+    // Prefix sums for X and Y, 1-based indexing
     prefX ← MATRIX of size (m+1) × (n+1) filled with 0
     prefY ← MATRIX of size (m+1) × (n+1) filled with 0
     result ← 0
@@ -96,11 +96,11 @@ Consider `grid = [["X","Y"],["Y","X"]]` (2×2):
 2. Process cell (1,1) `'X'`:
    - `prefX[1][1] = 1`, `prefY[1][1] = 0` → not counted.
 3. Process cell (1,2) `'Y'`:
-   - `prefX[1][2] = 1`, `prefY[1][2] = 1` → equal and >0, count 1.
+   - `prefX[1][2] = 1`, `prefY[1][2] = 1` → equal and >0, count 1.
 4. Process cell (2,1) `'Y'`:
-   - `prefX[2][1] = 1`, `prefY[2][1] = 1` → count 2.
+   - `prefX[2][1] = 1`, `prefY[2][1] = 1` → count 2.
 5. Process cell (2,2) `'X'`:
-   - `prefX[2][2] = 2`, `prefY[2][2] = 2` → count 3.
+   - `prefX[2][2] = 2`, `prefY[2][2] = 2` → count 3.
 
 All three qualifying submatrices are `(0,0)-(0,1)`, `(0,0)-(1,0)`, and `(0,0)-(1,1)`. The function returns `3`.
 
@@ -111,13 +111,13 @@ All three qualifying submatrices are `(0,0)-(0,1)`, `(0,0)-(1,0)`, and `(0,0)-(1
 | Aspect | Value |
 |---|---|
 | **Time** | O(m × n) — single pass to build prefix sums |
-| **Space** | O(m × n) — two prefix‑sum matrices |
+| **Space** | O(m × n) — two prefix-sum matrices |
 
 ---
 
 ## Follow-Up Questions
 
-- How would you modify the solution to count submatrices anchored at any arbitrary top‑left corner, not just `(0,0)`?
+- How would you modify the solution to count submatrices anchored at any arbitrary top-left corner, not just `(0,0)`?
 - Can the space usage be reduced to O(n) by processing rows one at a time?
 - What changes are needed if the condition becomes `countX = k * countY` for a given integer `k`?
 
@@ -125,4 +125,4 @@ All three qualifying submatrices are `(0,0)-(0,1)`, `(0,0)-(1,0)`, and `(0,0)-(1
 
 ## Key Takeaway
 
-> **When submatrices share a fixed anchor, 2‑D prefix sums give constant‑time queries for each possible bottom‑right corner. Comparing separate prefix sums for each character type yields the desired count efficiently.**
+> **When submatrices share a fixed anchor, 2-D prefix sums give constant-time queries for each possible bottom-right corner. Comparing separate prefix sums for each character type yields the desired count efficiently.**

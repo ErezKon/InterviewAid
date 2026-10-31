@@ -88,7 +88,7 @@ Final count = 2.
 
 ## Follow-Up Questions
 
-1. How would you modify the solution to handle case‑insensitive vowels?
+1. How would you modify the solution to handle case-insensitive vowels?
 2. Can you extend it to count strings that contain at least one vowel anywhere?
 3. What if the query range is updated frequently—how would you support fast updates?
 

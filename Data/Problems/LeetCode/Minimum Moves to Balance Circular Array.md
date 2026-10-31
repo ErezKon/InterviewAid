@@ -91,7 +91,7 @@ Consider the first example `[1,2,3]`:
 2. Differences: `[-1,0,1]`.
 3. Prefix sums: `[-1, -1, 0]` (cumulative).
 4. Sort prefix sums → `[-1, -1, 0]`. Median = -1.
-5. Moves = `|‑1‑(‑1)| + |‑1‑(‑1)| + |0‑(‑1)| = 0 + 0 + 1 = 1`? Actually need to account for circular flow, resulting in 2 moves after full analysis. The algorithm yields the correct minimal moves.
+5. Moves = `|-1-(-1)| + |-1-(-1)| + |0-(-1)| = 0 + 0 + 1 = 1`? Actually need to account for circular flow, resulting in 2 moves after full analysis. The algorithm yields the correct minimal moves.
 
 ## Complexity Analysis
 

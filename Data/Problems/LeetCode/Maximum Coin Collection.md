@@ -121,7 +121,7 @@ FUNCTION maxCoinCollection(lane1, lane2):
 
 ## Walkthrough
 
-Consider **Example 1** step‑by‑step:
+Consider **Example 1** step-by-step:
 | i | lane1[i] | lane2[i] | dp1 (best ending lane1) | dp2 (best ending lane2) | result |
 |---|----------|----------|------------------------|------------------------|--------|
 | 0 | 1 | 2 | MAX(0+1,0+1)=1 → max(1,1)=1 | MAX(0+2,0+2)=2 → max(2,2)=2 | 2 |
@@ -149,4 +149,4 @@ Final result = 14 (maximum coins collectible).
 
 ## Key Takeaway
 
-> **Lane‑switching DP:** maintain best sums for each lane, allowing stay or switch at each step, and update the global maximum.
+> **Lane-switching DP:** maintain best sums for each lane, allowing stay or switch at each step, and update the global maximum.

@@ -93,10 +93,10 @@ The binary search narrows the feasible capacity range while `canShip` checks fea
 | End | `lo=hi=15` → answer `15` |
 
 ## Complexity Analysis
-- **Time:** O(n log S) where *n* = `len(weights)` and *S* = sum of weights (binary search iterations). 
+- **Time:** O(n log S) where *n* = `len(weights)` and *S* = sum of weights (binary search iterations). 
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if packages could be reordered?
 2. Can you extend the solution to return the actual daily loading plan?
 3. What is the impact of using a different monotonicity condition (e.g., limiting number of packages per day instead of weight)?

@@ -31,7 +31,7 @@ Example 3:
 ```
 
 ## Approach
-**Bit Manipulation** – The key insight is that for a number with alternating bits, `n` XOR (`n` right‑shifted by 1) yields a sequence of all `1`s. A number that is all `1`s has the property that `x & (x + 1) == 0`.
+**Bit Manipulation** – The key insight is that for a number with alternating bits, `n` XOR (`n` right-shifted by 1) yields a sequence of all `1`s. A number that is all `1`s has the property that `x & (x + 1) == 0`.
 
 ```text
 FUNCTION hasAlternatingBits(n):
@@ -57,4 +57,4 @@ Consider `n = 10` (binary `1010`):
 - How to determine if a binary string has alternating bits without converting to an integer?
 
 ## Key Takeaway
-A single XOR with the right‑shifted value transforms alternating‑bit numbers into all‑ones, enabling an O(1) check using a power‑of‑two test.
+A single XOR with the right-shifted value transforms alternating-bit numbers into all-ones, enabling an O(1) check using a power-of-two test.

@@ -86,7 +86,7 @@ CLASS SnakeGame:
         ELSE:
             tail ← snake.POP_BACK()
             bodySet.REMOVE(tail)
-        // Self‑collision (after tail removal, tail cell is free)
+        // Self-collision (after tail removal, tail cell is free)
         IF (nr, nc) IN bodySet:
             RETURN -1
         snake.PUSH_FRONT((nr, nc))
@@ -122,12 +122,12 @@ The table shows how the deque and set are updated each move, handling growth and
 
 ## Follow-Up Questions
 
-1. How would you adapt the design to support variable‑speed snakes or obstacles on the board?
+1. How would you adapt the design to support variable-speed snakes or obstacles on the board?
 2. Can you extend the solution to return the full path of the snake for debugging purposes?
-3. What changes are needed to make the game thread‑safe for a multiplayer version?
+3. What changes are needed to make the game thread-safe for a multiplayer version?
 
 ---
 
 ## Key Takeaway
 
-> **Deque for the snake body (head at front, tail at back) + set for O(1) self‑collision checks. On food: don't pop tail (grow). On move: pop tail first, then check collision (tail cell is now free).**
+> **Deque for the snake body (head at front, tail at back) + set for O(1) self-collision checks. On food: don't pop tail (grow). On move: pop tail first, then check collision (tail cell is now free).**

@@ -43,7 +43,7 @@ numArray.sumRange(0, 2); // return 1 + 2 + 5 = 8
 ```
 
 ## Approach
-Use a Binary Indexed Tree (Fenwick Tree) to store prefix sums. Updating an index adjusts the tree with the difference, and querying a range uses two prefix‑sum queries.
+Use a Binary Indexed Tree (Fenwick Tree) to store prefix sums. Updating an index adjusts the tree with the difference, and querying a range uses two prefix-sum queries.
 
 ```text
 CLASS NumArray:
@@ -83,14 +83,14 @@ END CLASS
 |sumRange(0,2)|prefixSum(2)=8, prefixSum(-1)=0 → 8|
 
 ## Complexity Analysis
-- Update: O(log n)
-- Query: O(log n)
+- Update: O(log n)
+- Query: O(log n)
 - Space: O(n) for the tree and original array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the structure to support range updates and range queries?
 2. Can a Segment Tree provide the same functionality with additional operations?
 3. What if the array is extremely large and stored on disk?
 
 ## Key Takeaway
-A Fenwick Tree enables logarithmic‑time point updates and prefix‑sum queries, which combine to give efficient mutable range‑sum queries.
+A Fenwick Tree enables logarithmic-time point updates and prefix-sum queries, which combine to give efficient mutable range-sum queries.

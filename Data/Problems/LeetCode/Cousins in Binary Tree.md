@@ -76,7 +76,7 @@ FUNCTION isCousins(root, x, y):
 | 2 | [(2,1,1), (3,1,1)] | Dequeue node 2. Not x or y. Enqueue child (4,2,2). |
 | 3 | [(3,1,1), (4,2,2)] | Dequeue node 3. Matches y → yInfo = (1,1). No children. |
 | 4 | [(4,2,2)] | Dequeue node 4. Matches x → xInfo = (2,2). |
-| 5 | [] | Compare: depths 2 vs 1 → false for this example. (In Example 1 depths are both 2 and parents differ, yielding true.) |
+| 5 | [] | Compare: depths 2 vs 1 → false for this example. (In Example 1 depths are both 2 and parents differ, yielding true.) |
 
 ---
 
@@ -93,7 +93,7 @@ FUNCTION isCousins(root, x, y):
 
 1. How would you modify the algorithm to return the actual cousin nodes instead of just a boolean?
 2. Can you solve the problem using a single DFS traversal while still tracking parent and depth?
-3. How would the solution change if the tree were represented as an adjacency list rather than a binary‑tree structure?
+3. How would the solution change if the tree were represented as an adjacency list rather than a binary-tree structure?
 
 ---
 

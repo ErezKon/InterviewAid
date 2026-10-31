@@ -98,22 +98,22 @@ Explanation: Since k == x, answer[i] is equal to the sum of the subarray nums[i.
 
 ## 6. Walkthrough
 
-Consider the first example step‑by‑step:
-| Window indices | Window values | Frequency map | Top‑2 (value, freq) | Sum |
+Consider the first example step-by-step:
+| Window indices | Window values | Frequency map | Top-2 (value, freq) | Sum |
 |----------------|---------------|---------------|--------------------|-----|
-| 0‑2            | 1,2,2         | {1:1,2:2}     | (2,2), (1,1)       | 2*2+1*1 = 5 |
-| 1‑3            | 2,2,3         | {2:2,3:1}     | (2,2), (3,1)       | 2*2+3*1 = 7 |
-| 2‑4            | 2,3,3         | {2:1,3:2}     | (3,2), (2,1)       | 3*2+2*1 = 8 |
+| 0-2            | 1,2,2         | {1:1,2:2}     | (2,2), (1,1)       | 2*2+1*1 = 5 |
+| 1-3            | 2,2,3         | {2:2,3:1}     | (2,2), (3,1)       | 2*2+3*1 = 7 |
+| 2-4            | 2,3,3         | {2:1,3:2}     | (3,2), (2,1)       | 3*2+2*1 = 8 |
 
 ---
 
 ## 7. Follow-Up Questions
 - How would you adapt the solution for `n, k ≤ 10⁵`?
-- Can you maintain the top‑x frequencies with a balanced BST to achieve O(n log n)?
-- What if the tie‑breaking rule changes to prioritize smaller values?
+- Can you maintain the top-x frequencies with a balanced BST to achieve O(n log n)?
+- What if the tie-breaking rule changes to prioritize smaller values?
 
 ---
 
 ## 8. Key Takeaway
 
-> For small constraints, a straightforward frequency count per window combined with sorting yields a simple and correct solution. The hard version requires a sliding‑window data structure to keep the top‑x frequencies efficiently.
+> For small constraints, a straightforward frequency count per window combined with sorting yields a simple and correct solution. The hard version requires a sliding-window data structure to keep the top-x frequencies efficiently.

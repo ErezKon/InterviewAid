@@ -84,10 +84,10 @@ Output: "ZY"
 
 | Operation | Time | Space |
 |-----------|------|-------|
-| Conversion | O(log n) where n is the column number | O(1) |
+| Conversion | O(log n) where n is the column number | O(1) |
 
 ---
 
 ## Key Takeaway
 
-> 1‑indexed base‑26 conversion: subtract 1 before each modulo/division.
+> 1-indexed base-26 conversion: subtract 1 before each modulo/division.

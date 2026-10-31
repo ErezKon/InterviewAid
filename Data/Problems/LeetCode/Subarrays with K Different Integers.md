@@ -37,7 +37,7 @@ Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1
 ```
 
 ## Approach
-**At Most K – At Most (K‑1) Technique** – Count subarrays with at most `k` distinct integers using a sliding window and a frequency map. Subtract the count for `k‑1` to obtain the exact‑`k` result.
+**At Most K – At Most (K-1) Technique** – Count subarrays with at most `k` distinct integers using a sliding window and a frequency map. Subtract the count for `k-1` to obtain the exact-`k` result.
 
 ```text
 FUNCTION subarraysWithKDistinct(nums, k):
@@ -67,7 +67,7 @@ FUNCTION atMost(nums, limit):
 Consider `nums = [1,2,1,2,3]`, `k = 2`.
 1. `atMost(nums,2)` counts all subarrays with ≤2 distinct numbers → 10.
 2. `atMost(nums,1)` counts all subarrays with ≤1 distinct number → 3.
-3. Subtract: 10‑3 = 7 exact‑2 subarrays.
+3. Subtract: 10-3 = 7 exact-2 subarrays.
 The sliding window expands `right`, contracts `left` when distinct count exceeds the limit, and adds the number of valid subarrays ending at each `right`.
 
 ## Complexity Analysis
@@ -80,4 +80,4 @@ The sliding window expands `right`, contracts `left` when distinct count exceeds
 3. What changes are needed if the input is a stream and you must output the count after each new element?
 
 ## Key Takeaway
-Counting subarrays with exactly `k` distinct integers reduces to the difference of two “at most k” sliding‑window counts, yielding a linear‑time solution.
+Counting subarrays with exactly `k` distinct integers reduces to the difference of two “at most k” sliding-window counts, yielding a linear-time solution.

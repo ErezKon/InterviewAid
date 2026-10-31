@@ -77,9 +77,9 @@ Explanation: In this example, no hero can defeat a monster. So the answer would 
 **Algorithm:** Sort + Binary Search + Prefix Sum
 
 1. Pair each monster's health with its coin value and sort the pairs by health.
-2. Build a prefix‑sum array of the sorted coin values.
-3. For each hero, binary‑search the rightmost monster whose health ≤ hero health.
-4. Use the prefix‑sum index to retrieve the total coins the hero can collect.
+2. Build a prefix-sum array of the sorted coin values.
+3. For each hero, binary-search the rightmost monster whose health ≤ hero health.
+4. Use the prefix-sum index to retrieve the total coins the hero can collect.
 
 ```text
 FUNCTION maxCoins(heroes, monsters, coins):
@@ -135,4 +135,4 @@ Result = [5,0].
 
 ## Key Takeaway
 
-> Sorting monsters by health, building a prefix‑sum of coins, and binary‑searching per hero provides an efficient way to answer “total reward ≤ threshold” queries.
+> Sorting monsters by health, building a prefix-sum of coins, and binary-searching per hero provides an efficient way to answer “total reward ≤ threshold” queries.

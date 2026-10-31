@@ -99,10 +99,10 @@ Average for machine 1 = (5+10)/2 = 7.5.
 - **Time:** O(n) for scanning the `Activity` rows; the join is handled by the DB engine.
 - **Space:** O(n) for intermediate join results.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle missing `'end'` records?
 2. Extend the query to compute median processing time per machine.
-3. What indexes would optimise the self‑join?
+3. What indexes would optimise the self-join?
 
 ## Key Takeaway
-Self‑joining the activity log on matching start/end rows lets you compute per‑process durations, which can then be averaged per machine.
+Self-joining the activity log on matching start/end rows lets you compute per-process durations, which can then be averaged per machine.

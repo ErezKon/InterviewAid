@@ -70,7 +70,7 @@ For `a = 2, b = [1,0]`:
 Final result = 1024.
 
 ## Complexity Analysis
-- **Time:** O(L * log 10) where L is the number of digits in `b` (each digit triggers a fast exponentiation of exponent 10 and digit ≤9).
+- **Time:** O(L * log 10) where L is the number of digits in `b` (each digit triggers a fast exponentiation of exponent 10 and digit ≤9).
 - **Space:** O(1) – only a few integer variables.
 
 ## Follow-Up Questions
@@ -79,4 +79,4 @@ Final result = 1024.
 3. What if `b` were given as a string instead of an array of digits?
 
 ## Key Takeaway
-Breaking the exponent into base‑10 digits lets you iteratively apply modular exponentiation, achieving logarithmic work per digit.
+Breaking the exponent into base-10 digits lets you iteratively apply modular exponentiation, achieving logarithmic work per digit.

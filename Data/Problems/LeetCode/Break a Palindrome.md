@@ -31,7 +31,7 @@ Example 2:
 ```
 
 ## Approach
-Iterate over the first half of the string. Change the first character that is not `'a'` to `'a'`. If all characters in the first half are `'a'`, change the last character to `'b'`. This yields the smallest lexicographic non‑palindrome.
+Iterate over the first half of the string. Change the first character that is not `'a'` to `'a'`. If all characters in the first half are `'a'`, change the last character to `'b'`. This yields the smallest lexicographic non-palindrome.
 
 ### Pseudocode
 ```text
@@ -52,7 +52,7 @@ FUNCTION breakPalindrome(palindrome):
 | Index | Char before | Action | Char after |
 |-------|--------------|--------|------------|
 | 0 | 'a' | skip (already 'a') | 'a' |
-| 1 | 'b' | change to 'a' (first non‑'a') | 'a' |
+| 1 | 'b' | change to 'a' (first non-'a') | 'a' |
 | ... | ... | ... | ... |
 | Last | 'a' | set to 'b' if needed | 'b' |
 
@@ -62,8 +62,8 @@ FUNCTION breakPalindrome(palindrome):
 
 ## Follow-Up Questions
 1. How would you handle uppercase letters or a custom alphabet?
-2. Can the solution be adapted to return all possible minimal‑lexicographic results?
+2. Can the solution be adapted to return all possible minimal-lexicographic results?
 3. What if you were allowed to change up to two characters?
 
 ## Key Takeaway
-Changing the first non‑'a' character in the first half to 'a', or the last character to 'b' when all are 'a', yields the smallest lexicographically non‑palindromic string in linear time.
+Changing the first non-'a' character in the first half to 'a', or the last character to 'b' when all are 'a', yields the smallest lexicographically non-palindromic string in linear time.

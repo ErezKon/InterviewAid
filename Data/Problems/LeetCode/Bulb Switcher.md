@@ -59,10 +59,10 @@ For `n = 5`:
 - **Time:** O(1) – direct computation.
 - **Space:** O(1) – constant extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the actual indices of the bulbs that remain on?
 2. Can you derive a formula for the sum of the numbers of the bulbs that stay on?
-3. What if the toggling pattern changes to toggling every `i`‑th bulb starting from an offset?
+3. What if the toggling pattern changes to toggling every `i`-th bulb starting from an offset?
 
 ## Key Takeaway
 The problem reduces to counting perfect squares because only they have an odd divisor count, yielding a simple O(1) solution.

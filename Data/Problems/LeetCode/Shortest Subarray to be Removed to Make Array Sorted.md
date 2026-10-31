@@ -25,13 +25,13 @@ A **subarray** is a contiguous subsequence of the array.
 FUNCTION findLengthOfShortestSubarray(arr):
     n = len(arr)
 
-    // Find longest non‑decreasing prefix
+    // Find longest non-decreasing prefix
     left = 0
     WHILE left < n - 1 AND arr[left] <= arr[left + 1]:
         left += 1
     IF left == n - 1: RETURN 0    // already sorted
 
-    // Find longest non‑decreasing suffix
+    // Find longest non-decreasing suffix
     right = n - 1
     WHILE right > 0 AND arr[right - 1] <= arr[right]:
         right -= 1
@@ -92,7 +92,7 @@ Explanation: The array is already non-decreasing. We do not need to remove any e
 | 4 | i = 2, j = 7 | 3 ≤ 5 | Remove length 4, result = 4. |
 | 5 | i = 3, j = 7 | 10 > 5 → j++ (j out of bounds) |
 | 6 | Switch to option removing suffix: result = right = 6. |
-| 7 | Switch to option removing prefix: result = n‑left‑1 = 5. |
+| 7 | Switch to option removing prefix: result = n-left-1 = 5. |
 | 8 | Minimum result found is 3 (removing `[10,4,2]`). |
 
 ---

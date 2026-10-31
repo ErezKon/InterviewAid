@@ -49,40 +49,38 @@ Example 2:
 ```
 
 ## Approach
-Create a helper to transform a single integer by converting it to a string, mapping each digit, and converting back to an integer. Apply this to all numbers, then sort the resulting list.
+Create a helper that computes the mapped value of an integer (convert to string, map each digit, convert back to an integer so leading zeros vanish). Pair each number with its mapped value and original index, sort by `(mappedValue, index)` (or use a stable sort keyed only on the mapped value), and return the original numbers in that order.
 
 ```text
 FUNCTION sortJumbled(mapping, nums):
     FUNCTION transform(num):
-        strNum ← STRING(num)
-        transformedStr ← ""
-        FOR ch IN strNum:
-            digit ← INTEGER(ch)
-            mappedDigit ← mapping[digit]
-            transformedStr ← transformedStr + STRING(mappedDigit)
+        transformedStr <- ""
+        FOR ch IN STRING(num):
+            transformedStr <- transformedStr + STRING(mapping[INTEGER(ch)])
         RETURN INTEGER(transformedStr)
-    transformedList ← []
-    FOR n IN nums:
-        APPEND transformedList WITH transform(n)
-    SORT transformedList IN ASCENDING ORDER
-    RETURN transformedList
+    pairs <- []
+    FOR i FROM 0 TO LENGTH(nums)-1:
+        APPEND pairs WITH (transform(nums[i]), i)
+    SORT pairs BY (mapped, index) ASCENDING
+    RETURN [nums[i] FOR (mapped, i) IN pairs]
 ```
 
 ## Walkthrough
-For `nums = [991, 332, 123]` with the sample mapping:
-1. Transform `991` → `669`
-2. Transform `332` → `353`
-3. Transform `123` → `453`
-4. Sort `[669,353,453]` → `[353,453,669]`.
+For `mapping = [8,9,4,0,2,1,3,5,7,6]`, `nums = [991,338,38]` (Example 1):
+1. `991`: `9->6`, `9->6`, `1->9` -> `"669"` -> mapped `669`, index 0.
+2. `338`: `3->0`, `3->0`, `8->7` -> `"007"` -> mapped `7`, index 1.
+3. `38`: `3->0`, `8->7` -> `"07"` -> mapped `7`, index 2.
+4. Pairs: `[(669,0), (7,1), (7,2)]`. Sorted: `[(7,1), (7,2), (669,0)]` (tie on 7 broken by index, so 338 stays before 38).
+5. Map back to original values: `[338, 38, 991]`.
 
 ## Complexity Analysis
-- **Time:** `O(m * d + m log m)` where `m = LENGTH(nums)` and `d` is the average number of digits per number (transformation) plus sorting.
-- **Space:** `O(m)` for the transformed list.
+- **Time:** `O(m * d + m log m)` where `m = LENGTH(nums)` and `d` is the number of digits per number (at most 9): transformation plus sorting.
+- **Space:** `O(m)` for the (mapped, index) pairs.
 
 ## Follow-Up Questions
 1. How would you handle very large numbers that exceed standard integer limits?
-2. Can the transformation be performed in‑place without extra storage for the transformed list?
+2. Can you avoid string conversion by computing the mapped value arithmetically (digit by digit with `% 10` and powers of 10)? Watch out for `num = 0`.
 3. What changes are needed if the mapping array can contain duplicate values?
 
 ## Key Takeaway
-Transform each number digit‑wise using the provided mapping, then a simple sort yields the required order.
+Sort the original numbers by their digit-wise mapped value, using a stable sort (or index tie-breaker) and never replacing the numbers themselves.

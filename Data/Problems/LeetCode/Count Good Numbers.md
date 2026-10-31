@@ -15,7 +15,7 @@ Given an integer `n`, return *the **total** number of good digit strings of leng
 
 A **digit string** is a string consisting of digits `0` through `9` that may contain leading zeros.
 
-(In other words, we count good `n`‑digit strings, leading zeros allowed.)
+(In other words, we count good `n`-digit strings, leading zeros allowed.)
 
 **Constraints:**
 - `1 <= n <= 10^15`
@@ -26,7 +26,7 @@ Example 1:
   Input: n = 1
   Output: 5
   Explanation: The good numbers of length 1 are "0", "2", "4", "6", "8".
-  (All other single‑digit strings from the range 0‑9 are odd and therefore not good.)
+  (All other single-digit strings from the range 0-9 are odd and therefore not good.)
 ```
 
 ```
@@ -42,7 +42,7 @@ Example 3:
 ```
 
 ## Approach
-The problem reduces to counting strings of length `n` over digits 0‑9 where each adjacent pair differs by at most 1. This can be solved with dynamic programming: `dp[i][d]` = number of good strings of length `i` ending with digit `d`. Transition: `dp[i][d] = dp[i-1][d] + dp[i-1][d-1] + dp[i-1][d+1]` (where applicable). The answer is sum of `dp[n][d]` for all `d`. Use modular arithmetic.
+The problem reduces to counting strings of length `n` over digits 0-9 where each adjacent pair differs by at most 1. This can be solved with dynamic programming: `dp[i][d]` = number of good strings of length `i` ending with digit `d`. Transition: `dp[i][d] = dp[i-1][d] + dp[i-1][d-1] + dp[i-1][d+1]` (where applicable). The answer is sum of `dp[n][d]` for all `d`. Use modular arithmetic.
 
 ### Pseudocode
 ```text
@@ -66,7 +66,7 @@ For `n = 2`:
 - Sum = 55 good numbers.
 
 ## Complexity Analysis
-- **Time:** O(n × 10) → O(n).
+- **Time:** O(n × 10) → O(n).
 - **Space:** O(10) → O(1) extra space.
 
 ## Follow-Up Questions

@@ -38,7 +38,7 @@ Output: 41
 
 1. **Parse the string** into `year = 2019`, `month = 2`, `day = 10`.
 2. **Determine leap year**: a year divisible by 4 is leap, except centuries not divisible by 400. 2019 is not leap, so February = 28 days.
-3. **Sum days of previous months**: for month 2, sum days of month 1 → 31.
+3. **Sum days of previous months**: for month 2, sum days of month 1 → 31.
 4. **Add current day**: 31 + 10 = 41 → result.
 
 The same steps applied to other examples yield the shown outputs.
@@ -64,13 +64,13 @@ FUNCTION dayOfYear(date):
 | Aspect | Value |
 |---|---|
 | **Time** | O(1) — constant number of operations |
-| **Space** | O(1) — fixed‑size array for month lengths |
+| **Space** | O(1) — fixed-size array for month lengths |
 
 ---
 
 ## Follow-Up Questions
 
-* How would you compute the day of the year for dates before 1900 where built‑in libraries may not support parsing?
+* How would you compute the day of the year for dates before 1900 where built-in libraries may not support parsing?
 * Can you extend the solution to handle the Julian calendar?
 * How would you modify the algorithm to return the day of the year for a range of dates efficiently?
 

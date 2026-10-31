@@ -60,7 +60,7 @@ FUNCTION createCounter(start):
 ## Follow-Up Questions
 - How would you modify the design to support a `reset()` operation?
 - Can you implement the same behavior without using closures (e.g., using a class or struct)?
-- How would you make the counter thread‑safe for concurrent accesses?
+- How would you make the counter thread-safe for concurrent accesses?
 
 ## Key Takeaway
-A closure provides a concise way to encapsulate mutable state, enabling a function to remember and update a value across calls with constant‑time operations.
+A closure provides a concise way to encapsulate mutable state, enabling a function to remember and update a value across calls with constant-time operations.

@@ -113,7 +113,7 @@ Consider the first example with `n = 5`, `k = 2` and edges as listed.
 | 4 | 1 | (3,1) from child 2, (2,2) from child 3 | keep (2,2) only (size would become 3 > k if both) | 2 | 2 |
 | 5 | 0 | (4,2) from child 1 | keep (4,2) → total weight = 4 + 2 = 6, size = 3 > k, so we must drop one edge; optimal drop is (3,1) giving final sum 7.
 
-The DP aggregates these choices bottom‑up, yielding the maximum achievable weight sum of 7.
+The DP aggregates these choices bottom-up, yielding the maximum achievable weight sum of 7.
 
 ---
 
@@ -135,4 +135,4 @@ The DP aggregates these choices bottom‑up, yielding the maximum achievable wei
 
 ## Key Takeaway
 
-> **Tree DP with greedy edge selection handles "maximize edge weight sum under component size constraints."** For each node, greedily keep the highest‑weight child edges that fit within the size budget.
+> **Tree DP with greedy edge selection handles "maximize edge weight sum under component size constraints."** For each node, greedily keep the highest-weight child edges that fit within the size budget.

@@ -44,8 +44,8 @@ Explanation: - Remove [1, 2] from conflictingPairs. Now, conflictingPairs = [[2,
 ```
 
 ## Approach
-The problem can be solved with a **sliding window + hash map** technique to count duplicate‑free subarrays in O(n) time. To evaluate the effect of removing any conflicting pair, we:
-1. Pre‑compute for each index the contribution of subarrays that become valid when a particular element is removed.
+The problem can be solved with a **sliding window + hash map** technique to count duplicate-free subarrays in O(n) time. To evaluate the effect of removing any conflicting pair, we:
+1. Pre-compute for each index the contribution of subarrays that become valid when a particular element is removed.
 2. Use a **difference array** to aggregate the gain for each possible pair removal in O(n).
 3. Scan all conflicting pairs and pick the pair with the highest gain.
 
@@ -101,16 +101,16 @@ Consider `nums = [1,2,1,3,2]`.
 | 2 | 2 | 1 (duplicate 1) | {1:2,2:1} | 2 | 5 |
 | 3 | 3 | 1 | {1:2,2:1,3:3} | 3 | 8 |
 | 4 | 4 | 2 (duplicate 2) | {1:2,2:4,3:3} | 3 | 11 |
-Original count = 11 subarrays, but only 5 are duplicate‑free. Removing the pair (indices 0,2) eliminates the conflict, and the gain calculation shows an additional 4 valid subarrays, reaching the optimal total of 9.
+Original count = 11 subarrays, but only 5 are duplicate-free. Removing the pair (indices 0,2) eliminates the conflict, and the gain calculation shows an additional 4 valid subarrays, reaching the optimal total of 9.
 
 ## Complexity Analysis
 *Time:* O(n) to count original subarrays, O(n) to build gain array, and O(m) where *m* is the total number of conflicting pairs (bounded by n) to evaluate gains → overall O(n).
 *Space:* O(n) for the gain array and hash map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could remove **up to k** conflicting pairs?
 2. Can the algorithm be adapted to work with a stream of numbers where the full array is not known in advance?
 3. What modifications are needed if the definition of a conflicting pair is based on a distance constraint (e.g., duplicates within a window of size `w`)?
 
 ## Key Takeaway
-By converting the problem into a sliding‑window count of duplicate‑free subarrays and using a difference array to evaluate the impact of removing each conflicting pair, we achieve a linear‑time solution.
+By converting the problem into a sliding-window count of duplicate-free subarrays and using a difference array to evaluate the impact of removing each conflicting pair, we achieve a linear-time solution.

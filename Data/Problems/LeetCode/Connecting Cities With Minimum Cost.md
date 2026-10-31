@@ -79,8 +79,8 @@ After adding two edges (`n-1`), MST cost = 6.
 
 ## Complexity Analysis
 
-- **Time:** O(E log E) for sorting edges plus near‑constant Union‑Find operations.
-- **Space:** O(n) for the Union‑Find data structure and O(E) for storing edges.
+- **Time:** O(E log E) for sorting edges plus near-constant Union-Find operations.
+- **Space:** O(n) for the Union-Find data structure and O(E) for storing edges.
 
 ---
 

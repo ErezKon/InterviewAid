@@ -48,13 +48,13 @@ For `s = "ababa", k = 3`:
 The algorithm stops after the first successful check.
 
 ## Complexity Analysis
-- **Time:** O((n‑k+1) · k) in the worst case, where `n` is `len(s)`. Each window requires up to `k/2` character comparisons.
+- **Time:** O((n-k+1) · k) in the worst case, where `n` is `len(s)`. Each window requires up to `k/2` character comparisons.
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions
 - How can you improve the time complexity using rolling hash or Manacher’s algorithm?
 - What changes are needed if you must find the longest palindrome of length at least `k`?
-- Can the solution be adapted to handle Unicode characters and case‑insensitive comparison?
+- Can the solution be adapted to handle Unicode characters and case-insensitive comparison?
 
 ## Key Takeaway
-A straightforward sliding‑window scan with a palindrome check suffices for the fixed‑length requirement, though more advanced string algorithms can reduce the per‑window cost.
+A straightforward sliding-window scan with a palindrome check suffices for the fixed-length requirement, though more advanced string algorithms can reduce the per-window cost.

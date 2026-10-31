@@ -36,7 +36,7 @@ Example 1:
 ```
 
 ## Approach
-**Reservoir Sampling – One‑Pass Uniform Selection**
+**Reservoir Sampling – One-Pass Uniform Selection**
 When `pick(target)` is called, iterate through `nums` and for each occurrence of `target` keep it with probability `1/count`, where `count` is the number of seen occurrences so far. This yields a uniformly random index without storing all positions.
 
 ```text
@@ -67,9 +67,9 @@ The final result is each index with probability 1/3.
 Time: O(n) per `pick` call, where n is the length of `nums`.
 Space: O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the design to achieve O(1) `pick` time?
-2. Can you pre‑process the array to support multiple `pick` calls efficiently?
+2. Can you pre-process the array to support multiple `pick` calls efficiently?
 3. What changes are needed if the array is immutable but extremely large?
 
 ## Key Takeaway

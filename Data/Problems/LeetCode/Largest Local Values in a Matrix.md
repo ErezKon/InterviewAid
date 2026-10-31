@@ -68,7 +68,7 @@ FUNCTION largestLocal(grid):
 
 ## 4. Walkthrough
 
-Consider the first example. The algorithm slides a 3×3 window across the matrix. For the top‑left window (`r=0,c=0`) it examines nine cells and records `9`. It then moves right (`c=1`) and again scans nine cells, finding another `9`. Repeating this for all positions yields `[[9,9],[8,6]]`.
+Consider the first example. The algorithm slides a 3×3 window across the matrix. For the top-left window (`r=0,c=0`) it examines nine cells and records `9`. It then moves right (`c=1`) and again scans nine cells, finding another `9`. Repeating this for all positions yields `[[9,9],[8,6]]`.
 
 ---
 
@@ -76,15 +76,15 @@ Consider the first example. The algorithm slides a 3×3 window across the matrix
 
 | Time | Space |
 |------|-------|
-| O(n²) – each of the (n‑2)² windows scans 9 cells | O(n²) for the output matrix |
+| O(n²) – each of the (n-2)² windows scans 9 cells | O(n²) for the output matrix |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * How would you adapt the solution for a variable window size `k`?
 * Can you achieve O(n²) time without the inner 3×3 loops using prefix maxima?
-* How would you handle non‑square matrices?
+* How would you handle non-square matrices?
 
 ---
 

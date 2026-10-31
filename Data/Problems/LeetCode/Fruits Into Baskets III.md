@@ -86,22 +86,22 @@ baskets = [3, 3]
 
 ## 5. Walkthrough
 
-Take Example 1:
-1. Build segment tree over `[3,5]` → root stores max 5.
-2. Fruit 2: query finds basket 0 (capacity 3) → update basket 0 to 0.
-3. Fruit 5: query now finds basket 1 (capacity 5) → update basket 1 to 0.
-4. Fruit 1: query finds no basket with capacity ≥ 1 (both are 0) → count as unplaced.
+Take Example 1:
+1. Build segment tree over `[3,5]` → root stores max 5.
+2. Fruit 2: query finds basket 0 (capacity 3) → update basket 0 to 0.
+3. Fruit 5: query now finds basket 1 (capacity 5) → update basket 1 to 0.
+4. Fruit 1: query finds no basket with capacity ≥ 1 (both are 0) → count as unplaced.
 5. Return `0` unplaced fruits.
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n log m) – each fruit triggers a segment‑tree query and optional update.
+- **Time:** O(n log m) – each fruit triggers a segment-tree query and optional update.
 - **Space:** O(m) – segment tree storage for `m` baskets.
 
 ---
 
 ## 7. Key Takeaway
 
-> **Segment tree with leftmost query** — find the leftmost position where max ≥ target. Enables O(log m) per fruit placement instead of O(m).
+> **Segment tree with leftmost query** — find the leftmost position where max ≥ target. Enables O(log m) per fruit placement instead of O(m).

@@ -59,7 +59,7 @@ We change s[6] and s[8] to ')' to make s valid.
 ```
 
 ## Approach
-Use a two‑pass greedy scan. The first left‑to‑right pass ensures we never have more closing brackets than possible openings, treating unlocked positions as potential '(' . The second right‑to‑left pass ensures we never have more opening brackets than possible closings, treating unlocked positions as potential ')' . If both passes succeed, a valid assignment exists.
+Use a two-pass greedy scan. The first left-to-right pass ensures we never have more closing brackets than possible openings, treating unlocked positions as potential '(' . The second right-to-left pass ensures we never have more opening brackets than possible closings, treating unlocked positions as potential ')' . If both passes succeed, a valid assignment exists.
 
 ### Pseudocode
 ```text
@@ -97,10 +97,10 @@ Consider `s = "()())"`, `locked = "01011"` (n = 5):
 - Time: O(n) – two linear scans.
 - Space: O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the solution change if each unlocked position could be changed to any character, not just parentheses?
 - Can you extend the approach to handle multiple types of brackets (e.g., {}, [], ())?
 - What if a cost is associated with changing an unlocked character?
 
 ## Key Takeaway
-A string with locked and unlocked parentheses is validable iff a left‑to‑right and right‑to‑left greedy scan never sees a deficit, treating unlocked positions as flexible brackets.
+A string with locked and unlocked parentheses is validable iff a left-to-right and right-to-left greedy scan never sees a deficit, treating unlocked positions as flexible brackets.

@@ -48,15 +48,15 @@ Example 2:
 ```
 
 ## Approach
-We use 3‑dimensional dynamic programming where `dp[r][c1][c2]` stores the maximum cherries collected when robot 1 is at column `c1` and robot 2 at column `c2` on row `r`.
+We use 3-dimensional dynamic programming where `dp[r][c1][c2]` stores the maximum cherries collected when robot 1 is at column `c1` and robot 2 at column `c2` on row `r`.
 
 ```text
 FUNCTION cherryPickup(grid):
     m, n ← dimensions of grid
-    dp ← 2‑D array of size n×n filled with -∞
+    dp ← 2-D array of size n×n filled with -∞
     dp[0][n-1] ← grid[0][0] + grid[0][n-1]
     FOR r ← 1 TO m-1:
-        newDp ← 2‑D array of size n×n filled with -∞
+        newDp ← 2-D array of size n×n filled with -∞
         FOR c1 ← 0 TO n-1:
             FOR c2 ← 0 TO n-1:
                 IF dp[c1][c2] = -∞: CONTINUE
@@ -78,10 +78,10 @@ Consider the first example grid. After initializing `dp[0][2] = 4`, we iterate r
 *Time*: `O(m * n²)` – we process `m` rows and for each row examine all `n²` robot position pairs with constant 9 transitions.
 *Space*: `O(n²)` – we keep only the DP table for the current row.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if robots could move more than one column per step?
-2. Can the problem be solved with memoized recursion instead of bottom‑up DP?
+2. Can the problem be solved with memoized recursion instead of bottom-up DP?
 3. What if the grid is extremely large and does not fit in memory?
 
 ## Key Takeaway
-Modeling two simultaneous agents with a 3‑D DP state (`row, col1, col2`) captures all interactions and leads to an optimal solution.
+Modeling two simultaneous agents with a 3-D DP state (`row, col1, col2`) captures all interactions and leads to an optimal solution.

@@ -111,7 +111,7 @@ Take `n = 5, k = 2`:
 
 - How would you solve the problem for very large `n` (e.g., 10^12) where iterating up to `n` is infeasible?
 - Can the solution be adapted if the elimination step `k` changes after each round?
-- What is the closed‑form solution for `k = 2`?
+- What is the closed-form solution for `k = 2`?
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below answer a simpler fixed-K "k-th largest after insertion" problem. Correct idea: keep two sorted multisets `l ≤ r` with `|r| = k_i` (rebalance by moving a few elements since consecutive `k_i` differ by < 10); `x = min(r)`, then `p ← p^x mod (10^9+7)` by fast exponentiation. O((n + m) log(n + m)).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 You are given an integer array `nums` and an integer `p`.
 
@@ -58,30 +58,55 @@ Thus, ans = [1296, 220296870]
 ```
 
 ## Approach
-Maintain two heaps:
-1. **minHeap** of size K storing the K largest elements (top is K‑th largest).
-2. **maxHeap** for the remaining smaller elements.
-When inserting a value:
-- If minHeap size < K, push into minHeap.
-- Else compare with minHeap top; if larger, move top to maxHeap and push new value into minHeap; otherwise push directly into maxHeap.
-After each insertion, if minHeap size == K, answer is its top; else -1.
+Maintain two heaps whose split point follows the current `k_i`:
+1. **top** - a min-heap holding the `k` largest elements (its top is the `k`-th largest).
+2. **rest** - a max-heap holding all the smaller elements.
+
+Invariant: every element of `rest` is `<=` every element of `top`. For each query:
+- Insert `val`: push into `top` if `top` is non-empty and `val >= top.min`, otherwise into `rest`.
+- Rebalance to size `k_i`: move `top.min` to `rest` while `|top| > k_i`; move `rest.max` to `top` while `|top| < k_i`. Because consecutive `k_i` differ by less than 10, this is at most about 10 moves per query.
+- `x = top.min`; update `p ← p^x mod (10^9 + 7)` with fast modular exponentiation.
+
+**Pseudocode**
+```text
+FUNCTION PowerUpdates(nums, p, queries):
+    SET MOD ← 10^9 + 7
+    SET top ← EMPTY MIN-HEAP
+    SET rest ← MAX-HEAP OF nums
+    SET ans ← []
+    FOR EACH [val, k] IN queries:
+        IF top NOT EMPTY AND val >= TOP(top):
+            PUSH val INTO top
+        ELSE:
+            PUSH val INTO rest
+        WHILE SIZE(top) > k:
+            PUSH POP(top) INTO rest
+        WHILE SIZE(top) < k:
+            PUSH POP(rest) INTO top
+        SET x ← TOP(top)
+        SET p ← POWMOD(p, x, MOD)
+        APPEND p TO ans
+    RETURN ans
+```
 
 ## Walkthrough
-| Step | Inserted | minHeap (size K) | maxHeap | Report |
-|------|----------|------------------|---------|--------|
-|1|1|[1]|[]| -1 |
-|2|5|[1,5] (top 1)|[]| 1 |
-|3|2|[2,5] (top 2) after moving 1 to maxHeap|[1]| 2 |
-|4|4|[4,5] (top 4) after moving 2 to maxHeap|[1,2]| 4 |
+Example 2: `nums = [7,5]`, `p = 6`, `queries = [[4,3],[7,2]]`. Start: `top = []`, `rest = {7,5}`.
+
+| Step | Inserted | k | top (k largest) | rest | x | New p |
+|------|----------|---|-----------------|------|---|-------|
+|1|4 → rest (top empty)|3|move 7, 5, 4 → `{4,5,7}`|`{}`|4|`6^4 = 1296`|
+|2|7 → top (7 >= 4)|2|`{4,5,7,7}` → move 4, 5 out → `{7,7}`|`{4,5}`|7|`1296^7 mod (10^9+7) = 220296870`|
+
+Result: `[1296, 220296870]`.
 
 ## Complexity Analysis
-Time per insertion: O(log K) for heap operations.
-Space: O(K) for minHeap + O(N‑K) for maxHeap (overall O(N)).
+Time: O(n) to heapify `nums`, then O(log(n + m)) per insertion plus at most ~10 heap moves per query for rebalancing, and O(log x) for the modular power. Overall O(n + m log(n + m)).
+Space: O(n + m) for the two heaps.
 
 ## Follow-Up Questions
-1. How would you support deletions of arbitrary elements?
-2. Can you achieve O(1) query time with a balanced BST?
-3. Extend to support multiple different K values simultaneously.
+1. What if consecutive `k_i` could differ arbitrarily? (Use an order-statistics structure such as a Fenwick tree over compressed values or a sorted list, giving O(log n) per k-th query.)
+2. Why can `p` never become `0` here, and why does that matter if you wanted to reduce the exponent modulo `10^9 + 6` (Fermat)?
+3. How would you support deleting a value from `nums` between queries?
 
 ## Key Takeaway
-Using a min‑heap of size K efficiently tracks the K‑th largest element in a dynamic stream.
+Two heaps split at the k-th position track a moving order statistic cheaply when k changes by a bounded amount; combine with fast modular exponentiation for the power update.

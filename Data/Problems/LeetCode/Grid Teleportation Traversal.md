@@ -42,7 +42,7 @@ Return the **minimum** number of moves required to reach the bottom-right cell. 
 
 ## 2. Key Insight
 
-> Model the grid as a graph: edges to the four neighbours have weight 1, edges between cells with the same letter have weight 0. A 0‑1 BFS (deque) yields the optimal distance.
+> Model the grid as a graph: edges to the four neighbours have weight 1, edges between cells with the same letter have weight 0. A 0-1 BFS (deque) yields the optimal distance.
 
 ---
 
@@ -66,14 +66,14 @@ FUNCTION gridTeleportation(grid):
     WHILE deque NOT EMPTY:
         (r,c) ← deque.POP_FRONT()
         cur ← dist[r][c]
-        // 0‑cost teleport edges
+        // 0-cost teleport edges
         FOR (tr,tc) IN letterGroups[grid[r][c]]:
             IF dist[tr][tc] > cur:
                 dist[tr][tc] ← cur
                 deque.PUSH_FRONT((tr,tc))
         // Clear group to avoid revisiting
         letterGroups[grid[r][c]].CLEAR()
-        // 1‑cost adjacent moves
+        // 1-cost adjacent moves
         FOR (dr,dc) IN [(1,0),(-1,0),(0,1),(0,-1)]:
             nr ← r + dr
             nc ← c + dc
@@ -118,7 +118,7 @@ Example 2:
 1. Start at (0,0) with distance 0.
 2. Teleport to all other "a" cells (if any) at cost 0 and push them to the front of the deque.
 3. Pop the next cell; explore its neighbours with cost 1, pushing them to the back.
-4. Repeat until the bottom‑right cell is dequeued; its distance is the answer.
+4. Repeat until the bottom-right cell is dequeued; its distance is the answer.
 
 ---
 
@@ -139,4 +139,4 @@ Example 2:
 
 ## 8. Key Takeaway
 
-> Model free teleportation as 0‑weight edges and use **0‑1 BFS** with a deque to obtain the shortest path in linear time.
+> Model free teleportation as 0-weight edges and use **0-1 BFS** with a deque to obtain the shortest path in linear time.

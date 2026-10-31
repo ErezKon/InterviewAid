@@ -41,7 +41,7 @@ Output: -10
 ```
 
 ## Approach
-Use bottom‑up dynamic programming. Start from the last row as the initial DP values. For each row moving upward, update each entry with its value plus the minimum of the two reachable children from the row below. This reduces space to O(n) by reusing a single DP array.
+Use bottom-up dynamic programming. Start from the last row as the initial DP values. For each row moving upward, update each entry with its value plus the minimum of the two reachable children from the row below. This reduces space to O(n) by reusing a single DP array.
 
 **Pseudocode**
 ```text
@@ -65,10 +65,10 @@ Result `11`.
 - Time: O(n²) where n is the number of rows (each element processed once).
 - Space: O(n) for the DP array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to also return the actual path achieving the minimum sum?
-2. Can the solution be adapted for a triangle stored in a read‑only data structure?
-3. What changes are needed if moves are allowed to any of the three adjacent numbers below (including `j‑1`)?
+2. Can the solution be adapted for a triangle stored in a read-only data structure?
+3. What changes are needed if moves are allowed to any of the three adjacent numbers below (including `j-1`)?
 
 ## Key Takeaway
-Bottom‑up DP efficiently computes the minimal path by aggregating optimal sub‑solutions from the bottom row upward, using only linear extra space.
+Bottom-up DP efficiently computes the minimal path by aggregating optimal sub-solutions from the bottom row upward, using only linear extra space.

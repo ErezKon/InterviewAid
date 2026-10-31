@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Mathematical modulo insight (Nim‑style). The losing positions are exactly multiples of 4. If `n % 4 != 0`, the first player can move to a multiple of 4 and maintain the advantage.
+**Algorithm:** Mathematical modulo insight (Nim-style). The losing positions are exactly multiples of 4. If `n % 4 != 0`, the first player can move to a multiple of 4 and maintain the advantage.
 
 ```text
 FUNCTION canWinNim(n):
@@ -62,7 +62,7 @@ Consider `n = 7`:
 | Turn | Stones left | Move taken | Stones after move |
 |------|-------------|------------|-------------------|
 | 1 (first) | 7 | remove 3 | 4 |
-| 2 (second) | 4 | any (1‑3) | 1‑3 |
+| 2 (second) | 4 | any (1-3) | 1-3 |
 | 1 (first) | ≤3 | remove remaining | 0 (win) |
 The first player forces a multiple of 4 after the first move and wins.
 

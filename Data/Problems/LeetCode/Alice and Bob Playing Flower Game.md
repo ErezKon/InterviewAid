@@ -81,7 +81,7 @@ Thus the function returns 8.
 
 ## 6. Complexity Analysis
 
-- **Time:** O(1) – only constant‑time arithmetic operations.
+- **Time:** O(1) – only constant-time arithmetic operations.
 - **Space:** O(1) – no additional data structures.
 
 ---

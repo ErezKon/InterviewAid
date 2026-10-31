@@ -58,7 +58,7 @@ Output: [1]
 ```
 
 ## Approach
-Use a queue to store active iterators. Initially push iterators for any non‑empty input vector. For each `next()` call, pop the front iterator, retrieve its current value, and if it has more elements, push it back. `hasNext()` checks if the queue is non‑empty.
+Use a queue to store active iterators. Initially push iterators for any non-empty input vector. For each `next()` call, pop the front iterator, retrieve its current value, and if it has more elements, push it back. `hasNext()` checks if the queue is non-empty.
 
 ```text
 FUNCTION ZigzagIterator(v1, v2):
@@ -83,7 +83,7 @@ FUNCTION hasNext():
 | Start | `[it(v1), it(v2)]` | – |
 | next() | pop `it(v1)` → `1`; push back `it(v1)` | `1` |
 | next() | pop `it(v2)` → `3`; push back `it(v2)` | `3` |
-| next() | pop `it(v1)` → `2`; `it(v1)` exhausted, not re‑queued | `2` |
+| next() | pop `it(v1)` → `2`; `it(v1)` exhausted, not re-queued | `2` |
 | next() | pop `it(v2)` → `4`; push back `it(v2)` | `4` |
 | … | continue until queue empty |
 
@@ -91,10 +91,10 @@ FUNCTION hasNext():
 - **Time:** Each `next()` and `hasNext()` operation runs in **O(1)** amortized time.
 - **Space:** Stores at most two iterators → **O(1)** extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend this design to `k` vectors?
 2. Can you implement the iterator without using extra space for a queue?
 3. How would you handle infinite streams where one iterator never ends?
 
 ## Key Takeaway
-A queue of active iterators enables constant‑time alternating traversal across multiple sequences.
+A queue of active iterators enables constant-time alternating traversal across multiple sequences.

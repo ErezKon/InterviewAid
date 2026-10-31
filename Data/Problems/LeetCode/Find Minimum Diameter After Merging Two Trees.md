@@ -70,16 +70,16 @@ FUNCTION minMergedDiameter(tree1, tree2):
 ```
 
 ## Walkthrough
-Consider `T1` a line of 5 nodes (0‑4). BFS from node 0 finds farthest node 4, distance 4 → `d1 = 4`. `T2` is a single node, `d2 = 0`. Compute `cand3 = ceil(4/2) + ceil(0/2) + 1 = 2 + 0 + 1 = 3`. The maximum of `{4,0,3}` is `4`, but connecting the middle node (index 2) of `T1` to the lone node reduces the longest path to `3`, which matches `cand3`. Hence the minimal possible diameter is `3`.
+Consider `T1` a line of 5 nodes (0-4). BFS from node 0 finds farthest node 4, distance 4 → `d1 = 4`. `T2` is a single node, `d2 = 0`. Compute `cand3 = ceil(4/2) + ceil(0/2) + 1 = 2 + 0 + 1 = 3`. The maximum of `{4,0,3}` is `4`, but connecting the middle node (index 2) of `T1` to the lone node reduces the longest path to `3`, which matches `cand3`. Hence the minimal possible diameter is `3`.
 
 ## Complexity Analysis
 *Time*: O(n1 + n2) for two BFS traversals on each tree (linear in total nodes). 
 *Space*: O(n1 + n2) for adjacency lists and BFS queues.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the answer change if you could add more than one edge between the trees?
 2. Can the method be extended to merge `k` trees into a single tree with minimal diameter?
 3. What if the trees are weighted (edge lengths differ); how does the formula adapt?
 
 ## Key Takeaway
-The minimal diameter after merging two trees is achieved by linking their centers, and can be computed directly from the original diameters using a simple closed‑form expression.
+The minimal diameter after merging two trees is achieved by linking their centers, and can be computed directly from the original diameters using a simple closed-form expression.

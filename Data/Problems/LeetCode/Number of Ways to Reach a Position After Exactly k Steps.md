@@ -76,8 +76,8 @@ Explanation: It is impossible to reach position 5 from position 2 in exactly 10 
 
 ## 5. Walkthrough
 
-For Example 1:
-- Distance `d = |2‑1| = 1`.
+For Example 1:
+- Distance `d = |2-1| = 1`.
 - `(k + d) = 4` is even, so `r = (3 + 1)/2 = 2` right steps.
 - Choose 2 positions out of 3 steps for right moves: C(3,2) = 3.
 Thus 3 ways.

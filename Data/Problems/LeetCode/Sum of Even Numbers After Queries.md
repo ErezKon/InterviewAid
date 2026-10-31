@@ -55,9 +55,9 @@ Time: O(q) where q is number of queries.
 Space: O(1) extra.
 
 ## Follow-Up Questions
-* How would you modify the solution to handle range updates instead of single‑index updates?
+* How would you modify the solution to handle range updates instead of single-index updates?
 * Can you support queries that ask for the sum of odd numbers as well?
 * What if the array is extremely large and stored on disk?
 
 ## Key Takeaway
-Tracking the even‑sum incrementally avoids recomputing it from scratch after each update.
+Tracking the even-sum incrementally avoids recomputing it from scratch after each update.

@@ -96,12 +96,12 @@ For the first example:
 | Metric | Value |
 |--------|-------|
 | Time   | O(N² log N) where N is the number of distinct points (≤ 2·|specialRoads|+2) |
-| Space  | O(N²) for the adjacency matrix (can be optimized to O(N) with on‑the‑fly edge generation) |
+| Space  | O(N²) for the adjacency matrix (can be optimized to O(N) with on-the-fly edge generation) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if special roads could be used in both directions?
 2. Can you improve the time complexity by only connecting each point to its nearest neighbors instead of all pairs?
-3. What if the cost of moving off‑grid is not Manhattan distance but Euclidean distance?
+3. What if the cost of moving off-grid is not Manhattan distance but Euclidean distance?
 
 ## Key Takeaway
-Model the problem as a graph of key points and run Dijkstra, using Manhattan distances for regular moves and special‑road edges for cheaper shortcuts.
+Model the problem as a graph of key points and run Dijkstra, using Manhattan distances for regular moves and special-road edges for cheaper shortcuts.

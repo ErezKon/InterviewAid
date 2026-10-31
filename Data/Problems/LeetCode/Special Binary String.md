@@ -39,7 +39,7 @@ Example 2:
 ```
 
 ## Approach
-The key insight is that any special string can be uniquely decomposed into top‑level special substrings. By recursively processing the inner part of each substring and then sorting the resulting pieces in descending order, we obtain the lexicographically largest arrangement.
+The key insight is that any special string can be uniquely decomposed into top-level special substrings. By recursively processing the inner part of each substring and then sorting the resulting pieces in descending order, we obtain the lexicographically largest arrangement.
 
 ```text
 FUNCTION makeLargestSpecial(s):
@@ -52,7 +52,7 @@ FUNCTION makeLargestSpecial(s):
         ELSE:
             SET count ← count - 1
         IF count == 0:
-            // s[i..j] is a top‑level special substring
+            // s[i..j] is a top-level special substring
             SET inner ← makeLargestSpecial(s[i+1 : j])
             APPEND "1" + inner + "0" TO subs
             SET i ← j + 1
@@ -71,10 +71,10 @@ The final sorted list contains a single element, yielding `"11100100"`.
 - **Time:** Each character is visited once for splitting plus sorting of at most *k* substrings at each recursion level. Overall `O(n log n)` where *n* is the length of `s`.
 - **Space:** Recursion depth up to the number of `'1'` groups, `O(n)` auxiliary space.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to return the *k*‑th largest special string?
-2. Can the same technique be applied to other balanced parentheses‑like structures?
+## Follow-Up Questions
+1. How would you modify the algorithm to return the *k*-th largest special string?
+2. Can the same technique be applied to other balanced parentheses-like structures?
 3. What is the effect of using a stable sort versus a regular sort on the result?
 
 ## Key Takeaway
-Decompose a special binary string into its top‑level components, recursively maximize each part, and then sort the components descending to achieve the lexicographically largest string.
+Decompose a special binary string into its top-level components, recursively maximize each part, and then sort the components descending to achieve the lexicographically largest string.

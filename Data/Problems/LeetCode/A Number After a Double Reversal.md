@@ -56,10 +56,10 @@ FUNCTION isSameAfterReversals(num):
 | 3 | 0   | 0 (special case) | return true | true |
 
 ## Complexity Analysis
-- **Time:** O(1) – only a constant‑time modulo operation.
+- **Time:** O(1) – only a constant-time modulo operation.
 - **Space:** O(1) – no extra data structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle very large numbers that do not fit in standard integer types?
 2. What if the number is given as a string? Would the same insight apply?
 3. Can you extend the solution to detect if a number becomes a palindrome after a single reversal?

@@ -34,10 +34,10 @@ Output: [0,2,4]
 ```
 
 ## Approach
-Use dynamic programming with precomputed window sums and best‑left/right indices.
+Use dynamic programming with precomputed window sums and best-left/right indices.
 1. Compute `windowSums[i]` = sum of `nums[i..i+k-1]` for all valid `i`.
-2. `left[i]` stores the index of the maximum‑sum window in `[0..i]`.
-3. `right[i]` stores the index of the maximum‑sum window in `[i..end]` (choose rightmost on ties).
+2. `left[i]` stores the index of the maximum-sum window in `[0..i]`.
+3. `right[i]` stores the index of the maximum-sum window in `[i..end]` (choose rightmost on ties).
 4. Iterate `mid` from `k` to `len(windowSums)-k-1`, combine `left[mid-k]`, `mid`, `right[mid+k]` to get total sum, keep best.
 The DP runs in O(n) time.
 
@@ -95,10 +95,10 @@ For `nums = [1,2,1,2,6,7,5,1]`, `k = 2`:
 *Time*: O(n) – one pass for window sums, two passes for left/right, and one final scan.
 *Space*: O(n) for the auxiliary arrays.
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm for `m` non‑overlapping subarrays of length `k`?
-2. Can the solution be extended to variable‑length subarrays with a total length constraint?
+## Follow-Up Questions
+1. How would you adapt the algorithm for `m` non-overlapping subarrays of length `k`?
+2. Can the solution be extended to variable-length subarrays with a total length constraint?
 3. How would you modify the DP if the subarrays could overlap but you wanted to maximize the sum of exactly three chosen windows?
 
 ## Key Takeaway
-Precomputing window sums and maintaining best‑left/right indices enables an O(n) DP that efficiently selects three optimal non‑overlapping subarrays.
+Precomputing window sums and maintaining best-left/right indices enables an O(n) DP that efficiently selects three optimal non-overlapping subarrays.

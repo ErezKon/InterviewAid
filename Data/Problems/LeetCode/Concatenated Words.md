@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-1. Insert all words into a hash set for O(1) look‑ups.
+1. Insert all words into a hash set for O(1) look-ups.
 2. For each word, use dynamic programming to determine if it can be segmented into smaller words from the set (excluding the word itself).
    - `dp[i]` is true if the prefix `word[0:i]` can be formed.
    - For each `i`, check all `j < i` where `dp[j]` is true and `word[j:i]` exists in the set.
@@ -75,7 +75,7 @@ For `word = "catsdogcats"`:
 Time: O(N * L^2) where N is number of words and L is average word length (DP checks each split).
 Space: O(L) for the DP array per word plus O(total characters) for the hash set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to return the actual concatenation components for each word?
 - Can you improve the time complexity using a Trie instead of a hash set?
 - What changes are needed if words can be reused unlimited times versus at most once?

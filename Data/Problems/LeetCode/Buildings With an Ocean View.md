@@ -36,7 +36,7 @@ Example 3:
 ```
 
 ## Approach
-**Right‑to‑Left Scan** – Iterate from the end of the array, tracking the maximum height seen so far. If the current building is taller than `maxHeight`, it has an ocean view; record its index and update `maxHeight`. Finally, reverse the collected indices to obtain left‑to‑right order.
+**Right-to-Left Scan** – Iterate from the end of the array, tracking the maximum height seen so far. If the current building is taller than `maxHeight`, it has an ocean view; record its index and update `maxHeight`. Finally, reverse the collected indices to obtain left-to-right order.
 
 ```text
 FUNCTION findBuildings(heights):
@@ -59,9 +59,9 @@ Reverse `[3,2,0]` → `[0,2,3]`.
 
 ## Complexity Analysis
 - **Time:** O(n) – single pass.
-- **Space:** O(k) for the result list, where k is the number of ocean‑view buildings (≤ n).
+- **Space:** O(k) for the result list, where k is the number of ocean-view buildings (≤ n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual heights instead of indices?
 2. Can you solve the problem in a single pass without using extra space for the result (e.g., outputting as you go)?
 3. What if the buildings are arranged in a circular fashion?

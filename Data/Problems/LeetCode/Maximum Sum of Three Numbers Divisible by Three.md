@@ -38,13 +38,13 @@ Explanation: No triplet forms a sum divisible by 3, so the answer is 0.
 ```
 
 ## Approach
-The key observation is that the remainder of each number modulo 3 determines how it can contribute to a sum divisible by 3. We keep the three largest numbers for each remainder class `0`, `1`, and `2`.
+The key observation is that the remainder of each number modulo 3 determines how it can contribute to a sum divisible by 3. We keep the three largest numbers for each remainder class `0`, `1`, and `2`.
 1. Iterate through `nums`, placing each value into one of three buckets based on `value % 3` and maintaining only the top three values per bucket.
 2. After processing, consider all ways to obtain a total remainder of `0`:
-   - Three numbers from bucket 0.
-   - One from bucket 0 and a pair (1,2).
-   - Three from bucket 1.
-   - Three from bucket 2.
+   - Three numbers from bucket 0.
+   - One from bucket 0 and a pair (1,2).
+   - Three from bucket 1.
+   - Three from bucket 2.
 3. Compute the sum for each feasible combination and take the maximum.
 This runs in O(n) time with O(1) extra space.
 
@@ -98,13 +98,13 @@ For `nums = [3,6,5,1,8]`:
   - Best = 15, which is the maximum sum divisible by 3.
 
 ## Complexity Analysis
-*Time:* O(n) – single pass to fill buckets and constant‑time evaluations.
-*Space:* O(1) – only a few fixed‑size buckets.
+*Time:* O(n) – single pass to fill buckets and constant-time evaluations.
+*Space:* O(1) – only a few fixed-size buckets.
 
-## Follow‑Up Questions
-1. How would you extend the solution to select **any number** of elements (not just three) whose sum is divisible by 3?
+## Follow-Up Questions
+1. How would you extend the solution to select **any number** of elements (not just three) whose sum is divisible by 3?
 2. Can the algorithm be adapted for a different divisor `k` (e.g., sum divisible by 5)?
 3. What changes are needed if you must also return the actual three indices achieving the maximum sum?
 
 ## Key Takeaway
-By grouping numbers by their modulo 3 remainder and keeping only the top three candidates per group, we can evaluate all valid triples in constant time, achieving an O(n) solution.
+By grouping numbers by their modulo 3 remainder and keeping only the top three candidates per group, we can evaluate all valid triples in constant time, achieving an O(n) solution.

@@ -84,7 +84,7 @@ Example 1:
 
 ## 4. Approach
 
-The problem is a pure data‑retrieval task. Use a `WHERE` clause to filter odd `id` (`id % 2 = 1`) and exclude `'boring'` descriptions, then sort by `rating` descending.
+The problem is a pure data-retrieval task. Use a `WHERE` clause to filter odd `id` (`id % 2 = 1`) and exclude `'boring'` descriptions, then sort by `rating` descending.
 
 ---
 

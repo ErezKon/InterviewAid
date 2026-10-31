@@ -88,10 +88,10 @@ If the table has fewer than `N` distinct salaries, the query returns `NULL`.
 - **Time:** O(M log M) where M is the number of rows (due to sorting).
 - **Space:** O(M) for the intermediate distinct salary list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you implement this without using `LIMIT`/`OFFSET`?
 - Can you solve it in a single pass using window functions?
 - How to handle ties when multiple employees share the same salary?
 
 ## Key Takeaway
-Sorting distinct salaries and offsetting by `N-1` yields the N‑th highest salary directly.
+Sorting distinct salaries and offsetting by `N-1` yields the N-th highest salary directly.

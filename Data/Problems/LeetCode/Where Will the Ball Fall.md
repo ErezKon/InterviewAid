@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented binary-tree problem. Correct idea: simulate each ball row by row — at column `c` with board `d = grid[r][c]`, the next column is `c + d`; the ball is stuck if `c + d` is out of bounds or `grid[r][c + d] != d` (a "V"). Otherwise move to `c + d` and continue. O(m·n).*
-
 You have a 2-D `grid` of size `m x n` representing a box, and you have `n` balls. The box is open on the top and bottom sides.
 
 Each cell in the box has a diagonal board spanning two corners of the cell that can redirect a ball to the right or to the left.
@@ -55,35 +53,49 @@ Output: [0,1,2,3,4,-1]
 ```
 
 ## Approach
-Traverse the tree from the root following the direction indicated by each node’s value until a leaf is reached.
+Simulate each ball independently, row by row. In row `r` at column `c`, the board `d = grid[r][c]` (`1` = right, `-1` = left) pushes the ball toward column `c + d`. The ball gets stuck if:
+- `c + d` is outside `[0, n−1]` (pushed into a wall), or
+- `grid[r][c + d] ≠ d` — the neighbouring board slopes the opposite way, forming a "V".
+
+Otherwise the ball moves to column `c + d` and drops to the next row. If it survives all `m` rows, its final column is the answer.
 
 ```text
-FUNCTION findBallLeaf(root):
-    SET node ← root
-    WHILE node.left ≠ null OR node.right ≠ null:
-        IF node.val = 0:
-            SET node ← node.left
-        ELSE:
-            SET node ← node.right
-    RETURN node.val
+FUNCTION findBall(grid):
+    SET answer ← ARRAY of size n
+    FOR start ← 0 TO n-1:
+        SET c ← start
+        FOR r ← 0 TO m-1:
+            SET d ← grid[r][c]
+            SET nc ← c + d
+            IF nc < 0 OR nc ≥ n OR grid[r][nc] ≠ d:
+                SET c ← -1          // stuck (wall or V)
+                BREAK
+            SET c ← nc
+        SET answer[start] ← c
+    RETURN answer
 ```
 
 ## Walkthrough
-| Current node value | Move to |
-|--------------------|---------|
-| 0 (root)           | left child |
-| 1                  | right child |
-| …                  | … |
-Continue until a leaf is reached; return its value.
+Example 1: `grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]`.
+
+| Ball | Trace (row: col → next col) | Result |
+|------|-----------------------------|--------|
+| 0 | r0: 0→1, r1: 1→2, r2: 2→1, r3: 1→2, r4: 2→1 | 1 |
+| 1 | r0: 1→2, r1: at 2 d=1, grid[1][3] = −1 ≠ 1 → V | -1 |
+| 2 | r0: at 2 d=1, grid[0][3] = −1 → V | -1 |
+| 3 | r0: at 3 d=−1, grid[0][2] = 1 → V | -1 |
+| 4 | r0: 4→3, r1: at 3 d=−1, grid[1][2] = 1 → V | -1 |
+
+Output: `[1,-1,-1,-1,-1]`.
 
 ## Complexity Analysis
-- Time: O(h) where h is the height of the tree (≤ number of nodes).
-- Space: O(1) extra space.
+- Time: O(m·n) — `n` balls, each simulated through at most `m` rows.
+- Space: O(1) extra space besides the output array.
 
-## Follow‑Up Questions
-- How would you handle a tree where nodes can have both left and right children regardless of value?
-- What if the ball could bounce back on certain nodes?
-- Can you compute the path taken as a binary string?
+## Follow-Up Questions
+- Can you compute all answers in one bottom-up pass? (DP from the last row upward: `exit[r][c] = exit[r+1][c+d]` if the move is valid, else `-1` — still O(m·n) but reusable for queries.)
+- How would you report the row where each stuck ball stops?
+- What if the box were very tall (`m` huge) but the pattern of rows repeated periodically? (Compose the per-row column mappings with binary lifting.)
 
 ## Key Takeaway
-A simple deterministic traversal following node values yields the final leaf in linear time relative to tree height.
+A ball's motion through one row depends only on its current cell and one neighbour: it moves to `c + d` unless it hits a wall or a mismatched neighbour (a "V"), so direct simulation is simple and O(m·n).

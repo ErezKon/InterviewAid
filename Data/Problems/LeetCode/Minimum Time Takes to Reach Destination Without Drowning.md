@@ -78,7 +78,7 @@ Explanation: It can be shown that we can reach destination in 6 seconds. Also it
 
 ## 3. Key Insight
 
-> **Two-phase BFS**: First, multi‑source BFS from all flood sources to compute `floodTime[r][c]` — the time each cell gets flooded. Then BFS from `S`, only entering cells where `yourTime < floodTime[r][c]`.
+> **Two-phase BFS**: First, multi-source BFS from all flood sources to compute `floodTime[r][c]` — the time each cell gets flooded. Then BFS from `S`, only entering cells where `yourTime < floodTime[r][c]`.
 
 ---
 
@@ -86,7 +86,7 @@ Explanation: It can be shown that we can reach destination in 6 seconds. Also it
 
 ```text
 FUNCTION minimumTime(grid):
-    // Phase 1: Multi‑source BFS from all '*' cells
+    // Phase 1: Multi-source BFS from all '*' cells
     floodTime ← matrix of size m×n filled with INF
     queue ← all positions (r,c) where grid[r][c] == '*', each with time 0
     WHILE queue NOT EMPTY:
@@ -116,17 +116,17 @@ FUNCTION minimumTime(grid):
 
 ## 5. Walkthrough
 
-Consider **Example 1**.
+Consider **Example 1**.
 | Step | Person Position | Time | Flood Spread (cells flooded at this time) |
 |------|-----------------|------|-------------------------------------------|
 | 0    | (0,0) `S`       | 0    | `*` at (0,3) and (2,2)                     |
 | 1    | (0,1)           | 1    | (0,2), (1,3)                               |
 | 2    | (0,2)           | 2    | (0,1), (1,2), (2,3)                        |
 | 3    | (1,2)           | 3    | (1,1) is a wall, flood reaches (2,2) at 3 |
-| 4    | (2,2) (cannot)  | —    | Flood arrives at time 3, so this cell is unsafe |
+| 4    | (2,2) (cannot)  | —    | Flood arrives at time 3, so this cell is unsafe |
 | 5    | (2,3) `D`       | 5    | Person arrives before flood (flood at 4)   |
 
-The algorithm’s first BFS records flood times like `floodTime[2][3] = 4`. The second BFS follows the safe path (0,0)→(0,1)→(0,2)→(1,2)→(2,3), arriving at time 5, which matches the output.
+The algorithm’s first BFS records flood times like `floodTime[2][3] = 4`. The second BFS follows the safe path (0,0)→(0,1)→(0,2)→(1,2)→(2,3), arriving at time 5, which matches the output.
 
 ---
 
@@ -134,8 +134,8 @@ The algorithm’s first BFS records flood times like `floodTime[2][3] = 4`. The 
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(m × n) — two passes of BFS |
-| **Space** | O(m × n) for `floodTime` and visited set |
+| **Time** | O(m × n) — two passes of BFS |
+| **Space** | O(m × n) for `floodTime` and visited set |
 
 ---
 
@@ -143,10 +143,10 @@ The algorithm’s first BFS records flood times like `floodTime[2][3] = 4`. The 
 
 1. How would the solution change if water could flow diagonally?
 2. What if you could build temporary barriers on empty cells?
-3. Can the same two‑phase BFS pattern be applied to fire‑spread or virus‑spread scenarios?
+3. Can the same two-phase BFS pattern be applied to fire-spread or virus-spread scenarios?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Flood‑fill then path‑find** — pre‑compute when each cell becomes unsafe, then perform a constrained BFS where you only move into cells that remain safe at your arrival time.
+> **Flood-fill then path-find** — pre-compute when each cell becomes unsafe, then perform a constrained BFS where you only move into cells that remain safe at your arrival time.

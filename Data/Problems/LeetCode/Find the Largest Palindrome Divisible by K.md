@@ -39,7 +39,7 @@ Return the **largest** integer having `n` digits (as a string) that is **k-palin
 
 ## 2. Key Insight
 
-> Construct the palindrome greedily from the outermost digits inward, choosing the largest possible digit (9 down to 0) at each position. For each candidate, check divisibility using modular arithmetic on the contribution of symmetric positions. Different values of `k` have simple digit‑based constraints, except for `k = 7` which requires a small DP on remainders.
+> Construct the palindrome greedily from the outermost digits inward, choosing the largest possible digit (9 down to 0) at each position. For each candidate, check divisibility using modular arithmetic on the contribution of symmetric positions. Different values of `k` have simple digit-based constraints, except for `k = 7` which requires a small DP on remainders.
 
 ---
 
@@ -52,7 +52,7 @@ FUNCTION largestPalindrome(n, k):
 
     // Apply digit constraints based on k
     IF k IN {1,3,9} THEN
-        // All‑9 palindrome is already divisible
+        // All-9 palindrome is already divisible
         RETURN JOIN(digits)
     ELSE IF k == 2 OR k == 4 OR k == 8 THEN
         // Last digit must be even; set to largest even ≤ 9
@@ -63,7 +63,7 @@ FUNCTION largestPalindrome(n, k):
         digits[n-1] ← 5
         digits[0]   ← 5
     ELSE IF k == 6 THEN
-        // Combine even and divisible‑by‑3 constraints
+        // Combine even and divisible-by-3 constraints
         digits[n-1] ← 6
         digits[0]   ← 6
     ELSE IF k == 7 THEN
@@ -117,7 +117,7 @@ Example 3:
 Consider `n = 5, k = 7`.
 
 1. Initialise digits = [9,9,9,9,9].
-2. Process pair (0,4): try 9 → contribution ≡ (9*(10⁰+10⁴)) mod 7 = 9*(1+10000) mod 7 = 9*... = 2 (non‑zero). Try 8 → contribution 1, … finally 5 gives contribution 0, so set digits[0]=digits[4]=5, remainder=0.
+2. Process pair (0,4): try 9 → contribution ≡ (9*(10⁰+10⁴)) mod 7 = 9*(1+10000) mod 7 = 9*... = 2 (non-zero). Try 8 → contribution 1, … finally 5 gives contribution 0, so set digits[0]=digits[4]=5, remainder=0.
 3. Process pair (1,3): try 9 → contribution ≡ 9*(10¹+10³) mod 7 = 0, so set digits[1]=digits[3]=9.
 4. Middle index 2 (odd length): try 9 → contribution ≡ 9*10² mod 7 = 0, set digits[2]=9.
 5. Resulting palindrome: "59995", which is divisible by 7.
@@ -143,4 +143,4 @@ Consider `n = 5, k = 7`.
 
 ## 8. Key Takeaway
 
-> By exploiting the tiny range of `k` (≤ 9) we can apply simple digit‑level constraints, and only for the prime case `k = 7` a lightweight DP on remainders is needed. This yields an O(n) construction of the maximal palindrome.
+> By exploiting the tiny range of `k` (≤ 9) we can apply simple digit-level constraints, and only for the prime case `k = 7` a lightweight DP on remainders is needed. This yields an O(n) construction of the maximal palindrome.

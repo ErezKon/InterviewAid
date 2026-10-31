@@ -50,7 +50,7 @@ productOfNumbers.getProduct(2); // return 32. The product of the last 2 numbers 
 ```
 
 ## Approach
-Maintain a list of prefix products. When a non‑zero number is added, append `prefix[-1] * num`. When a zero is added, reset the prefix list to `[1]` because any product that spans the zero becomes zero. To answer `getProduct(k)`, if `k` is larger than the length of the prefix list minus one, a zero occurred within the window, so return `0`. Otherwise, return `prefix[-1] / prefix[-k-1]`.
+Maintain a list of prefix products. When a non-zero number is added, append `prefix[-1] * num`. When a zero is added, reset the prefix list to `[1]` because any product that spans the zero becomes zero. To answer `getProduct(k)`, if `k` is larger than the length of the prefix list minus one, a zero occurred within the window, so return `0`. Otherwise, return `prefix[-1] / prefix[-k-1]`.
 
 ### Pseudocode
 ```text
@@ -83,10 +83,10 @@ Adding `8` → prefix `[1,2,10,40,320]`; `getProduct(2)` → `320 / 10 = 32`.
 - **Time:** `O(1)` per `add` and `getProduct`.
 - **Space:** `O(n)` for storing prefix products, where `n` is the number of added elements since the last zero.
 
-## Follow‑Up Questions
-1. How would you modify the structure to support division‑free queries (e.g., using logarithms)?
+## Follow-Up Questions
+1. How would you modify the structure to support division-free queries (e.g., using logarithms)?
 2. Can you adapt the design to handle a sliding window of fixed size instead of arbitrary `k`?
 3. What changes are needed if the numbers can be negative and overflow is a concern?
 
 ## Key Takeaway
-By storing cumulative products and resetting on zeros, you can compute the product of the last k numbers in constant time.
+By storing cumulative products and resetting on zeros, you can compute the product of the last k numbers in constant time.

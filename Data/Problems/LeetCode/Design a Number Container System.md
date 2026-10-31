@@ -83,7 +83,7 @@ CLASS NumberContainers:
 
 ## Complexity Analysis
 
-- **Time:** `change` – O(log n) for updating the sorted list; `find` – O(1) to peek first element.
+- **Time:** `change` – O(log n) for updating the sorted list; `find` – O(1) to peek first element.
 - **Space:** O(n) to store mappings for all indices.
 
 ---
@@ -98,4 +98,4 @@ CLASS NumberContainers:
 
 ## Key Takeaway
 
-> **Dual map design: index→number for updates, number→SortedSet of indices for fast minimum‑index retrieval.**
+> **Dual map design: index→number for updates, number→SortedSet of indices for fast minimum-index retrieval.**

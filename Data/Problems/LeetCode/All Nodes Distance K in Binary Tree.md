@@ -48,10 +48,10 @@ Example 2:
 - **Time:** O(N) where N is the number of nodes (each node visited at most once).
 - **Space:** O(N) for the parent map and BFS queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return nodes in sorted order?
 2. Can you solve the problem without extra space for the parent map by using recursion?
-3. What changes are needed if the tree is not binary but an N‑ary tree?
+3. What changes are needed if the tree is not binary but an N-ary tree?
 
 ## Key Takeaway
 Transforming a binary tree into an undirected graph via parent pointers enables a simple BFS to find all nodes at a given distance from a target.

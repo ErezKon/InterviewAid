@@ -95,7 +95,7 @@ CLASS MyQueue:
 ## Follow-Up Questions
 1. How would you implement a queue using a single stack?
 2. Can you extend this design to support a `max()` operation in O(1) time?
-3. What changes are needed if the queue must be thread‑safe?
+3. What changes are needed if the queue must be thread-safe?
 
 ## Key Takeaway
-Two stacks can simulate a queue by reversing element order only when necessary, giving amortized constant‑time operations.
+Two stacks can simulate a queue by reversing element order only when necessary, giving amortized constant-time operations.

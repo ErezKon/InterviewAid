@@ -35,7 +35,7 @@ Example 4:
 ```
 
 ## Approach
-Iterative depth‑first search using a stack. Push the root, then repeatedly pop a node, record its value, and push its right child followed by its left child so that left is processed first.
+Iterative depth-first search using a stack. Push the root, then repeatedly pop a node, record its value, and push its right child followed by its left child so that left is processed first.
 
 ```text
 FUNCTION preorderTraversal(root):
@@ -63,7 +63,7 @@ For `[1,null,2,3]`:
 ## Follow-Up Questions
 - How would you implement preorder traversal recursively?
 - Can you achieve O(1) extra space using Morris traversal?
-- How does the algorithm adapt for an n‑ary tree?
+- How does the algorithm adapt for an n-ary tree?
 
 ## Key Takeaway
-A preorder traversal can be performed iteratively by using a stack to process nodes in root‑left‑right order, pushing right before left.
+A preorder traversal can be performed iteratively by using a stack to process nodes in root-left-right order, pushing right before left.

@@ -77,10 +77,10 @@ The maximum path length is 1 minute.
 *Time*: `O(n)` – each employee visited once.
 *Space*: `O(n)` – adjacency list and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the order in which employees receive the news?
-2. Can the solution be adapted for parallel processing where managers inform sub‑trees concurrently?
+2. Can the solution be adapted for parallel processing where managers inform sub-trees concurrently?
 3. What if `informTime` varies per subordinate rather than per manager?
 
 ## Key Takeaway
-A simple DFS on the manager‑subordinate tree, aggregating the maximum child time, yields the total inform time.
+A simple DFS on the manager-subordinate tree, aggregating the maximum child time, yields the total inform time.

@@ -75,7 +75,7 @@ Explanation: The possible longest common subpaths are [0], [1], [2], [3], and [4
 |------|--------|--------|
 | 1 | Set low = 0, high = min length of all paths |
 | 2 | Mid = (low+high)//2, compute rolling hashes of length Mid for each path |
-| 3 | Intersect hash sets; if non‑empty, a common subpath exists → set low = Mid+1 |
+| 3 | Intersect hash sets; if non-empty, a common subpath exists → set low = Mid+1 |
 | 4 | Else set high = Mid-1 |
 | 5 | Continue until low > high; answer = high |
 
@@ -85,12 +85,12 @@ The binary search narrows the maximum feasible length, while rolling hash provid
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n·L·log L) — binary search over length with O(n·L) hashing per iteration.
+- **Time:** O(n·L·log L) — binary search over length with O(n·L) hashing per iteration.
 - **Space:** O(L) for hash sets of the current length.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you adapt the solution if the paths were given as strings of characters instead of integer city IDs?
 - Can you reduce the time complexity using suffix automata or suffix arrays?

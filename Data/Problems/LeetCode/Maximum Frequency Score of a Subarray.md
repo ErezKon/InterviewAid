@@ -82,11 +82,11 @@ Consider `nums = [1,2,2,3,3,3]`, `k = 3`.
 ## Follow-Up Questions
 
 1. How would you adapt the solution if the score used `value * frequency` instead of exponentiation?
-2. Can the algorithm be extended to variable‑length windows while still running in linear time?
+2. Can the algorithm be extended to variable-length windows while still running in linear time?
 3. What if the modulo operation were removed – how would that affect overflow handling?
 
 ---
 
 ## Key Takeaway
 
-> Sliding a fixed‑size window while maintaining an incremental frequency‑based score lets you compute the maximum frequency score in linear time, updating `value^freq` terms as elements enter and leave.
+> Sliding a fixed-size window while maintaining an incremental frequency-based score lets you compute the maximum frequency score in linear time, updating `value^freq` terms as elements enter and leave.

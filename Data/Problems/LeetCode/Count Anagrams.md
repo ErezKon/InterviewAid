@@ -71,7 +71,7 @@ Example 2:
 
 ## Walkthrough
 
-Take Example 2 (`"aab aa"`).
+Take Example 2 (`"aab aa"`).
 1. Split into words: ["aab", "aa"].
 2. Word "aab": length 3, frequencies {a:2, b:1}. Permutations = 3! / (2!·1!) = 6 / 2 = 3.
 3. Word "aa": length 2, frequencies {a:2}. Permutations = 2! / 2! = 1.
@@ -90,10 +90,10 @@ Take Example 2 (`"aab aa"`).
 
 1. How would the solution change if the words could share letters (global rearrangement across the whole sentence)?
 2. Can you adapt the algorithm to handle very large strings where precomputing factorials up to the maximum length is infeasible?
-3. What if the modulo were a non‑prime number? How would you compute modular inverses?
+3. What if the modulo were a non-prime number? How would you compute modular inverses?
 
 ---
 
 ## Key Takeaway
 
-> Counting distinct anagrams reduces to a multinomial coefficient per word; using modular arithmetic and pre‑computed factorials enables an O(n) solution.
+> Counting distinct anagrams reduces to a multinomial coefficient per word; using modular arithmetic and pre-computed factorials enables an O(n) solution.

@@ -106,11 +106,11 @@ The loop terminates when `num` becomes 0, yielding a total of 6 steps.
 ## 6. Follow-Up Questions
 
 1. How would the solution change if the operation for odd numbers were to add 1 instead of subtract 1?
-2. Can you compute the number of steps using bit‑manipulation without explicit simulation?
+2. Can you compute the number of steps using bit-manipulation without explicit simulation?
 3. What is the result if the allowed operations are *divide by 3* for multiples of 3 and *subtract 1* otherwise?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Steps = bits + set bits - 1.** Each 0‑bit costs 1 step (divide), each 1‑bit costs 2 steps (subtract then divide), except the leading 1 costs only 1 (subtract). Or simply simulate.
+> **Steps = bits + set bits - 1.** Each 0-bit costs 1 step (divide), each 1-bit costs 2 steps (subtract then divide), except the leading 1 costs only 1 (subtract). Or simply simulate.

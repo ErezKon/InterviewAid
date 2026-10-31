@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented `capacity × numTrips` problem. Correct idea: simulate — while `mainTank ≥ 5` and `additionalTank > 0`, use 5 liters (+50 km), move 1 liter from the additional tank; finally add `mainTank × 10`. Equivalently `ans = (mainTank + min(additionalTank, (mainTank − 1) / 4)) × 10`.*
-
 A truck has two fuel tanks. You are given two integers, `mainTank` representing the fuel present in the main tank in liters and `additionalTank` representing the fuel present in the additional tank in liters.
 
 The truck has a mileage of `10` km per liter. Whenever `5` liters of fuel get used up in the main tank, if the additional tank has at least `1` liters of fuel, `1` liters of fuel will be transferred from the additional tank to the main tank.
@@ -43,28 +41,36 @@ Total distance traveled is 10km.
 ```
 
 ## Approach
-The car travels `capacity` miles per trip, and the trips are independent. Multiply the two values.
+Simulate the fuel consumption in chunks of 5 liters. While the main tank holds at least 5 liters, burn 5 liters (+50 km); if the additional tank still has fuel, move 1 liter into the main tank. When fewer than 5 liters remain, they are burned with no further injection, adding `mainTank × 10` km.
+
+Closed form: each injection needs 4 "net" liters from the main tank beyond the last one, so the number of injections is `min(additionalTank, (mainTank − 1) DIV 4)` and the answer is `(mainTank + injections) × 10`.
 
 ```text
-FUNCTION totalDistanceTraveled(capacity, numTrips):
-    RETURN capacity * numTrips
+FUNCTION distanceTraveled(mainTank, additionalTank):
+    distance ← 0
+    WHILE mainTank >= 5
+        mainTank ← mainTank - 5
+        distance ← distance + 50
+        IF additionalTank > 0
+            additionalTank ← additionalTank - 1
+            mainTank ← mainTank + 1
+    RETURN distance + mainTank * 10
 ```
 
 ## Walkthrough
-For `capacity = 10`, `numTrips = 3`:
-- Trip 1: 10 miles
-- Trip 2: 10 miles
-- Trip 3: 10 miles
-Total = 30 miles.
+Example 1: `mainTank = 5`, `additionalTank = 10`:
+1. mainTank = 5 ≥ 5 → burn 5 liters, distance = 50, mainTank = 0; inject 1 liter → mainTank = 1, additionalTank = 9.
+2. mainTank = 1 < 5 → loop ends.
+3. Burn the remaining 1 liter: distance = 50 + 1 × 10 = **60**, matching the expected output.
 
 ## Complexity Analysis
-*Time*: O(1)
+*Time*: O(mainTank + additionalTank) for the simulation (O(1) with the closed form)
 *Space*: O(1)
 
-## Follow‑Up Questions
-1. How would the answer change if the car loses 1 mile of range after each refuel due to wear?
-2. What if the car can only refuel after every two trips?
-3. Can you compute the total distance modulo a large prime for huge `numTrips`?
+## Follow-Up Questions
+1. Derive and prove the closed form `(mainTank + min(additionalTank, (mainTank − 1) DIV 4)) × 10`.
+2. How would the solution change if the transfer happened every `k` liters and moved `x` liters each time?
+3. What if the values were up to 10^18 — which approach would you use?
 
 ## Key Takeaway
-The total distance is simply the product of capacity and the number of trips.
+Simulating in discrete chunks of 5 liters captures the "sudden injection" rule exactly; counting how many chunks can occur gives an O(1) formula.

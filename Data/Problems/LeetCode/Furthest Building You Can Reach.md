@@ -92,23 +92,23 @@ Output: 3
 
 ## 5. Walkthrough
 
-Take Example 1:
-1. Start at building 0 (height 4).
-2. Climb to building 1 (height 2): diff = -2 → no resources needed.
-3. Climb to building 2 (height 7): diff = 5 → push `5` into heap.
+Take Example 1:
+1. Start at building 0 (height 4).
+2. Climb to building 1 (height 2): diff = -2 → no resources needed.
+3. Climb to building 2 (height 7): diff = 5 → push `5` into heap.
 4. Heap size (1) ≤ ladders (1) → use ladder for this climb.
-5. Climb to building 3 (height 6): diff = -1 → no resources.
-6. Climb to building 4 (height 9): diff = 3 → push `3` into heap (size 2 > ladders).
-   - Pop smallest (`3`) and pay with bricks: bricks = 5‑3 = 2.
-7. Climb to building 5 (height 14): diff = 5 → push `5` (heap size 2 > ladders).
-   - Pop smallest (`5`) → bricks = 2‑5 = -3 → bricks exhausted, stop.
-8. Return index 4 (the last reachable building).
+5. Climb to building 3 (height 6): diff = -1 → no resources.
+6. Climb to building 4 (height 9): diff = 3 → push `3` into heap (size 2 > ladders).
+   - Pop smallest (`3`) and pay with bricks: bricks = 5-3 = 2.
+7. Climb to building 5 (height 14): diff = 5 → push `5` (heap size 2 > ladders).
+   - Pop smallest (`5`) → bricks = 2-5 = -3 → bricks exhausted, stop.
+8. Return index 4 (the last reachable building).
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n log l) – each climb triggers a heap operation of size at most `ladders`.
+- **Time:** O(n log l) – each climb triggers a heap operation of size at most `ladders`.
 - **Space:** O(l) – heap stores at most `ladders` climbs.
 
 ---

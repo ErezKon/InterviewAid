@@ -76,19 +76,19 @@ CLASS Logger:
 
 ## 5. Complexity Analysis
 
-- **Time:** O(1) per `shouldPrintMessage` call – constant‑time hash‑map look‑up and update.
-- **Space:** O(M) where M is the number of distinct messages that have been printed within the last 10 seconds (worst‑case all unique messages).
+- **Time:** O(1) per `shouldPrintMessage` call – constant-time hash-map look-up and update.
+- **Space:** O(M) where M is the number of distinct messages that have been printed within the last 10 seconds (worst-case all unique messages).
 
 ---
 
 ## 6. Follow-Up Questions
 
 - How would you adapt the solution to limit memory usage, e.g., by discarding entries older than 10 seconds?
-- Can you implement the logger using a sliding‑window queue instead of a hash map?
+- Can you implement the logger using a sliding-window queue instead of a hash map?
 - How would you handle messages arriving out of order?
 
 ---
 
 ## 7. Key Takeaway
 
-> Simple hash map stores last‑printed timestamp per message. For memory‑constrained environments, use a circular buffer or LRU cache to limit stored messages.
+> Simple hash map stores last-printed timestamp per message. For memory-constrained environments, use a circular buffer or LRU cache to limit stored messages.

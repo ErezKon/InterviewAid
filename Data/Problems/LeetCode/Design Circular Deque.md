@@ -121,7 +121,7 @@ CLASS MyCircularDeque:
 
 - How would you implement the deque using a doubly linked list to avoid a fixed capacity?
 - How can you extend the design to support `getMin`/`getMax` in O(1) time?
-- What changes are needed to make the deque thread‑safe for concurrent access?
+- What changes are needed to make the deque thread-safe for concurrent access?
 
 ---
 

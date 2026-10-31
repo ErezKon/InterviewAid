@@ -80,10 +80,10 @@ Result = 4.
 - **Time:** `O(n)` – each node and edge visited at most once.
 - **Space:** `O(n)` for adjacency list, visited set, and stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if the tree were directed?
-2. Can you compute the answer without building an explicit adjacency list, using union‑find instead?
+2. Can you compute the answer without building an explicit adjacency list, using union-find instead?
 3. What if each edge had a weight and you needed the shortest reachable distance avoiding restricted nodes?
 
 ## Key Takeaway
-A simple graph traversal that respects a forbidden‑node set efficiently counts all reachable nodes in a tree.
+A simple graph traversal that respects a forbidden-node set efficiently counts all reachable nodes in a tree.

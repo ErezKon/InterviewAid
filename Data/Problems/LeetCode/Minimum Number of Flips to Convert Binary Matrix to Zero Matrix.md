@@ -47,7 +47,7 @@ Explanation: Given matrix cannot be a zero matrix.
 
 ## Approach
 
-**Algorithm:** Breadth‑first search (BFS) over the state space, treating each matrix configuration as a node. Represent a state as a bitmask of size `m·n`. For each state, generate up to `m·n` neighbor states by applying the flip operation at every cell. Use a queue to explore states level‑by‑level until the all‑zero state is reached.
+**Algorithm:** Breadth-first search (BFS) over the state space, treating each matrix configuration as a node. Represent a state as a bitmask of size `m·n`. For each state, generate up to `m·n` neighbor states by applying the flip operation at every cell. Use a queue to explore states level-by-level until the all-zero state is reached.
 
 ```text
 FUNCTION minFlips(mat):
@@ -87,16 +87,16 @@ FUNCTION FLIP(state, i, j, m, n):
 
 For `mat = [[0,0],[0,1]]` (`m=2,n=2`):
 
-- Encode start state → bitmask `1000` (binary, cell order row‑major).
+- Encode start state → bitmask `1000` (binary, cell order row-major).
 - BFS explores flipping each of the four cells, generating new masks.
-- After three levels the all‑zero mask `0000` is reached, yielding answer `3`.
+- After three levels the all-zero mask `0000` is reached, yielding answer `3`.
 
 ## Complexity Analysis
 
 - **Time:** `O(2^{m·n} * m·n)` in the worst case, because each of the `2^{m·n}` states may generate `m·n` neighbors. Feasible for small matrices (e.g., `m·n ≤ 16`).
 - **Space:** `O(2^{m·n})` for the visited set and queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you adapt the solution for larger matrices? (Hint: use linear algebra over GF(2) to solve as a system of equations.)
 - What if the flip also affected diagonal neighbors?
@@ -104,4 +104,4 @@ For `mat = [[0,0],[0,1]]` (`m=2,n=2`):
 
 ## Key Takeaway
 
-Model the matrix as a bitmask and perform BFS over all reachable configurations; the shortest path to the all‑zero mask gives the minimum number of flips.
+Model the matrix as a bitmask and perform BFS over all reachable configurations; the shortest path to the all-zero mask gives the minimum number of flips.

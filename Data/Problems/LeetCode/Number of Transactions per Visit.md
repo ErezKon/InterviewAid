@@ -185,9 +185,9 @@ The left join ensures counts with zero visits are included.
 
 ## 6. Follow-Up Questions
 
-1. How would you modify the query to limit results to the top k transaction counts?
+1. How would you modify the query to limit results to the top k transaction counts?
 2. How can you compute the median number of transactions per visit using SQL?
-3. Extend the solution to handle a rolling 30‑day window of visits.
+3. Extend the solution to handle a rolling 30-day window of visits.
 
 ---
 

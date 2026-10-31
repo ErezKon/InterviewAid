@@ -38,7 +38,7 @@ Example 2:
 ```
 
 ## Approach
-The problem can be solved by a single pass over the array, checking each element against its two neighbors using modular arithmetic for the circular wrap‑around.
+The problem can be solved by a single pass over the array, checking each element against its two neighbors using modular arithmetic for the circular wrap-around.
 
 ```text
 FUNCTION numberOfAlternatingGroups(colors):
@@ -65,7 +65,7 @@ The count accumulates to 4.
 *Time*: O(n) – one pass over the array.
 *Space*: O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if the array were not circular?
 2. Can you compute the result in a streaming fashion where colors arrive one by one?
 3. What if you needed to return the indices of alternating positions instead of the count?

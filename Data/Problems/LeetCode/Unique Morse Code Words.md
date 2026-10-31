@@ -76,7 +76,7 @@ FUNCTION uniqueMorseCount(words):
 Unique set = {`--...-.`, `--...--.`} → count 2.
 
 ## Complexity Analysis
-- **Time:** O(N · L) where N is number of words and L is average word length.
+- **Time:** O(N · L) where N is number of words and L is average word length.
 - **Space:** O(N) for the set of unique Morse strings.
 
 ## Follow-Up Questions

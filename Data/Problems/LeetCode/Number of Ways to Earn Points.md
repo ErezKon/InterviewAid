@@ -98,8 +98,8 @@ FUNCTION waysToReachTarget(target, types):
 
 Consider `target = 6` and `types = [[3,1],[2,2]]`:
 1. Initialize `dp[0]=1`.
-2. Process first type (1‑point, up to 3): update dp for sums 1..3.
-3. Process second type (2‑point, up to 2): for each existing sum, add 2‑point combos respecting count.
+2. Process first type (1-point, up to 3): update dp for sums 1..3.
+3. Process second type (2-point, up to 2): for each existing sum, add 2-point combos respecting count.
 4. Final `dp[6] = 7` representing all valid selections.
 
 ---
@@ -122,4 +122,4 @@ Consider `target = 6` and `types = [[3,1],[2,2]]`:
 
 ## 5. Key Takeaway
 
-> **Bounded knapsack variant.** Iterate each type, using reverse DP to combine counts without double‑counting within the same type.
+> **Bounded knapsack variant.** Iterate each type, using reverse DP to combine counts without double-counting within the same type.

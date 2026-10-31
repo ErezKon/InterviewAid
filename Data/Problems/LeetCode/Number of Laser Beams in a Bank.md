@@ -101,11 +101,11 @@ Result = 8.
 
 ## Follow-Up Questions
 
-- How would you modify the solution if beams could also be formed between non‑consecutive rows?
+- How would you modify the solution if beams could also be formed between non-consecutive rows?
 - What if the bank is extremely large and stored in a streaming fashion?
 
 ---
 
 ## Key Takeaway
 
-> **Consecutive non‑empty rows multiply.** Beams = product of device counts between consecutive non‑empty rows. Skip empty rows.
+> **Consecutive non-empty rows multiply.** Beams = product of device counts between consecutive non-empty rows. Skip empty rows.

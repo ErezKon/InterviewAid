@@ -108,7 +108,7 @@ Take Example 1 (`nums = [8,4,6]`, `k = 2`).
 
 ## 5. Complexity Analysis
 
-- **Time:** Each element is divided at most `log_k(value)` times → O(n · log_k(max(nums))).
+- **Time:** Each element is divided at most `log_k(value)` times → O(n · log_k(max(nums))).
 - **Space:** O(1) extra space.
 
 ---

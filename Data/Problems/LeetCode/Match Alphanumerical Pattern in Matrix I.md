@@ -73,7 +73,7 @@ Example 3:
 
 ## 4. Walkthrough
 
-1. Iterate over every possible top‑left cell `(i, j)` in the matrix where the pattern could fit.
+1. Iterate over every possible top-left cell `(i, j)` in the matrix where the pattern could fit.
 2. For each cell, initialise an empty map `letterToDigit` and `digitToLetter`.
 3. Scan the pattern cells:
    - If the pattern character is a digit, require matrix cell to equal that digit.

@@ -51,7 +51,7 @@ Example 2:
 
 ## 3. Key Insight
 
-> Perform a breadth‑first search, processing nodes level by level. Collect values of the current queue, then build the next queue from all children.
+> Perform a breadth-first search, processing nodes level by level. Collect values of the current queue, then build the next queue from all children.
 
 ---
 
@@ -102,12 +102,12 @@ Result after each iteration: `[[1]]`, `[[1],[3,2,4]]`, `[[1],[3,2,4],[5,6]]`.
 
 ## 7. Follow-Up Questions
 
-1. How would you perform a depth‑first traversal to achieve the same result?
-2. Can you modify the algorithm to return a zig‑zag (alternating left‑right) level order?
+1. How would you perform a depth-first traversal to achieve the same result?
+2. Can you modify the algorithm to return a zig-zag (alternating left-right) level order?
 3. How would you handle very deep trees where recursion depth is a concern?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Level‑by‑level BFS** works for N‑ary trees just like binary trees: use a queue to process each depth, collect node values, and enqueue all children for the next level.
+> **Level-by-level BFS** works for N-ary trees just like binary trees: use a queue to process each depth, collect node values, and enqueue all children for the next level.

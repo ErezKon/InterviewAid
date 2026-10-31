@@ -47,7 +47,7 @@ Example 3:
 ## Approach
 Use backtracking to explore numbers from `start` to `9`:
 1. If the current combination length equals `k` and the remaining sum is `0`, record it.
-2. If length reaches `k` or remaining sum becomes non‑positive, backtrack.
+2. If length reaches `k` or remaining sum becomes non-positive, backtrack.
 3. Recurse with the next number (`i+1`) and reduced remaining sum.
 
 ### Pseudocode
@@ -90,4 +90,4 @@ Space: O(k) recursion depth plus space for results.
 
 ## Key Takeaway
 
-> A simple depth‑first search with early pruning efficiently enumerates the limited search space of numbers 1‑9.
+> A simple depth-first search with early pruning efficiently enumerates the limited search space of numbers 1-9.

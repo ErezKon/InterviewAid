@@ -64,7 +64,7 @@ FUNCTION randPoint(radius, x_center, y_center):
 
 - How would you modify the algorithm to generate points uniformly inside an ellipse?
 - Can you generate points inside a 3D sphere using a similar technique?
-- What are the trade‑offs between this method and rejection sampling?
+- What are the trade-offs between this method and rejection sampling?
 
 ## Key Takeaway
 

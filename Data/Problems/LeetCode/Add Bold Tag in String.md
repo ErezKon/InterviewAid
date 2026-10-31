@@ -74,7 +74,7 @@ FUNCTION addBoldTag(s, words):
 ## Walkthrough
 Consider `s = "aaabbcc"` and `words = ["aaa","aab","bc"]`:
 1. After processing "aaa", `bold[0..2] = true`.
-2. After "aab", `bold[1..3] = true` (now indices 0‑3 are bold).
+2. After "aab", `bold[1..3] = true` (now indices 0-3 are bold).
 3. After "bc", `bold[4..5] = true`.
 4. The final `bold` array is `[T,T,T,T,T,T,F]`.
 5. While building the result we start a `<b>` at index 0, never close it until index 5, producing `<b>aaabbc</b>` and then append the last `c`.
@@ -83,10 +83,10 @@ Consider `s = "aaabbcc"` and `words = ["aaa","aab","bc"]`:
 - **Time Complexity:** `O(N * W * L)` where `N` is `len(s)`, `W` is the number of words, and `L` is the average word length (due to scanning each word's occurrences). In practice this is linear in the total length of `s` plus total matches.
 - **Space Complexity:** `O(N)` for the `bold` array and the output string.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you solve the problem without extra `O(N)` space?
 - Can you adapt the solution to work with Unicode characters?
 - How would you handle a very large list of words efficiently (e.g., using a Trie)?
 
 ## Key Takeaway
-Marking bold positions in a boolean array and then merging them while constructing the output yields a clean, linear‑time solution.
+Marking bold positions in a boolean array and then merging them while constructing the output yields a clean, linear-time solution.

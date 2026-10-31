@@ -75,13 +75,15 @@ FUNCTION areSentencesSimilar(sentence1, sentence2):
 
 ## Walkthrough
 
-Consider the second example: `sentence1 = "I love eating pizza"`, `sentence2 = "I love eating pizza with cheese"`.
+Example 1: `sentence1 = "My name is Haley"`, `sentence2 = "My Haley"`.
 
-1. Split into words: `w1 = [I, love, eating, pizza]`, `w2 = [I, love, eating, pizza, with, cheese]`.
-2. Since `w1` is shorter, swap so `w1` becomes the longer array.
-3. Match prefix: `i` progresses through `I, love, eating, pizza` → `i = 4`.
-4. No suffix needed because `i` already covers all words of the shorter sentence.
-5. `i + j = 4 >= len(w2)=4` → return `true`.
+1. Split into words: `w1 = [My, name, is, Haley]`, `w2 = [My, Haley]`.
+2. `w1` is already the longer array, no swap.
+3. Match prefix: `w1[0] = w2[0] = My` → `i = 1`; `w1[1] = name ≠ Haley` → stop.
+4. Match suffix (up to `len(w2) - i = 1` words): `w1[3] = w2[1] = Haley` → `j = 1`.
+5. `i + j = 2 >= len(w2) = 2` → return `true` ("name is" is the inserted middle).
+
+Example 2: `w1 = [A, lot, of, words]` (after swap), `w2 = [of]`. Prefix: `A ≠ of` → `i = 0`. Suffix: `words ≠ of` → `j = 0`. `0 < 1` → `false`.
 
 ---
 
@@ -95,7 +97,7 @@ Consider the second example: `sentence1 = "I love eating pizza"`, `sentence2 = "
 ## Follow-Up Questions
 
 - How would you modify the solution to handle transitive similarity (Sentence Similarity II)?
-- Could the insertion be split into multiple non‑contiguous blocks?
+- Could the insertion be split into multiple non-contiguous blocks?
 
 ---
 

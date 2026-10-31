@@ -44,7 +44,7 @@ Output: 21
 ```
 
 ## Approach
-Use a recursive descent parser (or explicit stack) that respects operator precedence. The parser evaluates sub‑expressions inside parentheses recursively. Multiplication and division are applied immediately, while addition and subtraction are deferred using a stack.
+Use a recursive descent parser (or explicit stack) that respects operator precedence. The parser evaluates sub-expressions inside parentheses recursively. Multiplication and division are applied immediately, while addition and subtraction are deferred using a stack.
 
 ```text
 FUNCTION calculate(s):
@@ -93,8 +93,8 @@ FUNCTION calculate(s):
 - **Time:** O(n) – each character processed once.
 - **Space:** O(n) – recursion depth / stack size proportional to parentheses nesting.
 
-## Follow‑Up Questions
-1. How would you extend the parser to support exponentiation `^` with right‑associativity?
+## Follow-Up Questions
+1. How would you extend the parser to support exponentiation `^` with right-associativity?
 2. What changes are needed to handle unary `+`/`-` operators?
 3. Can the algorithm be adapted to evaluate expressions in Reverse Polish Notation?
 

@@ -67,10 +67,10 @@ For the first example, total=9, target=3.
 - **Time:** O(n) where n is the length of the array.
 - **Space:** O(1) additional space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual partition indices?
-2. Can you solve the problem for non‑contiguous partitions?
+2. Can you solve the problem for non-contiguous partitions?
 3. What if the array contains very large integers causing overflow?
 
 ## Key Takeaway
-A single linear scan with a running sum suffices to detect two cut points that create three equal‑sum contiguous parts.
+A single linear scan with a running sum suffices to detect two cut points that create three equal-sum contiguous parts.

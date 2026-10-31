@@ -72,10 +72,10 @@ FUNCTION minBitwiseArray(nums):
 - **Time:** `O(|nums| * B)` where `B` is number of bits (≤ 31). Effectively linear in the array size.
 - **Space:** `O(|nums|)` for the output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm adapt to handle negative integers using two's complement?
-2. Can you compute the result in‑place without extra storage?
+2. Can you compute the result in-place without extra storage?
 3. What if we need to flip exactly two bits to achieve the minimum value?
 
 ## Key Takeaway
-Identifying the lowest zero bit and clearing the preceding set bit yields the minimal value achievable by a single‑bit flip.
+Identifying the lowest zero bit and clearing the preceding set bit yields the minimal value achievable by a single-bit flip.

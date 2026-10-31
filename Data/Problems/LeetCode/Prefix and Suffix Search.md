@@ -37,7 +37,7 @@ wordFilter.f("a", "e"); // return 0, because the word at index 0 has prefix = "a
 ```
 
 ## Approach
-**Algorithm:** Build a combined suffix‑prefix trie (wrapped trie) where each inserted string is `suffix + "#" + word`. For each word, insert all possible suffixes concatenated with the whole word, storing the word's index at each node. Query by traversing the trie with `suffix + "#" + prefix`.
+**Algorithm:** Build a combined suffix-prefix trie (wrapped trie) where each inserted string is `suffix + "#" + word`. For each word, insert all possible suffixes concatenated with the whole word, storing the word's index at each node. Query by traversing the trie with `suffix + "#" + prefix`.
 **Key Insight:** By encoding every possible suffix of a word together with the full word, a single trie lookup can simultaneously enforce both prefix and suffix constraints.
 
 ```text
@@ -66,23 +66,23 @@ CLASS WordFilter:
 ```
 
 ## Walkthrough
-For `words = ["apple"]` (index 0):
-- Insert `"apple#apple"` and all its suffix‑starting positions:
+For `words = ["apple"]` (index 0):
+- Insert `"apple#apple"` and all its suffix-starting positions:
   - i=0 → insert full string.
   - i=1 → insert `"pple#apple"`.
   - … i=5 → insert `"#apple"`.
 All nodes along each insertion path store `weight = 0`.
-Query `f("ap", "le")` builds `"le#ap"` and follows the trie; the final node holds weight 0, so the answer is 0.
+Query `f("ap", "le")` builds `"le#ap"` and follows the trie; the final node holds weight 0, so the answer is 0.
 
 ## Complexity Analysis
 - **Time (build):** O(N·L²) where N is number of words and L is average word length (each word contributes O(L²) insertions).
 - **Time (query):** O(L) where L = len(prefix) + len(suffix).
 - **Space:** O(N·L²) for the trie nodes.
 
-## Follow‑Up Questions
-1. How can the construction be optimized to O(N·L) using a suffix‑prefix map instead of a full trie?
+## Follow-Up Questions
+1. How can the construction be optimized to O(N·L) using a suffix-prefix map instead of a full trie?
 2. Can the data structure support dynamic insertion of new words after initialization?
-3. What modifications are needed to handle Unicode characters or case‑insensitive matching?
+3. What modifications are needed to handle Unicode characters or case-insensitive matching?
 
 ## Key Takeaway
-Encoding every possible suffix together with the full word in a single trie enables constant‑time lookup of the highest‑indexed word matching both a given prefix and suffix.
+Encoding every possible suffix together with the full word in a single trie enables constant-time lookup of the highest-indexed word matching both a given prefix and suffix.

@@ -122,12 +122,12 @@ Result max = 8 pages.
 
 ## Complexity Analysis
 - Time: O(N) because each index is pushed and popped at most once.
-- Space: O(N) for `dp` array and O(N) worst‑case for the stack.
+- Space: O(N) for `dp` array and O(N) worst-case for the stack.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm if the rating constraint were non‑strict (≤) instead of strict (<)?
+## Follow-Up Questions
+1. How would you modify the algorithm if the rating constraint were non-strict (≤) instead of strict (<)?
 2. Can you solve the problem using only O(1) extra space by overwriting the input array?
 3. How would you handle the case where books are not given in any particular order and you need to consider all possible starting points?
 
 ## Key Takeaway
-A monotonic stack combined with DP efficiently captures the longest decreasing‑rating sequence, yielding a linear‑time solution.
+A monotonic stack combined with DP efficiently captures the longest decreasing-rating sequence, yielding a linear-time solution.

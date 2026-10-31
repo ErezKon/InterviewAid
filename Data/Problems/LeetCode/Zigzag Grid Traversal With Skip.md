@@ -88,10 +88,10 @@ Result: `[1,3,5,7,9]`
 Time: O(m·n) – each cell is visited once.
 Space: O(k) for the output list, where k is the number of collected elements (≤ m·n).
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to collect every `k`‑th element instead of every other?
+## Follow-Up Questions
+1. How would you modify the algorithm to collect every `k`-th element instead of every other?
 2. Can you compute the result without storing the entire grid in memory (streaming rows)?
-3. What if the traversal order should start from the bottom‑right corner and still zigzag?
+3. What if the traversal order should start from the bottom-right corner and still zigzag?
 
 ## Key Takeaway
 A simple toggle flag while iterating in alternating row directions efficiently implements zigzag traversal with skipping.

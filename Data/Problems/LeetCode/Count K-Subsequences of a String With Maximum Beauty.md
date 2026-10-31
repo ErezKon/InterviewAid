@@ -111,19 +111,19 @@ Example 2:
   Hence, the answer is 2.
 ```
 
-(Extra illustration: for s = "aabccc", k = 2, frequencies are a→2, b→1, c→3; the top‑2 frequencies are 3 (c) and 2 (a), so the answer is 3 * 2 = 6.)
+(Extra illustration: for s = "aabccc", k = 2, frequencies are a→2, b→1, c→3; the top-2 frequencies are 3 (c) and 2 (a), so the answer is 3 * 2 = 6.)
 
 ---
 
 ## 5. Walkthrough
 
-Consider Example 1 (`s = "aabccc", k = 2`):
+Consider Example 1 (`s = "aabccc", k = 2`):
 1. Count frequencies → {a:2, b:1, c:3}.
 2. Sort descending → [3,2,1].
 3. Boundary frequency for k=2 is the second element → 2.
-4. Characters with freq > 2: only `c` (must‑take count =1).
+4. Characters with freq > 2: only `c` (must-take count =1).
 5. Characters with freq = 2: only `a` (atBoundary =1).
-6. Need from boundary = k - mustTake = 2‑1 =1.
+6. Need from boundary = k - mustTake = 2-1 =1.
 7. Multiply mandatory frequencies: result = 3.
 8. Choose 1 from the 1 boundary character → C(1,1)=1.
 9. Multiply by boundaryFreq^need → 2^1 =2.

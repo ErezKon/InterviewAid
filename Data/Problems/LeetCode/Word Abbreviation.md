@@ -90,10 +90,10 @@ FUNCTION abbr(word, k):
 | Continue until all unique.
 
 ## Complexity Analysis
-- Time: O(m · n) where *n* is number of words and *m* is average word length (due to repeated abbreviation recomputation). In practice fast because conflicts resolve quickly.
+- Time: O(m · n) where *n* is number of words and *m* is average word length (due to repeated abbreviation recomputation). In practice fast because conflicts resolve quickly.
 - Space: O(n) for prefix lengths and result array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the algorithm to handle very large dictionaries efficiently?
 - Can you guarantee a bound on the maximum prefix length needed?
 - What if abbreviations must also be lexicographically minimal?

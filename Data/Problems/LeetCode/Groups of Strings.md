@@ -110,12 +110,12 @@ Example 2:
 
 Consider the first example `words = ["abc","abd","ab","a"]`.
 
-| Step | Action | Union‑Find State |
+| Step | Action | Union-Find State |
 |------|--------|-----------------|
 | 1 | Compute bitmask for each word. | `abc→111`, `abd→1011`, `ab→11`, `a→1` |
 | 2 | Connect `abc` and `abd` by swapping `c`→`d`. | Union(0,1) |
 | 3 | Connect `ab` and `a` by removing `b`. | Union(2,3) |
-| 4 | No other single‑edit connections. | Two components remain |
+| 4 | No other single-edit connections. | Two components remain |
 
 Result: 2 groups, largest size 3.
 
@@ -124,7 +124,7 @@ Result: 2 groups, largest size 3.
 ## 6. Complexity Analysis
 
 - **Time:** For each word we examine up to 26 set bits and for each set bit try 26 replacements → O(n·26²) ≈ O(n).
-- **Space:** Union‑Find arrays plus a hash map of bitmasks → O(n).
+- **Space:** Union-Find arrays plus a hash map of bitmasks → O(n).
 
 ---
 
@@ -138,4 +138,4 @@ Result: 2 groups, largest size 3.
 
 ## 8. Key Takeaway
 
-> **Bitmask + Union-Find** — represent character sets as bitmasks, enumerate neighbors by flipping 1‑2 bits. O(n·26²) total.
+> **Bitmask + Union-Find** — represent character sets as bitmasks, enumerate neighbors by flipping 1-2 bits. O(n·26²) total.

@@ -42,7 +42,7 @@ Example 1:
 ```
 
 ## Approach
-Pre‑compute a 2‑D prefix‑sum matrix `prefix` where `prefix[i][j]` stores the sum of the sub‑matrix from `(0,0)` to `(i‑1,j‑1)`. Then any query can be answered with inclusion‑exclusion in O(1).
+Pre-compute a 2-D prefix-sum matrix `prefix` where `prefix[i][j]` stores the sum of the sub-matrix from `(0,0)` to `(i-1,j-1)`. Then any query can be answered with inclusion-exclusion in O(1).
 
 ```text
 CLASS NumMatrix:
@@ -60,7 +60,7 @@ CLASS NumMatrix:
             END FOR
         END FOR
     FUNCTION sumRegion(row1, col1, row2, col2):
-        // Convert to 1‑based indices for prefix matrix
+        // Convert to 1-based indices for prefix matrix
         SET r1 ← row1 + 1
         SET c1 ← col1 + 1
         SET r2 ← row2 + 1
@@ -77,17 +77,17 @@ END CLASS
 |------|--------|---------------------|
 |Init|Compute `prefix[1][1]` = `3`|3|
 |...|Fill entire table|...|
-|Query `(1,1,2,2)`|Use inclusion‑exclusion formula|`11`|
+|Query `(1,1,2,2)`|Use inclusion-exclusion formula|`11`|
 
 ## Complexity Analysis
-- Preprocessing time: O(m × n)
+- Preprocessing time: O(m × n)
 - Query time: O(1)
-- Space: O(m × n) for the prefix matrix.
+- Space: O(m × n) for the prefix matrix.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you support updates to the matrix?
-2. Can you reduce space using a Fenwick Tree (BIT) for 2‑D?
+2. Can you reduce space using a Fenwick Tree (BIT) for 2-D?
 3. Extend to handle large sparse matrices efficiently.
 
 ## Key Takeaway
-A 2‑D prefix‑sum transforms immutable range‑sum queries into constant‑time operations after a linear‑time preprocessing step.
+A 2-D prefix-sum transforms immutable range-sum queries into constant-time operations after a linear-time preprocessing step.

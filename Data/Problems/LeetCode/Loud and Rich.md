@@ -80,7 +80,7 @@ Output: [0]
 
 Consider `richer = [[1,0],[2,1],[3,1],[3,2]]` and `quiet = [3,2,5,4]`.
 1. Build graph: 0 → [1]; 1 → [2,3]; 2 → [3].
-2. Start DFS at person 0: answer[0]=0, recurse to 1.
+2. Start DFS at person 0: answer[0]=0, recurse to 1.
 3. DFS at 1: answer[1]=1, recurse to 2.
 4. DFS at 2: answer[2]=2, recurse to 3.
 5. DFS at 3: answer[3]=3 (quiet[3]=4). Return.

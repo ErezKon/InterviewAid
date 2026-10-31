@@ -94,7 +94,7 @@ The reconstructed tree matches the original.
 ## Complexity Analysis
 
 - **Time:** O(n) for both serialization and deserialization, where n is the number of nodes.
-- **Space:** O(n) for the output string and recursion stack (worst‑case height of the BST).
+- **Space:** O(n) for the output string and recursion stack (worst-case height of the BST).
 
 ---
 

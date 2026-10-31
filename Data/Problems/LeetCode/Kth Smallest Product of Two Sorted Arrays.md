@@ -18,9 +18,9 @@ Given two **sorted 0-indexed** integer arrays `nums1` and `nums2` as well as an 
 
 ---
 
-## 2. Approach: Binary Search on Value — O((m+n)·log max) ✅
+## 2. Approach: Binary Search on Value — O((m+n)·log max) ✅
 
-Binary search over the range of possible products. For each candidate `mid`, count how many pairs produce a product ≤ `mid`. Counting is done with two‑pointer style binary searches, handling negative‑negative, negative‑positive, and positive‑positive cases separately.
+Binary search over the range of possible products. For each candidate `mid`, count how many pairs produce a product ≤ `mid`. Counting is done with two-pointer style binary searches, handling negative-negative, negative-positive, and positive-positive cases separately.
 
 ```text
 FUNCTION kthSmallestProduct(nums1, nums2, k):
@@ -99,8 +99,8 @@ The 3^rd smallest product is -6.
 
 | Step | lo | hi | mid | count ≤ mid | Action |
 |------|----|----|-----|------------|--------|
-| 1 | -10^10 | 10^10 | 0 | 6 (all non‑positive) | count < k → lo = 1 |
-| 2 | 1 | 10^10 | 5 000 000 000 | 8 | count ≥ k → hi = 5 000 000 000 |
+| 1 | -10^10 | 10^10 | 0 | 6 (all non-positive) | count < k → lo = 1 |
+| 2 | 1 | 10^10 | 5 000 000 000 | 8 | count ≥ k → hi = 5 000 000 000 |
 | … | … | … | … | … | … |
 | Final | lo = hi = 8 | → answer |
 
@@ -108,19 +108,19 @@ The 3^rd smallest product is -6.
 
 ## Complexity Analysis
 
-- **Time:** O((m + n) · log range) where `range` ≈ 2·10^10, because each binary‑search step counts pairs in linear time.
+- **Time:** O((m + n) · log range) where `range` ≈ 2·10^10, because each binary-search step counts pairs in linear time.
 - **Space:** O(1) extra space.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you adapt the algorithm if the arrays were not sorted?
-- Can you find the k‑th largest product instead?
+- Can you find the k-th largest product instead?
 - What changes are needed if the arrays contain up to 10⁵ elements?
 
 ---
 
 ## Key Takeaway
 
-> Binary search on the product value combined with careful counting of pairs handles negatives and zeros efficiently, turning a potentially O(m·n) problem into O((m+n)·log range).
+> Binary search on the product value combined with careful counting of pairs handles negatives and zeros efficiently, turning a potentially O(m·n) problem into O((m+n)·log range).

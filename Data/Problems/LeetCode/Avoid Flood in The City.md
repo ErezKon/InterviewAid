@@ -102,10 +102,10 @@ FUNCTION avoidFlood(rains):
 - **Time:** O(n log n) – each sunny day insertion and lookup is logarithmic.
 - **Space:** O(n) for storing `dryDays`, `full`, and the answer array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to minimize the number of dry operations instead of just avoiding floods?
 2. Can the solution be adapted for multiple rain events per day?
-3. What data structure would you use in a language without a built‑in sorted list?
+3. What data structure would you use in a language without a built-in sorted list?
 
 ## Key Takeaway
 By greedily assigning each rainy lake to the earliest possible future sunny day using a sorted structure, we can prevent floods with optimal use of dry days.

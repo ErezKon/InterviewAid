@@ -72,7 +72,7 @@ Choosing all tasks using technique 2 yields the maximum points: 4 + 5 + 6 = 15.
 
 ## Approach
 
-> Sort tasks by point value in descending order and greedily select the top `k`. If there are order‑dependent bonuses, maintain a max‑heap to pick the best available task at each step.
+> Sort tasks by point value in descending order and greedily select the top `k`. If there are order-dependent bonuses, maintain a max-heap to pick the best available task at each step.
 
 ```text
 FUNCTION maximizePoints(tasks, k):
@@ -104,7 +104,7 @@ After selecting the top three values, the maximum achievable points are 21.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sort + top‑k | **O(n log n)** | O(1) |
+| Sort + top-k | **O(n log n)** | O(1) |
 
 ---
 
@@ -118,4 +118,4 @@ After selecting the top three values, the maximum achievable points are 21.
 
 ## Key Takeaway
 
-> **"Choose k items to maximize score" problems are typically solved with a sort‑and‑greedy approach.** When order‑dependent bonuses exist, a priority queue enables dynamic selection.
+> **"Choose k items to maximize score" problems are typically solved with a sort-and-greedy approach.** When order-dependent bonuses exist, a priority queue enables dynamic selection.

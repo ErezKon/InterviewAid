@@ -45,7 +45,7 @@ Example 2:
 ```
 
 ## Approach
-The problem follows a classic Fibonacci‑like recurrence: `ways[i] = ways[i‑1] + ways[i‑2]`. Use dynamic programming with O(K) time and O(1) space by keeping only the last two values.
+The problem follows a classic Fibonacci-like recurrence: `ways[i] = ways[i-1] + ways[i-2]`. Use dynamic programming with O(K) time and O(1) space by keeping only the last two values.
 
 ```text
 FUNCTION countWays(K):
@@ -61,7 +61,7 @@ FUNCTION countWays(K):
 
 ## Walkthrough
 Consider `K = 4`:
-| i | a (ways[i‑2]) | b (ways[i‑1]) | c = a+b (ways[i]) |
+| i | a (ways[i-2]) | b (ways[i-1]) | c = a+b (ways[i]) |
 |---|--------------|--------------|-------------------|
 | 2 | 1 | 1 | 2 |
 | 3 | 1 | 2 | 3 |
@@ -72,10 +72,10 @@ The final `b` after the loop is `5`, the answer.
 - **Time:** O(K) – one iteration per stair.
 - **Space:** O(1) – only three integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. What if you can climb up to `m` steps at a time?
 2. How would you handle very large `K` (e.g., `10^18`)?
 3. Can you compute the answer using matrix exponentiation for faster queries?
 
 ## Key Takeaway
-The number of ways to reach the K‑th stair follows a simple Fibonacci recurrence, allowing an O(K) time and O(1) space solution.
+The number of ways to reach the K-th stair follows a simple Fibonacci recurrence, allowing an O(K) time and O(1) space solution.

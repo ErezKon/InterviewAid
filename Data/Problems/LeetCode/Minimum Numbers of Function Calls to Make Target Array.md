@@ -67,7 +67,7 @@ The total calls equal the number of processed integers up to the last target ele
 Time: O(n) – single pass through numbers up to the last target element.
 Space: O(1) – only pointers and counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would the solution change if the operations had different costs?
 * Can we output the exact sequence of operations instead of just the count?
 * What if `target` is not strictly increasing?

@@ -82,7 +82,7 @@ Example 3:
 
 ## Walkthrough
 
-Take the N‑ary tree `1` with children `2,3,4`; `3` has children `5,6`.
+Take the N-ary tree `1` with children `2,3,4`; `3` has children `5,6`.
 
 | Step | Action | Tokens consumed | Constructed node |
 |------|--------|----------------|-----------------|
@@ -107,11 +107,11 @@ Resulting structure matches the original.
 ## Follow-Up Questions
 
 1. How would you modify the format to avoid recursion depth limits?
-2. Can you design a compact binary representation instead of a comma‑separated string?
+2. Can you design a compact binary representation instead of a comma-separated string?
 3. How would you handle trees with duplicate node values?
 
 ---
 
 ## Key Takeaway
 
-By recording each node’s value followed by its child count in preorder, an N‑ary tree can be uniquely serialized and reconstructed without extra delimiters.
+By recording each node’s value followed by its child count in preorder, an N-ary tree can be uniquely serialized and reconstructed without extra delimiters.

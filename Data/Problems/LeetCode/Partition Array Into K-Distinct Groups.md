@@ -78,7 +78,7 @@ Maximum frequency = 2. Since `k = 2`, condition holds → partition possible.
 - **Time:** O(n) – single pass to count frequencies.
 - **Space:** O(m) – map storing frequencies of distinct elements (`m` ≤ n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you construct an explicit partition when it exists?
 2. What if each group must have the same size?
 3. Can the algorithm be adapted for a streaming input where the array is too large to store entirely?

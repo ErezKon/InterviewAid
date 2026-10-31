@@ -57,7 +57,7 @@ FUNCTION smallestBeautifulString(s, k):
         IF s[i] ≥ 'a' + k:
             SET i ← i - 1
             CONTINUE
-        // Ensure no palindrome with previous 1‑2 chars
+        // Ensure no palindrome with previous 1-2 chars
         IF i > 0 AND s[i] = s[i-1] OR i > 1 AND s[i] = s[i-2]:
             CONTINUE  // try next larger char
         BREAK
@@ -91,9 +91,9 @@ For `s = "abac"`, `k = 3`:
 ## Follow-Up Questions
 
 1. How would the solution change if longer palindromic substrings were prohibited?
-2. Can the algorithm be adapted to generate the *k‑th* beautiful string?
+2. Can the algorithm be adapted to generate the *k-th* beautiful string?
 3. What is the impact of increasing `k` beyond 26 (Unicode characters)?
 
 ## Key Takeaway
 
-> Like "next permutation" but with palindrome constraints. Increment from the right, carry if out of range, and greedily fill the suffix with the smallest valid characters (avoiding palindromes with previous 1‑2 chars).
+> Like "next permutation" but with palindrome constraints. Increment from the right, carry if out of range, and greedily fill the suffix with the smallest valid characters (avoiding palindromes with previous 1-2 chars).

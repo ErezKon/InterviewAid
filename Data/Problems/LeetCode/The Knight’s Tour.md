@@ -44,7 +44,7 @@ Use backtracking with Warnsdorff’s heuristic: always move the knight to the re
 |------|------------------|----------------|-------------|--------|
 | 1 | (0,0) | (2,1),(1,2) | (2,1) | Both have 2 onward moves, pick first |
 | 2 | (2,1) | ... | ... | ... |
-Continue until all 25 cells are visited or backtrack when dead‑end is reached.
+Continue until all 25 cells are visited or backtrack when dead-end is reached.
 
 ## Complexity Analysis
 - Time: In the worst case exponential `O(n²!)`, but Warnsdorff’s rule makes it fast for typical board sizes (practically `O(n²)`).

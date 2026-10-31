@@ -98,14 +98,14 @@ Consider `s = "(name)is(age)years"` and `knowledge = [["name","bob"],["age","two
 | Step | i | char | Action | result so far |
 |------|---|------|--------|--------------|
 | 1 | 0 | `(` | start key collection | [] |
-| 2 | 1‑4 | `name` | collect until `)` at index 5 | [] |
+| 2 | 1-4 | `name` | collect until `)` at index 5 | [] |
 | 3 | 5 | `)` | lookup `name` → `bob`, append | [`bob`] |
 | 4 | 6 | `i` | append literal | [`bob`,`i`] |
 | 5 | 7 | `s` | append | [`bob`,`i`,`s`] |
 | 6 | 8 | `(` | start second key | ... |
-| 7 | 9‑11 | `age` | collect until `)` at 12 | ... |
+| 7 | 9-11 | `age` | collect until `)` at 12 | ... |
 | 8 | 12 | `)` | lookup `age` → `two`, append | [`bob`,`i`,`s`,`two`] |
-| 9 | 13‑17 | `years` | append each char | [`bob`,`i`,`s`,`two`,`y`,`e`,`a`,`r`,`s`] |
+| 9 | 13-17 | `years` | append each char | [`bob`,`i`,`s`,`two`,`y`,`e`,`a`,`r`,`s`] |
 | End | – | – | join list | `"bobistwoyears"` |
 
 ---

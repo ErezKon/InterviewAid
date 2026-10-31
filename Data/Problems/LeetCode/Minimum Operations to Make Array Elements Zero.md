@@ -57,8 +57,8 @@ Example 2:
 ```
 
 ## Approach
-**Greedy with Max‑Heap of Reductions**  
-Each element contributes a reduction of `x - ⌊x/2⌋` when halved. To minimise total steps, always apply the operation to the element that yields the largest reduction, because it brings the overall sum down fastest. Use a max‑heap storing the current value of each element and its potential reduction. Repeatedly extract the maximum reduction, apply the operation, push the new value back, and increment the operation count until all values become zero.
+**Greedy with Max-Heap of Reductions**  
+Each element contributes a reduction of `x - ⌊x/2⌋` when halved. To minimise total steps, always apply the operation to the element that yields the largest reduction, because it brings the overall sum down fastest. Use a max-heap storing the current value of each element and its potential reduction. Repeatedly extract the maximum reduction, apply the operation, push the new value back, and increment the operation count until all values become zero.
 
 ```
 text
@@ -88,10 +88,10 @@ FUNCTION minOperations(nums):
 - **Time:** Each heap operation is `O(log n)`. The number of operations equals the answer `k`, so `O(k log n)`.
 - **Space:** `O(n)` for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if the operation replaced `x` with `⌈x/2⌉`?
-2. Can we compute the answer directly using bit‑length sums without a heap?
+2. Can we compute the answer directly using bit-length sums without a heap?
 3. What if each halving operation had a different cost per element?
 
 ## Key Takeaway
-A max‑heap that always picks the element offering the largest immediate reduction yields the minimal number of halving steps to bring all numbers to zero.
+A max-heap that always picks the element offering the largest immediate reduction yields the minimal number of halving steps to bring all numbers to zero.

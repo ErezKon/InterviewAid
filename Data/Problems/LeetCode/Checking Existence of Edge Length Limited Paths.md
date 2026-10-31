@@ -80,21 +80,21 @@ Example 2:
 
 ## 5. Walkthrough
 
-Consider Example 1 with `limit = 5` for query (0,2).
-| Step | Action | Union‑Find Sets |
+Consider Example 1 with `limit = 5` for query (0,2).
+| Step | Action | Union-Find Sets |
 |------|--------|-----------------|
-| 1 | Sort edges: (0,1,2), (1,2,4). Sort queries: limit 3 then limit 5. | — |
-| 2 | Process query limit 3: add edges with weight <3 → edge (0,1,2). Union(0,1). | {0,1}, {2} |
-| 3 | Check connectivity 0‑2 → different sets → false. |
-| 4 | Process query limit 5: add remaining edge (1,2,4). Union(1,2) merges sets → {0,1,2}. |
-| 5 | Check connectivity 0‑2 → same set → true.
+| 1 | Sort edges: (0,1,2), (1,2,4). Sort queries: limit 3 then limit 5. | — |
+| 2 | Process query limit 3: add edges with weight <3 → edge (0,1,2). Union(0,1). | {0,1}, {2} |
+| 3 | Check connectivity 0-2 → different sets → false. |
+| 4 | Process query limit 5: add remaining edge (1,2,4). Union(1,2) merges sets → {0,1,2}. |
+| 5 | Check connectivity 0-2 → same set → true.
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time Complexity:** O((E + Q) log(E + Q)) for sorting, plus near‑linear Union‑Find operations (α(n) ≈ constant).
-- **Space Complexity:** O(n + Q) for Union‑Find parent array and answer list.
+- **Time Complexity:** O((E + Q) log(E + Q)) for sorting, plus near-linear Union-Find operations (α(n) ≈ constant).
+- **Space Complexity:** O(n + Q) for Union-Find parent array and answer list.
 
 ---
 
@@ -108,4 +108,4 @@ Consider Example 1 with `limit = 5` for query (0,2).
 
 ## Key Takeaway
 
-> Offline query processing with sorted edges + Union‑Find. Add edges incrementally as the limit increases. This avoids running a separate BFS/DFS for each query.
+> Offline query processing with sorted edges + Union-Find. Add edges incrementally as the limit increases. This avoids running a separate BFS/DFS for each query.

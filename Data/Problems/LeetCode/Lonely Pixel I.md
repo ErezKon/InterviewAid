@@ -90,4 +90,4 @@ FUNCTION findLonelyPixel(picture):
 
 ## 7. Key Takeaway
 
-> Precompute black‑pixel counts per row and column. A pixel is "lonely" iff both its row count and column count equal 1.
+> Precompute black-pixel counts per row and column. A pixel is "lonely" iff both its row count and column count equal 1.

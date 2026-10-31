@@ -71,10 +71,10 @@ For a row with `conditions = 'HYPER DIAB1A'`:
 - Time: O(N) where N is the number of rows, as each row is evaluated against two simple pattern matches.
 - Space: O(1) additional space beyond the result set.
 
-## Follow‑Up Questions
-1. How would you handle case‑insensitive matching?
-2. What if the condition codes are stored in a separate normalized table with a many‑to‑many relationship?
+## Follow-Up Questions
+1. How would you handle case-insensitive matching?
+2. What if the condition codes are stored in a separate normalized table with a many-to-many relationship?
 3. Can you write a query to return only the matching condition codes instead of the whole row?
 
 ## Key Takeaway
-Combining two `LIKE` patterns—one for the start of the string and one for a space‑prefixed occurrence—efficiently finds rows containing a specific condition prefix.
+Combining two `LIKE` patterns—one for the start of the string and one for a space-prefixed occurrence—efficiently finds rows containing a specific condition prefix.

@@ -56,7 +56,7 @@ Explanation: [0,0,0,0,0] -> [1,1,1,1,1] -> [2,1,1,1,1] -> [3,1,1,1,1] -> [3,1,2,
 
 **Greedy – Count Increases (O(n))**
 
-The number of operations equals the sum of positive differences between consecutive elements, plus the first element value. Each increase from `target[i‑1]` to `target[i]` requires additional operations; decreases are covered by earlier operations.
+The number of operations equals the sum of positive differences between consecutive elements, plus the first element value. Each increase from `target[i-1]` to `target[i]` requires additional operations; decreases are covered by earlier operations.
 
 ```text
 FUNCTION minNumberOperations(target):
@@ -72,7 +72,7 @@ FUNCTION minNumberOperations(target):
 ## Walkthrough
 
 For `target = [1,2,3,2,1]`:
-| i | target[i] | target[i‑1] | diff | ops |
+| i | target[i] | target[i-1] | diff | ops |
 |---|-----------|------------|------|-----|
 |0|1| – | – | 1 |
 |1|2|1|+1|2 |

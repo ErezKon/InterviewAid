@@ -46,17 +46,17 @@ Output: "123"
 ```
 
 ## Approach
-Use the factoradic representation of `k‑1` to determine the index of each digit among the remaining numbers.
+Use the factoradic representation of `k-1` to determine the index of each digit among the remaining numbers.
 
 ```text
 FUNCTION GetKthPermutation(n, k):
-    // pre‑compute factorials
+    // pre-compute factorials
     SET factorial[0] ← 1
     FOR i ← 1 TO n:
         SET factorial[i] ← factorial[i-1] * i
     // list of available numbers
     SET numbers ← [1, 2, ..., n]
-    // convert to 0‑based index
+    // convert to 0-based index
     SET k ← k - 1
     SET result ← ""
     FOR i ← n DOWN TO 1:
@@ -71,7 +71,7 @@ FUNCTION GetKthPermutation(n, k):
 | Step | Action | Result |
 |------|--------|--------|
 | 1 | factorial array for `n=3` | `[1,1,2,6]` |
-| 2 | numbers = `[1,2,3]`, `k=2` (since k‑1) |
+| 2 | numbers = `[1,2,3]`, `k=2` (since k-1) |
 | 3 | i=3: idx = 2/2 =1 → pick `2`, result=`"2"`, numbers=`[1,3]`, k=2%2=0 |
 | 4 | i=2: idx = 0/1 =0 → pick `1`, result=`"21"`, numbers=`[3]` |
 | 5 | i=1: idx = 0/1 =0 → pick `3`, result=`"213"` |
@@ -85,4 +85,4 @@ Time complexity **O(n²)** due to list removals; space complexity **O(n)** for f
 3. Can you generate the permutation directly in a streaming fashion?
 
 ## Key Takeaway
-Factoradic representation converts a rank into positional indices, enabling direct construction of the k‑th lexicographic permutation.
+Factoradic representation converts a rank into positional indices, enabling direct construction of the k-th lexicographic permutation.

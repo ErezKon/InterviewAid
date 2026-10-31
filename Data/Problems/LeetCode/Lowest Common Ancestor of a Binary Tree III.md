@@ -76,9 +76,9 @@ FUNCTION lowestCommonAncestor(p, q):
 ## Walkthrough
 
 Consider Example 1. The parent chains are:
-- Chain from node 5: 5 → 3 → null
-- Chain from node 4: 4 → 2 → 5 → 3 → null
-The two‑pointer technique moves each pointer up one level per iteration, switching to the other start when reaching null. After several steps both pointers meet at node 5, the LCA.
+- Chain from node 5: 5 → 3 → null
+- Chain from node 4: 4 → 2 → 5 → 3 → null
+The two-pointer technique moves each pointer up one level per iteration, switching to the other start when reaching null. After several steps both pointers meet at node 5, the LCA.
 
 ---
 
@@ -93,7 +93,7 @@ The two‑pointer technique moves each pointer up one level per iteration, switc
 
 1. How would you solve the problem if parent pointers were not available?
 2. Can you extend this approach to find the LCA in a directed acyclic graph?
-3. What is the runtime when the tree is highly unbalanced (height ≈ n)?
+3. What is the runtime when the tree is highly unbalanced (height ≈ n)?
 
 ---
 

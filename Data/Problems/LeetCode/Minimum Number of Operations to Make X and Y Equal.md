@@ -78,10 +78,10 @@ The process terminates because each halving strictly reduces the larger value.
 | 3 | 6 | 6 | Equal – stop | — |
 
 ## Complexity Analysis
-- **Time:** O(log max(x, y)) – each operation at least halves a number.
+- **Time:** O(log max(x, y)) – each operation at least halves a number.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. What if you could also increment an odd number by 1 before halving?
 2. How would the solution change if the cost of halving depended on the current value?
 3. Can you extend the problem to make *k* numbers equal using the same operation?

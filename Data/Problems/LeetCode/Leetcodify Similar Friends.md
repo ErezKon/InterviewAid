@@ -122,7 +122,7 @@ HAVING common_songs >= 3;
 
 ## 5. Complexity Analysis
 
-- **Time:** O(F × L) where F is number of friendships and L is average listens per user, due to joins.
+- **Time:** O(F × L) where F is number of friendships and L is average listens per user, due to joins.
 - **Space:** O(F) for intermediate join results and grouping.
 
 ---
@@ -137,4 +137,4 @@ HAVING common_songs >= 3;
 
 ## Key Takeaway
 
-Use self‑joins on the `Listen` table combined with the `Friendship` relation, then group and filter by the count of distinct common songs.
+Use self-joins on the `Listen` table combined with the `Friendship` relation, then group and filter by the count of distinct common songs.

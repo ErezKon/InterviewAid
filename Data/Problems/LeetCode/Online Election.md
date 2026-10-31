@@ -46,10 +46,10 @@ topVotedCandidate.q(8); // return 1
 ```
 
 ## Approach
-**Pre‑process with Prefix Leaders + Binary Search**
+**Pre-process with Prefix Leaders + Binary Search**
 1. Iterate through `persons` while maintaining a vote count map.
 2. After each vote, determine the current leader (choose higher count or later vote on tie) and store it in a `leaders` list aligned with `times`.
-3. For a query `q(t)`, binary‑search `times` to find the greatest index `i` where `times[i] ≤ t` and return `leaders[i]`.
+3. For a query `q(t)`, binary-search `times` to find the greatest index `i` where `times[i] ≤ t` and return `leaders[i]`.
 
 ```text
 FUNCTION constructor(persons, times):
@@ -77,16 +77,16 @@ Given `persons = [0,1,1,0]` and `times = [0,5,10,15]`:
 |1|1|{0:1,1:1}|1 (tie → later)|[0,1]
 |2|1|{0:1,1:2}|1|[0,1,1]
 |3|0|{0:2,1:2}|0 (tie → later)|[0,1,1,0]
-A query `q(12)` binary‑searches `times` → index 2 → returns `leaders[2] = 1`.
+A query `q(12)` binary-searches `times` → index 2 → returns `leaders[2] = 1`.
 
 ## Complexity Analysis
-- Pre‑processing: `O(n)` time, `O(n)` space for `leaders` and `times`.
+- Pre-processing: `O(n)` time, `O(n)` space for `leaders` and `times`.
 - Query: `O(log n)` time for binary search, `O(1)` extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you support updates (new votes) after initialization?
 2. Can you answer queries in `O(1)` time using additional data structures?
-3. Extend the design to return the top‑`k` candidates at time `t`.
+3. Extend the design to return the top-`k` candidates at time `t`.
 
 ## Key Takeaway
 Storing the leader after each vote and using binary search on timestamps turns repeated queries into fast `O(log n)` operations.

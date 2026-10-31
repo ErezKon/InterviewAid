@@ -50,9 +50,9 @@ The array built this way yields the sequence of ugly numbers.
 - **Time:** `O(n)` to generate the first `n` ugly numbers.
 - **Space:** `O(n)` to store the list of ugly numbers (can be reduced to `O(1)` if only the last three pointers are kept, but the list is needed for indexing).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the algorithm to include additional prime factors, e.g., `7`?
-2. Can you compute the `n`‑th ugly number without generating all previous ones using a binary search?
+2. Can you compute the `n`-th ugly number without generating all previous ones using a binary search?
 3. What is the impact on performance if `n` is extremely large (e.g., `10^9`)?
 
 ## Key Takeaway

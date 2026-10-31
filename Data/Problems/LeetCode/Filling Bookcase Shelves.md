@@ -69,7 +69,7 @@ FUNCTION minHeightShelves(books, shelfWidth):
 
 ## Walkthrough
 
-Consider **Example 1** (`books = [[1,3],[2,4],[3,2]]`, `shelfWidth = 6`):
+Consider **Example 1** (`books = [[1,3],[2,4],[3,2]]`, `shelfWidth = 6`):
 | i | j (backward) | width | height | dp[i] calculation |
 |---|--------------|-------|--------|-------------------|
 |1|1|1|3|dp[1] = dp[0] + 3 = 3 |
@@ -91,7 +91,7 @@ The algorithm ultimately yields the minimal height 6.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if books could be reordered?
 2. Can you achieve O(n) time using a monotonic stack?

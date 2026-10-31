@@ -50,7 +50,7 @@ Consider `[2,2,2,0,1]`:
 | 3 | 3 | - | - | - | loop ends, return `nums[lo]=0` |
 
 ## Complexity Analysis
-- **Time:** O(log n) on average, O(n) worst‑case when many duplicates force linear shrinkage.
+- **Time:** O(log n) on average, O(n) worst-case when many duplicates force linear shrinkage.
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions

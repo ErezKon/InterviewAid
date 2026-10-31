@@ -71,14 +71,21 @@ Example 3:
 
 ## Walkthrough
 
-Consider `rolls = [1,2,3,1,2,3]` with `k = 3`.
+Example 1: `rolls = [4,2,1,2,3,3,2,4,1]`, `k = 4`.
 
-1. Start with `seen = {}` and `rounds = 0`.
-2. Process `1` → `seen = {1}`.
-3. Process `2` → `seen = {1,2}`.
-4. Process `3` → `seen = {1,2,3}` → all values seen, increment `rounds` to 1 and clear `seen`.
-5. Repeat steps 2‑4 for the second half, resulting in `rounds = 2`.
-6. After processing all rolls, answer = `rounds + 1 = 3`.
+| Roll | seen after add | Full? | rounds |
+|------|----------------|-------|--------|
+| 4 | {4} | no | 0 |
+| 2 | {4,2} | no | 0 |
+| 1 | {4,2,1} | no | 0 |
+| 2 | {4,2,1} | no | 0 |
+| 3 | {4,2,1,3} | yes → clear | 1 |
+| 3 | {3} | no | 1 |
+| 2 | {3,2} | no | 1 |
+| 4 | {3,2,4} | no | 1 |
+| 1 | {3,2,4,1} | yes → clear | 2 |
+
+Answer = `rounds + 1 = 3` (expected output). In Example 3 the value 4 never appears, so `rounds = 0` and the answer is 1.
 
 ---
 

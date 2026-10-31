@@ -56,7 +56,7 @@ FUNCTION findLonely(nums):
             APPEND num TO result
     RETURN result
 ```
-The map provides O(1) look‑ups for neighbor checks.
+The map provides O(1) look-ups for neighbor checks.
 
 ## Walkthrough
 For `nums = [10,6,5,8]`:

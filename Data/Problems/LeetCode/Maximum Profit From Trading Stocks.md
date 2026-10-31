@@ -83,7 +83,7 @@ Consider `present = [3,5,2]`, `future = [4,6,5]`, `budget = 5`.
 ## Follow-Up Questions
 - How would the solution change if you could buy multiple units of each stock?
 - What if you had to sell the stocks on different future days instead of tomorrow?
-- Can you extend this to a multi‑day trading scenario with transaction limits?
+- Can you extend this to a multi-day trading scenario with transaction limits?
 
 ## Key Takeaway
 > **Classic 0-1 knapsack** — only buy profitable stocks (positive future - present). Iterate budget in reverse for 1D DP.

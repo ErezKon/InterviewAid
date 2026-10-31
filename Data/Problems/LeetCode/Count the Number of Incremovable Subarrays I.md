@@ -94,10 +94,10 @@ All 10 possible (i,j) pairs satisfy the condition, giving count = 10.
 
 1. How can we reduce the time complexity to O(n) for larger `n`?
 2. Can we handle the case where the array may contain duplicate values?
-3. How would the solution change if we needed to count subarrays whose removal makes the array non‑decreasing instead of strictly increasing?
+3. How would the solution change if we needed to count subarrays whose removal makes the array non-decreasing instead of strictly increasing?
 
 ---
 
 ## Key Takeaway
 
-> **For n ≤ 50, brute‑force all O(n²) subarray removals and check each in O(n). The Hard version optimizes to O(n) using prefix/suffix and two‑pointer techniques.**
+> **For n ≤ 50, brute-force all O(n²) subarray removals and check each in O(n). The Hard version optimizes to O(n) using prefix/suffix and two-pointer techniques.**

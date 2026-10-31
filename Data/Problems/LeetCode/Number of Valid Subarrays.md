@@ -77,14 +77,14 @@ FUNCTION countValidSubarrays(nums):
 
 ## 4. Walkthrough
 
-For `nums = [1,4,3,4,1]` (indices 0‑4):
+For `nums = [1,4,3,4,1]` (indices 0-4):
 | i | nums[i] | Stack after pops | rightBound | Added subarrays |
 |---|---------|------------------|------------|-----------------|
-| 4 | 1       | [] → []          | 5          | 5‑4 = 1 (subarray [1]) |
-| 3 | 4       | [] → []          | 5          | 5‑3 = 2 (subarrays [4], [4,1]) |
-| 2 | 3       | pop 3 (>=3) → []| 5          | 5‑2 = 3 (subarrays [3], [3,4], [3,4,1]) |
-| 1 | 4       | [] → []          | 5          | 5‑1 = 4 |
-| 0 | 1       | pop 1,2,3,4 → []| 5          | 5‑0 = 5 |
+| 4 | 1       | [] → []          | 5          | 5-4 = 1 (subarray [1]) |
+| 3 | 4       | [] → []          | 5          | 5-3 = 2 (subarrays [4], [4,1]) |
+| 2 | 3       | pop 3 (>=3) → []| 5          | 5-2 = 3 (subarrays [3], [3,4], [3,4,1]) |
+| 1 | 4       | [] → []          | 5          | 5-1 = 4 |
+| 0 | 1       | pop 1,2,3,4 → []| 5          | 5-0 = 5 |
 Total = 1+2+3+4+5 = 15 (after removing duplicates, actual count 11 as per problem). The algorithm correctly counts each valid start position up to the next smaller element.
 
 ---

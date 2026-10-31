@@ -61,7 +61,7 @@ FUNCTION countSubmatrices(grid, k):
 
 Consider `grid = [[1,2],[3,4]]`, `k = 4`.
 
-1. Compute 2‑D prefix sums:
+1. Compute 2-D prefix sums:
    - `prefix[1][1] = 1`
    - `prefix[1][2] = 1+2 = 3`
    - `prefix[2][1] = 1+3 = 4`
@@ -87,7 +87,7 @@ Consider `grid = [[1,2],[3,4]]`, `k = 4`.
 ## Follow-Up Questions
 
 1. How would you extend the solution to count **all** submatrices (not just anchored at `(0,0)`) with sum ≤ k?
-2. Can the algorithm be adapted for a sliding‑window approach on rows to achieve O(m·n) time with O(n) space?
+2. Can the algorithm be adapted for a sliding-window approach on rows to achieve O(m·n) time with O(n) space?
 3. What changes are needed if the constraint becomes `sum ≥ k`?
 
 ---

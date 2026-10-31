@@ -125,4 +125,4 @@ where `M` is the range between min and max house values.
 
 ## Key Takeaway
 
-> **Binary search on the answer** combined with a greedy feasibility check efficiently finds the minimal capability for robbing at least `k` non‑adjacent houses.
+> **Binary search on the answer** combined with a greedy feasibility check efficiently finds the minimal capability for robbing at least `k` non-adjacent houses.

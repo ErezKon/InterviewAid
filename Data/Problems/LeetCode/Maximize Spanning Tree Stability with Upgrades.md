@@ -106,7 +106,7 @@ FUNCTION maxStability(n, edges, budget):
 | Step | Action | Result |
 |------|--------|--------|
 | 1 | Set `lo=0`, `hi` to max possible weight after upgrades. | Initial bounds.
-| 2 | Mid = (lo+hi+1)/2, e.g., `mid=3` for Example 1. | Test threshold `3`.
+| 2 | Mid = (lo+hi+1)/2, e.g., `mid=3` for Example 1. | Test threshold `3`.
 | 3 | Filter edges that can reach `3` within budget (all edges). Compute MST using cheapest upgrades. | MST cost `3` ≤ budget, so `lo=3`.
 | 4 | Next `mid` becomes higher, e.g., `mid=4`. Filter edges, MST requires upgrading edge (2,3) to `4` (cost `3`). Still within budget, set `lo=4`.
 | 5 | `mid=5` fails (requires more budget), set `hi=4`. Loop ends, answer `4`.

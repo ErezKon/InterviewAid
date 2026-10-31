@@ -85,10 +85,10 @@ Since dp[0] > 0, Alice wins.
 - **Time:** O(n) – each index evaluates up to three options.
 - **Space:** O(n) for the DP array (can be reduced to O(1) with rolling variables).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the optimal sequence of moves?
 2. Can the space be reduced to O(1) while still handling large inputs?
 3. What changes are needed if a player may take up to `k` stones instead of 3?
 
 ## Key Takeaway
-Modeling the game as a score‑difference DP and considering the opponent’s optimal response yields a linear‑time solution for optimal play.
+Modeling the game as a score-difference DP and considering the opponent’s optimal response yields a linear-time solution for optimal play.

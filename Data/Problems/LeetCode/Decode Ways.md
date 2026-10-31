@@ -96,12 +96,12 @@ Take the input `"226"`:
 
 1. Initialize `prev2 = 1`, `prev1 = 1` (first character `"2"` is valid).
 2. `i = 1` (second character `"2"`):
-   - Single‑digit: `prev1 = 1` → `curr = 1`.
-   - Two‑digit `22` is within 10‑26 → add `prev2 = 1` → `curr = 2`.
+   - Single-digit: `prev1 = 1` → `curr = 1`.
+   - Two-digit `22` is within 10-26 → add `prev2 = 1` → `curr = 2`.
    - Update `prev2 ← 1`, `prev1 ← 2`.
 3. `i = 2` (third character `"6"`):
-   - Single‑digit: `curr = prev1 = 2`.
-   - Two‑digit `26` is valid → add `prev2 = 1` → `curr = 3`.
+   - Single-digit: `curr = prev1 = 2`.
+   - Two-digit `26` is valid → add `prev2 = 1` → `curr = 3`.
    - Update `prev2 ← 2`, `prev1 ← 3`.
 4. End of string, return `prev1 = 3`.
 

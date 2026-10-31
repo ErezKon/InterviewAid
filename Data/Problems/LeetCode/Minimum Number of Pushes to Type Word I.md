@@ -60,7 +60,7 @@ It can be shown that no other mapping can provide a lower cost.
 ```
 
 ## Approach
-The position of a character within its key determines the number of presses. Since keys contain eight letters, the index of a character `c` (0‑based) is `ord(c) - ord('a')`. The number of presses for `c` is `(index % 8) + 1`.
+The position of a character within its key determines the number of presses. Since keys contain eight letters, the index of a character `c` (0-based) is `ord(c) - ord('a')`. The number of presses for `c` is `(index % 8) + 1`.
 
 ```text
 FUNCTION minimumPushes(word):
@@ -73,7 +73,7 @@ FUNCTION minimumPushes(word):
 
 ## Walkthrough
 For `word = "hello"`:
-| Char | idx | idx % 8 | presses |
+| Char | idx | idx % 8 | presses |
 |------|-----|--------|---------|
 | h    | 7   | 7      | 8 |
 | e    | 4   | 4      | 5 |
@@ -87,9 +87,9 @@ Total = 8+5+4+4+7 = 28.
 - **Space:** O(1).
 
 ## Follow-Up Questions
-1. How would the solution change if the keypad layout were non‑uniform (different numbers of letters per key)?
+1. How would the solution change if the keypad layout were non-uniform (different numbers of letters per key)?
 2. What if you could reorder the characters to minimize total presses?
 3. Extend to a scenario where pressing a key also incurs a fixed overhead cost.
 
 ## Key Takeaway
-The minimum pushes equal the sum of each character’s position within its eight‑letter key, which can be computed directly from the character’s alphabet index.
+The minimum pushes equal the sum of each character’s position within its eight-letter key, which can be computed directly from the character’s alphabet index.

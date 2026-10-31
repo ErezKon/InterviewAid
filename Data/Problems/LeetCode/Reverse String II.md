@@ -41,7 +41,7 @@ FUNCTION ReverseStringII(s, k):
     FOR i ← 0 TO n-1 STEP 2*k:
         SET left ← i
         SET right ← MIN(i + k - 1, n - 1)
-        // Reverse in‑place
+        // Reverse in-place
         WHILE left < right:
             SWAP chars[left] WITH chars[right]
             INCREMENT left
@@ -58,12 +58,12 @@ FUNCTION ReverseStringII(s, k):
 
 ## Complexity Analysis
 - Time: O(n) – each character is visited at most once.
-- Space: O(n) for the mutable character list (in‑place on list).
+- Space: O(n) for the mutable character list (in-place on list).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to work on a linked list representation of the string?
 2. Can you achieve O(1) extra space without converting to a list?
 3. What changes are needed if `k` can be larger than the string length?
 
 ## Key Takeaway
-Processing the string in fixed `2k` blocks and reversing the first `k` characters yields a simple linear‑time solution.
+Processing the string in fixed `2k` blocks and reversing the first `k` characters yields a simple linear-time solution.

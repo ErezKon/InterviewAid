@@ -31,7 +31,7 @@ Output: ""
 ```
 
 ## Approach
-Iterate through the characters of the string and build a result containing only non‑vowel characters.
+Iterate through the characters of the string and build a result containing only non-vowel characters.
 
 ```text
 FUNCTION removeVowels(s):
@@ -57,11 +57,11 @@ FUNCTION removeVowels(s):
 
 ## Complexity Analysis
 - Time: O(n) where *n* is the length of the string.
-- Space: O(n) for the output string (in‑place modification is also possible).
+- Space: O(n) for the output string (in-place modification is also possible).
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to handle Unicode vowel characters?
-2. Can you perform the removal in‑place on a mutable character array?
+2. Can you perform the removal in-place on a mutable character array?
 3. How would you extend this to remove a custom set of characters supplied at runtime?
 
 ## Key Takeaway

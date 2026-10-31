@@ -111,4 +111,4 @@ Result `[3, -1, -1]`.
 
 ## 7. Key Takeaway
 
-> By maintaining a streak of consecutive ascending elements, we can decide in O(1) per index whether the current `k`‑size window is valid, yielding an overall O(n) solution.
+> By maintaining a streak of consecutive ascending elements, we can decide in O(1) per index whether the current `k`-size window is valid, yielding an overall O(n) solution.

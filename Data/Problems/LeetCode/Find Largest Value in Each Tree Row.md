@@ -54,7 +54,7 @@ Example 2:
 
 ## Approach
 
-**Breadth‑First Search (Level Order Traversal)** – traverse the tree level by level, tracking the maximum value seen in each level.
+**Breadth-First Search (Level Order Traversal)** – traverse the tree level by level, tracking the maximum value seen in each level.
 
 ```text
 FUNCTION largestValues(root):
@@ -95,14 +95,14 @@ Consider the tree `[1,3,2,5,3,null,9]`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to return the minimum value per level?
-2. Can you solve the problem using depth‑first search while tracking depth?
+2. Can you solve the problem using depth-first search while tracking depth?
 3. How would you handle a tree stored as an adjacency list instead of node objects?
 
 ---
 
 ## Key Takeaway
 
-> **BFS level‑by‑level, track max at each level. Standard level‑order traversal with aggregation.**
+> **BFS level-by-level, track max at each level. Standard level-order traversal with aggregation.**

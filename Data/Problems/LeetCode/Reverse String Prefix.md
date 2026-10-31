@@ -63,11 +63,13 @@ FUNCTION reversePrefix(s, k):
 
 ## Walkthrough
 
-Take `s = "abcdef", k = 3`:
-1. `k` ≤ length, keep `k = 3`.
-2. `prefix = "abc"`, `suffix = "def"`.
-3. `reversedPrefix = "cba"`.
-4. Result = `"cba" + "def" = "cbadef"`.
+Example 1: `s = "abcd", k = 2`:
+1. `k` ≤ length, keep `k = 2`.
+2. `prefix = "ab"`, `suffix = "cd"`.
+3. `reversedPrefix = "ba"`.
+4. Result = `"ba" + "cd" = "bacd"`, matching the expected output.
+
+Example 2 (`"xyz", k = 3`): prefix `"xyz"` → `"zyx"`, suffix `""` → `"zyx"`. Example 3 (`"hey", k = 1`): `"h"` reversed is `"h"` → `"hey"`.
 
 ---
 
@@ -82,11 +84,11 @@ Take `s = "abcdef", k = 3`:
 
 ## Follow-Up Questions
 
-1. How would you perform the reversal in‑place if the string were mutable?
+1. How would you perform the reversal in-place if the string were mutable?
 2. How to handle Unicode characters that may consist of multiple code units?
 
 ---
 
 ## Key Takeaway
 
-> Simple slice‑and‑reverse — take the first `k` characters, reverse them, and concatenate with the remainder.
+> Simple slice-and-reverse — take the first `k` characters, reverse them, and concatenate with the remainder.

@@ -79,7 +79,7 @@ Consider the tree `[5,2,9,null,3]` and `k = 2`.
 3. **Level 1:** Process nodes 2 and 9. Sum = 2+9 = 11 → `levelSums = [5,11]`. Children → `[3]` (only node 2 has right child 3).
 4. **Level 2:** Process node 3. Sum = 3 → `levelSums = [5,11,3]`. No more children, BFS ends.
 5. **Sort descending:** `[11,5,3]`.
-6. **k‑th largest:** `k=2` → second element = `5`.
+6. **k-th largest:** `k=2` → second element = `5`.
 
 ---
 
@@ -92,14 +92,14 @@ Consider the tree `[5,2,9,null,3]` and `k = 2`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would you find the k‑th largest level sum without sorting all sums (e.g., using a min‑heap of size `k`)?
-- Can you adapt the algorithm to return the k‑th smallest level sum?
+- How would you find the k-th largest level sum without sorting all sums (e.g., using a min-heap of size `k`)?
+- Can you adapt the algorithm to return the k-th smallest level sum?
 - What changes are needed if the tree is extremely large and cannot fit entirely in memory?
 
 ---
 
 ## Key Takeaway
 
-> Perform a level‑order traversal to collect each level’s sum, then select the k‑th largest sum—sorting or a heap makes the selection efficient.
+> Perform a level-order traversal to collect each level’s sum, then select the k-th largest sum—sorting or a heap makes the selection efficient.

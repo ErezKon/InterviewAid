@@ -105,4 +105,4 @@ ORDER BY product_id ASC, year ASC;
 3. How can you compute the average price per product per year instead of the sum?
 
 ## Key Takeaway
-Aggregating sales with `GROUP BY` and filtering via `HAVING` efficiently extracts product‑year pairs that exceed a sales threshold.
+Aggregating sales with `GROUP BY` and filtering via `HAVING` efficiently extracts product-year pairs that exceed a sales threshold.

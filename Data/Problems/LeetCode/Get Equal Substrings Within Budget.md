@@ -77,9 +77,9 @@ Example 3:
 - **Time:** O(n) – each character is visited at most twice (once by `right`, once by `left`).
 - **Space:** O(1) – only a few integer variables are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would you adapt the solution if the cost function were non‑linear?
+- How would you adapt the solution if the cost function were non-linear?
 - Can you extend the approach to handle multiple strings simultaneously?
 - What if you needed to return the actual substring instead of its length?
 

@@ -4,7 +4,7 @@ Related: #621, #358, #767, #1405
 ---
 
 ## Problem Description
-This article collects a family of greedy scheduling problems that share a common *cool‑down* or *spacing* constraint. The goal in each problem is to arrange tasks (or characters) so that certain patterns are avoided, typically by ensuring a minimum distance between identical items.
+This article collects a family of greedy scheduling problems that share a common *cool-down* or *spacing* constraint. The goal in each problem is to arrange tasks (or characters) so that certain patterns are avoided, typically by ensuring a minimum distance between identical items.
 
 - **Task Scheduler (#621):** given a list of CPU `tasks` (uppercase letters) and a cooldown `n`, identical tasks must be separated by at least `n` intervals (idle slots allowed). Return the minimum number of intervals needed to finish all tasks.
 - **Rearrange String k Distance Apart (#358):** given a string `s` and integer `k`, rearrange `s` so that identical characters are at least distance `k` apart; return `""` if impossible.
@@ -42,13 +42,13 @@ Example 3 – Longest Happy String (#1405):
 ```
 
 ## Approach
-All these problems can be tackled with a *greedy* strategy that always places the most frequent remaining item while respecting the spacing rule. The typical implementation uses a max‑heap (priority queue) to retrieve the item with highest remaining count, and a temporary cooldown queue to hold items that cannot be used until the required distance passes.
+All these problems can be tackled with a *greedy* strategy that always places the most frequent remaining item while respecting the spacing rule. The typical implementation uses a max-heap (priority queue) to retrieve the item with highest remaining count, and a temporary cooldown queue to hold items that cannot be used until the required distance passes.
 
 ```text
 FUNCTION schedule(tasks, n):
     // Count frequencies
     freqMap ← COUNTER(tasks)
-    // Build max‑heap of (count, item)
+    // Build max-heap of (count, item)
     heap ← MaxHeap()
     FOR each item, cnt IN freqMap:
         heap.PUSH((cnt, item))
@@ -75,25 +75,29 @@ Answer = MAX(len(tasks), (maxFreq - 1) * (n + 1) + countMaxFreq)
 where `maxFreq` is the highest task frequency and `countMaxFreq` is the number of tasks that achieve this frequency.
 
 ## Walkthrough
-Consider `tasks = [A,A,A,B,B,B]` with `n = 2`.
-| Time | Executed | Heap (cnt,item) | Cooldown queue |
-|------|----------|-----------------|----------------|
-| 0 | A | (3,B) | [(3, (2,A))] |
-| 1 | B | (2,A) | [(4, (2,B))] |
-| 2 | idle | (2,A) | [(5, (1,A)), (5, (1,B))] |
-| 3 | A | (1,B) | [(6, (1,A))] |
-| 4 | B | empty | [(7, (0,B))] |
-| 5 | A | empty | [] |
-Resulting schedule length = 8.
+Example 1: `tasks = [A,A,A,B,B,B]` with `n = 2`. Initially heap = {(3,A), (3,B)}.
+
+| Time | Released | Executed | Heap after step | Cooldown queue after step |
+|------|----------|----------|-----------------|---------------------------|
+| 0 | - | A | (3,B) | [(3,(2,A))] |
+| 1 | - | B | empty | [(3,(2,A)), (4,(2,B))] |
+| 2 | - | idle | empty | [(3,(2,A)), (4,(2,B))] |
+| 3 | (2,A) | A | empty | [(4,(2,B)), (6,(1,A))] |
+| 4 | (2,B) | B | empty | [(6,(1,A)), (7,(1,B))] |
+| 5 | - | idle | empty | [(6,(1,A)), (7,(1,B))] |
+| 6 | (1,A) | A | empty | [(7,(1,B))] |
+| 7 | (1,B) | B | empty | [] |
+
+Both structures are empty, `time = 8` -> **Output: 8** (formula check: `max(6, (3-1)*3 + 2) = 8`).
 
 ## Complexity Analysis
-- Time: O(T log U) where T is the total number of tasks (or characters) and U is the number of distinct items, due to heap operations.
+- Time: O(T log U) where T is the total number of tasks (or characters) and U is the number of distinct items, due to heap operations.
 - Space: O(U) for the heap and cooldown queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm if the cooldown period varies per task type?
 2. Can the Task Scheduler formula be derived using a counting argument without simulation?
 3. What changes are needed to handle weighted tasks where each execution has a different cost?
 
 ## Key Takeaway
-A max‑heap combined with a cooldown queue yields a simple greedy framework that solves many spacing‑constraint scheduling problems efficiently.
+A max-heap combined with a cooldown queue yields a simple greedy framework that solves many spacing-constraint scheduling problems efficiently.

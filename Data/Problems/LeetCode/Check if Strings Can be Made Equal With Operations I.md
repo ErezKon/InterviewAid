@@ -76,4 +76,4 @@ The algorithm correctly verifies multiset equality.
 3. What if the strings contain Unicode characters?
 
 ## Key Takeaway
-Even‑position swaps restrict characters to their parity groups, so matching the multisets of each parity is both necessary and sufficient.
+Even-position swaps restrict characters to their parity groups, so matching the multisets of each parity is both necessary and sufficient.

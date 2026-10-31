@@ -56,10 +56,10 @@ Loop ends, `sum == 28` → true.
 - Time: O(√n) – only iterate up to the square root.
 - Space: O(1) – constant extra variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you test many numbers efficiently (e.g., checking all numbers up to 10⁶)?
-2. Can you generate perfect numbers using Euclid‑Euler theorem instead of trial division?
+2. Can you generate perfect numbers using Euclid-Euler theorem instead of trial division?
 3. What modifications are needed for a streaming input of numbers?
 
 ## Key Takeaway
-Checking divisor pairs up to √n lets you compute the sum of proper divisors in O(√n) time, enabling a quick perfect‑number test.
+Checking divisor pairs up to √n lets you compute the sum of proper divisors in O(√n) time, enabling a quick perfect-number test.

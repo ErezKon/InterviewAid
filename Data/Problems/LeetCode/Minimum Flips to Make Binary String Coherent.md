@@ -47,7 +47,7 @@ Explanation: The string already has no "011" or "110" subsequences, so no flips 
 
 ## Approach
 
-**Prefix‑Count Dynamic Programming** – For each possible split point, compute flips needed: `flips = (# of 1s on the left) + (# of 0s on the right)`. Track the minimum while scanning.
+**Prefix-Count Dynamic Programming** – For each possible split point, compute flips needed: `flips = (# of 1s on the left) + (# of 0s on the right)`. Track the minimum while scanning.
 
 ```text
 FUNCTION minFlips(s):
@@ -82,7 +82,7 @@ Result = **2** flips.
 |------|-------|
 | O(n) | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 * How would the solution change if you could also delete characters instead of flipping?
 * Can you extend the algorithm to handle strings with more than two distinct characters needing ordered groups?

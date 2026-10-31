@@ -73,7 +73,7 @@ For `salary = [4000,3000,1000,2000]`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you handle duplicate salaries?
 - What if the array is extremely large and cannot fit in memory?
@@ -82,4 +82,4 @@ For `salary = [4000,3000,1000,2000]`:
 
 ## Key Takeaway
 
-> Subtract the min and max from the total sum and divide by `n‑2`; no sorting needed.
+> Subtract the min and max from the total sum and divide by `n-2`; no sorting needed.

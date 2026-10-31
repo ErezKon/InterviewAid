@@ -47,66 +47,48 @@ Example 2:
 ```
 
 ## Approach
-Perform a reverse graph traversal to compute, for each node, the set of sources that can reach it. Use a BFS/DFS from each node in the reversed graph, counting how many distinct sources arrive at each destination. Any destination with a source count ≥ 2 contributes that many source rooms to the answer.
+The confusion score is the number of **triangles** in an undirected graph.
+- Build adjacency sets.
+- For every corridor `(u, v)`, every common neighbor `w` of `u` and `v` closes a triangle `{u, v, w}`.
+- Each triangle `{a < b < c}` would be found from all three of its edges, so count it only from its edge `(a, b)` by requiring `w > max(u, v)`.
 
 ```text
-FUNCTION countRoomsWithCommonDestination(n, edges):
-    // build reverse adjacency list
-    SET revAdj ← LIST of n empty lists
-    FOR each (u, v) IN edges:
-        APPEND u TO revAdj[v]
-
-    // sourceCount[i] = number of distinct sources that can reach i
-    SET sourceCount ← ARRAY of n zeros
-
-    FOR src FROM 0 TO n-1:
-        // BFS from src in reverse graph to find destinations reachable from src
-        SET visited ← SET containing src
-        SET queue ← [src]
-        WHILE queue NOT EMPTY:
-            SET node ← DEQUEUE(queue)
-            INCREMENT sourceCount[node]
-            FOR each prev IN revAdj[node]:
-                IF prev NOT IN visited:
-                    ADD prev TO visited
-                    ENQUEUE(prev, queue)
-                ENDIF
-            ENDFOR
-        ENDWHILE
-    ENDFOR
-
-    // count sources that have at least one other source sharing a destination
-    SET answer ← 0
-    FOR i FROM 0 TO n-1:
-        IF sourceCount[i] >= 2:
-            // each source counted earlier, so we just sum those sources
-            // alternative: answer += sourceCount[i]
-            INCREMENT answer BY sourceCount[i]
-        ENDIF
-    ENDFOR
-    RETURN answer
+FUNCTION numberOfPaths(n, corridors):
+    adj ← ARRAY of n+1 empty sets
+    FOR each (u, v) IN corridors:
+        ADD v TO adj[u]
+        ADD u TO adj[v]
+    count ← 0
+    FOR each (u, v) IN corridors:
+        FOR each w IN (adj[u] INTERSECT adj[v]):
+            IF w > MAX(u, v):
+                count ← count + 1
+    RETURN count
 ```
 
 ## Walkthrough
-For the first example `n=4`, `edges=[[0,1],[1,2],[2,3],[0,2]]`:
+Example 1: `n = 5`, `corridors = [[1,2],[5,2],[4,1],[2,4],[3,1],[3,4]]`.
+Adjacency: `1:{2,3,4}`, `2:{1,4,5}`, `3:{1,4}`, `4:{1,2,3}`, `5:{2}`.
 
-| src | destinations reached (reverse) |
-|-----|--------------------------------|
-| 0 | 0,1,2 |
-| 1 | 1,2 |
-| 2 | 2 |
-| 3 | 3 |
+| Corridor | Common neighbors | w > max(u,v) | Count |
+|----------|------------------|--------------|-------|
+| (1,2) | {4} | 4 | 1 |
+| (5,2) | {} | - | 1 |
+| (4,1) | {2,3} | none | 1 |
+| (2,4) | {1} | none | 1 |
+| (3,1) | {4} | 4 | 2 |
+| (3,4) | {1} | none | 2 |
 
-`sourceCount` becomes `[1,2,3,1]`. Nodes `1` and `2` have ≥ 2 sources, contributing `2+3=5` source appearances; the distinct starting rooms that share a destination are `0` and `1` → answer `2`.
+Triangles `{1,2,4}` and `{1,3,4}` -> answer `2`.
 
 ## Complexity Analysis
-- **Time:** O(n · (m + n)) in the worst case, where `m` is number of edges (BFS from each source). For sparse graphs this is acceptable; more advanced SCC algorithms can reduce it.
-- **Space:** O(n + m) for adjacency lists and visited sets.
+- **Time:** O(m * d) where `m` is the number of corridors and `d` the max degree (set intersection per edge); at most O(m * n).
+- **Space:** O(n + m) for the adjacency sets.
 
-## Follow‑Up Questions
-1. How would you solve the problem using Strongly Connected Components to improve efficiency?
-2. Can the algorithm be adapted to return the actual pairs of rooms that share a destination?
-3. What changes are needed if edges are weighted and you only consider shortest‑path destinations?
+## Follow-Up Questions
+1. How does orienting each edge from lower-degree to higher-degree node give O(m * sqrt(m))?
+2. How would you use bitsets (n <= 1000) to speed up the intersections?
+3. How would you count cycles of length 4?
 
 ## Key Takeaway
-Counting how many sources can reach each node via a reverse traversal reveals destinations shared by multiple rooms.
+Counting length-3 cycles is triangle counting: intersect neighbor sets per edge and impose an ordering so each triangle is counted exactly once.

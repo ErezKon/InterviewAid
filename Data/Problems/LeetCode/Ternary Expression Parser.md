@@ -78,8 +78,8 @@ Expression: "0?1:0?1:2"
 - Time: O(n) where n is the length of the expression.
 - Space: O(n) for the stack (worst case when all characters are digits).
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to support multi‑digit numbers?
+## Follow-Up Questions
+1. How would you modify the algorithm to support multi-digit numbers?
 2. Can the expression be evaluated using recursion instead of a stack?
 3. What changes are needed if the condition can be any boolean expression rather than a single digit?
 

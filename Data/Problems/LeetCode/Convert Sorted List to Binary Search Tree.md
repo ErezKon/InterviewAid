@@ -35,7 +35,7 @@ Example 2:
 ```
 
 ## Approach
-Use the fast/slow pointer technique to find the middle node, which becomes the root. Recursively build left and right sub‑trees from the left and right halves of the list.
+Use the fast/slow pointer technique to find the middle node, which becomes the root. Recursively build left and right sub-trees from the left and right halves of the list.
 
 ```text
 FUNCTION sortedListToBST(head):
@@ -71,13 +71,13 @@ FUNCTION sortedListToBST(head):
 | 3 (right) | - | finds 9 as root of right subtree | left [5], right [] |
 
 ## Complexity Analysis
-- **Time:** O(n log n) – each recursion scans a sub‑list to find its middle.
-- **Space:** O(log n) recursion stack for a balanced tree.
+- **Time:** O(n log n) – each recursion scans a sub-list to find its middle.
+- **Space:** O(log n) recursion stack for a balanced tree.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can you achieve O(n) time using an inorder simulation with a global list pointer?
-2. How would you modify the algorithm for a doubly‑linked list?
-3. Can you build a BST that preserves the original list order without re‑balancing?
+2. How would you modify the algorithm for a doubly-linked list?
+3. Can you build a BST that preserves the original list order without re-balancing?
 
 ## Key Takeaway
-Finding the middle element with fast/slow pointers lets you recursively split a sorted list, yielding a height‑balanced BST in O(n log n) time.
+Finding the middle element with fast/slow pointers lets you recursively split a sorted list, yielding a height-balanced BST in O(n log n) time.

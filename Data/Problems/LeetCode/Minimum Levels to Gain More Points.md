@@ -86,7 +86,7 @@ Consider `possible = [1,0,1,0,1]`:
 
 1. Compute total score: `+1 -1 +1 -1 +1 = +1`.
 2. Iterate prefixes:
-   - i=0: prefix `+1`; remaining score `0`. `+1 > 0` → condition satisfied, return `1`? Actually remaining score = total - prefix = 0, so Player 1 leads after first level. The algorithm would return `1`.
+   - i=0: prefix `+1`; remaining score `0`. `+1 > 0` → condition satisfied, return `1`? Actually remaining score = total - prefix = 0, so Player 1 leads after first level. The algorithm would return `1`.
    - If not satisfied, continue.
 3. The earliest index where `2 * prefix > total` yields the answer.
 
@@ -99,9 +99,9 @@ Consider `possible = [1,0,1,0,1]`:
 ## Follow-Up Questions
 
 * How would the solution change if levels could have arbitrary integer scores instead of binary values?
-* Can you extend the approach to return the actual set of levels Player 1 should play rather than just the count?
+* Can you extend the approach to return the actual set of levels Player 1 should play rather than just the count?
 * What if both players could choose any subset of levels (not necessarily contiguous) to maximize their scores?
 
 ## Key Takeaway
 
-> Convert each level to `+1`/`-1` and use a prefix sum. Player 1 needs the smallest prefix where `2 * prefix > total`.
+> Convert each level to `+1`/`-1` and use a prefix sum. Player 1 needs the smallest prefix where `2 * prefix > total`.

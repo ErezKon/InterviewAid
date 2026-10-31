@@ -64,7 +64,7 @@ Consider the array `[5,3,4,2,1]`:
 | 3 | [3] | 4 ≥ 3 → push 4 |
 | 4 | [3,4] | 2 < 4 → pop 4, 2 < 3 → pop 3, push 2 |
 | 5 | [2] | 1 < 2 → pop 2, push 1 |
-Final stack size = 1, so longest non‑decreasing length = 2 (including the element that survived the removals).
+Final stack size = 1, so longest non-decreasing length = 2 (including the element that survived the removals).
 
 ---
 
@@ -78,8 +78,8 @@ Final stack size = 1, so longest non‑decreasing length = 2 (including the elem
 ## 6. Follow-Up Questions
 
 - How would the solution change if you could only remove at most *k* elements?
-- Can you solve the problem in O(1) extra space by using two‑pointer technique?
-- What if the array must remain strictly increasing instead of non‑decreasing?
+- Can you solve the problem in O(1) extra space by using two-pointer technique?
+- What if the array must remain strictly increasing instead of non-decreasing?
 
 ---
 

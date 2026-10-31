@@ -81,7 +81,7 @@ Consider `nums = [1,2,4,7,10]`.
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm if you could change up to *k* elements?
-- Can the solution be extended to non‑contiguous arithmetic subsequences?
+- Can the solution be extended to non-contiguous arithmetic subsequences?
 - What is the impact of allowing negative common differences?
 
 ---

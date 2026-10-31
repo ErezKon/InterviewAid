@@ -71,7 +71,7 @@ FUNCTION removeNodes(head):
 - **Space:** O(N) for the stack storing nodes.
 
 ## Follow-Up Questions
-1. How would you solve the problem in‑place without using extra stack space?
+1. How would you solve the problem in-place without using extra stack space?
 2. Can the algorithm be adapted to remove nodes that have a greater or equal value to the right?
 3. How would you handle a doubly linked list version of this problem?
 

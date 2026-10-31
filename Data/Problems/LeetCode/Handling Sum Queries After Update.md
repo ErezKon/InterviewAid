@@ -109,10 +109,10 @@ Explanation: After the first query, nums2 remains [5], so the answer to the seco
 ## 7. Follow-Up Questions
 
 - How would you modify the solution if `nums1` contained arbitrary integers instead of binary values?
-- Can you achieve O(1) update time using a difference array when only type‑2 queries are present?
+- Can you achieve O(1) update time using a difference array when only type-2 queries are present?
 
 ---
 
 ## 8. Key Takeaway
 
-> Use a segment tree with lazy XOR to maintain the count of 1s in a binary array, enabling fast range flips and constant‑time contribution to sum updates.
+> Use a segment tree with lazy XOR to maintain the count of 1s in a binary array, enabling fast range flips and constant-time contribution to sum updates.

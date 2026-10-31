@@ -45,43 +45,59 @@ Under the given constraints, the string can be split into two parts:
 ```
 
 ## Approach
-Iterate over possible numbers of parts `k` from 1 up to `len(message)`. For each `k`, compute the total suffix length: each suffix contributes `len(str(i)) + len(str(k)) + 3` characters (`<`, `/`, `>`). The total overhead is `k * (len(str(k)) + 3) + sum_{i=1}^{k} len(str(i))`. If `len(message) + overhead ≤ limit * k`, a valid split exists. Construct the parts by greedily taking `limit - suffixLength` characters for each part.
+Iterate over the number of parts `k` from 1 upward and take the first feasible `k` (fewest parts). For a fixed `k`, part `i` has suffix `"<i/k>"` of length `3 + len(str(i)) + len(str(k))`, so it can carry `limit - suffixLen(i)` message characters. The split is feasible iff the total capacity covers the message:
+
+`capacity(k) = k * limit - (3k + k * len(str(k)) + digitSum(k)) >= n`, where `digitSum(k) = sum_{i=1}^{k} len(str(i))` is maintained incrementally.
+
+If even the shortest-content suffix `3 + 2 * len(str(k))` is `>= limit`, no part can carry any character for this or any larger `k`, so return `[]`. Note `capacity(k)` is not monotone (it drops when `k` gains a digit), so we scan linearly rather than binary search. Once a feasible `k` is found, build the parts greedily: each part takes `limit - suffixLen(i)` characters; the last part takes whatever remains (never empty, otherwise `k-1` would have been feasible).
 
 ```text
 FUNCTION splitMessage(message, limit):
-    SET n ← LENGTH(message)
-    FOR k ← 1 TO n:
-        // Compute suffix length for this k (same for all parts except digit count of i)
-        SET suffixLen ← 0
-        FOR i ← 1 TO k:
-            SET suffixLen ← suffixLen + LEN(str(i)) + LEN(str(k)) + 3
-        IF n + suffixLen > limit * k:
+    SET n <- LENGTH(message)
+    SET digitSum <- 0
+    FOR k <- 1 TO n:
+        SET lk <- LEN(STR(k))
+        SET digitSum <- digitSum + lk
+        IF 3 + 2 * lk >= limit:
+            RETURN []                      // suffix alone fills a part
+        SET capacity <- k * limit - (3 * k + k * lk + digitSum)
+        IF capacity < n:
             CONTINUE
-        // Build parts
-        SET parts ← []
-        SET idx ← 0
-        FOR i ← 1 TO k:
-            SET curSuffix ← "<" + STR(i) + "/" + STR(k) + ">"
-            SET partSize ← limit - LEN(curSuffix)
-            SET partText ← SUBSTRING(message, idx, idx + partSize)
-            APPEND partText + curSuffix TO parts
-            SET idx ← idx + partSize
+        SET parts <- []
+        SET idx <- 0
+        FOR i <- 1 TO k:
+            SET curSuffix <- "<" + STR(i) + "/" + STR(k) + ">"
+            SET partSize <- limit - LEN(curSuffix)
+            APPEND SUBSTRING(message, idx, idx + partSize) + curSuffix TO parts
+            SET idx <- idx + partSize
         RETURN parts
     RETURN []
 ```
 
 ## Walkthrough
-For `message = "thisisatest"` and `limit = 7`:
-- Try `k = 1`: suffix `<1/1>` length = 5, total needed = 11 > 7 → impossible.
-- Try `k = 2`: suffixes `<1/2>` and `<2/2>` each length = 5, overhead = 10, message length = 11, total = 21 ≤ `limit * k` (= 14) → valid.
-- Build first part: take `7 - 5 = 2` chars → `"th" + "<1/2>" = "th<1/2>"` (actually need 2 chars, but example uses 5 chars; adjust accordingly). Continue similarly for second part.
+**Example 2:** `message = "short message"` (`n = 13`), `limit = 15`.
+- `k = 1`: `lk = 1`, `digitSum = 1`, `3 + 2 = 5 < 15`. `capacity = 15 - (3 + 1 + 1) = 10 < 13` -> infeasible.
+- `k = 2`: `lk = 1`, `digitSum = 2`. `capacity = 30 - (6 + 2 + 2) = 20 >= 13` -> feasible.
+- Build: part 1 suffix `"<1/2>"` (len 5) takes `15 - 5 = 10` chars `"short mess"` -> `"short mess<1/2>"`. Part 2 suffix `"<2/2>"` takes the remaining `"age"` -> `"age<2/2>"`.
+- Output: `["short mess<1/2>","age<2/2>"]`.
+
+**Example 1:** `n = 37`, `limit = 9`.
+| k | digitSum | capacity |
+|---|----------|----------|
+| 1..9 | k | `4k` (4, 8, ..., 36) - all `< 37` |
+| 10 | 11 | `90 - (30 + 20 + 11) = 29` |
+| 11 | 13 | 31 |
+| 12 | 15 | 33 |
+| 13 | 17 | 35 |
+| 14 | 19 | `126 - (42 + 28 + 19) = 37 >= 37` -> feasible |
+- Parts 1-9 have 5-char suffixes (`"<i/14>"`) and take 3 chars each (27 chars); parts 10-14 have 6-char suffixes and take 2 chars each (10 chars). Total 37, giving `["thi<1/14>", ..., "ge<14/14>"]`.
 
 ## Complexity Analysis
-- **Time:** Trying up to `n` possible `k` values, each computing suffix length in `O(k)` → `O(n^2)` worst case. Construction of parts is `O(n)`.
-- **Space:** Result list stores at most `n` characters → `O(n)`.
+- **Time:** `O(n log n)` - up to `n` values of `k`, each checked in `O(log k)` (digit count); building the parts is `O(n + k log k)` once.
+- **Space:** `O(n + k log k)` for the output.
 
-## Follow‑Up Questions
-1. How can the algorithm be optimized to `O(n log n)` by binary searching on `k`?
+## Follow-Up Questions
+1. Why is binary searching on `k` unsafe here (hint: capacity drops when `k` goes from 9 to 10)? How would you restrict it to within a fixed digit-count range?
 2. What changes are needed if the suffix format is different, e.g., `(i/k)`?
 3. Can we handle Unicode characters where length may differ from byte count?
 

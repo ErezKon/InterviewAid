@@ -102,7 +102,7 @@ Result reversed = `[1,0,0,0,0]` which is the correct negabinary sum.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you modify the algorithm to handle subtraction of two negabinary numbers?
 2. Can you extend the solution to support arbitrary negative bases?
@@ -112,4 +112,4 @@ Result reversed = `[1,0,0,0,0]` which is the correct negabinary sum.
 
 ## Key Takeaway
 
-> Negabinary addition follows the same digit‑by‑digit pattern, but carry propagation is non‑standard. The key is handling the carry cases (2, -1, -2) correctly. This tests your ability to work with unusual bases.
+> Negabinary addition follows the same digit-by-digit pattern, but carry propagation is non-standard. The key is handling the carry cases (2, -1, -2) correctly. This tests your ability to work with unusual bases.

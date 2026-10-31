@@ -42,7 +42,7 @@ Example 2:
 
 ## Approach
 **Greedy Difference Accumulation**  
-Compute the element‑wise difference `diff[i] = target[i] - nums[i]`. The problem reduces to making all differences zero by adding or subtracting 1 at each position. The optimal number of operations equals the sum of absolute changes when the sign of consecutive differences switches, plus the absolute value of the first difference. This can be computed in a single pass.
+Compute the element-wise difference `diff[i] = target[i] - nums[i]`. The problem reduces to making all differences zero by adding or subtracting 1 at each position. The optimal number of operations equals the sum of absolute changes when the sign of consecutive differences switches, plus the absolute value of the first difference. This can be computed in a single pass.
 
 ```
 text
@@ -73,10 +73,10 @@ The algorithm yields 2 operations.
 - **Time:** `O(n)` – single pass over the arrays.
 - **Space:** `O(1)` – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution adapt if each increment/decrement had a different cost per index?
 2. What if you could increment/decrement a contiguous subarray in a single operation?
-3. Can this be extended to multi‑dimensional vectors with Manhattan distance?
+3. Can this be extended to multi-dimensional vectors with Manhattan distance?
 
 ## Key Takeaway
 The minimal operations equal the total absolute adjustment needed when the sign of the required change switches, which can be computed by a linear scan of the difference array.

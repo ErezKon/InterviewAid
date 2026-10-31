@@ -43,7 +43,7 @@ Example 1:
 
 ## Approach
 
-Pre‑compute a prefix‑sum array where `prefix[i]` stores the sum of the first `i` elements.
+Pre-compute a prefix-sum array where `prefix[i]` stores the sum of the first `i` elements.
 
 ```text
 CLASS NumArray:
@@ -72,4 +72,4 @@ CLASS NumArray:
 
 ## Key Takeaway
 
-> Prefix sums turn range‑sum queries on a static array into constant‑time lookups: `sum(l,r) = prefix[r+1] - prefix[l]`.
+> Prefix sums turn range-sum queries on a static array into constant-time lookups: `sum(l,r) = prefix[r+1] - prefix[l]`.

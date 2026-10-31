@@ -37,7 +37,7 @@ Explanation: "abab" is the largest prefix which is also suffix. They can overlap
 ```text
 FUNCTION longestHappyPrefix(s):
     n ← LENGTH(s)
-    lps ← ARRAY of 0's size n   // longest proper prefix‑suffix lengths
+    lps ← ARRAY of 0's size n   // longest proper prefix-suffix lengths
     j ← 0
     FOR i ← 1 TO n - 1:
         WHILE j > 0 AND s[i] != s[j]:
@@ -51,7 +51,7 @@ FUNCTION longestHappyPrefix(s):
 ## 4. Walkthrough
 
 For `s = "ababab"`:
-1. Build `lps` array step‑by‑step:
+1. Build `lps` array step-by-step:
    - i=1 (`b` vs `a`): j stays 0 → lps[1]=0
    - i=2 (`a` vs `a`): j→1 → lps[2]=1
    - i=3 (`b` vs `b`): j→2 → lps[3]=2
@@ -67,7 +67,7 @@ For `s = "ababab"`:
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return *all* happy prefixes?
-- Can you solve the problem using a rolling hash (Rabin‑Karp) instead of KMP?
+- Can you solve the problem using a rolling hash (Rabin-Karp) instead of KMP?
 - What changes are needed if the string may contain Unicode characters with large alphabets?
 
 ## 7. Key Takeaway

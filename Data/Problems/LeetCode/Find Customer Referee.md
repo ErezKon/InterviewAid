@@ -90,7 +90,7 @@ WHERE referee_id != 2 OR referee_id IS NULL;
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the query to exclude customers referred by a set of ids, e.g., `{2, 5, 7}`?
 2. How can you write the query using a `LEFT JOIN` instead of direct filtering?

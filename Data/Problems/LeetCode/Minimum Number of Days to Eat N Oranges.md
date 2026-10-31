@@ -48,7 +48,7 @@ You need at least 3 days to eat the 6 oranges.
 
 ## Approach
 
-**Algorithm:** Top‑down recursion with memoization (DFS). For a given `x` the optimal answer is:
+**Algorithm:** Top-down recursion with memoization (DFS). For a given `x` the optimal answer is:
 ```
 1 + min( solve(x-1),
           solve(x/2)   if x % 2 == 0,
@@ -86,7 +86,7 @@ For `n = 10`:
 - **Time:** Roughly `O(number of distinct states)`, which is far smaller than `n` (empirically about `O(log n)`).
 - **Space:** `O(number of distinct states)` for the memo map and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if the division operations had different cost penalties?
 - Can the problem be solved iteratively using a priority queue (Dijkstra) over the state space?
@@ -94,4 +94,4 @@ For `n = 10`:
 
 ## Key Takeaway
 
-A memoized depth‑first search efficiently computes the minimum days by exploring only the reachable states and reusing sub‑problem results.
+A memoized depth-first search efficiently computes the minimum days by exploring only the reachable states and reusing sub-problem results.

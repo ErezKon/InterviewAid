@@ -73,7 +73,7 @@ FUNCTION kthCharacter(node, k):
     ELSE:
         RETURN kthCharacter(node.right, k - leftLength)
 ```
-The root's `totalLength` is pre‑computed, so each step reduces the search space by half on average.
+The root's `totalLength` is pre-computed, so each step reduces the search space by half on average.
 
 ## Walkthrough
 For the tree representing "ab" (left) and "cde" (right) with `k = 3`:
@@ -84,7 +84,7 @@ For the tree representing "ab" (left) and "cde" (right) with `k = 3`:
 The algorithm directly lands on the correct leaf.
 
 ## Complexity Analysis
-- **Time:** O(h) where h is the height of the rope tree (≈ O(log n) for a balanced rope).
+- **Time:** O(h) where h is the height of the rope tree (≈ O(log n) for a balanced rope).
 - **Space:** O(h) recursion stack.
 
 ## Follow-Up Questions
@@ -93,4 +93,4 @@ The algorithm directly lands on the correct leaf.
 3. What changes are needed to support range queries (e.g., substring extraction)?
 
 ## Key Takeaway
-Using the stored subtree lengths, a rope tree enables logarithmic‑time random access to any character.
+Using the stored subtree lengths, a rope tree enables logarithmic-time random access to any character.

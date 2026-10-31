@@ -54,7 +54,7 @@ Example 3:
 ```
 
 ## Approach
-**Sort + Binary Search – One‑Swap Optimization** – Compute the original total difference. Sort a copy of `nums1`. For each index, binary‑search the closest value in the sorted array to `nums2[i]` to determine the maximal reduction achievable by swapping that element.
+**Sort + Binary Search – One-Swap Optimization** – Compute the original total difference. Sort a copy of `nums1`. For each index, binary-search the closest value in the sorted array to `nums2[i]` to determine the maximal reduction achievable by swapping that element.
 
 ```text
 FUNCTION MinAbsoluteSumDiff(nums1, nums2):
@@ -90,7 +90,7 @@ FUNCTION MinAbsoluteSumDiff(nums1, nums2):
 - **Time:** `O(n log n)` for sorting and binary searches.
 - **Space:** `O(n)` for the sorted copy.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if you could perform up to `k` replacements instead of just one?
 2. Can you adapt the solution to return the actual index and value to replace for the optimal improvement?
 3. What if the arrays are extremely large and must be processed in a streaming fashion?

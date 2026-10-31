@@ -51,13 +51,13 @@ Example 3:
 - **Time:** O(max(m, n)) where m and n are the lengths of the two strings.
 - **Space:** O(max(m, n)) for the result list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to add numbers in bases other than 10?
 2. Can you perform the addition in place if the strings are mutable arrays?
 3. What changes are needed to add three or more numbers simultaneously?
 
 ## Key Takeaway
-Adding two numeric strings is a straightforward digit‑by‑digit simulation using pointers and a carry, mirroring manual addition.
+Adding two numeric strings is a straightforward digit-by-digit simulation using pointers and a carry, mirroring manual addition.
 
 ---
 

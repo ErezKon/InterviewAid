@@ -90,7 +90,7 @@ CLASS AutocompleteSystem:
 
 ## Walkthrough
 
-| Step | Input | Current Prefix | Node Exists? | Returned Top‑3 |
+| Step | Input | Current Prefix | Node Exists? | Returned Top-3 |
 |------|-------|----------------|--------------|----------------|
 | 1 | 'i' | "i" | Yes (root → 'i') | [] (no complete sentence yet) |
 | 2 | ' ' | "i " | Yes (node for space) | ["i love you", "i love leetcode"] (freq 5 and 2) |

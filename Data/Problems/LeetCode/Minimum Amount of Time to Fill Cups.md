@@ -86,10 +86,10 @@ For `amount = [1,4,2]`:
 | Direct formula | O(1) | O(1) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the problem change if you could fill up to three cups per second as long as they are of different types?
-2. What if each cup type had a different fill rate (e.g., one cup per second for type 0, two per second for type 1)?
+2. What if each cup type had a different fill rate (e.g., one cup per second for type 0, two per second for type 1)?
 ---
 
 ## Key Takeaway

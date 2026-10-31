@@ -56,7 +56,7 @@ Explanation: Since the first room in the warehouse is of height 1, we can only p
 ```
 
 ## Approach
-1. Convert the warehouse heights to a non‑increasing sequence from left to right by taking a running minimum.
+1. Convert the warehouse heights to a non-increasing sequence from left to right by taking a running minimum.
 2. Sort `boxes` in ascending order.
 3. Iterate over the sorted boxes, trying to place each box in the rightmost remaining warehouse segment that can accommodate it. Decrease the segment pointer after each successful placement.
 
@@ -92,7 +92,7 @@ FUNCTION maxBoxesInWarehouse(boxes, warehouse):
 - **Space:** O(1) extra beyond input arrays.
 
 ## Follow-Up Questions
-1. How would you adapt the algorithm for Warehouse II where boxes can be placed from either side?
+1. How would you adapt the algorithm for Warehouse II where boxes can be placed from either side?
 2. Can you solve the problem without sorting the boxes, perhaps using a counting sort for bounded heights?
 3. How would you handle the case where boxes have widths and must occupy consecutive segments?
 

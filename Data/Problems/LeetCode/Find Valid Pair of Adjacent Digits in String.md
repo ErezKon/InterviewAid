@@ -61,7 +61,7 @@ Explanation: Digit '1' appears once, '2' appears twice, and they form the first 
 ```
 Input: s = "1122"
 Output: ""
-Explanation: No adjacent pair meets the frequency‑value condition.
+Explanation: No adjacent pair meets the frequency-value condition.
 ```
 
 ---

@@ -67,7 +67,7 @@ FUNCTION reorderSpaces(text):
 
 ## Follow-Up Questions
 1. How would you modify the solution to preserve the original order of multiple consecutive spaces within words?
-2. Can the algorithm be performed in‑place on a mutable character array?
+2. Can the algorithm be performed in-place on a mutable character array?
 3. How to handle Unicode whitespace characters beyond the ASCII space?
 
 ## Key Takeaway

@@ -68,4 +68,4 @@ Consider `[10,2,5,3]`:
 3. What changes are needed if the array is sorted?
 
 ## Key Takeaway
-Using a hash set to record previously seen values enables constant‑time look‑ups for the required double or half relationship, yielding a linear‑time solution.
+Using a hash set to record previously seen values enables constant-time look-ups for the required double or half relationship, yielding a linear-time solution.

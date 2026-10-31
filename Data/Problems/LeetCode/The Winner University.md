@@ -70,7 +70,7 @@ Example 1:
   | New York University |
   +---------------------+
   Explanation:
-  New York University has 1 excellent student, and California University has 0 excellent students.
+  New York University has 1 excellent student, and California University has 0 excellent students.
 ```
 ```
 Example 2:
@@ -96,7 +96,7 @@ Example 2:
   | California University |
   +-----------------------+
   Explanation:
-  New York University has 0 excellent students, and California University has 1 excellent student.
+  New York University has 0 excellent students, and California University has 1 excellent student.
 ```
 ```
 Example 3:
@@ -153,7 +153,7 @@ The scan runs in linear time.
 - **Time:** O(n) where n is the number of universities.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return all indices that share the maximum vote count?
 2. If the votes are streamed in real time, how can you maintain the winner efficiently?
 3. How would you handle ties by preferring the university with the smallest alphabetical name instead of index?

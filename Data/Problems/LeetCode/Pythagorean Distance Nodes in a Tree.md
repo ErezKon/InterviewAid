@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented perfect-square-distance pair-counting problem. Correct idea: run three BFS passes from `x`, `y`, `z` to get `d1`, `d2`, `d3`; for each node sort `(d1[u], d2[u], d3[u])` as `a ≤ b ≤ c` and count it if `a² + b² = c²`. O(n).*
-
 You are given an integer `n` and an undirected tree with `n` nodes numbered from 0 to `n - 1`. The tree is represented by a 2D array `edges` of length `n - 1`, where `edges[i] = [u_i, v_i]` indicates an undirected edge between `u_i` and `v_i`.
 
 You are also given three **distinct** target nodes `x`, `y`, and `z`.
@@ -78,68 +76,54 @@ Therefore, the answer is 1.
 ```
 
 ## Approach
-Perform a DFS from each node computing distances to all descendants. While traversing, maintain a hash set of distances that are perfect squares (pre‑compute squares up to the maximum possible path length). For each visited node, if its accumulated distance is a perfect square, increment the count. To avoid O(n^2), use centroid decomposition: recursively decompose the tree, for each centroid count pairs crossing the centroid using distance frequency maps.
+Only distances to the three fixed targets matter, so compute them with three BFS passes (the tree is unweighted): `dx[]` from `x`, `dy[]` from `y`, `dz[]` from `z`. Then, for every node `u`, sort `(dx[u], dy[u], dz[u])` into `a <= b <= c` and count `u` if `a² + b² = c²`. Note that `0` is allowed, so each target node is special exactly when its distances to the other two targets are equal.
 
 ```text
-FUNCTION countPythagoreanPairs(tree):
-    SET maxDist ← maximum possible sum of edge lengths
-    SET perfectSquares ← SET of i*i for i ← 1 TO sqrt(maxDist)
-    RETURN centroidDecompose(tree, perfectSquares)
-
-FUNCTION centroidDecompose(subtree, perfectSquares):
-    IF subtree is empty: RETURN 0
-    SET centroid ← findCentroid(subtree)
-    MARK centroid as processed
-    SET total ← 0
-    // count pairs where one endpoint is centroid
-    FOR each neighbor IN adjacency[centroid]:
-        IF neighbor is processed: CONTINUE
-        SET distances ← []
-        dfsCollect(neighbor, centroid, edgeWeight, distances)
-        FOR d IN distances:
-            IF d IN perfectSquares:
-                INCREMENT total   // (centroid, node)
-        // count pairs across different subtrees via frequency map
-        total += countCrossPairs(distances, globalFreq, perfectSquares)
-        // merge distances into global frequency map
-        FOR d IN distances: INCREMENT globalFreq[d]
-    // recurse on each component
-    FOR each neighbor IN adjacency[centroid]:
-        IF neighbor not processed:
-            total += centroidDecompose(component rooted at neighbor, perfectSquares)
-    RETURN total
-
-FUNCTION dfsCollect(node, parent, accDist, list):
-    APPEND accDist TO list
-    FOR each (next, w) IN adjacency[node]:
-        IF next != parent AND not processed:
-            dfsCollect(next, node, accDist + w, list)
-
-FUNCTION countCrossPairs(distList, freqMap, perfectSquares):
+FUNCTION countSpecialNodes(n, edges, x, y, z):
+    BUILD adjacency list from edges
+    SET dx ← BFS(x)
+    SET dy ← BFS(y)
+    SET dz ← BFS(z)
     SET count ← 0
-    FOR d IN distList:
-        FOR sq IN perfectSquares:
-            SET need ← sq - d
-            IF need IN freqMap:
-                INCREMENT count BY freqMap[need]
+    FOR u ← 0 TO n - 1:
+        SET (a, b, c) ← SORTED(dx[u], dy[u], dz[u])
+        IF a*a + b*b = c*c:
+            INCREMENT count
     RETURN count
+
+FUNCTION BFS(source):
+    SET dist ← ARRAY OF -1 LENGTH n
+    SET dist[source] ← 0
+    SET queue ← [source]
+    WHILE queue NOT EMPTY:
+        SET node ← POP FRONT(queue)
+        FOR each next IN adjacency[node]:
+            IF dist[next] = -1:
+                SET dist[next] ← dist[node] + 1
+                PUSH next TO queue
+    RETURN dist
 ```
 
 ## Walkthrough
-| Step | Centroid | Processed Subtree Distances | Pairs Found |
-|------|----------|----------------------------|-------------|
-| 1 | 2 | from child 1: [1]; from child 3: [3]; from child 4: [4] | (2,4) distance 4 |
-| 2 | Cross‑subtree check: 1+3=4 (perfect) → (1,3) counted |
-| … | … | … | … |
+Example 3: `n = 4`, `edges = [[0,1],[1,2],[1,3]]`, `x = 1`, `y = 3`, `z = 0` (star centered at node 1).
+
+| Node | dx (to 1) | dy (to 3) | dz (to 0) | Sorted | a² + b² vs c² | Special? |
+|------|-----------|-----------|-----------|--------|---------------|----------|
+| 0 | 1 | 2 | 0 | (0,1,2) | 1 vs 4 | no |
+| 1 | 0 | 1 | 1 | (0,1,1) | 1 vs 1 | yes |
+| 2 | 1 | 2 | 2 | (1,2,2) | 5 vs 4 | no |
+| 3 | 1 | 0 | 2 | (0,1,2) | 1 vs 4 | no |
+
+Count = `1`.
 
 ## Complexity Analysis
-- **Time:** Centroid decomposition gives O(n log n) with distance map operations.
-- **Space:** O(n) for adjacency and auxiliary maps.
+- **Time:** O(n) - three BFS traversals plus a constant-time check per node.
+- **Space:** O(n) for the adjacency list, queue, and three distance arrays.
 
 ## Follow-Up Questions
-1. How would the solution change if edge lengths could be negative?
-2. Can you extend the algorithm to count unordered pairs only?
-3. How would you adapt it for dynamic updates (adding/removing edges)?
+1. How would you handle weighted edges (use DFS with accumulated weights, still O(n) on a tree)?
+2. How would you answer many queries `(x, y, z)` efficiently (LCA with binary lifting to get each distance in O(log n))?
+3. What if the condition involved `k` target nodes instead of three - how does the cost scale?
 
 ## Key Takeaway
-Centroid decomposition lets us count distance‑based pair properties efficiently by breaking the tree into manageable components and using frequency maps of path lengths.
+When a property depends on distances to a few fixed nodes, run one BFS per target and evaluate the condition per node - no pairwise or centroid machinery needed.

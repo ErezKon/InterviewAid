@@ -108,4 +108,4 @@ The final result is 2.
 
 ## 6. Key Takeaway
 
-> **Check if a string is a prefix of the target, then look up the remaining suffix in a counter.** Handle self‑pairing edge case.
+> **Check if a string is a prefix of the target, then look up the remaining suffix in a counter.** Handle self-pairing edge case.

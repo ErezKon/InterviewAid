@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented partitioning problem. Correct idea: groups are fixed (≤ 20 labels). Root the tree; for each edge (parent, child) and each label `g`, the edge lies on `cnt_g(subtree) · (total_g − cnt_g(subtree))` same-group paths. One DFS computing per-subtree label counts gives the answer as the sum over edges and labels. O(20·n).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer `n` and an undirected tree with `n` nodes numbered from 0 to `n - 1`. This is represented by a 2D array `edges` of length `n - 1`, where `edges[i] = [u_i, v_i]` indicates an undirected edge between nodes `u_i` and `v_i`.
 
@@ -68,69 +68,58 @@ Explanation: All nodes belong to different groups and there are no valid pairs. 
 ```
 
 ## Approach
-The optimal strategy is to pair (or group) nodes that are closest together. For `k = 2` this reduces to finding a maximum matching of edges with minimum total distance, which can be solved greedily by processing edges in increasing distance (all edges have weight 1 in an unweighted tree). For larger `k`, repeatedly merge the two closest groups until each group size ≤ k.
+Instead of summing path lengths pair by pair, count how many same-group paths use each edge (the classic "contribution of an edge" technique).
+
+Root the tree at node 0. Removing the edge `(parent, child)` splits the tree into the subtree of `child` and the rest. For a label `g`, if the child's subtree contains `c_g` nodes of label `g` and the whole tree contains `total_g`, then exactly `c_g · (total_g − c_g)` same-group pairs have their path crossing this edge, and each such crossing adds 1 to their interaction cost. Summing over all edges and all labels (at most 20) gives the answer.
+
+Per-subtree label counts are computed bottom-up with one iterative DFS (avoids recursion depth issues for n = 10^5). The answer can reach ~n³/6, so use 64-bit integers.
 
 ```text
-FUNCTION minInteractionCost(n, edges, k):
-    // build adjacency list
+FUNCTION interactionCosts(n, edges, group):
     CREATE adj[n] as empty lists
-    FOR each (u,v) IN edges:
+    FOR each (u, v) IN edges
         APPEND v TO adj[u]
         APPEND u TO adj[v]
-    // compute all pairwise distances using BFS from each node (O(n^2))
-    CREATE dist[n][n]
-    FOR i FROM 0 TO n-1:
-        CALL bfs(i, adj, dist[i])
-    // create list of all pairs with their distance
-    CREATE pairList ← []
-    FOR i FROM 0 TO n-1:
-        FOR j FROM i+1 TO n-1:
-            APPEND (i, j, dist[i][j]) TO pairList
-    SORT pairList BY distance ASCENDING
-    // DSU to form groups up to size k
-    CREATE parent[n] where parent[i]=i
-    CREATE size[n] where size[i]=1
-    SET totalCost ← 0
-    FOR (u,v,d) IN pairList:
-        SET pu ← FIND(parent, u)
-        SET pv ← FIND(parent, v)
-        IF pu ≠ pv AND size[pu] + size[pv] ≤ k:
-            UNION(parent, size, pu, pv)
-            SET totalCost ← totalCost + d
-    RETURN totalCost
-
-FUNCTION bfs(start, adj, distRow):
-    CREATE queue
-    ENQUEUE(queue, start)
-    SET visited[start] ← true
-    SET distRow[start] ← 0
-    WHILE NOT EMPTY(queue):
-        SET node ← DEQUEUE(queue)
-        FOR nb IN adj[node]:
-            IF NOT visited[nb]:
-                SET visited[nb] ← true
-                SET distRow[nb] ← distRow[node] + 1
-                ENQUEUE(queue, nb)
+    total[1..20] ← 0
+    FOR i ← 0 TO n-1
+        total[group[i]] ← total[group[i]] + 1
+    // iterative DFS from root 0 to get parent[] and a visiting order
+    parent[0] ← -1; order ← []; stack ← [0]; mark 0 visited
+    WHILE stack not empty
+        u ← POP(stack); APPEND u TO order
+        FOR v IN adj[u]
+            IF v not visited
+                mark v visited; parent[v] ← u; PUSH(stack, v)
+    cnt[i][g] ← 1 IF group[i] = g ELSE 0
+    ans ← 0
+    FOR u IN order REVERSED            // children before parents
+        IF parent[u] ≠ -1
+            FOR g ← 1 TO 20
+                c ← cnt[u][g]
+                ans ← ans + c * (total[g] - c)   // pairs crossing edge (parent[u], u)
+                cnt[parent[u]][g] ← cnt[parent[u]][g] + c
+    RETURN ans
 ```
 
 ## Walkthrough
-For the first example (`k=2`):
-1. All edges have distance 1, pair list sorted accordingly.
-2. Process edge (0,1): groups sizes 1+1 ≤2 → merge, cost +1.
-3. Edge (1,2): now group {0,1} size 2, cannot merge with 2 (size would be 3) → skip.
-4. Edge (1,3): skip (size 2 + 1 >2).
-5. Edge (3,4): merge groups {3} and {4}, cost +1.
-6. Remaining isolated node 2 stays alone.
-Total cost = 1+1+2 (distance between 2 and 3 is 2) = 4.
+Example 3: `n = 4`, `edges = [[0,1],[0,2],[0,3]]`, `group = [1,1,4,4]`. Totals: `total[1] = 2`, `total[4] = 2`. Root at 0; nodes 1, 2, 3 are leaves.
+
+| Edge (parent, child) | Subtree label counts | Contribution |
+|----------------------|----------------------|--------------|
+| (0, 1) | g1: 1 | 1 · (2 − 1) = 1 |
+| (0, 2) | g4: 1 | 1 · (2 − 1) = 1 |
+| (0, 3) | g4: 1 | 1 · (2 − 1) = 1 |
+
+Total = 1 + 1 + 1 = **3**, matching the expected output (pair (0,1) costs 1, pair (2,3) costs 2 = the two edges (0,2) and (0,3)).
 
 ## Complexity Analysis
-*Time*: `O(n^2 log n)` for computing all‑pair distances and sorting (acceptable for `n ≤ 200`).
-*Space*: `O(n^2)` for the distance matrix and `O(n)` for DSU structures.
+*Time*: `O(20 · n)` — one DFS plus 20 labels per edge.
+*Space*: `O(20 · n)` for per-node label counts (can be reduced by processing labels one at a time, or by merging counts into the parent and discarding the child's array).
 
-## Follow‑Up Questions
-1. How would you improve the algorithm for `n` up to 10⁵ (e.g., using centroid decomposition)?
-2. What changes if edge weights are arbitrary positive integers?
-3. Can you output the actual grouping of nodes achieving the minimum cost?
+## Follow-Up Questions
+1. If the number of distinct labels were up to `n`, how would you handle it (e.g., small-to-large merging or a virtual tree per label)?
+2. How does the solution change if edges have positive weights?
+3. How would you answer the same query restricted to pairs from *different* groups?
 
 ## Key Takeaway
-Merging the closest groups while respecting the size limit `k` (via a DSU on sorted pair distances) yields the minimal total interaction cost.
+The sum of pairwise tree distances equals the sum over edges of the number of pairs separated by that edge; with a small label set, tracking per-label subtree counts makes this O(labels · n).

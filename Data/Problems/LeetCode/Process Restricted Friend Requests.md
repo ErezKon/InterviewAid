@@ -63,10 +63,10 @@ Request 3: Person 3 and person 4 cannot be friends since person 0 and person 1 w
 ```
 
 ## Approach
-Use a Union‑Find (Disjoint Set Union) data structure to maintain friend groups. For each request `[a,b]`:
+Use a Union-Find (Disjoint Set Union) data structure to maintain friend groups. For each request `[a,b]`:
 1. Find the roots `ra` and `rb` of `a` and `b`.
 2. If `ra == rb`, the request is already satisfied → accept.
-3. Otherwise, simulate merging: for each restriction `[x,y]`, check if `find(x)` equals `ra` and `find(y)` equals `rb` (or vice‑versa). If any such restriction would be violated, reject the request.
+3. Otherwise, simulate merging: for each restriction `[x,y]`, check if `find(x)` equals `ra` and `find(y)` equals `rb` (or vice-versa). If any such restriction would be violated, reject the request.
 4. If no violation, perform `union(ra, rb)` and accept.
 The simulation step can be optimized by storing for each component the set of restricted partners, but the straightforward O(R) check per request is acceptable for moderate sizes.
 
@@ -102,16 +102,16 @@ The `UNION_FIND` supports `find` with path compression and `union` by rank.
 ## Walkthrough
 For the first example:
 1. Request `[0,1]`: roots 0 and 1, no restriction violated → union → accept.
-2. Request `[1,2]`: roots (0‑group) and 2, restriction `[0,2]` would connect 0 and 2 if merged, but after union they become connected, so we must check before union. Since `find(0)=0` (in group of 0) and `find(2)=2`, the restriction would be violated → reject? Actually the correct logic is to check after union; the algorithm checks before union and sees that merging would connect restricted pair, so it rejects. In this case the correct answer is accept first two, reject third, matching the example.
+2. Request `[1,2]`: roots (0-group) and 2, restriction `[0,2]` would connect 0 and 2 if merged, but after union they become connected, so we must check before union. Since `find(0)=0` (in group of 0) and `find(2)=2`, the restriction would be violated → reject? Actually the correct logic is to check after union; the algorithm checks before union and sees that merging would connect restricted pair, so it rejects. In this case the correct answer is accept first two, reject third, matching the example.
 
 ## Complexity Analysis
-- **Time:** `O(Q * (α(N) + R))` where `Q` is number of requests, `R` number of restrictions, and `α` inverse Ackermann for Union‑Find operations.
-- **Space:** `O(N + R)` for the Union‑Find parent/rank arrays and restriction list.
+- **Time:** `O(Q * (α(N) + R))` where `Q` is number of requests, `R` number of restrictions, and `α` inverse Ackermann for Union-Find operations.
+- **Space:** `O(N + R)` for the Union-Find parent/rank arrays and restriction list.
 
-## Follow‑Up Questions
-1. How can you improve the per‑request check to near‑O(1) using adjacency lists of restricted components?
+## Follow-Up Questions
+1. How can you improve the per-request check to near-O(1) using adjacency lists of restricted components?
 2. What changes are needed if restrictions are dynamic (added/removed) during processing?
 3. Can the algorithm be parallelised for batches of independent requests?
 
 ## Key Takeaway
-Union‑Find efficiently tracks friend groups, and each request is accepted only if merging the groups does not connect any restricted pair.
+Union-Find efficiently tracks friend groups, and each request is accepted only if merging the groups does not connect any restricted pair.

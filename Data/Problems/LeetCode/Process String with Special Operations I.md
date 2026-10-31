@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below only handle a backspace character, not the official `*` / `#` / `%` operations. Correct idea: simulate directly with a list — letter → append, `*` → pop if non-empty, `#` → `result += result`, `%` → reverse (`s.length <= 20`, so the result stays small).*
-
 You are given a string `s` consisting of lowercase English letters and the special characters: `*`, `#`, and `%`.
 
 Build a new string `result` by processing `s` according to the following rules from left to right:
@@ -56,45 +54,53 @@ Thus, the final result is "".
 ```
 
 ## Approach
-Use a stack to build the resulting characters. Iterate over each character `ch` in `s`:
-- If `ch` is not `#`, push it onto the stack.
-- If `ch` is `#` and the stack is non‑empty, pop the top element (the character to delete).
-After the loop, join the stack contents to form the final string.
+With `s.length <= 20`, the result stays small (at most about `2^19` characters in the extreme all-`#` case, in practice far less), so direct simulation with a character list is enough. Iterate over each character `ch` in `s`:
+- Lowercase letter: append it to `result`.
+- `*`: pop the last character if `result` is non-empty.
+- `#`: append a copy of `result` to itself.
+- `%`: reverse `result` in place.
+After the loop, join the list into the final string.
 
 ### Pseudocode
 ```text
-FUNCTION processString(s):
-    SET stack ← []
+FUNCTION processStr(s):
+    SET result ← []
     FOR ch IN s:
-        IF ch == '#':
-            IF stack NOT EMPTY:
-                POP(stack)
+        IF ch == '*':
+            IF result NOT EMPTY:
+                POP(result)
+        ELSE IF ch == '#':
+            SET result ← result + result
+        ELSE IF ch == '%':
+            REVERSE(result)
         ELSE:
-            APPEND ch TO stack
+            APPEND ch TO result
     END FOR
-    RETURN JOIN(stack, "")
+    RETURN JOIN(result, "")
 ```
-The stack naturally handles consecutive `#` characters and ensures deletions occur in the correct order.
+`*` on an empty result and `#` / `%` on an empty result are naturally no-ops.
 
 ## Walkthrough
-For `"abc#d"`:
-| Step | ch | Stack after step |
-|------|----|------------------|
+Example 1: `s = "a#b%*"`.
+
+| Step | ch | result after step |
+|------|----|-------------------|
 | 1 | a | [a] |
-| 2 | b | [a,b] |
-| 3 | c | [a,b,c] |
-| 4 | # | [a,b] (pop c) |
-| 5 | d | [a,b,d] |
-Result = "abd".
+| 2 | # | [a,a] |
+| 3 | b | [a,a,b] |
+| 4 | % | [b,a,a] |
+| 5 | * | [b,a] (pop a) |
+
+Result = `"ba"`.
 
 ## Complexity Analysis
-- **Time:** `O(n)` where `n` is the length of `s` – each character is processed once.
-- **Space:** `O(n)` for the stack in the worst case (no `#` characters).
+- **Time:** `O(n * L)` where `L` is the maximum length `result` reaches - each `#` or `%` costs time linear in the current length; with `n <= 20` this is tiny.
+- **Space:** `O(|result|)` for the character list.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to handle a different delete‑character rule, e.g., deleting the next character instead of the previous?
-2. Can the solution be adapted to work in‑place without extra stack space?
-3. How would you extend the approach to support multiple types of special characters with different deletion behaviors?
+## Follow-Up Questions
+1. If `s` could be `10^5` characters long and you only needed the `k`-th character, how would you avoid building the string? (See part II: track lengths and map `k` backwards.)
+2. How could you make `%` O(1) by keeping a deque and a "reversed" flag instead of physically reversing?
+3. How would you add an undo operation that reverts the previous special operation?
 
 ## Key Takeaway
-A stack provides an elegant way to simulate backspace‑like deletions, handling arbitrary sequences of `#` characters in linear time.
+When constraints are tiny, direct simulation of each operation on a mutable list is the simplest correct solution; recognize when size limits stop it from scaling.

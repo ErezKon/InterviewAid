@@ -71,10 +71,10 @@ Example 2:
 Consider the first example `[1,1,2,2,2]`.
 1. Total sum = 8, side length = 2.
 2. Sorted sticks: `[2,2,2,1,1]`.
-3. Place first `2` on side 0 → sides = `[2,0,0,0]`.
-4. Next `2` cannot go to side 0 (full), placed on side 1 → sides = `[2,2,0,0]`.
-5. Next `2` goes to side 2 → sides = `[2,2,2,0]`.
-6. Remaining `1`s fit into side 3 → sides = `[2,2,2,2]` → all sides equal → return true.
+3. Place first `2` on side 0 → sides = `[2,0,0,0]`.
+4. Next `2` cannot go to side 0 (full), placed on side 1 → sides = `[2,2,0,0]`.
+5. Next `2` goes to side 2 → sides = `[2,2,2,0]`.
+6. Remaining `1`s fit into side 3 → sides = `[2,2,2,2]` → all sides equal → return true.
 
 ---
 
@@ -95,4 +95,4 @@ Consider the first example `[1,1,2,2,2]`.
 
 ## Key Takeaway
 
-> Partition into 4 equal‑sum groups via backtracking. Key prunings: sort descending (fail fast), skip sides with identical current sums (symmetry), and abort when a stick exceeds the remaining capacity.
+> Partition into 4 equal-sum groups via backtracking. Key prunings: sort descending (fail fast), skip sides with identical current sums (symmetry), and abort when a stick exceeds the remaining capacity.

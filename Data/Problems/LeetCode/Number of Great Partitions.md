@@ -99,7 +99,7 @@ Take `nums = [1,2,3,4]`, `k = 5`.
    - Process `2`: update `dp[3] = 1`, `dp[2] = 1`.
    - Process `3`: update `dp[4] = 1`, `dp[5]` ignored (≥k).
    - Process `4`: no updates for sums <5.
-   - Final `dp` for sums `<5` = `[1,1,1,1,1]` (subsets with sums 0‑4).
+   - Final `dp` for sums `<5` = `[1,1,1,1,1]` (subsets with sums 0-4).
 3. **Bad subsets** = sum(dp) = 5. Multiply by 2 → 10 bad partitions.
 4. **Total partitions** = 2⁴ = 16.
 5. **Great partitions** = 16 - 10 = 6, but each good partition counted twice (swap sides), so final answer = 6 / 2 = 3. Modulo gives `3` (matches example).
@@ -125,4 +125,4 @@ Take `nums = [1,2,3,4]`, `k = 5`.
 
 ## 8. Key Takeaway
 
-> **Complementary counting:** compute total partitions and subtract those where a side’s sum is insufficient using a knapsack DP. This flips a hard counting problem into a manageable subset‑sum computation.
+> **Complementary counting:** compute total partitions and subtract those where a side’s sum is insufficient using a knapsack DP. This flips a hard counting problem into a manageable subset-sum computation.

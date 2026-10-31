@@ -114,10 +114,10 @@ FUNCTION basicCalculatorIV(expression, evalvars, evalints):
 | ... | after full parse | combined map of terms |
 
 ## Complexity Analysis
-- **Time:** O(L · log L) where L is the length of the expression, due to sorting term keys during multiplication.
+- **Time:** O(L · log L) where L is the length of the expression, due to sorting term keys during multiplication.
 - **Space:** O(T) where T is the number of distinct terms generated.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the parser to support exponentiation `^`?
 2. Can the algorithm be optimized to avoid full term sorting by using a canonical representation?
 3. How would you handle division of polynomials?

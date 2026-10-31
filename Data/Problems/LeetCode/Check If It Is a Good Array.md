@@ -59,13 +59,13 @@ FUNCTION isGoodArray(nums):
 Final GCD = 1 → `true`.
 
 ## Complexity Analysis
-- **Time:** O(n · log M) where `M` is the maximum element (Euclidean algorithm).
+- **Time:** O(n · log M) where `M` is the maximum element (Euclidean algorithm).
 - **Space:** O(1) – only a few scalar variables.
 
 ## Follow-Up Questions
-1. How would you adapt the solution to return an actual subset achieving sum 1?
+1. How would you adapt the solution to return an actual subset achieving sum 1?
 2. What if the target sum is a value `t` other than `1`?
 3. Can the problem be solved using linear algebra over the integers?
 
 ## Key Takeaway
-The existence of a subset summing to 1 is determined solely by the GCD of all numbers; a GCD of 1 guarantees such a subset.
+The existence of a subset summing to 1 is determined solely by the GCD of all numbers; a GCD of 1 guarantees such a subset.

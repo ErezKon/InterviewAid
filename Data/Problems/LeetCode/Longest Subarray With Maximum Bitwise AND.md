@@ -86,7 +86,7 @@ The algorithm tracks the length of the current run of the maximum value, yieldin
 
 ## 6. Follow-Up Questions
 
-- How would the solution change if you needed the subarray with the second‑largest possible AND?
+- How would the solution change if you needed the subarray with the second-largest possible AND?
 - Can you extend the approach to handle queries for the longest subarray achieving a given AND value?
 
 ---

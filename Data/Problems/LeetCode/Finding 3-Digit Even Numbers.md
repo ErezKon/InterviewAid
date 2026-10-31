@@ -68,7 +68,7 @@ Explanation: No even integers can be formed using the given digits.
 
 ## 3. Key Insight
 
-> Instead of permuting indices, iterate all 3‑digit even numbers (100‑998, step 2) and check if each can be formed from the available digits.
+> Instead of permuting indices, iterate all 3-digit even numbers (100-998, step 2) and check if each can be formed from the available digits.
 
 ---
 
@@ -81,7 +81,7 @@ FUNCTION findEvenNumbers(digits):
     FOR d IN digits:
         INCREMENT freq[d]
     result ← []
-    // Enumerate every even 3‑digit number
+    // Enumerate every even 3-digit number
     FOR num FROM 100 TO 998 STEP 2:
         hundreds ← num / 100
         tens ← (num / 10) % 10
@@ -121,7 +121,7 @@ FUNCTION findEvenNumbers(digits):
 
 ## 7. Follow-Up Questions
 
-- How would you adapt the solution if the length of the numbers to form were variable (e.g., 4‑digit numbers)?
+- How would you adapt the solution if the length of the numbers to form were variable (e.g., 4-digit numbers)?
 - Can the approach be extended to generate numbers with additional constraints such as being divisible by 3?
 - What if the input digits could be reused unlimited times?
 

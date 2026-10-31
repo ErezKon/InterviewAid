@@ -130,7 +130,7 @@ Take `num = 1010`:
 
 1. How would you detect if the process enters a cycle without storing all previous values?
 2. Can the algorithm be optimized for extremely large numbers using string manipulation instead of integer arithmetic?
-3. What is the maximum number of iterations possible for a 32‑bit integer input?
+3. What is the maximum number of iterations possible for a 32-bit integer input?
 
 ---
 

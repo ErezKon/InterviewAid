@@ -131,4 +131,4 @@ All grains consumed with T=3.
 
 ## 7. Key Takeaway
 
-> **Binary search on time combined with greedy left‑to‑right assignment** efficiently determines the minimal feasible time. This pattern appears in many “minimum‑time” scheduling problems.
+> **Binary search on time combined with greedy left-to-right assignment** efficiently determines the minimal feasible time. This pattern appears in many “minimum-time” scheduling problems.

@@ -100,7 +100,7 @@ The algorithm traverses the list at most twice and uses constant extra space.
 ## Follow-Up Questions
 
 1. How would you modify the algorithm to return the length of the cycle?
-2. Can you detect a cycle using only O(1) extra space without the two‑pointer technique?
+2. Can you detect a cycle using only O(1) extra space without the two-pointer technique?
 3. What changes are needed if the list is a doubly linked list?
 
 ---

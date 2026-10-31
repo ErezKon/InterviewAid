@@ -82,10 +82,10 @@ Sum of even parts = 6, an odd character exists → add 1 → total = 7.
 
 - How would you modify the algorithm to return the actual palindrome string, not just its length?
 - What if the input could contain Unicode characters beyond English letters?
-- Can the solution be adapted to handle case‑insensitive counting?
+- Can the solution be adapted to handle case-insensitive counting?
 
 ---
 
 ## Key Takeaway
 
-> Use all even‑count characters and the even part of odd‑count characters; at most one odd character can occupy the center of the palindrome.
+> Use all even-count characters and the even part of odd-count characters; at most one odd character can occupy the center of the palindrome.

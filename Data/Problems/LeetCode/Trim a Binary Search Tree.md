@@ -64,9 +64,9 @@ Resulting tree: 1 → right child 2.
 
 ## Complexity Analysis
 - Time: O(n) where n is the number of nodes, each visited once.
-- Space: O(h) recursion stack, h = height of the tree (worst‑case O(n)).
+- Space: O(h) recursion stack, h = height of the tree (worst-case O(n)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement an iterative version using a stack?
 2. Can you modify the algorithm to return the number of nodes removed?
 3. What changes are needed if the tree is not a BST but a generic binary tree?

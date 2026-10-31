@@ -58,13 +58,13 @@ FUNCTION entityParser(text):
 | 3 | "& is <test&gt;" | Replace `&gt;` with `>` | "& is <test>" |
 
 ## Complexity Analysis
-- **Time:** O(n + k·m) where *n* is the length of the input string, *k* is the number of entities (constant 6), and *m* is the average length of each entity. Effectively linear in the input size.
+- **Time:** O(n + k·m) where *n* is the length of the input string, *k* is the number of entities (constant 6), and *m* is the average length of each entity. Effectively linear in the input size.
 - **Space:** O(1) extra space besides the output string (the hash map is constant size).
 
 ## Follow-Up Questions
 1. How would you handle nested or overlapping entities?
-2. Can you solve the problem without using built‑in replace functions?
+2. Can you solve the problem without using built-in replace functions?
 3. How would you extend the solution to support a larger set of HTML entities?
 
 ## Key Takeaway
-A simple hash‑map lookup combined with string replacement efficiently parses HTML entities in linear time.
+A simple hash-map lookup combined with string replacement efficiently parses HTML entities in linear time.

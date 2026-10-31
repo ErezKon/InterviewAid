@@ -62,7 +62,7 @@ FUNCTION maxCrossing(nums, lo, mid, hi):
 Consider `nums = [-2,1,-3,4,-1,2,1,-5,4]`.
 | Step | Action | Result |
 |------|--------|--------|
-| Call maxSubArray(0,8) | Split at mid=4 | Recurse left (0‑4) and right (5‑8) |
+| Call maxSubArray(0,8) | Split at mid=4 | Recurse left (0-4) and right (5-8) |
 | Left recursion returns 4 (subarray `[4]`) | Right recursion eventually returns 6 (`[4,-1,2,1]`) | Cross max at mid=4 yields 6 |
 | Final max = MAX(4,6,6) = 6 |
 
@@ -70,10 +70,10 @@ Consider `nums = [-2,1,-3,4,-1,2,1,-5,4]`.
 *Time*: Each level processes `n` elements for the crossing step, and there are `log n` levels → `O(n log n)`.
 *Space*: Recursion stack depth `O(log n)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How does Kadane's algorithm improve the time complexity to `O(n)`?
 2. Can the divide and conquer approach be adapted to find the maximum subarray sum with length constraints?
 3. How would you modify the algorithm to also return the start and end indices of the optimal subarray?
 
 ## Key Takeaway
-Divide and conquer illustrates the classic “divide, conquer, combine” pattern, yielding an `O(n log n)` solution for Maximum Subarray, while highlighting why a linear‑time greedy method (Kadane) is preferred.
+Divide and conquer illustrates the classic “divide, conquer, combine” pattern, yielding an `O(n log n)` solution for Maximum Subarray, while highlighting why a linear-time greedy method (Kadane) is preferred.

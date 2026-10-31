@@ -38,7 +38,7 @@ Two common solutions:
 1. **Counting Sort (O(n))** – Create a bucket array of size `n+1` where `bucket[i]` counts papers with `i` citations (capped at `n`). Iterate from high to low to find the largest `h` where the cumulative count ≥ `h`.
 2. **Sorting (O(n log n))** – Sort citations descending and find the last position where `citations[i] >= i+1`.
 
-Below is the counting‑sort method.
+Below is the counting-sort method.
 
 ```text
 FUNCTION hIndex(citations):
@@ -54,7 +54,7 @@ FUNCTION hIndex(citations):
             RETURN h
     RETURN 0
 ```
-The bucket caps citation counts at `n` because any value larger than `n` contributes equally to the h‑index.
+The bucket caps citation counts at `n` because any value larger than `n` contributes equally to the h-index.
 
 ## Walkthrough
 | Paper citations | Bucket index (capped) |
@@ -71,10 +71,10 @@ Iterate h=5→0, cumulative totals: 2,2,3 → at h=3, total≥3 → return 3.
 - **Time:** `O(n)` for counting plus `O(n)` for the reverse scan.
 - **Space:** `O(n)` for the bucket array.
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm for the **sorted** version of the problem (H‑Index II)?
-2. Can you compute the h‑index in a streaming fashion with limited memory?
-3. What changes are needed to compute the **g‑index** instead?
+## Follow-Up Questions
+1. How would you adapt the algorithm for the **sorted** version of the problem (H-Index II)?
+2. Can you compute the h-index in a streaming fashion with limited memory?
+3. What changes are needed to compute the **g-index** instead?
 
 ## Key Takeaway
-Counting sort leverages the bounded nature of the h‑index (≤ n) to achieve linear time without full sorting.
+Counting sort leverages the bounded nature of the h-index (≤ n) to achieve linear time without full sorting.

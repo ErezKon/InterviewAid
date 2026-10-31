@@ -80,7 +80,7 @@ Take `word1 = "ababc"`, `word2 = "abc"`.
 3. `right = 2` (`'a'`): `have`={a:2,b:1}, `formed`=0.
 4. `right = 3` (`'b'`): `have`={a:2,b:2}, `formed`=0.
 5. `right = 4` (`'c'`): `have`={a:2,b:2,c:1}. Now each needed char meets requirement, so `formed = 3`.
-6. Enter while‑loop: add `len(word1)-right = 5-4 = 1` to result (substring `"ababc"`). Shrink left: remove `'a'`, `have` a becomes 1, still meets need, continue while‑loop, add another 1 (substring `"babc"`). Remove `'b'`, now `b` count falls below need, exit while‑loop.
+6. Enter while-loop: add `len(word1)-right = 5-4 = 1` to result (substring `"ababc"`). Shrink left: remove `'a'`, `have` a becomes 1, still meets need, continue while-loop, add another 1 (substring `"babc"`). Remove `'b'`, now `b` count falls below need, exit while-loop.
 7. Continue scanning – no more characters – final result = 3.
 
 ---
@@ -104,4 +104,4 @@ Take `word1 = "ababc"`, `word2 = "abc"`.
 
 ## Key Takeaway
 
-> **"Contains as anagram" substring counting = sliding window with character frequency tracking. Once all required frequencies are met, count all right‑extensions and shrink from the left.**
+> **"Contains as anagram" substring counting = sliding window with character frequency tracking. Once all required frequencies are met, count all right-extensions and shrink from the left.**

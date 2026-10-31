@@ -99,8 +99,8 @@ FUNCTION IsValidNumber(s):
 
 ## Follow-Up Questions
 1. How would you modify the DFA to support hexadecimal or binary literals? |
-2. Can you extend the solution to return the parsed numeric value as a floating‑point number? |
-3. What changes are needed to handle locale‑specific formats (e.g., commas as thousand separators)? |
+2. Can you extend the solution to return the parsed numeric value as a floating-point number? |
+3. What changes are needed to handle locale-specific formats (e.g., commas as thousand separators)? |
 
 ## Key Takeaway
 A small DFA with flags for digit, dot, exponent, and sign efficiently validates complex numeric strings in linear time.

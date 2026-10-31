@@ -32,7 +32,7 @@ Example 2:
 ```
 
 ## Approach
-**Algorithm:** Two‑Pointer Scan
+**Algorithm:** Two-Pointer Scan
 Since both arrays are sorted, advance the pointer of the smaller value until the values match or one array ends.
 
 ```text
@@ -61,10 +61,10 @@ The algorithm stops at the first common element, which is the smallest due to so
 | Time   | O(n + m) where n and m are lengths of the arrays |
 | Space  | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return **all** common elements?
 2. If the arrays were not sorted, what would be the optimal approach?
-3. Can you solve the problem using a hash set with better average‑case performance?
+3. Can you solve the problem using a hash set with better average-case performance?
 
 ## Key Takeaway
-A two‑pointer scan of sorted arrays finds the smallest common value in linear time without extra space.
+A two-pointer scan of sorted arrays finds the smallest common value in linear time without extra space.

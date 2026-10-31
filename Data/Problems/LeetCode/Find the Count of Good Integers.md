@@ -42,7 +42,7 @@ Return the count of **good** integers containing `n` digits.
 
 ## 2. Key Insight
 
-> Enumerate all `n`-digit palindromes divisible by `k`, then for each, count how many distinct digit permutations form valid `n`-digit numbers (no leading zero). Use a set of sorted digit tuples to avoid double‑counting.
+> Enumerate all `n`-digit palindromes divisible by `k`, then for each, count how many distinct digit permutations form valid `n`-digit numbers (no leading zero). Use a set of sorted digit tuples to avoid double-counting.
 
 ---
 
@@ -52,7 +52,7 @@ Return the count of **good** integers containing `n` digits.
 FUNCTION countGoodIntegers(n, k):
     seen ← SET()
     result ← 0
-    // Enumerate all n‑digit palindromes by generating the first half
+    // Enumerate all n-digit palindromes by generating the first half
     FOR each first_half of appropriate length DO
         palindrome ← mirror(first_half, n)
         IF palindrome % k == 0 THEN
@@ -70,7 +70,7 @@ FUNCTION countGoodIntegers(n, k):
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(10^(n/2) · n) — enumerate half‑palindromes |
+| **Time** | O(10^(n/2) · n) — enumerate half-palindromes |
 | **Space** | O(10^(n/2)) — seen set |
 
 ---
@@ -100,7 +100,7 @@ Example 3:
 ## 6. Walkthrough
 
 Consider `n = 3, k = 2`.
-1. Generate first half length `⌈3/2⌉ = 2`. Possible first halves: 10‑99.
+1. Generate first half length `⌈3/2⌉ = 2`. Possible first halves: 10-99.
 2. Mirror to form palindromes: 101, 111, 121, …, 999.
 3. Check divisibility by 2: only 101, 111, 121, 131 are even? Actually none are even; we instead count those whose palindrome is divisible by 2 → only palindromes ending with an even digit qualify (e.g., 202, 212, …). After filtering, we obtain the four good numbers listed.
 4. For each palindrome, sort its digits and ensure we count each unique digit multiset once.
@@ -112,10 +112,10 @@ Consider `n = 3, k = 2`.
 
 1. How would the solution change if leading zeros were allowed?
 2. Can the algorithm be adapted to count numbers whose permutations form a *strictly* increasing sequence?
-3. What if `k` could be up to 10⁹ – would a modular‑arithmetic optimization be needed?
+3. What if `k` could be up to 10⁹ – would a modular-arithmetic optimization be needed?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Enumerate palindromes by half, check divisibility, count permutations** — this avoids iterating over all n‑digit numbers by exploiting palindrome structure (only ~10^(n/2) candidates).
+> **Enumerate palindromes by half, check divisibility, count permutations** — this avoids iterating over all n-digit numbers by exploiting palindrome structure (only ~10^(n/2) candidates).

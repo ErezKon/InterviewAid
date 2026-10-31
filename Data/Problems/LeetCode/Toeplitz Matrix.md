@@ -43,7 +43,7 @@ The diagonal "[1, 2]" has different elements.
 ```
 
 ## Approach
-Iterate through the matrix starting from row 1 and column 1. For each cell, compare it with its top‑left neighbor. If any mismatch is found, return false; otherwise, after the loop return true.
+Iterate through the matrix starting from row 1 and column 1. For each cell, compare it with its top-left neighbor. If any mismatch is found, return false; otherwise, after the loop return true.
 
 ```text
 FUNCTION isToeplitzMatrix(matrix):
@@ -58,7 +58,7 @@ FUNCTION isToeplitzMatrix(matrix):
 
 ## Walkthrough
 For the first example matrix:
-| (r,c) | value | top‑left (r-1,c-1) | match? |
+| (r,c) | value | top-left (r-1,c-1) | match? |
 |-------|-------|-------------------|-------|
 | (1,1) | 1 | 1 | yes |
 | (1,2) | 2 | 2 | yes |
@@ -70,10 +70,10 @@ All checks pass → true.
 *Time*: O(m·n) – each cell (except first row/col) is visited once.
 *Space*: O(1) – only a few counters are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the first violating diagonal?
 2. Can you solve it in a single pass without explicit nested loops using diagonal indexing?
 3. What is the complexity if the matrix is stored in a sparse representation?
 
 ## Key Takeaway
-A straightforward scan comparing each element with its top‑left neighbor verifies the Toeplitz property in linear time.
+A straightforward scan comparing each element with its top-left neighbor verifies the Toeplitz property in linear time.

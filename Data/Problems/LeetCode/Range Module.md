@@ -39,7 +39,7 @@ Example 1:
 ```
 
 ## Approach
-Maintain a sorted list (or balanced BST) of non‑overlapping intervals `[start, end)`. For each operation, locate the first interval that may overlap using binary search, then merge or split as needed.
+Maintain a sorted list (or balanced BST) of non-overlapping intervals `[start, end)`. For each operation, locate the first interval that may overlap using binary search, then merge or split as needed.
 
 ```text
 CLASS RangeModule:
@@ -86,13 +86,13 @@ END CLASS
 |5|queryRange(14,16)|`false` (gap between intervals)|
 
 ## Complexity Analysis
-- Each operation performs binary search O(log n) plus linear work over overlapping intervals. In the worst case O(k + log n) where k is number of intervals merged or split.
+- Each operation performs binary search O(log n) plus linear work over overlapping intervals. In the worst case O(k + log n) where k is number of intervals merged or split.
 - Space: O(n) to store the intervals.
 
-## Follow‑Up Questions
-1. How would you adapt the structure for floating‑point ranges?
+## Follow-Up Questions
+1. How would you adapt the structure for floating-point ranges?
 2. Can you support range sum queries in addition to coverage?
-3. What if intervals need to be persisted across restarts (disk‑based storage)?
+3. What if intervals need to be persisted across restarts (disk-based storage)?
 
 ## Key Takeaway
-A sorted collection of non‑overlapping intervals enables efficient add, remove, and query operations by merging and splitting only the affected intervals.
+A sorted collection of non-overlapping intervals enables efficient add, remove, and query operations by merging and splitting only the affected intervals.

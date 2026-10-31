@@ -88,12 +88,12 @@ Consider the sentence `"leetcode exercises sound delightful"`.
 | Metric | Complexity |
 |--------|------------|
 | Time   | O(n) – each character is examined at most once |
-| Space  | O(k) – `k` words stored after splitting (or O(1) with in‑place scan) |
+| Space  | O(k) – `k` words stored after splitting (or O(1) with in-place scan) |
 
 ## 6. Follow-Up Questions
 
 - How would you solve the problem without splitting the string into an array?
-- Can the solution be adapted to handle punctuation or mixed‑case letters?
+- Can the solution be adapted to handle punctuation or mixed-case letters?
 - What if the definition of circularity required the *second* character of each word to match the *first* of the next?
 
 ## Key Takeaway

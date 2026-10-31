@@ -82,9 +82,9 @@ Total = 5? (adjust based on actual sums) – illustrates pointer movement.
 - Time: O(n) – each pointer moves at most n steps.
 - Space: O(n) for prefix sums.
 
-## Follow‑One 
+## Follow-One 
 - How would the algorithm change if the inequality signs were strict?\n- What if you needed exactly `k` subarrays instead of three?
 - Can you compute the number of splits without using modulo arithmetic for small arrays?
 
 ## Key Takeaway
-Two‑pointer scanning of prefix sums efficiently enumerates all valid middle‑segment boundaries for each left segment.
+Two-pointer scanning of prefix sums efficiently enumerates all valid middle-segment boundaries for each left segment.

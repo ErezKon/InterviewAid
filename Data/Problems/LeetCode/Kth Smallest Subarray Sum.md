@@ -60,7 +60,7 @@ Ordering the sums from smallest to largest gives 3, 3, 5, 5, 6, 8, 10, 11, 13, 1
 
 ## Approach
 
-Binary Search + Sliding Window — O(n log S) ✅
+Binary Search + Sliding Window — O(n log S) ✅
 
 Binary search on the sum value. For a candidate `mid`, count how many subarrays have sum ≤ mid using a sliding window.
 
@@ -94,10 +94,10 @@ FUNCTION countSubarrays(nums, target):
 Consider `nums = [5,2,6]`, `k = 5`.
 
 1. `lo = 2`, `hi = 13`.
-2. `mid = 7`. Count subarrays ≤ 7 → `[5],[2],[5,2]` → 3 < k, so `lo = 8`.
-3. `mid = 10`. Count ≤ 10 → `[5],[2],[6],[5,2],[2,6]` → 5 ≥ k, so `hi = 10`.
-4. `mid = 9`. Count ≤ 9 → same 5, so `hi = 9`.
-5. `mid = 8`. Count ≤ 8 → 4 < k, so `lo = 9`.
+2. `mid = 7`. Count subarrays ≤ 7 → `[5],[2],[5,2]` → 3 < k, so `lo = 8`.
+3. `mid = 10`. Count ≤ 10 → `[5],[2],[6],[5,2],[2,6]` → 5 ≥ k, so `hi = 10`.
+4. `mid = 9`. Count ≤ 9 → same 5, so `hi = 9`.
+5. `mid = 8`. Count ≤ 8 → 4 < k, so `lo = 9`.
 6. Loop ends, answer `9`.
 
 ---
@@ -106,15 +106,15 @@ Consider `nums = [5,2,6]`, `k = 5`.
 
 | Time | Space |
 |------|-------|
-| O(n · log S) where S is total sum of array | O(1) |
+| O(n · log S) where S is total sum of array | O(1) |
 
 ---
 
 ## Follow-Up Questions
 
 1. How would the solution change if the array could contain negative numbers?
-2. Can you extend the approach to return the actual k‑th smallest subarray instead of its sum?
-3. What if we need the k‑th largest sum?
+2. Can you extend the approach to return the actual k-th smallest subarray instead of its sum?
+3. What if we need the k-th largest sum?
 
 ---
 

@@ -109,11 +109,11 @@ Consider `nums = [2,4,6]`.
 
 1. Initialise `dp[0][0] = 1`.
 2. Process `2`:
-   - Assign to subsequence 1 → `dp[2][0] = 1`.
-   - Assign to subsequence 2 → `dp[0][2] = 1`.
+   - Assign to subsequence 1 → `dp[2][0] = 1`.
+   - Assign to subsequence 2 → `dp[0][2] = 1`.
 3. Process `4`:
-   - From state `dp[2][0]`, assign to subsequence 1 → `dp[4][0]` (GCD(2,4)=2) actually stays `dp[2][0]` incremented.
-   - Assign to subsequence 2 → `dp[2][4]`.
+   - From state `dp[2][0]`, assign to subsequence 1 → `dp[4][0]` (GCD(2,4)=2) actually stays `dp[2][0]` incremented.
+   - Assign to subsequence 2 → `dp[2][4]`.
    - Similar updates from other states.
 4. Process `6` and continue similarly.
 5. After all elements, sum `dp[g][g]` for `g=1..6` → result `3`.
@@ -133,10 +133,10 @@ Consider `nums = [2,4,6]`.
 
 1. How would the solution change if the two subsequences must have equal **sum** instead of GCD?
 2. Can you extend the DP to handle more than two subsequences with equal GCD?
-3. What optimizations are possible when the range of `nums[i]` is small (e.g., ≤ 50)?
+3. What optimizations are possible when the range of `nums[i]` is small (e.g., ≤ 50)?
 
 ---
 
 ## 5. Key Takeaway
 
-> **DP on GCD pairs** handles the partition constraint. Each element goes to one of two subsequences (or neither), and we track the running GCD of each. Count equal‑GCD states at the end.
+> **DP on GCD pairs** handles the partition constraint. Each element goes to one of two subsequences (or neither), and we track the running GCD of each. Count equal-GCD states at the end.

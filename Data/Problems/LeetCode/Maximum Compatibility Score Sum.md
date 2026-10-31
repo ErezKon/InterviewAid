@@ -67,7 +67,7 @@ Explanation: The compatibility score of any student-mentor pair is 0.
 
 **Algorithm:** Bitmask Dynamic Programming
 
-1. Pre‑compute a `score[i][j]` matrix where `score[i][j]` is the compatibility between student `i` and mentor `j`.
+1. Pre-compute a `score[i][j]` matrix where `score[i][j]` is the compatibility between student `i` and mentor `j`.
 2. Use a DP array `dp[mask]` where `mask` represents which mentors have been assigned. `popcount(mask)` gives the index of the next student to assign.
 3. Transition: for each unassigned mentor `j`, update `dp[mask | (1<<j)]` with `dp[mask] + score[student][j]`.
 4. The answer is `dp[(1<<m) - 1]`.
@@ -75,7 +75,7 @@ Explanation: The compatibility score of any student-mentor pair is 0.
 ```text
 FUNCTION maxCompatibilitySum(students, mentors):
     m ← LENGTH(students)
-    // Pre‑compute scores
+    // Pre-compute scores
     score ← MATRIX(m, m)
     FOR i ← 0 TO m-1:
         FOR j ← 0 TO m-1:
@@ -104,8 +104,8 @@ Take `students = [[1,1,0],[0,1,1]]`, `mentors = [[1,0,0],[0,1,1]]`.
 | mask (binary) | assigned mentors | student index | best score |
 |---------------|------------------|--------------|------------|
 | 00            | none             | 0            | 0          |
-| 01            | mentor0          | 1            | 2 (student0‑mentor0) |
-| 10            | mentor1          | 1            | 2 (student0‑mentor1) |
+| 01            | mentor0          | 1            | 2 (student0-mentor0) |
+| 10            | mentor1          | 1            | 2 (student0-mentor1) |
 | 11            | both mentors     | 2            | 4 (optimal) |
 
 The DP builds these states and yields 4.
@@ -116,7 +116,7 @@ The DP builds these states and yields 4.
 
 | Metric | Complexity |
 |--------|-------------|
-| Time   | **O(m · 2^m)** – pre‑compute scores O(m²·n) and DP over all masks |
+| Time   | **O(m · 2^m)** – pre-compute scores O(m²·n) and DP over all masks |
 | Space  | **O(2^m)** – DP table |
 
 ---
@@ -131,4 +131,4 @@ The DP builds these states and yields 4.
 
 ## Key Takeaway
 
-> For small‑scale assignment problems, a bitmask DP efficiently explores all possible pairings while using the mask to track used mentors.
+> For small-scale assignment problems, a bitmask DP efficiently explores all possible pairings while using the mask to track used mentors.

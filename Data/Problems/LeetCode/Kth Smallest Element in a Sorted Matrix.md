@@ -29,7 +29,7 @@ You must find a solution with a memory complexity better than `O(n^2)`.
 
 ---
 
-## 2. Approach 1: Binary Search on Value — O(n · log(max‑min)) ✅
+## 2. Approach 1: Binary Search on Value — O(n · log(max-min)) ✅
 
 ```text
 FUNCTION kthSmallest(matrix, k):
@@ -59,7 +59,7 @@ FUNCTION countLessOrEqual(matrix, target):
 
 ---
 
-## 3. Approach 2: Min‑Heap — O(k log n) ✅
+## 3. Approach 2: Min-Heap — O(k log n) ✅
 
 ```text
 FUNCTION kthSmallestHeap(matrix, k):
@@ -107,19 +107,19 @@ Consider the matrix `[[1,5,9],[10,11,13],[12,13,15]]`, `k = 8`.
 
 ## 6. Complexity Analysis
 
-- **Binary Search:** Time O(n · log(max‑min)) for the binary search loop, each iteration counts in O(n). Space O(1).
-- **Min‑Heap:** Time O(k log n) for pushing/popping up to `k` elements. Space O(n) for the heap of at most one element per row.
+- **Binary Search:** Time O(n · log(max-min)) for the binary search loop, each iteration counts in O(n). Space O(1).
+- **Min-Heap:** Time O(k log n) for pushing/popping up to `k` elements. Space O(n) for the heap of at most one element per row.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
-- How would you modify the solution to handle a non‑square `m × n` matrix?
-- Can you achieve O(k log n) time without extra space beyond the heap?
+- How would you modify the solution to handle a non-square `m × n` matrix?
+- Can you achieve O(k log n) time without extra space beyond the heap?
 - What if the matrix is streamed row by row and cannot be stored entirely in memory?
 
 ---
 
 ## 8. Key Takeaway
 
-> Binary search on the value range combined with a linear “staircase” count leverages the matrix’s sorted rows and columns to find the k‑th smallest in O(n log range). The min‑heap alternative offers a straightforward O(k log n) solution.
+> Binary search on the value range combined with a linear “staircase” count leverages the matrix’s sorted rows and columns to find the k-th smallest in O(n log range). The min-heap alternative offers a straightforward O(k log n) solution.

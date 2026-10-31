@@ -87,8 +87,8 @@ FUNCTION DetermineWinner(moves):
 
 ## Follow-Up Questions
 - How would you extend the solution to an N×N board?
-- Can you solve it using a Union‑Find data structure?
+- Can you solve it using a Union-Find data structure?
 - What changes are needed to report the winning line coordinates?
 
 ## Key Takeaway
-Using simple additive counters for rows, columns, and diagonals lets you detect a Tic‑Tac‑Toe win in constant space and linear time.
+Using simple additive counters for rows, columns, and diagonals lets you detect a Tic-Tac-Toe win in constant space and linear time.

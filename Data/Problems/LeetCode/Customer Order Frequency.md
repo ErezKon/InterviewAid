@@ -131,7 +131,7 @@ Example 1:
 1. **Join tables** – combine `Customers`, `Orders`, and `Product` to have price information per order.
 2. **Group by customer** – aggregate rows per `customer_id` and `name`.
 3. **Conditional sums** – use `CASE WHEN` inside `SUM` to compute total spend for June (`MONTH = 6`) and July (`MONTH = 7`).
-4. **HAVING clause** – keep only groups where both sums are ≥ 100.
+4. **HAVING clause** – keep only groups where both sums are ≥ 100.
 5. The query returns the IDs and names of customers satisfying the condition.
 
 ---

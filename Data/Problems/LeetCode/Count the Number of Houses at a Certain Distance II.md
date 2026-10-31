@@ -111,7 +111,7 @@ Consider the first example `n = 5, x = 2, y = 4`.
 | 4 | For `i = 2` (at `x`): `maxJ = MIN(5, 2+3-2)=3`. Shortcut helps for pair `(2,4)` giving distance 1 instead of 2. Increment `result[1]` and decrement after `result[2]`. |
 | 5 | After applying all i, convert difference array to prefix sums. | Final `result[1..5] = [4,4,2,0,0]`. |
 
-The table shows how the shortcut reduces certain distances and how the difference‑array updates capture those reductions efficiently.
+The table shows how the shortcut reduces certain distances and how the difference-array updates capture those reductions efficiently.
 
 ---
 
@@ -134,4 +134,4 @@ The table shows how the shortcut reduces certain distances and how the differenc
 
 ## Key Takeaway
 
-> Adding a single shortcut edge to a linear graph creates a cycle; by analyzing regions relative to the shortcut and using a difference array, we can count all shortest‑path distances for every pair in O(n) time.
+> Adding a single shortcut edge to a linear graph creates a cycle; by analyzing regions relative to the shortcut and using a difference array, we can count all shortest-path distances for every pair in O(n) time.

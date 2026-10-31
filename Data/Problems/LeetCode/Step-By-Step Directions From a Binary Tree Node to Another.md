@@ -70,16 +70,23 @@ FUNCTION findPath(node, target, currentPath):
 ```
 
 ## Walkthrough
-For the first example, `pathStart = ['L','L']` (5→1→3) and `pathDest = ['R','L']` (5→2→6). The common prefix is empty, so `i=0`. `upMoves = 'UU'` (two steps up from 3 to 5). `downMoves = 'RL'` (right then left to reach 6). Result `'UURL'`.
+**Example 1:** `root = [5,1,2,3,null,6,4]`, `startValue = 3`, `destValue = 6`.
+- Tree: 5 has children 1 (left) and 2 (right); 1 has left child 3; 2 has children 6 (left) and 4 (right).
+- `pathStart = ['L','L']` (5 -> 1 -> 3) and `pathDest = ['R','L']` (5 -> 2 -> 6).
+- Common prefix: `pathStart[0] = 'L' != pathDest[0] = 'R'`, so `i = 0` (LCA is the root 5).
+- `upMoves = 'UU'` (two steps up from 3 to 5), `downMoves = 'RL'` (right then left to reach 6).
+- Result `"UURL"`.
+
+**Example 2:** `root = [2,1]`, `startValue = 2`, `destValue = 1`: `pathStart = []`, `pathDest = ['L']`, `i = 0`, no up moves, result `"L"`.
 
 ## Complexity Analysis
 - **Time:** O(n) – each DFS visits nodes at most once.
 - **Space:** O(h) recursion stack, where h is tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for a binary tree stored as an adjacency list?
 2. Can you return the directions without explicitly storing the full paths (e.g., using parent pointers)?
-3. What changes are needed if moves can also include diagonal steps in a grid‑like tree?
+3. What changes are needed if moves can also include diagonal steps in a grid-like tree?
 
 ## Key Takeaway
-Finding root‑to‑node paths, extracting their common prefix (LCA), and concatenating upward and downward moves yields the shortest direction string.
+Finding root-to-node paths, extracting their common prefix (LCA), and concatenating upward and downward moves yields the shortest direction string.

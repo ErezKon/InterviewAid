@@ -46,9 +46,9 @@ Example 3:
 
 ## Walkthrough
 
-We use Zeller's Congruence (or built‑in datetime) to compute the weekday.
+We use Zeller's Congruence (or built-in datetime) to compute the weekday.
 
-1. Adjust month and year: if month ≤ 2, month += 12 and year‑‑.
+1. Adjust month and year: if month ≤ 2, month += 12 and year--.
 2. Compute:
    `K = year % 100`
    `J = year // 100`

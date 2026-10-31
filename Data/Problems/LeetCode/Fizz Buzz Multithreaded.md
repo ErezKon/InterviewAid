@@ -135,7 +135,7 @@ The condition variable wakes all threads after each increment; only the thread w
 
 ## 5. Complexity Analysis
 
-Each number from 1 to *n* is processed exactly once, and each thread performs constant‑time checks. Time complexity is **O(n)**. The lock and condition variables use **O(1)** extra space.
+Each number from 1 to *n* is processed exactly once, and each thread performs constant-time checks. Time complexity is **O(n)**. The lock and condition variables use **O(1)** extra space.
 
 ---
 

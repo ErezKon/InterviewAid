@@ -75,4 +75,4 @@ Space: `O(1)` extra.
 3. What changes are needed if the list is doubly linked?
 
 ## Key Takeaway
-A dummy node simplifies edge‑case handling, allowing uniform removal of target‑valued nodes in a single pass.
+A dummy node simplifies edge-case handling, allowing uniform removal of target-valued nodes in a single pass.

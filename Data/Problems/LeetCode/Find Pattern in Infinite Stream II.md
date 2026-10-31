@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm**: Rolling Hash (Rabin‑Karp) with a sliding window of size `k`.
+**Algorithm**: Rolling Hash (Rabin-Karp) with a sliding window of size `k`.
 1. Compute hash of the first `k` elements.
 2. For each subsequent element, update the hash by removing the oldest value and adding the new one.
 3. Compare the current hash with the stored pattern hash; if they match, verify the actual values to avoid collisions.
@@ -100,4 +100,4 @@ Consider the stream `1,2,3,1,2,3,…` with `k = 3`.
 3. How would you handle streams where elements arrive out of order?
 
 ## Key Takeaway
-Rolling hash enables constant‑time comparison of consecutive windows, making it possible to detect repeating patterns in an infinite stream efficiently.
+Rolling hash enables constant-time comparison of consecutive windows, making it possible to detect repeating patterns in an infinite stream efficiently.

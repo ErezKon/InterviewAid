@@ -102,8 +102,8 @@ Example 1:
 
 Assume `n=3, m=5`.
 1. **Initial state**: each row has 5 free seats.
-2. **gather(3,2)**: query leftmost row ≤2 with max ≥3 → row 0. Allocate seats 0‑2, update row 0 remaining = 2.
-3. **scatter(4,1)**: total seats in rows 0‑1 = 2 (row0) + 5 (row1) = 7 ≥4. Fill row 0 remaining 2 seats, then 2 seats in row 1. Row0 remaining=0, row1 remaining=3.
+2. **gather(3,2)**: query leftmost row ≤2 with max ≥3 → row 0. Allocate seats 0-2, update row 0 remaining = 2.
+3. **scatter(4,1)**: total seats in rows 0-1 = 2 (row0) + 5 (row1) = 7 ≥4. Fill row 0 remaining 2 seats, then 2 seats in row 1. Row0 remaining=0, row1 remaining=3.
 4. **gather(2,0)**: row 0 max = 0 <2, so return empty.
 
 ---
@@ -112,7 +112,7 @@ Assume `n=3, m=5`.
 
 | Time | Space |
 |------|-------|
-| O(log n) per `gather` query, O(k log n) worst‑case for `scatter` (each seat may trigger a log‑n update) | O(n) for the two segment trees |
+| O(log n) per `gather` query, O(k log n) worst-case for `scatter` (each seat may trigger a log-n update) | O(n) for the two segment trees |
 
 ---
 
@@ -126,4 +126,4 @@ Assume `n=3, m=5`.
 
 ## Key Takeaway
 
-> Segment trees with max‑query (for gather) and sum‑query (for scatter) enable efficient seat allocation. The leftmost‑row query uses a descent through the segment tree.
+> Segment trees with max-query (for gather) and sum-query (for scatter) enable efficient seat allocation. The leftmost-row query uses a descent through the segment tree.

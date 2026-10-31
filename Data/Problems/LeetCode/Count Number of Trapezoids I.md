@@ -61,7 +61,7 @@ When two pairs belong to the same group and involve four distinct points, they f
 ## Follow-Up Questions
 - How would you adapt the algorithm for collinear points where many pairs share the same slope?
 - Can the solution be improved to O(n²) using combinatorial formulas instead of explicit pair enumeration?
-- What changes are needed if the definition of a trapezoid requires the non‑parallel sides to be of equal length?
+- What changes are needed if the definition of a trapezoid requires the non-parallel sides to be of equal length?
 
 ## Key Takeaway
 Grouping point pairs by their slope lets you efficiently enumerate candidate parallel sides, turning the geometric counting problem into a manageable combinatorial search.

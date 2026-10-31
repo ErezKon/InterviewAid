@@ -29,7 +29,7 @@ Write a solution to display the **first** `3` rows of this DataFrame.
 
 ```text
 FUNCTION selectFirstRows(employees):
-    // Return the first three rows using built‑in method
+    // Return the first three rows using built-in method
     RETURN employees.head(3)
 ```
 

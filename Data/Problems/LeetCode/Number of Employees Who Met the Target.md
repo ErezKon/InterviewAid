@@ -115,4 +115,4 @@ Final count = 2.
 
 ## 8. Key Takeaway
 
-> **Simple threshold counting** – a linear scan with a constant‑space counter solves the problem efficiently.
+> **Simple threshold counting** – a linear scan with a constant-space counter solves the problem efficiently.

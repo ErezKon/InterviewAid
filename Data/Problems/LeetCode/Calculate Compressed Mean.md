@@ -84,7 +84,7 @@ For the example table:
 ## Complexity Analysis
 
 - **Time:** O(n) – each row is processed once by the aggregation functions.
-- **Space:** O(1) – only constant‑size aggregates are stored.
+- **Space:** O(1) – only constant-size aggregates are stored.
 
 ---
 

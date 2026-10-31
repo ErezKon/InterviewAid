@@ -70,7 +70,7 @@ Consider `n = 10`:
 | 3 | append `2` two times (s[4]=1) → `[1,2,2,1,1,1,2,2,2]` | 5 |
 | 4 | append `1` two times (s[5]=1) → `[1,2,2,1,1,1,2,2,2,1,1]` | 6 |
 
-After reaching length ≥ 10, the first ten characters are `1221121221`, which contain five `1`s.
+After reaching length ≥ 10, the first ten characters are `1221121221`, which contain five `1`s.
 
 ---
 
@@ -90,4 +90,4 @@ After reaching length ≥ 10, the first ten characters are `1221121221`, which
 
 ## 7. Key Takeaway
 
-> Build the string iteratively: a pointer `i` tells the group length, toggle the value with `3 - last`. The string is self‑describing, enabling an O(n) simulation.
+> Build the string iteratively: a pointer `i` tells the group length, toggle the value with `3 - last`. The string is self-describing, enabling an O(n) simulation.

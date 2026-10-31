@@ -78,27 +78,26 @@ FUNCTION numberOfRightTriangles(grid):
 
 ## Walkthrough
 
-Consider Example 1: `grid = [[1,0,1],[0,1,0],[1,0,1]]`
+Example 1: `grid = [[0,1,0],[0,1,1],[0,1,0]]`
 
 | Row | Row Count |
 |-----|-----------|
-| 0   | 2         |
-| 1   | 1         |
-| 2   | 2         |
+| 0   | 1         |
+| 1   | 2         |
+| 2   | 1         |
 
 | Column | Column Count |
 |--------|--------------|
-| 0      | 2            |
-| 1      | 1            |
-| 2      | 2            |
+| 0      | 0            |
+| 1      | 3            |
+| 2      | 1            |
 
 Now iterate each cell containing `1`:
-- Cell (0,0): `(rowCount[0]-1)*(colCount[0]-1) = (2-1)*(2-1) = 1`
-- Cell (0,2): `(2-1)*(2-1) = 1`
-- Cell (1,1): `(1-1)*(1-1) = 0`
-- Cell (2,0): `(2-1)*(2-1) = 1`
-- Cell (2,2): `(2-1)*(2-1) = 1`
-Sum = 4 triangles, matching the output.
+- Cell (0,1): `(rowCount[0]-1)*(colCount[1]-1) = (1-1)*(3-1) = 0`
+- Cell (1,1): `(2-1)*(3-1) = 2`
+- Cell (1,2): `(2-1)*(1-1) = 0`
+- Cell (2,1): `(1-1)*(3-1) = 0`
+Sum = 2 triangles, matching the expected output (vertex (1,1) with (1,2) and either (0,1) or (2,1)).
 
 ---
 

@@ -90,10 +90,10 @@ Only index 2 works → count = 1.
 - Time: O(n) – single pass.
 - Space: O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you extend this to allow removal of up to two elements?
 - What if the fairness condition required equality of sums modulo a given number?
 - Can you compute the number of ways without explicit prefix sums using a single pass?
 
 ## Key Takeaway
-Maintaining left/right even‑odd prefix sums lets you test each removal in constant time.
+Maintaining left/right even-odd prefix sums lets you test each removal in constant time.

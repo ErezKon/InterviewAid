@@ -19,7 +19,7 @@ This collection expands on the classic *Minimum Window Substring* problem, prese
 | "xyz" | contains any permutation of "zyx" | "xyz" |
 
 ## Approach
-**Algorithm:** Variable‑size sliding window with a frequency map.
+**Algorithm:** Variable-size sliding window with a frequency map.
 1. Build a frequency map of required characters.
 2. Expand the right pointer, updating a window map and a `formed` counter.
 3. When the window satisfies the requirement, shrink from the left to minimize length while maintaining validity.
@@ -60,17 +60,17 @@ Take `s = "adobecodebanc"`, requirement = `{a:1, b:1, c:1}`.
 | Step | right char | windowCounts | formed | left moves | Current best |
 |------|------------|--------------|--------|------------|--------------|
 | 1 | a | {a:1} | 1 | – | – |
-| 2‑5 | d,o,b,e | {a:1,b:1,...} | 2 | – | – |
-| 6‑9 | c,o,d,e | {a:1,b:1,c:1,...} | 3 (valid) | shrink left until `a` removed → window "banc" length 4 | "banc" |
+| 2-5 | d,o,b,e | {a:1,b:1,...} | 2 | – | – |
+| 6-9 | c,o,d,e | {a:1,b:1,c:1,...} | 3 (valid) | shrink left until `a` removed → window "banc" length 4 | "banc" |
 
 ## Complexity Analysis
 - Time: O(n + m) where *n* is length of `s` and *m* is size of requirement map.
 - Space: O(m) for the frequency maps.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for multiple target strings simultaneously?
 2. Can the approach handle weighted characters where each character has a cost?
 3. What changes are needed if the window must contain at most `k` distinct characters?
 
 ## Key Takeaway
-A variable‑size sliding window combined with a frequency map lets you shrink the window to the smallest possible segment that still satisfies all required character counts, achieving linear time.
+A variable-size sliding window combined with a frequency map lets you shrink the window to the smallest possible segment that still satisfies all required character counts, achieving linear time.

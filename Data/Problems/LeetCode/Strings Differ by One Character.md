@@ -71,7 +71,7 @@ For `words = ["abcd","acbd","aacd"]`:
 - **Time:** O(n·L) where n is number of words and L is word length (generate L masks per word).
 - **Space:** O(n·L) for storing masks.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the solution if the strings could have different lengths?
 - Can you solve the problem in O(n·L) time without extra space by sorting masked strings?
 - What changes are needed to find all pairs that differ by exactly one character?

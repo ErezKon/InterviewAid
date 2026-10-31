@@ -39,10 +39,10 @@ Output: [0]
 ```
 
 ## Approach
-Perform an in‑order traversal to visit nodes in non‑decreasing order. Keep a running count of the current value and track the maximum frequency seen so far. When the count exceeds the max, reset the result list; when it equals the max, append the value.
+Perform an in-order traversal to visit nodes in non-decreasing order. Keep a running count of the current value and track the maximum frequency seen so far. When the count exceeds the max, reset the result list; when it equals the max, append the value.
 
 ## Walkthrough
-For BST `[1,null,2,2]` (in‑order sequence `1,2,2`):
+For BST `[1,null,2,2]` (in-order sequence `1,2,2`):
 | Node value | Current count | Max freq | Result |
 |------------|---------------|----------|--------|
 | 1 | 1 | 1 | `[1]` |
@@ -60,4 +60,4 @@ Final result `[2]`.
 - What if the tree is extremely large and stored on disk?
 
 ## Key Takeaway
-An in‑order traversal of a BST yields sorted values, allowing a simple single‑pass frequency count to identify the mode(s).
+An in-order traversal of a BST yields sorted values, allowing a simple single-pass frequency count to identify the mode(s).

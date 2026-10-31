@@ -65,7 +65,7 @@ The sorting ensures that any previously seen character has attack ≥ current at
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting, O(n) for the scan.
-- **Space:** O(1) extra space besides the input array (in‑place sort).
+- **Space:** O(1) extra space besides the input array (in-place sort).
 
 ## Follow-Up Questions
 1. How would you adapt the algorithm if the definition of weak required `attack_j >= attack_i` and `defense_j > defense_i`?

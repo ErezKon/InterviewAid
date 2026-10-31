@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented "mod 3 cycle" problem. Correct idea: direct checks — `timer == 0` → "Green", `timer == 30` → "Orange", `30 < timer <= 90` → "Red", otherwise "Invalid". O(1).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer `timer` representing the remaining time (in seconds) on a traffic signal.
 
@@ -40,37 +40,36 @@ Explanation: Since timer = 5, it does not satisfy any of the given conditions, t
 ```
 
 ## Approach
-The colors repeat every 3 seconds. Compute `n mod 3` and map the remainder to the corresponding color.
+The rules are three disjoint conditions on `timer`, so check them in order and fall back to `"Invalid"`.
 
 **Pseudocode**
 ```text
-FUNCTION trafficSignalColor(n):
-    SET remainder ← n MOD 3
-    IF remainder = 0:
+FUNCTION trafficSignal(timer):
+    IF timer = 0
         RETURN "Green"
-    ELSE IF remainder = 1:
-        RETURN "Yellow"
-    ELSE:
+    IF timer = 30
+        RETURN "Orange"
+    IF timer > 30 AND timer <= 90
         RETURN "Red"
+    RETURN "Invalid"
 ```
 
 ## Walkthrough
-| n | n mod 3 | Color |
-|---|---------|-------|
-| 0 | 0 | Green |
-| 1 | 1 | Yellow |
-| 2 | 2 | Red |
-| 3 | 0 | Green |
-| 5 | 2 | Red |
+| timer | timer = 0? | timer = 30? | 30 < timer <= 90? | Result |
+|-------|------------|-------------|-------------------|--------|
+| 60 (Example 1) | no | no | yes | "Red" |
+| 5 (Example 2) | no | no | no | "Invalid" |
+
+Both match the expected outputs `"Red"` and `"Invalid"`.
 
 ## Complexity Analysis
-- Time: O(1) – only a constant‑time modulo operation.
+- Time: O(1) – a constant number of comparisons.
 - Space: O(1) – no additional data structures.
 
 ## Follow-Up Questions
-1. How would you handle a signal with a custom sequence of colors and varying durations for each color?
-2. What if the signal starts at a different initial color?
-3. Can you extend the solution to support multiple independent signals synchronizing their cycles?
+1. How would you make the thresholds configurable (e.g., a sorted list of interval → color rules)?
+2. With many interval rules, how would binary search over interval boundaries help?
+3. What test cases cover all boundaries (0, 1, 29, 30, 31, 90, 91)?
 
 ## Key Takeaway
-A traffic light’s color can be determined by a simple modulo operation because its cycle repeats uniformly every three seconds.
+For small rule-based classification problems, translate each condition directly and pay close attention to inclusive/exclusive boundaries.

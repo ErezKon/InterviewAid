@@ -81,10 +81,10 @@ CLASS Solution:
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you solve the problem iteratively without recursion?
-2. Can you extend the solution to find the *k*‑th minimum value?
+2. Can you extend the solution to find the *k*-th minimum value?
 3. How would the algorithm change if the tree were not guaranteed to have the special property?
 
 ---

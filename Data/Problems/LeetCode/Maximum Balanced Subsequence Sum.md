@@ -74,9 +74,9 @@ It is a balanced subsequence, and its sum is the maximum among the balanced subs
 
 ## Approach
 
-> **Key Transformation** – Define `key[i] = nums[i] - i`. The balanced condition becomes `key[j] >= key[i]`. The problem reduces to a maximum‑weight non‑decreasing subsequence on `key` values.
+> **Key Transformation** – Define `key[i] = nums[i] - i`. The balanced condition becomes `key[j] >= key[i]`. The problem reduces to a maximum-weight non-decreasing subsequence on `key` values.
 
-We process elements left‑to‑right, maintaining a segment tree (or BIT) that stores the best subsequence sum for each compressed key. For each `i`:
+We process elements left-to-right, maintaining a segment tree (or BIT) that stores the best subsequence sum for each compressed key. For each `i`:
 1. Query the maximum `dp` among keys ≤ `key[i]`.
 2. `dp[i] = nums[i] + max(0, queriedMax)`.
 3. Update the structure at `key[i]` with `dp[i]`.
@@ -136,4 +136,4 @@ Global max = 9 (subsequence 5,2,3).
 
 ## Key Takeaway
 
-> **Transform the balanced condition into a monotonic key comparison (`nums[i] - i`).** Then solve a maximum‑weight non‑decreasing subsequence using a segment tree or BIT for efficient range‑max queries.
+> **Transform the balanced condition into a monotonic key comparison (`nums[i] - i`).** Then solve a maximum-weight non-decreasing subsequence using a segment tree or BIT for efficient range-max queries.

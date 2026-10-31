@@ -62,8 +62,8 @@ Summing contributions gives `dp[3] = 5` unique BSTs.
 
 ## Follow-Up Questions
 1. How would you compute the result for large `n` modulo `10⁹+7`?
-2. Can you derive a closed‑form expression using binomial coefficients?
-3. How would the problem change if the tree must be height‑balanced?
+2. Can you derive a closed-form expression using binomial coefficients?
+3. How would the problem change if the tree must be height-balanced?
 
 ## Key Takeaway
 The count of unique BSTs follows Catalan numbers and can be efficiently computed with a simple O(n²) DP recurrence.

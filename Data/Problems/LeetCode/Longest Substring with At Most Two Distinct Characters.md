@@ -80,7 +80,7 @@ Take `s = "eceba"`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you extend this solution to the general "at most k distinct characters" problem?
 - Can you solve it using an array of size 256 for ASCII characters instead of a hash map?

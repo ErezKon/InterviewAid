@@ -99,4 +99,4 @@ Consider `num = 991`:
 - Can you compute the product without extracting all digits (single pass)?
 
 ## Key Takeaway
-> **Find the two largest digits** — extract digits, track the top‑2, and multiply.
+> **Find the two largest digits** — extract digits, track the top-2, and multiply.

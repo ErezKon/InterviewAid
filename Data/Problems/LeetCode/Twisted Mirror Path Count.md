@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented "path invariant under a mirror transform" problem. Correct idea: DP with direction — `f[i][j][d]` = number of ways to stand on cell `(i, j)` having arrived moving in direction `d` (right/down). From an empty cell you may step right or down; stepping into a mirror forces a turn (right → down, down → right) and the robot keeps bouncing through consecutive mirrors. Process cells in increasing `i + j`; answer = `Σ_d f[m−1][n−1][d]` mod 10⁹+7. O(m·n).*
+> *Note: statement verified via doocs/leetcode.*
 
 Given an `m x n` binary grid `grid` where:
 
@@ -75,26 +75,61 @@ Explanation:
 ```
 
 ## Approach
-1. Pre‑compute the mirror of each cell.
-2. Use dynamic programming where `dp[i][j]` stores the number of symmetric paths to cell `(i,j)`.
-3. Transition: a path to `(i,j)` can come from `(i-1,j)` (down) or `(i,j-1)` (right) **only if** the character at `(i,j)` equals the mirror of the character at the symmetric counterpart `(j,i)`.
-4. The answer is `dp[n-1][n-1]`.
+Track, for every cell, how many ways the robot **enters** it and in which direction, because a mirror's behaviour depends on the entering direction.
+
+- `R[i][j]` = number of ways the robot enters cell `(i, j)` while moving **right**.
+- `D[i][j]` = number of ways the robot enters cell `(i, j)` while moving **down**.
+
+Every move (including reflections) goes strictly right or down, so processing cells in row-major order guarantees all contributions to a cell are final before it is processed.
+
+- **Empty cell:** the robot stands here, `t = R + D` ways. It may try to step right (`R[i][j+1] += t`) or down (`D[i+1][j] += t`).
+- **Mirror cell:** the robot never stops here. Entering while moving right turns it down (`D[i+1][j] += R[i][j]`); entering while moving down turns it right (`R[i][j+1] += D[i][j]`). Chains of mirrors are handled automatically because the next mirror forwards its counts in the same way.
+- Anything pushed outside the grid is simply dropped, which discards invalid paths.
+
+The answer is `R[m-1][n-1] + D[m-1][n-1]` (the target is never a mirror).
+
+```text
+FUNCTION uniquePaths(grid):
+    MOD ← 10^9 + 7
+    R ← (m+1) x (n+1) zeros;  D ← (m+1) x (n+1) zeros   // extra row/col absorbs out-of-bounds
+    R[0][0] ← 1
+    FOR i ← 0 TO m-1:
+        FOR j ← 0 TO n-1:
+            IF grid[i][j] = 0:
+                t ← (R[i][j] + D[i][j]) MOD MOD
+                IF i = m-1 AND j = n-1: RETURN t
+                R[i][j+1] ← (R[i][j+1] + t) MOD MOD      // try to move right
+                D[i+1][j] ← (D[i+1][j] + t) MOD MOD      // try to move down
+            ELSE:                                        // mirror
+                D[i+1][j] ← (D[i+1][j] + R[i][j]) MOD MOD   // right -> down
+                R[i][j+1] ← (R[i][j+1] + D[i][j]) MOD MOD   // down -> right
+```
 
 ## Walkthrough
-| Cell (i,j) | Char | Mirror of counterpart (j,i) | Condition | dp[i][j] |
-|------------|------|----------------------------|-----------|----------|
-| (0,0) | `\` | mirror(`\`) = `/` (at (0,0) itself) → not equal → dp=0 (base case set to 1 if self‑mirror) |
-| ... | ... | ... | ... | ... |
-(Full table omitted for brevity.)
+Example 1: `grid = [[0,1,0],[0,0,1],[1,0,0]]`, start `R[0][0] = 1`.
+
+| Cell | Type | Incoming (R, D) | Action |
+|------|------|-----------------|--------|
+| (0,0) | empty | (1, 0) | t=1 → R[0][1]+=1, D[1][0]+=1 |
+| (0,1) | mirror | (1, 0) | right→down: D[1][1]+=1 |
+| (0,2) | empty | (0, 0) | t=0, nothing |
+| (1,0) | empty | (0, 1) | t=1 → R[1][1]+=1, D[2][0]+=1 |
+| (1,1) | empty | (1, 1) | t=2 → R[1][2]+=2, D[2][1]+=2 |
+| (1,2) | mirror | (2, 0) | right→down: D[2][2]+=2 |
+| (2,0) | mirror | (0, 1) | down→right: R[2][1]+=1 |
+| (2,1) | empty | (1, 2) | t=3 → R[2][2]+=3 (down goes out of grid) |
+| (2,2) | target | (3, 2) | return 3 + 2 = **5** |
+
+Output: `5`.
 
 ## Complexity Analysis
-- **Time:** `O(n^2)` to fill the DP table.
-- **Space:** `O(n^2)` or `O(n)` if we keep only the previous row.
+- **Time:** `O(m · n)` — each cell is processed once with O(1) work.
+- **Space:** `O(m · n)` for the two tables; can be reduced to `O(n)` by keeping only the current and next row.
 
-## Follow‑Up Questions
-1. How would the solution change if moves could also go left/up?
-2. Can the algorithm be adapted for larger alphabets with custom mirror maps?
-3. What is the impact on complexity if we need to list all such paths instead of counting them?
+## Follow-Up Questions
+1. How would you reduce memory to `O(n)`? (Keep `R` for the current row and `D` for the next row only.)
+2. What if mirrors could be of two kinds (`/` and `\`) with different reflection rules, possibly sending the robot left or up? (The state graph may contain cycles; you would need a graph traversal / cycle detection instead of a simple ordered DP.)
+3. How would you reconstruct one valid path, or the lexicographically smallest one?
 
 ## Key Takeaway
-By enforcing that each visited cell matches the mirror of its transposed counterpart, a simple DP over the grid counts only those paths invariant under the twisted mirror operation.
+When a cell's effect depends on how you enter it, add the entering direction to the DP state. Since every move (even reflections) goes right or down, a single row-major pass that "pushes" counts forward through mirrors counts all valid paths in `O(m · n)`.

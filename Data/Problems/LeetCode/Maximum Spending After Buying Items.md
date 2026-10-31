@@ -64,7 +64,7 @@ It can be shown that 386 is the maximum amount of money that can be spent buying
 ```
 
 ## Approach
-Sort prices ascending. Use a two‑pointer or binary‑search technique to try each possible minimum price `m`. For a fixed `m`, all items with price ≥ `m` are eligible; we need the largest subset whose sum ≤ `B - m` (budget after reserving cashback). This becomes a classic knapsack with all weights equal to prices, but because we only need the maximum sum ≤ limit, we can greedily take the cheapest eligible items first.
+Sort prices ascending. Use a two-pointer or binary-search technique to try each possible minimum price `m`. For a fixed `m`, all items with price ≥ `m` are eligible; we need the largest subset whose sum ≤ `B - m` (budget after reserving cashback). This becomes a classic knapsack with all weights equal to prices, but because we only need the maximum sum ≤ limit, we can greedily take the cheapest eligible items first.
 
 ```text
 FUNCTION MaxSpend(prices, B):

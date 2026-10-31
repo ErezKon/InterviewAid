@@ -54,7 +54,7 @@ FUNCTION minBuildTime(blocks, split):
     WHILE SIZE(heap) > 1:
         a ← heap.POP()  // smallest block time
         b ← heap.POP()  // second smallest
-        // After a split, the two sub‑tasks run in parallel; total time for this merge
+        // After a split, the two sub-tasks run in parallel; total time for this merge
         merged ← split + MAX(a, b)
         heap.PUSH(merged)
     RETURN heap.POP()

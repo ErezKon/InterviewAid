@@ -92,13 +92,13 @@ Take `s1 = "great"`, `s2 = "rgeat"`:
 
 1. Characters match in multiset, continue.
 2. Try split at `i = 1`:
-   - No‑swap: `"g"` vs `"r"` → false.
+   - No-swap: `"g"` vs `"r"` → false.
    - Swap: `"g"` vs `"t"` → false.
 3. Split at `i = 2`:
-   - No‑swap: `"gr"` vs `"rg"` (false) and `"eat"` vs `"eat"` (true) → overall false.
+   - No-swap: `"gr"` vs `"rg"` (false) and `"eat"` vs `"eat"` (true) → overall false.
    - Swap: `"gr"` vs `"at"` (false) and `"eat"` vs `"rg"` (false).
 4. Split at `i = 3`:
-   - No‑swap: `"gre"` vs `"rge"` (true after deeper recursion) and `"at"` vs `"at"` (true) → both true → return true.
+   - No-swap: `"gre"` vs `"rge"` (true after deeper recursion) and `"at"` vs `"at"` (true) → both true → return true.
 
 Thus `"rgeat"` is a scrambled version of `"great"`.
 
@@ -124,4 +124,4 @@ The recursion explores all split points; memoization reduces repeated work.
 
 ## Key Takeaway
 
-> Scramble String is a divide‑and‑conquer problem with two branching choices (swap or not) at each split point — memoization is essential to avoid exponential blowup.
+> Scramble String is a divide-and-conquer problem with two branching choices (swap or not) at each split point — memoization is essential to avoid exponential blowup.

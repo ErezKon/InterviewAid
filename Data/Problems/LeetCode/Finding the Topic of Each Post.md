@@ -131,7 +131,7 @@ ORDER BY p.post_id;
 1. **Prepare data** – Ensure each `content` string has spaces padded on both sides to simplify word boundary matching.
 2. **Join condition** – For each keyword `k.word`, the `LIKE` pattern `'% k.word %'` checks if the word appears as a whole word in the post.
 3. **Aggregation** – `GROUP_CONCAT` collects all matching `topic_id`s per `post_id`. If none match, `COALESCE` substitutes `'Ambiguous!'`.
-4. **Result** – The query returns one row per post with either a comma‑separated list of topics or `'Ambiguous!'`.
+4. **Result** – The query returns one row per post with either a comma-separated list of topics or `'Ambiguous!'`.
 
 ---
 
@@ -139,16 +139,16 @@ ORDER BY p.post_id;
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(P × K) – each post is compared against all keywords via the `LIKE` pattern. |
-| **Space** | O(P + K) – storing the tables and intermediate join results. |
+| **Time** | O(P × K) – each post is compared against all keywords via the `LIKE` pattern. |
+| **Space** | O(P + K) – storing the tables and intermediate join results. |
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you redesign the schema to support fast full‑text search instead of `LIKE`?
+- How would you redesign the schema to support fast full-text search instead of `LIKE`?
 - Can you modify the query to return only the *first* matching topic per post?
-- How would you handle case‑insensitive matching or punctuation?
+- How would you handle case-insensitive matching or punctuation?
 
 ---
 

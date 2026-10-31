@@ -96,9 +96,9 @@ The maximum area rectangle is formed by the points [1,3], [1,2], [3,2], [3,3], w
 |------|--------|--------|
 | 1 | Insert all points into a hash set for O(1) lookup. | Enables quick existence checks. |
 | 2 | Iterate over every unordered pair of points as potential diagonal corners. | Enumerates all rectangle candidates. |
-| 3 | Skip pairs sharing x or y coordinate (cannot form a rectangle). | Ensures rectangle is axis‑aligned. |
+| 3 | Skip pairs sharing x or y coordinate (cannot form a rectangle). | Ensures rectangle is axis-aligned. |
 | 4 | Verify the other two corners exist in the set. | Guarantees a complete rectangle. |
-| 5 | Call `noPointsInside` to ensure no other points lie inside or on the boundary. | Satisfies the interior‑free constraint. |
+| 5 | Call `noPointsInside` to ensure no other points lie inside or on the boundary. | Satisfies the interior-free constraint. |
 | 6 | Compute area and update the maximum if larger. | Tracks the best solution. |
 
 ---
@@ -114,7 +114,7 @@ The maximum area rectangle is formed by the points [1,3], [1,2], [3,2], [3,3], w
 ## Follow-Up Questions
 
 - How would you handle a large number of points (n up to 10⁵)?
-- Can the problem be extended to non‑axis‑aligned rectangles?
+- Can the problem be extended to non-axis-aligned rectangles?
 - What if interior points are allowed but must be minimized?
 
 ---

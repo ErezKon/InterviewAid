@@ -48,7 +48,7 @@ The problem can be solved with **prefix sums** and a sliding window.
 1. Compute a prefix sum array `pref` where `pref[i]` is the sum of the first `i` elements.
 2. For each possible position of the first subarray, compute its sum in O(1) using the prefix sums.
 3. Keep track of the best sum of a subarray of length `firstLen` seen so far on the left side and on the right side.
-4. For each position of the second subarray, combine it with the best non‑overlapping first subarray on the left or right.
+4. For each position of the second subarray, combine it with the best non-overlapping first subarray on the left or right.
 5. Perform the same procedure swapping the roles of `firstLen` and `secondLen` and take the overall maximum.
 
 ### Pseudocode
@@ -79,8 +79,8 @@ FUNCTION helper(pref, lenA, lenB):
 ## Walkthrough
 For `nums = [0,6,5,2,2,5,1,9,4]`, `firstLen = 1`, `secondLen = 2`:
 - Prefix sums: `[0,0,6,11,13,15,20,21,30,34]`.
-- Compute best 1‑length sums up to each index → bestA = `[0,0,6,6,6,6,6,6,9,9]`.
-- Iterate over 2‑length windows:
+- Compute best 1-length sums up to each index → bestA = `[0,0,6,6,6,6,6,6,9,9]`.
+- Iterate over 2-length windows:
   * At `j=3` (window `[6,5]` sum=11) combine with bestA[1]=0 → 11.
   * At `j=8` (window `[1,9]` sum=10) combine with bestA[6]=6 → 16.
   * At `j=9` (window `[9,4]` sum=13) combine with bestA[7]=6 → 19.
@@ -91,10 +91,10 @@ Thus the answer is 20.
 *Time:* O(n) – one pass to build prefix sums and two linear scans.
 *Space:* O(n) for the prefix sum array (can be reduced to O(1) with rolling sums).
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to handle **k** non‑overlapping subarrays of given lengths?
+## Follow-Up Questions
+1. How would you modify the algorithm to handle **k** non-overlapping subarrays of given lengths?
 2. Can the solution be adapted for a circular array where subarrays may wrap around?
 3. What changes are needed if the subarray lengths are not fixed but any lengths are allowed?
 
 ## Key Takeaway
-Using prefix sums to obtain O(1) subarray sums together with a sliding‑window scan for the best left/right contributions yields a linear‑time solution for two non‑overlapping subarrays.
+Using prefix sums to obtain O(1) subarray sums together with a sliding-window scan for the best left/right contributions yields a linear-time solution for two non-overlapping subarrays.

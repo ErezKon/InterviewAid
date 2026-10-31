@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-First, compute for each character its first and last occurrence. Then, for each position `i`, expand a candidate interval to include the full range of every character seen so far. If the interval closes (i reaches the maximum last index of characters inside), it forms a valid substring. Collect all such intervals, sort by end index, and greedily pick non‑overlapping ones.
+First, compute for each character its first and last occurrence. Then, for each position `i`, expand a candidate interval to include the full range of every character seen so far. If the interval closes (i reaches the maximum last index of characters inside), it forms a valid substring. Collect all such intervals, sort by end index, and greedily pick non-overlapping ones.
 
 ### Pseudocode
 ```text
@@ -77,10 +77,10 @@ For `s = "adefaddaccc"` the algorithm discovers intervals `[0,7]` ("adefadda") a
 - **Time:** O(n) to compute first/last positions plus O(n) to build intervals and O(k log k) to sort intervals (k ≤ n).
 - **Space:** O(n) for the maps and interval list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if overlapping substrings were allowed but you wanted to maximize total length?
 2. Can this be extended to uppercase letters or Unicode characters?
 3. What is the effect of using a segment tree to avoid sorting intervals?
 
 ## Key Takeaway
-By expanding intervals to fully contain all occurrences of their characters, the problem reduces to selecting the maximum number of non‑overlapping intervals via a greedy schedule.
+By expanding intervals to fully contain all occurrences of their characters, the problem reduces to selecting the maximum number of non-overlapping intervals via a greedy schedule.

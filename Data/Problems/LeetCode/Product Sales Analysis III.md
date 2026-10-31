@@ -58,10 +58,10 @@ Output:
 ```
 
 ## Approach
-Use a sub‑query to compute the minimum year for each `product_id`, then join back to the original table to fetch the corresponding `quantity` and `price`.
+Use a sub-query to compute the minimum year for each `product_id`, then join back to the original table to fetch the corresponding `quantity` and `price`.
 
 ## Walkthrough
-1. Sub‑query groups rows by `product_id` and selects `MIN(year)` as `first_year`.
+1. Sub-query groups rows by `product_id` and selects `MIN(year)` as `first_year`.
 2. Join the original `Sales` table on both `product_id` and `year = first_year`.
 3. Project the required columns.
 
@@ -69,7 +69,7 @@ Use a sub‑query to compute the minimum year for each `product_id`, then join b
 - Time: O(N) where N is the number of rows, due to a single scan for grouping and a join on indexed columns.
 - Space: O(P) for storing the minimum year per product, where P is the number of distinct products.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How to handle ties if multiple rows share the same earliest year?
 - Extend to retrieve the cumulative sales for the first three years of each product.
 - Adapt the query for databases without window functions.

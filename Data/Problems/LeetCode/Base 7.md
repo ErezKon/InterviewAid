@@ -52,13 +52,13 @@ FUNCTION convertToBase7(num):
 Result = "202".
 
 ## Complexity Analysis
-- **Time:** O(log₇ n) – number of divisions equals the number of digits.
-- **Space:** O(log₇ n) – storage for the digit list.
+- **Time:** O(log₇ n) – number of divisions equals the number of digits.
+- **Space:** O(log₇ n) – storage for the digit list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you convert to an arbitrary base `b`?
 2. Can you perform the conversion without using extra space for the digit list?
-3. How would you handle very large integers beyond built‑in limits?
+3. How would you handle very large integers beyond built-in limits?
 
 ## Key Takeaway
-Repeated division by the base and collecting remainders (in reverse) yields the base‑7 representation, handling sign separately.
+Repeated division by the base and collecting remainders (in reverse) yields the base-7 representation, handling sign separately.

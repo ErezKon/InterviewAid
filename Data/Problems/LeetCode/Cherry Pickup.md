@@ -46,12 +46,12 @@ Example 2:
 ```
 
 ## Approach
-Model the round‑trip as two people moving simultaneously from `(0,0)` to `(n-1,n-1)`. At step `t` both have taken `t` moves, so their positions are `(r1, c1)` and `(r2, c2)` with `c1 = t‑r1`, `c2 = t‑r2`. Use 3‑D DP `dp[t][r1][r2]` for the maximum cherries collected up to step `t`.
+Model the round-trip as two people moving simultaneously from `(0,0)` to `(n-1,n-1)`. At step `t` both have taken `t` moves, so their positions are `(r1, c1)` and `(r2, c2)` with `c1 = t-r1`, `c2 = t-r2`. Use 3-D DP `dp[t][r1][r2]` for the maximum cherries collected up to step `t`.
 
 ```text
 FUNCTION cherryPickup(grid):
     n ← size of grid
-    dp ← 3‑D array (2n‑1) × n × n filled with -∞
+    dp ← 3-D array (2n-1) × n × n filled with -∞
     dp[0][0][0] ← grid[0][0]
     FOR t ← 1 TO 2*n - 2:
         FOR r1 ← MAX(0, t-n+1) TO MIN(n-1, t):
@@ -77,10 +77,10 @@ For the first example, `dp[0][0][0] = 0`. At `t=1`, possible positions are `(0,1
 *Time*: `O(n³)` – three nested loops over `t`, `r1`, `r2`.
 *Space*: `O(n³)` naïve, but can be reduced to `O(n²)` by keeping only the previous `t` layer.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the grid were rectangular (`m x n`)?
-2. Can the problem be solved with memoized recursion instead of bottom‑up DP?
+2. Can the problem be solved with memoized recursion instead of bottom-up DP?
 3. What if the traveler could move in four directions instead of only right/down?
 
 ## Key Takeaway
-Viewing the round‑trip as two simultaneous paths enables a clean 3‑D DP formulation that captures overlapping cells and obstacles.
+Viewing the round-trip as two simultaneous paths enables a clean 3-D DP formulation that captures overlapping cells and obstacles.

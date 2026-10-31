@@ -46,10 +46,10 @@ Example 2:
 
 ## Approach
 
-**Algorithm:** 0‑1 BFS (deque based shortest path for binary edge weights).
+**Algorithm:** 0-1 BFS (deque based shortest path for binary edge weights).
 
 - Build an undirected representation where traversing an original edge has cost 0 and traversing the reverse direction has cost 1.
-- Perform BFS using a double‑ended queue: push cost‑0 neighbors to the front, cost‑1 neighbors to the back.
+- Perform BFS using a double-ended queue: push cost-0 neighbors to the front, cost-1 neighbors to the back.
 - The first time we pop `target` we have the minimum cost.
 
 ```text
@@ -88,14 +88,14 @@ FUNCTION minCostPath(n, edges, source, target):
 | Pop  | –                  | Explore 0→1 (cost 0) → push front |
 | …    | (continue until target reached) |
 
-The algorithm expands zero‑cost edges first, guaranteeing the shortest reversal count.
+The algorithm expands zero-cost edges first, guaranteeing the shortest reversal count.
 
 ## Complexity Analysis
 
 - **Time:** `O(V + E)` – each edge examined at most once.
 - **Space:** `O(V + E)` for the adjacency list and distance array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the solution to also return the actual path with reversals?
 - What if each reversal had a different cost instead of a uniform `1`?
@@ -103,4 +103,4 @@ The algorithm expands zero‑cost edges first, guaranteeing the shortest reversa
 
 ## Key Takeaway
 
-Use **0‑1 BFS** for graphs with binary edge costs: push zero‑cost moves to the front of a deque and one‑cost moves to the back to achieve linear‑time shortest paths.
+Use **0-1 BFS** for graphs with binary edge costs: push zero-cost moves to the front of a deque and one-cost moves to the back to achieve linear-time shortest paths.

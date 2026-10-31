@@ -41,7 +41,7 @@ Explanation: The ugly numbers are 2, 4, 6, 8, 10, 11, 12, 13... The 5th is 10.
 ```
 
 ## Approach
-Use binary search on the answer space combined with inclusion‑exclusion to count how many ugly numbers are ≤ a candidate value.
+Use binary search on the answer space combined with inclusion-exclusion to count how many ugly numbers are ≤ a candidate value.
 
 ### Pseudocode
 ```text
@@ -76,10 +76,10 @@ The loop narrows the range until `lo` equals the smallest value with at least `n
 - **Time:** `O(log(maxValue))` binary search iterations, each `O(1)` counting → overall `O(log 2e9)`.
 - **Space:** `O(1)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if the numbers could be zero or negative?
-2. Can you extend the approach to find the k‑th number divisible by any of `m` given divisors?
+2. Can you extend the approach to find the k-th number divisible by any of `m` given divisors?
 3. What if you need to generate the first `n` ugly numbers instead of only the nth?
 
 ## Key Takeaway
-Binary search with inclusion‑exclusion efficiently finds the nth number meeting multiple divisibility constraints without enumerating all candidates.
+Binary search with inclusion-exclusion efficiently finds the nth number meeting multiple divisibility constraints without enumerating all candidates.

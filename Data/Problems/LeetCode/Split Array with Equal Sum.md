@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve a pivot-index problem, not this one. Correct idea: prefix sums; for each middle cut `j`, store every sum `s` with `sum(0,i-1) == sum(i+1,j-1) == s` (valid `i` in the left part) in a set, then scan `k` in the right part and return `true` if `sum(j+1,k-1) == sum(k+1,n-1)` is in the set. O(n²).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 Given an integer array `nums` of length `n`, return `true` if there is a triplet `(i, j, k)` which satisfies the following conditions:
 
@@ -43,38 +43,48 @@ Output: false
 ```
 
 ## Approach
-Compute the total sum of the array. Iterate once, maintaining a running prefix sum. At each position `i`, the left sum is the prefix, and the right sum is `total - prefix - nums[i]`. If they are equal, a valid split is found.
+Build prefix sums `p` so that `sum(l, r) = p[r+1] - p[l]` in O(1). Fix the **middle cut `j`** first; the problem then splits into two independent halves:
+
+1. **Left half** (`1 ≤ i ≤ j-2`): every `i` with `sum(0, i-1) == sum(i+1, j-1)` produces a candidate common sum; store it in a hash set.
+2. **Right half** (`j+2 ≤ k ≤ n-2`): for every `k` with `sum(j+1, k-1) == sum(k+1, n-1)`, if that sum is in the set, all four parts are equal → return `true`.
+
+Each `j` costs O(n), giving O(n²) overall instead of the O(n³) brute force over all triplets.
 
 ```text
-FUNCTION canSplitEqualSum(nums):
-    SET total ← SUM of all elements in nums
-    SET leftSum ← 0
-    FOR i ← 0 TO LENGTH(nums) - 2:   // cannot split after last element
-        SET leftSum ← leftSum + nums[i]
-        SET rightSum ← total - leftSum - nums[i+1]
-        IF leftSum == rightSum:
-            RETURN true
+FUNCTION splitArray(nums):
+    n ← LENGTH(nums)
+    p[0] ← 0
+    FOR t ← 0 TO n-1: p[t+1] ← p[t] + nums[t]
+    // sum(l, r) = p[r+1] - p[l]
+    FOR j ← 3 TO n-4:
+        seen ← empty set
+        FOR i ← 1 TO j-2:
+            IF sum(0, i-1) == sum(i+1, j-1):
+                ADD sum(0, i-1) TO seen
+        FOR k ← j+2 TO n-2:
+            IF sum(j+1, k-1) == sum(k+1, n-1) AND sum(k+1, n-1) IN seen:
+                RETURN true
     RETURN false
 ```
 
 ## Walkthrough
-For `nums = [1,2,3,4,6]`:
-| i | leftSum | rightSum (excluding nums[i+1]) |
-|---|---------|---------------------------------|
-|0|1|15 (2+3+4+6) |
-|1|3|13 (3+4+6) |
-|2|6|10 (4+6) |
-|3|10|6 (6) |
-At i = 3, leftSum = 10 equals rightSum = 6? Actually rightSum computed as total - leftSum - nums[i+1] = 16 - 10 - 6 = 0, need adjust. Simpler: compare leftSum with total - leftSum - nums[i+1]. At i=2 leftSum=6, rightSum=16-6-4=6 → equal, split after index 2.
+Example 1: `nums = [1,2,1,2,1,2,1]`, `n = 7`, prefix `p = [0,1,3,4,6,7,9,10]`. Only `j = 3` is possible (`3 ≤ j ≤ n-4 = 3`).
+
+| Phase | Index | Left/Right sums | Action |
+|-------|-------|-----------------|--------|
+| left  | i = 1 | sum(0,0)=1, sum(2,2)=1 | equal → seen = {1} |
+| right | k = 5 | sum(4,4)=1, sum(6,6)=1 | equal and 1 ∈ seen → return true |
+
+Output: `true`. (For Example 2, `n = 8`; for `j = 3` and `j = 4` no right-half match lies in the set, so the result is `false`.)
 
 ## Complexity Analysis
-- **Time:** Single pass `O(n)`.
-- **Space:** `O(1)` extra space.
+- **Time:** O(n²) — for each of the O(n) middle cuts, the left and right scans are O(n) each with O(1) prefix-sum queries.
+- **Space:** O(n) for the prefix array and the hash set.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to return all possible split indices?
-2. Can the solution be extended to handle multiple splits (e.g., three equal‑sum parts)?
-3. What changes are needed if the array contains very large integers that may overflow a 32‑bit sum?
+## Follow-Up Questions
+1. How would you return the actual triplet `(i, j, k)` instead of a boolean?
+2. How would you generalise to `m` cuts producing `m + 1` equal-sum parts?
+3. If all numbers were non-negative, could you prune the search using monotonic prefix sums?
 
 ## Key Takeaway
-A single linear scan with a running prefix sum efficiently determines whether an array can be divided into two parts with equal sums.
+Fixing the middle cut decouples the problem into two independent "two equal parts" checks; a hash set of left-side sums joins them, turning O(n³) into O(n²).

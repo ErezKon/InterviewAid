@@ -45,7 +45,7 @@ CLASS Matrix3D:
             layerCounts[x] -= 1
 
     FUNCTION largestMatrix(x):
-        // Compute largest all‑ones submatrix in layer x using histogram technique
+        // Compute largest all-ones submatrix in layer x using histogram technique
         SET maxArea ← 0
         SET heights ← array of zeros with length = number of columns
         FOR row FROM 0 TO rows-1:
@@ -107,19 +107,19 @@ The histogram method recomputes heights for each row, then finds the maximal rec
 
 ## Complexity Analysis
 
-- **Time:** `setCell` / `unsetCell` O(1). `largestMatrix` O(rows × cols) per query using the largest‑rectangle‑in‑histogram algorithm.
-- **Space:** O(rows × cols × layers) for the matrix plus O(cols) auxiliary space for heights.
+- **Time:** `setCell` / `unsetCell` O(1). `largestMatrix` O(rows × cols) per query using the largest-rectangle-in-histogram algorithm.
+- **Space:** O(rows × cols × layers) for the matrix plus O(cols) auxiliary space for heights.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you support queries for the largest sub‑matrix across *all* layers efficiently?
+1. How would you support queries for the largest sub-matrix across *all* layers efficiently?
 2. Can you extend the design to handle dynamic resizing of the matrix?
-3. What if the matrix stores integers and you need the largest sum sub‑matrix?
+3. What if the matrix stores integers and you need the largest sum sub-matrix?
 
 ---
 
 ## Key Takeaway
 
-> **3D matrix design: maintain per‑layer metadata and use a histogram‑based algorithm to compute the largest all‑ones submatrix efficiently.**
+> **3D matrix design: maintain per-layer metadata and use a histogram-based algorithm to compute the largest all-ones submatrix efficiently.**

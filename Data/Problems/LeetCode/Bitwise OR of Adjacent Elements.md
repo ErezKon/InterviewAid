@@ -66,12 +66,12 @@ Take `nums = [1,2,3,4]`.
 
 ## 6. Follow-Up Questions
 
-1. How would you modify the solution to handle odd‑length arrays by leaving the last element unchanged?
-2. Can you compute the result in‑place without extra space?
+1. How would you modify the solution to handle odd-length arrays by leaving the last element unchanged?
+2. Can you compute the result in-place without extra space?
 3. What if the operation were bitwise AND instead of OR?
 
 ---
 
 ## Key Takeaway
 
-> Simple pairwise reduction: iterate with step 2 and OR adjacent pairs.
+> Simple pairwise reduction: iterate with step 2 and OR adjacent pairs.

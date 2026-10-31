@@ -67,7 +67,7 @@ FUNCTION minSensors(grid):
 
 ## 4. Walkthrough
 
-Consider Example 1. The grid is processed row‑by‑row.
+Consider Example 1. The grid is processed row-by-row.
 1. At `(0,0)` we see a `1` not covered → place a sensor (sensors=1) and mark its coverage.
 2. Cells `(0,2)` and `(2,0)` are still uncovered `1`s → each triggers a new sensor placement (sensors=2, then 3).
 3. All `1`s become covered, final count = 3.
@@ -87,7 +87,7 @@ The greedy choice of placing a sensor at the first uncovered `1` ensures we neve
 ## 6. Follow-Up Questions
 
 - How would the algorithm change if sensors could cover only orthogonal neighbors (no diagonals)?
-- Can you design a solution with O(1) extra space by modifying the grid in‑place?
+- Can you design a solution with O(1) extra space by modifying the grid in-place?
 - What if each sensor has a limited range `k` cells away?
 
 ---

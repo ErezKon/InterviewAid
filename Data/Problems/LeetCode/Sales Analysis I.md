@@ -113,13 +113,13 @@ For the first example:
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you modify the query to return the top K sellers instead of just the maximum?
+1. How would you modify the query to return the top K sellers instead of just the maximum?
 2. How can you handle ties when ranking sellers using window functions?
 
 ---
 
 ## Key Takeaway
 
-Aggregating with `GROUP BY` and comparing to the maximum total lets you efficiently identify the top‑selling seller(s), handling ties naturally.
+Aggregating with `GROUP BY` and comparing to the maximum total lets you efficiently identify the top-selling seller(s), handling ties naturally.

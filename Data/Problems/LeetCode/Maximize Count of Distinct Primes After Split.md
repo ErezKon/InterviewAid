@@ -115,4 +115,4 @@ Splits:
 
 ## Key Takeaway
 
-> Prefix and suffix distinct‑prime counts combined with a prime sieve let us evaluate every possible split in linear time.
+> Prefix and suffix distinct-prime counts combined with a prime sieve let us evaluate every possible split in linear time.

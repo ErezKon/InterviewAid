@@ -76,14 +76,14 @@ FUNCTION queryKthSmallest(nums, queries):
         SET pairs ← []
         FOR i ← 0 TO LENGTH(nums) - 1:
             SET trimmed ← SUBSTRING(nums[i], LENGTH(nums[i]) - trim, trim)
-            APPEND (trimmed, i + 1) TO pairs   // store 1‑based index
+            APPEND (trimmed, i + 1) TO pairs   // store 1-based index
         SORT pairs BY first element (trimmed string) ASCENDING, THEN BY second ASCENDING
         APPEND pairs[k-1].second TO answers
     RETURN answers
 ```
 
 ## Walkthrough
-| Query | Trimmed strings | Sorted (value,index) | k‑th element | Answer |
+| Query | Trimmed strings | Sorted (value,index) | k-th element | Answer |
 |-------|----------------|----------------------|--------------|--------|
 | [1,1,2] | ["2","3","1","4"] | [("1",3),("2",1),("3",2),("4",4)] | 1st → ("1",3) | 3 |
 | … | … | … | … | … |
@@ -92,7 +92,7 @@ FUNCTION queryKthSmallest(nums, queries):
 - **Time:** For each query O(N log N) sorting → O(Q·N log N).
 - **Space:** O(N) for the temporary trimmed list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you answer all queries faster if `Q` is large? (Hint: sort queries by `trim` and reuse previous work.)
 2. Can you handle the case where numbers have leading zeros after trimming?
 3. How would you modify the algorithm to return the actual trimmed string instead of the original index?

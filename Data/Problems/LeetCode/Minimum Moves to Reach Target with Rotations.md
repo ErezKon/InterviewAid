@@ -56,7 +56,7 @@ Output: 9
 
 ## Approach
 
-**Algorithm:** Breadth‑First Search (BFS) on a state space that includes the snake’s head position and its orientation (horizontal = 0, vertical = 1).
+**Algorithm:** Breadth-First Search (BFS) on a state space that includes the snake’s head position and its orientation (horizontal = 0, vertical = 1).
 
 **Key Insight:** The snake’s movement depends on both cells it occupies, so the state must capture orientation. Rotations are only allowed when the 2×2 block around the head is free.
 
@@ -94,7 +94,7 @@ Consider the first example grid. The snake starts at `(0,0)` horizontal.
 | Time   | O(n²) – each cell with two orientations is visited at most once. |
 | Space  | O(n²) – queue and visited set store states for each cell/orientation. |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the snake length were greater than 2?
 2. Could a heuristic (A*) improve performance on very large grids?
@@ -102,4 +102,4 @@ Consider the first example grid. The snake starts at `(0,0)` horizontal.
 
 ## Key Takeaway
 
-> Multi‑cell movement on grids → BFS with state including **position + orientation**. Rotation constraints require checking a 2×2 area for obstacles.
+> Multi-cell movement on grids → BFS with state including **position + orientation**. Rotation constraints require checking a 2×2 area for obstacles.

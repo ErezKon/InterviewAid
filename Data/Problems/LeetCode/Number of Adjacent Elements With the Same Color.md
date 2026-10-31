@@ -97,9 +97,9 @@ FUNCTION colorTheArray(n, queries):
 
 ## 5. Walkthrough
 
-Consider Example 1 step‑by‑step:
+Consider Example 1 step-by-step:
 
-| Query | colors after update | Adjacent same‑color pairs | `same` value |
+| Query | colors after update | Adjacent same-color pairs | `same` value |
 |-------|---------------------|---------------------------|-------------|
 | [0,1] | [1,0,0,0] | none | 0 |
 | [1,2] | [1,2,0,0] | none | 0 |

@@ -59,7 +59,7 @@ The maximum `curr` observed is 2, so the answer is 2.
 - **Time:** `O(|s|)` – one pass over the string.
 - **Space:** `O(1)` – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the character(s) that achieve the maximum length?
 2. Can you solve the problem in a single pass without storing `maxLen` until the end?
 3. How would the solution change if the input were a stream of characters?

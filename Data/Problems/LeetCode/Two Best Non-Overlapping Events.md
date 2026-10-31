@@ -44,7 +44,7 @@ Explanation: Choose events 0 and 2 for a sum of 3 + 5 = 8.
 ```
 
 ## Approach
-Sort events by start time. Pre‑compute a suffix array `suffixMax[i]` storing the maximum event value from index `i` to end. For each event `i`, binary‑search the first event `j` whose start time is greater than `events[i].end`. The best total using event `i` is `events[i].value + suffixMax[j]`. Track the maximum over all `i` and also the single‑event maximum.
+Sort events by start time. Pre-compute a suffix array `suffixMax[i]` storing the maximum event value from index `i` to end. For each event `i`, binary-search the first event `j` whose start time is greater than `events[i].end`. The best total using event `i` is `events[i].value + suffixMax[j]`. Track the maximum over all `i` and also the single-event maximum.
 
 ## Walkthrough
 | i | Event (s,e,v) | Binary search j | suffixMax[j] | candidate sum |
@@ -58,13 +58,13 @@ Maximum = 4.
 - **Time:** `O(n log n)` for sorting and binary searches.
 - **Space:** `O(n)` for the suffix max array.
 
-## Follow‑Up Questions
-1. How would you extend the solution to select `k` non‑overlapping events?
-2. Can you solve the problem in `O(n)` after sorting using a two‑pointer technique?
+## Follow-Up Questions
+1. How would you extend the solution to select `k` non-overlapping events?
+2. Can you solve the problem in `O(n)` after sorting using a two-pointer technique?
 3. What changes are needed if events can share endpoints (i.e., end == start is allowed)?
 
 ## Key Takeaway
-Sorting by start time and using a suffix‑max array enables constant‑time lookup of the best compatible event for each candidate, yielding an efficient `O(n log n)` solution.
+Sorting by start time and using a suffix-max array enables constant-time lookup of the best compatible event for each candidate, yielding an efficient `O(n log n)` solution.
 
 ## Approach: Sort + Binary Search + Suffix Max — O(n log n) ✅
 

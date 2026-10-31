@@ -46,9 +46,9 @@ Output: 8
 
 ## Approach
 Sum three contributions:
-1. **Top view (xy‑plane)** – count cells with value > 0.
-2. **Front view (yz‑plane)** – for each column, take the maximum height.
-3. **Side view (xz‑plane)** – for each row, take the maximum height.
+1. **Top view (xy-plane)** – count cells with value > 0.
+2. **Front view (yz-plane)** – for each column, take the maximum height.
+3. **Side view (xz-plane)** – for each row, take the maximum height.
 
 ```text
 FUNCTION ProjectionArea(grid):

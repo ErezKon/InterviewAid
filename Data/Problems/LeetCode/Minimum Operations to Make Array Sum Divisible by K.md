@@ -47,7 +47,7 @@ Example 3:
 ```
 
 ## Approach
-The sum of the whole array modulo `k` tells how far we are from a multiple of `k`. Removing a single element with the same remainder fixes the sum. If such an element does not exist, we need to remove two elements whose remainders add up to the needed offset. Since we only need the minimal count, we check for a single‑element solution first, otherwise answer is `2` (or `0` if already divisible).
+The sum of the whole array modulo `k` tells how far we are from a multiple of `k`. Removing a single element with the same remainder fixes the sum. If such an element does not exist, we need to remove two elements whose remainders add up to the needed offset. Since we only need the minimal count, we check for a single-element solution first, otherwise answer is `2` (or `0` if already divisible).
 
 ```text
 FUNCTION minOperations(nums, k):

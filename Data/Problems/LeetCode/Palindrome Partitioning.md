@@ -62,7 +62,7 @@ For `s = "aab"`:
 
 ## Follow-Up Questions
 1. How can you modify the algorithm to return the minimum number of cuts (Palindrome Partitioning II)?
-2. Can you improve the palindrome check using a pre‑computed DP table?
+2. Can you improve the palindrome check using a pre-computed DP table?
 3. How would you adapt the solution to output partitions in lexicographic order?
 
 ## Key Takeaway

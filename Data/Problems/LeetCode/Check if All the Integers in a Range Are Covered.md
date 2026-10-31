@@ -59,10 +59,10 @@ FUNCTION isCovered(ranges, left, right):
 |[1,2]     |1,2|
 |[3,4]     |3,4|
 |[5,6]     |5,6|
-After marking, check indices 2‑5: all true → return true.
+After marking, check indices 2-5: all true → return true.
 
 ## Complexity Analysis
-- **Time:** O(N + R) where N is the number of intervals and R is the size of the range (`right‑left+1`). With constraints ≤50, effectively O(1).
+- **Time:** O(N + R) where N is the number of intervals and R is the size of the range (`right-left+1`). With constraints ≤50, effectively O(1).
 - **Space:** O(51) for the boolean array → O(1).
 
 ## Follow-Up Questions

@@ -65,14 +65,14 @@ FUNCTION digitCount(num):
 
 ## 4. Walkthrough
 
-Consider **Example 1** (`"1210"`).
+Consider **Example 1** (`"1210"`).
 | Step | Action | freq after step |
 |------|--------|----------------|
 | 1 | Count characters: `1→2`, `2→1`, `0→1` | [1,2,1,0,0,0,0,0,0,0] |
-| 2 | Verify index 0: expected 1, freq[0]=1 → ok |
-| 3 | Verify index 1: expected 2, freq[1]=2 → ok |
-| 4 | Verify index 2: expected 1, freq[2]=1 → ok |
-| 5 | Verify index 3: expected 0, freq[3]=0 → ok |
+| 2 | Verify index 0: expected 1, freq[0]=1 → ok |
+| 3 | Verify index 1: expected 2, freq[1]=2 → ok |
+| 4 | Verify index 2: expected 1, freq[2]=1 → ok |
+| 5 | Verify index 3: expected 0, freq[3]=0 → ok |
 All checks pass, return **true**.
 
 ---
@@ -85,9 +85,9 @@ All checks pass, return **true**.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-1. How would you adapt the solution for Unicode digits beyond `0‑9`?
+1. How would you adapt the solution for Unicode digits beyond `0-9`?
 2. Can you solve the problem in a single pass without extra storage?
 3. What changes are needed if the input is a list of integers instead of a string?
 

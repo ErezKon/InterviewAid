@@ -22,7 +22,7 @@ Given 2 integers `n` and `start`. Your task is return **any** permutation `p` of
 
 ## 2. Key Insight
 
-> Standard Gray code for index `i` is `i ^ (i >> 1)`. XOR‑ing every Gray code value with `start` rotates the sequence so it begins at `start` while preserving the one‑bit difference property.
+> Standard Gray code for index `i` is `i ^ (i >> 1)`. XOR-ing every Gray code value with `start` rotates the sequence so it begins at `start` while preserving the one-bit difference property.
 
 ---
 
@@ -68,7 +68,7 @@ Explanation: The binary representation of the permutation is (010,110,111,101,10
 
 1. **First example** (`n=2`): generate Gray codes `[0,1,3,2]`.
 2. XOR each with `start=1` → `[1,0,2,3]`.
-3. Verify adjacent pairs differ by one bit: `1↔0` (bit 0), `0↔2` (bit 1), `2↔3` (bit 0), `3↔1` (bit 1) – condition satisfied.
+3. Verify adjacent pairs differ by one bit: `1↔0` (bit 0), `0↔2` (bit 1), `2↔3` (bit 0), `3↔1` (bit 1) – condition satisfied.
 
 ---
 
@@ -82,7 +82,7 @@ Explanation: The binary representation of the permutation is (010,110,111,101,10
 ## Follow-Up Questions
 
 - How would you generate the sequence iteratively without storing the entire list?
-- Can you adapt the method for a non‑binary Gray code (e.g., ternary)?
+- Can you adapt the method for a non-binary Gray code (e.g., ternary)?
 - What is the effect of using a different start value on the adjacency property?
 
 ---

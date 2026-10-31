@@ -28,7 +28,7 @@ Return *the string described above. If there is more than one string with the sa
 
 ```text
 // Build a trie from all words, marking end-of-word nodes.
-// Perform DFS from the root, only following children that are end‑of‑word.
+// Perform DFS from the root, only following children that are end-of-word.
 // Track the longest (and lexicographically smallest) word encountered.
 ```
 
@@ -94,4 +94,4 @@ The DFS explores this path and records "world" as the answer.
 
 ## Key Takeaway
 
-Use a trie to enforce the prefix condition and perform a depth‑first search that only follows nodes marked as complete words; this yields the longest word with all prefixes in linear time.
+Use a trie to enforce the prefix condition and perform a depth-first search that only follows nodes marked as complete words; this yields the longest word with all prefixes in linear time.

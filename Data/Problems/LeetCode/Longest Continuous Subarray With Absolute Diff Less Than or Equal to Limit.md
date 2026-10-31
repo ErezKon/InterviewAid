@@ -89,12 +89,12 @@ FUNCTION longestSubarray(nums, limit):
 ## 4. Walkthrough
 
 Take `nums = [10,1,2,4,7,2]`, `limit = 5`.
-1. `right=0` → maxDeque=[10], minDeque=[10]; window `[10]`, length 1.
+1. `right=0` → maxDeque=[10], minDeque=[10]; window `[10]`, length 1.
 2. `right=1` → insert 1: maxDeque stays [10], minDeque becomes [1]; diff=9>5, shrink left: remove 10, left=1. Window `[1]`.
-3. `right=2` → add 2: maxDeque=[2], minDeque=[1,2]; diff=1≤5, window `[1,2]`, length 2.
-4. `right=3` → add 4: maxDeque=[4], minDeque=[1,2,4]; diff=3≤5, window `[1,2,4]`, length 3.
-5. `right=4` → add 7: maxDeque=[7], minDeque=[1,2,4,7]; diff=6>5, shrink left (remove 1). New diff=6>5, shrink left (remove 2). New diff=5≤5, window `[4,7]`, length 2.
-6. `right=5` → add 2: maxDeque=[7,2], minDeque=[2]; diff=5≤5, window `[4,7,2]` (indices 3‑5), length 3.
+3. `right=2` → add 2: maxDeque=[2], minDeque=[1,2]; diff=1≤5, window `[1,2]`, length 2.
+4. `right=3` → add 4: maxDeque=[4], minDeque=[1,2,4]; diff=3≤5, window `[1,2,4]`, length 3.
+5. `right=4` → add 7: maxDeque=[7], minDeque=[1,2,4,7]; diff=6>5, shrink left (remove 1). New diff=6>5, shrink left (remove 2). New diff=5≤5, window `[4,7]`, length 2.
+6. `right=5` → add 2: maxDeque=[7,2], minDeque=[2]; diff=5≤5, window `[4,7,2]` (indices 3-5), length 3.
 Maximum length observed is 4 for subarray `[2,4,7,2]`.
 
 ## 5. Complexity Analysis
@@ -110,4 +110,4 @@ Maximum length observed is 4 for subarray `[2,4,7,2]`.
 
 ## 7. Key Takeaway
 
-> Two monotonic deques maintain the current window's maximum and minimum in O(1). Expand the right pointer, and shrink the left pointer whenever the range exceeds the limit, yielding a linear‑time solution.
+> Two monotonic deques maintain the current window's maximum and minimum in O(1). Expand the right pointer, and shrink the left pointer whenever the range exceeds the limit, yielding a linear-time solution.

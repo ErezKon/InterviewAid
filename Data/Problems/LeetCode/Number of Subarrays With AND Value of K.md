@@ -111,8 +111,8 @@ Consider `nums = [5,1,2]`, `k = 0`.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n · log max) — at most 30 distinct AND values per position |
-| **Space** | O(log max) for the map of AND values |
+| **Time** | O(n · log max) — at most 30 distinct AND values per position |
+| **Space** | O(log max) for the map of AND values |
 
 ---
 
@@ -120,7 +120,7 @@ Consider `nums = [5,1,2]`, `k = 0`.
 
 - How would the solution change if we needed subarrays with AND **greater than or equal to** `k`?
 - Can this approach be adapted for the bitwise OR or XOR operations?
-- What is the impact on performance if the array length reaches 10⁵ and values are up to 2³¹‑1?
+- What is the impact on performance if the array length reaches 10⁵ and values are up to 2³¹-1?
 
 ---
 

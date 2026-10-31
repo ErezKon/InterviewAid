@@ -72,9 +72,9 @@ FUNCTION minOperations(nums, threshold):
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting.
-- **Space:** O(1) extra (in‑place sort) or O(n) if a copy is made.
+- **Space:** O(1) extra (in-place sort) or O(n) if a copy is made.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. What if you could only pick each element at most once?
 2. How would you handle a stream of numbers where you cannot store all values?
 3. Can you solve it in O(n) time using a selection algorithm?

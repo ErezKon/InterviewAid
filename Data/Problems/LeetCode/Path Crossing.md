@@ -75,10 +75,10 @@ Path `"NESWW"`:
 - **Time:** O(L) where L is the length of `path`.
 - **Space:** O(L) for the visited set in the worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the first crossing point?
-2. Can you solve it using a hash‑free approach, e.g., encoding positions into a single integer?
+2. Can you solve it using a hash-free approach, e.g., encoding positions into a single integer?
 3. What changes are needed if diagonal moves are allowed?
 
 ## Key Takeaway
-Recording each visited coordinate and checking for repeats yields a simple linear‑time solution for detecting path crossings.
+Recording each visited coordinate and checking for repeats yields a simple linear-time solution for detecting path crossings.

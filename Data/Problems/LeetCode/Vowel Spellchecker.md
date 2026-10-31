@@ -52,7 +52,7 @@ Output: ["yellow"]
 ## Approach
 Preprocess the wordlist into three hash maps:
 - `exactSet` for O(1) exact lookup.
-- `caseMap` mapping lowercase word → first original word (case‑insensitive).
+- `caseMap` mapping lowercase word → first original word (case-insensitive).
 - `vowelMap` mapping devoweled lowercase word (replace vowels with '*') → first original word.
 For each query, check these maps in order.
 
@@ -83,7 +83,7 @@ FUNCTION spellchecker(wordlist, queries):
 ```
 
 ## Walkthrough
-| Query | Exact? | Case‑insensitive? | Vowel error? | Returned |
+| Query | Exact? | Case-insensitive? | Vowel error? | Returned |
 |-------|--------|-------------------|--------------|----------|
 | "Kite" | No | Yes (`kite`) | — | `kite` |
 | "KiTe" | No | No | Yes (`k*t*`) → `KiTe` | `KiTe` |
@@ -95,8 +95,8 @@ FUNCTION spellchecker(wordlist, queries):
 
 ## Follow-Up Questions
 1. How would you extend the solution to support other character equivalence groups (e.g., leet speak)?
-2. Can you design a trie‑based approach to reduce memory usage?
+2. Can you design a trie-based approach to reduce memory usage?
 3. How would you handle Unicode characters and diacritics?
 
 ## Key Takeaway
-Precomputing exact, case‑insensitive, and vowel‑error mappings lets you answer each query in O(1) by checking the maps in priority order.
+Precomputing exact, case-insensitive, and vowel-error mappings lets you answer each query in O(1) by checking the maps in priority order.

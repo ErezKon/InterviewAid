@@ -39,7 +39,7 @@ Example 2:
 ```
 
 ## Approach
-Recursively build the tree using an **upper‑bound** that limits node values. Process the preorder list sequentially; for each value, create a node and recursively construct its left subtree with bound = node.val, then its right subtree with the previous bound.
+Recursively build the tree using an **upper-bound** that limits node values. Process the preorder list sequentially; for each value, create a node and recursively construct its left subtree with bound = node.val, then its right subtree with the previous bound.
 
 ```text
 FUNCTION bstFromPreorder(preorder):
@@ -70,7 +70,7 @@ FUNCTION bstFromPreorder(preorder):
 - **Time:** `O(n)` – each element is visited once.
 - **Space:** `O(n)` for recursion stack in the worst case (skewed tree).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you construct the BST iteratively using a stack?
 2. Can you adapt the algorithm to work with inorder + preorder traversals?
 3. What changes are needed if duplicate values are allowed?

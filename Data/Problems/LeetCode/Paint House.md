@@ -67,9 +67,9 @@ Minimum of last row = **10**.
 
 ## Complexity Analysis
 - **Time:** O(n) – one pass through the houses.
-- **Space:** O(1) extra if we modify `costs` in‑place; otherwise O(n) for a separate DP table.
+- **Space:** O(1) extra if we modify `costs` in-place; otherwise O(n) for a separate DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the solution to `k` colors?
 2. How can you reconstruct the actual color choices for each house?
 3. What if the adjacency restriction applies to a sliding window of size > 1?

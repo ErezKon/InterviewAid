@@ -42,11 +42,11 @@ Example 2:
 ```
 
 ## Approach
-Maintain a max‑heap of the current gift values. In each of the `k` iterations, extract the maximum, compute its integer square root, and push the result back. After the loop, sum the heap contents.
+Maintain a max-heap of the current gift values. In each of the `k` iterations, extract the maximum, compute its integer square root, and push the result back. After the loop, sum the heap contents.
 
 ```text
 FUNCTION pickGifts(gifts, k):
-    // Build a max‑heap from the initial values
+    // Build a max-heap from the initial values
     heap ← MaxHeap(gifts)
     FOR i ← 1 TO k:
         maxVal ← heap.POP()
@@ -64,13 +64,13 @@ FUNCTION pickGifts(gifts, k):
 | End | – | – | – | Sum = 26 |
 
 ## Complexity Analysis
-- Time: O((n + k) log n) – building the heap takes O(n), each of the `k` operations costs O(log n).
+- Time: O((n + k) log n) – building the heap takes O(n), each of the `k` operations costs O(log n).
 - Space: O(n) for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the operation could be applied to any element, not just the maximum?
 2. Can you compute the final sum without using a heap by observing the monotonic decrease of values?
 3. What if the replacement rule were `ceil(sqrt(x))` instead of `floor`?
 
 ## Key Takeaway
-A max‑heap lets you repeatedly access and update the largest element efficiently, enabling greedy reduction of values.
+A max-heap lets you repeatedly access and update the largest element efficiently, enabling greedy reduction of values.

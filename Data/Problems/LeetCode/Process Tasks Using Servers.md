@@ -58,10 +58,10 @@ Explanation: Events in chronological order go as follows:
 ```
 
 ## Approach
-We maintain two min‑heaps:
+We maintain two min-heaps:
 1. **available** – `(weight, index)` of free servers.
 2. **busy** – `(freeTime, weight, index)` of servers currently processing a task.
-For each second `t` (task index), we first move any servers whose `freeTime ≤ t` from `busy` back to `available`. If `available` is non‑empty we pop the smallest server, assign the task, and push it into `busy` with `freeTime = t + tasks[t]`. If no server is free, we pop the earliest finishing server from `busy`, assign the task at its `freeTime`, and push it back with an updated `freeTime`.
+For each second `t` (task index), we first move any servers whose `freeTime ≤ t` from `busy` back to `available`. If `available` is non-empty we pop the smallest server, assign the task, and push it into `busy` with `freeTime = t + tasks[t]`. If no server is free, we pop the earliest finishing server from `busy`, assign the task at its `freeTime`, and push it back with an updated `freeTime`.
 
 ```text
 FUNCTION assignTasks(servers, tasks):

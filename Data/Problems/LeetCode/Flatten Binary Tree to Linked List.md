@@ -94,7 +94,7 @@ FUNCTION flatten(root):
 Input: root = [1,2,5,3,4,null,6]
 Output: [1,null,2,null,3,null,4,null,5,null,6]
 ```
-Explanation: The tree is flattened to a right‑skewed linked list following preorder.
+Explanation: The tree is flattened to a right-skewed linked list following preorder.
 
 **Example 2:**
 ```
@@ -116,7 +116,7 @@ Explanation: Empty tree remains empty.
 | 5 | 5 | Left child null, right child 6 → move to 6.
 | 6 | 6 | No children → end.
 
-Resulting right‑skewed list: 1→2→3→4→5→6.
+Resulting right-skewed list: 1→2→3→4→5→6.
 
 ---
 
@@ -125,7 +125,7 @@ Resulting right‑skewed list: 1→2→3→4→5→6.
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(n) – each node visited once |
-| **Space** | O(1) for Morris‑like, O(h) for recursive alternative |
+| **Space** | O(1) for Morris-like, O(h) for recursive alternative |
 
 ---
 

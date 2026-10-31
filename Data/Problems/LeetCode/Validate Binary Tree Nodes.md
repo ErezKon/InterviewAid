@@ -40,13 +40,13 @@ Output: false
 ```
 
 ## Approach
-1. Compute in‑degree for each node using the child arrays.
-2. Identify the unique root (in‑degree = 0). If there is not exactly one, return false.
+1. Compute in-degree for each node using the child arrays.
+2. Identify the unique root (in-degree = 0). If there is not exactly one, return false.
 3. Perform a BFS/DFS from the root, marking visited nodes. If a node is visited twice or not all nodes are visited, the structure is invalid.
 
 ```text
 FUNCTION validateBinaryTreeNodes(n, leftChild, rightChild):
-    // Step 1: compute in‑degree
+    // Step 1: compute in-degree
     SET inDeg[0…n-1] ← 0
     FOR i ← 0 TO n-1:
         IF leftChild[i] ≠ -1:
@@ -77,18 +77,22 @@ FUNCTION validateBinaryTreeNodes(n, leftChild, rightChild):
 ```
 
 ## Walkthrough
-Example: `n = 4`, `left = [-1,0,0,-1]`, `right = [-1,1,2,-1]`.
-| Node | left | right | inDeg after processing |
-|------|------|-------|------------------------|
-|0| -1 | -1 | 0 |
-|1| 0 | 1 | inDeg[0]=1, inDeg[1]=1 |
-|2| 0 | 2 | inDeg[0]=2, inDeg[2]=1 |
+Example 1: `n = 4`, `leftChild = [1,-1,3,-1]`, `rightChild = [2,-1,-1,-1]`.
+
+| Node | left | right | inDeg updates |
+|------|------|-------|---------------|
+|0| 1 | 2 | inDeg[1]=1, inDeg[2]=1 |
+|1| -1 | -1 | unchanged |
+|2| 3 | -1 | inDeg[3]=1 |
 |3| -1 | -1 | unchanged |
-Root identified as node 3 (inDeg = 0). BFS visits nodes 3 → (none) then stops, visited count = 1 ≠ 4 → returns false. Adjust example accordingly to illustrate a true case.
+
+inDeg = [0,1,1,1] → exactly one root: node 0. BFS: pop 0 (queue [1,2]) → pop 1 → pop 2 (queue [3]) → pop 3. No node seen twice, visited = {0,1,2,3}, size 4 = n → **Output: true**.
+
+Example 2 differs by `rightChild[1] = 3`: inDeg[3] = 2, root is still 0, but BFS enqueues 3 from both 1 and 2, so the second pop of 3 hits the visited check → `false`. Example 3 has inDeg = [1,1] (no root) → `false`.
 
 ## Complexity Analysis
-- Time: O(n) – one pass to compute in‑degree and one BFS/DFS traversal.
-- Space: O(n) – for the in‑degree array, visited set, and queue.
+- Time: O(n) – one pass to compute in-degree and one BFS/DFS traversal.
+- Space: O(n) – for the in-degree array, visited set, and queue.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to return the root of the tree if it is valid?
@@ -96,4 +100,4 @@ Root identified as node 3 (inDeg = 0). BFS visits nodes 3 → (none) then 
 3. What changes are needed to handle a forest (multiple trees) instead of a single tree?
 
 ## Key Takeaway
-A binary tree can be validated by ensuring a single root via in‑degree counts and confirming that a traversal visits every node exactly once.
+A binary tree can be validated by ensuring a single root via in-degree counts and confirming that a traversal visits every node exactly once.

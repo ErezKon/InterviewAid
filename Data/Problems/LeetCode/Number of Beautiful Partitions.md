@@ -109,7 +109,7 @@ Consider `s = "2357"`, `k = 2`, `minLength = 2`.
 | Step | Action | dp state (part=1) | dp state (part=2) |
 |------|--------|-------------------|-------------------|
 | 0    | init   | dp[0][0]=1        | - |
-| 1‑2  | no cut (positions 1,2 not valid) | 0 | 0 |
+| 1-2  | no cut (positions 1,2 not valid) | 0 | 0 |
 | 3    | cut at index 2 ("23|57") | dp[1][2]=1 | dp[2][4]=1 |
 Result: dp[2][4] = 1.
 
@@ -126,11 +126,11 @@ Result: dp[2][4] = 1.
 
 ## 7. Follow-Up Questions
 
-- How would the solution change if the partition must start and end with the same type of digit (both prime or both non‑prime)?
+- How would the solution change if the partition must start and end with the same type of digit (both prime or both non-prime)?
 - Can the algorithm be adapted to return the actual partitions, not just the count?
 
 ---
 
 ## 5. Key Takeaway
 
-> **DP on valid cut positions with prefix sum optimization.** Only positions where a non‑prime meets a prime are valid split points. Prefix sums avoid O(n²) inner loops.
+> **DP on valid cut positions with prefix sum optimization.** Only positions where a non-prime meets a prime are valid split points. Prefix sums avoid O(n²) inner loops.

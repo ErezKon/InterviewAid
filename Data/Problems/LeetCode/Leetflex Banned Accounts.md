@@ -91,7 +91,7 @@ Example 1:
 
 ## 5. Complexity Analysis
 
-- **Time:** O(N²) in the worst case due to self‑join, where N is the number of log records.
+- **Time:** O(N²) in the worst case due to self-join, where N is the number of log records.
 - **Space:** O(N) for the join result and intermediate tables.
 
 ---
@@ -106,4 +106,4 @@ Example 1:
 
 ## Key Takeaway
 
-> Use a self‑join to compare each session with others of the same account, filtering by different IPs and overlapping time windows.
+> Use a self-join to compare each session with others of the same account, filtering by different IPs and overlapping time windows.

@@ -108,4 +108,4 @@ Example 1:
 
 ## Key Takeaway
 
-> **A hash map tracks token expiry; renew only unexpired tokens. For faster counting, combine with a min‑heap of expiries for O(1) queries.**
+> **A hash map tracks token expiry; renew only unexpired tokens. For faster counting, combine with a min-heap of expiries for O(1) queries.**

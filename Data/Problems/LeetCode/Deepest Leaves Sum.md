@@ -75,7 +75,7 @@ The algorithm overwrites `levelSum` each iteration; after the final level it hol
 
 ## Follow-Up Questions
 
-- How would you solve the problem using depth‑first search instead of BFS?
+- How would you solve the problem using depth-first search instead of BFS?
 - Can you compute the sum in a single recursive pass without storing an entire level?
 - How would you modify the algorithm to also return the list of deepest leaf values?
 
@@ -83,4 +83,4 @@ The algorithm overwrites `levelSum` each iteration; after the final level it hol
 
 ## Key Takeaway
 
-> **BFS level‑by‑level: compute sum at each level, the last computed sum corresponds to the deepest leaves.**
+> **BFS level-by-level: compute sum at each level, the last computed sum corresponds to the deepest leaves.**

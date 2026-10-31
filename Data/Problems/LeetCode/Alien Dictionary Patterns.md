@@ -64,7 +64,7 @@ Example 4 (cycle):
 - **Time:** O(V + E) where V is number of vertices and E is number of edges.
 - **Space:** O(V + E) for the graph, indegree map, and queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return all possible topological orders?
 2. Can you detect a cycle and return the nodes involved?
 3. What changes are needed if the graph is given as an edge list rather than adjacency list?

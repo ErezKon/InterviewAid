@@ -111,7 +111,7 @@ Result → `["Alaska","Dad"]`.
 ## 7. Follow-Up Questions
 
 1. How would you adapt the solution for a different keyboard layout?
-2. Can you solve it without using explicit sets, e.g., with bit‑masking?
+2. Can you solve it without using explicit sets, e.g., with bit-masking?
 3. What is the runtime if the input contains millions of words?
 
 ---

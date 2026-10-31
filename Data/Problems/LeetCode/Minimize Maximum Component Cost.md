@@ -100,10 +100,10 @@ FUNCTION canSplit(tree, values, k, maxCost):
 
 ## Walkthrough
 
-Consider Example 1:
+Consider Example 1:
 1. `lo = 6` (max node value), `hi = 18` (sum of all values).
-2. Mid `12` → DFS finds a subtree of cost `13` (>12) → cut once, cuts = 1 ≤ k, so `hi = 12`.
-3. Mid `9` → two cuts needed (subtrees `13` and `5`), cuts = 2 > k, so `lo = 10`.
+2. Mid `12` → DFS finds a subtree of cost `13` (>12) → cut once, cuts = 1 ≤ k, so `hi = 12`.
+3. Mid `9` → two cuts needed (subtrees `13` and `5`), cuts = 2 > k, so `lo = 10`.
 4. Continue narrowing until `lo = hi = 13`, the minimal feasible maximum component cost.
 
 ---

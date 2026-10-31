@@ -78,7 +78,7 @@ For `grid = [[1,0,1],[0,1,0],[1,0,1]]`:
 - **Time:** O(m·n) – one pass to build masks.
 - **Space:** O(m) – hashmap of at most `2ⁿ` entries, but `n ≤ 60`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if a row is considered covered only when all its bits are `1`?
 2. What if you are allowed to flip at most `k` columns?
 3. Can you extend the approach to handle ternary values (0,1,2) with a different flip operation?

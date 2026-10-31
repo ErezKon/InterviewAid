@@ -83,8 +83,8 @@ FUNCTION minChanges(nums, k):
 For `nums = [1,2,3,4,5,6]`, `k = 2` (n = 6, g = GCD(6,2)=2):
 | Cycle | Indices | Values | Sorted | Median | Changes |
 |-------|---------|--------|--------|--------|---------|
-| 0 | 0,2,4 | [1,3,5] | [1,3,5] | 3 | |1‑3|+|3‑3|+|5‑3| = 2 |
-| 1 | 1,3,5 | [2,4,6] | [2,4,6] | 4 | |2‑4|+|4‑4|+|6‑4| = 2 |
+| 0 | 0,2,4 | [1,3,5] | [1,3,5] | 3 | |1-3|+|3-3|+|5-3| = 2 |
+| 1 | 1,3,5 | [2,4,6] | [2,4,6] | 4 | |2-4|+|4-4|+|6-4| = 2 |
 Total changes = 2 + 2 = 4 (but we can choose values 3 and 5 to reduce to 3 changes as shown in example).
 The algorithm computes the minimal sum of absolute deviations, which yields the optimal number of changes.
 
@@ -97,10 +97,10 @@ The algorithm computes the minimal sum of absolute deviations, which yields the 
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if you could only increment (or only decrement) elements?
-- Can you achieve O(n) time by using a linear‑time median selection algorithm?
+- Can you achieve O(n) time by using a linear-time median selection algorithm?
 - What if the array length `n` is not a multiple of `k` and you must keep the original order of elements?
 
 ---

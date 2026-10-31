@@ -44,7 +44,7 @@ Example 4:
 ```
 
 ## Approach
-Use a stack to keep asteroids moving right. When a left‑moving asteroid arrives, compare it with the stack top:
+Use a stack to keep asteroids moving right. When a left-moving asteroid arrives, compare it with the stack top:
 - If the top moves left or the stack is empty, push the current asteroid.
 - Otherwise, resolve collisions by comparing absolute sizes, popping smaller ones, and possibly discarding the current one.
 
@@ -77,12 +77,12 @@ Result `[5,10]`.
 
 ## Complexity Analysis
 *Time*: O(n) – each asteroid is pushed and popped at most once.
-*Space*: O(n) – stack holds at most all right‑moving asteroids.
+*Space*: O(n) – stack holds at most all right-moving asteroids.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if asteroids could have varying speeds?
 2. Can you adapt the solution to return the order of explosions?
-3. What if the line is circular, allowing wrap‑around collisions?
+3. What if the line is circular, allowing wrap-around collisions?
 
 ## Key Takeaway
-A monotonic stack efficiently resolves pairwise collisions by processing left‑moving asteroids against previously seen right‑moving ones.
+A monotonic stack efficiently resolves pairwise collisions by processing left-moving asteroids against previously seen right-moving ones.

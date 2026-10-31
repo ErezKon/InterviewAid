@@ -68,7 +68,7 @@ Result = 1.
 - **Time:** O(m) where *m* is the number of items.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle a large dataset that cannot fit into memory?
 2. Can you extend the solution to support multiple rules combined with AND/OR logic?
 3. What if the rule keys are dynamic and not limited to the three known fields?

@@ -131,7 +131,7 @@ Example 1:
 1. **Correlated Subquery** – For each employee, the inner query counts distinct salaries higher than the employee's salary within the same department.
 2. **Filter** – Employees with a count less than 3 have a salary in the top three.
 3. **Dense Rank** – The window function partitions rows by `departmentId` and orders by `salary` descending, assigning a rank that handles ties.
-4. **Select** – Rows with rank `<= 3` are the top‑three earners per department.
+4. **Select** – Rows with rank `<= 3` are the top-three earners per department.
 
 ---
 
@@ -152,4 +152,4 @@ Example 1:
 
 ## Key Takeaway
 
-> **Top‑N per group:** use `DENSE_RANK()` (or `ROW_NUMBER()`) with `PARTITION BY` to rank rows and filter `rnk <= N`. The correlated subquery counts higher distinct salaries as an alternative.
+> **Top-N per group:** use `DENSE_RANK()` (or `ROW_NUMBER()`) with `PARTITION BY` to rank rows and filter `rnk <= N`. The correlated subquery counts higher distinct salaries as an alternative.

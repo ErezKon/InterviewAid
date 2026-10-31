@@ -124,7 +124,7 @@ The algorithm records the highest product (54) found at index 3.
 ## Follow-Up Questions
 
 - How would the solution adapt if we needed to maximize `GCD(subarray) + SUM(subarray)` instead of the product?
-- Can we extend this technique to two‑dimensional grids where sub‑matrices are considered?
+- Can we extend this technique to two-dimensional grids where sub-matrices are considered?
 - What if the array is streamed; how would you maintain the maximum efficiently?
 
 ---

@@ -122,7 +122,7 @@ The `COUNT(DISTINCT ...)` aggregates unique subject IDs for each teacher, produc
 
 1. How would you modify the query to list only teachers with more than *k* distinct subjects?
 2. How can you compute the total number of distinct subjects across all teachers?
-3. Extend the solution to handle a many‑to‑many relationship stored in a separate `TeacherSubject` junction table.
+3. Extend the solution to handle a many-to-many relationship stored in a separate `TeacherSubject` junction table.
 
 ---
 

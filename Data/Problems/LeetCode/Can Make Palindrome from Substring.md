@@ -26,7 +26,7 @@ Note that each letter is counted individually for replacement, so if, for exampl
 
 ## 2. Key Insight
 
-> A string can be permuted into a palindrome if at most one character appears an odd number of times. To fix `f` odd‑frequency characters we need `⌊f/2⌋` replacements. Thus the query reduces to counting odd‑frequency characters in the range and checking `oddCount/2 ≤ k`.
+> A string can be permuted into a palindrome if at most one character appears an odd number of times. To fix `f` odd-frequency characters we need `⌊f/2⌋` replacements. Thus the query reduces to counting odd-frequency characters in the range and checking `oddCount/2 ≤ k`.
 
 ---
 
@@ -101,4 +101,4 @@ Consider the third query `[0,4,1]` on `s = "abcda"`.
 
 ## Key Takeaway
 
-> Use a prefix XOR bitmask to capture parity of character frequencies; the number of odd‑frequency characters determines the minimum replacements needed to form a palindrome.
+> Use a prefix XOR bitmask to capture parity of character frequencies; the number of odd-frequency characters determines the minimum replacements needed to form a palindrome.

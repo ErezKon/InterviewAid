@@ -32,8 +32,8 @@ Output: [10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98]
 ```
 
 ## Approach
-**Breadth‑First Construction**
-Start from all one‑digit numbers `1‑9` (or `0` when `n==1`). For each step, append a digit that is `k` away from the last digit.
+**Breadth-First Construction**
+Start from all one-digit numbers `1-9` (or `0` when `n==1`). For each step, append a digit that is `k` away from the last digit.
 1. Use a list `curr` for numbers of current length.
 2. For each number, compute `lastDigit = num % 10`.
 3. If `lastDigit + k ≤ 9`, create `num*10 + lastDigit + k`.
@@ -44,7 +44,7 @@ Start from all one‑digit numbers `1‑9` (or `0` when `n==1`). For each step, 
 FUNCTION numsSameConsecDiff(n, k):
     IF n == 1:
         RETURN LIST(0 TO 9)
-    curr ← LIST(1 TO 9)  // start with non‑zero leading digit
+    curr ← LIST(1 TO 9)  // start with non-zero leading digit
     FOR step FROM 1 TO n-1:
         next ← []
         FOR num IN curr:
@@ -70,10 +70,10 @@ Result = `[181,292,707,818,929]`.
 - Time: `O(9 * 2^{n-1})` in worst case, but bounded by at most `9 * 2^{n-1}` generated numbers.
 - Space: `O(9 * 2^{n-1})` for storing current level numbers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return numbers in sorted order without an extra sort step?
 2. Can you adapt the solution to count the numbers instead of listing them, using DP?
 3. What changes are needed if leading zeros are allowed for `n > 1`?
 
 ## Key Takeaway
-Iteratively building numbers level by level ensures the consecutive‑difference constraint is maintained, yielding a simple BFS‑style construction.
+Iteratively building numbers level by level ensures the consecutive-difference constraint is maintained, yielding a simple BFS-style construction.

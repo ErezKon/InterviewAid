@@ -84,10 +84,10 @@ FUNCTION findShortestWay(maze, start, hole):
 Start at (0,4). Rolling left reaches (0,1) after 3 steps, path "l". Continue exploring with Dijkstra, always picking the smallest (distance, path) pair. When the hole at (4,4) is first popped, the associated path "ldr" is returned as the optimal solution.
 
 ## Complexity Analysis
-- Time: O(m · n log (m · n)) – each cell processed with heap operations.
-- Space: O(m · n) for distance and path matrices and the heap.
+- Time: O(m · n log (m · n)) – each cell processed with heap operations.
+- Space: O(m · n) for distance and path matrices and the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual sequence of coordinates visited?
 2. Can the solution be adapted for multiple holes simultaneously?
 3. What changes are needed if the ball can stop voluntarily before hitting a wall?

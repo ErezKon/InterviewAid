@@ -66,7 +66,7 @@ Example 3:
 
 ## 3. Approach
 
-**Algorithm:** Prefix Count (single‑pass)
+**Algorithm:** Prefix Count (single-pass)
 
 ```text
 FUNCTION maxScoreIndices(nums):
@@ -115,7 +115,7 @@ The final `result` `[2,4]` matches the expected output.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the array contained integers other than 0/1?
 - Can you extend the approach to return the split index with the **second** highest score?
@@ -125,4 +125,4 @@ The final `result` `[2,4]` matches the expected output.
 
 ## Key Takeaway
 
-> Single‑pass prefix counting: maintain running counts of zeros‑left and ones‑right. No need for actual prefix arrays — just two counters.
+> Single-pass prefix counting: maintain running counts of zeros-left and ones-right. No need for actual prefix arrays — just two counters.

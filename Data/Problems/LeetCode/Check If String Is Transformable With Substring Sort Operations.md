@@ -54,9 +54,9 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Per‑digit queues (Greedy) — O(n)
+**Algorithm:** Per-digit queues (Greedy) — O(n)
 
-Track the indices of each digit `0‑9` in `s` using ten queues. Scan `t` from left to right. For each target digit `d`, pop the earliest occurrence of `d` from its queue. If any smaller digit queue has a front index that appears before this popped index, the transformation is impossible because a smaller digit cannot be moved right past a larger one.
+Track the indices of each digit `0-9` in `s` using ten queues. Scan `t` from left to right. For each target digit `d`, pop the earliest occurrence of `d` from its queue. If any smaller digit queue has a front index that appears before this popped index, the transformation is impossible because a smaller digit cannot be moved right past a larger one.
 
 ```text
 FUNCTION isTransformable(s, t):
@@ -81,7 +81,7 @@ FUNCTION isTransformable(s, t):
 
 Take `s = "84532"`, `t = "34852"`.
 1. Build queues: 0:[], 1:[], 2:[4], 3:[2], 4:[1], 5:[3], 6:[], 7:[0], 8:[], 9:[] (indices shown).
-2. Process `t[0] = '3'` (d=3): pop idx=2. No smaller digit (0‑2) has front <2, continue.
+2. Process `t[0] = '3'` (d=3): pop idx=2. No smaller digit (0-2) has front <2, continue.
 3. `t[1] = '4'` (d=4): pop idx=1. Smaller digit 3 has front empty now, ok.
 4. `t[2] = '8'` (d=8): queue empty → return false? Actually 8 not present, so transformation impossible. In this example we would have needed a different ordering; the provided example demonstrates a possible sequence of sorts that achieves the target.
 
@@ -107,4 +107,4 @@ We traverse both strings once and maintain ten queues whose total size is `n`.
 
 ## Key Takeaway
 
-> Substring sorting behaves like bubble sort: a smaller digit can only move left past larger ones. Using per‑digit queues lets us greedily verify the feasibility of transforming `s` into `t`.
+> Substring sorting behaves like bubble sort: a smaller digit can only move left past larger ones. Using per-digit queues lets us greedily verify the feasibility of transforming `s` into `t`.

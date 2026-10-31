@@ -76,10 +76,10 @@ Consider `queries = ["bbb","cc"]`, `words = ["a","aa","aaa"]`.
    Sorted `wordFreqs = [1,2,3]`.
 2. Process query `"bbb"`:
    - `f("bbb") = 3` (smallest `b` appears 3 times).
-   - Upper bound of 3 in `[1,2,3]` is index 3 (end), so count = 3‑3 = 0.
+   - Upper bound of 3 in `[1,2,3]` is index 3 (end), so count = 3-3 = 0.
 3. Process query `"cc"`:
    - `f("cc") = 2`.
-   - Upper bound of 2 is index 2, count = 3‑2 = 1 (only `"aaa"`).
+   - Upper bound of 2 is index 2, count = 3-2 = 1 (only `"aaa"`).
 Result `[0,1]`.
 
 ---
@@ -95,7 +95,7 @@ Result `[0,1]`.
 
 - How would you adapt the solution if `f(s)` were defined as the frequency of the most frequent character instead?
 - Can you solve the problem in O(n + q) time using counting sort given the limited alphabet size?
-- What changes are needed if the input strings can contain Unicode characters beyond `a‑z`?
+- What changes are needed if the input strings can contain Unicode characters beyond `a-z`?
 
 ---
 

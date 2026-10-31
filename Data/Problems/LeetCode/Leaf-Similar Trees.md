@@ -38,7 +38,7 @@ Output: false
 
 ## Approach
 
-**Depth‑First Search (DFS)** – Collect leaves of each tree in order, then compare the two lists.
+**Depth-First Search (DFS)** – Collect leaves of each tree in order, then compare the two lists.
 
 ```text
 FUNCTION leafSimilar(root1, root2):
@@ -54,7 +54,7 @@ FUNCTION getLeaves(node):
 ## Walkthrough
 
 For the first example:
-1. Traverse `root1` DFS left‑to‑right, collecting leaves: `6, 7, 4, 9`.
+1. Traverse `root1` DFS left-to-right, collecting leaves: `6, 7, 4, 9`.
 2. Traverse `root2` similarly, also obtaining `6, 7, 4, 9`.
 3. Compare the two sequences – they match, so return `true`.
 
@@ -66,7 +66,7 @@ For the first example:
 
 `n₁, n₂` are node counts; `h₁, h₂` are tree heights (recursion stack).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 * How would you solve this iteratively using a stack?
 * Can you modify the algorithm to handle very large trees without storing the full leaf sequences?
@@ -74,4 +74,4 @@ For the first example:
 
 ## Key Takeaway
 
-> DFS collects leaves in left‑to‑right order. Comparing the two leaf sequences determines leaf similarity.
+> DFS collects leaves in left-to-right order. Comparing the two leaf sequences determines leaf similarity.

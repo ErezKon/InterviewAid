@@ -11,19 +11,19 @@ Related: #127 Word Ladder, #433 Min Genetic Mutation, #752 Open the Lock, #773 S
 Given a start state, a target state, and a function that generates neighboring states, find the minimum number of moves to transform the start into the target. The state space is implicit and potentially huge, so an explicit graph cannot be built.
 
 ## Examples
-**Example 1:** Transform "hit" to "cog" using one‑letter changes where each intermediate word must be in a given dictionary.
+**Example 1:** Transform "hit" to "cog" using one-letter changes where each intermediate word must be in a given dictionary.
 ```
 Input: start = "hit", target = "cog", dict = ["hot","dot","dog","lot","log","cog"]
 Output: 4  // hit → hot → dot → dog → cog
 ```
-**Example 2:** Open the lock with 4 wheels, each wheel shows digits 0‑9.
+**Example 2:** Open the lock with 4 wheels, each wheel shows digits 0-9.
 ```
 Input: start = "0000", target = "0202", deadends = ["0201","0101","0102","1212","2002"]
 Output: -1  // target is unreachable
 ```
 
 ## Approach
-Use Breadth‑First Search (BFS) on the implicit graph. Each state is a node; edges are generated on‑the‑fly via `getNeighbors`. BFS guarantees the shortest path. For large depth, bidirectional BFS reduces the search space by expanding from both ends.
+Use Breadth-First Search (BFS) on the implicit graph. Each state is a node; edges are generated on-the-fly via `getNeighbors`. BFS guarantees the shortest path. For large depth, bidirectional BFS reduces the search space by expanding from both ends.
 
 ```text
 FUNCTION bfs(start, target, getNeighbors):
@@ -69,7 +69,7 @@ Consider the Word Ladder example. Initial `frontSet = {"hit"}`, `backSet = {"cog
 - Standard BFS: O(b^d) time, O(b^d) space, where b is branching factor and d is depth.
 - Bidirectional BFS: O(b^{d/2}) time and space, significantly faster for large d.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for weighted edges (e.g., each move has a cost)?
 2. Can you implement a heuristic to turn BFS into A* for faster convergence?
 3. How would you handle extremely large state spaces that exceed memory limits?

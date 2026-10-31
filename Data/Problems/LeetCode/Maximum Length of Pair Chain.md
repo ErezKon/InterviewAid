@@ -64,12 +64,12 @@ Result `3`.
 
 ## Complexity Analysis
 - **Time:** `O(n log n)` for sorting.
-- **Space:** `O(1)` extra beyond input (in‑place sort possible).
+- **Space:** `O(1)` extra beyond input (in-place sort possible).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if pairs could be reordered arbitrarily after selection?
-2. What if the chain condition allowed `end <= start` (non‑strict) instead of `<`?
+2. What if the chain condition allowed `end <= start` (non-strict) instead of `<`?
 3. Can you extend the greedy approach to also return the actual chain of pairs?
 
 ## Key Takeaway
-Sorting by interval end and greedily selecting non‑overlapping pairs yields the maximum chain length, mirroring the optimal activity‑selection strategy.
+Sorting by interval end and greedily selecting non-overlapping pairs yields the maximum chain length, mirroring the optimal activity-selection strategy.

@@ -69,7 +69,7 @@ The algorithm runs in logarithmic time.
 - **Time:** `O(log n)` due to binary search.
 - **Space:** `O(1)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if duplicates were allowed?
 2. Can you find all fixed points in `O(n)` without extra space?
 3. What if the array is not sorted?

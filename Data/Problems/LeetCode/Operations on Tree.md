@@ -94,17 +94,17 @@ FUNCTION upgrade(node):
 
 ## Walkthrough
 Consider the first example with `parent = [-1,0,0,1,1,2]`.
-1. **lock(2)** – ancestors (0) are unlocked, node 2 not locked → lock succeeds.
-2. **unlock(2)** – node 2 is locked → unlock succeeds (but example expects false because previous step unlocked? Actually after lock, unlock should succeed; however example shows false to illustrate a failed unlock when node not locked). The algorithm correctly checks membership.
-3. **upgrade(0)** – ancestors none, descendants include node 2 which is locked → unlock node 2, lock node 0 → returns true.
+1. **lock(2)** – ancestors (0) are unlocked, node 2 not locked → lock succeeds.
+2. **unlock(2)** – node 2 is locked → unlock succeeds (but example expects false because previous step unlocked? Actually after lock, unlock should succeed; however example shows false to illustrate a failed unlock when node not locked). The algorithm correctly checks membership.
+3. **upgrade(0)** – ancestors none, descendants include node 2 which is locked → unlock node 2, lock node 0 → returns true.
 
 ## Complexity Analysis
 - **Time:** `lock`/`unlock` O(h) where *h* is tree height; `upgrade` O(size of subtree) in worst case.
 - **Space:** O(n) for adjacency list and locked set.
 
-## Follow‑Up Questions
-1. How would you optimize `upgrade` to run in O(log n) using segment trees or binary lifting?
-2. Can the operations be made thread‑safe for concurrent queries?
+## Follow-Up Questions
+1. How would you optimize `upgrade` to run in O(log n) using segment trees or binary lifting?
+2. Can the operations be made thread-safe for concurrent queries?
 3. How would the solution change if the tree were dynamic (nodes added/removed)?
 
 ## Key Takeaway

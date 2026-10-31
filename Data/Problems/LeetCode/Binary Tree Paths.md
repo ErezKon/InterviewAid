@@ -29,7 +29,7 @@ Example 2:
 ```
 
 ## Approach
-Use a depth‑first search (DFS) that builds the path string as it traverses. When a leaf is reached, add the accumulated path to the result list.
+Use a depth-first search (DFS) that builds the path string as it traverses. When a leaf is reached, add the accumulated path to the result list.
 
 ### Pseudocode
 ```text
@@ -62,10 +62,10 @@ Result `[`"1->2->5","1->3"`]`.
 - **Time:** `O(n)` – each node visited once.
 - **Space:** `O(h)` – recursion stack, plus result list storing all leaf paths.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you generate the paths iteratively using a stack?
 2. Can you output the paths in lexicographic order without sorting?
 3. How would you modify the algorithm to return paths as lists of integers instead of strings?
 
 ## Key Takeaway
-DFS that carries the current path string enables straightforward construction of all root‑to‑leaf paths.
+DFS that carries the current path string enables straightforward construction of all root-to-leaf paths.

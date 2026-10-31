@@ -70,7 +70,7 @@ FUNCTION findClosestElements(arr, k, x):
 
 ## Complexity Analysis
 
-- **Time:** O(log(n‑k) + k) – binary search to locate window start, then O(k) to collect results.
+- **Time:** O(log(n-k) + k) – binary search to locate window start, then O(k) to collect results.
 - **Space:** O(1) – only constant extra variables.
 
 ---
@@ -78,7 +78,7 @@ FUNCTION findClosestElements(arr, k, x):
 ## Follow-Up Questions
 
 - How would you modify the solution to handle unsorted input?
-- Can you solve it using a max‑heap of size k?
+- Can you solve it using a max-heap of size k?
 - How to return the result in descending order?
 
 ---

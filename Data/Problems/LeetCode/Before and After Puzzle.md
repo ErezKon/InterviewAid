@@ -96,7 +96,7 @@ The set now contains the two merged strings, which are returned sorted.
 ## 6. Follow-Up Questions
 
 1. How would you improve the time complexity if the list is very large?
-2. Can you adapt the solution to handle case‑insensitive word matching?
+2. Can you adapt the solution to handle case-insensitive word matching?
 3. What changes are needed if a phrase can be used multiple times in different merges?
 
 ---

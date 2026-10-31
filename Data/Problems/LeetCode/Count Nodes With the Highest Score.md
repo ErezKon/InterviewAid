@@ -46,7 +46,7 @@ Example 2:
 ```
 
 ## Approach
-Use a depth‑first search to compute the size of each subtree. For each node, the score is the product of:
+Use a depth-first search to compute the size of each subtree. For each node, the score is the product of:
 1. The size of each child’s subtree.
 2. The size of the remaining part of the tree (`totalNodes - subtreeSize[node]`).
 Track the maximum score and count how many nodes achieve it.

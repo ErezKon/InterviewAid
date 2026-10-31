@@ -40,7 +40,7 @@ Example 3:
 ```
 
 ## Approach
-Generate all subarray sums using a prefix‑sum array to obtain each sum in O(1). Collect them, sort, then compute the required range sum using prefix sums of the sorted list. Modulo is applied at the end.
+Generate all subarray sums using a prefix-sum array to obtain each sum in O(1). Collect them, sort, then compute the required range sum using prefix sums of the sorted list. Modulo is applied at the end.
 
 ```text
 FUNCTION rangeSum(nums, left, right):
@@ -83,8 +83,8 @@ END FUNCTION
 - Time: O(n²) to generate sums, O(m log m) to sort where m = n·(n+1)/2.
 - Space: O(m) to store all subarray sums.
 
-## Follow‑Up Questions
-1. How can you compute the answer without storing all sums (e.g., using a min‑heap for the k‑smallest sums)?
+## Follow-Up Questions
+1. How can you compute the answer without storing all sums (e.g., using a min-heap for the k-smallest sums)?
 2. Can you adapt the solution for streaming input where the array is too large to fit in memory?
 3. What changes are needed if the modulo should be applied to each subarray sum before sorting?
 

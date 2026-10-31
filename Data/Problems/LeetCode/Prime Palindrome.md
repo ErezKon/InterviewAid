@@ -44,12 +44,12 @@ Output: 101
 ```
 
 ## Approach
-All even‑length palindromes (except 11) are divisible by 11, so only odd‑length palindromes need to be generated.
+All even-length palindromes (except 11) are divisible by 11, so only odd-length palindromes need to be generated.
 1. If `n ≤ 2` return 2; if `n ≤ 11` iterate from `n` to 11 and test.
 2. For lengths `1, 3, 5, 7, 9` (sufficient for `n ≤ 10⁸`):
-   - Generate the first half of the palindrome, mirror it to form an odd‑length palindrome.
+   - Generate the first half of the palindrome, mirror it to form an odd-length palindrome.
    - If the palindrome ≥ `n` and `isPrime(palindrome)`, return it.
-3. If none found, the answer is 100030001 (the first 9‑digit prime palindrome).
+3. If none found, the answer is 100030001 (the first 9-digit prime palindrome).
 
 ### Pseudocode
 ```text
@@ -96,10 +96,10 @@ For `n = 130`:
 - Time: Generating at most ~10⁴ palindromes and testing primality up to √pal (≤ 10⁴) → roughly `O(10⁴ * √10⁸)` ≈ `O(10⁶)`, well within limits.
 - Space: `O(1)` extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the algorithm for `n` up to `10¹⁸`?
-- Can you pre‑compute all prime palindromes up to a bound and answer queries in `O(1)`?
-- What optimizations exist for the primality test (e.g., Miller‑Rabin) for larger numbers?
+- Can you pre-compute all prime palindromes up to a bound and answer queries in `O(1)`?
+- What optimizations exist for the primality test (e.g., Miller-Rabin) for larger numbers?
 
 ## Key Takeaway
-By generating only odd‑length palindromes and leveraging the fact that even‑length palindromes are non‑prime (except 11), the search space shrinks dramatically, enabling an efficient solution.
+By generating only odd-length palindromes and leveraging the fact that even-length palindromes are non-prime (except 11), the search space shrinks dramatically, enabling an efficient solution.

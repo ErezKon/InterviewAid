@@ -98,7 +98,7 @@ Total count = 2.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n!) worst‑case, heavily pruned by square‑sum check and duplicate skipping |
+| **Time** | O(n!) worst-case, heavily pruned by square-sum check and duplicate skipping |
 | **Space** | O(n) recursion stack and auxiliary arrays |
 
 ---
@@ -113,4 +113,4 @@ Total count = 2.
 
 ## 7. Key Takeaway
 
-> **Backtracking with duplicate handling and perfect‑square pruning** efficiently enumerates valid permutations despite the factorial search space.
+> **Backtracking with duplicate handling and perfect-square pruning** efficiently enumerates valid permutations despite the factorial search space.

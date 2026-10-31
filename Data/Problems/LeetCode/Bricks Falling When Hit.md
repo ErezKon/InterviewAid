@@ -68,7 +68,7 @@ Once again, all remaining bricks are still stable, so no bricks fall.
 Hence the result is [0,0].
 ```
 
-## Approach: Reverse Union‑Find — O(m·n·α) ✅
+## Approach: Reverse Union-Find — O(m·n·α) ✅
 
 ```text
 FUNCTION bricksFalling(grid, hits):
@@ -79,7 +79,7 @@ FUNCTION bricksFalling(grid, hits):
     FOR (r,c) IN hits:
         copy[r][c] ← 0
 
-    // Union‑Find with an extra virtual node representing the top
+    // Union-Find with an extra virtual node representing the top
     uf ← UnionFind(rows*cols + 1)
     top ← rows*cols
 
@@ -116,18 +116,18 @@ FUNCTION bricksFalling(grid, hits):
 
 ## Walkthrough (first example)
 1. Apply hits → grid becomes `[[1,0,0,0],[0,1,1,0],[1,0,0,0],[1,1,0,0]]`.
-2. Build Union‑Find; bricks connected to top are identified.
+2. Build Union-Find; bricks connected to top are identified.
 3. Reverse first hit `(2,2)`: no brick originally, result `0`.
 4. Reverse second hit `(1,0)`: reconnect brick, union with neighbors, top component grows by 3 → 2 bricks fall.
 
 ## Complexity Analysis
 - **Time:** O(m·n·α(m·n) + k·α(m·n)) where k = number of hits, α is inverse Ackermann.
-- **Space:** O(m·n) for Union‑Find structures.
+- **Space:** O(m·n) for Union-Find structures.
 
-## Follow‑Up Questions
-1. How would you adapt the solution for a 3‑D grid of bricks?
+## Follow-Up Questions
+1. How would you adapt the solution for a 3-D grid of bricks?
 2. Can the algorithm be modified to return the positions of fallen bricks?
 3. What if hits can also add bricks instead of only removing them?
 
 ## Key Takeaway
-Processing hits in reverse with Union‑Find lets you efficiently track connectivity to the top, turning a costly simulation into near‑linear time.
+Processing hits in reverse with Union-Find lets you efficiently track connectivity to the top, turning a costly simulation into near-linear time.

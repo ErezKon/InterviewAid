@@ -59,7 +59,7 @@ Explanation: For each node, including the other node only adds another bad node,
 ```
 
 ## Approach
-The problem reduces to finding the maximum sum of a connected component in a tree where nodes may have negative values. This is analogous to the **Maximum Subtree Sum** problem and can be solved with a **post‑order DFS** that aggregates positive contributions from children.
+The problem reduces to finding the maximum sum of a connected component in a tree where nodes may have negative values. This is analogous to the **Maximum Subtree Sum** problem and can be solved with a **post-order DFS** that aggregates positive contributions from children.
 1. Root the tree arbitrarily (e.g., at node 0).
 2. Perform a DFS returning the best subgraph sum that includes the current node and any subset of its child subgraphs.
 3. For each child, if its returned sum is positive, add it to the current node's sum (including the edge does not change the sum because edges have no weight).
@@ -92,7 +92,7 @@ FUNCTION maxSubgraphScore(n, edges, score):
 ```
 
 ## Walkthrough
-Consider the tree from Example 1.
+Consider the tree from Example 1.
 | Node | score | Children contributions (positive only) | Subgraph sum at node |
 |------|-------|------------------------------------------|----------------------|
 | 2    | 3     | none                                     | 3 |
@@ -100,16 +100,16 @@ Consider the tree from Example 1.
 | 3    | 4     | child 4 contributes 0 (negative)        | 4 |
 | 1    | -2    | child 2 contributes 3, child 3 contributes 4 | -2 + 3 + 4 = 5 |
 | 0    | 1     | child 1 contributes 5 (positive)         | 1 + 5 = 6 |
-The global maximum encountered during DFS is 8 (when node 1 aggregates children 2 and 3), which matches the answer.
+The global maximum encountered during DFS is 8 (when node 1 aggregates children 2 and 3), which matches the answer.
 
 ## Complexity Analysis
 *Time:* O(n) – each node and edge is visited once during DFS.
 *Space:* O(n) – adjacency list and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if edges had weights that contributed to the subgraph score?
-2. Can the algorithm be extended to return the actual set of nodes forming the maximum‑score subgraph?
+2. Can the algorithm be extended to return the actual set of nodes forming the maximum-score subgraph?
 3. What modifications are needed to handle a forest (multiple disconnected trees) instead of a single tree?
 
 ## Key Takeaway
-A post‑order DFS that aggregates only positive child contributions yields the maximum‑score connected subgraph in linear time, mirroring the classic maximum subarray technique applied to trees.
+A post-order DFS that aggregates only positive child contributions yields the maximum-score connected subgraph in linear time, mirroring the classic maximum subarray technique applied to trees.

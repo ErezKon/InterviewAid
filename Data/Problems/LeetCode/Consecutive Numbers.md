@@ -50,11 +50,11 @@ Example 1:
 ```
 
 ## Approach
-Use **self‑joins** on the `Logs` table to align three consecutive rows (`l1`, `l2`, `l3`). Filter where the `num` values are equal, then select distinct numbers.
+Use **self-joins** on the `Logs` table to align three consecutive rows (`l1`, `l2`, `l3`). Filter where the `num` values are equal, then select distinct numbers.
 
 ```text
 FUNCTION find_consecutive_numbers():
-    // Expressed in SQL‑style pseudocode
+    // Expressed in SQL-style pseudocode
     SELECT DISTINCT l1.num AS ConsecutiveNums
     FROM Logs l1
     JOIN Logs l2 ON l1.id = l2.id - 1
@@ -293,10 +293,10 @@ FUNCTION find_consecutive_numbers():
 - **Time:** `O(N)` where `N` is number of rows (handled by DB engine).
 - **Space:** `O(1)` additional space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the query to find numbers that appear at least `k` times consecutively?
-2. Can you write a window‑function version that avoids self‑joins?
-3. How would you handle duplicate `id` values or non‑sequential timestamps?
+2. Can you write a window-function version that avoids self-joins?
+3. How would you handle duplicate `id` values or non-sequential timestamps?
 
 ## Key Takeaway
-Self‑joining a table on offset `id`s lets you detect consecutive patterns directly in SQL.
+Self-joining a table on offset `id`s lets you detect consecutive patterns directly in SQL.

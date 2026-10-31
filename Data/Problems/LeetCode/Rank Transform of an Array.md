@@ -18,7 +18,7 @@ The rank represents how large the element is. The rank has the following rules:
 
 - `0 <= arr.length <= 10⁵`
 - `-10⁹ <= arr[i] <= 10⁹`
-<!-- 1 2 -->
+<!-- 1 2 -->
 
 ## Examples
 
@@ -73,13 +73,13 @@ END FUNCTION
 |3|Map original elements|`[4,1,2,3]`|
 
 ## Complexity Analysis
-- Time: O(n log n) for sorting the unique values.
+- Time: O(n log n) for sorting the unique values.
 - Space: O(n) for the rank map and output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the transformation if the array is streamed and cannot be stored entirely?
 2. Can you compute ranks in O(n) time using counting sort when the value range is limited?
-3. Extend the problem to rank 2‑D matrices row‑wise and column‑wise.
+3. Extend the problem to rank 2-D matrices row-wise and column-wise.
 
 ## Key Takeaway
-Sorting the distinct elements and assigning incremental ranks provides a simple O(n log n) solution to map each array entry to its rank.
+Sorting the distinct elements and assigning incremental ranks provides a simple O(n log n) solution to map each array entry to its rank.

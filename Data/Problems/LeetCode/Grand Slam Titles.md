@@ -103,7 +103,7 @@ GROUP BY p.player_id, p.player_name;
 
 ## 5. Complexity Analysis
 
-- **Time**: O(N) where N is total rows processed (players + 4 × championship rows).
+- **Time**: O(N) where N is total rows processed (players + 4 × championship rows).
 - **Space**: O(N) for the intermediate unpivoted result set.
 
 ## 6. Follow-Up Questions

@@ -46,10 +46,10 @@ Explanation: - From the first row, we can take at most 2 elements. The element t
 ## Approach
 The optimal sum is obtained by taking all **positive** numbers, but we cannot exceed `k` elements. Therefore:
 1. Separate positive numbers and sort them in descending order.
-2. If the count of positives ≤ k, sum them all.
+2. If the count of positives ≤ k, sum them all.
 3. If there are more than `k` positives, sum the largest `k` of them.
 4. If there are no positive numbers, the answer is the maximum (least negative) element, because picking fewer than `k` elements is allowed.
-An alternative O(n log k) solution uses a **min‑heap** of size `k` to keep the largest positive values while scanning.
+An alternative O(n log k) solution uses a **min-heap** of size `k` to keep the largest positive values while scanning.
 
 ### Pseudocode (Sorting version)
 ```text
@@ -86,17 +86,17 @@ FUNCTION maxSumAtMostKHeap(nums, k):
 
 ## Walkthrough
 For `nums = [4, -1, 2, 1]`, `k = 3`:
-- Positives = [4,2,1]; length = 3 ≤ k, sum = 7.
-- Heap method would push 4,2,1; heap size stays ≤ 3; sum = 7.
+- Positives = [4,2,1]; length = 3 ≤ k, sum = 7.
+- Heap method would push 4,2,1; heap size stays ≤ 3; sum = 7.
 
 ## Complexity Analysis
-*Time:* O(n log n) for sorting, or O(n log k) for the heap.
+*Time:* O(n log n) for sorting, or O(n log k) for the heap.
 *Space:* O(n) for the positives list, or O(k) for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to also return the selected indices?
 2. Can the solution be adapted for a streaming input where the array is not known in advance?
-3. What if the selection must be a contiguous subarray of length ≤ k?
+3. What if the selection must be a contiguous subarray of length ≤ k?
 
 ## Key Takeaway
-By focusing on the largest positive numbers and respecting the `k` limit (or falling back to the maximum element when all are non‑positive), we obtain the maximum sum with at most `k` selections in linearithmic time.
+By focusing on the largest positive numbers and respecting the `k` limit (or falling back to the maximum element when all are non-positive), we obtain the maximum sum with at most `k` selections in linearithmic time.

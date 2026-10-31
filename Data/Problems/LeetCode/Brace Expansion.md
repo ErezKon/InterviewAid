@@ -59,8 +59,8 @@ FUNCTION expand(s):
 | 3 | ['d','e'] | ["acd","ace","bcd","bce"] |
 
 ## Complexity Analysis
-- **Time:** O(k · n) where `k` is the total number of generated strings and `n` is the length of the input.
-- **Space:** O(k · n) for storing all expansions.
+- **Time:** O(k · n) where `k` is the total number of generated strings and `n` is the length of the input.
+- **Space:** O(k · n) for storing all expansions.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to handle nested braces?
@@ -68,4 +68,4 @@ FUNCTION expand(s):
 3. How would you adapt the solution for very large input strings where sorting all results is expensive?
 
 ## Key Takeaway
-Parsing the string into independent groups and iteratively forming the Cartesian product yields a simple, linear‑time expansion algorithm.
+Parsing the string into independent groups and iteratively forming the Cartesian product yields a simple, linear-time expansion algorithm.

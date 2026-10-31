@@ -105,4 +105,4 @@ Sum of positive scores = 2 + 2 = 4. Adding the base segment score gives total 5 
 
 ## Key Takeaway
 
-> Cyclic partition problems often reduce to independent decisions on each boundary; greedily include positive‑contribution cuts to maximize the total score.
+> Cyclic partition problems often reduce to independent decisions on each boundary; greedily include positive-contribution cuts to maximize the total score.

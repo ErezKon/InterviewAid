@@ -38,7 +38,7 @@ Example 2:
 ```
 
 ## Approach
-Use a recursive divide‑and‑conquer strategy: select the middle element of the current sub‑array as the root, recursively build the left subtree from the left half, and the right subtree from the right half. This guarantees minimal height.
+Use a recursive divide-and-conquer strategy: select the middle element of the current sub-array as the root, recursively build the left subtree from the left half, and the right subtree from the right half. This guarantees minimal height.
 
 **Pseudocode**
 ```text
@@ -70,10 +70,10 @@ The recursion yields a balanced BST.
 - **Time:** O(n) – each element becomes a node once.
 - **Space:** O(log n) – recursion stack depth equals tree height.
 
-## Follow‑Up Questions
-1. How would you construct a height‑balanced BST from a sorted linked list?
+## Follow-Up Questions
+1. How would you construct a height-balanced BST from a sorted linked list?
 2. Can you modify the algorithm to produce a BST with minimal possible height when the input array size is not a power of two?
-3. What changes are needed to build an AVL or Red‑Black tree instead?
+3. What changes are needed to build an AVL or Red-Black tree instead?
 
 ## Key Takeaway
 Choosing the middle element recursively creates a balanced BST directly from a sorted array.

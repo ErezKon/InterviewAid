@@ -72,7 +72,7 @@ Example 2:
 ## 4. Walkthrough
 
 Take the first example with `k = 1`.
-1. Build the prefix matrix (extra row/col of zeros). For cell `(1,1)` (value 2), the prefix sum up to that point is `1+2+4+5 = 12`.
+1. Build the prefix matrix (extra row/col of zeros). For cell `(1,1)` (value 2), the prefix sum up to that point is `1+2+4+5 = 12`.
 2. For output cell `(0,0)`, block corners are `(0,0)` to `(1,1)`. Using the prefix formula yields `12`.
 3. Repeat for each cell; cells near the border have smaller blocks automatically because `r1,c1,r2,c2` are clamped.
 
@@ -88,11 +88,11 @@ Take the first example with `k = 1`.
 ## 6. Follow-Up Questions
 
 1. How would you modify the algorithm to support rectangular blocks with different row and column radii?
-2. Can you compute the block sums in‑place without extra O(m·n) space?
+2. Can you compute the block sums in-place without extra O(m·n) space?
 3. How would you handle updates to the matrix (e.g., changing a cell value) efficiently?
 
 ---
 
 ## Key Takeaway
 
-> 2D prefix sums turn a naïve O(m·n·k²) block‑sum computation into O(m·n) by pre‑computing cumulative sums and using inclusion‑exclusion for constant‑time queries.
+> 2D prefix sums turn a naïve O(m·n·k²) block-sum computation into O(m·n) by pre-computing cumulative sums and using inclusion-exclusion for constant-time queries.

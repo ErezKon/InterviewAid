@@ -123,4 +123,4 @@ Minimum length found is `3`.
 
 ## 7. Key Takeaway
 
-> **Sliding window with distinct‑value tracking** — maintain a frequency map and a running distinct sum, adding a value only on its first appearance and removing it when its count drops to zero. This yields an O(n) solution for the minimum‑length problem.
+> **Sliding window with distinct-value tracking** — maintain a frequency map and a running distinct sum, adding a value only on its first appearance and removing it when its count drops to zero. This yields an O(n) solution for the minimum-length problem.

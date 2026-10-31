@@ -49,86 +49,70 @@ Example 2:
 
 ## Approach
 
-Use **coordinate compression + sweep line** to compute union area below a candidate y, then binary search on y.
+Sweep a horizontal line upward over the y-events (bottom and top edge of each square). A segment tree over the compressed x-coordinates keeps the **covered width** of the union at the current height. Each strip between consecutive event y's contributes `coveredWidth * dy` of union area. After computing the total union area, scan the strips again and find the strip where the cumulative area reaches half; inside that strip the area grows linearly, so the answer is found by interpolation.
 
 ```text
 FUNCTION separateSquaresII(squares):
-    // Preprocess all y‑coordinates (bottom and top of each square)
-    ys ← sorted unique {y, y+side for each square}
-    // Binary search on y-coordinate
-    lo ← minimum y in ys
-    hi ← maximum y in ys
-    totalArea ← computeUnionArea(squares, hi)  // area of all squares
-    WHILE hi - lo > 1e-6:
-        mid ← (lo + hi) / 2
-        areaBelow ← computeUnionArea(squares, mid)
-        IF areaBelow < totalArea / 2:
-            lo ← mid
-        ELSE:
-            hi ← mid
-    RETURN (lo + hi) / 2
-
-FUNCTION computeUnionArea(squares, limitY):
-    // Sweep line over x‑axis for strips below limitY
+    xs ← sorted unique {x, x+side for each square}
     events ← []
     FOR each [x, y, side] IN squares:
-        top ← MIN(y + side, limitY)
-        IF top > y:
-            events.APPEND((x, y, top))   // rectangle slice
-    // Coordinate‑compress x‑coordinates of all event edges
-    xs ← sorted unique {x, x+side for each event}
-    area ← 0
-    FOR i ← 0 TO LENGTH(xs)-2:
-        xStart ← xs[i]
-        xEnd   ← xs[i+1]
-        width  ← xEnd - xStart
-        // Collect y‑intervals covering this x‑strip
-        intervals ← []
-        FOR each (ex, ey, etop) IN events:
-            IF ex ≤ xStart AND ex + side ≥ xEnd:
-                intervals.APPEND((ey, etop))
-        merged ← mergeIntervals(intervals)
-        height ← SUM(end - start FOR (start, end) IN merged)
-        area ← area + width * height
-    RETURN area
+        events.APPEND((y,        +1, x, x+side))   // bottom edge: add x-interval
+        events.APPEND((y + side, -1, x, x+side))   // top edge: remove x-interval
+    SORT events by y
+    // Segment tree over xs: count[node] = cover count, covered[node] = covered width
+    strips ← []; total ← 0; prevY ← events[0].y
+    FOR each (y, type, x1, x2) IN events:
+        IF y > prevY:
+            w ← covered[root]                       // union width in (prevY, y)
+            strips.APPEND((prevY, y, w))
+            total ← total + w * (y - prevY)
+            prevY ← y
+        SEGTREE_UPDATE(x1, x2, type)
+    half ← total / 2; acc ← 0
+    FOR each (y0, y1, w) IN strips:
+        IF w > 0 AND acc + w * (y1 - y0) ≥ half:
+            RETURN y0 + (half - acc) / w            // linear interpolation inside strip
+        acc ← acc + w * (y1 - y0)
+
+FUNCTION SEGTREE_UPDATE(node covering [xs[l], xs[r]], a, b, v):
+    // standard range add; covered[node] ← xs[r]-xs[l] IF count[node] > 0
+    //                     ELSE 0 for leaves, ELSE covered[left] + covered[right]
 ```
 
 ---
 
 ## Walkthrough
 
-Consider squares = [[0,0,2],[1,1,3]].
-1. **Compression:** y‑coordinates = {0,2,1,4} → sorted → [0,1,2,4].
-2. **Binary search:** lo=0, hi=4, mid=2.
-   - `computeUnionArea` up to y=2 gives area 7.5 (partial overlap).
-   - Total union area = 13, half = 6.5 → areaBelow > half, set hi=2.
-3. Next mid=1 → areaBelow ≈ 5.2 < 6.5, set lo=1.
-4. Continue until convergence → y ≈ 1.5.
-The table below shows a few iterations:
-| lo | hi | mid | areaBelow |
-|----|----|-----|-----------|
-| 0  | 4  | 2   | 7.5 |
-| 0  | 2  | 1   | 5.2 |
-| 1  | 2  | 1.5 | 6.5 |
-The algorithm stops when the interval width < 1e‑6.
+Example 1: squares = [[0,0,1],[2,2,1]] → xs = [0,1,2,3].
+
+| Event y | Strip before event | Covered width | Strip area | Update |
+|---------|--------------------|---------------|------------|--------|
+| 0 | - | - | - | add [0,1] |
+| 1 | (0,1) | 1 | 1 | remove [0,1] |
+| 2 | (1,2) | 0 | 0 | add [2,3] |
+| 3 | (2,3) | 1 | 1 | remove [2,3] |
+
+total = 2, half = 1. Scanning strips: strip (0,1) has w = 1 and 0 + 1 ≥ 1 → return 0 + (1 - 0)/1 = **1.00000** (expected output).
+
+Example 2: the 1x1 square lies inside the 2x2 one, so the covered width is 2 on (0,2) and total = 4; the first strip (0,1) reaches half = 2 → y = 0 + 2/2 = 1.00000.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O((n + m) · log precision) where *n* is number of squares and *m* is number of x‑segments after compression (worst‑case O(n²)). Each binary‑search step scans all events.
-- **Space:** O(n + m) for storing events and compressed coordinates.
+- **Time:** O(n log n) – sorting 2n events and one O(log n) segment-tree update per event; the final strip scan is O(n).
+- **Space:** O(n) for the compressed coordinates, events, strips and segment tree.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you adapt the algorithm for a **vertical** dividing line?
-2. Can the problem be solved in **O(n log n)** using advanced geometry data structures?
+2. How would you answer many queries "union area below y" efficiently after preprocessing?
 3. What changes are needed if squares can be **rotated** arbitrarily?
 
 ---
 
 ## Key Takeaway
 
-Combining **coordinate compression**, a **sweep‑line union area** computation, and **binary search** on the line position yields an exact split of overlapping geometric shapes.
+Combining **coordinate compression**, a **sweep-line union area** computation with a segment tree, and **linear interpolation** inside the critical strip yields an exact split of overlapping geometric shapes.

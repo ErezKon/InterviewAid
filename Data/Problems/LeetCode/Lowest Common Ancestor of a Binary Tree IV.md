@@ -75,7 +75,7 @@ Explanation: The lowest common ancestor of the nodes 7, 6, 2, and 4 is node 5.
 | 1 | root (3) | Not in set, recurse left & right |
 | 2 | left child (5) | 5 is in set → return 5 |
 | 3 | right child (1) | 1 is in set → return 1 |
-| 4 | Back at 3 | left and right returned non‑null → LCA is 3 |
+| 4 | Back at 3 | left and right returned non-null → LCA is 3 |
 
 For the second example, recursion returns 5 from left subtree and null from right, so 5 bubbles up as the LCA.
 
@@ -84,10 +84,10 @@ For the second example, recursion returns 5 from left subtree and null from righ
 ## 5. Complexity Analysis
 
 - **Time Complexity:** O(n) – each node visited at most once.
-- **Space Complexity:** O(h) recursion stack, where h is tree height (worst‑case O(n)).
+- **Space Complexity:** O(h) recursion stack, where h is tree height (worst-case O(n)).
 
 ---
 
 ## Key Takeaway
 
-> Use a set of target nodes and a standard DFS LCA routine; the first node where two recursive calls return non‑null is the lowest common ancestor for any number of nodes.
+> Use a set of target nodes and a standard DFS LCA routine; the first node where two recursive calls return non-null is the lowest common ancestor for any number of nodes.

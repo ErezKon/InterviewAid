@@ -60,7 +60,7 @@ We iterate over points of the first group, maintaining a DP map from a bitmask o
 
 For each point `i` in group 1 we consider connecting it to every point `j` in group 2, updating the mask `mask | (1 << j)` with the new cost `dp[mask] + cost[i][j]`.
 
-After processing all points of group 1, some points of group 2 may still be unconnected. For each such point we add its cheapest possible connection (pre‑computed `minCost2[j]`). The final answer is the minimum over all masks.
+After processing all points of group 1, some points of group 2 may still be unconnected. For each such point we add its cheapest possible connection (pre-computed `minCost2[j]`). The final answer is the minimum over all masks.
 
 ```text
 FUNCTION connectTwoGroups(cost):
@@ -92,7 +92,7 @@ FUNCTION connectTwoGroups(cost):
     allMask ← (1 << n) - 1
     answer ← INFINITY
     FOR (mask, curCost) IN dp DO
-        // add cheapest connections for any still‑unconnected points in group2
+        // add cheapest connections for any still-unconnected points in group2
         extra ← 0
         FOR j ← 0 TO n-1 DO
             IF (mask AND (1 << j)) = 0 THEN
@@ -122,7 +122,7 @@ After all group1 points are assigned, any missing bits in the mask are filled us
 | Time   | **O(m · 2ⁿ · n)** – DP over `2ⁿ` masks for each of the `m` points, iterating over `n` connections |
 | Space  | **O(2ⁿ)** – DP map stores one entry per mask |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the groups had different size limits (e.g., `m` up to 100, `n` up to 12)?
 2. Can we adapt the DP to also output the actual set of connections achieving the minimum cost?

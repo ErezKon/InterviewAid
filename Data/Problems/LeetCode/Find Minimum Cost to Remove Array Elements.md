@@ -44,7 +44,7 @@ Example 2:
 ```
 
 ## Approach
-The problem is a variant of **dynamic programming** where the state is the index of the last element kept after processing a prefix. Sort the array to ensure that when we pick three elements, the largest is the last one in the sorted order, minimizing cost. Define `dp[i]` as the minimum cost to process the first `i` elements (0‑based, sorted). Transition:
+The problem is a variant of **dynamic programming** where the state is the index of the last element kept after processing a prefix. Sort the array to ensure that when we pick three elements, the largest is the last one in the sorted order, minimizing cost. Define `dp[i]` as the minimum cost to process the first `i` elements (0-based, sorted). Transition:
 - Skip element `i` (it will be part of a future group): `dp[i] = dp[i-1]`.
 - Form a group with elements `i-2, i-1, i` (if `i >= 2`): cost = `arr[i]` (largest), so `dp[i] = min(dp[i], dp[i-3] + arr[i])`.
 Initialize `dp[-1] = 0` (no elements). The answer is `dp[n-1]`.
@@ -83,7 +83,7 @@ Result = 4, matching the example.
 *Time*: O(n log n) for sorting plus O(n) DP → O(n log n).
 *Space*: O(n) for the DP array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if groups of size `k` (instead of 3) are allowed?
 2. Can we retrieve the actual groups that achieve the minimum cost?
 3. What if the cost of a group is the sum of its elements rather than the maximum?

@@ -29,7 +29,7 @@ Return the **minimum** number of jumps required to reach index `n - 1`.
 
 ## Approach: BFS on Prime Factor Groups — O(n·√M) ✅
 
-Group indices by each prime factor they contain. Treat each prime factor as a virtual node that connects all indices sharing it. Perform BFS starting from index 0, expanding through prime‑factor nodes. Mark visited primes to avoid re‑processing large groups.
+Group indices by each prime factor they contain. Treat each prime factor as a virtual node that connects all indices sharing it. Perform BFS starting from index 0, expanding through prime-factor nodes. Mark visited primes to avoid re-processing large groups.
 
 ```text
 FUNCTION minJumps(nums):
@@ -99,10 +99,10 @@ Explanation: - Since no teleportation is possible, we move through 0 → 1 → 2
 Consider `nums = [2,3,6,7]`.
 1. Build prime groups: `{2: [0,2]}, {3: [1,2]}, {5: []}, {7: [3]}`.
 2. BFS queue starts with `(0,0)`. Visited indices `{0}`.
-3. Dequeue `(0,0)`. Prime factors of `2` → `{2}`. Expand prime `2` → neighbors `[0,2]`. Index 2 not visited → enqueue `(2,1)`. Mark prime `2` visited.
-4. Dequeue `(2,1)`. Prime factors of `6` → `{2,3}`. Prime `2` already visited. Expand prime `3` → neighbors `[1,2]`. Index 1 not visited → enqueue `(1,2)`. Mark prime `3` visited.
+3. Dequeue `(0,0)`. Prime factors of `2` → `{2}`. Expand prime `2` → neighbors `[0,2]`. Index 2 not visited → enqueue `(2,1)`. Mark prime `2` visited.
+4. Dequeue `(2,1)`. Prime factors of `6` → `{2,3}`. Prime `2` already visited. Expand prime `3` → neighbors `[1,2]`. Index 1 not visited → enqueue `(1,2)`. Mark prime `3` visited.
 5. Dequeue `(1,2)`. Prime factors of `3` → `{3}` (already visited). No new nodes.
-6. Dequeue `(3,2)` would be reached when expanding from index 2 via prime `7` (if present). Since `7` not connected, the BFS ends with target reached at jumps 2.
+6. Dequeue `(3,2)` would be reached when expanding from index 2 via prime `7` (if present). Since `7` not connected, the BFS ends with target reached at jumps 2.
 
 ---
 

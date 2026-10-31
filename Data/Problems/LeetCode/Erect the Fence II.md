@@ -44,7 +44,7 @@ Explanation: The fence will have center = (2.5, 2) and radius = 1.5
 ## Approach
 Use the **Monotone Chain** (a.k.a. Andrew's algorithm) which sorts points lexicographically and builds the lower and upper hulls in O(n log n) time.
 1. Sort points by x then y.
-2. Build lower hull: iterate sorted points, while the last two points and the current point make a non‑counter‑clockwise turn, pop the last point.
+2. Build lower hull: iterate sorted points, while the last two points and the current point make a non-counter-clockwise turn, pop the last point.
 3. Build upper hull similarly by iterating in reverse order.
 4. Concatenate lower and upper hulls, removing the duplicate end points.
 
@@ -84,10 +84,10 @@ FUNCTION convexHull(points):
 - **Time:** O(n log n) for sorting; hull construction is O(n).
 - **Space:** O(n) to store sorted points and hull lists.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to include collinear points on the hull edges?
 - Can you compute the hull in O(n) time if the points are already sorted?
 - How would you adapt the solution to return the area or perimeter of the hull?
 
 ## Key Takeaway
-The Monotone Chain algorithm efficiently builds the convex hull by maintaining a stack‑like structure and discarding points that would create a non‑convex turn.
+The Monotone Chain algorithm efficiently builds the convex hull by maintaining a stack-like structure and discarding points that would create a non-convex turn.

@@ -38,7 +38,7 @@ Example 3:
 ```
 
 ## Approach
-Any single character is a substring. Therefore the answer is `true` iff `s` contains at least one character that also appears in its reverse, which is always the case for any non‑empty string. The only failing case is when `s` has length 1? Actually length 1 trivially true. Hence the answer is always `true` for non‑empty strings. If empty, return `false`.
+Any single character is a substring. Therefore the answer is `true` iff `s` contains at least one character that also appears in its reverse, which is always the case for any non-empty string. The only failing case is when `s` has length 1? Actually length 1 trivially true. Hence the answer is always `true` for non-empty strings. If empty, return `false`.
 
 ## Pseudocode
 ```text
@@ -58,10 +58,10 @@ FUNCTION hasCommonSubstring(s):
 - **Time:** O(1) – constant check.
 - **Space:** O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the problem to require a substring of length ≥ 2?
 - Can you find the longest such common substring efficiently?
 - What if the strings contain Unicode characters?
 
 ## Key Takeaway
-For the original statement, any non‑empty string always contains a character that also appears in its reverse, making the answer trivially `true`.
+For the original statement, any non-empty string always contains a character that also appears in its reverse, making the answer trivially `true`.

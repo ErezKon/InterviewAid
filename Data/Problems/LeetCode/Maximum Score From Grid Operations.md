@@ -79,4 +79,4 @@ FUNCTION MaxScore(grid):
 3. Can the problem be solved in polynomial time for large `m` using greedy strategies?
 
 ## Key Takeaway
-Modeling row‑coloring states with a bitmask enables optimal scoring by exploring all column ordering possibilities via DP.
+Modeling row-coloring states with a bitmask enables optimal scoring by exploring all column ordering possibilities via DP.

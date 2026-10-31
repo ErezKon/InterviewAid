@@ -74,7 +74,7 @@ For `m = 3, n = 3`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * **Unique Paths II** – grids with obstacles.
 * **Minimum Path Sum** – each cell has a cost.

@@ -72,7 +72,7 @@ FUNCTION constructFromPrePost(preorder, postorder):
 - **Time:** `O(n)` – each node is visited once.
 - **Space:** `O(n)` for recursion stack in the worst case (skewed tree).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for trees that are not full (nodes may have a single child)?
 2. Can you implement an iterative version using a stack?
 3. What changes are needed to handle duplicate values in the traversals?

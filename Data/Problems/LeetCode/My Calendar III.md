@@ -98,7 +98,7 @@ The maximum concurrent bookings observed is **2**.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n log n) for each `book` due to sorting the timeline (or O(log n) with a balanced BST) |
+| **Time** | O(n log n) for each `book` due to sorting the timeline (or O(log n) with a balanced BST) |
 | **Space** | O(n) to store the timeline |
 
 ---
@@ -106,11 +106,11 @@ The maximum concurrent bookings observed is **2**.
 ## 6. Follow-Up Questions
 
 * How would you support **cancellation** of a booking?
-* Can you achieve **O(log n)** per `book` using a segment tree or binary indexed tree?
-* How would the solution change if the time range is bounded (e.g., 0 ≤ time ≤ 10⁹)?
+* Can you achieve **O(log n)** per `book` using a segment tree or binary indexed tree?
+* How would the solution change if the time range is bounded (e.g., 0 ≤ time ≤ 10⁹)?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Line sweep is the canonical pattern for max overlap queries.** `+1` at start, `-1` at end, sweep and track running count. Can be optimized with segment tree for O(log n) per query.
+> **Line sweep is the canonical pattern for max overlap queries.** `+1` at start, `-1` at end, sweep and track running count. Can be optimized with segment tree for O(log n) per query.

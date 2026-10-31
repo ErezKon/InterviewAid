@@ -133,11 +133,11 @@ When searching for `2`, the algorithm starts at the highest level (1), moves fro
 ## Follow-Up Questions
 
 1. How would you modify the skiplist to support a `countLessThan(x)` operation?
-2. What changes are needed to make the skiplist thread‑safe for concurrent reads and writes?
-3. Could you adapt the structure to store key‑value pairs like a map?
+2. What changes are needed to make the skiplist thread-safe for concurrent reads and writes?
+3. Could you adapt the structure to store key-value pairs like a map?
 
 ---
 
 ## Key Takeaway
 
-> **Skiplist = randomized balanced structure. Coin‑flip level promotion gives expected O(log n) height with no rotations. Track `update[]` pointers during descent to splice nodes in or out at every level.**
+> **Skiplist = randomized balanced structure. Coin-flip level promotion gives expected O(log n) height with no rotations. Track `update[]` pointers during descent to splice nodes in or out at every level.**

@@ -52,27 +52,37 @@ Example 3:
 ```
 
 ## Approach
-Count the frequency of each character in `s` using a hash map. Then iterate over `target`; for each character, decrement its count. If any count becomes negative or a character is missing, return `false`. Otherwise return `true`.
+Count the frequency of each character in `s` and in `target`. Each copy of `target` consumes `need[ch]` copies of every character `ch` in `target`, so character `ch` alone allows `have[ch] / need[ch]` copies (integer division). The answer is the minimum of this ratio over all characters of `target` (the bottleneck letter).
 
 ```text
-FUNCTION canMakeTarget(s, target):
-    freq ← MAP<CHAR, INT>
+FUNCTION rearrangeCharacters(s, target):
+    have ← MAP<CHAR, INT>
+    need ← MAP<CHAR, INT>
     FOR ch IN s:
-        freq[ch] ← freq.get(ch, 0) + 1
+        have[ch] ← have.get(ch, 0) + 1
     FOR ch IN target:
-        IF freq.get(ch, 0) == 0:
-            RETURN false
-        freq[ch] ← freq[ch] - 1
-    RETURN true
+        need[ch] ← need.get(ch, 0) + 1
+    answer ← INFINITY
+    FOR (ch, cnt) IN need:
+        answer ← MIN(answer, have.get(ch, 0) DIV cnt)
+    RETURN answer
 ```
 
 ## Walkthrough
-`s = "aabbc"`, `target = "abcb"`
-1. freq = {a:2, b:2, c:1}
-2. Process `a`: freq[a]=1
-3. Process `b`: freq[b]=1
-4. Process `c`: freq[c]=0
-5. Process `b`: freq[b]=0 → all characters satisfied → return `true`.
+Example 1: `s = "ilovecodingonleetcode"`, `target = "code"`.
+1. need = {c:1, o:1, d:1, e:1}
+2. have (relevant letters) = {c:2, o:4, d:2, e:4}
+
+| ch | have | need | have DIV need |
+|----|------|------|---------------|
+| c | 2 | 1 | 2 |
+| o | 4 | 1 | 4 |
+| d | 2 | 1 | 2 |
+| e | 4 | 1 | 4 |
+
+3. Minimum = **2** (bottleneck letters `c` and `d`).
+
+Example 3: `have[a] = 5`, `need[a] = 5` → `5 DIV 5 = 1`.
 
 ## Complexity Analysis
 - **Time:** O(|s| + |target|) – single pass over both strings.
@@ -81,7 +91,7 @@ FUNCTION canMakeTarget(s, target):
 ## Follow-Up Questions
 1. How would you handle Unicode characters with a large alphabet?
 2. Can you solve the problem without extra space by sorting both strings?
-3. What if you need to construct the actual rearranged string instead of just checking feasibility?
+3. What if you need to report which indices of `s` are used for each copy?
 
 ## Key Takeaway
-Use a character frequency map to ensure `target` does not require more of any character than `s` provides.
+Compare character frequencies: the number of copies is limited by the scarcest character, i.e. `min(have[ch] / need[ch])` over the characters of `target`.

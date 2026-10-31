@@ -65,16 +65,16 @@ Use a **hash map** to group timestamps by `userId`. For each user's sorted times
 ## Walkthrough
 | Step | User | Sorted Timestamps | Sliding Window (left, right) | Condition Met? |
 |------|------|-------------------|------------------------------|----------------|
-| 1    | 1    | [1,5,10]          | (1,5) → 5‑1 ≤7 ✅            | Yes → count++ |
-| 2    | 2    | [2,8]             | (2,8) → 8‑2 >7 ❌            | No |
+| 1    | 1    | [1,5,10]          | (1,5) → 5-1 ≤7 ✅            | Yes → count++ |
+| 2    | 2    | [2,8]             | (2,8) → 8-2 >7 ❌            | No |
 
 ## Complexity Analysis
 - **Time:** O(N log N) for sorting timestamps per user (total N records). Sliding window is linear in the number of timestamps.
 - **Space:** O(N) for the hash map storing timestamps.
 
 ## Follow-Up Questions
-1. How would you handle real‑time streams of purchases?
-2. Extend to find the **maximum number of purchases** any user made within a 7‑day window.
+1. How would you handle real-time streams of purchases?
+2. Extend to find the **maximum number of purchases** any user made within a 7-day window.
 3. Generalize to an arbitrary window size `k` days.
 
 ## Key Takeaway

@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem (statement checked against the official text with verify.py). The Approach/Walkthrough below solve an invented concatenation problem. Correct idea: take `m = min(nums)`, compute its digit sum `s`, return `1` if `s` is even else `0`. O(n).*
+> *Note: premium problem (statement checked against the official text with verify.py).*
 
 Given an integer array `nums`, return `0` *if the sum of the digits of the minimum integer in* `nums` *is odd, or* `1` *otherwise*.
 
@@ -33,22 +33,41 @@ Explanation: The minimal element is 33, and the sum of those digits is 3 + 3 = 6
 ```
 
 ## Approach
-Sort the numbers as strings using a custom comparator: for strings `a` and `b`, compare `a+b` vs `b+a`. Concatenating the sorted list yields the smallest number. Then iterate over the characters of the concatenated string, summing their numeric values.
+Find the minimum element with a single scan, sum its decimal digits by repeatedly taking `m mod 10` and dividing by 10, and return `1` if the digit sum is even, otherwise `0`.
+
+```text
+FUNCTION sumOfDigits(nums):
+    m ← nums[0]
+    FOR i ← 1 TO LENGTH(nums) - 1:
+        m ← MIN(m, nums[i])
+    s ← 0
+    WHILE m > 0:
+        s ← s + (m MOD 10)
+        m ← m / 10            // integer division
+    IF s MOD 2 == 0: RETURN 1
+    ELSE: RETURN 0
+```
 
 ## Walkthrough
-| nums | sorted strings | concatenated | digit sum |
-|------|----------------|--------------|----------|
-| [10,2] | ["10","2"] | "102" | 1+0+2 = 3 |
-| [3,30,34,5,9] | ["30","3","34","5","9"] | "3033459" | 27 |
+Example 2: `nums = [99,77,33,66,55]`.
+
+| Step | Value |
+|------|-------|
+| minimum `m` | 33 |
+| digit 1 (`33 mod 10`) | 3, s = 3, m = 3 |
+| digit 2 (`3 mod 10`) | 3, s = 6, m = 0 |
+| parity of 6 | even → return 1 |
+
+Output: `1`.
 
 ## Complexity Analysis
-Time: O(n log n) for sorting plus O(L) to sum digits, where L is total length of concatenated string.
-Space: O(L) for the concatenated string.
+Time: O(n + log₁₀(min)) – one pass for the minimum plus at most 3 digit steps (values ≤ 100).
+Space: O(1).
 
 ## Follow-Up Questions
-* How would you handle very large arrays where the concatenated number does not fit in standard numeric types?
-* Can the sorting be performed in linear time using radix sort on the string representations?
-* What if the problem asked for the largest possible number instead?
+* How would you return the digit-sum parity for the maximum element, or for every element?
+* What if the numbers were given as very long strings (compare by length, then lexicographically)?
+* Could you compute the parity directly from the digits without forming the full sum?
 
 ## Key Takeaway
-A custom lexical comparator on string concatenations yields the minimal arrangement, after which digit summation is trivial.
+Read the statement carefully: only the minimum element matters, so a linear scan plus a digit-sum loop and a parity check solve it in O(n).

@@ -82,7 +82,7 @@ FUNCTION removeStars(s):
 - Space: O(n) for the stack (output size).
 
 ## Follow-Up Questions
-1. How would you solve the problem without using extra space, modifying the string in‑place?
+1. How would you solve the problem without using extra space, modifying the string in-place?
 2. Can the algorithm be adapted to handle a different deletion rule, such as removing the *previous* vowel instead of any character?
 3. What changes are needed if the input may contain uppercase letters and other symbols?
 

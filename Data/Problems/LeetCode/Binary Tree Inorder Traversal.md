@@ -35,7 +35,7 @@ Example 4:
 ```
 
 ## Approach
-Perform a depth‑first search in **inorder** order. The recursive version is straightforward; the iterative version uses a stack to simulate the call stack.
+Perform a depth-first search in **inorder** order. The recursive version is straightforward; the iterative version uses a stack to simulate the call stack.
 
 ### Pseudocode (Recursive)
 ```text
@@ -73,9 +73,9 @@ For the tree `[1,null,2,3]`:
 
 ## Complexity Analysis
 - **Time:** `O(n)` – each node visited once.
-- **Space:** `O(h)` recursion stack or explicit stack, where `h` is tree height (worst‑case `O(n)`).
+- **Space:** `O(h)` recursion stack or explicit stack, where `h` is tree height (worst-case `O(n)`).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you perform inorder traversal without recursion or a stack (Morris Traversal)?
 2. Can you modify the algorithm to output the kth smallest element?
 3. How does the approach change for a threaded binary tree?

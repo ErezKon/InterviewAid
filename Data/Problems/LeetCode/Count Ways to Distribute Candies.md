@@ -103,4 +103,4 @@ Result `dp[4][2] = 7` matches the example.
 
 ## Key Takeaway
 
-> **Distributing n distinct items into k non‑empty indistinguishable groups equals the Stirling number S(n,k). The recurrence `S(n,k) = k·S(n‑1,k) + S(n‑1,k‑1)` enables an O(n·k) DP solution.**
+> **Distributing n distinct items into k non-empty indistinguishable groups equals the Stirling number S(n,k). The recurrence `S(n,k) = k·S(n-1,k) + S(n-1,k-1)` enables an O(n·k) DP solution.**

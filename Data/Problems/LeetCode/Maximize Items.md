@@ -122,10 +122,10 @@ Output table is ordered by item count in descending order.
 2. **Compute container capacity** – sum all container capacities.
 3. **Allocate to primes** – `prime_alloc = MIN(total_prime, FLOOR(total_space / prime_unit))`.
 4. **Remaining space** – `remaining = total_space - prime_alloc * prime_unit`.
-5. **Allocate to non‑primes** – `non_prime_alloc = FLOOR(remaining / non_prime_unit)`.
+5. **Allocate to non-primes** – `non_prime_alloc = FLOOR(remaining / non_prime_unit)`.
 6. **Return counts** – combine both allocations.
 
-The SQL CTEs perform steps 1‑2, and the final SELECT computes steps 3‑5.
+The SQL CTEs perform steps 1-2, and the final SELECT computes steps 3-5.
 
 ---
 
@@ -147,4 +147,4 @@ The SQL CTEs perform steps 1‑2, and the final SELECT computes steps 3‑5.
 
 ## Key Takeaway
 
-> **Priority-based bin packing in SQL: allocate to high‑priority items first, then use remaining capacity for lower‑priority items.** This is a greedy approach expressed declaratively.
+> **Priority-based bin packing in SQL: allocate to high-priority items first, then use remaining capacity for lower-priority items.** This is a greedy approach expressed declaratively.

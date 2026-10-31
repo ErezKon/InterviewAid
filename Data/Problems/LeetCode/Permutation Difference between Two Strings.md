@@ -77,4 +77,4 @@ Time complexity **O(n)** where *n* is string length, due to two linear passes. S
 3. How to handle the case where strings are not permutations of each other?
 
 ## Key Takeaway
-Mapping character positions in one string enables constant‑time look‑ups to compute positional differences efficiently.
+Mapping character positions in one string enables constant-time look-ups to compute positional differences efficiently.

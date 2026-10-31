@@ -105,10 +105,10 @@ The final count is 3.
 
 1. How would you improve the solution for large inputs where `patterns` and `word` are very long?
 2. Can you adapt the algorithm to return the list of matching patterns instead of just the count?
-3. How would you handle case‑insensitive substring checks?
+3. How would you handle case-insensitive substring checks?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Direct substring checks are simple and effective for small inputs.** For large-scale matching, consider building a trie or using the Aho‑Corasick algorithm.
+> **Direct substring checks are simple and effective for small inputs.** For large-scale matching, consider building a trie or using the Aho-Corasick algorithm.

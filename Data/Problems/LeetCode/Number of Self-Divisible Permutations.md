@@ -82,7 +82,7 @@ FUNCTION selfDivisiblePermutationCount(n):
     dp ← ARRAY of size (1 << n) filled with 0
     dp[0] ← 1
     FOR mask ← 0 TO (1 << n) - 1:
-        pos ← POPCOUNT(mask) + 1  // current position (1‑based)
+        pos ← POPCOUNT(mask) + 1  // current position (1-based)
         FOR num ← 1 TO n:
             IF NOT (mask AND (1 << (num-1))):
                 IF num MOD pos = 0 OR pos MOD num = 0:
@@ -120,7 +120,7 @@ After processing all masks, `dp[111] = 3`, matching the example output.
 
 ## 6. Follow-Up Questions
 
-1. How would the solution change if `n` could be up to 20? Discuss trade‑offs.
+1. How would the solution change if `n` could be up to 20? Discuss trade-offs.
 2. Can the problem be solved using backtracking with pruning instead of DP?
 3. How would you adapt the algorithm for a similar constraint where `perm[i]` must be a multiple of `i` only?
 
@@ -128,4 +128,4 @@ After processing all masks, `dp[111] = 3`, matching the example output.
 
 ## 7. Key Takeaway
 
-> **Bitmask DP efficiently enumerates all subsets for small‑n permutation constraints**, using the position derived from the current mask’s popcount.
+> **Bitmask DP efficiently enumerates all subsets for small-n permutation constraints**, using the position derived from the current mask’s popcount.

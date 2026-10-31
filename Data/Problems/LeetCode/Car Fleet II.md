@@ -82,10 +82,10 @@ The stack maintains cars that are still viable collision candidates; popping rem
 - **Time:** O(n) – each car is pushed and popped at most once.
 - **Space:** O(n) for the result array and stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if cars could change speed after collisions?
 2. Can you extend the algorithm to handle cars moving in both directions?
-3. What is the effect of floating‑point precision on the computed times?
+3. What is the effect of floating-point precision on the computed times?
 
 ## Key Takeaway
 A monotonic stack lets you efficiently determine the next collision for each car by discarding cars that become irrelevant due to earlier collisions.

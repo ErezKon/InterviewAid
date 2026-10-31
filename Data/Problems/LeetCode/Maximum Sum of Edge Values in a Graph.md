@@ -52,7 +52,7 @@ The problem is the classic **Maximum Weight Matching** in a general graph. For b
 1. Represent the graph with adjacency lists storing neighbor and edge weight.
 2. Use the Blossom algorithm to repeatedly find augmenting paths that increase the total weight, contracting odd cycles (blossoms) when necessary.
 3. Maintain dual variables (vertex potentials) to ensure optimality of the matching.
-The implementation is intricate; the high‑level steps are outlined below.
+The implementation is intricate; the high-level steps are outlined below.
 
 ```text
 FUNCTION maxWeightMatching(n, edges):
@@ -80,7 +80,7 @@ FUNCTION maxWeightMatching(n, edges):
 ## Walkthrough
 Consider a triangle graph with vertices `0,1,2` and edges `(0,1,4)`, `(1,2,5)`, `(0,2,3)`.
 1. Initially all vertices are unmatched.
-2. The algorithm picks the highest‑weight edge `(1,2,5)` and matches `1‑2`.
+2. The algorithm picks the highest-weight edge `(1,2,5)` and matches `1-2`.
 3. Vertex `0` remains free; no augmenting path exists because any edge from `0` would connect to a matched vertex, forming an odd cycle. The blossom contraction step would handle this if a better matching existed.
 4. Final matching weight = 5, which is optimal.
 
@@ -88,10 +88,10 @@ Consider a triangle graph with vertices `0,1,2` and edges `(0,1,4)`, `(1,2,5)`, 
 *Time*: Edmonds' Blossom algorithm runs in `O(V³)` in the worst case, which is acceptable for `V ≤ 500` as in typical LeetCode limits.
 *Space*: `O(V²)` for the weight matrix and additional `O(V + E)` for auxiliary structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution simplify if the graph is guaranteed to be bipartite?
-2. Can you achieve `O(E·√V)` time using a primal‑dual approach for bipartite graphs?
-3. How would you modify the algorithm to return the actual set of edges in the maximum‑weight matching?
+2. Can you achieve `O(E·√V)` time using a primal-dual approach for bipartite graphs?
+3. How would you modify the algorithm to return the actual set of edges in the maximum-weight matching?
 
 ## Key Takeaway
-Edmonds' Blossom algorithm extends augmenting‑path ideas to general graphs, enabling the computation of a maximum‑weight matching where edges must not share vertices.
+Edmonds' Blossom algorithm extends augmenting-path ideas to general graphs, enabling the computation of a maximum-weight matching where edges must not share vertices.

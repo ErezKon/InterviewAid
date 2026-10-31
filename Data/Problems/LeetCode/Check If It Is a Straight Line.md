@@ -32,7 +32,7 @@ Output: false
 ```
 
 ## Approach
-Compute the slope between the first two points using the difference in `x` and `y`. For each subsequent point, the cross‑product `(y_i - y_0) * dx` should equal `(x_i - x_0) * dy`. If any point violates this, the points are not collinear.
+Compute the slope between the first two points using the difference in `x` and `y`. For each subsequent point, the cross-product `(y_i - y_0) * dx` should equal `(x_i - x_0) * dy`. If any point violates this, the points are not collinear.
 
 ```text
 FUNCTION checkStraightLine(coordinates):
@@ -58,8 +58,8 @@ The mismatch shows the points are not collinear.
 
 ## Follow-Up Questions
 1. How would you handle vertical lines where `dx = 0`?
-2. Extend to check if points are collinear in 3‑D space.
-3. Determine the line equation (slope‑intercept) if the points are collinear.
+2. Extend to check if points are collinear in 3-D space.
+3. Determine the line equation (slope-intercept) if the points are collinear.
 
 ## Key Takeaway
-Collinearity can be verified using a simple cross‑product check that avoids division and works for any orientation of the line.
+Collinearity can be verified using a simple cross-product check that avoids division and works for any orientation of the line.

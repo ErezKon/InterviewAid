@@ -106,7 +106,7 @@ The table above matches the **Examples** section.
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(log n) per `addNum` (binary search), O(k) for `getIntervals` where k is number of intervals |
+| **Time** | O(log n) per `addNum` (binary search), O(k) for `getIntervals` where k is number of intervals |
 | **Space** | O(n) to store intervals |
 
 ---
@@ -121,4 +121,4 @@ The table above matches the **Examples** section.
 
 ## Key Takeaway
 
-> **Streaming interval merge:** maintain a sorted list of intervals, binary‑search the insertion point, and merge with neighboring intervals when possible.
+> **Streaming interval merge:** maintain a sorted list of intervals, binary-search the insertion point, and merge with neighboring intervals when possible.

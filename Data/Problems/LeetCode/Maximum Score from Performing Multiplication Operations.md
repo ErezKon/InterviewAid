@@ -94,7 +94,7 @@ For `nums = [1,2,3,4,5]`, `m = 3`:
 - **Time:** O(m²) where `m` ≤ `n` (at most 1000 in typical constraints).
 - **Space:** O(m²) (or O(m) with optimization).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the DP if you had to use all `n` elements instead of exactly `m` operations?
 2. Can the solution be adapted to maximize the minimum score among the `m` operations?
 3. What if the multiplier for each operation followed a custom sequence instead of `1..m`?

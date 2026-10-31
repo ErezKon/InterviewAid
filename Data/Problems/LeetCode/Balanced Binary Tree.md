@@ -31,7 +31,7 @@ Example 3:
 ```
 
 ## Approach
-Use a bottom‑up depth‑first search that returns the subtree height, or `-1` as a sentinel indicating an unbalanced subtree. If any child returns `-1` or the height difference exceeds 1, propagate `-1` upward.
+Use a bottom-up depth-first search that returns the subtree height, or `-1` as a sentinel indicating an unbalanced subtree. If any child returns `-1` or the height difference exceeds 1, propagate `-1` upward.
 
 ```text
 FUNCTION isBalanced(root):
@@ -54,19 +54,19 @@ FUNCTION height(node):
 ## Walkthrough
 For the tree `[1,2,2,3,3,null,null,4,4]`:
 1. Compute heights of deepest leaves (4) → 1.
-2. Their parents (3) get height 2, difference 0.
-3. At node 2 (left side), left height 3, right height 2 → diff 1, ok.
-4. At root, left height 4, right height 2 → diff 2 → returns `-1`.
+2. Their parents (3) get height 2, difference 0.
+3. At node 2 (left side), left height 3, right height 2 → diff 1, ok.
+4. At root, left height 4, right height 2 → diff 2 → returns `-1`.
 Thus the tree is unbalanced.
 
 ## Complexity Analysis
 *Time*: O(n) – each node visited once.
 *Space*: O(h) recursion stack, where h is tree height (O(log n) for balanced, O(n) worst case).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement the check iteratively using a stack?
 2. Can you modify the algorithm to return the size of the largest balanced subtree?
-3. What changes are needed if the tree is a multi‑way tree instead of binary?
+3. What changes are needed if the tree is a multi-way tree instead of binary?
 
 ## Key Takeaway
-A post‑order DFS that propagates a sentinel `-1` efficiently detects imbalance while computing heights in a single pass.
+A post-order DFS that propagates a sentinel `-1` efficiently detects imbalance while computing heights in a single pass.

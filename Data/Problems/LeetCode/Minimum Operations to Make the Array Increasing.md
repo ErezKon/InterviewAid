@@ -76,4 +76,4 @@ Resulting array `[1,5,6,7,8]` with 14 increments.
 3. Can you extend the approach to handle a circular array where the first element must also be greater than the last after adjustments?
 
 ## Key Takeaway
-A single left‑to‑right pass with greedy increments yields the minimal operations needed to enforce a strictly increasing sequence.
+A single left-to-right pass with greedy increments yields the minimal operations needed to enforce a strictly increasing sequence.

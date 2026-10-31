@@ -69,7 +69,7 @@ Consider Example 1. The DP table stores four direction lengths for each cell. Wh
 - Horizontal extends from (1,0): length 1 → becomes 2.
 - Vertical extends from (0,1): length 1 → becomes 2.
 - Diagonal extends from (0,0): `0` → starts at 1.
-- Anti‑diagonal extends from (0,2): `1` → becomes 2.
+- Anti-diagonal extends from (0,2): `1` → becomes 2.
 Continuing this for every `1` updates `maxLen` to 3 at column 1.
 
 ---
@@ -81,11 +81,11 @@ Continuing this for every `1` updates `maxLen` to 3 at column 1.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the solution to return the coordinates of the longest line?
-- Can the space be reduced to O(1) by updating in‑place?
-- How does the algorithm change for a toroidal (wrap‑around) matrix?
+- Can the space be reduced to O(1) by updating in-place?
+- How does the algorithm change for a toroidal (wrap-around) matrix?
 
 ---
 

@@ -91,6 +91,6 @@ The bitmask encodes character presence, allowing O(1) overlap checks.
 - **Time:** O(2ⁿ) – explores all subsets of filtered strings.
 - **Space:** O(n) – recursion stack and masks array.
 
-## Follow‑Up 
+## Follow-Up 
 
--    ");
+-    ");

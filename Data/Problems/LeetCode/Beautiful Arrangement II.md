@@ -66,9 +66,9 @@ Result `[1,2,3,4,5]` has differences `[1,1,1,1]` (k=1). For `k=2`, the alternati
 *Time*: O(n) – single pass constructing the array.
 *Space*: O(n) – output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to produce the lexicographically smallest valid array?
-2. Can you generate an array with exactly `k` distinct differences without using the alternating high‑low trick?
+2. Can you generate an array with exactly `k` distinct differences without using the alternating high-low trick?
 3. What changes are needed if the array must be a permutation of a custom set of numbers?
 
 ## Key Takeaway

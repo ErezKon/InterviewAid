@@ -44,8 +44,8 @@ Explanation:
 ```
 
 ## Approach
-**Algorithm:** Prefix sums + nearest‑candle pre‑computation (Two‑Pass Scan)
-**Key Insight:** By pre‑computing for every index the nearest candle to its left and right, each query can be answered in O(1) using a prefix sum of plates between those candles.
+**Algorithm:** Prefix sums + nearest-candle pre-computation (Two-Pass Scan)
+**Key Insight:** By pre-computing for every index the nearest candle to its left and right, each query can be answered in O(1) using a prefix sum of plates between those candles.
 
 ```text
 FUNCTION platesBetweenCandles(s, queries):
@@ -82,7 +82,7 @@ FUNCTION platesBetweenCandles(s, queries):
 ```
 
 ## Walkthrough
-Consider `s = "*|*|**|"` (indices 0‑6) and query `[1,6]`.
+Consider `s = "*|*|**|"` (indices 0-6) and query `[1,6]`.
 | i | s[i] | leftCandle[i] | rightCandle[i] | platePrefix[i] |
 |---|------|--------------|---------------|----------------|
 |0|*| -1 | 1 | 0 |
@@ -98,10 +98,10 @@ For the query, `left = rightCandle[1] = 1`, `right = leftCandle[6] = 6`. Plates 
 - **Time:** O(n + q) where n = |s| and q = number of queries.
 - **Space:** O(n) for the three auxiliary arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the string also contained a third character representing obstacles that block counting plates?
-2. Can you answer queries online (as they arrive) without pre‑computing all queries?
+2. Can you answer queries online (as they arrive) without pre-computing all queries?
 3. How would you modify the algorithm to return the positions of the plates instead of just the count?
 
 ## Key Takeaway
-Pre‑computing nearest candles on both sides and a prefix sum of plates enables each interval query to be answered in constant time.
+Pre-computing nearest candles on both sides and a prefix sum of plates enables each interval query to be answered in constant time.

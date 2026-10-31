@@ -143,4 +143,4 @@ Take `s = "10101"`.
 
 ## 8. Key Takeaway
 
-> **Count ones and use gaps.** When total ones are divisible by three, the number of ways equals the product of the sizes of zero‑gaps between the required partitions.
+> **Count ones and use gaps.** When total ones are divisible by three, the number of ways equals the product of the sizes of zero-gaps between the required partitions.

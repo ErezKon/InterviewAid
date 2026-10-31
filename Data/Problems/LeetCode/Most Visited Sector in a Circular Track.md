@@ -37,7 +37,7 @@ Notice that you circulate the track in ascending order of sector numbers in the 
 
 ## 2. Key Insight
 
-> Full laps visit every sector equally, so they do not affect the count of the most‑visited sectors. Only the partial lap from the first sector `rounds[0]` to the last sector `rounds[-1]` matters.
+> Full laps visit every sector equally, so they do not affect the count of the most-visited sectors. Only the partial lap from the first sector `rounds[0]` to the last sector `rounds[-1]` matters.
 
 ---
 
@@ -83,7 +83,7 @@ Example 3:
 
 ## 5. Walkthrough
 
-Consider Example 1 (`n = 4, rounds = [1,3,1,2]`).
+Consider Example 1 (`n = 4, rounds = [1,3,1,2]`).
 
 | Step | Operation | Visited sectors (cumulative) |
 |------|-----------|------------------------------|
@@ -92,7 +92,7 @@ Consider Example 1 (`n = 4, rounds = [1,3,1,2]`).
 | 3 | Move to sector 1 (full lap 3→4→1) | 1,2,3,4,1 |
 | 4 | Move to sector 2 (partial lap 1→2) | 1,2,3,4,1,2 |
 
-Counts: sector 1 → 2, sector 2 → 2, sector 3 → 1, sector 4 → 1. The maximum count is 2, so the answer is `[1,2]`.
+Counts: sector 1 → 2, sector 2 → 2, sector 3 → 1, sector 4 → 1. The maximum count is 2, so the answer is `[1,2]`.
 
 ---
 
@@ -107,4 +107,4 @@ Counts: sector 1 → 2, sector 2 → 2, sector 3 → 1, sector 4 → 1. 
 
 ## 7. Key Takeaway
 
-> **Only the start and end sectors of the final lap matter.** Full laps cancel out, so the most‑visited sectors are exactly those in the interval from `rounds[0]` to `rounds[-1]` (wrapping around if needed).
+> **Only the start and end sectors of the final lap matter.** Full laps cancel out, so the most-visited sectors are exactly those in the interval from `rounds[0]` to `rounds[-1]` (wrapping around if needed).

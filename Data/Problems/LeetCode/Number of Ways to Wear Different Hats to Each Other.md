@@ -95,8 +95,8 @@ FUNCTION countWays(hatPreferences):
 Consider 2 people with preferences: Person0 → [1,2], Person1 → [1].
 
 1. Initialize dp[0]=1.
-2. Hat 1: assign to Person0 → dp[01]=1, assign to Person1 → dp[10]=1.
-3. Hat 2: only Person0 likes it. From dp[01] (Person0 already assigned) no change. From dp[10] (Person1 assigned) we can assign Person0 → dp[11]=1.
+2. Hat 1: assign to Person0 → dp[01]=1, assign to Person1 → dp[10]=1.
+3. Hat 2: only Person0 likes it. From dp[01] (Person0 already assigned) no change. From dp[10] (Person1 assigned) we can assign Person0 → dp[11]=1.
 4. Final mask 11 (both assigned) has value 1 → one valid assignment.
 
 ---

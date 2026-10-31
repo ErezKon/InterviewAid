@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-Use a post‑order **DFS** that returns for each node a pair `(inc, dec)`:
+Use a post-order **DFS** that returns for each node a pair `(inc, dec)`:
 - `inc` = length of longest increasing consecutive sequence starting at this node.
 - `dec` = length of longest decreasing consecutive sequence starting at this node.
 For each child, update `inc`/`dec` if the child value is `node.val + 1` or `node.val - 1`. The longest path through the current node is `inc + dec - 1`. Keep a global maximum.
@@ -64,17 +64,17 @@ FUNCTION dfs(node):
 ## Walkthrough
 Consider the tree `[2,1,3]`:
 1. Leaf `1` returns `(1,1)`; leaf `3` returns `(1,1)`.
-2. At node `2`, child `1` is `val‑1`, so `dec = max(1, 1+1)=2`.
+2. At node `2`, child `1` is `val-1`, so `dec = max(1, 1+1)=2`.
 3. Child `3` is `val+1`, so `inc = max(1, 1+1)=2`.
 4. Path length through `2` = `inc + dec - 1 = 2+2-1 = 3`. Update `maxLen` to 3.
 5. Return `(2,2)` upward; final answer 3.
 
 ## Complexity Analysis
 - **Time:** `O(n)` – each node visited once.
-- **Space:** `O(h)` – recursion stack, where `h` is tree height (worst‑case `O(n)`).
+- **Space:** `O(h)` – recursion stack, where `h` is tree height (worst-case `O(n)`).
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm for an **N‑ary tree**?
+## Follow-Up Questions
+1. How would you adapt the algorithm for an **N-ary tree**?
 2. Can you compute the longest consecutive path **iteratively** using an explicit stack?
 3. What changes are needed if the path must be strictly **downward** (no direction change)?
 

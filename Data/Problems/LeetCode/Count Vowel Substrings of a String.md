@@ -80,7 +80,7 @@ Consider the input `"aeiouu"`.
 | 7 | 1 | 1 | `e` | {e} | continue |
 | … | … | … | … | … | … |
 
-The inner loop stops early when a non‑vowel appears, ensuring O(n²) worst‑case but often much less.
+The inner loop stops early when a non-vowel appears, ensuring O(n²) worst-case but often much less.
 
 ---
 
@@ -103,4 +103,4 @@ The inner loop stops early when a non‑vowel appears, ensuring O(n²) worst‑c
 
 ## Key Takeaway
 
-> **"Exactly K distinct" substrings = `atMost(K) - atMost(K-1)`. For small constraints, brute force with early break on non‑vowels also works.**
+> **"Exactly K distinct" substrings = `atMost(K) - atMost(K-1)`. For small constraints, brute force with early break on non-vowels also works.**

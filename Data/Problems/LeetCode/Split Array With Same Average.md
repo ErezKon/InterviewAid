@@ -36,7 +36,7 @@ Output: false
 ```
 
 ## Approach
-Use a meet‑in‑the‑middle technique. For each possible subset size `k` (1 ≤ k < n), the required subset sum is `k * total / n`. Enumerate all subset sums of the first half and store them by subset size. Then enumerate subsets of the second half and check if a complementary sum exists that satisfies the target.
+Use a meet-in-the-middle technique. For each possible subset size `k` (1 ≤ k < n), the required subset sum is `k * total / n`. Enumerate all subset sums of the first half and store them by subset size. Then enumerate subsets of the second half and check if a complementary sum exists that satisfies the target.
 
 ```text
 FUNCTION splitArraySameAverage(nums):
@@ -85,10 +85,10 @@ Thus a valid partition exists.
 - **Time:** Enumerating subsets of each half → `O(2^{n/2})`.
 - **Space:** Storing subset sums for one half → `O(2^{n/2})`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. Can the solution be optimized using bitset DP for larger `n`?
 2. How would you adapt the algorithm to return the actual subsets, not just a boolean?
 3. What changes are needed if the array may contain negative numbers?
 
 ## Key Takeaway
-Meet‑in‑the‑middle efficiently checks all possible subset sizes and sums, enabling detection of equal‑average partitions without exhaustive enumeration of the full set.
+Meet-in-the-middle efficiently checks all possible subset sizes and sums, enabling detection of equal-average partitions without exhaustive enumeration of the full set.

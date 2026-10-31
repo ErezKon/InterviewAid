@@ -40,7 +40,7 @@ For the point (1,1): floor((50+200+200+200+200+100+100+100+100)/9) = floor(138.8
 
 ## Approach
 
-Brute‑Force Neighbors — O(m·n) ✅
+Brute-Force Neighbors — O(m·n) ✅
 
 ```text
 FUNCTION imageSmoother(img):
@@ -68,7 +68,7 @@ Consider the first example `[[1,2,3],[4,5,6],[7,8,9]]`.
 |------|----------------|-----|-------|-----------|
 | (0,0) | 1,2,4,5 | 12 | 4 | 3 |
 | (0,1) | 1,2,3,4,5,6 | 21 | 6 | 3 |
-| (1,1) | 1‑9 all cells | 45 | 9 | 5 |
+| (1,1) | 1-9 all cells | 45 | 9 | 5 |
 The algorithm iterates each cell, gathers its neighbors, computes the floor average, and stores it in `result`.
 
 ## Complexity Analysis
@@ -76,9 +76,9 @@ The algorithm iterates each cell, gathers its neighbors, computes the floor aver
 - **Time:** O(m·n) – each cell examines at most 9 neighbors, a constant factor.
 - **Space:** O(m·n) – auxiliary matrix `result` of the same size as the input.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you modify the algorithm to perform the smoothing in‑place without extra space?
+1. How would you modify the algorithm to perform the smoothing in-place without extra space?
 2. Can you achieve O(1) additional space using prefix sums?
 3. How would the solution change if the averaging rule required rounding instead of flooring?
 

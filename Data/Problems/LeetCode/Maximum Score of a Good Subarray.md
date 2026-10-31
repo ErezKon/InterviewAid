@@ -70,9 +70,9 @@ For `nums = [1,2,3,2]`:
 - **Time:** O(n) – each index is pushed and popped at most once.
 - **Space:** O(n) for the stack and prefix array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm if the score were defined as `max(nums[l..r]) * sum(nums[l..r])`?
-2. Can the solution be extended to two‑dimensional grids where the score uses the minimum element of a sub‑matrix?
+2. Can the solution be extended to two-dimensional grids where the score uses the minimum element of a sub-matrix?
 3. What if the array size is up to 10⁶ – would the same approach still be optimal?
 
 ## Key Takeaway

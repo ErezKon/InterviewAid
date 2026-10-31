@@ -92,10 +92,10 @@ Result = 13.
 - **Time:** O(n log n) – each BIT query/update costs `log n`.
 - **Space:** O(n) – two BIT structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the profit were defined as `prices[k] - prices[i]` with a middle price constraint?
 2. Can the problem be solved in O(n) using monotonic stacks instead of BITs?
 3. How would you extend the approach to find the maximum profit for **four** increasing prices?
 
 ## Key Takeaway
-When simple linear scans are insufficient, data structures like Fenwick Trees enable efficient range queries to combine prefix minima and suffix maxima for optimal increasing‑triplet profit calculations.
+When simple linear scans are insufficient, data structures like Fenwick Trees enable efficient range queries to combine prefix minima and suffix maxima for optimal increasing-triplet profit calculations.

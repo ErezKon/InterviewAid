@@ -100,26 +100,26 @@ FUNCTION numberOfSubstrings(s):
 
 Take `s = "11010"` (n = 5).
 
-1. **Zero positions:** `[2,4]` (0‑based).
-2. **All‑ones substrings (z=0):** runs of `1`s → lengths 2 and 1 → add `2+1 = 3` substrings.
+1. **Zero positions:** `[2,4]` (0-based).
+2. **All-ones substrings (z=0):** runs of `1`s → lengths 2 and 1 → add `2+1 = 3` substrings.
 3. **Maximum zeros:** `⌊√5⌋ = 2` → consider `z = 1` and `z = 2`.
    - *z = 1*: each single zero forms a window.
      * For zero at index 2:
        - leftBound = 0, rightBound = 3.
        - Need `1` one (1²).
-       - Valid left starts: positions 0‑2 (3 choices).
-       - Valid right ends: positions 2‑3 (2 choices).
+       - Valid left starts: positions 0-2 (3 choices).
+       - Valid right ends: positions 2-3 (2 choices).
        - Adds `3 × 2 = 6` substrings.
      * For zero at index 4:
        - leftBound = 3, rightBound = 4.
        - Need `1` one.
-       - Valid left starts: positions 3‑4 (2 choices).
+       - Valid left starts: positions 3-4 (2 choices).
        - Valid right ends: position 4 (1 choice).
        - Adds `2 × 1 = 2` substrings.
-   - *z = 2*: window covering both zeros (indices 2‑4).
+   - *z = 2*: window covering both zeros (indices 2-4).
      - leftBound = 0, rightBound = 4.
      - Need `4` ones (2²) → impossible, adds 0.
-4. **Total:** `3 (all‑ones) + 6 + 2 = 11` substrings. (The editorial counts 9; the extra come from overlapping windows that violate the exact condition – the algorithm refines bounds to avoid over‑counting.)
+4. **Total:** `3 (all-ones) + 6 + 2 = 11` substrings. (The editorial counts 9; the extra come from overlapping windows that violate the exact condition – the algorithm refines bounds to avoid over-counting.)
 
 ---
 

@@ -41,11 +41,11 @@ Example 2:
 ```
 
 ## Approach
-The operation only affects a sliding window of size 3. A greedy left‑to‑right scan works: whenever we encounter a `0` at position `i` (where `i ≤ n‑3`), we must flip the window starting at `i` because later operations cannot affect `nums[i]`. This ensures the earliest possible correction and yields the minimum number of flips.
+The operation only affects a sliding window of size 3. A greedy left-to-right scan works: whenever we encounter a `0` at position `i` (where `i ≤ n-3`), we must flip the window starting at `i` because later operations cannot affect `nums[i]`. This ensures the earliest possible correction and yields the minimum number of flips.
 
 **Algorithm**
 1. Initialise `ops = 0`.
-2. Iterate `i` from `0` to `n‑3`:
+2. Iterate `i` from `0` to `n-3`:
    - If `nums[i] == 0`, flip `nums[i]`, `nums[i+1]`, `nums[i+2]` and increment `ops`.
 3. After the loop, check the last two elements; if both are `1`, return `ops`, else `-1`.
 
@@ -76,7 +76,7 @@ Loop ends. Last two are `1,1` → return `1`.
 
 ## Complexity Analysis
 - **Time:** `O(n)` – single pass.
-- **Space:** `O(1)` – in‑place modifications.
+- **Space:** `O(1)` – in-place modifications.
 
 ## Follow-Up Questions
 1. How would the solution change if the operation flipped exactly two consecutive bits?
@@ -84,4 +84,4 @@ Loop ends. Last two are `1,1` → return `1`.
 3. What if the target pattern for the last `k` bits is configurable?
 
 ## Key Takeaway
-A left‑to‑right greedy scan that flips whenever a `0` is encountered yields the minimal number of three‑bit flips needed to satisfy the final‑two‑bits condition.
+A left-to-right greedy scan that flips whenever a `0` is encountered yields the minimal number of three-bit flips needed to satisfy the final-two-bits condition.

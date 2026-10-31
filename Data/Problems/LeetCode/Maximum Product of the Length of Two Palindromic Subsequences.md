@@ -69,7 +69,7 @@ END FUNCTION
 
 ## Walkthrough
 Consider the first example `"acdapmpomp"` (length 10).
-1. Enumerate all masks (2^10‑1 = 1023). For mask representing positions {0,2,4} we get subsequence "aca", which is a palindrome of length 3.
+1. Enumerate all masks (2^10-1 = 1023). For mask representing positions {0,2,4} we get subsequence "aca", which is a palindrome of length 3.
 2. Store this length in `palLen[mask]`.
 3. Later, when processing mask for "pmpom" (positions {5,6,7,8,9}), its mask is disjoint from the first (bitwise AND = 0).
 4. The algorithm examines the pair of masks, multiplies their lengths 3 × 5 = 15 and updates `best`.

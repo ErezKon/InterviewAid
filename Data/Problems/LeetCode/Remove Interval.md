@@ -44,7 +44,7 @@ Output: [[-5,-4],[-3,-2],[4,5],[8,9]]
 Iterate through `intervals` and handle each case based on its relation to `toBeRemoved`:
 1. If the current interval ends before `toBeRemoved` starts, keep it unchanged.
 2. If the current interval starts after `toBeRemoved` ends, keep it unchanged.
-3. Otherwise, there is overlap; possibly add the left non‑overlapping part (`[start, toBeRemoved[0]]`) and/or the right non‑overlapping part (`[toBeRemoved[1], end]`).
+3. Otherwise, there is overlap; possibly add the left non-overlapping part (`[start, toBeRemoved[0]]`) and/or the right non-overlapping part (`[toBeRemoved[1], end]`).
 
 ```text
 FUNCTION removeInterval(intervals, toBeRemoved):
@@ -80,11 +80,11 @@ FUNCTION removeInterval(intervals, toBeRemoved):
 
 ## Complexity Analysis
 - **Time:** O(M) where M is the number of intervals.
-- **Space:** O(M) for the output list (in‑place modification possible but not required).
+- **Space:** O(M) for the output list (in-place modification possible but not required).
 
 ## Follow-Up Questions
 1. How would you modify the algorithm if `intervals` could overlap initially?
-2. Can the solution be performed in‑place without extra storage?
+2. Can the solution be performed in-place without extra storage?
 3. How would you handle open intervals (exclusive endpoints) instead of closed intervals?
 
 ## Key Takeaway

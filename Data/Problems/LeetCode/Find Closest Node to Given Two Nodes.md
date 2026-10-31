@@ -86,7 +86,7 @@ FUNCTION closestMeetingNode(edges, node1, node2):
 | 1    | [0,-1,-1,-1] (node0)      | [-1,-1,-1,-1]             | N/A              | -1 (∞)       |
 | 2    | [0,1,-1,-1] (node1)       | [-1,-1,-1,-1]             | N/A              | -1 (∞)       |
 | 3    | [0,1,2,-1] (node2)        | [-1,-1,-1,-1]             | N/A              | -1 (∞)       |
-| …    | continue until both traversals finish. The algorithm then scans all indices, finds index 2 with max distance 2, which is minimal. |
+| …    | continue until both traversals finish. The algorithm then scans all indices, finds index 2 with max distance 2, which is minimal. |
 
 ---
 

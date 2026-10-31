@@ -63,7 +63,7 @@ FUNCTION canPlaceFlowers(flowerbed, n):
 - **Time:** O(m) where m = length of `flowerbed`.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for a circular flowerbed?
 2. Can you compute the maximum number of flowers that can be planted without a given `n`?
 3. What changes are needed if the rule allows at most two consecutive empty spots instead of one?

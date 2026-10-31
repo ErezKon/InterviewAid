@@ -51,7 +51,7 @@ Other valid solutions are to put the green box in room 2 or to put the orange bo
 ```
 
 ## Approach
-1. Preprocess the warehouse to obtain a non‑increasing height profile from both ends:
+1. Preprocess the warehouse to obtain a non-increasing height profile from both ends:
    - From left to right, enforce `warehouse[i] = min(warehouse[i], warehouse[i-1])`.
    - From right to left, enforce `warehouse[i] = min(warehouse[i], warehouse[i+1])`.
    This yields the maximum height a box can have if placed from the left or right at each position.
@@ -61,10 +61,10 @@ Other valid solutions are to put the green box in room 2 or to put the orange bo
 
 ```text
 FUNCTION maxBoxesInWarehouseII(boxes, warehouse):
-    // Step 1: left‑to‑right monotonic
+    // Step 1: left-to-right monotonic
     FOR i ← 1 TO LENGTH(warehouse) - 1:
         SET warehouse[i] ← MIN(warehouse[i], warehouse[i-1])
-    // Step 1b: right‑to‑left monotonic
+    // Step 1b: right-to-left monotonic
     FOR i ← LENGTH(warehouse) - 2 DOWNTO 0:
         SET warehouse[i] ← MIN(warehouse[i], warehouse[i+1])
     // Step 2: sort boxes

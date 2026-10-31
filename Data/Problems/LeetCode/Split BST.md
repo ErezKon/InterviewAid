@@ -63,10 +63,10 @@ Resulting trees: left root = 2, right root = 4.
 - **Time:** Each node visited once → `O(n)`.
 - **Space:** Recursion stack depth `O(h)` where `h` is tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to split the tree into three parts based on two thresholds?
 2. Can the split be performed iteratively without recursion?
 3. What changes are needed if the tree is not a BST but a generic binary tree?
 
 ## Key Takeaway
-By recursively partitioning based on the target and re‑linking subtrees, a BST can be split into ≤ target and > target parts in linear time.
+By recursively partitioning based on the target and re-linking subtrees, a BST can be split into ≤ target and > target parts in linear time.

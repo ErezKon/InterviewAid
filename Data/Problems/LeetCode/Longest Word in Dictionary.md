@@ -50,7 +50,7 @@ FUNCTION longestWord(words):
                 result ← word
     RETURN result
 ```
-A Trie can achieve the same with a depth‑first search.
+A Trie can achieve the same with a depth-first search.
 
 ## Walkthrough
 For the list `["w","wo","wor","worl","world"]`:
@@ -62,10 +62,10 @@ For the list `["w","wo","wor","worl","world"]`:
 *Time*: **O(n·L·log n)** for sorting (`n` words, average length `L`).
 *Space*: **O(n·L)** for the set (or Trie).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return **all** buildable words, not just the longest?
-2. Can you solve the problem in **O(n·L)** time without sorting, using a bucket‑by‑length approach?
-3. How would a Trie‑based solution differ in space usage?
+2. Can you solve the problem in **O(n·L)** time without sorting, using a bucket-by-length approach?
+3. How would a Trie-based solution differ in space usage?
 
 ## Key Takeaway
-Sorting ensures that when a word is examined, all its possible prefixes have already been processed, allowing a simple hash‑set check to verify buildability.
+Sorting ensures that when a word is examined, all its possible prefixes have already been processed, allowing a simple hash-set check to verify buildability.

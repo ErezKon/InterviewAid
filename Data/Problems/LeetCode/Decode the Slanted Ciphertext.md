@@ -98,7 +98,7 @@ FUNCTION decodeCiphertext(encodedText, rows):
 
 ## Follow-Up Questions
 
-1. How would you modify the algorithm if the grid were filled column‑wise instead of row‑wise?
+1. How would you modify the algorithm if the grid were filled column-wise instead of row-wise?
 2. Can the solution be adapted to decode when the number of rows is unknown but the grid is square?
 3. What is the impact on complexity if the encoded text contains a large number of trailing spaces?
 

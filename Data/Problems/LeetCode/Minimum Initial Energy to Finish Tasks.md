@@ -98,7 +98,7 @@ Consider Example 1 with tasks `[[4,5],[2,3],[4,7]]`.
 
 | Time | Space |
 |------|-------|
-| O(n log n) – sorting the tasks | O(1) – in‑place processing |
+| O(n log n) – sorting the tasks | O(1) – in-place processing |
 
 ## Follow-Up Questions
 

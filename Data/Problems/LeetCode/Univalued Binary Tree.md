@@ -31,7 +31,7 @@ Output: false
 ```
 
 ## Approach
-**Algorithm:** Depth‑First Search (recursive).
+**Algorithm:** Depth-First Search (recursive).
 1. Record the value of the root.
 2. Recursively verify that each child node exists and matches the root value.
 3. If any mismatch is found, propagate false up the call stack.
@@ -57,18 +57,18 @@ FUNCTION dfs(node, target):
 |------|------|----------------|-----------|--------|
 | 1 | root (1) | 1 | 1 == 1 | continue |
 | 2 | left child (1) | 1 | 1 == 1 | continue |
-| 3 | left‑left (1) | 1 | 1 == 1 | leaf → true |
+| 3 | left-left (1) | 1 | 1 == 1 | leaf → true |
 | … | ... | ... | ... | ... |
 If any node value differs, the function returns false immediately.
 
 ## Complexity Analysis
 - Time: O(N) where N is the number of nodes (each visited once).
-- Space: O(H) recursion stack, H = height of the tree (worst‑case O(N)).
+- Space: O(H) recursion stack, H = height of the tree (worst-case O(N)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve it iteratively using a stack or queue?
 2. Can you extend the solution to count the number of distinct values in the tree?
-3. How would you modify the algorithm to handle a large tree without recursion (tail‑call optimization or explicit stack)?
+3. How would you modify the algorithm to handle a large tree without recursion (tail-call optimization or explicit stack)?
 
 ## Key Takeaway
 A simple DFS that checks each node against the root value determines univalued trees in linear time.

@@ -72,7 +72,7 @@ Consider the string `"13542"`:
 ## 6. Follow-Up Questions
 
 * How would the solution change if any number of swaps were allowed?
-* What if swaps could be performed between any two same‑parity digits, not just adjacent ones?
+* What if swaps could be performed between any two same-parity digits, not just adjacent ones?
 * Can the algorithm be extended to handle very long strings efficiently in a streaming fashion?
 
 ---

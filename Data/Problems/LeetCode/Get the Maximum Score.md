@@ -127,4 +127,4 @@ Example 3:
 
 ## 7. Key Takeaway
 
-> **Two‑pointer merge** on sorted arrays, switching at common values by keeping the larger running sum, yields an optimal O(m+n) solution.
+> **Two-pointer merge** on sorted arrays, switching at common values by keeping the larger running sum, yields an optimal O(m+n) solution.

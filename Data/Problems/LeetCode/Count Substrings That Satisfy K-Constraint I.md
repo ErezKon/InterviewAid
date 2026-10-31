@@ -82,7 +82,7 @@ Consider `s = "10101"`, `k = 1`.
 | 2 | 0 | 1 | `10` | 1 | 1 | +2 → 3 |
 | 3 | 0 | 2 | `101` | 1 | 2 | zeros≤k, ones>k → valid, +3 → 6 |
 | 4 | 0 | 3 | `1010` | 2 | 2 | both>k → shrink: left→1 (`0` removed) zeros=1, ones=2, still both>k → left→2 (`1` removed) zeros=1, ones=1, valid, +2 → 8 |
-| 5 | 2 | 4 | `101` | 1 | 2 | valid, +3 → 11 (but only 9 distinct substrings, duplicates counted in sliding‑window formula) |
+| 5 | 2 | 4 | `101` | 1 | 2 | valid, +3 → 11 (but only 9 distinct substrings, duplicates counted in sliding-window formula) |
 
 The algorithm accumulates the number of valid substrings ending at each `right` index, yielding the final count `9`.
 

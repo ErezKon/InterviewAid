@@ -67,19 +67,19 @@ FUNCTION possibleBipartition(n, dislikes):
 ## Walkthrough
 Consider `n = 4, dislikes = [[1,2],[1,3],[2,4]]`.
 1. Build graph: 1↔2, 1↔3, 2↔4.
-2. Start BFS at node 1, color 1 = 0.
-3. Visit neighbors 2 and 3, assign color 1 to both.
-4. Dequeue 2, its neighbor 4 is uncolored → assign color 0.
+2. Start BFS at node 1, color 1 = 0.
+3. Visit neighbors 2 and 3, assign color 1 to both.
+4. Dequeue 2, its neighbor 4 is uncolored → assign color 0.
 5. No conflict encountered; all nodes colored → return `true`.
 
 ## Complexity Analysis
 - **Time:** O(n + m) where `m` is the number of dislike pairs (edges).
 - **Space:** O(n + m) for the adjacency list and the color array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to output the actual two groups instead of just a boolean?
-2. Can the algorithm be extended to handle a scenario where more than two groups are allowed (k‑colorability)?
+2. Can the algorithm be extended to handle a scenario where more than two groups are allowed (k-colorability)?
 3. What changes are needed if the graph is directed, i.e., dislikes are not necessarily mutual?
 
 ## Key Takeaway
-A set of mutual dislikes can be partitioned into two groups exactly when the corresponding undirected graph is bipartite; BFS/DFS coloring provides a linear‑time verification.
+A set of mutual dislikes can be partitioned into two groups exactly when the corresponding undirected graph is bipartite; BFS/DFS coloring provides a linear-time verification.

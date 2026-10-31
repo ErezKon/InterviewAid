@@ -39,7 +39,7 @@ Example 3:
 ```
 
 ## Approach
-The problem can be solved using the **Pigeonhole Principle** and modular arithmetic. We iteratively build the number `111…1` while keeping only its remainder modulo `k`. If the remainder becomes `0`, the current length is the answer. Because there are only `k` possible remainders (0 to k‑1), the process must terminate within `k` steps; otherwise a cycle occurs and no solution exists.
+The problem can be solved using the **Pigeonhole Principle** and modular arithmetic. We iteratively build the number `111…1` while keeping only its remainder modulo `k`. If the remainder becomes `0`, the current length is the answer. Because there are only `k` possible remainders (0 to k-1), the process must terminate within `k` steps; otherwise a cycle occurs and no solution exists.
 
 ```text
 FUNCTION smallestRepunitDivByK(k):
@@ -66,8 +66,8 @@ The remainder becomes `0` at length `3`, so the answer is `3`.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to return the actual smallest repunit string for small `k`?
-2. Can you extend the approach to find the smallest number consisting of only a given digit `d` (1‑9) divisible by `k`?
+2. Can you extend the approach to find the smallest number consisting of only a given digit `d` (1-9) divisible by `k`?
 3. What changes are needed if `k` can be up to `10^12`?
 
 ## Key Takeaway
-By tracking remainders instead of the full number, we can efficiently find the smallest all‑`1` integer divisible by `k` using at most `k` steps.
+By tracking remainders instead of the full number, we can efficiently find the smallest all-`1` integer divisible by `k` using at most `k` steps.

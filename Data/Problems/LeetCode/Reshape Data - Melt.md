@@ -73,7 +73,18 @@ FUNCTION meltTable(report):
 2. Call `pd.melt` with `id_vars=['product']`.
 3. `var_name='quarter'` creates a new column containing the original quarter column names.
 4. `value_name='sales'` stores the corresponding sales numbers.
-5. The function returns the transformed long‑format DataFrame.
+5. The function returns the transformed long-format DataFrame.
+
+Tracing Example 1 (2 products x 4 quarter columns → 8 rows). `melt` walks the value columns in order, emitting one row per input row for each column:
+
+| Value column | Rows emitted (product, quarter, sales) |
+|--------------|----------------------------------------|
+| quarter_1 | (Umbrella, quarter_1, 417), (SleepingBag, quarter_1, 800) |
+| quarter_2 | (Umbrella, quarter_2, 224), (SleepingBag, quarter_2, 936) |
+| quarter_3 | (Umbrella, quarter_3, 379), (SleepingBag, quarter_3, 93) |
+| quarter_4 | (Umbrella, quarter_4, 611), (SleepingBag, quarter_4, 875) |
+
+Stacking these blocks gives exactly the expected output table, in the same row order.
 
 ---
 
@@ -94,4 +105,4 @@ FUNCTION meltTable(report):
 
 ## Key Takeaway
 
-> `pd.melt()` transforms wide‑format data to long‑format — the inverse of `pivot`. Specify `id_vars` for columns to keep, and the remaining columns become rows.
+> `pd.melt()` transforms wide-format data to long-format — the inverse of `pivot`. Specify `id_vars` for columns to keep, and the remaining columns become rows.

@@ -45,7 +45,7 @@ Example 2:
 ```
 
 ## Approach
-Three‑pass partition using auxiliary lists — O(n) ✅
+Three-pass partition using auxiliary lists — O(n) ✅
 
 ```text
 FUNCTION pivotArray(nums, pivot):
@@ -79,10 +79,10 @@ Result = [9,5,3,10,10,12,14]
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(n) – three auxiliary lists storing all elements.
 
-## Follow‑Up Questions
-1. How would you perform the partition in‑place with O(1) extra space?
-2. Can you extend the solution to handle multiple pivots (e.g., three‑way partition)?
+## Follow-Up Questions
+1. How would you perform the partition in-place with O(1) extra space?
+2. Can you extend the solution to handle multiple pivots (e.g., three-way partition)?
 3. What changes are needed if the relative order within each group must be preserved?
 
 ## Key Takeaway
-A simple three‑bucket pass efficiently groups elements around a pivot, yielding a linear‑time solution.
+A simple three-bucket pass efficiently groups elements around a pivot, yielding a linear-time solution.

@@ -50,7 +50,7 @@ solution.getRandom(); // return 3
 
 ## 3. Approach
 
-**Reservoir Sampling (k=1)** – Iterate through the list, keeping a single candidate. Replace the candidate with the current node's value with probability `1/i` at the i‑th node.
+**Reservoir Sampling (k=1)** – Iterate through the list, keeping a single candidate. Replace the candidate with the current node's value with probability `1/i` at the i-th node.
 
 ```text
 CLASS Solution:
@@ -104,4 +104,4 @@ Final returned value is 9. Over many runs each element appears with equal probab
 
 ## Key Takeaway
 
-> Reservoir sampling lets you pick a uniformly random element from an unknown‑size list using constant extra space.
+> Reservoir sampling lets you pick a uniformly random element from an unknown-size list using constant extra space.

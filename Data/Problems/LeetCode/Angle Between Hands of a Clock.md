@@ -7,7 +7,7 @@
 ---
 
 ## Problem Description
-<!-- old description: (0 ≤ hour ≤ 23) and an integer `minutes` (0 ≤ minutes < 60), return the smaller angle (in degrees) formed between the hour and minute hands on an analog clock. -->
+<!-- old description: (0 ≤ hour ≤ 23) and an integer `minutes` (0 ≤ minutes < 60), return the smaller angle (in degrees) formed between the hour and minute hands on an analog clock. -->
 Given two numbers, `hour` and `minutes`, return *the smaller angle (in degrees) formed between the* `hour` *and the* `minute` *hand*.
 
 Answers within `10^-5` of the actual value will be accepted as correct.
@@ -41,7 +41,7 @@ The problem is solved with simple geometry. Compute the absolute positions of bo
 
 ```text
 FUNCTION angleClock(hour, minutes):
-    // Convert hour to 12‑hour format
+    // Convert hour to 12-hour format
     SET hour12 ← hour MOD 12
     // Minute hand moves 6° per minute
     SET minuteAngle ← minutes * 6.0
@@ -61,7 +61,7 @@ FUNCTION angleClock(hour, minutes):
 - **Time:** O(1) – constant arithmetic operations.
 - **Space:** O(1) – only a few variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle a clock with a second hand?
 2. Extend to compute the angle at any given time including fractional minutes.
 3. What if the clock runs in reverse direction?

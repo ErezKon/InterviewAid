@@ -79,7 +79,7 @@ Example 2:
 
 ## Walkthrough
 
-For Example 1:
+For Example 1:
 1. Start with needs **[3,2]**.
 2. Try offer **[3,0,5]** → new needs **[0,2]**, cost **5 + dfs([0,2])**.
 3. For **[0,2]**, buying individually costs **2*5 = 10**. No offer fits, so total **5+10 = 15**.
@@ -89,7 +89,7 @@ For Example 1:
 
 ## Complexity Analysis
 
-- **Time:** O(N × M × K) where *N* is number of distinct need states, *M* number of offers, *K* number of items (bounded by small constants). Memoization ensures each state is computed once.
+- **Time:** O(N × M × K) where *N* is number of distinct need states, *M* number of offers, *K* number of items (bounded by small constants). Memoization ensures each state is computed once.
 - **Space:** O(N) for memoization table plus recursion stack depth ≤ K.
 
 ## Follow-Up Questions
@@ -100,4 +100,4 @@ For Example 1:
 
 ## Key Takeaway
 
-Use DFS with memoization to explore all combinations of special offers, treating each unique need vector as a sub‑problem. This transforms an exponential search into a tractable DP solution.
+Use DFS with memoization to explore all combinations of special offers, treating each unique need vector as a sub-problem. This transforms an exponential search into a tractable DP solution.

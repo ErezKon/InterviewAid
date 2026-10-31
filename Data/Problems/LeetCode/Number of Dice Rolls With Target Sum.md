@@ -92,9 +92,9 @@ FUNCTION numRollsToTarget(n, k, target):
 1. Initialize `dp[0] = 1`.
 2. First die:
    - `newDp[1..6]` become 1 (each face yields one way).
-   - `dp = [1,1,1,1,1,1,1]` (indices 0‑6).
+   - `dp = [1,1,1,1,1,1,1]` (indices 0-6).
 3. Second die:
-   - For each target `t` from 1 to 7, sum contributions from previous `dp[t‑face]`.
+   - For each target `t` from 1 to 7, sum contributions from previous `dp[t-face]`.
    - `newDp[7] = dp[6] + dp[5] + dp[4] + dp[3] + dp[2] + dp[1] = 1+1+1+1+1+1 = 6`.
 4. Result `dp[7] = 6`, matching the six possible pairs.
 
@@ -119,4 +119,4 @@ FUNCTION numRollsToTarget(n, k, target):
 
 ## 8. Key Takeaway
 
-> **Bounded knapsack DP.** Each die adds one item with value 1..k. Rolling array optimization keeps only the previous DP row. Prefix‑sum tricks can further speed up the computation.
+> **Bounded knapsack DP.** Each die adds one item with value 1..k. Rolling array optimization keeps only the previous DP row. Prefix-sum tricks can further speed up the computation.

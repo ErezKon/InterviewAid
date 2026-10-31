@@ -64,7 +64,7 @@ FUNCTION MaxSquareArea(vertical, horizontal):
 ```
 
 ## Walkthrough
-For `vertical = [0,2,5,8]` → gaps `[2,3,3]`. For `horizontal = [0,3,8]` → gaps `[3,5]`. The common gap is `3`; the largest square side is `3`, area `9`. After removing the fence that creates the 3‑unit gap on both axes, a 3×3 square can be formed.
+For `vertical = [0,2,5,8]` → gaps `[2,3,3]`. For `horizontal = [0,3,8]` → gaps `[3,5]`. The common gap is `3`; the largest square side is `3`, area `9`. After removing the fence that creates the 3-unit gap on both axes, a 3×3 square can be formed.
 
 ## Complexity Analysis
 - Time: `O(m + n)` where `m` and `n` are the numbers of vertical and horizontal fences.

@@ -68,7 +68,7 @@ FUNCTION maxNonAdjacentSum(nums):
     RETURN dpPrev
 ```
 
-### Pseudocode (Segment‑Tree version)
+### Pseudocode (Segment-Tree version)
 ```text
 STRUCT Node:
     withLeft  ← 0   // max sum when left endpoint is taken
@@ -105,7 +105,7 @@ FUNCTION queryFullRange(tree):
 
 ## Walkthrough
 For `nums = [3,2,5,10,7]` using DP:
-| i | nums[i‑1] | dp[i‑2] | dp[i‑1] | take? | dp[i] |
+| i | nums[i-1] | dp[i-2] | dp[i-1] | take? | dp[i] |
 |---|-----------|---------|---------|-------|------|
 | 1 | 3         | 0       | 0       | yes   | 3 |
 | 2 | 2         | 0       | 3       | no    | 3 |
@@ -115,13 +115,13 @@ For `nums = [3,2,5,10,7]` using DP:
 Result = 15.
 
 ## Complexity Analysis
-*Time:* O(n) for the DP scan; O(n log n) for building and querying the segment tree.
-*Space:* O(1) extra for DP; O(n) for the segment‑tree structure.
+*Time:* O(n) for the DP scan; O(n log n) for building and querying the segment tree.
+*Space:* O(1) extra for DP; O(n) for the segment-tree structure.
 
-## Follow‑Up Questions
-1. How would you adapt the solution to handle **range updates** (changing values) and queries for the maximum non‑adjacent sum after each update?
+## Follow-Up Questions
+1. How would you adapt the solution to handle **range updates** (changing values) and queries for the maximum non-adjacent sum after each update?
 2. Can the problem be extended to a circular array where the first and last elements are considered adjacent?
 3. What changes are needed if each selected element incurs a fixed penalty cost?
 
 ## Key Takeaway
-A simple linear‑time DP that tracks the best sum with and without the current element efficiently solves the maximum‑sum non‑adjacent subsequence problem.
+A simple linear-time DP that tracks the best sum with and without the current element efficiently solves the maximum-sum non-adjacent subsequence problem.

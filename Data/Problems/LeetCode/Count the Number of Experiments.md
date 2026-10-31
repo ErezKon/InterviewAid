@@ -100,7 +100,7 @@ On the platform "Web", we had two "Reading" experiments and one "Programming" ex
 
 1. **Generate full grid** – `platforms` CTE lists all three platforms, `experiments` CTE lists all three experiment types. `CROSS JOIN` creates nine combinations.
 2. **Left join** – Attach actual rows from `Experiments`. If a combination has no matching row, `ex.experiment_id` is `NULL`.
-3. **Count** – `COUNT(ex.experiment_id)` counts only non‑NULL ids, yielding `0` for missing combos.
+3. **Count** – `COUNT(ex.experiment_id)` counts only non-NULL ids, yielding `0` for missing combos.
 4. **Group** – Group by both dimensions to produce one row per combination.
 
 ---

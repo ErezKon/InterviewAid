@@ -53,7 +53,7 @@ Example 2:
 
 ---
 
-## 3. Approach: Bottom‑Up Greedy — O(n) ✅
+## 3. Approach: Bottom-Up Greedy — O(n) ✅
 
 ```
 FUNCTION minIncrements(n, cost):
@@ -77,7 +77,7 @@ FUNCTION minIncrements(n, cost):
 
 ## 4. Walkthrough
 
-Consider `cost = [0,1,2,3,4,5,6]` (indices 1‑7):
+Consider `cost = [0,1,2,3,4,5,6]` (indices 1-7):
 | Step | Node i | left child | right child | Action | increments |
 |------|--------|------------|-------------|--------|------------|
 | 1 | 3 | 5 | 6 | Increment node 5 by 1 (to match 6) | +1 |
@@ -90,11 +90,11 @@ Total increments = 3.
 ## 5. Complexity Analysis
 
 - **Time:** O(n) – each internal node is visited once.
-- **Space:** O(1) extra – modifications are done in‑place.
+- **Space:** O(1) extra – modifications are done in-place.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the tree were not perfect?
 - Can you extend the algorithm to return the final costs of all nodes?
@@ -104,4 +104,4 @@ Total increments = 3.
 
 ## 7. Key Takeaway
 
-> Equalizing each pair of sibling sub‑paths greedily from the leaves upward yields the minimal total increment.
+> Equalizing each pair of sibling sub-paths greedily from the leaves upward yields the minimal total increment.

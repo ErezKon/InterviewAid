@@ -75,7 +75,7 @@ WHERE area >= 3000000 OR population >= 25000000;
 - **Time:** O(n) – the database scans each row once.
 - **Space:** O(1) extra space beyond the result set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the query to also return countries with **both** criteria?
 2. What indexes could speed up this query for a very large `World` table?
 3. How can you write the query to order results by descending population?

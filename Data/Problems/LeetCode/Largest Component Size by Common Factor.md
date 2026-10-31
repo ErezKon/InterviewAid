@@ -47,7 +47,7 @@ Example 3:
 
 ---
 
-## 3. Approach — Union‑Find by Prime Factors ✅
+## 3. Approach — Union-Find by Prime Factors ✅
 
 ```text
 FUNCTION largestComponentSize(nums):
@@ -70,7 +70,7 @@ FUNCTION largestComponentSize(nums):
 
 **Example:** `nums = [4,6,15,35]`
 
-1. `maxVal = 35`, create Union‑Find for indices `0..35`.
+1. `maxVal = 35`, create Union-Find for indices `0..35`.
 2. Process `4` → prime factors `{2}` → `uf.UNION(4,2)`.
 3. Process `6` → primes `{2,3}` → `uf.UNION(6,2)`, `uf.UNION(6,3)`.
 4. Process `15` → primes `{3,5}` → `uf.UNION(15,3)`, `uf.UNION(15,5)`.
@@ -85,18 +85,18 @@ FUNCTION largestComponentSize(nums):
 | Metric | Value |
 |--------|-------|
 | Time | O(n · √M) where M is max(nums) (factorization) |
-| Space | O(M) for Union‑Find structure |
+| Space | O(M) for Union-Find structure |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm if numbers could be up to 10⁹, making factorization expensive?
-- Can you solve the problem without explicit Union‑Find, using graph traversal instead?
-- What if the definition of connectivity required a common factor ≥ k for a given k?
+- Can you solve the problem without explicit Union-Find, using graph traversal instead?
+- What if the definition of connectivity required a common factor ≥ k for a given k?
 
 ---
 
 ## 7. Key Takeaway
 
-> Union‑Find on prime factors efficiently groups numbers sharing any factor, turning a pairwise connectivity problem into near‑linear time.
+> Union-Find on prime factors efficiently groups numbers sharing any factor, turning a pairwise connectivity problem into near-linear time.

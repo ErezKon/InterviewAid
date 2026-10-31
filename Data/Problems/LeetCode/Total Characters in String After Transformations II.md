@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "maximum distinct characters" problem. Correct idea: build a 26×26 transition matrix `M` where character `c` produces the next `nums[c]` letters (wrapping); the count vector after `t` steps is `cnt · M^t` — use fast matrix exponentiation mod 10⁹+7 and sum the entries. O(26³ log t).*
-
 You are given a string `s` consisting of lowercase English letters, an integer `t` representing the number of **transformations** to perform, and an array `nums` of size 26. In one **transformation**, every character in `s` is replaced according to the following rules:
 
 - Replace `s[i]` with the **next** `nums[s[i] - 'a']` consecutive characters in the alphabet. For example, if `s[i] = 'a'` and `nums[0] = 3`, the character `'a'` transforms into the next 3 consecutive characters ahead of it, which results in `"bcd"`.
@@ -65,33 +63,51 @@ Final Length of the string: The string is "bcabcdlm", which has 8 characters.
 ```
 
 ## Approach
-The goal is to maximize distinct characters. The optimal strategy is to keep each original character that already appears uniquely and transform duplicated characters into unused letters until no unused letters remain.
+Only the **count of each letter** matters, not the order. One transformation is a linear map on the 26-entry count vector: every copy of letter `c` produces one copy of each of the letters `c+1, c+2, ..., c+nums[c]` (mod 26). Encode this as a 26×26 matrix `M` with `M[c][(c+k) mod 26] = 1` for `k = 1..nums[c]`.
+
+If `cnt` is the row vector of letter frequencies in `s`, then after `t` transformations the frequencies are `cnt · M^t`. Since `t` can be up to 10^9, compute `M^t` by **binary (fast) exponentiation** with all arithmetic mod 10^9+7, then sum all entries of `cnt · M^t`.
 
 **Pseudocode**
 ```text
-FUNCTION maxDistinctCharacters(s):
-    SET freq ← MAP of character → count in s
-    SET distinct ← NUMBER OF KEYS in freq
-    SET duplicates ← SUM over freq values where count > 1 of (count - 1)
-    SET availableLetters ← 26 - distinct
-    SET extra ← MIN(duplicates, availableLetters)
-    RETURN distinct + extra
+FUNCTION lengthAfterTransformations(s, t, nums):
+    MOD ← 10^9 + 7
+    M ← 26×26 zero matrix
+    FOR c ← 0 TO 25
+        FOR k ← 1 TO nums[c]
+            M[c][(c + k) MOD 26] ← M[c][(c + k) MOD 26] + 1
+    R ← 26×26 identity matrix
+    WHILE t > 0                      // fast exponentiation
+        IF t is odd
+            R ← R × M  (mod MOD)
+        M ← M × M  (mod MOD)
+        t ← t DIV 2
+    cnt ← frequency of each letter in s
+    ans ← 0
+    FOR i ← 0 TO 25
+        FOR j ← 0 TO 25
+            ans ← (ans + cnt[i] * R[i][j]) MOD MOD
+    RETURN ans
 ```
 
 ## Walkthrough
-| Step | Action | Distinct | Duplicates | Available | Extra Added |
-|------|--------|----------|------------|-----------|------------|
-| 1 | Count frequencies of "abac" | {a:2,b:1,c:1} → 3 distinct | 1 duplicate (extra 'a') | 26‑3 = 23 | min(1,23)=1 |
-| 2 | Result = 3 + 1 = 4, but only 3 letters exist, so final distinct = 3 |
+Example 1: `s = "abcyy"`, `t = 2`, `nums[25] = 2`, all others 1. Applying the count vector update `cnt ← cnt · M` twice (what `M^2` does):
+
+| Step | Non-zero counts | Total |
+|------|-----------------|-------|
+| Start | a:1, b:1, c:1, y:2 | 5 |
+| After t=1 (each letter shifts by 1) | b:1, c:1, d:1, z:2 | 5 |
+| After t=2 (z → a,b since nums[25]=2) | c:1, d:1, e:1, a:2, b:2 | 7 |
+
+Sum of the final vector = **7**, matching the expected output.
 
 ## Complexity Analysis
-- Time: O(n) to count frequencies, where n = |s|.
-- Space: O(1) because the alphabet size is fixed (26).
+- Time: O(n + 26³ · log t) — counting letters in `s`, then O(log t) matrix multiplications of 26×26 matrices.
+- Space: O(26²) = O(1) for the matrices.
 
 ## Follow-Up Questions
-1. How would the solution change if the alphabet size were unbounded?
-2. What if each transformation could replace only a **single** occurrence instead of all occurrences?
-3. Can you extend the problem to return the actual transformed string achieving the maximum distinct count?
+1. In Part I every letter maps to one letter except `'z'` (→ `"ab"`); how does a simple O(26·t) DP suffice there, and why does it fail here for t up to 10^9?
+2. Instead of matrix exponentiation, could you use the characteristic polynomial (Kitamasa / Cayley-Hamilton) to speed up the computation?
+3. How would you return the count of a specific letter after `t` transformations rather than the total length?
 
 ## Key Takeaway
-Maximizing distinct characters reduces to counting duplicates and filling the remaining unused alphabet slots.
+When a process acts independently on each item and only counts matter, model one step as a linear transformation on the count vector and apply it `t` times with fast matrix exponentiation.

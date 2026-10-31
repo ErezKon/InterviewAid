@@ -117,13 +117,13 @@ FUNCTION calculateTeamScores(matches, results):
 | End | – | – | Sorted order: A (4), C (1), B (0) |
 
 ## Complexity Analysis
-- Time: O(m log t) where m is the number of matches and t is the number of distinct teams (sorting step).
+- Time: O(m log t) where m is the number of matches and t is the number of distinct teams (sorting step).
 - Space: O(t) for the scores map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to handle a league where a win gives 2 points instead of 3?
 2. Can you compute the ranking in a single pass without an explicit sort by using a bucket array?
 3. What changes are needed if matches can be replayed and scores need to be updated dynamically?
 
 ## Key Takeaway
-A simple hash‑map accumulation followed by sorting yields the final team ranking efficiently.
+A simple hash-map accumulation followed by sorting yields the final team ranking efficiently.

@@ -86,4 +86,4 @@ Example 1:
 
 ## Key Takeaway
 
-> **Filter by constraints, then multi‑key sort. Straightforward simulation problem — common in real‑world API design.**
+> **Filter by constraints, then multi-key sort. Straightforward simulation problem — common in real-world API design.**

@@ -40,7 +40,7 @@ Explanation: We can express n in the following ways:
 ```
 
 ## Approach
-Use a 0‑1 knapsack DP where each possible power `a^x` (≤ n) is an item with weight equal to its value. Iterate powers and update `dp[j]` backwards.
+Use a 0-1 knapsack DP where each possible power `a^x` (≤ n) is an item with weight equal to its value. Iterate powers and update `dp[j]` backwards.
 
 ```text
 FUNCTION numberOfWays(n, x):
@@ -67,10 +67,10 @@ FUNCTION numberOfWays(n, x):
 - Time: O(m · n) where m is number of powers ≤ n.
 - Space: O(n).
 
-## Follow‑Up 
+## Follow-Up 
 - How would you adapt the DP for unlimited use of each power?
 - Can the solution be optimized using combinatorial formulas?
 - What changes if `x` is large (e.g., 10) making few powers available?
 
 ## Key Takeaway
-Treat each admissible power as a 0‑1 knapsack item and use backward DP to count distinct‑sum combinations.
+Treat each admissible power as a 0-1 knapsack item and use backward DP to count distinct-sum combinations.

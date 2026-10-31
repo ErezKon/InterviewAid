@@ -82,8 +82,8 @@ After processing all edges, two distinct roots remain (2 and 4), giving 2 connec
 
 ## Complexity Analysis
 
-- **Union-Find:** Time = O(n + E · α(n)) (α is inverse Ackermann, practically constant). Space = O(n) for the parent array.
-- **BFS/DFS:** Time = O(V + E). Space = O(V) for visited set / recursion stack.
+- **Union-Find:** Time = O(n + E · α(n)) (α is inverse Ackermann, practically constant). Space = O(n) for the parent array.
+- **BFS/DFS:** Time = O(V + E). Space = O(V) for visited set / recursion stack.
 
 ---
 

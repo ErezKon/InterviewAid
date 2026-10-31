@@ -103,7 +103,7 @@ SELECT 'High Salary',
 1. **First SELECT** counts rows where `income < 20000`. The `CASE` returns `1` for matching rows, otherwise `NULL`; `COUNT` ignores `NULL`.
 2. **Second SELECT** counts rows with `20000 ≤ income ≤ 50000` using `BETWEEN`.
 3. **Third SELECT** counts rows where `income > 50000`.
-4. `UNION ALL` concatenates the three single‑row results, preserving rows even when a count is `0`.
+4. `UNION ALL` concatenates the three single-row results, preserving rows even when a count is `0`.
 5. The final output lists each category with its respective count.
 
 ---
@@ -120,7 +120,7 @@ SELECT 'High Salary',
 ## Follow-Up Questions
 
 1. How would you modify the query to also return the average income per category?
-2. Can you write a single‑pass solution using `GROUP BY` while still showing zero‑count categories?
+2. Can you write a single-pass solution using `GROUP BY` while still showing zero-count categories?
 3. How would you handle a large `Accounts` table efficiently (e.g., using indexes)?
 
 ---

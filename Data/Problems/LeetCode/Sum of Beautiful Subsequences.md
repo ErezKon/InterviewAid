@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below are generic placeholders. Correct idea: for each `d`, count strictly increasing subsequences among the elements that are multiples of `d` with a Fenwick-tree DP (`cnt(x) = 1 + Σ cnt(y) for earlier y < x`), giving `g[d]` = number of increasing subsequences whose GCD is a multiple of `d`. Then Möbius-style inclusion–exclusion from large `d` down: `f[d] = g[d] − Σ_{t≥2} f[t·d]`; answer = `Σ d · f[d]` mod 10⁹+7. Total work ≈ Σ_d (multiples of d)·log ≈ O(M log² M).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer array `nums` of length `n`.
 
@@ -69,23 +69,71 @@ Total beauty is 2 + 4 + 6 = 12.
 ```
 
 ## Approach
-The problem can be tackled with dynamic programming that tracks the contribution of each element to future subsequences. The key insight is that the property defining a beautiful subsequence can be expressed as a state transition, allowing a DP over the array with O(n) or O(n log n) time.
+Counting subsequences with GCD **exactly** `g` is hard directly, but counting those whose GCD is a **multiple** of `d` is easy: they are exactly the strictly increasing subsequences formed only from elements divisible by `d`.
+
+1. **`g[d]` via Fenwick DP.** For each `d = 1..M` (`M = max(nums)`), walk the indices of elements divisible by `d` in array order. For an element `x`, the number of increasing subsequences ending at it is `cnt(x) = 1 + Σ cnt(y)` over earlier `y < x`. A Fenwick tree indexed by `x / d` (size `M / d`) answers the prefix sum in O(log). `g[d] = Σ cnt`.
+2. **Inclusion–exclusion.** Let `f[d]` = number with GCD exactly `d`. Then `g[d] = Σ_{t ≥ 1} f[t·d]`, so processing `d` from `M` down to 1: `f[d] = g[d] − Σ_{t ≥ 2} f[t·d]`.
+3. **Answer** = `Σ d · f[d]` mod 10⁹+7.
+
+Each element is processed once per divisor (≤ ~100 divisors for values ≤ 7·10⁴), and the Fenwick trees have total size `Σ M/d = O(M log M)`.
+
+```text
+FUNCTION totalBeauty(nums):
+    MOD ← 10^9 + 7; M ← MAX(nums)
+    positions[v] ← sorted list of indices i with nums[i] == v
+    FOR d ← 1 TO M:
+        idx ← all indices from positions[m] for m = d, 2d, 3d, ... ≤ M, sorted
+        IF idx empty: g[d] ← 0; CONTINUE
+        bit ← Fenwick tree of size M / d, all zeros
+        total ← 0
+        FOR i IN idx:
+            v ← nums[i] / d
+            c ← (1 + bit.prefixSum(v - 1)) MOD MOD     // strictly smaller values
+            total ← total + c
+            bit.add(v, c)
+        g[d] ← total MOD MOD
+    ans ← 0
+    FOR d ← M DOWNTO 1:
+        f[d] ← g[d]
+        FOR t ← 2d TO M STEP d: f[d] ← f[d] − f[t]
+        f[d] ← f[d] MOD MOD
+        ans ← (ans + d · f[d]) MOD MOD
+    RETURN ans
+```
 
 ## Walkthrough
-| Index | DP State | Meaning |
-|-------|----------|---------|
-| 0 | dp[0] = 1 | Empty subsequence base |
-| 1 | dp[1] = dp[0] + contribution of nums[0] |
-| … | … | Update using transition that respects the beautiful condition |
+Example 2: `nums = [4,6]`, `M = 6`.
+
+| d | elements divisible by d | increasing subsequences | g[d] |
+|---|-------------------------|-------------------------|------|
+| 1 | 4, 6 | [4], [6], [4,6] | 3 |
+| 2 | 4, 6 | [4], [6], [4,6] | 3 |
+| 3 | 6 | [6] | 1 |
+| 4 | 4 | [4] | 1 |
+| 5 | - | - | 0 |
+| 6 | 6 | [6] | 1 |
+
+Inclusion–exclusion from large `d` down:
+
+| d | f[d] = g[d] − Σ f[multiples] | d · f[d] |
+|---|------------------------------|----------|
+| 6 | 1 | 6 |
+| 5 | 0 | 0 |
+| 4 | 1 | 4 |
+| 3 | 1 − f[6] = 0 | 0 |
+| 2 | 3 − f[4] − f[6] = 1 | 2 |
+| 1 | 3 − (1+0+1+0+1) = 0 | 0 |
+
+Sum = 6 + 4 + 2 = `12`.
 
 ## Complexity Analysis
-Time: O(n · k) where *k* is the number of DP states (often constant for this problem).
-Space: O(k) additional space.
+- **Time:** O(n · D · log M + M log M), where `D` ≤ ~100 is the maximum number of divisors of a value ≤ 7·10⁴ (each element is inserted into the Fenwick tree of each of its divisors), plus the harmonic-sum cost of allocating trees and the inclusion–exclusion loop.
+- **Space:** O(M + n) for `g`, `f`, the position lists, and one Fenwick tree at a time.
 
 ## Follow-Up Questions
-* How would the solution change if the subsequence length must be at least L?
-* Can the DP be optimized to O(1) extra space?
-* What if the definition of beauty depends on the sum of elements instead of a positional property?
+1. Using `g = Σ_{d | g} φ(d)`, show the answer also equals `Σ_d φ(d) · g[d]` — how does that remove the inclusion–exclusion pass?
+2. How would you handle non-strictly increasing subsequences (allowing equal neighbours)?
+3. What changes if the beauty used the LCM instead of the GCD?
 
 ## Key Takeaway
-Formulating the beautiful‑subsequence condition as a DP state enables an efficient aggregation of contributions across the array.
+Turn "GCD exactly g" into "GCD a multiple of d" (just restrict to multiples of `d`), count those with a Fenwick-tree increasing-subsequence DP, then recover exact counts by inclusion–exclusion over multiples.

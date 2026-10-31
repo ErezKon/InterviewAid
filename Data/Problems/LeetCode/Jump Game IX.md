@@ -102,10 +102,10 @@ Thus, ans = [3, 3, 3].
 ## 5. Walkthrough
 
 Consider `nums = [5,1,3,4,2]` and `costs = [2,3]`.
-1. Start at index 0 (`dp[0]=0`).
-2. Using the decreasing stack, the next greater element for index 0 is none, so no cost 2 jump.
-3. Using the increasing stack, the next smaller/equal element is index 1 (`1`). `dp[1] = dp[0] + 3 = 3`.
-4. At index 1, the decreasing stack finds next greater at index 2 (`3`). `dp[2] = min(dp[2], dp[1] + 2) = 5`.
+1. Start at index 0 (`dp[0]=0`).
+2. Using the decreasing stack, the next greater element for index 0 is none, so no cost 2 jump.
+3. Using the increasing stack, the next smaller/equal element is index 1 (`1`). `dp[1] = dp[0] + 3 = 3`.
+4. At index 1, the decreasing stack finds next greater at index 2 (`3`). `dp[2] = min(dp[2], dp[1] + 2) = 5`.
 5. Continue similarly; the algorithm updates `dp` via stack pops, eventually yielding `dp[4] = 5` as the minimum cost to reach the last index.
 
 ---
@@ -117,7 +117,7 @@ Consider `nums = [5,1,3,4,2]` and `costs = [2,3]`.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if jumps could skip multiple greater/smaller elements?
 - Can you adapt the algorithm to return the actual sequence of jumps, not just the cost?
@@ -127,4 +127,4 @@ Consider `nums = [5,1,3,4,2]` and `costs = [2,3]`.
 
 ## Key Takeaway
 
-> Monotonic stacks turn "next greater/smaller" lookups into amortized O(1), enabling linear DP for jump game variants with next‑element‑based transitions.
+> Monotonic stacks turn "next greater/smaller" lookups into amortized O(1), enabling linear DP for jump game variants with next-element-based transitions.

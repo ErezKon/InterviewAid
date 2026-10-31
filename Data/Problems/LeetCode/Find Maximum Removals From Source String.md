@@ -61,10 +61,10 @@ Example 4:
 ```
 
 ## Approach
-The problem can be solved with a **two‑pointer greedy** strategy combined with a binary search on the answer.
-1. Pre‑compute for each position in `s` the earliest index in `t` it can match when scanning from left to right (`leftMatch`).
+The problem can be solved with a **two-pointer greedy** strategy combined with a binary search on the answer.
+1. Pre-compute for each position in `s` the earliest index in `t` it can match when scanning from left to right (`leftMatch`).
 2. Similarly compute from right to left (`rightMatch`).
-3. Binary search the number `k` of removals. For a candidate `k`, mark the first `k` removable indices (given by the removal order) and check if `t` is still a subsequence using the pre‑computed matches.
+3. Binary search the number `k` of removals. For a candidate `k`, mark the first `k` removable indices (given by the removal order) and check if `t` is still a subsequence using the pre-computed matches.
 
 ### Pseudocode
 ```text
@@ -109,20 +109,20 @@ FUNCTION canKeep(k, s, t, removalOrder, leftMatch, rightMatch):
 ```
 
 ## Walkthrough
-Consider `s = "abcde"`, `t = "ace"`, removal order `[1,3,0,2,4]` (0‑based indices). Binary search tests `k = 2`:
+Consider `s = "abcde"`, `t = "ace"`, removal order `[1,3,0,2,4]` (0-based indices). Binary search tests `k = 2`:
 1. Removed indices `{1,3}` → characters `'b'` and `'d'` are gone.
 2. Remaining string = `"ace"`.
 3. Scanning confirms `t` is a subsequence, so `k = 2` is feasible. Trying `k = 3` fails because removing index `0` would delete `'a'`.
 Thus the maximum removable count is `2`.
 
 ## Complexity Analysis
-*Pre‑processing*: O(|s|) time, O(|s|) space.
-*Binary search*: O(log |s|) iterations, each `canKeep` runs O(|s|). Overall O(|s| log |s|) time, O(|s|) extra space.
+*Pre-processing*: O(|s|) time, O(|s|) space.
+*Binary search*: O(log |s|) iterations, each `canKeep` runs O(|s|). Overall O(|s| log |s|) time, O(|s|) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if removals must be contiguous?
 2. Can the algorithm be adapted to return the actual set of removable indices?
 3. What if `t` itself can also be modified (e.g., characters can be replaced) while preserving a subsequence relationship?
 
 ## Key Takeaway
-By pre‑computing prefix and suffix match information and binary searching the removal count, we can efficiently determine the maximum deletions while still keeping the target as a subsequence.
+By pre-computing prefix and suffix match information and binary searching the removal count, we can efficiently determine the maximum deletions while still keeping the target as a subsequence.

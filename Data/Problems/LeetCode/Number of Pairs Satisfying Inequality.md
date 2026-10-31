@@ -38,7 +38,7 @@ Return* the **number of pairs** that satisfy the conditions.*
 
 ## 2. Key Insight
 
-> Transform each index `i` into a single value `a[i] = nums1[i] - nums2[i]`. The condition becomes `a[i] <= a[j] + diff` for `i < j`. This is a classic “count of pairs with bounded difference” problem that can be solved with a modified merge‑sort counting step or a Binary Indexed Tree (Fenwick) after coordinate compression.
+> Transform each index `i` into a single value `a[i] = nums1[i] - nums2[i]`. The condition becomes `a[i] <= a[j] + diff` for `i < j`. This is a classic “count of pairs with bounded difference” problem that can be solved with a modified merge-sort counting step or a Binary Indexed Tree (Fenwick) after coordinate compression.
 
 ---
 
@@ -144,4 +144,4 @@ Explanation: Since there does not exist any pair that satisfies the conditions, 
 
 ## 8. Key Takeaway
 
-> **Reduce two‑array inequality to a single‑array bound and count with merge sort or BIT.** The transformation `a[i] = nums1[i] - nums2[i]` simplifies the condition to `a[i] ≤ a[j] + diff`.
+> **Reduce two-array inequality to a single-array bound and count with merge sort or BIT.** The transformation `a[i] = nums1[i] - nums2[i]` simplifies the condition to `a[i] ≤ a[j] + diff`.

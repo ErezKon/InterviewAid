@@ -91,11 +91,11 @@ Result `"efcfe"`.
 ## 6. Follow-Up Questions
 
 1. How would you handle Unicode characters?
-2. Can you modify the algorithm to return all possible minimal‑change palindromes?
+2. Can you modify the algorithm to return all possible minimal-change palindromes?
 3. What if the cost of changing each character differs?
 
 ---
 
 ## Key Takeaway
 
-> For each mirror pair, set both to the smaller character. This minimizes changes and produces the lex‑smallest palindrome.
+> For each mirror pair, set both to the smaller character. This minimizes changes and produces the lex-smallest palindrome.

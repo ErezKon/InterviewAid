@@ -76,7 +76,7 @@ The algorithm stops early once a valid subarray is found.
 - **Time:** O(n) – one pass through the array.
 - **Space:** O(min(n, k)) – at most one entry per distinct remainder.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case `k = 0` where the condition becomes “sum equals 0”?
 2. Can the method be extended to find the longest such subarray?
 3. What modifications are needed if the array contains negative numbers?

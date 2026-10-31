@@ -95,11 +95,11 @@ For `points = [[1,1],[2,2],[3,4]]`:
 - **Time:** In the worst case `O(n^2)` because each iteration may scan remaining points to test collinearity.
 - **Space:** `O(n)` for the set of points.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the algorithm to return the actual lines (their equations) used?
 - Can the problem be solved in `O(n log n)` using hashing of slopes for each pivot point?
-- What if points are in 3‑D space and lines become planes?
+- What if points are in 3-D space and lines become planes?
 
 ## Key Takeaway
 

@@ -76,11 +76,11 @@ ORDER BY score DESC;
 |3|Order final output by `score DESC`|Rows `(100,1)`, `(100,1)`, `(50,2)`, `(40,3)`|
 
 ## Complexity Analysis
-- Time: O(N log N) for sorting the result set (handled by the database engine).
+- Time: O(N log N) for sorting the result set (handled by the database engine).
 - Space: O(N) to store the intermediate result.
 
-## Follow‑Up Questions
-1. How would you modify the query for `RANK()` (non‑dense ranking) instead?
+## Follow-Up Questions
+1. How would you modify the query for `RANK()` (non-dense ranking) instead?
 2. Can you compute the rank in a single pass without window functions?
 3. How would you handle ties when ranking by multiple columns (e.g., score then timestamp)?
 

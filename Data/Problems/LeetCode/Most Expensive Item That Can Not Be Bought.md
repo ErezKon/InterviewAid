@@ -83,7 +83,7 @@ Example 2:
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(1) — constant‑time arithmetic |
+| **Time** | O(1) — constant-time arithmetic |
 | **Space** | O(1) |
 
 ---
@@ -98,4 +98,4 @@ Example 2:
 
 ## 8. Key Takeaway
 
-> **Frobenius number = a·b - a - b** for two coprime integers `a` and `b`. A constant‑time formula solves the classic “coin problem”.
+> **Frobenius number = a·b - a - b** for two coprime integers `a` and `b`. A constant-time formula solves the classic “coin problem”.

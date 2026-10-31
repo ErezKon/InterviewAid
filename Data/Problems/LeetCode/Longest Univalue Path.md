@@ -96,4 +96,4 @@ The global maximum `maxLen` becomes 2, representing two edges.
 
 ## Key Takeaway
 
-> Use a post‑order DFS to compute longest same‑value arms from each child, combine them to update a global maximum, and return the longer arm upward.
+> Use a post-order DFS to compute longest same-value arms from each child, combine them to update a global maximum, and return the longer arm upward.

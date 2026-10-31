@@ -30,7 +30,7 @@ Input: s = "abcd"
 Output: ""
 ```
 
-## 3. Approach: Binary Search + Rabin‑Karp — O(n log n) ✅
+## 3. Approach: Binary Search + Rabin-Karp — O(n log n) ✅
 
 ```text
 FUNCTION longestDupSubstring(s):

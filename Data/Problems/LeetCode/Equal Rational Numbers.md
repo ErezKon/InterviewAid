@@ -53,8 +53,8 @@ Example 3:
 
 ## Approach
 Convert each representation to a fraction `numerator/denominator` in reduced form.
-1. Parse integer part, non‑repeating fractional part, and repeating part.
-2. Let `a` be integer part, `b` the non‑repeating digits, `c` the repeating digits.
+1. Parse integer part, non-repeating fractional part, and repeating part.
+2. Let `a` be integer part, `b` the non-repeating digits, `c` the repeating digits.
 3. If there is a repeating part, the value equals:
    `a + (b * 10^{len(c)} + c - b) / (10^{len(b)} * (10^{len(c)} - 1))`.
    Otherwise, value = `a + b / 10^{len(b)}`.
@@ -101,10 +101,10 @@ Both fractions reduce to 53/90 → equal.
 - **Time:** O(L) per string, where L is its length (parsing and GCD).
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle very large repeating sections without overflow?
 - Can you extend the solution to compare more than two numbers efficiently?
 - What if the input includes scientific notation (e.g., "1e-3")?
 
 ## Key Takeaway
-Transforming a decimal with repeating parts into a reduced fraction provides a precise way to compare rational numbers without floating‑point errors.
+Transforming a decimal with repeating parts into a reduced fraction provides a precise way to compare rational numbers without floating-point errors.

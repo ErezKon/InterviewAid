@@ -40,7 +40,7 @@ Example 3:
 ```
 
 ## Approach
-The problem can be solved combinatorially. When adding the i‑th order to an existing valid sequence of length `2(i‑1)`, there are `2i‑1` possible positions for its pickup. After placing the pickup, the delivery must be placed after it, giving `i` choices. Multiply these choices for all `i` from `1` to `n` and take modulo.
+The problem can be solved combinatorially. When adding the i-th order to an existing valid sequence of length `2(i-1)`, there are `2i-1` possible positions for its pickup. After placing the pickup, the delivery must be placed after it, giving `i` choices. Multiply these choices for all `i` from `1` to `n` and take modulo.
 
 ### Pseudocode
 ```text
@@ -48,7 +48,7 @@ FUNCTION countOrders(n):
     MOD ← 1_000_000_007
     result ← 1
     FOR i ← 1 TO n:
-        // (2i‑1) possible slots for pickup, i slots for delivery after pickup
+        // (2i-1) possible slots for pickup, i slots for delivery after pickup
         SET result ← (result * (2*i - 1) * i) % MOD
     RETURN result
 ```
@@ -57,7 +57,7 @@ FUNCTION countOrders(n):
 Consider `n = 2`:
 1. Start with empty sequence, result = 1.
 2. i = 1: only one slot, result = 1 * 1 * 1 = 1.
-3. i = 2: sequence length is 2, there are `2*2‑1 = 3` slots for the second pickup. After placing it, delivery has 2 possible positions after the pickup. Multiply: result = 1 * 3 * 2 = 6.
+3. i = 2: sequence length is 2, there are `2*2-1 = 3` slots for the second pickup. After placing it, delivery has 2 possible positions after the pickup. Multiply: result = 1 * 3 * 2 = 6.
 Thus, 6 valid sequences.
 
 ## Complexity Analysis
@@ -70,4 +70,4 @@ Thus, 6 valid sequences.
 - What is the combinatorial interpretation using Catalan numbers?
 
 ## Key Takeaway
-The count of valid pickup‑delivery sequences is the product of `(2i‑1) * i` for each order `i`, yielding an O(n) solution using simple modular arithmetic.
+The count of valid pickup-delivery sequences is the product of `(2i-1) * i` for each order `i`, yielding an O(n) solution using simple modular arithmetic.

@@ -77,4 +77,4 @@ The algorithm correctly identifies feasibility by comparing parity groups.
 3. What if the strings contain Unicode characters?
 
 ## Key Takeaway
-Swaps preserve character parity, so matching the multisets of even‑ and odd‑position characters is both necessary and sufficient.
+Swaps preserve character parity, so matching the multisets of even- and odd-position characters is both necessary and sufficient.

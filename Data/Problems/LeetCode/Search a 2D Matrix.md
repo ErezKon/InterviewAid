@@ -69,7 +69,7 @@ FUNCTION searchMatrix(matrix, target):
 
 ## 4. Walkthrough
 
-Consider Example 1 with target = 3.
+Consider Example 1 with target = 3.
 | Step | lo | hi | mid | row | col | val | Action |
 |------|----|----|-----|-----|-----|-----|--------|
 | 1 | 0 | 11 | 5 | 1 | 1 | 11 | val > target → hi = 4 |
@@ -97,4 +97,4 @@ The algorithm narrows the search space by half each iteration.
 
 ## Key Takeaway
 
-> When the matrix is "virtually sorted" (row‑major order), treat it as a 1D array with index conversion: `row = idx / cols`, `col = idx % cols`.
+> When the matrix is "virtually sorted" (row-major order), treat it as a 1D array with index conversion: `row = idx / cols`, `col = idx % cols`.

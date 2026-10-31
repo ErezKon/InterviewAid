@@ -104,4 +104,4 @@ Consider the first example grid:
 
 ## Key Takeaway
 
-> Multi‑source BFS from all gates propagates distances in optimal order; each empty room is filled with the shortest path length to the nearest gate.
+> Multi-source BFS from all gates propagates distances in optimal order; each empty room is filled with the shortest path length to the nearest gate.

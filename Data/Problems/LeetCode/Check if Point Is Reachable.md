@@ -26,7 +26,7 @@ Given two integers `targetX` and `targetY` representing the X-coordinate and Y-c
 
 ## 2. Key Insight
 
-> Work backwards. From `(targetX, targetY)`: dividing by 2 is always allowed (reverse of doubling). If both are odd, we can reverse‑subtract: but `gcd(targetX, targetY)` must be a power of 2, since the subtraction moves preserve gcd, and doubling only adds factors of 2. Starting gcd is `gcd(1,1) = 1`.
+> Work backwards. From `(targetX, targetY)`: dividing by 2 is always allowed (reverse of doubling). If both are odd, we can reverse-subtract: but `gcd(targetX, targetY)` must be a power of 2, since the subtraction moves preserve gcd, and doubling only adds factors of 2. Starting gcd is `gcd(1,1) = 1`.
 
 So: **divide out all factors of 2 from both, then check if `gcd == 1`**.
 
@@ -80,19 +80,19 @@ Take `(targetX, targetY) = (12, 8)`.
 
 ## 6. Complexity Analysis
 
-- **Time**: O(log max(targetX, targetY)) – each division by 2 and the Euclidean gcd run in logarithmic time.
+- **Time**: O(log max(targetX, targetY)) – each division by 2 and the Euclidean gcd run in logarithmic time.
 - **Space**: O(1) – only a few integer variables are used.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if the allowed moves were only `(x+y, y)` and `(x, x+y)`?
-- Can you extend the approach to three‑dimensional coordinates with similar operations?
+- Can you extend the approach to three-dimensional coordinates with similar operations?
 - What if the doubling operation were replaced by multiplication by a constant `k`?
 
 ---
 
 ## Key Takeaway
 
-> After removing all powers of two from the coordinates, reachability is equivalent to checking whether the remaining numbers are coprime (gcd = 1).
+> After removing all powers of two from the coordinates, reachability is equivalent to checking whether the remaining numbers are coprime (gcd = 1).

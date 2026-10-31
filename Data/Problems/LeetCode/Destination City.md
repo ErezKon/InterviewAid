@@ -66,7 +66,7 @@ FUNCTION destCity(paths):
 
 ## Walkthrough
 
-**Step‑by‑step for the first example:**
+**Step-by-step for the first example:**
 
 1. Build `sources = {"London", "New York"}`.
 2. Iterate paths again:

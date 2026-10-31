@@ -120,4 +120,4 @@ The algorithm slides the window, maintaining exactly `k` ones and updating the b
 
 ## Key Takeaway
 
-> A sliding‑window maintains the count of ones, allowing O(n) identification of the shortest qualifying substring while handling tie‑breaking lexicographically.
+> A sliding-window maintains the count of ones, allowing O(n) identification of the shortest qualifying substring while handling tie-breaking lexicographically.

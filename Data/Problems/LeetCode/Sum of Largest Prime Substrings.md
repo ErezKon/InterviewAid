@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement checked against the official text with verify.py. The Approach/Walkthrough below look for a single largest prime. Correct idea: `|s| ≤ 10`, so enumerate all O(n²) substrings, convert to integers, test primality by trial division up to `√v`, keep the **distinct** primes in a set, and return the sum of the three largest (or all if fewer than three).*
+> *Note: statement checked against the official text with verify.py.*
 
 Given a string `s`, find the sum of the **3 largest unique prime numbers** that can be formed using any of its **substrings**.
 
@@ -41,50 +41,55 @@ Explanation:
 ```
 
 ## Approach
-The task can be solved by enumerating all substrings up to a reasonable length (primes > 10⁶ are rare in typical constraints) and checking primality.
-1. **Limit substring length** – because `s` length ≤ 10⁴, checking every O(n²) substring is feasible with early break when the numeric value exceeds a pre‑computed prime limit.
-2. **Primality test** – use deterministic Miller‑Rabin for 32‑bit integers or simple trial division up to √value.
-3. Track the current maximum prime `maxPrime` and a running sum `total` of its occurrences. When a new prime > `maxPrime` is found, reset `total` to that value; when equal, add its value.
+Since `|s| ≤ 10`, there are at most 55 substrings, and every substring value is below 10^10. So brute-force enumeration is cheap:
+1. **Enumerate substrings** – for each start `i`, extend the end `j` and build the value incrementally (`num = num·10 + digit`). Leading zeros are naturally ignored by the numeric conversion.
+2. **Primality test** – trial division up to `√num` (at most 10^5 iterations per value).
+3. **Deduplicate** – store primes in a set, because each prime counts once even if it appears in several substrings.
+4. **Answer** – sort the distinct primes in descending order and sum the first three (or all of them if fewer; 0 if none).
 
 ```text
-FUNCTION sumLargestPrimeSubstrings(s):
-    n ← LENGTH(s)
-    maxPrime ← 0
-    total ← 0
-    FOR i FROM 0 TO n-1:
+FUNCTION sumOfLargestPrimes(s)
+    n ← length(s)
+    primes ← empty set
+    FOR i ← 0 TO n-1
         num ← 0
-        FOR j FROM i TO n-1:
-            SET digit ← INTEGER(s[j])
-            SET num ← num * 10 + digit
-            IF num > 1_000_000_000: BREAK   // avoid overflow
-            IF isPrime(num):
-                IF num > maxPrime:
-                    SET maxPrime ← num
-                    SET total ← num
-                ELSE IF num == maxPrime:
-                    SET total ← total + num
-    RETURN total
+        FOR j ← i TO n-1
+            num ← num * 10 + digit(s[j])
+            IF isPrime(num)
+                ADD num TO primes
+    sorted ← primes sorted in descending order
+    RETURN sum of the first min(3, |sorted|) elements of sorted
+
+FUNCTION isPrime(v)
+    IF v < 2 RETURN false
+    d ← 2
+    WHILE d * d ≤ v
+        IF v MOD d = 0 RETURN false
+        d ← d + 1
+    RETURN true
 ```
-`isPrime(x)` performs a fast deterministic check for 32‑bit integers.
 
 ## Walkthrough
-| i | j | substring | num | prime? | maxPrime | total |
-|---|---|-----------|-----|--------|----------|-------|
-| 0 | 0 | "1" | 1 | no | 0 | 0 |
-| 0 | 1 | "11" | 11 | yes | 11 | 11 |
-| 0 | 2 | "113" | 113 | yes | 113 | 113 |
-| 1 | 3 | "137" | 137 | yes | 137 | 137 |
-| 2 | 4 | "373" | 373 | yes | 373 | 373 |
-Final total = 373.
+Example 1: `s = "12234"`.
+
+| i | substrings (num) | primes found |
+|---|------------------|--------------|
+| 0 | 1, 12, 122, 1223, 12234 | 1223 |
+| 1 | 2, 22, 223, 2234 | 2, 223 |
+| 2 | 2, 23, 234 | 2 (duplicate), 23 |
+| 3 | 3, 34 | 3 |
+| 4 | 4 | — |
+
+Distinct primes = {1223, 223, 23, 3, 2}. Three largest: 1223 + 223 + 23 = **1469**.
 
 ## Complexity Analysis
-- **Time:** O(n · L) where `L` is the maximum substring length examined (bounded by log₁₀(maxPrime) ≈ 9 for 32‑bit). In practice O(n²) with early break.
-- **Space:** O(1) besides input string.
+- **Time:** O(n² · √V) where V < 10^10 is the largest substring value — at most 55 · 10^5 ≈ 5.5·10^6 divisions.
+- **Space:** O(n²) for the set of distinct primes (at most 55 entries).
 
 ## Follow-Up Questions
-1. How would you modify the algorithm to return the *count* of the largest prime substring instead of the sum?
-2. Can the solution be optimized using a suffix automaton or rolling hash to avoid recomputing numbers?
-3. How would you handle extremely long strings (e.g., 10⁶ characters) where O(n²) is infeasible?
+1. How would you return the k largest distinct primes instead of 3? (Keep a min-heap of size k or sort the set.)
+2. What if `s` could be much longer (values far beyond 64 bits)? (Use deterministic Miller-Rabin on big integers, and restrict attention to the longest substrings first since they produce the largest values.)
+3. How would you speed up repeated primality tests? (Sieve small primes once and trial-divide only by primes up to 10^5.)
 
 ## Key Takeaway
-Enumerating substrings with an early termination bound and a fast primality test lets you locate the maximum prime efficiently, turning a potentially quadratic search into a practical solution.
+Tiny input bounds make exhaustive substring enumeration optimal; the key details are building numbers incrementally, deduplicating with a set, and handling the "fewer than three primes" case.

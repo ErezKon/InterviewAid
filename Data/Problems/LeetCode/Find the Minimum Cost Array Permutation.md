@@ -119,11 +119,11 @@ Thus the algorithm finds the optimal permutation and its cost.
 ## 7. Follow-Up Questions
 
 1. How would the solution adapt if the cost function were `|perm[i] - perm[(i+1) % n]|` without referencing `nums`?
-2. Can we improve the time complexity using meet‑in‑the‑middle or other combinatorial tricks for larger `n`?
+2. Can we improve the time complexity using meet-in-the-middle or other combinatorial tricks for larger `n`?
 3. What changes are needed to output all permutations achieving the minimum cost instead of just the lexicographically smallest?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Bitmask DP for small n** (≤ 14) with circular cost function. Fix element 0 at position 0 to break symmetry, then reconstruct the lexicographically smallest optimal permutation.
+> **Bitmask DP for small n** (≤ 14) with circular cost function. Fix element 0 at position 0 to break symmetry, then reconstruct the lexicographically smallest optimal permutation.

@@ -48,7 +48,7 @@ Example 1:
 ```
 
 ## Approach
-**Controlled Inorder with Stack** – Push all left descendants of the current node onto a stack. `next()` pops the top node, processes its value, then pushes the left chain of its right child. This yields the next in‑order element.
+**Controlled Inorder with Stack** – Push all left descendants of the current node onto a stack. `next()` pops the top node, processes its value, then pushes the left chain of its right child. This yields the next in-order element.
 
 ```text
 CLASS BSTIterator:

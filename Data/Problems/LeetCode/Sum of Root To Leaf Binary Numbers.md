@@ -36,7 +36,7 @@ Output: 0
 ```
 
 ## Approach
-Perform a DFS, carrying the current accumulated value `val`. At each node, left‑shift `val` by one bit and add the node's value. When a leaf is reached, add `val` to the total.
+Perform a DFS, carrying the current accumulated value `val`. At each node, left-shift `val` by one bit and add the node's value. When a leaf is reached, add `val` to the total.
 
 ```text
 FUNCTION sumRootToLeaf(root):
@@ -58,21 +58,21 @@ FUNCTION sumRootToLeaf(root):
 |------|------|--------------|--------|
 | 1 | root (1) | 1 | recurse left/right |
 | 2 | left child (0) | 10 | continue |
-| 3 | left‑left (0) leaf | 100 (4) → add 4 |
-| 4 | left‑right (1) leaf | 101 (5) → add 5 |
+| 3 | left-left (0) leaf | 100 (4) → add 4 |
+| 4 | left-right (1) leaf | 101 (5) → add 5 |
 | 5 | right child (1) | 11 | continue |
-| 6 | right‑left (1) leaf | 110 (6) → add 6 |
-| 7 | right‑right (1) leaf | 111 (7) → add 7 |
+| 6 | right-left (1) leaf | 110 (6) → add 6 |
+| 7 | right-right (1) leaf | 111 (7) → add 7 |
 Total = 22.
 
 ## Complexity Analysis
 Time: O(n) where n is number of nodes.
 Space: O(h) recursion stack, h = tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you solve it iteratively using a stack?
-- What if node values could be any digit (0‑9) and you interpret the path as a base‑10 number?
+- What if node values could be any digit (0-9) and you interpret the path as a base-10 number?
 - Can you compute the sum modulo 10^9+7 for very large trees?
 
 ## Key Takeaway
-Accumulating the binary value along the DFS path and adding it at leaves yields a simple linear‑time solution.
+Accumulating the binary value along the DFS path and adding it at leaves yields a simple linear-time solution.

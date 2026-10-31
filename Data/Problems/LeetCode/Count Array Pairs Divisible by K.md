@@ -80,7 +80,7 @@ Example 2:
 
 ## Walkthrough
 
-Take Example 1 (`nums = [2,3,4,6]`, `k = 12`).
+Take Example 1 (`nums = [2,3,4,6]`, `k = 12`).
 1. Compute `gcd` with `k`:
    - 2 → 2, 3 → 3, 4 → 4, 6 → 6.
 2. Frequency map: {2:1, 3:1, 4:1, 6:1}.
@@ -91,8 +91,8 @@ Take Example 1 (`nums = [2,3,4,6]`, `k = 12`).
    - (2,4): (2*4) % 12 != 0 → no pair.
    - (2,3): (2*3) % 12 != 0 → no pair.
    - (3,6): (3*6) % 12 == 0 → contributes 1 pair.
-   - (4,4): same‑group pair → (1*0)/2 = 0.
-   - (6,6): same‑group pair → 0.
+   - (4,4): same-group pair → (1*0)/2 = 0.
+   - (6,6): same-group pair → 0.
 4. Total pairs = 5, matching the output.
 
 ---

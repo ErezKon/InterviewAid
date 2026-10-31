@@ -58,18 +58,18 @@ Output: 3
 
 The problem reduces to counting connected components in an undirected graph.
 Two common methods:
-1. **Depth‑First Search (DFS)** – traverse from each unvisited node, marking all reachable nodes.
-2. **Union‑Find (Disjoint Set Union)** – union nodes that are directly connected, then count distinct roots.
+1. **Depth-First Search (DFS)** – traverse from each unvisited node, marking all reachable nodes.
+2. **Union-Find (Disjoint Set Union)** – union nodes that are directly connected, then count distinct roots.
 Both run in `O(n²)` time because the adjacency matrix must be scanned.
 
 ---
 
 ## 4. Walkthrough
 
-Consider Example 1 (`isConnected = [[1,1,0],[1,1,0],[0,0,1]]`).
+Consider Example 1 (`isConnected = [[1,1,0],[1,1,0],[0,0,1]]`).
 | Step | Action | Visited / DSU Roots |
 |------|--------|----------------------|
-| 1 | Start DFS at node 0 → visit 0, then neighbor 1 (edge 0‑1) → visit 1. | {0,1} visited |
+| 1 | Start DFS at node 0 → visit 0, then neighbor 1 (edge 0-1) → visit 1. | {0,1} visited |
 | 2 | Next unvisited node is 2 → start new DFS, visit 2 only. | {2} visited |
 | 3 | All nodes visited; two separate traversals → 2 provinces.
 
@@ -79,7 +79,7 @@ Consider Example 1 (`isConnected = [[1,1,0],[1,1,0],[0,0,1]]`).
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | `O(n²)` – scanning the matrix and DFS/Union‑Find operations. |
+| **Time** | `O(n²)` – scanning the matrix and DFS/Union-Find operations. |
 | **Space** | `O(n)` – visited array or DSU parent array. |
 
 ---
@@ -94,4 +94,4 @@ Consider Example 1 (`isConnected = [[1,1,0],[1,1,0],[0,0,1]]`).
 
 ## 7. Key Takeaway
 
-> Counting provinces is equivalent to counting connected components in an undirected graph. DFS or Union‑Find provides a straightforward `O(n²)` solution when the input is an adjacency matrix.
+> Counting provinces is equivalent to counting connected components in an undirected graph. DFS or Union-Find provides a straightforward `O(n²)` solution when the input is an adjacency matrix.

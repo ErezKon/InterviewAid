@@ -42,7 +42,7 @@ Example 3:
 ```
 
 ## Approach
-**Pattern Matching with Trailing Zeros** – Count total number of `1`s. If not divisible by 3, impossible. Let `k = totalOnes / 3`. Locate the start indices of the first, second, and third groups of `k` ones. The suffix after the third group defines the target pattern. Ensure the first and second groups can be extended with enough trailing zeros to match the third group.
+**Pattern Matching with Trailing Zeros** – Count total number of `1`s. If not divisible by 3, impossible. Let `k = totalOnes / 3`. Locate the start indices of the first, second, and third groups of `k` ones. The suffix after the third group defines the target pattern. Ensure the first and second groups can be extended with enough trailing zeros to match the third group.
 
 ```text
 FUNCTION threeEqualParts(arr):
@@ -76,13 +76,13 @@ For `arr = [1,0,1,0,1]`:
 5. `i = 0 + 1 - 1 = 0`, `j = 2 + 1 = 3` → return `[0,3]`.
 
 ## Complexity Analysis
-- **Time:** O(n) – single pass to count ones and locate indices, plus constant‑time slice checks.
+- **Time:** O(n) – single pass to count ones and locate indices, plus constant-time slice checks.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for arrays with values other than binary?
 2. Can the algorithm be extended to split into `k` equal parts for arbitrary `k`?
 3. What if the array is presented as a stream?
 
 ## Key Takeaway
-When the number of `1`s is divisible by three, the problem reduces to aligning three identical suffix patterns, allowing a linear‑time solution with only constant extra space.
+When the number of `1`s is divisible by three, the problem reduces to aligning three identical suffix patterns, allowing a linear-time solution with only constant extra space.

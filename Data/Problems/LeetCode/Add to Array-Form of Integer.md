@@ -59,15 +59,15 @@ Result: `[1,2,3,4]`
 
 ## Complexity Analysis
 - **Time:** O(n) where n is the length of `num`.
-- **Space:** O(1) extra space besides the output array (modifies in place, may prepend at most O(log k) digits).
+- **Space:** O(1) extra space besides the output array (modifies in place, may prepend at most O(log k) digits).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where `num` is extremely large and cannot fit in memory?
 2. Can the algorithm be adapted to subtract `k` instead of adding?
-3. What changes are needed if the digits are stored in reverse order (least‑significant first)?
+3. What changes are needed if the digits are stored in reverse order (least-significant first)?
 
 ## Key Takeaway
-Adding an integer to an array‑form number is a straightforward digit‑wise addition with carry, processed from the least significant digit.
+Adding an integer to an array-form number is a straightforward digit-wise addition with carry, processed from the least significant digit.
 
 ---
 

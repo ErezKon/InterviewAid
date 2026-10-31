@@ -38,7 +38,7 @@ Example 3:
 ```
 
 ## Approach
-Use a state‑machine DP with four variables representing the best profit after each of the four possible actions: first buy, first sell, second buy, second sell.
+Use a state-machine DP with four variables representing the best profit after each of the four possible actions: first buy, first sell, second buy, second sell.
 
 ```text
 FUNCTION maxProfit(prices):
@@ -54,7 +54,7 @@ FUNCTION maxProfit(prices):
     RETURN sell2
 ```
 
-The transitions capture buying at a lower price and selling to realize profit, re‑investing profit from the first transaction into the second.
+The transitions capture buying at a lower price and selling to realize profit, re-investing profit from the first transaction into the second.
 
 ## Walkthrough
 | price | buy1 | sell1 | buy2 | sell2 |
@@ -73,10 +73,10 @@ Result = 6.
 - **Time:** O(n) – single pass over `prices`.
 - **Space:** O(1) – constant number of variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you generalize to at most `k` transactions? (DP with O(nk) time.)
 2. What if a transaction fee is charged on each sell?
-3. Can you solve the problem with a divide‑and‑conquer approach?
+3. Can you solve the problem with a divide-and-conquer approach?
 
 ## Key Takeaway
-Maintaining four state variables for the two‑transaction problem yields an O(n) time, O(1) space solution by greedily updating best profits after each price.
+Maintaining four state variables for the two-transaction problem yields an O(n) time, O(1) space solution by greedily updating best profits after each price.

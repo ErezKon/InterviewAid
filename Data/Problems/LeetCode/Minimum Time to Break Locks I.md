@@ -180,7 +180,7 @@ Result: dp[11] = 7 seconds, the optimal total time.
 
 ## 7. Follow-Up Questions
 
-1. How would the approach change if `n` could be up to 20? Discuss state‑compression techniques.
+1. How would the approach change if `n` could be up to 20? Discuss state-compression techniques.
 2. What if the power increase factor `K` varied after each lock instead of being constant?
 3. Could a greedy strategy work for special cases where strengths are sorted?
 
@@ -188,4 +188,4 @@ Result: dp[11] = 7 seconds, the optimal total time.
 
 ## 8. Key Takeaway
 
-> **Bitmask DP for small n** — when n ≤ ~20, enumerate subsets with bitmask. The power depends on how many locks are already broken, making it order‑dependent and perfect for bitmask DP.
+> **Bitmask DP for small n** — when n ≤ ~20, enumerate subsets with bitmask. The power depends on how many locks are already broken, making it order-dependent and perfect for bitmask DP.

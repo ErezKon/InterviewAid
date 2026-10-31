@@ -69,12 +69,12 @@ Only product `12` has count `2`, contributing `2*1/2*8 = 8` tuples.
 
 ## Complexity Analysis
 - **Time:** `O(n^2)` for generating all pairs.
-- **Space:** `O(p)` where `p` is the number of distinct products (≤ n(n‑1)/2).
+- **Space:** `O(p)` where `p` is the number of distinct products (≤ n(n-1)/2).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where `nums` can contain zeros?
 2. Can the solution be optimized using number theory to avoid enumerating all pairs?
 3. What if the tuple order did not matter – how would the counting change?
 
 ## Key Takeaway
-Counting pair products with a hash map lets you transform the tuple‑counting problem into a combinatorial calculation based on product frequencies.
+Counting pair products with a hash map lets you transform the tuple-counting problem into a combinatorial calculation based on product frequencies.

@@ -42,7 +42,7 @@ Explanation: The 3 smallest positive integers that have exactly k = 1 one in the
 - The answer is strictly less than `2^50`.
 
 ## Approach
-Generate numbers with exactly `k` set bits in increasing order using a min‑heap (priority queue). Start with the smallest such number ` (1 << k) - 1`. Repeatedly pop the smallest number, push its next larger candidate by moving the rightmost non‑trailing zero one position left and resetting lower bits. Continue until the `n`‑th number is popped.
+Generate numbers with exactly `k` set bits in increasing order using a min-heap (priority queue). Start with the smallest such number ` (1 << k) - 1`. Repeatedly pop the smallest number, push its next larger candidate by moving the rightmost non-trailing zero one position left and resetting lower bits. Continue until the `n`-th number is popped.
 
 ## Walkthrough
 For `k = 2`:
@@ -51,16 +51,16 @@ For `k = 2`:
 | 1 | `11` | 3 | move rightmost `0` left → `101` (5) |
 | 2 | `101` | 5 | generate `110` (6) |
 | 3 | `110` | 6 | generate `1001` (9) |
-... continue until `n`‑th pop.
+... continue until `n`-th pop.
 
 ## Complexity Analysis
-- **Time:** O(n log n) due to heap operations for each of the first `n` numbers.
+- **Time:** O(n log n) due to heap operations for each of the first `n` numbers.
 - **Space:** O(n) for the heap storing generated candidates.
 
 ## Follow-Up Questions
-- Can you devise an O(1) formula to compute the `n`‑th number for small `k`?
+- Can you devise an O(1) formula to compute the `n`-th number for small `k`?
 - How would the solution change if numbers are limited to a maximum bit length?
-- What if you need the `n`‑th smallest number with at most `k` set bits instead of exactly `k`?
+- What if you need the `n`-th smallest number with at most `k` set bits instead of exactly `k`?
 
 ## Key Takeaway
-A priority‑queue driven generation of bit‑patterns allows systematic enumeration of integers with a fixed number of set bits, yielding the `n`‑th smallest efficiently.
+A priority-queue driven generation of bit-patterns allows systematic enumeration of integers with a fixed number of set bits, yielding the `n`-th smallest efficiently.

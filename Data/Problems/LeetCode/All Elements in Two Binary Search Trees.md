@@ -65,7 +65,7 @@ FUNCTION merge(a, b):
 |------|--------|
 | 1 | Perform an inorder traversal on `root1` to obtain `list1` (sorted). |
 | 2 | Perform an inorder traversal on `root2` to obtain `list2` (sorted). |
-| 3 | Merge `list1` and `list2` using the two‑pointer technique, always taking the smaller current element. |
+| 3 | Merge `list1` and `list2` using the two-pointer technique, always taking the smaller current element. |
 | 4 | The merged list is the final sorted collection of all node values. |
 
 ---

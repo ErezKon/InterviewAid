@@ -134,7 +134,7 @@ Example 1:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the query to include orders from multiple years?
 - Can you write a version that returns the total order amount per user for 2019?

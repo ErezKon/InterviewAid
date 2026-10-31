@@ -111,4 +111,4 @@ All possible traversals end at the destination without encountering a cycle.
 
 ## 7. Key Takeaway
 
-> Three‑state DFS (white/gray/black) simultaneously detects cycles and ensures every terminal node equals the destination, guaranteeing all paths lead to the target.
+> Three-state DFS (white/gray/black) simultaneously detects cycles and ensures every terminal node equals the destination, guaranteeing all paths lead to the target.

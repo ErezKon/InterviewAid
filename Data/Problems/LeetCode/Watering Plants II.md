@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve a single-person refill count. Correct idea: two pointers — Alice from the left with `a = capacityA`, Bob from the right with `b = capacityB`; at each step, if the current person's water is insufficient, refill (count++) then water. When `i == j`, the one with more water (Alice on ties) waters it, refilling only if that amount is insufficient. O(n).*
-
 Alice and Bob want to water `n` plants in their garden. The plants are arranged in a row and are labeled from `0` to `n - 1` from left to right where the `i`th plant is located at `x = i`.
 
 Each plant needs a specific amount of water. Alice and Bob each have a watering can, **initially full**. They water the plants in the following way:
@@ -64,38 +62,47 @@ So, the total number of times they have to refill is 0.
 ```
 
 ## Approach
-Simulate watering from left to right, tracking remaining water. When the next plant’s requirement exceeds the remaining water, increment refill count and reset remaining water to `capacity` before watering that plant.
+Simulate both people with two pointers: `i` for Alice moving right with `a` units left, `j` for Bob moving left with `b` units left. Since they work simultaneously at the same speed, at each time step Alice handles `plants[i]` and Bob handles `plants[j]` independently: if the current water is insufficient, refill (count it) and then water. When the pointers meet (`i == j`, odd `n`), the person with more water (Alice on ties) waters the middle plant; a refill is needed only if even that larger amount is insufficient, i.e. `max(a, b) < plants[i]`.
 
 ```text
-FUNCTION minRefills(plants, capacity):
+FUNCTION minimumRefill(plants, capacityA, capacityB):
+    SET i ← 0;  SET j ← n - 1
+    SET a ← capacityA;  SET b ← capacityB
     SET refills ← 0
-    SET water ← capacity
-    FOR need IN plants:
-        IF need > water:
+    WHILE i < j:
+        IF a < plants[i]:                 // Alice refills
             SET refills ← refills + 1
-            SET water ← capacity
-        SET water ← water - need
+            SET a ← capacityA
+        SET a ← a - plants[i]
+        IF b < plants[j]:                 // Bob refills
+            SET refills ← refills + 1
+            SET b ← capacityB
+        SET b ← b - plants[j]
+        SET i ← i + 1;  SET j ← j - 1
+    IF i = j AND MAX(a, b) < plants[i]:   // shared middle plant
+        SET refills ← refills + 1
     RETURN refills
 ```
 
 ## Walkthrough
-| Plant index | Need | Water before | Action | Water after |
-|-------------|------|--------------|--------|------------|
-| 0 | 2 | 6 | - | 4 |
-| 1 | 4 | 4 | - | 0 |
-| 2 | 5 | 0 | Refill (refills=1) → 6 | 1 |
-| 3 | 1 | 1 | - | 0 |
-| 4 | 2 | 0 | Refill (refills=2) → 6 | 4 |
-Result: 2 refills.
+Example 2: `plants = [2,2,3,3]`, `capacityA = 3`, `capacityB = 4`.
+
+| Step | i | j | Alice: a before → action → a after | Bob: b before → action → b after | Refills |
+|------|---|---|------------------------------------|----------------------------------|---------|
+| 1 | 0 | 3 | 3 ≥ 2 → water → 1 | 4 ≥ 3 → water → 1 | 0 |
+| 2 | 1 | 2 | 1 < 2 → refill to 3 → 1 | 1 < 3 → refill to 4 → 1 | 2 |
+| end | 2 | 1 | pointers crossed, no middle plant | | 2 |
+
+Output: `2`.
 
 ## Complexity Analysis
-- Time: O(n) where n is number of plants.
+- Time: O(n) — each plant is visited once.
 - Space: O(1) extra space.
 
 ## Follow-Up Questions
-- How would the solution change if refilling could only be done at the start?
-- What if the watering can leaks a fixed amount after each plant?
-- Can you compute the minimum total distance walked to refill?
+- How would the answer change if more than two people started from different positions?
+- What if refilling took time, so the two people no longer stay synchronized? (Then the meeting point depends on timing and must be simulated with event times.)
+- What if each person could choose to refill early (before running out)? Would refilling earlier ever reduce the count?
 
 ## Key Takeaway
-A greedy left‑to‑right simulation with a simple refill check yields the optimal number of refills.
+Two simultaneous greedy walkers map naturally to two pointers moving inward; the only subtlety is the shared middle plant, which needs a refill only when the fuller can is still insufficient.

@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement checked against the official text with verify.py. The Approach/Walkthrough below solve an invented monotonic-stack problem. Correct idea: prefix sums `P`; for each `i` add `P[i+1] − P[max(0, i − nums[i])]`. O(n).*
+> *Note: statement checked against the official text with verify.py.*
 
 You are given an integer array `nums` of size `n`. For **each** index `i` where `0 <= i < n`, define a subarray `nums[start ... i]` where `start = max(0, i - nums[i])`.
 
@@ -50,39 +50,41 @@ The total sum is 13. Hence, 13 is the output.
 ```
 
 ## Approach
-The problem is equivalent to computing the sum of minimums of all subarrays. Use a monotonic increasing stack to find, for each element, the distance to the previous smaller element (`prev`) and the next smaller element (`next`). The number of subarrays where `nums[i]` is the minimum equals `(i - prev) * (next - i)`. Multiply by `nums[i]` and accumulate.
+Each index `i` contributes the sum of `nums[start..i]` with `start = max(0, i - nums[i])`. Build a prefix-sum array `P` where `P[k]` is the sum of the first `k` elements; then every range sum is `P[i+1] - P[start]` in `O(1)`. Add these up over all `i`. (With `n <= 100` a direct double loop also passes, but prefix sums make it linear.)
 
 ```text
-FUNCTION sumVariableLengthSubarrays(nums):
-    SET MOD ← 1_000_000_007
+FUNCTION subarraySum(nums):
     SET n ← LENGTH(nums)
-    SET stack ← empty
+    SET P ← ARRAY of size n+1 filled with 0
+    FOR i ← 0 TO n-1:
+        SET P[i+1] ← P[i] + nums[i]
     SET total ← 0
-    FOR i ← 0 TO n:
-        WHILE stack NOT EMPTY AND (i == n OR nums[stack.TOP] > nums[i]):
-            SET idx ← POP(stack)
-            SET left ← idx - (stack.TOP IF stack NOT EMPTY ELSE -1)
-            SET right ← i - idx
-            SET contribution ← (nums[idx] * left * right) MOD MOD
-            SET total ← (total + contribution) MOD MOD
-        PUSH(i, stack)
+    FOR i ← 0 TO n-1:
+        SET start ← MAX(0, i - nums[i])
+        SET total ← total + P[i+1] - P[start]
     RETURN total
 ```
 
 ## Walkthrough
-For `nums = [3,1,2,4]`:
-1. Process index 0 (3): stack pushes 0.
-2. Index 1 (1) triggers pop of 0: left=1, right=1 → contribution 3*1*1=3.
-3. Continue, eventually compute contributions 1*2*2=4, 2*1*1=2, 4*3*1=12. Sum = 21 → modulo gives 21 (example adjusted).
+For `nums = [3,1,1,2]`: prefix sums `P = [0, 3, 4, 5, 7]`.
+
+| i | nums[i] | start = max(0, i - nums[i]) | P[i+1] - P[start] | running total |
+|---|---|---|---|---|
+| 0 | 3 | 0 | 3 - 0 = 3 | 3 |
+| 1 | 1 | 0 | 4 - 0 = 4 | 7 |
+| 2 | 1 | 1 | 5 - 3 = 2 | 9 |
+| 3 | 2 | 1 | 7 - 3 = 4 | 13 |
+
+Result: `13`, matching the expected output.
 
 ## Complexity Analysis
-- **Time:** O(n) – each element is pushed and popped at most once.
-- **Space:** O(n) for the stack in the worst case.
+- **Time:** O(n) - one pass to build prefix sums, one pass to sum the ranges.
+- **Space:** O(n) for the prefix array.
 
 ## Follow-Up Questions
-1. How would you adapt the algorithm to compute the sum of maximums of all subarrays?
-2. Can the method be extended to handle circular arrays?
-3. What changes are needed if the array contains negative numbers?
+1. Can you avoid the prefix array and compute each element's total contribution directly (count how many windows cover each index)?
+2. How would you handle the case where `nums[i]` can be negative or zero (window length no longer tied to the value)?
+3. How would you support point updates to `nums` interleaved with total-sum queries (Fenwick tree)?
 
 ## Key Takeaway
-A monotonic stack efficiently counts how many subarrays each element serves as the minimum, enabling O(n) computation of the total sum.
+Whenever you need many contiguous range sums, precompute prefix sums so each range costs O(1); here that turns the total into a single linear pass.

@@ -37,7 +37,7 @@ Return *the **number** of pairs of **interchangeable** rectangles in *`rectangle
 
 ## 2. Key Insight
 
-> Reduce each rectangle’s width and height to their lowest terms using the greatest common divisor (GCD). The canonical pair `(w/g, h/g)` uniquely identifies the aspect ratio without floating‑point errors. Group rectangles by this canonical ratio and count pairs within each group.
+> Reduce each rectangle’s width and height to their lowest terms using the greatest common divisor (GCD). The canonical pair `(w/g, h/g)` uniquely identifies the aspect ratio without floating-point errors. Group rectangles by this canonical ratio and count pairs within each group.
 
 ---
 
@@ -100,7 +100,7 @@ Explanation: There are no interchangeable pairs of rectangles.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n * log max(w,h)) — GCD per rectangle |
+| **Time** | O(n * log max(w,h)) — GCD per rectangle |
 | **Space** | O(n) — hashmap of ratios |
 
 ---

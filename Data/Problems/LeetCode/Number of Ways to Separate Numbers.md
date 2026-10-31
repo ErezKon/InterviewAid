@@ -66,13 +66,13 @@ Explanation: No numbers can have leading zeros and all numbers must be positive.
 
 ## 4. Approach: DP + LCP — O(n²) ✅
 
-We pre‑compute `LCP[i][j]` – the length of the longest common prefix of the suffixes starting at `i` and `j`. Then we fill `dp` using prefix sums for fast range queries.
+We pre-compute `LCP[i][j]` – the length of the longest common prefix of the suffixes starting at `i` and `j`. Then we fill `dp` using prefix sums for fast range queries.
 
 ```text
 FUNCTION numberOfWays(s):
     n ← LENGTH(s)
     MOD ← 1_000_000_007
-    // Pre‑compute LCP matrix
+    // Pre-compute LCP matrix
     DECLARE LCP[n][n]
     FOR i ← n-1 DOWNTO 0:
         FOR j ← n-1 DOWNTO 0:
@@ -106,7 +106,7 @@ FUNCTION numberOfWays(s):
 
 ## 5. Walkthrough
 
-Take the string `"1234"` (n = 4).
+Take the string `"1234"` (n = 4).
 
 | i | j | Substring `s[j..i]` | Valid previous start? | dp[i][j] |
 |---|---|-------------------|-----------------------|----------|
@@ -138,10 +138,10 @@ Summing the last row gives `1 + 1 + 1 = 3` ways, but partitions `[1,2,34]` and `
 
 1. How would you adapt the solution for a larger modulus or to return the exact count without modulo?
 2. Can the DP be optimized to O(n) space while keeping O(n²) time?
-3. What changes are needed if the sequence must be **strictly** increasing instead of non‑decreasing?
+3. What changes are needed if the sequence must be **strictly** increasing instead of non-decreasing?
 
 ---
 
 ## 8. Key Takeaway
 
-> **LCP + DP** turns costly substring comparisons into O(1) checks, enabling an O(n²) solution for partitioning a numeric string into a non‑decreasing sequence.
+> **LCP + DP** turns costly substring comparisons into O(1) checks, enabling an O(n²) solution for partitioning a numeric string into a non-decreasing sequence.

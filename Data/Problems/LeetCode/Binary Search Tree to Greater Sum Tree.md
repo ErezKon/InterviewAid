@@ -66,4 +66,4 @@ Resulting tree values in inorder: `6,5,3`.
 - What changes are needed to perform the conversion in-place for a threaded binary tree?
 
 ## Key Takeaway
-A reverse inorder traversal accumulates the sum of larger keys, allowing each node to be updated to the required greater‑sum value in linear time.
+A reverse inorder traversal accumulates the sum of larger keys, allowing each node to be updated to the required greater-sum value in linear time.

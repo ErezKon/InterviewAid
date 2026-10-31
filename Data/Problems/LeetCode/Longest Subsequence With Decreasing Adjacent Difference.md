@@ -66,10 +66,10 @@ Consider the array `[5, 3, 1, 2, 4]`.
 | Index | Value | Possible last diff | dp entry (value, diff) |
 |-------|-------|--------------------|-----------------------|
 | 0     | 5     | —                  | dp[5][*] = 1          |
-| 1     | 3     | |5‑3| = 2           | Extend dp[5][≥2] → dp[3][2] = 2 |
-| 2     | 1     | |3‑1| = 2, |5‑1| = 4| | Extend dp[3][2] (diff 2) → dp[1][2] = 3 |
-| 3     | 2     | |1‑2| = 1, |3‑2| = 1, |5‑2| = 3| | Extend dp[1][2] (diff 2) → dp[2][1] = 4 |
-| 4     | 4     | ...                | No extension keeps non‑increasing diff |
+| 1     | 3     | |5-3| = 2           | Extend dp[5][≥2] → dp[3][2] = 2 |
+| 2     | 1     | |3-1| = 2, |5-1| = 4| | Extend dp[3][2] (diff 2) → dp[1][2] = 3 |
+| 3     | 2     | |1-2| = 1, |3-2| = 1, |5-2| = 3| | Extend dp[1][2] (diff 2) → dp[2][1] = 4 |
+| 4     | 4     | ...                | No extension keeps non-increasing diff |
 
 The longest length recorded is **4**, matching the subsequence `[5,3,2,1]`.
 
@@ -78,11 +78,11 @@ The longest length recorded is **4**, matching the subsequence `[5,3,2,1]`.
 ## 5. Complexity Analysis
 
 - **Time:** O(n · M) where *n* is the array length and *M* is the maximum element value (due to iterating over possible differences).
-- **Space:** O(M²) for the DP table storing states for each value‑difference pair.
+- **Space:** O(M²) for the DP table storing states for each value-difference pair.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would the solution change if the differences must be **strictly decreasing**?
 2. Can the problem be solved in O(n log n) using a segment tree or binary indexed tree?

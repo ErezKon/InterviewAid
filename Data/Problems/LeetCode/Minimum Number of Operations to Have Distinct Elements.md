@@ -90,7 +90,7 @@ Total ops = 6.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sort + scan | **O(n log n)** | **O(1)** (in‑place) |
+| Sort + scan | **O(n log n)** | **O(1)** (in-place) |
 
 ---
 

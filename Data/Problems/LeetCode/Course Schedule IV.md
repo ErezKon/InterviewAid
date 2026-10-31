@@ -57,7 +57,7 @@ Example 3:
 
 ---
 
-## Approach: Floyd‑Warshall — O(n³) ✅
+## Approach: Floyd-Warshall — O(n³) ✅
 
 ```text
 FUNCTION checkIfPrerequisite(numCourses, prerequisites, queries):
@@ -98,19 +98,19 @@ Consider `numCourses = 3`, `prerequisites = [[0,1],[1,2]]`:
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n³ + Q) – Floyd‑Warshall plus answering Q queries |
+| **Time** | O(n³ + Q) – Floyd-Warshall plus answering Q queries |
 | **Space** | O(n²) – boolean matrix |
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you improve the time complexity if the number of courses `n` is large but the number of queries `Q` is small?
-2. Can the problem be solved using BFS/DFS from each source node instead of Floyd‑Warshall?
+2. Can the problem be solved using BFS/DFS from each source node instead of Floyd-Warshall?
 3. How would you adapt the solution to handle dynamic addition of new prerequisite edges?
 
 ---
 
 ## Key Takeaway
 
-> **Transitive closure via Floyd‑Warshall efficiently answers all prerequisite queries in a DAG by iteratively propagating reachability through intermediate courses.**
+> **Transitive closure via Floyd-Warshall efficiently answers all prerequisite queries in a DAG by iteratively propagating reachability through intermediate courses.**

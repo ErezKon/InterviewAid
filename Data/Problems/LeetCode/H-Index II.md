@@ -37,7 +37,7 @@ Output: 2
 ```
 
 ## Approach
-Because the array is sorted, we can binary search for the smallest index `i` such that `citations[i] >= n - i`. The h‑index will then be `n - i`.
+Because the array is sorted, we can binary search for the smallest index `i` such that `citations[i] >= n - i`. The h-index will then be `n - i`.
 
 ```text
 FUNCTION hIndex(citations):
@@ -60,16 +60,16 @@ The loop ends with `left` pointing to the first position satisfying the conditio
 | 0    | 4     | 2   | 3              | 5-2=3 | >= | right ← 1 |
 | 0    | 1     | 0   | 0              | 5-0=5 | <  | left ← 1 |
 | 1    | 1     | 1   | 1              | 5-1=4 | <  | left ← 2 |
-Loop ends, left=2 → h‑index = 5‑2 = 3.
+Loop ends, left=2 → h-index = 5-2 = 3.
 
 ## Complexity Analysis
 - **Time:** `O(log n)` due to binary search.
 - **Space:** `O(1)` auxiliary space.
 
-## Follow‑Up Questions
-1. How would you compute the h‑index if the citations array were unsorted?
-2. Can you extend the method to return the h‑index for a stream of citations?
-3. What if you need to find the **g‑index** instead?
+## Follow-Up Questions
+1. How would you compute the h-index if the citations array were unsorted?
+2. Can you extend the method to return the h-index for a stream of citations?
+3. What if you need to find the **g-index** instead?
 
 ## Key Takeaway
-Binary search exploits the monotonic relationship between index and citation count in a sorted list to locate the h‑index efficiently.
+Binary search exploits the monotonic relationship between index and citation count in a sorted list to locate the h-index efficiently.

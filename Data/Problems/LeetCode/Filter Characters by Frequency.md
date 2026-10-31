@@ -66,7 +66,7 @@ FUNCTION filterByFrequency(s):
 
 ## Walkthrough
 
-Consider **Example 1** (`s = "aabccc"`):
+Consider **Example 1** (`s = "aabccc"`):
 | Step | Action | freq map | avg | result |
 |------|--------|----------|-----|--------|
 | 1 | Count frequencies | {a:2, b:1, c:3} | 2 | "" |
@@ -91,7 +91,7 @@ Final result = "aacc c" → "aabccc" after preserving original order (note 'b' r
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to keep characters whose frequency is **greater than** the median frequency?
 2. Can the solution be adapted to work with Unicode characters beyond ASCII?

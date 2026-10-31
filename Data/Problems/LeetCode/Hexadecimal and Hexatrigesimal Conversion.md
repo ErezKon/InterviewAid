@@ -58,7 +58,7 @@ Example 2:
 ## 4. Walkthrough
 
 1. Input "1A" → decimal = 26.
-2. 26 % 36 = 26 → digit "K" (0‑9 then A‑Z).
+2. 26 % 36 = 26 → digit "K" (0-9 then A-Z).
 3. Decimal becomes 0, stop. Result "K" → prepend "1" from previous division? Actually conversion yields "1K" after processing full number.
 4. Return "1K".
 
@@ -70,9 +70,9 @@ Example 2:
 ## 6. Follow-Up Questions
 
 - How would you convert directly between arbitrary bases without an intermediate decimal?
-- How to handle very large numbers that exceed built‑in integer limits?
+- How to handle very large numbers that exceed built-in integer limits?
 - Can you perform the conversion in-place for mutable character arrays?
 
 ## Key Takeaway
 
-> Convert hex → decimal → base‑36 using repeated division and remainder.
+> Convert hex → decimal → base-36 using repeated division and remainder.

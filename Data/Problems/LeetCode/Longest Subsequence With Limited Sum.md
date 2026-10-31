@@ -67,9 +67,9 @@ FUNCTION answerQueries(nums, queries):
 
 | Step | Sorted nums | Prefix sums | Query | Binary search result | Answer |
 |------|-------------|-------------|-------|----------------------|--------|
-| 1 | [1,2,4,5] | [0,1,3,7,12] | 3 | index = 2 → count = 1 | 1 |
-| 2 | same | same | 10 | index = 4 → count = 3 | 3 |
-| 3 | same | same | 21 | index = 5 → count = 4 | 4 |
+| 1 | [1,2,4,5] | [0,1,3,7,12] | 3 | index = 2 → count = 1 | 1 |
+| 2 | same | same | 10 | index = 4 → count = 3 | 3 |
+| 3 | same | same | 21 | index = 5 → count = 4 | 4 |
 
 ---
 

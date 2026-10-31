@@ -57,9 +57,9 @@ But the second continuation byte does not start with 10, so it is invalid.
 
 ## Approach
 Iterate through the bytes while tracking how many continuation bytes are expected (`remaining`). For each byte:
-- If `remaining > 0`, verify the two most‑significant bits are `10`; decrement `remaining`.
+- If `remaining > 0`, verify the two most-significant bits are `10`; decrement `remaining`.
 - Otherwise, determine the length of a new character by inspecting the leading bits:
-  - `0xxxxxxx` → 1‑byte (no continuation).
+  - `0xxxxxxx` → 1-byte (no continuation).
   - `110xxxxx` → expect 1 continuation.
   - `1110xxxx` → expect 2 continuations.
   - `11110xxx` → expect 3 continuations.
@@ -69,19 +69,19 @@ At the end, the sequence is valid only if `remaining == 0`.
 ## Walkthrough
 | Index | Byte (binary) | Action | remaining after |
 |-------|---------------|--------|-----------------|
-| 0 | 11000101 | start 2‑byte char → remaining=1 |
+| 0 | 11000101 | start 2-byte char → remaining=1 |
 | 1 | 10000010 | continuation (starts with 10) → remaining=0 |
-| 2 | 00000001 | 1‑byte char → remaining stays 0 |
+| 2 | 00000001 | 1-byte char → remaining stays 0 |
 All bytes processed and `remaining` is 0 → valid.
 
 ## Complexity Analysis
 - **Time:** `O(n)` where `n` is the length of `data`.
 - **Space:** `O(1)` extra variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the index of the first invalid byte?
 2. Can the validation be performed in a streaming fashion without storing the whole array?
-3. What changes are needed to support UTF‑16 validation instead?
+3. What changes are needed to support UTF-16 validation instead?
 
 ## Key Takeaway
-Tracking the expected number of continuation bytes while scanning the byte stream provides a simple linear‑time validation of UTF‑8 encoding.
+Tracking the expected number of continuation bytes while scanning the byte stream provides a simple linear-time validation of UTF-8 encoding.

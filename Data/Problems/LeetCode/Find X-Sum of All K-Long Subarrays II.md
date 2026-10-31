@@ -139,7 +139,7 @@ FUNCTION REBALANCE():
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(n log n) — sorted‑set operations per slide |
+| **Time** | O(n log n) — sorted-set operations per slide |
 | **Space** | O(n) |
 
 ---
@@ -150,9 +150,9 @@ FUNCTION REBALANCE():
 ```
 nums = [1,2,2,3,3], k = 3, x = 2
 ```
-- Window 0‑2: frequencies {1:1,2:2} → top‑2 sum = 1*1 + 2*2 = 5
-- Window 1‑3: {2:2,3:1} → 2*2 + 3*1 = 7
-- Window 2‑4: {2:1,3:2} → 3*2 + 2*1 = 8
+- Window 0-2: frequencies {1:1,2:2} → top-2 sum = 1*1 + 2*2 = 5
+- Window 1-3: {2:2,3:1} → 2*2 + 3*1 = 7
+- Window 2-4: {2:1,3:2} → 3*2 + 2*1 = 8
 Output: `[5,7,8]`
 
 **Example 2:**
@@ -166,7 +166,7 @@ Output: `[8,8,8]`
 
 ## 6. Walkthrough
 
-Step‑by‑step for the first example (k=3, x=2):
+Step-by-step for the first example (k=3, x=2):
 | Step | Action | top (freq,val) | topSum |
 |------|--------|----------------|-------|
 | Init | Build freqMap for first 3 elems | top = {(2,2),(1,1)} | 5 |
@@ -177,11 +177,11 @@ Step‑by‑step for the first example (k=3, x=2):
 
 ## 7. Follow-Up Questions
 - How would you modify the data structures to support updates where `x` changes between windows?
-- Can the solution be adapted to return the actual top‑x elements instead of just the sum?
-- What if the tie‑breaking rule prefers smaller values; how does the ordering change?
+- Can the solution be adapted to return the actual top-x elements instead of just the sum?
+- What if the tie-breaking rule prefers smaller values; how does the ordering change?
 
 ---
 
 ## 8. Key Takeaway
 
-> Maintaining two ordered sets—one for the current top‑x frequent elements and one for the rest—allows O(log n) updates per slide, turning a naïve O(n·k) approach into an O(n log n) solution suitable for large inputs.
+> Maintaining two ordered sets—one for the current top-x frequent elements and one for the rest—allows O(log n) updates per slide, turning a naïve O(n·k) approach into an O(n log n) solution suitable for large inputs.

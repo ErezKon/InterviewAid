@@ -99,7 +99,7 @@ The final mask `1111` covers all elements with total incompatibility `4`.
 
 - How would you adapt the solution if groups could have variable sizes?
 - Can you design an approximation algorithm for larger `n` where exact DP is infeasible?
-- How does the problem change if the incompatibility metric is defined as sum of absolute differences instead of max‑min?
+- How does the problem change if the incompatibility metric is defined as sum of absolute differences instead of max-min?
 
 ## Key Takeaway
 

@@ -59,7 +59,7 @@ Intersections: `s1&s2 = {2,3}`, `s1&s3 = {3}`, `s2&s3 = {3}`. Union → `{2,3}`.
 - **Time:** `O(n1 + n2 + n3)` to build the sets and compute intersections.
 - **Space:** `O(u)` where `u` is the number of unique elements across the three arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the arrays are extremely large and cannot fit into memory?
 2. What if you need to return the numbers that appear in exactly two arrays (not three)?
 3. Can you solve it in a single pass without using explicit set data structures?

@@ -48,14 +48,14 @@ It can be shown that 4 is the minimum number of moves required to place one ston
 
 ## Approach
 
-**Algorithm:** Brute‑force assignment using permutations (feasible for small numbers of stones).
+**Algorithm:** Brute-force assignment using permutations (feasible for small numbers of stones).
 
 1. List each stone individually according to its count, producing a `sources` list of coordinates.
 2. List all empty cells (`targets`).
 3. For every permutation mapping `sources[i] → targets[i]`, compute the sum of Manhattan distances.
 4. Return the minimum sum.
 
-This is essentially the assignment problem; for larger inputs a Hungarian algorithm or min‑cost flow would be needed, but the brute‑force works for the constraints of the original problem.
+This is essentially the assignment problem; for larger inputs a Hungarian algorithm or min-cost flow would be needed, but the brute-force works for the constraints of the original problem.
 
 ```text
 FUNCTION minimumMoves(grid):
@@ -94,9 +94,9 @@ For `grid = [[0,2],[1,0]]`:
 - **Time:** `O(k! * k)` where `k` is the number of extra stones (factorial due to permutations). Suitable only for small `k`.
 - **Space:** `O(k + t)` for storing source and target coordinates.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would you solve the problem efficiently for large `k`? (Hint: Hungarian algorithm or min‑cost max‑flow.)
+- How would you solve the problem efficiently for large `k`? (Hint: Hungarian algorithm or min-cost max-flow.)
 - What if diagonal moves were allowed?
 - Can the solution be adapted to minimize the maximum individual move instead of the sum?
 

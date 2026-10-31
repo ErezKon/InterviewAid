@@ -117,12 +117,12 @@ Consider `n = 2, m = 3, k = 2`.
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n × m × k) due to DP transitions, with prefix‑sum optimization eliminating an inner loop.
+- **Time:** O(n × m × k) due to DP transitions, with prefix-sum optimization eliminating an inner loop.
 - **Space:** O(m × k) if we keep only two layers of `i`.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if the array elements could be any integer (including negatives)?
 - Can the DP be further optimized using combinatorial formulas?
@@ -132,4 +132,4 @@ Consider `n = 2, m = 3, k = 2`.
 
 ## Key Takeaway
 
-> The "search cost" equals the number of left‑to‑right maxima. A DP that tracks the current maximum and accumulated cost, combined with prefix sums, efficiently counts all valid arrays.
+> The "search cost" equals the number of left-to-right maxima. A DP that tracks the current maximum and accumulated cost, combined with prefix sums, efficiently counts all valid arrays.

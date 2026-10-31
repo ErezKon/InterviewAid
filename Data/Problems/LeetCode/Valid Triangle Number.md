@@ -33,7 +33,7 @@ Output: 4
 ```
 
 ## Approach
-Sort the array. For each index `k` treating `nums[k]` as the largest side, use two pointers `i` (start) and `j` (k‑1) to find how many pairs `(i, j)` satisfy `nums[i] + nums[j] > nums[k]`. When the condition holds, all elements between `i` and `j‑1` also satisfy it, so add `j - i` to the count and move `j` left; otherwise move `i` right.
+Sort the array. For each index `k` treating `nums[k]` as the largest side, use two pointers `i` (start) and `j` (k-1) to find how many pairs `(i, j)` satisfy `nums[i] + nums[j] > nums[k]`. When the condition holds, all elements between `i` and `j-1` also satisfy it, so add `j - i` to the count and move `j` left; otherwise move `i` right.
 
 ```text
 FUNCTION triangleNumber(nums):
@@ -54,20 +54,20 @@ FUNCTION triangleNumber(nums):
 ## Walkthrough
 | Step | Sorted nums | k (largest) | i | j | Condition | Added to count |
 |------|-------------|-------------|---|---|-----------|----------------|
-| 1    | [2,2,3,4]   | k=3 (4)     | 0 | 2 | 2+3 > 4 ✔ | count += 2 (j‑i) |
+| 1    | [2,2,3,4]   | k=3 (4)     | 0 | 2 | 2+3 > 4 ✔ | count += 2 (j-i) |
 | 2    |             | j=1        | 0 | 1 | 2+2 > 4 ✗ | i++ → i=1 |
 | 3    |             | i=1, j=1 → stop |
 | 4    | k=2 (3)     | i=0, j=1   | 0 | 1 | 2+2 > 3 ✔ | count += 1 |
 | …    | continue for remaining k |
 
 ## Complexity Analysis
-- **Time:** O(n²) – each `k` iteration runs a linear two‑pointer scan.
-- **Space:** O(1) – sorting can be done in‑place; only a few variables are used.
+- **Time:** O(n²) – each `k` iteration runs a linear two-pointer scan.
+- **Space:** O(1) – sorting can be done in-place; only a few variables are used.
 
 ## Follow-Up Questions
 - How would you modify the algorithm to return the actual list of valid triplets?
-- Can you solve the problem in sub‑quadratic time using advanced data structures?
+- Can you solve the problem in sub-quadratic time using advanced data structures?
 - How does the solution change if the array may contain negative numbers?
 
 ## Key Takeaway
-Sorting plus a two‑pointer scan efficiently counts triangle‑forming triplets by exploiting the monotonic property of the triangle inequality.
+Sorting plus a two-pointer scan efficiently counts triangle-forming triplets by exploiting the monotonic property of the triangle inequality.

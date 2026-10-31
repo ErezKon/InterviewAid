@@ -37,7 +37,7 @@ Output: ["a","b","c"]
 ```
 
 ## Approach
-We check each word against the pattern using two hash maps to enforce a one‑to‑one correspondence.
+We check each word against the pattern using two hash maps to enforce a one-to-one correspondence.
 1. Iterate characters of the word and pattern simultaneously.
 2. For each pair `(cWord, cPat)`, ensure `mapWordToPat[cWord]` equals `cPat` and `mapPatToWord[cPat]` equals `cWord`.
 3. If any mismatch occurs, the word does not match.
@@ -77,13 +77,13 @@ Word = "mee", pattern = "abb"
 All positions consistent → word matches.
 
 ## Complexity Analysis
-- **Time:** O(N × L) where N is number of words and L is length of each word.
+- **Time:** O(N × L) where N is number of words and L is length of each word.
 - **Space:** O(L) for the two hash maps per word.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to handle Unicode characters?
 2. Can the algorithm be adapted to find words that match a pattern with wildcard characters?
 3. What is the impact on performance if the list of words is extremely large and stored on disk?
 
 ## Key Takeaway
-Using two synchronized hash maps enforces a bijective mapping, allowing linear‑time verification of pattern conformity for each word.
+Using two synchronized hash maps enforces a bijective mapping, allowing linear-time verification of pattern conformity for each word.

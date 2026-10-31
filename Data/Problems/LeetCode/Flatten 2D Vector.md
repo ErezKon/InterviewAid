@@ -117,7 +117,7 @@ vector2D.hasNext(); // return False
 ## Follow-Up Questions
 
 - How would you modify the iterator to support a `remove()` operation?
-- Can you design a similar iterator for a 3‑dimensional vector?
+- Can you design a similar iterator for a 3-dimensional vector?
 - What changes are needed if the input is a stream of vectors rather than a static 2D array?
 
 ---

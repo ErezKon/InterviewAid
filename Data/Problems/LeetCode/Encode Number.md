@@ -45,7 +45,7 @@ FUNCTION EncodeNumber(num):
     SET chars ← []
     WHILE num > 0:
         SET rem ← num MOD 26
-        SET ch ← CHAR('a' + rem)   // map 0‑25 to 'a'‑'z'
+        SET ch ← CHAR('a' + rem)   // map 0-25 to 'a'-'z'
         PREPEND ch TO chars
         SET num ← num DIV 26
     RETURN JOIN(chars)
@@ -59,8 +59,8 @@ FUNCTION EncodeNumber(num):
 Result `"ba"`.
 
 ## Complexity Analysis
-- **Time:** O(log₍₂₆₎ n) – one iteration per digit.
-- **Space:** O(log₍₂₆₎ n) for the output string.
+- **Time:** O(log₍₂₆₎ n) – one iteration per digit.
+- **Space:** O(log₍₂₆₎ n) for the output string.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to use uppercase letters?

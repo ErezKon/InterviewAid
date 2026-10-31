@@ -56,7 +56,7 @@ Explanation: Place students in available seats in column 1, 3 and 5.
 
 ## Approach
 The problem is a classic **bitmask DP** over rows.
-1. For each row, generate all valid seat masks: bits set only on functional seats (`1` in `seats`) and with no adjacent `1`s (students cannot sit side‑by‑side).
+1. For each row, generate all valid seat masks: bits set only on functional seats (`1` in `seats`) and with no adjacent `1`s (students cannot sit side-by-side).
 2. Use DP where `dp[row][mask]` stores the maximum students up to `row` with current row configuration `mask`.
 3. Transition: for each `prevMask` from the previous row, ensure no cheating diagonally: `(mask << 1) & prevMask == 0` and `(mask >> 1) & prevMask == 0`.
 4. Update `dp[row][mask] = max(dp[row][mask], dp[row-1][prevMask] + popcount(mask))`.
@@ -101,13 +101,13 @@ Consider `seats = [[1,0,1],[1,1,1],[1,0,1]]` (3×3).
 Total = 4 students.
 
 ## Complexity Analysis
-*Time*: Generating masks `O(m·2ⁿ)`. DP transitions `O(m·k²)` where `k` is the number of valid masks per row (≤ 2ⁿ). Overall `O(m·2ⁿ·2ⁿ)` in worst case.
+*Time*: Generating masks `O(m·2ⁿ)`. DP transitions `O(m·k²)` where `k` is the number of valid masks per row (≤ 2ⁿ). Overall `O(m·2ⁿ·2ⁿ)` in worst case.
 *Space*: DP stores two rows of masks `O(2ⁿ)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for a rectangular grid with `n` up to 10 (still using bitmask DP) versus larger `n`?
 2. Can the problem be solved with a maximum bipartite matching formulation?
 3. How would you modify the DP if students could also cheat horizontally (left/right) in addition to diagonally?
 
 ## Key Takeaway
-Bitmask DP efficiently captures row‑wise seating constraints and diagonal cheating checks, enabling optimal placement of students in exponential‑time but feasible for small column counts.
+Bitmask DP efficiently captures row-wise seating constraints and diagonal cheating checks, enabling optimal placement of students in exponential-time but feasible for small column counts.

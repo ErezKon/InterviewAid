@@ -99,19 +99,19 @@ Example 1:
 
 ## Complexity Analysis
 
-- **Time:** Each `changeRating` and `highestRated` operation O(log n) due to heap insertion/removal.
-- **Space:** O(n) to store food‑to‑cuisine, food‑to‑rating maps and a heap per cuisine.
+- **Time:** Each `changeRating` and `highestRated` operation O(log n) due to heap insertion/removal.
+- **Space:** O(n) to store food-to-cuisine, food-to-rating maps and a heap per cuisine.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you support ties by returning the lexicographically smallest food name?
 2. Can you extend the design to handle removal of foods?
-3. What if you need to query the top k foods per cuisine?
+3. What if you need to query the top k foods per cuisine?
 
 ---
 
 ## Key Takeaway
 
-> **SortedList per cuisine with `(-rating, name)` tuples gives O(log n) updates and O(1) top query. Negate rating for max‑first ordering; name breaks ties lexicographically.**
+> **SortedList per cuisine with `(-rating, name)` tuples gives O(log n) updates and O(1) top query. Negate rating for max-first ordering; name breaks ties lexicographically.**

@@ -87,8 +87,8 @@ Result = max(7,6) = 7.
 
 ## 5. Follow-Up Questions
 
-1. How would you modify the solution for a k‑ary tree?
-2. Can you solve it iteratively using post‑order traversal?
+1. How would you modify the solution for a k-ary tree?
+2. Can you solve it iteratively using post-order traversal?
 3. What if each house has a cooldown of two levels instead of one?
 
 ---

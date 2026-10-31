@@ -85,7 +85,7 @@ FUNCTION countSteps(n, prefix1, prefix2):
 
 | Step | curr | k (remaining) | steps (curr→curr+1) | Action |
 |------|------|---------------|---------------------|--------|
-| 1 | 1 | 1 | 5 (1,10‑19) | steps > k → go deeper: `curr = 1*10 = 10`, `k = 0` |
+| 1 | 1 | 1 | 5 (1,10-19) | steps > k → go deeper: `curr = 1*10 = 10`, `k = 0` |
 | End | 10 | 0 | — | Return `curr = 10` |
 
 The algorithm correctly returns `10` as the 2nd lexicographic number.

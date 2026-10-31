@@ -106,4 +106,4 @@ After conversion and sorting → `[[1,4],[2,3]]`.
 3. How would you adapt the solution for a streaming input of logs?
 
 ## Key Takeaway
-A simple hash‑map aggregation efficiently groups and sums durations per employee, turning a list of logs into total work times.
+A simple hash-map aggregation efficiently groups and sums durations per employee, turning a list of logs into total work times.

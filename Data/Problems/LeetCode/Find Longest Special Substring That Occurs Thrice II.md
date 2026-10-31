@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-Use a sliding window with two pointers. Maintain a frequency map of characters inside the window and a counter of how many characters have frequency exactly three. Expand the right pointer, and when any character exceeds three, shrink from the left until all frequencies are ≤ 3. Whenever the counter equals the number of distinct characters in the window, the window is special; update the answer.
+Use a sliding window with two pointers. Maintain a frequency map of characters inside the window and a counter of how many characters have frequency exactly three. Expand the right pointer, and when any character exceeds three, shrink from the left until all frequencies are ≤ 3. Whenever the counter equals the number of distinct characters in the window, the window is special; update the answer.
 
 ### Pseudocode
 ```text
@@ -87,12 +87,12 @@ Result = 8 (the longest special substring is "abbbccc").
 
 ## Complexity Analysis
 - **Time:** O(n) – each character enters and leaves the window at most once.
-- **Space:** O(k) where *k* is the number of distinct characters in the current window (≤ 26).
+- **Space:** O(k) where *k* is the number of distinct characters in the current window (≤ 26).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for the requirement “each character appears exactly *k* times” for arbitrary *k*?
-2. Can the problem be solved using a prefix‑frequency hash without a sliding window?
+2. Can the problem be solved using a prefix-frequency hash without a sliding window?
 3. What changes are needed if the string may contain uppercase letters as well?
 
 ## Key Takeaway
-A sliding‑window that enforces an upper bound on character frequencies lets you efficiently track when all characters meet the exact‑three condition.
+A sliding-window that enforces an upper bound on character frequencies lets you efficiently track when all characters meet the exact-three condition.

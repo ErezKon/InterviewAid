@@ -93,10 +93,10 @@ Explanation: There is no common subsequence between the two arrays.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the arrays could contain duplicate values?
-- Can you solve the problem with O(1) extra space assuming the arrays are read‑only?
+- Can you solve the problem with O(1) extra space assuming the arrays are read-only?
 - What if the arrays are not sorted? Which algorithm would you use then?
 
 ---

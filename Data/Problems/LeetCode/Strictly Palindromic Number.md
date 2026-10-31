@@ -38,7 +38,7 @@ Therefore, we return false.
 ```
 
 ## Approach
-Observe that for any `n ≥ 4`, the representation in base `n‑2` is always `12`, which is not a palindrome. Hence no number `n ≥ 4` can be strictly palindromic. The only possible candidates are `n = 1, 2, 3`, all of which fail the definition as the range of bases is empty or invalid. Therefore the answer is always `false`.
+Observe that for any `n ≥ 4`, the representation in base `n-2` is always `12`, which is not a palindrome. Hence no number `n ≥ 4` can be strictly palindromic. The only possible candidates are `n = 1, 2, 3`, all of which fail the definition as the range of bases is empty or invalid. Therefore the answer is always `false`.
 
 ### Pseudocode
 ```text
@@ -48,7 +48,7 @@ FUNCTION isStrictlyPalindromic(n):
 ```
 
 ## Walkthrough
-| n | Check base n‑2 | Result |
+| n | Check base n-2 | Result |
 |---|----------------|--------|
 | 4 | representation = 12 (not palindrome) | false |
 | 5 | base 3 representation = 12 (not palindrome) | false |
@@ -56,11 +56,11 @@ FUNCTION isStrictlyPalindromic(n):
 Thus the function immediately returns `false` for any input.
 
 ## Complexity Analysis
-- **Time:** O(1) – constant‑time check.
+- **Time:** O(1) – constant-time check.
 - **Space:** O(1).
 
-## Follow‑Up Questions
-1. How would you verify the property for very small `n` (1‑3) if the definition were adjusted?
+## Follow-Up Questions
+1. How would you verify the property for very small `n` (1-3) if the definition were adjusted?
 2. Can you extend the observation to other numeral systems, such as negative bases?
 3. What if the requirement were that the representation be a palindrome for *at least* one base?
 

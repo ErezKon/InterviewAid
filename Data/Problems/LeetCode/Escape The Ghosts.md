@@ -70,10 +70,10 @@ Result: true.
 - **Time:** O(g) where g is the number of ghosts.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the solution change if you could move diagonally?
-- What if ghosts could also move optimally after each of your moves (turn‑based game)?
+- What if ghosts could also move optimally after each of your moves (turn-based game)?
 - Can you extend the problem to a grid with obstacles?
 
 ## Key Takeaway
-Comparing Manhattan distances gives a constant‑time decision: you escape only if every ghost is farther from the target than you are.
+Comparing Manhattan distances gives a constant-time decision: you escape only if every ghost is farther from the target than you are.

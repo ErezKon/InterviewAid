@@ -76,7 +76,7 @@ FUNCTION maxSum(nums, k):
 | Step | Action | Bit Counts After Step | Constructed Value |
 |------|--------|-----------------------|-------------------|
 | 1    | Count bits in original array `[1,2,3,4]` | bit0:2, bit1:2, bit2:1 | — |
-| 2    | Build first number (i=0) by taking one from each non‑zero count | bit0:1, bit1:1, bit2:0 | `101`₂ = 5 |
+| 2    | Build first number (i=0) by taking one from each non-zero count | bit0:1, bit1:1, bit2:0 | `101`₂ = 5 |
 | 3    | Build second number (i=1) | bit0:0, bit1:0, bit2:0 | `100`₂ = 4 |
 | 4    | Sum of squares: 5² + 4² = 25 |
 
@@ -92,7 +92,7 @@ FUNCTION maxSum(nums, k):
 ## Follow-Up Questions
 
 - How would the solution change if the operations were limited to a fixed number of times?
-- Can you extend the approach to work with 64‑bit integers efficiently?
+- Can you extend the approach to work with 64-bit integers efficiently?
 - What if the goal is to maximize the sum of the selected elements (not squares)?
 
 ---

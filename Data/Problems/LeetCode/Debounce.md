@@ -33,7 +33,7 @@ Please solve it without using lodash's `_.debounce()` function.
 
 ## Examples
 
-   
+   
 
 ```
 Example 1:
@@ -113,7 +113,7 @@ FUNCTION debounce(fn, t):
    - New `SET_TIMEOUT` reschedules `fn` for another `t` ms from now.
 4. If no further calls, the last scheduled timeout finally executes `fn`.
 
-Thus only the last call within any `t`‑millisecond window results in execution.
+Thus only the last call within any `t`-millisecond window results in execution.
 
 ---
 
@@ -128,8 +128,8 @@ Thus only the last call within any `t`‑millisecond window results in execution
 
 ## Follow-Up Questions
 
-* How would you implement a leading‑edge debounce (invoke immediately, then ignore calls for `t` ms)?
-* How can you adapt this pattern for server‑side rate‑limiting?
+* How would you implement a leading-edge debounce (invoke immediately, then ignore calls for `t` ms)?
+* How can you adapt this pattern for server-side rate-limiting?
 * What changes are needed to support cancellation of the pending call?
 
 ---

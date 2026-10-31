@@ -91,7 +91,7 @@ Take `target = 10`, `maxDoubles = 4`.
 
 ## Complexity Analysis
 
-- **Time:** O(log target) – each iteration reduces the target by at least half or by one.
+- **Time:** O(log target) – each iteration reduces the target by at least half or by one.
 - **Space:** O(1) – only a few scalar variables are used.
 
 ## Follow-Up Questions
@@ -102,4 +102,4 @@ Take `target = 10`, `maxDoubles = 4`.
 
 ## Key Takeaway
 
-> Reverse simulation turns forward additions/doubles into backward subtractions/halves, yielding a greedy O(log target) solution.
+> Reverse simulation turns forward additions/doubles into backward subtractions/halves, yielding a greedy O(log target) solution.

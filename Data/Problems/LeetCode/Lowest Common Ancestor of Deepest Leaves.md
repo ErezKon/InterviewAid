@@ -73,7 +73,7 @@ FUNCTION lcaDeepestLeaves(root):
 
 ## Walkthrough
 
-Consider Example 1. The DFS explores left and right sub‑trees, returning depths:
+Consider Example 1. The DFS explores left and right sub-trees, returning depths:
 | Node | Left Depth | Right Depth | Returned LCA |
 |------|------------|-------------|--------------|
 | 7    | 0          | 0           | 7            |
@@ -83,7 +83,7 @@ Consider Example 1. The DFS explores left and right sub‑trees, returning depth
 | 2    | 2 (7)      | 2 (8)       | 2            |
 | 3    | 0          | 1 (6)       | 6            |
 | 1    | 3 (2)      | 3 (6)       | 1            |
-The deepest leaves are 7 and 8 (depth 4). Their LCA is node 2, which the algorithm returns.
+The deepest leaves are 7 and 8 (depth 4). Their LCA is node 2, which the algorithm returns.
 
 ---
 
@@ -97,7 +97,7 @@ The deepest leaves are 7 and 8 (depth 4). Their LCA is node 2, which the alg
 ## Follow-Up Questions
 
 1. How would you modify the algorithm to return all deepest leaves instead of their LCA?
-2. Can you solve the problem iteratively using a bottom‑up BFS approach?
+2. Can you solve the problem iteratively using a bottom-up BFS approach?
 3. How does the solution change if the tree is a binary search tree?
 
 ---

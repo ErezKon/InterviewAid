@@ -41,7 +41,7 @@ Return the **maximum** number of customers that can be *satisfied* throughout th
 
 ## 2. Key Insight
 
-> Base satisfied = sum when not grumpy. Extra satisfied = grumpy‑minute customers "saved" by the technique. Slide a window of size `minutes` over grumpy slots to maximize extra.
+> Base satisfied = sum when not grumpy. Extra satisfied = grumpy-minute customers "saved" by the technique. Slide a window of size `minutes` over grumpy slots to maximize extra.
 
 ---
 
@@ -116,4 +116,4 @@ Example 2:
 
 ## 8. Key Takeaway
 
-> Fixed‑size sliding window over "salvageable" customers. Answer = base + max window sum.
+> Fixed-size sliding window over "salvageable" customers. Answer = base + max window sum.

@@ -86,7 +86,7 @@ Users 102 and 103 spent the same amount and we break the tie by their ID while u
 ## Approach
 Group rows by `product_id` and `store_id` to count distinct dates per product. Then filter products that have exactly two distinct `store_id`s and at least three distinct `sale_date`s across those stores.
 
-### Pseudocode (SQL‑style)
+### Pseudocode (SQL-style)
 ```text
 SELECT product_id
 FROM (
@@ -104,17 +104,17 @@ The inner aggregation computes the required counts per product; the outer query 
 ## Walkthrough
 For `product_id = 2`:
 - Distinct stores: {30,40} → `store_cnt = 2`.
-- Distinct dates across both stores: {2021‑02‑01, 2021‑02‑03, 2021‑02‑04} → `date_cnt = 3`.
-Both conditions satisfied → product 2 is included.
+- Distinct dates across both stores: {2021-02-01, 2021-02-03, 2021-02-04} → `date_cnt = 3`.
+Both conditions satisfied → product 2 is included.
 
 ## Complexity Analysis
 - **Time:** `O(N log N)` due to grouping and sorting, where `N` is the number of rows.
 - **Space:** `O(P)` for storing aggregation per distinct `product_id`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the query to return the list of qualifying store IDs per product?
 2. What index strategy would improve performance for large tables?
 3. How can you adapt the solution if the requirement changes to “at least *k* stores and *m* dates”?
 
 ## Key Takeaway
-Aggregating by `product_id` and counting distinct stores and dates lets you filter products that meet multi‑dimensional sales criteria.
+Aggregating by `product_id` and counting distinct stores and dates lets you filter products that meet multi-dimensional sales criteria.

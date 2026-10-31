@@ -60,7 +60,7 @@ FUNCTION isPerfectSquare(num):
 | 2    | 1  | 7  | 4   | 16 | sq == num → return true |
 
 ## Complexity Analysis
-- **Time:** O(log num) due to binary search.
+- **Time:** O(log num) due to binary search.
 - **Space:** O(1) constant extra space.
 
 ## Follow-Up Questions

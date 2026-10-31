@@ -63,7 +63,7 @@ Take `[5,6,8,8,5]`:
 - **Time:** O(n) – single pass to find min and sum.
 - **Space:** O(1) – only a few variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if you could increment **any** single element by `1` instead?
 - What if each move could increment `k` elements by `1`?
@@ -71,4 +71,4 @@ Take `[5,6,8,8,5]`:
 
 ## Key Takeaway
 
-> Reframing “increment n‑1 elements” as “decrement one element” reduces the problem to a simple arithmetic formula based on the minimum value.
+> Reframing “increment n-1 elements” as “decrement one element” reduces the problem to a simple arithmetic formula based on the minimum value.

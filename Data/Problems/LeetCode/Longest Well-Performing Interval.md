@@ -100,4 +100,4 @@ Output: 0
 
 ## Key Takeaway
 
-Convert the problem to a +1/-1 prefix sum; the longest well‑performing interval is the farthest distance between a prefix sum and its earliest occurrence of `score‑1`.
+Convert the problem to a +1/-1 prefix sum; the longest well-performing interval is the farthest distance between a prefix sum and its earliest occurrence of `score-1`.

@@ -67,11 +67,11 @@ FUNCTION lowestCommonAncestor(root, p, q):
 
 ## Walkthrough
 
-Consider Example 1. Starting at root 6:
+Consider Example 1. Starting at root 6:
 - `p.val` (2) and `q.val` (8) are on opposite sides of 6 → split point → LCA = 6.
 If we search for nodes 2 and 4:
-- At root 6, both values < 6 → move left to node 2.
-- At node 2, `p.val` = 2 (equal) and `q.val` = 4 > 2 → split point → LCA = 2.
+- At root 6, both values < 6 → move left to node 2.
+- At node 2, `p.val` = 2 (equal) and `q.val` = 4 > 2 → split point → LCA = 2.
 The algorithm stops as soon as the split point is found.
 
 ---
@@ -87,7 +87,7 @@ The algorithm stops as soon as the split point is found.
 
 ### LCA in a Binary Tree (LeetCode #236)?
 
-Without BST property, use recursion: if either subtree returns non‑null, that's where `p` or `q` is found. If both return non‑null, current node is the LCA.
+Without BST property, use recursion: if either subtree returns non-null, that's where `p` or `q` is found. If both return non-null, current node is the LCA.
 
 ---
 

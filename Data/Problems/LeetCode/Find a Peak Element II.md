@@ -72,14 +72,14 @@ FUNCTION FindPeak(mat):
 ## Walkthrough
 | Step | mid row | maxCol | above | below | Action |
 |------|---------|--------|-------|-------|--------|
-| 1 | 1 (rows 0‑2) | 1 (value 30) | 20 | 16 | 30 > both → peak found |
+| 1 | 1 (rows 0-2) | 1 (value 30) | 20 | 16 | 30 > both → peak found |
 
 ## Complexity Analysis
-- **Time:** O(m log n) if binary search on rows and linear scan for column max, or O(n log m) vice‑versa. Here O(m log n).
+- **Time:** O(m log n) if binary search on rows and linear scan for column max, or O(n log m) vice-versa. Here O(m log n).
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions
-- How would you adapt the algorithm to run in O(log m * log n) using a 2‑D binary search?
+- How would you adapt the algorithm to run in O(log m * log n) using a 2-D binary search?
 - Can the method be extended to find **all** peaks?
 - What changes are needed if the matrix is not sorted but only guarantees that a peak exists?
 

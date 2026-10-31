@@ -74,7 +74,7 @@ Example 3:
 For the first board example:
 1. Locate `'R'` at (2,3).
 2. Scan right: encounter `'.'` until board edge → no pawn.
-3. Scan left: encounter `'.'` then `'p'` at (1,3) → capture count = 1, stop.
+3. Scan left: encounter `'.'` then `'p'` at (1,3) → capture count = 1, stop.
 4. Scan up/down: only `'.'` → no captures.
 Result = 1.
 
@@ -87,7 +87,7 @@ Result = 1.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm for an N×N board?
 - What if there were multiple rooks?

@@ -119,4 +119,4 @@ Result `dp[3]=6` matches the manual contribution sum.
 
 ## 7. Key Takeaway
 
-> **Contribution trick**: each subset summing to k of size s contributes `2^(n-s)`. Fold the `2^(n-s)` factor into the DP transitions by multiplying non‑selected states by 2.
+> **Contribution trick**: each subset summing to k of size s contributes `2^(n-s)`. Fold the `2^(n-s)` factor into the DP transitions by multiplying non-selected states by 2.

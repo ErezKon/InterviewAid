@@ -39,7 +39,7 @@ Return an array `ans` of length `n`, where `ans[i]` represents the **count** of 
 
 ## 2. Key Insight
 
-> Maintain a hash map for ID counts and a sorted multiset (or max‑heap) for frequencies. After each update, adjust both structures and query the current maximum frequency.
+> Maintain a hash map for ID counts and a sorted multiset (or max-heap) for frequencies. After each update, adjust both structures and query the current maximum frequency.
 
 ---
 
@@ -49,7 +49,7 @@ Return an array `ans` of length `n`, where `ans[i]` represents the **count** of 
 FUNCTION mostFrequentIDs(ops):
     // ops is list of (id, delta) where delta is +1 (add) or -1 (remove)
     SET countMap ← EMPTY MAP          // ID → current count
-    SET freqHeap ← EMPTY MAX‑HEAP     // stores (frequency, id)
+    SET freqHeap ← EMPTY MAX-HEAP     // stores (frequency, id)
     SET result ← EMPTY LIST
 
     FOR each (id, delta) IN ops:
@@ -96,7 +96,7 @@ Example 2:
 
 ## 5. Walkthrough
 
-Consider the first example step‑by‑step.
+Consider the first example step-by-step.
 | Step | Operation | countMap after step | freqHeap top | Result |
 |------|-----------|---------------------|--------------|--------|
 | 1 | (1,+1) | {1:1} | (1,1) | 1 |
@@ -112,7 +112,7 @@ The heap may contain stale entries, but they are removed lazily before reading t
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n log n) — each operation updates heap (log n) |
+| **Time** | O(n log n) — each operation updates heap (log n) |
 | **Space** | O(n) — maps and heap store at most n distinct IDs |
 
 ---
@@ -120,11 +120,11 @@ The heap may contain stale entries, but they are removed lazily before reading t
 ## 7. Follow-Up Questions
 
 1. How would you modify the solution to support decrementing counts below zero?
-2. Can you achieve O(1) amortized time per operation using a bucket‑based frequency list?
+2. Can you achieve O(1) amortized time per operation using a bucket-based frequency list?
 3. How would you extend this to return the actual ID(s) with maximum frequency, not just the count?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Dual tracking:** a hash map for ID→count and a max‑heap (or bucket list) for frequencies lets you query the most frequent ID after each dynamic update efficiently.
+> **Dual tracking:** a hash map for ID→count and a max-heap (or bucket list) for frequencies lets you query the most frequent ID after each dynamic update efficiently.

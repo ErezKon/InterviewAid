@@ -138,12 +138,12 @@ FUNCTION getExamCounts():
 Assume the tables from the first example.
 1. `CROSS JOIN` creates pairs: `(1, Alice, Math)`, `(1, Alice, Physics)`, `(2, Bob, Math)`, `(2, Bob, Physics)`.
 2. `LEFT JOIN` attaches exams: rows for `(1, Math)` and `(1, Physics)` match one exam each; `(2, Math)` matches one; `(2, Physics)` matches none → `NULL`.
-3. `COUNT(e.subject_name)` counts non‑NULL matches, yielding `1, 1, 1, 0` respectively.
+3. `COUNT(e.subject_name)` counts non-NULL matches, yielding `1, 1, 1, 0` respectively.
 4. The final `ORDER BY` sorts by `student_id` then `subject_name`.
 
 ## Complexity Analysis
-- **Time:** O(S × T + E) where *S* is number of students, *T* subjects, and *E* examinations; the cross join dominates.
-- **Space:** O(S × T) for the intermediate result set.
+- **Time:** O(S × T + E) where *S* is number of students, *T* subjects, and *E* examinations; the cross join dominates.
+- **Space:** O(S × T) for the intermediate result set.
 
 ## Follow-Up Questions
 1. How would you modify the query to include only subjects a student has taken at least once?
@@ -151,4 +151,4 @@ Assume the tables from the first example.
 3. How would you handle very large tables efficiently (e.g., using indexing or partitioning)?
 
 ## Key Takeaway
-A cross join combined with a left join and aggregation provides a concise way to compute per‑student, per‑subject exam counts, automatically yielding `0` for missing records.
+A cross join combined with a left join and aggregation provides a concise way to compute per-student, per-subject exam counts, automatically yielding `0` for missing records.

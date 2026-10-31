@@ -50,12 +50,12 @@ Use Kadane’s algorithm to compute maximum subarray sums from the left and righ
 
 ## Complexity Analysis
 - **Time:** O(n) – single pass to compute left/right Kadane arrays and evaluate gains.
-- **Space:** O(n) – storing two auxiliary arrays; can be reduced to O(1) with two‑pass scanning.
+- **Space:** O(n) – storing two auxiliary arrays; can be reduced to O(1) with two-pass scanning.
 
 ## Follow-Up Questions
 1. What if the operation multiplies the subarray by a factor `k` instead of `2`?
 2. How would the solution change if you could perform the operation at most `m` times?
-3. Can you extend the approach to 2‑D matrices for maximum sub‑rectangle sum after one operation?
+3. Can you extend the approach to 2-D matrices for maximum sub-rectangle sum after one operation?
 
 ## Key Takeaway
 Doubling a subarray adds its original sum to the total, so the problem reduces to finding the subarray with the maximum sum gain and combining it with the best surrounding subarray sums using Kadane’s algorithm.

@@ -77,7 +77,7 @@ Example 2:
 
 ## 5. Walkthrough
 
-1. For each string, compute its shift‑signature key based on differences from the first character.
+1. For each string, compute its shift-signature key based on differences from the first character.
 2. Group strings sharing the same key in a map.
 3. After processing all strings, collect the map values as the grouped result.
 
@@ -93,7 +93,7 @@ Example 2:
 ## 7. Follow-Up Questions
 
 - How would you modify the solution to return groups sorted by size?
-- Can you adapt the algorithm to handle Unicode characters beyond 'a'‑'z'?
+- Can you adapt the algorithm to handle Unicode characters beyond 'a'-'z'?
 - What if the input list is extremely large and cannot fit into memory?
 
 ---

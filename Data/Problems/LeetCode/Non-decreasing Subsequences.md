@@ -74,7 +74,7 @@ Example 2:
 1. Start with empty `curr`. At index 0, include `4` → `curr=[4]`.
 2. Recurse index 1, include `6` (≥4) → `curr=[4,6]` (recorded).
 3. Continue adding `7` and another `7`, recording each valid subsequence.
-4. Backtrack to explore branches where elements are skipped, generating all combinations while maintaining non‑decreasing order.
+4. Backtrack to explore branches where elements are skipped, generating all combinations while maintaining non-decreasing order.
 
 ---
 

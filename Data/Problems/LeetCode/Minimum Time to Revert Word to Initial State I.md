@@ -116,10 +116,10 @@ The algorithm finds `t = 1` as the smallest satisfying `z[t*k] ≥ n - t*k`.
 
 1. How would the solution change if the appended characters must be the same as the removed ones?
 2. Can the approach be adapted for a variable `k` per operation?
-3. What is the impact of using other string‑matching algorithms like KMP instead of Z‑function?
+3. What is the impact of using other string-matching algorithms like KMP instead of Z-function?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Z-function enables efficient suffix‑prefix matching.** By checking `z[t*k] ≥ n - t*k` for increasing `t`, we obtain the minimum seconds in linear time.
+> **Z-function enables efficient suffix-prefix matching.** By checking `z[t*k] ≥ n - t*k` for increasing `t`, we obtain the minimum seconds in linear time.

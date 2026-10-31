@@ -91,17 +91,17 @@ CLASS TaskManager:
 
 ## Complexity Analysis
 
-- `add`, `edit`, `rmv`, `execTop`: each performs a constant‑time hash map operation **O(1)** and a `SortedList` insertion/removal **O(log n)** where *n* is number of tasks.
+- `add`, `edit`, `rmv`, `execTop`: each performs a constant-time hash map operation **O(1)** and a `SortedList` insertion/removal **O(log n)** where *n* is number of tasks.
 - Space: **O(n)** for storing tasks and priority queue.
 
 ## Follow-Up Questions
 
-- How would you support retrieving the top‑k tasks without removal?
-- Can you design a lock‑free concurrent version?
+- How would you support retrieving the top-k tasks without removal?
+- Can you design a lock-free concurrent version?
 - How to handle duplicate priorities with stable ordering?
 
 ---
 
 ## Key Takeaway
 
-> **Hash map for O(1) task lookup + SortedList with `(-priority, -taskId)` tuples for max‑priority ordering with taskId tie‑breaking. Edit = remove old + insert new.**
+> **Hash map for O(1) task lookup + SortedList with `(-priority, -taskId)` tuples for max-priority ordering with taskId tie-breaking. Edit = remove old + insert new.**

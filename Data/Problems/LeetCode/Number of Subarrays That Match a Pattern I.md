@@ -103,11 +103,11 @@ Result: 1 matching subarray.
 
 ## 6. Follow-Up Questions
 
-1. How can you improve the solution to O(n + m) using KMP or Z‑algorithm?
+1. How can you improve the solution to O(n + m) using KMP or Z-algorithm?
 2. What changes are needed if the pattern includes "any" (wildcard) symbols?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Convert consecutive differences to a pattern signature, then match.** For Part II, use KMP/Z‑algorithm on the difference array for linear time.
+> **Convert consecutive differences to a pattern signature, then match.** For Part II, use KMP/Z-algorithm on the difference array for linear time.

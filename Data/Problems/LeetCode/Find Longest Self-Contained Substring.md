@@ -106,7 +106,7 @@ Consider `s = "abac"`:
 ## Follow-Up Questions
 
 - How would you adapt the algorithm for Unicode strings with a large alphabet?
-- Can you modify the solution to return the actual longest self‑contained substring instead of its length?
+- Can you modify the solution to return the actual longest self-contained substring instead of its length?
 - What if the substring may be the entire string? How does the answer change?
 
 ---

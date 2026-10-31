@@ -71,7 +71,7 @@ Final partitionIdx=2 → left length = 3.
 - **Time:** O(n) single pass.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual left and right subarrays?
 2. Can the solution be adapted for the case where the inequality is strict (`<` instead of `≤`)?
 3. What if the array is streamed and you cannot store it entirely?

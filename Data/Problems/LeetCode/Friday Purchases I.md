@@ -99,8 +99,8 @@ ORDER BY week_of_month;
 ## 4. Walkthrough
 
 1. **Filter Fridays** – `DAYOFWEEK(purchase_date) = 6` selects only Friday rows.
-2. **Restrict to month/year** – `MONTH` and `YEAR` limit to November 2023.
-3. **Compute week number** – `CEIL(DAY/7)` converts the day of month to a week index (1‑4).
+2. **Restrict to month/year** – `MONTH` and `YEAR` limit to November 2023.
+3. **Compute week number** – `CEIL(DAY/7)` converts the day of month to a week index (1-4).
 4. **Aggregate** – `SUM(amount_spend)` gives total spend per week.
 5. **Order** – `ORDER BY week_of_month` returns results chronologically.
 
@@ -111,7 +111,7 @@ ORDER BY week_of_month;
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(n) – scans each row once (handled by the DB engine) |
-| **Space** | O(w) – stores aggregates for `w` weeks (constant ≤ 5) |
+| **Space** | O(w) – stores aggregates for `w` weeks (constant ≤ 5) |
 
 ---
 

@@ -27,13 +27,13 @@ Example 2:
 ```
 
 ## Approach
-1. Perform an in‑order traversal to collect nodes in a sorted list.
+1. Perform an in-order traversal to collect nodes in a sorted list.
 2. Build a balanced BST recursively by selecting the middle element as the root of each subtree.
 
 ```text
 FUNCTION balanceBST(root):
     nodes ← []
-    // In‑order traversal to fill nodes in ascending order
+    // In-order traversal to fill nodes in ascending order
     FUNCTION inorder(node):
         IF node == NULL: RETURN
         inorder(node.left)
@@ -56,7 +56,7 @@ FUNCTION balanceBST(root):
 
 ## Walkthrough
 For the chain `[1,null,2,null,3,null,4,null,5]`:
-- In‑order yields nodes `[1,2,3,4,5]`.
+- In-order yields nodes `[1,2,3,4,5]`.
 - `build(0,4)` picks mid=2 → node 3 as root.
 - Left subtree `build(0,1)` picks mid=0 → node 1, then its right child node 2.
 - Right subtree `build(3,4)` picks mid=3 → node 4 with right child node 5.
@@ -66,10 +66,10 @@ Resulting tree is balanced.
 *Time*: O(n) – one traversal and one recursive build.
 *Space*: O(n) – list of nodes; recursion depth O(log n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you balance the tree iteratively without extra storage?
-2. Can you perform the rebalancing in‑place by modifying pointers only?
+2. Can you perform the rebalancing in-place by modifying pointers only?
 3. What if the input tree is not a BST – how would you approach balancing?
 
 ## Key Takeaway
-Collecting nodes via in‑order traversal gives a sorted sequence, from which a perfectly balanced BST can be constructed by repeatedly choosing middle elements.
+Collecting nodes via in-order traversal gives a sorted sequence, from which a perfectly balanced BST can be constructed by repeatedly choosing middle elements.

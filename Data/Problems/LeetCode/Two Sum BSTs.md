@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem (statement checked against the official text with verify.py). The Approach/Walkthrough below handle a single BST (that is #653 Two Sum IV). Correct idea: in-order traverse both trees into sorted lists `a` (tree 1) and `b` (tree 2); two pointers `i` at the start of `a` and `j` at the end of `b` — if `a[i] + b[j] == target` return true, if smaller `i++`, else `j--`. O(m + n).*
+> *Note: premium problem (statement checked against the official text with verify.py).*
 
 Given the roots of two binary search trees, `root1` and `root2`, return `true` if and only if there is a node in the first tree and a node in the second tree whose values sum up to a given integer `target`.
 
@@ -32,21 +32,51 @@ Output: false
 ```
 
 ## Approach
-Perform an in‑order traversal to obtain the sorted list of node values. Then apply the two‑pointer technique on this sorted list to find a pair that sums to `k`.
+An in-order traversal of a BST yields its values in sorted order. Collect `a` = sorted values of tree 1 and `b` = sorted values of tree 2. Then run two pointers: `i` at the smallest value of `a`, `j` at the largest value of `b`.
+
+- If `a[i] + b[j] == target` → found.
+- If the sum is too small, the only way to increase it is `i++` (every `b[j'] > b[j]` was already ruled out).
+- If the sum is too large, `j--`.
+
+Each step discards one value that cannot be part of any valid pair, so the scan is linear.
+
+```text
+FUNCTION twoSumBSTs(root1, root2, target):
+    a ← INORDER(root1)          // ascending
+    b ← INORDER(root2)          // ascending
+    i ← 0;  j ← len(b) - 1
+    WHILE i < len(a) AND j ≥ 0:
+        s ← a[i] + b[j]
+        IF s = target: RETURN true
+        IF s < target: i ← i + 1
+        ELSE: j ← j - 1
+    RETURN false
+
+FUNCTION INORDER(node):
+    IF node = null: RETURN []
+    RETURN INORDER(node.left) + [node.val] + INORDER(node.right)
+```
 
 ## Walkthrough
-| Step | Action | In‑order list | Pointers (l,r) | Sum |
-|------|--------|---------------|----------------|-----|
-| 1 | Traverse BST in order | `[2,3,4,5,6,7]` | l=0 (2), r=5 (7) | 9 → match → return true |
+Example 1: `root1 = [2,1,4]`, `root2 = [1,0,3]`, `target = 5` → `a = [1,2,4]`, `b = [0,1,3]`.
+
+| Step | i (a[i]) | j (b[j]) | Sum | Action |
+|------|----------|----------|-----|--------|
+| 1 | 0 (1) | 2 (3) | 4 | 4 < 5 → i++ |
+| 2 | 1 (2) | 2 (3) | 5 | match → return true |
+
+Output: `true`.
+
+(Example 2: `a = [-10,0,10]`, `b = [0,1,2,5,7]`, sums `-3, 7, 17` are all `< 18`, `i` runs off the end → `false`.)
 
 ## Complexity Analysis
-- **Time:** `O(n)` where `n` is the number of nodes (traversal + two‑pointer scan).
-- **Space:** `O(n)` for the list of values (or `O(h)` if using an iterative BST iterator with a stack).
+- **Time:** `O(m + n)` — two traversals plus a linear two-pointer scan.
+- **Space:** `O(m + n)` for the value lists (plus `O(h)` recursion stack).
 
-## Follow‑Up Questions
-1. How would you solve the problem using only `O(h)` extra space without storing all values?
-2. Can the solution be adapted for a general binary tree (not a BST)?
-3. What if the BST is immutable and you cannot modify it – does the approach change?
+## Follow-Up Questions
+1. How would you use only `O(h1 + h2)` extra space? (Use an ascending iterator on tree 1 and a descending iterator on tree 2, each backed by a stack, and run the same two-pointer logic.)
+2. Alternative: store all values of tree 1 in a hash set and look up `target − v` for each `v` in tree 2 — `O(m + n)` time, `O(m)` space; or search each value in the other BST for `O(m · h2)` time and `O(h)` space.
+3. How would you count all pairs (with duplicates) instead of just detecting one?
 
 ## Key Takeaway
-An in‑order traversal of a BST yields a sorted sequence, enabling the classic two‑pointer method to detect a target sum in linear time.
+In-order traversal turns each BST into a sorted array; the "sorted pair sum" two-pointer scan (smallest of one list, largest of the other) then answers the cross-tree two-sum in linear time.

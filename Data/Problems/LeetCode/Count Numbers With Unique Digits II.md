@@ -36,7 +36,7 @@ Example 3:
 
 ## Approach
 Count numbers by length. For length `len` (1 ≤ len ≤ n):
-- First digit: 9 choices (1‑9) if len>1, otherwise 10 choices (0‑9).
+- First digit: 9 choices (1-9) if len>1, otherwise 10 choices (0-9).
 - Subsequent digits: choose from remaining 9,8,… options.
 Sum these counts for all lengths.
 
@@ -57,8 +57,8 @@ FUNCTION countNumbersWithUniqueDigits(n):
 
 ## Walkthrough
 For `n = 2`:
-- Length 1: 10 numbers (0‑9) → total = 10.
-- Length 2: first digit 9 choices (1‑9), second digit 9 choices (0‑9 except first) → 9 × 9 = 81.
+- Length 1: 10 numbers (0-9) → total = 10.
+- Length 2: first digit 9 choices (1-9), second digit 9 choices (0-9 except first) → 9 × 9 = 81.
 - Sum = 10 + 81 = 91.
 
 ## Complexity Analysis
@@ -71,4 +71,4 @@ For `n = 2`:
 3. What changes if leading zeros are allowed for all numbers?
 
 ## Key Takeaway
-Counting unique‑digit numbers reduces to a simple combinatorial product for each length, avoiding enumeration.
+Counting unique-digit numbers reduces to a simple combinatorial product for each length, avoiding enumeration.

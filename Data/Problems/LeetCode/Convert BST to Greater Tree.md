@@ -36,7 +36,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a reverse in‑order traversal (right → node → left) while maintaining a running sum of visited node values. For each visited node, add its original value to the running sum and update the node's value to this sum.
+Perform a reverse in-order traversal (right → node → left) while maintaining a running sum of visited node values. For each visited node, add its original value to the running sum and update the node's value to this sum.
 
 **Pseudocode**
 ```text
@@ -66,10 +66,10 @@ The traversal continues leftwards, updating each node accordingly.
 - **Time:** O(n) – each node visited once.
 - **Space:** O(h) – recursion stack where h is tree height (O(log n) for balanced, O(n) worst case).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement the conversion iteratively without recursion?
 2. Can the algorithm be adapted to work on a threaded BST to achieve O(1) extra space?
 3. What changes are needed if the tree is not a BST but you still need to replace each node with the sum of greater values in the whole tree?
 
 ## Key Takeaway
-A reverse in‑order traversal naturally visits nodes from largest to smallest, allowing a running sum to produce the required greater‑tree values.
+A reverse in-order traversal naturally visits nodes from largest to smallest, allowing a running sum to produce the required greater-tree values.

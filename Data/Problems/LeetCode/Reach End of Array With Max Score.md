@@ -34,7 +34,7 @@ Example 2:
   Output: 16
   Explanation: Jump directly to the last index. The final score is 4 * 4 = 16.
 ```
-<!-- -->
+<!-- -->
 
 ## Approach
 A greedy strategy works: as you iterate, keep the maximum value seen so far (`maxSoFar`). Add this value to the score for each step except the last, because the score contributed by a step is the maximum of all visited positions up to that step.
@@ -63,10 +63,10 @@ END FUNCTION
 - Time: O(n) – single pass through the array.
 - Space: O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could only jump up to `k` positions ahead?
 2. Can you compute the maximum score when each jump adds the value of the destination instead of the max so far?
 3. What if the array is extremely large and must be processed in a streaming fashion?
 
 ## Key Takeaway
-Maintaining the running maximum while iterating yields the optimal total score for this greedy‑compatible problem.
+Maintaining the running maximum while iterating yields the optimal total score for this greedy-compatible problem.

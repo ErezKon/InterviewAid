@@ -77,7 +77,7 @@ Total time = 2+2+2 = 6 seconds.
 *Time*: O(n) – one pass over the array.
 *Space*: O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle a dynamic queue where new people can join at any time?
 2. Can you compute the order of ticket purchases for all individuals, not just person `k`?
 3. What changes if each person can buy multiple tickets per second?

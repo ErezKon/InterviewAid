@@ -52,4 +52,4 @@ Space: O(1).
 * What if `k` could be up to 10⁹?
 
 ## Key Takeaway
-Repeated division extracts base‑k digits, and summing the remainders yields the desired digit sum in logarithmic time.
+Repeated division extracts base-k digits, and summing the remainders yields the desired digit sum in logarithmic time.

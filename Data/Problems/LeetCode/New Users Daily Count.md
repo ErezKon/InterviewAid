@@ -110,7 +110,7 @@ ORDER BY first_login_date;
 
 ## Follow-Up Questions
 
-1. How would you modify the query to handle multiple activity types (e.g., sign‑up vs. login)?
+1. How would you modify the query to handle multiple activity types (e.g., sign-up vs. login)?
 2. Can you write a version that works on a streaming data source?
 3. How would you index the table for optimal performance?
 
@@ -118,4 +118,4 @@ ORDER BY first_login_date;
 
 ## Key Takeaway
 
-> Use a subquery to compute each user's first event with `MIN()`, then aggregate by date to get daily new‑user counts.
+> Use a subquery to compute each user's first event with `MIN()`, then aggregate by date to get daily new-user counts.

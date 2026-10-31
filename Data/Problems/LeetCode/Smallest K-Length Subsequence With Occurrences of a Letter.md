@@ -50,10 +50,10 @@ Example 3:
 <!-- old examples (superseded):
 - **Input:** `s = "leetcode", k = 4, letter = "e", repetition = 2`  
   **Output:** `"ecde"`  
-  **Explanation:** The subsequence must be length 4 and contain at least two `e`s. Among all valid subsequences, `"ecde"` is lexicographically smallest.
+  **Explanation:** The subsequence must be length 4 and contain at least two `e`s. Among all valid subsequences, `"ecde"` is lexicographically smallest.
 - **Input:** `s = "abacb", k = 3, letter = "a", repetition = 2`  
   **Output:** `"aab"`  
-  **Explanation:** Valid subsequences of length 3 with at least two `a`s are `"aab"` and `"aac"`; `"aab"` is smaller.
+  **Explanation:** Valid subsequences of length 3 with at least two `a`s are `"aab"` and `"aac"`; `"aab"` is smaller.
 -->
 
 ## Approach
@@ -83,7 +83,7 @@ FUNCTION smallestSubsequence(s, k, letter, repetition):
         remaining ← remaining - 1
     // ensure we have enough `letter`
     WHILE neededLetter > 0:
-        // remove non‑letter from the end
+        // remove non-letter from the end
         IF TOP(stack) != letter: POP(stack) ELSE BREAK
         neededLetter ← neededLetter - 1
     RETURN JOIN(first k elements of stack)

@@ -44,7 +44,7 @@ Example 2:
 ```
 
 ## Approach
-We use a **Line Sweep** combined with a **Max‑Heap** to keep track of active building heights.
+We use a **Line Sweep** combined with a **Max-Heap** to keep track of active building heights.
 
 ```text
 FUNCTION getSkyline(buildings):
@@ -55,7 +55,7 @@ FUNCTION getSkyline(buildings):
 
     SORT events BY (x, height)               // ensures starts before ends at same x
     result = []
-    heap = [(0, INF)]                         // (negHeight, endX) – max‑heap via negative height
+    heap = [(0, INF)]                         // (negHeight, endX) – max-heap via negative height
 
     FOR each (x, negH, endX) IN events:
         IF negH < 0:                         // building start
@@ -73,19 +73,19 @@ The sweep processes events in order, updating the heap of active heights and emi
 ## Walkthrough
 | Step | x | Event | Heap (negHeight, endX) | Max Height | Skyline so far |
 |------|---|-------|-----------------------|------------|----------------|
-| 1 | 2 | start (‑10, 9) | [(0,∞), (‑10,9)] | 10 | (2,10) |
-| 2 | 3 | start (‑15,7) | [(0,∞), (‑15,7), (‑10,9)] | 15 | (2,10),(3,15) |
-| 3 | 7 | end of height 15 | [(0,∞), (‑10,9)] | 10 | (2,10),(3,15),(7,10) |
+| 1 | 2 | start (-10, 9) | [(0,∞), (-10,9)] | 10 | (2,10) |
+| 2 | 3 | start (-15,7) | [(0,∞), (-15,7), (-10,9)] | 15 | (2,10),(3,15) |
+| 3 | 7 | end of height 15 | [(0,∞), (-10,9)] | 10 | (2,10),(3,15),(7,10) |
 | … | … | … | … | … | … |
 
 ## Complexity Analysis
 - **Time:** O(n log n) – sorting events and heap operations for each of the 2n events.
 - **Space:** O(n) – heap stores at most n active buildings and the result list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the skyline as a list of line segments instead of key points?
-2. Can the solution be adapted to handle buildings with non‑integer coordinates?
+2. Can the solution be adapted to handle buildings with non-integer coordinates?
 3. What if we need to support dynamic insertion and removal of buildings after the initial skyline is computed?
 
 ## Key Takeaway
-A line sweep with a max‑heap efficiently tracks the highest active building, allowing the skyline to be built in O(n log n) time.
+A line sweep with a max-heap efficiently tracks the highest active building, allowing the skyline to be built in O(n log n) time.

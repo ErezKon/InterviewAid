@@ -60,7 +60,7 @@ The largest prefix sum is `6`; answer `6 + 1 = 7`.
 ## Follow-Up Questions
 1. How would the solution change if negative numbers were allowed?
 2. Can you compute the answer without storing the entire array (streaming input)?
-3. What if we needed the smallest missing *non‑negative* integer instead?
+3. What if we needed the smallest missing *non-negative* integer instead?
 
 ## Key Takeaway
 The smallest integer greater than all sequential prefix sums is simply one more than the total sum of the array.

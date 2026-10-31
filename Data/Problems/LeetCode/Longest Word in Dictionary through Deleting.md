@@ -78,4 +78,4 @@ Consider `s = "abpcplea"` and dictionary sorted as `["apple", "plea", "ale", "mo
 
 ## 7. Key Takeaway
 
-> Sort the dictionary by length (desc) and lexicographically. The first word that is a subsequence of `s` is the answer. Use a two‑pointer subsequence check.
+> Sort the dictionary by length (desc) and lexicographically. The first word that is a subsequence of `s` is the answer. Use a two-pointer subsequence check.

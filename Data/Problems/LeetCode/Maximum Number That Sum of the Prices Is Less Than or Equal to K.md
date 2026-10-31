@@ -90,7 +90,7 @@ For `prices = [2,3,1,5]`, `k = 7`:
 *Time*: **O(n log n)** for sorting (`n = len(prices)`).
 *Space*: **O(1)** extra if sorting in place, otherwise **O(n)**.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem in **O(n)** time using a frequency array when `prices[i] ≤ 10⁵`?
 2. What if you must also output the list of selected item indices?
 3. How does the algorithm change if you can purchase at most `m` items regardless of cost?

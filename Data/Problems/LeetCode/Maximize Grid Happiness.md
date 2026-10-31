@@ -97,10 +97,10 @@ Output: 240
 
 Consider the first example (m=2, n=3). The DP processes rows sequentially.
 
-| Row | PrevMask (base‑3) | CurrMask (base‑3) | Introverts Used | Extroverts Used | Row Happiness |
+| Row | PrevMask (base-3) | CurrMask (base-3) | Introverts Used | Extroverts Used | Row Happiness |
 |-----|-------------------|-------------------|-----------------|-----------------|----------------|
 | 0   | 0 (empty)         | 012 (cells: empty, introvert, extrovert) | 1 | 1 | 120 (introvert) + 40 (extrovert) + neighbor effects = 160 |
-| 1   | 012               | 020 (empty, extrovert, empty) | 0 | 1 | Additional happiness from vertical neighbor (introvert‑extrovert) = 80 |
+| 1   | 012               | 020 (empty, extrovert, empty) | 0 | 1 | Additional happiness from vertical neighbor (introvert-extrovert) = 80 |
 
 The DP accumulates the best total (240) after processing both rows.
 
@@ -124,4 +124,4 @@ The DP accumulates the best total (240) after processing both rows.
 
 ## Key Takeaway
 
-> **Small grid dimensions (≤ 5) signal profile/bitmask DP.** Encode each row's state as a base‑3 number and transition row by row, tracking remaining resource counts.
+> **Small grid dimensions (≤ 5) signal profile/bitmask DP.** Encode each row's state as a base-3 number and transition row by row, tracking remaining resource counts.

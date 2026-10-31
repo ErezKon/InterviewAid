@@ -76,7 +76,7 @@ The root aggregates the maximum child depth plus one.
 ---
 
 ## Follow-Up Questions
-- How would you compute the minimum depth of an N‑ary tree?
+- How would you compute the minimum depth of an N-ary tree?
 - Can you solve it iteratively using a queue (BFS) instead of recursion?
 - How does the solution change if the tree is represented as an adjacency list?
 

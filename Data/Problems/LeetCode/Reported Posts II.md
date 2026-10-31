@@ -119,7 +119,7 @@ After processing, both post 1 and 2 have ≥2 distinct reporters → result 2.
 - Time: O(R) where R is number of reports.
 - Space: O(P + R) for storing sets per post.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the list of reported post IDs?
 2. What if each user can report a post only once, but duplicate reports appear in the input?
 3. How to handle a streaming scenario where reports arrive in real time?

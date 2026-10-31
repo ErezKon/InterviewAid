@@ -85,8 +85,8 @@ LIMIT 1;
 
 ## 6. Follow-Up Questions
 
-- How would you modify the query to return the top K questions with the highest answer rates?
-- How to handle cases where `shows` is zero to avoid division‑by‑zero errors?
+- How would you modify the query to return the top K questions with the highest answer rates?
+- How to handle cases where `shows` is zero to avoid division-by-zero errors?
 
 ## Key Takeaway
 

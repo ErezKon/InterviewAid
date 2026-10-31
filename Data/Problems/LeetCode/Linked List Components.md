@@ -43,7 +43,7 @@ Explanation: 0 and 1 are connected, 3 and 4 are connected, so [0, 1] and [3, 4] 
 
 ## Approach: Set + Linear Scan — O(n) ✅
 
-Store `nums` in a hash set for O(1) membership checks, then traverse the list counting transitions from non‑component to component nodes.
+Store `nums` in a hash set for O(1) membership checks, then traverse the list counting transitions from non-component to component nodes.
 
 ```text
 FUNCTION numComponents(head, nums):

@@ -41,7 +41,7 @@ Return* the **minimum** time to finish the race.*
 
 ## 2. Key Insight
 
-> Each tire becomes inefficient after a small number of consecutive laps because the lap time grows exponentially. After roughly 18 laps the time exceeds `changeTime + fi`, so it is always better to switch. Pre‑compute the cheapest way to run `j` consecutive laps on any tire for `j = 1 … 18`. Then use DP: `dp[i]` = minimum time to finish `i` laps, trying every possible last stint length `j`.
+> Each tire becomes inefficient after a small number of consecutive laps because the lap time grows exponentially. After roughly 18 laps the time exceeds `changeTime + fi`, so it is always better to switch. Pre-compute the cheapest way to run `j` consecutive laps on any tire for `j = 1 … 18`. Then use DP: `dp[i]` = minimum time to finish `i` laps, trying every possible last stint length `j`.
 
 ---
 
@@ -110,17 +110,17 @@ The minimum time to complete the race is 25 seconds.
 
 ## 6. Walkthrough
 
-Consider Example 1 (`numLaps = 4`).
+Consider Example 1 (`numLaps = 4`).
 | Step | Stint length `j` considered | `best[j]` (cheapest `j` laps) | DP transition `dp[i] = dp[i-j] + changeTime + best[j]` |
 |------|----------------------------|------------------------------|---------------------------------------------------|
 | i=1 | j=1 → best[1]=2 | dp[1] = dp[0] + 5 + 2 = 7 |
 | i=2 | j=2 → best[2]=8 | dp[2] = dp[0] + 5 + 8 = 13 |
 | i=3 | j=1 → dp[2]+5+2 = 20; j=2 → dp[1]+5+8 = 20; j=3 → best[3]=? ( > changeTime) ignored |
-| i=4 | j=2 → dp[2]+5+8 = 26; j=4 → best[4]=? ( > changeTime) ignored; best solution uses two stints of length 2 giving 21 as computed earlier. |
+| i=4 | j=2 → dp[2]+5+8 = 26; j=4 → best[4]=? ( > changeTime) ignored; best solution uses two stints of length 2 giving 21 as computed earlier. |
 The DP ultimately picks the combination that yields 21.
 
 ---
 
 ## 7. Key Takeaway
 
-> **Bound the useful consecutive laps, pre‑compute cheapest stints, then DP over total laps.** This reduces an exponential search to linear time.
+> **Bound the useful consecutive laps, pre-compute cheapest stints, then DP over total laps.** This reduces an exponential search to linear time.

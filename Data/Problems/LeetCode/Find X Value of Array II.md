@@ -72,7 +72,7 @@ FUNCTION buildSegTree(arr, k):
 
 FUNCTION query(l, r, x):
     trans ← multiply matrices for segment [l, r]
-    RETURN trans[1][x]   // 1 represents empty‑product remainder
+    RETURN trans[1][x]   // 1 represents empty-product remainder
 ```
 
 ---
@@ -135,11 +135,11 @@ Consider `nums = [2,3]`, `k = 4` and a query for the whole array, remainder `x =
 ## 7. Follow-Up Questions
 
 - How would the solution change if updates were range assignments instead of point updates?
-- Can we extend the segment‑tree approach to handle sum modulo `k` queries?
+- Can we extend the segment-tree approach to handle sum modulo `k` queries?
 - What optimizations are possible when `k` is large (e.g., > 100)?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Segment tree with matrix nodes** handles product‑remainder queries with updates. Since `k ≤ 5`, the k×k matrices are tiny, making matrix multiplication cheap.
+> **Segment tree with matrix nodes** handles product-remainder queries with updates. Since `k ≤ 5`, the k×k matrices are tiny, making matrix multiplication cheap.

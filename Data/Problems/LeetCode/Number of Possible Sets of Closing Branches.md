@@ -93,7 +93,7 @@ It can be proven, that there are only 2 possible sets of closing branches.
 
 The small bound `n ≤ 10` enables **bitmask enumeration** of all `2ⁿ` subsets of branches to close. For each subset:
 1. Derive the set of open branches.
-2. Run **Floyd‑Warshall** on the original graph to obtain all‑pairs shortest paths.
+2. Run **Floyd-Warshall** on the original graph to obtain all-pairs shortest paths.
 3. Verify that every pair of open branches has distance ≤ `maxDistance`.
 If the check passes, count the subset.
 
@@ -101,14 +101,14 @@ If the check passes, count the subset.
 
 ## 4. Walkthrough
 
-Consider Example 1 (`n = 3`).
+Consider Example 1 (`n = 3`).
 | Bitmask | Closed Branches | Open Branches | Pairwise Distances | Valid? |
 |---------|----------------|--------------|--------------------|--------|
-| 000     | {}             | {0,1,2}      | 0‑1:2, 1‑2:2, 0‑2:4 | ✅ |
-| 001     | {0}            | {1,2}        | 1‑2:2               | ✅ |
-| 010     | {1}            | {0,2}        | 0‑2:4               | ✅ |
+| 000     | {}             | {0,1,2}      | 0-1:2, 1-2:2, 0-2:4 | ✅ |
+| 001     | {0}            | {1,2}        | 1-2:2               | ✅ |
+| 010     | {1}            | {0,2}        | 0-2:4               | ✅ |
 | 011     | {0,1}          | {2}          | (single node)      | ✅ |
-| 100     | {2}            | {0,1}        | 0‑1:2               | ✅ |
+| 100     | {2}            | {0,1}        | 0-1:2               | ✅ |
 | 101     | {0,2}          | {1}          | (single node)      | ✅ |
 | 110     | {1,2}          | {0}          | (single node)      | ✅ |
 | 111     | {0,1,2}        | {}           | (empty)            | ✅ |
@@ -120,19 +120,19 @@ All eight subsets satisfy the distance constraint, but the problem asks for **cl
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | `O(2ⁿ · n³)` – enumerate subsets and run Floyd‑Warshall (`n³`) for each. |
-| **Space** | `O(n²)` – distance matrix for Floyd‑Warshall. |
+| **Time** | `O(2ⁿ · n³)` – enumerate subsets and run Floyd-Warshall (`n³`) for each. |
+| **Space** | `O(n²)` – distance matrix for Floyd-Warshall. |
 
 ---
 
 ## 6. Follow-Up Questions
 
-1. How would the solution change if `n` were up to 10⁵? (Consider Union‑Find or MST based approaches.)
+1. How would the solution change if `n` were up to 10⁵? (Consider Union-Find or MST based approaches.)
 2. What if the distance constraint applied only to a specific **root** branch instead of all pairs?
-3. Can the problem be solved using **bitmask DP** to avoid recomputing Floyd‑Warshall for every subset?
+3. Can the problem be solved using **bitmask DP** to avoid recomputing Floyd-Warshall for every subset?
 
 ---
 
 ## 7. Key Takeaway
 
-> When `n` is tiny, exhaustive bitmask enumeration combined with an all‑pairs shortest‑path check (Floyd‑Warshall) provides a simple yet powerful way to evaluate every possible subset.
+> When `n` is tiny, exhaustive bitmask enumeration combined with an all-pairs shortest-path check (Floyd-Warshall) provides a simple yet powerful way to evaluate every possible subset.

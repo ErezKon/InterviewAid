@@ -115,8 +115,8 @@ The algorithm accumulates the sum and resets to 0 when negative, yielding 52 as 
 ## 7. Follow-Up Questions
 
 - How would you modify the solution if substrings must be of length at least `k`?
-- Can you extend this to 2‑D grids where you need the maximum‑cost sub‑matrix?
-- What if the cost function is non‑linear, e.g., product of values?
+- Can you extend this to 2-D grids where you need the maximum-cost sub-matrix?
+- What if the cost function is non-linear, e.g., product of values?
 
 ---
 

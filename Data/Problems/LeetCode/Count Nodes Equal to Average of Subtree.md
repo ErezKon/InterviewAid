@@ -38,7 +38,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a post‑order DFS. For each node, obtain `(subSum, subCount)` from its left and right children, compute the total sum and count for the current subtree, and check if `totalSum // totalCount == node.val`. Increment a global counter when the condition holds.
+Perform a post-order DFS. For each node, obtain `(subSum, subCount)` from its left and right children, compute the total sum and count for the current subtree, and check if `totalSum // totalCount == node.val`. Increment a global counter when the condition holds.
 
 ## Walkthrough
 | Node | Left (sum,count) | Right (sum,count) | totalSum | totalCount | avg = totalSum // totalCount | matches? |
@@ -52,10 +52,10 @@ Perform a post‑order DFS. For each node, obtain `(subSum, subCount)` from its 
 - **Time:** O(N) – each node visited once.
 - **Space:** O(H) recursion stack, where H is tree height (≤ N).
 
-## Follow‑Up Questions
-1. How would you adapt the solution for a tree given as parent‑pointer array instead of node objects?
+## Follow-Up Questions
+1. How would you adapt the solution for a tree given as parent-pointer array instead of node objects?
 2. Can the problem be solved iteratively using an explicit stack?
-3. What changes are needed if the average should be computed using floating‑point division instead of integer division?
+3. What changes are needed if the average should be computed using floating-point division instead of integer division?
 
 ## Key Takeaway
-A post‑order traversal provides subtree sums and sizes in one pass, enabling direct comparison of a node’s value to its subtree’s integer average.
+A post-order traversal provides subtree sums and sizes in one pass, enabling direct comparison of a node’s value to its subtree’s integer average.

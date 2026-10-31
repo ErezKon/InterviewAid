@@ -40,7 +40,7 @@ Example 2:
 ```
 
 ## Approach
-Model the tickets as a directed multigraph where vertices are airports and edges are tickets. The required itinerary is an Eulerian path that starts at "JFK". Using Hierholzer's algorithm, perform a depth‑first traversal, always selecting the smallest lexical destination first (by sorting adjacency lists in reverse and popping). Record the path in post‑order and reverse it at the end.
+Model the tickets as a directed multigraph where vertices are airports and edges are tickets. The required itinerary is an Eulerian path that starts at "JFK". Using Hierholzer's algorithm, perform a depth-first traversal, always selecting the smallest lexical destination first (by sorting adjacency lists in reverse and popping). Record the path in post-order and reverse it at the end.
 
 ## Pseudocode
 ```text
@@ -79,7 +79,7 @@ Consider tickets `[["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"]]`.
 - **Time:** O(E log E) for sorting adjacency lists, where E = number of tickets.
 - **Space:** O(V + E) for the graph and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to handle multiple possible starting airports?
 2. Can the solution be adapted to return all valid itineraries in lexical order?
 3. What changes are needed if tickets can be reused (i.e., edges are not required to be used exactly once)?

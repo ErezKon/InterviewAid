@@ -80,7 +80,7 @@ Explanation: - The circle is centered at (0, 0) with radius 1, and the rectangle
 
 ## Walkthrough
 
-1. **First example** – Circle centered at origin with radius 1, rectangle from `(-1,-1)` to `(1,1)`. Clamping yields `closestX = 0`, `closestY = 0`. Distance `0 ≤ 1²`, so overlap → `true`.
+1. **First example** – Circle centered at origin with radius 1, rectangle from `(-1,-1)` to `(1,1)`. Clamping yields `closestX = 0`, `closestY = 0`. Distance `0 ≤ 1²`, so overlap → `true`.
 2. **Second example** – Rectangle far away (`x1=2`). Clamping gives `closestX = 2`, `closestY = 2`. Distance squared `(0-2)²+(0-2)² = 8 > 1²`, no overlap → `false`.
 3. **Third example** – Circle touches rectangle edge. Clamping results in point `(1,1)`. Distance squared `0 ≤ 2²`, overlap → `true`.
 
@@ -88,7 +88,7 @@ Explanation: - The circle is centered at (0, 0) with radius 1, and the rectangle
 
 ## Complexity Analysis
 
-- **Time:** O(1) – constant‑time arithmetic and clamping.
+- **Time:** O(1) – constant-time arithmetic and clamping.
 - **Space:** O(1) – only a few scalar variables.
 
 ---
@@ -103,4 +103,4 @@ Explanation: - The circle is centered at (0, 0) with radius 1, and the rectangle
 
 ## Key Takeaway
 
-> Circle‑rectangle overlap reduces to clamping the circle center to the rectangle bounds and checking the squared distance against the radius.
+> Circle-rectangle overlap reduces to clamping the circle center to the rectangle bounds and checking the squared distance against the radius.

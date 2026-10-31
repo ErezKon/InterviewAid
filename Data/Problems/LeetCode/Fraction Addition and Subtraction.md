@@ -113,7 +113,7 @@ Result `1/3`.
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm to support mixed numbers (e.g., `1_1/2`)?
-- Can you extend the solution to handle very large numerators/denominators using arbitrary‑precision arithmetic?
+- Can you extend the solution to handle very large numerators/denominators using arbitrary-precision arithmetic?
 - What changes are needed to output the result as a mixed fraction instead of an improper fraction?
 
 ---

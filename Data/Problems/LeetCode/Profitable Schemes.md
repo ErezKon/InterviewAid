@@ -67,10 +67,10 @@ Consider `n=5`, `minProfit=3`, `group=[2,2]`, `profit=[2,3]`.
 - Time: O(C * n * minProfit) where C is number of crimes.
 - Space: O(n * minProfit).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How to extend the solution to also limit the total number of crimes?
-- Can the DP be optimized to use a 1‑D array?
+- Can the DP be optimized to use a 1-D array?
 - What changes are needed if profits can be negative?
 
 ## Key Takeaway
-A 2‑dimensional DP over members and profit, iterating crimes in reverse member order, efficiently counts feasible profit schemes.
+A 2-dimensional DP over members and profit, iterating crimes in reverse member order, efficiently counts feasible profit schemes.

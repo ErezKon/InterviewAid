@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below use an invented "greater than everything left, smaller than everything right" definition. Correct idea: element `nums[i]` (1-indexed) is special iff `n % i == 0`; sum `nums[i]²` over those `i`. O(n).*
-
 You are given a **1-indexed** integer array `nums` of length `n`.
 
 An element `nums[i]` of `nums` is called **special** if `i` divides `n`, i.e. `n % i == 0`.
@@ -39,43 +37,41 @@ Hence, the sum of the squares of all special elements of nums is nums[1] * nums[
 ```
 
 ## Approach
-Perform a left‑to‑right pass to compute `leftMax[i]` – the maximum value among `nums[0..i-1]`. Perform a right‑to‑left pass to compute `rightMin[i]` – the minimum value among `nums[i+1..n-1]`. An element `nums[i]` is special if `nums[i] > leftMax[i]` and `nums[i] < rightMin[i]`. Accumulate `nums[i] * nums[i]` for all special elements.
+Walk the 1-indexed positions `i = 1..n`. Position `i` is special exactly when `i` is a divisor of `n`, so test `n % i == 0` and add `nums[i]²` (0-indexed: `nums[i-1]²`). With `n <= 50` a single linear scan is all that's needed; enumerating divisors up to `sqrt(n)` is an optional micro-optimization.
 
 ### Pseudocode
 ```text
-FUNCTION sumOfSpecialSquares(nums):
+FUNCTION sumOfSquares(nums):
     n ← LENGTH(nums)
-    leftMax ← ARRAY of size n filled with -∞
-    rightMin ← ARRAY of size n filled with +∞
-    maxSoFar ← -∞
-    FOR i ← 0 TO n-1:
-        leftMax[i] ← maxSoFar
-        maxSoFar ← MAX(maxSoFar, nums[i])
-    minSoFar ← +∞
-    FOR i ← n-1 DOWNTO 0:
-        rightMin[i] ← minSoFar
-        minSoFar ← MIN(minSoFar, nums[i])
     total ← 0
-    FOR i ← 0 TO n-1:
-        IF nums[i] > leftMax[i] AND nums[i] < rightMin[i]:
-            total ← total + nums[i] * nums[i]
+    FOR i ← 1 TO n:
+        IF n MOD i == 0:
+            total ← total + nums[i-1] * nums[i-1]
     RETURN total
 ```
 
 ## Walkthrough
-For `nums = [1,3,2,4,5]`:
-- `leftMax` = [-∞, 1, 3, 3, 4]
-- `rightMin` = [2, 2, 4, 5, +∞]
-Elements satisfying `> leftMax` and `< rightMin` are at indices 0 (1), 1 (3), and 4 (5). Their squares sum to `1 + 9 + 25 = 35`.
+For `nums = [2,7,1,19,18,3]`, `n = 6`:
+
+| i (1-indexed) | 6 % i | special? | nums[i] | square | running total |
+|---|---|---|---|---|---|
+| 1 | 0 | yes | 2 | 4 | 4 |
+| 2 | 0 | yes | 7 | 49 | 53 |
+| 3 | 0 | yes | 1 | 1 | 54 |
+| 4 | 2 | no | 19 | - | 54 |
+| 5 | 1 | no | 18 | - | 54 |
+| 6 | 0 | yes | 3 | 9 | 63 |
+
+Result: `63`, matching the expected output.
 
 ## Complexity Analysis
-- **Time:** `O(n)` – two linear passes.
-- **Space:** `O(n)` for the auxiliary arrays (can be reduced to `O(1)` by computing on the fly).
+- **Time:** `O(n)` - one pass over the indices (or `O(sqrt(n))` if only divisors are enumerated).
+- **Space:** `O(1)`.
 
-## Follow‑Up Questions
-1. How would you modify the solution to return the list of special elements instead of the sum?
-2. Can the problem be solved in a single pass using a monotonic stack?
-3. What changes are needed if the definition of *special* uses `≥` and `≤` instead of strict inequalities?
+## Follow-Up Questions
+1. How would you enumerate only the divisors of `n` in `O(sqrt(n))` time, taking care not to double count when `i * i == n`?
+2. What changes if the array were 0-indexed and the condition were `(i + 1)` divides `n`?
+3. How would you answer many queries "sum of squares over indices dividing `k`" for different `k` on the same array?
 
 ## Key Takeaway
-By precomputing the maximum on the left and minimum on the right for each position, we can identify special elements in linear time and easily sum their squares.
+The "special" condition depends only on the index, not on the values: it is simply "index divides `n`". Recognize the 1-indexed convention, test divisibility, and sum the squares.

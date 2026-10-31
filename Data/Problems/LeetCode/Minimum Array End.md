@@ -33,18 +33,18 @@ Example 2:
 
 ## Approach
 
-**Algorithm:** Bit‑Filling (embed counter into zero‑bits of `x`)
+**Algorithm:** Bit-Filling (embed counter into zero-bits of `x`)
 
-For each bit position where `x` has a `0`, we can choose to set it or not. To obtain the smallest possible maximum element, we fill those zero‑bits with the binary representation of `n‑1` (the smallest number that provides `n‑1` distinct values when combined with the fixed bits of `x`).
+For each bit position where `x` has a `0`, we can choose to set it or not. To obtain the smallest possible maximum element, we fill those zero-bits with the binary representation of `n-1` (the smallest number that provides `n-1` distinct values when combined with the fixed bits of `x`).
 
 ```text
 FUNCTION minEnd(n, x):
-    result ← x               // keep all 1‑bits of x
-    bitIdx ← 0               // index in binary of (n‑1)
+    result ← x               // keep all 1-bits of x
+    bitIdx ← 0               // index in binary of (n-1)
     val ← n - 1
     FOR b ← 0 TO 63 DO
         IF (x AND (1 << b)) = 0 THEN
-            // zero‑bit position, may take bit from val
+            // zero-bit position, may take bit from val
             IF (val AND (1 << bitIdx)) ≠ 0 THEN
                 result ← result OR (1 << b)
             END IF
@@ -63,7 +63,7 @@ FUNCTION minEnd(n, x):
 | 3    | 2        | 0      | 0        | leave bit 2 cleared | unchanged |
 | …    | …        | …      | …        | …      | … |
 
-After all zero‑bits are processed, `result` equals the minimal possible last element.
+After all zero-bits are processed, `result` equals the minimal possible last element.
 
 ## Complexity Analysis
 
@@ -72,7 +72,7 @@ After all zero‑bits are processed, `result` equals the minimal possible last e
 | Time   | **O(64)** – constant time over 64 bit positions |
 | Space  | **O(1)** – only a few scalar variables |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the array must be strictly increasing?
 2. What if each element has an associated cost and we want the minimum total cost?
@@ -80,4 +80,4 @@ After all zero‑bits are processed, `result` equals the minimal possible last e
 
 ## Key Takeaway
 
-By embedding the count `n‑1` into the zero‑bit positions of `x`, we obtain the smallest possible maximum element while preserving the required overall AND.
+By embedding the count `n-1` into the zero-bit positions of `x`, we obtain the smallest possible maximum element while preserving the required overall AND.

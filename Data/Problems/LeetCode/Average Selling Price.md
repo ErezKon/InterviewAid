@@ -92,17 +92,17 @@ GROUP BY p.product_id;
 ## Walkthrough
 | Step | Join Condition | price*units | units | cumulative sum | average |
 |------|----------------|------------|------|----------------|---------|
-| 1    | product 1, date 2020‑01‑15 in range | 10*5 = 50 | 5 | SUM(price*units)=50, SUM(units)=5 | 50/5 = 10 |
-| 2    | product 2, no matching units | – | 0 | SUM=0, SUM(units)=0 | 0 |
+| 1    | product 1, date 2020-01-15 in range | 10*5 = 50 | 5 | SUM(price*units)=50, SUM(units)=5 | 50/5 = 10 |
+| 2    | product 2, no matching units | – | 0 | SUM=0, SUM(units)=0 | 0 |
 
 ## Complexity Analysis
-- **Time:** O(p + u) for scanning both tables; the join is performed by the database engine.
-- **Space:** O(p + u) for intermediate join results.
+- **Time:** O(p + u) for scanning both tables; the join is performed by the database engine.
+- **Space:** O(p + u) for intermediate join results.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle overlapping price intervals for the same product?
 2. Extend the query to compute the average price per month.
 3. What indexes would improve the performance of this query?
 
 ## Key Takeaway
-A weighted average selling price can be derived by joining price intervals with sales records, summing `price * units`, and dividing by total units, handling zero‑sale cases with `IFNULL`.
+A weighted average selling price can be derived by joining price intervals with sales records, summing `price * units`, and dividing by total units, handling zero-sale cases with `IFNULL`.

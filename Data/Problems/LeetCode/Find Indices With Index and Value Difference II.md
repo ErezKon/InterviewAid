@@ -73,7 +73,7 @@ Use a hash map to store the earliest index for each value of `i - nums[i]`. Whil
 
 ## Follow-Up Questions
 1. How would you adapt the solution if the condition were `i + nums[i] == j + nums[j]`?
-2. Can the problem be solved in a single pass without extra space using two‑pointer technique?
+2. Can the problem be solved in a single pass without extra space using two-pointer technique?
 3. What if you need to return the actual pair of indices instead of just the distance?
 
 ## Key Takeaway

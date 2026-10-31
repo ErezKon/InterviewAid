@@ -87,7 +87,7 @@ Example 1:
 
 ## Approach
 
-Use a self‑join on the `Submissions` table.
+Use a self-join on the `Submissions` table.
 1. Select all rows where `parent_id IS NULL` as posts.
 2. LEFT JOIN the same table on `post.sub_id = comment.parent_id` to count comments, including posts with zero comments.
 3. GROUP BY the post ID.
@@ -104,8 +104,8 @@ FUNCTION commentCountSQL():
 | Step | Action | Result |
 |------|--------|--------|
 | 1 | Identify posts (`parent_id IS NULL`). | Rows 1 and 4 are posts. |
-| 2 | LEFT JOIN comments on `post.sub_id = comment.parent_id`. | Comments 2,3 join to post 1; comment 5 joins to post 4. |
-| 3 | GROUP BY post ID and COUNT comment IDs. | Post 1 → 2 comments, Post 4 → 1 comment. |
+| 2 | LEFT JOIN comments on `post.sub_id = comment.parent_id`. | Comments 2,3 join to post 1; comment 5 joins to post 4. |
+| 3 | GROUP BY post ID and COUNT comment IDs. | Post 1 → 2 comments, Post 4 → 1 comment. |
 | 4 | ORDER BY post ID for deterministic output. |
 
 ---
@@ -123,10 +123,10 @@ FUNCTION commentCountSQL():
 
 1. How would you modify the query to include the content of each comment?
 2. What index would you create to optimise this query for large tables?
-3. How can you retrieve the top‑k posts with the most comments?
+3. How can you retrieve the top-k posts with the most comments?
 
 ---
 
 ## Key Takeaway
 
-> **Self‑join** a table to relate parent‑child rows, then **LEFT JOIN** to include parents with zero children.
+> **Self-join** a table to relate parent-child rows, then **LEFT JOIN** to include parents with zero children.

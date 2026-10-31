@@ -70,7 +70,7 @@ FUNCTION btreeGameWinningMove(root, n, x):
 | Step | Action | Left Subtree | Right Subtree | Parent Region |
 |------|--------|--------------|---------------|---------------|
 | 1 | Compute subtree sizes for node `x` | `leftCount` | `rightCount` | `parentCount = n - leftCount - rightCount - 1` |
-| 2 | Compare each region size to `n/2` | If any > `n/2`, Player 2 can choose that region and win |
+| 2 | Compare each region size to `n/2` | If any > `n/2`, Player 2 can choose that region and win |
 
 For the first example, `leftCount = 6`, `rightCount = 2`, `parentCount = 2`. Since `6 > 11/2`, return `true`.
 

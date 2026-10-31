@@ -83,7 +83,7 @@ Total changes = 2, but we can achieve beauty with a single change by flipping th
 - **Time:** `O(n)` where `n` is the length of the string.
 - **Space:** `O(1)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if blocks could have odd length as long as they are uniform?
 - Can we extend the approach to strings over a larger alphabet?

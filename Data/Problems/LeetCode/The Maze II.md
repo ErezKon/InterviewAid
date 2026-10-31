@@ -48,7 +48,7 @@ Example 3:
 ```
 
 ## Approach
-Treat each stop position as a node in a graph. The edge weight between two nodes equals the number of cells rolled. Since edge weights are non‑negative, Dijkstra’s algorithm yields the shortest distance.
+Treat each stop position as a node in a graph. The edge weight between two nodes equals the number of cells rolled. Since edge weights are non-negative, Dijkstra’s algorithm yields the shortest distance.
 
 ```text
 FUNCTION shortestDistance(maze, start, destination):
@@ -75,12 +75,12 @@ FUNCTION shortestDistance(maze, start, destination):
 Start at (0,4). Rolling left stops at (0,1) after 3 steps, etc. Dijkstra explores all reachable stops, always expanding the node with smallest accumulated distance until the destination is popped.
 
 ## Complexity Analysis
-- Time: O(m · n log (m · n)) – each cell may be processed once and heap operations cost log of the number of cells.
-- Space: O(m · n) for the distance matrix and heap.
+- Time: O(m · n log (m · n)) – each cell may be processed once and heap operations cost log of the number of cells.
+- Space: O(m · n) for the distance matrix and heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to return the actual path taken?
-2. Can the solution be optimized to O(m · n) using a 0‑1 BFS variant?
+2. Can the solution be optimized to O(m · n) using a 0-1 BFS variant?
 3. What changes are needed if the ball can also stop voluntarily before hitting a wall?
 
 ## Key Takeaway

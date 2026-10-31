@@ -85,10 +85,10 @@ Sum = 2.
 *Time*: O(26·t) ≈ O(t) – each transformation processes 26 letters.
 *Space*: O(26) – two fixed-size arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can you compute the result in O(1) using matrix exponentiation for very large `t`?
 2. What changes if the alphabet size is not 26?
 3. Can you extend the method to handle multiple independent strings simultaneously?
 
 ## Key Takeaway
-Repeated character shifts can be simulated with a small fixed‑size frequency array, updating it `t` times with modular arithmetic.
+Repeated character shifts can be simulated with a small fixed-size frequency array, updating it `t` times with modular arithmetic.

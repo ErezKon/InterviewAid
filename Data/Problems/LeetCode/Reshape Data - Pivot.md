@@ -90,4 +90,4 @@ FUNCTION pivotTable(weather):
 
 ## Key Takeaway
 
-> `DataFrame.pivot()` reshapes long‑format to wide‑format — specify `index` (rows), `columns` (new columns), and `values` (cell data). The inverse of `melt`.
+> `DataFrame.pivot()` reshapes long-format to wide-format — specify `index` (rows), `columns` (new columns), and `values` (cell data). The inverse of `melt`.

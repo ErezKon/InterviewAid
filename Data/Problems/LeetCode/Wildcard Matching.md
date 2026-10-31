@@ -74,16 +74,15 @@ FUNCTION isMatch(s, p):
 
 ## 4. Walkthrough
 
-Consider `s = "adceb"`, `p = "*a*b"`.
+Example 3: `s = "cb"`, `p = "?a"`.
 
-| i (s) | j (p) | dp[i][j] | Reason |
-|-------|-------|----------|--------|
-| 0 | 0 | true | empty matches empty |
-| 0 | 1 | true | `*` can match empty |
-| 1 (a) | 2 (a) | true | characters equal |
-| 5 (b) | 5 (b) | true | final match via `*` handling |
+| dp | j=0 (empty) | j=1 (`?`) | j=2 (`a`) |
+|----|-------------|-----------|-----------|
+| i=0 (empty) | true | false (`?` needs a char) | false |
+| i=1 (`c`) | false | true (`?` matches `c`: dp[0][0]) | false (`a` ≠ `c`) |
+| i=2 (`b`) | false | false (dp[1][0]) | false (`a` ≠ `b`) |
 
-The table shows a true value at `dp[5][5]`, so the strings match.
+`dp[2][2] = false` → **Output: false**. For Example 2 (`"aa"`, `"*"`): dp[0][1] = true, then dp[1][1] = dp[0][1] = true and dp[2][1] = dp[1][1] = true → `true`. Example 1 (`"aa"`, `"a"`) ends with dp[2][1] = false.
 
 ---
 
@@ -94,11 +93,11 @@ The table shows a true value at `dp[5][5]`, so the strings match.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm to support `+` (one or more characters) as a wildcard?
 - Can you achieve O(1) extra space by using two rolling arrays?
-- What changes are needed for case‑insensitive matching?
+- What changes are needed for case-insensitive matching?
 
 ---
 

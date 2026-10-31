@@ -47,11 +47,11 @@ Explanation: Choosing index 2 is optimal: nums1[2] * nums2[2] = 3 * 10 = 30 is t
 ```
 
 ## Approach
-The key insight is to process elements in **decreasing order of `nums2`**. When iterating, the current `nums2` value becomes the minimum (`min2`) for any subset that includes the current element and any previously processed elements. We maintain the **k largest `nums1` values** seen so far using a **min‑heap**. For each element:
+The key insight is to process elements in **decreasing order of `nums2`**. When iterating, the current `nums2` value becomes the minimum (`min2`) for any subset that includes the current element and any previously processed elements. We maintain the **k largest `nums1` values** seen so far using a **min-heap**. For each element:
 1. Insert its `nums1` into the heap and add to a running sum.
 2. If the heap size exceeds `k`, remove the smallest `nums1` (pop from heap) and adjust the sum.
 3. When the heap size equals `k`, compute `score = sum1 × current nums2` and update the answer.
-This yields an O(n log n) solution.
+This yields an O(n log n) solution.
 
 ### Pseudocode
 ```text
@@ -84,13 +84,13 @@ Take `nums1 = [1,3,3,2]`, `nums2 = [2,1,3,4]`, `k = 3`.
 Result = 12.
 
 ## Complexity Analysis
-*Time:* O(n log n) for sorting and heap operations.
+*Time:* O(n log n) for sorting and heap operations.
 *Space:* O(k) for the heap plus O(n) for the paired list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm adapt if `k` could vary for each query?
 2. Can we achieve O(n) time using a selection algorithm instead of full sorting?
 3. What changes are needed if the score definition used `max(nums2)` instead of `min(nums2)`?
 
 ## Key Takeaway
-Sorting by the potential minimum (`nums2`) and keeping the top‑k `nums1` values with a min‑heap lets us evaluate every possible `min2` efficiently, yielding a linearithmic solution.
+Sorting by the potential minimum (`nums2`) and keeping the top-k `nums1` values with a min-heap lets us evaluate every possible `min2` efficiently, yielding a linearithmic solution.

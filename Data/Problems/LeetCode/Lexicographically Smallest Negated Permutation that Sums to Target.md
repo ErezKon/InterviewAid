@@ -45,7 +45,7 @@ Example 2:
 
 ## Approach
 
-Greedy reduction to a subset‑sum problem — ✅
+Greedy reduction to a subset-sum problem — ✅
 
 ```text
 FUNCTION smallestNegatedPermutation(n, target):
@@ -74,12 +74,12 @@ FUNCTION smallestNegatedPermutation(n, target):
 
 `n = 4, target = 2`
 
-1. `total = 10`, `S = (10‑2)/2 = 4`.
+1. `total = 10`, `S = (10-2)/2 = 4`.
 2. Iterate numbers descending:
    - `num=4`: `S (4) ≥ 4` → negate 4, `S=0`.
    - Remaining numbers are not negated.
 3. Build result: `[1, 2, 3, -4]` → sum = 2, but lexicographically larger than `[1, -2, 3, -4]`.
-4. To obtain lexicographically smallest, after selecting the subset, we **re‑order** by placing negated smaller numbers earlier when possible. Adjust by swapping signs of earlier numbers while preserving the subset sum, yielding `[1, -2, 3, -4]`.
+4. To obtain lexicographically smallest, after selecting the subset, we **re-order** by placing negated smaller numbers earlier when possible. Adjust by swapping signs of earlier numbers while preserving the subset sum, yielding `[1, -2, 3, -4]`.
 
 ## Complexity Analysis
 
@@ -95,4 +95,4 @@ FUNCTION smallestNegatedPermutation(n, target):
 
 ## Key Takeaway
 
-> Reduce the problem to a subset‑sum: find a subset whose sum equals `(total‑target)/2`. Greedily choose the largest numbers for the subset, then construct the permutation, adjusting signs to achieve the lexicographically smallest ordering.
+> Reduce the problem to a subset-sum: find a subset whose sum equals `(total-target)/2`. Greedily choose the largest numbers for the subset, then construct the permutation, adjusting signs to achieve the lexicographically smallest ordering.

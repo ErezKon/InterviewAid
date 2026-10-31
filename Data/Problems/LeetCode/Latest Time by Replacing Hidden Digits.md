@@ -83,18 +83,18 @@ FUNCTION maximumTime(time):
 ## 5. Complexity Analysis
 
 - **Time:** O(1) – constant number of operations regardless of input size.
-- **Space:** O(1) – only a few variables and a mutable copy of the 5‑character string.
+- **Space:** O(1) – only a few variables and a mutable copy of the 5-character string.
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you modify the algorithm for a 12‑hour clock with AM/PM?
+- How would you modify the algorithm for a 12-hour clock with AM/PM?
 - What if the input allowed any number of `?` and you needed the *smallest* valid time?
-- Can you extend this to validate and fill a full date‑time string (e.g., `"YYYY-MM-DD HH:MM"`)?
+- Can you extend this to validate and fill a full date-time string (e.g., `"YYYY-MM-DD HH:MM"`)?
 
 ---
 
 ## Key Takeaway
 
-> Greedily maximize each digit while respecting hour and minute bounds, processing left‑to‑right with simple case analysis.
+> Greedily maximize each digit while respecting hour and minute bounds, processing left-to-right with simple case analysis.

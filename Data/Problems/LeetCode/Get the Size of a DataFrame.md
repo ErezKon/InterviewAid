@@ -102,7 +102,7 @@ FUNCTION getDataframeSize(df):
 ## 6. Follow-Up Questions
 
 * How would you retrieve the size of a DataFrame without using `.shape`?
-* How can you get the total number of elements (rows × columns) efficiently?
+* How can you get the total number of elements (rows × columns) efficiently?
 
 ---
 

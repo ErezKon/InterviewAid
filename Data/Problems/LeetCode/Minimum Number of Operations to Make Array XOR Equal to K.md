@@ -80,7 +80,7 @@ Thus only one change is needed.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Bit‑count scan | **O(n)** | **O(1)** |
+| Bit-count scan | **O(n)** | **O(1)** |
 
 ---
 

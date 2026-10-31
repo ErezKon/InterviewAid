@@ -87,10 +87,10 @@ Swap values of nodes 3 and 2 → corrected BST.
 - **Time:** O(n) where n is the number of nodes.
 - **Space:** O(1) auxiliary space using Morris traversal (excluding recursion stack).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if you were allowed O(n) space?
 2. Can the algorithm be extended to recover a BST where more than two nodes are swapped?
 3. What modifications are needed to handle duplicate values in the BST?
 
 ## Key Takeaway
-Morris inorder traversal lets you detect the two out‑of‑order nodes in a BST using constant extra space and fix the tree by swapping their values.
+Morris inorder traversal lets you detect the two out-of-order nodes in a BST using constant extra space and fix the tree by swapping their values.

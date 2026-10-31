@@ -114,11 +114,11 @@ All levels satisfy their constraints, so the function returns `true`.
 ## Follow-Up Questions
 
 1. How would you modify the algorithm to return the first level that violates the Even-Odd property?
-2. Can this problem be solved with a depth‑first search while still maintaining O(h) auxiliary space, where h is tree height?
+2. Can this problem be solved with a depth-first search while still maintaining O(h) auxiliary space, where h is tree height?
 3. How would you adapt the solution for a streamed tree representation where children are provided lazily?
 
 ---
 
 ## Key Takeaway
 
-> **BFS level-order traversal with per‑level validation. Check value parity and ordering direction based on level index. Straightforward constraint checking.**
+> **BFS level-order traversal with per-level validation. Check value parity and ordering direction based on level index. Straightforward constraint checking.**

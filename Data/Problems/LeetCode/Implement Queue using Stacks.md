@@ -99,7 +99,7 @@ myQueue.empty(); // return false
 
 ## 5. Complexity Analysis
 
-- **Time**: Amortized O(1) per operation; worst‑case O(n) when transferring.
+- **Time**: Amortized O(1) per operation; worst-case O(n) when transferring.
 - **Space**: O(n) for storing elements across two stacks.
 
 ---

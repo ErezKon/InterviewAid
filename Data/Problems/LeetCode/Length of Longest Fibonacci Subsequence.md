@@ -45,7 +45,7 @@ Example 2:
 
 ```text
 FUNCTION lenLongestFibSubseq(arr):
-    // Map each value to its index for O(1) look‑up
+    // Map each value to its index for O(1) look-up
     SET indexMap ← {value: idx FOR idx, value IN ENUMERATE(arr)}
     SET dp ← {}               // (i, j) → length of sequence ending with arr[i], arr[j]
     SET maxLen ← 0
@@ -94,4 +94,4 @@ The longest length recorded is 5, matching the subsequence `[1,2,3,5,8]`.
 
 ## 7. Key Takeaway
 
-> Use DP on index pairs with a hash map for fast predecessor lookup; each pair extends a Fibonacci‑like sequence by one element.
+> Use DP on index pairs with a hash map for fast predecessor lookup; each pair extends a Fibonacci-like sequence by one element.

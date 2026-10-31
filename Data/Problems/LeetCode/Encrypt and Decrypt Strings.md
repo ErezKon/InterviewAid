@@ -61,7 +61,7 @@ encrypter.decrypt("eizfeiam"); // return 2.
 ```
 
 ## Approach
-Pre‑process the dictionary: for each word compute its encrypted form using a hash map from character to value, then store the frequency of each encrypted string. Decryption queries become a simple lookup.
+Pre-process the dictionary: for each word compute its encrypted form using a hash map from character to value, then store the frequency of each encrypted string. Decryption queries become a simple lookup.
 
 ## Pseudocode
 ```text
@@ -98,14 +98,14 @@ FUNCTION decrypt(query, freq):
 A query `"123"` looks up `freq["123"]` → 1.
 
 ## Complexity Analysis
-- **Pre‑processing:** O(N·L) where N is number of dictionary words and L is average word length.
+- **Pre-processing:** O(N·L) where N is number of dictionary words and L is average word length.
 - **Query:** O(1) lookup per encrypted string.
 - **Space:** O(N·L) for storing encrypted forms and their counts.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle collisions if two different characters map to the same value?
 - Can you support dynamic updates to the dictionary (add/remove words) efficiently?
 - What if the encryption uses a reversible algorithm instead of a simple lookup?
 
 ## Key Takeaway
-Pre‑computing encrypted representations and counting frequencies turns decryption into constant‑time lookups, enabling fast queries even with large dictionaries.
+Pre-computing encrypted representations and counting frequencies turns decryption into constant-time lookups, enabling fast queries even with large dictionaries.

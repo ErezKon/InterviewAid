@@ -43,7 +43,7 @@ Explanation: n is already a perfect square, Alice can win with one move, removin
 ```
 
 ## Approach
-The game is a classic impartial combinatorial game. Use DP to compute a win/lose state for each `i` from `1` to `n`. `dp[i]` is true if there exists a divisor `d` of `i` such that `dp[d]` is false (i.e., moving to a losing position for the opponent). Pre‑compute divisors for each number up to `n`.
+The game is a classic impartial combinatorial game. Use DP to compute a win/lose state for each `i` from `1` to `n`. `dp[i]` is true if there exists a divisor `d` of `i` such that `dp[d]` is false (i.e., moving to a losing position for the opponent). Pre-compute divisors for each number up to `n`.
 
 ### Pseudocode
 ```text
@@ -69,11 +69,11 @@ FUNCTION canAliceWin(n):
 Thus Alice can win for any `n > 1`.
 
 ## Complexity Analysis
-- **Time:** O(n · √n) – for each `i` we enumerate divisors up to √i.
+- **Time:** O(n · √n) – for each `i` we enumerate divisors up to √i.
 - **Space:** O(n) for the DP array.
 
-## Follow‑Up Questions
-1. Can the divisor enumeration be optimized using a sieve‑like approach?
+## Follow-Up Questions
+1. Can the divisor enumeration be optimized using a sieve-like approach?
 2. How would the solution change if a move could also increase the number by adding a divisor?
 3. What is the result for very large `n` (e.g., up to 10^9) and how would you handle it?
 

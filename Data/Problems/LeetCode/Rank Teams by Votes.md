@@ -52,7 +52,7 @@ Example 3:
 ```
 
 ## Approach
-Count votes for each team at each position using a dictionary mapping team → array of counts. Then sort the teams by a tuple of counts (from highest rank to lowest) in descending order, using the team name as a secondary key for alphabetical tie‑break.
+Count votes for each team at each position using a dictionary mapping team → array of counts. Then sort the teams by a tuple of counts (from highest rank to lowest) in descending order, using the team name as a secondary key for alphabetical tie-break.
 
 ```text
 FUNCTION rankTeams(votes):
@@ -86,13 +86,13 @@ END FUNCTION
 |Result| Concatenated team order, e.g., "ACB" |
 
 ## Complexity Analysis
-- Time: O(m · n + k log k) where m = number of votes, n = length of each vote, k = number of distinct teams (≤26).
-- Space: O(k · n) for the count map.
+- Time: O(m · n + k log k) where m = number of votes, n = length of each vote, k = number of distinct teams (≤26).
+- Space: O(k · n) for the count map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for a dynamic stream of votes?
 2. Can you compute the ranking using a priority queue instead of sorting?
 3. What changes are needed if the number of teams exceeds 26 (e.g., arbitrary strings)?
 
 ## Key Takeaway
-By counting votes per position and sorting teams using these count vectors, you can derive the overall ranking respecting hierarchical preferences and alphabetical tie‑breaks.
+By counting votes per position and sorting teams using these count vectors, you can derive the overall ranking respecting hierarchical preferences and alphabetical tie-breaks.

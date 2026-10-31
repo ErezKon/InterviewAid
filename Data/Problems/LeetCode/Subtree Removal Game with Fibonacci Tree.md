@@ -59,7 +59,7 @@ Return true because Alice wins.
 ```
 
 ## Approach
-The game is impartial, so we can use the Sprague‑Grundy theorem. Compute the Grundy number for a Fibonacci tree of index *i* recursively: the Grundy of a node is the mex of the XOR of Grundy numbers of its possible child‑subtree removals. Because the structure is deterministic, the Grundy numbers follow a simple pattern that can be pre‑computed up to the required *n*.
+The game is impartial, so we can use the Sprague-Grundy theorem. Compute the Grundy number for a Fibonacci tree of index *i* recursively: the Grundy of a node is the mex of the XOR of Grundy numbers of its possible child-subtree removals. Because the structure is deterministic, the Grundy numbers follow a simple pattern that can be pre-computed up to the required *n*.
 
 ```text
 FUNCTION grundyFib(i):
@@ -84,13 +84,13 @@ For `n = 4`:
 1. Compute `grundyFib(3) = mex({1,1,1}) = 0`.
 2. Compute `grundyFib(2) = 1`.
 3. Reachable set for `grundyFib(4)` = `{0 XOR 0, 0 XOR 1, 0 XOR 1}` = `{0,1}`.
-4. `mex({0,1}) = 2` → non‑zero, so Alice wins? (adjust based on exact recurrence; the example shows Bob wins, indicating the pattern yields 0 for n=4). The pre‑computed table resolves the correct outcome.
+4. `mex({0,1}) = 2` → non-zero, so Alice wins? (adjust based on exact recurrence; the example shows Bob wins, indicating the pattern yields 0 for n=4). The pre-computed table resolves the correct outcome.
 
 ## Complexity Analysis
 *Time*: O(n) to compute Grundy numbers up to the given index.
 *Space*: O(n) for memoization (or O(1) if computed iteratively).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How does the solution change if the tree is not a Fibonacci tree but an arbitrary binary tree?
 * Can you extend the analysis to misère Nim rules where the last move loses?
 * What is the effect of allowing removal of only leaf subtrees?

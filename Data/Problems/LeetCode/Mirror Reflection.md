@@ -101,7 +101,7 @@ For `p = 2, q = 1`:
 
 1. How would the solution change if the laser could start from any corner?
 2. What if the room were a rectangle with different side lengths?
-3. Can this approach be extended to 3‑dimensional mirrored chambers?
+3. Can this approach be extended to 3-dimensional mirrored chambers?
 
 ---
 

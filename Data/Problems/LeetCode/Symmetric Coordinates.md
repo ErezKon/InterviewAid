@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: #2978 "Symmetric Coordinates" is a premium **SQL** problem (table `Coordinates(X, Y)`: find pairs `(X1, Y1)`, `(X2, Y2)` with `X1 = Y2` and `X2 = Y1`, output distinct pairs with `X ≤ Y`, ordered by X, Y). The statement below is the official one (via doocs); the Approach/Walkthrough further down still solve an invented algorithmic problem and need an SQL rewrite.*
+> *Note: #2978 "Symmetric Coordinates" is a premium **SQL** problem (table `Coordinates(X, Y)`: find pairs `(X1, Y1)`, `(X2, Y2)` with `X1 = Y2` and `X2 = Y1`, output distinct pairs with `X ≤ Y`, ordered by X, Y). Statement verified via doocs; Approach rewritten as SQL in session 8.*
 
 Table: `Coordinates`
 
@@ -62,41 +62,36 @@ The output table is sorted by X and Y in ascending order.
 ```
 
 ## Approach
-Compute the candidate symmetry line as the average of the minimum and maximum x‑coordinates. Then verify that for each point its mirrored counterpart exists using a hash set of encoded points.
+Give every row an id with `ROW_NUMBER()` (the table can hold duplicates), self-join rows `a`, `b` where `a.X = b.Y` and `a.Y = b.X` and the two rows are **different** (`a.id <> b.id`). The id check matters for points on the diagonal: `(20, 20)` is only symmetric if it appears at least twice. Keep `a.X <= a.Y`, de-duplicate, and sort.
 
-```text
-FUNCTION hasSymmetry(points):
-    SET minX ← +∞, maxX ← -∞
-    FOR each (x, y) IN points:
-        SET minX ← MIN(minX, x)
-        SET maxX ← MAX(maxX, x)
-    SET line ← (minX + maxX) / 2   // candidate k
-    CREATE set ← empty hash set
-    FOR each (x, y) IN points:
-        ADD (x, y) TO set   // encode as string "x#y"
-    FOR each (x, y) IN points:
-        SET mirrorX ← 2*line - x
-        IF (mirrorX, y) NOT IN set:
-            RETURN false
-    RETURN true
+```sql
+WITH t AS (
+    SELECT X, Y, ROW_NUMBER() OVER () AS id
+    FROM Coordinates
+)
+SELECT DISTINCT a.X AS x, a.Y AS y
+FROM t a
+JOIN t b
+  ON a.X = b.Y AND a.Y = b.X AND a.id <> b.id
+WHERE a.X <= a.Y
+ORDER BY x, y;
 ```
 
 ## Walkthrough
-For `points = [[1,1],[-1,1]]`:
-- `minX = -1`, `maxX = 1` → `line = 0`.
-- Set contains `{(1,1), (-1,1)}`.
-- Mirror of `(1,1)` is `(-1,1)` → present.
-- Mirror of `(-1,1)` is `(1,1)` → present.
-- All checks pass → return `true`.
+For the example table (ids 1–6 in input order):
+- Row 1 `(20, 20)` matches row 2 `(20, 20)` (different id) → keep `(20, 20)`; row 2 matches row 1 → same pair, removed by `DISTINCT`.
+- Row 3 `(20, 21)` matches row 6 `(21, 20)` → `20 <= 21`, keep `(20, 21)`; row 6 fails `X <= Y`.
+- Row 5 `(22, 23)` matches row 4 `(23, 22)` → keep `(22, 23)`; row 4 fails `X <= Y`.
+- Sorted result: `(20, 20)`, `(20, 21)`, `(22, 23)`.
 
 ## Complexity Analysis
-- **Time:** O(n) – one pass to find min/max and another to verify.
-- **Space:** O(n) – hash set storing all points.
+- **Time:** O(n log n) with a hash/merge join on `(X, Y)` plus the final sort (O(n²) worst case for a naive nested-loop join with many duplicates).
+- **Space:** O(n) for the numbered CTE and join buffers.
 
-## Follow‑Up Questions
-1. How would you handle symmetry about a horizontal line `y = k`?
-2. Can the algorithm be extended to check for diagonal symmetry?
-3. What changes if the input size is huge and cannot fit into memory?
+## Follow-Up Questions
+1. How would you count how many symmetric partners each coordinate has?
+2. How would you solve it without window functions (e.g. `GROUP BY X, Y` with `COUNT(*) > 1` for diagonal points)?
+3. Which index would speed up the self-join?
 
 ## Key Takeaway
-The symmetry line is uniquely determined by the extreme x‑coordinates; verifying mirrored points with a hash set yields an O(n) solution.
+A self-join with swapped columns finds mirrored pairs; number the rows first so a diagonal point is not matched with itself.

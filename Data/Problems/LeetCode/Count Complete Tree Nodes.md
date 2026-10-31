@@ -39,7 +39,7 @@ Example 3:
 
 ## Approach
 **Binary Search on the Last Level** – O(log² n)
-The height of a complete tree is at most log n. By checking whether a node exists at a given index on the last level using binary search, we can determine the number of nodes on that level.
+The height of a complete tree is at most log n. By checking whether a node exists at a given index on the last level using binary search, we can determine the number of nodes on that level.
 
 ```text
 FUNCTION countNodes(root):
@@ -83,21 +83,21 @@ The `exists` helper checks if a node at a given index exists by traversing from 
 ## Walkthrough
 | Step | Action | Explanation |
 |------|--------|-------------|
-| 1 | Compute tree height `h = 2` (levels 0‑2) | Traverses leftmost path 1→2→4 |
-| 2 | Upper nodes count = 2^2‑1 = 3 | Nodes on levels 0‑1 |
-| 3 | Binary search indices 0‑3 on last level | Checks existence of nodes 4,5,6,7 |
+| 1 | Compute tree height `h = 2` (levels 0-2) | Traverses leftmost path 1→2→4 |
+| 2 | Upper nodes count = 2^2-1 = 3 | Nodes on levels 0-1 |
+| 3 | Binary search indices 0-3 on last level | Checks existence of nodes 4,5,6,7 |
 | 4 | `exists` returns true for indices 0,1,2 and false for 3 | Node 7 is missing |
 | 5 | `left` ends at 3 → three nodes on last level |
 | 6 | Total = 3 + 3 = 6 |
 
 ## Complexity Analysis
-- **Time:** O(log² n) – height computation O(log n) and binary search O(log n) each checking existence in O(log n).
-- **Space:** O(log n) recursion stack for height/computation.
+- **Time:** O(log² n) – height computation O(log n) and binary search O(log n) each checking existence in O(log n).
+- **Space:** O(log n) recursion stack for height/computation.
 
 ## Follow-Up Questions
 1. How would you count nodes in a **perfect** binary tree in O(1)?
-2. Can you adapt the algorithm to return the **k-th** node in level‑order?
-3. How would you modify the solution for a **complete n‑ary tree**?
+2. Can you adapt the algorithm to return the **k-th** node in level-order?
+3. How would you modify the solution for a **complete n-ary tree**?
 
 ## Key Takeaway
-Leverage the structural property of complete trees: binary search on the last level reduces the problem from O(n) to O(log² n).
+Leverage the structural property of complete trees: binary search on the last level reduces the problem from O(n) to O(log² n).

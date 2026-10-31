@@ -82,10 +82,10 @@ Result = 9.
 - **Time:** `O(n + m log m)` where `n` is length of `power` (building count map) and `m` is number of distinct damage values (sorting and DP).
 - **Space:** `O(m)` for the count map, sorted list, and DP array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution adapt if the forbidden difference were `k` instead of `1`?
 2. Can you extend the DP to also return the actual set of chosen spells?
 3. What changes are needed if each spell also has a cooldown period after casting?
 
 ## Key Takeaway
-Compressing values and applying a House‑Robber style DP efficiently handles the “no adjacent damage” constraint.
+Compressing values and applying a House-Robber style DP efficiently handles the “no adjacent damage” constraint.

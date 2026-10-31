@@ -54,7 +54,7 @@ Explanation: - After queries[0], there is an obstacle at distance 10.
 
 ---
 
-## 2. Approach: Max‑Heap of Size k — O(n log k) ✅
+## 2. Approach: Max-Heap of Size k — O(n log k) ✅
 
 ```text
 FUNCTION kthNearestObstacles(queries, k):
@@ -84,7 +84,7 @@ Consider `queries = [(1,2), (3,0), (0,4)]` with `k = 2`.
 | 2 | (3,0) | 3 | [3,3] | 3 (heap top) |
 | 3 | (0,4) | 4 | [4,3] → pop 4 → [3,3] | 3 |
 
-The heap always keeps the two closest distances; its top is the 2‑nd nearest.
+The heap always keeps the two closest distances; its top is the 2-nd nearest.
 
 ---
 
@@ -92,12 +92,12 @@ The heap always keeps the two closest distances; its top is the 2‑nd nearest.
 
 | Metric | Value | Explanation |
 |--------|-------|-------------|
-| Time | O(n log k) | Each insertion into max‑heap of size ≤ k |
+| Time | O(n log k) | Each insertion into max-heap of size ≤ k |
 | Space | O(k) | Heap stores at most k distances |
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you adapt the solution for **Euclidean** distance?
 2. Can you support **deletions** of obstacles efficiently?
@@ -107,4 +107,4 @@ The heap always keeps the two closest distances; its top is the 2‑nd nearest.
 
 ## Key Takeaway
 
-> Classic streaming top‑k problem: maintain a max‑heap of size k to keep the k closest obstacles; the heap root is the k‑th nearest distance.
+> Classic streaming top-k problem: maintain a max-heap of size k to keep the k closest obstacles; the heap root is the k-th nearest distance.

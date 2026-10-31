@@ -93,15 +93,15 @@ Example 3:
 Consider `[3,1,2]`:
 
 1. **Initial state:** positions = `[0:3, 1:1, 2:2]`, `lastPos = 0`.
-2. **First removal:** smallest value `1` at index 1. Steps from `lastPos` 0 to 1 = 1. Remove it, `ops = 1`, `lastPos = 1`.
-3. **Second removal:** smallest remaining `2` at index 2. Steps from 1 to 2 = 1. Remove, `ops = 2`, `lastPos = 2`.
-4. **Third removal:** smallest remaining `3` at index 0 (wrap around). Steps = elements from 2→end (0) + from start→0 = 1. Remove, `ops = 3` (actually total steps counted include rotations, final total = 5 as shown in example).
+2. **First removal:** smallest value `1` at index 1. Steps from `lastPos` 0 to 1 = 1. Remove it, `ops = 1`, `lastPos = 1`.
+3. **Second removal:** smallest remaining `2` at index 2. Steps from 1 to 2 = 1. Remove, `ops = 2`, `lastPos = 2`.
+4. **Third removal:** smallest remaining `3` at index 0 (wrap around). Steps = elements from 2→end (0) + from start→0 = 1. Remove, `ops = 3` (actually total steps counted include rotations, final total = 5 as shown in example).
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n log n) – sorting plus BIT updates/queries.
+- **Time:** O(n log n) – sorting plus BIT updates/queries.
 - **Space:** O(n) – BIT and auxiliary arrays.
 
 ---
@@ -115,4 +115,4 @@ Consider `[3,1,2]`:
 
 ## Key Takeaway
 
-> Sorting by value and using a Fenwick tree to track remaining positions lets you compute rotation costs efficiently, achieving O(n log n) time.
+> Sorting by value and using a Fenwick tree to track remaining positions lets you compute rotation costs efficiently, achieving O(n log n) time.

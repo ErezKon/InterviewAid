@@ -62,7 +62,7 @@ Since student 2 has more points, [2,1] is returned.
 | 2 | 2 | "the student is not smart" | 1 (smart) | 1 (not) | 2 |
 | 3 | 3 | "brilliant work" | 1 (brilliant) | 0 | 3 |
 
-After computing scores, sort by `(-score, id)`: (3,1), (3,3), (2,2). Return first `k=2` IDs → `[1,3]` (or `[3,1]` depending on tie‑break rule; here we sort by score desc then id asc).
+After computing scores, sort by `(-score, id)`: (3,1), (3,3), (2,2). Return first `k=2` IDs → `[1,3]` (or `[3,1]` depending on tie-break rule; here we sort by score desc then id asc).
 
 ---
 

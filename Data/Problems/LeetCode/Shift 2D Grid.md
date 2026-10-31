@@ -80,13 +80,13 @@ FUNCTION shiftGrid(grid, k):
 ## Complexity Analysis
 
 - **Time:** O(m·n) – flattening, rotating, and reshaping each touch every element once.
-- **Space:** O(m·n) – auxiliary 1‑D list holds all elements.
+- **Space:** O(m·n) – auxiliary 1-D list holds all elements.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you perform the shift **in‑place** without extra O(m·n) space?
+1. How would you perform the shift **in-place** without extra O(m·n) space?
 2. Can you extend the solution to support **left** shifts as well?
 3. What if the grid is **sparse** and stored as a list of coordinates?
 

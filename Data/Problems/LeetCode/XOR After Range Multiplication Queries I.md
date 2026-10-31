@@ -72,7 +72,7 @@ FUNCTION build(node, l, r):
 FUNCTION applyMul(node, factor):
     node.lazyMul ← (node.lazyMul * factor) MOD MOD
     // Update stored xorVal by applying factor to each element in the segment
-    // Re‑compute by traversing children when needed (deferred)
+    // Re-compute by traversing children when needed (deferred)
 
 FUNCTION push(node):
     IF node.lazyMul ≠ 1:
@@ -102,13 +102,13 @@ FUNCTION queryXor(root):
 | 2 | XOR query | – | `0` |
 
 ## Complexity Analysis
-Time: O((n + q)·log n) where `q` is number of operations (segment‑tree updates and queries). 
+Time: O((n + q)·log n) where `q` is number of operations (segment-tree updates and queries). 
 Space: O(n) for the tree.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if updates were addition instead of multiplication?
 2. Can the problem be solved using a Binary Indexed Tree with range updates?
-3. What changes are needed if the query asks for XOR of a sub‑array instead of the whole array?
+3. What changes are needed if the query asks for XOR of a sub-array instead of the whole array?
 
 ## Key Takeaway
-A lazy‑propagation segment tree lets you combine range multiplication updates with global XOR queries efficiently, keeping both operations logarithmic.
+A lazy-propagation segment tree lets you combine range multiplication updates with global XOR queries efficiently, keeping both operations logarithmic.

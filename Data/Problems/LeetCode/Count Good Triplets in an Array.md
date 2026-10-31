@@ -54,7 +54,7 @@ FUNCTION countGoodTriplets(nums1, nums2):
     // BIT for suffix counts
     bitRight ← BIT(n)
     FOR i FROM 0 TO n-1:
-        bitRight.UPDATE(pos[i] + 1, 1)   // 1‑based BIT
+        bitRight.UPDATE(pos[i] + 1, 1)   // 1-based BIT
     bitLeft ← BIT(n)
     result ← 0
     FOR j FROM 0 TO n-1:
@@ -74,7 +74,7 @@ For `nums1 = [1,2,3,4]`, `nums2 = [1,2,3,4]`:
 - As we iterate `j`, `leftLess` and `rightGreater` produce counts that sum to 4 good triplets.
 
 ## Complexity Analysis
-- **Time:** O(n log n) due to BIT updates and queries.
+- **Time:** O(n log n) due to BIT updates and queries.
 - **Space:** O(n) for the position array and two BITs.
 
 ## Follow-Up Questions

@@ -110,8 +110,8 @@ The final matrix matches the expected output.
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm if you were allowed O(m+n) extra space?
-- Can you solve the problem using a different in‑place strategy that avoids the first row/col markers?
-- How would you extend this to a 3‑dimensional matrix?
+- Can you solve the problem using a different in-place strategy that avoids the first row/col markers?
+- How would you extend this to a 3-dimensional matrix?
 
 ---
 

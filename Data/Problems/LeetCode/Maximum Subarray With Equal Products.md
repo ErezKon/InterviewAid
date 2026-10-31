@@ -79,16 +79,16 @@ For `nums = [2,2,1,2]`:
 |1|2|0|FALSE|0|0|
 |2|1|0|TRUE|3|3|
 |3|2|0|TRUE|4|4 (but window contains a 1, so answer 4) |
-The longest window containing a `1` is length 4, but the product condition fails for the full window because removing a non‑1 changes product. The algorithm correctly returns 3 for the maximal valid subarray.
+The longest window containing a `1` is length 4, but the product condition fails for the full window because removing a non-1 changes product. The algorithm correctly returns 3 for the maximal valid subarray.
 
 ## Complexity Analysis
 *Time*: `O(n)` – single pass through the array.
 *Space*: `O(1)` – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where removal of a `0` is allowed?
 2. Can the problem be extended to require the removed element to be the minimum value in the subarray?
 3. How would you modify the solution for circular arrays?
 
 ## Key Takeaway
-The equal‑product condition collapses to the presence of a `1` in the subarray, enabling a simple linear‑time sliding‑window solution.
+The equal-product condition collapses to the presence of a `1` in the subarray, enabling a simple linear-time sliding-window solution.

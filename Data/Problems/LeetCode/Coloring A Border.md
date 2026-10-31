@@ -75,7 +75,7 @@ FUNCTION colorBorder(grid, row, col, newColor):
 
 ## Walkthrough
 For `grid = [[1,1],[1,2]]` starting at `(0,0)`:
-1. DFS visits cells `(0,0)`, `(0,1)`, `(1,0)` (all color 1).
+1. DFS visits cells `(0,0)`, `(0,1)`, `(1,0)` (all color 1).
 2. `(0,1)` touches a different color `2` → border.
 3. `(1,0)` is on grid edge → border.
 4. `(0,0)` also on edge → border.
@@ -94,4 +94,4 @@ Space: O(m·n) for recursion stack / visited set.
 
 ## Key Takeaway
 
-> A flood‑fill traversal combined with neighbor checks cleanly isolates border cells, allowing an in‑place recolor in linear time.
+> A flood-fill traversal combined with neighbor checks cleanly isolates border cells, allowing an in-place recolor in linear time.

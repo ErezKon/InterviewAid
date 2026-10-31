@@ -70,7 +70,7 @@ FUNCTION inOrder(w1, w2, rank):
 - **Time:** O(N * L) where N is number of words and L is average word length.
 - **Space:** O(1) extra space for the rank map of size 26.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle duplicate words?
 2. Can the algorithm be extended to support Unicode characters?
 3. What if the alien order is given as a list of pairs instead of a full string?

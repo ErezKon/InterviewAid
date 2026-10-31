@@ -69,7 +69,7 @@ var argumentsLength = function(...args) {
 
 ## Follow-Up Questions
 
-- How would you implement this in a language without a built‑in rest parameter?
+- How would you implement this in a language without a built-in rest parameter?
 - How can you count arguments in a variadic function written in C?
 
 ---

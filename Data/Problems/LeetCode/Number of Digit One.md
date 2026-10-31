@@ -95,7 +95,7 @@ FUNCTION countDigitOne(n):
 
 ## 7. Follow-Up Questions
 
-- How would you adapt the algorithm to count occurrences of any digit `d` (0‑9) instead of just `1`?
+- How would you adapt the algorithm to count occurrences of any digit `d` (0-9) instead of just `1`?
 - Can you compute the count for a range `[low, high]` efficiently?
 - What changes are needed for bases other than decimal (e.g., binary or hexadecimal)?
 
@@ -103,4 +103,4 @@ FUNCTION countDigitOne(n):
 
 ## 8. Key Takeaway
 
-> **Per‑position digit counting.** For each decimal place, combine contributions from higher, current, and lower parts. Handles all three cases of the current digit to accumulate the total number of `1`s.
+> **Per-position digit counting.** For each decimal place, combine contributions from higher, current, and lower parts. Handles all three cases of the current digit to accumulate the total number of `1`s.

@@ -133,4 +133,4 @@ Example 2:
 
 ## Key Takeaway
 
-> Combine a hash map for O(1) video metadata access with a min‑heap to recycle the smallest available video IDs, enabling efficient uploads, deletions, and queries.
+> Combine a hash map for O(1) video metadata access with a min-heap to recycle the smallest available video IDs, enabling efficient uploads, deletions, and queries.

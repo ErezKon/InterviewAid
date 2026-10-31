@@ -92,7 +92,7 @@ Consider the input "444947137":
 
 ## 6. Follow-Up Questions
 
-- How would you modify the algorithm to return the *k*‑th largest palindromic number?
+- How would you modify the algorithm to return the *k*-th largest palindromic number?
 - Can the solution be adapted to work with alphanumeric characters?
 - What changes are needed if the palindrome must use **all** digits exactly once?
 
@@ -100,4 +100,4 @@ Consider the input "444947137":
 
 ## Key Takeaway
 
-> Build the left half greedily from the highest digits using pairs, place the largest odd‑count digit in the middle, and strip leading zeros to obtain the maximal palindrome.
+> Build the left half greedily from the highest digits using pairs, place the largest odd-count digit in the middle, and strip leading zeros to obtain the maximal palindrome.

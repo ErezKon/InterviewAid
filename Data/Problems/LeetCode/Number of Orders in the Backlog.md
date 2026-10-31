@@ -45,7 +45,7 @@ Return *the total **amount** of orders in the backlog after placing all the orde
 
 ## 2. Key Insight
 
-> Maintain two priority queues: a max‑heap for buy orders (by price) and a min‑heap for sell orders. When a new order arrives, greedily match it against the opposite heap while possible.
+> Maintain two priority queues: a max-heap for buy orders (by price) and a min-heap for sell orders. When a new order arrives, greedily match it against the opposite heap while possible.
 
 ---
 
@@ -150,4 +150,4 @@ Finally, the backlog has (1000000000-3) sell orders with price 7, and (999999995
 
 ## 8. Key Takeaway
 
-> **Two‑heap order‑book simulation** efficiently matches buy and sell orders greedily, yielding an O(n log n) solution.
+> **Two-heap order-book simulation** efficiently matches buy and sell orders greedily, yielding an O(n log n) solution.

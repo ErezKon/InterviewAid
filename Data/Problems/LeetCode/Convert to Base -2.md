@@ -35,7 +35,7 @@ Example 3:
 ```
 
 ## Approach
-Use repeated division by `-2`, adjusting remainders to be non‑negative. When a negative remainder occurs, add `2` to it and increment the quotient.
+Use repeated division by `-2`, adjusting remainders to be non-negative. When a negative remainder occurs, add `2` to it and increment the quotient.
 
 ```text
 FUNCTION ConvertToBaseNeg2(n):
@@ -70,4 +70,4 @@ Result after reversal: `110`.
 - What changes are needed to output the representation without using a list (streaming output)?
 
 ## Key Takeaway
-Converting to a negative base works like standard base conversion but requires adjusting negative remainders to stay within `[0, base‑1]`.
+Converting to a negative base works like standard base conversion but requires adjusting negative remainders to stay within `[0, base-1]`.

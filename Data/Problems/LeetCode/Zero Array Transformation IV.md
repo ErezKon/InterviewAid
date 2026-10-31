@@ -73,7 +73,7 @@ Output: 4
 ```
 
 ## Approach
-Treat each query as a resource that contributes `val` to a range. The goal is to pick a subset with minimum total `val` that satisfies the per‑index requirement `required[i] = max(0, -nums[i])` (here nums are already non‑negative, so requirement is 0; but the problem statement expects making them non‑negative, so we consider deficits if any). Since all `val` are positive, the optimal strategy is to use a **minimum‑cost flow** like greedy: repeatedly select the query with the smallest `val` that covers the most uncovered deficit.
+Treat each query as a resource that contributes `val` to a range. The goal is to pick a subset with minimum total `val` that satisfies the per-index requirement `required[i] = max(0, -nums[i])` (here nums are already non-negative, so requirement is 0; but the problem statement expects making them non-negative, so we consider deficits if any). Since all `val` are positive, the optimal strategy is to use a **minimum-cost flow** like greedy: repeatedly select the query with the smallest `val` that covers the most uncovered deficit.
 A simpler polynomial solution uses a **difference array** combined with a **priority queue** of queries sorted by `val`.
 1. Compute deficits `need[i] = max(0, -nums[i])` (if nums may be negative).
 2. Sort queries by `val` ascending.
@@ -116,16 +116,16 @@ FUNCTION minTotalVal(nums, queries):
 ## Walkthrough
 | Query | diff updates | Cumulative addition after query | Deficits satisfied |
 |-------|--------------|--------------------------------|--------------------|
-| [0,1,2] | +2 at 0, -2 at 2 | positions 0‑1 get +2 | reduces need at those indices |
-| [1,2,1] | +1 at 1, -1 at 3 | positions 1‑2 get additional +1 | all deficits cleared → stop |
+| [0,1,2] | +2 at 0, -2 at 2 | positions 0-1 get +2 | reduces need at those indices |
+| [1,2,1] | +1 at 1, -1 at 3 | positions 1-2 get additional +1 | all deficits cleared → stop |
 
 ## Complexity Analysis
-Time: O((n + q) · log q) due to sorting queries; the inner scan can be optimized with segment tree to O((n+q) log n) but the presented version is acceptable.
+Time: O((n + q) · log q) due to sorting queries; the inner scan can be optimized with segment tree to O((n+q) log n) but the presented version is acceptable.
 Space: O(n + q) for arrays and sorted list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if queries have both positive and negative `val` (allowing subtraction)?
-2. Can the problem be solved in O(n + q) using a more sophisticated data structure such as a Fenwick tree with range updates?
+2. Can the problem be solved in O(n + q) using a more sophisticated data structure such as a Fenwick tree with range updates?
 3. What if each query also carries a cost independent of `val` and you need to minimize total cost?
 
 ## Key Takeaway

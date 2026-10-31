@@ -33,7 +33,7 @@ Return `true` if and only if there exists a circle in the plane such that the ro
 
 ## Key Insight
 
-> After one cycle: if the robot is back at origin **or** not facing north, it is bounded. A non‑north heading means the robot’s trajectory will be cyclic within 2 or 4 repetitions.
+> After one cycle: if the robot is back at origin **or** not facing north, it is bounded. A non-north heading means the robot’s trajectory will be cyclic within 2 or 4 repetitions.
 
 ---
 
@@ -129,7 +129,7 @@ Based on that, we return true.
 ## Follow-Up Questions
 
 - How would the solution change if the robot could also move backward?
-- Can you extend the algorithm to handle 3‑D movements?
+- Can you extend the algorithm to handle 3-D movements?
 - What if the instruction string is extremely long (streaming input)?
 
 ---

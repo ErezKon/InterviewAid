@@ -70,7 +70,7 @@ FUNCTION smallestGeneratedString(constraints):
 
 ## Walkthrough
 
-For constraints `a < b`, `b < c` on a 3‑position string:
+For constraints `a < b`, `b < c` on a 3-position string:
 
 1. Start with `aaa`.
 2. Apply `a < b`: position 2 must be > position 1 → set to `b` → `aba`.

@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-Apply backtracking to explore numbers 1‑9, building combinations of length `k` while maintaining the remaining sum.
+Apply backtracking to explore numbers 1-9, building combinations of length `k` while maintaining the remaining sum.
 
 ### Pseudocode
 ```text
@@ -73,12 +73,12 @@ For `k = 3, n = 9` the recursion explores:
 
 ## Complexity Analysis
 - **Time:** O(C(9, k)) – each valid combination is generated once.
-- **Space:** O(k) recursion stack plus O(number of answers) for output.
+- **Space:** O(k) recursion stack plus O(number of answers) for output.
 
 ## Follow-Up Questions
 1. How would you adapt the algorithm if numbers could repeat?
-2. What changes are needed to handle a larger range than 1‑9?
+2. What changes are needed to handle a larger range than 1-9?
 3. Can you compute the count of combinations without enumerating them?
 
 ## Key Takeaway
-Backtracking efficiently enumerates limited‑size combinations by pruning when the remaining sum becomes unattainable.
+Backtracking efficiently enumerates limited-size combinations by pruning when the remaining sum becomes unattainable.

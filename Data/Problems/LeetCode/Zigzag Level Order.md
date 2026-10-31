@@ -35,7 +35,7 @@ Output: []
 ```
 
 ## Approach
-Perform a breadth‑first search (BFS) using a queue. For each level, collect node values in order, then reverse the list when the current level should be traversed right‑to‑left.
+Perform a breadth-first search (BFS) using a queue. For each level, collect node values in order, then reverse the list when the current level should be traversed right-to-left.
 
 ```text
 FUNCTION zigzagLevelOrder(root):
@@ -73,10 +73,10 @@ FUNCTION zigzagLevelOrder(root):
 - **Time:** Each node visited once → **O(n)** where n is number of nodes.
 - **Space:** Queue holds at most one level → **O(w)** where w is maximum width of the tree.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement the traversal using a single deque without explicit reversal?
 2. Can you modify the algorithm to return the zigzag order in a streaming fashion?
-3. How would you adapt the solution for an N‑ary tree?
+3. How would you adapt the solution for an N-ary tree?
 
 ## Key Takeaway
 A simple BFS combined with a direction flag and optional reversal yields zigzag level order traversal efficiently.

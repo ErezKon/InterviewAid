@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve LC 1299 (Replace Elements with Greatest Element on Right Side), not this problem. Correct idea: keep a hash map `value → index`; for each operation `[x, y]`, set `i = pos[x]`, `nums[i] = y`, `pos[y] = i`, delete `pos[x]`. O(n + m).*
-
 You are given a **0-indexed** array `nums` that consists of `n` **distinct** positive integers. Apply `m` operations to this array, where in the `i`th operation you replace the number `operations[i][0]` with `operations[i][1]`.
 
 It is guaranteed that in the `i`th operation:
@@ -54,37 +52,42 @@ We return the array [2,1].
 ```
 
 ## Approach
-Traverse the array from right to left while keeping track of the maximum seen so far.
+Searching `nums` for `operations[i][0]` each time would be O(n·m) = 10^10 in the worst case. Because all values stay distinct (an operation always removes an existing value and inserts a new one), keep a hash map `pos: value → index`.
+
+For each operation `[x, y]`: look up `i = pos[x]`, write `nums[i] = y`, remove `x` from the map and set `pos[y] = i`. Each operation is O(1).
 
 ```text
-FUNCTION ReplaceElements(arr):
-    SET maxSoFar ← -1
-    FOR i ← LENGTH(arr) - 1 DOWNTO 0:
-        SET current ← arr[i]
-        SET arr[i] ← maxSoFar
-        IF current > maxSoFar:
-            SET maxSoFar ← current
-    RETURN arr
+FUNCTION arrayChange(nums, operations):
+    pos ← EMPTY HASH MAP
+    FOR i ← 0 TO length(nums)-1:
+        pos[nums[i]] ← i
+    FOR each [x, y] IN operations:
+        i ← pos[x]          // index currently holding x
+        nums[i] ← y
+        DELETE pos[x]
+        pos[y] ← i
+    RETURN nums
 ```
 
 ## Walkthrough
-| Index | Original | maxSoFar before | New Value |
-|------|----------|----------------|----------|
-| 5 | 1 | -1 | -1 |
-| 4 | 6 | 1 | 1 |
-| 3 | 4 | 6 | 6 |
-| 2 | 5 | 6 | 6 |
-| 1 | 18 | 6 | 6 |
-| 0 | 17 | 18 | 18 |
+Example 1: `nums = [1,2,4,6]`, `operations = [[1,3],[4,7],[6,1]]`. Initial `pos = {1:0, 2:1, 4:2, 6:3}`.
+
+| Operation | i = pos[x] | nums after | pos after |
+|-----------|------------|------------|-----------|
+| [1,3] | 0 | [3,2,4,6] | {3:0, 2:1, 4:2, 6:3} |
+| [4,7] | 2 | [3,2,7,6] | {3:0, 2:1, 7:2, 6:3} |
+| [6,1] | 3 | [3,2,7,1] | {3:0, 2:1, 7:2, 1:3} |
+
+Result: `[3,2,7,1]` — matches the expected output.
 
 ## Complexity Analysis
-- Time: O(n) – single pass.
-- Space: O(1) – in‑place modification.
+- **Time:** O(n + m) — building the map plus O(1) average work per operation.
+- **Space:** O(n) for the value-to-index map (values are always exactly n distinct numbers). Since values are at most 10^6, a plain array of size 10^6 + 1 can replace the hash map.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to return a new array instead of modifying in place?
-2. Can this be extended to a circular array where the right side wraps around?
-3. What if we needed the second‑largest element to the right?
+## Follow-Up Questions
+1. What if values were not guaranteed distinct and each operation replaced *all* occurrences of `x`? (Map each value to a list/union-find group of indices and merge groups.)
+2. Can you solve it without knowing `nums` positions, processing operations backwards? (Yes: compose the replacement chain in reverse with a map `final[x]`, then map each original value through it.)
+3. How would you support undoing the last operation? (Store `[x, y]` on a stack and apply the reverse replacement `[y, x]`.)
 
 ## Key Takeaway
-Scanning from right to left lets you maintain the maximum seen so far, enabling an O(n) in‑place solution.
+When elements are distinct and you repeatedly need "where is value x?", maintain a value-to-index map alongside the array so every replacement is constant time.

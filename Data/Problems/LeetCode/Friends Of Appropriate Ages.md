@@ -99,7 +99,7 @@ Consider `ages = [16,16,16]`.
    - `b > a` false.
    - `b > 100 && a < 100` false.
    - Add `count[16] * count[16] = 9` to result.
-   - Subtract `count[16]` because a == b (no self‑request): result = 9‑3 = 6.
+   - Subtract `count[16]` because a == b (no self-request): result = 9-3 = 6.
 3. Final result 6, which matches the 3 users each sending requests to the other two.
 
 ---
@@ -115,4 +115,4 @@ Consider `ages = [16,16,16]`.
 
 ## 7. Key Takeaway
 
-> **Count ages** to reduce from O(n²) to O(A²). Iterate over age pairs, multiply counts, and subtract self‑requests when ages match.
+> **Count ages** to reduce from O(n²) to O(A²). Iterate over age pairs, multiply counts, and subtract self-requests when ages match.

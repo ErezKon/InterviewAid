@@ -112,21 +112,24 @@ Each index `i` "owns" the range `(prefixSum[i-1], prefixSum[i]]`. A uniform rand
 ## 4. Walkthrough
 
 ```
-w = [1, 3, 2]
-prefixSum = [1, 4, 6]
-totalWeight = 6
+Example 2: Solution([1, 3])
+prefixSum = [1, 4]
+totalWeight = 4
 
 pickIndex():
-  target = random(1, 6)
+  target = random(1, 4)
 
-  If target = 1 → binary search finds index 0 (prefixSum[0]=1 ≥ 1)
+  If target = 1 → index 0 (prefixSum[0]=1 ≥ 1)
   If target = 2 → index 1 (prefixSum[0]=1 < 2, prefixSum[1]=4 ≥ 2)
   If target = 3 → index 1
   If target = 4 → index 1
-  If target = 5 → index 2
-  If target = 6 → index 2
 
-  Probabilities: 0→1/6, 1→3/6, 2→2/6  ✅ (matches weights)
+  Probabilities: 0→1/4, 1→3/4  ✅ (matches weights)
+
+  Five calls drawing targets e.g. 3, 2, 4, 2, 1 → [1, 1, 1, 1, 0],
+  giving the official sample output [null,1,1,1,1,0].
+
+Example 1: Solution([1]) → prefixSum = [1], target is always 1 → returns 0.
 ```
 
 ---

@@ -92,7 +92,7 @@ FROM Triangles;
 
 - How would you modify the query to return the count of each triangle type?
 - Can you write a procedural solution that validates triangles before classification?
-- How would you handle floating‑point side lengths with tolerance for precision errors?
+- How would you handle floating-point side lengths with tolerance for precision errors?
 
 ## Key Takeaway
 

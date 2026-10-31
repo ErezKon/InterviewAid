@@ -93,12 +93,12 @@ FUNCTION immediateFirstOrderPercentage():
 - **Time:** O(N) – the query scans the `Delivery` table a constant number of times.
 - **Space:** O(N) for the subquery result set (one row per customer), otherwise O(1) additional.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you compute the immediate‑first‑order percentage for each customer individually?
+1. How would you compute the immediate-first-order percentage for each customer individually?
 2. How to handle ties when a customer has multiple orders on the same earliest date?
 3. Extend the query to consider only orders within a specific date range.
 
 ## Key Takeaway
 
-> Filter to each customer's first order using a subquery, then apply conditional aggregation to compute the immediate‑delivery percentage.
+> Filter to each customer's first order using a subquery, then apply conditional aggregation to compute the immediate-delivery percentage.

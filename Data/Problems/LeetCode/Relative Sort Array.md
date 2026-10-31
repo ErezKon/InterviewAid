@@ -52,14 +52,18 @@ FUNCTION relativeSortArray(arr1, arr2):
 ```
 
 ## Walkthrough
-For `arr1 = [2,3,1,3,2,4]` and `arr2 = [2,1,4]`:
-1. `rankMap = {2:0, 1:1, 4:2}`.
+Example 1: `arr1 = [2,3,1,3,2,4,6,7,9,2,19]`, `arr2 = [2,1,4,3,9,6]`:
+1. `rankMap = {2:0, 1:1, 4:2, 3:3, 9:4, 6:5}`; `LENGTH(arr2) = 6`.
 2. Sorting keys:
-   - 2 → (0,0)
-   - 3 → (3,3) (not in map, uses length of arr2 = 3)
+   - 2 → (0,0) (three copies)
    - 1 → (1,0)
    - 4 → (2,0)
-3. Ordered by keys → `[2,2,1,4,3,3]`.
+   - 3 → (3,0) (two copies)
+   - 9 → (4,0)
+   - 6 → (5,0)
+   - 7 → (6,7) (not in map)
+   - 19 → (6,19) (not in map)
+3. Ordered by keys → `[2,2,2,1,4,3,3,9,6,7,19]`, matching the expected output.
 
 ## Complexity Analysis
 - Building the map: O(m) where m = length of `arr2`.
@@ -67,8 +71,8 @@ For `arr1 = [2,3,1,3,2,4]` and `arr2 = [2,1,4]`:
 - Extra space: O(m) for the map and O(n) for sorting.
 Overall: **Time O(n log n), Space O(n + m)**.
 
-## Follow‑Up Questions
-1. How can you achieve O(n) time using counting sort given the bounded value range (0‑1000)?
+## Follow-Up Questions
+1. How can you achieve O(n) time using counting sort given the bounded value range (0-1000)?
 2. What changes are needed if `arr2` may contain values not present in `arr1`?
 3. How would you adapt the solution for streaming `arr1` elements?
 

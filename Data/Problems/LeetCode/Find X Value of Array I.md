@@ -65,7 +65,7 @@ FUNCTION findXValue(nums, k):
                 newDp[newR] += dp[r]
         // include subsequence consisting of only current element
         newDp[num % k] += 1
-        dp ← dp + newDp   // element‑wise addition
+        dp ← dp + newDp   // element-wise addition
     END FOR
 
     RETURN dp   // dp now holds counts for each remainder x

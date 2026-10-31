@@ -99,7 +99,7 @@ Consider `s1 = "a2c"` and `s2 = "3"`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if digits could represent any length up to 10⁹?
 - Can you adapt the DP to also output one possible original string?

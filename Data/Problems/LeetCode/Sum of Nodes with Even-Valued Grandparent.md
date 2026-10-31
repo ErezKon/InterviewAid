@@ -63,9 +63,9 @@ Total sum = 18.
 Time: O(n) where n is number of nodes.
 Space: O(h) recursion stack, h = tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you solve it iteratively using a stack?
-- Can you modify the solution to sum nodes with odd‑valued grandparents?
+- Can you modify the solution to sum nodes with odd-valued grandparents?
 - What if the tree is given as a parent array instead of pointers?
 
 ## Key Takeaway

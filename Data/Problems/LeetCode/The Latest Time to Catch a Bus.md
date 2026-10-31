@@ -82,7 +82,7 @@ After buses, candidate starts at 20, 20 is free → check 20 (bus time) not occu
 - Time: O(b + p) where `b` is number of buses and `p` number of passengers.
 - Space: O(p) for the occupied set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if passengers could board at the exact bus departure time?
 2. Can the solution be adapted to handle multiple new passengers arriving simultaneously?
 3. What changes are needed if each bus has a different capacity?

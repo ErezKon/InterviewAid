@@ -96,7 +96,7 @@ Products with product_id = 5 is ordered in February a total of (50 + 50) = 100.
 
 ## 3. Approach
 
-**SQL aggregation** – Join `Products` with `Orders`, filter rows to February 2020, group by product, sum the ordered units, and keep groups with sum ≥ 100.
+**SQL aggregation** – Join `Products` with `Orders`, filter rows to February 2020, group by product, sum the ordered units, and keep groups with sum ≥ 100.
 
 ```sql
 SELECT p.product_name, SUM(o.unit) AS total_units
@@ -112,7 +112,7 @@ HAVING SUM(o.unit) >= 100;
 ## 4. Walkthrough
 
 1. **Join** – Each order row is paired with its product name.
-2. **Filter** – `WHERE` keeps only rows where `order_date` falls in February 2020.
+2. **Filter** – `WHERE` keeps only rows where `order_date` falls in February 2020.
 3. **Group & Sum** – `GROUP BY` aggregates rows per product; `SUM(o.unit)` computes total units ordered.
 4. **Having** – `HAVING SUM(o.unit) >= 100` discards products with fewer than 100 units.
 5. **Select** – Return the product name and the summed units.
@@ -123,15 +123,15 @@ HAVING SUM(o.unit) >= 100;
 
 | Metric | Complexity |
 |--------|------------|
-| Time   | O(N log N) – depends on database indexing and join cost |
+| Time   | O(N log N) – depends on database indexing and join cost |
 | Space  | O(K) – space for `K` groups that satisfy the condition |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you modify the query to handle a **date range** supplied at runtime?
-2. How can you retrieve the **top k** products by units ordered in the period?
+2. How can you retrieve the **top k** products by units ordered in the period?
 3. What indexes would you create to optimise this query for large tables?
 
 ---

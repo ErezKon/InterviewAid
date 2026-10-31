@@ -50,38 +50,40 @@ Example 3:
 ```
 
 ## Approach
-The optimal target value is the minimum element after repeatedly halving larger elements. Sort the array and repeatedly halve elements greater than the current minimum, counting operations, until all values match.
+Each operation lowers one element by exactly one "level" in the sorted list of distinct values. An element whose value is the `k`-th smallest distinct value (0-based `k`) must therefore be reduced exactly `k` times before it reaches the minimum. Sort the array ascending, keep a counter `level` that increases whenever the value changes, and add `level` for every element.
 
 ```text
-FUNCTION MinReductionOps(nums):
+FUNCTION reductionOperations(nums):
     SORT nums ASCENDING
-    SET target ← nums[0]
     SET ops ← 0
-    FOR i FROM 1 TO LENGTH(nums)-1:
-        SET val ← nums[i]
-        WHILE val > target:
-            SET val ← FLOOR(val / 2)
-            INCREMENT ops
-        // After loop, val <= target; if val < target, update target
-        IF val < target:
-            SET target ← val
+    SET level ← 0                      // number of distinct values smaller than nums[i]
+    FOR i ← 1 TO LENGTH(nums)-1:
+        IF nums[i] != nums[i-1]:
+            level ← level + 1
+        ops ← ops + level
     RETURN ops
 ```
 
 ## Walkthrough
-`nums = [5,2,1]` sorted → `[1,2,5]`.
-- target=1.
-- i=1, val=2: while 2>1 → val=1, ops=1.
-- i=2, val=5: 5>1 → val=2, ops=2; 2>1 → val=1, ops=3. (But optimal is 2 ops by reducing 5 directly to 2 then both to 1; this greedy still yields correct count after adjusting target updates.)
+Example 3: `nums = [1,1,2,2,3]` (already sorted).
+
+| i | nums[i] | changed? | level | ops |
+|---|---------|----------|-------|-----|
+| 1 | 1 | no | 0 | 0 |
+| 2 | 2 | yes | 1 | 1 |
+| 3 | 2 | no | 1 | 2 |
+| 4 | 3 | yes | 2 | 4 |
+
+Result **4**. Example 1: sorted `[1,3,5]` gives levels `0,1,2` → `0+1+2 = 3`.
 
 ## Complexity Analysis
-- **Time:** `O(n log n + m log max(nums))` where `m` is total halving steps.
-- **Space:** `O(1)` extra.
+- **Time:** `O(n log n)` for sorting (or `O(n + V)` with counting sort, since values are at most `5 * 10^4`).
+- **Space:** `O(1)` extra beyond the sort.
 
 ## Follow-Up Questions
-1. How would you handle negative numbers or zeros?
-2. Can the process be optimized using a priority queue to always halve the largest element?
-3. What is the complexity if the array size is up to 10⁵ and values up to 10⁹?
+1. How would you solve it in linear time using counting sort given the value bound?
+2. What changes if each operation may reduce the largest element to any smaller existing value?
+3. How would you compute the answer for every prefix of the array?
 
 ## Key Takeaway
-Repeatedly halving larger elements toward the smallest value, counting each division, yields the minimal number of reduction operations needed to equalize the array.
+Every element must step down through each distinct smaller value, so the answer is the sum, over all elements, of the number of distinct values below it -- computed in one pass over the sorted array.

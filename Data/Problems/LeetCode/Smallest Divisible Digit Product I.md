@@ -77,10 +77,10 @@ For `n = 10`:
 4. Result string `"25"` whose digit product `2*5 = 10`.
 
 ## Complexity Analysis
-- **Time:** O(log n) for factorization + O(number of digits) for construction → effectively O(log n).
-- **Space:** O(number of digits) for the digit list → O(log n) in the worst case.
+- **Time:** O(log n) for factorization + O(number of digits) for construction → effectively O(log n).
+- **Space:** O(number of digits) for the digit list → O(log n) in the worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if digits could be repeated unlimitedly but the answer must have the minimal *length* rather than minimal numeric value?
 2. Can the algorithm be extended to handle bases other than decimal?
 3. What is the approach when `n` contains prime factors larger than 7?

@@ -88,17 +88,17 @@ FUNCTION minZeroArray(nums, queries):
 ## Walkthrough
 | k | Applied Queries | diff array (partial) | Feasibility |
 |---|----------------|----------------------|-------------|
-| 1 | `[0,1,2]` | increments at 0‑1 = 2 | fails for index 2 |
+| 1 | `[0,1,2]` | increments at 0-1 = 2 | fails for index 2 |
 | 2 | first two queries | sufficient for all indices | success → answer 2 |
 
 ## Complexity Analysis
-Time: O((n + q) · log q) due to binary search with linear checks.
+Time: O((n + q) · log q) due to binary search with linear checks.
 Space: O(n) for the temporary difference array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if queries could be applied in any order, not just a prefix?
-2. Can you achieve O(n + q) without binary search using a greedy sweep?
+2. Can you achieve O(n + q) without binary search using a greedy sweep?
 3. What if each query has a cost and you need the minimum total cost rather than count?
 
 ## Key Takeaway
-Binary searching the prefix length combined with a difference‑array feasibility test yields the minimal number of queries needed.
+Binary searching the prefix length combined with a difference-array feasibility test yields the minimal number of queries needed.

@@ -87,8 +87,8 @@ FUNCTION countConsistentStrings(allowed, words):
 
 ## Follow-Up Questions
 
-1. How would you modify the solution if `allowed` could contain uppercase letters and the check should be case‑insensitive?
-2. Can you solve the problem in a single pass without explicitly building a set, using bit‑masking for the alphabet?
+1. How would you modify the solution if `allowed` could contain uppercase letters and the check should be case-insensitive?
+2. Can you solve the problem in a single pass without explicitly building a set, using bit-masking for the alphabet?
 3. How would the approach change if you needed to return the list of consistent strings instead of just the count?
 
 ---

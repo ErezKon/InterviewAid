@@ -42,8 +42,8 @@ Explanation: In round one, first Alice removes 2 and then Bob removes 5. Then in
 
 **Algorithm:** Greedy sorting with pairwise swapping
 
-1. Sort `nums` in non‑decreasing order.
-2. Iterate over the sorted array with step size 2.
+1. Sort `nums` in non-decreasing order.
+2. Iterate over the sorted array with step size 2.
 3. For each pair `(i, i+1)`, place the larger element first and the smaller second in the result.
 
 ```text
@@ -72,9 +72,9 @@ The final `result` satisfies the required ordering.
 | Metric | Complexity |
 |--------|-------------|
 | Time   | **O(n log n)** – sorting dominates |
-| Space  | **O(n)** – result array (in‑place possible) |
+| Space  | **O(n)** – result array (in-place possible) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the array length could be odd?
 2. Can we achieve the same ordering without an explicit sort, e.g., using a selection algorithm?

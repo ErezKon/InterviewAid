@@ -49,13 +49,13 @@ Sort the array in ascending order. Use two pointers, `left` at the start and `ri
 Final best = 58 (from pair 34+24).
 
 ## Complexity Analysis
-- **Time:** `O(n log n)` for sorting plus `O(n)` for the two‑pointer scan.
+- **Time:** `O(n log n)` for sorting plus `O(n)` for the two-pointer scan.
 - **Space:** `O(1)` extra space besides the input array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem without sorting, using a hash set for `O(n)` time?
 2. What if you need to return the actual pair of numbers, not just the sum?
 3. How does the solution change if duplicate elements are not allowed?
 
 ## Key Takeaway
-Sorting enables a two‑pointer technique that efficiently explores all candidate pairs in linear time, yielding the optimal sum under a threshold.
+Sorting enables a two-pointer technique that efficiently explores all candidate pairs in linear time, yielding the optimal sum under a threshold.

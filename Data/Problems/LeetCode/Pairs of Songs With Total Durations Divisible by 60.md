@@ -67,7 +67,7 @@ Total pairs = 3.
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – fixed size array of 60 counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the divisor were an arbitrary `k`?
 2. Can you extend the approach to count triples whose sum is divisible by 60?
 3. What if you need to output the actual pairs, not just the count?

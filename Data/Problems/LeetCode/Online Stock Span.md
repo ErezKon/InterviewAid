@@ -77,10 +77,10 @@ CLASS StockSpanner:
 - Each price is pushed and popped at most once → **O(1) amortized** time per `next` call.
 - Stack stores at most `n` elements → **O(n)** space in the worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the structure to support decreasing spans (price ≥ previous)?
-2. Can you answer range‑maximum queries on historic prices using a similar stack technique?
+2. Can you answer range-maximum queries on historic prices using a similar stack technique?
 3. What changes are needed if you must support price updates after insertion?
 
 ## Key Takeaway
-A monotonic stack efficiently tracks previous higher prices, turning each query into constant‑amortized work by aggregating spans during pops.
+A monotonic stack efficiently tracks previous higher prices, turning each query into constant-amortized work by aggregating spans during pops.

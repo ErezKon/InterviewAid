@@ -69,7 +69,7 @@ Output: 0
 |------|--------|--------|
 | 1 | Iterate over each cell in the grid. | Locate potential island starting points. |
 | 2 | When a `1` is found, launch DFS to explore the entire connected component. | Marks all cells of the island and counts its area. |
-| 3 | During DFS, set visited cells to `0` to avoid revisiting. | Prevents infinite recursion and double‑counting. |
+| 3 | During DFS, set visited cells to `0` to avoid revisiting. | Prevents infinite recursion and double-counting. |
 | 4 | DFS returns the size of the current island; update `maxArea` if larger. | Tracks the largest island seen so far. |
 | 5 | Continue scanning the grid until all cells processed. | Ensures all islands are considered. |
 

@@ -38,7 +38,7 @@ Return an integer denoting the **maximum** possible **bitwise AND** of any **sub
 
 ## Key Insight
 
-> Process bits from most significant to least. For each bit, determine the minimum increments needed to make **every** element have that bit set while preserving already‑chosen higher bits. If the required cost fits within the remaining budget, commit to that bit.
+> Process bits from most significant to least. For each bit, determine the minimum increments needed to make **every** element have that bit set while preserving already-chosen higher bits. If the required cost fits within the remaining budget, commit to that bit.
 
 ---
 
@@ -102,9 +102,9 @@ Explanation: - We need a subset of size m = 2. Choose indices [0, 1].
 
 Take `nums = [5,6]` (`101`, `110`) with `budget = 2`.
 1. Start with `result = 0`.
-2. Bit 2 (value 4): both numbers already have this bit → cost 0, commit → `result = 4`.
-3. Bit 1 (value 2): numbers are `101` and `110`. To have bit 1 set, `5` needs +1 → `110`. Cost = 1 ≤ remaining budget 2 → commit → `result = 6`, budget = 1.
-4. Bit 0 (value 1): now numbers are `110` and `110`. `5` already upgraded to `6`; both lack bit 0. Increment one of them by 1 costs 1, fits budget → `result = 7`.
+2. Bit 2 (value 4): both numbers already have this bit → cost 0, commit → `result = 4`.
+3. Bit 1 (value 2): numbers are `101` and `110`. To have bit 1 set, `5` needs +1 → `110`. Cost = 1 ≤ remaining budget 2 → commit → `result = 6`, budget = 1.
+4. Bit 0 (value 1): now numbers are `110` and `110`. `5` already upgraded to `6`; both lack bit 0. Increment one of them by 1 costs 1, fits budget → `result = 7`.
 5. Final AND = `7`.
 
 ---
@@ -113,7 +113,7 @@ Take `nums = [5,6]` (`101`, `110`) with `budget = 2`.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Greedy per bit | **O(n · B)** (B ≈ 31) | O(1) |
+| Greedy per bit | **O(n · B)** (B ≈ 31) | O(1) |
 
 ---
 

@@ -106,8 +106,8 @@ Take `nums = [13,31,22]`.
 2. Sort by (digitSum, value) → `[(4,13,0), (4,22,2), (4,31,1)]`.
 3. Target positions: `targetPos[0]=0`, `targetPos[2]=1`, `targetPos[1]=2` → mapping `[0→0, 1→2, 2→1]`.
 4. Cycle detection:
-   - Index 0 is already correct.
-   - Start at index 1 → 1→2→1 forms a 2‑cycle → swaps += 1.
+   - Index 0 is already correct.
+   - Start at index 1 → 1→2→1 forms a 2-cycle → swaps += 1.
 Result = 1 swap.
 
 ---

@@ -39,11 +39,11 @@ Example 2:
 The problem reduces to finding the longest subsequence of `source` that already matches `target`. Let `L` be the length of the longest common subsequence (LCS) between `source` and `target`. Elements not part of this LCS must be replaced. Hence, the answer is `|source| - L`.
 
 We compute LCS using dynamic programming where `dp[i][j]` stores the LCS length for `source[0..i)` and `target[0..j)`. The transition is:
-- If `source[i‑1] == target[j‑1]`, `dp[i][j] = dp[i‑1][j‑1] + 1`.
-- Otherwise, `dp[i][j] = max(dp[i‑1][j], dp[i][j‑1])`.
+- If `source[i-1] == target[j-1]`, `dp[i][j] = dp[i-1][j-1] + 1`.
+- Otherwise, `dp[i][j] = max(dp[i-1][j], dp[i][j-1])`.
 
 ## Walkthrough
-| i (source index) | j (target index) | source[i‑1] | target[j‑1] | dp[i][j] |
+| i (source index) | j (target index) | source[i-1] | target[j-1] | dp[i][j] |
 |------------------|------------------|------------|------------|----------|
 | 1                | 1                | 5          | 1          | 0        |
 | 2                | 1                | 1          | 1          | 1        |
@@ -59,7 +59,7 @@ The final LCS length `L = 3`, so answer = 5 − 3 = 2 replacements.
 
 ## Follow-Up Questions
 1. How would you adapt the solution if replacements have different costs?
-2. Can the problem be solved in O(|source| log |target|) using greedy matching when `target` contains distinct elements?
+2. Can the problem be solved in O(|source| log |target|) using greedy matching when `target` contains distinct elements?
 3. What changes if you can only replace elements with values present in `target`?
 
 ## Key Takeaway

@@ -52,7 +52,7 @@ Explanation: One jump forward (0 -> 16) then one jump backward (16 -> 7) will ge
 
 ## Approach
 
-**Algorithm**: Breadth‑First Search (BFS) with state `(position, lastWasBack)`.
+**Algorithm**: Breadth-First Search (BFS) with state `(position, lastWasBack)`.
 
 The backward constraint is encoded as a boolean flag. We explore forward jumps always; backward jumps only if the previous move was not backward. The search space is bounded by `maxPos = max(x, max(forbidden)) + a + b` (≈ 6000).
 
@@ -97,7 +97,7 @@ Example: `forbidden = [14,4,18,1,15], a = 3, b = 15, x = 9`
 - **Time**: O(maxPos) – each state `(position, flag)` is visited at most once.
 - **Space**: O(maxPos) – queue and visited set store at most two entries per position.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm if backward jumps could be performed consecutively?
 2. Can the solution be optimized to use `O(1)` additional space?
@@ -105,4 +105,4 @@ Example: `forbidden = [14,4,18,1,15], a = 3, b = 15, x = 9`
 
 ## Key Takeaway
 
-> When movement has constraints on consecutive actions, encode the constraint in the BFS state. Here: `(position, last_direction)` doubles the state space but handles the no‑consecutive‑backward rule cleanly.
+> When movement has constraints on consecutive actions, encode the constraint in the BFS state. Here: `(position, last_direction)` doubles the state space but handles the no-consecutive-backward rule cleanly.

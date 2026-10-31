@@ -54,10 +54,10 @@ Output: 4
 ```
 
 ## Approach
-**Greedy + Hashing** – For each row that has reservations, store the occupied seat numbers in a set. For rows without reservations we can always place two families. For a row with reservations, check the three possible blocks (2‑5, 4‑7, 6‑9). If both left and right blocks are free, add two families; otherwise, add one if any block is free.
+**Greedy + Hashing** – For each row that has reservations, store the occupied seat numbers in a set. For rows without reservations we can always place two families. For a row with reservations, check the three possible blocks (2-5, 4-7, 6-9). If both left and right blocks are free, add two families; otherwise, add one if any block is free.
 
 ## Walkthrough
-| Row | Reserved Seats | Left Block (2‑5) | Middle Block (4‑7) | Right Block (6‑9) | Families Added |
+| Row | Reserved Seats | Left Block (2-5) | Middle Block (4-7) | Right Block (6-9) | Families Added |
 |-----|----------------|-----------------|-------------------|------------------|----------------|
 | 1   | 2,3,8          | ❌ (2,3)        | ✅                | ❌ (8)            | 1              |
 | 2   | 6              | ✅              | ❌ (6)            | ✅               | 2              |
@@ -75,4 +75,4 @@ Total families = 1 + 2 + 2 = 5, but row 1 can only host one family, so the answe
 - What if the reservation list is streamed in real time?
 
 ## Key Takeaway
-Hash the reserved seats per row and greedily check the three possible 4‑seat blocks; rows without reservations automatically accommodate two families.
+Hash the reserved seats per row and greedily check the three possible 4-seat blocks; rows without reservations automatically accommodate two families.

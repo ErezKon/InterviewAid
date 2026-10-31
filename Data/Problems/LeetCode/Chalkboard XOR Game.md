@@ -71,7 +71,7 @@ FUNCTION ChalkboardXORGame(nums):
 ## Follow-Up Questions
 1. How would the solution change if players could only remove a single element per turn?
 2. What if the win condition required the XOR to be a specific target value instead of zero?
-3. Can this reasoning be extended to a multi‑player variant?
+3. Can this reasoning be extended to a multi-player variant?
 
 ## Key Takeaway
 The XOR of the entire array and the parity of its length fully determine the winner in this impartial game.

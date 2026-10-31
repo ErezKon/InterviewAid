@@ -44,7 +44,7 @@ Example 2:
 
 ## Approach
 
-Post‑order DFS — O(n) ✅
+Post-order DFS — O(n) ✅
 
 Return a tuple `(isBST, size, minVal, maxVal)` for each node. A node forms a BST if both children are BSTs and its value is greater than the maximum in the left subtree and less than the minimum in the right subtree.
 
@@ -85,7 +85,7 @@ Consider the tree `[5,1,4,null,null,3,6]`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to return the actual nodes of the largest BST subtree?
 2. Can you solve the problem iteratively without recursion?
@@ -95,4 +95,4 @@ Consider the tree `[5,1,4,null,null,3,6]`.
 
 ## Key Takeaway
 
-> Post‑order DFS propagates BST validity and range information upward. A subtree is a BST iff both children are BSTs and the node’s value respects both ranges.
+> Post-order DFS propagates BST validity and range information upward. A subtree is a BST iff both children are BSTs and the node’s value respects both ranges.

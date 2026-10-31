@@ -66,7 +66,7 @@ Result `[1,3,2,5,4]` satisfies the condition.
 |------|-------|
 | O(n log n) due to sorting | O(1) extra |
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you handle arrays with duplicate values?
 - Can you achieve O(n) time without sorting?

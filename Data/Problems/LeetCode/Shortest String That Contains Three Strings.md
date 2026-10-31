@@ -90,4 +90,4 @@ The algorithm tries all orderings and picks the minimal result.
 
 ## Key Takeaway
 
-> Only 6 permutations to try (3!). For each ordering, greedily merge with maximum suffix‑prefix overlap. Pick the best result.
+> Only 6 permutations to try (3!). For each ordering, greedily merge with maximum suffix-prefix overlap. Pick the best result.

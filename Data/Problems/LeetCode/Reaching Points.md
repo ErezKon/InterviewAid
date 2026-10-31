@@ -71,10 +71,10 @@ Thus reachable.
 - **Time:** `O(log max(tx, ty))` because each modulo reduces a coordinate substantially.
 - **Space:** `O(1)` – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if moves allowed subtraction instead of addition?
 2. Can you extend the algorithm to count the minimum number of moves required?
 3. What if the grid contains obstacles that block certain coordinates?
 
 ## Key Takeaway
-Reversing the process and using modulo lets you collapse many forward steps into a single operation, yielding a logarithmic‑time decision.
+Reversing the process and using modulo lets you collapse many forward steps into a single operation, yielding a logarithmic-time decision.

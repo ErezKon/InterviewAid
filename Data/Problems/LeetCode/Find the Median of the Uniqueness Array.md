@@ -61,20 +61,20 @@ Example 3:
 
 ## 3. Walkthrough
 
-We illustrate the binary‑search + sliding‑window process on **Example 1** (`nums = [1,2,1]`).
+We illustrate the binary-search + sliding-window process on **Example 1** (`nums = [1,2,1]`).
 
-1. **Total subarrays** = `n·(n+1)/2 = 3·4/2 = 6`. The median position is `⌈6/2⌉ = 3` (1‑based).
+1. **Total subarrays** = `n·(n+1)/2 = 3·4/2 = 6`. The median position is `⌈6/2⌉ = 3` (1-based).
 2. **Binary search range**: `lo = 1`, `hi = n = 3`.
-3. **First mid = 2** – count subarrays with ≤ 2 distinct elements:
+3. **First mid = 2** – count subarrays with ≤ 2 distinct elements:
    - Expand window rightwards, maintaining a frequency map.
    - When distinct count exceeds 2, shrink from the left.
-   - Accumulate `right‑left+1` for each right index.
-   - Result = 6 subarrays (all satisfy ≤ 2).
+   - Accumulate `right-left+1` for each right index.
+   - Result = 6 subarrays (all satisfy ≤ 2).
    Since `6 ≥ 3`, set `hi = 2`.
-4. **Second mid = 1** – count subarrays with ≤ 1 distinct element:
+4. **Second mid = 1** – count subarrays with ≤ 1 distinct element:
    - Sliding window yields counts: `[1]`, `[2]`, `[1]` → 3 subarrays.
    - Result = 3, which is still `≥ 3`, so `hi = 1`.
-5. Loop ends (`lo == hi == 1`). The median value is `1`?  Wait – we mis‑interpreted. Actually we binary‑search the **distinct‑count value** whose cumulative count reaches the median position. The correct steps give final answer `2` (as shown in the official solution). The walkthrough demonstrates how the count function works and how binary search narrows the answer.
+5. Loop ends (`lo == hi == 1`). The median value is `1`?  Wait – we mis-interpreted. Actually we binary-search the **distinct-count value** whose cumulative count reaches the median position. The correct steps give final answer `2` (as shown in the official solution). The walkthrough demonstrates how the count function works and how binary search narrows the answer.
 
 ---
 
@@ -90,7 +90,7 @@ We illustrate the binary‑search + sliding‑window process on **Example 1** 
 FUNCTION medianOfUniquenessArray(nums):
     n ← LENGTH(nums)
     total ← n * (n + 1) / 2    // total subarrays
-    target ← (total + 1) / 2   // median position (1‑based)
+    target ← (total + 1) / 2   // median position (1-based)
 
     lo ← 1; hi ← n
     WHILE lo < hi DO

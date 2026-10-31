@@ -80,7 +80,7 @@ Explanation: An optimal path for maximum coins is:
 ```text
 FUNCTION maximumAmount(coins):
     m, n ← dimensions of coins
-    dp ← 3‑D array of size m × n × 3 initialized to -infinity
+    dp ← 3-D array of size m × n × 3 initialized to -infinity
     dp[0][0][0] ← coins[0][0]
     IF coins[0][0] < 0:
         dp[0][0][1] ← 0   // neutralize first cell
@@ -130,7 +130,7 @@ The DP yields the optimal value `11`.
 
 - How would the solution change if the robot could move left or up as well?
 - What if the number of neutralizations is not fixed but part of the input?
-- Can this be extended to 3‑dimensional grids?
+- Can this be extended to 3-dimensional grids?
 
 ---
 

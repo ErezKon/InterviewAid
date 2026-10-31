@@ -72,27 +72,32 @@ FUNCTION separateSquares(squares):
     RETURN (lo + hi) / 2
 ```
 
-Binary search on the y‑coordinate because the area below a line is a monotonic function.
+Binary search on the y-coordinate because the area below a line is a monotonic function.
 
 ---
 
 ## Walkthrough
 
-Consider squares = [[0,0,2],[3,1,3]].
-| Step | lo | hi | mid | areaBelow |
-|------|----|----|-----|-----------|
-| Init | 0  | 6  | —   | — |
-| 1    | 0  | 6  | 3   | 9 (first square fully below, second partially) |
-| 2    | 0  | 3  | 1.5 | 4.5 |
-| 3    | 1.5| 3  | 2.25| 6.125 |
-| …    | …  | …  | …   | … |
-The loop converges to y ≈ 2.0, where areaBelow = totalArea/2.
+Example 2: squares = [[0,0,2],[1,1,1]] → totalArea = 4 + 1 = 5, target = 2.5, lo = 0, hi = 2.
+
+| Step | lo | hi | mid | areaBelow | Action |
+|------|----|----|-----|-----------|--------|
+| 1 | 0 | 2 | 1 | 2·1 + 0 = 2 | < 2.5 → lo = 1 |
+| 2 | 1 | 2 | 1.5 | 2·1.5 + 0.5 = 3.5 | ≥ 2.5 → hi = 1.5 |
+| 3 | 1 | 1.5 | 1.25 | 2.5 + 0.25 = 2.75 | ≥ 2.5 → hi = 1.25 |
+| 4 | 1 | 1.25 | 1.125 | 2.25 + 0.125 = 2.375 | < 2.5 → lo = 1.125 |
+| 5 | 1.125 | 1.25 | 1.1875 | 2.375 + 0.1875 = 2.5625 | ≥ 2.5 → hi = 1.1875 |
+| … | … | … | … | … | … |
+
+The interval converges to 7/6 ≈ 1.16667 (expected output), where 3·y - 1 = 2.5.
+
+In Example 1, every y in [1, 2] gives areaBelow = 1 = target, so `hi` keeps shrinking toward the minimum, 1.00000.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(n · log(precision)) – each binary‑search iteration scans all *n* squares.
+- **Time:** O(n · log(precision)) – each binary-search iteration scans all *n* squares.
 - **Space:** O(1) – only constant extra variables are used.
 
 ---
@@ -100,11 +105,11 @@ The loop converges to y ≈ 2.0, where areaBelow = totalArea/2.
 ## Follow-Up Questions
 
 1. How would you extend the solution to find a vertical line that splits the area equally?
-2. What if the squares are not axis‑aligned (rotated)?
+2. What if the squares are not axis-aligned (rotated)?
 3. Can you compute the exact line without binary search using geometric formulas?
 
 ---
 
 ## Key Takeaway
 
-The area below a horizontal line is monotonic, enabling a binary‑search solution that iteratively narrows the line position until the split is balanced.
+The area below a horizontal line is monotonic, enabling a binary-search solution that iteratively narrows the line position until the split is balanced.

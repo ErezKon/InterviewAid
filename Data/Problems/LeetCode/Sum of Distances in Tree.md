@@ -47,10 +47,10 @@ Output: [1,1]
 ```
 
 ## Approach
-The problem can be solved with two depth‑first searches (DFS) using a rerooting technique.
+The problem can be solved with two depth-first searches (DFS) using a rerooting technique.
 1. **First DFS** computes for each node:
    - `count[node]`: size of its subtree (including itself).
-   - `result[0]`: sum of distances from an arbitrary root (e.g., node 0) to all nodes.
+   - `result[0]`: sum of distances from an arbitrary root (e.g., node 0) to all nodes.
 2. **Second DFS** reroots the tree: when moving the root from a parent to a child, distances to the child's subtree decrease by `count[child]` and distances to all other nodes increase by `n - count[child]`. This yields `result[child]` from `result[parent]` in O(1).
 
 ```text
@@ -97,4 +97,4 @@ FUNCTION sumOfDistancesInTree(n, edges):
 3. How would you handle dynamic updates (adding/removing edges) while maintaining distance sums?
 
 ## Key Takeaway
-Rerooting transforms a global distance‑sum problem into two linear passes: one to gather subtree information and another to propagate results efficiently to every node.
+Rerooting transforms a global distance-sum problem into two linear passes: one to gather subtree information and another to propagate results efficiently to every node.

@@ -9,7 +9,7 @@ See also: [Pow(x, n).md](Pow%28x,%20n%29.md)
 
 > *Note: companion file — see [Pow(x, n).md](Pow%28x,%20n%29.md) for the official statement and constraints.*
 
-Implement a function `myPow(x, n)` that calculates `x` raised to the power `n` (`xⁿ`). The exponent `n` can be a negative integer, zero, or positive. Return the result as a double-precision floating‑point number. The algorithm must run in logarithmic time.
+Implement a function `myPow(x, n)` that calculates `x` raised to the power `n` (`xⁿ`). The exponent `n` can be a negative integer, zero, or positive. Return the result as a double-precision floating-point number. The algorithm must run in logarithmic time.
 
 ## Examples
 **Example 1:**
@@ -32,7 +32,7 @@ Explanation: 2⁻² = 1/4 = 0.25
 
 ## Approach
 **Algorithm:** Binary (fast) exponentiation – repeatedly square the base and multiply when the current exponent bit is 1.
-**Key Insight:** Any integer `n` can be expressed in binary; by squaring the base for each bit and multiplying when the bit is set, we achieve O(log |n|) multiplications.
+**Key Insight:** Any integer `n` can be expressed in binary; by squaring the base for each bit and multiplying when the bit is set, we achieve O(log |n|) multiplications.
 
 ```text
 FUNCTION myPow(x, n):
@@ -53,19 +53,19 @@ FUNCTION myPow(x, n):
 ## Walkthrough
 For `x = 2, n = 10 (1010₂)`:
 1. n LSB = 0 → skip multiplication, square `x` → 4, n → 5.
-2. n LSB = 1 → result = 1 × 4 = 4, square `x` → 16, n → 2.
+2. n LSB = 1 → result = 1 × 4 = 4, square `x` → 16, n → 2.
 3. n LSB = 0 → skip, square `x` → 256, n → 1.
-4. n LSB = 1 → result = 4 × 256 = 1024, square `x` (unused), n → 0.
+4. n LSB = 1 → result = 4 × 256 = 1024, square `x` (unused), n → 0.
 Final result = 1024.
 
 ## Complexity Analysis
-- **Time:** O(log |n|) multiplications.
+- **Time:** O(log |n|) multiplications.
 - **Space:** O(1) auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for modular exponentiation (computing `xⁿ mod m`)?
 2. Can you implement the same logic iteratively without using bitwise operators?
-3. What changes are needed to handle very large exponents that exceed 64‑bit integer range?
+3. What changes are needed to handle very large exponents that exceed 64-bit integer range?
 
 ## Key Takeaway
-Binary exponentiation reduces the exponent by half each step, turning a linear‑time power calculation into a logarithmic‑time process.
+Binary exponentiation reduces the exponent by half each step, turning a linear-time power calculation into a logarithmic-time process.

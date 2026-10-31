@@ -92,7 +92,7 @@ Output: [0,0]
 
 ## 5. Walkthrough
 
-Consider Example 1 (3×3 board). The DP starts at cell (2,2) `'S'` with score 0, paths 1. Processing cells backwards, the algorithm computes scores for each reachable cell, updating both score and path count. When reaching the start cell (0,0) `'E'`, the stored score is 4 and paths count is 2.
+Consider Example 1 (3×3 board). The DP starts at cell (2,2) `'S'` with score 0, paths 1. Processing cells backwards, the algorithm computes scores for each reachable cell, updating both score and path count. When reaching the start cell (0,0) `'E'`, the stored score is 4 and paths count is 2.
 
 ---
 

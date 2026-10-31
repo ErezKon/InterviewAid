@@ -50,9 +50,9 @@ Example 2:
 ## 3. Walkthrough
 
 **Example "word":**
-1. Start at position 0 with empty current string and count 0.
-2. Choose to abbreviate → count 1, move to position 1.
-3. At position 1, either continue abbreviating (count 2) or keep the letter (flush count 1 then add `'w'`).
+1. Start at position 0 with empty current string and count 0.
+2. Choose to abbreviate → count 1, move to position 1.
+3. At position 1, either continue abbreviating (count 2) or keep the letter (flush count 1 then add `'w'`).
 4. Recursively explore all choices; when reaching the end, append any remaining count.
 5. Collect each fully built string into the result list.
 

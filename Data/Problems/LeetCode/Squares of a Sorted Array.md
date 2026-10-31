@@ -67,10 +67,10 @@ The final `result` is `[0,1,9,16,100]`.
 - **Time:** O(n) – each element is processed once.
 - **Space:** O(n) – output array of size n.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to work in‑place without extra O(n) space?
+## Follow-Up Questions
+1. How would you modify the algorithm to work in-place without extra O(n) space?
 2. Can you handle the case where the input array is not sorted?
 3. What if you need to return the k smallest squares instead of all of them?
 
 ## Key Takeaway
-Two‑pointer traversal from both ends efficiently builds the sorted squares array in linear time.
+Two-pointer traversal from both ends efficiently builds the sorted squares array in linear time.

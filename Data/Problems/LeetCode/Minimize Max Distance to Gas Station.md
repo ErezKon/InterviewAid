@@ -111,6 +111,6 @@ The loop continues until the interval width is below `1e-6`, yielding the minima
 
 ## Key Takeaway
 
-> **Binary search on answer for min‑max problems** — guess the answer, verify feasibility, and narrow the range. Works whenever feasibility is monotonic (smaller answer → need more resources).
+> **Binary search on answer for min-max problems** — guess the answer, verify feasibility, and narrow the range. Works whenever feasibility is monotonic (smaller answer → need more resources).
 
 ---

@@ -54,7 +54,7 @@ Explanation: Each level is already sorted in increasing order so return 0.
 
 ## Approach
 The problem separates by level, so handle each level independently.
-1. Perform a breadth‑first search (BFS) to collect the values of each level in order.
+1. Perform a breadth-first search (BFS) to collect the values of each level in order.
 2. For a level array `arr`, the minimum swaps to sort it equals the sum over cycles of `(cycle_length - 1)`. This is classic cycle decomposition:
    - Pair each value with its original index.
    - Sort the pairs by value.
@@ -72,10 +72,10 @@ The problem separates by level, so handle each level independently.
 - **Time:** O(N log N) – BFS visits each node once, and sorting each level of size `m` costs `O(m log m)`. The sum over levels is bounded by `O(N log N)`.
 - **Space:** O(N) for storing level arrays and BFS queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if swaps could be performed between any two nodes in the tree (not limited to the same level)?
 2. Can you compute the answer in O(N) time using counting sort when node values are bounded?
 3. What if the tree is a complete binary tree and you must output the sequence of swap operations?
 
 ## Key Takeaway
-Sorting each level independently reduces to counting the minimum swaps via cycle decomposition; summing these per‑level counts yields the overall minimum operations.
+Sorting each level independently reduces to counting the minimum swaps via cycle decomposition; summing these per-level counts yields the overall minimum operations.

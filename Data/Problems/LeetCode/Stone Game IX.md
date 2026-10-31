@@ -52,42 +52,44 @@ Alice loses the game because the sum of the removed stones (15) is divisible by 
 ```
 
 ## Approach
-The game can be solved with DP on intervals. Let `dp[i][j]` be the maximum score difference (current player score minus opponent score) achievable from the subarray `stones[i..j]`. The player can take `stones[i]` or `stones[j]`; after the move, the opponent will play optimally on the remaining interval. Hence:
-`dp[i][j] = max(stones[i] - dp[i+1][j], stones[j] - dp[i][j-1])`.
-Alice wins if `dp[0][n-1] > 0`.
+Only values mod 3 matter, so count `c0`, `c1`, `c2` (stones with value mod 3 = 0, 1, 2).
+
+- **Ignoring zeros:** the running sum must never hit 0 mod 3. If Alice starts with a 1, the sum is 1 and the only safe move is another 1 (sum 2), then a 2 (sum 1), then a 1, ... so the forced order is `1, 1, 2, 1, 2, ...`. Symmetrically, starting with a 2 forces `2, 2, 1, 2, 1, ...`. Alice picks the starting class.
+- **Zeros:** a 0-stone never changes the sum, so it just passes the turn. Only the parity of `c0` matters (pairs cancel out).
+
+Case analysis (Alice wins iff):
+1. `c0` even: zeros cancel. Alice starts with the scarcer non-zero class; Bob is the one who runs out of safe moves as long as both classes exist. Alice wins iff `c1 >= 1 and c2 >= 1`.
+2. `c0` odd: one effective turn swap. Alice must start with a class that has at least 3 more stones than the other so that Bob is forced to break the sum before the stones run out (otherwise either she gets stuck or the stones run out, which is a Bob win). Alice wins iff `|c1 - c2| > 2`.
 
 ### Pseudocode
 ```text
 FUNCTION stoneGameIX(stones):
-    n ← LENGTH(stones)
-    SET dp[n][n] ← 0
-    FOR length ← 1 TO n:
-        FOR i ← 0 TO n - length:
-            j ← i + length - 1
-            IF i == j:
-                SET dp[i][j] ← stones[i]
-            ELSE:
-                SET takeLeft ← stones[i] - dp[i+1][j]
-                SET takeRight ← stones[j] - dp[i][j-1]
-                SET dp[i][j] ← MAX(takeLeft, takeRight)
-    RETURN dp[0][n-1] > 0
+    c <- [0, 0, 0]
+    FOR v IN stones:
+        c[v MOD 3] <- c[v MOD 3] + 1
+    IF c[0] MOD 2 == 0:
+        RETURN c[1] >= 1 AND c[2] >= 1
+    RETURN ABS(c[1] - c[2]) > 2
 ```
 
 ## Walkthrough
-Consider `stones = [5,3,4,5]` (n=4).
-1. Length=1: dp[i][i] = stone value.
-2. Length=2: compute dp[0][1] = max(5-3,3-5)=2, dp[1][2]=max(3-4,4-3)=1, dp[2][3]=max(4-5,5-4)=1.
-3. Length=3: dp[0][2]=max(5-dp[1][2]=5-1=4,4-dp[0][1]=4-2=2)=4; dp[1][3]=max(3-dp[2][3]=3-1=2,5-dp[1][2]=5-1=4)=4.
-4. Length=4: dp[0][3]=max(5-dp[1][3]=5-4=1,5-dp[0][2]=5-4=1)=1 > 0, so Alice wins.
+**Example 3:** `stones = [5,1,2,4,3]`.
+1. Residues mod 3: `[2,1,2,1,0]` -> `c0 = 1`, `c1 = 2`, `c2 = 2`.
+2. `c0 = 1` is odd -> check `|c1 - c2| = |2 - 2| = 0 > 2`? No.
+3. Return `false` (Bob wins), matching the expected output.
+
+**Example 1:** `stones = [2,1]` -> residues `[2,1]`, `c0 = 0` (even), `c1 = 1`, `c2 = 1` -> both present -> `true`.
+
+**Example 2:** `stones = [2]` -> `c0 = 0` (even), `c1 = 0` -> `false`.
 
 ## Complexity Analysis
-- **Time:** O(n²) – all interval lengths.
-- **Space:** O(n²) for the DP table (can be reduced to O(n) with rolling arrays).
+- **Time:** O(n) - one pass to count residues.
+- **Space:** O(1) - three counters.
 
-## Follow‑Up Questions
-1. How would you adapt the solution if a player could also take the middle stone when the array length is odd?
-2. Can the space be reduced to O(n) while preserving O(n²) time?
-3. What changes are needed if the score is based on the sum of taken stones modulo a value?
+## Follow-Up Questions
+1. How would you verify the case analysis with a memoized brute force over `(c0, c1, c2, sum mod 3, turn)`?
+2. How does the answer change if the losing condition were divisibility by 4 instead of 3?
+3. What if running out of stones counted as a win for the player who made the last move instead of Bob?
 
 ## Key Takeaway
-Transforming the game into a score‑difference interval DP captures optimal play and determines the winner in quadratic time.
+Reducing values mod 3 makes the move sequence forced; with zeros acting as turn passes, the winner depends only on `c0` parity and the counts `c1`, `c2`.

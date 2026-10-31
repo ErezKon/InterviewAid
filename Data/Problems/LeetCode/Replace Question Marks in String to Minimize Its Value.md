@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "no two adjacent equal" problem. Correct idea: count the fixed letters; for each `'?'` pop the letter with the smallest count (min-heap keyed by `(count, letter)`), record it and push it back with `count + 1`; finally **sort** the chosen letters and write them into the `'?'` positions left to right (value depends only on counts, sorting gives the lexicographically smallest string). O(n log 26).*
-
 You are given a string `s`. `s[i]` is either a lowercase English letter or `'?'`.
 
 For a string `t` having length `m` containing **only** lowercase English letters, we define the function `cost(i)` for an index `i` as the number of characters **equal** to `t[i]` that appeared before it, i.e. in the range `[0, i - 1]`.
@@ -54,38 +52,51 @@ The value of "abac" is 1.
 ```
 
 ## Approach
-Iterate through the string, and for each `'?'` choose the smallest letter (`'a'`‑`'z'`) that differs from its immediate neighbors.
+If letter `c` occurs `k` times in the final string, those occurrences contribute `0 + 1 + ... + (k-1) = k(k-1)/2` to the value, regardless of where they are. So the value depends **only on the letter counts**, not on positions.
+
+1. **Choose the multiset of letters.** Count the fixed letters. For each `'?'`, greedily pick the letter with the smallest current count (ties broken by the smaller letter) and increment its count. Adding a letter with count `k` raises the value by `k`, so always taking the minimum count is optimal. A min-heap of `(count, letter)` does this in O(log 26).
+2. **Make it lexicographically smallest.** The positions of the chosen letters do not affect the value, so sort the chosen letters and write them into the `'?'` positions from left to right.
 
 ```text
-FUNCTION MinimizeString(s):
-    CONVERT s TO mutable list chars
-    FOR i ← 0 TO LENGTH(chars) - 1:
-        IF chars[i] = '?':
-            FOR c ← 'a' TO 'z':
-                IF (i > 0 AND chars[i-1] = c) OR (i < LENGTH(chars)-1 AND chars[i+1] = c):
-                    CONTINUE
-                SET chars[i] ← c
-                BREAK
-    RETURN JOIN(chars)
+FUNCTION minimizeStringValue(s):
+    cnt ← array of 26 zeros
+    FOR each c IN s:
+        IF c ≠ '?': cnt[c] ← cnt[c] + 1
+    heap ← MIN-HEAP of (cnt[c], c) FOR c ← 'a' TO 'z'
+    chosen ← []
+    FOR each c IN s:
+        IF c = '?':
+            (k, letter) ← POP-MIN(heap)
+            APPEND letter TO chosen
+            PUSH (k + 1, letter) INTO heap
+    SORT chosen ASCENDING
+    result ← CHARACTER ARRAY OF s
+    j ← 0
+    FOR i ← 0 TO length(s)-1:
+        IF result[i] = '?':
+            result[i] ← chosen[j]
+            j ← j + 1
+    RETURN JOIN(result)
 ```
 
 ## Walkthrough
-| Index | Original | Chosen Char | Result So Far |
-|------|----------|-------------|--------------|
-| 0 | ? | a (no left neighbor, right is 'a') | a |
-| 1 | a | – | a |
-| 2 | b | – | ab |
-| 3 | ? | a (left is 'b', right is '?') | aba |
-| 4 | ? | c (left is 'a', no right) | abac |
+Example 2: `s = "a?a?"`. Fixed counts: `a = 2`, all others 0.
+
+| Step | '?' # | Heap minimum (count, letter) | Chosen | Counts after |
+|------|-------|------------------------------|--------|--------------|
+| 1 | first '?' | (0, b) | b | a=2, b=1 |
+| 2 | second '?' | (0, c) | c | a=2, b=1, c=1 |
+
+Sorted chosen letters: `[b, c]`. Fill positions 1 and 3: `"a" + "b" + "a" + "c"` = `"abac"` (value = 1, from the second `a`). Result: `"abac"` — matches the expected output.
 
 ## Complexity Analysis
-- Time: O(n·26) → O(n) since 26 is constant.
-- Space: O(n) for mutable character list.
+- **Time:** O(n log 26 + q log q) where q is the number of `'?'`; with a counting sort over 26 letters this is O(n).
+- **Space:** O(26 + q) for the heap and the chosen letters, plus O(n) for the output string.
 
-## Follow‑Up Questions
-1. How would you handle uppercase letters as well?
-2. Can the algorithm be adapted to minimize the number of distinct letters used?
-3. What if the string must also avoid forming a given forbidden substring?
+## Follow-Up Questions
+1. Why is the greedy choice optimal? (Each added letter with current count `k` costs exactly `k`; the marginal costs of a letter are increasing, so picking the cheapest marginal cost each time minimises the convex sum.)
+2. Could you avoid the heap? (Yes: with 26 letters a linear scan for the minimum per `'?'` is O(26·n), or "water-fill" counts level by level.)
+3. What if `cost(i)` counted equal characters in a window of the last `w` positions instead of all earlier ones? (Positions now matter; the problem becomes a placement / spacing problem rather than a pure counting one.)
 
 ## Key Takeaway
-Greedy selection of the smallest valid character at each `'?'` yields the lexicographically minimal string while respecting adjacency constraints.
+The value is `Σ k_c(k_c − 1)/2`, a function of counts only: greedily assign each `'?'` the currently rarest letter, then sort those letters into the `'?'` slots to get the lexicographically smallest optimal string.

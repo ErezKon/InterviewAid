@@ -56,7 +56,7 @@ Note that the starting and ending square can be anywhere in the grid.
 ```
 
 ## Approach
-Backtracking – explore all possible moves from the current cell, marking cells as visited, and backtrack when a dead‑end is reached.
+Backtracking – explore all possible moves from the current cell, marking cells as visited, and backtrack when a dead-end is reached.
 
 ```text
 FUNCTION uniquePathsIII(grid):
@@ -69,7 +69,7 @@ FUNCTION uniquePathsIII(grid):
             IF grid[r][c] == 1:
                 startRow ← r; startCol ← c
             IF grid[r][c] != -1:
-                empty += 1               // count non‑obstacle cells
+                empty += 1               // count non-obstacle cells
     count ← 0
 
     FUNCTION dfs(r, c, remaining):
@@ -88,16 +88,16 @@ FUNCTION uniquePathsIII(grid):
 ```
 
 ## Walkthrough
-For the first example, the algorithm starts at `(0,0)`. It recursively explores four directions, pruning paths that hit obstacles or revisit cells. Only two complete traversals reach `(2,2)` after covering all 7 non‑obstacle cells.
+For the first example, the algorithm starts at `(0,0)`. It recursively explores four directions, pruning paths that hit obstacles or revisit cells. Only two complete traversals reach `(2,2)` after covering all 7 non-obstacle cells.
 
 ## Complexity Analysis
 Time: O(4^{m·n}) in the worst case (explores every permutation of moves). Practical input sizes are limited by constraints.
 Space: O(m·n) recursion stack plus the grid itself.
 
-## Follow‑Up Questions
-* How can memoization be applied to reduce repeated sub‑problems?
+## Follow-Up Questions
+* How can memoization be applied to reduce repeated sub-problems?
 * What changes if diagonal moves are allowed?
 * Can the solution be adapted to count paths modulo `10^9+7` for large grids?
 
 ## Key Takeaway
-Backtracking systematically tries every possible ordering of moves, ensuring each non‑obstacle cell is visited exactly once, which is essential for Hamiltonian‑path‑style grid problems.
+Backtracking systematically tries every possible ordering of moves, ensuring each non-obstacle cell is visited exactly once, which is essential for Hamiltonian-path-style grid problems.

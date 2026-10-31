@@ -52,43 +52,50 @@ Choose suffix from index = 4, so resulting s = "ababab".
 ```
 
 ## Approach
-**Algorithm:** Combine KMP to find all rotation matches and matrix exponentiation for counting sequences.
-- **Insight 1:** All rotations of `s` that equal `t` correspond to occurrences of `t` in `s+s` using KMP pattern matching.
-- **Insight 2:** The transformation process can be modeled as a linear recurrence; using matrix exponentiation we compute the number of ways for a given number of steps.
+**Algorithm:** KMP to count matching rotations + closed-form (or 2x2 matrix power) counting of rotation walks.
+- **Insight 1:** Every operation is a rotation. Track the current string as a rotation offset `r` in `[0, n)` of the original `s`. One operation adds a shift `l` in `1..n-1` (mod n), i.e. it moves to **any offset except the current one**.
+- **Insight 2:** By symmetry, after `k` operations starting from offset 0 there are only two distinct counts: `f0` = ways to be back at offset 0, and `f1` = ways to be at any one specific nonzero offset. They satisfy `f0' = (n-1) * f1`, `f1' = f0 + (n-2) * f1`, with closed form
+  - `f0(k) = ((n-1)^k + (n-1) * (-1)^k) / n`
+  - `f1(k) = ((n-1)^k - (-1)^k) / n`
+  (division via the modular inverse of `n`, since `10^9 + 7` is prime).
+- **Insight 3:** The offsets `r` whose rotation of `s` equals `t` are exactly the start indices of `t` in `s + s[0..n-2]` (KMP, O(n)). Offset 0 matches iff `s == t`.
+- **Answer:** `(s == t ? f0 : 0) + (#matching nonzero offsets) * f1`.
 
 ### Pseudocode
 ```text
-FUNCTION countTransformations(s, t):
-    n ← LENGTH(s)
-    // Step 1: Find rotation offsets where s rotated equals t
-    pattern ← t
-    text ← s + s
-    offsets ← KMP_SEARCH(text, pattern)   // returns start indices < n
-    // Step 2: Build transition matrix M where M[i][j] = number of ways to go from state i to j in one step
-    // (states represent rotation offsets)
-    M ← BUILD_TRANSITION_MATRIX(n)
-    // Step 3: Raise M to the power of k (number of allowed steps) using fast exponentiation
-    // If no step limit is given, compute total ways using combinatorial formula based on offsets.
-    result ← 0
-    FOR offset IN offsets:
-        result ← result + MATRIX_POWER_SUM(M, offset)
-    RETURN result MOD 1_000_000_007
+FUNCTION numberOfWays(s, t, k):
+    MOD <- 1_000_000_007
+    n <- LENGTH(s)
+    offsets <- KMP_SEARCH(s + s[0..n-2], t)       // all start indices, each < n
+    sign <- (k EVEN) ? 1 : MOD - 1                 // (-1)^k mod MOD
+    p <- POW(n-1, k, MOD)
+    invN <- POW(n, MOD-2, MOD)
+    f0 <- (p + (n-1) * sign) * invN MOD MOD
+    f1 <- (p - sign + MOD) * invN MOD MOD
+    zeroMatch <- 1 IF 0 IN offsets ELSE 0
+    RETURN (zeroMatch * f0 + (LENGTH(offsets) - zeroMatch) * f1) MOD MOD
 ```
 
 ## Walkthrough
-For `s = "abc"`, `t = "bca"`:
-1. `s+s = "abcabc"`. KMP finds match at index 1 → rotation offset 1.
-2. Transition matrix for 3 rotations allows moving clockwise or staying.
-3. After exponentiation, sum of paths that end at offset 1 yields 2 distinct sequences.
+**Example 1:** `s = "abcd"`, `t = "cdab"`, `k = 2`, `n = 4`.
+1. Text `s + s[0..2] = "abcdabc"`. KMP finds `"cdab"` only at index 2 -> offsets `[2]`; offset 0 does not match (`s != t`).
+2. `(n-1)^k = 3^2 = 9`, `(-1)^2 = 1`.
+3. `f0 = (9 + 3 * 1) / 4 = 3`, `f1 = (9 - 1) / 4 = 2`.
+4. Answer `= 0 * f0 + 1 * f1 = 2`. (The two walks are offset 0 -> 1 -> 2 and 0 -> 3 -> 2, matching the "bcda" and "dabc" paths in the explanation.)
+
+**Example 2:** `s = t = "ababab"`, `k = 1`, `n = 6`.
+1. Text `"abababababa"`; `"ababab"` occurs at indices `0, 2, 4` -> 3 offsets, including offset 0.
+2. `5^1 = 5`, `(-1)^1 = -1`: `f0 = (5 - 5) / 6 = 0`, `f1 = (5 + 1) / 6 = 1`.
+3. Answer `= 1 * 0 + 2 * 1 = 2`.
 
 ## Complexity Analysis
-- **Time:** O(n) for KMP search plus O(log k · n³) for matrix exponentiation (n is string length, k is step count).
-- **Space:** O(n²) for the transition matrix.
+- **Time:** O(n + log k) - KMP is linear, and the fast powers take O(log k).
+- **Space:** O(n) for the KMP failure table and search text.
 
 ## Follow-Up Questions
-- How would the solution change if rotations could be performed in both directions?
-- Can the counting be done without explicit matrix exponentiation using combinatorial formulas?
-- What is the complexity if the alphabet size is large (e.g., Unicode)?
+- How would you derive `f0`/`f1` with a 2x2 matrix power `[[0, n-1], [1, n-2]]^k` instead of the closed form?
+- Could you use Z-function or rolling hashes instead of KMP to find matching rotations?
+- What changes if only shifts of a fixed set of lengths `l` were allowed?
 
 ## Key Takeaway
-KMP efficiently discovers matching rotations, and matrix exponentiation counts transformation sequences by treating rotations as states in a linear recurrence.
+Model the string as a rotation offset: each move goes to any other offset, so symmetry collapses the state to two counts (`f0`, `f1`) with a closed form, and KMP counts which offsets equal `t`.

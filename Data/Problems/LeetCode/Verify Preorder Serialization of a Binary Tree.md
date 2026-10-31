@@ -47,7 +47,7 @@ Output: false
 ```
 
 ## Approach
-Slot Counting (Greedy) — each node consumes a slot; non‑null nodes generate two new slots.
+Slot Counting (Greedy) — each node consumes a slot; non-null nodes generate two new slots.
 
 ```text
 FUNCTION isValidSerialization(preorder):
@@ -57,7 +57,7 @@ FUNCTION isValidSerialization(preorder):
         IF slots < 0:
             RETURN false
         IF token != '#':
-            SET slots ← slots + 2    // non‑null node adds two child slots
+            SET slots ← slots + 2    // non-null node adds two child slots
     RETURN slots == 0
 ```
 
@@ -89,4 +89,4 @@ Result: slots = 0 → valid.
 3. How would you extend this to handle trees with more than two children?
 
 ## Key Takeaway
-A preorder serialization is valid if, while processing tokens left‑to‑right, the number of available slots never becomes negative and ends exactly at zero.
+A preorder serialization is valid if, while processing tokens left-to-right, the number of available slots never becomes negative and ends exactly at zero.

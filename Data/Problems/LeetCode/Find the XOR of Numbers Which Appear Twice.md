@@ -66,10 +66,10 @@ Result = 3.
 - **Time:** O(n) to build frequency map and compute XOR.
 - **Space:** O(n) for the frequency map (can be O(1) if numbers are bounded).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem with O(1) extra space if the range of numbers is limited?
 2. Can you extend the solution to handle numbers appearing three times?
-3. What if the array is read‑only and you cannot use extra storage?
+3. What if the array is read-only and you cannot use extra storage?
 
 ## Key Takeaway
-XOR cancels out duplicate values, making it a powerful tool for problems involving pairs or even‑occurrence elements.
+XOR cancels out duplicate values, making it a powerful tool for problems involving pairs or even-occurrence elements.

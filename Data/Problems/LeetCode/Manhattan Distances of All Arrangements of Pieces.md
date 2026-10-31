@@ -28,13 +28,13 @@ The Manhattan Distance between two cells `(xi, yi)` and `(xj, yj)` is `|xi - xj|
 
 ## 2. Approach: Combinatorics — Decompose X and Y Contributions ✅
 
-The Manhattan distance between two cells `(x₁, y₁)` and `(x₂, y₂)` equals `|x₁‑x₂| + |y₁‑y₂|`. The total contribution can be split into independent X‑axis and Y‑axis parts.
+The Manhattan distance between two cells `(x₁, y₁)` and `(x₂, y₂)` equals `|x₁-x₂| + |y₁-y₂|`. The total contribution can be split into independent X-axis and Y-axis parts.
 
 1. Compute the sum of absolute differences for all pairs of row indices.
 2. Compute the sum for all pairs of column indices.
-3. Multiply each sum by the number of ways to choose the remaining `k‑2` pieces from the other cells: `C(m·n‑2, k‑2)`.
+3. Multiply each sum by the number of ways to choose the remaining `k-2` pieces from the other cells: `C(m·n-2, k-2)`.
 
-Both axis sums are obtained in O(m) and O(n) using prefix‑sum style accumulation.
+Both axis sums are obtained in O(m) and O(n) using prefix-sum style accumulation.
 
 ---
 
@@ -66,10 +66,10 @@ Example 2:
 
 Consider `m=2, n=2, k=2`.
 
-1. Row indices: `[0,1]`. Pairwise |Δx| sum = `|0‑1| = 1`.
+1. Row indices: `[0,1]`. Pairwise |Δx| sum = `|0-1| = 1`.
 2. Column indices: `[0,1]`. Pairwise |Δy| sum = `1`.
 3. Total axis sum = `1 + 1 = 2`.
-4. Number of ways to choose remaining pieces: `C(4‑2, 0) = 1`.
+4. Number of ways to choose remaining pieces: `C(4-2, 0) = 1`.
 5. Final total = `2 * 1 = 2` per pair, but there are `C(4,2)=6` pairs, giving `2*4 = 8` (accounting for symmetry).
 
 ---

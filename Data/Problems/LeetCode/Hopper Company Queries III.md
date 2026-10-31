@@ -170,10 +170,10 @@ ORDER BY month;
 
 ## 4. Walkthrough
 
-1. **Generate months** 1‑12 via recursive CTE.
+1. **Generate months** 1-12 via recursive CTE.
 2. **Aggregate per month**: `SUM(distance)` and `SUM(duration)` give totals for each month.
-3. **Moving average**: `AVG(...) OVER (ORDER BY month ROWS BETWEEN CURRENT ROW AND 2 FOLLOWING)` computes the average of the current month and the next two months, yielding a 3‑month window.
-4. **Filter**: Keep only months 1‑10, because months 11‑12 lack a full forward window.
+3. **Moving average**: `AVG(...) OVER (ORDER BY month ROWS BETWEEN CURRENT ROW AND 2 FOLLOWING)` computes the average of the current month and the next two months, yielding a 3-month window.
+4. **Filter**: Keep only months 1-10, because months 11-12 lack a full forward window.
 5. **Result**: Returns `month, avg_distance, avg_duration` for each of the first ten months.
 
 ## 5. Complexity Analysis
@@ -183,10 +183,10 @@ ORDER BY month;
 
 ## 6. Follow-Up Questions
 
-- How would you compute a trailing 3‑month moving average instead of a forward one?
+- How would you compute a trailing 3-month moving average instead of a forward one?
 - Extend the query to handle multiple years in a single result set.
 - How to include only rides with a certain status (e.g., completed) in the averages?
 
 ## 7. Key Takeaway
 
-> Generate month rows, aggregate per‑month metrics, then apply a window `AVG` over a 3‑month frame to obtain moving averages.
+> Generate month rows, aggregate per-month metrics, then apply a window `AVG` over a 3-month frame to obtain moving averages.

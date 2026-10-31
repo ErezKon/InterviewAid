@@ -57,19 +57,19 @@ Note that we can connect houses 1 and 2 with cost 1 or with cost 2 but we will a
 ```
 
 ## Approach
-Model the problem as a Minimum Spanning Tree (MST) on a graph with `n+1` nodes: a virtual node `0` representing the water source, edges from `0` to each house with weight equal to well cost, and edges for each pipe. Apply Kruskal's algorithm with a Union‑Find data structure to select the cheapest edges that connect all houses.
+Model the problem as a Minimum Spanning Tree (MST) on a graph with `n+1` nodes: a virtual node `0` representing the water source, edges from `0` to each house with weight equal to well cost, and edges for each pipe. Apply Kruskal's algorithm with a Union-Find data structure to select the cheapest edges that connect all houses.
 
 ## Walkthrough
 | Step | Edge considered | Action |
 |------|----------------|--------|
-| 1 | (0‑1, cost=5) | Add to MST, union(0,1)
-| 2 | (0‑2, cost=5) | Add to MST, union(0,2)
-| 3 | (1‑2, cost=2) | Skipped, 1 and 2 already connected
+| 1 | (0-1, cost=5) | Add to MST, union(0,1)
+| 2 | (0-2, cost=5) | Add to MST, union(0,2)
+| 3 | (1-2, cost=2) | Skipped, 1 and 2 already connected
 Resulting cost = 5 + 5 = 10 (or choose cheaper combination based on actual inputs).
 
 ## Complexity Analysis
 - **Time:** O(E log E) where E = number of pipes + n (edges for wells).
-- **Space:** O(E) for storing edges and O(n) for Union‑Find.
+- **Space:** O(E) for storing edges and O(n) for Union-Find.
 
 ## Follow-Up Questions
 1. How would you adapt the solution if pipes could be built in both directions with different costs?
@@ -77,4 +77,4 @@ Resulting cost = 5 + 5 = 10 (or choose cheaper combination based on actual input
 3. What changes are needed if some houses are already supplied with water initially?
 
 ## Key Takeaway
-Transforming the water‑distribution problem into an MST with a virtual source node enables a straightforward greedy solution via Kruskal's algorithm.
+Transforming the water-distribution problem into an MST with a virtual source node enables a straightforward greedy solution via Kruskal's algorithm.

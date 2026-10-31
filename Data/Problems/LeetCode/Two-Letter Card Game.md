@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented two-player game. Correct idea: only cards containing `x` matter — split them into `"xx"`, `"x?"` (grouped by the other letter) and `"?x"` (grouped by the other letter). Within one side, two cards pair iff their other letters differ, so a side with total `s` and largest group `m` yields `min(⌊s/2⌋, s − m)` pairs; each `"xx"` card can pair with any leftover `"x?"`/`"?x"` card. Enumerate how the `"xx"` cards are used (or greedily match them to leftovers) and take the maximum. O(n + 10²).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given a deck of cards represented by a string array `cards`, and each card displays two lowercase letters.
 
@@ -58,24 +58,59 @@ Explanation: The only cards that contain the character 'b' are "ab" and "ba". Ho
 ```
 
 ## Approach
-Model the game as a turn‑based selection where each card offers two possible strings (original and reversed). Use minimax with memoization on the multiset of remaining cards and the current turn. Since each card contributes exactly two characters, the state can be represented by a bitmask of used cards. For each turn, iterate over unused cards, consider both orientations, and recursively evaluate the opponent's best response. The first player wins if any move leads to a state where the opponent cannot force a win.
+Only cards containing `x` matter. Split them into three kinds:
+
+- `"xx"` — count `c`.
+- `"x?"` with `? ≠ x` — the **left** side, grouped by the second letter (`L[letter]`).
+- `"?x"` with `? ≠ x` — the **right** side, grouped by the first letter (`R[letter]`).
+
+Compatibility (differ in exactly one position):
+- Two left cards `"xa"`, `"xb"` are compatible iff `a ≠ b`; same for two right cards.
+- A left card and a right card (`"xa"` vs `"bx"`, both letters `≠ x`) differ in both positions — never compatible.
+- `"xx"` is compatible with every left and every right card, but not with another `"xx"`.
+
+So each `"xx"` card behaves like an extra letter group on whichever side it is used. For one side with group sizes summing to `s` and largest group `m`, the maximum number of pairs of cards from different groups is the classic `min(⌊s/2⌋, s − m)`.
+
+Enumerate `k` = number of `"xx"` cards assigned to the left side (the other `c − k` go right) and take the best `f(L ∪ {k}) + f(R ∪ {c − k})`.
+
+```text
+FUNCTION score(cards, x):
+    L ← array[10] of 0;  R ← array[10] of 0;  c ← 0
+    FOR each card (a, b) IN cards:
+        IF a = x AND b = x: c ← c + 1
+        ELSE IF a = x: L[b] ← L[b] + 1
+        ELSE IF b = x: R[a] ← R[a] + 1
+
+    FUNCTION pairs(groups):            // max pairs with different groups
+        s ← sum(groups);  m ← max(groups)
+        RETURN min(s DIV 2, s - m)
+
+    best ← 0
+    FOR k ← 0 TO c:
+        best ← max(best, pairs(L + [k]) + pairs(R + [c - k]))
+    RETURN best
+```
 
 ## Walkthrough
-| Turn | Remaining cards | Chosen card (orientation) | Resulting strings so far |
-|------|----------------|---------------------------|--------------------------|
-| 1 (P1) | ["ab","ba","ac"] | pick "ba" reversed → "ab" | P1 = "ab" |
-| 2 (P2) | ["ab","ac"] | pick "ab" (keep) → "ab" | P2 = "ab" |
-| 3 (P1) | ["ac"] | pick "ac" → "ac" | P1 = "abac" |
-Final comparison: "abac" > "ab" → P1 loses, but alternative first move leads to win.
+Example 1: `cards = ["aa","ab","ba","ac"]`, `x = "a"`.
+
+- `"aa"` → `c = 1`; `"ab"`, `"ac"` → left `L = {b:1, c:1}`; `"ba"` → right `R = {b:1}`.
+
+| k (xx to left) | Left groups | pairs(left) | Right groups | pairs(right) | Total |
+|---|---|---|---|---|---|
+| 0 | {1, 1} | min(1, 2−1) = 1 | {1, xx:1} | min(1, 2−1) = 1 | **2** |
+| 1 | {1, 1, xx:1} | min(1, 3−1) = 1 | {1} | min(0, 0) = 0 | 1 |
+
+Maximum = `2` (pairs `"ab"+"ac"` and `"aa"+"ba"`). Output: `2`.
 
 ## Complexity Analysis
-- **Time:** `O(2^n * n)` where `n` is the number of cards, due to exploring all subsets with memoization.
-- **Space:** `O(2^n)` for the memo table storing game outcomes for each bitmask.
+- **Time:** `O(n + c · σ)` with `σ = 10` letters — one pass to count, then `c + 1` evaluations of `pairs`, each `O(σ)`. (The objective is concave in `k`, so a ternary search or direct greedy would also work, but the linear scan is already fast.)
+- **Space:** `O(σ)`.
 
-## Follow‑Up Questions
-1. How would the solution change if cards could have more than two letters?
-2. Can you design a greedy strategy that works for a restricted set of cards (e.g., already sorted)?
-3. What is the complexity if the number of cards is large (≥ 20) – can you use alpha‑beta pruning?
+## Follow-Up Questions
+1. Why does `min(⌊s/2⌋, s − m)` give the maximum number of pairs from different groups? (If the largest group exceeds half, each of its partners is used once; otherwise a perfect/near-perfect pairing exists by pairing across a sorted arrangement.)
+2. Can you avoid enumerating `k`? (Greedily give `"xx"` cards to the side whose largest group dominates, then split the remainder evenly — the objective is concave in `k`.)
+3. How would the solution change if cards had length 3 and compatibility still meant differing in exactly one position?
 
 ## Key Takeaway
-Representing each turn as a choice among remaining cards and orientations, and memoizing results for each subset, transforms the game into a tractable minimax problem despite exponential possibilities.
+Classify cards by the position of `x`: left and right cards never interact, each side reduces to "pair items of different colors" with the closed form `min(⌊s/2⌋, s − max)`, and the wildcard `"xx"` cards are just an extra color whose split between the sides is enumerated.

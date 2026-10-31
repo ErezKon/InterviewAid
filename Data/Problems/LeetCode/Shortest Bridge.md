@@ -78,15 +78,15 @@ Example 3:
 
 ## Walkthrough
 
-1. Perform DFS from the first `1` found (top‑left island) and mark its cells as `2`. Border cells are added to the BFS queue.
-2. Begin BFS level‑by‑level expanding outward from the border.
+1. Perform DFS from the first `1` found (top-left island) and mark its cells as `2`. Border cells are added to the BFS queue.
+2. Begin BFS level-by-level expanding outward from the border.
 3. After expanding one layer, we encounter the second island (`1`) → steps = 1 (first example).
 4. In the second example, two BFS layers are needed before reaching the opposite island, giving answer 2.
 
 ## Complexity Analysis
 
-- **Time:** O(N × M) where N and M are grid dimensions – each cell visited at most twice (DFS + BFS).
-- **Space:** O(N × M) for the queue and recursion stack.
+- **Time:** O(N × M) where N and M are grid dimensions – each cell visited at most twice (DFS + BFS).
+- **Space:** O(N × M) for the queue and recursion stack.
 
 ## Follow-Up Questions
 
@@ -96,4 +96,4 @@ Example 3:
 
 ## Key Takeaway
 
-Combine DFS to isolate one island with multi‑source BFS to expand uniformly; the first contact with the second island yields the minimal number of flips.
+Combine DFS to isolate one island with multi-source BFS to expand uniformly; the first contact with the second island yields the minimal number of flips.

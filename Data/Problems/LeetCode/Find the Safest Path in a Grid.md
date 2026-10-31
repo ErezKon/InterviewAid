@@ -103,7 +103,7 @@ It can be shown that there are no other paths with a higher safeness factor.
 
 ## 5. Walkthrough
 
-Consider Example 1 (3×3 grid). After multi‑source BFS, each cell receives its Manhattan distance to the thief:
+Consider Example 1 (3×3 grid). After multi-source BFS, each cell receives its Manhattan distance to the thief:
 | Cell | Distance |
 |------|----------|
 | (0,0) | 2 |
@@ -131,4 +131,4 @@ Binary search tries mid = 2. A BFS restricted to cells with distance ≥2 finds 
 
 ## 7. Key Takeaway
 
-> **Multi-source BFS** computes distances, then **binary search on answer** checks reachability. Alternative: max‑heap Dijkstra variant for a single‑pass O(n² log n) solution.
+> **Multi-source BFS** computes distances, then **binary search on answer** checks reachability. Alternative: max-heap Dijkstra variant for a single-pass O(n² log n) solution.

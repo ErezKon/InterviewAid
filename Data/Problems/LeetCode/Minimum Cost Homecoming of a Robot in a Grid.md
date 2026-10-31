@@ -76,13 +76,13 @@ For `startPos = [1,1]`, `homePos = [3,5]`:
 ## Complexity Analysis
 | Metric | Value |
 |--------|-------|
-| Time   | O(|hr‑sr| + |hc‑sc|) – linear in the number of traversed rows and columns |
+| Time   | O(|hr-sr| + |hc-sc|) – linear in the number of traversed rows and columns |
 | Space  | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if moving diagonally were allowed with its own cost matrix?
 2. If row and column costs could be negative, what precautions are needed to avoid cycles?
 3. Can you extend the approach to compute the minimum cost for multiple robots moving simultaneously without collisions?
 
 ## Key Takeaway
-When each row and column has a fixed traversal cost, the total cost from start to home is path‑independent and equals the sum of costs for all intermediate rows and columns.
+When each row and column has a fixed traversal cost, the total cost from start to home is path-independent and equals the sum of costs for all intermediate rows and columns.

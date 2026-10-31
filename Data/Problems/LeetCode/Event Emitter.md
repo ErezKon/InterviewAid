@@ -95,8 +95,8 @@ emitter.emit("firstEvent", [5]); // [7]
 
 ## Follow-Up Questions
 
-1. How would you modify the design to support once‑only listeners?
-2. How can you ensure thread‑safety if `subscribe`/`emit` are called from multiple threads?
+1. How would you modify the design to support once-only listeners?
+2. How can you ensure thread-safety if `subscribe`/`emit` are called from multiple threads?
 3. How would you implement priority ordering of callbacks?
 
 ---

@@ -72,7 +72,7 @@ FUNCTION getStrongest(arr, k):
             SET left ← left + 1
     RETURN result
 ```
-The two‑pointer selection ensures the strongest elements are chosen without sorting by strength.
+The two-pointer selection ensures the strongest elements are chosen without sorting by strength.
 
 ## Walkthrough
 | Step | left | right | chosen | result |
@@ -82,13 +82,13 @@ The two‑pointer selection ensures the strongest elements are chosen without so
 | … | … | … | continue until k=2 |
 
 ## Complexity Analysis
-- **Time:** O(n log n) for sorting; the two‑pointer scan is O(k) ≤ O(n).
-- **Space:** O(1) extra space besides the output list (in‑place sort).
+- **Time:** O(n log n) for sorting; the two-pointer scan is O(k) ≤ O(n).
+- **Space:** O(1) extra space besides the output list (in-place sort).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the `k` weakest values instead?
-2. Can you achieve O(n) time without full sorting, e.g., using a quick‑select to find the median and a heap for the strongest elements?
+2. Can you achieve O(n) time without full sorting, e.g., using a quick-select to find the median and a heap for the strongest elements?
 3. How would the solution change if the strength definition used a different distance metric (e.g., squared difference)?
 
 ## Key Takeaway
-Sorting to find the median and then using a two‑pointer greedy selection yields the `k` strongest values efficiently.
+Sorting to find the median and then using a two-pointer greedy selection yields the `k` strongest values efficiently.

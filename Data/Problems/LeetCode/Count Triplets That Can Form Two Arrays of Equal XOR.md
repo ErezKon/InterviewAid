@@ -86,12 +86,12 @@ Consider `arr = [2,3,1,6,7]`.
 
 1. Compute prefix XORs: `[0, 2, 1, 0, 6, 1]`.
 2. Iterate indices:
-   - index 0, val 0: first occurrence → store (1,0).
-   - index 1, val 2: first → store (1,1).
-   - index 2, val 1: first → store (1,2).
-   - index 3, val 0: seen before (cnt=1, idxSum=0). Contribution = 1 * (3‑1) - 0 = 2 → result=2. Update (cnt=2, idxSum=3).
-   - index 4, val 6: first → store (1,4).
-   - index 5, val 1: seen before (cnt=1, idxSum=2). Contribution = 1 * (5‑1) - 2 = 2 → result=4. Update (cnt=2, idxSum=7).
+   - index 0, val 0: first occurrence → store (1,0).
+   - index 1, val 2: first → store (1,1).
+   - index 2, val 1: first → store (1,2).
+   - index 3, val 0: seen before (cnt=1, idxSum=0). Contribution = 1 * (3-1) - 0 = 2 → result=2. Update (cnt=2, idxSum=3).
+   - index 4, val 6: first → store (1,4).
+   - index 5, val 1: seen before (cnt=1, idxSum=2). Contribution = 1 * (5-1) - 2 = 2 → result=4. Update (cnt=2, idxSum=7).
 3. Final result = 4 triplets, matching the example.
 
 ---
@@ -115,4 +115,4 @@ Consider `arr = [2,3,1,6,7]`.
 
 ## Key Takeaway
 
-> **XOR(a..b) == XOR(b+1..c) ⟹ XOR(a..c) == 0. Reduce to finding segments with zero XOR via prefix XOR. Each zero‑XOR segment of length L contributes L‑1 valid split points.**
+> **XOR(a..b) == XOR(b+1..c) ⟹ XOR(a..c) == 0. Reduce to finding segments with zero XOR via prefix XOR. Each zero-XOR segment of length L contributes L-1 valid split points.**

@@ -80,7 +80,7 @@ The algorithm simply checks the presence of a `1` in each string and returns the
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if the operation allowed swapping bits instead of the OR/XOR combo?
 - Can you extend the approach to strings over a larger alphabet with similar propagation rules?

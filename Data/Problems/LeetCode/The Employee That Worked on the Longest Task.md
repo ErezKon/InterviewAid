@@ -78,8 +78,8 @@ Result: employee 0 has max total 5.
 
 ## Follow-Up Questions
 1. How would you handle streaming logs where data cannot be stored entirely?
-2. Extend to find top‑k employees with longest work time.
+2. Extend to find top-k employees with longest work time.
 3. What if logs can overlap and you need total active time per employee?
 
 ## Key Takeaway
-Accumulate per‑key aggregates with a hash map and then select the maximum efficiently.
+Accumulate per-key aggregates with a hash map and then select the maximum efficiently.

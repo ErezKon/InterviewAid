@@ -117,4 +117,4 @@ Example 2:
 
 ## Key Takeaway
 
-> **Two-phase approach: simulate with heap until convergence, then batch‑apply remaining ops with modular exponentiation. Handles k up to 10⁹ efficiently.**
+> **Two-phase approach: simulate with heap until convergence, then batch-apply remaining ops with modular exponentiation. Handles k up to 10⁹ efficiently.**

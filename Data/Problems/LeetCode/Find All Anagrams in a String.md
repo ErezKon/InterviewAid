@@ -76,14 +76,14 @@ FUNCTION findAnagrams(s, p):
 
 | Step | Window (indices) | sCount vs pCount | Action |
 |------|------------------|------------------|--------|
-| 0 | [0‑2] "cba" | matches 26? No | No output |
-| 1 | [1‑3] "bae" | matches 26? No | No output |
-| 2 | [2‑4] "aeb" | matches 26? No | No output |
-| 3 | [3‑5] "eba" | matches 26? No | No output |
-| 4 | [4‑6] "bab" | matches 26? No | No output |
-| 5 | [5‑7] "aba" | matches 26? No | No output |
-| 6 | [6‑8] "bac" | matches 26? Yes | Output 6 |
-| 7 | [7‑9] "acd" | matches 26? No | End |
+| 0 | [0-2] "cba" | matches 26? No | No output |
+| 1 | [1-3] "bae" | matches 26? No | No output |
+| 2 | [2-4] "aeb" | matches 26? No | No output |
+| 3 | [3-5] "eba" | matches 26? No | No output |
+| 4 | [4-6] "bab" | matches 26? No | No output |
+| 5 | [5-7] "aba" | matches 26? No | No output |
+| 6 | [6-8] "bac" | matches 26? Yes | Output 6 |
+| 7 | [7-9] "acd" | matches 26? No | End |
 
 ---
 

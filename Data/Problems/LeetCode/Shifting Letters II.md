@@ -76,7 +76,7 @@ The difference array batches range updates in O(1) each; a prefix sum yields the
 | Index | Original | diff after ops | Cumulative shift | New char |
 |-------|----------|----------------|------------------|---------|
 | 0 | a | +1 (from [0,1,1]) | 1 | b |
-| 1 | b | +1‑1 (from both ops) | 0 | b |
+| 1 | b | +1-1 (from both ops) | 0 | b |
 | 2 | c | -1 (from [1,2,0]) | -1 → 25 | b |
 
 Resulting string: "bab" (adjusted for modulo arithmetic).
@@ -90,7 +90,7 @@ Resulting string: "bab" (adjusted for modulo arithmetic).
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to support **different shift magnitudes** per operation?
 2. Can the solution be extended to handle **Unicode** characters beyond the English alphabet?

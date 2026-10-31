@@ -89,13 +89,13 @@ Sorted events: `(-1,+1)`, `(0,+1)`, `(2,-1)`, `(5,-1)`.
 Result `0` (the smallest position with maximum brightness 2).
 
 ## Complexity Analysis
-- **Time:** O(n log n) for sorting `2n` events, where `n` is the number of lights.
+- **Time:** O(n log n) for sorting `2n` events, where `n` is the number of lights.
 - **Space:** O(n) to store the events.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return all positions with maximum brightness?
 2. Can the sweep be performed in O(n) time if the coordinate range is bounded?
-3. How would you handle floating‑point positions or non‑integer ranges?
+3. How would you handle floating-point positions or non-integer ranges?
 
 ## Key Takeaway
-A line‑sweep with start/end events converts overlapping interval counting into a simple linear scan after sorting, yielding an optimal O(n log n) solution.
+A line-sweep with start/end events converts overlapping interval counting into a simple linear scan after sorting, yielding an optimal O(n log n) solution.

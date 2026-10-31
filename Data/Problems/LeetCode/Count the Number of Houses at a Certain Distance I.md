@@ -69,12 +69,12 @@ FUNCTION countOfPairs(n, x, y):
         IF i+1 < n THEN
             dist[i][i+1] ← 1
             dist[i+1][i] ← 1
-    // Add extra edge between x and y (1‑based to 0‑based)
+    // Add extra edge between x and y (1-based to 0-based)
     SET a ← x-1
     SET b ← y-1
     dist[a][b] ← 1
     dist[b][a] ← 1
-    // Floyd‑Warshall to compute all‑pairs shortest paths
+    // Floyd-Warshall to compute all-pairs shortest paths
     FOR k ← 0 TO n-1 DO
         FOR i ← 0 TO n-1 DO
             FOR j ← 0 TO n-1 DO
@@ -96,10 +96,10 @@ FUNCTION countOfPairs(n, x, y):
 
 **Example 1:** `n = 3`, `x = 1`, `y = 3`
 
-1. Initialize `dist` with INF, set self distances to 0, and edges (1‑2) and (2‑3) to 1.
-2. Add extra edge between nodes 0 and 2 (1‑based → 0‑based). Now `dist[0][2] = dist[2][0] = 1`.
-3. Run Floyd‑Warshall: shortest paths become 1 for every pair.
-4. Count ordered pairs: distance‑1 appears for all 6 ordered pairs, so `result[0] = 6`. Since we store per distance‑1 index, final output `[6]` (or `[2,2,2]` when split by distance values for n=3).
+1. Initialize `dist` with INF, set self distances to 0, and edges (1-2) and (2-3) to 1.
+2. Add extra edge between nodes 0 and 2 (1-based → 0-based). Now `dist[0][2] = dist[2][0] = 1`.
+3. Run Floyd-Warshall: shortest paths become 1 for every pair.
+4. Count ordered pairs: distance-1 appears for all 6 ordered pairs, so `result[0] = 6`. Since we store per distance-1 index, final output `[6]` (or `[2,2,2]` when split by distance values for n=3).
 
 ---
 
@@ -107,7 +107,7 @@ FUNCTION countOfPairs(n, x, y):
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n³) due to Floyd‑Warshall |
+| **Time** | O(n³) due to Floyd-Warshall |
 | **Space** | O(n²) for distance matrix |
 
 ---
@@ -122,4 +122,4 @@ FUNCTION countOfPairs(n, x, y):
 
 ## Key Takeaway
 
-> **When constraints are small (n ≤ 100), an all‑pairs shortest‑path algorithm like Floyd‑Warshall provides a simple and reliable solution.**
+> **When constraints are small (n ≤ 100), an all-pairs shortest-path algorithm like Floyd-Warshall provides a simple and reliable solution.**

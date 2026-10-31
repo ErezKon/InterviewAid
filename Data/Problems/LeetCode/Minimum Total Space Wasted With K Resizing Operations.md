@@ -47,7 +47,7 @@ Return *the **minimum** **total space wasted** if you can resize the array at mo
 ```text
 FUNCTION minSpaceWastedKResizing(nums, k):
     n ← LENGTH(nums)
-    // Pre‑compute waste for every segment [l, r]
+    // Pre-compute waste for every segment [l, r]
     SET waste[l][r] ← 0 FOR all l ≤ r
     FOR l ← 0 TO n-1:
         SET maxVal ← 0; total ← 0
@@ -105,7 +105,7 @@ Consider `nums = [10,5,15,20]`, `k = 2`.
 
 | Step | Chosen Split Points | Segments | Segment Max | Segment Waste |
 |------|---------------------|----------|-------------|---------------|
-| 1 | after index 1 and 2 | `[10,5]`, `[15]`, `[20]` | 10, 15, 20 | `(10*2‑15)=5`, `0`, `0` |
+| 1 | after index 1 and 2 | `[10,5]`, `[15]`, `[20]` | 10, 15, 20 | `(10*2-15)=5`, `0`, `0` |
 | 2 | Total waste = 5 |
 
 The DP computes `waste[l][r]` for all possible segments, then builds up the optimal combination of at most `k+1 = 3` segments, selecting the split that yields the smallest sum of segment wastes.
@@ -124,11 +124,11 @@ The DP computes `waste[l][r]` for all possible segments, then builds up the opti
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n²·k) — pre‑compute waste O(n²), DP O(n²·k) |
+| **Time** | O(n²·k) — pre-compute waste O(n²), DP O(n²·k) |
 | **Space** | O(n² + n·k) — waste table and DP matrix |
 
 ---
 
 ## 8. Key Takeaway
 
-> **Partition DP**: break the array into at most `k+1` segments, compute segment cost (max·len‑sum), and use DP to choose optimal splits.
+> **Partition DP**: break the array into at most `k+1` segments, compute segment cost (max·len-sum), and use DP to choose optimal splits.

@@ -63,7 +63,7 @@ Output: 8
 
 ## 3. Key Insight
 
-> In `steps` moves you can never travel more than `steps/2` positions to the right, because you must return to index 0. Therefore the reachable position range is bounded by `min(arrLen, steps/2 + 1)`. This small bound enables a DP over positions.
+> In `steps` moves you can never travel more than `steps/2` positions to the right, because you must return to index 0. Therefore the reachable position range is bounded by `min(arrLen, steps/2 + 1)`. This small bound enables a DP over positions.
 
 ---
 
@@ -100,8 +100,8 @@ Consider `steps = 3`, `arrLen = 2`.
 |----------|-------|-------|
 | 0 (init) | 1 | 0 |
 | 1 | 1 (stay) | 1 (right) |
-| 2 | 2 (stay‑stay, right‑left) | 2 (stay‑right, right‑stay) |
-| 3 | 4 (stay‑stay‑stay, right‑left‑stay, stay‑right‑left, right‑left‑right) | 4 |
+| 2 | 2 (stay-stay, right-left) | 2 (stay-right, right-stay) |
+| 3 | 4 (stay-stay-stay, right-left-stay, stay-right-left, right-left-right) | 4 |
 
 The answer after 3 steps is `dp[0] = 4`.
 
@@ -111,8 +111,8 @@ The answer after 3 steps is `dp[0] = 4`.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(steps · min(steps, arrLen)) |
-| **Space** | O(min(steps, arrLen)) |
+| **Time** | O(steps · min(steps, arrLen)) |
+| **Space** | O(min(steps, arrLen)) |
 
 ---
 
@@ -120,10 +120,10 @@ The answer after 3 steps is `dp[0] = 4`.
 
 1. How would you modify the DP if moves could only be left or right (no stay)?
 2. Can the solution be optimized further using combinatorial formulas?
-3. What changes are needed if the line is circular (wrap‑around movement)?
+3. What changes are needed if the line is circular (wrap-around movement)?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Bound the state space.** By limiting positions to `steps/2`, DP becomes feasible even for large `arrLen`. Rolling arrays give O(min(steps, arrLen)) space.
+> **Bound the state space.** By limiting positions to `steps/2`, DP becomes feasible even for large `arrLen`. Rolling arrays give O(min(steps, arrLen)) space.

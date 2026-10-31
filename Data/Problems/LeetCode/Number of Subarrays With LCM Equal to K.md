@@ -101,7 +101,7 @@ Total count = 2.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n² · log k) worst case, early break reduces average work |
+| **Time** | O(n² · log k) worst case, early break reduces average work |
 | **Space** | O(1) |
 
 ---

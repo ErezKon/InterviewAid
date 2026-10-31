@@ -49,7 +49,7 @@ Output: ["CIC","OSO","N M","T I","E N","S G","T"]
 1. **Split** the input string into an array of words.
 2. Determine the length of the longest word `maxLen`.
 3. For each column index `i` from `0` to `maxLen-1`:
-   - Build a string by taking the `i`‑th character of each word if it exists, otherwise a space.
+   - Build a string by taking the `i`-th character of each word if it exists, otherwise a space.
    - Trim trailing spaces before adding to the result list.
 
 ### Pseudocode
@@ -86,10 +86,10 @@ The final list matches the example.
 - **Time:** `O(N * L)` where `N` is the number of words and `L` is the length of the longest word (each character is visited once).
 - **Space:** `O(N * L)` for the output list plus `O(N)` for the split words.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to handle multiple spaces between words?
 2. Can you output the result without building the full intermediate matrix?
 3. How would you adapt the algorithm for Unicode characters with variable byte length?
 
 ## Key Takeaway
-Treat the problem as column‑wise traversal of a word matrix, padding shorter words with spaces and trimming trailing blanks.
+Treat the problem as column-wise traversal of a word matrix, padding shorter words with spaces and trimming trailing blanks.

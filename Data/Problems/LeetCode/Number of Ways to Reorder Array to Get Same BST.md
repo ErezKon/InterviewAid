@@ -101,7 +101,7 @@ Take `nums = [3,1,2,5,4,6]`.
 3. Recursively count right:
    - Root = 5, left = `[4]`, right = `[6]` → interleave = C(2,1)=2, ways = 2.
 4. Interleave left (size 2) and right (size 3): C(5,2)=10.
-5. Total ways = 10 * 1 * 2 = 20. Subtract original ordering → 19, then take modulo → 19. (The example output uses a smaller set for illustration; actual count is 20‑1=19, but the problem statement expects 5 for this specific input due to modulo and constraints.)
+5. Total ways = 10 * 1 * 2 = 20. Subtract original ordering → 19, then take modulo → 19. (The example output uses a smaller set for illustration; actual count is 20-1=19, but the problem statement expects 5 for this specific input due to modulo and constraints.)
 
 ---
 
@@ -109,8 +109,8 @@ Take `nums = [3,1,2,5,4,6]`.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n²) – each node processes its subtree and binomial coefficients are pre‑computed.
-| **Space** | O(n²) for Pascal's triangle (can be reduced to O(n) with on‑the‑fly computation).
+| **Time** | O(n²) – each node processes its subtree and binomial coefficients are pre-computed.
+| **Space** | O(n²) for Pascal's triangle (can be reduced to O(n) with on-the-fly computation).
 
 ---
 
@@ -118,10 +118,10 @@ Take `nums = [3,1,2,5,4,6]`.
 
 - How would the solution change if duplicate values were allowed?
 - Can you compute the answer using only O(n) space?
-- What if the tree must be balanced (AVL/Red‑Black) after each insertion?
+- What if the tree must be balanced (AVL/Red-Black) after each insertion?
 
 ---
 
 ## 8. Key Takeaway
 
-> **BST shape is determined by the relative ordering of left‑ and right‑subtree elements.** Count interleavings with combinations and recurse on subtrees.
+> **BST shape is determined by the relative ordering of left- and right-subtree elements.** Count interleavings with combinations and recurse on subtrees.

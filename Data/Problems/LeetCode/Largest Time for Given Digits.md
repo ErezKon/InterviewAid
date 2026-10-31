@@ -82,7 +82,7 @@ Take the first example `[1,2,3,4]`.
 
 - How would you modify the solution if the input size were larger (e.g., 6 digits forming HH:MM:SS)?
 - Can you solve it without generating all permutations, using a greedy construction?
-- How would you handle time zones or 12‑hour format?
+- How would you handle time zones or 12-hour format?
 
 ---
 

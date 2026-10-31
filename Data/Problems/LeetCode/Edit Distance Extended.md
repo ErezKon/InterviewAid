@@ -37,7 +37,7 @@ Example 3 (Distinct Subsequences, #115):
 ```
 
 ## Approach
-Use a 2‑D DP table initialized for empty prefixes. Fill row‑wise using the recurrence:
+Use a 2-D DP table initialized for empty prefixes. Fill row-wise using the recurrence:
 
 ```text
 FUNCTION TwoStringDP(s1, s2):
@@ -56,11 +56,11 @@ FUNCTION TwoStringDP(s1, s2):
                 dp[i][j] ← mismatchTransition(dp, i, j)
     RETURN dp[m][n]
 ```
-`matchTransition` and `mismatchTransition` are problem‑specific (e.g., add 1 for edit, take max for LCS).
+`matchTransition` and `mismatchTransition` are problem-specific (e.g., add 1 for edit, take max for LCS).
 
 ## Walkthrough
 Consider Edit Distance for "int" → "sint" (insert 's'):
-| i | j | s1[i‑1] | s2[j‑1] | dp[i][j] |
+| i | j | s1[i-1] | s2[j-1] | dp[i][j] |
 |---|---|--------|--------|----------|
 |0|0| – | – |0|
 |1|1| i | s | dp[0][1]+1 =1 |
@@ -75,8 +75,8 @@ Result dp[3][4] = 1 insertion.
 
 ## Follow-Up Questions
 1. How can you optimize space for large strings?
-2. How would you adapt the template for three‑string DP problems like "Longest Common Subsequence of three strings"?
+2. How would you adapt the template for three-string DP problems like "Longest Common Subsequence of three strings"?
 3. Can you convert the DP to a recursive memoization solution?
 
 ## Key Takeaway
-A unified two‑string DP template lets you solve a family of string alignment problems by customizing the match and mismatch transitions.
+A unified two-string DP template lets you solve a family of string alignment problems by customizing the match and mismatch transitions.

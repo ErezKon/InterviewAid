@@ -68,7 +68,7 @@ After sorting descending by height → `[(180, Mary),(170, Emma),(165, John)]` �
 
 ## Follow-Up Questions
 1. How would you modify the solution to sort by height ascending while preserving original order for equal heights?
-2. Can you achieve `O(n)` time if the height range is limited (e.g., 1‑200 cm) using counting sort?
+2. Can you achieve `O(n)` time if the height range is limited (e.g., 1-200 cm) using counting sort?
 3. How would you adapt the algorithm to sort by multiple criteria, such as height then name alphabetically?
 
 ## Key Takeaway

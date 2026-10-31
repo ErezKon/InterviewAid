@@ -30,7 +30,7 @@ Example 2:
 ```
 
 ## Approach
-**One‑Pass Scan — O(n)**
+**One-Pass Scan — O(n)**
 While iterating `j` from left to right, keep track of the best `values[i] + i` seen so far (`maxI`). For each `j`, the candidate score is `maxI + values[j] - j`. Update the answer and possibly `maxI`.
 
 ```text
@@ -58,10 +58,10 @@ The maximum score remains 11.
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the score formula were `values[i] + values[j] - |i - j|`?
-2. Can you extend the approach to find the top‑k best pairs?
+2. Can you extend the approach to find the top-k best pairs?
 3. What changes are needed if the array is streamed and you cannot store all values?
 
 ## Key Takeaway
-By rewriting the score as `(values[i] + i) + (values[j] - j)`, we can maintain the best left component while scanning, turning a quadratic problem into a linear‑time solution.
+By rewriting the score as `(values[i] + i) + (values[j] - j)`, we can maintain the best left component while scanning, turning a quadratic problem into a linear-time solution.

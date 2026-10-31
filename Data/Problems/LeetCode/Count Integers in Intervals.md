@@ -50,7 +50,7 @@ Example 1:
 ```
 
 ## Approach
-Maintain a sorted container of non‑overlapping intervals (e.g., a balanced BST). When adding a new interval, locate all existing intervals that intersect it, remove them, and replace with the merged span. Keep a running total of covered length, updating it by subtracting lengths of removed intervals and adding the length of the merged interval.
+Maintain a sorted container of non-overlapping intervals (e.g., a balanced BST). When adding a new interval, locate all existing intervals that intersect it, remove them, and replace with the merged span. Keep a running total of covered length, updating it by subtracting lengths of removed intervals and adding the length of the merged interval.
 
 ```text
 CLASS CountIntervals:
@@ -84,13 +84,13 @@ Add `[2,6]`:
 - Merge to `[1,7]`, subtract old lengths 3 and 3, add new length 7 → total = 6 - 6 + 7 = 7.
 
 ## Complexity Analysis
-- **Time:** O(k log m) per `add`, where *k* is number of overlapping intervals and *m* is current interval count (log m for search, linear for removals). `count` is O(1).
+- **Time:** O(k log m) per `add`, where *k* is number of overlapping intervals and *m* is current interval count (log m for search, linear for removals). `count` is O(1).
 - **Space:** O(m) for storing intervals.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the structure for a massive number of intervals streamed in real time?
 2. Can the solution be extended to support removal of intervals?
-3. What changes are needed if intervals are floating‑point ranges?
+3. What changes are needed if intervals are floating-point ranges?
 
 ## Key Takeaway
 Merging overlapping intervals in a sorted container lets you maintain the exact count of distinct covered integers with efficient updates.

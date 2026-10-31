@@ -112,11 +112,11 @@ FUNCTION minimumTime(power):
 Consider `power = [9,5,3]`.
 
 1. **Initial state** `mask = 0`, `killed = 0`, `damage = 1`.
-2. Try killing monster 2 (power 3): `time = ⌈3/1⌉ = 3`, new `mask = 100`.
+2. Try killing monster 2 (power 3): `time = ⌈3/1⌉ = 3`, new `mask = 100`.
 3. From `mask = 100`, `killed = 1`, `damage = 2`.
-   - Kill monster 1 (power 5): `time = ⌈5/2⌉ = 3`, new `mask = 110`.
+   - Kill monster 1 (power 5): `time = ⌈5/2⌉ = 3`, new `mask = 110`.
 4. From `mask = 110`, `killed = 2`, `damage = 3`.
-   - Kill monster 0 (power 9): `time = ⌈9/3⌉ = 3`, final `mask = 111`.
+   - Kill monster 0 (power 9): `time = ⌈9/3⌉ = 3`, final `mask = 111`.
 5. Total time = `3 + 3 + 3 = 9`, which is optimal.
 
 The DP table records the minimum time for each subset, guaranteeing the best ordering.
@@ -135,11 +135,11 @@ The DP table records the minimum time for each subset, guaranteeing the best ord
 ## 7. Follow-Up Questions
 
 - How would the solution change if `n` were up to 10⁵? (Consider greedy or sorting strategies.)
-- What if the damage increase rule were non‑linear, e.g., `damage = (killed)^2 + 1`?
+- What if the damage increase rule were non-linear, e.g., `damage = (killed)^2 + 1`?
 - Can this approach be adapted for a variant where monsters have shields that reduce damage?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Bitmask DP for order‑dependent optimization.** When the cost of each action depends on how many prior actions have been taken, and `n` is small, bitmask DP enumerates all orderings efficiently.
+> **Bitmask DP for order-dependent optimization.** When the cost of each action depends on how many prior actions have been taken, and `n` is small, bitmask DP enumerates all orderings efficiently.

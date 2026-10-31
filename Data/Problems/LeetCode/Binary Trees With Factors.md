@@ -70,8 +70,8 @@ For `arr = [2,4,5,10]`:
 
 ## Follow-Up Questions
 - How would you adapt the solution if the array could contain duplicate values?
-- Can you improve the time complexity using hash‑based lookups for divisor pairs?
+- Can you improve the time complexity using hash-based lookups for divisor pairs?
 - How does the problem change if you allow more than two children per node?
 
 ## Key Takeaway
-Sorting the array and using DP to count trees for each value, while combining counts of factor pairs, yields an efficient solution for counting factor‑based binary trees.
+Sorting the array and using DP to count trees for each value, while combining counts of factor pairs, yields an efficient solution for counting factor-based binary trees.

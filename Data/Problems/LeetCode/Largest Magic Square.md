@@ -81,7 +81,7 @@ FUNCTION allRowsColsDiagsEqual(grid, r, c, k, target):
     FOR d ← 0 TO k-1:
         diag1 ← diag1 + grid[r+d][c+d]
     IF diag1 != target: RETURN FALSE
-    // anti‑diagonal
+    // anti-diagonal
     diag2 ← 0
     FOR d ← 0 TO k-1:
         diag2 ← diag2 + grid[r+d][c+k-1-d]
@@ -93,7 +93,7 @@ FUNCTION allRowsColsDiagsEqual(grid, r, c, k, target):
 
 ## 4. Walkthrough
 
-Take the first example grid. The algorithm starts with `k = 4` (the smaller dimension) and checks every 4×4 subgrid – none satisfy the magic‑square condition. It then tries `k = 3`. For the subgrid with top‑left corner `(0,0)`, row sums are `12,8,12`; column sums are `10,7,15`; they do not match, so it moves on. When it reaches the subgrid starting at `(0,1)`, all three rows, three columns, and both diagonals sum to `12`, so the function returns `3`.
+Take the first example grid. The algorithm starts with `k = 4` (the smaller dimension) and checks every 4×4 subgrid – none satisfy the magic-square condition. It then tries `k = 3`. For the subgrid with top-left corner `(0,0)`, row sums are `12,8,12`; column sums are `10,7,15`; they do not match, so it moves on. When it reaches the subgrid starting at `(0,1)`, all three rows, three columns, and both diagonals sum to `12`, so the function returns `3`.
 
 ---
 
@@ -101,15 +101,15 @@ Take the first example grid. The algorithm starts with `k = 4` (the smaller dime
 
 | Time | Space |
 |------|-------|
-| O(m·n·min(m,n)²) – brute‑force over all sizes and positions with O(1) sum queries | O(m·n) for prefix‑sum tables |
+| O(m·n·min(m,n)²) – brute-force over all sizes and positions with O(1) sum queries | O(m·n) for prefix-sum tables |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * How would you modify the algorithm to return the coordinates of the largest magic square?
 * Can you improve the time complexity using more advanced mathematical properties of magic squares?
-* How would you handle non‑square grids where the number of rows differs from columns?
+* How would you handle non-square grids where the number of rows differs from columns?
 
 ---
 

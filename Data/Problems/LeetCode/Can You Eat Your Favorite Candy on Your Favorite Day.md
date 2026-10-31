@@ -86,16 +86,16 @@ Example 2:
 
 Consider Example 1, first query `[0,2,2]`:
 1. Compute prefix sums: `[0,7,11,16,19,27]`.
-2. For type 0: range = (0, 7] → positions 1‑7.
-3. Day 2, cap 2 → total candies eaten range = [3, 6].
-4. Overlap check: `3 ≤ 7` **and** `6 ≥ 1` → true, so you can eat a type‑0 candy on day 2.
+2. For type 0: range = (0, 7] → positions 1-7.
+3. Day 2, cap 2 → total candies eaten range = [3, 6].
+4. Overlap check: `3 ≤ 7` **and** `6 ≥ 1` → true, so you can eat a type-0 candy on day 2.
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n + q) – one pass to build prefix sums (n = number of candy types) and one pass per query.
-- **Space:** O(n) for the prefix‑sum array.
+- **Time:** O(n + q) – one pass to build prefix sums (n = number of candy types) and one pass per query.
+- **Space:** O(n) for the prefix-sum array.
 
 ---
 

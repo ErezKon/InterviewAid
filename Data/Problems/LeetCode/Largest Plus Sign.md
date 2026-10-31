@@ -122,7 +122,7 @@ For `n = 5, mines = [[4,2]]`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you adapt the algorithm for a rectangular grid (m × n)?
 - Can the space be reduced to O(n) by reusing rows?

@@ -91,7 +91,7 @@ Consider the array `[1,2,2,3]`.
 | 3 | 2 | 3 (1 from value 1, 2 from previous 2) | 4 | {1:1, 2:6} | 7 |
 | 4 | 3 | 7 (all previous subsequences) | 8 | {1:1, 2:6, 3:8} | 15 |
 
-The final `total` modulo 10⁹+7 is `15`, but only `5` of them satisfy the stricter stability condition defined in the problem, which the DP logic filters via the ordering rule.
+The final `total` modulo 10⁹+7 is `15`, but only `5` of them satisfy the stricter stability condition defined in the problem, which the DP logic filters via the ordering rule.
 
 ---
 

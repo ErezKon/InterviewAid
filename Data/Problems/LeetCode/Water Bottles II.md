@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the original description (and the Approach below) describe #1518 Water Bottles; here `numExchange` **increases by one after every exchange** and only one bottle is obtained per exchange. Correct idea: `ans = empty = numBottles`; while `empty >= numExchange`: `empty -= numExchange; numExchange++; ans++; empty++`. O(√numBottles).*
-
 You are given two integers `numBottles` and `numExchange`.
 
 `numBottles` represents the number of full water bottles that you initially have. In one operation, you can perform one of the following operations:
@@ -42,42 +40,40 @@ Explanation: The table above shows the number of full water bottles, empty water
 ```
 
 ## Approach
-Simulate the process: keep track of `drunk` (total consumed) and `empty` bottles. While there are enough empty bottles to exchange, perform the exchange, increment `drunk`, and update counts.
+Drinking is free and never hurts, so drink every full bottle immediately. After that, every exchange costs `numExchange` empties, yields one full bottle (which is drunk at once and becomes one empty), and raises the price by one. Exchanging whenever possible is optimal: delaying an exchange never lowers its price, and each exchange adds exactly one drunk bottle. Simulate until the empties are fewer than the current price.
 
 ```text
 FUNCTION maxBottlesDrunk(numBottles, numExchange):
-    SET drunk ← 0
-    SET empty ← 0
-    WHILE numBottles > 0:
-        // Drink all current full bottles
-        SET drunk ← drunk + numBottles
-        SET empty ← empty + numBottles
-        SET numBottles ← 0
-        // Exchange empties for new full bottles
-        WHILE empty >= numExchange:
-            SET empty ← empty - numExchange
-            SET numBottles ← numBottles + 1
+    SET drunk ← numBottles          // drink everything first
+    SET empty ← numBottles
+    WHILE empty >= numExchange:
+        SET empty ← empty - numExchange   // pay for one full bottle
+        SET numExchange ← numExchange + 1 // price rises
+        SET drunk ← drunk + 1             // drink the new bottle
+        SET empty ← empty + 1             // it becomes empty
     RETURN drunk
 ```
 
 ## Walkthrough
-| Step | Full Bottles | Empty Bottles | Drunk |
-|------|--------------|--------------|-------|
-| Start| 9            | 0            | 0     |
-| Drink| 0            | 9            | 9     |
-| Exchange| 3        | 0            | 9     |
-| Drink| 0            | 3            | 12    |
-| Exchange| 1        | 0            | 12    |
-| Drink| 0            | 1            | 13    |
+Example 1: `numBottles = 13`, `numExchange = 6`.
+
+| Step | Empty before | Price | Empty after (−price, +1) | New price | Drunk |
+|------|--------------|-------|--------------------------|-----------|-------|
+| Drink all | — | 6 | 13 | 6 | 13 |
+| Exchange 1 | 13 | 6 | 13 − 6 + 1 = 8 | 7 | 14 |
+| Exchange 2 | 8 | 7 | 8 − 7 + 1 = 2 | 8 | 15 |
+| Stop | 2 | 8 | 2 < 8 | — | 15 |
+
+Output: `15`.
 
 ## Complexity Analysis
-- Time: O(total bottles drunk) – each bottle is processed once.
+- Time: O(√numBottles) – the k-th exchange costs `numExchange + k − 1` and each nets a loss of at least `numExchange + k − 2` empties, so the number of exchanges `k` satisfies roughly `k²/2 ≤ numBottles`.
 - Space: O(1) extra space.
 
 ## Follow-Up Questions
-- How would the solution change if each exchange gave `k` new bottles instead of one?
-- What if you could borrow bottles temporarily and must return them later?
-- Can you compute the result directly using arithmetic instead of simulation?
+- Can you compute the number of exchanges in closed form? (Find the largest `k` with `numBottles − Σ_{i=0}^{k−1}(numExchange + i − 1) ≥ numExchange + k − 1` — a quadratic inequality solvable with the quadratic formula or binary search.)
+- How does this differ from Water Bottles I, where the price is fixed and multiple batches can be exchanged at once?
+- What if the price increased by `d` instead of 1 after each exchange?
 
 ## Key Takeaway
-Repeatedly exchanging empties for new bottles can be simulated with a simple loop, tracking total drunk and empty counts.
+When the exchange price rises after each trade, the greedy "drink everything, then exchange one bottle at a time while affordable" simulation is optimal and terminates after only O(√n) iterations.

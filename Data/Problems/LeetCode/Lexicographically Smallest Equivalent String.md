@@ -58,7 +58,7 @@ Example 3:
 
 ## Approach
 
-Union‑Find with smallest‑root invariant — O(n) ✅
+Union-Find with smallest-root invariant — O(n) ✅
 
 ```text
 FUNCTION smallestEquivalentString(s1, s2, baseStr):
@@ -98,4 +98,4 @@ For `s1 = "parker"`, `s2 = "morris"`, `baseStr = "parser"`:
 
 ## Key Takeaway
 
-> Union‑Find where the root is always the smallest character in each group ensures direct retrieval of the lexicographically smallest equivalent.
+> Union-Find where the root is always the smallest character in each group ensures direct retrieval of the lexicographically smallest equivalent.

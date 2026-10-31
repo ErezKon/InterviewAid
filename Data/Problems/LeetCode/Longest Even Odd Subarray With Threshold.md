@@ -73,12 +73,12 @@ FUNCTION longestAlternatingSubarray(nums, threshold):
 ## 4. Walkthrough
 
 Consider `nums = [2,5,8,1,4]`, `threshold = 8`:
-1. `i = 0`, `nums[0]` is even and ≤ 8 → start a subarray.
-2. Extend while alternating and ≤ 8:
-   - `j=0` → check `j+1=1`: `5` is odd ≤ 8 → extend.
-   - `j=1` → check `j+1=2`: `8` is even ≤ 8 → extend.
-   - `j=2` → check `j+1=3`: `1` is odd ≤ 8 → extend.
-   - `j=3` → check `j+1=4`: `4` is even ≤ 8 → extend.
+1. `i = 0`, `nums[0]` is even and ≤ 8 → start a subarray.
+2. Extend while alternating and ≤ 8:
+   - `j=0` → check `j+1=1`: `5` is odd ≤ 8 → extend.
+   - `j=1` → check `j+1=2`: `8` is even ≤ 8 → extend.
+   - `j=2` → check `j+1=3`: `1` is odd ≤ 8 → extend.
+   - `j=3` → check `j+1=4`: `4` is even ≤ 8 → extend.
 3. No more elements; subarray length = `5`. Update `maxLen = 5`.
 4. Move `i` past the subarray; loop ends.
 
@@ -95,4 +95,4 @@ Consider `nums = [2,5,8,1,4]`, `threshold = 8`:
 
 ## 7. Key Takeaway
 
-> A single linear scan that starts from every even, threshold‑valid element and greedily extends while alternating parity yields the optimal length in O(n) time.
+> A single linear scan that starts from every even, threshold-valid element and greedily extends while alternating parity yields the optimal length in O(n) time.

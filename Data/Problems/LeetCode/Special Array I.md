@@ -59,10 +59,10 @@ All checks passed → return true.
 - Time: `O(n)` where `n` is the length of `nums`.
 - Space: `O(1)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the check for a circular array where the last and first elements are also adjacent?
 2. Can you solve the problem using a single bitwise operation instead of modulo?
-3. How would you extend the check to ensure a pattern of length >2 repeats (e.g., odd‑even‑odd‑even‑…)?
+3. How would you extend the check to ensure a pattern of length >2 repeats (e.g., odd-even-odd-even-…)?
 
 ## Key Takeaway
 A simple linear scan comparing parity of consecutive elements determines if the array alternates between even and odd.

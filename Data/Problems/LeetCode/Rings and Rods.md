@@ -80,16 +80,18 @@ FUNCTION countPoints(rings):
 
 ## Walkthrough
 
-Consider `rings = "RGBRGR"` (n = 3):
-1. Initialize 10 empty sets for rods 0‑9.
+Example 1: `rings = "B0B6G0R6R0R6G9"` (n = 7):
+1. Initialize 10 empty sets for rods 0-9.
 2. Iterate pairs:
-   - i=0: color `R`, rod `0` → rods[0] = {R}
-   - i=2: color `G`, rod `1` → rods[1] = {G}
-   - i=4: color `B`, rod `0` → rods[0] = {R, B}
-   - i=6: color `R`, rod `1` → rods[1] = {G, R}
-   - i=8: color `G`, rod `0` → rods[0] = {R, B, G}
-3. After processing, rods[0] contains three colors, rods[1] contains two.
-4. Count sets of size 3 → only rod 0 → result 1.
+   - i=0: color `B`, rod `0` → rods[0] = {B}
+   - i=2: color `B`, rod `6` → rods[6] = {B}
+   - i=4: color `G`, rod `0` → rods[0] = {B, G}
+   - i=6: color `R`, rod `6` → rods[6] = {B, R}
+   - i=8: color `R`, rod `0` → rods[0] = {B, G, R}
+   - i=10: color `R`, rod `6` → rods[6] = {B, R} (duplicate ignored)
+   - i=12: color `G`, rod `9` → rods[9] = {G}
+3. After processing: rods[0] has 3 colors, rods[6] has 2, rods[9] has 1.
+4. Count sets of size 3 → only rod 0 → result 1, matching the expected output.
 
 ---
 
@@ -104,8 +106,8 @@ Consider `rings = "RGBRGR"` (n = 3):
 
 ## Follow-Up Questions
 
-1. How would you modify the solution if rods were labeled with arbitrary integers instead of 0‑9?
-2. Can you solve the problem using bit‑masking instead of sets?
+1. How would you modify the solution if rods were labeled with arbitrary integers instead of 0-9?
+2. Can you solve the problem using bit-masking instead of sets?
 3. What if you needed to return the list of rods that have all three colors?
 
 ---

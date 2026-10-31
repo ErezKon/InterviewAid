@@ -88,7 +88,7 @@ FUNCTION deleteDuplicateFolder(paths):
             IF part NOT IN node.children:
                 node.children[part] ← new TrieNode()
             node ← node.children[part]
-    // Serialize subtrees bottom‑up
+    // Serialize subtrees bottom-up
     map ← empty dictionary (serialization → count)
     FUNCTION serialize(node):
         IF node has no children:
@@ -122,7 +122,7 @@ FUNCTION deleteDuplicateFolder(paths):
 | 2 | Insert "/c/d" | Creates nodes `c` → `d` |
 | 3 | Insert "/c/e" | Adds sibling `e` under `c` |
 | 4 | Insert remaining paths | Builds full trie with three identical subtrees under `c` |
-| 5 | Serialize bottom‑up | Each leaf returns "()"; subtrees under `c` serialize to the same string |
+| 5 | Serialize bottom-up | Each leaf returns "()"; subtrees under `c` serialize to the same string |
 | 6 | Count serializations | Serialization for each `c` child appears > 1, so marked for deletion |
 | 7 | Collect remaining paths | Only paths not under a marked subtree are kept |
 
@@ -147,4 +147,4 @@ FUNCTION deleteDuplicateFolder(paths):
 
 ## Key Takeaway
 
-> **Subtree deduplication via serialization: serialize each subtree bottom‑up into a canonical string, count occurrences, and delete any subtree whose serialization appears more than once.**
+> **Subtree deduplication via serialization: serialize each subtree bottom-up into a canonical string, count occurrences, and delete any subtree whose serialization appears more than once.**

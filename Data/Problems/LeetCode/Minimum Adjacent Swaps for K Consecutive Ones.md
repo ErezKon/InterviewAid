@@ -46,7 +46,7 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Sliding window on the positions of `1`s with prefix sums (median‑based L1 minimization).
+**Algorithm:** Sliding window on the positions of `1`s with prefix sums (median-based L1 minimization).
 
 Key insight: After extracting the indices of all `1`s, subtract the running index to normalize gaps. For any window of size `k`, the optimal target is the median position; the total swaps equal the sum of absolute distances to that median, which can be computed in O(1) using prefix sums.
 
@@ -89,11 +89,11 @@ For `nums = [1,0,0,1,0,1]`, `k = 2`:
 1. Positions of 1s: `[0,3,5]`.
 2. Normalized: `[0-0, 3-1, 5-2] → [0,2,3]`.
 3. Prefix sums: `[0,0,2,5]`.
-4. Window `[0,2]` (indices 0‑1): median = `positions[1]=2`.
+4. Window `[0,2]` (indices 0-1): median = `positions[1]=2`.
    - leftCost = `2*1 - 0 = 2`
    - rightCost = `0` (no right elements)
    - total = 2.
-5. Window `[2,3]` (indices 1‑2): median = `positions[2]=3`.
+5. Window `[2,3]` (indices 1-2): median = `positions[2]=3`.
    - leftCost = `3*1 - 2 = 1`
    - rightCost = `0`
    - total = 1 → minimum swaps = 1.
@@ -106,7 +106,7 @@ For `nums = [1,0,0,1,0,1]`, `k = 2`:
 | Sliding window with prefix sums | O(n) where n = number of 1s | O(n) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to handle weighted swaps where moving a `1` over a `0` has a cost proportional to the distance?
 2. Can the solution be extended to find the minimum swaps for multiple disjoint groups of `k` ones?

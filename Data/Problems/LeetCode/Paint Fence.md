@@ -67,8 +67,8 @@ FUNCTION numWays(n, k):
 | i | same | diff | Explanation |
 |---|------|------|-------------|
 |1|k|0|Only one post, all colors possible|
-|2|k|k·(k‑1)|Two posts: either same or different|
-|3|k·(k‑1)|k·(k‑1)·(k‑2)+k·(k‑1)·(k‑1)|Update using recurrence|
+|2|k|k·(k-1)|Two posts: either same or different|
+|3|k·(k-1)|k·(k-1)·(k-2)+k·(k-1)·(k-1)|Update using recurrence|
 
 The table continues until **i = n**.
 

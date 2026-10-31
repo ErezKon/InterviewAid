@@ -76,7 +76,7 @@ Output: []
 
 Consider the perfect tree `[1,2,3,4,5,6,7]`:
 1. Start with `leftmost = 1`. Connect `2.next = 3`.
-2. Move to next level: `leftmost = 2`. Connect `4.next = 5`, `5.next = 6`, `6.next = 7` using already‑established `next` from previous level.
+2. Move to next level: `leftmost = 2`. Connect `4.next = 5`, `5.next = 6`, `6.next = 7` using already-established `next` from previous level.
 3. No further children, algorithm ends. All `next` pointers are set correctly.
 
 ---
@@ -91,7 +91,7 @@ Consider the perfect tree `[1,2,3,4,5,6,7]`:
 
 ## 6. Follow-Up Questions
 
-- How would you adapt the solution for a **non‑perfect** binary tree (LeetCode 117)?
+- How would you adapt the solution for a **non-perfect** binary tree (LeetCode 117)?
 - Can you solve it using BFS with a queue instead of pointer manipulation?
 
 ---

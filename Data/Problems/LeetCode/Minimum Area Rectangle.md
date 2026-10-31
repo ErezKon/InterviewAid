@@ -34,7 +34,7 @@ Example 2:
 
 ## Approach
 **Algorithm:** Diagonal Pair Check with Hash Set
-Key insight: For any two points that could be opposite corners of an axis‑aligned rectangle (different x and y), the other two corners must also exist in the set.
+Key insight: For any two points that could be opposite corners of an axis-aligned rectangle (different x and y), the other two corners must also exist in the set.
 
 ```text
 FUNCTION minAreaRect(points):
@@ -67,10 +67,10 @@ All other pairs either share x or y or miss a corner. Minimum area = 4.
 | Time   | O(n²) due to pair enumeration |
 | Space  | O(n) for the hash set of points |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to find the rectangle with the **largest** area?
 2. Can the algorithm be improved for very large point sets (e.g., using spatial indexing)?
-3. How would you handle rectangles that are not axis‑aligned?
+3. How would you handle rectangles that are not axis-aligned?
 
 ## Key Takeaway
-Two opposite corners uniquely define an axis‑aligned rectangle; checking existence of the remaining corners with a hash set yields an O(n²) solution.
+Two opposite corners uniquely define an axis-aligned rectangle; checking existence of the remaining corners with a hash set yields an O(n²) solution.

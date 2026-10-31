@@ -56,7 +56,7 @@ FUNCTION largestMultipleOfThree(digits):
         ELSE:
             RETURN ""
 
-    // Re‑assemble remaining digits
+    // Re-assemble remaining digits
     remaining ← MERGE r1, r2, and untouched digits
     SORT remaining DESCENDING
     IF ALL digits in remaining are 0:
@@ -110,7 +110,7 @@ Consider `digits = [8,6,7,1,0]`:
 ## Follow-Up Questions
 
 1. How would you adapt the solution if the digits were provided as a string?
-2. Can you solve the problem in O(n) time using counting sort for digits 0‑9?
+2. Can you solve the problem in O(n) time using counting sort for digits 0-9?
 3. How would you modify the algorithm to return the *second* largest multiple of three?
 
 ---

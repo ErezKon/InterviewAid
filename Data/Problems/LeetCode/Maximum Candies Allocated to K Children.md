@@ -73,7 +73,7 @@ FUNCTION maximumCandies(candies, k):
 
 ## Walkthrough
 
-Consider **Example 1**: `candies = [3,1,4,1,5,9]`, `k = 3`.
+Consider **Example 1**: `candies = [3,1,4,1,5,9]`, `k = 3`.
 
 | Step | lo | hi | mid | children (sum floor(pile/mid)) | Decision |
 |------|----|----|-----|------------------------------|----------|

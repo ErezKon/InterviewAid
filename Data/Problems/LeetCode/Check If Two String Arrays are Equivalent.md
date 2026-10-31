@@ -69,7 +69,7 @@ The final strings match, so the function returns `true`.
 ## Follow-Up Questions
 1. How would you solve the problem without constructing the full strings, using only O(1) extra space?
 2. How can you compare the arrays if they are provided as iterators or streams?
-3. What changes are needed if the comparison should be case‑insensitive?
+3. What changes are needed if the comparison should be case-insensitive?
 
 ## Key Takeaway
 Concatenating the two string arrays and performing a direct equality check yields a simple O(N) solution.

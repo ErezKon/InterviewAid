@@ -84,21 +84,21 @@ Example 1:
 
 ## 5. Walkthrough
 
-Consider the first example with limit = 5 for query (0,4).
+Consider the first example with limit = 5 for query (0,4).
 | Step | Action | Result |
 |------|--------|--------|
-| 1 | Build reconstruction tree: internal nodes created for edges weight 2,4,6,8. | Tree root weight = 8.
-| 2 | Find LCA of nodes 0 and 4 → internal node with weight = 8. | LCA weight 8.
-| 3 | Since 8 ≥ limit 5, we cannot use that LCA directly. We instead look at the highest ancestor whose weight < limit, which is the node with weight = 4 (covers vertices 0‑2). | Path exists using edges ≤4.
+| 1 | Build reconstruction tree: internal nodes created for edges weight 2,4,6,8. | Tree root weight = 8.
+| 2 | Find LCA of nodes 0 and 4 → internal node with weight = 8. | LCA weight 8.
+| 3 | Since 8 ≥ limit 5, we cannot use that LCA directly. We instead look at the highest ancestor whose weight < limit, which is the node with weight = 4 (covers vertices 0-2). | Path exists using edges ≤4.
 | 4 | Return true.
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Preprocessing:** O(n log n) to sort edges and build the reconstruction tree, plus O(n log n) for LCA binary lifting.
-- **Per Query:** O(log n) to compute LCA and compare weight.
-- **Space:** O(n) for the tree, union‑find structure, and LCA tables.
+- **Preprocessing:** O(n log n) to sort edges and build the reconstruction tree, plus O(n log n) for LCA binary lifting.
+- **Per Query:** O(log n) to compute LCA and compare weight.
+- **Space:** O(n) for the tree, union-find structure, and LCA tables.
 
 ---
 
@@ -112,4 +112,4 @@ Consider the first example with limit = 5 for query (0,4).
 
 ## Key Takeaway
 
-> Kruskal's reconstruction tree transforms edge‑weight constraints into ancestor‑weight checks, enabling fast online queries via LCA.
+> Kruskal's reconstruction tree transforms edge-weight constraints into ancestor-weight checks, enabling fast online queries via LCA.

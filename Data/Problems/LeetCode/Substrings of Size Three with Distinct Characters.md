@@ -61,12 +61,12 @@ Result = 1.
 
 ## Complexity Analysis
 *Time*: O(|s|) – one pass through the string.
-*Space*: O(1) – only a few variables and a constant‑size set.
+*Space*: O(1) – only a few variables and a constant-size set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would you modify the solution for substrings of length *k* with all distinct characters?
 * Can you solve it in a single pass without constructing a set each time?
 * What if the alphabet size is limited (e.g., only lowercase letters)?
 
 ## Key Takeaway
-A fixed‑size sliding window combined with a set check efficiently counts length‑three substrings with all distinct characters.
+A fixed-size sliding window combined with a set check efficiently counts length-three substrings with all distinct characters.

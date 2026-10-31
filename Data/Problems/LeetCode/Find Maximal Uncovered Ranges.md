@@ -88,7 +88,7 @@ FUNCTION maximalUncovered(L, R, covered):
 - **Time:** O(n) where *n* is the number of covered intervals.
 - **Space:** O(k) for the output list, where *k* is the number of uncovered ranges.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle overlapping intervals in the input?
 2. Can the algorithm be adapted to work with a stream of intervals?
 3. What changes are needed if the intervals are not sorted?

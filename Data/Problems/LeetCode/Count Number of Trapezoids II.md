@@ -90,7 +90,7 @@ FUNCTION countTrapezoids(points):
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n² log n) – generating all pairs (O(n²)) and inserting into a hash map with slope reduction (log maxCoordinate).
+- **Time:** O(n² log n) – generating all pairs (O(n²)) and inserting into a hash map with slope reduction (log maxCoordinate).
 - **Space:** O(n²) – storing all edge pairs grouped by slope.
 
 ---
@@ -98,11 +98,11 @@ FUNCTION countTrapezoids(points):
 ## 6. Follow-Up Questions
 
 1. How would you modify the algorithm to count only **isosceles trapezoids**?
-2. Can the solution be extended to **3‑dimensional points** to count trapezoidal faces of a polyhedron?
+2. Can the solution be extended to **3-dimensional points** to count trapezoidal faces of a polyhedron?
 3. What if the input size is huge (≥10⁵ points)? Discuss approximation or randomized techniques.
 
 ---
 
 ## Key Takeaway
 
-> Trapezoid detection: group edges by slope, pick two non‑adjacent parallel edges, then subtract parallelograms. Slope representation as reduced fractions avoids floating‑point issues.
+> Trapezoid detection: group edges by slope, pick two non-adjacent parallel edges, then subtract parallelograms. Slope representation as reduced fractions avoids floating-point issues.

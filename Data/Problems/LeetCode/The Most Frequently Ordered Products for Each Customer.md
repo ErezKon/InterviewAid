@@ -114,11 +114,11 @@ Example 1:
   frequently ordered products for them.
   Tom (customer 3) only ordered the screen (two times), so that is the most frequently ordered product for them.
   Jerry (customer 4) only ordered the keyboard (one time), so that is the most frequently ordered product for them.
-  John (customer 5) did not order anything, so we do not include them in the result table.
+  John (customer 5) did not order anything, so we do not include them in the result table.
 ```
 
 ## Approach
-Use SQL aggregation: group by `customer_id` and `product_id` to count orders, then for each customer select the product with the maximum count using a window function or a self‑join.
+Use SQL aggregation: group by `customer_id` and `product_id` to count orders, then for each customer select the product with the maximum count using a window function or a self-join.
 
 ```text
 SELECT customer_id, product_id
@@ -147,9 +147,9 @@ The inner query computes frequencies and ranks them per customer; the outer quer
 - **Space:** O(N) to store intermediate aggregates.
 
 ## Follow-Up Questions
-1. How would you modify the query to return the top k most frequent products per customer?
+1. How would you modify the query to return the top k most frequent products per customer?
 2. How can you handle ties by returning all products that share the maximum frequency?
 3. If the dataset is huge, what indexing strategies improve performance?
 
 ## Key Takeaway
-Aggregate orders per customer and use a window function to rank product frequencies, then select the top‑ranked product for each customer.
+Aggregate orders per customer and use a window function to rank product frequencies, then select the top-ranked product for each customer.

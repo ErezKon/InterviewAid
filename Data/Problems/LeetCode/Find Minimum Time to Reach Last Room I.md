@@ -49,13 +49,13 @@ Output: 3
 ```
 
 ## Approach
-The problem is a shortest‑path search where the edge weight from a cell to a neighbor is `1` plus any additional waiting time needed to satisfy the neighbor’s `moveTime`. Dijkstra’s algorithm fits perfectly:
+The problem is a shortest-path search where the edge weight from a cell to a neighbor is `1` plus any additional waiting time needed to satisfy the neighbor’s `moveTime`. Dijkstra’s algorithm fits perfectly:
 1. Initialise a distance matrix `dist` with infinity; `dist[0][0] ← 0`.
-2. Use a min‑heap storing `(currentTime, row, col)`.
+2. Use a min-heap storing `(currentTime, row, col)`.
 3. Pop the smallest entry; if it is the target, return the time.
 4. For each neighbor `(nr,nc)` compute `nextTime ← max(currentTime, moveTime[nr][nc]) + 1`.
 5. If `nextTime < dist[nr][nc]`, update and push onto the heap.
-Because all edge costs are non‑negative, Dijkstra guarantees the first time we pop the target cell we have the optimal answer.
+Because all edge costs are non-negative, Dijkstra guarantees the first time we pop the target cell we have the optimal answer.
 
 ## Walkthrough
 | Pop order (time, cell) | Neighbour | Computed `nextTime` |
@@ -64,16 +64,16 @@ Because all edge costs are non‑negative, Dijkstra guarantees the first time we
 | (0,0)                  | (1,0)     | max(0,1)+1 = 2      |
 | (2,0) (cell (0,1))     | (0,2)     | max(2,2)+1 = 3      |
 | …                      | …         | …                   |
-The algorithm continues until `(m‑1,n‑1)` is popped with time `6` for the first example.
+The algorithm continues until `(m-1,n-1)` is popped with time `6` for the first example.
 
 ## Complexity Analysis
 Time: `O(m·n·log(m·n))` due to heap operations for each cell.
 Space: `O(m·n)` for the distance matrix and heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if diagonal moves were allowed?
 2. What if the waiting time could decrease (negative weights) – which algorithm would be needed?
-3. Can the problem be solved with a 0‑1 BFS when all `moveTime` values are either `0` or `1`?
+3. Can the problem be solved with a 0-1 BFS when all `moveTime` values are either `0` or `1`?
 
 ## Key Takeaway
 Model the waiting constraint as part of the edge cost and apply Dijkstra’s algorithm to obtain the minimum arrival time.

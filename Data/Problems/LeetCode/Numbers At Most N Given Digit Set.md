@@ -47,7 +47,7 @@ Output: 1
 ```
 
 ## Approach
-**Algorithm:** Digit DP – count numbers with fewer digits, then process the same‑length prefix of `n` digit by digit.
+**Algorithm:** Digit DP – count numbers with fewer digits, then process the same-length prefix of `n` digit by digit.
 
 ```text
 FUNCTION atMostNGivenDigitSet(digits, n):
@@ -76,19 +76,19 @@ FUNCTION atMostNGivenDigitSet(digits, n):
 
 ## Walkthrough
 Take `digits = ["1","3","5","7"]`, `n = 100`:
-1. `k = 3`, `d = 4`. Numbers with 1‑digit: `4` (1,3,5,7). 2‑digit: `4^2 = 16`. `result = 20`.
-2. Process 3‑digit numbers: first digit of `n` is `'1'`. Digits smaller than `'1'` → none, `hasSame` true, continue.
+1. `k = 3`, `d = 4`. Numbers with 1-digit: `4` (1,3,5,7). 2-digit: `4^2 = 16`. `result = 20`.
+2. Process 3-digit numbers: first digit of `n` is `'1'`. Digits smaller than `'1'` → none, `hasSame` true, continue.
 3. Second digit `'0'`: no digit in set is `< '0'` and none equal, so `hasSame` false → return `20`.
 Thus only the 20 numbers with ≤2 digits are counted.
 
 ## Complexity Analysis
-- **Time:** O(k·d) where `k` is the number of digits in `n` (≤ 10) and `d` ≤ 9.
+- **Time:** O(k·d) where `k` is the number of digits in `n` (≤ 10) and `d` ≤ 9.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the solution for a digit set that includes `'0'`?
 - Can you extend the DP to handle a range `[low, high]` instead of `[1, n]`?
 - What is the effect of allowing repeated use of digits versus using each at most once?
 
 ## Key Takeaway
-Digit DP efficiently counts numbers ≤ n by separating shorter‑length counts and a digit‑by‑digit prefix comparison.
+Digit DP efficiently counts numbers ≤ n by separating shorter-length counts and a digit-by-digit prefix comparison.

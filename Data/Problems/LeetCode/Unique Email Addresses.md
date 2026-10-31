@@ -72,12 +72,12 @@ FUNCTION normalizeAndCount(emails):
 | 3 | `testemail+david@lee.tcode.com` | `testemail+david` | `testemail` | `testemail` | `testemail@lee.tcode.com` |
 
 ## Complexity Analysis
-- **Time:** O(N · L) where N is the number of emails and L is the average length of an email.
+- **Time:** O(N · L) where N is the number of emails and L is the average length of an email.
 - **Space:** O(N) for the hash set storing unique normalized emails.
 
 ## Follow-Up Questions
 1. How would you handle very large input streams that cannot fit into memory?
-2. Can the solution be adapted to support case‑insensitive domains?
+2. Can the solution be adapted to support case-insensitive domains?
 3. What if the normalization rules change (e.g., allowing certain characters)?
 
 ## Key Takeaway

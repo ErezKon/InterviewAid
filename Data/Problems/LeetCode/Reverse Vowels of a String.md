@@ -93,4 +93,4 @@ Take `s = "leetcode"`.
 
 ## Key Takeaway
 
-> Same two-pointer skip pattern as Reverse Only Letters — advance past non‑matching characters, swap matching ones from both ends.
+> Same two-pointer skip pattern as Reverse Only Letters — advance past non-matching characters, swap matching ones from both ends.

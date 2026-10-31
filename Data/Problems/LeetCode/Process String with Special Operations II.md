@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below only handle a backspace character and build the whole string. Correct idea: the result can reach 10^15 characters, so only track lengths. Forward pass: record `len_i` after each operation. Backward pass from the end with index `k`: for `#` (len doubled) map `k ← k − len/2` if `k ≥ len/2`; for `%` map `k ← len − 1 − k`; for `*` nothing changes (k < shorter length); for a letter, if `k == len − 1` that letter is the answer. Return `'.'` if `k ≥` final length. O(n).*
-
 You are given a string `s` consisting of lowercase English letters and the special characters: `'*'`, `'#'`, and `'%'`.
 
 You are also given an integer `k`.
@@ -76,46 +74,60 @@ The final result is "". Since index k = 0 is out of bounds, the output is '.'.
 ```
 
 ## Approach
-The problem is analogous to a backspace operation and can be solved with a stack:
-1. Iterate over each character `ch` in `s`.
-2. If `ch` is not `*`, push it onto the stack.
-3. If `ch` is `*` and the stack is non‑empty, pop the top element (the character to delete). The `*` itself is never stored.
-After processing all characters, concatenate the stack contents to obtain the result.
+The final string can have up to `10^15` characters, so it cannot be built. Track only lengths and map the index `k` backwards through the operations:
+1. **Forward pass:** compute `len[i]`, the length of `result` after processing `s[i]` (letter: +1, `*`: max(len-1, 0), `#`: doubled, `%`: unchanged). If `k >= len[n-1]`, return `'.'`.
+2. **Backward pass:** walk `i` from `n-1` down to `0` with `L = len[i]`:
+   - `#`: the string was `X + X` with `|X| = L/2`; if `k >= L/2`, set `k ← k - L/2`.
+   - `%`: the string was reversed, so `k ← L - 1 - k`.
+   - `*`: the removed character was at index `L`, and `k < L`, so `k` is unchanged.
+   - letter: it sits at index `L - 1`; if `k == L - 1`, this letter is the answer, otherwise `k` is in the earlier part and unchanged.
 
 ### Pseudocode
 ```text
-FUNCTION processStringII(s):
-    SET stack ← []
-    FOR ch IN s:
-        IF ch == '*':
-            IF stack NOT EMPTY:
-                POP(stack)
-        ELSE:
-            APPEND ch TO stack
+FUNCTION processStr(s, k):
+    SET L ← 0
+    SET len ← ARRAY LENGTH |s|
+    FOR i ← 0 TO |s| - 1:
+        IF s[i] == '*': L ← MAX(L - 1, 0)
+        ELSE IF s[i] == '#': L ← 2 * L
+        ELSE IF s[i] != '%': L ← L + 1
+        len[i] ← L
+    IF k >= L: RETURN '.'
+    FOR i ← |s| - 1 DOWN TO 0:
+        L ← len[i]
+        IF s[i] == '#':
+            IF k >= L / 2: k ← k - L / 2
+        ELSE IF s[i] == '%':
+            k ← L - 1 - k
+        ELSE IF s[i] != '*':
+            IF k == L - 1: RETURN s[i]
     END FOR
-    RETURN JOIN(stack, "")
 ```
-The stack automatically handles consecutive `*` characters and ensures deletions occur in the correct order.
+The loop always returns at some letter: `k` stays inside the current length, and every character ultimately originates from an appended letter.
 
 ## Walkthrough
-For `"ab*c*"`:
-| Step | ch | Stack after step |
-|------|----|------------------|
-| 1 | a | [a] |
-| 2 | b | [a,b] |
-| 3 | * | [a] (pop b) |
-| 4 | c | [a,c] |
-| 5 | * | [a] (pop c) |
-Result = "a".
+Example 2: `s = "cd%#*#"`, `k = 3`.
+
+Forward lengths: `c → 1`, `d → 2`, `% → 2`, `# → 4`, `* → 3`, `# → 6`. Final length 6 > 3, so continue.
+
+| i | s[i] | L | Action | k after |
+|---|------|---|--------|---------|
+| 5 | # | 6 | k = 3 >= 3 → k - 3 | 0 |
+| 4 | * | 3 | unchanged | 0 |
+| 3 | # | 4 | k = 0 < 2 → unchanged | 0 |
+| 2 | % | 2 | k = 2 - 1 - 0 | 1 |
+| 1 | d | 2 | k == L - 1 = 1 → answer | `'d'` |
+
+Result: `"d"`.
 
 ## Complexity Analysis
-- **Time:** `O(n)` where `n` is the length of `s` – each character is examined once.
-- **Space:** `O(n)` for the stack in the worst case (no `*` characters).
+- **Time:** `O(n)` where `n` is the length of `s` - one forward and one backward pass.
+- **Space:** `O(n)` for the stored lengths (values up to `10^15` fit in 64-bit integers).
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm if the deletion rule removed the **next** character instead of the previous one?
-2. Can the solution be implemented in‑place using two‑pointer technique to achieve `O(1)` extra space?
-3. How would you handle multiple special characters each with distinct deletion semantics?
+## Follow-Up Questions
+1. How would you answer many queries `k_1, k_2, ...` on the same `s` efficiently?
+2. What changes if `#` appended the reversed copy (`X + reverse(X)`) instead of a plain duplicate?
+3. Can you avoid storing all lengths by recomputing them in reverse (hint: `*` is not invertible, so why does that make it hard)?
 
 ## Key Takeaway
-A stack efficiently simulates the backspace‑like deletions caused by `*`, yielding a linear‑time solution.
+When the generated string is astronomically long, record lengths on a forward pass and invert each operation on the index during a backward pass until it lands on the letter that created it.

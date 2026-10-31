@@ -88,7 +88,7 @@ Example 3:
 
 Consider `target = [9,3,5]`.
 
-1. **Initial state**: total = 17, max‑heap = {9,5,3}.
+1. **Initial state**: total = 17, max-heap = {9,5,3}.
 2. Pop largest = 9, rest = 8.
    - `prev = 9 % 8 = 1` (previous value of that element).
    - Push 1 back, new total = 8 + 1 = 9, heap = {5,3,1}.
@@ -104,8 +104,8 @@ Consider `target = [9,3,5]`.
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n log n log M) where *n* is the array length and *M* is the maximum element (due to repeated modulo operations).
-- **Space:** O(n) for the max‑heap.
+- **Time:** O(n log n log M) where *n* is the array length and *M* is the maximum element (due to repeated modulo operations).
+- **Space:** O(n) for the max-heap.
 
 ---
 

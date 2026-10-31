@@ -122,7 +122,7 @@ Take `word = "aaab"`, `k = 3`.
      * New lengths: 2,3,4 each get one way.
    Resulting `dp` for lengths 2,3,4 = 1 each.
 4. Sum of lengths `< k` (`<3`) is `dp[0]+dp[1]+dp[2]=0+0+1=1`.
-5. Answer = `total - shortSum = 3 - 1 = 2`? Actually earlier example gave 3; the DP counts exact lengths, total includes all lengths, shortSum counts length 2 only, so answer = 3‑1 = 2? Adjust example accordingly. (The walkthrough demonstrates the subtraction process.)
+5. Answer = `total - shortSum = 3 - 1 = 2`? Actually earlier example gave 3; the DP counts exact lengths, total includes all lengths, shortSum counts length 2 only, so answer = 3-1 = 2? Adjust example accordingly. (The walkthrough demonstrates the subtraction process.)
 
 ---
 
@@ -130,7 +130,7 @@ Take `word = "aaab"`, `k = 3`.
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(n + k) with prefix‑sum optimization (n = |word|) |
+| **Time** | O(n + k) with prefix-sum optimization (n = |word|) |
 | **Space** | O(k) for DP array |
 
 ---

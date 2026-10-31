@@ -77,7 +77,7 @@ FUNCTION highestGradePerStudent():
 ## 4. Walkthrough
 
 1. **Rank rows**: For each `student_id`, rows are ordered by `grade` descending, breaking ties with `course_id` ascending. `ROW_NUMBER` assigns `1` to the best row.
-2. **Select top row**: Filter `rn = 1` to keep only the highest‑grade course per student.
+2. **Select top row**: Filter `rn = 1` to keep only the highest-grade course per student.
 3. **Result**: Return the selected columns, sorted by `student_id`.
 
 ## 5. Complexity Analysis
@@ -85,12 +85,12 @@ FUNCTION highestGradePerStudent():
 - **Time**: The window function sorts each partition → O(N log N) where N is number of enrollment rows.
 - **Space**: O(N) for the intermediate ranked table.
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would you modify the query to return the top K courses per student?
+- How would you modify the query to return the top K courses per student?
 - How to handle ties by returning all courses with the highest grade?
 - Can the solution be expressed without window functions (e.g., using `MAX` and joins)?
 
 ## Key Takeaway
 
-> `ROW_NUMBER()` partitioned by `student_id` and ordered by `grade` descending then `course_id` ascending cleanly extracts each student's highest‑grade course.
+> `ROW_NUMBER()` partitioned by `student_id` and ordered by `grade` descending then `course_id` ascending cleanly extracts each student's highest-grade course.

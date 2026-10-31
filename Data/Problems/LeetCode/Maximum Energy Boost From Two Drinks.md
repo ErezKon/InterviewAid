@@ -98,7 +98,7 @@ The best final energy is `max(dpA[2], dpB[2]) = 8`.
 ---
 
 ## Follow-Up Questions
-- How would the solution change if switching drinks incurred a variable penalty instead of a fixed one‑hour skip?
+- How would the solution change if switching drinks incurred a variable penalty instead of a fixed one-hour skip?
 - Can the DP be optimized to O(1) space?
 - What if there were three drink options instead of two?
 
@@ -114,4 +114,4 @@ The best final energy is `max(dpA[2], dpB[2]) = 8`.
 
 ## Key Takeaway
 
-> **Two‑drink switching DP:** stay = previous same drink, switch = previous‑2 other drink (skip penalty). Classic two‑state DP with transition cost.
+> **Two-drink switching DP:** stay = previous same drink, switch = previous-2 other drink (skip penalty). Classic two-state DP with transition cost.

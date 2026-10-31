@@ -101,11 +101,11 @@ Resulting tree values become `[2,5,3,8,13,21,34]`.
 ## Follow-Up Questions
 
 1. How would you solve the problem using a recursive DFS that swaps mirrored nodes?
-2. How would the solution change for a non‑perfect binary tree?
-3. Can you perform the reversal in‑place without extra storage for the level values?
+2. How would the solution change for a non-perfect binary tree?
+3. Can you perform the reversal in-place without extra storage for the level values?
 
 ---
 
 ## Key Takeaway
 
-> For perfect binary trees, BFS gives direct access to all nodes at each level — swapping values (rather than restructuring pointers) simplifies level‑based transformations.
+> For perfect binary trees, BFS gives direct access to all nodes at each level — swapping values (rather than restructuring pointers) simplifies level-based transformations.

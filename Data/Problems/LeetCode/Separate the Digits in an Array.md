@@ -64,13 +64,16 @@ FUNCTION separateDigits(nums):
 
 ## Walkthrough
 
-Consider `nums = [13, 25, 83]`:
+Example 1: `nums = [13, 25, 83, 77]`
+
 | Step | num | digitsString | result after processing |
 |------|-----|--------------|--------------------------|
 | 1 | 13 | "13" | [1, 3] |
 | 2 | 25 | "25" | [1, 3, 2, 5] |
 | 3 | 83 | "83" | [1, 3, 2, 5, 8, 3] |
-The final `result` matches the expected output.
+| 4 | 77 | "77" | [1, 3, 2, 5, 8, 3, 7, 7] |
+
+Return `[1,3,2,5,8,3,7,7]` (expected output). In Example 2 every number is a single digit, so the result is `[7,1,3,9]`.
 
 ---
 

@@ -8,7 +8,7 @@ Related: #778 Swim in Rising Water, #1631 Path With Minimum Effort, #1102 Path W
 
 > *Note: companion pattern file (not an official LeetCode problem) — see [Swim in Rising Water.md](Swim%20in%20Rising%20Water.md) for the official statement and constraints of #778.*
 
-Given an `n × n` grid of non‑negative integers representing elevations, you start at the top‑left cell and must reach the bottom‑right cell. At time `t` you can enter any cell with elevation ≤ `t`. The goal is to find the minimum time `t` such that a path exists, i.e., minimize the maximum elevation encountered along the path (min‑max). Variants include minimizing the maximum difference between adjacent cells or maximizing the minimum value along a path.
+Given an `n × n` grid of non-negative integers representing elevations, you start at the top-left cell and must reach the bottom-right cell. At time `t` you can enter any cell with elevation ≤ `t`. The goal is to find the minimum time `t` such that a path exists, i.e., minimize the maximum elevation encountered along the path (min-max). Variants include minimizing the maximum difference between adjacent cells or maximizing the minimum value along a path.
 
 ## Examples
 **Example 1 – Swim in Rising Water (#778)**
@@ -25,7 +25,7 @@ Explanation: Minimum effort (max diff) along path is 2.
 ```
 
 ## Approach
-Use a modified Dijkstra (or BFS with a min‑heap) where the cost of a path is the maximum elevation (or difference) seen so far. The priority queue orders states by this cost, always expanding the currently cheapest (lowest max) frontier.
+Use a modified Dijkstra (or BFS with a min-heap) where the cost of a path is the maximum elevation (or difference) seen so far. The priority queue orders states by this cost, always expanding the currently cheapest (lowest max) frontier.
 
 ```text
 FUNCTION minimaxPath(grid):
@@ -58,13 +58,13 @@ Consider `grid = [[0,2],[1,3]]`.
 Result is 3.
 
 ## Complexity Analysis
-- **Time:** O(n² log n) – each cell may be pushed to the heap once.
+- **Time:** O(n² log n) – each cell may be pushed to the heap once.
 - **Space:** O(n²) – heap and visited set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to minimize the maximum *difference* between adjacent cells (Path With Minimum Effort)?
 2. Can you solve the problem using binary search on the answer combined with BFS/DFS?
 3. How does the approach change for a weighted graph where edges have arbitrary costs?
 
 ## Key Takeaway
-Treat the path cost as the maximum elevation seen so far and use a min‑heap to always expand the currently lowest‑max frontier, yielding an optimal minimax path.
+Treat the path cost as the maximum elevation seen so far and use a min-heap to always expand the currently lowest-max frontier, yielding an optimal minimax path.

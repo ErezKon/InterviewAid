@@ -99,7 +99,7 @@ FUNCTION incremovableSubarrayCount(nums):
 
 ## Follow-Up Questions
 
-1. How would you adapt the algorithm for the “non‑decreasing” version of the problem?
+1. How would you adapt the algorithm for the “non-decreasing” version of the problem?
 2. Can the approach be extended to handle duplicate values in the array?
 3. What changes are needed if we must also output the actual subarrays, not just the count?
 
@@ -107,4 +107,4 @@ FUNCTION incremovableSubarrayCount(nums):
 
 ## Key Takeaway
 
-> **Incremovable subarrays: find the increasing prefix and suffix, then two‑pointer to count valid connections. The key constraint is `prefix_last < suffix_first` after removal.**
+> **Incremovable subarrays: find the increasing prefix and suffix, then two-pointer to count valid connections. The key constraint is `prefix_last < suffix_first` after removal.**

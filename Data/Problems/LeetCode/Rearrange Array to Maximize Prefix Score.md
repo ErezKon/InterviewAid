@@ -37,7 +37,7 @@ Example 2:
 ```
 
 ## Approach
-The optimal strategy is greedy: place the largest numbers first to keep the running sum as high as possible. Sorting the array in descending order ensures each added element contributes maximally to the prefix sum. Iterate through the sorted array, maintaining a running `prefix`. Increment the score while `prefix` remains positive; stop once it becomes non‑positive.
+The optimal strategy is greedy: place the largest numbers first to keep the running sum as high as possible. Sorting the array in descending order ensures each added element contributes maximally to the prefix sum. Iterate through the sorted array, maintaining a running `prefix`. Increment the score while `prefix` remains positive; stop once it becomes non-positive.
 
 ## Pseudocode
 ```text
@@ -62,13 +62,13 @@ FUNCTION maxScore(nums):
 | 2 | [5, 3, -2, -4] | 8 | 2 |
 | 3 | [5, 3, -2, -4] | 6 | 3 |
 | 4 | [5, 3, -2, -4] | 2 | 4 |
-The loop stops when `prefix` would become non‑positive.
+The loop stops when `prefix` would become non-positive.
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting the array.
-- **Space:** O(1) extra space aside from the input array (in‑place sort).
+- **Space:** O(1) extra space aside from the input array (in-place sort).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could remove at most one element?
 2. What if the goal is to maximize the *sum* of positive prefix sums instead of the count?
 3. Can you extend the approach to handle streaming inputs where the array is not known upfront?

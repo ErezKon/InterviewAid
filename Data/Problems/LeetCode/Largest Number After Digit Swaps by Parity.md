@@ -29,7 +29,7 @@ FUNCTION largestNumberByParity(num):
     // Sort each group descending to maximize value
     SORT evens DESCENDING
     SORT odds DESCENDING
-    // Re‑assemble preserving original parity positions
+    // Re-assemble preserving original parity positions
     result ← []
     evenIdx ← 0
     oddIdx ← 0
@@ -74,7 +74,7 @@ Take `num = 65875`:
 1. Digits list: `[6,5,8,7,5]`.
 2. Evens = `[6,8]` → sorted descending `[8,6]`.
 3. Odds = `[5,7,5]` → sorted descending `[7,5,5]`.
-4. Re‑assemble preserving parity:
+4. Re-assemble preserving parity:
    - Position 0 (even) → `8`
    - Position 1 (odd) → `7`
    - Position 2 (even) → `6`
@@ -94,8 +94,8 @@ Take `num = 65875`:
 
 ## Follow-Up Questions
 
-1. How would you solve the problem in O(n) time using counting sort for digits 0‑9?
-2. What changes are needed if the parity constraint is replaced by a modulo‑k constraint?
+1. How would you solve the problem in O(n) time using counting sort for digits 0-9?
+2. What changes are needed if the parity constraint is replaced by a modulo-k constraint?
 3. Can you extend the approach to maximize the number after a limited number of swaps?
 
 ---

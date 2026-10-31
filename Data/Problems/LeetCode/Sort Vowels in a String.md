@@ -36,41 +36,46 @@ Example 2:
 ```
 
 ## Approach
-1. Scan the string and collect all vowels in a list.
-2. Sort the vowel list alphabetically (case‑insensitive, preserving original case order if needed).
-3. Iterate the string again, replacing each vowel with the next element from the sorted list.
+1. Scan the string and collect all vowels (either case) in a list.
+2. Sort the vowel list by raw ASCII value (uppercase letters `A`-`Z` = 65-90 come before lowercase `a`-`z` = 97-122; no case folding).
+3. Iterate the string again, replacing each vowel position with the next element from the sorted list; consonants stay put.
 
 ```text
 FUNCTION sortVowels(s):
-    vowelsList ← []
+    VOWELS <- "aeiouAEIOU"
+    vowelsList <- []
     FOR ch IN s:
-        IF LOWER(ch) IN ['a','e','i','o','u']:
+        IF ch IN VOWELS:
             APPEND vowelsList WITH ch
-    SORT vowelsList BY LOWERCASE
-    result ← []
-    idx ← 0
+    SORT vowelsList BY ASCII VALUE
+    result <- []
+    idx <- 0
     FOR ch IN s:
-        IF LOWER(ch) IN ['a','e','i','o','u']:
+        IF ch IN VOWELS:
             APPEND result WITH vowelsList[idx]
-            idx ← idx + 1
+            idx <- idx + 1
         ELSE:
             APPEND result WITH ch
     RETURN JOIN(result)
 ```
 
 ## Walkthrough
-For `s = "beautiful"`:
+For `s = "lEetcOde"` (Example 1):
+- Collected vowels (in order): `['E','e','O','e']`.
+- Sorted by ASCII (`E`=69, `O`=79, `e`=101): `['E','O','e','e']`.
+
 | step | original char | action | result so far |
 |------|---------------|--------|--------------|
-|1|b|consonant|`b`|
-|2|e|vowel|replace with `a` → `ba`|
-|3|a|vowel|replace with `e` → `bae`|
-|4|u|vowel|replace with `i` → `baei`|
-|5|t|consonant|`baeit`|
-|6|i|vowel|replace with `u` → `baei tu`|
-|7|f|consonant|`baei tuf`|
-|8|u|vowel|replace with `u` → `baei tufu`|
-|9|l|consonant|`baei tuful` → final `baeftiulu`.
+|1|l|consonant|`l`|
+|2|E|vowel -> `vowelsList[0]` = `E`|`lE`|
+|3|e|vowel -> `vowelsList[1]` = `O`|`lEO`|
+|4|t|consonant|`lEOt`|
+|5|c|consonant|`lEOtc`|
+|6|O|vowel -> `vowelsList[2]` = `e`|`lEOtce`|
+|7|d|consonant|`lEOtced`|
+|8|e|vowel -> `vowelsList[3]` = `e`|`lEOtcede`|
+
+Result: `"lEOtcede"`. For `"lYmpH"` (Example 2) the vowel list is empty, so the string is returned unchanged.
 
 ## Complexity Analysis
 - **Time:** `O(n log n)` for sorting the collected vowels (`n` = length of `s`).
@@ -78,7 +83,7 @@ For `s = "beautiful"`:
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to sort vowels in descending order?
-2. Can you achieve `O(n)` time without explicit sorting by using counting sort on the five vowel categories?
+2. Can you achieve `O(n)` time without explicit sorting by using counting sort on the ten vowel characters (`AEIOUaeiou` in ASCII order)?
 3. What changes are needed if the input may contain Unicode vowel characters?
 
 ## Key Takeaway

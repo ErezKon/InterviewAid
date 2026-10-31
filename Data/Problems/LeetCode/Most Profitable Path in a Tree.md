@@ -120,7 +120,7 @@ Thus, Alice opens the gate at node 0 only. Hence, her net income is -7280.
 
 ## 5. Walkthrough
 
-Take Example 1.
+Take Example 1.
 1. Build adjacency list from edges.
 2. Find Bob's path: start at 4, parent 1, then 0 → `bobPath = [4,1,0]`.
 3. Record times: `bobTime = {4:0, 1:1, 0:2}`.
@@ -152,4 +152,4 @@ Take Example 1.
 
 ## 8. Key Takeaway
 
-> **Two‑phase tree traversal** — first compute Bob's deterministic path, then DFS as Alice with time‑aware profit adjustment. The tree structure ensures Bob has a unique path.
+> **Two-phase tree traversal** — first compute Bob's deterministic path, then DFS as Alice with time-aware profit adjustment. The tree structure ensures Bob has a unique path.

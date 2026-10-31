@@ -30,7 +30,7 @@ FUNCTION reorganizeString(s):
         IF cnt > (LEN(s) + 1) / 2:
             RETURN ""
 
-    // Build a max‑heap based on remaining count
+    // Build a max-heap based on remaining count
     SET maxHeap ← MaxHeap of (cnt, char) for each entry in freq
     SET result ← []
     SET prev ← (0, '')  // previous character waiting for cooldown
@@ -40,7 +40,7 @@ FUNCTION reorganizeString(s):
         APPEND char TO result
         // Decrease count because we used one occurrence
         SET cnt ← cnt - 1
-        // Re‑insert the previous character if it still has remaining count
+        // Re-insert the previous character if it still has remaining count
         IF prev[0] > 0:
             maxHeap.PUSH(prev)
         // Current character becomes previous for next iteration
@@ -72,7 +72,7 @@ Output: ""
 Consider the input `"aaabbc"` (length 7).
 
 1. Frequency map: `a:3, b:2, c:1`.
-2. Max‑heap initially contains `(3,'a'), (2,'b'), (1,'c')`.
+2. Max-heap initially contains `(3,'a'), (2,'b'), (1,'c')`.
 3. **Iteration 1**: pop `(3,'a')` → result `a`. `prev` becomes `(2,'a')`.
 4. **Iteration 2**: pop `(2,'b')` → result `ab`. Push `prev` `(2,'a')` back into heap. `prev` becomes `(1,'b')`.
 5. **Iteration 3**: heap now `(2,'a'), (1,'c')`. Pop `(2,'a')` → result `aba`. Push `prev` `(1,'b')`. `prev` becomes `(1,'a')`.
@@ -101,4 +101,4 @@ The final string `"ababac"` satisfies the condition.
 
 ## Key Takeaway
 
-> Use a max‑heap to always place the most frequent remaining character, delaying its reuse by one position (cooldown), which guarantees a valid arrangement when one exists.
+> Use a max-heap to always place the most frequent remaining character, delaying its reuse by one position (cooldown), which guarantees a valid arrangement when one exists.

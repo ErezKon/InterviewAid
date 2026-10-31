@@ -102,7 +102,7 @@ FUNCTION GetEmployeeUniqueIds():
 - Time: O(N) where N is the number of rows in `Employees` (assuming indexed join).
 - Space: O(N) for the result set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle duplicate `id` values in either table?
 2. How to return only employees that have a unique identifier?
 3. How to update the `EmployeeUNI` table to add missing identifiers?

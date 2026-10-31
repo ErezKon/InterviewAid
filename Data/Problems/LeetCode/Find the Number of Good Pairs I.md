@@ -65,7 +65,7 @@ FUNCTION numberOfPairs(nums1, nums2, k):
 
 ## 4. Walkthrough
 
-Consider Example 1:
+Consider Example 1:
 
 | i (nums1) | j (nums2) | b * k | a % (b * k) | Pair counted? |
 |-----------|----------|-------|-------------|----------------|
@@ -99,4 +99,4 @@ The algorithm iterates all six possible `(i, j)` combos, checks the modulus cond
 
 ## 7. Key Takeaway
 
-> With small input sizes, a straightforward double‑loop brute‑force check is both simple to implement and optimal.
+> With small input sizes, a straightforward double-loop brute-force check is both simple to implement and optimal.

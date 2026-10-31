@@ -46,7 +46,7 @@ Explanation: Choosing any two distinct candies from the candies we have will res
 ```
 
 ## Approach
-The problem can be solved with a binary‑search on the answer combined with a greedy feasibility check.
+The problem can be solved with a binary-search on the answer combined with a greedy feasibility check.
 1. **Sort** the price array.
 2. **Binary Search** the minimum gap `mid` between 0 and `max(price)-min(price)`.
 3. **Greedy Check** – starting from the smallest price, repeatedly pick the next price that is at least `mid` larger than the previously chosen one. If we can pick `k` candies, `mid` is feasible.
@@ -86,13 +86,13 @@ For `price = [1,2,4,8,9]` and `k = 3`:
 - Loop ends, answer = 3.
 
 ## Complexity Analysis
-- **Time:** O(n log M) where `n` is the number of candies and `M` is the price range (`max‑min`). Sorting costs O(n log n).
+- **Time:** O(n log M) where `n` is the number of candies and `M` is the price range (`max-min`). Sorting costs O(n log n).
 - **Space:** O(1) extra space besides the input array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the candies could be selected in any order (no sorting)?
 2. Can you adapt the algorithm to return the actual set of selected candies?
-3. What if `k` is very large, close to `n`? How does that affect the binary‑search bounds?
+3. What if `k` is very large, close to `n`? How does that affect the binary-search bounds?
 
 ## Key Takeaway
 Combining binary search on the answer with a greedy feasibility test efficiently finds the largest minimum gap for selecting `k` items.

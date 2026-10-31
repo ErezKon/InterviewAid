@@ -73,7 +73,7 @@ FUNCTION findMaxAverage(nums, k):
         SET adjusted ← []
         FOR each num IN nums:
             APPEND (num - mid) TO adjusted
-        // Check if a subarray of length ≥ k has non‑negative sum
+        // Check if a subarray of length ≥ k has non-negative sum
         IF maxSubarraySumLenK(adjusted, k) >= 0:
             SET lo ← mid
         ELSE:
@@ -100,7 +100,7 @@ FUNCTION maxSubarraySumLenK(arr, k):
 Consider `nums = [1,12,-5,-6,50,3]`, `k = 4`.
 1. **Binary search range:** lo = 1, hi = 50.
 2. **Mid = 25.5:** Adjusted = [-24.5, -13.5, -30.5, -31.5, 24.5, -22.5]. The best subarray of length ≥4 has sum < 0 → hi = 25.5.
-3. **Mid = 13.25:** Adjusted = [-12.25, -1.25, -18.25, -19.25, 36.75, -10.25]. The subarray `[ -1.25, -18.25, -19.25, 36.75 ]` (indices 1‑4) sums to -2 → still <0 → hi = 13.25.
+3. **Mid = 13.25:** Adjusted = [-12.25, -1.25, -18.25, -19.25, 36.75, -10.25]. The subarray `[ -1.25, -18.25, -19.25, 36.75 ]` (indices 1-4) sums to -2 → still <0 → hi = 13.25.
 4. **Mid = 7.875:** Adjusted = [-6.875, 4.125, -12.875, -13.875, 42.125, -4.875]. Subarray `[4.125, -12.875, -13.875, 42.125]` sums to 19.5 ≥ 0 → lo = 7.875.
 5. Continue narrowing until `hi - lo` ≤ 1e-5. Final `lo` ≈ 12.75.
 
@@ -126,4 +126,4 @@ The algorithm converges to the maximum average 12.75.
 
 ## Key Takeaway
 
-> **"Max average subarray of length ≥ k" uses binary search on the answer + subarray sum check.** Subtract the candidate average and check if a non‑negative sum subarray of length ≥ k exists.
+> **"Max average subarray of length ≥ k" uses binary search on the answer + subarray sum check.** Subtract the candidate average and check if a non-negative sum subarray of length ≥ k exists.

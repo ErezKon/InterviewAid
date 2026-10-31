@@ -65,7 +65,7 @@ FUNCTION divideString(s, k, fill):
     RETURN groups
 ```
 
-The insight is to make the string length a multiple of `k` first, then a simple fixed‑size slicing yields the groups.
+The insight is to make the string length a multiple of `k` first, then a simple fixed-size slicing yields the groups.
 
 ---
 
@@ -94,11 +94,11 @@ Take `s = "abcde"`, `k = 3`, `fill = "x"`:
 ## Follow-Up Questions
 
 - How would you handle Unicode characters where length may differ from byte count?
-- Can you perform the operation in‑place on a mutable character array?
+- Can you perform the operation in-place on a mutable character array?
 - What if the groups must be formed without padding, discarding leftover characters?
 
 ---
 
 ## Key Takeaway
 
-> **Pad the string to make its length divisible by `k`, then slice into fixed‑size chunks.**
+> **Pad the string to make its length divisible by `k`, then slice into fixed-size chunks.**

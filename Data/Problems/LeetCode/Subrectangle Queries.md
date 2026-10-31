@@ -105,11 +105,11 @@ CLASS SubrectangleQueries:
 |------|-----------|----------------|------------------------|
 | 1 | `updateSubrectangle(0,0,3,2,5)` | all cells | `[(0,0,3,2,5)]` |
 | 2 | `getValue(2,1)` | – | scans list, finds first update → returns `5` |
-| 3 | `updateSubrectangle(3,0,3,2,10)` | row 3 cells | `[(0,0,3,2,5), (3,0,3,2,10)]` |
+| 3 | `updateSubrectangle(3,0,3,2,10)` | row 3 cells | `[(0,0,3,2,5), (3,0,3,2,10)]` |
 | 4 | `getValue(3,1)` | – | reverse scan hits second update → returns `10` |
 
 ## Complexity Analysis
-- **Time:** `updateSubrectangle` O(1); `getValue` O(U) where U is number of updates (≤ 500).
+- **Time:** `updateSubrectangle` O(1); `getValue` O(U) where U is number of updates (≤ 500).
 - **Space:** O(U) for storing updates plus O(M·N) for the original matrix.
 
 ## Follow-Up Questions
@@ -118,4 +118,4 @@ CLASS SubrectangleQueries:
 - What if the matrix size and number of updates were both up to 10⁵?
 
 ## Key Takeaway
-Recording updates lazily and checking them in reverse during queries provides a simple solution with constant‑time updates and acceptable query performance for modest numbers of updates.
+Recording updates lazily and checking them in reverse during queries provides a simple solution with constant-time updates and acceptable query performance for modest numbers of updates.

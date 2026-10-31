@@ -25,7 +25,7 @@ Example 1:
   Node 4 -> (3,4) is the maximum value in the path starting from the root.
   Node 5 -> (3,4,5) is the maximum value in the path
   Node 3 -> (3,1,3) is the maximum value in the path.
-  (Good nodes: the root (3), the right child (4), the left grand‑child (3) and the right‑most leaf (5).)
+  (Good nodes: the root (3), the right child (4), the left grand-child (3) and the right-most leaf (5).)
 ```
 
 ```
@@ -33,7 +33,7 @@ Example 2:
   Input: root = [3,3,null,4,2]
   Output: 3
   Explanation: Node 2 -> (3, 3, 2) is not good, because "3" is higher than it.
-  (Good nodes: the root (3), its left child (3) and the left‑most leaf (4).)
+  (Good nodes: the root (3), its left child (3) and the left-most leaf (4).)
 ```
 
 ```
@@ -44,7 +44,7 @@ Example 3:
 ```
 
 ## Approach
-Perform a depth‑first search while tracking the maximum value seen on the current path. A node is good if its value is at least this maximum. Update the maximum when recursing to children.
+Perform a depth-first search while tracking the maximum value seen on the current path. A node is good if its value is at least this maximum. Update the maximum when recursing to children.
 
 ### Pseudocode
 ```text
@@ -64,15 +64,15 @@ For the tree `[3,1,4,3,null,1,5]`:
 |------|----------------|-------|--------|
 | 3 (root) | -∞ | yes | 3 |
 | 1 (left) | 3 | no | 3 |
-| 3 (left‑left) | 3 | yes | 3 |
+| 3 (left-left) | 3 | yes | 3 |
 | 4 (right) | 3 | yes | 4 |
-| 1 (right‑left) | 4 | no | 4 |
-| 5 (right‑right) | 4 | yes | 5 |
+| 1 (right-left) | 4 | no | 4 |
+| 5 (right-right) | 4 | yes | 5 |
 Total good nodes = 4.
 
 ## Complexity Analysis
 - **Time:** O(n) – each node visited once.
-- **Space:** O(h) – recursion stack height `h` (worst‑case O(n)).
+- **Space:** O(h) – recursion stack height `h` (worst-case O(n)).
 
 ## Follow-Up Questions
 1. How would you solve the problem iteratively using a stack?
@@ -80,4 +80,4 @@ Total good nodes = 4.
 3. What changes are needed if the tree is given as a parent array instead of node objects?
 
 ## Key Takeaway
-Tracking the maximum value along the root‑to‑node path enables a linear‑time DFS to count good nodes.
+Tracking the maximum value along the root-to-node path enables a linear-time DFS to count good nodes.

@@ -47,7 +47,7 @@ Thus, [2,0,2] is returned.
 ```
 
 ## Approach
-Sort the potions once. For each spell compute the minimum required potion strength `ceil(success / spell)` and binary‑search the first potion meeting that threshold.
+Sort the potions once. For each spell compute the minimum required potion strength `ceil(success / spell)` and binary-search the first potion meeting that threshold.
 
 ```text
 FUNCTION successfulPairs(spells, potions, success):
@@ -73,7 +73,7 @@ Time: `O((m + n) log n)` – sorting `n` potions and binary searching for each o
 
 ## Follow-Up Questions
 1. How would you handle updates to the `potions` array dynamically?
-2. Can you solve it using a two‑pointer technique after sorting both arrays?
+2. Can you solve it using a two-pointer technique after sorting both arrays?
 3. What if the success condition uses addition instead of multiplication?
 
 ## Key Takeaway

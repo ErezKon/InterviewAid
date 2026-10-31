@@ -60,16 +60,16 @@ FUNCTION minTotalDistance(grid):
 ```
 
 ## Walkthrough
-For the first example, `rows = [0,0,2]` → medianR = 0, `cols = [0,1,4]` → medianC = 1. Sum of |row‑medianR| = 0+0+2 = 2, sum of |col‑medianC| = 1+0+3 = 4, total = 6.
+For the first example, `rows = [0,0,2]` → medianR = 0, `cols = [0,1,4]` → medianC = 1. Sum of |row-medianR| = 0+0+2 = 2, sum of |col-medianC| = 1+0+3 = 4, total = 6.
 
 ## Complexity Analysis
 - **Time:** O(m·n) to scan the grid, plus O(k log k) for sorting `k` homes (k ≤ m·n).
 - **Space:** O(k) for the row and column lists.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change for Euclidean distance?
 2. Can you solve it in O(m·n) time without explicit sorting?
 3. What if the meeting point must be an existing home cell?
 
 ## Key Takeaway
-The Manhattan distance separates into independent dimensions, and the median of each dimension yields the optimal meeting point, turning a 2‑D optimization into two 1‑D problems.
+The Manhattan distance separates into independent dimensions, and the median of each dimension yields the optimal meeting point, turning a 2-D optimization into two 1-D problems.

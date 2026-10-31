@@ -66,7 +66,7 @@ Example 1:
 ```
 
 ## Walkthrough
-1. Use a recursive CTE to start from the head manager (id = 1).
+1. Use a recursive CTE to start from the head manager (id = 1).
 2. Iteratively join `Employees` on `manager_id` to collect direct reports.
 3. The recursion continues until no more reports are found.
 4. Exclude the head manager from the final result.

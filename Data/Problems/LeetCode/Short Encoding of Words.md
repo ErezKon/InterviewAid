@@ -77,8 +77,8 @@ For the first example, removing suffixes yields the set {"time", "bell"}. The to
 
 ## Complexity Analysis
 
-- **Time:** O(Σ |wᵢ|²) – each word generates all its suffixes.
-- **Space:** O(Σ |wᵢ|) – storing the set of words.
+- **Time:** O(Σ |wᵢ|²) – each word generates all its suffixes.
+- **Space:** O(Σ |wᵢ|) – storing the set of words.
 
 ---
 

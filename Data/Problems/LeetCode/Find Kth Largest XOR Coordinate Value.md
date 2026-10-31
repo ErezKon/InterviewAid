@@ -91,12 +91,12 @@ Consider `matrix = [[5,2],[1,6]]`:
 
 ## Follow-Up Questions
 
-1. How would you find the k‑th largest value without fully sorting the list (e.g., using a heap or quick‑select)?
-2. Can this technique be extended to 3‑D tensors with XOR prefix sums?
+1. How would you find the k-th largest value without fully sorting the list (e.g., using a heap or quick-select)?
+2. Can this technique be extended to 3-D tensors with XOR prefix sums?
 3. What if the matrix is extremely large and cannot fit in memory—how would you stream the computation?
 
 ---
 
 ## Key Takeaway
 
-> **2D prefix XOR lets you compute XOR of any submatrix in O(1) after O(m·n) preprocessing; then select the k‑th largest among the collected values.**
+> **2D prefix XOR lets you compute XOR of any submatrix in O(1) after O(m·n) preprocessing; then select the k-th largest among the collected values.**

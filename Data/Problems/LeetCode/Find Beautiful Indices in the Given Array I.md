@@ -91,7 +91,7 @@ First collect all occurrence positions of `a` and `b`. Then walk through `posA` 
 
 ## Complexity Analysis
 
-- **Time:** O(n + m) where *n* is length of `s` and *m* is total length of patterns (scanning for occurrences). The two‑pointer merge is linear in the number of occurrences.
+- **Time:** O(n + m) where *n* is length of `s` and *m* is total length of patterns (scanning for occurrences). The two-pointer merge is linear in the number of occurrences.
 - **Space:** O(p + q) for storing positions of `a` (`p`) and `b` (`q`).
 
 ---
@@ -106,4 +106,4 @@ First collect all occurrence positions of `a` and `b`. Then walk through `posA` 
 
 ## Key Takeaway
 
-> **Collect occurrence indices for both patterns and use a two‑pointer scan to efficiently check the distance constraint.**
+> **Collect occurrence indices for both patterns and use a two-pointer scan to efficiently check the distance constraint.**

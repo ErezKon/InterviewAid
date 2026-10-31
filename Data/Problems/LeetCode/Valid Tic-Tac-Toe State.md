@@ -88,4 +88,4 @@ FUNCTION validTicTacToe(board):
 - How would you detect a win when multiple lines are completed simultaneously?
 
 ## Key Takeaway
-A Tic‑Tac‑Toe board is valid only when the move counts and winning conditions are consistent with alternating turns.
+A Tic-Tac-Toe board is valid only when the move counts and winning conditions are consistent with alternating turns.

@@ -78,10 +78,10 @@ The map groups two words under (3,-1) and one under (1,1); the unique group yiel
 - Time: O(k·L) where *k* is number of words and *L* is word length.
 - Space: O(k·L) for storing the difference tuples.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle strings of varying lengths?
 2. Can you solve the problem in O(k) time without storing full tuples?
 3. What if you need to return all strings whose difference pattern appears exactly `t` times?
 
 ## Key Takeaway
-Representing a string by its consecutive character differences creates a canonical signature; a hash map then isolates the uniquely‑patterned string in linear time.
+Representing a string by its consecutive character differences creates a canonical signature; a hash map then isolates the uniquely-patterned string in linear time.

@@ -75,7 +75,7 @@ FUNCTION encodeShortest(s):
 - **Time:** O(n³) – three nested loops for interval length, start index, and split point.
 - **Space:** O(n²) for the DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - Can the algorithm be optimized to O(n²) using KMP to find repetitions?
 - How would you modify it to output the actual encoded string, not just its length?
 - What changes are needed if the encoding format allows nested encodings like `2[3[a]b]`?

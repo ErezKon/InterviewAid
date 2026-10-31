@@ -59,7 +59,7 @@ Result = 2 operations.
 *Time*: O(n) – one pass through the array.
 *Space*: O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the target divisor were a different integer `k`?
 2. Can we extend the approach to also return the final adjusted array?
 3. What if each increment/decrement operation has a different cost per element?

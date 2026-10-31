@@ -86,9 +86,9 @@ FUNCTION minCostTrainLine(n, train):
 ## Walkthrough
 For the first example (`n=5`):
 1. Initialise `dist[0]=0`.
-2. From node 0, walking edges give distances `[0,1,2,3,4]`; train edge to 1 gives distance 2 (better than walking 1). Update `dist[1]=2`.
-3. Extract node 1 (dist 2). Its train edge to 2 costs 3 → total 5, better than walking 1 (dist 3). Update `dist[2]=5`.
-4. Continue extracting the smallest distance node, relaxing both walking and train edges until node 4 is settled with distance 7.
+2. From node 0, walking edges give distances `[0,1,2,3,4]`; train edge to 1 gives distance 2 (better than walking 1). Update `dist[1]=2`.
+3. Extract node 1 (dist 2). Its train edge to 2 costs 3 → total 5, better than walking 1 (dist 3). Update `dist[2]=5`.
+4. Continue extracting the smallest distance node, relaxing both walking and train edges until node 4 is settled with distance 7.
 
 ## Complexity Analysis
 | Metric | Value |
@@ -96,9 +96,9 @@ For the first example (`n=5`):
 | Time   | O(n² log n) – each node relaxes up to n walking edges and its train edges |
 | Space  | O(n) for distance array and priority queue |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if walking was only allowed between adjacent stations?
-2. Can you improve the time complexity by pre‑computing walking distances with a monotonic queue?
+2. Can you improve the time complexity by pre-computing walking distances with a monotonic queue?
 3. What modifications are needed if train connections are bidirectional with different costs each way?
 
 ## Key Takeaway

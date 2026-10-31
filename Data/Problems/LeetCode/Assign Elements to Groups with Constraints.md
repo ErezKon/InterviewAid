@@ -102,15 +102,15 @@ Consider `groups = [12]` and `elements = [2,3,4]`.
 
 ## 6. Complexity Analysis
 
-- **Time**: For each group we enumerate divisors up to √g, giving O(g √max) overall; building the map is O(n).
-- **Space**: O(n) for the value‑to‑index map and O(m) for the result array.
+- **Time**: For each group we enumerate divisors up to √g, giving O(g √max) overall; building the map is O(n).
+- **Space**: O(n) for the value-to-index map and O(m) for the result array.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if an element could be used for multiple groups?
-- What if groups and elements are up to 10⁹ and you need a sub‑linear solution?
+- What if groups and elements are up to 10⁹ and you need a sub-linear solution?
 
 ---
 

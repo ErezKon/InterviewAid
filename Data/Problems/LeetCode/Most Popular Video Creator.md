@@ -91,7 +91,7 @@ Example 2:
 
 ## 5. Walkthrough
 
-Take Example 1.
+Take Example 1.
 1. Initialize empty maps.
 2. Iterate i=0: creator=alice, id=one, views=5 → totalViews[alice]=5, bestVideo[alice]=(one,5).
 3. i=1: creator=bob → totalViews[bob]=5, bestVideo[bob]=(two,5).
@@ -113,7 +113,7 @@ Take Example 1.
 
 ## 7. Follow-Up Questions
 
-- How would you modify the solution to return the top k creators by total views?
+- How would you modify the solution to return the top k creators by total views?
 - Can you solve the problem using a single pass without storing all creators (streaming scenario)?
 - How would the approach change if the number of creators is extremely large and does not fit in memory?
 
@@ -121,4 +121,4 @@ Take Example 1.
 
 ## 5. Key Takeaway
 
-> **Dual hash maps** — track total views and best video per creator simultaneously. Single pass with composite tie‑breaking.
+> **Dual hash maps** — track total views and best video per creator simultaneously. Single pass with composite tie-breaking.

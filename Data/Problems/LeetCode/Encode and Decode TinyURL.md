@@ -40,7 +40,7 @@ Implement the `Solution` class:
 
 ## Key Insight
 
-> Generate a random 6-character key from `[a-zA-Z0-9]` (62⁶ ≈ 56 billion combinations). Store bidirectional mappings. Re‑generate on collision. For idempotency, cache `longUrl → shortUrl` so the same URL always gets the same short code.
+> Generate a random 6-character key from `[a-zA-Z0-9]` (62⁶ ≈ 56 billion combinations). Store bidirectional mappings. Re-generate on collision. For idempotency, cache `longUrl → shortUrl` so the same URL always gets the same short code.
 
 ---
 
@@ -84,7 +84,7 @@ string ans = obj.decode(tiny); // returns the original url after decoding it.
 ## Walkthrough
 
 1. **First call to `encode`** with a new URL:
-   - No entry in `longToShort`, generate a random 6‑char key.
+   - No entry in `longToShort`, generate a random 6-char key.
    - Ensure the key is unique (check `shortToLong`).
    - Store mappings in both dictionaries.
 2. **Subsequent call to `encode`** with the same URL:
@@ -108,11 +108,11 @@ string ans = obj.decode(tiny); // returns the original url after decoding it.
 
 ## Follow-Up Questions
 
-**Q1: What about using an auto‑incrementing counter instead of random?**
+**Q1: What about using an auto-incrementing counter instead of random?**
 > Counter → base62 encoding gives predictable, sequential short URLs. Simpler but URLs are guessable (security concern).
 
 **Q2: How would you scale this for production?**
-> Distributed key generation (e.g., ID ranges per server), database‑backed storage, caching layer, and 301/302 redirects.
+> Distributed key generation (e.g., ID ranges per server), database-backed storage, caching layer, and 301/302 redirects.
 
 **Q3: What if the same long URL is encoded twice?**
 > The `longToShort` cache ensures idempotency — same long URL always returns the same short URL.
@@ -121,4 +121,4 @@ string ans = obj.decode(tiny); // returns the original url after decoding it.
 
 ## Key Takeaway
 
-> **URL shortening = bidirectional hash map + random key generation. In interviews, discuss trade‑offs: random vs counter, collision handling, and scaling to distributed systems.**
+> **URL shortening = bidirectional hash map + random key generation. In interviews, discuss trade-offs: random vs counter, collision handling, and scaling to distributed systems.**

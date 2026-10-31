@@ -54,7 +54,7 @@ Example 3:
 ```
 
 ## Approach
-Parse recursively while maintaining a stack of scope dictionaries. When encountering `let`, push a new scope, evaluate each binding, then evaluate the final expression in that scope, and finally pop the scope. For `add` and `mult`, evaluate both sub‑expressions and combine. Tokens are separated by spaces and parentheses.
+Parse recursively while maintaining a stack of scope dictionaries. When encountering `let`, push a new scope, evaluate each binding, then evaluate the final expression in that scope, and finally pop the scope. For `add` and `mult`, evaluate both sub-expressions and combine. Tokens are separated by spaces and parentheses.
 
 ```text
 FUNCTION evaluate(expression):
@@ -117,10 +117,10 @@ Expression `(let x 2 (mult x (let x 3 y 4 (add x y))))`:
 - **Time:** O(L) where L is the length of the expression, each character processed a constant number of times.
 - **Space:** O(D) for the maximum depth of nested scopes (stack size).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the parser to support additional operations like `sub` or `div`?
 2. Can the solution be implemented iteratively using an explicit stack instead of recursion?
 3. How would you handle variable shadowing when the same variable appears multiple times in the same `let` block?
 
 ## Key Takeaway
-A recursive descent parser with a stack of scoped variable maps cleanly evaluates nested Lisp‑style expressions while respecting variable lifetimes.
+A recursive descent parser with a stack of scoped variable maps cleanly evaluates nested Lisp-style expressions while respecting variable lifetimes.

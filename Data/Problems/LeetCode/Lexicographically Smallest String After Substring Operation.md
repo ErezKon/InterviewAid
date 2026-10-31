@@ -54,7 +54,7 @@ Explanation: Perform the operation on the entire string.
 
 ## 3. Approach: Greedy — O(n) ✅
 
-Skip leading `'a'` characters because turning them into `'z'` would make the string larger. Then decrement the first contiguous block of non‑`'a'` characters. If the entire string consists of `'a'`, change the last character to `'z'`.
+Skip leading `'a'` characters because turning them into `'z'` would make the string larger. Then decrement the first contiguous block of non-`'a'` characters. If the entire string consists of `'a'`, change the last character to `'z'`.
 
 ```text
 FUNCTION smallestString(s):
@@ -67,7 +67,7 @@ FUNCTION smallestString(s):
         // all 'a's case
         s[-1] ← 'z'
         RETURN JOIN(s)
-    // decrement the first non‑'a' block
+    // decrement the first non-'a' block
     WHILE i < LENGTH(s) AND s[i] != 'a':
         s[i] ← CHAR(ORD(s[i]) - 1)
         i ← i + 1
@@ -82,10 +82,10 @@ FUNCTION smallestString(s):
 
 | Step | Index | Char before | Action | Char after |
 |------|-------|-------------|--------|------------|
-| 1 | 0 | `c` | first non‑`a`, start decrement block | `b` |
-| 2 | 1 | `b` | still non‑`a`, continue | `a` |
+| 1 | 0 | `c` | first non-`a`, start decrement block | `b` |
+| 2 | 1 | `b` | still non-`a`, continue | `a` |
 | 3 | 2 | `a` | block ends (hit `a`) | `a` |
-| Remaining | 3‑4 | `b c` | unchanged | `b c` |
+| Remaining | 3-4 | `b c` | unchanged | `b c` |
 
 Resulting string: `"baabc"`.
 
@@ -98,7 +98,7 @@ Resulting string: `"baabc"`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the operation could be applied multiple times?
 - What if the decrement step could wrap multiple times (e.g., decrement by 2)?
@@ -108,4 +108,4 @@ Resulting string: `"baabc"`.
 
 ## 7. Key Takeaway
 
-> Skip leading `'a'`s, then decrement the first contiguous non‑`'a'` block; if all `'a'`s, change the last character to `'z'`. This greedy choice yields the smallest possible string.
+> Skip leading `'a'`s, then decrement the first contiguous non-`'a'` block; if all `'a'`s, change the last character to `'z'`. This greedy choice yields the smallest possible string.

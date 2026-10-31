@@ -78,10 +78,10 @@ Consider the example table above:
 - **Time Complexity:** O(N) – the database scans each row once.
 - **Space Complexity:** O(K) – where K is the number of distinct authors who viewed their own articles (output size).
 
-## Follow‑Up Questions
-- How would you modify the query to also return the count of self‑views per author?
+## Follow-Up Questions
+- How would you modify the query to also return the count of self-views per author?
 - How can you handle large datasets efficiently (e.g., using indexes)?
-- Extend the problem to return authors who have viewed **any** of their articles, not just self‑views.
+- Extend the problem to return authors who have viewed **any** of their articles, not just self-views.
 
 ## Key Takeaway
 A simple `WHERE` filter combined with `SELECT DISTINCT` and `ORDER BY` solves the problem of finding authors who viewed their own articles.

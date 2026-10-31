@@ -92,7 +92,7 @@ Explanation: All the possible stable binary arrays are [0,0,1,0,1,1], [0,0,1,1,0
 
 ## Walkthrough
 
-Consider Example 2 (`zero=2, one=1, limit=2`).
+Consider Example 2 (`zero=2, one=1, limit=2`).
 1. Initialise `dp` with base cases: `dp[1][0][0]=1`, `dp[2][0][0]=1` (run of zeros up to limit), `dp[0][1][1]=1`.
 2. Fill table:
    - `dp[1][1][0]` = `dp[0][1][1]` (add 0 after 1) + `dp[0][1][0]` (none) = 1.
@@ -105,8 +105,8 @@ Consider Example 2 (`zero=2, one=1, limit=2`).
 
 ## Complexity Analysis
 
-- **Time:** O(zero × one) because each cell `(i,j)` is computed in O(1).
-- **Space:** O(zero × one) for the DP table (two layers for last bit can be optimized to O(one) but we keep full table for clarity).
+- **Time:** O(zero × one) because each cell `(i,j)` is computed in O(1).
+- **Space:** O(zero × one) for the DP table (two layers for last bit can be optimized to O(one) but we keep full table for clarity).
 
 ---
 
@@ -114,10 +114,10 @@ Consider Example 2 (`zero=2, one=1, limit=2`).
 
 - How would you modify the DP if the limit differed for zeros and ones?
 - Can the solution be adapted to count arrays with more than two distinct symbols?
-- What if the modulo were a non‑prime number—how would you handle negative intermediate values?
+- What if the modulo were a non-prime number—how would you handle negative intermediate values?
 
 ---
 
 ## Key Takeaway
 
-> **3‑dimensional DP tracks counts of zeros, ones, and the last placed digit. The `limit` constraint is enforced by subtracting over‑counted sequences that exceed the allowed run length.**
+> **3-dimensional DP tracks counts of zeros, ones, and the last placed digit. The `limit` constraint is enforced by subtracting over-counted sequences that exceed the allowed run length.**

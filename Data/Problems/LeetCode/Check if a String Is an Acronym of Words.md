@@ -84,7 +84,7 @@ Consider `words = ["apple", "banana", "cherry"]` and `s = "abc"`:
 
 ## 6. Follow-Up Questions
 
-- How would you handle case‑insensitive comparisons?
+- How would you handle case-insensitive comparisons?
 - What if words may be empty strings?
 - Can you extend this to check if `s` is a subsequence of the first letters?
 
@@ -92,4 +92,4 @@ Consider `words = ["apple", "banana", "cherry"]` and `s = "abc"`:
 
 ## Key Takeaway
 
-> Simple length check + character‑by‑character comparison of first letters against the acronym string.
+> Simple length check + character-by-character comparison of first letters against the acronym string.

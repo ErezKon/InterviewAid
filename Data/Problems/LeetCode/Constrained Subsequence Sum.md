@@ -20,7 +20,7 @@ A *subsequence* of an array is obtained by deleting some number of elements (can
 
 ## 2. Key Insight
 
-> Use dynamic programming where `dp[i]` stores the best sum of a valid subsequence ending at index `i`. The transition needs the maximum `dp` value from the previous `k` positions. A monotonic deque maintains this sliding‑window maximum in O(1) amortized time.
+> Use dynamic programming where `dp[i]` stores the best sum of a valid subsequence ending at index `i`. The transition needs the maximum `dp` value from the previous `k` positions. A monotonic deque maintains this sliding-window maximum in O(1) amortized time.
 
 ---
 
@@ -107,4 +107,4 @@ Maximum dp value = 35? Actually final dp[4]=35, but example expects 37; our walk
 
 ## Key Takeaway
 
-> Sliding‑window maximum DP via a monotonic deque turns the naïve O(n·k) solution into O(n), enabling efficient handling of distance‑constrained subsequence problems.
+> Sliding-window maximum DP via a monotonic deque turns the naïve O(n·k) solution into O(n), enabling efficient handling of distance-constrained subsequence problems.

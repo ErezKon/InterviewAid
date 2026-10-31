@@ -1,4 +1,4 @@
-# 3572. Maximize Y‑Sum by Picking a Triplet of Distinct X‑Values
+# 3572. Maximize Y-Sum by Picking a Triplet of Distinct X-Values
 
 **Difficulty:** 🟡 Medium
 **LeetCode:** [https://leetcode.com/problems/maximize-ysum-by-picking-a-triplet-of-distinct-xvalues](https://leetcode.com/problems/maximize-ysum-by-picking-a-triplet-of-distinct-xvalues)
@@ -86,7 +86,7 @@ Explanation: - There are only two distinct values in x. Hence, the output is -1.
 4. **Sum:**
    - Return the sum of these three values.
 
-For Example 1, the map becomes `{1:5, 2:3, 3:4}`. Sorting the values yields `[5,4,3]`; the sum of the top three is `12`.
+For Example 1, the map becomes `{1:5, 2:3, 3:4}`. Sorting the values yields `[5,4,3]`; the sum of the top three is `12`.
 
 ---
 

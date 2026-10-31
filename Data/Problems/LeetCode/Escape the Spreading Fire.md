@@ -55,7 +55,7 @@ Example 3:
 ```
 
 ## Approach
-1. **Pre‑process fire distances**: Run a multi‑source BFS from all fire cells to compute `fireDist[r][c]` = earliest minute fire reaches each cell (∞ if never).
+1. **Pre-process fire distances**: Run a multi-source BFS from all fire cells to compute `fireDist[r][c]` = earliest minute fire reaches each cell (∞ if never).
 2. **Binary search on waiting time `w`**: The feasible `w` lies between `0` and `m*n` (or a large upper bound). For each `mid`:
    - Perform a BFS for the person starting after `mid` minutes. The person can step into a cell `(r,c)` at time `t` only if `t + mid < fireDist[r][c]` (strictly before fire arrives).
    - If the destination is reachable, `mid` is feasible → search higher; otherwise lower.
@@ -76,7 +76,7 @@ FUNCTION maximumMinutes(grid):
             queue.ENQUEUE((r,c))
     WHILE queue NOT EMPTY:
         (r,c) ← queue.DEQUEUE()
-        FOR each (nr,nc) in 4‑neighbors of (r,c):
+        FOR each (nr,nc) in 4-neighbors of (r,c):
             IF inside grid AND grid[nr][nc] != 1 AND fireDist[nr][nc] == INF:
                 fireDist[nr][nc] ← fireDist[r][c] + 1
                 queue.ENQUEUE((nr,nc))
@@ -91,7 +91,7 @@ FUNCTION maximumMinutes(grid):
         WHILE q NOT EMPTY:
             (r,c,t) ← q.DEQUEUE()
             IF (r,c) == (m-1,n-1): RETURN true
-            FOR each (nr,nc) in 4‑neighbors:
+            FOR each (nr,nc) in 4-neighbors:
                 IF NOT inside grid OR visited[nr][nc]: CONTINUE
                 SET nextTime ← t + 1
                 // person arrives at absolute time wait + nextTime
@@ -124,10 +124,10 @@ FUNCTION maximumMinutes(grid):
 - **Person BFS per iteration:** O(m·n) time.
 Overall: O(m·n·log(m·n)) time, O(m·n) space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the algorithm if fire spreads faster than the person (e.g., two cells per minute)?
 - Can you compute the exact maximum waiting time without binary search using a single modified Dijkstra?
 - What if there are multiple people starting at different cells?
 
 ## Key Takeaway
-Separating fire propagation (multi‑source BFS) from the person’s movement and using binary search on the waiting time yields an efficient solution to a seemingly complex time‑dependent path problem.
+Separating fire propagation (multi-source BFS) from the person’s movement and using binary search on the waiting time yields an efficient solution to a seemingly complex time-dependent path problem.

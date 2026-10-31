@@ -74,13 +74,13 @@ CLASS MRUQueue:
 
 ## Walkthrough
 
-Consider Example 1 with `n = 8` and the first query `fetch(3)`:
+Consider Example 1 with `n = 8` and the first query `fetch(3)`:
 | Step | Operation | BIT state (present count) | Queue representation |
 |------|-----------|---------------------------|----------------------|
-| 1 | Find 3rd present element using `findKth` | Position 3 is found | Queue: `[1,2,3,4,5,6,7,8]` |
-| 2 | Remove element at position 3 (`bit.update(3,-1)`) | Count at 3 becomes 0 | Queue becomes `[1,2,4,5,6,7,8]` |
-| 3 | Append value 3 at `nextSlot = 9` (`bit.update(9,1)`) | New position 9 marked present | Queue becomes `[1,2,4,5,6,7,8,3]` |
-The same steps repeat for subsequent queries, always locating the k‑th present element, removing it, and appending it at the next free slot.
+| 1 | Find 3rd present element using `findKth` | Position 3 is found | Queue: `[1,2,3,4,5,6,7,8]` |
+| 2 | Remove element at position 3 (`bit.update(3,-1)`) | Count at 3 becomes 0 | Queue becomes `[1,2,4,5,6,7,8]` |
+| 3 | Append value 3 at `nextSlot = 9` (`bit.update(9,1)`) | New position 9 marked present | Queue becomes `[1,2,4,5,6,7,8,3]` |
+The same steps repeat for subsequent queries, always locating the k-th present element, removing it, and appending it at the next free slot.
 
 ---
 
@@ -97,7 +97,7 @@ The same steps repeat for subsequent queries, always locating the k‑th present
 
 1. How would you modify the design to support `pushBack(val)` and `popFront()` operations efficiently?
 2. Can the solution be adapted to handle deletions of arbitrary elements, not just the fetched one?
-3. What trade‑offs arise if you use a balanced binary search tree instead of a Fenwick tree?
+3. What trade-offs arise if you use a balanced binary search tree instead of a Fenwick tree?
 
 ---
 

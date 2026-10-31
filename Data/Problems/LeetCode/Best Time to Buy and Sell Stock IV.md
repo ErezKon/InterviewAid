@@ -33,8 +33,8 @@ Example 2:
 
 ## Approach
 Dynamic programming with two arrays `buy` and `sell` of size `k+1`.
-- `buy[j]` stores the best profit after the `j`‑th buy (negative cost).
-- `sell[j]` stores the best profit after the `j`‑th sell.
+- `buy[j]` stores the best profit after the `j`-th buy (negative cost).
+- `sell[j]` stores the best profit after the `j`-th sell.
 Iterate over each price and update the states for all transaction counts.
 If `k` is large (≥ n/2) the problem reduces to unlimited transactions, which can be solved by summing all positive price differences.
 
@@ -73,13 +73,13 @@ FUNCTION maxProfit(k, prices):
 Result = 7.
 
 ## Complexity Analysis
-- **Time:** O(n · k) – each price updates `k` transaction states.
+- **Time:** O(n · k) – each price updates `k` transaction states.
 - **Space:** O(k) – two arrays of length `k+1`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to include a transaction fee per trade?
-2. Can you achieve O(n) time when `k` is large by using the unlimited‑transactions shortcut?
-3. What if you are allowed at most `k` *non‑overlapping* intervals of increasing prices?
+2. Can you achieve O(n) time when `k` is large by using the unlimited-transactions shortcut?
+3. What if you are allowed at most `k` *non-overlapping* intervals of increasing prices?
 
 ## Key Takeaway
-By tracking the best profit after each possible buy and sell using DP arrays, the `k`‑transaction stock problem is solved in O(n k) time with O(k) space.
+By tracking the best profit after each possible buy and sell using DP arrays, the `k`-transaction stock problem is solved in O(n k) time with O(k) space.

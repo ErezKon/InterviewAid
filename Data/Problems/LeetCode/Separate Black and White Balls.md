@@ -71,16 +71,16 @@ FUNCTION minimumSteps(s):
 
 ## Walkthrough
 
-Consider `s = "10101"`.
+Example 2: `s = "100"`.
 
 1. Initialize `ones = 0`, `swaps = 0`.
 2. Iterate characters:
    - `c='1'`: `ones = 1`.
    - `c='0'`: `swaps += ones` → `swaps = 1`.
-   - `c='1'`: `ones = 2`.
-   - `c='0'`: `swaps += ones` → `swaps = 3`.
-   - `c='1'`: `ones = 3`.
-3. End of loop, `swaps = 3`, which is minimal.
+   - `c='0'`: `swaps += ones` → `swaps = 2`.
+3. End of loop, `swaps = 2`, matching the expected output.
+
+Example 1 `"101"`: the single `0` sees one `1` before it → `1`. Example 3 `"0111"`: the `0` comes first with `ones = 0` → `0`.
 
 ---
 
@@ -100,4 +100,4 @@ Consider `s = "10101"`.
 
 ## Key Takeaway
 
-> Count the number of `1`s encountered so far; each `0` must swap past all those `1`s, giving a linear‑time solution.
+> Count the number of `1`s encountered so far; each `0` must swap past all those `1`s, giving a linear-time solution.

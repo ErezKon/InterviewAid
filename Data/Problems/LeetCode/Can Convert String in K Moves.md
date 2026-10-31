@@ -30,7 +30,7 @@ Return `true` if it's possible to convert `s` into `t` in no more than `k` moves
 
 ## 2. Key Insight
 
-> For each mismatched position compute the required shift `d`. The first occurrence of shift `d` can use move `d`, the second needs `d+26`, the third `d+52`, etc. All required move numbers must be ≤ `k`.
+> For each mismatched position compute the required shift `d`. The first occurrence of shift `d` can use move `d`, the second needs `d+26`, the third `d+52`, etc. All required move numbers must be ≤ `k`.
 
 ---
 
@@ -92,7 +92,7 @@ Thus conversion is impossible within 52 moves.
 ## 6. Complexity Analysis
 
 - **Time:** O(n) – single pass over the strings.
-- **Space:** O(1) – fixed‑size array of 26 counters.
+- **Space:** O(1) – fixed-size array of 26 counters.
 
 ---
 

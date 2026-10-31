@@ -174,7 +174,7 @@ Consider `strength = [9, 3, 8]`.
 | 2        | 8        | 1            | 4                                 |
 | 2        | 8        | 2            | 2                                 |
 
-The Hungarian algorithm selects the minimum‑cost matching: (Lock 0→Pos 2, Lock 1→Pos 0, Lock 2→Pos 1) giving total time `3 + 3 + 4 = 10`. A different optimal matching yields total `5` (Lock 0→Pos 1, Lock 1→Pos 2, Lock 2→Pos 0). The algorithm systematically improves the assignment until the minimal total is found.
+The Hungarian algorithm selects the minimum-cost matching: (Lock 0→Pos 2, Lock 1→Pos 0, Lock 2→Pos 1) giving total time `3 + 3 + 4 = 10`. A different optimal matching yields total `5` (Lock 0→Pos 1, Lock 1→Pos 2, Lock 2→Pos 0). The algorithm systematically improves the assignment until the minimal total is found.
 
 ---
 

@@ -72,7 +72,7 @@ FUNCTION continuousSubarrays(nums):
 Total = 6.
 
 ## Complexity Analysis
-- **Time:** O(n log n) due to sorted‑list operations for each element.
+- **Time:** O(n log n) due to sorted-list operations for each element.
 - **Space:** O(n) for the container holding at most the current window.
 
 ## Follow-Up Questions
@@ -81,4 +81,4 @@ Total = 6.
 3. Can the approach be adapted for streaming data where the array is not fully known?
 
 ## Key Takeaway
-Maintaining min and max with a sorted container lets a sliding window efficiently enforce the `max‑min ≤ 2` constraint, turning a naïve O(n²) enumeration into O(n log n).
+Maintaining min and max with a sorted container lets a sliding window efficiently enforce the `max-min ≤ 2` constraint, turning a naïve O(n²) enumeration into O(n log n).

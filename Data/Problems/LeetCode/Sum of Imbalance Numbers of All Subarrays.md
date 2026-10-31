@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below use an invented `max − min − (r − l)` definition. Correct idea (n ≤ 1000): for each left end `i`, extend `j` while keeping a `seen` set and the running imbalance `cnt`: when adding a new value `x`, `cnt += 1`, then `cnt -= 1` if `x−1` is seen and `cnt -= 1` if `x+1` is seen (duplicates change nothing); the imbalance is `cnt − 1`; add it for every `j`. O(n²).*
-
 The **imbalance number** of a **0-indexed** integer array `arr` of length `n` is defined as the number of indices in `sarr = sorted(arr)` such that:
 
 - `0 <= i < n - 1`, and
@@ -54,66 +52,60 @@ The imbalance number of all other subarrays is 0. Hence, the sum of imbalance nu
 ```
 
 ## Approach
-The contribution of each element can be counted separately using two monotonic stacks – one for next greater element and one for next smaller element.
-1. For each index `i`, find the nearest index `Lmax` to the left where `nums[Lmax] > nums[i]` and `Rmax` to the right where `nums[Rmax] > nums[i]`. The element `nums[i]` is the **maximum** for all subarrays whose left bound lies in `(Lmax, i]` and right bound lies in `[i, Rmax)`. The number of such subarrays is `(i - Lmax) * (Rmax - i)`.
-2. Similarly compute `Lmin` and `Rmin` for the nearest smaller elements. The element is the **minimum** for `(i - Lmin) * (Rmin - i)` subarrays.
-3. For each subarray, the imbalance contribution is `max - min - (len-1)`. Summing over all subarrays, the total contribution of each element as a maximum adds `nums[i] * (i - Lmax) * (Rmax - i)`. The total contribution as a minimum subtracts `nums[i] * (i - Lmin) * (Rmin - i)`. Finally subtract the total length contribution `∑ (len-1)` which equals the number of subarrays minus the count of elements, i.e., `n*(n+1)/2 - n`.
-4. Combine the three sums and take modulo.
+With `n ≤ 1000`, enumerating all O(n²) subarrays is fine as long as each extension costs O(1).
+
+Observation: the imbalance number of a set of distinct values equals (number of maximal runs of consecutive integers) − 1. For example `{1, 3, 4}` has runs `{1}` and `{3,4}`, so its imbalance is 1. Duplicates do not matter.
+
+Fix the left end `i` and extend the right end `j`, maintaining a `seen` set of values and `runs` (number of runs of consecutive integers). When adding a value `x`:
+- if `x` is already in `seen`, nothing changes;
+- otherwise `x` forms a new run (`runs += 1`), but if `x − 1` is present it merges with that run (`runs −= 1`), and if `x + 1` is present it merges again (`runs −= 1`).
+
+After each extension, the current subarray `nums[i..j]` has imbalance `runs − 1`; add it to the answer. Since values are in `[1, n]`, `seen` can be a boolean array of size `n + 2`, reset for each `i`.
 
 ```text
-FUNCTION sumImbalance(nums):
-    MOD ← 1_000_000_007
-    n ← LENGTH(nums)
-    // helpers to compute next greater/smaller indices
-    FUNCTION nextGreater(arr, direction):
-        stack ← empty
-        result ← array of size n filled with (n if direction = "right" else -1)
-        indices ← RANGE(0, n) if direction = "right" else REVERSE(RANGE(0, n))
-        FOR i IN indices:
-            WHILE stack NOT EMPTY AND arr[stack.TOP] <= arr[i]:
-                SET result[stack.POP()] ← i
-            stack.PUSH(i)
-        RETURN result
-
-    Lmax ← nextGreater(nums, "left")   // nearest greater on left (or -1)
-    Rmax ← nextGreater(nums, "right")  // nearest greater on right (or n)
-    Lmin ← nextSmaller(nums, "left")
-    Rmin ← nextSmaller(nums, "right")
-
-    maxSum ← 0
-    minSum ← 0
-    FOR i FROM 0 TO n-1:
-        SET leftMax ← i - Lmax[i]
-        SET rightMax ← Rmax[i] - i
-        SET maxSum ← (maxSum + nums[i] * leftMax * rightMax) % MOD
-
-        SET leftMin ← i - Lmin[i]
-        SET rightMin ← Rmin[i] - i
-        SET minSum ← (minSum + nums[i] * leftMin * rightMin) % MOD
-
-    totalSubarrays ← n * (n + 1) / 2
-    lengthContribution ← (totalSubarrays - n) % MOD
-    ans ← (maxSum - minSum - lengthContribution) % MOD
-    IF ans < 0: ans ← ans + MOD
-    RETURN ans
+FUNCTION sumImbalanceNumbers(nums)
+    n ← length(nums)
+    total ← 0
+    FOR i ← 0 TO n-1
+        seen ← boolean array of size n+2, all false
+        runs ← 0
+        FOR j ← i TO n-1
+            x ← nums[j]
+            IF NOT seen[x]
+                runs ← runs + 1                 // x starts a new run
+                IF seen[x-1] THEN runs ← runs - 1  // merges with run ending at x-1
+                IF seen[x+1] THEN runs ← runs - 1  // merges with run starting at x+1
+                seen[x] ← true
+            total ← total + (runs - 1)          // imbalance of nums[i..j]
+    RETURN total
 ```
 
 ## Walkthrough
-| i | nums[i] | Lmax | Rmax | leftMax | rightMax | max contribution |
-|---|---------|------|------|---------|----------|-----------------|
-| 0 | 2       | -1   | 2    | 1       | 2        | 2 * 1 * 2 = 4   |
-| 1 | 1       | 0    | 2    | 1       | 1        | 1 * 1 * 1 = 1   |
-| 2 | 3       | -1   | 3    | 3       | 1        | 3 * 3 * 1 = 9   |
-Summing max contributions = 14, similarly compute min contributions = 12, length contribution = 3, final answer = 14‑12‑3 = -1 → modulo = 2.
+Example 1: `nums = [2,3,1,4]`.
+
+| i | j | x added | seen after | runs | imbalance (runs − 1) | total |
+|---|---|---------|------------|------|----------------------|-------|
+| 0 | 0 | 2 | {2} | 1 | 0 | 0 |
+| 0 | 1 | 3 | {2,3} | 1 | 0 | 0 |
+| 0 | 2 | 1 | {1,2,3} | 1 | 0 | 0 |
+| 0 | 3 | 4 | {1,2,3,4} | 1 | 0 | 0 |
+| 1 | 1 | 3 | {3} | 1 | 0 | 0 |
+| 1 | 2 | 1 | {1,3} | 2 | 1 | 1 |
+| 1 | 3 | 4 | {1,3,4} | 2 | 1 | 2 |
+| 2 | 2 | 1 | {1} | 1 | 0 | 2 |
+| 2 | 3 | 4 | {1,4} | 2 | 1 | 3 |
+| 3 | 3 | 4 | {4} | 1 | 0 | 3 |
+
+The three non-zero rows are `[3,1]`, `[3,1,4]` and `[1,4]`. Result: **3**.
 
 ## Complexity Analysis
-- **Time:** O(n) – each element is pushed/popped at most once in each monotonic stack.
-- **Space:** O(n) – stacks and four auxiliary index arrays.
+- **Time:** O(n²) — each of the n(n+1)/2 subarray extensions costs O(1) (plus O(n) reset per left end).
+- **Space:** O(n) for the `seen` array.
 
 ## Follow-Up Questions
-1. How would the algorithm change if the imbalance definition used `max - min` without subtracting length?
-2. Can the same monotonic‑stack technique be applied to compute the sum of range sums for all subarrays?
-3. How would you adapt the solution for a streaming setting where numbers arrive one by one?
+1. Can you do better than O(n²)? (Yes: count, for each index, the subarrays in which it is the "first" occurrence contributing a gap, using nearest occurrences of `nums[i]` and `nums[i] + 1` — O(n) contribution technique.)
+2. What if values are unbounded (up to 10^9)? (Use a hash set instead of a boolean array.)
+3. How would you change the solution if a gap were defined as `sarr[i+1] − sarr[i] > k`?
 
 ## Key Takeaway
-Monotonic stacks let us count how many subarrays treat each element as the maximum or minimum, turning a seemingly quadratic sum into a linear‑time calculation.
+Re-expressing "gaps in the sorted order" as "number of runs of consecutive integers minus one" turns a sorting-based definition into an O(1) incremental update, making the full enumeration of subarrays efficient.

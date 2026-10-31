@@ -71,7 +71,7 @@ Example 2:
 
 ## Walkthrough
 
-Consider Example 1 step‑by‑step.
+Consider Example 1 step-by-step.
 
 | Query | Graph edges added | BFS result (distance 0→4) |
 |-------|-------------------|---------------------------|
@@ -79,13 +79,13 @@ Consider Example 1 step‑by‑step.
 | 1     | add 0→2 | shortest path 0→2→3→4 → distance 3 (but after next query) |
 | 2     | add 2→4 | shortest path 0→2→4 → distance 2 |
 
-The algorithm updates the adjacency list, then runs a BFS from node 0 to node n‑1, recording the distance after each query.
+The algorithm updates the adjacency list, then runs a BFS from node 0 to node n-1, recording the distance after each query.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** For each of the `q` queries we perform a BFS on a graph with `V = n` vertices and up to `E = n‑1 + q` edges, costing `O(q·(V+E))` in the worst case.
+- **Time:** For each of the `q` queries we perform a BFS on a graph with `V = n` vertices and up to `E = n-1 + q` edges, costing `O(q·(V+E))` in the worst case.
 - **Space:** The adjacency list stores `O(V+E)` edges, and the BFS queue plus distance array use `O(V)` additional space.
 
 ---
@@ -100,4 +100,4 @@ The algorithm updates the adjacency list, then runs a BFS from node 0 to node�
 
 ## Key Takeaway
 
-> Maintaining the graph incrementally and re‑running BFS after each edge addition yields correct shortest‑path distances, but more advanced techniques are needed for large‑scale inputs.
+> Maintaining the graph incrementally and re-running BFS after each edge addition yields correct shortest-path distances, but more advanced techniques are needed for large-scale inputs.

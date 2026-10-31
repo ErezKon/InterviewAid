@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-Because the stream is infinite, we cannot materialize it entirely. Instead, generate elements on‑the‑fly while maintaining a sliding window of size equal to `len(pattern)`. Compare the window to the pattern at each step; stop early if a match is found.
+Because the stream is infinite, we cannot materialize it entirely. Instead, generate elements on-the-fly while maintaining a sliding window of size equal to `len(pattern)`. Compare the window to the pattern at each step; stop early if a match is found.
 
 ```text
 FUNCTION containsPattern(pattern):
@@ -67,20 +67,20 @@ FUNCTION containsPattern(pattern):
 ```
 
 ## Walkthrough
-For `pattern = [2,3,5]` and a Fibonacci‑like stream `1,2,3,5,8,...`:
-1. Generate `1` → window `[1]` (size < 3).
+For `pattern = [2,3,5]` and a Fibonacci-like stream `1,2,3,5,8,...`:
+1. Generate `1` → window `[1]` (size < 3).
 2. Generate `2` → window `[1,2]`.
-3. Generate `3` → window `[1,2,3]` (size = 3, not equal to pattern).
+3. Generate `3` → window `[1,2,3]` (size = 3, not equal to pattern).
 4. Generate `5` → window slides to `[2,3,5]` → matches pattern → return `true`.
 
 ## Complexity Analysis
 - **Time:** O(N) where N is the number of generated elements until a match or termination; each step does O(1) work.
 - **Space:** O(m) for the sliding window of size `m = len(pattern)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle multiple patterns simultaneously?
 2. Can you use a rolling hash to compare windows in O(1) time?
 3. What changes if the stream can be reset or accessed randomly?
 
 ## Key Takeaway
-A sliding window over a lazily generated stream lets you detect a fixed‑size pattern using constant extra space, stopping as soon as the pattern is found.
+A sliding window over a lazily generated stream lets you detect a fixed-size pattern using constant extra space, stopping as soon as the pattern is found.

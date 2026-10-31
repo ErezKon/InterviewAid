@@ -46,10 +46,10 @@ Result matches expected height.
 - **Time:** O(1) for the formula (or O(log n) for binary search).
 - **Space:** O(1).
 
-## Follow‑Up Questions
-1. How would you adapt the solution for very large `n` (e.g., 10¹⁸) where floating‑point precision may be an issue?
+## Follow-Up Questions
+1. How would you adapt the solution for very large `n` (e.g., 10¹⁸) where floating-point precision may be an issue?
 2. Can you compute the height using only integer arithmetic?
 3. What if each row must contain at least `m` coins instead of exactly `i`?
 
 ## Key Takeaway
-Transform the staircase sum into a quadratic inequality and solve it directly for a constant‑time answer.
+Transform the staircase sum into a quadratic inequality and solve it directly for a constant-time answer.

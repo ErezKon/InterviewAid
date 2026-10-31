@@ -91,10 +91,10 @@ Example 1:
 ## Walkthrough
 
 1. **Initialize** with 10 free units (`memory = [0,0,0,0,0,0,0,0,0,0]`).
-2. `allocate(3,1)` scans from left, finds three consecutive zeros at indices 0‑2, sets them to `1`. Memory becomes `[1,1,1,0,0,0,0,0,0,0]`.
-3. `allocate(4,2)` continues scanning, finds four zeros at 3‑6, sets them to `2`. Memory becomes `[1,1,1,2,2,2,2,0,0,0]`.
-4. `freeMemory(1)` iterates, resets indices 0‑2 to `0`, counting three freed units.
-5. `allocate(5,3)` now sees only a block of three zeros (0‑2) and a block of three zeros (7‑9); no block of size 5, so returns `-1`.
+2. `allocate(3,1)` scans from left, finds three consecutive zeros at indices 0-2, sets them to `1`. Memory becomes `[1,1,1,0,0,0,0,0,0,0]`.
+3. `allocate(4,2)` continues scanning, finds four zeros at 3-6, sets them to `2`. Memory becomes `[1,1,1,2,2,2,2,0,0,0]`.
+4. `freeMemory(1)` iterates, resets indices 0-2 to `0`, counting three freed units.
+5. `allocate(5,3)` now sees only a block of three zeros (0-2) and a block of three zeros (7-9); no block of size 5, so returns `-1`.
 
 ---
 
@@ -111,10 +111,10 @@ Example 1:
 
 - How could you improve allocation to O(log n) using a segment tree or balanced interval tree?
 - How would you support merging adjacent free blocks efficiently?
-- Can you design a thread‑safe allocator for concurrent allocations?
+- Can you design a thread-safe allocator for concurrent allocations?
 
 ---
 
 ## Key Takeaway
 
-> **Array simulation with a consecutive‑free counter finds the leftmost fit. For better performance, maintain a free‑list of intervals or use a balanced tree of gaps.**
+> **Array simulation with a consecutive-free counter finds the leftmost fit. For better performance, maintain a free-list of intervals or use a balanced tree of gaps.**

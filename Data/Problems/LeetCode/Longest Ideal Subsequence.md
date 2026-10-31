@@ -67,7 +67,7 @@ Consider `s = "acfgbd"` and `k = 2`.
 
 | Step | char | c (index) | dp before | best from range | dp after |
 |------|------|----------|-----------|----------------|----------|
-| 1 | a | 0 | [0…0] | 0 (range 0‑2) | dp[0]=1 |
+| 1 | a | 0 | [0…0] | 0 (range 0-2) | dp[0]=1 |
 | 2 | c | 2 | dp[0]=1 | max(dp[0..4])=1 | dp[2]=2 |
 | 3 | f | 5 | dp[2]=2 | max(dp[3..7])=0 | dp[5]=1 |
 | 4 | g | 6 | dp[5]=1 | max(dp[4..8])=0 | dp[6]=1 |

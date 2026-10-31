@@ -14,7 +14,7 @@ You have to take each integer in the array, **reverse its digits**, and add it t
 
 Return *the number of **distinct** integers in the final array*.
 
-(Equivalently, for each element also add its digit‑reversed version, then count distinct values.)
+(Equivalently, for each element also add its digit-reversed version, then count distinct values.)
 
 **Constraints:**
 - `1 <= nums.length <= 10^5`
@@ -91,7 +91,7 @@ Resulting distinct count = 2.
 ## Follow-Up Questions
 
 1. How would you modify the solution if numbers could be negative?
-2. Can the algorithm be adapted to work in‑place without extra storage, assuming the input array can be mutated?
+2. Can the algorithm be adapted to work in-place without extra storage, assuming the input array can be mutated?
 3. What if the reversal operation had a cost and you could only perform it a limited number of times?
 
 ---

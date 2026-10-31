@@ -32,7 +32,7 @@ Return *the number of **different** ranges that are balanced.* Since the answer 
 
 ## 2. Key Insight
 
-> Treat each index as contributing either `+nums1[i]` or `-nums2[i]`. The problem becomes a subset‑sum over possible differences. Because the range of differences can be large, we store only reachable differences in a hashmap (sparse DP).
+> Treat each index as contributing either `+nums1[i]` or `-nums2[i]`. The problem becomes a subset-sum over possible differences. Because the range of differences can be large, we store only reachable differences in a hashmap (sparse DP).
 
 ---
 
@@ -101,17 +101,17 @@ Example 2:
 
 ## 5. Walkthrough
 
-Consider Example 1 (`nums1=[1,2]`, `nums2=[1,1]`).
+Consider Example 1 (`nums1=[1,2]`, `nums2=[1,1]`).
 1. Start with empty `dp`.
 2. Process i=0:
    - New subsets: +1 and -1 → dp = {1:1, -1:1}
 3. Process i=1:
    - Extend each existing diff:
-     * From diff 1: +2 → 3, -1 → 0
-     * From diff -1: +2 → 1, -1 → -2
+     * From diff 1: +2 → 3, -1 → 0
+     * From diff -1: +2 → 1, -1 → -2
    - Also start new subsets: +2 and -2.
    - Final `dp` = {3:1, 0:1, 1:2, -2:2, -1:1, 2:1}
-4. Positive diffs are 1 (count 2), 2 (1), 3 (1) → total 4, but note subsets of size 0 are excluded, leaving 3 valid subsets as listed.
+4. Positive diffs are 1 (count 2), 2 (1), 3 (1) → total 4, but note subsets of size 0 are excluded, leaving 3 valid subsets as listed.
 
 ---
 
@@ -123,14 +123,14 @@ Consider Example 1 (`nums1=[1,2]`, `nums2=[1,1]`).
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if the condition were `diff ≥ 0` instead of `> 0`?
-- Can the DP be optimized using meet‑in‑the‑middle for larger `n`?
+- Can the DP be optimized using meet-in-the-middle for larger `n`?
 - What if each index allowed three choices (skip, pick from `nums1`, pick from `nums2`)?
 
 ---
 
 ## Key Takeaway
 
-> Transform the “choose from two arrays with a sign constraint” into a subset‑sum over signed differences and use a sparse DP hashmap to count all positive outcomes.
+> Transform the “choose from two arrays with a sign constraint” into a subset-sum over signed differences and use a sparse DP hashmap to count all positive outcomes.

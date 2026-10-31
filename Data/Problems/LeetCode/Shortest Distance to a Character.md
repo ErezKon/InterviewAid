@@ -26,12 +26,12 @@ The **distance** between two indices `i` and `j` is `abs(i - j)`, where `abs` is
 FUNCTION shortestToChar(s, c):
     n ← len(s)
     result ← ARRAY[n] filled with n
-    // Left‑to‑right pass
+    // Left-to-right pass
     pos ← -n
     FOR i ← 0 TO n-1:
         IF s[i] == c: pos ← i
         result[i] ← i - pos
-    // Right‑to‑left pass
+    // Right-to-left pass
     pos ← 2*n
     FOR i ← n-1 DOWN TO 0:
         IF s[i] == c: pos ← i
@@ -65,7 +65,7 @@ Example 2:
 ## Walkthrough
 
 1. **First pass (left to right)** – Keep `pos` as the most recent index where `c` was seen. For each `i`, the distance to the nearest `c` on the left is `i - pos`.
-2. **Second pass (right to left)** – Reset `pos` to a far‑right sentinel. Iterate backwards, updating `pos` when `c` is encountered. For each `i`, compute the distance to the nearest `c` on the right (`pos - i`) and keep the smaller of the two distances.
+2. **Second pass (right to left)** – Reset `pos` to a far-right sentinel. Iterate backwards, updating `pos` when `c` is encountered. For each `i`, compute the distance to the nearest `c` on the right (`pos - i`) and keep the smaller of the two distances.
 3. The final `result` array contains the minimum distance to `c` from every position.
 
 ---
@@ -79,4 +79,4 @@ Example 2:
 
 ## Key Takeaway
 
-> Two linear passes, one from each direction, efficiently compute the nearest‑character distance for every index.
+> Two linear passes, one from each direction, efficiently compute the nearest-character distance for every index.

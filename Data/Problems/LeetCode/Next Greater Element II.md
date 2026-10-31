@@ -105,7 +105,7 @@ Final output: `[2,-1,2]`.
 
 ## 7. Follow-Up Questions
 
-- How would you modify the algorithm for the non‑circular version (Next Greater Element I)?
+- How would you modify the algorithm for the non-circular version (Next Greater Element I)?
 - Can you solve the problem using only O(1) extra space by modifying the input array?
 - How would you extend this to find the *previous* greater element in a circular array?
 
@@ -113,4 +113,4 @@ Final output: `[2,-1,2]`.
 
 ## 8. Key Takeaway
 
-> **Double iteration for circular arrays.** Same monotonic stack pattern as NGE I, but iterate `2n` times with modular indexing to handle wrap‑around.
+> **Double iteration for circular arrays.** Same monotonic stack pattern as NGE I, but iterate `2n` times with modular indexing to handle wrap-around.

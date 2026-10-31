@@ -64,9 +64,9 @@ Explanation: We can reach the end from starting indices 1, 2, and 4.
 ```
 
 ## Approach
-**Algorithm:** Pre‑compute next jump targets using monotonic stacks, then DP backwards.
-1. For odd jumps, sort indices by `(value, index)` ascending; use a stack to assign the next greater‑or‑equal index.
-2. For even jumps, sort by `(value desc, index)`; stack gives next smaller‑or‑equal index.
+**Algorithm:** Pre-compute next jump targets using monotonic stacks, then DP backwards.
+1. For odd jumps, sort indices by `(value, index)` ascending; use a stack to assign the next greater-or-equal index.
+2. For even jumps, sort by `(value desc, index)`; stack gives next smaller-or-equal index.
 3. DP arrays `oddReach[i]` and `evenReach[i]` indicate if the end is reachable starting with an odd/even jump from `i`.
 4. Process indices from right to left, linking to previously computed reachable states.
 
@@ -120,12 +120,12 @@ Indices 0,1,2 are true → answer 3.
 
 ## Complexity Analysis
 - Time: O(n log n) for sorting plus O(n) stack processing.
-- Space: O(n) for the next‑jump and DP arrays.
+- Space: O(n) for the next-jump and DP arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for circular arrays?
-2. Can the monotonic‑stack step be replaced with a balanced BST for online queries?
+2. Can the monotonic-stack step be replaced with a balanced BST for online queries?
 3. What changes are needed if jumps must be exactly `k` positions apart?
 
 ## Key Takeaway
-Monotonic stacks efficiently compute the nearest greater/smaller targets, enabling a linear‑time DP that determines reachability from each start index.
+Monotonic stacks efficiently compute the nearest greater/smaller targets, enabling a linear-time DP that determines reachability from each start index.

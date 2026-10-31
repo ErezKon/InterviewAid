@@ -44,7 +44,7 @@ Example 2:
 ```
 
 ## Approach
-Sort the logs by timestamp, then use a Union‑Find (Disjoint Set Union) data structure to merge friendship groups. After each union, check if the number of connected components has become `1`; if so, return the current timestamp.
+Sort the logs by timestamp, then use a Union-Find (Disjoint Set Union) data structure to merge friendship groups. After each union, check if the number of connected components has become `1`; if so, return the current timestamp.
 
 ```text
 FUNCTION earliestAcq(logs, n):
@@ -62,19 +62,19 @@ FUNCTION earliestAcq(logs, n):
 ## Walkthrough
 | Step | Log entry (t,a,b) | Union performed | Components left |
 |------|-------------------|----------------|-----------------|
-| 1 | (20190101,0,1) | merge 0‑1 | 4 |
-| 2 | (20190104,3,4) | merge 3‑4 | 3 |
-| 3 | (20190107,2,3) | merge 2‑3‑4 | 2 |
+| 1 | (20190101,0,1) | merge 0-1 | 4 |
+| 2 | (20190104,3,4) | merge 3-4 | 3 |
+| 3 | (20190107,2,3) | merge 2-3-4 | 2 |
 | 4 | (20190110,0,2) | merge {0,1} with {2,3,4} → all connected | 1 → return 20190110 |
 
 ## Complexity Analysis
-- Time: O(m log m) for sorting `m` logs plus near‑constant Union‑Find operations (≈ O(m α(n))).
-- Space: O(n) for the Union‑Find parent and rank arrays.
+- Time: O(m log m) for sorting `m` logs plus near-constant Union-Find operations (≈ O(m α(n))).
+- Space: O(n) for the Union-Find parent and rank arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if logs could arrive out of order and you needed an online algorithm?
-2. Can you solve the problem using a graph‑based BFS/DFS after building the friendship graph?
+2. Can you solve the problem using a graph-based BFS/DFS after building the friendship graph?
 3. What changes are required if each friendship has a weight and you need the earliest time when the total weight exceeds a threshold?
 
 ## Key Takeaway
-Sorting events chronologically and merging groups with Union‑Find efficiently reveals the moment when all nodes become connected.
+Sorting events chronologically and merging groups with Union-Find efficiently reveals the moment when all nodes become connected.

@@ -64,15 +64,15 @@ For `s = "zab"`:
 | i | char | condition | curLen | maxLen['z'] | maxLen['a'] | maxLen['b'] |
 |---|------|-----------|--------|-------------|-------------|-------------|
 |0|z| - |1|1|0|0|
-|1|a| (a‑z) %26 ==1|2|1|2|0|
-|2|b| (b‑a)%26==1|3|1|2|3|
+|1|a| (a-z) %26 ==1|2|1|2|0|
+|2|b| (b-a)%26==1|3|1|2|3|
 Sum = 1+2+3 = 6 distinct substrings.
 
 ## Complexity Analysis
 Time: O(n) – single pass over the string.
 Space: O(1) – fixed array of size 26.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would the solution change if uppercase letters were also allowed?
 * Can the algorithm be extended to count substrings that appear at least `k` times in the wraparound string?
 * What if the wraparound order were custom (e.g., a given permutation of the alphabet)?

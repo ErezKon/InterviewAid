@@ -69,7 +69,7 @@ Example 3:
   At timestamp 12, "HERE" is mentioned. Because id0 is still offline, they will not be mentioned. mentions = [0,1]
 ```
 
-(Note: messages have no sender, so there are no self‑mentions; `id<number>` and `ALL` count even for offline users, while `HERE` counts only online users.)
+(Note: messages have no sender, so there are no self-mentions; `id<number>` and `ALL` count even for offline users, while `HERE` counts only online users.)
 
 ## Approach
 Maintain a hash map `online` tracking which users are currently online and another map `count` for mention totals. Iterate through events:
@@ -88,13 +88,13 @@ Parsing can be done with a simple scan for `@` characters.
 | 5 | msg A @B | B offline → no change |
 
 ## Complexity Analysis
-- **Time:** O(E + M) where `E` is number of events and `M` total number of mentions parsed.
+- **Time:** O(E + M) where `E` is number of events and `M` total number of mentions parsed.
 - **Space:** O(U) for storing online status and counts of `U` distinct users.
 
-## Follow‑Up Questions
-1. How would you handle out‑of‑order events where timestamps are not sorted?
+## Follow-Up Questions
+1. How would you handle out-of-order events where timestamps are not sorted?
 2. Extend the solution to support group mentions (e.g., `@team`) with hierarchical online status.
-3. What if the system needs to support real‑time queries of the current mention count for a user?
+3. What if the system needs to support real-time queries of the current mention count for a user?
 
 ## Key Takeaway
 By tracking online status in a hash map and updating counts only when a mentioned user is online, the problem reduces to a single linear pass over the event log.

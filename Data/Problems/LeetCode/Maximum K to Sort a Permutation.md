@@ -63,14 +63,14 @@ FUNCTION maxKToSort(permutation):
 
 ## Walkthrough
 Consider `[3,1,2]` (n=3):
-1. Start at index 0 → 0→2→1→0 forms one cycle, `cycles=1`.
+1. Start at index 0 → 0→2→1→0 forms one cycle, `cycles=1`.
 2. `minSwaps = 3 - 1 = 2` → return `2`.
 
 ## Complexity Analysis
 - **Time:** `O(n)` – single pass to discover cycles.
 - **Space:** `O(n)` – visited array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the answer change if only adjacent swaps were allowed?
 2. Can you extend the solution to return the actual sequence of swaps?
 3. What is the minimum number of swaps needed to sort a list with duplicate values?

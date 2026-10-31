@@ -51,8 +51,8 @@ For `s = "foobar"`, `letter = 'o'`:
 - Time: O(n) where n = length of `s`.
 - Space: O(1) additional space.
 
-## Follow‑Up Questions
-1. How would you modify the solution to handle uppercase letters case‑insensitively?
+## Follow-Up Questions
+1. How would you modify the solution to handle uppercase letters case-insensitively?
 2. Can you compute the result in a single pass without using division until the end (e.g., using integer arithmetic)?
 3. What if you need to return percentages for **all** letters in the string simultaneously?
 

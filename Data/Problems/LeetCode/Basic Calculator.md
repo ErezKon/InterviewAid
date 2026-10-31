@@ -107,10 +107,10 @@ FUNCTION calculate(s):
 
 - How would you extend the solution to support `*` and `/` operators (Basic Calculator II)?
 - Can you evaluate the expression without using an explicit stack, e.g., by converting to Reverse Polish Notation?
-- How would you handle unary operators or floating‑point numbers?
+- How would you handle unary operators or floating-point numbers?
 
 ---
 
 ## Key Takeaway
 
-> Push the current `result` and `sign` onto a stack at each `(`. When encountering `)`, combine the computed sub‑expression with the popped sign and previous result. This pattern cleanly handles nested parentheses.
+> Push the current `result` and `sign` onto a stack at each `(`. When encountering `)`, combine the computed sub-expression with the popped sign and previous result. This pattern cleanly handles nested parentheses.

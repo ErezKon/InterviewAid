@@ -62,10 +62,10 @@ Thus need to append 2 characters.
 - **Time:** O(|s|) – single pass through `s`.
 - **Space:** O(1) – only the pointer `j`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to insert characters anywhere, not just at the end?
 2. Can you compute the answer for multiple `t` strings efficiently?
 3. What is the relationship to the Longest Common Subsequence problem?
 
 ## Key Takeaway
-A greedy two‑pointer scan finds the longest prefix of `t` that appears as a subsequence in `s`; the remainder must be appended.
+A greedy two-pointer scan finds the longest prefix of `t` that appears as a subsequence in `s`; the remainder must be appended.

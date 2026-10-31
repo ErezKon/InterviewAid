@@ -136,9 +136,9 @@ Consider the first example grid.
 | Start (r,c) | Direction (dr,dc) | Numbers generated | Prime? | Count update |
 |-------------|-------------------|-------------------|--------|--------------|
 | (0,0)       | (0,1) (right)     | 1 → 12 → 123       | 12 not prime, 123 not prime | — |
-| (0,1)       | (1,1) (down‑right)| 2 → 25 → 258       | 25 not prime, 258 not prime | — |
+| (0,1)       | (1,1) (down-right)| 2 → 25 → 258       | 25 not prime, 258 not prime | — |
 | (0,1)       | (1,0) (down)      | 2 → 25 → 258       | same as above | — |
-| (0,1)       | (1,−1) (down‑left)| 2 → 21 → 214 → ... | 21 not prime, 214 not prime | — |
+| (0,1)       | (1,−1) (down-left)| 2 → 21 → 214 → ... | 21 not prime, 214 not prime | — |
 | (0,1)       | (0,1) (right)     | 2 → 23 → 235 ...   | 23 is prime → count[23] = 1 |
 | ... continue for all cells/directions ... |
 
@@ -157,4 +157,4 @@ After enumerating all 8 directions from every cell, the frequency map might be `
 
 ## 7. Key Takeaway
 
-> **Brute‑force enumeration works on tiny grids.** Generate every directional number, test primality, and count frequencies to obtain the most common prime.
+> **Brute-force enumeration works on tiny grids.** Generate every directional number, test primality, and count frequencies to obtain the most common prime.

@@ -48,11 +48,11 @@ Example 2:
 ```
 
 ## Approach
-Use the Knuth‑Morris‑Pratt (KMP) preprocessing to compute the longest proper prefix which is also a suffix for every prefix of the string. The value for the full string is the mirror score.
+Use the Knuth-Morris-Pratt (KMP) preprocessing to compute the longest proper prefix which is also a suffix for every prefix of the string. The value for the full string is the mirror score.
 
 ## Walkthrough
 For `"ababa"`:
-| i | char | pi[i] (longest prefix‑suffix) |
+| i | char | pi[i] (longest prefix-suffix) |
 |---|------|-------------------------------|
 | 0 | a | 0 |
 | 1 | b | 0 |
@@ -66,7 +66,7 @@ The final `pi[4] = 3` gives the mirror score.
 - **Space:** O(n) for the prefix table (can be reduced to O(1) with careful handling).
 
 ## Follow-Up Questions
-- How would you modify the algorithm to return all prefix‑suffix lengths?
+- How would you modify the algorithm to return all prefix-suffix lengths?
 - Can the mirror score be computed in a streaming fashion?
 - How does the problem change if the string contains Unicode characters?
 

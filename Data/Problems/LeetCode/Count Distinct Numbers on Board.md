@@ -96,4 +96,4 @@ All numbers {2,3,4,5} are present, count = 4.
 
 ## Key Takeaway
 
-> The process creates a chain that adds every integer from `2` up to `n`; thus the distinct count is `n‑1` (or `1` when `n` is `1`).
+> The process creates a chain that adds every integer from `2` up to `n`; thus the distinct count is `n-1` (or `1` when `n` is `1`).

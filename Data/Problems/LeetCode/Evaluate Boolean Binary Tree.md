@@ -77,8 +77,8 @@ Consider the first example tree `[2,1,3,null,null,0,1]`:
 1. Call `evaluateTree` on root (value 2 → OR).
 2. Recurse left: node value `1` → leaf, returns `True`.
 3. Recurse right: node value `3` → AND.
-4. Right‑left child value `0` → leaf, returns `False`.
-5. Right‑right child value `1` → leaf, returns `True`.
+4. Right-left child value `0` → leaf, returns `False`.
+5. Right-right child value `1` → leaf, returns `True`.
 6. AND node combines `False` and `True` → `False`.
 7. OR node combines `True` (left) and `False` (right) → `True`.
 

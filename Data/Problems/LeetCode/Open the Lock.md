@@ -49,7 +49,7 @@ Explanation: We cannot reach the target without getting stuck.
 ```
 
 ## Approach
-Use Breadth‑First Search (BFS) on the implicit graph where each node is a 4‑digit state and edges connect states that differ by one wheel turn. BFS guarantees the shortest path.
+Use Breadth-First Search (BFS) on the implicit graph where each node is a 4-digit state and edges connect states that differ by one wheel turn. BFS guarantees the shortest path.
 
 ```text
 FUNCTION openLock(deadends, target):
@@ -74,14 +74,14 @@ FUNCTION openLock(deadends, target):
 | Step | Current State | Queue (state, moves) | Visited |
 |------|---------------|----------------------|---------|
 | 0 | "0000" | [("0000",0)] | {"0000"} |
-| 1 | Dequeue "0000" → generate 8 neighbors, enqueue non‑dead | [("1000",1), ("9000",1), …] | add enqueued |
-| … | Continue until "0202" is dequeued at moves = 6 |
+| 1 | Dequeue "0000" → generate 8 neighbors, enqueue non-dead | [("1000",1), ("9000",1), …] | add enqueued |
+| … | Continue until "0202" is dequeued at moves = 6 |
 
 ## Complexity Analysis
 - **Time:** O(10⁴) – at most 10,000 possible states, each processed once.
 - **Space:** O(10⁴) for the visited set and queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if the lock had *n* wheels?
 2. Can you solve the problem using bidirectional BFS to reduce the search space?
 3. How would you handle weighted moves where turning a wheel costs different amounts?

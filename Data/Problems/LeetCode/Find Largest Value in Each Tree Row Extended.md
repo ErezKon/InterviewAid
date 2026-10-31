@@ -5,7 +5,7 @@ Related: #102, #103, #107, #199, #515, #637, #993
 ---
 
 ## Problem Description
-Given the root of a binary tree, return an array `largestValues` where `largestValues[i]` is the maximum node value among all nodes at depth `i` (0‑indexed). The tree may be empty.
+Given the root of a binary tree, return an array `largestValues` where `largestValues[i]` is the maximum node value among all nodes at depth `i` (0-indexed). The tree may be empty.
 
 This file covers the general BFS level-order pattern used by related problems (#102 level order, #103 zigzag, #107 bottom-up, #199 right side view, #515 largest value per row, #637 average per level, #993 cousins): process the queue one level at a time and aggregate per level.
 
@@ -40,7 +40,7 @@ Example 3:
 ```
 
 ## Approach
-Perform a breadth‑first search (BFS) level‑order traversal. For each level, track the maximum value seen.
+Perform a breadth-first search (BFS) level-order traversal. For each level, track the maximum value seen.
 
 ### Pseudocode
 ```text
@@ -73,9 +73,9 @@ Consider the tree `[1,3,2,5,3,null,9]`.
 - **Time:** O(n) – each node visited once.
 - **Space:** O(w) – queue holds at most the width `w` of the tree.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the minimum value per level?
-2. Can you solve the problem using depth‑first search without extra space for a queue?
+2. Can you solve the problem using depth-first search without extra space for a queue?
 3. What if the tree is extremely large and stored on disk – how would you stream the levels?
 
 ## Key Takeaway

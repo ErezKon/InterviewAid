@@ -39,7 +39,7 @@ Explanation: We cannot get t from s by only one step.
 ```
 
 ## Approach
-**Algorithm:** Single‑pass two‑pointer comparison.
+**Algorithm:** Single-pass two-pointer comparison.
 1. If length difference > 1 → false.
 2. Ensure `s` is the shorter string.
 3. Iterate with index `i` over `s`. On first mismatch:
@@ -77,7 +77,7 @@ FUNCTION isOneEditDistance(s, t):
 - Time: O(min(|s|,|t|)) – single pass.
 - Space: O(1) – only pointers and counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the algorithm to check if two strings are at most `k` edits apart?
 2. Can you adapt it to return the actual edit operation (insert, delete, replace) and position?
 3. What changes are needed if the strings contain Unicode characters with variable byte length?

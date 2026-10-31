@@ -36,10 +36,10 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Base‑3 digit check (greedy)
+**Algorithm:** Base-3 digit check (greedy)
 1. Repeatedly divide `n` by 3.
 2. If any remainder equals `2`, a digit `2` would be required, meaning a power of three is used more than once → return `false`.
-3. If the loop finishes without encountering `2`, the base‑3 representation consists only of `0`s and `1`s, which corresponds to a valid sum of distinct powers.
+3. If the loop finishes without encountering `2`, the base-3 representation consists only of `0`s and `1`s, which corresponds to a valid sum of distinct powers.
 
 ```text
 FUNCTION isSumOfDistinctPowersOfThree(n):
@@ -58,13 +58,13 @@ For `n = 12`:
 No remainder `2` encountered → return `true`.
 
 ## Complexity Analysis
-- **Time:** O(log₃ n) – number of digits in base‑3.
+- **Time:** O(log₃ n) – number of digits in base-3.
 - **Space:** O(1) – constant extra variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to allow each power of three to be used at most *k* times?
-2. Can you solve the problem without converting to base‑3, using a greedy subtraction of the largest power of three?
+2. Can you solve the problem without converting to base-3, using a greedy subtraction of the largest power of three?
 3. What changes are needed if `n` can be negative?
 
 ## Key Takeaway
-A number is a sum of distinct powers of three exactly when its base‑3 representation contains only `0`s and `1`s, which can be verified with a simple division loop.
+A number is a sum of distinct powers of three exactly when its base-3 representation contains only `0`s and `1`s, which can be verified with a simple division loop.

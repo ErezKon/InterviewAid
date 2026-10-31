@@ -88,8 +88,8 @@ Example 2:
 ## 4. Walkthrough
 
 **Example 1**
-1. Start from user `0`. Level 1 friends are `2` and `3`.
-2. Collect videos: user 2 watched `"B"`, user 3 watched `"C"`.
+1. Start from user `0`. Level 1 friends are `2` and `3`.
+2. Collect videos: user 2 watched `"B"`, user 3 watched `"C"`.
 3. Frequencies: `B:1`, `C:1`. Alphabetical order gives `["B","C"]`.
 
 ---

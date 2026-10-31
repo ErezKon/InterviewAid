@@ -74,12 +74,12 @@ When checking "google", its counts `g:2, o:2, l:1, e:1` satisfy the requirements
 
 ## Complexity Analysis
 Time: O(N·L + M·K) where N and M are lengths of `words1` and `words2`, L and K are average word lengths.
-Space: O(1) extra (26‑element array).
+Space: O(1) extra (26-element array).
 
 ## Follow-Up Questions
-1. How would you handle Unicode characters beyond 'a'‑'z'?
+1. How would you handle Unicode characters beyond 'a'-'z'?
 2. Can you extend the solution to support wildcard characters in `words2`?
 3. What if `words2` is extremely large—how would you stream the computation?
 
 ## Key Takeaway
-Aggregating the maximum letter frequencies from `words2` reduces the problem to a simple per‑word frequency check, yielding linear time overall.
+Aggregating the maximum letter frequencies from `words2` reduces the problem to a simple per-word frequency check, yielding linear time overall.

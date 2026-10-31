@@ -71,7 +71,7 @@ For `directions = "RLRSLL"`:
 
 ## Follow-Up Questions
 - How would the solution change if cars could reverse direction after a collision?
-- What if the road is circular, so cars exiting on one side re‑enter from the other?
+- What if the road is circular, so cars exiting on one side re-enter from the other?
 - Can you compute the final positions of all cars after collisions?
 
 ## Key Takeaway

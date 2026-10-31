@@ -46,13 +46,13 @@ Explanation: The first 6 primes are [2, 3, 5, 7, 11, 13]. The sum 7 can be forme
 ```
 
 ## Approach
-The problem is a variation of the classic coin change where the coin denominations are all prime numbers ≤ `target`. The optimal solution can be derived from number‑theoretic observations:
+The problem is a variation of the classic coin change where the coin denominations are all prime numbers ≤ `target`. The optimal solution can be derived from number-theoretic observations:
 1. Any even `target ≥ 4` can be expressed as the sum of two primes (Goldbach's conjecture, verified for the range used in LeetCode).
-2. Any odd `target` can be expressed as `3 + (target‑3)`, and `target‑3` is even, so it reduces to case 1.
+2. Any odd `target` can be expressed as `3 + (target-3)`, and `target-3` is even, so it reduces to case 1.
 Thus the answer is:
 - `1` if `target` is prime.
 - `2` if `target` is even.
-- `3` otherwise (odd non‑prime).
+- `3` otherwise (odd non-prime).
 If `target < 2`, return `-1`.
 
 ```text
@@ -88,4 +88,4 @@ For `target = 27` (odd, not prime): `isPrime(27)` → FALSE, `27 MOD 2 = 1`, so 
 3. Extend to a weighted version where each prime has a cost.
 
 ## Key Takeaway
-Leverage number‑theoretic properties: any even number ≥ 4 is the sum of two primes, and any odd number can be reduced to an even case by subtracting a prime (3).
+Leverage number-theoretic properties: any even number ≥ 4 is the sum of two primes, and any odd number can be reduced to an even case by subtracting a prime (3).

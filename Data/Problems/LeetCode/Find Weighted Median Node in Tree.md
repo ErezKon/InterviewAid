@@ -56,7 +56,7 @@ Explanation:
 - The input is generated such that `edges` represents a valid tree.
 
 ## Approach
-Perform a post‑order traversal to compute the total weight of each subtree. Then, in a second pass, locate the first node where both left and right subtree weights are ≤ totalWeight/2.
+Perform a post-order traversal to compute the total weight of each subtree. Then, in a second pass, locate the first node where both left and right subtree weights are ≤ totalWeight/2.
 
 ```text
 FUNCTION FindWeightedMedian(root):
@@ -91,7 +91,7 @@ FUNCTION FindWeightedMedian(root):
 ## Walkthrough
 | Step | Action |
 |------|--------|
-| 1 | Compute subtree weights for every node (post‑order). |
+| 1 | Compute subtree weights for every node (post-order). |
 | 2 | Total weight = 23 (example). half = 11.5 |
 | 3 | Starting at root, check left/right weights against half. |
 | 4 | Move to child whose subtree exceeds half until condition satisfied. |
@@ -104,7 +104,7 @@ FUNCTION FindWeightedMedian(root):
 ## Follow-Up Questions
 - How would you adapt the algorithm for a tree with parent pointers only? 
 - Can the solution be extended to support dynamic updates of node weights?
-- What changes are needed for an n‑ary tree instead of binary?
+- What changes are needed for an n-ary tree instead of binary?
 
 ## Key Takeaway
 By separating weight aggregation and median location into two traversals, we can efficiently identify the weighted median node in linear time.

@@ -69,13 +69,13 @@ Assume underlying iterator yields `[1,2,3]`:
 | `next()` | no cache, call iterator.next() → 2 | – | – | 2 |
 
 ## Complexity Analysis
-- Time: O(1) for each method – only constant‑time operations.
+- Time: O(1) for each method – only constant-time operations.
 - Space: O(1) – only a single cached element.
 
-## Follow‑Up Questions
-1. How would you extend the design to support `peek(k)` for the k‑th upcoming element?
+## Follow-Up Questions
+1. How would you extend the design to support `peek(k)` for the k-th upcoming element?
 2. Can you implement the iterator without extra state by modifying the underlying iterator?
 3. What changes are needed if the underlying collection is a stream with no `hasNext()`?
 
 ## Key Takeaway
-Caching the next element enables a constant‑time `peek()` while preserving the original iterator’s O(1) semantics.
+Caching the next element enables a constant-time `peek()` while preserving the original iterator’s O(1) semantics.

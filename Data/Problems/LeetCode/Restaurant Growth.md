@@ -78,7 +78,7 @@ Explanation:
 
 ```text
 FUNCTION computeRolling(customer):
-    // Use a correlated subquery to sum amounts over the 7‑day window
+    // Use a correlated subquery to sum amounts over the 7-day window
     RETURN SELECT visited_on,
            SUM(amount) OVER (PARTITION BY visited_on ORDER BY visited_on ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS amount,
            ROUND(AVG(amount) OVER (PARTITION BY visited_on ORDER BY visited_on ROWS BETWEEN 6 PRECEDING AND CURRENT ROW), 2) AS average_amount

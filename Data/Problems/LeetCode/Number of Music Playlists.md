@@ -103,5 +103,5 @@ Take the second example (`n=2, goal=3, k=1`).
 |------------|-----------------|------------|--------------|
 | 1 | 1 | add new song (`2` choices) | dp[1][1] = 2 |
 | 2 | 2 | add new song (`1` choice) | dp[2][2] = dp[1][1] * 1 = 2 |
-| 3 | 2 | replay old song (`j‑k = 1` choice) | dp[3][2] = dp[2][2] * 1 = 2 |
+| 3 | 2 | replay old song (`j-k = 1` choice) | dp[3][2] = dp[2][2] * 1 = 2 |
 The final answer `dp[3][2] = 2` matches the output.

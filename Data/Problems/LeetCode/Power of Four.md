@@ -38,9 +38,9 @@ Output: true
 ```
 
 ## Approach
-Use bit‑manipulation properties:
+Use bit-manipulation properties:
 1. `n` must be positive.
-2. It must have exactly one set bit (`n & (n‑1) == 0`).
+2. It must have exactly one set bit (`n & (n-1) == 0`).
 3. That set bit must be in an even position; mask `0x55555555` (binary `0101…`) isolates bits at even indices.
 If all three hold, `n` is a power of four.
 
@@ -48,12 +48,12 @@ If all three hold, `n` is a power of four.
 | Step | Check | Result |
 |------|-------|--------|
 |1|`n > 0`|`16 > 0` → true|
-|2|`n & (n‑1) == 0`|`16 & 15 = 0` → true|
-|3|`n & 0x55555555 != 0`|`16 & 0x55555555 = 16` → non‑zero → true|
+|2|`n & (n-1) == 0`|`16 & 15 = 0` → true|
+|3|`n & 0x55555555 != 0`|`16 & 0x55555555 = 16` → non-zero → true|
 All checks pass → return `true`.
 
 ## Complexity Analysis
-Time: O(1) – constant‑time bit operations.
+Time: O(1) – constant-time bit operations.
 Space: O(1) – only a few integer variables.
 
 ## Follow-Up Questions
@@ -62,4 +62,4 @@ Space: O(1) – only a few integer variables.
 3. What if the input range includes negative numbers?
 
 ## Key Takeaway
-A power‑of‑four test reduces to three constant‑time bit checks: positivity, single set bit, and even‑position mask.
+A power-of-four test reduces to three constant-time bit checks: positivity, single set bit, and even-position mask.

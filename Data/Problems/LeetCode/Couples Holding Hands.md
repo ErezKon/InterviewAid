@@ -45,7 +45,7 @@ Example 2:
 
 ```text
 FUNCTION minSwapsCouples(row):
-    // Build position map for O(1) look‑ups
+    // Build position map for O(1) look-ups
     SET pos ← {val: i FOR i, val IN ENUMERATE(row)}
     SET swaps ← 0
     SET n ← LENGTH(row)
@@ -79,7 +79,7 @@ Consider `row = [3,2,0,1]`:
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n) – single pass with constant‑time look‑ups |
+| **Time** | O(n) – single pass with constant-time look-ups |
 | **Space** | O(n) – position map |
 
 ---
@@ -87,11 +87,11 @@ Consider `row = [3,2,0,1]`:
 ## Follow-Up Questions
 
 1. How would you modify the algorithm if each swap could only involve adjacent seats?
-2. Can the problem be solved using Union‑Find instead of a position map?
+2. Can the problem be solved using Union-Find instead of a position map?
 3. What is the minimum number of swaps if couples are allowed to sit in any order within a pair?
 
 ---
 
 ## Key Takeaway
 
-> **Greedy couple pairing: scan seats left‑to‑right, swap the partner into place. XOR with 1 gives the partner index (2k ↔ 2k+1). Each swap fixes exactly one couple.**
+> **Greedy couple pairing: scan seats left-to-right, swap the partner into place. XOR with 1 gives the partner index (2k ↔ 2k+1). Each swap fixes exactly one couple.**

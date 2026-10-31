@@ -80,7 +80,7 @@ Explanation: Both employees with id 1 and 3 have the most experience among the e
 ```
 
 ## Approach
-Use a window function to rank distinct experience values per project and then select rows with rank 2.
+Use a window function to rank distinct experience values per project and then select rows with rank 2.
 
 ```text
 FUNCTION SecondHighestExperience():
@@ -97,17 +97,17 @@ FUNCTION SecondHighestExperience():
 
 ## Walkthrough
 1. Join `Project` with `Employee` to associate each employee's experience with their project.
-2. Apply `DENSE_RANK()` partitioned by `project_id` ordered by `experience_years` descending; this assigns rank 1 to the highest experience, rank 2 to the second highest, etc.
-3. Filter rows where the rank equals 2, yielding employees with the second‑highest experience for each project.
+2. Apply `DENSE_RANK()` partitioned by `project_id` ordered by `experience_years` descending; this assigns rank 1 to the highest experience, rank 2 to the second highest, etc.
+3. Filter rows where the rank equals 2, yielding employees with the second-highest experience for each project.
 
 ## Complexity Analysis
 - Time: O(N log N) due to the ranking operation, where N is the number of rows in `Project`.
 - Space: O(N) for the intermediate ranked result set.
 
 ## Follow-Up Questions
-- How to retrieve the top K experience levels per project?
-- How to handle ties when multiple employees share the same second‑highest experience?
+- How to retrieve the top K experience levels per project?
+- How to handle ties when multiple employees share the same second-highest experience?
 - How to compute the average experience of employees above a certain rank?
 
 ## Key Takeaway
-`DENSE_RANK()` (or `RANK()`) lets you efficiently isolate rows based on their ordered position within each group, simplifying “nth‑largest” queries.
+`DENSE_RANK()` (or `RANK()`) lets you efficiently isolate rows based on their ordered position within each group, simplifying “nth-largest” queries.

@@ -52,72 +52,51 @@ Example 2:
 ```
 
 ## Approach
-Process the queries offline using a Union‑Find (Disjoint Set Union) data structure:
-1. Initialise each vertex as its own set.
-2. Iterate over all edges, union the two endpoints.
-3. After all unions, each query answer is simply whether `find(u) == find(v)`.
-The union‑find operations run in near‑constant amortised time with path compression and union by rank.
+Edges are implicit (up to O(n^2) of them), so never build them. Because `nums` is sorted:
+- If `nums[i] - nums[i-1] <= maxDiff`, nodes `i-1` and `i` are directly connected.
+- If `nums[i] - nums[i-1] > maxDiff`, no node at index `<= i-1` can reach any node at index `>= i` (every such pair differs by even more).
+- So connected components are **contiguous index ranges** split at "gaps". Label them with one scan: `comp[i] = comp[i-1] + (gap ? 1 : 0)`.
+- Query `[u, v]` is `true` iff `comp[u] == comp[v]`.
 
 ```text
-FUNCTION pathExistenceQueries(n, edges, queries):
-    // initialise DSU
-    SET parent ← ARRAY of size n where parent[i] ← i
-    SET rank ← ARRAY of size n filled with 0
-
-    // union all edges
-    FOR each (u, v) IN edges:
-        UNION(u, v)
-
-    // answer queries
-    SET answers ← empty list
-    FOR each (u, v) IN queries:
-        IF FIND(u) = FIND(v):
-            APPEND true TO answers
+FUNCTION pathExistenceQueries(n, nums, maxDiff, queries):
+    comp ← ARRAY n, comp[0] ← 0
+    FOR i ← 1 TO n-1:
+        IF nums[i] - nums[i-1] > maxDiff:
+            comp[i] ← comp[i-1] + 1
         ELSE:
-            APPEND false TO answers
+            comp[i] ← comp[i-1]
+    answers ← []
+    FOR each (u, v) IN queries:
+        APPEND (comp[u] = comp[v]) TO answers
     RETURN answers
-
-FUNCTION FIND(x):
-    IF parent[x] ≠ x:
-        SET parent[x] ← FIND(parent[x])   // path compression
-    RETURN parent[x]
-
-FUNCTION UNION(a, b):
-    SET rootA ← FIND(a)
-    SET rootB ← FIND(b)
-    IF rootA = rootB: RETURN
-    // union by rank
-    IF rank[rootA] < rank[rootB]:
-        SET parent[rootA] ← rootB
-    ELSE IF rank[rootA] > rank[rootB]:
-        SET parent[rootB] ← rootA
-    ELSE:
-        SET parent[rootB] ← rootA
-        INCREMENT rank[rootA]
 ```
 
 ## Walkthrough
-For the first example `n=3`, `edges=[[0,1],[1,2]]`:
+Example 2: `nums = [2,5,6,8]`, `maxDiff = 2`, `queries = [[0,1],[0,2],[1,3],[2,3]]`.
 
-| Step | Operation | DSU parent array |
-|------|-----------|-------------------|
-| Init | each node separate | `[0,1,2]` |
-| Union 0‑1 | parent[1] ← 0 | `[0,0,2]` |
-| Union 1‑2 | find(1)=0, find(2)=2 → parent[2] ← 0 | `[0,0,0]` |
-| Query (0,2) | FIND(0)=0, FIND(2)=0 → true |
-| Query (0,1) | both 0 → true |
-| Query (2,0) | both 0 → true |
+| i | nums[i] - nums[i-1] | Gap (> 2)? | comp |
+|---|---------------------|------------|------|
+| 0 | - | - | `[0]` |
+| 1 | 5 - 2 = 3 | Yes | `[0,1]` |
+| 2 | 6 - 5 = 1 | No | `[0,1,1]` |
+| 3 | 8 - 6 = 2 | No | `[0,1,1,1]` |
 
-All answers are `true`.
+- `[0,1]`: 0 vs 1 -> false
+- `[0,2]`: 0 vs 1 -> false
+- `[1,3]`: 1 vs 1 -> true
+- `[2,3]`: 1 vs 1 -> true
+
+Result: `[false,false,true,true]`.
 
 ## Complexity Analysis
-- **Time:** O(n + m + q α(n)) where `m` is number of edges, `q` number of queries, and `α` is the inverse Ackermann function (practically constant).
-- **Space:** O(n) for the `parent` and `rank` arrays.
+- **Time:** O(n + q) - one scan to label components, O(1) per query.
+- **Space:** O(n) for the `comp` array.
 
-## Follow‑Up Questions
-1. How would you handle dynamic edge additions/removals?
-2. Can you answer queries online (as edges arrive) with similar efficiency?
-3. What changes are needed if the graph is directed?
+## Follow-Up Questions
+1. How would you answer the minimum number of edges on a path between `u` and `v` (Path Existence Queries II)? Hint: binary lifting on the farthest reachable index.
+2. What if `nums` were not sorted? (Sort indices by value, then apply the same idea.)
+3. How would you support updates to `nums` between queries?
 
 ## Key Takeaway
-Using an offline Union‑Find to merge all edges lets each connectivity query be answered in almost O(1) time.
+With sorted values and a threshold-based edge rule, components are contiguous ranges, so a single "gap" scan replaces any graph construction or Union-Find.

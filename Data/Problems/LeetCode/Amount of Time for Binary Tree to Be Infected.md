@@ -42,7 +42,7 @@ Example 2:
 ```
 
 ## Approach
-Convert the binary tree into an undirected graph where each node connects to its children and parent, then perform a breadth‑first search (BFS) starting from `start` to measure the farthest distance.
+Convert the binary tree into an undirected graph where each node connects to its children and parent, then perform a breadth-first search (BFS) starting from `start` to measure the farthest distance.
 
 ```text
 FUNCTION amountOfTime(root, start):
@@ -75,7 +75,7 @@ FUNCTION amountOfTime(root, start):
 
 ## Walkthrough
 Consider the tree `[1,5,3,null,4,10,6]` with `start = 3`.
-1. Build graph edges: 1‑5, 1‑3, 5‑4, 3‑10, 3‑6.
+1. Build graph edges: 1-5, 1-3, 5-4, 3-10, 3-6.
 2. BFS level 0: {3} → time = 0.
 3. Level 1: {1,10,6} → time = 1.
 4. Level 2: {5} → time = 2.
@@ -86,7 +86,7 @@ All nodes infected after 4 minutes.
 *Time*: O(n) – each node visited once to build the graph and once during BFS.
 *Space*: O(n) – adjacency list and BFS queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem without explicitly building a graph?
 2. Can you compute the infection time using a single DFS traversal?
 3. What changes are needed if infection spreads only to children, not the parent?

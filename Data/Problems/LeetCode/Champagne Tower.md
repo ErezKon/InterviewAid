@@ -41,17 +41,17 @@ Example 3:
 ```
 
 ## Approach
-Simulate the pyramid row by row, storing the amount in each glass. For each glass, compute overflow = max(0, amount‑1) / 2 and add it to the two glasses below. Stop after processing `query_row` because deeper rows do not affect the target glass.
+Simulate the pyramid row by row, storing the amount in each glass. For each glass, compute overflow = max(0, amount-1) / 2 and add it to the two glasses below. Stop after processing `query_row` because deeper rows do not affect the target glass.
 
 ```text
 FUNCTION ChampagneTower(poured, query_row, query_glass):
     // Initialize pyramid up to the needed row
-    SET tower ← 2‑D array of size (query_row+1) × (query_row+1) filled with 0
+    SET tower ← 2-D array of size (query_row+1) × (query_row+1) filled with 0
     SET tower[0][0] ← poured
 
-    FOR r ← 0 TO query_row‑1:
+    FOR r ← 0 TO query_row-1:
         FOR c ← 0 TO r:
-            SET overflow ← MAX(0, tower[r][c]‑1) / 2
+            SET overflow ← MAX(0, tower[r][c]-1) / 2
             IF overflow > 0:
                 SET tower[r+1][c] ← tower[r+1][c] + overflow
                 SET tower[r+1][c+1] ← tower[r+1][c+1] + overflow
@@ -69,9 +69,9 @@ The target `(1,1)` holds 0.5 liters, capped at 1.
 
 ## Complexity Analysis
 - **Time:** O(query_row²) – we process each glass up to the target row.
-- **Space:** O(query_row²) for the 2‑D array (can be reduced to O(query_row) with rolling arrays).
+- **Space:** O(query_row²) for the 2-D array (can be reduced to O(query_row) with rolling arrays).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the amount for many queries efficiently?
 2. Can the solution be adapted for a triangular pyramid with different glass capacities?
 3. What is the effect of using a streaming approach that processes rows on the fly?

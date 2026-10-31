@@ -74,9 +74,9 @@ For `costs = [1,3,2,4,1]`:
 
 ## Complexity Analysis
 *Time*: **O(n log n)** for sorting (`n = len(costs)`).
-*Space*: **O(1)** extra (in‑place sort) or **O(n)** if a new sorted list is created.
+*Space*: **O(1)** extra (in-place sort) or **O(n)** if a new sorted list is created.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem in **O(n)** time using counting sort when `costs[i]` ≤ 10⁵?
 2. What if you could buy at most `k` bars regardless of cost?
 3. How does the solution change if each bar can be bought multiple times (unlimited supply)?

@@ -68,16 +68,20 @@ FUNCTION smallestNumberWithDigitProduct(n):
 
 ## Walkthrough
 
-Let's trace `n = 48`:
+Let's trace `n = 105` (Example 1):
 
-1.  Start with `n = 48`, `result_digits = []`.
-2.  Try `d = 9`. `48 % 9 != 0`.
-3.  Try `d = 8`. `48 % 8 == 0`. `result_digits = [8]`, `n = 6`.
-4.  Try `d = 7`. `6 % 7 != 0`.
-5.  Try `d = 6`. `6 % 6 == 0`. `result_digits = [8, 6]`, `n = 1`.
-6.  `n` is now 1, so we stop.
-7.  Sort `result_digits`: `[6, 8]`.
-8.  Join to form the string `"68"`.
+1.  Start with `n = 105`, `result_digits = []`.
+2.  Try `d = 9`. `105 % 9 = 6`, skip.
+3.  Try `d = 8`. `105 % 8 = 1`, skip.
+4.  Try `d = 7`. `105 % 7 == 0`. `result_digits = [7]`, `n = 15`.
+5.  Try `d = 6`. `15 % 6 = 3`, skip.
+6.  Try `d = 5`. `15 % 5 == 0`. `result_digits = [7, 5]`, `n = 3`.
+7.  Try `d = 4`. `3 % 4 = 3`, skip.
+8.  Try `d = 3`. `3 % 3 == 0`. `result_digits = [7, 5, 3]`, `n = 1`.
+9.  `d = 2`: `1 % 2 != 0`. Loop ends with `n = 1`, so a valid number exists.
+10. Sort `result_digits`: `[3, 5, 7]` -> `"357"`.
+
+For `n = 44` (Example 3): `d = 4` gives `n = 11`; no digit 2..9 divides 11, so `n = 11 > 1` and we return `"-1"`.
 
 ## Complexity
 

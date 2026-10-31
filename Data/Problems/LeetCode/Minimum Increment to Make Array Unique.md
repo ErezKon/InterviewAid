@@ -69,7 +69,7 @@ Total moves = 1+1+2+2 = 6.
 ## Complexity Analysis
 
 - **Time:** O(n log n) due to sorting.
-- **Space:** O(1) extra space if sorting in‑place.
+- **Space:** O(1) extra space if sorting in-place.
 
 ## Follow-Up Questions
 

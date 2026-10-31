@@ -110,11 +110,11 @@ We cannot group the segments together because an empty space with no buildings s
 | Step | Event | Active Buildings (height) | SumH | Count | Segment Avg |
 |------|-------|---------------------------|------|-------|-------------|
 | 1 | (1, +10, +1) | [10] | 10 | 1 | — |
-| 2 | (2, +20, +1) | [10,20] | 30 | 2 | avg between 1‑2 = 10 |
-| 3 | (4, +30, +1) | [10,20,30] | 60 | 3 | avg between 2‑4 = 15 |
-| 4 | (5, -10, -1) | [20,30] | 50 | 2 | avg between 4‑5 = 20 |
-| 5 | (6, -20, -1) | [30] | 30 | 1 | avg between 5‑6 = 25 |
-| 6 | (8, -30, -1) | [] | 0 | 0 | avg between 6‑8 = 30 |
+| 2 | (2, +20, +1) | [10,20] | 30 | 2 | avg between 1-2 = 10 |
+| 3 | (4, +30, +1) | [10,20,30] | 60 | 3 | avg between 2-4 = 15 |
+| 4 | (5, -10, -1) | [20,30] | 50 | 2 | avg between 4-5 = 20 |
+| 5 | (6, -20, -1) | [30] | 30 | 1 | avg between 5-6 = 25 |
+| 6 | (8, -30, -1) | [] | 0 | 0 | avg between 6-8 = 30 |
 
 ---
 

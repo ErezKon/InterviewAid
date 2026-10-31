@@ -45,7 +45,7 @@ Explanation: There are 0 beautiful splits.
 
 ## 3. Key Insight
 
-> Use the **Z‑function** or **LCP array** to efficiently check prefix relationships. `a` is a prefix of `b` iff the longest common prefix of the suffixes starting at the beginnings of `a` and `b` is at least `|a|`. Pre‑computing all LCP values lets each split be verified in O(1).
+> Use the **Z-function** or **LCP array** to efficiently check prefix relationships. `a` is a prefix of `b` iff the longest common prefix of the suffixes starting at the beginnings of `a` and `b` is at least `|a|`. Pre-computing all LCP values lets each split be verified in O(1).
 
 ---
 
@@ -100,9 +100,9 @@ The algorithm enumerates these pairs and counts the three valid splits.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
-- How would you reduce the space complexity? (Hint: use Z‑function on the concatenated string.)
+- How would you reduce the space complexity? (Hint: use Z-function on the concatenated string.)
 - Can the problem be solved in O(n) time using rolling hashes?
 - How does the solution change if the prefix condition must hold for both `a`→`b` **and** `b`→`c` simultaneously?
 
@@ -110,4 +110,4 @@ The algorithm enumerates these pairs and counts the three valid splits.
 
 ## Key Takeaway
 
-> Pre‑computing an LCP table lets you verify prefix relationships between any two suffixes in O(1), turning a combinatorial split‑counting problem into an O(n²) enumeration.
+> Pre-computing an LCP table lets you verify prefix relationships between any two suffixes in O(1), turning a combinatorial split-counting problem into an O(n²) enumeration.

@@ -60,7 +60,7 @@ Explanation: We can achieve a maximum frequency of two by:
 
 ## Approach
 
-The operation allows each element `x` to become any value in `[x‑k, x+k]`. Two elements can share a common target value iff their intervals overlap. After sorting the array, the problem reduces to finding the longest contiguous sub‑array where the difference between the maximum and minimum element is ≤ 2k. This is a classic sliding‑window / two‑pointer technique.
+The operation allows each element `x` to become any value in `[x-k, x+k]`. Two elements can share a common target value iff their intervals overlap. After sorting the array, the problem reduces to finding the longest contiguous sub-array where the difference between the maximum and minimum element is ≤ 2k. This is a classic sliding-window / two-pointer technique.
 
 ```text
 FUNCTION maxFrequency(nums, k):
@@ -109,4 +109,4 @@ The maximum window size observed is 2, so the answer is 2.
 
 ## Key Takeaway
 
-> By converting each element to an interval `[x‑k, x+k]`, the problem becomes finding the longest sub‑array within a width of `2k`. A sorted array and sliding‑window efficiently capture this.
+> By converting each element to an interval `[x-k, x+k]`, the problem becomes finding the longest sub-array within a width of `2k`. A sorted array and sliding-window efficiently capture this.

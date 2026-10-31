@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below ignore the `'*'` wildcard. Correct idea: split `p` at `'*'` into `left` and `right`; find the first occurrence `i` of `left` in `s`, then check whether `right` occurs in `s` at or after `i + len(left)`. O(n·m).*
-
 You are given a string `s` and a pattern string `p`, where `p` contains **exactly one** `'*'` character.
 
 The `'*'` in `p` can be replaced with any sequence of zero or more characters.
@@ -46,37 +44,39 @@ Explanation: The substrings "u", "uc", and "uck" match the pattern.
 ```
 
 ## Approach
-Iterate through `s` and compare each window of length `len(p)` with `p`. Stop early when a match is found.
+Split `p` at the single `'*'` into `left` and `right`. A match is `left`, then any gap, then `right`. Greedily take the **earliest** occurrence of `left` in `s` (an earlier end leaves the most room for `right`), then check whether `right` occurs anywhere starting at or after the end of that occurrence. Empty `left`/`right` match trivially.
 
 ```text
-FUNCTION IsSubstring(s, p):
-    SET n ← LENGTH(s)
-    SET m ← LENGTH(p)
-    IF m = 0:
-        RETURN true
-    FOR i FROM 0 TO n - m:
-        IF SUBSTRING(s, i, i + m) = p:
-            RETURN true
-    RETURN false
+FUNCTION HasMatch(s, p):
+    SET star ← INDEX_OF(p, '*')
+    SET left ← p[0 : star]
+    SET right ← p[star + 1 : ]
+    SET i ← FIND(s, left, from 0)
+    IF i = -1:
+        RETURN false
+    SET j ← FIND(s, right, from i + LENGTH(left))
+    RETURN j ≠ -1
 ```
 
 ## Walkthrough
-| i | Substring `s[i:i+m]` | Match? |
-|---|----------------------|--------|
-| 0 | "leet" | no |
-| 1 | "eetc" | no |
-| 2 | "etco" | no |
-| 3 | "tco..." | no |
-| 4 | "code" | **yes** → return `true` |
+`s = "leetcode"`, `p = "ee*e"` → `left = "ee"`, `right = "e"`.
+
+| Step | Action | Result |
+|------|--------|--------|
+| 1 | Find `"ee"` in `"leetcode"` | first at index 1 (`s[1..2] = "ee"`) |
+| 2 | Search `"e"` starting at index `1 + 2 = 3` (`"tcode"`) | found at index 7 |
+| 3 | Both found | return `true` |
+
+The matched substring is `s[1..7] = "eetcode"`, with `'*'` = `"tcod"`.
 
 ## Complexity Analysis
-- **Time:** O(n · m) in the worst case, where `n` is `|s|` and `m` is `|p|`. With simple character comparison it is effectively O(n) when `m` is small.
-- **Space:** O(1) extra space.
+- **Time:** O(n · m) in the worst case with naive substring search, where `n` is `|s|` and `m` is `|p|` (O(n + m) with KMP).
+- **Space:** O(m) for the two pattern halves.
 
 ## Follow-Up Questions
-- How would you improve the runtime using KMP or Rabin‑Karp algorithms?
-- Can the solution be adapted for multiple pattern queries on the same text?
-- What changes are needed to support wildcard characters in the pattern?
+- How would you handle a pattern with **multiple** `'*'` characters (greedy left-to-right matching of each piece)?
+- What if `'?'` (match exactly one character) were also allowed?
+- Why is choosing the earliest occurrence of `left` always safe?
 
 ## Key Takeaway
-A straightforward sliding‑window scan checks each possible position, providing a simple O(n · m) solution for exact substring matching.
+A single wildcard splits the pattern into two literal pieces; greedily matching the first piece as early as possible and then searching for the second piece after it decides the match.

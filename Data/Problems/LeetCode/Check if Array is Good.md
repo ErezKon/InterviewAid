@@ -54,7 +54,7 @@ Sort the array and compare it against the expected pattern generated on the fly.
 ```text
 FUNCTION isGood(nums):
     SET n ← LENGTH(nums) - 1
-    SORT nums IN NON‑DECREASING ORDER
+    SORT nums IN NON-DECREASING ORDER
     FOR i ← 0 TO n-1:
         IF nums[i] != i + 1:
             RETURN false
@@ -73,7 +73,7 @@ FUNCTION isGood(nums):
 
 ## Complexity Analysis
 - **Time:** O(n log n) due to sorting.
-- **Space:** O(1) additional space if an in‑place sort is used; otherwise O(n).
+- **Space:** O(1) additional space if an in-place sort is used; otherwise O(n).
 
 ## Follow-Up Questions
 1. How can you achieve O(n) time without sorting, using a frequency array?

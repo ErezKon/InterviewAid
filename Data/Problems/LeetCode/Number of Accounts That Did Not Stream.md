@@ -97,7 +97,7 @@ Example 1:
 
 ## 3. Approach
 
-Use a **SQL NOT IN** sub‑query to exclude accounts that have any streaming record within the target year.
+Use a **SQL NOT IN** sub-query to exclude accounts that have any streaming record within the target year.
 
 ```text
 FUNCTION CountAccountsWithoutStreams(year):
@@ -126,7 +126,7 @@ FUNCTION CountAccountsWithoutStreams(year):
 
 ## 5. Complexity Analysis
 
-The query runs in **O(N + M)** where *N* is the number of subscription rows and *M* is the number of stream rows examined for the year. Indexes on `account_id` and `stream_date` make the sub‑query efficient.
+The query runs in **O(N + M)** where *N* is the number of subscription rows and *M* is the number of stream rows examined for the year. Indexes on `account_id` and `stream_date` make the sub-query efficient.
 
 ---
 

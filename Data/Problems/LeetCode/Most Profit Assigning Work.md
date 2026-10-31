@@ -82,7 +82,7 @@ Example 2:
 
 ## 5. Walkthrough
 
-Take Example 1.
+Take Example 1.
 1. Pair jobs: (2,3), (4,5), (6,7) and sort → already sorted.
 2. Sort workers → [1,3,5].
 3. ability=1: no job ≤1, maxProfit=0, total=0.
@@ -111,4 +111,4 @@ Take Example 1.
 
 ## 5. Key Takeaway
 
-> **Sort both arrays, sweep with running max.** As workers get stronger, more jobs become available. The running max tracks the best profit seen so far — no need to re‑scan.
+> **Sort both arrays, sweep with running max.** As workers get stronger, more jobs become available. The running max tracks the best profit seen so far — no need to re-scan.

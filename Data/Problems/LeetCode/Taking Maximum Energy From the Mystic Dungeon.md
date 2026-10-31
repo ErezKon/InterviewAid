@@ -37,7 +37,7 @@ Example 2:
 ```
 
 ## Approach
-Compute suffix sums with step `k` in reverse order: for each index `i` from `n‑k‑1` down to `0`, add the value at `i + k` to `energy[i]`. After this DP‑like pass, each `energy[i]` holds the total energy obtainable when starting from `i`. The answer is the maximum of these values.
+Compute suffix sums with step `k` in reverse order: for each index `i` from `n-k-1` down to `0`, add the value at `i + k` to `energy[i]`. After this DP-like pass, each `energy[i]` holds the total energy obtainable when starting from `i`. The answer is the maximum of these values.
 
 ```text
 FUNCTION maximumEnergy(energy, k):
@@ -58,9 +58,9 @@ FUNCTION maximumEnergy(energy, k):
 
 ## Complexity Analysis
 - Time: O(n) – a single reverse pass over the array.
-- Space: O(1) – modifications are done in‑place.
+- Space: O(1) – modifications are done in-place.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could jump either `+k` or `-k` steps?
 2. Can you extend the algorithm to handle multiple allowed jump lengths?
 3. What if each jump incurs a cost that depends on the starting index?

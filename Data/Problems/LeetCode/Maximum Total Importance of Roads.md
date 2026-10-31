@@ -54,7 +54,7 @@ It can be shown that we cannot obtain a greater total importance than 20.
 ```
 
 ## Approach
-**Greedy by Degree** – Sort cities by their degree (number of incident roads) descending, then assign the highest available values to the highest‑degree cities.
+**Greedy by Degree** – Sort cities by their degree (number of incident roads) descending, then assign the highest available values to the highest-degree cities.
 
 ```text
 FUNCTION MaxTotalImportance(n, roads):
@@ -93,10 +93,10 @@ Compute importance by summing values of each road pair.
 - **Time:** `O(n + m log n)` where `m` is number of roads (degree counting + sorting).
 - **Space:** `O(n + m)` for degree array, city list, and value map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if roads had individual weights that also contributed to importance?
 2. Can you extend the solution to handle directed edges where importance is only counted from source to destination?
 3. What if the assigned values need not be a permutation but any positive integers with a sum constraint?
 
 ## Key Takeaway
-Assigning higher values to higher‑degree cities maximizes total road importance because each city’s contribution is proportional to its degree.
+Assigning higher values to higher-degree cities maximizes total road importance because each city’s contribution is proportional to its degree.

@@ -15,7 +15,7 @@
 5. [Approach](#5-approach)
 6. [Walkthrough](#6-walkthrough)
 7. [Complexity Analysis](#7-complexity-analysis)
-8. [Follow‑Up Questions](#8-follow‑up-questions)
+8. [Follow-Up Questions](#8-follow-up-questions)
 9. [Key Takeaway](#9-key-takeaway)
 
 ---
@@ -70,13 +70,13 @@ Write a solution to:
 - Find the name of the user who has rated the greatest number of movies. In case of a tie, return the lexicographically smaller user name.
 - Find the movie name with the **highest average** rating in `February 2020`. In case of a tie, return the lexicographically smaller movie name.
 
-The result format is in the following example. 
+The result format is in the following example. 
 
 ---
 
 ## 2. Key Insight
 
-> Two independent queries combined with `UNION ALL`. First query: group by user, count ratings, order by count desc then name. Second query: filter Feb 2020, group by movie, order by avg desc then title.
+> Two independent queries combined with `UNION ALL`. First query: group by user, count ratings, order by count desc then name. Second query: filter Feb 2020, group by movie, order by avg desc then title.
 
 ---
 
@@ -150,7 +150,7 @@ Example 1:
   Daniel and Monica have rated 3 movies ("Avengers", "Frozen 2" and "Joker") but Daniel is smaller lexicographically.
   Frozen 2 and Joker have a rating average of 3.5 in February but Frozen 2 is smaller lexicographically.
 ```
- 
+ 
 ---
 
 ## 5. Approach
@@ -182,7 +182,7 @@ FUNCTION getTopUserAndMovie():
 ## 6. Walkthrough
 
 1. **User query:** Group ratings by `user_id`, count rows, sort descending by count, then alphabetically by `name`. The first row is the desired user.
-2. **Movie query:** Filter rows where `created_at` falls in February 2020, group by `movie_id`, compute `AVG(rating)`, sort descending by average, then alphabetically by `title`. The first row is the desired movie.
+2. **Movie query:** Filter rows where `created_at` falls in February 2020, group by `movie_id`, compute `AVG(rating)`, sort descending by average, then alphabetically by `title`. The first row is the desired movie.
 3. Combine both results with `UNION ALL` to produce a single column output.
 
 ---
@@ -191,12 +191,12 @@ FUNCTION getTopUserAndMovie():
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(N log N) for sorting groups (handled by the DB engine) |
+| **Time** | O(N log N) for sorting groups (handled by the DB engine) |
 | **Space** | O(N) for intermediate aggregation tables |
 
 ---
 
-## 8. Follow‑Up Questions
+## 8. Follow-Up Questions
 
 - How would you modify the query to handle ties by returning all top users or movies?
 - What if the rating period is dynamic (e.g., any given month) – how would you parameterize the query?
@@ -206,4 +206,4 @@ FUNCTION getTopUserAndMovie():
 
 ## 9. Key Takeaway
 
-> **Two independent ranked sub‑queries combined with `UNION ALL`.** Each sub‑query uses `GROUP BY`, `ORDER BY` with tie‑breakers, and `LIMIT 1` to extract the top result.
+> **Two independent ranked sub-queries combined with `UNION ALL`.** Each sub-query uses `GROUP BY`, `ORDER BY` with tie-breakers, and `LIMIT 1` to extract the top result.

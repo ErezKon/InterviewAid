@@ -79,7 +79,7 @@ Example 1:
 
 ## 5. Complexity Analysis
 
-- **Time:** O(N log N) due to sorting within `GROUP_CONCAT` (implementation‑dependent).
+- **Time:** O(N log N) due to sorting within `GROUP_CONCAT` (implementation-dependent).
 - **Space:** O(G) where G is the number of distinct groups (sell dates).
 
 ## 6. Follow-Up Questions
@@ -90,4 +90,4 @@ Example 1:
 
 ## Key Takeaway
 
-> `GROUP_CONCAT(DISTINCT ... ORDER BY ...)` creates comma‑separated aggregated strings per group.
+> `GROUP_CONCAT(DISTINCT ... ORDER BY ...)` creates comma-separated aggregated strings per group.

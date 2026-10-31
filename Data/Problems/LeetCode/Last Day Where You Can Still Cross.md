@@ -100,7 +100,7 @@ FUNCTION canCross(row, col, waterCells):
 | 1   | (1,1)         | Yes (via bottom row) |
 | 2   | (1,1),(2,1)   | No – top row blocked |
 
-Binary search probes day 2, sees no path, then checks day 1 and confirms a path, returning 2 as the last feasible day.
+Binary search probes day 2, sees no path, then checks day 1 and confirms a path, returning 2 as the last feasible day.
 
 ---
 
@@ -113,12 +113,12 @@ Binary search probes day 2, sees no path, then checks day 1 and confirms a p
 
 ## 5. Follow-Up Questions
 
-1. How would you solve the problem using Union‑Find by adding cells in reverse order?
-2. Can the solution be adapted for diagonal movement instead of 4‑directional?
-3. What if the flood order is unknown and you must determine the worst‑case day?
+1. How would you solve the problem using Union-Find by adding cells in reverse order?
+2. Can the solution be adapted for diagonal movement instead of 4-directional?
+3. What if the flood order is unknown and you must determine the worst-case day?
 
 ---
 
 ## Key Takeaway
 
-> Binary search on the answer (day). Monotonic property: if you can cross on day d, you can cross on any day < d. Alternative: reverse Union‑Find (add land cells in reverse, connect until top‑bottom joined).
+> Binary search on the answer (day). Monotonic property: if you can cross on day d, you can cross on any day < d. Alternative: reverse Union-Find (add land cells in reverse, connect until top-bottom joined).

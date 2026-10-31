@@ -76,10 +76,10 @@ CLASS UndoRedoStack:
 - **Time:** O(1) for each `execute`, `undo`, and `redo` operation.
 - **Space:** O(k) where k is the number of executed commands stored in the stacks.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you support batching multiple commands as a single undoable action?
 - Can you persist the undo/redo history across application restarts?
 - How would you limit memory usage by discarding old history?
 
 ## Key Takeaway
-Two stacks combined with the Command pattern provide a clean, constant‑time mechanism for reversible operations.
+Two stacks combined with the Command pattern provide a clean, constant-time mechanism for reversible operations.

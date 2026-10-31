@@ -53,10 +53,10 @@ Output: 66
 ```
 
 ## Approach
-Calculate how many odd‑length subarrays include each element and multiply.
+Calculate how many odd-length subarrays include each element and multiply.
 1. For each index `i`, compute `left = i + 1` (choices on the left) and `right = n - i` (choices on the right).
 2. Total subarrays containing `arr[i]` = `left * right`.
-3. Number of odd‑length subarrays = `(totalSub + 1) // 2` (half of them rounded up).
+3. Number of odd-length subarrays = `(totalSub + 1) // 2` (half of them rounded up).
 4. Add `arr[i] * oddSub` to the answer.
 
 ```text
@@ -88,8 +88,8 @@ Sum = 58.
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions
-- How would you modify the solution to handle very large arrays where the sum may overflow 32‑bit integers?
-- Can you compute the result using prefix sums instead of per‑element counting?
+- How would you modify the solution to handle very large arrays where the sum may overflow 32-bit integers?
+- Can you compute the result using prefix sums instead of per-element counting?
 - How does the approach change if only subarrays of length divisible by 3 are required?
 
 ## Key Takeaway

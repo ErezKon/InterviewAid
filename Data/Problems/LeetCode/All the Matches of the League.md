@@ -73,14 +73,14 @@ WHERE t1.team_name != t2.team_name;
 | Step | Action | Result |
 |------|--------|--------|
 | 1 | Perform `CROSS JOIN` of `Teams` with itself | Produces every ordered pair of teams |
-| 2 | Filter out rows where `team_name` equals itself | Removes self‑matches |
+| 2 | Filter out rows where `team_name` equals itself | Removes self-matches |
 | 3 | Select `home_team` and `away_team` columns | Final match list |
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time Complexity**: `O(N²)` where `N` is the number of teams, due to the self‑join.
+- **Time Complexity**: `O(N²)` where `N` is the number of teams, due to the self-join.
 - **Space Complexity**: `O(N²)` for the result set of matches.
 
 ---
@@ -95,4 +95,4 @@ WHERE t1.team_name != t2.team_name;
 
 ## Key Takeaway
 
-> A self `CROSS JOIN` with a non‑equality filter efficiently enumerates all possible ordered matches between teams.
+> A self `CROSS JOIN` with a non-equality filter efficiently enumerates all possible ordered matches between teams.

@@ -76,7 +76,7 @@ FUNCTION numberOfPairs(points):
     FOR i ← 0 TO n - 1:
         FOR j ← 0 TO n - 1:
             IF i == j: CONTINUE
-            // Alice upper‑left, Bob lower‑right
+            // Alice upper-left, Bob lower-right
             IF points[i][0] <= points[j][0] AND points[i][1] >= points[j][1]:
                 SET valid ← true
                 FOR k ← 0 TO n - 1:
@@ -94,9 +94,9 @@ FUNCTION numberOfPairs(points):
 ## 4. Walkthrough
 
 Consider points `[[0,0],[1,1],[2,2]]`.
-1. Pair (0,2): `(0,0)` is upper‑left of `(2,2)`. No other point lies inside, so count = 1.
-2. Pair (0,1): valid, count = 2.
-3. Pair (1,2): valid, count = 3.
+1. Pair (0,2): `(0,0)` is upper-left of `(2,2)`. No other point lies inside, so count = 1.
+2. Pair (0,1): valid, count = 2.
+3. Pair (1,2): valid, count = 3.
 All other ordered pairs fail the geometric condition, resulting in a final answer of `3` (or `2` if unordered pairs are required by the problem statement).
 
 ---
@@ -112,7 +112,7 @@ All other ordered pairs fail the geometric condition, resulting in a final answe
 
 ## 6. Follow-Up Questions
 
-- How would you improve the solution for `n` up to 10⁵?
+- How would you improve the solution for `n` up to 10⁵?
 - Can the problem be solved using sweep line or segment tree techniques?
 - What changes if points can share the same x or y coordinate?
 
@@ -120,4 +120,4 @@ All other ordered pairs fail the geometric condition, resulting in a final answe
 
 ## 7. Key Takeaway
 
-> With n ≤ 50, brute‑force O(n³) works. For larger inputs, sorting by x and scanning with a monotonic structure reduces the complexity dramatically.
+> With n ≤ 50, brute-force O(n³) works. For larger inputs, sorting by x and scanning with a monotonic structure reduces the complexity dramatically.

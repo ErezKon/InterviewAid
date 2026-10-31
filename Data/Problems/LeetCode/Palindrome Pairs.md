@@ -87,4 +87,4 @@ FUNCTION palindromePairs(words):
 3. How would you extend this to find the longest palindrome that can be formed by concatenating any subset of words?
 
 ## Key Takeaway
-By breaking each word into all possible prefix/suffix splits and leveraging a hash map of reversed strings, we can efficiently discover all palindrome‑forming pairs.
+By breaking each word into all possible prefix/suffix splits and leveraging a hash map of reversed strings, we can efficiently discover all palindrome-forming pairs.

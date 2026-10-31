@@ -77,7 +77,7 @@ FUNCTION checkPalindromes(parent, s):
 
     FUNCTION dfs(node):
         entry[node] ← timer
-        // visit children first (pre‑order)
+        // visit children first (pre-order)
         FOR child IN children[node]:
             dfs(child)
         eulerStr ← eulerStr + s[node]
@@ -110,7 +110,7 @@ FUNCTION checkPalindromes(parent, s):
 
 Consider the tree `parent = [-1,0,0,1,1]` with characters `s = "abcba"`.
 1. Build children lists: `0→[1,2]`, `1→[3,4]`.
-2. DFS order (pre‑order) visits nodes `0,1,3,4,2`. The euler string after post‑order concatenation becomes `"cbaab"` (each node appended after its children).
+2. DFS order (pre-order) visits nodes `0,1,3,4,2`. The euler string after post-order concatenation becomes `"cbaab"` (each node appended after its children).
 3. Record entry/exit indices:
    - Node 0: entry 0, exit 5 → substring `"cbaab"` (which is "abcba" reversed, still palindrome).
    - Node 3: entry 2, exit 3 → substring `"a"` (palindrome).
@@ -125,14 +125,14 @@ Consider the tree `parent = [-1,0,0,1,1]` with characters `s = "abcba"`.
 
 | Metric | Complexity |
 |--------|------------|
-| Time   | O(n) – one DFS, one linear‑time Manacher pass |
+| Time   | O(n) – one DFS, one linear-time Manacher pass |
 | Space  | O(n) – adjacency list, euler string, radius array |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would the solution adapt if the DFS string needed to be checked for being a **k‑palindrome** (at most k mismatches)?
+- How would the solution adapt if the DFS string needed to be checked for being a **k-palindrome** (at most k mismatches)?
 - Can the approach be extended to support dynamic updates to the tree (insert/delete nodes) while maintaining palindrome queries?
 - What if the characters are Unicode strings with combining marks? Discuss handling of grapheme clusters.
 

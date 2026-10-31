@@ -46,8 +46,8 @@ Explanation: The large groups are "ddd", "eeee", and "bbb".
 ```
 
 ## Approach
-**Algorithm:** Single‑pass scan using two pointers (start `i` and end `j`).
-**Key Insight:** While expanding `j` as long as characters match, the length of the segment is `j‑i`. When the segment ends, record it if length ≥ 3, then move `i` to `j`.
+**Algorithm:** Single-pass scan using two pointers (start `i` and end `j`).
+**Key Insight:** While expanding `j` as long as characters match, the length of the segment is `j-i`. When the segment ends, record it if length ≥ 3, then move `i` to `j`.
 
 ```text
 FUNCTION largeGroupPositions(s):
@@ -79,10 +79,10 @@ Result = [[3,6]].
 - **Time:** O(n) – each character is visited at most twice.
 - **Space:** O(1) extra space besides the output list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the groups themselves, not just indices?
 2. Can you solve the problem in a streaming fashion where the string is received character by character?
-3. How would you handle Unicode characters or case‑insensitive grouping?
+3. How would you handle Unicode characters or case-insensitive grouping?
 
 ## Key Takeaway
-A simple two‑pointer scan lets you identify and record all maximal runs of identical characters, checking their length on the fly.
+A simple two-pointer scan lets you identify and record all maximal runs of identical characters, checking their length on the fly.

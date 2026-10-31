@@ -47,12 +47,12 @@ Example 4:
 ```
 
 ## Approach
-Model each circle as a node in a graph. Connect two nodes if their circles overlap or touch, or if a circle touches a rectangle side. Use Union‑Find to group connected obstacles. The path is blocked iff there exists a component that simultaneously touches the left and right sides **or** the top and bottom sides, forming an impenetrable barrier.
+Model each circle as a node in a graph. Connect two nodes if their circles overlap or touch, or if a circle touches a rectangle side. Use Union-Find to group connected obstacles. The path is blocked iff there exists a component that simultaneously touches the left and right sides **or** the top and bottom sides, forming an impenetrable barrier.
 
 ### Pseudocode
 ```text
 FUNCTION IsReachable(rectWidth, rectHeight, circles):
-    // Initialize Union‑Find for each circle
+    // Initialize Union-Find for each circle
     SET uf ← NewUnionFind(size = LENGTH(circles))
 
     // Union overlapping circles
@@ -81,13 +81,13 @@ FUNCTION IsReachable(rectWidth, rectHeight, circles):
 Consider a 5×5 rectangle with circles at (1,2,r=1) and (4,3,r=1). Neither circle touches opposite sides, and they do not overlap, so no component blocks the path → reachable.
 
 ## Complexity Analysis
-- Time: O(k²) for k circles (pairwise overlap checks) plus near‑linear Union‑Find operations.
-- Space: O(k) for Union‑Find structures and side‑touch maps.
+- Time: O(k²) for k circles (pairwise overlap checks) plus near-linear Union-Find operations.
+- Space: O(k) for Union-Find structures and side-touch maps.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the solution change for rectangular obstacles instead of circles?
 - Can the algorithm be optimized to O(k log k) using sweep line or spatial indexing?
 - What if movement is restricted to grid steps rather than continuous space?
 
 ## Key Takeaway
-The reachability problem reduces to detecting a connected component of obstacles that simultaneously touches opposite sides of the rectangle, which can be efficiently solved with Union‑Find.
+The reachability problem reduces to detecting a connected component of obstacles that simultaneously touches opposite sides of the rectangle, which can be efficiently solved with Union-Find.

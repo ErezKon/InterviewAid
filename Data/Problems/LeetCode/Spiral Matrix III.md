@@ -68,10 +68,10 @@ The process continues, expanding the step count each cycle.
 - **Time:** Each cell is added once → `O(rows·cols)`.
 - **Space:** Output list stores all coordinates → `O(rows·cols)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to start from the center of the grid?
 2. Can the spiral be generated in-place without storing all coordinates?
-3. What changes are needed to produce a counter‑clockwise spiral?
+3. What changes are needed to produce a counter-clockwise spiral?
 
 ## Key Takeaway
-By iterating over directions with an increasing step count and recording only in‑bounds positions, we can efficiently generate the outward spiral traversal of a matrix.
+By iterating over directions with an increasing step count and recording only in-bounds positions, we can efficiently generate the outward spiral traversal of a matrix.

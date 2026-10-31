@@ -82,7 +82,7 @@ Note that the carpets are able to overlap one another.
 
 Consider Example 1 (`floor = "10101", numCarpets = 2, carpetLen = 2`).
 
-| i (1‑based) | floor[i‑1] | dp[i][0] (no carpet) | dp[i][1] | dp[i][2] |
+| i (1-based) | floor[i-1] | dp[i][0] (no carpet) | dp[i][1] | dp[i][2] |
 |------------|-----------|----------------------|----------|----------|
 | 0          | -         | 0                    | 0        | 0        |
 | 1          | 1         | 1                    | 0 (cover) | 0        |

@@ -76,11 +76,11 @@ All unique subsets are collected.
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n·2ⁿ) – each element leads to two branches, with duplicate‑skipping reducing redundant work.
+- **Time:** O(n·2ⁿ) – each element leads to two branches, with duplicate-skipping reducing redundant work.
 - **Space:** O(n) – recursion stack and current path.
 
 ---
 
 ## Key Takeaway
 
-> `if i > start and nums[i] == nums[i-1]: continue` is the universal duplicate‑skipping line for sorted backtracking. Works for Subsets II, Combination Sum II, Permutations II.
+> `if i > start and nums[i] == nums[i-1]: continue` is the universal duplicate-skipping line for sorted backtracking. Works for Subsets II, Combination Sum II, Permutations II.

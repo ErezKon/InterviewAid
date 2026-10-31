@@ -48,22 +48,22 @@ FUNCTION getBiggestThree(grid):
             FOR size ← 1 TO MIN(r, m-1-r, c, n-1-c):
                 // sum the four edges of the rhombus
                 rhombusSum ← 0
-                // top‑right edge
+                // top-right edge
                 i ← r - size; j ← c
                 WHILE i < r:
                     rhombusSum += grid[i][j]
                     i += 1; j += 1
-                // bottom‑right edge
+                // bottom-right edge
                 i ← r; j ← c + size
                 WHILE i < r + size:
                     rhombusSum += grid[i][j]
                     i += 1; j -= 1
-                // bottom‑left edge
+                // bottom-left edge
                 i ← r + size; j ← c
                 WHILE i > r:
                     rhombusSum += grid[i][j]
                     i -= 1; j -= 1
-                // top‑left edge
+                // top-left edge
                 i ← r; j ← c - size
                 WHILE i > r - size:
                     rhombusSum += grid[i][j]
@@ -103,7 +103,7 @@ Example 3:
 
 ## 4. Walkthrough
 
-Consider the first example grid. The algorithm iterates over every cell as a potential center. For center `(1,1)` with size `1`, the border consists of cells `(0,1)`, `(1,2)`, `(2,1)`, `(1,0)` whose sum is `4+8+6+1 = 19`. Adding the size‑0 rhombus at each cell yields many sums; the three largest distinct sums are `20`, `18`, and `9`.
+Consider the first example grid. The algorithm iterates over every cell as a potential center. For center `(1,1)` with size `1`, the border consists of cells `(0,1)`, `(1,2)`, `(2,1)`, `(1,0)` whose sum is `4+8+6+1 = 19`. Adding the size-0 rhombus at each cell yields many sums; the three largest distinct sums are `20`, `18`, and `9`.
 
 ## 5. Complexity Analysis
 
@@ -112,4 +112,4 @@ Consider the first example grid. The algorithm iterates over every cell as a pot
 
 ## 6. Key Takeaway
 
-> Enumerate all possible rhombus centers and sizes, sum the four diagonal edges, and keep the three largest distinct sums. Prefix sums on diagonals can reduce the per‑rhombus cost to O(1).
+> Enumerate all possible rhombus centers and sizes, sum the four diagonal edges, and keep the three largest distinct sums. Prefix sums on diagonals can reduce the per-rhombus cost to O(1).

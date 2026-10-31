@@ -59,8 +59,8 @@ As all the sides are of different lengths, it will form a scalene triangle.
 - **Time:** `O(1)` (sorting three numbers is constant).
 - **Space:** `O(1)`.
 
-## Follow‑Up Questions
-1. How would you extend the solution to handle floating‑point side lengths with precision issues?
+## Follow-Up Questions
+1. How would you extend the solution to handle floating-point side lengths with precision issues?
 2. What if you need to return the area of the triangle as well?
 3. Can you determine the triangle type without sorting, using only comparisons?
 

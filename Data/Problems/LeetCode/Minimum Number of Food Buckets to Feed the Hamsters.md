@@ -47,7 +47,7 @@ Explanation: If we place a food bucket at every empty index as shown, the hamste
 
 ## Approach
 
-**Algorithm:** Greedy left‑to‑right placement
+**Algorithm:** Greedy left-to-right placement
 
 Iterate through the string. When a hamster `'H'` is encountered:
 1. If the left neighbor already has a bucket `'F'`, continue.
@@ -93,9 +93,9 @@ All hamsters now have an adjacent bucket.
 | Metric | Complexity |
 |--------|-------------|
 | Time   | **O(n)** – single pass over the string |
-| Space  | **O(n)** – mutable copy of the string (can be in‑place) |
+| Space  | **O(n)** – mutable copy of the string (can be in-place) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the algorithm change if a bucket could feed hamsters up to two cells away?
 2. Can we compute the answer without modifying the string, using only counters?

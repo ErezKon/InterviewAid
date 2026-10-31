@@ -50,11 +50,15 @@ FUNCTION Build(lo, hi):
 ```
 
 ## Walkthrough
-For `n = 3`:
-1. Choose `root = 1` → left = [], right = Build(2,3) → two trees.
-2. Choose `root = 2` → left = Build(1,1) (single node), right = Build(3,3) (single node) → one tree.
-3. Choose `root = 3` → symmetric to case 1.
-All combinations produce the 5 unique BSTs.
+Example 1: `n = 3`, call `Build(1,3)`:
+
+| rootVal | leftTrees | rightTrees | trees produced |
+|---------|-----------|------------|----------------|
+| 1 | Build(1,0) = [null] | Build(2,3) = [2→right 3, 3→left 2] | `[1,null,2,null,3]`, `[1,null,3,2]` |
+| 2 | Build(1,1) = [1] | Build(3,3) = [3] | `[2,1,3]` |
+| 3 | Build(1,2) = [1→right 2, 2→left 1] | Build(4,3) = [null] | `[3,1,null,null,2]`, `[3,2,null,1]` |
+
+Collected trees: **`[[1,null,2,null,3],[1,null,3,2],[2,1,3],[3,1,null,null,2],[3,2,null,1]]`** (5 = Catalan C₃). For Example 2, `Build(1,1)` returns the single tree `[[1]]`.
 
 ## Complexity Analysis
 - **Time:** Catalan number `C_n` of trees; each tree is built once, leading to O(C_n) overall.

@@ -63,10 +63,10 @@ For `n = 521`:
 Result = 4.
 
 ## Complexity Analysis
-- **Time:** O(d) where d is the number of digits (≤ 10 for 32‑bit ints).
+- **Time:** O(d) where d is the number of digits (≤ 10 for 32-bit ints).
 - **Space:** O(d) for the digit list (can be O(1) if processed on the fly).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the result without storing all digits?
 2. Can the same idea be applied to alternating sum of bits in a binary representation?
 3. What if the sign starts negative instead of positive?

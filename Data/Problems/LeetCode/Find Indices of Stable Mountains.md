@@ -57,11 +57,11 @@ Indices 1 and 3 satisfy the condition.
 
 ## Complexity Analysis
 - **Time:** O(n) for two linear scans.
-- **Space:** O(n) for the auxiliary left/right max arrays (can be reduced to O(1) with two‑pointer technique).
+- **Space:** O(n) for the auxiliary left/right max arrays (can be reduced to O(1) with two-pointer technique).
 
 ## Follow-Up Questions
 1. How would you modify the solution to return the longest stable mountain segment?
-2. Can you solve it in O(1) extra space using a two‑pointer approach?
+2. Can you solve it in O(1) extra space using a two-pointer approach?
 3. What if the array is streamed and you cannot store it entirely?
 
 ## Key Takeaway

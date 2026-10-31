@@ -51,7 +51,7 @@ Hence, the answer is nums[3] = 1.
 ```
 
 ## Approach
-Iterate over the array, compute the number of set bits of the current index using Kernighan’s algorithm (clear the lowest‑set bit repeatedly). If the count equals `k`, add `nums[i]` to the answer.
+Iterate over the array, compute the number of set bits of the current index using Kernighan’s algorithm (clear the lowest-set bit repeatedly). If the count equals `k`, add `nums[i]` to the answer.
 
 ```text
 FUNCTION sumValues(nums, k):
@@ -68,21 +68,21 @@ FUNCTION sumValues(nums, k):
 ```
 
 ## Walkthrough
-For `nums = [5,7,1,3,3]`, `k = 1`:
-- i=0 (0b0) → count 0 → skip
-- i=1 (0b1) → count 1 → add 7 (answer=7)
-- i=2 (0b10) → count 1 → add 1 (answer=8)
-- i=3 (0b11) → count 2 → skip
-- i=4 (0b100) → count 1 → add 3 (answer=11)
-Result = 11.
+For `nums = [5,10,1,5,2]`, `k = 1` (Example 1):
+- i=0 (0b0) -> count 0 -> skip
+- i=1 (0b1) -> count 1 -> add 10 (answer=10)
+- i=2 (0b10) -> count 1 -> add 1 (answer=11)
+- i=3 (0b11) -> count 2 -> skip
+- i=4 (0b100) -> count 1 -> add 2 (answer=13)
+Result = 13.
 
 ## Complexity Analysis
-- **Time:** O(n * popcount(i)) → O(n * log maxIndex) in worst case, but each iteration clears bits, so overall O(n · average bits) ≤ O(n · log n).
+- **Time:** O(n * popcount(i)) → O(n * log maxIndex) in worst case, but each iteration clears bits, so overall O(n · average bits) ≤ O(n · log n).
 - **Space:** O(1) – only a few integer variables.
 
 ## Follow-Up Questions
-1. How would you optimize the solution if `nums` were extremely large and you needed sub‑linear time?
-2. Can you pre‑compute popcounts for all indices up to `n` to achieve O(n) overall?
+1. How would you optimize the solution if `nums` were extremely large and you needed sub-linear time?
+2. Can you pre-compute popcounts for all indices up to `n` to achieve O(n) overall?
 3. How would the approach change if you needed to handle queries with different `k` values online?
 
 ## Key Takeaway

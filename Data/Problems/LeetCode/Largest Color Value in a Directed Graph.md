@@ -84,12 +84,12 @@ FUNCTION largestPathValue(colors, edges):
 
 **Example:** `colors = "abaca", edges = [[0,1],[0,2],[2,3],[3,4]]`
 
-1. Build graph and in‑degree: nodes `0` has out‑edges to `1` and `2`; `2` → `3`; `3` → `4`. In‑degrees: `0:0, 1:1, 2:1, 3:1, 4:1`.
+1. Build graph and in-degree: nodes `0` has out-edges to `1` and `2`; `2` → `3`; `3` → `4`. In-degrees: `0:0, 1:1, 2:1, 3:1, 4:1`.
 2. Initialize queue with node `0`. Set `dp[0]['a'] = 1`.
 3. Dequeue `0`: propagate to `1` and `2`.
    - For neighbor `1` (color `b`): update `dp[1]['a'] = 1`, `dp[1]['b'] = 1`.
    - For neighbor `2` (color `a`): update `dp[2]['a'] = 2` (inherit `1` from `0` + own `a`).
-   - Decrease in‑degrees; node `1` and `2` become ready, enqueue them.
+   - Decrease in-degrees; node `1` and `2` become ready, enqueue them.
 4. Dequeue `1` (no outgoing edges).
 5. Dequeue `2`: propagate to `3` (color `c`). Update `dp[3]['a'] = 2`, `dp[3]['c'] = 1`.
 6. Dequeue `3`: propagate to `4` (color `a`). Update `dp[4]['a'] = 3` (max path `0→2→3→4`).
@@ -116,4 +116,4 @@ FUNCTION largestPathValue(colors, edges):
 
 ## 7. Key Takeaway
 
-> Topological sorting provides a natural order to propagate per‑color counts in a DAG. By maintaining a DP table of size `26 × n`, we compute the maximum color frequency on any path while detecting cycles automatically.
+> Topological sorting provides a natural order to propagate per-color counts in a DAG. By maintaining a DP table of size `26 × n`, we compute the maximum color frequency on any path while detecting cycles automatically.

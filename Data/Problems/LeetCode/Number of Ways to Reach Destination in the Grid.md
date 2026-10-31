@@ -46,7 +46,7 @@ Since the answer may be very large, return it **modulo** `10^9 + 7`.
 
 ## 2. Key Insight
 
-> Depending on exact constraints, either grid DP or combinatorial counting (e.g., C(m+n-2, m-1) for basic grid paths). Obstacles require inclusion‑exclusion or DP.
+> Depending on exact constraints, either grid DP or combinatorial counting (e.g., C(m+n-2, m-1) for basic grid paths). Obstacles require inclusion-exclusion or DP.
 
 ---
 
@@ -103,7 +103,7 @@ Consider a 3×3 grid without obstacles.
 | (2,0) | 1 |
 | (2,1) | 3 |
 | (2,2) | 6 |
-The bottom‑right cell accumulates 6 ways, matching the combinatorial result.
+The bottom-right cell accumulates 6 ways, matching the combinatorial result.
 
 ---
 
@@ -118,4 +118,4 @@ The bottom‑right cell accumulates 6 ways, matching the combinatorial result.
 
 ## 7. Key Takeaway
 
-> **Grid path counting.** Basic = combinations. With obstacles = DP. With restricted moves = state‑based DP or matrix exponentiation.
+> **Grid path counting.** Basic = combinations. With obstacles = DP. With restricted moves = state-based DP or matrix exponentiation.

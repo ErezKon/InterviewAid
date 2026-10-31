@@ -37,7 +37,7 @@ Output: [false,false,false]
 ```
 
 ## Approach
-**Iterative Modulo** – While scanning the bits, maintain the current value modulo 5. For each new bit, update `val = (val * 2 + bit) % 5`. The prefix is divisible by 5 when `val == 0`.
+**Iterative Modulo** – While scanning the bits, maintain the current value modulo 5. For each new bit, update `val = (val * 2 + bit) % 5`. The prefix is divisible by 5 when `val == 0`.
 
 ```text
 FUNCTION prefixesDivBy5(nums):
@@ -66,4 +66,4 @@ For `nums = [1,0,0,1]`:
 - What changes are needed if the input is given as a string of bits?
 
 ## Key Takeaway
-Maintaining the remainder modulo 5 while iterating allows constant‑time updates per bit, yielding an O(n) solution without constructing the full integer.
+Maintaining the remainder modulo 5 while iterating allows constant-time updates per bit, yielding an O(n) solution without constructing the full integer.

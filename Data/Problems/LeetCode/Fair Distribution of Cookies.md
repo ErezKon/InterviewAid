@@ -95,7 +95,7 @@ Consider `cookies = [1,2,3]`, `k = 2`.
 
 ## Complexity Analysis
 
-- **Time:** O(k^n) worst‑case, dramatically reduced by pruning and symmetry breaking.
+- **Time:** O(k^n) worst-case, dramatically reduced by pruning and symmetry breaking.
 - **Space:** O(n) recursion stack plus O(k) for `children` array.
 
 ---
@@ -109,4 +109,4 @@ Consider `cookies = [1,2,3]`, `k = 2`.
 
 ## Key Takeaway
 
-> **Small‑size combinatorial search:** backtrack over assignments, prune when current max ≥ best found, and skip identical empty children to avoid redundant work.
+> **Small-size combinatorial search:** backtrack over assignments, prune when current max ≥ best found, and skip identical empty children to avoid redundant work.

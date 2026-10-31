@@ -108,7 +108,7 @@ No matrix can satisfy all the conditions, so we return the empty matrix.
 ## 7. Follow-Up Questions
 
 - How would you modify the algorithm if row and column constraints were interdependent?
-- Can you detect cycles more efficiently using union‑find?
+- Can you detect cycles more efficiently using union-find?
 - What if the matrix size is not square but rectangular?
 
 ---

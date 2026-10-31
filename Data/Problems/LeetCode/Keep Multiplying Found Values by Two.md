@@ -92,11 +92,11 @@ FUNCTION findFinalValue(nums, original):
 
 | Metric | Value |
 |--------|-------|
-| Time | O(n) – building the set and at most O(log max) doublings |
+| Time | O(n) – building the set and at most O(log max) doublings |
 | Space | O(n) – storing the set of numbers |
 
 ---
 
 ## 7. Key Takeaway
 
-> Use a hash set for constant‑time membership checks and repeatedly double the value until it no longer appears.
+> Use a hash set for constant-time membership checks and repeatedly double the value until it no longer appears.

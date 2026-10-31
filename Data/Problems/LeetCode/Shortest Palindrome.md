@@ -78,7 +78,7 @@ Consider `s = "aacecaaa"`.
 
 ## Follow-Up Questions
 
-1. How would you solve the problem using a rolling hash (Rabin‑Karp) instead of KMP?
+1. How would you solve the problem using a rolling hash (Rabin-Karp) instead of KMP?
 2. Can you modify the algorithm to allow insertions at both ends of the string?
 3. What is the longest palindrome that can be formed by adding characters only at the **end**?
 

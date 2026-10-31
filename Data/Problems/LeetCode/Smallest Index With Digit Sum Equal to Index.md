@@ -43,11 +43,12 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Linear scan with digit‑sum computation.
+**Algorithm:** Linear scan with digit-sum computation.
 
 1. Iterate `i` from `0` to `len(nums)-1`.
-2. Compute `digitSum(i)` by repeatedly extracting digits.
-3. If `digitSum(i) == nums[i]`, return `i`.
+2. Compute `digitSum(nums[i])` by repeatedly extracting digits.
+3. If `digitSum(nums[i]) == i`, return `i`.
+4. If no index matches, return `-1`.
 
 **Pseudocode:**
 ```text
@@ -60,23 +61,29 @@ FUNCTION digitSum(x):
 
 FUNCTION smallestIndex(nums):
     FOR i ← 0 TO LENGTH(nums)-1:
-        IF digitSum(i) = nums[i]:
+        IF digitSum(nums[i]) = i:
             RETURN i
-    RETURN -1  // should never happen per problem guarantee
+    RETURN -1  // no index satisfies the condition
 ```
 
 ## Walkthrough
-For `nums = [0,1,2,3,4]`:
-- `i=0`: `digitSum(0)=0` matches `nums[0]` → return `0`.
+Example 2: `nums = [1,10,11]`
+
+| i | nums[i] | digitSum(nums[i]) | equals i? |
+|---|---------|-------------------|-----------|
+| 0 | 1 | 1 | no |
+| 1 | 10 | 1 + 0 = 1 | yes → return 1 |
+
+Output `1` (expected). In Example 3 (`[1,2,3]`) the digit sums 1, 2, 3 never equal indices 0, 1, 2, so the result is `-1`.
 
 ## Complexity Analysis
-- **Time:** O(n · log i) → effectively O(n) because digit sum is at most 9 × number of digits.
+- **Time:** O(n · log M) where M = max(nums[i]) ≤ 1000 → effectively O(n), since each number has at most 4 digits.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the array were infinite (conceptually) and you needed the smallest index up to a large bound?
-2. Can the problem be solved faster using pre‑computed digit sums for consecutive numbers?
+2. Can the problem be solved faster using pre-computed digit sums for consecutive numbers?
 3. What changes are needed if the digit sum condition is replaced by the product of digits?
 
 ## Key Takeaway
-A straightforward linear scan combined with a simple digit‑sum helper efficiently finds the required index.
+A straightforward linear scan combined with a simple digit-sum helper efficiently finds the required index.

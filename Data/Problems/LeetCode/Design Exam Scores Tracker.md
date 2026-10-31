@@ -92,19 +92,19 @@ Example 1:
 
 ## Complexity Analysis
 
-- **Time Complexity:** `addScore` O(log n) for insertion into SortedList; `getMedian` O(1); `getMean` O(1).
+- **Time Complexity:** `addScore` O(log n) for insertion into SortedList; `getMedian` O(1); `getMean` O(1).
 - **Space Complexity:** O(n) to store all scores.
 
 ---
 
 ## Follow-Up Questions
 
-- How would you support retrieving the top k scores efficiently?
+- How would you support retrieving the top k scores efficiently?
 - How can you handle deletions of scores while maintaining median and mean?
-- What if scores are streamed in real‑time and you need constant‑time median?
+- What if scores are streamed in real-time and you need constant-time median?
 
 ---
 
 ## Key Takeaway
 
-> **SortedList for O(log n) insertion and O(1) median access by index. Running sum for O(1) mean. Combine data structures for multi‑query designs.**
+> **SortedList for O(log n) insertion and O(1) median access by index. Running sum for O(1) mean. Combine data structures for multi-query designs.**

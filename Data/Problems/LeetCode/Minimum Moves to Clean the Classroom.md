@@ -67,9 +67,9 @@ Explanation: No valid path collects all 'L'.
 
 ## Approach
 
-**Algorithm:** Breadth‑First Search with Bitmask State
+**Algorithm:** Breadth-First Search with Bitmask State
 
-We treat each litter piece as a bit in a mask. The BFS state is `(row, col, mask)` where `mask` records which pieces have been collected. Starting from the initial position with mask = 0, we explore neighboring cells, updating the mask when stepping onto a litter cell. The first time we reach a state where `mask` equals `allCollected` we have the minimum moves.
+We treat each litter piece as a bit in a mask. The BFS state is `(row, col, mask)` where `mask` records which pieces have been collected. Starting from the initial position with mask = 0, we explore neighboring cells, updating the mask when stepping onto a litter cell. The first time we reach a state where `mask` equals `allCollected` we have the minimum moves.
 
 ```text
 FUNCTION minMoves(classroom):
@@ -102,12 +102,12 @@ FUNCTION minMoves(classroom):
 
 ## Complexity Analysis
 
-- **Time:** O(R · C · 2^L) – each cell combined with each possible mask may be visited.
-- **Space:** O(R · C · 2^L) – for the visited set and BFS queue.
+- **Time:** O(R · C · 2^L) – each cell combined with each possible mask may be visited.
+- **Space:** O(R · C · 2^L) – for the visited set and BFS queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would the solution change if the number of litter pieces were large (e.g., > 15)?
+1. How would the solution change if the number of litter pieces were large (e.g., > 15)?
 2. Can you adapt the algorithm for weighted moves where each step has a different cost?
 3. What if the robot could teleport to any empty cell?
 

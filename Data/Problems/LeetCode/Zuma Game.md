@@ -114,9 +114,9 @@ For the solvable example, the BFS explores inserting `R` at position 2, triggers
 - **Time:** In the worst case the search space is exponential; each insertion creates a new state, but pruning drastically reduces it.
 - **Space:** Stores visited states, also exponential in the worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can memoization with dynamic programming improve the search?
-2. Can you design a heuristic to prioritize promising insertions and achieve an A*‑like search?
+2. Can you design a heuristic to prioritize promising insertions and achieve an A*-like search?
 3. How would the solution change if the board were circular?
 
 ## Key Takeaway

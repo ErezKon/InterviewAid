@@ -105,4 +105,4 @@ FUNCTION deleteTreeNodes(nodes, parent, value):
 
 ## Key Takeaway
 
-> **Post-order aggregation:** compute subtree sums bottom‑up; if a subtree sum is zero, its node count becomes zero, effectively deleting it while propagating correct sums upward.
+> **Post-order aggregation:** compute subtree sums bottom-up; if a subtree sum is zero, its node count becomes zero, effectively deleting it while propagating correct sums upward.

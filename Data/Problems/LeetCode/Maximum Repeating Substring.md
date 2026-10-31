@@ -63,7 +63,7 @@ Consider `sequence = "ababc"` and `word = "ab"`.
 The loop stops at `k = 2`, which is returned.
 
 ## Complexity Analysis
-- **Time:** Each substring check scans `sequence`, leading to `O(n * k)` where `n` is `len(sequence)` and `k` is the final answer (worst‑case `O(n * m)` with `m = len(word)`).
+- **Time:** Each substring check scans `sequence`, leading to `O(n * k)` where `n` is `len(sequence)` and `k` is the final answer (worst-case `O(n * m)` with `m = len(word)`).
 - **Space:** `O(1)` extra space.
 
 ## Follow-Up Questions

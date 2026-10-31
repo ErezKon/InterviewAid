@@ -63,10 +63,10 @@ FUNCTION totalMoney(n):
 - **Time:** O(1) – only a few arithmetic operations.
 - **Space:** O(1) – constant extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the deposit amount for each individual day?
 2. Can the formula be extended to handle a different weekly increment pattern?
 3. What if the bank started with an arbitrary initial amount `x` instead of 1?
 
 ## Key Takeaway
-A closed‑form arithmetic series derived from weekly patterns yields a constant‑time solution for cumulative deposits.
+A closed-form arithmetic series derived from weekly patterns yields a constant-time solution for cumulative deposits.

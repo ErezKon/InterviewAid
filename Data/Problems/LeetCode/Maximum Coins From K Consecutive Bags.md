@@ -61,7 +61,7 @@ Explanation: Selecting bags at positions [1, 2] gives the maximum number of coin
 
 ## Key Insight
 
-> The optimal window of `k` consecutive bags either starts or ends at a boundary of some coin range. Enumerate all candidate starting positions (range boundaries) and compute the coins in each `k`‑length window using prefix sums over the ranges.
+> The optimal window of `k` consecutive bags either starts or ends at a boundary of some coin range. Enumerate all candidate starting positions (range boundaries) and compute the coins in each `k`-length window using prefix sums over the ranges.
 
 ---
 
@@ -97,21 +97,21 @@ FUNCTION maxCoins(ranges, k):
 
 ## Walkthrough
 
-Consider **Example 1** step‑by‑step:
+Consider **Example 1** step-by-step:
 1. Sort ranges → `[[1,3,4], [2,5,2], [6,8,5]]`.
 2. Sweep line builds cumulative coins per bag:
-   - Bag 1‑3: +4 each → 4
-   - Bag 2‑5: +2 each → bags 2‑3 become 6, bags 4‑5 become 2
-   - Bag 6‑8: +5 each → 5
+   - Bag 1-3: +4 each → 4
+   - Bag 2-5: +2 each → bags 2-3 become 6, bags 4-5 become 2
+   - Bag 6-8: +5 each → 5
    Resulting coin per bag: `[4,6,6,2,2,5,5,5]`.
 3. Enumerate window starts at bag 1,2,3,4,5,6:
-   - Start 1 → bags 1‑3 sum = 4+6+6 = 16 (exceeds k=3? actually k=3, sum=16) → best so far.
-   - Start 2 → bags 2‑4 sum = 6+6+2 = 14.
+   - Start 1 → bags 1-3 sum = 4+6+6 = 16 (exceeds k=3? actually k=3, sum=16) → best so far.
+   - Start 2 → bags 2-4 sum = 6+6+2 = 14.
    - Start 3 → 6+2+2 = 10.
    - Start 4 → 2+2+5 = 9.
    - Start 5 → 2+5+5 = 12.
    - Start 6 → 5+5+5 = 15.
-   Max = 16 (window 1‑3). Adjust example output accordingly.
+   Max = 16 (window 1-3). Adjust example output accordingly.
 
 ---
 
@@ -125,11 +125,11 @@ Consider **Example 1** step‑by‑step:
 
 ## Follow-Up Questions
 - How would the algorithm change if the window size `k` is variable per query?
-- Can you solve the problem in O(n) time if the ranges are already non‑overlapping and sorted?
-- What if each bag can contain a different number of coins (non‑uniform within a range)?
+- Can you solve the problem in O(n) time if the ranges are already non-overlapping and sorted?
+- What if each bag can contain a different number of coins (non-uniform within a range)?
 
 ---
 
 ## Key Takeaway
 
-> **For "k consecutive" range problems, the optimal window aligns with a range boundary.** Enumerate boundary‑aligned windows and compute each efficiently using a sweep line and prefix sums.
+> **For "k consecutive" range problems, the optimal window aligns with a range boundary.** Enumerate boundary-aligned windows and compute each efficiently using a sweep line and prefix sums.

@@ -6,7 +6,7 @@
 
 > *Note: companion pattern file (not an official LeetCode problem) — see [String to Integer (atoi).md](String%20to%20Integer%20%28atoi%29.md) for the official statement and constraints of #8.*
 
-Implement a function that converts a string representing a signed integer into the corresponding 32‑bit signed integer value, following the same rules as the C/C++ `atoi` function. The function must handle leading whitespace, an optional sign, overflow/underflow, and stop parsing at the first non‑digit character.
+Implement a function that converts a string representing a signed integer into the corresponding 32-bit signed integer value, following the same rules as the C/C++ `atoi` function. The function must handle leading whitespace, an optional sign, overflow/underflow, and stop parsing at the first non-digit character.
 
 ## Examples
 - **Input:** `"   -42"` **Output:** `-42`
@@ -15,7 +15,7 @@ Implement a function that converts a string representing a signed integer into t
 
 ## Approach
 **Algorithm:** Linear scan with state handling (skip spaces, detect sign, accumulate digits, overflow check).
-- **Insight:** Process characters sequentially; maintain the current numeric value and stop as soon as a non‑digit is encountered.
+- **Insight:** Process characters sequentially; maintain the current numeric value and stop as soon as a non-digit is encountered.
 
 ### Pseudocode
 ```text
@@ -53,10 +53,10 @@ For `s = "   -42"`:
 - **Time:** O(n) where n is the length of the input string.
 - **Space:** O(1) auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the parser to handle hexadecimal or binary literals?
 - Can you modify the algorithm to return the index of the first invalid character?
-- What changes are needed to support arbitrary‑precision integers?
+- What changes are needed to support arbitrary-precision integers?
 
 ## Key Takeaway
-A single pass with careful overflow checks converts a string to an integer while respecting all edge‑case rules of `atoi`.
+A single pass with careful overflow checks converts a string to an integer while respecting all edge-case rules of `atoi`.

@@ -45,8 +45,8 @@ Example 2:
 ```
 
 ## Approach
-1. Single left‑to‑right pass: when `nums[i] == nums[i+1]`, set `nums[i] ← nums[i] * 2` and `nums[i+1] ← 0` and skip the next index.
-2. After the pass, collect all non‑zero values preserving order, then append the appropriate number of zeros.
+1. Single left-to-right pass: when `nums[i] == nums[i+1]`, set `nums[i] ← nums[i] * 2` and `nums[i+1] ← 0` and skip the next index.
+2. After the pass, collect all non-zero values preserving order, then append the appropriate number of zeros.
 
 ```text
 FUNCTION applyOperations(nums):
@@ -58,7 +58,7 @@ FUNCTION applyOperations(nums):
             i ← i + 2   // skip the zero we just created
         ELSE:
             i ← i + 1
-    // compact non‑zeros
+    // compact non-zeros
     result ← []
     FOR val IN nums:
         IF val != 0:
@@ -75,12 +75,12 @@ Compaction yields `[4,2]` and two zeros appended → `[4,2,0,0]`.
 
 ## Complexity Analysis
 *Time*: O(n) – one pass plus one compact pass.
-*Space*: O(n) for the result array (in‑place can be O(1)).
+*Space*: O(n) for the result array (in-place can be O(1)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to perform the operation repeatedly until no adjacent equal pairs remain?
 2. Can you achieve the same result using only O(1) extra space?
 3. What changes are needed if the operation should be applied from right to left instead?
 
 ## Key Takeaway
-A single linear scan with in‑place updates, followed by a compacting step, solves the problem efficiently.
+A single linear scan with in-place updates, followed by a compacting step, solves the problem efficiently.

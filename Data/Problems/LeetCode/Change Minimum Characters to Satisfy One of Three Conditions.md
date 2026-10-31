@@ -84,10 +84,10 @@ Consider `a = "aba"`, `b = "caa"`.
    - `freqB` for 'a':2, 'c':1, others:0.
 2. Iterate split points:
    - At split `'b'` (c=1): `prefA=2` (a's ≤ 'b'), `prefB=2` (b's ≤ 'b').
-   - Condition 1 cost = (3‑2) + 2 = 3.
-   - Condition 2 cost = 2 + (3‑2) = 3.
+   - Condition 1 cost = (3-2) + 2 = 3.
+   - Condition 2 cost = 2 + (3-2) = 3.
 3. Uniform cost for each letter:
-   - For `'a'`: changes = (3‑2) + (3‑2) = 2 → best.
+   - For `'a'`: changes = (3-2) + (3-2) = 2 → best.
 4. Return 2.
 
 ---

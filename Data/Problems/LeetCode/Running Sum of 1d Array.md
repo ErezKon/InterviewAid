@@ -30,7 +30,7 @@ FUNCTION runningSum(nums):
 
 | Time | Space |
 |------|-------|
-| O(n) | O(1) — in‑place prefix sum |
+| O(n) | O(1) — in-place prefix sum |
 
 ---
 
@@ -80,13 +80,13 @@ Resulting array `[1,3,6,10]`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you compute the running sum without modifying the input array?
-2. Can you extend this to a 2‑D matrix to compute prefix sums for sub‑matrix queries?
+2. Can you extend this to a 2-D matrix to compute prefix sums for sub-matrix queries?
 
 ---
 
 ## Key Takeaway
 
-Running sum is a simple prefix‑sum technique: each element accumulates the sum of all previous elements, enabling O(n) time and O(1) extra space.
+Running sum is a simple prefix-sum technique: each element accumulates the sum of all previous elements, enabling O(n) time and O(1) extra space.

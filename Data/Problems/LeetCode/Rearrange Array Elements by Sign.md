@@ -72,7 +72,7 @@ For `nums = [3,1,-2,-5,2,-4]`:
 - **Space:** O(n) – extra arrays for positives, negatives, and result.
 
 ## Follow-Up Questions
-1. How would you solve the problem in‑place with O(1) extra space?
+1. How would you solve the problem in-place with O(1) extra space?
 2. What if the counts of positive and negative numbers are not equal?
 3. Can you preserve the original relative order of positives and negatives?
 

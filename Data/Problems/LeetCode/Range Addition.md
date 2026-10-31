@@ -74,10 +74,10 @@ END FUNCTION
 - Time: O(length + k) where k is number of updates.
 - Space: O(length) for the difference array.
 
-## Follow‑Up Questions
-1. How would you support range queries (sum of a sub‑array) in addition to updates?
-2. Can the technique be extended to two‑dimensional matrices?
+## Follow-Up Questions
+1. How would you support range queries (sum of a sub-array) in addition to updates?
+2. Can the technique be extended to two-dimensional matrices?
 3. What if updates can be both increments and decrements with large values?
 
 ## Key Takeaway
-A difference array converts range‑update problems into point‑update operations, enabling O(1) updates and O(n) final reconstruction via a prefix sum.
+A difference array converts range-update problems into point-update operations, enabling O(1) updates and O(n) final reconstruction via a prefix sum.

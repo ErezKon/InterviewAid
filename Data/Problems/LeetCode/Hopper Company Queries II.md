@@ -177,7 +177,7 @@ ORDER BY m.month;
 
 ## 4. Walkthrough
 
-1. **Generate months** 1‑12 via recursive CTE.
+1. **Generate months** 1-12 via recursive CTE.
 2. **Active drivers**: cumulative count similar to Query I.
 3. **Working drivers**: count distinct drivers with at least one accepted ride per month.
 4. **Compute percentage**: use `CASE` to avoid division by zero, round to two decimals.
@@ -196,4 +196,4 @@ ORDER BY m.month;
 
 ## 7. Key Takeaway
 
-> Build on Query I by adding a distinct count of drivers with accepted rides and compute the ratio, handling zero‑active‑driver months gracefully.
+> Build on Query I by adding a distinct count of drivers with accepted rides and compute the ratio, handling zero-active-driver months gracefully.

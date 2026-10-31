@@ -133,4 +133,4 @@ Example 1:
 
 ## Key Takeaway
 
-> **Two‑stack cursor model: left stack holds text before the cursor, right stack (reversed) holds text after. Cursor moves are simple push/pop transfers, giving clean `O(k)` operations.**
+> **Two-stack cursor model: left stack holds text before the cursor, right stack (reversed) holds text after. Cursor moves are simple push/pop transfers, giving clean `O(k)` operations.**

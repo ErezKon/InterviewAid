@@ -73,7 +73,7 @@ The function returns `[2, 0, 0]` for the first example.
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return the exact second when both sticks run out simultaneously?
-- Can you compute the result without simulation using a closed‑form formula?
+- Can you compute the result without simulation using a closed-form formula?
 - What if allocation amounts follow a different arithmetic progression?
 
 ## Key Takeaway

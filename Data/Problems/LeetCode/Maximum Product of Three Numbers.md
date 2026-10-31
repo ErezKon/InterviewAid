@@ -89,4 +89,4 @@ Example 3:
 ---
 
 ## Key Takeaway
-> **Two candidates** — three largest OR two most‑negative × largest. Always check both.
+> **Two candidates** — three largest OR two most-negative × largest. Always check both.

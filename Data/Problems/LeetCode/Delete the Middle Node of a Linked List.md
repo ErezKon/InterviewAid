@@ -53,7 +53,7 @@ Example 3:
 
 ## Approach
 
-Use the classic slow‑/fast‑pointer technique. Advance `fast` two steps and `slow` one step. When `fast` reaches the end, `slow` points to the node **before** the middle node, allowing deletion in O(1) time.
+Use the classic slow-/fast-pointer technique. Advance `fast` two steps and `slow` one step. When `fast` reaches the end, `slow` points to the node **before** the middle node, allowing deletion in O(1) time.
 
 ```text
 FUNCTION deleteMiddle(head):
@@ -95,8 +95,8 @@ Resulting list: `1→2→4→5`.
 
 ## Follow-Up Questions
 
-1. How would you delete the **k**‑th node from the end of the list in one pass?
-2. Can you perform the deletion without using a dummy node while handling the single‑node edge case?
+1. How would you delete the **k**-th node from the end of the list in one pass?
+2. Can you perform the deletion without using a dummy node while handling the single-node edge case?
 3. How would the solution change for a doubly linked list?
 
 ---

@@ -48,12 +48,12 @@ Given a **0-indexed** integer array `favorite`, where `favorite[i]` denotes the 
 ```text
 FUNCTION maximumInvitations(favorite):
     SET n ← LENGTH(favorite)
-    // Step 1: Compute in‑degrees
+    // Step 1: Compute in-degrees
     SET inDegree ← ARRAY of zeros size n
     FOR i ← 0 TO n-1:
         SET inDegree[favorite[i]] ← inDegree[favorite[i]] + 1
 
-    // Step 2: Topological removal of non‑cycle nodes
+    // Step 2: Topological removal of non-cycle nodes
     SET queue ← EMPTY QUEUE
     FOR i ← 0 TO n-1:
         IF inDegree[i] == 0:
@@ -82,7 +82,7 @@ FUNCTION maximumInvitations(favorite):
                 SET cycleLen ← cycleLen + 1
             UNTIL cur == i
             IF cycleLen == 2:
-                // two‑cycle nodes a and b
+                // two-cycle nodes a and b
                 SET a ← i
                 SET b ← favorite[i]
                 SET sumTwoCycles ← sumTwoCycles + depth[a] + depth[b]
@@ -132,19 +132,19 @@ The maximum number of employees that can be invited to the meeting is 4.
 
 ## Walkthrough
 
-Consider `favorite = [2,2,1,2]` (0‑based indices).
-| Index | Favorite | In‑Degree (initial) |
+Consider `favorite = [2,2,1,2]` (0-based indices).
+| Index | Favorite | In-Degree (initial) |
 |-------|----------|---------------------|
 | 0     | 2        | 0                   |
 | 1     | 2        | 2                   |
 | 2     | 1        | 2                   |
 | 3     | 2        | 0                   |
 
-1. Queue starts with nodes 0 and 3 (in‑degree 0).
-2. Remove 0 → update depth of 2 to 2, decrement in‑degree of 2 to 1.
-3. Remove 3 → update depth of 2 to 2 (unchanged), decrement in‑degree of 2 to 0, enqueue 2.
-4. Remove 2 → update depth of 1 to 3, decrement in‑degree of 1 to 1.
-5. Remaining node 1 has in‑degree 1 → part of a 2‑cycle with node 2.
+1. Queue starts with nodes 0 and 3 (in-degree 0).
+2. Remove 0 → update depth of 2 to 2, decrement in-degree of 2 to 1.
+3. Remove 3 → update depth of 2 to 2 (unchanged), decrement in-degree of 2 to 0, enqueue 2.
+4. Remove 2 → update depth of 1 to 3, decrement in-degree of 1 to 1.
+5. Remaining node 1 has in-degree 1 → part of a 2-cycle with node 2.
 6. Cycle length = 2, chain depths: depth[1]=3, depth[2]=2 → contribution = 5.
 7. No larger cycle, so answer = 5 (but limited by total employees = 4, so actual max = 4). Adjusted example shows answer 3 as per problem statement.
 
@@ -153,7 +153,7 @@ Consider `favorite = [2,2,1,2]` (0‑based indices).
 ## Follow-Up Questions
 - How would the solution change if each employee could have up to two favorites?
 - Can you adapt the algorithm to also return the actual seating order?
-- What is the complexity if the graph is given as an adjacency list of arbitrary out‑degree?
+- What is the complexity if the graph is given as an adjacency list of arbitrary out-degree?
 
 ---
 
@@ -167,4 +167,4 @@ Consider `favorite = [2,2,1,2]` (0‑based indices).
 
 ## Key Takeaway
 
-> **Functional graph problems split into two cases: large cycles (take the biggest) and mutual pairs (sum all with their chains).** Topological sort peels off non‑cycle nodes and measures chain depths.
+> **Functional graph problems split into two cases: large cycles (take the biggest) and mutual pairs (sum all with their chains).** Topological sort peels off non-cycle nodes and measures chain depths.

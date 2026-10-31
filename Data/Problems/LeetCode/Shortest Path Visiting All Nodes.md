@@ -92,4 +92,4 @@ Consider `graph = [[1,2,3],[0],[0],[0]]` (4 nodes, node 0 connected to all other
 
 ## Key Takeaway
 
-Representing visited nodes as a bitmask and performing BFS over (node, mask) states yields the shortest path that covers all nodes in exponential‑time but optimal for the problem constraints.
+Representing visited nodes as a bitmask and performing BFS over (node, mask) states yields the shortest path that covers all nodes in exponential-time but optimal for the problem constraints.

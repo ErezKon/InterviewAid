@@ -40,10 +40,10 @@ Output: [11,8,5,4,3,4]
 ```
 
 ## Approach
-The total moves for a target box can be computed by summing distances from every ball. A two‑pass linear scan (left‑to‑right then right‑to‑left) accumulates the contribution of balls seen so far.
+The total moves for a target box can be computed by summing distances from every ball. A two-pass linear scan (left-to-right then right-to-left) accumulates the contribution of balls seen so far.
 
-1. **Left‑to‑right pass** – keep `balls` (number of balls left of current index) and `ops` (total distance contributed by those balls). For each index `i`, add `ops` to `answer[i]`, then update `balls` and `ops` with the current box.
-2. **Right‑to‑left pass** – repeat the same logic from the right side, adding the right‑side contributions to `answer[i]`.
+1. **Left-to-right pass** – keep `balls` (number of balls left of current index) and `ops` (total distance contributed by those balls). For each index `i`, add `ops` to `answer[i]`, then update `balls` and `ops` with the current box.
+2. **Right-to-left pass** – repeat the same logic from the right side, adding the right-side contributions to `answer[i]`.
 3. The final `answer` contains the minimum operations for each box.
 
 ## Walkthrough
@@ -59,10 +59,10 @@ The total moves for a target box can be computed by summing distances from every
 - **Time:** O(n) – two linear passes.
 - **Space:** O(n) for the answer array (output), O(1) extra.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm if moving a ball over distance `d` cost `d²` operations?
 2. Can the solution be extended to handle weighted balls where each ball has a different move cost?
 3. What changes are needed if the boxes are arranged in a circle (the first and last boxes are adjacent)?
 
 ## Key Takeaway
-A two‑pass prefix‑sum scan efficiently aggregates left‑ and right‑side distances, yielding the minimum moves for every target box in linear time.
+A two-pass prefix-sum scan efficiently aggregates left- and right-side distances, yielding the minimum moves for every target box in linear time.

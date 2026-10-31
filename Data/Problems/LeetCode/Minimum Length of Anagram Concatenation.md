@@ -76,7 +76,7 @@ Example: `s = "abcabc"`
 - **Time**: O(n · d(n)) where `d(n)` is the number of divisors of `n` (at most ~O(√n)).
 - **Space**: O(26) for character frequency counters (constant).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you adapt the solution if the string could contain Unicode characters beyond lowercase English letters?
 2. Can you solve the problem in O(n) time without enumerating all divisors?

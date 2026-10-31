@@ -47,7 +47,7 @@ Example 2:
 ```
 
 ## Approach
-**Dynamic Programming (DP) – Bottom‑Up**
+**Dynamic Programming (DP) – Bottom-Up**
 For each position `t` from `1` to `target` compute the minimal instructions `dp[t]`. Let `k` be the smallest integer such that `2^k - 1 >= t`. Two cases:
 1. **Exact overshoot:** If `2^k - 1 == t`, then `dp[t] = k`.
 2. **Overshoot then reverse:** Reach `2^k - 1` (k moves), reverse, and move back the excess.
@@ -83,7 +83,7 @@ Thus the optimal sequence is `A A R A A`.
 Time: O(target * log target) due to the inner loop over `j` (at most `log target`).
 Space: O(target) for the DP array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for a target that could be negative?
 2. Can the problem be solved with BFS in comparable time?
 3. What if the car could also decelerate (speed halved) as an operation?

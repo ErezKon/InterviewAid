@@ -99,11 +99,11 @@ END FUNCTION
 ## Walkthrough
 | Step | Action | Details |
 |------|--------|---------|
-|1|Build graph with weights `cnt+1`|Edge (0,1,10) weight 11, etc.
+|1|Build graph with weights `cnt+1`|Edge (0,1,10) weight 11, etc.
 |2|Run Dijkstra from 0|Distances: `dist[0]=0`, `dist[1]=11`, `dist[2]=2`, `dist[3]=13`.
-|3|Original nodes reachable (`dist ≤ 6`)|Nodes 0 and 2 → count 2.
-|4|Edge (0,1,10): fromU = 6‑0 = 6, fromV = 6‑11 = 0 → reachableOnEdge = min(10,6) = 6.
-|5|Edge (0,2,1): fromU = 6, fromV = 6‑2 = 4 → reachableOnEdge = min(1,10) = 1.
+|3|Original nodes reachable (`dist ≤ 6`)|Nodes 0 and 2 → count 2.
+|4|Edge (0,1,10): fromU = 6-0 = 6, fromV = 6-11 = 0 → reachableOnEdge = min(10,6) = 6.
+|5|Edge (0,2,1): fromU = 6, fromV = 6-2 = 4 → reachableOnEdge = min(1,10) = 1.
 |6|Edge (1,3,2): both ends exceed maxMoves → reachableOnEdge = 0.
 |7|Total reachable = 2 + 6 + 1 = 9 (example numbers illustrate process).
 
@@ -111,7 +111,7 @@ END FUNCTION
 - Time: O((n + m) log n) where `m` is number of edges, due to Dijkstra.
 - Space: O(n + m) for adjacency list, distance array, and priority queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for weighted edges where each intermediate node has its own cost?
 2. Can you solve the problem using BFS when all edge weights are equal?
 3. What changes are needed to handle dynamic updates to `maxMoves` without recomputing Dijkstra?

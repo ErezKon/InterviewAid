@@ -61,7 +61,7 @@ var createHelloWorld = function() {
 
 ## Complexity Analysis
 
-- **Time Complexity:** O(1) – the function creation and each call are constant‑time operations.
+- **Time Complexity:** O(1) – the function creation and each call are constant-time operations.
 - **Space Complexity:** O(1) – only a constant amount of extra space is used for the closure.
 
 ---

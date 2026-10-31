@@ -111,10 +111,10 @@ Total count = 4.
 
 1. How would you adapt the solution if `d` could be up to 10⁹? (Consider using a hashmap with only observed remainders.)
 2. Can you extend the approach to count quadruplets whose sum is divisible by `d`?
-3. What if the array is sorted—can a two‑pointer technique be applied?
+3. What if the array is sorted—can a two-pointer technique be applied?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Reduce a triplet condition to a pair‑sum remainder lookup.** By fixing the third element and storing remainders of all previous pairs, the problem becomes a simple complement search.
+> **Reduce a triplet condition to a pair-sum remainder lookup.** By fixing the third element and storing remainders of all previous pairs, the problem becomes a simple complement search.

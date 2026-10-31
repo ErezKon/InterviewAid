@@ -117,7 +117,7 @@ SELECT ROUND(
 
 ## 4. Walkthrough
 
-1. **Count distinct requests** – `SELECT COUNT(DISTINCT sender_id, send_to_id) FROM FriendRequest` gives total unique friend‑request pairs.
+1. **Count distinct requests** – `SELECT COUNT(DISTINCT sender_id, send_to_id) FROM FriendRequest` gives total unique friend-request pairs.
 2. **Count distinct acceptances** – `SELECT COUNT(DISTINCT requester_id, accepter_id) FROM RequestAccepted` counts unique accepted pairs.
 3. **Compute rate** – Divide acceptances by requests; `IFNULL` handles the case of zero requests.
 4. **Round** – `ROUND(..., 2)` formats the result to two decimal places.
@@ -128,8 +128,8 @@ SELECT ROUND(
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(1) – single‑pass aggregations performed by the DB engine |
-| **Space** | O(1) – only constant‑size aggregates stored |
+| **Time** | O(1) – single-pass aggregations performed by the DB engine |
+| **Space** | O(1) – only constant-size aggregates stored |
 
 ---
 

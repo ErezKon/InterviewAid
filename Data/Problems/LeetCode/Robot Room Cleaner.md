@@ -72,7 +72,7 @@ Output: Robot cleaned all rooms.
 ```
 
 ## Approach
-Perform a depth‑first search (DFS) with backtracking, keeping a set of visited coordinates. The robot always tries the four directions relative to its current orientation, moving when possible, and backtracking by turning 180° and stepping back.
+Perform a depth-first search (DFS) with backtracking, keeping a set of visited coordinates. The robot always tries the four directions relative to its current orientation, moving when possible, and backtracking by turning 180° and stepping back.
 
 ```text
 FUNCTION CleanRoom(robot):
@@ -110,10 +110,10 @@ FUNCTION CleanRoom(robot):
 - Time: O(C) where C is the number of reachable cells (each cell visited once).
 - Space: O(C) for the visited set and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm for a robot that can only turn left?
 2. Can the solution be adapted to return the shortest path that visits all cells?
 3. What changes are needed if the robot has a limited battery capacity?
 
 ## Key Takeaway
-DFS with backtracking and a visited set lets an unknown‑room robot systematically explore and clean all reachable cells using only local operations.
+DFS with backtracking and a visited set lets an unknown-room robot systematically explore and clean all reachable cells using only local operations.

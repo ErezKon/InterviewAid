@@ -74,10 +74,10 @@ The third child gets 1 candy because it satisfies the above two conditions.
 
 Take `ratings = [1,0,2]`:
 1. Initialise `candies = [1,1,1]`.
-2. **Left‑to‑right**:
+2. **Left-to-right**:
    - i=1: rating 0 ≤ rating 1 → no change.
    - i=2: rating 2 > rating 0 → `candies[2] = candies[1] + 1 = 2` → `[1,1,2]`.
-3. **Right‑to‑left**:
+3. **Right-to-left**:
    - i=1: rating 0 < rating 2 → no change.
    - i=0: rating 1 > rating 0 → `candies[0] = MAX(1, candies[1] + 1) = 2` → `[2,1,2]`.
 4. Final candies `[2,1,2]` sum to `5` (minimum satisfying constraints).
@@ -93,12 +93,12 @@ Take `ratings = [1,0,2]`:
 
 ## Follow-Up Questions
 
-- How would the solution change if children could be given any non‑negative number of candies (allowing zero)?
-- Can you solve the problem in O(1) extra space by modifying the ratings array in‑place?
+- How would the solution change if children could be given any non-negative number of candies (allowing zero)?
+- Can you solve the problem in O(1) extra space by modifying the ratings array in-place?
 - What if the neighbor constraint applies only to the left neighbor?
 
 ---
 
 ## Key Takeaway
 
-> Two greedy passes—first left‑to‑right, then right‑to‑left—ensure each child satisfies the higher‑rating‑than‑neighbor rule with the minimum total candies.
+> Two greedy passes—first left-to-right, then right-to-left—ensure each child satisfies the higher-rating-than-neighbor rule with the minimum total candies.

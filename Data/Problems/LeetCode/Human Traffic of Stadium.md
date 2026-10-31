@@ -63,14 +63,14 @@ The rows with ids 2 and 3 are not included because we need at least three consec
 
 ## 3. Walkthrough
 
-1. Self‑join the table three times (s1, s2, s3).
-2. Ensure each join pair represents consecutive days by checking `id` differences (‑1, +1, etc.).
+1. Self-join the table three times (s1, s2, s3).
+2. Ensure each join pair represents consecutive days by checking `id` differences (-1, +1, etc.).
 3. Filter each alias to have `people >= 100`.
 4. Select distinct rows from the first alias to avoid duplicates.
 
 ## 4. Complexity Analysis
 
-- **Time:** The self‑join scans the table three times, yielding O(n) where n is the number of rows.
+- **Time:** The self-join scans the table three times, yielding O(n) where n is the number of rows.
 - **Space:** Only a few extra references for the joined tables, O(1) auxiliary space.
 
 ## 5. Approach: Self-Join on 3 Consecutive IDs ✅

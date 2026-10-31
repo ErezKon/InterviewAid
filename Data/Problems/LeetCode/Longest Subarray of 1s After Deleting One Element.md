@@ -73,12 +73,12 @@ Explanation: You must delete one element.
 Consider the first example `[1,1,0,1,1,1,0,1,1]`.
 
 1. Initialise `left=0, zeros=0, maxLen=0`.
-2. Expand `right` until the first zero at index 2 → `zeros=1`.
-3. Window `[0..2]` size 3, `maxLen = 2` (`right-left = 2`).
-4. Continue expanding; when second zero at index 6 appears, `zeros` becomes 2, trigger shrink:
-   - Move `left` past first zero (index 2) → `zeros=1`, `left=3`.
-5. Window now `[3..6]` size 4, `maxLen = max(2, 6-3)=3`.
-6. Continue to end; the largest `right-left` observed is 5, which is the answer.
+2. Expand `right` until the first zero at index 2 → `zeros=1`.
+3. Window `[0..2]` size 3, `maxLen = 2` (`right-left = 2`).
+4. Continue expanding; when second zero at index 6 appears, `zeros` becomes 2, trigger shrink:
+   - Move `left` past first zero (index 2) → `zeros=1`, `left=3`.
+5. Window now `[3..6]` size 4, `maxLen = max(2, 6-3)=3`.
+6. Continue to end; the largest `right-left` observed is 5, which is the answer.
 
 ---
 
@@ -89,11 +89,11 @@ Consider the first example `[1,1,0,1,1,1,0,1,1]`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would the solution change if you could delete **at most** `k` zeros?
 2. What if the array contained other values besides 0/1 and you needed the longest subarray of a given target value after one deletion?
-3. Can you adapt the sliding‑window to return the actual subarray indices instead of just the length?
+3. Can you adapt the sliding-window to return the actual subarray indices instead of just the length?
 
 ---
 

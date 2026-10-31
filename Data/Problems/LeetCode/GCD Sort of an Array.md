@@ -66,7 +66,7 @@ FUNCTION canSort(nums):
             RETURN false
     RETURN true
 ```
-The helper `primeFactors` returns distinct prime factors of a number. By union‑ing indices sharing a prime, we capture all possible swaps.
+The helper `primeFactors` returns distinct prime factors of a number. By union-ing indices sharing a prime, we capture all possible swaps.
 
 ## Walkthrough
 Consider `nums = [2,3,6,7,4,9]`:
@@ -78,10 +78,10 @@ Consider `nums = [2,3,6,7,4,9]`:
 - **Time:** `O(n * sqrt(max(nums)))` for factorization plus `O(n log n)` for sorting.
 - **Space:** `O(n)` for DSU and factor maps.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle very large numbers where factorization is expensive?
 2. Can the approach be adapted if the swap condition uses `gcd == 1` instead?
-3. What is the complexity if we pre‑compute smallest prime factors up to `max(nums)`?
+3. What is the complexity if we pre-compute smallest prime factors up to `max(nums)`?
 
 ## Key Takeaway
-By modeling GCD‑based swapability as connectivity via shared prime factors, the problem reduces to checking component consistency between the original and sorted arrays.
+By modeling GCD-based swapability as connectivity via shared prime factors, the problem reduces to checking component consistency between the original and sorted arrays.

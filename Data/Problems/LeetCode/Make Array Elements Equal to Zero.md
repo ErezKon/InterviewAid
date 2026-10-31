@@ -87,9 +87,9 @@ Consider `[0,1,0,2]`:
 
 | Index | Value | leftSum before | rightSum after | Condition | Count increment |
 |-------|-------|----------------|----------------|-----------|-----------------|
-| 0 | 0 | 0 | 3 (1+0+2) | left = 0, right = 3 → diff = 3 → none |
+| 0 | 0 | 0 | 3 (1+0+2) | left = 0, right = 3 → diff = 3 → none |
 | 1 | 1 | 0 | 2 (0+2) | not zero → skip |
-| 2 | 0 | 1 | 2 (2) | left = 1, right = 2 → diff = 1 → +1 |
+| 2 | 0 | 1 | 2 (2) | left = 1, right = 2 → diff = 1 → +1 |
 | 3 | 2 | 1 | 0 | not zero → skip |
 
 Total count = 1.

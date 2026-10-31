@@ -54,7 +54,7 @@ Output: 3
 
 ## Approach
 
-Use a depth‑first search that carries the minimum and maximum values seen on the path from the root to the current node. At each node, update these extremes and compute the potential difference. The global maximum across all nodes is the answer.
+Use a depth-first search that carries the minimum and maximum values seen on the path from the root to the current node. At each node, update these extremes and compute the potential difference. The global maximum across all nodes is the answer.
 
 ```text
 FUNCTION maxAncestorDiff(root):
@@ -77,11 +77,11 @@ Consider the tree `[[8,3,10],[1,6,null],[4,7,14]]`.
 |------|------|--------|--------|---------|
 | 1 | 8 (root) | 8 | 8 | 0 |
 | 2 | 3 (left) | 3 | 8 | 5 |
-| 3 | 1 (left‑left) | 1 | 8 | 7 |
-| 4 | 6 (left‑right) | 3 | 8 | 5 |
+| 3 | 1 (left-left) | 1 | 8 | 7 |
+| 4 | 6 (left-right) | 3 | 8 | 5 |
 | 5 | 7 (right of 6) | 3 | 8 | 5 |
 | 6 | 10 (right) | 8 | 10 | 2 |
-| 7 | 14 (right‑right) | 8 | 14 | 6 |
+| 7 | 14 (right-right) | 8 | 14 | 6 |
 
 The largest difference observed is `7` (between 8 and 1).
 

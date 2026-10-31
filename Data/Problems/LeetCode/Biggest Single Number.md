@@ -73,7 +73,7 @@ Example 2:
 ```
 
 ## Approach
-Count occurrences of each number, then scan the keys to find the maximum value with count = 1.
+Count occurrences of each number, then scan the keys to find the maximum value with count = 1.
 
 ```text
 FUNCTION BiggestSingle(nums):
@@ -94,7 +94,7 @@ FUNCTION BiggestSingle(nums):
 | [4,5]          | {4:1,5:1}                |
 | [4,5,7]        | {4:1,5:1,7:1}            |
 | ...            | ... (final) {4:2,5:2,7:1,8:1} |
-After counting, the single‑occurrence numbers are 7 and 8; the maximum is 8.
+After counting, the single-occurrence numbers are 7 and 8; the maximum is 8.
 
 ## Complexity Analysis
 - **Time:** O(n) – one pass to count and one pass over the map.
@@ -102,8 +102,8 @@ After counting, the single‑occurrence numbers are 7 and 8; the maximum is 8.
 
 ## Follow-Up Questions
 1. How would you solve the problem if the array is sorted?
-2. Can you achieve O(1) extra space when the input range is limited (e.g., numbers 0‑100)?
+2. Can you achieve O(1) extra space when the input range is limited (e.g., numbers 0-100)?
 3. How to extend the solution to return the *k* largest single numbers?
 
 ## Key Takeaway
-Counting frequencies and then selecting the maximum among unique elements yields a simple linear‑time solution.
+Counting frequencies and then selecting the maximum among unique elements yields a simple linear-time solution.

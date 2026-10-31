@@ -92,4 +92,4 @@ Maximum width satisfying condition is 3.
 3. What if the threshold can be negative? How does that affect the comparison?
 
 ## Key Takeaway
-A monotonic stack efficiently gives the maximal span where each element is the minimum, enabling a linear‑time check against the threshold condition.
+A monotonic stack efficiently gives the maximal span where each element is the minimum, enabling a linear-time check against the threshold condition.

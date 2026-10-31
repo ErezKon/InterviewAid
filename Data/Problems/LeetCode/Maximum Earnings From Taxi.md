@@ -109,14 +109,14 @@ Consider `n = 7` and rides `[[2,5,4],[1,5,1],[5,7,2]]`.
    - pos=5: dp[5]=MAX(dp[4]=0, dp[2]+7=7, dp[1]+6=6) → 7
    - pos=6: dp[6]=dp[5]=7
    - pos=7: dp[7]=MAX(dp[6]=7, dp[5]+(7-5+2)=7+4=11) → 11 (but ride profit is 4, so total 11)
-   Final dp[7]=11, but actual optimal earnings are 9 (taking rides `[2,5,4]` and `[5,7,2]`). Adjusting DP to ensure non‑overlap yields 9.
+   Final dp[7]=11, but actual optimal earnings are 9 (taking rides `[2,5,4]` and `[5,7,2]`). Adjusting DP to ensure non-overlap yields 9.
 
 ---
 
 ## Follow-Up Questions
 
 - How would you modify the algorithm if rides could share endpoints?
-- Can you solve the problem using a greedy interval‑scheduling approach?
+- Can you solve the problem using a greedy interval-scheduling approach?
 - What changes are needed if the road is circular rather than linear?
 
 ---

@@ -141,4 +141,4 @@ Task 3 was divided into 4 subtasks (1, 2, 3, 4). All of the subtasks were execut
 
 ## 7. Key Takeaway
 
-> Generate all possible `(task_id, subtask_id)` pairs using a recursive CTE, then anti‑join with the `Executed` table to find missing ones.
+> Generate all possible `(task_id, subtask_id)` pairs using a recursive CTE, then anti-join with the `Executed` table to find missing ones.

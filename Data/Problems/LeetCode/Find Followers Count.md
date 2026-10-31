@@ -91,7 +91,7 @@ ORDER BY user_id;
 
 - How would you handle duplicate follower entries?
 - How to extend the query to include users with zero followers?
-- How to compute the top‑k users with most followers?
+- How to compute the top-k users with most followers?
 
 ---
 

@@ -93,10 +93,10 @@ For `values=[1,2,3]`, `freq=[2,2,1]`:
 - **Time:** O(n log n) for sorting (if needed) plus O(log n) per median lookup.
 - **Space:** O(n) for the prefix array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where `values` are not distinct?
 2. Can you compute the median in O(n) without sorting by using a selection algorithm on the weighted frequencies?
-3. What changes are needed if the frequencies are extremely large and may overflow 32‑bit integers?
+3. What changes are needed if the frequencies are extremely large and may overflow 32-bit integers?
 
 ## Key Takeaway
 By converting frequencies to prefix sums, the median can be located via binary search without materializing the full multiset.

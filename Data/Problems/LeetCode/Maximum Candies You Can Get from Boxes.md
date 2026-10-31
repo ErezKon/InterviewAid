@@ -109,7 +109,7 @@ FUNCTION maxCandies(status, candies, keys, containedBoxes, initialBoxes):
 
 ## Walkthrough
 
-Consider **Example 1** step‑by‑step:
+Consider **Example 1** step-by-step:
 | Step | Queue | Opened Boxes | Keys Owned | Candies Collected |
 |------|-------|--------------|-----------|-------------------|
 | 0 | [0] | {} | {} | 0 |
@@ -141,4 +141,4 @@ All boxes processed, total candies = **111**.
 
 ## Key Takeaway
 
-> **Simulation with BFS: track what you have (boxes, keys) and process anything newly openable.** The key‑and‑lock mechanic just requires re‑enqueuing boxes when new keys arrive.
+> **Simulation with BFS: track what you have (boxes, keys) and process anything newly openable.** The key-and-lock mechanic just requires re-enqueuing boxes when new keys arrive.

@@ -54,7 +54,7 @@ FUNCTION removeLeafNodes(root, target):
 ## Walkthrough
 
 Consider the tree `[1,2,3,2,null,2,4]` with target `2`.
-1. Post‑order visits left subtree `2` → its left child `2` is a leaf and matches → removed.
+1. Post-order visits left subtree `2` → its left child `2` is a leaf and matches → removed.
 2. Right subtree `3` processes its left child `2` (leaf) → removed.
 3. After removals, node `2` becomes a leaf with value `2` → removed.
 4. Remaining nodes are `1,3,4` forming the output tree.

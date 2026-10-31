@@ -93,13 +93,13 @@ Consider ranks `[13,13,2,5,7]` and suits `["a","b","c","d","e"]`.
 
 | Time | Space |
 |------|-------|
-| O(5) → O(1) | O(1) (fixed‑size map) |
+| O(5) → O(1) | O(1) (fixed-size map) |
 
 ---
 
 ## Follow-Up Questions
 
-1. How would you extend this to a full 52‑card deck with variable hand sizes?
+1. How would you extend this to a full 52-card deck with variable hand sizes?
 2. Can you rank multiple hands against each other?
 3. What changes are needed for Texas Hold'em where community cards are shared?
 

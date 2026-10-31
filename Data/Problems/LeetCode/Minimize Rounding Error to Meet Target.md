@@ -63,7 +63,7 @@ Example 3:
 1. Compute the floor of each price and accumulate `floorSum`.
 2. Record the fractional part of each price (value - floor).
 3. The number of prices that must be rounded up is `need = target - floorSum`.
-4. If `need` is negative or exceeds the count of non‑integer prices, return `-1`.
+4. If `need` is negative or exceeds the count of non-integer prices, return `-1`.
 5. Sort the fractional parts in descending order; rounding up the largest fractions adds the smallest extra error.
 6. Sum the error: for the first `need` fractions add `(1 - frac)`, for the rest add `frac`.
 7. Return the total error formatted to three decimal places.
@@ -114,7 +114,7 @@ Consider `prices = ["0.300","0.600","0.900"]`, `target = 2`.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Greedy with sorting | **O(n log n)** | **O(n)** |
+| Greedy with sorting | **O(n log n)** | **O(n)** |
 
 ---
 
@@ -128,6 +128,6 @@ Consider `prices = ["0.300","0.600","0.900"]`, `target = 2`.
 
 ## Key Takeaway
 
-> **Greedy rounding** — round up the prices with the largest fractional parts first, because they add the smallest extra error. The required number of round‑ups is fixed by `target - floorSum`.
+> **Greedy rounding** — round up the prices with the largest fractional parts first, because they add the smallest extra error. The required number of round-ups is fixed by `target - floorSum`.
 
 ---

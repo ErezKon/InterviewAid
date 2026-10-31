@@ -47,7 +47,7 @@ Example 3:
 ```
 
 ## Approach
-1. Compute `maxOr` by OR‑ing all numbers.
+1. Compute `maxOr` by OR-ing all numbers.
 2. Use backtracking (or bitmask enumeration) to explore every subset, tracking the current OR.
 3. When the end of the array is reached, increment a counter if the current OR equals `maxOr`.
 The backtracking explores two choices per element: include it (OR with current) or exclude it.

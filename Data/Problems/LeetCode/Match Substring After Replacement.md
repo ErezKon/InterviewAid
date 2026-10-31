@@ -96,4 +96,4 @@ Example 3:
 
 ## Key Takeaway
 
-> Pre‑build a set of allowed replacement pairs and slide `sub` over `s`, checking each character in O(1) time.
+> Pre-build a set of allowed replacement pairs and slide `sub` over `s`, checking each character in O(1) time.

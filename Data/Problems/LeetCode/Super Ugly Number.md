@@ -38,7 +38,7 @@ Explanation: 1 has no prime factors, therefore all of its prime factors are in t
 ```
 
 ## Approach
-Maintain an array `dp` where `dp[i]` is the i‑th super ugly number. For each prime, keep a pointer to the smallest `dp` value that when multiplied by the prime yields a candidate larger than the last generated number. At each step, select the minimum candidate, advance all pointers that produced this minimum, and store it.
+Maintain an array `dp` where `dp[i]` is the i-th super ugly number. For each prime, keep a pointer to the smallest `dp` value that when multiplied by the prime yields a candidate larger than the last generated number. At each step, select the minimum candidate, advance all pointers that produced this minimum, and store it.
 
 ```text
 FUNCTION nthSuperUglyNumber(n, primes):
@@ -65,13 +65,13 @@ For `n = 12, primes = [2,7,13,19]`:
 4. Continue this process; after 11 iterations `dp[11]=32`.
 
 ## Complexity Analysis
-- **Time:** O(n · p) where `p` is the number of primes (each iteration scans all primes).
+- **Time:** O(n · p) where `p` is the number of primes (each iteration scans all primes).
 - **Space:** O(n + p) for the `dp` array and the pointers.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to generate the sequence lazily without storing the entire `dp` array?
-2. Can you improve the time complexity using a min‑heap?
-3. What changes are needed if `primes` may contain non‑prime numbers?
+2. Can you improve the time complexity using a min-heap?
+3. What changes are needed if `primes` may contain non-prime numbers?
 
 ## Key Takeaway
-Using multiple pointers to track the next multiple of each prime yields an O(n · p) solution that builds the super ugly sequence incrementally.
+Using multiple pointers to track the next multiple of each prime yields an O(n · p) solution that builds the super ugly sequence incrementally.

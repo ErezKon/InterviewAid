@@ -84,9 +84,9 @@ The table continues until the string is fully processed, demonstrating that only
 
 ## Complexity Analysis
 - **Time:** O(n), where n is the length of `s`, each character is visited once.
-- **Space:** O(n) for the output string (in‑place modification is not required).
+- **Space:** O(n) for the output string (in-place modification is not required).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the list of primitive substrings instead of the concatenated result?
 2. Can this be solved using an explicit stack data structure instead of a depth counter?
 3. How would you handle malformed input where the parentheses are not balanced?

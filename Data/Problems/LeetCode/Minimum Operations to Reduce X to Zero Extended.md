@@ -3,7 +3,7 @@
 ---
 
 ## Problem Description
-Many array problems ask for the minimum number of removals from the **ends** of the array to achieve a target sum. Instead of reasoning about two‑sided deletions, consider the **complement**: the subarray that remains in the middle. If the total sum of the array is `total` and we need to remove elements summing to `x`, the middle subarray must sum to `total - x`. Finding the longest such middle subarray minimizes the number of removals.
+Many array problems ask for the minimum number of removals from the **ends** of the array to achieve a target sum. Instead of reasoning about two-sided deletions, consider the **complement**: the subarray that remains in the middle. If the total sum of the array is `total` and we need to remove elements summing to `x`, the middle subarray must sum to `total - x`. Finding the longest such middle subarray minimizes the number of removals.
 
 Canonical instance (LeetCode #1658): given an integer array `nums` and an integer `x`, in one operation remove either the leftmost or the rightmost element of `nums` and subtract its value from `x`. Return the **minimum number of operations** to reduce `x` to **exactly** `0`, or `-1` if it is not possible.
 
@@ -43,7 +43,7 @@ Example 3:
 ```
 
 ## Approach
-The complement insight converts a two‑pointer removal problem into a classic **sliding window** search for a subarray with sum `target = total - x`. Because all numbers are positive, a sliding window can expand to increase the sum and shrink to decrease it, guaranteeing O(n) time.
+The complement insight converts a two-pointer removal problem into a classic **sliding window** search for a subarray with sum `target = total - x`. Because all numbers are positive, a sliding window can expand to increase the sum and shrink to decrease it, guaranteeing O(n) time.
 
 ```text
 FUNCTION minOperations(nums, x):
@@ -82,4 +82,4 @@ Consider `nums = [1,1,4,2,3]`, `x = 5`.
 3. What if each removal has a different cost?
 
 ## Key Takeaway
-Reframing end‑removal problems as a search for the longest middle subarray (the complement) turns a two‑sided challenge into a simple sliding‑window task.
+Reframing end-removal problems as a search for the longest middle subarray (the complement) turns a two-sided challenge into a simple sliding-window task.

@@ -70,10 +70,10 @@ The final mask `1111` yields 2 sessions.
 Time: O(2^n * n) – each mask iterates over n tasks.
 Space: O(2^n) – DP table for masks.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would the solution change if the number of sessions is limited?
 * Can we output the actual grouping of tasks, not just the count?
 * What if tasks can be split across sessions?
 
 ## Key Takeaway
-Bitmask DP efficiently explores all task groupings, enabling the minimum‑session count by tracking sessions and remaining time for each subset.
+Bitmask DP efficiently explores all task groupings, enabling the minimum-session count by tracking sessions and remaining time for each subset.

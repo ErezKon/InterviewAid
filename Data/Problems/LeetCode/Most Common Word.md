@@ -101,18 +101,18 @@ Example 2:
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(n) — single pass over words |
-| **Space** | O(m) — hash map for distinct non‑banned words |
+| **Space** | O(m) — hash map for distinct non-banned words |
 
 ---
 
 ## 7. Follow-Up Questions
 
-1. How would you modify the solution to handle streaming input where the paragraph is received piece‑wise?
-2. Can you extend the algorithm to return the top‑k most frequent non‑banned words?
+1. How would you modify the solution to handle streaming input where the paragraph is received piece-wise?
+2. Can you extend the algorithm to return the top-k most frequent non-banned words?
 3. What changes are needed if punctuation should be considered part of a word (e.g., "can't")?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Regex tokenization + hash map** — extract words, filter banned via a set, count frequencies, and pick the maximum. A clean one‑liner pattern for frequency problems.
+> **Regex tokenization + hash map** — extract words, filter banned via a set, count frequencies, and pick the maximum. A clean one-liner pattern for frequency problems.

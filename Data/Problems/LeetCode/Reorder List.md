@@ -104,7 +104,7 @@ Output: [1,5,2,4,3]
 ## 5. Complexity Analysis
 
 - **Time:** O(n) – each node is visited a constant number of times.
-- **Space:** O(1) – in‑place reordering using only a few pointers.
+- **Space:** O(1) – in-place reordering using only a few pointers.
 
 ---
 
@@ -118,4 +118,4 @@ Output: [1,5,2,4,3]
 
 ## Key Takeaway
 
-> Combine three fundamental linked‑list operations – find middle (slow/fast), reverse, and merge – to achieve the required ordering in linear time and constant space.
+> Combine three fundamental linked-list operations – find middle (slow/fast), reverse, and merge – to achieve the required ordering in linear time and constant space.

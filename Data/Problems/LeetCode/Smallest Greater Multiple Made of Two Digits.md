@@ -21,7 +21,7 @@ Return *the **smallest** such integer. If no such integer exists or the integer 
 - `0 <= digit2 <= 9`
 
 <!-- old description (superseded):
-(0 ≤ a,b ≤ 9, a ≠ b), find the smallest integer `x` such that `x > n` and every decimal digit of `x` is either `a` or `b`. Return `x` as an integer. It is guaranteed that a solution exists.
+(0 ≤ a,b ≤ 9, a ≠ b), find the smallest integer `x` such that `x > n` and every decimal digit of `x` is either `a` or `b`. Return `x` as an integer. It is guaranteed that a solution exists.
 -->
 
 ## Examples
@@ -49,7 +49,7 @@ Example 3:
 ## Approach
 **Algorithm:** Generate candidate numbers using BFS (or DFS) over digit strings composed of `a` and `b` in increasing length until a candidate exceeds `n`.
 
-1. Use a queue initialized with the two one‑digit numbers `a` and `b` (skip leading zero).
+1. Use a queue initialized with the two one-digit numbers `a` and `b` (skip leading zero).
 2. Repeatedly pop the smallest number, compare with `n`.
    - If the number > `n`, return it.
    - Otherwise, append both digits to the right (multiply by 10 and add `a` or `b`) and push the new numbers back into the queue.
@@ -60,8 +60,8 @@ Example 3:
 FUNCTION smallestGreaterMultiple(n, a, b):
     // Ensure a < b for deterministic ordering
     IF a > b: SWAP(a, b)
-    queue ← empty min‑heap (or priority queue)
-    // Seed with non‑zero single‑digit numbers
+    queue ← empty min-heap (or priority queue)
+    // Seed with non-zero single-digit numbers
     IF a ≠ 0: INSERT(queue, a)
     IF b ≠ 0: INSERT(queue, b)
 
@@ -96,10 +96,10 @@ A correct implementation generates numbers by length: for length = 1..∞, produ
 - **Time:** In the worst case we may generate O(k) numbers until we exceed `n`, where `k` is the answer size. Each generation is O(1). Hence average time is proportional to the number of candidates examined.
 - **Space:** O(k) for the queue of pending candidates.
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm if the allowed digits form a set of size > 2?
+## Follow-Up Questions
+1. How would you adapt the algorithm if the allowed digits form a set of size > 2?
 2. Can you solve the problem without a priority queue, using simple string enumeration?
-3. What changes are needed if `n` can be up to 10¹⁸ (64‑bit) and performance must be O(log n)?
+3. What changes are needed if `n` can be up to 10¹⁸ (64-bit) and performance must be O(log n)?
 
 ## Key Takeaway
 Enumerating numbers composed of the allowed digits in increasing order guarantees the first number larger than `n` is the minimal solution.

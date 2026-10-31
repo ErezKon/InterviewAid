@@ -40,7 +40,7 @@ Example 3:
 ```
 
 ## Approach
-Generate all possible splits of the inner string into left and right parts. For each part, generate all valid numbers by either keeping it as an integer or inserting a decimal point at every possible position while respecting the no‑leading‑zero and no‑trailing‑zero rules. Combine each left number with each right number to form a coordinate.
+Generate all possible splits of the inner string into left and right parts. For each part, generate all valid numbers by either keeping it as an integer or inserting a decimal point at every possible position while respecting the no-leading-zero and no-trailing-zero rules. Combine each left number with each right number to form a coordinate.
 
 ```text
 FUNCTION ambiguousCoordinates(s):
@@ -77,7 +77,7 @@ Result list matches output.
 - **Time:** O(n³) in the worst case due to generating all splits and decimal placements (n ≤ 12 in constraints).
 - **Space:** O(n²) for storing intermediate valid numbers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for longer strings (e.g., length 100)?
 2. Can you generate the coordinates in lexicographic order without sorting?
 3. What changes are needed if numbers may contain a leading plus sign?

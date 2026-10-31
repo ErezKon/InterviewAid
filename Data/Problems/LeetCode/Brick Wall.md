@@ -55,7 +55,7 @@ FUNCTION leastBricks(wall):
 | 1 | [1,2,2,1] | 1 → 3 → 5 (skip last) | {1:1, 3:1, 5:1} |
 | 2 | [3,1,2] | 3 → 4 (skip last) | {1:1, 3:2, 5:1, 4:1} |
 | ... | ... | ... | ... |
-The position `2` ends up with the highest count (3), so crossing bricks = 6‑3 = 3. Adjusted example yields answer `2`.
+The position `2` ends up with the highest count (3), so crossing bricks = 6-3 = 3. Adjusted example yields answer `2`.
 
 ## Complexity Analysis
 - **Time:** O(N) where N is total number of bricks.

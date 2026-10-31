@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "digit = index into result" problem. Correct idea: for every odd index `i`, set `s[i] = chr(ord(s[i-1]) + int(s[i]))`. O(n).*
-
 You are given a **0-indexed** string `s` that has lowercase English letters in its **even** indices and digits in its **odd** indices.
 
 You must perform an operation `shift(c, x)`, where `c` is a character and `x` is a digit, that returns the `x`th character after `c`.
@@ -51,42 +49,40 @@ Explanation: The digits are replaced as follows:
 ```
 
 ## Approach
-Iterate once over `s`, maintaining a mutable result list. For each character:
-- If it is a letter, append directly.
-- If it is a digit, convert to integer `d` and append `result[d]`.
-The result can be built using a dynamic array (list) for O(1) append.
+Copy `s` into a mutable character array. For every odd index `i`, the digit `s[i]` is replaced by `shift(s[i-1], s[i])`, i.e. the character whose code is `code(s[i-1]) + digit`. Even indices (letters) stay unchanged, and since `s[i-1]` is always an original letter, a single left-to-right pass is enough. The guarantee `shift(...) <= 'z'` means no wrap-around is needed.
 
 ```text
+FUNCTION shift(c, x):
+    RETURN CHARACTER WITH CODE (CODE(c) + x)
+
 FUNCTION replaceDigits(s):
-    SET result ← EMPTY LIST
-    FOR ch IN s:
-        IF ch IS LETTER:
-            result.APPEND(ch)
-        ELSE: // digit
-            SET idx ← INTEGER VALUE OF ch
-            SET result.APPEND(result[idx])
+    result ← CHARACTER ARRAY OF s
+    FOR i ← 1 TO length(s)-1 STEP 2:
+        // result[i] is a digit, result[i-1] is a letter
+        result[i] ← shift(result[i-1], INTEGER VALUE OF result[i])
     RETURN STRING JOINED FROM result
 ```
 
 ## Walkthrough
-For `s = "abc123"`:
-| i | ch | result after step |
-|---|----|-------------------|
-|0|`a`|[`a`]|
-|1|`b`|[`a`,`b`]|
-|2|`c`|[`a`,`b`,`c`]|
-|3|`1`|append result[1] = `b` → [`a`,`b`,`c`,`b`]|
-|4|`2`|append result[2] = `c` → [`a`,`b`,`c`,`b`,`c`]|
-|5|`3`|append result[3] = `b` → [`a`,`b`,`c`,`b`,`c`,`b`] → "abc bcb" => final `"abcabc"` (adjusted example). |
+Example 2: `s = "a1b2c3d4e"`
+
+| i | s[i-1] | digit s[i] | shift | result after step |
+|---|--------|-----------|-------|-------------------|
+| 1 | `a` | 1 | `b` | `abb2c3d4e` |
+| 3 | `b` | 2 | `d` | `abbdc3d4e` |
+| 5 | `c` | 3 | `f` | `abbdcfd4e` |
+| 7 | `d` | 4 | `h` | `abbdcfdhe` |
+
+Index 8 (`e`) is even and stays. Result: `"abbdcfdhe"` — matches the expected output.
 
 ## Complexity Analysis
-- **Time:** O(n), one pass over the input string.
-- **Space:** O(n) for the result string.
+- **Time:** O(n), one pass over the string.
+- **Space:** O(n) for the mutable copy / output string (O(1) extra if the string is mutable in place).
 
 ## Follow-Up Questions
-1. How would you modify the algorithm to work with Unicode characters where a digit may represent a code point index?
-2. Can you solve the problem in-place if the input string is mutable?
-3. What changes are needed if digits can be larger than 9 (multi‑digit numbers)?
+1. What if the shift could go past `'z'`? (Wrap around with `'a' + (code(c) − code('a') + x) mod 26`.)
+2. What if digits could appear at any position and should shift the nearest preceding letter? (Track the last letter seen while scanning.)
+3. How would you handle multi-digit shift amounts? (Parse the full number between letters before applying the shift.)
 
 ## Key Takeaway
-A single linear scan with a mutable result buffer lets each digit directly reference a previously built character, yielding an O(n) solution.
+Each odd position depends only on its immediate left neighbour, which is an unchanged letter, so a single pass with simple character arithmetic solves the problem in linear time.

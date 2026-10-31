@@ -111,7 +111,7 @@ FUNCTION processQueries(arr, queries):
 
 ## 5. Complexity Analysis
 
-- **Time**: O((n + q) log n) where n is array length and q is number of queries (segment‑tree updates and queries).
+- **Time**: O((n + q) log n) where n is array length and q is number of queries (segment-tree updates and queries).
 - **Space**: O(n) for the segment tree and auxiliary frequency maps.
 
 ## 6. Follow-Up Questions

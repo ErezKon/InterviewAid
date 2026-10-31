@@ -63,16 +63,16 @@ END FUNCTION
 |Init| – | 3 | 3 |
 |[2,2]| minA = MIN(3,2)=2; minB = MIN(3,2)=2 |
 |[3,3]| minA = MIN(2,3)=2; minB = MIN(2,3)=2 |
-|Result| → 2 × 2 = 4 (maximum value in overlapping region) |
+|Result| → 2 × 2 = 4 (maximum value in overlapping region) |
 
 ## Complexity Analysis
 - Time: O(k) where k = number of operations.
 - Space: O(1) additional space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution for decrement operations?
 2. What if each operation adds a different value instead of `1`?
-3. Can you extend this to three‑dimensional cuboids?
+3. Can you extend this to three-dimensional cuboids?
 
 ## Key Takeaway
 The maximum value after all range additions is simply the area of the intersection of all operation rectangles, found by tracking the minimum row and column bounds.

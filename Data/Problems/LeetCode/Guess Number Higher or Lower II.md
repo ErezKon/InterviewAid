@@ -101,14 +101,14 @@ FUNCTION getMoneyAmount(n):
 
 Consider `n = 4`.
 
-| Step | Guess `k` | Cost paid | Left sub‑range | Right sub‑range | Worst‑case cost |
+| Step | Guess `k` | Cost paid | Left sub-range | Right sub-range | Worst-case cost |
 |------|-----------|-----------|----------------|-----------------|-----------------|
 | 1 | 1 | 1 | [] | [2,4] | 1 + dp[2][4]
 | 2 | 2 | 2 | [1] | [3,4] | 2 + max(dp[1][1], dp[3][4])
 | 3 | 3 | 3 | [1,2] | [4] | 3 + max(dp[1][2], dp[4][4])
 | 4 | 4 | 4 | [1,3] | [] | 4 + dp[1][3]
 
-Evaluating the DP values gives `dp[1][4] = 4`, meaning the optimal worst‑case cost is `4`.
+Evaluating the DP values gives `dp[1][4] = 4`, meaning the optimal worst-case cost is `4`.
 
 ---
 

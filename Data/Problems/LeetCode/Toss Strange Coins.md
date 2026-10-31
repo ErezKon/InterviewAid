@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem (statement checked against the official text with verify.py). The Approach/Walkthrough below solve an invented harmonic-series problem. Correct idea: DP over coins — `dp[j]` = probability of exactly `j` heads so far; for each coin `p`, update `j` from high to low: `dp[j] = dp[j]·(1−p) + dp[j−1]·p`. Answer `dp[target]`. O(n·target).*
+> *Note: premium problem (statement checked against the official text with verify.py).*
 
 You have some coins. The `i`-th coin has a probability `prob[i]` of facing heads when tossed.
 
@@ -35,33 +35,41 @@ Output: 0.03125
 ```
 
 ## Approach
-Each toss removes each remaining coin with probability `1/2`. The expected number of tosses for `k` coins equals `1 + 1/2 + 1/3 + … + 1/k`, i.e., the `k`‑th harmonic number `H_k`. Compute the sum iteratively.
+Let `dp[j]` be the probability of exactly `j` heads among the coins processed so far (start with `dp[0] = 1`). Adding a coin with heads-probability `p`: either it lands tails and the count stays `j`, or heads and the count goes from `j-1` to `j`. So `dp[j] = dp[j]·(1-p) + dp[j-1]·p`. Update `j` from high to low so `dp[j-1]` still holds the previous coin's value (1D knapsack trick). Counts above `target` never matter, so the array has size `target + 1`.
 
 ```text
-FUNCTION tossStrangeCoins(n):
-    SET expected ← 0.0
-    FOR i FROM 1 TO n:
-        SET expected ← expected + 1.0 / i
-    RETURN expected
+FUNCTION probabilityOfHeads(prob, target):
+    SET dp ← ARRAY of size target+1 filled with 0.0
+    SET dp[0] ← 1.0
+    FOR p IN prob:
+        FOR j FROM target DOWNTO 1:
+            SET dp[j] ← dp[j] * (1 - p) + dp[j-1] * p
+        SET dp[0] ← dp[0] * (1 - p)
+    RETURN dp[target]
 ```
 
 ## Walkthrough
-For `n = 3`:
-| i | term | cumulative |
-|---|------|------------|
-| 1 | 1/1 = 1.0 | 1.0 |
-| 2 | 1/2 = 0.5 | 1.5 |
-| 3 | 1/3 ≈ 0.333 | 1.833 |
-Result ≈ 1.833.
+For `prob = [0.5,0.5,0.5,0.5,0.5]`, `target = 0` the array has a single entry `dp[0]` (probability of all tails so far):
+
+| coin | p | dp[0] = dp[0] · (1 - p) |
+|---|---|---|
+| start | - | 1.0 |
+| 1 | 0.5 | 0.5 |
+| 2 | 0.5 | 0.25 |
+| 3 | 0.5 | 0.125 |
+| 4 | 0.5 | 0.0625 |
+| 5 | 0.5 | 0.03125 |
+
+Result: `0.03125`, matching the expected output. (For Example 1, `prob = [0.4], target = 1`: `dp = [1, 0]` -> `dp[1] = 0·0.6 + 1·0.4 = 0.4`.)
 
 ## Complexity Analysis
-*Time*: O(n) – single loop.
-*Space*: O(1).
+*Time*: O(n · target) - at most 1000 · 1000 = 10^6 updates.
+*Space*: O(target) for the rolling DP array.
 
-## Follow‑Up Questions
-1. How would the expectation change if the removal probability per toss were `p` instead of `1/2`?
-2. Can you derive a closed‑form approximation for large `n` using the natural logarithm?
-3. What is the variance of the number of tosses?
+## Follow-Up Questions
+1. How would you return the full distribution (probability of every head count) and what is its expected value?
+2. How would you compute the probability of **at least** `target` heads?
+3. For very large `n`, how could you approximate the answer (normal approximation, or FFT-based polynomial multiplication of `(1-p_i) + p_i·x`)?
 
 ## Key Takeaway
-The expected toss count equals the harmonic number `H_n`, computed by summing reciprocals from 1 to `n`.
+Independent Bernoulli trials with different probabilities form a "probability knapsack": `dp[j]` over the number of successes, updated per coin in reverse order, gives the exact distribution in O(n · target).

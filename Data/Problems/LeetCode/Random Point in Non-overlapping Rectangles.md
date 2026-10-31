@@ -46,48 +46,53 @@ Example 1:
 ```
 
 ## Approach
-Use area‑weighted selection. Compute each rectangle's area, build a prefix‑sum array, and binary‑search a random value to pick a rectangle. Then generate a uniform point inside the chosen rectangle.
+Use weighted selection by the number of **integer points** in each rectangle (not its geometric area): a rectangle `[a, b, x, y]` contains `(x - a + 1) * (y - b + 1)` lattice points, perimeter included. Build a prefix-sum array of these counts, draw a uniform integer `r` in `[1, total]`, binary-search the rectangle that owns `r`, and map the offset of `r` inside that rectangle to a unique point.
 
 ```text
-FUNCTION pickRandomPoint(rectangles):
-    // Preprocess once
-    SET areas ← []
+FUNCTION Constructor(rects):
     SET prefix ← []
     SET total ← 0
-    FOR each rect IN rectangles:
-        SET w ← rect.x2 - rect.x1
-        SET h ← rect.y2 - rect.y1
-        SET area ← w * h
-        APPEND area TO areas
-        SET total ← total + area
+    FOR each [a, b, x, y] IN rects:
+        SET total ← total + (x - a + 1) * (y - b + 1)   // integer points, inclusive
         APPEND total TO prefix
     END FOR
-    // Pick rectangle
-    SET r ← RANDOM(0, total)
-    SET idx ← BINARY_SEARCH(prefix, r)
-    SET chosen ← rectangles[idx]
-    // Uniform point inside
-    SET x ← RANDOM(chosen.x1, chosen.x2)
-    SET y ← RANDOM(chosen.y1, chosen.y2)
-    RETURN (x, y)
+
+FUNCTION pick():
+    SET r ← RANDOM_INT(1, total)                       // inclusive
+    SET idx ← leftmost i with prefix[i] >= r           // binary search
+    SET [a, b, x, y] ← rects[idx]
+    SET offset ← r - (idx > 0 ? prefix[idx-1] : 0) - 1 // 0-based inside rectangle
+    SET W ← x - a + 1
+    RETURN [a + offset MOD W, b + offset DIV W]
 END FUNCTION
 ```
 
+Every integer point corresponds to exactly one value of `r`, so all points are equally likely.
+
 ## Walkthrough
-| Step | Action | Details |
-|------|--------|---------|
-|1|Compute areas|Rect1 area=1, Rect2 area=4 → prefix=[1,5]|
-|2|Random value|Suppose r=3.2 → binary search finds idx=1 (second rectangle)|
-|3|Generate point|x ∈ [3,5], y ∈ [3,5] → e.g., (4.1,4.8)|
+Example 1: `rects = [[-2,-2,1,1],[2,2,4,6]]`.
+
+- Rect 0 has `4 * 4 = 16` points, rect 1 has `3 * 5 = 15` points → `prefix = [16, 31]`, `total = 31`.
+- Any `r` in `[1,16]` picks rect 0 (width `W = 4`); `r` in `[17,31]` picks rect 1.
+
+| pick | r (random) | idx | offset | point `[a + off%4, b + off//4]` |
+|------|-----------|-----|--------|---------------------------------|
+|1|4|0|3|`[1, -2]`|
+|2|8|0|7|`[1, -1]`|
+|3|2|0|1|`[-1, -2]`|
+|4|1|0|0|`[-2, -2]`|
+|5|11|0|10|`[0, 0]`|
+
+These draws reproduce the official output `[null, [1, -2], [1, -1], [-1, -2], [-2, -2], [0, 0]]` (any uniformly random output is accepted).
 
 ## Complexity Analysis
-- Time: O(N) preprocessing, O(log N) per query for binary search.
+- Time: O(N) preprocessing, O(log N) per query for binary search.
 - Space: O(N) for prefix array.
 
 ## Follow-Up Questions
 1. How would you handle dynamic updates (adding/removing rectangles)?
 2. Extend to weighted rectangles where selection probability differs from area.
-3. Generalize to 3‑D boxes.
+3. Generalize to 3-D boxes.
 
 ## Key Takeaway
-Uniform random selection across multiple rectangles can be achieved by area‑weighted prefix sums and binary search, followed by uniform sampling within the chosen rectangle.
+Uniform random selection across multiple rectangles can be achieved by area-weighted prefix sums and binary search, followed by uniform sampling within the chosen rectangle.

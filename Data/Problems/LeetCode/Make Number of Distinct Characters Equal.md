@@ -97,7 +97,7 @@ Take `word1 = "ac"`, `word2 = "b"`.
 
 | Time | Space |
 |------|-------|
-| O(26²) – constant‑time enumeration of character pairs | O(1) – only frequency arrays of size 26 |
+| O(26²) – constant-time enumeration of character pairs | O(1) – only frequency arrays of size 26 |
 
 ---
 

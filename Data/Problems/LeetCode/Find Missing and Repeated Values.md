@@ -48,7 +48,7 @@ After counting, scanning `1..4` finds `count[2]=2` → repeated `2`, `count[3]=0
 
 ## Complexity Analysis
 - **Time:** O(n²) to traverse the grid once, plus O(n²) to scan the count array – overall O(n²).
-- **Space:** O(n²) for the count array (can be reduced to O(1) by in‑place marking, but hash table is clearer).
+- **Space:** O(n²) for the count array (can be reduced to O(1) by in-place marking, but hash table is clearer).
 
 ## Follow-Up Questions
 - How would you solve the problem with O(1) extra space?
@@ -56,4 +56,4 @@ After counting, scanning `1..4` finds `count[2]=2` → repeated `2`, `count[3]=0
 - What changes are needed if the grid is not square?
 
 ## Key Takeaway
-A simple frequency count quickly reveals the duplicated and missing values in a matrix containing a near‑complete range of numbers.
+A simple frequency count quickly reveals the duplicated and missing values in a matrix containing a near-complete range of numbers.

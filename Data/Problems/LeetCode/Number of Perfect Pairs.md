@@ -53,7 +53,7 @@ Return the number of **distinct** perfect pairs.
 
 ```text
 FUNCTION countPerfectPairs(arr):
-    // Preprocess based on the exact perfect‑pair rule (e.g., sum, xor, etc.)
+    // Preprocess based on the exact perfect-pair rule (e.g., sum, xor, etc.)
     // For illustration, assume we need pairs where (arr[i] + arr[j]) % k == 0
     SORT arr ASCENDING
     left ← 0
@@ -151,7 +151,7 @@ Explanation: There are no perfect pairs. Thus, the answer is 0.
 Consider `arr = [1,2,3,4,5]` and `k = 3`.
 1. Sort → `[1,2,3,4,5]` (already sorted).
 2. Initialize `left = 0` (value 1) and `right = 4` (value 5).
-3. `(1+5) % 3 = 0` → valid pair, count += 4 (pairs with 1 and each of indices 1‑4). Increment `left`.
+3. `(1+5) % 3 = 0` → valid pair, count += 4 (pairs with 1 and each of indices 1-4). Increment `left`.
 4. `left = 1` (value 2), `right = 4` (value 5). `(2+5) % 3 = 1` → not valid, move `right`.
 5. `right = 3` (value 4). `(2+4) % 3 = 0` → valid, count += 2 (pairs (2,3) and (2,4)). Increment `left`.
 6. Continue until `left >= right`. Final count = 4.
@@ -162,14 +162,14 @@ Consider `arr = [1,2,3,4,5]` and `k = 3`.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n log n) for sorting + O(n) two‑pointer scan |
-| **Space** | O(1) extra (in‑place sorting) |
+| **Time** | O(n log n) for sorting + O(n) two-pointer scan |
+| **Space** | O(1) extra (in-place sorting) |
 
 ---
 
 ## 7. Follow-Up Questions
 
-1. How would the solution change if the perfect‑pair condition involved bitwise XOR instead of sum?
+1. How would the solution change if the perfect-pair condition involved bitwise XOR instead of sum?
 2. Can you solve the problem in O(n) time without sorting using a hash map?
 3. How would you extend the algorithm to return the actual list of pairs, not just the count?
 
@@ -177,4 +177,4 @@ Consider `arr = [1,2,3,4,5]` and `k = 3`.
 
 ## 8. Key Takeaway
 
-> **Transform pair constraints into a searchable form.** Sorting or hashing lets you replace a quadratic scan with linear or log‑linear work.
+> **Transform pair constraints into a searchable form.** Sorting or hashing lets you replace a quadratic scan with linear or log-linear work.

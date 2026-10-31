@@ -60,7 +60,7 @@ Explanation: None of the passengers are older than 60.
 
 **Algorithm:** Simple string parsing – O(n)
 
-Iterate over each detail string, extract the two‑character age substring at positions 11‑12, convert to integer, and count if greater than 60.
+Iterate over each detail string, extract the two-character age substring at positions 11-12, convert to integer, and count if greater than 60.
 
 **Pseudocode:**
 ```text
@@ -108,4 +108,4 @@ The loop increments `count` only for the second record, resulting in `count = 1`
 
 ## 7. Key Takeaway
 
-> **Direct substring extraction** from a fixed‑position field enables an O(n) solution for counting senior citizens.
+> **Direct substring extraction** from a fixed-position field enables an O(n) solution for counting senior citizens.

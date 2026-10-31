@@ -65,13 +65,23 @@ FUNCTION longestRepeatedSubstring(s):
 ```
 
 ## Walkthrough
-For `s = "ABAB"`:
-- Total counts: A=2, B=2.
-- Target `A`: sliding window finds max size 2 (cannot exceed total A count).
-- Target `B`: similar, but window with one mismatch yields size 3 (window "BAB" with one non‑B). Result = 3.
+For `text = "aaabaaa"` (Example 2), total counts: a=6, b=1.
+
+Target `a` (cap 6):
+| right | char | mismatches | left | window | min(window, 6) | maxLen |
+|-------|------|------------|------|--------|----------------|--------|
+| 0-2 | a | 0 | 0 | 1..3 | 1..3 | 3 |
+| 3 | b | 1 | 0 | 4 | 4 | 4 |
+| 4 | a | 1 | 0 | 5 | 5 | 5 |
+| 5 | a | 1 | 0 | 6 | 6 | 6 |
+| 6 | a | 1 | 0 | 7 | 6 (capped: only 6 a's exist) | 6 |
+
+Target `b` (cap 1): every window is capped at 1, so `maxLen` stays 6. Result = 6.
+
+For `text = "ababa"` (Example 1): target `a` (cap 3) reaches window `"aba"` (right=2, one mismatch) -> 3; later windows shrink to 2-3. Target `b` (cap 2) never exceeds 2. Result = 3.
 
 ## Complexity Analysis
-- **Time:** O(26 · n) ≈ O(n) – iterate over each character type.
+- **Time:** O(26 · n) ≈ O(n) – iterate over each character type.
 - **Space:** O(1) – only frequency map of fixed size 26.
 
 ## Follow-Up Questions

@@ -32,7 +32,7 @@ Example 2:
 ## Approach
 1. Sort `candidates` to bring duplicates together.
 2. Use backtracking, advancing the start index after each pick to enforce “use once”.
-3. Skip a candidate if it is the same as the previous one **and** the previous was not chosen at this recursion level (duplicate‑skipping rule).
+3. Skip a candidate if it is the same as the previous one **and** the previous was not chosen at this recursion level (duplicate-skipping rule).
 
 ### Pseudocode
 ```text
@@ -74,4 +74,4 @@ Space: O(n) recursion stack plus space for results.
 
 ## Key Takeaway
 
-> Sorting plus a careful duplicate‑skipping condition lets backtracking generate each unique combination exactly once.
+> Sorting plus a careful duplicate-skipping condition lets backtracking generate each unique combination exactly once.

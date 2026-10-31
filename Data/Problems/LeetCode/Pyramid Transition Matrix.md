@@ -45,9 +45,9 @@ Starting from the bottom (level 4), there are multiple ways to build level 3, bu
 ```
 
 ## Approach
-**Backtracking with Pre‑computed Mapping**
+**Backtracking with Pre-computed Mapping**
 1. Build a map from each pair of characters to the list of possible characters that can sit above them.
-2. Perform a depth‑first search row by row. For the current row, generate all possible strings for the next row by choosing a valid character for each adjacent pair.
+2. Perform a depth-first search row by row. For the current row, generate all possible strings for the next row by choosing a valid character for each adjacent pair.
 3. Recurse until a row of length 1 is formed.
 
 ```text
@@ -59,7 +59,7 @@ FUNCTION pyramidTransition(bottom, allowed):
         SET top  ← triple[2]
         APPEND top TO mapping[pair]
 
-    // Depth‑first search
+    // Depth-first search
     FUNCTION dfs(currentRow):
         IF LENGTH(currentRow) == 1:
             RETURN true
@@ -94,10 +94,10 @@ The only possible next row is `GE`. Repeating the process, `GE` yields pair `GE`
 Time: In the worst case, we explore all possible combinations of characters for each level, which is O(3^{n}) where n is the length of the bottom row, but the mapping drastically prunes invalid branches.
 Space: O(n) for the recursion stack plus O(|allowed|) for the mapping.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to also return one valid pyramid configuration?
-2. Can the solution be optimized using memoization of sub‑rows?
+2. Can the solution be optimized using memoization of sub-rows?
 3. What if the allowed triples are given as a large dataset—how would you handle memory constraints?
 
 ## Key Takeaway
-By pre‑computing a pair‑to‑top mapping and using backtracking, the problem reduces to exploring a constrained search tree, enabling an efficient check for a possible pyramid.
+By pre-computing a pair-to-top mapping and using backtracking, the problem reduces to exploring a constrained search tree, enabling an efficient check for a possible pyramid.

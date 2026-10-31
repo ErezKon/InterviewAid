@@ -60,7 +60,7 @@ Output: 0
 
 ## 3. Approach: 2D Prefix Sum + Hash Map — O(m²n) ✅
 
-Fix a pair of rows `top` and `bottom`. For each column, maintain the cumulative sum between these rows, turning the 2‑D problem into a 1‑D subarray‑sum‑equals‑`target` problem solved with a hash map of prefix sums.
+Fix a pair of rows `top` and `bottom`. For each column, maintain the cumulative sum between these rows, turning the 2-D problem into a 1-D subarray-sum-equals-`target` problem solved with a hash map of prefix sums.
 
 ```text
 FUNCTION numSubmatrixSumTarget(matrix, target):
@@ -71,7 +71,7 @@ FUNCTION numSubmatrixSumTarget(matrix, target):
         FOR bottom ← top TO m - 1:
             FOR c ← 0 TO n - 1:
                 SET colSum[c] ← colSum[c] + matrix[bottom][c]
-            // 1‑D subarray sum = target using prefix sums
+            // 1-D subarray sum = target using prefix sums
             SET prefixCount ← MAP with default 0
             SET prefixCount[0] ← 1
             SET running ← 0
@@ -114,10 +114,10 @@ Total count = 4.
 
 - How would you adapt the algorithm for very large matrices that cannot fit in memory?
 - Can the approach be extended to count submatrices with sum **≤** or **≥** a target?
-- What if the matrix contains only non‑negative numbers—could a sliding‑window technique be used?
+- What if the matrix contains only non-negative numbers—could a sliding-window technique be used?
 
 ---
 
 ## 7. Key Takeaway
 
-> **2D → 1D reduction.** By fixing row boundaries and compressing columns, the problem becomes the classic "subarray sum equals K" solved with prefix‑sum hash maps.
+> **2D → 1D reduction.** By fixing row boundaries and compressing columns, the problem becomes the classic "subarray sum equals K" solved with prefix-sum hash maps.

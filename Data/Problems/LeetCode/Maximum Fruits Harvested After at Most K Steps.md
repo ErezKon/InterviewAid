@@ -123,7 +123,7 @@ The algorithm slides the window, discarding leftmost positions when the step cos
 ## Follow-Up Questions
 
 - How would the solution change if you could make at most `k` turns instead of steps?
-- Can the problem be extended to 2‑D coordinates with Manhattan distance?
+- Can the problem be extended to 2-D coordinates with Manhattan distance?
 - What if fruits could appear dynamically; how would you maintain the maximum efficiently?
 
 ---

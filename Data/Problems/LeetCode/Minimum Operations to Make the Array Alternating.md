@@ -49,7 +49,7 @@ Count the frequency of each value separately for even and odd positions.
 - Let `evenFreq` and `oddFreq` be maps from value → count.
 - Identify the most frequent value and its count for each parity (`evenMax1`, `evenCnt1`, `evenMax2`, `evenCnt2`, similarly for odd).
 - If the top values for even and odd positions differ, the answer is `len(nums) - evenCnt1 - oddCnt1`.
-- If they are the same, we must choose the second‑best value for one side, giving the minimum of:
+- If they are the same, we must choose the second-best value for one side, giving the minimum of:
   `len(nums) - evenCnt1 - oddCnt2` and `len(nums) - evenCnt2 - oddCnt1`.
 This greedy selection ensures the fewest changes.
 
@@ -86,7 +86,7 @@ Consider `nums = [3,1,3,2,4,3]`.
 
 ## Follow-Up Questions
 1. How would the solution change if the array must alternate between two *given* values?
-2. Can you extend the approach to a 2‑D grid requiring a checkerboard pattern?
+2. Can you extend the approach to a 2-D grid requiring a checkerboard pattern?
 3. What if each change has a different cost depending on the new value?
 
 ## Key Takeaway

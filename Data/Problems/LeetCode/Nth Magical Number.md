@@ -31,7 +31,7 @@ Example 2:
 ```
 
 ## Approach
-**Algorithm:** Binary search using inclusion‑exclusion.
+**Algorithm:** Binary search using inclusion-exclusion.
 1. Compute `lcm = a * b / GCD(a, b)`.
 2. Search the smallest `x` such that `count(x) = x//a + x//b - x//lcm >= n`.
 3. Return `x % MOD`.
@@ -62,10 +62,10 @@ For `n=5, a=2, b=4`:
 - Time: O(log(n * min(a,b))) – binary search.
 - Space: O(1).
 
-## Follow‑Up Questions
-1. How would the solution change if you needed the `n`‑th number divisible by **both** `a` and `b`?
+## Follow-Up Questions
+1. How would the solution change if you needed the `n`-th number divisible by **both** `a` and `b`?
 2. Can you extend the method to handle more than two divisors?
-3. What if the modulus changes to a non‑prime number?
+3. What if the modulus changes to a non-prime number?
 
 ## Key Takeaway
-Binary search combined with inclusion‑exclusion efficiently finds the `n`‑th number divisible by either of two values.
+Binary search combined with inclusion-exclusion efficiently finds the `n`-th number divisible by either of two values.

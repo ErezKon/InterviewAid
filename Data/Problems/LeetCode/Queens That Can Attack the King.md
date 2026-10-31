@@ -65,13 +65,13 @@ FUNCTION queensAttacktheKing(queens, king):
 | other dirs| … | none |
 
 ## Complexity Analysis
-- **Time:** At most 8 × 8 steps → O(1) (constant board size).
+- **Time:** At most 8 × 8 steps → O(1) (constant board size).
 - **Space:** O(q) for the hash set of queen positions, where q = number of queens.
 
 ## Follow-Up Questions
-1. How would the solution change for an N × N board with N up to 10⁵?
+1. How would the solution change for an N × N board with N up to 10⁵?
 2. Can you extend the algorithm to return the distance of each attacking queen?
 3. How would you handle multiple kings on the board?
 
 ## Key Takeaway
-Using a hash set and scanning outward in the eight possible directions yields a simple O(1) solution on a fixed‑size board.
+Using a hash set and scanning outward in the eight possible directions yields a simple O(1) solution on a fixed-size board.

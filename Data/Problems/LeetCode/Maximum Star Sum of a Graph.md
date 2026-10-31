@@ -71,7 +71,7 @@ FUNCTION MaxStarSum(vals, edges, k):
 ```
 
 ## Walkthrough
-| Node | Positive neighbor values | Top k | Star sum |
+| Node | Positive neighbor values | Top k | Star sum |
 |------|--------------------------|-------|----------|
 | 0 | [2,3] | k=2 → 2+3 | 1+5 = 6 |
 | 1 | [1,4] | 4 | 2+4 = 6 |
@@ -89,4 +89,4 @@ Maximum = 6.
 3. What is the complexity if `k` can be as large as the degree of the node (i.e., no limit)?
 
 ## Key Takeaway
-Collecting positive neighbor values, sorting, and taking the top k yields the optimal star sum in linearithmic time.
+Collecting positive neighbor values, sorting, and taking the top k yields the optimal star sum in linearithmic time.

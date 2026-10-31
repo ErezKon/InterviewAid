@@ -85,13 +85,13 @@ Example 2:
 
 Consider `arr = [3,5,1,2,4]`, `m = 1`.
 
-1. Step 1, set position 3 → groups: `[0001000]` → one group of size 1 → result = 1.
-2. Step 2, set position 5 → groups: `[0001010]` → two groups of size 1 → result = 2.
-3. Step 3, set position 1 → groups: `[1001010]` → three groups of size 1 → result = 3.
-4. Step 4, set position 2 → groups merge to size 2 → no size‑1 groups → result stays = 3.
-5. Step 5, set position 4 → groups merge to size 5 → still no size‑1 groups.
+1. Step 1, set position 3 → groups: `[0001000]` → one group of size 1 → result = 1.
+2. Step 2, set position 5 → groups: `[0001010]` → two groups of size 1 → result = 2.
+3. Step 3, set position 1 → groups: `[1001010]` → three groups of size 1 → result = 3.
+4. Step 4, set position 2 → groups merge to size 2 → no size-1 groups → result stays = 3.
+5. Step 5, set position 4 → groups merge to size 5 → still no size-1 groups.
 
-The latest step with a size‑1 group was step 3, so the algorithm returns `3`.
+The latest step with a size-1 group was step 3, so the algorithm returns `3`.
 
 ---
 
@@ -102,11 +102,11 @@ The latest step with a size‑1 group was step 3, so the algorithm returns `3`
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you adapt the solution to return the earliest step instead of the latest?
-2. Can you solve the problem using a Union‑Find data structure?
-3. What changes are needed if the input positions are 0‑indexed?
+2. Can you solve the problem using a Union-Find data structure?
+3. What changes are needed if the input positions are 0-indexed?
 
 ---
 

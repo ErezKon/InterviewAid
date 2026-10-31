@@ -72,7 +72,7 @@ METHOD insert(idKey, value):
 
 ## Walkthrough
 
-**Step‑by‑step for the sequence above:**
+**Step-by-step for the sequence above:**
 
 | Operation | Stream state (index→value) | ptr | Returned |
 |-----------|---------------------------|-----|----------|
@@ -96,10 +96,10 @@ The pointer only moves forward, collecting consecutive filled slots.
 ## Follow-Up Questions
 
 1. How would you modify the design to support deletion of an id?
-2. Can you implement the stream with a balanced BST to allow out‑of‑order retrieval without a pointer?
+2. Can you implement the stream with a balanced BST to allow out-of-order retrieval without a pointer?
 
 ---
 
 ## Key Takeaway
 
-> **Pointer‑based ordered stream:** store values at their ID, advance a pointer through consecutive filled slots on each insert. Amortized O(1) per insert since the pointer only moves forward.
+> **Pointer-based ordered stream:** store values at their ID, advance a pointer through consecutive filled slots on each insert. Amortized O(1) per insert since the pointer only moves forward.

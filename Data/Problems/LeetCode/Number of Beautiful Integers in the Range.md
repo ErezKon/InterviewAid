@@ -39,7 +39,7 @@ Return *the number of beautiful integers in the range* `[low, high]`.
 
 ## 2. Key Insight
 
-> Use Digit DP with states: position, tight bound, whether a non‑leading digit has started, the difference `even - odd`, and the remainder modulo `k`. The answer for the range is `count(high) - count(low‑1)`.
+> Use Digit DP with states: position, tight bound, whether a non-leading digit has started, the difference `even - odd`, and the remainder modulo `k`. The answer for the range is `count(high) - count(low-1)`.
 
 ---
 
@@ -97,12 +97,12 @@ Example 3:
 
 Consider `high = 20, k = 2`.
 1. Convert `20` to digits `[2,0]`.
-2. DP starts at position 0 with `tight=TRUE`, `started=FALSE`, `diff=0`, `mod=0`.
-3. At position 0 we can place digit `0` (skip) or `1`‑`2`.
+2. DP starts at position 0 with `tight=TRUE`, `started=FALSE`, `diff=0`, `mod=0`.
+3. At position 0 we can place digit `0` (skip) or `1`-`2`.
    - Placing `2` (even) updates `diff←1`, `mod←0` (since 2 % 2 = 0).
-4. Move to position 1 with `tight=TRUE` (still matching prefix) and continue.
+4. Move to position 1 with `tight=TRUE` (still matching prefix) and continue.
 5. At the end, only the number `2` satisfies `diff==0` and `mod==0`.
-6. Repeating for `low‑1 = 0` yields 0, so answer = 2.
+6. Repeating for `low-1 = 0` yields 0, so answer = 2.
 
 ---
 
@@ -117,7 +117,7 @@ Consider `high = 20, k = 2`.
 
 ## 7. Follow-Up Questions
 
-1. How would you adapt the DP to handle a different balance condition, e.g., `#prime‑digit == #non‑prime‑digit`?
+1. How would you adapt the DP to handle a different balance condition, e.g., `#prime-digit == #non-prime-digit`?
 2. Can the algorithm be extended to count numbers with a specific digit sum modulo `m`?
 3. What changes are needed to output the actual beautiful integers instead of just the count?
 
@@ -125,4 +125,4 @@ Consider `high = 20, k = 2`.
 
 ## 8. Key Takeaway
 
-> **Digit DP can simultaneously track multiple constraints** (digit parity balance and modular remainder). Combine them in the state and use the classic `count(high) - count(low‑1)` technique for range queries.
+> **Digit DP can simultaneously track multiple constraints** (digit parity balance and modular remainder). Combine them in the state and use the classic `count(high) - count(low-1)` technique for range queries.

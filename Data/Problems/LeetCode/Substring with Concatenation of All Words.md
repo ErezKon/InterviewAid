@@ -52,7 +52,7 @@ The substring starting at 12 is "thefoobar". It is the concatenation of ["the","
 ```
 
 ## Approach
-Use a sliding window of word‑length chunks. For each possible offset within a word length, maintain a frequency map of words seen in the current window and shrink the window when a word exceeds its required count.
+Use a sliding window of word-length chunks. For each possible offset within a word length, maintain a frequency map of words seen in the current window and shrink the window when a word exceeds its required count.
 
 ```text
 FUNCTION findSubstring(s, words):
@@ -95,10 +95,10 @@ Consider `s = "barfoothefoobarman"`, `words = ["foo","bar"]` (wordLen = 3).
 *Time*: O(|s| · wordLen) – each character is visited at most twice per offset.
 *Space*: O(|words|) for the frequency maps.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would you adapt the solution if words have varying lengths?
 * Can you solve the problem in O(|s|) without the inner loop over offsets?
 * How does the approach change if words may repeat in the array?
 
 ## Key Takeaway
-Sliding a fixed‑size word window while maintaining a frequency counter lets you efficiently locate all concatenations of the given words.
+Sliding a fixed-size word window while maintaining a frequency counter lets you efficiently locate all concatenations of the given words.

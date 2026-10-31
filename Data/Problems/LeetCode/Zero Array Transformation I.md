@@ -50,9 +50,9 @@ Explanation: - For i = 0:
 ```
 
 ## Approach
-Use a difference array to simulate the effect of all selected queries in O(n + q) time.
-1. Create `diff` of length `n+1` initialized to 0.
-2. For each query `[l, r]` add 1 to `diff[l]` and subtract 1 from `diff[r+1]`.
+Use a difference array to simulate the effect of all selected queries in O(n + q) time.
+1. Create `diff` of length `n+1` initialized to 0.
+2. For each query `[l, r]` add 1 to `diff[l]` and subtract 1 from `diff[r+1]`.
 3. Compute the prefix sum `curr` over `diff`; at each index `i` compare `curr` with `nums[i]`. If `curr < nums[i]` the required increments are insufficient → return `false`.
 4. If the loop finishes, all positions can be zeroed → return `true`.
 
@@ -79,13 +79,13 @@ FUNCTION isZeroArray(nums, queries):
 | 3 | Prefix scan | – | `i=0:1≥2? no → false` (example 1 would have larger nums) |
 
 ## Complexity Analysis
-Time: O(n + q) where `n` is array length and `q` is number of queries.
+Time: O(n + q) where `n` is array length and `q` is number of queries.
 Space: O(n) for the difference array.
 
-## Follow‑Up Questions
-1. How would the solution change if each query adds an arbitrary value `val` instead of 1?
+## Follow-Up Questions
+1. How would the solution change if each query adds an arbitrary value `val` instead of 1?
 2. Can you support removal of a previously applied query efficiently?
 3. What if queries are online (arriving one by one) – how to maintain the feasibility check?
 
 ## Key Takeaway
-A difference array converts range‑increment operations into two O(1) updates, enabling a linear‑time feasibility check.
+A difference array converts range-increment operations into two O(1) updates, enabling a linear-time feasibility check.

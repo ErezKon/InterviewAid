@@ -43,11 +43,11 @@ Explanation: The subarray [1] has OR value of 1. Hence, we return 1.
 ```
 
 ## Approach
-**Algorithm:** Sliding Window with bit‑frequency counters.
+**Algorithm:** Sliding Window with bit-frequency counters.
 
 1. Maintain a window `[left, right]` and an array `bits[0..29]` counting how many numbers in the window have each bit set.
 2. Expand `right` one step at a time, updating `bits` for `nums[right]`.
-3. While the current window OR (computed from `bits`) is `≥ k`, update the answer with the window size and shrink from the left, decrementing `bits` for `nums[left]`.
+3. While the window is non-empty and its OR (computed from `bits`) is `≥ k`, update the answer with the window size and shrink from the left, decrementing `bits` for `nums[left]`.
 4. Continue until `right` reaches the end.
 
 **Pseudocode:**
@@ -63,7 +63,7 @@ FUNCTION minimumSubarrayLength(nums, k):
             IF nums[right] AND (1 << b) ≠ 0:
                 bits[b] ← bits[b] + 1
         // Try to shrink while OR >= k
-        WHILE computeOR(bits) ≥ k:
+        WHILE left ≤ right AND computeOR(bits) ≥ k:   // keep window non-empty (k may be 0)
             currentLen ← right - left + 1
             IF currentLen < minLen:
                 minLen ← currentLen
@@ -83,22 +83,26 @@ FUNCTION computeOR(bits):
 ```
 
 ## Walkthrough
-Consider `nums = [1,2,4]`, `k = 7`.
-| Step | right | left | Window | bits (set bits) | OR | minLen |
-|------|-------|------|--------|----------------|----|--------|
-| 0 | 0 | 0 | `[1]` | {0} | 1 | INF |
-| 1 | 1 | 0 | `[1,2]` | {0,1} | 3 | INF |
-| 2 | 2 | 0 | `[1,2,4]` | {0,1,2} | 7 ≥ k → update minLen=3, then shrink left → window `[2,4]` OR=6 < k |
-| end | – | – | – | – | – | Result = 3 |
+Example 1: `nums = [1,2,3]`, `k = 2`.
+
+| Step | right | left | Window | bits (set bits) | OR | Action / minLen |
+|------|-------|------|--------|-----------------|----|-----------------|
+| 1 | 0 | 0 | `[1]` | {0} | 1 | < k, INF |
+| 2 | 1 | 0 | `[1,2]` | {0,1} | 3 | ≥ k → minLen=2, drop 1 |
+| 3 | 1 | 1 | `[2]` | {1} | 2 | ≥ k → minLen=1, drop 2 (window empty, stop) |
+| 4 | 2 | 2 | `[3]` | {0,1} | 3 | ≥ k → minLen=1, drop 3 |
+| end | – | – | – | – | – | Result = 1 |
+
+Result 1 matches the expected output. In Example 3 (`k = 0`), the `left ≤ right` guard is what stops the loop from recording an empty window of length 0, so the answer stays 1.
 
 ## Complexity Analysis
-- **Time:** O(n × 30) → O(n), each element updates at most 30 bit counters.
+- **Time:** O(n × 30) → O(n), each element updates at most 30 bit counters.
 - **Space:** O(30) → O(1) extra space.
 
-## Follow‑Up Questions
-1. How would you adapt the solution for larger integers (e.g., 64‑bit) without increasing time complexity?
+## Follow-Up Questions
+1. How would you adapt the solution for larger integers (e.g., 64-bit) without increasing time complexity?
 2. Can the approach be extended to find the number of subarrays with OR ≥ k?
 3. What changes are needed if the array is streamed and cannot be stored entirely?
 
 ## Key Takeaway
-A sliding window combined with per‑bit frequency counters lets you maintain the OR of the current window in constant time, enabling an O(n) solution.
+A sliding window combined with per-bit frequency counters lets you maintain the OR of the current window in constant time, enabling an O(n) solution.

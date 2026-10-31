@@ -48,7 +48,7 @@ Return *the number of land cells in* `grid` *for which we cannot walk off the bo
 FUNCTION numEnclaves(grid):
     SET rows ← LENGTH(grid)
     SET cols ← LENGTH(grid[0])
-    // Helper DFS to mark border‑connected land as visited (set to 0)
+    // Helper DFS to mark border-connected land as visited (set to 0)
     FUNCTION dfs(r, c):
         IF r < 0 OR r ≥ rows OR c < 0 OR c ≥ cols OR grid[r][c] = 0:
             RETURN
@@ -124,4 +124,4 @@ Take the first example grid.
 
 ## 8. Key Takeaway
 
-> **Eliminate border‑connected land, then count the remainder.** Flood‑fill from the edges turns the problem into a simple counting task.
+> **Eliminate border-connected land, then count the remainder.** Flood-fill from the edges turns the problem into a simple counting task.

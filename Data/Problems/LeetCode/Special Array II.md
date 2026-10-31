@@ -37,7 +37,7 @@ Example 2:
 ```
 
 ## Approach
-Pre‑compute a prefix array of parity‑violation counts. For each index `i` (≥1), `violation[i] = 1` if `nums[i]` and `nums[i‑1]` share the same parity, else `0`. The prefix sum lets us answer any query in O(1) by checking if `prefix[to] - prefix[from]` equals zero.
+Pre-compute a prefix array of parity-violation counts. For each index `i` (≥1), `violation[i] = 1` if `nums[i]` and `nums[i-1]` share the same parity, else `0`. The prefix sum lets us answer any query in O(1) by checking if `prefix[to] - prefix[from]` equals zero.
 
 ```text
 FUNCTION preprocess(nums):
@@ -71,10 +71,10 @@ For query `[0,3]`, `prefix[3] - prefix[0] = 0` → true.
 - Time: `O(n + q)` where `n` is array length and `q` number of queries.
 - Space: `O(n)` for the prefix array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle updates to `nums` (dynamic array) while still answering queries efficiently?
 2. Can you extend the method to check other patterns, such as strictly increasing sequences?
-3. What if the parity condition needed to hold for every *k*‑th element instead of adjacent?
+3. What if the parity condition needed to hold for every *k*-th element instead of adjacent?
 
 ## Key Takeaway
-A prefix sum of parity violations enables constant‑time answers to range‑alternation queries after a linear‑time preprocessing step.
+A prefix sum of parity violations enables constant-time answers to range-alternation queries after a linear-time preprocessing step.

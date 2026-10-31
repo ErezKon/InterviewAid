@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below handle a single nut only. Correct idea: every nut costs `2·d(nut, tree)` except the first one, which costs `d(squirrel, nut) + d(nut, tree)`; answer = `Σ 2·d(nut_i, tree) + min_i (d(squirrel, nut_i) − d(nut_i, tree))` with Manhattan distance. O(k).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 You are given two integers `height` and `width` representing a garden of size `height x width`. You are also given:
 
@@ -47,31 +47,41 @@ Output: 3
 ```
 
 ## Approach
-The optimal route is to go directly from the start to the nut, then from the nut to the tree. The Manhattan distance gives the shortest path in a grid with orthogonal moves.
+Each nut must be carried to the tree individually. If the squirrel started at the tree, every nut would cost a round trip `2·d(nut, tree)` (Manhattan distance). The only difference is the very first nut: the squirrel walks `d(squirrel, nut)` instead of `d(tree, nut)` to reach it. So the total is `Σ 2·d(nut_i, tree)` plus the adjustment `d(squirrel, nut) − d(nut, tree)` for the first nut, and we pick the first nut that minimizes this adjustment.
 
+**Pseudocode**
 ```text
-FUNCTION minTimeToStoreNut(sx, sy, nx, ny, tx, ty):
-    SET distStartToNut ← ABS(sx - nx) + ABS(sy - ny)
-    SET distNutToTree ← ABS(nx - tx) + ABS(ny - ty)
-    RETURN distStartToNut + distNutToTree
+FUNCTION minDistance(height, width, tree, squirrel, nuts):
+    SET total ← 0
+    SET bestDelta ← INFINITY
+    FOR EACH nut IN nuts:
+        SET dTree ← ABS(nut.r - tree.r) + ABS(nut.c - tree.c)
+        SET dSq ← ABS(nut.r - squirrel.r) + ABS(nut.c - squirrel.c)
+        SET total ← total + 2 * dTree
+        SET bestDelta ← MIN(bestDelta, dSq - dTree)
+    RETURN total + bestDelta
 ```
-If multiple nuts existed, we would subtract the saved distance by choosing the nut that reduces the extra travel compared to always going start→tree→nut.
 
 ## Walkthrough
-For the first example:
-- `distStartToNut = |1-2| + |1-2| = 2`
-- `distNutToTree = |2-3| + |2-3| = 2`
-- Total = 4 seconds.
-The function returns 4.
+Example 1: `tree = [2,2]`, `squirrel = [4,4]`, `nuts = [[3,0],[2,5]]`.
+
+| nut | d(nut, tree) | d(squirrel, nut) | 2·d(nut, tree) | delta = dSq − dTree |
+|-----|--------------|------------------|----------------|---------------------|
+| [3,0] | 1 + 2 = 3 | 1 + 4 = 5 | 6 | 2 |
+| [2,5] | 0 + 3 = 3 | 2 + 1 = 3 | 6 | 0 |
+
+- `total = 6 + 6 = 12`
+- `bestDelta = min(2, 0) = 0` (start with nut `[2,5]`)
+- Answer: `12 + 0 = 12`.
 
 ## Complexity Analysis
-- **Time:** O(1) – only a few arithmetic operations.
+- **Time:** O(k) where `k = nuts.length` - one pass over the nuts.
 - **Space:** O(1).
 
-## Follow‑Up Questions
-1. How would the solution change if the squirrel could carry multiple nuts?
-2. What if obstacles block certain grid cells?
-3. Can you extend the algorithm to compute the optimal order for many nuts?
+## Follow-Up Questions
+1. How would the answer change if the squirrel could carry two nuts at a time?
+2. What if some grid cells were blocked (Manhattan distance no longer valid)?
+3. What if there were multiple trees and each nut could go to any tree?
 
 ## Key Takeaway
-In a Manhattan grid, the shortest travel time is the sum of Manhattan distances between consecutive required points.
+Model the cost as "every nut is a round trip from the tree" and then fix up only the first trip; the choice of the first nut is the single decision that matters.

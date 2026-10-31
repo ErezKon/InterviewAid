@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "filter deprecated names" problem. Correct idea: DFS/BFS from `k` over `invocations` to mark all suspicious methods; then scan every edge `[a, b]` — if `a` is not suspicious but `b` is, removal is impossible, return all `0..n-1`; otherwise return the non-suspicious methods. O(n + m).*
-
 You are maintaining a project that has `n` methods numbered from `0` to `n - 1`.
 
 You are given two integers `n` and `k`, and a 2D integer array `invocations`, where `invocations[i] = [a_i, b_i]` indicates that method `a_i` invokes method `b_i`.
@@ -56,35 +54,57 @@ All methods are suspicious. We can remove them.
 ```
 
 ## Approach
-Iterate through the `methods` list and keep a hash set of deprecated method names for O(1) lookup. Append each method to the result only if it is not in the deprecated set.
+1. Build the adjacency list of the invocation graph and run an iterative DFS (or BFS) from `k`; every reached node is **suspicious**.
+2. The suspicious set can be removed only if no non-suspicious method invokes a suspicious one. Scan every edge `[a, b]`: if `a` is not suspicious but `b` is, removal is impossible, so return all methods `0..n-1`.
+3. Otherwise return every non-suspicious method.
+
+(Edges from a suspicious method to a non-suspicious one cannot exist, because DFS would have marked the target.)
 
 ```text
-FUNCTION removeDeprecatedMethods(methods, deprecated):
-    SET deprecatedSet ← SET FROM deprecated
-    SET result ← []
-    FOR name IN methods:
-        IF name NOT IN deprecatedSet:
-            APPEND name TO result
-    RETURN result
+FUNCTION remainingMethods(n, k, invocations):
+    graph ← array of n empty lists
+    FOR each [a, b] IN invocations:
+        APPEND b TO graph[a]
+    suspicious ← array of n FALSE
+    suspicious[k] ← TRUE
+    stack ← [k]
+    WHILE stack not empty:
+        u ← POP(stack)
+        FOR v IN graph[u]:
+            IF NOT suspicious[v]:
+                suspicious[v] ← TRUE
+                PUSH v ONTO stack
+    // check for an outside caller into the suspicious group
+    FOR each [a, b] IN invocations:
+        IF NOT suspicious[a] AND suspicious[b]:
+            RETURN [0, 1, ..., n-1]
+    RETURN [i FOR i ← 0 TO n-1 IF NOT suspicious[i]]
 ```
 
 ## Walkthrough
-| Step | Current method | In deprecatedSet? | Action |
-|------|----------------|-------------------|--------|
-| 1 | "init" | no | keep → result ["init"] |
-| 2 | "load" | yes | skip |
-| 3 | "save" | no | keep → result ["init","save"] |
-| 4 | "delete" | yes | skip |
-| 5 | "load" | yes | skip |
+Example 2: `n = 5, k = 0, invocations = [[1,2],[0,2],[0,1],[3,4]]`
+
+DFS from 0: visit 0 → neighbours 2, 1 → suspicious = {0, 1, 2}.
+
+| Edge [a,b] | a suspicious? | b suspicious? | Outside caller? |
+|------------|---------------|---------------|-----------------|
+| [1,2] | yes | yes | no |
+| [0,2] | yes | yes | no |
+| [0,1] | yes | yes | no |
+| [3,4] | no | no | no |
+
+No outside caller, so remove {0,1,2}. Result: `[3,4]` — matches the expected output.
+
+(In Example 1, suspicious = {1,2} and edge [0,1] has a non-suspicious caller, so `[0,1,2,3]` is returned.)
 
 ## Complexity Analysis
-- **Time:** O(N + D) where N is the number of methods and D is the number of deprecated entries.
-- **Space:** O(D) for the deprecated set plus O(N) for the output list.
+- **Time:** O(n + m), where m = `invocations.length` — one DFS plus one pass over the edges.
+- **Space:** O(n + m) for the adjacency list, the visited array and the stack.
 
 ## Follow-Up Questions
-1. How would you perform the removal in‑place without extra space?
-2. How would you handle case‑insensitive method names?
-3. Can you extend the solution to remove methods based on a pattern (e.g., prefix or suffix)?
+1. How would you report *which* outside methods block the removal? (Collect every `a` from offending edges.)
+2. What if there are several buggy methods `k1, k2, ...`? (Multi-source DFS from all of them; the edge check stays the same.)
+3. How would you find the smallest extra set of methods to remove so that removal becomes possible? (Add all ancestors of the suspicious set — i.e. everything that can reach it — then recheck.)
 
 ## Key Takeaway
-Using a hash set for deprecated methods enables linear‑time filtering while preserving order.
+Mark the reachable set with one graph traversal, then a single edge scan checks whether any edge crosses into the set from outside; this decides "remove all or nothing" in linear time.

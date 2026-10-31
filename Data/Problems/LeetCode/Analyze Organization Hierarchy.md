@@ -129,16 +129,16 @@ Note:
 
 ## Walkthrough
 
-1. **Base case** – select the CEO (manager_id NULL) with level 1.
+1. **Base case** – select the CEO (manager_id NULL) with level 1.
 2. **Recursive step** – join each employee to its manager, increment level.
-3. **Subordinate aggregation** – self‑join hierarchy on manager_id to count direct subordinates and sum their salaries.
+3. **Subordinate aggregation** – self-join hierarchy on manager_id to count direct subordinates and sum their salaries.
 4. **Final select** – combine hierarchy and subordinates, compute total budget as own salary plus subordinates' salaries.
 
 ---
 
 ## Complexity Analysis
 
-- **Time**: O(N log N) for the recursive join processing all employees (depends on DB optimizer).
+- **Time**: O(N log N) for the recursive join processing all employees (depends on DB optimizer).
 - **Space**: O(N) for the CTE tables storing hierarchy and aggregation.
 
 ---
@@ -147,7 +147,7 @@ Note:
 
 - How to compute the total budget for *all* indirect subordinates (entire subtree) efficiently?
 - How to handle cycles or invalid manager references in the data?
-- Can the query be adapted to return the top‑k departments by total budget?
+- Can the query be adapted to return the top-k departments by total budget?
 
 ---
 

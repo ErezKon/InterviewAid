@@ -47,11 +47,11 @@ The total number of stones in [2,3,3,4] is 12.
 ```
 
 ## Approach
-**Greedy + Max‑Heap** – Always remove stones from the currently largest pile because halving the biggest number yields the greatest reduction. Use a max‑heap to retrieve the largest pile in O(log n) time each operation.
+**Greedy + Max-Heap** – Always remove stones from the currently largest pile because halving the biggest number yields the greatest reduction. Use a max-heap to retrieve the largest pile in O(log n) time each operation.
 
 ```text
 FUNCTION minStoneSum(piles, k):
-    // Build a max‑heap from all piles
+    // Build a max-heap from all piles
     heap ← BUILD_MAX_HEAP(piles)
     FOR i ← 1 TO k:
         largest ← POP_MAX(heap)
@@ -72,10 +72,10 @@ FUNCTION minStoneSum(piles, k):
 - **Time:** O(k log n) for k heap operations.
 - **Space:** O(n) for the heap storing all piles.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could remove any number of stones up to `⌊piles[i]/2⌋` each operation?
 2. Can you solve the problem in O(n) time without a heap?
 3. What if the number of operations `k` is larger than the total number of stones?
 
 ## Key Takeaway
-Greedy selection of the largest pile combined with a max‑heap yields the optimal minimal total after `k` reductions.
+Greedy selection of the largest pile combined with a max-heap yields the optimal minimal total after `k` reductions.

@@ -56,7 +56,7 @@ Explanation: The best possible way to select 1 subarray is: nums[0..0]. The stre
 ## Approach
 Use dynamic programming where `dp[i][j]` is the maximum strength using `j` subarrays considering the first `i` elements. For each position `i`, either skip it or end a subarray at `i`. To compute the best subarray ending at `i`, maintain `bestEnd[i]` = maximum subarray sum ending at `i` (Kadane). Transition:
 `dp[i][j] = MAX(dp[i-1][j], dp[t][j-1] + bestEnd[i])` where `t` is the index before the start of the current subarray.
-We can compress the DP to 1‑D over `j` while iterating `i`.
+We can compress the DP to 1-D over `j` while iterating `i`.
 
 ```text
 FUNCTION MaxStrength(nums, k):
@@ -93,8 +93,8 @@ For `nums = [5,-1,3,4,-2,6]`, `k = 3`:
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to also return the actual subarrays chosen?
-2. Can the solution be improved for very large `k` (e.g., `k ≈ n/2`) using divide‑and‑conquer DP optimization?
+2. Can the solution be improved for very large `k` (e.g., `k ≈ n/2`) using divide-and-conquer DP optimization?
 3. What changes are needed if subarrays must have length at least `L`?
 
 ## Key Takeaway
-Dynamic programming with a running best‑ending‑here subarray value lets you efficiently combine disjoint subarray choices for maximal total strength.
+Dynamic programming with a running best-ending-here subarray value lets you efficiently combine disjoint subarray choices for maximal total strength.

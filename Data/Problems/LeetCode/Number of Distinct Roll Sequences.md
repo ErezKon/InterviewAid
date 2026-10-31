@@ -83,7 +83,7 @@ FUNCTION distinctSequences(n):
 
 Consider `n = 3`.
 
-1. **Initialize**: For position 1, each face (1‑6) has count 1.
+1. **Initialize**: For position 1, each face (1-6) has count 1.
 2. **Position 2**: For each previous face `p`, choose any `c` ≠ `p`. This yields `6 × 5 = 30` pairs.
 3. **Position 3**: For each pair `(prev, prevprev)`, iterate possible `curr`:
    - `curr` must differ from `prev` and `prevprev`.

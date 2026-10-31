@@ -58,10 +58,10 @@ Maintain a hash map `counter` that records the frequency of each added number. F
 - **add:** `O(1)` time, `O(1)` extra space per call.
 - **find:** `O(m)` time where `m` is the number of distinct keys in the map; `O(1)` extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you improve `find` to `O(1)` average time?
 2. Can you support deletion of a number while keeping both operations efficient?
 3. What changes are needed if the data structure must handle a stream of queries with limited memory?
 
 ## Key Takeaway
-Storing frequencies in a hash map enables constant‑time addition and a simple linear scan for pair‑sum queries, balancing simplicity and efficiency.
+Storing frequencies in a hash map enables constant-time addition and a simple linear scan for pair-sum queries, balancing simplicity and efficiency.

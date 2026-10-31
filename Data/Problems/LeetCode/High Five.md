@@ -72,10 +72,10 @@ Output: [[1,100],[7,100]]
 
 ## 6. Follow-Up Questions
 
-- How would you solve the problem in O(n) time using a min‑heap of size 5 per student?
+- How would you solve the problem in O(n) time using a min-heap of size 5 per student?
 - What changes are needed if the number of top scores to average is a variable `k`?
 - How to handle streaming input where scores arrive one by one?
 
 ## Key Takeaway
 
-> Group by student, sort scores descending, take the top 5 and average them.
+> Group by student, sort scores descending, take the top 5 and average them.

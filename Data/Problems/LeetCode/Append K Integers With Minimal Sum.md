@@ -90,11 +90,11 @@ The algorithm stops once `k` becomes zero, having collected the minimal sum.
 ## 6. Complexity Analysis
 
 - **Time:** O(n log n) for sorting the array, where n = length of `nums`.
-- **Space:** O(1) extra space besides the input array (in‑place sorting assumed).
+- **Space:** O(1) extra space besides the input array (in-place sorting assumed).
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you modify the solution if `nums` could contain negative numbers?
 - Can you solve the problem in O(n) time using a hash set instead of sorting?

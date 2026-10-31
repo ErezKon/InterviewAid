@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below implement an invented lazy segment tree. Correct idea: scan maximal rise–fall–rise pieces. For each piece the fixed core is `nums[p−1..q+1]` (last two of the first rise, the whole fall, first step of the last rise); add the best non-negative suffix sum extending left along the first rise and the best non-negative prefix sum extending right along the last rise. Restart from the valley `q`. O(n).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer array `nums` of length `n`.
 
@@ -50,105 +50,63 @@ Explanation: Pick l = 0, p = 1, q = 2, r = 3:
 ```
 
 ## Approach
-Use a **segment tree with lazy propagation** to handle range updates and range sum queries efficiently.
-- Each node stores the sum of its segment.
-- Lazy value stores a pending addition to be applied to the node’s children.
-- `Update` and `RangeUpdate` are point and range updates respectively, both O(log n).
-- `Query` aggregates sums from relevant segments, also O(log n).
-- `Reset` can be implemented by setting the root sum to 0 and marking a lazy reset flag, or by rebuilding the tree in O(n).
+Use a left-to-right **state-machine DP** over subarrays ending at index `i`. Each phase must contain at least one strict step, so we keep three running maxima:
+
+- `inc1` — best sum of a subarray ending at `i` that is strictly increasing with length ≥ 2 (phase 1 done, `l < p`).
+- `dec` — best sum ending at `i` of the form "increasing (≥ 1 step) then strictly decreasing (≥ 1 step)" (phases 1–2, `p < q`).
+- `inc2` — best sum ending at `i` of a full trionic subarray (phases 1–3, `q < r`).
+
+Transitions depend only on how `nums[i-1]` compares with `nums[i]`:
+
+- `nums[i-1] < nums[i]`: `inc1 = max(inc1, nums[i-1]) + nums[i]` (extend, or start fresh at `i-1`); `inc2 = max(inc2, dec) + nums[i]` (extend the last rise, or begin it from the valley); `dec = −∞`.
+- `nums[i-1] > nums[i]`: `dec = max(dec, inc1) + nums[i]` (extend the fall, or begin it from the peak); `inc1 = inc2 = −∞`.
+- Equal: every state breaks → all `−∞`.
+
+The answer is the maximum `inc2` seen. Taking `max` with "start fresh" automatically discards negative prefixes of the first rise, so values down to −10^9 are handled correctly (use 64-bit sums).
 
 **Pseudocode**
 ```text
-CLASS SegmentTreeNode:
-    FUNCTION __init__(left, right):
-        SET leftIdx ← left
-        SET rightIdx ← right
-        SET sum ← 0
-        SET lazyAdd ← 0
-        SET leftChild ← null
-        SET rightChild ← null
-
-FUNCTION build(node, arr):
-    IF node.leftIdx = node.rightIdx:
-        SET node.sum ← arr[node.leftIdx]
-        RETURN
-    SET mid ← (node.leftIdx + node.rightIdx) // 2
-    SET node.leftChild ← NEW SegmentTreeNode(node.leftIdx, mid)
-    SET node.rightChild ← NEW SegmentTreeNode(mid+1, node.rightIdx)
-    CALL build(node.leftChild, arr)
-    CALL build(node.rightChild, arr)
-    SET node.sum ← node.leftChild.sum + node.rightChild.sum
-
-FUNCTION push(node):
-    IF node.lazyAdd ≠ 0:
-        FOR child IN [node.leftChild, node.rightChild]:
-            SET child.sum ← child.sum + (child.rightIdx - child.leftIdx + 1) * node.lazyAdd
-            SET child.lazyAdd ← child.lazyAdd + node.lazyAdd
-        SET node.lazyAdd ← 0
-
-FUNCTION rangeUpdate(node, l, r, delta):
-    IF r < node.leftIdx OR l > node.rightIdx:
-        RETURN
-    IF l ≤ node.leftIdx AND node.rightIdx ≤ r:
-        SET node.sum ← node.sum + (node.rightIdx - node.leftIdx + 1) * delta
-        SET node.lazyAdd ← node.lazyAdd + delta
-        RETURN
-    CALL push(node)
-    CALL rangeUpdate(node.leftChild, l, r, delta)
-    CALL rangeUpdate(node.rightChild, l, r, delta)
-    SET node.sum ← node.leftChild.sum + node.rightChild.sum
-
-FUNCTION pointUpdate(node, idx, val):
-    IF node.leftIdx = node.rightIdx = idx:
-        SET node.sum ← val
-        RETURN
-    CALL push(node)
-    IF idx ≤ node.leftChild.rightIdx:
-        CALL pointUpdate(node.leftChild, idx, val)
-    ELSE:
-        CALL pointUpdate(node.rightChild, idx, val)
-    SET node.sum ← node.leftChild.sum + node.rightChild.sum
-
-FUNCTION query(node, l, r):
-    IF r < node.leftIdx OR l > node.rightIdx:
-        RETURN 0
-    IF l ≤ node.leftIdx AND node.rightIdx ≤ r:
-        RETURN node.sum
-    CALL push(node)
-    RETURN query(node.leftChild, l, r) + query(node.rightChild, l, r)
-
-CLASS TrionicArray:
-    FUNCTION __init__(initial):
-        SET n ← LENGTH(initial)
-        SET root ← NEW SegmentTreeNode(0, n-1)
-        CALL build(root, initial)
-    FUNCTION update(i, val):
-        CALL pointUpdate(root, i, val)
-    FUNCTION rangeUpdate(l, r, delta):
-        CALL rangeUpdate(root, l, r, delta)
-    FUNCTION query(l, r):
-        RETURN query(root, l, r)
-    FUNCTION reset():
-        // Rebuild tree with zeros
-        CALL build(root, ARRAY of n zeros)
+FUNCTION maxSumTrionic(nums):
+    n ← LENGTH(nums)
+    inc1 ← -INF; dec ← -INF; inc2 ← -INF; ans ← -INF
+    FOR i ← 1 TO n-1
+        prev ← nums[i-1]; x ← nums[i]
+        IF prev < x
+            newInc1 ← MAX(inc1, prev) + x
+            newInc2 ← MAX(inc2, dec) + x
+            newDec ← -INF
+        ELSE IF prev > x
+            newDec ← MAX(dec, inc1) + x
+            newInc1 ← -INF; newInc2 ← -INF
+        ELSE
+            newInc1 ← -INF; newDec ← -INF; newInc2 ← -INF
+        inc1 ← newInc1; dec ← newDec; inc2 ← newInc2
+        ans ← MAX(ans, inc2)
+    RETURN ans
 ```
 
 ## Walkthrough
-For `arr = [0,0,0,0]`:
-1. Build tree → all sums 0.
-2. `update(1,5)`: leaf at index 1 set to 5, ancestors updated.
-3. `rangeUpdate(0,2,3)`: lazy add 3 to segment covering indices 0‑2; affected sums become 3,8,3.
-4. `query(1,3)`: combines node for index 1 (8) and segment 2‑3 (3+0) → 11.
-5. `reset()`: rebuild with zeros.
+Example 1: `nums = [0,-2,-1,-3,0,2,-1]` (`-` means −∞):
+
+| i | nums[i-1] → nums[i] | inc1 | dec | inc2 | ans |
+|---|---------------------|------|-----|------|-----|
+| 1 | 0 → -2 (down) | - | max(-, -) + (-2) = - | - | - |
+| 2 | -2 → -1 (up) | max(-, -2) + (-1) = -3 | - | - | - |
+| 3 | -1 → -3 (down) | - | max(-, -3) + (-3) = -6 | - | - |
+| 4 | -3 → 0 (up) | max(-, -3) + 0 = -3 | - | max(-, -6) + 0 = -6 | -6 |
+| 5 | 0 → 2 (up) | max(-3, 0) + 2 = 2 | - | max(-6, -) + 2 = -4 | -4 |
+| 6 | 2 → -1 (down) | - | max(-, 2) + (-1) = 1 | - | -4 |
+
+Result = **-4** (subarray `[-2,-1,-3,0,2]`), matching the expected output.
 
 ## Complexity Analysis
-- Update / RangeUpdate / Query: O(log n) time.
-- Space: O(n) for the segment tree nodes.
+- Time: O(n) — a single pass with O(1) work per index.
+- Space: O(1) — only three state variables.
 
-## Follow‑Up Questions
-1. How would you modify the structure to support range minimum queries instead of sums?
-2. Can you implement a persistent segment tree to query historical versions?
-3. What changes are needed if the array size can change dynamically (insert/delete)?
+## Follow-Up Questions
+1. How would you also return the indices `l, p, q, r` of the optimal subarray?
+2. How does the DP generalize to a pattern with `k` alternating monotone phases?
+3. An alternative solution decomposes the array into maximal rise–fall–rise pieces and extends with best prefix/suffix sums; how do the two compare?
 
 ## Key Takeaway
-Lazy‑propagated segment trees enable logarithmic point updates, range additions, and range sum queries on an array, satisfying the hard version’s performance requirements.
+Shape-constrained maximum-sum subarray problems map naturally to a small state machine: one DP value per phase, with "extend" vs. "start the next phase here" transitions, giving O(n) time and O(1) space.

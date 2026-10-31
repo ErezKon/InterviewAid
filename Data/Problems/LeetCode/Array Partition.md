@@ -32,7 +32,7 @@ Example 2:
 ```
 
 ## Approach
-Sort the array in non‑decreasing order. Pair consecutive elements; the smaller of each pair is at the even index. Summing elements at even positions yields the maximal score.
+Sort the array in non-decreasing order. Pair consecutive elements; the smaller of each pair is at the even index. Summing elements at even positions yields the maximal score.
 
 ```text
 FUNCTION arrayPairSum(nums):
@@ -48,9 +48,9 @@ For `[6,2,6,5,1,2]` after sorting: `[1,2,2,5,6,6]`. Adding indices 0,2,4 gives `
 
 ## Complexity Analysis
 *Time*: O(n log n) for sorting.
-*Space*: O(1) extra if sorting in‑place.
+*Space*: O(1) extra if sorting in-place.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem in linear time using counting sort when the value range is limited?
 2. Can you extend the approach to maximize the sum of maximums instead of minimums?
 3. What if the array length is odd – how would you handle the leftover element?

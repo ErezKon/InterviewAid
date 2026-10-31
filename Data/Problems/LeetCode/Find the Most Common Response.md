@@ -101,4 +101,4 @@ FUNCTION mostCommonResponse(responses):
 
 ## 7. Key Takeaway
 
-> Deduplicate per‑list responses, count globally with a hashmap, and select the highest frequency (lexicographically smallest on ties).
+> Deduplicate per-list responses, count globally with a hashmap, and select the highest frequency (lexicographically smallest on ties).

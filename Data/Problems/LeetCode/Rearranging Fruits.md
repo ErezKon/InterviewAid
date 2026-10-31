@@ -79,20 +79,23 @@ FUNCTION minCost(basket1, basket2):
 ```
 
 ## Walkthrough
-Consider `basket1 = [5,5,5]`, `basket2 = [1,2,3]`.
-1. `diff` becomes {5:3, 1:-1, 2:-1, 3:-1}. All counts are even after halving: surplus list `toSwap = [5,5]` (two 5s need to move).
-2. `minVal = 1`.
-3. Pair the smallest surplus (5) with itself: direct cost = 5, via min cost = 2*1 = 2 → choose 2.
-4. Total cost = 2 + 2 = 4 (example adjusted for illustration).
+Example 1: `basket1 = [4,2,2,2]`, `basket2 = [1,4,1,2]`.
+1. `diff` = {4: 1-1 = 0, 2: 3-1 = 2, 1: 0-2 = -2}. All counts even → feasible.
+2. `toSwap` = one `2` (surplus in basket1) + one `1` (surplus in basket2) → sorted `[1,2]`.
+3. `minVal = 1`. Only `LENGTH(toSwap)/2 = 1` swap is needed.
+4. i=0: direct = 1, viaMin = 2 → add 1.
+5. Total cost = **1** (swap a `2` from basket1 with a `1` from basket2).
+
+Example 2: `diff[4] = 1` and `diff[5] = -1` are odd → return **-1**.
 
 ## Complexity Analysis
 - **Time:** O(n log n) due to sorting the surplus list, where n is the total number of fruits.
 - **Space:** O(n) for the frequency map and surplus list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if swapping cost were `max(x, y)` instead of `min(x, y)`?
 2. Can the algorithm be adapted to handle more than two baskets simultaneously?
-3. What is the impact on complexity if the fruit values are bounded (e.g., 1 ≤ value ≤ 1000)?
+3. What is the impact on complexity if the fruit values are bounded (e.g., 1 ≤ value ≤ 1000)?
 
 ## Key Takeaway
 Balancing frequency differences with a greedy pairing of the smallest surplus values, optionally routing through the global minimum, yields the minimum swap cost.

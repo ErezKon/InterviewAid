@@ -101,7 +101,7 @@ The maximum dp value is 3, giving subsequence length 4 including the start eleme
 
 1. How would you handle variable word lengths?
 2. Can the problem be solved in O(n·L) using advanced data structures?
-3. What changes if the Hamming distance constraint is ≤ k instead of exactly 1?
+3. What changes if the Hamming distance constraint is ≤ k instead of exactly 1?
 
 ---
 

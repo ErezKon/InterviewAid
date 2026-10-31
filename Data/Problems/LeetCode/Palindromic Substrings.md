@@ -98,4 +98,4 @@ Total count = 6.
 
 ## Key Takeaway
 
-> Same technique as Longest Palindromic Substring (#5) but count instead of track max. 2n‑1 centers, expand each.
+> Same technique as Longest Palindromic Substring (#5) but count instead of track max. 2n-1 centers, expand each.

@@ -77,9 +77,9 @@ Take `[1,10,2,9]`:
 ## Complexity Analysis
 
 - **Time:** O(n log n) due to sorting (can be O(n) with quickselect).
-- **Space:** O(1) extra space if sorting in‑place.
+- **Space:** O(1) extra space if sorting in-place.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How to achieve O(n) time without full sorting?
 - What changes if each move can adjust an element by `k` instead of `1`?

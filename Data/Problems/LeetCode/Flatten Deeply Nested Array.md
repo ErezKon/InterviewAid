@@ -91,7 +91,7 @@ Explanation: Two levels are flattened, resulting in a fully flat array.
 
 | Call | n | Action |
 |------|---|--------|
-| flatten([1, [2, [3,4]], 5], 2) | 2 | Iterate items; encounter sub‑array `[2, [3,4]]` → recursive call.
+| flatten([1, [2, [3,4]], 5], 2) | 2 | Iterate items; encounter sub-array `[2, [3,4]]` → recursive call.
 | flatten([2, [3,4]], 1) | 1 | Flatten first level: result `[2, [3,4]]`.
 | Combine results → `[1] + [2, [3,4]] + [5]` → `[1,2,[3,4],5]`.
 | Since outer call had n=2, the returned `[1,2,[3,4],5]` is processed again, flattening inner `[3,4]` → final `[1,2,3,4,5]`.
@@ -109,7 +109,7 @@ Explanation: Two levels are flattened, resulting in a fully flat array.
 
 ## Follow-Up Questions
 
-- How would you modify the algorithm to flatten the array in‑place?
+- How would you modify the algorithm to flatten the array in-place?
 - Can you implement an iterative version using a stack?
 - What changes are needed to support streaming input where the array is too large to fit in memory?
 
@@ -117,4 +117,4 @@ Explanation: Two levels are flattened, resulting in a fully flat array.
 
 ## 3. Key Takeaway
 
-> Recursively flatten each sub‑array, decreasing the depth counter `n` until it reaches zero. Each level processes its elements once, yielding O(N) time.
+> Recursively flatten each sub-array, decreasing the depth counter `n` until it reaches zero. Each level processes its elements once, yielding O(N) time.

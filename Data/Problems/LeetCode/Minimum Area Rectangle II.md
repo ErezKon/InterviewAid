@@ -48,7 +48,7 @@ Key insight: In any rectangle, the two diagonals share the same midpoint and hav
 ```text
 FUNCTION minAreaFreeRect(points):
     n ← LEN(points)
-    diags ← MAP from (midX, midY, dist) TO LIST of point‑pair indices
+    diags ← MAP from (midX, midY, dist) TO LIST of point-pair indices
     FOR i ← 0 TO n-1:
         FOR j ← i+1 TO n-1:
             midX ← (points[i][0] + points[j][0]) / 2
@@ -83,13 +83,13 @@ Pairs with the same midpoint (1,1) and distance 4 are (1,2)-(1,0) and (2,1)-(0,1
 ## Complexity Analysis
 | Metric | Value |
 |--------|-------|
-| Time   | O(n² + g²) where g is the size of the largest group (worst‑case O(n²)) |
+| Time   | O(n² + g²) where g is the size of the largest group (worst-case O(n²)) |
 | Space  | O(n²) for storing all point pairs |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the rectangle’s coordinates instead of just the area?
-2. Can the solution be adapted to find the minimum‑area **axis‑aligned** rectangle?
-3. What if the input size is very large (e.g., 10⁵ points); can you design a sub‑quadratic approximation?
+2. Can the solution be adapted to find the minimum-area **axis-aligned** rectangle?
+3. What if the input size is very large (e.g., 10⁵ points); can you design a sub-quadratic approximation?
 
 ## Key Takeaway
 Two diagonals with identical midpoints and lengths uniquely define a rectangle; grouping point pairs by these properties enables an O(n²) solution.

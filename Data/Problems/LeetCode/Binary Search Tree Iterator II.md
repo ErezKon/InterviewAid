@@ -119,7 +119,7 @@ The table shows how the pointer moves through the flattened sorted list `[1,2,3,
 
 - How would you implement the iterator with O(h) space using a controlled stack instead of flattening the entire tree?
 - Can you support `remove()` operation to delete the current node?
-- How does the design change for a self‑balancing BST like AVL or Red‑Black tree?
+- How does the design change for a self-balancing BST like AVL or Red-Black tree?
 
 ---
 

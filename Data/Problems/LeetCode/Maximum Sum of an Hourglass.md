@@ -39,10 +39,10 @@ Explanation: There is only one hourglass in the matrix, with the sum: 1 + 2 + 3 
 ```
 
 ## Approach
-The hourglass shape has a fixed size of `3 x 3`. We can slide a window across the matrix, compute each hourglass sum using a constant‑time formula, and keep the maximum.
+The hourglass shape has a fixed size of `3 x 3`. We can slide a window across the matrix, compute each hourglass sum using a constant-time formula, and keep the maximum.
 
-1. **Prefix‑Sum Grid** – Build a prefix sum matrix `P` where `P[i][j]` stores the sum of the sub‑matrix `(0,0)` to `(i‑1,j‑1)`. This allows O(1) retrieval of any rectangular sum.
-2. **Hourglass Sum** – For each top‑left corner `(i,j)` where `i ≤ m‑3` and `j ≤ n‑3`, compute the sum of the three rows using the prefix sums and add the middle element.
+1. **Prefix-Sum Grid** – Build a prefix sum matrix `P` where `P[i][j]` stores the sum of the sub-matrix `(0,0)` to `(i-1,j-1)`. This allows O(1) retrieval of any rectangular sum.
+2. **Hourglass Sum** – For each top-left corner `(i,j)` where `i ≤ m-3` and `j ≤ n-3`, compute the sum of the three rows using the prefix sums and add the middle element.
 3. Track the maximum value while iterating.
 
 ## Pseudocode
@@ -73,16 +73,16 @@ FUNCTION maxHourglassSum(matrix):
 ```
 
 ## Walkthrough
-Consider the matrix from Example 2. After building `P`, the algorithm examines each possible top‑left corner. For corner `(0,3)`, the top row sum is `1+1+1 = 3`, middle element is `1`, bottom row sum is `1+1+1 = 3`; hourglass sum = `7`, which becomes the current maximum.
+Consider the matrix from Example 2. After building `P`, the algorithm examines each possible top-left corner. For corner `(0,3)`, the top row sum is `1+1+1 = 3`, middle element is `1`, bottom row sum is `1+1+1 = 3`; hourglass sum = `7`, which becomes the current maximum.
 
 ## Complexity Analysis
-- **Time:** O(m·n) to build the prefix sum matrix plus O((m‑2)·(n‑2)) to evaluate hourglasses → O(m·n).
+- **Time:** O(m·n) to build the prefix sum matrix plus O((m-2)·(n-2)) to evaluate hourglasses → O(m·n).
 - **Space:** O(m·n) for the prefix sum matrix.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if the hourglass shape could be any `k x k` pattern?
-2. Can you solve the problem in O(1) extra space by updating the matrix in‑place?
-3. How would you extend this to find the top‑`k` hourglass sums?
+2. Can you solve the problem in O(1) extra space by updating the matrix in-place?
+3. How would you extend this to find the top-`k` hourglass sums?
 
 ## Key Takeaway
-Using a prefix‑sum grid turns the fixed‑size hourglass sum computation into constant‑time per position, enabling an overall linear‑time solution.
+Using a prefix-sum grid turns the fixed-size hourglass sum computation into constant-time per position, enabling an overall linear-time solution.

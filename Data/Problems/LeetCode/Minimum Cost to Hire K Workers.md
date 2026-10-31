@@ -40,12 +40,12 @@ Explanation: We pay 4 to 0^th worker, 13.33333 to 2^nd and 3^rd workers separate
 
 ## Approach
 
-**Algorithm:** Sort workers by their wage‑to‑quality ratio and maintain a max‑heap of the `k` smallest qualities.
+**Algorithm:** Sort workers by their wage-to-quality ratio and maintain a max-heap of the `k` smallest qualities.
 
 1. Compute `ratio = wage[i] / quality[i]` for each worker.
 2. Sort workers ascending by `ratio`.
-3. Iterate through the sorted list, adding each worker’s quality to a max‑heap and tracking the sum of qualities.
-4. When the heap size exceeds `k`, remove the largest quality (pop from max‑heap) to keep only the cheapest `k` qualities.
+3. Iterate through the sorted list, adding each worker’s quality to a max-heap and tracking the sum of qualities.
+4. When the heap size exceeds `k`, remove the largest quality (pop from max-heap) to keep only the cheapest `k` qualities.
 5. If the heap size equals `k`, the current `ratio` can serve as the wage rate; compute `cost = ratio × sumQualities` and update the minimum.
 
 ```text
@@ -72,7 +72,7 @@ FUNCTION minCostToHireKWorkers(quality, wage, k):
 
 Consider `quality = [10,20,5]`, `wage = [70,50,30]`, `k = 2`.
 
-| Step | Worker (ratio, q) | Heap (max‑top) | sumQual | Cost (if size=2) |
+| Step | Worker (ratio, q) | Heap (max-top) | sumQual | Cost (if size=2) |
 |------|-------------------|----------------|---------|-------------------|
 | 1    | (3.0, 10)         | [10]           | 10      | – |
 | 2    | (2.5, 20)         | [20,10]        | 30      | 2.5 × 30 = 75 |
@@ -85,12 +85,12 @@ The minimum observed cost is `105` after processing all workers (using ratio = 7
 - **Time:** `O(n log n)` for sorting and heap operations.
 - **Space:** `O(n)` for storing workers and the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if workers could be hired in multiple groups with different rates?
 - Can the algorithm be adapted to return the actual set of hired workers?
-- What if the wage‑to‑quality ratio is not monotonic due to additional constraints?
+- What if the wage-to-quality ratio is not monotonic due to additional constraints?
 
 ## Key Takeaway
 
-Sort by **wage‑to‑quality ratio** and keep the `k` smallest qualities in a max‑heap; the current ratio gives the cheapest feasible rate, yielding a linear‑ith‑log solution.
+Sort by **wage-to-quality ratio** and keep the `k` smallest qualities in a max-heap; the current ratio gives the cheapest feasible rate, yielding a linear-ith-log solution.

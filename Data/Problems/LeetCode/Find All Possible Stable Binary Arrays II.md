@@ -81,8 +81,8 @@ The final answer is `dp[2][2][0] + dp[2][2][1] = 6`.
 
 ## Complexity Analysis
 
-- **Time:** O(zero × one) – each state is computed in O(1) using sliding‑window sums.
-- **Space:** O(zero × one) – two 2‑D tables for ending with 0 and 1 (can be reduced to O(one) with rolling arrays).
+- **Time:** O(zero × one) – each state is computed in O(1) using sliding-window sums.
+- **Space:** O(zero × one) – two 2-D tables for ending with 0 and 1 (can be reduced to O(one) with rolling arrays).
 
 ---
 

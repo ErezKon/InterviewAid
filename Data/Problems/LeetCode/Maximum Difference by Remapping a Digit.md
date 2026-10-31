@@ -85,7 +85,7 @@ FUNCTION maxMinDifference(num):
 
 **Example:** `123`
 1. Original string `s = "123"`.
-2. **Maximum:** First non‑`9` digit is `1`. Replace all `1` with `9` → `923`.
+2. **Maximum:** First non-`9` digit is `1`. Replace all `1` with `9` → `923`.
 3. **Minimum:** First digit is `1`. Replace all `1` with `0` → `023` → `23`.
 4. Compute `923 - 23 = 900`.
 
@@ -109,4 +109,4 @@ FUNCTION maxMinDifference(num):
 
 ## Key Takeaway
 
-> **Maximize by mapping the first non‑9 digit to 9, minimize by mapping the leading digit to 0.** Two independent greedy choices give the optimal difference.
+> **Maximize by mapping the first non-9 digit to 9, minimize by mapping the leading digit to 0.** Two independent greedy choices give the optimal difference.

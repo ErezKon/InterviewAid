@@ -37,7 +37,7 @@ FUNCTION numMagicSquaresInside(grid):
     RETURN count
 
 FUNCTION isMagic(grid, r, c):
-    // Verify values are 1‑9 and distinct
+    // Verify values are 1-9 and distinct
     vals ← SET()
     FOR i ← r TO r+2:
         FOR j ← c TO c+2:
@@ -86,12 +86,12 @@ Example 2:
 
 ## 4. Walkthrough
 
-| Step | Sub‑grid Top‑Left | Action |
+| Step | Sub-grid Top-Left | Action |
 |------|------------------|--------|
-| 1 | (0,0) | Check all 9 values are 1‑9 and distinct; center is 5.
+| 1 | (0,0) | Check all 9 values are 1-9 and distinct; center is 5.
 | 2 | (0,0) | Verify each row, column, and diagonal sums to 15 → passes.
 | 3 | (0,1) | Values out of range or duplicate → fails.
-| … | … | Continue scanning all positions; only the first sub‑grid succeeds.
+| … | … | Continue scanning all positions; only the first sub-grid succeeds.
 
 ---
 
@@ -104,4 +104,4 @@ Example 2:
 
 ## Key Takeaway
 
-> For a 3×3 magic square, the center must be 5 and the numbers 1‑9 must be distinct; checking these conditions plus the eight sums yields an O(m·n) solution.
+> For a 3×3 magic square, the center must be 5 and the numbers 1-9 must be distinct; checking these conditions plus the eight sums yields an O(m·n) solution.

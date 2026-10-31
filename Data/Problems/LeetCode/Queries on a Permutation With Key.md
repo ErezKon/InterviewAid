@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented swap/lookup problem. Correct idea: simulate with a list (`m ≤ 1000`): find `queries[i]` in `P`, record its index, remove it and insert it at the front — O(n·m); or use a Fenwick tree over `m + n` slots for O((n + m) log(n + m)).*
-
 Given the array `queries` of positive integers between `1` and `m`, you have to process all `queries[i]` (from `i=0` to `i=queries.length-1`) according to the following rules:
 
 - In the beginning, you have the permutation `P=[1,2,3,...,m]`.
@@ -49,42 +47,48 @@ Output: [6,5,0,7,5]
 ```
 
 ## Approach
-Maintain the permutation in an array `perm`. For a type‑1 query, swap `perm[val]` and `perm[val+1]`. For a type‑2 query, read `perm[val]` and append to the answer list. All operations are O(1).
+Brute-force simulation is enough for `m ≤ 1000` (O(n·m)), but a Fenwick tree gives O((n + m) log(n + m)).
+
+Reserve `n + m` slots. The first `n` slots are empty "front" positions used for future moves; numbers `1..m` start in slots `n+1..n+m`. Each occupied slot holds a 1 in a Fenwick tree. The index of value `q` in `P` equals the number of occupied slots before its slot, i.e. `prefixSum(pos[q]) - 1`. To move `q` to the front, clear its slot and place it in the next free front slot (`front`, which decreases by one after each query).
 
 ```text
-FUNCTION processQueries(n, queries):
-    // initialise permutation
-    SET perm ← [0, 1, 2, ..., n-1]
-    SET answer ← []
+FUNCTION processQueries(queries, m):
+    n ← length(queries)
+    BIT ← Fenwick tree of size n + m (all zeros)
+    FOR v ← 1 TO m:
+        pos[v] ← n + v
+        BIT.add(pos[v], +1)
+    front ← n
+    answer ← []
     FOR each q IN queries:
-        SET type ← q[0]
-        SET val ← q[1]
-        IF type == 1:
-            // swap adjacent elements
-            SET temp ← perm[val]
-            SET perm[val] ← perm[val+1]
-            SET perm[val+1] ← temp
-        ELSE IF type == 2:
-            APPEND perm[val] TO answer
+        APPEND BIT.prefixSum(pos[q]) - 1 TO answer   // elements before q
+        BIT.add(pos[q], -1)                           // remove q
+        pos[q] ← front                                // move q to the front
+        BIT.add(front, +1)
+        front ← front - 1
     RETURN answer
 ```
 
 ## Walkthrough
-| Query | Permutation before | Action | Permutation after | Output |
-|-------|-------------------|--------|-------------------|--------|
-| [1,1] | [0,1,2,3,4] | swap indices 1&2 | [0,2,1,3,4] | — |
-| [2,1] | [0,2,1,3,4] | read index 1 | — | 2 |
-| [1,2] | [0,2,1,3,4] | swap 2&3 | [0,2,3,1,4] | — |
-| [2,2] | [0,2,3,1,4] | read index 2 | — | 3 |
+Example 1: `queries = [3,1,2,1]`, `m = 5`, so `n = 4`. Initially values 1..5 sit in slots 5..9; `front = 4`.
+
+| q | pos[q] | prefixSum(pos[q]) - 1 | Move q to slot | P afterwards |
+|---|--------|-----------------------|----------------|--------------|
+| 3 | 7 | 3 - 1 = **2** | 4 | [3,1,2,4,5] |
+| 1 | 5 | 2 - 1 = **1** (slots 4,5) | 3 | [1,3,2,4,5] |
+| 2 | 6 | 3 - 1 = **2** (slots 3,4,6) | 2 | [2,1,3,4,5] |
+| 1 | 3 | 2 - 1 = **1** (slots 2,3) | 1 | [1,2,3,4,5] |
+
+Result: `[2,1,2,1]` — matches the expected output.
 
 ## Complexity Analysis
-- **Time:** Each query is processed in O(1) → O(Q) where Q = number of queries.
-- **Space:** O(n) for the permutation array plus O(k) for the answers (k = number of type‑2 queries).
+- **Time:** O((n + m) log(n + m)) — each initial insertion and each query does O(1) Fenwick operations. (The plain list simulation is O(n·m), also acceptable here.)
+- **Space:** O(n + m) for the Fenwick tree and the position map.
 
 ## Follow-Up Questions
-1. How would you support swaps of non‑adjacent elements efficiently?
-2. Can you answer queries in a streaming fashion with limited memory (e.g., when `n` is huge)?
-3. How would you modify the solution to handle a batch of swaps applied simultaneously?
+1. How would you also support "move to the back" operations? (Reserve free slots on both ends.)
+2. What if `m` were up to 10^9 but only the queried values mattered? (Coordinate-compress the queried values; unqueried ones keep their relative order.)
+3. Could you answer the queries offline without a Fenwick tree? (Yes, with a balanced BST / order-statistic tree, or sqrt-decomposition.)
 
 ## Key Takeaway
-Keeping the permutation in a mutable array lets you handle adjacent swaps and direct lookups in constant time, giving a linear‑time overall solution.
+"Move to front + ask for the index" becomes a prefix-count problem once you pre-allocate empty slots in front of the array; a Fenwick tree then answers each query in logarithmic time.

@@ -132,11 +132,11 @@ CLASS BoundedBlockingQueue:
 ## Follow-Up Questions
 
 1. How would you extend this design to support a priority queue?
-2. What changes are needed to make the queue lock‑free?
+2. What changes are needed to make the queue lock-free?
 3. How would you handle shutdown semantics where pending enqueues should fail gracefully?
 
 ---
 
 ## Key Takeaway
 
-> **Classic producer‑consumer pattern: two condition variables (`notFull`, `notEmpty`) on a shared lock. Use `while` loops (not `if`) for spurious wakeup safety.**
+> **Classic producer-consumer pattern: two condition variables (`notFull`, `notEmpty`) on a shared lock. Use `while` loops (not `if`) for spurious wakeup safety.**

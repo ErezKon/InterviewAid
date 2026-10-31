@@ -50,7 +50,7 @@ House 0 has color 0, and house 1 has color 1. The distance between them is abs(0
 ```
 
 ## Approach
-The maximum distance will involve either the leftmost house with a color different from the rightmost house, or vice‑versa. Scan from the left to find the first index `i` where `colors[i] != colors[n-1]`; distance = `n-1-i`. Scan from the right to find the first index `j` where `colors[j] != colors[0]`; distance = `j`. The answer is the maximum of these two distances.
+The maximum distance will involve either the leftmost house with a color different from the rightmost house, or vice-versa. Scan from the left to find the first index `i` where `colors[i] != colors[n-1]`; distance = `n-1-i`. Scan from the right to find the first index `j` where `colors[j] != colors[0]`; distance = `j`. The answer is the maximum of these two distances.
 
 ## Walkthrough
 | Scan direction | Condition | Index found | Distance |
@@ -63,10 +63,10 @@ Take the larger of the two distances.
 - **Time:** `O(n)` single pass from both ends.
 - **Space:** `O(1)` extra variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if you needed the pair of indices, not just the distance?
-2. What if the street is circular (wrap‑around) – how does the problem change?
+2. What if the street is circular (wrap-around) – how does the problem change?
 3. Can you solve it using a single pass without storing `n`?
 
 ## Key Takeaway
-The furthest differing‑color houses must include one endpoint of the array; checking the first mismatch from each end yields the answer in linear time.
+The furthest differing-color houses must include one endpoint of the array; checking the first mismatch from each end yields the answer in linear time.

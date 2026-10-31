@@ -61,7 +61,7 @@ Explanation: It can be shown that the sum of nums1 will always be greater than x
 
 ## 3. Key Insight
 
-> After `t` seconds, if we zero out elements at times `t₁ < t₂ < ... < tₖ`, element `i` zeroed at time `tⱼ` saves `nums1[i] + nums2[i] * tⱼ`. Sorting by `nums2[i]` and assigning later times to larger `nums2[i]` yields a greedy ordering, but we still need to choose which elements to reset. This becomes a 0/1 knapsack‑style DP where `dp[j]` stores the maximum total savings using `j` resets.
+> After `t` seconds, if we zero out elements at times `t₁ < t₂ < ... < tₖ`, element `i` zeroed at time `tⱼ` saves `nums1[i] + nums2[i] * tⱼ`. Sorting by `nums2[i]` and assigning later times to larger `nums2[i]` yields a greedy ordering, but we still need to choose which elements to reset. This becomes a 0/1 knapsack-style DP where `dp[j]` stores the maximum total savings using `j` resets.
 
 ---
 
@@ -74,7 +74,7 @@ FUNCTION minimumTime(nums1, nums2, x):
     dp[0 ← 0] ← 0
     FOR i ← 0 TO n - 1:
         FOR j ← i + 1 DOWN TO 1:
-            // reset element i as the j‑th operation
+            // reset element i as the j-th operation
             saved ← pairs[i].second + pairs[i].first * j
             dp[j] ← MAX(dp[j], dp[j-1] + saved)
     total1 ← SUM(nums1)
@@ -115,7 +115,7 @@ Take `nums1 = [3,1,4]`, `nums2 = [2,2,1]`, `x = 5`.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n²) — knapsack‑style DP |
+| **Time** | O(n²) — knapsack-style DP |
 | **Space** | O(n) |
 
 ---
@@ -123,11 +123,11 @@ Take `nums1 = [3,1,4]`, `nums2 = [2,2,1]`, `x = 5`.
 ## 7. Follow-Up Questions
 
 - How would the solution change if you could reset **multiple** elements per second?
-- Can the DP be optimized to O(n·log n) using a priority queue?
+- Can the DP be optimized to O(n·log n) using a priority queue?
 - What if `nums2` values could be negative, representing decay instead of growth?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Sort by growth rate + knapsack DP.** Elements with higher `nums2[i]` should be zeroed later (saving more). The DP computes maximum total savings for a given number of resets, enabling the minimal‑time decision.
+> **Sort by growth rate + knapsack DP.** Elements with higher `nums2[i]` should be zeroed later (saving more). The DP computes maximum total savings for a given number of resets, enabling the minimal-time decision.

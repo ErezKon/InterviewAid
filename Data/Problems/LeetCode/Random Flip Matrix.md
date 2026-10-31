@@ -40,9 +40,9 @@ Example 1:
 ```
 
 ## Approach
-**Reservoir‑style Mapping (Hash‑based Indexing)**
+**Reservoir-style Mapping (Hash-based Indexing)**
 Treat the matrix as a flat list of `n*m` cells indexed from `0` to `n*m-1`. Maintain a hash map that records a remapped index for each flipped cell. When `flip()` is called:
-1. Choose a random integer `x` in `[0, remaining-1]` where `remaining` is the count of still‑zero cells.
+1. Choose a random integer `x` in `[0, remaining-1]` where `remaining` is the count of still-zero cells.
 2. The actual index to return is `map.get(x, x)` (if `x` has been remapped, use its value; otherwise `x`).
 3. Decrease `remaining` by 1.
 4. Map `x` to `map.get(remaining, remaining)` to keep the pool compact.
@@ -84,10 +84,10 @@ The map now contains `{4:5, 2:4}` representing the swapped indices.
 Time: O(1) average for both `flip()` and `reset()`.
 Space: O(k) where `k` is the number of flips performed (size of the map).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the design to support weighted probabilities for each cell?
-2. Can the solution be extended to a 3‑D grid with similar performance guarantees?
-3. What are the trade‑offs of using a balanced BST instead of a hash map for deterministic ordering?
+2. Can the solution be extended to a 3-D grid with similar performance guarantees?
+3. What are the trade-offs of using a balanced BST instead of a hash map for deterministic ordering?
 
 ## Key Takeaway
-By treating the matrix as a flat pool and lazily swapping used indices into a hash map, we achieve constant‑time random flips with minimal extra memory.
+By treating the matrix as a flat pool and lazily swapping used indices into a hash map, we achieve constant-time random flips with minimal extra memory.

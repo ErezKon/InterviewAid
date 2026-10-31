@@ -58,7 +58,7 @@ Explanation: We start at the cell (0, 0), and we perform one move: (0, 0) to (0,
 
 ## Approach
 
-Use dynamic programming while scanning the grid row‑by‑row. Maintain `minVal[r][c]`, the minimum value in the rectangle from (0,0) to (r,c). For each cell, the best score ending at that cell is `grid[r][c] - minVal[r][c]`. Update the global maximum accordingly.
+Use dynamic programming while scanning the grid row-by-row. Maintain `minVal[r][c]`, the minimum value in the rectangle from (0,0) to (r,c). For each cell, the best score ending at that cell is `grid[r][c] - minVal[r][c]`. Update the global maximum accordingly.
 
 ```text
 FUNCTION maxScore(grid):
@@ -82,17 +82,17 @@ FUNCTION maxScore(grid):
 
 Consider the grid `[[5,1,3],[2,8,4],[6,7,9]]`.
 
-| Step | Cell (r,c) | grid[r][c] | minVal up‑left | Candidate Score | Global Max |
+| Step | Cell (r,c) | grid[r][c] | minVal up-left | Candidate Score | Global Max |
 |------|------------|------------|---------------|----------------|------------|
 | 1 | (0,0) | 5 | 5 | — | — |
 | 2 | (0,1) | 1 | 1 | — | — |
-| 3 | (0,2) | 3 | 1 | 3‑1 = 2 | 2 |
+| 3 | (0,2) | 3 | 1 | 3-1 = 2 | 2 |
 | 4 | (1,0) | 2 | 2 | — | 2 |
-| 5 | (1,1) | 8 | 1 | 8‑1 = 7 | 7 |
-| 6 | (1,2) | 4 | 1 | 4‑1 = 3 | 7 |
-| 7 | (2,0) | 6 | 2 | 6‑2 = 4 | 7 |
-| 8 | (2,1) | 7 | 1 | 7‑1 = 6 | 7 |
-| 9 | (2,2) | 9 | 1 | 9‑1 = 8 | **8** |
+| 5 | (1,1) | 8 | 1 | 8-1 = 7 | 7 |
+| 6 | (1,2) | 4 | 1 | 4-1 = 3 | 7 |
+| 7 | (2,0) | 6 | 2 | 6-2 = 4 | 7 |
+| 8 | (2,1) | 7 | 1 | 7-1 = 6 | 7 |
+| 9 | (2,2) | 9 | 1 | 9-1 = 8 | **8** |
 
 The maximum achievable score is `8`.
 
@@ -116,4 +116,4 @@ The maximum achievable score is `8`.
 
 ## Key Takeaway
 
-> **Chained differences telescope: total = endpoint - startpoint.** Track the running minimum in the top‑left rectangle to maximize each cell's contribution.
+> **Chained differences telescope: total = endpoint - startpoint.** Track the running minimum in the top-left rectangle to maximize each cell's contribution.

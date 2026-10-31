@@ -67,7 +67,7 @@ For `[1,2,3]`:
 
 ## Complexity Analysis
 - Time: O(n) – each node visited once.
-- Space: O(h) – recursion stack height `h` (worst‑case O(n)).
+- Space: O(h) – recursion stack height `h` (worst-case O(n)).
 
 ## Follow-Up Questions
 - How would you implement the solution iteratively using a stack?

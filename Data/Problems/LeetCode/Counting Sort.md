@@ -5,7 +5,7 @@
 ## Problem Description
 > *Note: constraints and examples are derived, not from an official LeetCode source.*
 
-Counting sort is a non‑comparison sorting technique useful when the range of input values is limited (e.g., all numbers are between 0 and *k*). It counts the occurrences of each value and then reconstructs the sorted array in linear time.
+Counting sort is a non-comparison sorting technique useful when the range of input values is limited (e.g., all numbers are between 0 and *k*). It counts the occurrences of each value and then reconstructs the sorted array in linear time.
 
 Given an integer array `nums` whose values all lie in `[0, maxVal]`, sort it in non-decreasing order using counting sort.
 
@@ -62,10 +62,10 @@ FUNCTION countingSort(nums, maxVal):
 - **Time:** O(n + k) where *n* is the number of elements and *k* = maxVal.
 - **Space:** O(k) for the count array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to sort negative numbers?
 - Can you make counting sort stable to preserve the relative order of equal elements?
-- When is counting sort preferable to comparison‑based sorts like quicksort?
+- When is counting sort preferable to comparison-based sorts like quicksort?
 
 ## Key Takeaway
 When the value range is small relative to the input size, counting sort achieves linear time sorting by counting occurrences instead of comparing elements.

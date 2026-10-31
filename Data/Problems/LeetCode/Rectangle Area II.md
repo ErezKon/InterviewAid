@@ -40,7 +40,7 @@ Example 2:
 ```
 
 ## Approach
-Use a sweep line algorithm with coordinate compression. Sweep vertically, maintaining active horizontal intervals in a segment tree or multiset to compute covered width at each y‑step.
+Use a sweep line algorithm with coordinate compression. Sweep vertically, maintaining active horizontal intervals in a segment tree or multiset to compute covered width at each y-step.
 
 ```text
 FUNCTION RectangleUnionArea(rectangles):
@@ -67,26 +67,31 @@ FUNCTION RectangleUnionArea(rectangles):
         SET right ← xIndex[x2] - 1
         segTree.UPDATE(left, right, type) // increment/decrement count
         SET prevY ← y
-    RETURN area
+    RETURN area MOD (10^9 + 7)   // keep area in 64-bit (or reduce mod each step)
 ```
 
 ## Walkthrough
-Consider `rectangles = [[0,0,2,2],[1,0,3,1]]`.
-1. Unique x-coordinates: `[0,1,2,3]` → intervals: `[0-1],[1-2],[2-3]`.
-2. Events: `(0,+1,0,2)`, `(0,+1,1,3)`, `(1,-1,1,3)`, `(2,-1,0,2)` sorted by y.
-3. Sweep:
-   - At y=0, `dy=0`, area=0. Add intervals `[0-2]` and `[1-3]` → covered width = 3.
-   - Move to y=1, `dy=1`, area += 3*1 = 3. Remove `[1-3]` → covered width = 2.
-   - Move to y=2, `dy=1`, area += 2*1 = 2. Total area = 5.
+Example 1: `rectangles = [[0,0,2,2],[1,0,2,3],[1,0,3,1]]`.
+1. Unique x-coordinates: `[0,1,2,3]` → elementary intervals `[0-1],[1-2],[2-3]`.
+2. Events sorted by y: `(0,+1,0,2)`, `(0,+1,1,2)`, `(0,+1,1,3)`, `(1,-1,1,3)`, `(2,-1,0,2)`, `(3,-1,1,2)`.
+
+| y | dy | width before event | area | after update, covered x |
+|---|----|--------------------|------|-------------------------|
+| 0 | 0 | 0 | 0 | add all three → `[0,3]`, width 3 |
+| 1 | 1 | 3 | 3 | remove `[1,3]` → `[0,2]`, width 2 |
+| 2 | 1 | 2 | 5 | remove `[0,2]` → `[1,2]`, width 1 |
+| 3 | 1 | 1 | 6 | remove `[1,2]` → empty |
+
+Total area = **6**. Example 2: a single square gives `10^18 MOD (10^9 + 7) = 49`.
 
 ## Complexity Analysis
-- **Time:** `O(N log N)` where `N` is number of rectangles (sorting + segment‑tree updates).
+- **Time:** `O(N log N)` where `N` is number of rectangles (sorting + segment-tree updates).
 - **Space:** `O(N)` for events, compressed coordinates, and segment tree.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to also return the actual union polygon?
-2. Can the solution be adapted for rectangles with rotation (non‑axis aligned)?
-3. What is the impact on complexity if coordinates are up to 10⁹ and need 64‑bit arithmetic?
+2. Can the solution be adapted for rectangles with rotation (non-axis aligned)?
+3. What is the impact on complexity if coordinates are up to 10⁹ and need 64-bit arithmetic?
 
 ## Key Takeaway
 Sweeping a vertical line while maintaining active horizontal coverage via a segment tree (or multiset) efficiently computes the union area of many overlapping rectangles.

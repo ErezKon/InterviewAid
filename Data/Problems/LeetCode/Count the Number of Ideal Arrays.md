@@ -109,7 +109,7 @@ Sum = 1+3+3+5 = 12 arrays of length 3.
 
 ## Follow-Up Questions
 
-1. How would you adapt the solution if the divisibility condition were replaced by `a[i] ≤ a[i+1]` (non‑decreasing arrays)?
+1. How would you adapt the solution if the divisibility condition were replaced by `a[i] ≤ a[i+1]` (non-decreasing arrays)?
 2. Can the algorithm be extended to handle a dynamic `maxValue` that changes per query?
 3. What is the impact on complexity if `maxValue` can be up to `10^9`?
 
@@ -117,4 +117,4 @@ Sum = 1+3+3+5 = 12 arrays of length 3.
 
 ## Key Takeaway
 
-> By treating the problem as a DP over possible ending values and using divisor‑multiple relationships, we can count ideal arrays efficiently with O(n·maxValue·log maxValue) time.
+> By treating the problem as a DP over possible ending values and using divisor-multiple relationships, we can count ideal arrays efficiently with O(n·maxValue·log maxValue) time.

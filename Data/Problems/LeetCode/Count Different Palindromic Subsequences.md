@@ -15,7 +15,7 @@ A sequence is palindromic if it is equal to the sequence reversed.
 
 Two sequences `a1, a2, ...` and `b1, b2, ...` are different if there is some `i` for which `ai != bi`.
 
-(Only non‑empty subsequences are counted, and equal sequences are counted once regardless of position.)
+(Only non-empty subsequences are counted, and equal sequences are counted once regardless of position.)
 
 **Constraints:**
 - `1 <= s.length <= 1000`
@@ -43,7 +43,7 @@ Use interval dynamic programming. Let `dp[i][j]` be the count of distinct palind
 - If `s[i] == s[j]`, we need to consider inner occurrences of the same character to avoid double counting. Locate the next occurrence `lo` after `i` and the previous occurrence `hi` before `j`.
   * If no such inner occurrence (`lo > hi`), we can form three new palindromes: the single character, the pair, and the pair wrapped around any inner palindrome → `2*dp[i+1][j-1] + 3`.
   * If exactly one inner occurrence (`lo == hi`), we add one new palindrome → `2*dp[i+1][j-1] + 1`.
-  * If multiple inner occurrences, we subtract the count of palindromes inside `s[lo+1..hi-1]` to avoid over‑counting → `2*dp[i+1][j-1] - dp[lo+1][hi-1]`.
+  * If multiple inner occurrences, we subtract the count of palindromes inside `s[lo+1..hi-1]` to avoid over-counting → `2*dp[i+1][j-1] - dp[lo+1][hi-1]`.
 All operations are performed modulo `MOD`.
 
 ### Pseudocode
@@ -78,7 +78,7 @@ FUNCTION countPalindromicSubsequences(s):
 ```
 
 ## Walkthrough
-Take `s = "bccb"` (indices 0‑3).
+Take `s = "bccb"` (indices 0-3).
 | i | j | s[i] | s[j] | Action | dp[i][j] |
 |---|---|------|------|--------|----------|
 |0|0|b|b|base|1|

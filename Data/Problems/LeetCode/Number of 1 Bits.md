@@ -89,7 +89,7 @@ Explanation: The input binary string 1111111111111111111111111111101 has a total
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(k) for Kernighan's method (k = set bits) or O(32) for bit‑shift method |
+| **Time** | O(k) for Kernighan's method (k = set bits) or O(32) for bit-shift method |
 | **Space** | O(1) |
 
 ---

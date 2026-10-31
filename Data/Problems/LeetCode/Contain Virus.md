@@ -102,16 +102,16 @@ FUNCTION bfs(sr, sc, grid, visited, regionCells, frontier, wallsNeeded):
 ``` 
 
 ## Walkthrough
-Consider the first example grid. Day 1 we identify three infected regions; the leftmost region can infect 5 new cells, the rightmost 3, the middle 2. We wall off the leftmost (cost 5). Remaining regions spread, updating the grid. The process repeats until no frontier exists, accumulating a total of 10 walls.
+Consider the first example grid. Day 1 we identify three infected regions; the leftmost region can infect 5 new cells, the rightmost 3, the middle 2. We wall off the leftmost (cost 5). Remaining regions spread, updating the grid. The process repeats until no frontier exists, accumulating a total of 10 walls.
 
 ## Complexity Analysis
 - **Time:** O(m·n·D) where D is the number of days; each day scans the grid and performs BFS on each region.
 - **Space:** O(m·n) for visited matrix and queues.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the solution change if walls could be built around multiple regions per day?
 - Can the algorithm be optimized to avoid full rescans each day?
-- How would you adapt the approach for diagonal spreading (8‑directional)?
+- How would you adapt the approach for diagonal spreading (8-directional)?
 
 ## Key Takeaway
 A greedy simulation that each day walls off the most threatening infected region ensures the minimal total wall count needed to contain the virus.

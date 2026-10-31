@@ -98,8 +98,8 @@ FUNCTION ValidArrangement(pairs):
 | Step | Action |
 |------|--------|
 | 1 | Build adjacency list and compute in/out degrees for each node. |
-| 2 | Identify start node (out‑degree exceeds in‑degree by one) or fallback to any node. |
-| 3 | Perform Hierholzer’s algorithm: traverse edges depth‑first, pushing nodes onto `stack`. |
+| 2 | Identify start node (out-degree exceeds in-degree by one) or fallback to any node. |
+| 3 | Perform Hierholzer’s algorithm: traverse edges depth-first, pushing nodes onto `stack`. |
 | 4 | When a node has no outgoing edges, pop it to `path`. |
 | 5 | Reverse `path` to obtain the Eulerian trail, then translate consecutive nodes into pairs. |
 
@@ -113,4 +113,4 @@ FUNCTION ValidArrangement(pairs):
 3. What changes are needed if pairs can contain duplicate edges? |
 
 ## Key Takeaway
-Transforming the problem into an Eulerian path on a directed graph and applying Hierholzer’s algorithm yields a linear‑time solution that uses every pair exactly once.
+Transforming the problem into an Eulerian path on a directed graph and applying Hierholzer’s algorithm yields a linear-time solution that uses every pair exactly once.

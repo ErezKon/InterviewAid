@@ -83,7 +83,7 @@ FUNCTION countPairs(nums, maxDist):
 | 1 | [1,1,3] | 0 | 2 | 1 | 2 (pairs ≤1: (1,1)) | count < k → lo = 2 |
 | 2 | [1,1,3] | 2 | 2 | - | - | lo == hi → answer 2 |
 
-The algorithm narrows the distance range until `lo` equals the k‑th smallest distance.
+The algorithm narrows the distance range until `lo` equals the k-th smallest distance.
 
 ---
 
@@ -96,7 +96,7 @@ The algorithm narrows the distance range until `lo` equals the k‑th smallest d
 
 ## Follow-Up Questions
 
-1. How would you modify the solution to return the actual pair(s) achieving the k‑th distance?
+1. How would you modify the solution to return the actual pair(s) achieving the k-th distance?
 2. Can this approach be adapted for multidimensional points with Euclidean distance?
 3. What if the array is streamed and cannot be fully stored in memory?
 

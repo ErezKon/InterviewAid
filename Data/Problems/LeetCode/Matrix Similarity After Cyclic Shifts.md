@@ -58,7 +58,7 @@ Example 3:
 FUNCTION areSimilar(mat, k):
     FOR each row IN mat:
         n ← LENGTH(row)
-        FOR j ← 0 TO n‑1:
+        FOR j ← 0 TO n-1:
             IF row[j] != row[(j + k) MOD n]:
                 RETURN false
     RETURN true
@@ -85,11 +85,11 @@ The algorithm stops at the first mismatch, returning `false`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you handle **different shift values per row**?
 - Can you determine the **minimum k** that makes the matrix similar, or report that none exists?
-- What changes are needed if the matrix is **circularly shifted column‑wise** instead of row‑wise?
+- What changes are needed if the matrix is **circularly shifted column-wise** instead of row-wise?
 
 ---
 

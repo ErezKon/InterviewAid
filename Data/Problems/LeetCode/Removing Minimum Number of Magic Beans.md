@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "strictly decreasing piles" problem. Correct idea: sort `beans` ascending; if every remaining bag keeps `beans[i]` beans, bags `i..n-1` survive, so the kept amount is `beans[i] · (n − i)`. Answer = `sum(beans) − max_i beans[i] · (n − i)`. O(n log n).*
-
 You are given an array of **positive** integers `beans`, where each integer represents the number of magic beans found in a particular magic bag.
 
 **Remove** any number of beans (**possibly none**) from each bag such that the number of beans in each remaining **non-empty** bag (still containing **at least one** bean) is **equal**. Once a bean has been removed from a bag, you are **not** allowed to return it to any of the bags.
@@ -53,40 +51,44 @@ There are no other solutions that removes 7 beans or fewer.
 ```
 
 ## Approach
-Sort the array. Iterate from smallest to largest, maintaining the maximum beans that can be kept so far while ensuring a strictly decreasing order when traversed backwards. For each pile, the kept amount is the minimum of the current pile size and `prevKept-1` (where `prevKept` is the amount kept for the previous larger pile). Accumulate the kept beans; the answer is `totalBeans - keptBeans`.
+Suppose every non-empty bag ends with exactly `t` beans. Bags with fewer than `t` beans must be emptied, and bags with at least `t` beans are trimmed to `t`. The optimal `t` is always one of the original bag sizes (raising `t` up to the next existing size never empties an extra bag and keeps more beans).
+
+Sort `beans` ascending. Choosing `t = beans[i]` keeps bags `i..n-1`, each with `beans[i]` beans, so the kept amount is `beans[i] · (n − i)`. Minimising removals is the same as maximising the kept amount:
+
+`answer = sum(beans) − max_i beans[i] · (n − i)`
 
 ```text
-FUNCTION minRemovedBeans(beans):
+FUNCTION minimumRemoval(beans):
     SORT beans ASCENDING
-    SET total ← SUM of beans
-    SET kept ← 0
-    SET prevKept ← INFINITY
-    FOR value IN beans REVERSED: // iterate from largest to smallest
-        SET keep ← MIN(value, prevKept - 1)
-        IF keep < 0:
-            SET keep ← 0
-        SET kept ← kept + keep
-        SET prevKept ← keep
-    RETURN total - kept
+    n ← length(beans)
+    total ← SUM of beans
+    bestKept ← 0
+    FOR i ← 0 TO n-1:
+        // all bags from i onward keep exactly beans[i] beans
+        bestKept ← MAX(bestKept, beans[i] * (n - i))
+    RETURN total - bestKept
 ```
 
 ## Walkthrough
-| Step | value (sorted) | prevKept | keep | kept so far |
-|------|----------------|----------|------|------------|
-| 1 | 6 | ∞ | 6 | 6 |
-| 2 | 5 | 6 | 5 (min(5,5)) | 11 |
-| 3 | 4 | 5 | 4 (min(4,4)) | 15 |
-| 4 | 1 | 4 | 1 (min(1,3)) | 16 |
-Total beans = 16, kept = 16 → removed = 0 (example adjusted for illustration).
+Example 1: `beans = [4,1,6,5]` → sorted `[1,4,5,6]`, `total = 16`, `n = 4`.
+
+| i | beans[i] | bags kept (n − i) | kept = beans[i]·(n − i) | bestKept |
+|---|----------|-------------------|-------------------------|----------|
+| 0 | 1 | 4 | 4 | 4 |
+| 1 | 4 | 3 | 12 | 12 |
+| 2 | 5 | 2 | 10 | 12 |
+| 3 | 6 | 1 | 6 | 12 |
+
+Answer = 16 − 12 = **4** — matches the expected output. (Example 2: sorted `[2,2,3,10]`, total 17, best kept = max(8, 6, 6, 10) = 10 → 7.)
 
 ## Complexity Analysis
-- Time: O(n log n) for sorting, where *n* is the number of piles.
-- Space: O(1) extra beyond the input array.
+- **Time:** O(n log n) for sorting; the scan is O(n).
+- **Space:** O(1) extra (or O(n) depending on the sort implementation). Note the products and sum can reach 10^10, so use 64-bit integers.
 
 ## Follow-Up Questions
-1. How would the solution change if the piles must be **non‑increasing** instead of strictly decreasing?
-2. Can you solve the problem in‑place without extra variables beyond a few scalars?
-3. How would you extend the algorithm to handle a constraint on the maximum number of operations?
+1. Can you avoid sorting? (Yes: counting sort over values up to 10^5, then sweep values from high to low tracking how many bags have at least that many beans — O(n + maxValue).)
+2. What if you could also *add* beans at a cost per bean? (Then the target `t` becomes a weighted-median-style search over candidate values using prefix sums.)
+3. What if at least `k` bags must remain non-empty? (Restrict the scan to `i ≤ n − k`.)
 
 ## Key Takeaway
-Sorting the piles and greedily fixing the maximum allowable beans from largest to smallest ensures the strictly decreasing requirement while minimizing removals.
+Fix the final common value `t`; after sorting, every candidate `t = beans[i]` keeps exactly the suffix of bags, so the best choice is `max beans[i] · (n − i)` and the answer is the total minus that.

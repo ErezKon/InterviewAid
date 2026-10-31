@@ -76,7 +76,7 @@ Consider tree `[1,2,3,4,5,6,7]` with `to_delete = [3,5]`.
 
 ## Follow-Up Questions
 
-- How would you modify the algorithm to return the forest in level‑order traversal format?
+- How would you modify the algorithm to return the forest in level-order traversal format?
 - Can the solution be implemented iteratively using a stack?
 - What changes are needed if the tree is represented as parent pointers instead of child pointers?
 
@@ -84,4 +84,4 @@ Consider tree `[1,2,3,4,5,6,7]` with `to_delete = [3,5]`.
 
 ## Key Takeaway
 
-> **When a node is deleted, its children become new roots. Passing an `isRoot` flag during DFS lets you collect those roots while performing a post‑order traversal.**
+> **When a node is deleted, its children become new roots. Passing an `isRoot` flag during DFS lets you collect those roots while performing a post-order traversal.**

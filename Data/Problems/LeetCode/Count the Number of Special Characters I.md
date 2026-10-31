@@ -59,7 +59,7 @@ FUNCTION numberOfSpecialChars(word):
 
 ## Walkthrough
 
-Consider **Example 1** (`word = "abBA"`).
+Consider **Example 1** (`word = "abBA"`).
 
 1. Build a set of characters: `{ 'a','b','B','A' }`.
 2. Iterate over each lowercase letter:
@@ -85,10 +85,10 @@ The algorithm runs in linear time over the string length and constant extra spac
 
 1. How would you modify the solution if the string could contain Unicode characters beyond the English alphabet?
 2. What if you needed to return the list of special characters instead of just the count?
-3. How would the approach change if the problem required case‑insensitive counting (treat 'a' and 'A' as the same character)?
+3. How would the approach change if the problem required case-insensitive counting (treat 'a' and 'A' as the same character)?
 
 ---
 
 ## Key Takeaway
 
-> **Build a set of all characters, then check each letter for both cases. Simpler than version II since no ordering constraint.**
+> **Build a set of all characters, then check each letter for both cases. Simpler than version II since no ordering constraint.**

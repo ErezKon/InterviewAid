@@ -36,7 +36,7 @@ Example 2:
 ```
 
 ## Approach
-Iterate over all possible hour values (0‑11) and minute values (0‑59). Count the number of set bits in each using a bit‑count operation. If the sum equals `turnedOn`, format the time as `h:mm` (minutes padded to two digits) and add to the result list.
+Iterate over all possible hour values (0-11) and minute values (0-59). Count the number of set bits in each using a bit-count operation. If the sum equals `turnedOn`, format the time as `h:mm` (minutes padded to two digits) and add to the result list.
 
 ```text
 FUNCTION readBinaryWatch(turnedOn):
@@ -56,13 +56,13 @@ For `turnedOn = 1`:
 3. Combine all → 10 possible times.
 
 ## Complexity Analysis
-- Time: O(12 × 60) = O(1) – constant bounded loops.
+- Time: O(12 × 60) = O(1) – constant bounded loops.
 - Space: O(k) where k is the number of valid times returned.
 
 ## Follow-Up Questions
-- How would you generate the times using combinatorial generation of bit positions instead of brute‑force loops?
+- How would you generate the times using combinatorial generation of bit positions instead of brute-force loops?
 - Can you adapt the solution for a watch with a different number of hour/minute LEDs?
 - How would you modify the algorithm to return times sorted chronologically?
 
 ## Key Takeaway
-Enumerating all hour and minute combinations and filtering by total set‑bit count provides a simple, constant‑time solution for the binary watch problem.
+Enumerating all hour and minute combinations and filtering by total set-bit count provides a simple, constant-time solution for the binary watch problem.

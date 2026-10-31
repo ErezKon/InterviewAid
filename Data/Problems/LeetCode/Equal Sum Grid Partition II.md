@@ -56,10 +56,10 @@ Example 4:
 
 ## Approach
 1. Compute the total sum of the grid. If it is not divisible by 4, return false.
-2. Compute prefix sums for rows and columns to allow O(1) sub‑grid sum queries.
-3. Iterate over possible horizontal cut positions `h` (1 ≤ h < m‑1). For each `h`, compute the sum of the top half and bottom half.
+2. Compute prefix sums for rows and columns to allow O(1) sub-grid sum queries.
+3. Iterate over possible horizontal cut positions `h` (1 ≤ h < m-1). For each `h`, compute the sum of the top half and bottom half.
    - If either half sum is not `total/2`, continue.
-4. For a valid `h`, iterate over vertical cut positions `v` (1 ≤ v < n‑1). Using the prefix sums, obtain the four quadrant sums:
+4. For a valid `h`, iterate over vertical cut positions `v` (1 ≤ v < n-1). Using the prefix sums, obtain the four quadrant sums:
    - `topLeft`, `topRight`, `bottomLeft`, `bottomRight`.
    - If all four equal `total/4`, return true.
 5. If no pair of cuts satisfies the condition, return false.
@@ -109,7 +109,7 @@ FUNCTION canPartitionGridII(grid):
     RETURN false
 
 FUNCTION sumRegion(r1,c1,r2,c2):
-    // compute sum using 2‑D prefix matrix (omitted for brevity)
+    // compute sum using 2-D prefix matrix (omitted for brevity)
     // assume O(1) retrieval
     RETURN computed sum
 ```
@@ -117,19 +117,19 @@ FUNCTION sumRegion(r1,c1,r2,c2):
 ## Walkthrough
 | Cut (h,v) | Quadrant sums | Result |
 |-----------|---------------|--------|
-| (1,1) on 4×4 all‑ones grid | each = 4 | true |
-| (1,2) on same grid | top‑left = 2, others differ | false |
+| (1,1) on 4×4 all-ones grid | each = 4 | true |
+| (1,2) on same grid | top-left = 2, others differ | false |
 
 The algorithm checks each feasible pair until it finds a balanced partition.
 
 ## Complexity Analysis
-- **Time:** O(m·n) to build prefix sums + O(m·n) worst‑case to test cuts → O(m·n).
-- **Space:** O(m·n) for the 2‑D prefix matrix (or O(m+n) if using separate row/column prefixes and recompute quadrant sums).
+- **Time:** O(m·n) to build prefix sums + O(m·n) worst-case to test cuts → O(m·n).
+- **Space:** O(m·n) for the 2-D prefix matrix (or O(m+n) if using separate row/column prefixes and recompute quadrant sums).
 
-## Follow‑Up Questions
-- How would you adapt the solution for three cuts (creating nine sub‑grids)?
-- Can the algorithm be optimized to O(m·n) without the extra 2‑D prefix matrix?
+## Follow-Up Questions
+- How would you adapt the solution for three cuts (creating nine sub-grids)?
+- Can the algorithm be optimized to O(m·n) without the extra 2-D prefix matrix?
 - What changes are needed if the grid contains negative numbers?
 
 ## Key Takeaway
-Using prefix sums enables constant‑time sub‑grid sum queries, allowing an exhaustive yet efficient search for a pair of cuts that yields four equal‑sum quadrants.
+Using prefix sums enables constant-time sub-grid sum queries, allowing an exhaustive yet efficient search for a pair of cuts that yields four equal-sum quadrants.

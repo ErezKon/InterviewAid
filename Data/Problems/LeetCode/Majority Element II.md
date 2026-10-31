@@ -99,4 +99,4 @@ Consider `nums = [1,1,1,3,3,2,2,2]`:
 
 ## 7. Key Takeaway
 
-> Extended Boyer-Moore: track k‑1 candidates for > n/k threshold. Always verify in a second pass since the algorithm only guarantees candidates, not certainty.
+> Extended Boyer-Moore: track k-1 candidates for > n/k threshold. Always verify in a second pass since the algorithm only guarantees candidates, not certainty.

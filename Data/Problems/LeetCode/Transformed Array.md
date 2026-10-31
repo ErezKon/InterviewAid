@@ -48,7 +48,7 @@ Explanation:
 ```
 
 ## Approach
-Use direct index calculation with modulo arithmetic to handle wrap‑around for both positive and negative shifts.
+Use direct index calculation with modulo arithmetic to handle wrap-around for both positive and negative shifts.
 
 ```text
 FUNCTION constructTransformedArray(nums):
@@ -75,8 +75,8 @@ FUNCTION constructTransformedArray(nums):
 - **Time:** O(n) – one pass through the array.
 - **Space:** O(n) – the output array.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to perform the transformation in‑place?
+## Follow-Up Questions
+1. How would you modify the algorithm to perform the transformation in-place?
 2. What if the shift value could be larger than `n`? How does modulo handle it?
 3. Can you extend this to a circular linked list representation?
 

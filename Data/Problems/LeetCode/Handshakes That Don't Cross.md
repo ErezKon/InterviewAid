@@ -84,7 +84,7 @@ Consider `numPeople = 6` (`n = 3`). The DP builds Catalan numbers:
 2. `dp[1] = dp[0]*dp[0] = 1`
 3. `dp[2] = dp[0]*dp[1] + dp[1]*dp[0] = 2`
 4. `dp[3] = dp[0]*dp[2] + dp[1]*dp[1] + dp[2]*dp[0] = 5`
-Thus there are 5 non‑crossing handshake configurations.
+Thus there are 5 non-crossing handshake configurations.
 
 ---
 

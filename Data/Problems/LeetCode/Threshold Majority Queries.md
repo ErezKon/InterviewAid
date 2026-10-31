@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below look for a strict majority with Boyer–Moore; the official problem asks for the **most frequent** element (smallest on ties) whose frequency is **at least** `threshold`, which is not a majority query. Correct idea: coordinate-compress values and use Mo's algorithm (or sqrt decomposition on values) maintaining frequencies and the current best (max frequency, smallest value); answer `-1` if the best frequency `< threshold`. O((n + q)·√n).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer array `nums` of length `n` and an array `queries`, where `queries[i] = [l_i, r_i, threshold_i]`.
 
@@ -50,63 +50,62 @@ Explanation:
 ```
 
 ## Approach
-**Segment Tree + Boyer‑Moore Candidate + Binary Search** – Build a segment tree where each node stores a *candidate* for majority element and its relative count using the Boyer‑Moore voting algorithm. For a query, combine candidates from O(log n) nodes to obtain a global candidate. Then verify the candidate by counting its actual occurrences using pre‑computed position lists (binary search).
+**Mo's Algorithm with Rollback (add-only)** - The answer is a *range mode* with a smallest-value tie-break, then compared to `threshold`. Range mode has no cheap merge (so no segment tree), but it is easy to maintain while *adding* elements: keep `freq[v]` and the current best pair `(bestF, bestV)` (higher frequency wins, smaller value on ties). Removing elements would break `best`, so use the rollback variant of Mo's algorithm, which only ever adds and restores a saved snapshot.
+
+1. Coordinate-compress values (order-preserving, so "smallest" is unchanged). Pick block size `B ≈ n / sqrt(q)`.
+2. Queries with `l` and `r` in the same block: brute force in O(B).
+3. Other queries: group by block of `l`, sort each group by `r`. For a group, start with an empty window whose right part begins at `end` = last index of the block. For each query, extend the right pointer to `r` (permanent adds), snapshot `best`, add `l..end` (temporary adds), read the answer, then undo the temporary adds and restore the snapshot.
+4. Answer is `bestV` if `bestF >= threshold`, else `-1`.
 
 ```text
-FUNCTION buildTree(node, left, right):
-    IF left = right:
-        SET tree[node] ← (value ← arr[left], count ← 1)
-        RETURN
-    SET mid ← (left + right) / 2
-    CALL buildTree(node*2, left, mid)
-    CALL buildTree(node*2+1, mid+1, right)
-    SET tree[node] ← merge(tree[node*2], tree[node*2+1])
+FUNCTION add(v):
+    SET freq[v] ← freq[v] + 1
+    IF freq[v] > bestF OR (freq[v] = bestF AND v < bestV):
+        SET (bestF, bestV) ← (freq[v], v)
 
-FUNCTION merge(pairA, pairB):
-    // Boyer‑Moore merge of two candidates
-    IF pairA.value = pairB.value:
-        RETURN (value ← pairA.value, count ← pairA.count + pairB.count)
-    IF pairA.count > pairB.count:
-        RETURN (value ← pairA.value, count ← pairA.count - pairB.count)
-    RETURN (value ← pairB.value, count ← pairB.count - pairA.count)
-
-FUNCTION query(node, left, right, ql, qr):
-    IF ql ≤ left AND right ≤ qr:
-        RETURN tree[node]
-    SET mid ← (left + right) / 2
-    IF qr ≤ mid:
-        RETURN query(node*2, left, mid, ql, qr)
-    IF ql > mid:
-        RETURN query(node*2+1, mid+1, right, ql, qr)
-    SET leftRes ← query(node*2, left, mid, ql, qr)
-    SET rightRes ← query(node*2+1, mid+1, right, ql, qr)
-    RETURN merge(leftRes, rightRes)
-
-FUNCTION majorityQuery(l, r, threshold):
-    SET candidatePair ← query(1, 0, n-1, l, r)
-    SET cand ← candidatePair.value
-    // Verify actual frequency using position map
-    SET occ ← COUNT of indices in positions[cand] within [l, r] (binary search)
-    IF occ > threshold:
-        RETURN cand
-    RETURN -1
+FUNCTION thresholdQueries(nums, queries):
+    SET a ← COMPRESS(nums)
+    SET B ← MAX(1, n / SQRT(q))
+    FOR EACH query (l, r, t) WITH BLOCK(l) = BLOCK(r):
+        SET ans[query] ← BRUTE_FORCE(l, r, t)          // O(B), then clear freq
+    FOR EACH block b WITH its queries SORTED BY r:
+        SET end ← MIN(n-1, (b+1)*B - 1)
+        SET curR ← end
+        SET (bestF, bestV) ← (0, NONE)
+        FOR EACH (l, r, t) IN group:
+            WHILE curR < r:
+                SET curR ← curR + 1
+                CALL add(a[curR])
+            SET saved ← (bestF, bestV)
+            FOR i ← l TO end:
+                CALL add(a[i])
+            SET ans[query] ← ORIGINAL(bestV) IF bestF >= t ELSE -1
+            FOR i ← l TO end:
+                SET freq[a[i]] ← freq[a[i]] - 1
+            SET (bestF, bestV) ← saved
+        CLEAR freq for indices end+1 .. curR
+    RETURN ans
 ```
 
 ## Walkthrough
-Array `arr = [1,2,1,1,3,2]`, query `(0,5,2)`:
-1. Segment tree returns candidate `1` with count 2.
-2. Positions of `1` are `[0,2,3]`. Binary search finds 3 occurrences in `[0,5]`.
-3. Since `3 > 2`, answer is `1`.
+Example 1: `nums = [1,1,2,2,1,1]`, `queries = [[0,5,4],[0,3,3],[2,3,2]]`, `n = 6`, `q = 3`, `B = floor(6 / sqrt(3)) = 3` -> blocks `[0..2]`, `[3..5]`. All three queries cross the block boundary, so they all go to block 0 (`end = 2`), sorted by `r`: `[0,3,3]`, `[2,3,2]`, `[0,5,4]`.
+
+| Query | Permanent adds (right part) | best after right part | Temporary adds `l..2` | best at answer | Answer |
+|---|---|---|---|---|---|
+| [0,3,3] | idx 3 (2) | (1, 2) | 1, 1, 2 | (2, 1) | 2 < 3 -> **-1** |
+| [2,3,2] | none | (1, 2) | 2 | (2, 2) | 2 >= 2 -> **2** |
+| [0,5,4] | idx 4, 5 (1, 1) | (2, 1) | 1, 1, 2 | (4, 1) | 4 >= 4 -> **1** |
+
+After each query the temporary adds are undone and `best` is restored. Mapping back to the original order gives `[1,-1,2]`, matching the expected output.
 
 ## Complexity Analysis
-- **Pre‑processing:** O(n log n) to build the segment tree; O(n) to store positions of each value.
-- **Per Query:** O(log n) to obtain candidate + O(log n) for binary‑search verification → O(log n) total.
-- **Space:** O(n) for the tree and position lists.
+- **Time:** O(n log n + q log q) for compression and sorting, plus O(n · sqrt(q)) for right-pointer moves (O(n) per block, n / B blocks) and O(q · B) for the left parts, i.e. O((n + q) · sqrt(q)) overall with `B ≈ n / sqrt(q)`.
+- **Space:** O(n + q) for the compressed array, frequency table and answers.
 
-## Follow‑Up Questions
-1. How would you handle updates to the array (point modifications)?
-2. Can you answer queries with a *range mode* (most frequent element) instead of a threshold?
-3. What if the array is extremely large and must be stored on disk?
+## Follow-Up Questions
+1. Why does standard Mo's algorithm (with removals) struggle here, and how could you support removals instead (e.g. buckets of values per frequency plus a sqrt-decomposed "smallest value at max frequency")?
+2. How would you answer the queries online (no reordering), e.g. by precomputing the mode for every pair of blocks?
+3. How would you handle point updates to `nums` between queries (Mo's with time dimension)?
 
 ## Key Takeaway
-Combining Boyer‑Moore voting within a segment tree yields a fast majority‑candidate for any range, and a secondary verification step using binary search confirms whether the candidate truly exceeds the given threshold.
+"Most frequent element in a range, then compare to a threshold" is a range-mode problem, not a majority problem. Mo's algorithm with rollback fits because the best answer is easy to maintain on insertions and can be restored from a snapshot instead of being repaired on deletions.

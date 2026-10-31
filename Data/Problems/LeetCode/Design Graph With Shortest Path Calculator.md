@@ -47,8 +47,8 @@ Example 1:
 ```
 
 <!-- previous (non-official) example notes (edges 0-1:4, 0-2:2, 1-2:5, 1-3:10, 2-4:3), kept hidden:
-**Explanation:** The shortest path from node 0 to node 3 is 0 → 2 → 4 → 3 with total cost 14.
-**Explanation:** No path exists from node 2 back to node 0, so return -1.
+**Explanation:** The shortest path from node 0 to node 3 is 0 → 2 → 4 → 3 with total cost 14.
+**Explanation:** No path exists from node 2 back to node 0, so return -1.
 -->
 
 ---
@@ -112,7 +112,7 @@ CLASS Graph:
 ## Follow-Up Questions
 
 1. How would you modify the design to support edge deletions efficiently?
-2. Can you improve query time by preprocessing all‑pairs shortest paths?
+2. Can you improve query time by preprocessing all-pairs shortest paths?
 3. How would you handle negative edge weights?
 
 ---

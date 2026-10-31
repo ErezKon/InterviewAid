@@ -84,7 +84,7 @@ Final stack size = 4 → maximum chunks.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the array contained **negative numbers**?
 - Can you solve the problem using a **single pass without extra space**?

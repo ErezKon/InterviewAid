@@ -46,7 +46,7 @@ Example 2:
 
 ## Walkthrough
 
-1. Build a set `s` of all elements for O(1) look‑ups.
+1. Build a set `s` of all elements for O(1) look-ups.
 2. Iterate over each element `x` in `arr`.
 3. If `x + 1` is in `s`, increment the count.
 4. Return the final count.

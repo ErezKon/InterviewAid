@@ -29,7 +29,7 @@ Return *an edge that can be removed so that the resulting graph is a tree of* `n
 
 ## 2. Approach: Union-Find — O(n·α(n)) ✅
 
-Process edges one by one. The first edge connecting two already‑connected nodes creates the cycle.
+Process edges one by one. The first edge connecting two already-connected nodes creates the cycle.
 
 ```text
 FUNCTION findRedundantConnection(edges):
@@ -67,7 +67,7 @@ Example 2:
 2. Edge `[1,2]`: `find(1) != find(2)` → union.
 3. Edge `[1,3]`: `find(1) != find(3)` → union.
 4. Edge `[2,3]`: `find(2) == find(3)` (both in same component) → cycle detected, return `[2,3]`.
-5. For the second example, the cycle is detected when processing `[1,4]` because `1` and `4` are already connected via `1‑2‑3‑4`.
+5. For the second example, the cycle is detected when processing `[1,4]` because `1` and `4` are already connected via `1-2-3-4`.
 
 ---
 
@@ -81,7 +81,7 @@ Example 2:
 ## Follow-Up Questions
 
 - How would you modify the algorithm to return all edges that form cycles?
-- Can you solve the problem without Union‑Find, e.g., using DFS for each edge?
+- Can you solve the problem without Union-Find, e.g., using DFS for each edge?
 - What changes are needed if the graph may contain multiple extra edges?
 
 ---

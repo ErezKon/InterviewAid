@@ -33,7 +33,7 @@ Output: [[0]]
 ```
 
 ## Approach
-Iterate over non‑zero elements of `mat1`; for each, multiply with the corresponding row of `mat2` and accumulate into `result`. This avoids O(m·k·n) work when many zeros exist.
+Iterate over non-zero elements of `mat1`; for each, multiply with the corresponding row of `mat2` and accumulate into `result`. This avoids O(m·k·n) work when many zeros exist.
 
 ```text
 FUNCTION multiplySparse(mat1, mat2):
@@ -57,13 +57,13 @@ FUNCTION multiplySparse(mat1, mat2):
 Result matches expected output.
 
 ## Complexity Analysis
-- Time: `O(nnz(mat1) * n)` where `nnz(mat1)` is number of non‑zero entries in `mat1` (often far less than m·k).
+- Time: `O(nnz(mat1) * n)` where `nnz(mat1)` is number of non-zero entries in `mat1` (often far less than m·k).
 - Space: `O(m·n)` for the output matrix.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you store the matrices using hash maps or coordinate lists to further reduce memory?
 2. Can you extend the method to multiply more than two sparse matrices?
 3. What changes are needed if the matrices are extremely large and stored on disk?
 
 ## Key Takeaway
-Skipping zero entries during multiplication dramatically reduces work for sparse matrices, turning a cubic algorithm into one proportional to the number of non‑zero elements.
+Skipping zero entries during multiplication dramatically reduces work for sparse matrices, turning a cubic algorithm into one proportional to the number of non-zero elements.

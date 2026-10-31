@@ -104,19 +104,19 @@ WHERE a.ad_id IS NULL;
 
 1. Perform a LEFT JOIN between `Playback` and `Ads` on matching `customer_id` and ad timestamps within the session interval.
 2. For sessions with no matching ad, the joined `Ads` columns become `NULL`.
-3. Filter rows where `a.ad_id IS NULL` to keep only ad‑free sessions.
+3. Filter rows where `a.ad_id IS NULL` to keep only ad-free sessions.
 4. Return the `session_id` of those rows.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time:** O(N + M) where N is the number of playback rows and M is the number of ad rows (join operation).
+- **Time:** O(N + M) where N is the number of playback rows and M is the number of ad rows (join operation).
 - **Space:** O(N) for the result set and temporary join structures.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the query to find sessions with **exactly one** ad?
 - How to handle overlapping sessions for the same customer?
@@ -126,4 +126,4 @@ WHERE a.ad_id IS NULL;
 
 ## Key Takeaway
 
-> Anti‑join pattern: LEFT JOIN + `WHERE … IS NULL` efficiently finds rows with no matching record, a classic technique for “not exists” queries in SQL.
+> Anti-join pattern: LEFT JOIN + `WHERE … IS NULL` efficiently finds rows with no matching record, a classic technique for “not exists” queries in SQL.

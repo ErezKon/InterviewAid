@@ -52,11 +52,11 @@ Example 2:
 ```
 
 ## Approach
-**Greedy with Min‑Heap.** Always combine the two smallest numbers because this yields the smallest possible increase in the minimum value, minimizing the number of operations.
+**Greedy with Min-Heap.** Always combine the two smallest numbers because this yields the smallest possible increase in the minimum value, minimizing the number of operations.
 
 ```text
 FUNCTION minOperations(nums, k):
-    // Build a min‑heap from all numbers
+    // Build a min-heap from all numbers
     SET heap ← MIN_HEAP(nums)
     SET ops ← 0
     WHILE heap.PEEK() < k:
@@ -76,13 +76,13 @@ FUNCTION minOperations(nums, k):
 | End  | [10]           | – | – | –         | 2 |
 
 ## Complexity Analysis
-- **Time:** O(n log n) to build the heap plus O(m log n) for `m` operations (each heap push/pop is log n).
+- **Time:** O(n log n) to build the heap plus O(m log n) for `m` operations (each heap push/pop is log n).
 - **Space:** O(n) for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could combine any two elements, not just the smallest?
-2. Can you achieve O(n) time using a counting sort‑based bucket for limited value ranges?
+2. Can you achieve O(n) time using a counting sort-based bucket for limited value ranges?
 3. What if the operation formula were `a + b` instead of `min*2 + max`?
 
 ## Key Takeaway
-Using a min‑heap to always merge the two smallest elements yields the minimal number of operations to raise the minimum array value to the target.
+Using a min-heap to always merge the two smallest elements yields the minimal number of operations to raise the minimum array value to the target.

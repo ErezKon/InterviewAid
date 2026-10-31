@@ -80,11 +80,11 @@ Consider **Example 1** (`start = 1, finish = 1000, limit = 5, s = "23"`).
 
 1. Compute `count(1000)`:
    - `numStr = "1000"`, `suffixLen = 2`, `prefixLen = 2`.
-   - Enumerate all 2‑digit prefixes where each digit ≤ 5 and the combined number ≤ 1000.
+   - Enumerate all 2-digit prefixes where each digit ≤ 5 and the combined number ≤ 1000.
    - Valid prefixes: `00, 01, 02, 03, 04, 05, 10, 11, …, 95` (subject to tight bound).
    - Append suffix `23` to each prefix → numbers like `0023, 0123, …, 9523`.
    - Only those ≤ 1000 survive: `23, 123, 523, 923` → 4 numbers.
-2. Compute `count(0)` (since `start‑1 = 0`): returns 0.
+2. Compute `count(0)` (since `start-1 = 0`): returns 0.
 3. Final answer = `4 - 0 = 4`.
 
 The DP efficiently counts prefixes without enumerating each integer.

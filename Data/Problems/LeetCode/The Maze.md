@@ -54,7 +54,7 @@ Example 3:
 ```
 
 ## Approach
-We treat each stopping position as a node in a graph. From a node, we explore all four directions, rolling the ball until it hits a wall, which yields a neighboring node. A breadth‑first search (BFS) or depth‑first search (DFS) from the start node discovers reachable stopping positions. If the destination node is reached, a path exists.
+We treat each stopping position as a node in a graph. From a node, we explore all four directions, rolling the ball until it hits a wall, which yields a neighboring node. A breadth-first search (BFS) or depth-first search (DFS) from the start node discovers reachable stopping positions. If the destination node is reached, a path exists.
 
 ```text
 FUNCTION hasPath(maze, start, destination):

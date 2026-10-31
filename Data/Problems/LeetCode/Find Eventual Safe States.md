@@ -102,7 +102,7 @@ Result safe nodes: `{2,4,5,6}`.
 
 ## Follow-Up Questions
 
-1. How would you solve the problem using depth‑first search with node coloring?
+1. How would you solve the problem using depth-first search with node coloring?
 2. Can the algorithm be adapted to return the actual safe paths instead of just safe nodes?
 3. What changes are needed if the graph is given as an adjacency matrix?
 

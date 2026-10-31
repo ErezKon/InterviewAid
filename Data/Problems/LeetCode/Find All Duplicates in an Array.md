@@ -76,10 +76,10 @@ FUNCTION findDuplicates(nums):
 - **Time:** O(n) – single pass.
 - **Space:** O(1) extra space (output list excluded).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to return numbers that appear more than twice?
 - Can you solve the problem without modifying the input array?
 - What changes are needed if the numbers are not limited to `[1, n]`?
 
 ## Key Takeaway
-By treating indices as markers and using sign flipping, we achieve constant‑extra‑space duplicate detection in linear time.
+By treating indices as markers and using sign flipping, we achieve constant-extra-space duplicate detection in linear time.

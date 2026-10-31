@@ -39,7 +39,7 @@ AB -> 28
 FUNCTION titleToNumber(columnTitle):
     SET result ← 0
     FOR char IN columnTitle:
-        // Convert character to 1‑based value
+        // Convert character to 1-based value
         SET value ← (ASCII(char) - ASCII('A') + 1)
         SET result ← result * 26 + value
     RETURN result
@@ -76,7 +76,7 @@ Output: 701
 | 1 | 'A' | result = 0 * 26 + 1 = 1 |
 | 2 | 'B' | result = 1 * 26 + 2 = 28 |
 
-The algorithm processes each character, treating the string as a base‑26 number where 'A' maps to 1.
+The algorithm processes each character, treating the string as a base-26 number where 'A' maps to 1.
 
 ---
 
@@ -90,4 +90,4 @@ The algorithm processes each character, treating the string as a base‑26 numbe
 
 ## Key Takeaway
 
-> It's base‑26 but 1‑indexed (A=1 not 0). For the reverse, subtract 1 before modding.
+> It's base-26 but 1-indexed (A=1 not 0). For the reverse, subtract 1 before modding.

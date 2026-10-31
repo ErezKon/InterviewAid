@@ -87,7 +87,7 @@ The sorting step implicitly captures any sequence of subarray reversals because 
 
 1. How would you handle the case where only *one* subarray reversal is allowed?
 2. What if the arrays contain duplicate elements and you need to count the minimum number of reversals?
-3. Extend to multi‑dimensional arrays where you can reverse sub‑matrices.
+3. Extend to multi-dimensional arrays where you can reverse sub-matrices.
 
 ---
 

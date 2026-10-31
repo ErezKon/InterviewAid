@@ -22,7 +22,7 @@ Given the `root` of a binary search tree, and an integer `k`, return *the* `k^th
 
 ## 2. Approach: Inorder Traversal — O(H+k) ✅
 
-BST inorder = sorted order. Stop at the k‑th element.
+BST inorder = sorted order. Stop at the k-th element.
 
 ```text
 FUNCTION kthSmallest(root, k):
@@ -72,19 +72,19 @@ Consider BST `[3,1,4,null,2]`, `k = 1`.
 
 ## 5. Complexity Analysis
 
-- **Time:** Each node is visited at most once until the k‑th is found → O(H + k).
+- **Time:** Each node is visited at most once until the k-th is found → O(H + k).
 - **Space:** Stack holds at most H nodes (height of tree) → O(H).
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you handle frequent insert/delete operations while still supporting O(log n) k‑th queries?
-- Can you augment each node with the size of its left subtree to achieve O(log n) query time?
+- How would you handle frequent insert/delete operations while still supporting O(log n) k-th queries?
+- Can you augment each node with the size of its left subtree to achieve O(log n) query time?
 - What changes are needed if the tree is not a BST?
 
 ---
 
 ## 7. Key Takeaway
 
-> Iterative inorder traversal with early termination at k. The stack‑based approach avoids a full traversal and runs in O(H + k) time.
+> Iterative inorder traversal with early termination at k. The stack-based approach avoids a full traversal and runs in O(H + k) time.

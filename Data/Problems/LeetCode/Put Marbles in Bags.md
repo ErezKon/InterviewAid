@@ -46,7 +46,7 @@ Since both the maximal and minimal score are the same, we return 0.
 
 ## Approach
 **Greedy – Sort Adjacent Sums**
-Each split point contributes `weights[i] + weights[i+1]` to the total score. To obtain the maximum total, pick the `k‑1` largest adjacent sums; for the minimum total, pick the `k‑1` smallest. The answer is the difference between these two sums.
+Each split point contributes `weights[i] + weights[i+1]` to the total score. To obtain the maximum total, pick the `k-1` largest adjacent sums; for the minimum total, pick the `k-1` smallest. The answer is the difference between these two sums.
 
 ```text
 FUNCTION putMarbles(weights, k):
@@ -62,24 +62,27 @@ FUNCTION putMarbles(weights, k):
 ```
 
 ## Walkthrough
-Consider `weights = [4,2,1,6,5]` and `k = 3`.
+Example 1: `weights = [1,3,5,1]`, `k = 2` (so we choose `k-1 = 1` split).
+
 | i | weights[i] | weights[i+1] | pairSum |
 |---|------------|--------------|---------|
-|0|4|2|6|
-|1|2|1|3|
-|2|1|6|7|
-|3|6|5|11|
-Sorted pairSums = [3,6,7,11].
-- Minimum sum = 3 + 6 = 9 (choose splits at indices 1 and 2).
-- Maximum sum = 11 + 7 = 18 (choose splits at indices 3 and 2).
-Difference = 18 - 9 = 9.
+|0|1|3|4|
+|1|3|5|8|
+|2|5|1|6|
+
+Sorted pairSums = [4,6,8].
+- Minimum sum = 4 (split after index 0: `[1],[3,5,1]`).
+- Maximum sum = 8 (split after index 1: `[1,3],[5,1]`).
+Difference = 8 - 4 = **4**. (The first and last marbles contribute `1+1` to every distribution, so they cancel.)
+
+Example 2: the only pair sum is 4, so max - min = 0.
 
 ## Complexity Analysis
-Time: O(n log n) for sorting the `n‑1` adjacent sums.
+Time: O(n log n) for sorting the `n-1` adjacent sums.
 Space: O(n) to store the pair sums.
 
-## Follow‑Up Questions
-1. How would the solution change if bags could contain non‑contiguous marbles?
+## Follow-Up Questions
+1. How would the solution change if bags could contain non-contiguous marbles?
 2. Can you solve the problem in O(n) time without sorting?
 3. What if each bag’s score is defined as the sum of all marbles inside it?
 

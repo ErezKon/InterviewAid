@@ -51,12 +51,12 @@ Example 3:
 ```
 
 ## Approach
-The problem is equivalent to finding the length of the **Longest Non‑decreasing Subsequence (LNDS)**. A classic DP runs in O(n²). To achieve O(n log n) we maintain a monotone queue (or binary‑searchable list) of the smallest possible tail value for each subsequence length.
+The problem is equivalent to finding the length of the **Longest Non-decreasing Subsequence (LNDS)**. A classic DP runs in O(n²). To achieve O(n log n) we maintain a monotone queue (or binary-searchable list) of the smallest possible tail value for each subsequence length.
 
 ### Pseudocode
 ```text
 FUNCTION maxNonDecreasingLength(nums):
-    SET tails ← empty list  // tails[i] = smallest possible tail of a non‑decreasing subsequence of length i+1
+    SET tails ← empty list  // tails[i] = smallest possible tail of a non-decreasing subsequence of length i+1
     FOR x IN nums:
         // Find the first index i where tails[i] > x (strictly greater) using binary search
         SET i ← LOWER_BOUND(tails, x+1)  // first position with value > x
@@ -83,10 +83,10 @@ Result length = 4.
 - **Time:** O(n log n) – each element triggers a binary search on `tails`.
 - **Space:** O(n) in the worst case for `tails` (actually O(L) where L is the LNDS length).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual subsequence, not just its length?
 2. Can the same technique be applied to the strictly increasing case?
-3. What if deletions have a cost and you want to minimize total cost while achieving a non‑decreasing sequence?
+3. What if deletions have a cost and you want to minimize total cost while achieving a non-decreasing sequence?
 
 ## Key Takeaway
-Transforming the problem into a longest non‑decreasing subsequence and using a binary‑search‑maintained tail array yields an O(n log n) solution.
+Transforming the problem into a longest non-decreasing subsequence and using a binary-search-maintained tail array yields an O(n log n) solution.

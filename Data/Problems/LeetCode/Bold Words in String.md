@@ -80,7 +80,7 @@ For `s = "abcxyz123"` and `words = ["abc","123"]`:
 1. Initialize `bold = [F,F,F,F,F,F,F,F,F]`.
 2. Find "abc" at index 0 → set `bold[0..2]=T`.
 3. Find "123" at index 6 → set `bold[6..8]=T`.
-4. Scan: at i=0 bold → add `<b>`, output `abc`, close tag; continue non‑bold chars `xyz`; at i=6 bold → add `<b>123</b>`.
+4. Scan: at i=0 bold → add `<b>`, output `abc`, close tag; continue non-bold chars `xyz`; at i=6 bold → add `<b>123</b>`.
 Result: `<b>abc</b>xyz<b>123</b>`.
 
 ---

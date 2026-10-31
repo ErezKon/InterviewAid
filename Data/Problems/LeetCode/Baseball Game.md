@@ -99,7 +99,7 @@ Sum = 30.
 - **Time:** O(n) where n = number of operations.
 - **Space:** O(n) for the stack (worst case all operations are scores).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the total without storing the entire stack?
 2. Can you extend the problem to support an operation that removes the last two scores?
 3. What if the operations are streamed and you must output the running total after each step?

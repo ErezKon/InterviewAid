@@ -6,7 +6,7 @@ See also: [Koko Eating Bananas.md](Koko%20Eating%20Bananas.md) for the full solu
 ---
 
 ## Problem Description
-Given an array `piles` where `piles[i]` is the number of bananas in the i‑th pile and an integer `h` representing hours, Koko can eat bananas at a constant speed `k` (bananas per hour). Each hour she chooses a pile and eats `k` bananas from it (or the whole pile if fewer remain). Find the minimum integer `k` such that Koko can finish all piles within `h` hours.
+Given an array `piles` where `piles[i]` is the number of bananas in the i-th pile and an integer `h` representing hours, Koko can eat bananas at a constant speed `k` (bananas per hour). Each hour she chooses a pile and eats `k` bananas from it (or the whole pile if fewer remain). Find the minimum integer `k` such that Koko can finish all piles within `h` hours.
 
 > *Note: companion "pattern" file for LeetCode #875 — the official statement and examples are in [Koko Eating Bananas.md](Koko%20Eating%20Bananas.md) (verified session 4).*
 
@@ -64,7 +64,7 @@ FUNCTION minEatingSpeed(piles, h):
 The binary search narrows to `k = 4`.
 
 ## Complexity Analysis
-- **Time:** O(n log M) where `n` is number of piles and `M = max(piles)`.
+- **Time:** O(n log M) where `n` is number of piles and `M = max(piles)`.
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions

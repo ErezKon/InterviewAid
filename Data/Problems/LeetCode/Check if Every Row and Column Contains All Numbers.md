@@ -67,9 +67,9 @@ All checks pass → return `true`.
 - **Space:** O(n) – auxiliary set for a single row or column.
 
 ## Follow-Up Questions
-1. How would you modify the solution to handle non‑square matrices?
+1. How would you modify the solution to handle non-square matrices?
 2. Can you detect the first row or column that violates the condition?
 3. What if the matrix is extremely large and cannot fit in memory?
 
 ## Key Takeaway
-Using a set to verify uniqueness in each row and column provides a straightforward O(n²) solution for checking Latin‑square validity.
+Using a set to verify uniqueness in each row and column provides a straightforward O(n²) solution for checking Latin-square validity.

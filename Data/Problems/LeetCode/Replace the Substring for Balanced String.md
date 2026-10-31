@@ -82,10 +82,10 @@ FUNCTION MinReplaceLength(s):
 - Time: O(n) – each character enters and leaves the window at most once.
 - Space: O(1) – fixed-size count map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the string could contain other characters?
 2. Can you extend the algorithm to return the actual substring(s) to replace?
-3. What is the effect of using a different window‑shrink strategy on performance?
+3. What is the effect of using a different window-shrink strategy on performance?
 
 ## Key Takeaway
 A sliding window that tracks excess character counts efficiently finds the minimal substring whose replacement balances the string.

@@ -39,7 +39,7 @@ Output: 1
 ```
 
 ## Approach
-Perform a DFS while maintaining a 10‑bit mask representing the parity (odd/even) of each digit count along the current path. Flipping the bit for a digit updates its parity. At a leaf, the path is pseudo‑palindromic if the mask has at most one bit set (`mask & (mask‑1) == 0`).
+Perform a DFS while maintaining a 10-bit mask representing the parity (odd/even) of each digit count along the current path. Flipping the bit for a digit updates its parity. At a leaf, the path is pseudo-palindromic if the mask has at most one bit set (`mask & (mask-1) == 0`).
 
 ```text
 FUNCTION dfs(node, mask):
@@ -63,7 +63,7 @@ FUNCTION pseudoPalindromicPaths(root):
 |------|------|---------------|--------|
 | 1 | root(2) | 00000100 | toggle bit 2 |
 | 2 | left(3) | 00001100 | toggle bit 3 |
-| 3 | left‑left(3) – leaf | 00001000 | toggle bit 3 → mask 00001000 (single bit) → count++ |
+| 3 | left-left(3) – leaf | 00001000 | toggle bit 3 → mask 00001000 (single bit) → count++ |
 | 4 | backtrack to left, go right(1) – leaf | 00001101 → toggle bit 1 → 00001101 (two bits) → not counted |
 | … | explore other branches similarly |
 
@@ -72,9 +72,9 @@ FUNCTION pseudoPalindromicPaths(root):
 - **Space:** Recursion stack depth ≤ height of tree → O(H).
 
 ## Follow-Up Questions
-1. How would you adapt the solution to handle trees with values outside `0‑9`?
+1. How would you adapt the solution to handle trees with values outside `0-9`?
 2. Can you compute the result iteratively using a stack instead of recursion?
-3. How would you modify the algorithm to return the actual pseudo‑palindromic paths, not just the count?
+3. How would you modify the algorithm to return the actual pseudo-palindromic paths, not just the count?
 
 ## Key Takeaway
-Using a bitmask to track digit parity allows constant‑time palindrome feasibility checks at each leaf, yielding an elegant O(N) solution.
+Using a bitmask to track digit parity allows constant-time palindrome feasibility checks at each leaf, yielding an elegant O(N) solution.

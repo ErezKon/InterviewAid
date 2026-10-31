@@ -111,7 +111,7 @@ The resulting beautiful array `[1,2,3,6,7,8,9]` contains no pair summing to `6` 
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(1) — closed‑form arithmetic |
+| **Time** | O(1) — closed-form arithmetic |
 | **Space** | O(1) |
 
 ---

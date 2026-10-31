@@ -29,7 +29,7 @@ To capture a **surrounded region**, replace all `'O'`s with `'X'`s **in-place** 
 
 ```text
 FUNCTION solve(board):
-    // Step 1: Mark border‑connected 'O's as safe ('S')
+    // Step 1: Mark border-connected 'O's as safe ('S')
     FOR each cell (r, c) on the border:
         IF board[r][c] == 'O':
             dfs(board, r, c)
@@ -89,18 +89,18 @@ Consider the first example board:
 | Metric | Complexity |
 |--------|------------|
 | Time   | O(m·n) — each cell visited at most twice |
-| Space  | O(m·n) in worst‑case recursion stack (can be reduced to O(m·n) iterative) |
+| Space  | O(m·n) in worst-case recursion stack (can be reduced to O(m·n) iterative) |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you implement the same algorithm iteratively using a queue (BFS) instead of recursion?
-- Can you solve the problem with Union‑Find and what would be its time/space trade‑offs?
+- Can you solve the problem with Union-Find and what would be its time/space trade-offs?
 - How would the solution change if the board were extremely large and could not fit into memory?
 
 ---
 
 ## Key Takeaway
 
-> Invert the problem: instead of searching for surrounded regions, first mark all border‑connected `'O'` cells as safe, then flip everything else.
+> Invert the problem: instead of searching for surrounded regions, first mark all border-connected `'O'` cells as safe, then flip everything else.

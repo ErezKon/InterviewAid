@@ -83,7 +83,7 @@ The algorithm runs in linear time.
 - **Time:** O(n) where n is the number of users.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle a stream of purchase amounts arriving in real time?
 2. What if each user can have multiple purchases and you need the total per user?
 3. How could you extend the solution to return the list of qualifying user IDs?

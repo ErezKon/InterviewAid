@@ -65,11 +65,11 @@ Example 3:
 
 ## Approach
 
-Use dynamic programming where `dp[i][j]` denotes the number of ways to arrange the first `i` elements (0‑based) with exactly `j` inversions. When adding the `(i+1)`‑th element, it can create `0 … i` new inversions depending on its position. Transition:
+Use dynamic programming where `dp[i][j]` denotes the number of ways to arrange the first `i` elements (0-based) with exactly `j` inversions. When adding the `(i+1)`-th element, it can create `0 … i` new inversions depending on its position. Transition:
 ```
-dp[i][j] = Σ_{k=0}^{min(i, j)} dp[i‑1][j‑k]
+dp[i][j] = Σ_{k=0}^{min(i, j)} dp[i-1][j-k]
 ```
-Prefix‑sum optimization reduces the inner sum to O(1). Apply each requirement as a constraint: if a state `(i, j)` violates `requirements`, skip it. The answer is `dp[n‑1][requiredInv]` where `requiredInv` is the constraint for the full prefix.
+Prefix-sum optimization reduces the inner sum to O(1). Apply each requirement as a constraint: if a state `(i, j)` violates `requirements`, skip it. The answer is `dp[n-1][requiredInv]` where `requiredInv` is the constraint for the full prefix.
 
 ---
 
@@ -92,7 +92,7 @@ Only states with `j = 1` at `i = 1` are kept, yielding two final permutations.
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n × maxInv) using prefix‑sum optimization |
+| **Time** | O(n × maxInv) using prefix-sum optimization |
 | **Space** | O(n × maxInv) |
 
 ---
@@ -107,4 +107,4 @@ Only states with `j = 1` at `i = 1` are kept, yielding two final permutations.
 
 ## Key Takeaway
 
-> **Permutation inversion counting DP: the i‑th element creates 0 to i‑1 new inversions. Use prefix sums for efficient range transitions, and prune states using the requirements constraints.**
+> **Permutation inversion counting DP: the i-th element creates 0 to i-1 new inversions. Use prefix sums for efficient range transitions, and prune states using the requirements constraints.**

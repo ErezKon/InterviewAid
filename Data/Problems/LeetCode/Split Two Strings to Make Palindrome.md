@@ -50,7 +50,7 @@ Then, aprefix + bsuffix = "ula" + "alu" = "ulaalu", which is a palindrome.
 ```
 
 ## Approach
-The key insight is that a palindrome reads the same forward and backward, so the characters at symmetric positions must match. By trying all possible split positions (0 … n) and checking the two possible concatenations, we can verify the condition in linear time.
+The key insight is that a palindrome reads the same forward and backward, so the characters at symmetric positions must match. By trying all possible split positions (0 … n) and checking the two possible concatenations, we can verify the condition in linear time.
 
 ```text
 FUNCTION CanFormPalindrome(a, b):
@@ -83,13 +83,13 @@ FUNCTION IsPalindrome(s):
 | 2 | "ab" + "cab" = "abcab" | true → stop |
 
 ## Complexity Analysis
-*Time:* O(n²) in the worst case because each split builds a string of length n and palindrome check is O(n). With careful character‑by‑character comparison without building strings, it can be reduced to O(n).
+*Time:* O(n²) in the worst case because each split builds a string of length n and palindrome check is O(n). With careful character-by-character comparison without building strings, it can be reduced to O(n).
 *Space:* O(1) extra space besides the input strings.
 
 ## Follow-Up Questions
 1. How would you adapt the solution if you could split at different positions in the two strings?
 2. Can the problem be solved in O(n) time without constructing candidate strings?
-3. What if the strings contain Unicode characters with multi‑byte representations?
+3. What if the strings contain Unicode characters with multi-byte representations?
 
 ## Key Takeaway
 By enumerating split points and checking symmetric character matches, we can decide palindrome feasibility with only linear scans.

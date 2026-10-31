@@ -68,7 +68,7 @@ When answering a query `[l,r]`, for each character `c` compute `k = prefix[c][r+
 
 ## 2. Key Insight
 
-> For each character `c`, count its occurrences `k` in the range. It contributes `k + C(k,2)` = `k*(k+1)/2` same‑end substrings (single chars + pairs). Use prefix sums per character.
+> For each character `c`, count its occurrences `k` in the range. It contributes `k + C(k,2)` = `k*(k+1)/2` same-end substrings (single chars + pairs). Use prefix sums per character.
 
 ---
 
@@ -116,4 +116,4 @@ FUNCTION sameEndSubstringCount(s, queries):
 
 ## 5. Key Takeaway
 
-> **Per‑character prefix sums.** For each character in a range, `k` occurrences contribute `k*(k+1)/2` same‑end substrings. Sum over all 26 characters.
+> **Per-character prefix sums.** For each character in a range, `k` occurrences contribute `k*(k+1)/2` same-end substrings. Sum over all 26 characters.

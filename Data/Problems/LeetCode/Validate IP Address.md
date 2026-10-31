@@ -89,7 +89,7 @@ Consider `"172.16.254.1"`:
 
 ## Follow-Up Questions
 - How would you extend validation to support CIDR notation?
-- Can you validate IP addresses without using built‑in split functions?
+- Can you validate IP addresses without using built-in split functions?
 - How would you handle IPv6 shorthand notation like `::`?
 
 ## Key Takeaway

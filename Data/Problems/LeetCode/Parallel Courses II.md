@@ -88,7 +88,7 @@ For the first example (`n=4, k=2`):
 3. From `mask=1110`, available = {4}. Take it → `mask=1111`. Total semesters = 3.
 
 ## Complexity Analysis
-- **Time:** O(3^n) in the worst case due to subset enumeration, but practical for n ≤ 15‑20.
+- **Time:** O(3^n) in the worst case due to subset enumeration, but practical for n ≤ 15-20.
 - **Space:** O(2^n) for the DP table.
 
 ## Follow-Up Questions

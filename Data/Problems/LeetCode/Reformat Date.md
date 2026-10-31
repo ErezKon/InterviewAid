@@ -44,7 +44,7 @@ Example 3:
 ```
 
 ## Approach
-Use a lookup table for month abbreviations, strip the ordinal suffix from the day, zero‑pad day and month, and concatenate year, month, and day.
+Use a lookup table for month abbreviations, strip the ordinal suffix from the day, zero-pad day and month, and concatenate year, month, and day.
 
 ```text
 FUNCTION ReformatDate(dateString):
@@ -71,7 +71,7 @@ For "20th Oct 2052":
 
 ## Complexity Analysis
 Time: O(1) – constant work on three parts.
-Space: O(1) – fixed‑size map and output string.
+Space: O(1) – fixed-size map and output string.
 
 ## Follow-Up Questions
 * How would you handle different locale date formats?
@@ -79,7 +79,7 @@ Space: O(1) – fixed‑size map and output string.
 * What if the input contains invalid dates?
 
 ## Key Takeaway
-Strip the ordinal suffix, map month abbreviations, and zero‑pad components to build the ISO date string.
+Strip the ordinal suffix, map month abbreviations, and zero-pad components to build the ISO date string.
 
 ```
 FUNCTION reformatDate(date):

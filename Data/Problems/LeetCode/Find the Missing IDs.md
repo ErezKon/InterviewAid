@@ -120,4 +120,4 @@ For the first example (`Customers` = {1,2,4,5}):
 
 ## 7. Key Takeaway
 
-> Use a **recursive CTE to generate the full ID range**, then anti‑join with the existing table to find gaps.
+> Use a **recursive CTE to generate the full ID range**, then anti-join with the existing table to find gaps.

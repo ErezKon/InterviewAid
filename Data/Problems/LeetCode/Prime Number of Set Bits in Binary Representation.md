@@ -48,7 +48,7 @@ Explanation:
 ```
 
 ## Approach
-The set‑bit count of a number can be obtained by repeatedly clearing the lowest set bit. Pre‑compute the small set of prime counts (up to 20 for 32‑bit integers). Iterate through the range, count set bits, and increment the answer when the count is prime.
+The set-bit count of a number can be obtained by repeatedly clearing the lowest set bit. Pre-compute the small set of prime counts (up to 20 for 32-bit integers). Iterate through the range, count set bits, and increment the answer when the count is prime.
 
 ### Pseudocode
 ```text
@@ -75,13 +75,13 @@ For `num = 6` (binary `110`):
 The loop repeats for each number up to `right`.
 
 ## Complexity Analysis
-- Time: `O((right‑left+1) * k)` where `k` is the number of set bits per integer (≤ 32). Effectively linear in the range size.
+- Time: `O((right-left+1) * k)` where `k` is the number of set bits per integer (≤ 32). Effectively linear in the range size.
 - Space: `O(1)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle a range up to `10^9` efficiently?
-- Can you pre‑compute results for all numbers up to a maximum and answer queries in `O(1)`?
+- Can you pre-compute results for all numbers up to a maximum and answer queries in `O(1)`?
 - What if the definition of “prime” changes to include only odd primes?
 
 ## Key Takeaway
-Counting set bits with bit‑trick `x = x & (x‑1)` combined with a small prime lookup yields a fast solution for ranges of moderate size.
+Counting set bits with bit-trick `x = x & (x-1)` combined with a small prime lookup yields a fast solution for ranges of moderate size.

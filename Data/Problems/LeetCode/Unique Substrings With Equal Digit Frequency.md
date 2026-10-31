@@ -34,7 +34,7 @@ Explanation: The substrings that meet the requirements are "1", "2", "3", "12", 
 ```
 
 ## Approach
-Frequency‑Map Sliding Window – expand the right end while maintaining a count map. For each left index, shrink the window when the frequencies become unbalanced. Record each window that satisfies the equal‑frequency condition in a hash set.
+Frequency-Map Sliding Window – expand the right end while maintaining a count map. For each left index, shrink the window when the frequencies become unbalanced. Record each window that satisfies the equal-frequency condition in a hash set.
 
 ```text
 FUNCTION countEqualFreqSubstrings(s):
@@ -49,7 +49,7 @@ FUNCTION countEqualFreqSubstrings(s):
             IF freq[digit] == 0: distinct += 1
             freq[digit] += 1
             maxFreq ← MAX(maxFreq, freq[digit])
-            // All non‑zero frequencies must equal maxFreq
+            // All non-zero frequencies must equal maxFreq
             IF maxFreq * distinct == (right - left + 1):
                 resultSet.ADD(s[left..right])
     RETURN SIZE(resultSet)
@@ -57,18 +57,27 @@ FUNCTION countEqualFreqSubstrings(s):
 The condition `maxFreq * distinct == windowLength` guarantees every present digit appears exactly `maxFreq` times.
 
 ## Walkthrough
-For `s = "1122"`:
-- left=0, expand right: "1" (freq {1:1}) → good, add.
-- right=1, "11" (freq {1:2}) → good, add.
-- right=2, "112" (freq {1:2,2:1}) → maxFreq=2, distinct=2, 2*2≠3 → not good.
-- right=3, "1122" (freq {1:2,2:2}) → 2*2=4 → good, add.
-Repeating for other left positions yields the remaining good substrings "2" and "22".
+Example 1: `s = "1212"`:
+
+| left | right | window | maxFreq | distinct | maxFreq·distinct = len? | resultSet |
+|------|-------|--------|---------|----------|-------------------------|-----------|
+| 0 | 0 | "1" | 1 | 1 | 1 = 1 yes | {1} |
+| 0 | 1 | "12" | 1 | 2 | 2 = 2 yes | {1,12} |
+| 0 | 2 | "121" | 2 | 2 | 4 ≠ 3 | |
+| 0 | 3 | "1212" | 2 | 2 | 4 = 4 yes | {1,12,1212} |
+| 1 | 1 | "2" | 1 | 1 | yes | +2 |
+| 1 | 2 | "21" | 1 | 2 | yes | +21 |
+| 1 | 3 | "212" | 2 | 2 | 4 ≠ 3 | |
+| 2 | 2..3 | "1", "12" | | | yes | duplicates |
+| 3 | 3 | "2" | | | yes | duplicate |
+
+resultSet = {"1","12","1212","2","21"} → **Output: 5**. Example 2 (`"12321"`) gives 9 the same way.
 
 ## Complexity Analysis
-Time: O(n²) – two nested loops over the string.
+Time: O(n²) window checks from the two nested loops; materializing/hashing each good substring adds O(n) per insert (O(n³) worst case), which a rolling hash reduces back to O(n²).
 Space: O(1) extra for the frequency array plus O(k) for the result set where k is the number of distinct good substrings.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * Can the solution be improved to O(n) using combinatorial counting?
 * How would the problem change if the alphabet were larger (e.g., all lowercase letters)?
 * What if we required the substrings to have at least two distinct digits?

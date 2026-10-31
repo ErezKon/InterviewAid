@@ -42,13 +42,13 @@ FUNCTION bagOfTokensScore(tokens, power):
     
     WHILE lo ≤ hi:
         IF power ≥ tokens[lo]:
-            // Play cheapest token face‑up
+            // Play cheapest token face-up
             power ← power - tokens[lo]
             lo ← lo + 1
             score ← score + 1
             maxScore ← MAX(maxScore, score)
         ELSE IF score > 0:
-            // Play most expensive token face‑down
+            // Play most expensive token face-down
             power ← power + tokens[hi]
             hi ← hi - 1
             score ← score - 1
@@ -101,20 +101,20 @@ Consider `tokens = [100,200,300,400]` and `power = 200`.
 | Step | lo token | hi token | power | score | maxScore |
 |------|----------|----------|-------|-------|----------|
 | Start | 100 | 400 | 200 | 0 | 0 |
-| 1 (face‑up) | 200 | 400 | 100 | 1 | 1 |
-| 2 (face‑down) | 200 | 300 | 500 | 0 | 1 |
-| 3 (face‑up) | 300 | 300 | 400 | 1 | 1 |
-| 4 (face‑up) | 400 | 300 | 100 | 2 | 2 |
+| 1 (face-up) | 200 | 400 | 100 | 1 | 1 |
+| 2 (face-down) | 200 | 300 | 500 | 0 | 1 |
+| 3 (face-up) | 300 | 300 | 400 | 1 | 1 |
+| 4 (face-up) | 400 | 300 | 100 | 2 | 2 |
 | End | – | – | 100 | 2 | 2 |
 
-The algorithm tracks the maximum score (`maxScore`) because the score may temporarily drop when swapping a token face‑down.
+The algorithm tracks the maximum score (`maxScore`) because the score may temporarily drop when swapping a token face-down.
 
 ---
 
 ## 6. Complexity Analysis
 
 - **Time:** Sorting dominates → `O(n log n)`, where `n` is the number of tokens.
-- **Space:** Sorting can be done in‑place; the algorithm uses only a few pointers and counters → `O(1)` auxiliary space.
+- **Space:** Sorting can be done in-place; the algorithm uses only a few pointers and counters → `O(1)` auxiliary space.
 
 ---
 

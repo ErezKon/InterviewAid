@@ -120,8 +120,8 @@ Example 3:
 
 ## 6. Complexity Analysis
 
-- **Time:** O(m² × n² × 128) due to exploring all positions for both players up to depth 128.
-- **Space:** O(m² × n² × 128) for memoization table.
+- **Time:** O(m² × n² × 128) due to exploring all positions for both players up to depth 128.
+- **Space:** O(m² × n² × 128) for memoization table.
 
 ---
 

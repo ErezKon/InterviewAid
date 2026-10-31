@@ -38,12 +38,12 @@ Explanation: Since each element in nums is distinct, arr[i] = 0 for all i.
 ```
 
 ## Approach
-Group indices by value. For each group, pre‑compute prefix sums of the sorted indices. For an index at position `i` in its group, the distance sum equals `idx*i - prefix[i]` (left side) plus `(prefix[n] - prefix[i+1]) - idx*(n-i-1)` (right side).
+Group indices by value. For each group, pre-compute prefix sums of the sorted indices. For an index at position `i` in its group, the distance sum equals `idx*i - prefix[i]` (left side) plus `(prefix[n] - prefix[i+1]) - idx*(n-i-1)` (right side).
 
 ## Walkthrough
 | Value | Indices | Prefix sums | Calculation for idx=2 |
 |-------|---------|-------------|------------------------|
-| 1 | [0,2,3] | [0,0,2,5] | left = 2*1‑0 = 2; right = (5‑2)‑2*1 = 1; total = 3 |
+| 1 | [0,2,3] | [0,0,2,5] | left = 2*1-0 = 2; right = (5-2)-2*1 = 1; total = 3 |
 
 ## Complexity Analysis
 Time: O(n) to build groups and compute prefix sums.
@@ -52,7 +52,7 @@ Space: O(n) for storing groups and prefix arrays.
 ## Follow-Up Questions
 * How would you adapt the solution for a streaming input where the array grows over time?
 * Can the method be extended to compute sums of squared distances?
-* What if the distance metric is Manhattan distance in a 2‑D grid of values?
+* What if the distance metric is Manhattan distance in a 2-D grid of values?
 
 ## Key Takeaway
-Using prefix sums on sorted index groups enables O(1) per‑element distance computation after linear preprocessing.
+Using prefix sums on sorted index groups enables O(1) per-element distance computation after linear preprocessing.

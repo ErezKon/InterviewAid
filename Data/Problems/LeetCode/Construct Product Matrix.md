@@ -41,7 +41,7 @@ Example 2:
 ```
 
 ## Approach
-Flatten the grid to a 1‑D list. Pre‑compute prefix and suffix products modulo `MOD`. For each index `i`, the product of all other elements equals `prefix[i] * suffix[i+1] % MOD`.
+Flatten the grid to a 1-D list. Pre-compute prefix and suffix products modulo `MOD`. For each index `i`, the product of all other elements equals `prefix[i] * suffix[i+1] % MOD`.
 
 ```text
 FUNCTION constructProductMatrix(grid):
@@ -82,9 +82,9 @@ FUNCTION constructProductMatrix(grid):
 - **Time:** `O(m·n)` – one pass to flatten and one pass to fill result.
 - **Space:** `O(m·n)` for the flattened list and prefix/suffix arrays (can be reduced to O(1) with two passes).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to avoid overflow without using modulo until the end?
-2. Can you compute the matrix in‑place without extra arrays?
+2. Can you compute the matrix in-place without extra arrays?
 3. How would the solution change if `grid` could contain zeros?
 
 ## Key Takeaway

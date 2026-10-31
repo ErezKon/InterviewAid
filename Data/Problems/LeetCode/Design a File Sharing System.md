@@ -95,8 +95,8 @@ CLASS FileSharing:
 
 | Step | Operation | Owners of Chunk 1 | Owners of Chunk 4 |
 |------|-----------|-------------------|-------------------|
-| 1 | `join([0,2])` → ID 1 | – | – |
-| 2 | `join([1,3,4])` → ID 2 | {2} | {2} |
+| 1 | `join([0,2])` → ID 1 | – | – |
+| 2 | `join([1,3,4])` → ID 2 | {2} | {2} |
 | 3 | `request(1,1)` → [2] | {1,2} | {2} |
 | 4 | `leave(2)` | {1} | {} |
 | 5 | `request(1,4)` → [] | {1} | {} |
@@ -107,19 +107,19 @@ The table shows how owners are updated after each operation.
 
 ## Complexity Analysis
 
-- **Time:** `join` O(k log n) where *k* is number of initial chunks; `leave` O(c log n) where *c* is number of chunks owned; `request` O(log n) for retrieving sorted owners and optional insertion.
-- **Space:** O(u + c) for storing user‑to‑chunk and chunk‑to‑user mappings, where *u* is number of users and *c* total chunk entries.
+- **Time:** `join` O(k log n) where *k* is number of initial chunks; `leave` O(c log n) where *c* is number of chunks owned; `request` O(log n) for retrieving sorted owners and optional insertion.
+- **Space:** O(u + c) for storing user-to-chunk and chunk-to-user mappings, where *u* is number of users and *c* total chunk entries.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the design to support chunk replication limits (e.g., at most *r* owners per chunk)?
 2. Can the system be made distributed while preserving the ordering of user IDs?
-3. What data structures would you use to achieve O(1) average‑case operations?
+3. What data structures would you use to achieve O(1) average-case operations?
 
 ---
 
 ## Key Takeaway
 
-> **Design with maps (chunk → owners) and a min‑heap for ID reuse. Request returns sorted owner list and grants the chunk to the requester if available.**
+> **Design with maps (chunk → owners) and a min-heap for ID reuse. Request returns sorted owner list and grants the chunk to the requester if available.**

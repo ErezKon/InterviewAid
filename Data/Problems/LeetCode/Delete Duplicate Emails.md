@@ -70,8 +70,8 @@ WHERE p1.id > p2.id;
 
 ## Walkthrough
 
-1. **Self‑join** the `Person` table on `email` so that each pair of rows sharing the same email is paired (`p1` and `p2`).
-2. The `WHERE p1.id > p2.id` clause keeps the row with the smaller `id` (`p2`) and marks the larger‑id duplicate (`p1`) for deletion.
+1. **Self-join** the `Person` table on `email` so that each pair of rows sharing the same email is paired (`p1` and `p2`).
+2. The `WHERE p1.id > p2.id` clause keeps the row with the smaller `id` (`p2`) and marks the larger-id duplicate (`p1`) for deletion.
 3. Executing the `DELETE` removes all `p1` rows that have a matching `p2` with a smaller `id`.
 
 Result: only the earliest entry for each email remains.
@@ -82,7 +82,7 @@ Result: only the earliest entry for each email remains.
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n) – single self‑join scan of the table |
+| **Time** | O(n) – single self-join scan of the table |
 | **Space** | O(1) – no extra data structures beyond query execution |
 
 ---
@@ -97,4 +97,4 @@ Result: only the earliest entry for each email remains.
 
 ## Key Takeaway
 
-> **Self‑join to find duplicates: join on the duplicate column, then DELETE rows with the larger id. Classic SQL deduplication pattern.**
+> **Self-join to find duplicates: join on the duplicate column, then DELETE rows with the larger id. Classic SQL deduplication pattern.**

@@ -53,7 +53,7 @@ Explanation: The 4 palindromic subsequences of length 3 are:
 ```
 
 ## Approach
-For each distinct character `c` that appears at least twice, treat the first and last occurrence of `c` as the outer pair of a palindrome. Any distinct character appearing between these two positions can serve as the middle character, forming a unique length‑3 palindrome.
+For each distinct character `c` that appears at least twice, treat the first and last occurrence of `c` as the outer pair of a palindrome. Any distinct character appearing between these two positions can serve as the middle character, forming a unique length-3 palindrome.
 
 ```text
 FUNCTION countUniqueLength3Palindromes(s):
@@ -78,7 +78,7 @@ FUNCTION countUniqueLength3Palindromes(s):
 Total = 2 (from `a`) + 1 (from `a` with middle `a` when applicable) = 3.
 
 ## Complexity Analysis
-- **Time:** O(N · Σ) where N is the length of `s` and Σ is the alphabet size (26), effectively O(N).
+- **Time:** O(N · Σ) where N is the length of `s` and Σ is the alphabet size (26), effectively O(N).
 - **Space:** O(Σ) for the set of characters.
 
 ## Follow-Up Questions
@@ -87,4 +87,4 @@ Total = 2 (from `a`) + 1 (from `a` with middle `a` when applicable) = 3.
 3. What if the string is extremely long and cannot fit into memory?
 
 ## Key Takeaway
-Use the first and last occurrence of each character as outer bounds and count distinct middle characters to obtain all unique length‑3 palindromic subsequences.
+Use the first and last occurrence of each character as outer bounds and count distinct middle characters to obtain all unique length-3 palindromic subsequences.

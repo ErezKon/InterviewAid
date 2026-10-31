@@ -62,7 +62,7 @@ The algorithm stops as soon as all codes are observed.
 
 ## Complexity Analysis
 - **Time:** O(N) where N = length of `s` (each window processed once).
-- **Space:** O(2^k) for the hash set, bounded by at most 2^20 ≈ 1 048 576 entries.
+- **Space:** O(2^k) for the hash set, bounded by at most 2^20 ≈ 1 048 576 entries.
 
 ## Follow-Up Questions
 1. How would you implement the solution using bit manipulation to avoid storing strings?
@@ -70,4 +70,4 @@ The algorithm stops as soon as all codes are observed.
 3. How would the approach change if the alphabet were larger than binary?
 
 ## Key Takeaway
-A sliding window combined with a hash set efficiently checks for the presence of all fixed‑length substrings.
+A sliding window combined with a hash set efficiently checks for the presence of all fixed-length substrings.

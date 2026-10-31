@@ -122,10 +122,10 @@ Consider the tree:
 ## 6. Complexity Analysis
 
 - **Time:** O(n) preprocessing + O(1) per query.
-- **Space:** O(n) for storing depth, height, and top‑two per depth.
+- **Space:** O(n) for storing depth, height, and top-two per depth.
 
 ---
 
 ## 7. Key Takeaway
 
-> **Top‑2 per level** pattern: precompute each node's depth and subtree height, keep the two deepest heights per depth, and answer removal queries in constant time.
+> **Top-2 per level** pattern: precompute each node's depth and subtree height, keep the two deepest heights per depth, and answer removal queries in constant time.

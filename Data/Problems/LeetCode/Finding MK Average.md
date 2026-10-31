@@ -73,7 +73,7 @@ obj.calculateMKAverage(); // The last 3 elements are [5,5,5].
 
 ## 3. Key Insight
 
-> Maintain three sorted containers: `bottom` (smallest k), `middle` (remaining m‑2k), and `top` (largest k). Track the sum of `middle`. On each insertion or removal, rebalance the containers so the size constraints hold.
+> Maintain three sorted containers: `bottom` (smallest k), `middle` (remaining m-2k), and `top` (largest k). Track the sum of `middle`. On each insertion or removal, rebalance the containers so the size constraints hold.
 
 ---
 
@@ -156,7 +156,7 @@ CLASS MKAverage:
 
 ## 6. Complexity Analysis
 
-- **Time:** O(log m) for each insertion, deletion, and rebalancing (balanced BST operations).
+- **Time:** O(log m) for each insertion, deletion, and rebalancing (balanced BST operations).
 - **Space:** O(m) to store the last `m` elements and three sets.
 
 ---
@@ -171,4 +171,4 @@ CLASS MKAverage:
 
 ## 8. Key Takeaway
 
-> Keeping three balanced containers for the smallest k, middle, and largest k elements lets you update and query the MK average in logarithmic time per operation.
+> Keeping three balanced containers for the smallest k, middle, and largest k elements lets you update and query the MK average in logarithmic time per operation.

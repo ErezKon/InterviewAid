@@ -121,4 +121,4 @@ FUNCTION countDifferentSubsequenceGCDs(nums):
 
 ## 8. Key Takeaway
 
-> **Enumerate candidate GCDs, verify via multiples.** For each `g`, the GCD of all its multiples present in the array equals `g` iff `g` can be formed as a subsequence GCD. The harmonic series gives an efficient O(max · log max) solution.
+> **Enumerate candidate GCDs, verify via multiples.** For each `g`, the GCD of all its multiples present in the array equals `g` iff `g` can be formed as a subsequence GCD. The harmonic series gives an efficient O(max · log max) solution.

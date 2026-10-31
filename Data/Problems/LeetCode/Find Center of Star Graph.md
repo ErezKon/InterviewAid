@@ -64,7 +64,7 @@ Example 2:
 
 ## Complexity Analysis
 
-- **Time:** O(1) – only constant‑time checks on the first two edges.
+- **Time:** O(1) – only constant-time checks on the first two edges.
 - **Space:** O(1) – no extra data structures needed.
 
 ---

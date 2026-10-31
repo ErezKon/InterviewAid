@@ -60,13 +60,13 @@ For `startValue = 2`, `target = 3`:
 Now `target == startValue`, total ops = 2.
 
 ## Complexity Analysis
-- **Time:** O(log target) because each division halves the value.
+- **Time:** O(log target) because each division halves the value.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the allowed operations were `*3` and `+1`?
 2. Can you compute the sequence of operations, not just the count?
 3. What if both multiplication and subtraction have different costs?
 
 ## Key Takeaway
-Reversing the process turns a branching forward search into a deterministic greedy walk, yielding a logarithmic‑time solution.
+Reversing the process turns a branching forward search into a deterministic greedy walk, yielding a logarithmic-time solution.

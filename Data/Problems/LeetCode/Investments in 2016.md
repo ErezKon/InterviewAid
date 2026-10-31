@@ -89,7 +89,7 @@ So, the result is the sum of tiv_2016 of the first and last record, which is 45.
 - **Time:** The query scans the table a constant number of times; each `GROUP BY` is O(N) where *N* is the number of rows.
 - **Space:** O(N) for the intermediate grouping results, plus O(1) extra for the final sum.
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you rewrite the query using `JOIN`s instead of `IN` subqueries?
 - Can you compute the result in a single pass using window functions?
@@ -97,4 +97,4 @@ So, the result is the sum of tiv_2016 of the first and last record, which is 45.
 
 ## Key Takeaway
 
-> Combine independent set‑based filters with `AND` using subqueries (or joins) to enforce multiple constraints before aggregation.
+> Combine independent set-based filters with `AND` using subqueries (or joins) to enforce multiple constraints before aggregation.

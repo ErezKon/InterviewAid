@@ -38,8 +38,8 @@ Output: [6,6,5,6,3,8]
 
 ## Approach
 Iterate through the array. At each index `i`:
-- If `i` is odd, ensure `nums[i] ≥ nums[i‑1]`; otherwise swap.
-- If `i` is even, ensure `nums[i] ≤ nums[i‑1]`; otherwise swap.
+- If `i` is odd, ensure `nums[i] ≥ nums[i-1]`; otherwise swap.
+- If `i` is even, ensure `nums[i] ≤ nums[i-1]`; otherwise swap.
 This greedy correction guarantees the wiggle condition for all processed elements.
 
 ```text
@@ -62,12 +62,12 @@ Resulting array satisfies the wiggle pattern.
 
 ## Complexity Analysis
 - Time: O(n) – single linear scan.
-- Space: O(1) – only constant‑time swaps.
+- Space: O(1) – only constant-time swaps.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you extend this to the stricter wiggle sort (`<` and `>` instead of `≤`/`≥`)?
 - Can you prove that this greedy pass always yields a correct ordering?
-- What if the array is read‑only and you must output a new wiggle‑sorted array?
+- What if the array is read-only and you must output a new wiggle-sorted array?
 
 ## Key Takeaway
-A single left‑to‑right pass with conditional swaps enforces the alternating ≤/≥ relationship using only constant extra space.
+A single left-to-right pass with conditional swaps enforces the alternating ≤/≥ relationship using only constant extra space.

@@ -51,7 +51,7 @@ FUNCTION isValid(board, row, col, digit):
     FOR i ← 0 TO 8:
         IF board[row][i] == digit: RETURN false
         IF board[i][col] == digit: RETURN false
-    // 3×3 sub‑grid check
+    // 3×3 sub-grid check
     startRow ← 3 * (row / 3)
     startCol ← 3 * (col / 3)
     FOR i ← 0 TO 2:
@@ -76,7 +76,7 @@ Explanation: The input board is shown above and the only valid solution is shown
 
 ## 4. Walkthrough
 
-Consider the first empty cell at `(0,2)`. Try digits `1`‑`9`:
+Consider the first empty cell at `(0,2)`. Try digits `1`-`9`:
 
 1. `1` fails row check.
 2. `2` fails column check.
@@ -88,14 +88,14 @@ Consider the first empty cell at `(0,2)`. Try digits `1`‑`9`:
 
 ## 5. Complexity Analysis
 
-- **Time:** O(9^E) where `E` is the number of empty cells (worst‑case exponential). Pruning via `isValid` dramatically reduces the search space.
+- **Time:** O(9^E) where `E` is the number of empty cells (worst-case exponential). Pruning via `isValid` dramatically reduces the search space.
 - **Space:** O(E) recursion stack, plus O(1) extra board storage.
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How can bit‑mask representations of rows, columns, and boxes speed up `isValid` checks?
+- How can bit-mask representations of rows, columns, and boxes speed up `isValid` checks?
 - Can constraint propagation (e.g., naked singles, hidden singles) be combined with backtracking for faster solving?
 - How would you adapt the algorithm to solve larger Sudoku variants (16×16, irregular regions)?
 

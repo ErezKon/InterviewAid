@@ -54,7 +54,7 @@ validWordAbbr.isUnique("cake"); // return true, because "cake" is already in the
 
 ## Approach
 **Algorithm:** Hash Table of abbreviations.
-1. Pre‑process the dictionary: for each word compute its abbreviation and store the set of original words sharing that abbreviation.
+1. Pre-process the dictionary: for each word compute its abbreviation and store the set of original words sharing that abbreviation.
 2. To check uniqueness, compute the abbreviation of the query word and verify that either the abbreviation is absent from the table or the stored set contains only that word.
 
 **Pseudocode:**
@@ -88,13 +88,13 @@ CLASS ValidWordAbbr:
 When checking "dear": abbreviation "d2r" exists with {"deer","door"} ≠ {"dear"} → false. For "cane": abbreviation "c2e" maps to {"cake"} → false. For a word not in dictionary like "dog": "d1g" not in map → true.
 
 ## Complexity Analysis
-- Pre‑processing: O(N * L) time, O(N) space where N is number of dictionary words and L is average word length.
+- Pre-processing: O(N * L) time, O(N) space where N is number of dictionary words and L is average word length.
 - Query: O(L) time, O(1) additional space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you support dynamic updates (add/remove words) efficiently?
 2. Can you design a version that works without storing the full sets of words, only counts?
-3. How would you handle case‑insensitive abbreviations?
+3. How would you handle case-insensitive abbreviations?
 
 ## Key Takeaway
 Using a hash map to store abbreviation → word set lets you answer uniqueness queries in linear time per word.

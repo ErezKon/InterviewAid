@@ -73,7 +73,7 @@ The algorithm finishes with `minLen = 4`.
 | Time   | **O(n)** – single pass over the array |
 | Space  | **O(n)** – hashmap storing last indices |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the solution to return the actual segment indices?
 2. Can the approach be adapted to find the shortest segment containing **k** equal cards?
@@ -81,4 +81,4 @@ The algorithm finishes with `minLen = 4`.
 
 ## Key Takeaway
 
-By remembering the last occurrence of each card, we can compute the length of the smallest duplicate‑containing segment in linear time.
+By remembering the last occurrence of each card, we can compute the length of the smallest duplicate-containing segment in linear time.

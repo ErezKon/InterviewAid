@@ -97,19 +97,19 @@ Thus the algorithm returns `[9,8,6,5,3]`.
 
 ## Complexity Analysis
 
-- **Time Complexity:** O(k × (m + n)) – we try O(k) splits and each merge/selection is linear in the total length.
-- **Space Complexity:** O(m + n) – auxiliary stacks for subsequences and the merged result.
+- **Time Complexity:** O(k × (m + n)) – we try O(k) splits and each merge/selection is linear in the total length.
+- **Space Complexity:** O(m + n) – auxiliary stacks for subsequences and the merged result.
 
 ---
 
 ## Follow-Up Questions
 
 - How would you adapt the solution if the input arrays could contain negative numbers?
-- Can you design an O(k log k) algorithm using a priority queue?
+- Can you design an O(k log k) algorithm using a priority queue?
 - How would you extend this to more than two arrays?
 
 ---
 
 ## Key Takeaway
 
-> **Maximum number from two arrays:** enumerate possible splits, extract the best subsequence from each array using a monotonic stack, then merge greedily by comparing remaining suffixes. This combines three classic sub‑routines into a powerful solution.
+> **Maximum number from two arrays:** enumerate possible splits, extract the best subsequence from each array using a monotonic stack, then merge greedily by comparing remaining suffixes. This combines three classic sub-routines into a powerful solution.

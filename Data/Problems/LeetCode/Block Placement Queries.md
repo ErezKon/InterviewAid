@@ -40,7 +40,7 @@ Example 2:
 ```
 
 ## Approach
-**Segment Tree + Sorted Set** – Maintain a sorted set of obstacle positions (including sentinel `0` and `x`). The gaps between consecutive obstacles are stored in a segment tree that supports range‑maximum queries. When inserting a new obstacle, locate its left and right neighbors, split the existing gap into two new gaps, and update the segment tree. For a type‑2 query, query the maximum gap within the prefix up to position `p`; if it is ≥ `sz`, answer `true`.
+**Segment Tree + Sorted Set** – Maintain a sorted set of obstacle positions (including sentinel `0` and `x`). The gaps between consecutive obstacles are stored in a segment tree that supports range-maximum queries. When inserting a new obstacle, locate its left and right neighbors, split the existing gap into two new gaps, and update the segment tree. For a type-2 query, query the maximum gap within the prefix up to position `p`; if it is ≥ `sz`, answer `true`.
 
 ```text
 CLASS BlockPlacement:
@@ -69,19 +69,19 @@ CLASS BlockPlacement:
 ## Walkthrough
 Assume `maxX = 10`.
 1. Initially obstacles `{0,10}`, gap `10`.
-2. `place(5)`: left=0, right=10 → gaps become `5` (0‑5) and `5` (5‑10).
+2. `place(5)`: left=0, right=10 → gaps become `5` (0-5) and `5` (5-10).
 3. `canFit(10,3)`: query max gap in `[0,10]` → `5 ≥ 3` → `true`.
-4. `place(2)`: left=0, right=5 → gaps become `2` (0‑2) and `3` (2‑5).
+4. `place(2)`: left=0, right=5 → gaps become `2` (0-2) and `3` (2-5).
 5. `canFit(7,2)`: gaps up to 7 are `2,3,5` → max `5 ≥ 2` → `true` (if we restrict to `[0,7]` the gap `[5,10]` is partially outside, but max within prefix is `5`).
 
 ## Complexity Analysis
-- **Time:** Each `place` and `canFit` operation costs `O(log n)` for set lookup and segment‑tree update/query, where `n` is the number of obstacles.
+- **Time:** Each `place` and `canFit` operation costs `O(log n)` for set lookup and segment-tree update/query, where `n` is the number of obstacles.
 - **Space:** `O(n)` for storing obstacles and the segment tree.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the solution to support removal of obstacles?
-2. Can the data structure be adapted for a two‑dimensional grid?
+2. Can the data structure be adapted for a two-dimensional grid?
 3. What if queries ask for the *minimum* block size that fits instead of a fixed size?
 
 ## Key Takeaway
-Combining a sorted set of obstacle positions with a segment tree over gap lengths enables fast updates and prefix‑maximum queries, handling dynamic placement checks in logarithmic time.
+Combining a sorted set of obstacle positions with a segment tree over gap lengths enables fast updates and prefix-maximum queries, handling dynamic placement checks in logarithmic time.

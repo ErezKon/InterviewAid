@@ -135,4 +135,4 @@ Consider `n = 6`, `threshold = 2`.
 
 ## Key Takeaway
 
-> Use a sieve‑style enumeration of factors greater than the threshold and Union‑Find to merge all cities sharing each factor. This avoids quadratic pair checks and yields near‑linear preprocessing.
+> Use a sieve-style enumeration of factors greater than the threshold and Union-Find to merge all cities sharing each factor. This avoids quadratic pair checks and yields near-linear preprocessing.

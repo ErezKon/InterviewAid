@@ -105,8 +105,8 @@ The `ROUND` function formats the results to two decimal places.
 
 ## Follow-Up Questions
 1. How would you modify the query to handle weighted averages based on `position`?
-2. Can you write a version that returns the top‑k queries by quality?
+2. Can you write a version that returns the top-k queries by quality?
 3. How would you compute these metrics incrementally as new rows are inserted?
 
 ## Key Takeaway
-SQL aggregation lets you compute per‑group averages and conditional percentages concisely using `AVG`, `SUM(CASE ...)`, and `ROUND`.
+SQL aggregation lets you compute per-group averages and conditional percentages concisely using `AVG`, `SUM(CASE ...)`, and `ROUND`.

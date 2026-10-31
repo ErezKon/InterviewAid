@@ -61,13 +61,13 @@ FUNCTION subarrayBitwiseORs(arr):
 The final size of `result` is 3 distinct values (in this example).
 
 ## Complexity Analysis
-- **Time:** O(n · log M) where M is the maximum element value (bits limited to 32), because the size of `current` is bounded by the number of bits.
-- **Space:** O(log M) for the rolling set plus O(k) for the result set where k is the number of distinct ORs.
+- **Time:** O(n · log M) where M is the maximum element value (bits limited to 32), because the size of `current` is bounded by the number of bits.
+- **Space:** O(log M) for the rolling set plus O(k) for the result set where k is the number of distinct ORs.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to return the actual distinct OR values instead of just the count?
 2. Can the approach be adapted for bitwise AND of subarrays?
-3. What if subarrays are allowed to be non‑contiguous (subsequences)?
+3. What if subarrays are allowed to be non-contiguous (subsequences)?
 
 ## Key Takeaway
-The rolling set technique leverages the monotonic nature of bitwise OR to keep only a small, bounded set of intermediate results, enabling an efficient O(n log M) solution.
+The rolling set technique leverages the monotonic nature of bitwise OR to keep only a small, bounded set of intermediate results, enabling an efficient O(n log M) solution.

@@ -81,7 +81,7 @@ FUNCTION swimInWater(grid):
 2. Explore neighbors: (1,0) elevation 1 → push `(1,1,0)`; (0,1) elevation 2 → push `(2,0,1)`.
 3. Pop smallest maxElev → `(1,1,0)`. Not target, explore its neighbor (1,1) elevation 3 → push `(3,1,1)`.
 4. Pop `(2,0,1)`. Not target, neighbor (1,1) already visited.
-5. Pop `(3,1,1)` which is bottom‑right cell → return 3.
+5. Pop `(3,1,1)` which is bottom-right cell → return 3.
 
 The algorithm always expands the path with the smallest possible maximum elevation first.
 
@@ -89,7 +89,7 @@ The algorithm always expands the path with the smallest possible maximum elevati
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n² log n) – each cell may be pushed to the heap once; heap operations cost log (n²).
+- **Time:** O(n² log n) – each cell may be pushed to the heap once; heap operations cost log (n²).
 - **Space:** O(n²) for the visited matrix and heap.
 
 ---
@@ -97,11 +97,11 @@ The algorithm always expands the path with the smallest possible maximum elevati
 ## 6. Follow-Up Questions
 
 1. How would you solve the problem using binary search combined with BFS/DFS?
-2. Can the algorithm be adapted for a 3‑dimensional elevation map?
+2. Can the algorithm be adapted for a 3-dimensional elevation map?
 3. What changes are needed if diagonal moves are allowed?
 
 ---
 
 ## Key Takeaway
 
-> "Minimize the maximum value along any path" = modified Dijkstra where edge weight is the max elevation. The min‑heap always explores the path with the smallest maximum elevation first.
+> "Minimize the maximum value along any path" = modified Dijkstra where edge weight is the max elevation. The min-heap always explores the path with the smallest maximum elevation first.

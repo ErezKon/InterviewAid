@@ -85,8 +85,8 @@ WHERE e.position = 'Manager'
 
 ## 4. Walkthrough
 
-1. The sub‑query groups all rows by `dep_id` and orders the groups by their employee count, picking the department with the most rows.
-2. The outer query filters the `Employees` table for rows where `position = 'Manager'` and `dep_id` matches the department identified in step 1.
+1. The sub-query groups all rows by `dep_id` and orders the groups by their employee count, picking the department with the most rows.
+2. The outer query filters the `Employees` table for rows where `position = 'Manager'` and `dep_id` matches the department identified in step 1.
 3. The selected `name` column gives the manager of that largest department.
 
 ---
@@ -98,9 +98,9 @@ WHERE e.position = 'Manager'
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would you modify the query to return the manager(s) of the top k largest departments?
+- How would you modify the query to return the manager(s) of the top k largest departments?
 - What if a department can have multiple managers? Adjust the query to list all managers of the largest department.
 - Can you write a version that works on databases without `LIMIT` (e.g., using `ROW_NUMBER`).
 

@@ -56,7 +56,7 @@ Example 2:
 
 ## 4. Walkthrough
 
-Take Example 1 (`n = 5`):
+Take Example 1 (`n = 5`):
 1. Initialise `count = 0`.
 2. Iterate `i = 1` → POPCOUNT(1)=1 (odd) → `count = 1`.
 3. `i = 2` → POPCOUNT(2)=1 (odd) → `count = 2`.

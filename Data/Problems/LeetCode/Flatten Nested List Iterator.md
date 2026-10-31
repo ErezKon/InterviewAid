@@ -91,7 +91,7 @@ Input: nestedList = [[1,1],2,[1,1]]
 Operations: next(), next(), next(), next(), hasNext()
 Output: 1,1,2,1,false
 ```
-Explanation: The iterator returns the integers in order, flattening each sub‑list lazily.
+Explanation: The iterator returns the integers in order, flattening each sub-list lazily.
 
 **Example 2:**
 ```

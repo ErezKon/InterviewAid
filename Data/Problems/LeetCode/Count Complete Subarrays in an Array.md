@@ -61,7 +61,7 @@ FUNCTION countCompleteSubarrays(nums):
 For `nums = [1,3,1,2,2]`:
 1. `total = 3` distinct values.
 2. Expand right pointer, track frequencies.
-3. When window `[1,3,1,2]` (indices 0‑3) contains all three values, add `5 - 3 = 2` to count (subarrays ending at 3 and 4). Continue shrinking and counting as per algorithm, resulting in total 4.
+3. When window `[1,3,1,2]` (indices 0-3) contains all three values, add `5 - 3 = 2` to count (subarrays ending at 3 and 4). Continue shrinking and counting as per algorithm, resulting in total 4.
 
 ## Complexity Analysis
 - Time: O(n) – each element enters and leaves the window at most once.
@@ -73,4 +73,4 @@ For `nums = [1,3,1,2,2]`:
 - What is the effect on complexity if you need to output all complete subarrays instead of just counting them?
 
 ## Key Takeaway
-A sliding‑window with a frequency map efficiently counts complete subarrays by adding `len(nums) - right` each time the window first becomes complete.
+A sliding-window with a frequency map efficiently counts complete subarrays by adding `len(nums) - right` each time the window first becomes complete.

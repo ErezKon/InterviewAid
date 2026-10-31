@@ -38,11 +38,11 @@ Output: ["I am happy today but was sad yesterday","I am joy today but was sad ye
 ```
 
 ## Approach
-Use Union‑Find to group all synonyms into disjoint sets, then perform backtracking to generate every combination.
+Use Union-Find to group all synonyms into disjoint sets, then perform backtracking to generate every combination.
 
 ```text
 FUNCTION generateSentences(synonyms, text):
-    // Build Union‑Find structure
+    // Build Union-Find structure
     uf ← UnionFind()
     FOR each pair IN synonyms:
         uf.UNION(pair[0], pair[1])
@@ -83,13 +83,13 @@ FUNCTION generateSentences(synonyms, text):
 | 3 | End | – | Add both sentences to result |
 
 ## Complexity Analysis
-- Time: O(N · K) where N is the number of words and K is the total number of generated sentences.
-- Space: O(N + G) for the Union‑Find structure, groups map, and recursion stack.
+- Time: O(N · K) where N is the number of words and K is the total number of generated sentences.
+- Space: O(N + G) for the Union-Find structure, groups map, and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to handle large synonym groups efficiently?
 2. Can you generate sentences in lexicographic order without sorting at each step?
 3. How would you adapt the solution to support dynamic updates to the synonym list?
 
 ## Key Takeaway
-Group synonyms with Union‑Find and then use backtracking to enumerate all sentence variations.
+Group synonyms with Union-Find and then use backtracking to enumerate all sentence variations.

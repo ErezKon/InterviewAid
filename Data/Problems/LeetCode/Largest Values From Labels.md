@@ -83,7 +83,7 @@ Example 3:
 
 ## Complexity Analysis
 
-- **Time:** O(n log n) for sorting the items.
+- **Time:** O(n log n) for sorting the items.
 - **Space:** O(n) to store the paired list and label counts.
 
 ---

@@ -168,7 +168,7 @@ active_drivers AS (
 
 ## 4. Walkthrough
 
-1. **Generate months**: The recursive CTE creates rows for months 1‑12.
+1. **Generate months**: The recursive CTE creates rows for months 1-12.
 2. **Active drivers**: A cumulative count (`COUNT(*) OVER`) gives the total active drivers up to each month.
 3. **Accepted rides**: LEFT JOIN the `Rides` table on month, aggregating rides per month.
 4. **Handle missing data**: Use `COALESCE(accepted_rides, 0)` to replace NULLs with 0.
@@ -187,4 +187,4 @@ active_drivers AS (
 
 ## 7. Key Takeaway
 
-> Generate all 12 months with a recursive CTE, left‑join drivers (cumulative) and rides (per month), and fill missing months with 0.
+> Generate all 12 months with a recursive CTE, left-join drivers (cumulative) and rides (per month), and fill missing months with 0.

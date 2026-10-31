@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "minimum parity operations" problem. Correct idea: count the even numbers `e`; return `e` zeros followed by `n − e` ones. O(n).*
-
 You are given an integer array `nums`. Transform `nums` by performing the following operations in the **exact** order specified:
 
 - Replace each even number with 0.
@@ -41,35 +39,46 @@ Explanation: - Replace the even numbers (4 and 2) with 0 and the odd numbers (1,
 ```
 
 ## Approach
-Count how many even and how many odd numbers are present. To make all elements share parity, you must change the minority group. The answer is `min(evenCount, oddCount)`.
+After replacing evens with 0 and odds with 1, sorting simply puts all 0s before all 1s. So we only need the number of even elements `e`: the answer is `e` zeros followed by `n − e` ones (a counting sort, no comparison sort needed).
 
 **Pseudocode**
 ```text
-FUNCTION minOperationsParity(nums):
-    SET evenCount ← 0
-    SET oddCount ← 0
-    FOR each num IN nums:
-        IF num MOD 2 = 0:
-            SET evenCount ← evenCount + 1
-        ELSE:
-            SET oddCount ← oddCount + 1
-    RETURN MIN(evenCount, oddCount)
+FUNCTION transformArray(nums):
+    n ← LENGTH(nums)
+    e ← 0
+    FOR i ← 0 TO n-1
+        IF nums[i] MOD 2 = 0
+            e ← e + 1
+    result ← array of length n
+    FOR i ← 0 TO n-1
+        IF i < e
+            result[i] ← 0
+        ELSE
+            result[i] ← 1
+    RETURN result
 ```
 
 ## Walkthrough
-| nums | evenCount | oddCount | min → operations |
-|------|-----------|----------|-------------------|
-| [3,2,1,4] | 2 | 2 | 2 |
-| [2,4,6]   | 3 | 0 | 0 |
+Example 2: `nums = [1,5,1,4,2]`, `n = 5`.
+
+| i | nums[i] | Even? | e after |
+|---|---------|-------|---------|
+| 0 | 1 | no | 0 |
+| 1 | 5 | no | 0 |
+| 2 | 1 | no | 0 |
+| 3 | 4 | yes | 1 |
+| 4 | 2 | yes | 2 |
+
+`e = 2` → result = two 0s then three 1s = **[0,0,1,1,1]**, matching the expected output.
 
 ## Complexity Analysis
 - Time: O(n) where n = length of `nums`.
-- Space: O(1) – only counters are used.
+- Space: O(1) extra besides the output array (or O(1) total if written in place).
 
 ## Follow-Up Questions
-1. How would the solution change if each operation could only increment/decrement by 1?
-2. What if you were required to transform the array into a specific target parity (all even) regardless of the minority count?
-3. Can you extend the problem to minimize the total sum of changes rather than the number of operations?
+1. How would you do it in place in a single pass (two pointers / Dutch-flag style)?
+2. What if values were replaced by `nums[i] mod k` for some `k` — how does counting sort generalize?
+3. Why is counting better than calling a generic sort here?
 
 ## Key Takeaway
-The optimal strategy is to convert the smaller parity group, yielding a simple count‑based solution.
+When values collapse to a tiny set, sorting reduces to counting how many of each value there are.

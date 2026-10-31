@@ -34,7 +34,7 @@ Given an integer `n`, return* the number of people who know the secret at the en
 
 ## 2. Key Insight
 
-> `dp[i]` = number of new people who learn the secret on day `i`. A person who learned on day `j` can share it on days `[j+delay, j+forget‑1]`. Summing `dp[j]` over all valid `j` gives `dp[i]`.
+> `dp[i]` = number of new people who learn the secret on day `i`. A person who learned on day `j` can share it on days `[j+delay, j+forget-1]`. Summing `dp[j]` over all valid `j` gives `dp[i]`.
 
 ---
 
@@ -85,15 +85,15 @@ Day 4: A forgets the secret. B, C, and D share the secret with 3 new people. (6 
 
 ## 5. Walkthrough
 
-Consider Example 1 (`n=6, delay=2, forget=4`).
+Consider Example 1 (`n=6, delay=2, forget=4`).
 | Day | dp[day] (new learners) | Cumulative aware (last 4 days) |
 |-----|------------------------|--------------------------------|
 | 1   | 1                      | 1 |
 | 2   | 0 (cannot share yet)  | 1 |
-| 3   | 1 (share from day 1)   | 2 |
-| 4   | 1 (share from day 2)   | 2 (day 1 forgets) |
-| 5   | 1 (share from day 3)   | 3 |
-| 6   | 1 (share from day 4)   | 5 |
+| 3   | 1 (share from day 1)   | 2 |
+| 4   | 1 (share from day 2)   | 2 (day 1 forgets) |
+| 5   | 1 (share from day 3)   | 3 |
+| 6   | 1 (share from day 4)   | 5 |
 The final sum of dp[3]…dp[6] = 5, matching the output.
 
 ---
@@ -109,4 +109,4 @@ The final sum of dp[3]…dp[6] = 5, matching the output.
 
 ## 7. Key Takeaway
 
-> **Model the spread as daily new learners and use a sliding‑window DP** to aggregate contributions from previous days within the `[delay, forget)` window.
+> **Model the spread as daily new learners and use a sliding-window DP** to aggregate contributions from previous days within the `[delay, forget)` window.

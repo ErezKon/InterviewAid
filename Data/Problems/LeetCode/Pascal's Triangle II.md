@@ -39,7 +39,7 @@ Output: [1,1]
 ```
 
 ## Approach
-Build the row in‑place from right to left so that previously computed values are not overwritten.
+Build the row in-place from right to left so that previously computed values are not overwritten.
 
 ```text
 FUNCTION getRow(rowIndex):
@@ -66,9 +66,9 @@ Result `[1,3,3,1]`.
 - **Time:** O(rowIndex²) due to the nested loops.
 - **Space:** O(rowIndex) for the output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you generate the entire Pascal's Triangle up to `rowIndex`?
-2. Can you compute a specific element `C(row, col)` in O(min(col, row‑col)) time?
+2. Can you compute a specific element `C(row, col)` in O(min(col, row-col)) time?
 3. How does the problem change if you need results modulo a large prime?
 
 ## Key Takeaway

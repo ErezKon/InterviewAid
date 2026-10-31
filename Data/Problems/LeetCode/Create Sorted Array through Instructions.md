@@ -113,7 +113,7 @@ Total cost = `1`.
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n log M) where M = max value |
+| **Time** | O(n log M) where M = max value |
 | **Space** | O(M) |
 
 ---

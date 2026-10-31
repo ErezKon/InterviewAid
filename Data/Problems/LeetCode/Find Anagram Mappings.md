@@ -73,8 +73,8 @@ For `nums1 = [12,28,46,32,50]` and `nums2 = [50,12,32,46,28]`:
 
 ## Follow-Up Questions
 
-1. How would you handle duplicate values if the mapping must be one‑to‑one?
-2. Can you solve it without extra space by modifying `nums2` in‑place?
+1. How would you handle duplicate values if the mapping must be one-to-one?
+2. Can you solve it without extra space by modifying `nums2` in-place?
 3. What if the arrays are extremely large and don’t fit in memory?
 
 ---

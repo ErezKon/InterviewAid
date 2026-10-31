@@ -80,9 +80,9 @@ FUNCTION immediateDeliveryPercentage():
 ## Complexity Analysis
 
 - **Time:** O(N) – the query scans the `Delivery` table once.
-- **Space:** O(1) – only constant‑size aggregates are stored.
+- **Space:** O(1) – only constant-size aggregates are stored.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you compute the percentage for each customer separately?
 2. How to handle cases where `order_date` or `customer_pref_delivery_date` can be NULL?

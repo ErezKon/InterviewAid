@@ -67,12 +67,12 @@ FUNCTION specialArray(nums):
 
 ## Complexity Analysis
 - Time: `O(n log n)` for sorting plus `O(n log n)` for binary searches (overall `O(n log n)`).
-- Space: `O(1)` extra beyond the input array (in‑place sort).
+- Space: `O(1)` extra beyond the input array (in-place sort).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem in `O(n)` time without sorting?
 2. Can you adapt the algorithm to return all possible `x` values if multiple exist?
 3. How does the solution change if the array may contain negative numbers?
 
 ## Key Takeaway
-Sorting enables binary search to efficiently count elements ≥ x, allowing a linear scan over possible `x` values to find the special array condition.
+Sorting enables binary search to efficiently count elements ≥ x, allowing a linear scan over possible `x` values to find the special array condition.

@@ -43,7 +43,7 @@ Example 2:
 
 ## 3. Approach
 
-Simulate the transformation on a copy each round to avoid in‑place interference. Continue until a round makes no changes.
+Simulate the transformation on a copy each round to avoid in-place interference. Continue until a round makes no changes.
 
 ```text
 FUNCTION transformArray(arr):
@@ -65,7 +65,7 @@ FUNCTION transformArray(arr):
 ## 4. Walkthrough
 
 Take `[5,1,3,2,4]`:
-1. Round 1: check indices 1‑3.
+1. Round 1: check indices 1-3.
    - i=1: 1 < 5 and 1 < 3 → increment → 2
    - i=2: 3 > 2 and 3 > 2 → decrement → 2
    - i=3: 2 < 3 and 2 < 4 → increment → 3
@@ -76,9 +76,9 @@ Take `[5,1,3,2,4]`:
 
 | Time | Space |
 |------|-------|
-| O(n × k) where *k* is number of rounds (worst‑case bounded by max value range) | O(n) |
+| O(n × k) where *k* is number of rounds (worst-case bounded by max value range) | O(n) |
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - Can the process be optimized to run in O(n) without explicit simulation?
 - How would you handle very large integer ranges?
@@ -86,4 +86,4 @@ Take `[5,1,3,2,4]`:
 
 ## Key Takeaway
 
-> Simulate the transformation on a copy each round to avoid in‑place interference. Converges when all local extrema are eliminated.
+> Simulate the transformation on a copy each round to avoid in-place interference. Converges when all local extrema are eliminated.

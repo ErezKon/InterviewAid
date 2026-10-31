@@ -61,7 +61,7 @@ Output table is ordered by user_id in ascending order.
 ```
 
 ## Approach
-A direct index lookup solves the problem. Check the length of the array; if it is at least three, return the element at index `2` (0‑based). Otherwise return `-1`.
+A direct index lookup solves the problem. Check the length of the array; if it is at least three, return the element at index `2` (0-based). Otherwise return `-1`.
 
 ```text
 FUNCTION thirdTransaction(transactions):
@@ -76,13 +76,13 @@ For `transactions = [5, 10, 15, 20]`:
 The function returns `15`.
 
 ## Complexity Analysis
-- **Time:** O(1) – constant‑time index access.
+- **Time:** O(1) – constant-time index access.
 - **Space:** O(1) – no extra data structures.
 
-## Follow‑Up Questions
-1. How would you modify the solution to return the *k*‑th transaction for any given `k`?
+## Follow-Up Questions
+1. How would you modify the solution to return the *k*-th transaction for any given `k`?
 2. What if the transactions are streamed and you cannot store the entire list?
-3. How would you handle 1‑based indexing conventions in the input?
+3. How would you handle 1-based indexing conventions in the input?
 
 ## Key Takeaway
 When the required element position is fixed, a simple length check and direct index access provide an O(1) solution.

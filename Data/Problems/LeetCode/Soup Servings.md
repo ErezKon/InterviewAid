@@ -51,7 +51,7 @@ Example 2:
 ```
 
 ## Approach
-Model the process as a recursive probability DP with memoization. Scale `n` by 25 ml (ceil) to reduce state space. Use the recurrence for the four possible serving actions.
+Model the process as a recursive probability DP with memoization. Scale `n` by 25 ml (ceil) to reduce state space. Use the recurrence for the four possible serving actions.
 
 ```text
 FUNCTION soupProbability(n):
@@ -71,19 +71,19 @@ Memoize `dp` results to avoid recomputation.
 ## Walkthrough
 | State (a,b) | Action | New State | Contribution |
 |------------|--------|-----------|--------------|
-| (2,2) | Serve 4 ml A, 0 ml B | (−2,2) → A empty → 1.0 | 0.25 * 1.0 |
-| (2,2) | Serve 3 ml A, 1 ml B | (−1,1) → A empty → 1.0 | 0.25 * 1.0 |
-| (2,2) | Serve 2 ml A, 2 ml B | (0,0) → both empty → 0.5 | 0.25 * 0.5 |
-| (2,2) | Serve 1 ml A, 3 ml B | (1,−1) → B empty → 0.0 | 0.25 * 0.0 |
+| (2,2) | Serve 4 ml A, 0 ml B | (−2,2) → A empty → 1.0 | 0.25 * 1.0 |
+| (2,2) | Serve 3 ml A, 1 ml B | (−1,1) → A empty → 1.0 | 0.25 * 1.0 |
+| (2,2) | Serve 2 ml A, 2 ml B | (0,0) → both empty → 0.5 | 0.25 * 0.5 |
+| (2,2) | Serve 1 ml A, 3 ml B | (1,−1) → B empty → 0.0 | 0.25 * 0.0 |
 Aggregating gives `dp(2,2) = 0.625`.
 
 ## Complexity Analysis
 - Time: `O(m²)` where `m = ceil(n/25)` (states memoized). For `n ≤ 4800`, `m ≤ 192`.
 - Space: `O(m²)` for memo table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the serving amounts were different?
-2. Can you derive a closed‑form expression for the probability as `n → ∞`?
+2. Can you derive a closed-form expression for the probability as `n → ∞`?
 3. How would you adapt the DP for more than two soups?
 
 ## Key Takeaway

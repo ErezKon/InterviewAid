@@ -35,10 +35,10 @@ Example 2:
 ```
 
 ## Approach
-Transform the condition: `j - i != nums[j] - nums[i]` ⇔ `nums[i] - i != nums[j] - j`. For each element compute `key = nums[i] - i`. Count how many previous elements share the same key (good pairs). Total pairs = n·(n‑1)/2. Bad pairs = total – good.
+Transform the condition: `j - i != nums[j] - nums[i]` ⇔ `nums[i] - i != nums[j] - j`. For each element compute `key = nums[i] - i`. Count how many previous elements share the same key (good pairs). Total pairs = n·(n-1)/2. Bad pairs = total – good.
 
 ## Walkthrough
-| Index i | nums[i] | key = nums[i]‑i | Good pairs added |
+| Index i | nums[i] | key = nums[i]-i | Good pairs added |
 |---------|---------|----------------|------------------|
 | 0       | 4       | 4              | 0                |
 | 1       | 1       | 0              | 0                |
@@ -56,4 +56,4 @@ The sum of good pairs is 1, total pairs = 6, so bad = 5.
 - What if the definition of a bad pair changes to a different linear relation?
 
 ## Key Takeaway
-By rewriting the bad‑pair condition to a simple equality of `nums[i]‑i`, the problem reduces to counting equal values, which is efficiently done with a hash map in linear time.
+By rewriting the bad-pair condition to a simple equality of `nums[i]-i`, the problem reduces to counting equal values, which is efficiently done with a hash map in linear time.

@@ -14,7 +14,7 @@
 4. [Examples](#4-examples)
 5. [Walkthrough](#5-walkthrough)
 6. [Complexity Analysis](#6-complexity-analysis)
-7. [Follow‑Up Questions](#7-follow‑up-questions)
+7. [Follow-Up Questions](#7-follow-up-questions)
 8. [Key Takeaway](#8-key-takeaway)
 
 ---
@@ -106,7 +106,7 @@ Example 2:
 
 ## 5. Walkthrough
 
-Take **Example 1**:
+Take **Example 1**:
 | Step | Action |
 |------|--------|
 | 1 | Compute final positions: 1→3, 3→5, 6→4 (using `+d` for `R`, `-d` for `L`). |
@@ -121,11 +121,11 @@ Take **Example 1**:
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(n log n) — sorting the final positions |
-| **Space** | O(1) extra (in‑place sort) |
+| **Space** | O(1) extra (in-place sort) |
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if robots could have different speeds?
 - Can you solve the problem in O(n) time without sorting?
@@ -135,4 +135,4 @@ Take **Example 1**:
 
 ## 8. Key Takeaway
 
-> **Colliding robots = passing through.** Ignore collisions, compute final positions, sort, and use the prefix‑sum trick to obtain all pairwise distances efficiently.
+> **Colliding robots = passing through.** Ignore collisions, compute final positions, sort, and use the prefix-sum trick to obtain all pairwise distances efficiently.

@@ -66,7 +66,7 @@ Result = 2.
 - **Time:** `O(n)` where `n` is `LEN(word)` – each character is examined at most once.
 - **Space:** `O(1)` – only a few counters are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if the required pattern were an arbitrary string `p` instead of `"abc"`?
 2. Can you modify the solution to also return the final constructed valid string?
 3. What if deletions were allowed in addition to insertions, and you wanted the minimum total operations?

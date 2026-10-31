@@ -72,13 +72,13 @@ Output: 2
 
 1. Initialize `bankSet` and check if `endGene` is reachable.
 2. Start BFS with `startGene` at depth 0.
-3. Dequeue a gene, generate all possible one‑letter mutations.
+3. Dequeue a gene, generate all possible one-letter mutations.
 4. For each valid mutation present in `bankSet` and not visited, enqueue with depth+1.
 5. When `endGene` is dequeued, its associated depth is the minimum number of mutations.
 
 ## Complexity Analysis
 
-- **Time**: O(B · 8 · 4) — each gene generates at most 24 neighbors, each lookup is O(1).
+- **Time**: O(B · 8 · 4) — each gene generates at most 24 neighbors, each lookup is O(1).
 - **Space**: O(B) for the `bankSet` and visited set.
 
 ## Follow-Up Questions

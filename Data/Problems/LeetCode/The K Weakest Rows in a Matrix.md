@@ -79,12 +79,12 @@ After sorting by (strength, index): (1,2), (2,0), (2,3), (4,1), (5,4). First 3 i
 
 ## Complexity Analysis
 - Time: O(m log n) for binary searches + O(m log m) for sorting → O(m log n + m log m).
-- Space: O(m) to store the strength‑index pairs.
+- Space: O(m) to store the strength-index pairs.
 
 ## Follow-Up Questions
-1. How would you solve the problem in O(m + n log k) using a min‑heap of size `k`?
+1. How would you solve the problem in O(m + n log k) using a min-heap of size `k`?
 2. Can you modify the algorithm to handle rows that are not sorted?
 3. What if the matrix is streamed row by row and you cannot store all rows at once?
 
 ## Key Takeaway
-Counting per‑row strengths with binary search and sorting by (strength, index) yields a simple and efficient solution.
+Counting per-row strengths with binary search and sorting by (strength, index) yields a simple and efficient solution.

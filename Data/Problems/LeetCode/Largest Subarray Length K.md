@@ -76,7 +76,7 @@ FUNCTION largestSubarray(nums, k):
 | i=1 | 1 | 0 → 1 | nums[1]=5 > nums[0]=3 |
 | i=2 | 2 | 1 | nums[2]=2 < nums[1]=5 |
 | i=3 | 3 | 3 | nums[3]=6 > nums[1]=5 |
-| i=4 | 4 | 3 | i exceeds n‑k (5‑3=2), stop |
+| i=4 | 4 | 3 | i exceeds n-k (5-3=2), stop |
 
 Resulting subarray = SLICE(nums, 3, 6) = [6,4].
 
@@ -99,4 +99,4 @@ Resulting subarray = SLICE(nums, 3, 6) = [6,4].
 
 ## Key Takeaway
 
-> With distinct elements, lexicographic order is determined by the first element. Find the max among positions `[0, n‑k]` and return the subarray starting there.
+> With distinct elements, lexicographic order is determined by the first element. Find the max among positions `[0, n-k]` and return the subarray starting there.

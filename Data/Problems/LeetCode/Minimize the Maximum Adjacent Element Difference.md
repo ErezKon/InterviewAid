@@ -54,7 +54,7 @@ Example 3:
 
 ## Approach
 
-The answer can be found via binary search on the maximum allowed difference `d`. For a candidate `d`, each `-1` must be assigned a value that lies within the intersection of ranges imposed by its known neighbors: `[neighbor - d, neighbor + d]`. If all intersections are non‑empty, `d` is feasible.
+The answer can be found via binary search on the maximum allowed difference `d`. For a candidate `d`, each `-1` must be assigned a value that lies within the intersection of ranges imposed by its known neighbors: `[neighbor - d, neighbor + d]`. If all intersections are non-empty, `d` is feasible.
 
 ```text
 FUNCTION minimizeMaxDiff(nums):

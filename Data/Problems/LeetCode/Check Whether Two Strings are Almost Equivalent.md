@@ -81,7 +81,7 @@ FUNCTION checkAlmostEquivalent(word1, word2):
 
 Consider `word1 = "aabbcc"`, `word2 = "abccdd"`.
 
-| Step | freq array (a‑z) after processing |
+| Step | freq array (a-z) after processing |
 |------|--------------------------------------|
 | Init | all zeros |
 | Process `word1` | a:2, b:2, c:2 |

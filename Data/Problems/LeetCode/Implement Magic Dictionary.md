@@ -77,12 +77,12 @@ Consider dictionary `["hello","leetcode"]` and `searchWord = "hhllo"`.
 - **Time**: O(n·k) where *n* is number of stored words and *k* is word length.
 - **Space**: O(1) extra beyond storing the dictionary.
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would you improve the search to O(k) using a Trie with one‑mismatch DFS?
+- How would you improve the search to O(k) using a Trie with one-mismatch DFS?
 - How to support multiple character modifications?
 - How to handle large dictionaries efficiently?
 
 ## Key Takeaway
 
-> For each dictionary word of same length, count character differences. Exactly one difference = match. Alternative: Trie with one‑mismatch DFS.
+> For each dictionary word of same length, count character differences. Exactly one difference = match. Alternative: Trie with one-mismatch DFS.

@@ -59,7 +59,7 @@ Explanation: The sizes of the perfect binary subtrees in non-increasing order ar
 
 ## 2. Key Insight
 
-Use **post-order DFS**: a subtree rooted at a node is perfect if both children's subtrees are perfect and have equal height. Collect all perfect subtree sizes, sort, and return the k‑th largest.
+Use **post-order DFS**: a subtree rooted at a node is perfect if both children's subtrees are perfect and have equal height. Collect all perfect subtree sizes, sort, and return the k-th largest.
 
 ---
 
@@ -99,7 +99,7 @@ Consider the tree `[[1,2,3],[null,4,5],[null,null,null]]` and `k = 1`.
 | 4 | leaf 3 | 0 | 0 | 1 | Yes (size=1) | [1,1,3,1] |
 | 5 | root 1 | 2 | 1 | -1 | No (unequal heights) | [1,1,3,1] |
 
-After DFS, perfect subtree sizes are `[3,1,1,1]`. Sorted descending → `[3,1,1,1]`. The 1‑st largest is `3` (size of subtree rooted at node 2). Since the whole tree isn’t perfect, the answer is `3`.
+After DFS, perfect subtree sizes are `[3,1,1,1]`. Sorted descending → `[3,1,1,1]`. The 1-st largest is `3` (size of subtree rooted at node 2). Since the whole tree isn’t perfect, the answer is `3`.
 
 ---
 
@@ -114,12 +114,12 @@ After DFS, perfect subtree sizes are `[3,1,1,1]`. Sorted descending → `[3,1,1,
 
 ## Follow-Up Questions
 
-1. How would you modify the algorithm to return the **k‑th smallest** perfect subtree size?
-2. Can you compute the answer in **O(n)** time without sorting, e.g., using a min‑heap of size k?
-3. How would the solution change if the tree were not binary but an **n‑ary** tree?
+1. How would you modify the algorithm to return the **k-th smallest** perfect subtree size?
+2. Can you compute the answer in **O(n)** time without sorting, e.g., using a min-heap of size k?
+3. How would the solution change if the tree were not binary but an **n-ary** tree?
 
 ---
 
 ## Key Takeaway
 
-> Post‑order DFS returns the height of perfect subtrees (or -1 if imperfect). A subtree is perfect iff both children are perfect with equal height. Collect sizes, sort, and pick the k‑th largest.
+> Post-order DFS returns the height of perfect subtrees (or -1 if imperfect). A subtree is perfect iff both children are perfect with equal height. Collect sizes, sort, and pick the k-th largest.

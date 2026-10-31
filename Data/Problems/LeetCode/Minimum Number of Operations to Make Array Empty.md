@@ -46,7 +46,7 @@ Explanation: It is impossible to empty the array.
 The problem reduces to repeatedly removing groups of equal numbers. The optimal strategy is to **merge equal elements** whenever possible, which can be modeled with a frequency map and a greedy removal of the largest groups first.
 
 1. Count occurrences of each value.
-2. Use a max‑heap (or sorted list) to always pick the value with the highest remaining count.
+2. Use a max-heap (or sorted list) to always pick the value with the highest remaining count.
 3. Remove a group of size `k` (cost 1) and decrease its count by `k`. If the count remains > 0, push it back.
 4. If at any point the largest count is 1 while the array is not empty, the task is impossible.
 
@@ -61,10 +61,10 @@ The problem reduces to repeatedly removing groups of equal numbers. The optimal 
 - **Time:** O(N log M) where N is the array length and M is the number of distinct values (heap operations).
 - **Space:** O(M) for the frequency map and heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the cost of an operation were the **square** of the subarray length?
-2. Can the problem be solved in O(N) time using a stack‑based greedy approach?
+2. Can the problem be solved in O(N) time using a stack-based greedy approach?
 3. What if you could only remove subarrays of length at most `k`?
 
 ## Key Takeaway
-Greedy removal of the largest equal‑value groups, guided by a frequency map, yields the minimum number of operations to empty the array.
+Greedy removal of the largest equal-value groups, guided by a frequency map, yields the minimum number of operations to empty the array.

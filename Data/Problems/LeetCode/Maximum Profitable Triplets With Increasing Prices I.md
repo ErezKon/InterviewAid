@@ -90,10 +90,10 @@ Result = 20.
 - **Time:** O(n) – three linear passes.
 - **Space:** O(n) – two auxiliary arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the solution to return the actual indices of the optimal triplet?
 2. What changes are needed if the profit is defined as `prices[k] - prices[i]` with a middle constraint?
 3. Can the problem be solved in O(1) extra space?
 
 ## Key Takeaway
-By precomputing prefix minima and suffix maxima, each element can be evaluated as the middle of an increasing triplet in constant time, yielding a linear‑time solution.
+By precomputing prefix minima and suffix maxima, each element can be evaluated as the middle of an increasing triplet in constant time, yielding a linear-time solution.

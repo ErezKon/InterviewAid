@@ -62,7 +62,7 @@ Product 2 was ordered one time in 2022. We do not include it in the answer.
 ## Approach
 1. **Aggregate**: Group by `product_id` and `order_year` to count orders per year.
 2. **Filter**: Keep rows where `count >= 3`.
-3. **Self‑join** the filtered result on `product_id` where `year2 = year1 + 1` to find consecutive years.
+3. **Self-join** the filtered result on `product_id` where `year2 = year1 + 1` to find consecutive years.
 4. **Select distinct** `product_id`s and order them.
 
 ## Walkthrough
@@ -75,10 +75,10 @@ Product 2 was ordered one time in 2022. We do not include it in the answer.
 - Time: O(N log N) for grouping and joining N rows.
 - Space: O(N) to store intermediate aggregates.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How to handle cases where the streak spans more than two years?
 - Extend to require a minimum total quantity across the consecutive years.
-- Adapt the query for databases without self‑join support (use window functions).
+- Adapt the query for databases without self-join support (use window functions).
 
 ## Key Takeaway
-Aggregating per‑group counts and self‑joining on consecutive keys efficiently identifies back‑to‑back qualifying periods.
+Aggregating per-group counts and self-joining on consecutive keys efficiently identifies back-to-back qualifying periods.

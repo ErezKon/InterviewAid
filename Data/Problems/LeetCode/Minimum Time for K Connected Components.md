@@ -99,12 +99,12 @@ FUNCTION minTimeForKComponents(n, edges, k):
 
 ## 5. Walkthrough
 
-Consider **Example 1** (`n=4`, edges `[(0,1,3),(1,2,2),(2,3,4)]`, `k=3`).
+Consider **Example 1** (`n=4`, edges `[(0,1,3),(1,2,2),(2,3,4)]`, `k=3`).
 | Step | Edge Added (weight) | Components after union | When components < k? |
 |------|---------------------|------------------------|----------------------|
 | Start | – | 4 | No |
-| 1 | (2,3,4) | merges 2‑3 → 3 components | No |
-| 2 | (0,1,3) | merges 0‑1 → 2 components | **Yes**, components dropped below 3, so answer = weight of next edge to disappear = 2 |
+| 1 | (2,3,4) | merges 2-3 → 3 components | No |
+| 2 | (0,1,3) | merges 0-1 → 2 components | **Yes**, components dropped below 3, so answer = weight of next edge to disappear = 2 |
 Thus the minimum time is `2`.
 
 ---
@@ -113,8 +113,8 @@ Thus the minimum time is `2`.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(E log E) — sorting + near‑linear Union‑Find |
-| **Space** | O(n) for Union‑Find structure |
+| **Time** | O(E log E) — sorting + near-linear Union-Find |
+| **Space** | O(n) for Union-Find structure |
 
 ---
 
@@ -122,7 +122,7 @@ Thus the minimum time is `2`.
 
 1. How would the solution change if edges could appear instead of disappear?
 2. Can you extend the approach to handle dynamic edge insertions and deletions online?
-3. What if each edge had a different activation delay rather than a simple weight‑based disappearance?
+3. What if each edge had a different activation delay rather than a simple weight-based disappearance?
 
 ---
 

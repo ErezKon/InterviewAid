@@ -89,4 +89,4 @@ Space: O(N) for intermediate grouping structures.
 3. How would you adapt the query for a hierarchical department structure?
 
 ## Key Takeaway
-A concise SQL query can retrieve each employee's primary department by combining a flag filter with a single‑row detection via grouping.
+A concise SQL query can retrieve each employee's primary department by combining a flag filter with a single-row detection via grouping.

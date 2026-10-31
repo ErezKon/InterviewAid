@@ -71,7 +71,7 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Greedy Bit‑by‑Bit (from most‑significant to least‑significant)
+**Algorithm:** Greedy Bit-by-Bit (from most-significant to least-significant)
 
 For each bit, we try to eliminate it from the final OR using at most `k` merge operations. Merging can only clear bits (AND never sets a 0 to 1). We greedily attempt to turn off the highest bits first; if the required operations exceed `k`, the bit must stay on.
 
@@ -106,7 +106,7 @@ FUNCTION MinimizeOR(nums, k):
 
 ## Walkthrough
 
-Take **Example 1** `nums = [1,2,3]`, `k = 1`.
+Take **Example 1** `nums = [1,2,3]`, `k = 1`.
 
 | Bit | mask | Groups formed | ops needed | Can clear? |
 |-----|------|---------------|------------|------------|
@@ -122,7 +122,7 @@ Resulting OR = 1 (only bit0 remains).
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Greedy per bit | **O(30 · n)** | **O(1)** |
+| Greedy per bit | **O(30 · n)** | **O(1)** |
 
 ---
 
@@ -136,6 +136,6 @@ Resulting OR = 1 (only bit0 remains).
 
 ## Key Takeaway
 
-> **Bit‑by‑bit greedy from MSB** — try to eliminate each bit starting from the highest. AND‑merge operations can only clear bits, so greedily remove the most significant bits first for minimum OR.
+> **Bit-by-bit greedy from MSB** — try to eliminate each bit starting from the highest. AND-merge operations can only clear bits, so greedily remove the most significant bits first for minimum OR.
 
 ---

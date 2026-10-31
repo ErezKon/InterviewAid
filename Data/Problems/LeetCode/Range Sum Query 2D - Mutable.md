@@ -49,7 +49,7 @@ numMatrix.sumRegion(2, 1, 4, 3); // return 10 (i.e. sum of the right red rectang
 ```
 
 ## Approach
-Use a 2‑D Binary Indexed Tree (Fenwick Tree) to store prefix sums. Updating an element computes the difference and propagates it through the BIT. Querying a region uses inclusion‑exclusion of four prefix sums.
+Use a 2-D Binary Indexed Tree (Fenwick Tree) to store prefix sums. Updating an element computes the difference and propagates it through the BIT. Querying a region uses inclusion-exclusion of four prefix sums.
 
 ```text
 CLASS NumMatrix:
@@ -106,14 +106,14 @@ END CLASS
 |sumRegion(1,1,2,2)|use four `query` calls → result `15`|
 
 ## Complexity Analysis
-- Update: O(log m · log n)
-- Query: O(log m · log n)
+- Update: O(log m · log n)
+- Query: O(log m · log n)
 - Space: O(m·n) for the BIT and original matrix.
 
-## Follow‑Up Questions
-1. How would you adapt the structure for a 3‑D matrix?
-2. Can you achieve the same operations with a 2‑D Segment Tree?
+## Follow-Up Questions
+1. How would you adapt the structure for a 3-D matrix?
+2. Can you achieve the same operations with a 2-D Segment Tree?
 3. What optimizations are possible for sparse matrices?
 
 ## Key Takeaway
-A 2‑D Fenwick Tree converts mutable range‑sum queries into logarithmic‑time operations by maintaining cumulative frequencies in a compact tree structure.
+A 2-D Fenwick Tree converts mutable range-sum queries into logarithmic-time operations by maintaining cumulative frequencies in a compact tree structure.

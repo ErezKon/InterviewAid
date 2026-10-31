@@ -153,4 +153,4 @@ Example 1:
 
 ## Key Takeaway
 
-> **Self‑join on the tests table: find a positive result followed by a later negative result to identify recovered patients.**
+> **Self-join on the tests table: find a positive result followed by a later negative result to identify recovered patients.**

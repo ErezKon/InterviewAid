@@ -65,9 +65,9 @@ In total, 1 + 3 + 0 + 0 = 4 moves were used.
 
 **Algorithm:** Greedy matching after sorting.
 
-1. Sort the `seats` array in non‑decreasing order.
-2. Sort the `students` array in non‑decreasing order.
-3. Pair the `i`‑th seat with the `i`‑th student for all `i` and sum the absolute differences.
+1. Sort the `seats` array in non-decreasing order.
+2. Sort the `students` array in non-decreasing order.
+3. Pair the `i`-th seat with the `i`-th student for all `i` and sum the absolute differences.
 
 This works because the optimal assignment for minimizing sum of absolute differences is the identity pairing after sorting (the Rearrangement Inequality).
 
@@ -92,9 +92,9 @@ For `seats = [5,1,2]`, `students = [3,2,7]`:
 ## Complexity Analysis
 
 - **Time:** `O(n log n)` for sorting the two arrays.
-- **Space:** `O(1)` additional space if sorting in‑place; otherwise `O(n)` for the sorted copies.
+- **Space:** `O(1)` additional space if sorting in-place; otherwise `O(n)` for the sorted copies.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if moving a student one unit costs a different weight (e.g., based on student speed)?
 - What if seats and students are on a circular track instead of a line?
@@ -102,4 +102,4 @@ For `seats = [5,1,2]`, `students = [3,2,7]`:
 
 ## Key Takeaway
 
-Sorting both lists and pairing them index‑wise yields the minimal total movement due to the Rearrangement Inequality, providing a simple `O(n log n)` solution.
+Sorting both lists and pairing them index-wise yields the minimal total movement due to the Rearrangement Inequality, providing a simple `O(n log n)` solution.

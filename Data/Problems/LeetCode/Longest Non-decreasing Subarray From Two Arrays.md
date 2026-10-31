@@ -88,7 +88,7 @@ Take the first example `[1,3,5]` and `[2,4,6]`.
 |0|1|2|1|1|1|
 |1|3|4|2 (3≥1) |2 (4≥2) |2|
 |2|5|6|3 (5≥3 or 5≥4) |3 (6≥4 or 6≥5) |3|
-The DP maintains the longest subarray ending at each index for both choices, yielding length 3.
+The DP maintains the longest subarray ending at each index for both choices, yielding length 3.
 
 ## Complexity Analysis
 - **Time:** O(n) – single pass over the arrays.
@@ -101,4 +101,4 @@ The DP maintains the longest subarray ending at each index for both choices, yie
 
 ## Key Takeaway
 
-> Maintain two DP states representing the longest non‑decreasing subarray ending at the current index when choosing from the first or second array. Update both states using the four possible transitions.
+> Maintain two DP states representing the longest non-decreasing subarray ending at the current index when choosing from the first or second array. Update both states using the four possible transitions.

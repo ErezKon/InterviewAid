@@ -52,7 +52,7 @@ FUNCTION numSubarrayProductLessThanK(nums, k):
     RETURN count
 ```
 
-The window `[left, right]` always maintains a product `< k`. Each extension adds `right‑left+1` new subarrays ending at `right`.
+The window `[left, right]` always maintains a product `< k`. Each extension adds `right-left+1` new subarrays ending at `right`.
 
 ## Walkthrough
 | Step | right | nums[right] | product (after multiply) | while condition | left moves | product (after shrink) | count added |
@@ -68,8 +68,8 @@ The window `[left, right]` always maintains a product `< k`. Each extension adds
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to count subarrays with product **greater than or equal to** `k`?
-2. Can you adapt the sliding‑window technique to handle arrays that may contain zeros?
+2. Can you adapt the sliding-window technique to handle arrays that may contain zeros?
 3. What changes are needed if the array contains negative numbers?
 
 ## Key Takeaway
-A sliding window that maintains a product less than `k` lets you count all qualifying subarrays in linear time by leveraging the fact that extending the window adds exactly `right‑left+1` new subarrays.
+A sliding window that maintains a product less than `k` lets you count all qualifying subarrays in linear time by leveraging the fact that extending the window adds exactly `right-left+1` new subarrays.

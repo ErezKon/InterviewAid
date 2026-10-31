@@ -59,13 +59,13 @@ Example 2:
 
 ## Approach
 1. Group visits by user and sort each group by timestamp.
-2. For each user, generate all unique 3‑website combinations preserving order.
+2. For each user, generate all unique 3-website combinations preserving order.
 3. Count how many users have each combination using a hash map.
 4. Return the combination with the highest count; break ties by lexicographic order.
 
 ```text
 FUNCTION mostVisitedPattern(username, timestamp, website):
-    // Build per‑user visit lists sorted by time
+    // Build per-user visit lists sorted by time
     userVisits ← MAP()
     FOR (u, t, w) IN SORTED(zip(username, timestamp, website)):
         IF u NOT IN userVisits:
@@ -74,7 +74,7 @@ FUNCTION mostVisitedPattern(username, timestamp, website):
 
     patternCount ← MAP(default=0)
     FOR user, sites IN userVisits:
-        // Generate all 3‑length ordered combos without repetition per user
+        // Generate all 3-length ordered combos without repetition per user
         combos ← SET()
         n ← LENGTH(sites)
         FOR i ← 0 TO n-3:
@@ -97,18 +97,18 @@ FUNCTION mostVisitedPattern(username, timestamp, website):
 
 ## Walkthrough
 For the first example, after sorting we have:
-- joe: ["home","about","career"] → only one 3‑combo.
+- joe: ["home","about","career"] → only one 3-combo.
 - james: ["home","cart","maps","home"] → combos: (home,cart,maps), (home,cart,home), (home,maps,home), (cart,maps,home).
 Counting frequencies, the combo (home,about,career) appears once, which is the highest.
 
 ## Complexity Analysis
 *Time*: O(N + U·K³) where N is total visits, U is number of users, and K is the maximum visits per user (K is small, ≤ 50). The triple loop generates at most C(K,3) combos per user.
-*Space*: O(U·K) for storing per‑user visits and O(C) for the pattern hash map.
+*Space*: O(U·K) for storing per-user visits and O(C) for the pattern hash map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the sequence length were variable (e.g., any length L)?
 2. Can you compute the result in a single pass without storing all visits?
 3. How would you handle ties using a custom ordering (e.g., by earliest occurrence)?
 
 ## Key Takeaway
-Group and sort each user's visits, generate unique ordered triples, and use a frequency map to identify the most common 3‑website pattern.
+Group and sort each user's visits, generate unique ordered triples, and use a frequency map to identify the most common 3-website pattern.

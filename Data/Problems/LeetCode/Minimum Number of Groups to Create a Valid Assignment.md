@@ -63,9 +63,9 @@ You can't use fewer than four boxes while still following the rules. For example
 
 ## Approach
 
-**Greedy – Longest Non‑Decreasing Subsequence Count**
+**Greedy – Longest Non-Decreasing Subsequence Count**
 
-The minimum number of groups equals the length of the longest non‑increasing subsequence of `tasks`. This follows from Dilworth’s theorem: the size of the smallest chain decomposition equals the size of the largest antichain. We can compute it by iterating through `tasks` and maintaining a list of group tops.
+The minimum number of groups equals the length of the longest non-increasing subsequence of `tasks`. This follows from Dilworth’s theorem: the size of the smallest chain decomposition equals the size of the largest antichain. We can compute it by iterating through `tasks` and maintaining a list of group tops.
 
 ```text
 FUNCTION minGroups(tasks):
@@ -109,7 +109,7 @@ Result = 4 groups, which matches the optimal decomposition.
 
 1. How would the solution change if groups must have equal size?
 2. Can you output the actual grouping of tasks, not just the count?
-3. What if the difficulty values can be negative or non‑integer?
+3. What if the difficulty values can be negative or non-integer?
 
 ---
 

@@ -98,4 +98,4 @@ Total training = 8 hours.
 
 ## Key Takeaway
 
-> Energy needs a one‑time bulk boost (total sum), while experience must be increased just‑in‑time before each fight. Greedy simulation yields the minimal training hours.
+> Energy needs a one-time bulk boost (total sum), while experience must be increased just-in-time before each fight. Greedy simulation yields the minimal training hours.

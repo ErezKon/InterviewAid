@@ -107,7 +107,7 @@ Both yield 2.
 ## 7. Follow-Up Questions
 
 1. How would you solve this if the numbers could appear multiple times?
-2. Can you find the missing number in a read‑only array with O(1) extra space?
+2. Can you find the missing number in a read-only array with O(1) extra space?
 3. How would you extend the solution to find two missing numbers?
 
 ---

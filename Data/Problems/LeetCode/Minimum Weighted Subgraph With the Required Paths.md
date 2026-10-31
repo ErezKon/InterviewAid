@@ -44,7 +44,7 @@ A **subgraph** is a graph whose vertices and edges are subsets of the original g
 
 ## 2. Key Insight
 
-> The optimal subgraph merges the two source‑to‑destination paths at some meeting node `m`. From `src1` to `m`, from `src2` to `m`, and from `m` to `dest` are independent shortest‑path problems. Running Dijkstra from each source (forward graph) and from `dest` (reverse graph) gives the needed distances.
+> The optimal subgraph merges the two source-to-destination paths at some meeting node `m`. From `src1` to `m`, from `src2` to `m`, and from `m` to `dest` are independent shortest-path problems. Running Dijkstra from each source (forward graph) and from `dest` (reverse graph) gives the needed distances.
 
 ---
 
@@ -68,7 +68,7 @@ FUNCTION minimumWeight(n, edges, src1, src2, dest):
 FUNCTION dijkstra(g, start):
     dist ← array of size n filled with INFINITY
     dist[start] ← 0
-    pq ← min‑heap containing (0, start)
+    pq ← min-heap containing (0, start)
     WHILE pq NOT EMPTY:
         (d, u) ← EXTRACT_MIN(pq)
         IF d > dist[u]: CONTINUE
@@ -104,7 +104,7 @@ It can be seen that there does not exist any path from node 1 to node 2, hence t
 
 ## 5. Walkthrough
 
-We illustrate **Example 1**.
+We illustrate **Example 1**.
 
 | Node `m` | dist1[m] | dist2[m] | distDest[m] | Sum |
 |----------|----------|----------|-------------|-----|
@@ -131,7 +131,7 @@ The minimum sum is 3 at meeting nodes 2 and 3, giving the answer 3.
 
 1. How would the solution change if edge weights could be negative but no negative cycles existed?
 2. Can the algorithm be adapted to return the actual subgraph (list of edges) achieving the minimum weight?
-3. What if we needed *k* source nodes instead of two – how would the meeting‑point idea extend?
+3. What if we needed *k* source nodes instead of two – how would the meeting-point idea extend?
 
 ---
 

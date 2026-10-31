@@ -103,8 +103,8 @@ The algorithm counts the steps taken to bring both nodes to their lowest common 
 
 ## Follow-Up Questions
 
-1. How would you preprocess the tree to answer queries in O(log n) time?
-2. Extend the solution to a general (non‑perfect) binary tree.
+1. How would you preprocess the tree to answer queries in O(log n) time?
+2. Extend the solution to a general (non-perfect) binary tree.
 3. What changes are needed if multiple edges are added simultaneously?
 
 ---

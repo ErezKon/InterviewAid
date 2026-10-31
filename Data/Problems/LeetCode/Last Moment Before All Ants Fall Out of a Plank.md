@@ -60,9 +60,9 @@ Example 3:
 
 ## 3. Approach — Greedy / Math ✅
 
-The collision‑and‑reverse behavior is equivalent to ants passing through each other without interaction. Therefore each ant independently travels to the nearest end:
-- A left‑moving ant exits after `position` seconds.
-- A right‑moving ant exits after `n - position` seconds.
+The collision-and-reverse behavior is equivalent to ants passing through each other without interaction. Therefore each ant independently travels to the nearest end:
+- A left-moving ant exits after `position` seconds.
+- A right-moving ant exits after `n - position` seconds.
 The answer is the maximum of all these times.
 
 ```text
@@ -80,7 +80,7 @@ FUNCTION getLastMoment(n, left, right):
 |-----|-----------|-------|--------------|
 | A1  | left      | 4     | 4            |
 | A2  | left      | 3     | 3            |
-| A3  | right     | 2     | 5 (n‑2)      |
+| A3  | right     | 2     | 5 (n-2)      |
 
 The maximum time is **5**, which is the last moment any ant remains on the plank.
 

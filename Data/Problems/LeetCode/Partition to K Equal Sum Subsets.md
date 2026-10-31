@@ -76,10 +76,10 @@ For `nums = [4,3,2,3,5,2,1]`, `k = 4`:
 - **Time:** O(k·2ⁿ) in the worst case due to exponential backtracking, but pruning (sorting, symmetry skip) reduces practical runtime.
 - **Space:** O(k) for bucket sums plus recursion stack O(n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem using DP with bitmasking?
 2. Can the algorithm be adapted to return the actual subsets?
 3. What changes are needed if `k` is very large relative to `n`?
 
 ## Key Takeaway
-Backtracking with descending order and symmetry pruning efficiently explores ways to fill `k` equal‑sum buckets.
+Backtracking with descending order and symmetry pruning efficiently explores ways to fill `k` equal-sum buckets.

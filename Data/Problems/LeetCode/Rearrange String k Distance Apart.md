@@ -39,7 +39,7 @@ Example 3:
 ```
 
 ## Approach
-Use a max‑heap to always pick the character with the highest remaining count. After placing a character, put it into a waiting queue for `k` steps before it can be used again. When the waiting period expires, push it back into the heap if it still has remaining occurrences.
+Use a max-heap to always pick the character with the highest remaining count. After placing a character, put it into a waiting queue for `k` steps before it can be used again. When the waiting period expires, push it back into the heap if it still has remaining occurrences.
 
 ```text
 FUNCTION rearrangeString(s, k):
@@ -71,10 +71,10 @@ FUNCTION rearrangeString(s, k):
 ## Walkthrough
 `s = "aabbcc", k = 3`
 1. Build heap: [(2,'a'),(2,'b'),(2,'c')].
-2. Step 0: pop `'a'`, result=`a`, enqueue `(3,1,'a')`.
-3. Step 1: pop `'b'`, result=`ab`, enqueue `(4,1,'b')`.
-4. Step 2: pop `'c'`, result=`abc`, enqueue `(5,1,'c')`.
-5. Steps 3‑5: waiting entries become available and are pushed back, producing `abcabc`.
+2. Step 0: pop `'a'`, result=`a`, enqueue `(3,1,'a')`.
+3. Step 1: pop `'b'`, result=`ab`, enqueue `(4,1,'b')`.
+4. Step 2: pop `'c'`, result=`abc`, enqueue `(5,1,'c')`.
+5. Steps 3-5: waiting entries become available and are pushed back, producing `abcabc`.
 
 ## Complexity Analysis
 - **Time:** O(n log σ) where n is length of `s` and σ is number of distinct characters (heap operations). 
@@ -82,8 +82,8 @@ FUNCTION rearrangeString(s, k):
 
 ## Follow-Up Questions
 1. How would the solution change if `k` could be larger than the string length?
-2. Can you solve the problem using a bucket‑based approach without a heap?
+2. Can you solve the problem using a bucket-based approach without a heap?
 3. How to adapt the algorithm for Unicode characters with large alphabets?
 
 ## Key Takeaway
-A max‑heap combined with a waiting queue enforces the `k`‑distance constraint while always selecting the most frequent available character.
+A max-heap combined with a waiting queue enforces the `k`-distance constraint while always selecting the most frequent available character.

@@ -110,7 +110,7 @@ CLASS Calculator:
 
 ## 5. Complexity Analysis
 
-- **Time:** O(1) per chained operation – each method performs a constant‑time arithmetic update.
+- **Time:** O(1) per chained operation – each method performs a constant-time arithmetic update.
 - **Space:** O(1) – only the `result` field is stored.
 
 ---

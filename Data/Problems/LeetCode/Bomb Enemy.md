@@ -73,13 +73,13 @@ FUNCTION maxKilledEnemies(grid):
 | Final | (1,1) | Empty → total = 2 (row) + 1 (col) | 2 | 1 | 3 |
 
 ## Complexity Analysis
-- **Time:** O(m × n), each cell is visited a constant number of times.
+- **Time:** O(m × n), each cell is visited a constant number of times.
 - **Space:** O(n) for the column cache.
 
 ## Follow-Up Questions
 1. How would you modify the solution to return the coordinates of the optimal bomb placement?
-2. Can the algorithm be adapted for a 3‑D grid?
+2. Can the algorithm be adapted for a 3-D grid?
 3. What if the bomb could also travel diagonally until blocked?
 
 ## Key Takeaway
-Caching enemy counts for each row and column segment allows a single pass O(m × n) solution without recomputing counts for every empty cell.
+Caching enemy counts for each row and column segment allows a single pass O(m × n) solution without recomputing counts for every empty cell.

@@ -88,4 +88,4 @@ Thus the smallest missing integer is `2`.
 3. What is the impact if negative numbers are allowed in `nums`?
 
 ## Key Takeaway
-By counting remainders and greedily consuming them in order, we can efficiently determine the smallest non‑negative integer that cannot be represented after the modulo operation.
+By counting remainders and greedily consuming them in order, we can efficiently determine the smallest non-negative integer that cannot be represented after the modulo operation.

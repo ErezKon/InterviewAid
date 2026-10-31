@@ -7,7 +7,7 @@
 ---
 
 ## Problem Description
-Given an integer array `nums` and an integer `target`, find two non‑overlapping sub‑arrays such that each sub‑array sums to `target`. Return the minimum sum of lengths of the two sub‑arrays. If no such pair exists, return `-1`.
+Given an integer array `nums` and an integer `target`, find two non-overlapping sub-arrays such that each sub-array sums to `target`. Return the minimum sum of lengths of the two sub-arrays. If no such pair exists, return `-1`.
 
 **Official statement:** You are given an array of integers `arr` and an integer `target`. You have to find **two non-overlapping sub-arrays** of `arr` each with a sum equal `target`. There can be multiple answers so you have to find an answer where the sum of the lengths of the two sub-arrays is **minimum**. Return *the minimum sum of the lengths* of the two required sub-arrays, or return `-1` if you cannot find such two sub-arrays.
 
@@ -37,13 +37,13 @@ Example 3:
   Output: -1
   Explanation: We have only one sub-array of sum = 6.
 ```
-*Explanation*: In the first example, sub‑arrays `[3]` (index 0) and `[3]` (index 4) have lengths 1 + 1 = 2.
+*Explanation*: In the first example, sub-arrays `[3]` (index 0) and `[3]` (index 4) have lengths 1 + 1 = 2.
 
 ## Approach
-**Algorithm**: Prefix‑sum + DP.
-1. Compute prefix sums to enable O(1) sub‑array sum queries.
-2. Scan from left to right, maintaining `bestLeft[i]` – the minimum length of a sub‑array ending at or before `i` that sums to `target`.
-3. Scan from right to left, maintaining `bestRight[i]` – the minimum length of a sub‑array starting at or after `i` that sums to `target`.
+**Algorithm**: Prefix-sum + DP.
+1. Compute prefix sums to enable O(1) sub-array sum queries.
+2. Scan from left to right, maintaining `bestLeft[i]` – the minimum length of a sub-array ending at or before `i` that sums to `target`.
+3. Scan from right to left, maintaining `bestRight[i]` – the minimum length of a sub-array starting at or after `i` that sums to `target`.
 4. For each split point `i`, combine `bestLeft[i]` and `bestRight[i+1]` to update the answer.
 
 ```text
@@ -88,18 +88,18 @@ FUNCTION MinSumLengths(nums, target):
 
 ## Walkthrough
 For `nums = [3,2,2,4,3]`, `target = 3`:
-- Left pass finds sub‑array `[3]` ending at index 0 (len 1) and `[3]` ending at index 4 (len 1).
-- Right pass finds sub‑array `[3]` starting at index 4 (len 1).
-- Combining at split after index 0 gives `1 + 1 = 2`, the minimal total length.
+- Left pass finds sub-array `[3]` ending at index 0 (len 1) and `[3]` ending at index 4 (len 1).
+- Right pass finds sub-array `[3]` starting at index 4 (len 1).
+- Combining at split after index 0 gives `1 + 1 = 2`, the minimal total length.
 
 ## Complexity Analysis
 - **Time**: O(N) for the two linear passes.
 - **Space**: O(N) for prefix sums and DP arrays.
 
 ## Follow-Up Questions
-1. How would you modify the solution to return the actual sub‑array indices?
-2. Can the algorithm be extended to `k` non‑overlapping sub‑arrays?
+1. How would you modify the solution to return the actual sub-array indices?
+2. Can the algorithm be extended to `k` non-overlapping sub-arrays?
 3. What if the array contains negative numbers?
 
 ## Key Takeaway
-Using prefix sums with DP lets you efficiently track the shortest qualifying sub‑array on each side of a split, enabling a linear‑time solution for the minimum total length.
+Using prefix sums with DP lets you efficiently track the shortest qualifying sub-array on each side of a split, enabling a linear-time solution for the minimum total length.

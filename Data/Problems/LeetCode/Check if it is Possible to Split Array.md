@@ -102,7 +102,7 @@ Consider `nums = [1,2,3,4]`, `m = 5`.
 
 ## 7. Follow-Up Questions
 
-- How would the solution change if the subarray length requirement were ≥ k instead of 2?
+- How would the solution change if the subarray length requirement were ≥ k instead of 2?
 - Can we extend the approach to handle circular arrays where the end connects to the start?
 - What if we need to return the minimum number of splits required?
 

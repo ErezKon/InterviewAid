@@ -56,40 +56,40 @@ Example 3:
 ```
 
 ## Approach
-Iterate through the array while maintaining the current subarray's minimum and maximum values. If adding the next element would make `max - min > k`, start a new subarray. Use a balanced data structure (e.g., multiset) to update min and max efficiently, but a simple scan with tracking works because we only need the current window extremes.
+Because we partition into **subsequences**, element order does not matter - only which values share a group. So sort the array and greedily group:
+- Start a group at the smallest unassigned value `start`.
+- Keep adding values while `value - start <= k`.
+- The first value with `value - start > k` must open a new group (it cannot join the previous one, and extending the previous group as far as possible never hurts).
 
 ```text
-FUNCTION minPartitions(arr, k):
+FUNCTION partitionArray(nums, k):
+    SORT nums
     count ← 1
-    curMin ← arr[0]
-    curMax ← arr[0]
-    FOR i ← 1 TO LEN(arr)-1:
-        curMin ← MIN(curMin, arr[i])
-        curMax ← MAX(curMax, arr[i])
-        IF curMax - curMin > k:
+    start ← nums[0]
+    FOR i ← 1 TO LEN(nums)-1:
+        IF nums[i] - start > k:
             count ← count + 1
-            curMin ← arr[i]
-            curMax ← arr[i]
+            start ← nums[i]
     RETURN count
 ```
 
 ## Walkthrough
-For `arr = [1,5,6,2,8]`, `k = 3`:
-- Start with 1 → min=1, max=1.
-- Add 5 → min=1, max=5, diff=4 >3 → start new subarray count=2, reset min=max=5.
-- Add 6 → min=5, max=6, diff=1 ≤3.
-- Add 2 → min=2, max=6, diff=4 >3 → new subarray count=3, reset min=max=2.
-- Add 8 → min=2, max=8, diff=6 >3 → new subarray count=4, reset min=max=8.
-Result count=4 (but optimal is 3; this simple greedy may need refinement). A more optimal approach uses a sliding window with a deque to maintain min/max, resetting when constraint violated.
+Example 1: `nums = [3,6,1,2,5]`, `k = 2`. Sorted: `[1,2,3,5,6]`.
+- Start group at 1, count = 1.
+- 2: `2 - 1 = 1 <= 2`, same group.
+- 3: `3 - 1 = 2 <= 2`, same group -> `{1,2,3}`.
+- 5: `5 - 1 = 4 > 2` -> new group, count = 2, start = 5.
+- 6: `6 - 5 = 1 <= 2`, same group -> `{5,6}`.
+Result: `2`.
 
 ## Complexity Analysis
-- **Time:** O(n) scanning the array.
-- **Space:** O(1) additional space.
+- **Time:** O(n log n) for sorting; the scan is O(n).
+- **Space:** O(1) extra (or O(n) depending on the sort implementation).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual partitions?
-2. Can you achieve the same result using a segment tree for faster updates on larger windows?
+2. Since values are at most 10^5, how would counting sort make the whole solution O(n + maxValue)?
 3. What changes are needed if the array is streamed and you cannot store it entirely?
 
 ## Key Takeaway
-A linear scan that tracks the current window's extremes yields the minimal number of partitions when the constraint is monotonic.
+Subsequences ignore order, so sort first; then a greedy scan that opens a new group only when `value - groupStart > k` yields the minimal number of groups.

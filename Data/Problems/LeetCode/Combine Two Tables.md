@@ -92,7 +92,7 @@ ON p.personId = a.personId;
 ## Complexity Analysis
 Time: O(N + M) where N and M are the number of rows in `Person` and `Address` respectively (hash join or indexed lookup). Space: O(N) for the output.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the query to include only persons living in a specific state?
 - What index would you create to optimize the join performance?
 - How can you achieve the same result using a subquery instead of a join?

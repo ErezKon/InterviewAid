@@ -55,14 +55,14 @@ Use two passes with a **Binary Indexed Tree (Fenwick Tree)** to count smaller el
 ## Walkthrough
 
 Consider `nums = [3,1,4,2,5]`, `k = 1`.
-| i | nums[i] | leftSmaller[i] (BIT query) | rightSmaller[i] (BIT query) | k‑big? |
+| i | nums[i] | leftSmaller[i] (BIT query) | rightSmaller[i] (BIT query) | k-big? |
 |---|---|---|---|---|
 | 0 | 3 | 0 (no previous) | 2 (elements 1,2) | No (left < k) |
 | 1 | 1 | 0 | 0 | No |
 | 2 | 4 | 2 (3,1) | 1 (2) | **Yes** |
 | 3 | 2 | 1 (1) | 0 | No |
 | 4 | 5 | 4 (3,1,4,2) | 0 | No |
-Only index 2 meets both thresholds, giving the answer 1.
+Only index 2 meets both thresholds, giving the answer 1.
 
 ---
 
@@ -70,7 +70,7 @@ Only index 2 meets both thresholds, giving the answer 1.
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n log M) where M is the range of `nums` (BIT operations) |
+| **Time** | O(n log M) where M is the range of `nums` (BIT operations) |
 | **Space** | O(M) for the BIT arrays |
 
 ---
@@ -78,11 +78,11 @@ Only index 2 meets both thresholds, giving the answer 1.
 ## Follow-Up Questions
 
 1. How would you solve the problem if `k` could be different for each index?
-2. Can you achieve O(n) time using order‑statistics trees or offline sorting?
+2. Can you achieve O(n) time using order-statistics trees or offline sorting?
 3. How would the solution change if the array contains duplicate values?
 
 ---
 
 ## Key Takeaway
 
-> **K‑big indices require counting smaller elements on both sides. Two Fenwick Tree passes give an O(n log M) solution.**
+> **K-big indices require counting smaller elements on both sides. Two Fenwick Tree passes give an O(n log M) solution.**

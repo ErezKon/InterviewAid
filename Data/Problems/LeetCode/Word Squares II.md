@@ -55,7 +55,7 @@ Explanation: No combination of four words satisfies all four corner constraints.
 ```
 
 ## Approach
-Use backtracking with a prefix‑hash map. For each partial square, the next word must have a prefix matching the characters in the current column position.
+Use backtracking with a prefix-hash map. For each partial square, the next word must have a prefix matching the characters in the current column position.
 
 ```text
 FUNCTION buildWordSquares(words):
@@ -91,7 +91,7 @@ For the first example, start with "wall". The required prefix for the second wor
 - Time: O(m * n * 26) in practice, where `m` is number of words and `n` is word length, due to prefix lookups and backtracking.
 - Space: O(m * n) for the prefix map and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for words of varying lengths?
 2. Can you improve performance by using a Trie instead of a hash map for prefix queries?
 3. How would you generate word squares when the input list is extremely large (e.g., streaming words)?

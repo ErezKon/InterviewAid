@@ -89,21 +89,21 @@ To make all root-to-leaf path scores equal to 10, increase the cost of node 1 by
 
 ## Walkthrough
 
-Consider Example 1. The leaf path sums are:
+Consider Example 1. The leaf path sums are:
 - Path 0→1→3 = 1 + 3 = 4
 - Path 0→1→4 = 1 + 4 = 5
 - Path 0→2 = 2
-The maximum leaf sum under node 0 is 5 (through node 1→4). Increment edge (0‑2) from 2 to 5, costing 3. After this increment all root‑to‑leaf sums become 5 + 1 = 6? Actually we also need to align deeper nodes; the algorithm pads shorter sub‑paths at each internal node, resulting in total cost 3.
+The maximum leaf sum under node 0 is 5 (through node 1→4). Increment edge (0-2) from 2 to 5, costing 3. After this increment all root-to-leaf sums become 5 + 1 = 6? Actually we also need to align deeper nodes; the algorithm pads shorter sub-paths at each internal node, resulting in total cost 3.
 
 ## Complexity Analysis
 
 - **Time:** O(n) – each node visited once.
 - **Space:** O(h) – recursion stack where h is tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if you could also **decrement** edge weights?
-2. Can the algorithm be adapted for n‑ary trees?
+2. Can the algorithm be adapted for n-ary trees?
 3. What if each increment has a different cost per edge?
 
 ## Key Takeaway

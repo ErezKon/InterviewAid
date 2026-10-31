@@ -82,7 +82,7 @@ DFS visits node 1, then node 2 (detects right child 4 as lonely), then node 4, t
 ## Complexity Analysis
 
 - **Time:** O(n) – each node visited once.
-- **Space:** O(h) – recursion stack, where h is tree height (worst‑case O(n)).
+- **Space:** O(h) – recursion stack, where h is tree height (worst-case O(n)).
 
 ---
 

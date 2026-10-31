@@ -77,53 +77,38 @@ Explanation: There is no time during the event not occupied by meetings.
 
 ## Key Insight
 
-> Unlike variant I (which only swaps adjacent meetings), here we can move a meeting **anywhere** there's a gap large enough to hold it. For each meeting, check if removing it would merge adjacent gaps, and whether the meeting can fit in some other gap.
+> Unlike variant I (where meetings keep their order and can only shift), here a single meeting can be moved **anywhere** there's a gap large enough to hold it. Removing meeting i always merges `gaps[i] + gaps[i+1]`; if it also fits into some **non-adjacent** gap, its own duration is freed too, giving `gaps[i] + dur[i] + gaps[i+1]`. Prefix/suffix maxima of gaps answer "largest non-adjacent gap" in O(1).
 
 ---
 
 ## Approach
 
 ```
-// Similar to variant I but can move meetings to any free slot
-// Greedy: find gaps, try relocating meetings adjacent to largest gap
+// gaps[j] = free time before meeting j (gaps[n] = after last meeting)
+// For meeting i, the adjacent gaps are gaps[i] and gaps[i+1]
+// Non-adjacent gaps: gaps[0..i-1] and gaps[i+2..n]
 
 FUNCTION MaxFreeTime(eventTime, startTime, endTime)
     n ← LENGTH(startTime)
 
-    ——— Compute gaps between events ———
-    gaps ← []
-    APPEND (startTime[0] - 0) to gaps             // gap before first meeting
+    ——— Compute n+1 gaps ———
+    gaps ← [startTime[0]]
     FOR i ← 1 TO n-1 DO
         APPEND (startTime[i] - endTime[i-1]) to gaps
     END FOR
-    APPEND (eventTime - endTime[n-1]) to gaps      // gap after last meeting
+    APPEND (eventTime - endTime[n-1]) to gaps
 
-    ——— Sort meetings by duration (ascending) to check fit ———
-    durations ← [endTime[i] - startTime[i] FOR i IN 0..n-1]
-
-    ——— For each meeting i, removing it merges gaps[i] + duration[i] + gaps[i+1] ———
-    ——— Check if meeting i fits in any other existing gap ———
-    maxGap ← MAX(gaps)            // largest existing gap
-    sortedGaps ← SORTED(gaps, descending)
+    ——— Prefix / suffix maxima of gaps ———
+    prefMax[j] ← MAX(gaps[0..j]),   suffMax[j] ← MAX(gaps[j..n]),   (empty range → 0)
 
     best ← 0
     FOR i ← 0 TO n-1 DO
-        merged ← gaps[i] + durations[i] + gaps[i+1]
-
-        // Find the largest gap NOT adjacent to meeting i
-        // If meeting i fits there, total free = merged
-        // If it only fits in adjacent gaps, we need second/third largest
-        canRelocate ← false
-        IF maxGap >= durations[i] THEN
-            // Check if the max gap is not one of gaps[i] or gaps[i+1]
-            // If it is, try the next largest
-            canRelocate ← CheckFit(sortedGaps, gaps[i], gaps[i+1], durations[i])
-        END IF
-
-        IF canRelocate THEN
-            best ← MAX(best, merged)
+        dur ← endTime[i] - startTime[i]
+        other ← MAX(prefMax[i-1], suffMax[i+2])     // largest non-adjacent gap
+        IF other >= dur THEN
+            best ← MAX(best, gaps[i] + dur + gaps[i+1])   // move meeting i away entirely
         ELSE
-            best ← MAX(best, merged - durations[i])
+            best ← MAX(best, gaps[i] + gaps[i+1])         // just slide it to one side
         END IF
     END FOR
 
@@ -135,18 +120,21 @@ END FUNCTION
 
 ## Walkthrough
 
-`eventTime = 10, startTime = [1,3,6], endTime = [2,5,8]`
+Example 3: `eventTime = 10, startTime = [0,3,7,9], endTime = [1,4,8,10]`
 
-Gaps: [1, 1, 1, 2] (before meeting 0, between 0-1, between 1-2, after meeting 2)
-Durations: [1, 2, 2]
+Gaps: [0, 2, 3, 1, 0] (before meeting 0, between 0-1, 1-2, 2-3, after meeting 3)
+Durations: [1, 1, 1, 1]
 
-| Remove meeting i | Merged gap                | Duration | Fits elsewhere? | Free time |
-|-----------------|---------------------------|----------|-----------------|-----------|
-| i=0 (dur=1)     | 1+1+1 = 3                | 1        | gap[3]=2 ≥ 1 ✅ | 3         |
-| i=1 (dur=2)     | 1+2+1 = 4                | 2        | gap[3]=2 ≥ 2 ✅ | 4         |
-| i=2 (dur=2)     | 1+2+2 = 5                | 2        | gap[0]=1? No, gap[3]=2 but it's adjacent. Check other gaps ≥ 2? No → **6** if we check carefully |
+| Meeting i | gaps[i] + dur + gaps[i+1] | Largest non-adjacent gap | Fits? | Free time |
+|-----------|---------------------------|--------------------------|-------|-----------|
+| i=0 | 0+1+2 = 3 | max(gaps[2..4]) = 3 | yes | 3 |
+| i=1 | 2+1+3 = 6 | max(gaps[0], gaps[3..4]) = 1 | yes | 6 |
+| i=2 | 3+1+1 = 5 | max(gaps[0..1], gaps[4]) = 2 | yes | 5 |
+| i=3 | 1+1+0 = 2 | max(gaps[0..2]) = 3 | yes | 2 |
 
-Best = **6** ✅
+Best = **6** (move [3,4] into the gap [8,9], freeing [1,7]), matching the expected output.
+
+Example 2 (`[0,7,9]`, `[1,8,10]`): gaps [0, 6, 1, 0]. For i=0, merged = 0+1+6 = 7 and gap 1 (between meetings 1 and 2) can hold it → **7**.
 
 ---
 
@@ -154,24 +142,24 @@ Best = **6** ✅
 
 | Aspect | Complexity |
 |--------|-----------|
-| Time   | O(n log n) — sorting gaps + iterating meetings |
-| Space  | O(n) — for gaps and durations arrays |
+| Time   | O(n) - gaps, prefix/suffix maxima, one pass over meetings |
+| Space  | O(n) - gaps and prefix/suffix arrays |
 
 ---
 
 ## Follow-Up Questions
 
 1. **How does this differ from variant I?**
-   → Variant I only allows swapping consecutive meetings (sliding window), while variant II allows relocating a meeting to any gap.
+   → Variant I keeps the relative order (sliding window over k+1 gaps), while variant II allows relocating one meeting into any gap.
 
 2. **What if we can move k meetings?**
    → Becomes significantly harder; need to consider combinations of meetings to remove and fit elsewhere.
 
 3. **What if meetings can be shortened?**
-   → Different problem — becomes an optimization over meeting durations.
+   → Different problem - becomes an optimization over meeting durations.
 
 ---
 
 ## Key Takeaway
 
-> When relocating an element to maximize a merged gap, compute the merged gap from removal, then verify the element can fit in some non-adjacent gap — track the top-k gaps to handle edge cases where the largest gap is adjacent to the removal point.
+> When relocating one element to maximize a merged gap, compute the merged gap from removal, then check whether the element fits in some non-adjacent gap - prefix and suffix maxima make that check O(1) per element.

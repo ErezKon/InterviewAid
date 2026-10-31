@@ -70,8 +70,8 @@ Example 2:
 ## Walkthrough
 
 Example 1: `nums=[5,3,2]`, `k=2`, `multiplier=2`
-1. **Step 0:** Minimum is `2` at index 2 → multiply → `nums=[5,3,4]`.
-2. **Step 1:** Minimum is `3` at index 1 → multiply → `nums=[5,6,4]`.
+1. **Step 0:** Minimum is `2` at index 2 → multiply → `nums=[5,3,4]`.
+2. **Step 1:** Minimum is `3` at index 1 → multiply → `nums=[5,6,4]`.
 3. Return `[5,6,4]`.
 
 ## Complexity Analysis
@@ -86,4 +86,4 @@ Example 1: `nums=[5,3,2]`, `k=2`, `multiplier=2`
 
 ## Key Takeaway
 
-> **Greedy simulation: always multiply the smallest element. For large k, use a min‑heap to find the minimum in O(log n) per operation.**
+> **Greedy simulation: always multiply the smallest element. For large k, use a min-heap to find the minimum in O(log n) per operation.**

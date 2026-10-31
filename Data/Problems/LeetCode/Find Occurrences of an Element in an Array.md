@@ -40,11 +40,11 @@ Example 2:
 ```
 
 ## Approach
-Pre‑process the array to store all indices where `nums[i] == x` in a list `positions`. Then answer each query in O(1) by checking if `q` ≤ length of `positions`.
+Pre-process the array to store all indices where `nums[i] == x` in a list `positions`. Then answer each query in O(1) by checking if `q` ≤ length of `positions`.
 
 ```text
 FUNCTION findOccurrences(nums, queries, x):
-    // Build list of 1‑based positions of x
+    // Build list of 1-based positions of x
     SET positions ← []
     FOR i ← 0 TO LENGTH(nums) - 1:
         IF nums[i] == x:
@@ -70,12 +70,12 @@ Result `[2,4,6,-1]`.
 
 ## Complexity Analysis
 - **Time:** O(n + q) where `n` is length of `nums` and `q` number of queries.
-- **Space:** O(k) for `k` occurrences of `x` (worst‑case O(n)).
+- **Space:** O(k) for `k` occurrences of `x` (worst-case O(n)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle multiple different target values `x` in the same batch of queries?
 2. Can you answer online queries where `nums` is updated dynamically?
-3. What if queries ask for the value at the `q`‑th occurrence instead of its position?
+3. What if queries ask for the value at the `q`-th occurrence instead of its position?
 
 ## Key Takeaway
-Pre‑computing the positions of the target value enables constant‑time query answers, turning a potentially O(n·q) problem into linear preprocessing plus O(1) per query.
+Pre-computing the positions of the target value enables constant-time query answers, turning a potentially O(n·q) problem into linear preprocessing plus O(1) per query.

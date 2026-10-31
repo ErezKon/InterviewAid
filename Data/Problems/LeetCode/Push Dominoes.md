@@ -45,7 +45,7 @@ Output: "LL.RR.LLRRLL.."
 ```
 
 ## Approach
-Treat the string as a line of forces. Pad with a virtual `'L'` at the start and `'R'` at the end to simplify edge handling. Scan the string, and for each segment between two non‑dot characters, fill based on their relative directions:
+Treat the string as a line of forces. Pad with a virtual `'L'` at the start and `'R'` at the end to simplify edge handling. Scan the string, and for each segment between two non-dot characters, fill based on their relative directions:
 - Same direction (`L...L` or `R...R`): fill the whole segment with that direction.
 - Opposite (`R...L`): fill from both ends moving inward until they meet.
 - `L...R`: leave the segment unchanged.

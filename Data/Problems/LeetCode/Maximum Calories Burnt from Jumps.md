@@ -96,7 +96,7 @@ FUNCTION maxCalories(positions, calories):
 
 ## Walkthrough
 
-Consider **Example 1**:
+Consider **Example 1**:
 
 | i | positions[i] | calories[i] | dp[i] (max calories to reach i) |
 |---|--------------|-------------|-----------------------------------|

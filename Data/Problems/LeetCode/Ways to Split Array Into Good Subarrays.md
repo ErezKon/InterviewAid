@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "perfect-square sums" problem. Correct idea: if there is no `1`, the answer is `0`; otherwise each cut must fall somewhere between two consecutive `1`s at indices `i < j`, giving `j − i` choices — the answer is the product of these gaps mod 10⁹+7. O(n).*
-
 You are given a binary array `nums`.
 
 A subarray of an array is **good** if it contains **exactly** **one** element with the value `1`.
@@ -43,50 +41,44 @@ Explanation: There is 1 way to split nums into good subarrays:
 ```
 
 ## Approach
-Use dynamic programming where `dp[i]` stores the number of ways to split the prefix `nums[0..i]` into good subarrays. For each end index `i`, iterate over possible start indices `j` and check if `sum(nums[j..i])` is a perfect square; if so, add `dp[j-1]` (or 1 if `j==0`).
+Every good subarray contains exactly one `1`, so the number of pieces equals the number of `1`s. If there are no `1`s, no split exists (answer `0`). Otherwise, leading zeros must join the first piece and trailing zeros the last piece; the only freedom is where to cut between each pair of consecutive `1`s. If consecutive `1`s are at indices `p < q`, the cut can be placed right after any index in `p .. q−1`, giving `q − p` choices, independently for every gap. The answer is the product of these gaps modulo `10^9 + 7`.
 
 ```text
-FUNCTION waysToSplitGood(nums):
+FUNCTION numberOfGoodSubarraySplits(nums):
     SET MOD ← 1_000_000_007
-    SET n ← LENGTH(nums)
-    SET prefix ← ARRAY of size n+1 with prefix[0]=0
-    FOR i ← 1 TO n:
-        SET prefix[i] ← prefix[i-1] + nums[i-1]
-    SET dp ← ARRAY of size n with 0
+    SET ans ← 1
+    SET prev ← -1                    // index of the previous 1
     FOR i ← 0 TO n-1:
-        FOR j ← 0 TO i:
-            SET subSum ← prefix[i+1] - prefix[j]
-            IF isPerfectSquare(subSum):
-                IF j = 0:
-                    SET dp[i] ← (dp[i] + 1) MOD MOD
-                ELSE:
-                    SET dp[i] ← (dp[i] + dp[j-1]) MOD MOD
-    RETURN dp[n-1]
-
-FUNCTION isPerfectSquare(x):
-    SET r ← FLOOR(SQRT(x))
-    RETURN r * r = x
+        IF nums[i] = 1:
+            IF prev ≥ 0:
+                SET ans ← ans * (i - prev) MOD MOD
+            SET prev ← i
+    IF prev = -1:
+        RETURN 0                     // no 1 at all
+    RETURN ans
 ```
 
 ## Walkthrough
-| i | j | subSum | perfect? | dp[i] update |
-|---|---|--------|----------|--------------|
-| 0 | 0 | 1 | yes | dp[0]=1 |
-| 1 | 0 | 4 | yes | dp[1]=1 |
-| 1 | 1 | 3 | no | - |
-| 2 | 0 | 9 | yes | dp[2]=1 |
-| 2 | 1 | 8 | no | - |
-| 2 | 2 | 5 | no | - |
-Result = 1 (or 2 depending on other splits).
+Example 1: `nums = [0,1,0,0,1]`.
+
+| i | nums[i] | prev before | Gap (i − prev) | ans after |
+|---|---------|-------------|----------------|-----------|
+| 0 | 0 | -1 | — | 1 |
+| 1 | 1 | -1 | first 1, no gap | 1 |
+| 2 | 0 | 1 | — | 1 |
+| 3 | 0 | 1 | — | 1 |
+| 4 | 1 | 1 | 4 − 1 = 3 | 3 |
+
+A `1` was found, so the result is `3` (cuts after index 1, 2 or 3). Output: `3`.
 
 ## Complexity Analysis
-- Time: O(n^2) for checking all subarrays.
-- Space: O(n) for prefix sums and dp array.
+- Time: O(n) – a single pass.
+- Space: O(1) extra space.
 
-## Follow‑Up Questions
-- Can the solution be optimized using prefix‑sum hashing or sliding windows?
-- How would you handle very large arrays where O(n^2) is too costly?
-- What if the definition of “good” changed to sums being prime numbers?
+## Follow-Up Questions
+- What if a good subarray had to contain exactly `k` ones? (Cuts must fall between the `(mk)`-th and `(mk+1)`-th ones; multiply those gaps, and the answer is 0 unless the total count is a positive multiple of `k`.)
+- What if a good subarray needed **at least** one `1`? (Then a DP over prefix positions with prefix sums of ways is needed.)
+- How would you list all the splits instead of counting them?
 
 ## Key Takeaway
-Dynamic programming over prefix sums lets you count valid split configurations by verifying each possible subarray sum.
+Fix the structure first: each piece owns one `1`, so the only choices are the cut positions between consecutive `1`s, and independent choices multiply — a product of gaps.

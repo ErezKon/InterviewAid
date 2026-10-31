@@ -116,4 +116,4 @@ Bob ends with positive diff → winning sequence.
 
 ## Key Takeaway
 
-> **Game sequence DP with score tracking: state = (round, score_diff, last_move). The no‑consecutive constraint limits transitions to 2 options per round. Offset negative scores for array indexing.**
+> **Game sequence DP with score tracking: state = (round, score_diff, last_move). The no-consecutive constraint limits transitions to 2 options per round. Offset negative scores for array indexing.**

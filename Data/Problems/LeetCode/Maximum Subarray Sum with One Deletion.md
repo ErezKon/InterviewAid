@@ -40,7 +40,7 @@ Explanation: The final subarray needs to be non-empty. You can't choose [-1] and
 ```
 
 ## Approach
-Apply a two‑state Kadane DP: `noDel[i]` – max subarray sum ending at `i` with no deletion, `oneDel[i]` – max sum ending at `i` with one deletion already used. Transition:
+Apply a two-state Kadane DP: `noDel[i]` – max subarray sum ending at `i` with no deletion, `oneDel[i]` – max sum ending at `i` with one deletion already used. Transition:
 - `noDel[i] = max(arr[i], noDel[i-1] + arr[i])`
 - `oneDel[i] = max(noDel[i-1], oneDel[i-1] + arr[i])`
 Track the global maximum over both states.

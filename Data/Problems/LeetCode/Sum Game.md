@@ -94,7 +94,7 @@ Consider `num = "25??"` (n=4):
 Time: `O(n)` – single pass over the string. Space: `O(1)`.
 
 ## Follow-Up Questions
-1. How would the solution change if players could replace `'?'` with any integer (not limited to 0‑9)?
+1. How would the solution change if players could replace `'?'` with any integer (not limited to 0-9)?
 2. Can you extend the game to strings of odd length?
 3. What if the goal is to maximize the difference instead of balancing sums?
 

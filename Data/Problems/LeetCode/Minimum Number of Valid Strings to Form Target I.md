@@ -50,7 +50,7 @@ Output: -1
 ```
 
 ## Approach
-Treat the problem as a shortest‑path (DP) over the prefix of `target`. For each position `i`, try every word that matches the substring starting at `i`; if it matches, update `dp[i+len(word)]` with `dp[i] + 1`. The answer is `dp[n]` where `n` is `target` length.
+Treat the problem as a shortest-path (DP) over the prefix of `target`. For each position `i`, try every word that matches the substring starting at `i`; if it matches, update `dp[i+len(word)]` with `dp[i] + 1`. The answer is `dp[n]` where `n` is `target` length.
 
 ### Pseudocode
 ```text

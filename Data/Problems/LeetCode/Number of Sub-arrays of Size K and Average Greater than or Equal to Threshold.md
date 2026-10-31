@@ -93,7 +93,7 @@ Result: 3 qualifying subarrays.
 
 ## 6. Follow-Up Questions
 
-1. How would you modify the solution for variable‑size subarrays where the length is not fixed?
+1. How would you modify the solution for variable-size subarrays where the length is not fixed?
 2. Can you extend the approach to handle a stream of numbers where the array is not fully known in advance?
 
 ---

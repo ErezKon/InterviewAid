@@ -57,7 +57,7 @@ Output:
 ```
 
 ## Approach
-The optimal strategy is to sort each column independently and then pair the i‑th smallest element of column 1 with the i‑th smallest element of column 2. This minimizes the sum of absolute differences by the rearrangement inequality.
+The optimal strategy is to sort each column independently and then pair the i-th smallest element of column 1 with the i-th smallest element of column 2. This minimizes the sum of absolute differences by the rearrangement inequality.
 
 ## Walkthrough
 | Step | Sorted col1 | Sorted col2 | Pairwise diff |
@@ -72,7 +72,7 @@ The optimal strategy is to sort each column independently and then pair the i‑
 ## Follow-Up Questions
 1. How would the solution change if the matrix had more than two columns?
 2. Can you extend the approach to minimize the maximum absolute difference instead of the sum?
-3. What if each column could be sorted only in non‑decreasing order but rows cannot be reordered?
+3. What if each column could be sorted only in non-decreasing order but rows cannot be reordered?
 
 ## Key Takeaway
 Sorting each column independently and pairing elements by their order yields the minimal sum of absolute differences due to the rearrangement inequality.

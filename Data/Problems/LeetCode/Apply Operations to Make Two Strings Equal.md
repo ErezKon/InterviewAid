@@ -78,10 +78,10 @@ Result = 2.
 *Time*: O(n) to collect mismatches plus O(m) DP, overall O(n).
 *Space*: O(m) for the `diffs` list and DP array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if swapping any two mismatched characters incurs a fixed cost instead of distance?
 2. Can you extend the DP to handle a third operation type, such as rotating a substring?
 3. What is the optimal strategy when `x` is very large compared to any possible distance?
 
 ## Key Takeaway
-Transform the problem into a DP over mismatch positions, choosing between pairing adjacent mismatches (distance cost) or flipping individually (fixed half‑cost).
+Transform the problem into a DP over mismatch positions, choosing between pairing adjacent mismatches (distance cost) or flipping individually (fixed half-cost).

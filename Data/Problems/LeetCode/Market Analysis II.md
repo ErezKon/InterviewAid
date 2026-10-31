@@ -138,14 +138,14 @@ Example 1:
 
 ## 5. Complexity Analysis
 
-- **Time:** The query runs in O(|Orders| log |Orders|) due to the window function, plus linear joins on `Users` and `Items`.
-- **Space:** O(|Orders|) for the intermediate window result and O(|Users| + |Items|) for join buffers.
+- **Time:** The query runs in O(|Orders| log |Orders|) due to the window function, plus linear joins on `Users` and `Items`.
+- **Space:** O(|Orders|) for the intermediate window result and O(|Users| + |Items|) for join buffers.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would you modify the query to find the brand of the *k*‑th sold item?
+- How would you modify the query to find the brand of the *k*-th sold item?
 - Can you write a version that returns the full list of items sold by each user with their rank?
 - How would you handle ties when multiple items share the same `order_date`?
 
@@ -153,4 +153,4 @@ Example 1:
 
 ## Key Takeaway
 
-> Use `ROW_NUMBER` to isolate the N‑th record per group, then join to compare attributes.
+> Use `ROW_NUMBER` to isolate the N-th record per group, then join to compare attributes.

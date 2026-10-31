@@ -72,7 +72,7 @@ Consider the tree `[5,4,8,11,null,13,4,7,2,null,null,5,1]` with `targetSum = 22`
 5. Right child `2` → remaining `0`, leaf reached → add `[5,4,11,2]` to result.
 6. Backtrack to `5`, explore right subtree `8` … similarly find `[5,8,4,5]`.
 
-The algorithm explores all root‑to‑leaf paths, records those matching the sum, and backtracks to explore alternatives.
+The algorithm explores all root-to-leaf paths, records those matching the sum, and backtracks to explore alternatives.
 
 ## 5. Complexity Analysis
 
@@ -83,7 +83,7 @@ The algorithm explores all root‑to‑leaf paths, records those matching the su
 ## 6. Follow-Up Questions
 
 * How would you modify the solution to return paths in any order without copying the path list each time?
-* Can you solve the problem using an iterative stack‑based DFS?
+* Can you solve the problem using an iterative stack-based DFS?
 * What changes are needed if the tree can contain negative values?
 
 ## Key Takeaway

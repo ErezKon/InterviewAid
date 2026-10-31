@@ -89,10 +89,10 @@ Result is true.
 - **Time:** Each element processed O(1) → `O(n)`.
 - **Space:** Hash maps store at most distinct numbers → `O(n)` in worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if subsequences could be of length 2?
 2. Can the solution be adapted for unsorted input?
 3. What if we need to output the actual subsequences, not just a boolean?
 
 ## Key Takeaway
-Greedy use of frequency and pending‑extension maps ensures we always extend existing sequences when possible, otherwise we must create a new length‑three sequence, leading to an optimal linear‑time solution.
+Greedy use of frequency and pending-extension maps ensures we always extend existing sequences when possible, otherwise we must create a new length-three sequence, leading to an optimal linear-time solution.

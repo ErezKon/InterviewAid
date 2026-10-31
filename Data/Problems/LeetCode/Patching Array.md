@@ -81,7 +81,7 @@ Now `reach = 6 ≥ n`, stop. Total patches = 1.
 - **Time:** O(m) where m is the length of `nums` plus the number of patches (each iteration advances either `i` or adds a patch).
 - **Space:** O(1) – only a few variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for unsorted input?
 2. Can you output the actual list of patched numbers?
 3. What changes are needed if numbers can be negative?

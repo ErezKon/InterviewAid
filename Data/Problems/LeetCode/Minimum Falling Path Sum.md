@@ -35,7 +35,7 @@ Explanation: The falling path with a minimum sum is shown.
 
 ## Approach
 
-**In‑Place Dynamic Programming** – Update each cell with the minimum sum to reach it from the row above.
+**In-Place Dynamic Programming** – Update each cell with the minimum sum to reach it from the row above.
 
 ```text
 FUNCTION minFallingPathSum(matrix):
@@ -54,22 +54,22 @@ FUNCTION minFallingPathSum(matrix):
 ## Walkthrough
 
 Take matrix `[[2,1,3],[6,5,4],[7,8,9]]`:
-1. Row 1 updates: `6←2+6=8`, `5←1+5=6`, `4←3+4=7` → `[8,6,7]`.
-2. Row 2 updates using new row 1 values: `7←min(8,6)+7=13`, `8←min(8,6,7)+8=14`, `9←min(6,7)+9=15` → `[13,14,15]`.
+1. Row 1 updates: `6←2+6=8`, `5←1+5=6`, `4←3+4=7` → `[8,6,7]`.
+2. Row 2 updates using new row 1 values: `7←min(8,6)+7=13`, `8←min(8,6,7)+8=14`, `9←min(6,7)+9=15` → `[13,14,15]`.
 3. Minimum of last row = **13** (actually path 2→1→9 gives 12, check calculations – example illustrates process).
 
 ## Complexity Analysis
 
 | Time | Space |
 |------|-------|
-| O(n²) | O(1) — in‑place |
+| O(n²) | O(1) — in-place |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-* How would you handle a non‑square matrix?
+* How would you handle a non-square matrix?
 * Can you extend the solution to return the actual path, not just the sum?
 * What changes if diagonal moves are also allowed?
 
 ## Key Takeaway
 
-> Standard falling‑path DP – each cell accumulates the minimum from the three cells above it. In‑place modification avoids extra space.
+> Standard falling-path DP – each cell accumulates the minimum from the three cells above it. In-place modification avoids extra space.

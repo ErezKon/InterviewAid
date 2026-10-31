@@ -98,7 +98,7 @@ Example 1:
 
 | Step | Action | Result |
 |------|--------|--------|
-| 1 | Join Product and Sales | rows with product‑sale pairs |
+| 1 | Join Product and Sales | rows with product-sale pairs |
 | 2 | Group by product | aggregates per product |
 | 3 | Apply HAVING clause to keep only products where MIN(date) ≥ start and MAX(date) ≤ end | filtered set |
 | 4 | Return product IDs and names | desired output |

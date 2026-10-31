@@ -51,7 +51,7 @@ Example 3:
 
 ## Approach
 **Algorithm:** Greedy – sort descending and skip every third candy
-After sorting in non‑increasing order, the cheapest candy in each consecutive group of three becomes free. Summing the prices of all candies whose index `i % 3 != 2` yields the minimal cost.
+After sorting in non-increasing order, the cheapest candy in each consecutive group of three becomes free. Summing the prices of all candies whose index `i % 3 != 2` yields the minimal cost.
 
 ```text
 FUNCTION minimumCost(cost):
@@ -73,9 +73,9 @@ The algorithm guarantees the free candy is always the cheapest possible in each 
 | Metric | Value |
 |--------|-------|
 | Time   | O(n log n) for sorting |
-| Space  | O(1) additional (in‑place sort) |
+| Space  | O(1) additional (in-place sort) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the offer were "buy two, get the cheapest of the next `k` free"?
 2. Can you solve the problem in O(n) time using a counting sort when candy prices are bounded?
 3. What if the free candy must be strictly cheaper than the two paid ones?

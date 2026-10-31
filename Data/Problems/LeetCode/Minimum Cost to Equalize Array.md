@@ -60,7 +60,7 @@ Example 3:
 
 ## Approach
 **Algorithm:** Greedy pairing based on cost comparison
-If `c2 ≥ 2·c1`, paired operation is never cheaper than two singles, so use only single increments. Otherwise, pair increments whenever possible to reduce cost. The total number of increments needed to raise all elements to a target `T` is `total = Σ (T - nums[i])`. The maximum single‑element gap is `maxGap = T - min(nums)`. The number of paired increments we can perform is `pairs = min(total/2, total - maxGap)`. Remaining increments are done singly.
+If `c2 ≥ 2·c1`, paired operation is never cheaper than two singles, so use only single increments. Otherwise, pair increments whenever possible to reduce cost. The total number of increments needed to raise all elements to a target `T` is `total = Σ (T - nums[i])`. The maximum single-element gap is `maxGap = T - min(nums)`. The number of paired increments we can perform is `pairs = min(total/2, total - maxGap)`. Remaining increments are done singly.
 
 ```text
 FUNCTION minCostToEqualize(nums, c1, c2):
@@ -97,7 +97,7 @@ Assume `nums = [1,2,3]`, `c1 = 5`, `c2 = 8`.
 | Time   | O(n + range) – linear in array size plus a bounded loop over possible targets |
 | Space  | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the paired operation could increment any *k* distinct elements at once?
 2. Can you devise a formula to compute the optimal target `T` without iterating over a range?
 3. What if decrement operations with their own costs were also allowed?

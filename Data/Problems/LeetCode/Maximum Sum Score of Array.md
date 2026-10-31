@@ -77,10 +77,10 @@ The algorithm returns 40.
 *Time:* O(n) – single pass through the array.
 *Space:* O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the index of the prefix achieving the maximum score?
 2. Can the approach be extended to compute the maximum score for any subarray (not just prefixes)?
 3. What changes are needed if the score definition uses the **minimum** element of the prefix instead of its length?
 
 ## Key Takeaway
-A single linear scan that maintains the running prefix sum and multiplies by the prefix length yields the maximum sum‑score efficiently.
+A single linear scan that maintains the running prefix sum and multiplies by the prefix length yields the maximum sum-score efficiently.

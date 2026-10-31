@@ -26,11 +26,11 @@ Return *the **minimum** index of a **valid split***. If no valid split exists, r
 - `1 <= nums[i] <= 10^9`
 - `nums` has exactly one dominant element.
 
-## Approach: Boyer‑Moore Majority Vote + Prefix Scan — O(n) ✅
+## Approach: Boyer-Moore Majority Vote + Prefix Scan — O(n) ✅
 
 ```text
 FUNCTION findValidSplit(nums):
-    // 1. Find candidate dominant element using Boyer‑Moore
+    // 1. Find candidate dominant element using Boyer-Moore
     SET candidate ← None
     SET count ← 0
     FOR x IN nums:
@@ -90,7 +90,7 @@ Explanation: It can be shown that there is no valid split.
 
 ## Walkthrough
 
-1. **Find candidate** – Boyer‑Moore cancels out non‑dominant values, leaving 2 as candidate.
+1. **Find candidate** – Boyer-Moore cancels out non-dominant values, leaving 2 as candidate.
 2. **Count total occurrences** – 2 appears 5 times, satisfying `5*2 > 7`.
 3. **Prefix scan** – iterate indices:
    - i=0: leftCount=0 (1 is not 2) → left not dominant.
@@ -103,7 +103,7 @@ Explanation: It can be shown that there is no valid split.
 - **Time:** O(n) – one pass for majority vote, one pass to count, one pass for prefix scan.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if there could be multiple dominant elements?
 2. Can the algorithm be extended to find all valid split indices, not just the smallest?
@@ -111,4 +111,4 @@ Explanation: It can be shown that there is no valid split.
 
 ## Key Takeaway
 
-> The overall dominant element must also dominate each half; using Boyer‑Moore to find the candidate and a single prefix scan yields an O(n) solution.
+> The overall dominant element must also dominate each half; using Boyer-Moore to find the candidate and a single prefix scan yields an O(n) solution.

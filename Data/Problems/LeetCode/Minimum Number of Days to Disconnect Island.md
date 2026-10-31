@@ -41,11 +41,11 @@ Explanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 isl
 
 ## Approach
 
-**Algorithm:** Brute‑force check for 0, 1, or 2 removals (the answer is always ≤ 2)
+**Algorithm:** Brute-force check for 0, 1, or 2 removals (the answer is always ≤ 2)
 
-1. **Zero‑day case** – Count islands using DFS/BFS. If the count is `0` or `≥ 2`, return `0`.
-2. **One‑day case** – For each land cell, temporarily turn it to water and recount islands. If the count becomes `0` or `≥ 2`, return `1`.
-3. **Two‑day case** – If neither of the above succeeded, the answer is `2`. This follows from graph theory: a connected component with at least two land cells either has a bridge or a cut vertex; removing two appropriate cells always disconnects it.
+1. **Zero-day case** – Count islands using DFS/BFS. If the count is `0` or `≥ 2`, return `0`.
+2. **One-day case** – For each land cell, temporarily turn it to water and recount islands. If the count becomes `0` or `≥ 2`, return `1`.
+3. **Two-day case** – If neither of the above succeeded, the answer is `2`. This follows from graph theory: a connected component with at least two land cells either has a bridge or a cut vertex; removing two appropriate cells always disconnects it.
 
 ```text
 FUNCTION minDays(grid):
@@ -83,7 +83,7 @@ FUNCTION DFS(r, c, grid, visited):
     END WHILE
 ```
 
-## Walkthrough (Example 1)
+## Walkthrough (Example 1)
 
 **Example 1:**
 ```
@@ -104,10 +104,10 @@ Explanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 isl
 
 | Metric | Complexity |
 |--------|-------------|
-| Time   | **O(m·n·k)** where `k` is the number of land cells (≤ m·n). In the worst case we run a DFS for each cell, giving `O((m·n)²)` – acceptable for `m,n ≤ 30`. |
+| Time   | **O(m·n·k)** where `k` is the number of land cells (≤ m·n). In the worst case we run a DFS for each cell, giving `O((m·n)²)` – acceptable for `m,n ≤ 30`. |
 | Space  | **O(m·n)** – visited matrix and recursion/stack for DFS |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the algorithm change if you could remove **any** cell (land or water) each day?
 2. Can we determine the answer in `O(m·n)` time without trying every cell, e.g., by detecting bridges or articulation points?
@@ -115,4 +115,4 @@ Explanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 isl
 
 ## Key Takeaway
 
-Because a connected land component can be split by removing at most two cells, checking the zero‑day and one‑day cases suffices; otherwise the answer is guaranteed to be two.
+Because a connected land component can be split by removing at most two cells, checking the zero-day and one-day cases suffices; otherwise the answer is guaranteed to be two.

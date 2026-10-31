@@ -63,7 +63,7 @@ FUNCTION mapArray(arr, fn):
 - **Time:** O(n) – one pass over the array.
 - **Space:** O(n) – space for the output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement this lazily, generating elements on demand?
 2. What if the transformation function can fail for some elements?
 3. Can you perform the transformation in place without extra space?

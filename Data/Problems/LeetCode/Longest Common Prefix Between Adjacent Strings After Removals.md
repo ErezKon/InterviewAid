@@ -81,21 +81,21 @@ Explanation: - Removing any index results in an answer of 0.
 | 3 | Remove index 2 ("flight") | New pair (flower,flow)=4, (flow,flute)=2 | 4 |
 | ... | Continue for each removal | … | … |
 
-The prefix‑max and suffix‑max arrays let us retrieve the maximum LCP among unchanged pairs in O(1), and we only recompute the LCP for the newly adjacent pair.
+The prefix-max and suffix-max arrays let us retrieve the maximum LCP among unchanged pairs in O(1), and we only recompute the LCP for the newly adjacent pair.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n·L) to pre‑compute all adjacent LCPs, plus O(1) per removal query using prefix/suffix maxima.
+- **Time:** O(n·L) to pre-compute all adjacent LCPs, plus O(1) per removal query using prefix/suffix maxima.
 - **Space:** O(n) for storing LCP values and the two auxiliary max arrays.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if we needed the **second** longest LCP after each removal?
-- Can we extend the approach to handle **non‑adjacent** pairs efficiently?
+- Can we extend the approach to handle **non-adjacent** pairs efficiently?
 - What if the strings are extremely long; can we use hashing to speed up LCP computation?
 
 ---

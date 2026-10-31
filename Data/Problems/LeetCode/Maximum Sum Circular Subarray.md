@@ -114,4 +114,4 @@ Take Example 2: `nums = [5,-3,5]`.
 
 ## Key Takeaway
 
-> Max circular subarray = max(normal Kadane's, total - min subarray). The "wrapping" case is the complement of the minimum subarray. Handle all‑negative edge case separately.
+> Max circular subarray = max(normal Kadane's, total - min subarray). The "wrapping" case is the complement of the minimum subarray. Handle all-negative edge case separately.

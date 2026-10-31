@@ -89,7 +89,7 @@ FUNCTION isObject(val):
 
 **Example 1:** `obj1 = {a:1, b:{c:2}}, obj2 = {b:{d:3}, e:4}`
 
-1. Call `deepMerge` on the top‑level objects.
+1. Call `deepMerge` on the top-level objects.
 2. `a` exists only in `obj1` → copied to result.
 3. `b` exists in both and both values are objects → recurse:
    - Merge `{c:2}` with `{d:3}` → result `{c:2, d:3}`.

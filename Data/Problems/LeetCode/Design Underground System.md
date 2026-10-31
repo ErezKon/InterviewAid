@@ -108,7 +108,7 @@ Example 2:
 ## Walkthrough
 
 1. **checkIn** stores `("Leyton", 3)` in `checkIns[45]`.
-2. **checkOut** retrieves the start info, computes `duration = 15‑3 = 12`, updates `trips[("Leyton","Waterloo")]` to `(12,1)`.
+2. **checkOut** retrieves the start info, computes `duration = 15-3 = 12`, updates `trips[("Leyton","Waterloo")]` to `(12,1)`.
 3. **getAverageTime** reads `(12,1)` and returns `12/1 = 12`.
 4. A second trip updates the aggregate to `(22,2)`, so the average becomes `22/2 = 11`.
 
@@ -127,4 +127,4 @@ Example 2:
 
 ## Key Takeaway
 
-> Use two hash maps: one for active check‑ins and another for aggregated trip statistics. This enables constant‑time updates and average‑time queries.
+> Use two hash maps: one for active check-ins and another for aggregated trip statistics. This enables constant-time updates and average-time queries.

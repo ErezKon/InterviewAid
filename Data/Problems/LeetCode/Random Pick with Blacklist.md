@@ -45,7 +45,7 @@ Example 1:
 
 ## Approach
 **Hash Mapping – Remap Blacklisted Indices**
-Treat the allowed numbers as a pool of size `size = n - len(blacklist)`. For each blacklisted number `b` that falls within the first `size` positions, map it to a non‑blacklisted number from the tail `[size, n)`. Store these mappings in a hash table.
+Treat the allowed numbers as a pool of size `size = n - len(blacklist)`. For each blacklisted number `b` that falls within the first `size` positions, map it to a non-blacklisted number from the tail `[size, n)`. Store these mappings in a hash table.
 When `pick()` is called:
 1. Generate a random integer `r` in `[0, size-1]`.
 2. If `r` is a key in the map, return `map[r]`; otherwise return `r`.
@@ -82,10 +82,10 @@ Calling `pick()` generates `randIdx` in `[0,3]`. If it is `2` or `3`, the map re
 Time: O(|blacklist|) preprocessing; O(1) per `pick()`.
 Space: O(|blacklist|) for the hash map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if `pick()` needed to support removal of returned numbers?
 2. Can the approach be extended to handle multiple blacklists for different ranges?
-3. What are the trade‑offs of using a balanced tree instead of a hash map for deterministic ordering?
+3. What are the trade-offs of using a balanced tree instead of a hash map for deterministic ordering?
 
 ## Key Takeaway
-By remapping blacklisted indices in the first part of the range to valid indices in the tail, we achieve constant‑time uniform random selection without storing the entire allowed set.
+By remapping blacklisted indices in the first part of the range to valid indices in the tail, we achieve constant-time uniform random selection without storing the entire allowed set.

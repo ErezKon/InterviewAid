@@ -75,7 +75,7 @@ The recursion aggregates the maximum depth from leaves up to the root.
 ## Follow-Up Questions
 - How would you compute the minimum depth of a binary tree?
 - Can you solve this iteratively using a stack instead of recursion?
-- How does the algorithm change for an N‑ary tree?
+- How does the algorithm change for an N-ary tree?
 
 ---
 

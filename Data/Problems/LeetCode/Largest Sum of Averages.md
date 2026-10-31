@@ -51,7 +51,7 @@ FUNCTION largestSumOfAverages(nums, k):
     FOR i ← 1 TO n:
         prefix[i] ← prefix[i-1] + nums[i-1]
 
-    dp ← 2‑D ARRAY (n+1) × (k+1) filled with 0
+    dp ← 2-D ARRAY (n+1) × (k+1) filled with 0
     FOR i ← 1 TO n:
         dp[i][1] ← prefix[i] / i   // one group: average of first i elements
 
@@ -89,7 +89,7 @@ For `nums = [9,1,2,3,9]`, `k = 3`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the solution to return the actual partitioning of the array?
 - Can the DP be optimized to O(n·k) using monotonic queue or convex hull tricks?

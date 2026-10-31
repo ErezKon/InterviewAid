@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "run a list of functions under a global budget" problem. Correct idea: return `async (...args) => Promise.race([fn(...args), new Promise((_, reject) => setTimeout(() => reject("Time Limit Exceeded"), t))])` (optionally `clearTimeout` once `fn` settles).*
-
 Given an asynchronous function `fn` and a time `t` in milliseconds, return a new **time limited** version of the input function. `fn` takes arguments provided to the **time limited** function.
 
 The **time limited** function should follow these rules:
@@ -91,45 +89,50 @@ The function immediately throws an error.
 ```
 
 ## Approach
-Iterate through the functions, measuring elapsed time with a start timestamp. Before invoking each function, check if `currentTime - startTime + estimatedMaxDuration` would exceed `t`. Since we cannot know exact duration, we simply start the next function and abort if the promise resolves after the limit, discarding its result.
+Return a wrapper that races `fn(...args)` against a timer. Wrap both in a single `new Promise`: start a `setTimeout` that rejects with `"Time Limit Exceeded"` after `t` ms, and forward `fn`'s resolution or rejection to the outer promise. Whichever settles first wins - a promise can only settle once, so the later event is ignored. Clearing the timer once `fn` settles avoids a dangling timeout. (Equivalent one-liner: `Promise.race([fn(...args), timeoutPromise])`.)
 
 ```text
-FUNCTION promiseTimeLimit(functions, t):
-    SET results ← []
-    SET start ← CURRENT_TIME_MS()
-    
-    FOR i ← 0 TO len(functions)-1:
-        SET elapsed ← CURRENT_TIME_MS() - start
-        IF elapsed >= t:
-            BREAK
-        SET p ← functions[i]()
-        p.THEN(value):
-            SET newElapsed ← CURRENT_TIME_MS() - start
-            IF newElapsed <= t:
-                APPEND value TO results
-            ELSE:
-                // time limit exceeded after this promise; stop further processing
-                BREAK
-    RETURN results
+FUNCTION timeLimit(fn, t):
+    RETURN ASYNC FUNCTION(...args):
+        RETURN NEW PROMISE(resolve, reject):
+            SET id ← SET_TIMEOUT(() → reject("Time Limit Exceeded"), t)
+            fn(...args)
+                .THEN(resolve, reject)          // forward result or error
+                .FINALLY(() → CLEAR_TIMEOUT(id))
+```
+
+In JavaScript:
+```javascript
+var timeLimit = function(fn, t) {
+  return async function(...args) {
+    return new Promise((resolve, reject) => {
+      const id = setTimeout(() => reject("Time Limit Exceeded"), t);
+      fn(...args).then(resolve, reject).finally(() => clearTimeout(id));
+    });
+  };
+};
 ```
 
 ## Walkthrough
+Example 1: `fn` resolves `n * n` after 100 ms, `inputs = [5]`, `t = 50`.
+
 | Step | Elapsed (ms) | Action |
 |------|--------------|--------|
-| Start | 0 | Record start time |
-| Call f1 | 0 | Execute, resolves at 400 → result added |
-| Call f2 | 400 | Execute, resolves at 900 → result added |
-| Check before f3 | 900 | 900 ≥ 1000? No, start f3 |
-| f3 resolves | 1200 | Exceeds limit → discard, stop |
+| Call `limited(5)` | 0 | Start 50 ms timer; call `fn(5)` (will resolve at 100) |
+| Timer fires | 50 | `reject("Time Limit Exceeded")` - outer promise settles |
+| `fn` resolves 25 | 100 | `resolve(25)` ignored (already settled); timer already gone |
+| Result | | `{"rejected":"Time Limit Exceeded","time":50}` |
+
+With `t = 150` (Example 2), `fn` resolves first at 100 ms, the outer promise resolves with `25`, and the timer is cleared. In Example 4, `fn` rejects immediately with `"Error"`, which is forwarded at time 0.
 
 ## Complexity Analysis
-- **Time:** O(k) where k is number of functions executed before timeout.
-- **Space:** O(k) for stored results.
+- **Time:** O(1) overhead per call beyond `fn` itself - one timer and one promise.
+- **Space:** O(1) per pending call.
 
 ## Follow-Up Questions
-1. How would you enforce a hard timeout that cancels a running promise?
-2. Can you modify the algorithm to run up to `n` promises concurrently with a global time limit?
-3. How would you report which functions were skipped due to the timeout?
+1. The timeout rejects the wrapper but `fn` keeps running - how would you actually cancel it (e.g. pass an `AbortSignal` into `fn`)?
+2. How would you implement a retry wrapper that retries `fn` up to `k` times, each attempt with its own time limit?
+3. Why is clearing the timer important in Node.js (keeping the event loop alive) and in long-running apps with many calls?
 
 ## Key Takeaway
-By tracking elapsed time after each promise resolves, you can stop further asynchronous work once a global time budget is exhausted.
+A promise settles only once, so racing the real work against a rejecting timer gives a clean time limit; always clean up the timer once the real work finishes.

@@ -106,7 +106,7 @@ Result: `"c"` ✅
 ## Follow-Up Questions
 
 - How would you modify the algorithm to handle removal of characters with a difference of **k** instead of 1?
-- Can this be extended to support removal of non‑adjacent pairs?
+- Can this be extended to support removal of non-adjacent pairs?
 
 ---
 

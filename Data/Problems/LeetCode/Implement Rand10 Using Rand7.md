@@ -23,7 +23,7 @@ Each test case will have one **internal** argument `n`, the number of times that
 
 ## 2. Approach: Rejection Sampling — Expected O(1) ✅
 
-Generate a uniform number in a larger range (1‑49) using two calls to `rand7()`. Accept numbers 1‑40 and map them to 1‑10; reject 41‑49 and retry.
+Generate a uniform number in a larger range (1-49) using two calls to `rand7()`. Accept numbers 1-40 and map them to 1-10; reject 41-49 and retry.
 
 ```
 FUNCTION rand10():
@@ -60,19 +60,19 @@ Output: [3,8,10]
 
 ## 4. Walkthrough
 
-1. Call `rand7()` twice → 3 and 5 → compute `num = 19` (≤40). Return `(19‑1)%10+1 = 9`.
+1. Call `rand7()` twice → 3 and 5 → compute `num = 19` (≤40). Return `(19-1)%10+1 = 9`.
 2. If `num` had been 44 (>40), the loop repeats until an accepted value is produced.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time**: Expected O(1) calls to `rand7()` (rejection probability 9/49). Worst‑case unbounded but rare.
+- **Time**: Expected O(1) calls to `rand7()` (rejection probability 9/49). Worst-case unbounded but rare.
 - **Space**: O(1).
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How to generate `rand10()` using only `rand5()`?
 - Can you reduce the expected number of `rand7()` calls?

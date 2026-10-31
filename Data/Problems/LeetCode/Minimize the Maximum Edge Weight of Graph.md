@@ -102,7 +102,7 @@ FUNCTION minMaxWeight(n, edges):
 
 Consider the first example: `n = 3`, `edges = [[0,1,5],[1,2,3],[2,0,4]]`.
 
-| Step | Threshold `w` | Edges ≤ w | Reachable from 0 (reverse) | Decision |
+| Step | Threshold `w` | Edges ≤ w | Reachable from 0 (reverse) | Decision |
 |------|---------------|----------|----------------------------|----------|
 | 1 | 3 | `[1,2,3]` | Nodes reachable: 0 (none) | Not all reachable → increase `w` |
 | 2 | 4 | `[1,2,3]`, `[2,0,4]` | Reverse graph: 0←2←1 → all nodes reachable | Feasible, try lower bound |

@@ -56,7 +56,7 @@ Example 4:
 FUNCTION checkIfInstanceOf(value, classFunction):
     IF value IS null OR value IS undefined OR TYPEOF classFunction ≠ "function":
         RETURN false
-    // Auto‑box primitives so they have a prototype chain
+    // Auto-box primitives so they have a prototype chain
     SET obj ← Object(value)
     SET proto ← GET_PROTOTYPE_OF(obj)
     WHILE proto IS NOT null:
@@ -92,7 +92,7 @@ For `value = null`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the function to support custom `instanceof` semantics?
 - Can you implement a similar check in languages without prototype chains?
@@ -102,4 +102,4 @@ For `value = null`:
 
 ## Key Takeaway
 
-> Walk the prototype chain via `Object.getPrototypeOf()`. Use `Object(value)` to auto‑box primitives so they have a prototype chain to traverse.
+> Walk the prototype chain via `Object.getPrototypeOf()`. Use `Object(value)` to auto-box primitives so they have a prototype chain to traverse.

@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below implement a "run with timeout" wrapper, which is a different task. Correct idea (JavaScript): `const id = setTimeout(() => fn(...args), t); return () => clearTimeout(id);`.*
-
 Given a function `fn`, an array of arguments `args`, and a timeout `t` in milliseconds, return a cancel function `cancelFn`.
 
 After a delay of `cancelTimeMs`, the returned cancel function `cancelFn` will be invoked.
@@ -65,36 +63,38 @@ The cancellation was scheduled to occur after a delay of cancelTimeMs (100ms), w
 ```
 
 ## Approach
-Use a timer that triggers after the timeout duration. Run the original operation in a separate task. Whichever finishes first— the operation or the timer— determines the result.
+Schedule `fn(...args)` immediately with `setTimeout(..., t)` and keep the timer id. Return a closure `cancelFn` that calls `clearTimeout(id)`. If `cancelFn` runs before `t` ms elapse, the pending call is removed from the timer queue and `fn` never executes; if it runs later, `clearTimeout` on an already-fired timer is a harmless no-op.
 
 ```text
-FUNCTION RunWithTimeout(operation, timeout):
-    CREATE channel resultChannel
-    START ASYNC:
-        SET res ← operation()
-        SEND res TO resultChannel
-    END ASYNC
-    START TIMER FOR timeout MILLISECONDS
-    WAIT UNTIL resultChannel OR TIMER fires:
-        IF resultChannel RECEIVED:
-            RETURN received value
-        ELSE:
-            RETURN timeout error
+FUNCTION cancellable(fn, args, t):
+    SET timerId ← SET_TIMEOUT(() => fn(...args), t)
+    FUNCTION cancelFn():
+        CLEAR_TIMEOUT(timerId)
+    RETURN cancelFn
+```
+
+```javascript
+var cancellable = function(fn, args, t) {
+    const id = setTimeout(() => fn(...args), t);
+    return () => clearTimeout(id);
+};
 ```
 
 ## Walkthrough
-Consider an operation that sleeps for 5 s with a timeout of 3 s.
-1. The async task starts and will send its result after 5 s.
-2. The timer is set for 3 s.
-3. After 3 s the timer fires first, so the function returns a timeout error and discards the later result.
+Example 2: `fn = (x) => x**2`, `args = [2]`, `t = 100`, `cancelTimeMs = 50`.
+1. At 0 ms, `cancellable` schedules `fn(2)` for 100 ms and returns `cancelFn`; the harness schedules `cancelFn` for 50 ms.
+2. At 50 ms, `cancelFn` runs and calls `clearTimeout(id)`, removing the pending `fn(2)` call.
+3. At 100 ms nothing happens, so no call is recorded. Output: `[]`, as expected.
+
+Contrast with Example 1 (`t = 20`, `cancelTimeMs = 50`): the timer fires first at 20 ms, `fn(2)` returns `10` (recorded as `{"time": 20, "returned": 10}`), and the later `clearTimeout` at 50 ms does nothing.
 
 ## Complexity Analysis
-Time: O(t) where *t* is the smaller of the operation duration and the timeout. Space: O(1) additional memory.
+Time: O(1) to schedule and to cancel (excluding the cost of `fn` itself). Space: O(1) - the closure only holds the timer id.
 
 ## Follow-Up Questions
-* How would you support cancellation of the underlying operation to free resources?
-* How can you extend this pattern to handle multiple concurrent operations with a shared timeout?
-* What changes are needed for a deterministic timeout in a distributed system?
+* How would you implement `cancellable` that calls `fn` repeatedly every `t` ms until cancelled (`setInterval` / `clearInterval`)?
+* How would you make `cancelFn` report whether it actually cancelled anything (e.g. a `fired` flag set inside the callback)?
+* How would you build a Promise-based version where cancelling rejects the pending promise?
 
 ## Key Takeaway
-A timeout wrapper runs the target operation and a timer in parallel, returning whichever finishes first, which cleanly isolates long‑running tasks.
+A cancellable delayed call is just a timer id captured in a closure: `setTimeout` schedules the work, and the returned function calls `clearTimeout` on that id.

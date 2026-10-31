@@ -42,74 +42,64 @@ There is no valid split.
 ```
 
 ## Approach
-The product of a segment can be represented by the multiset of its prime factors. Two products are coprime iff they share no prime factor. We can pre‑compute for each position the set of prime factors that appear in the prefix and suffix. The earliest index where the intersection of prefix‑factors and suffix‑factors is empty gives the answer.
+The two products are coprime iff no prime factor appears on both sides of the split. So for every prime, all elements containing it must lie entirely on one side. Record the **last index** at which each prime occurs; then sweep left to right, tracking `reach` = the furthest last-occurrence of any prime seen so far. If `reach == i` at index `i`, every prime in the prefix is finished, so splitting at `i` is valid.
 
-1. Factor each number into its distinct primes using trial division up to √num.
-2. Sweep from left to right, maintaining a hash set `prefixSet` of all primes seen so far.
-3. Simultaneously compute `suffixSet[i]` – the set of primes appearing in the suffix starting at i.
-4. For each split i (1 ≤ i < n), check `prefixSet ∩ suffixSet[i]` is empty.
-5. Return the first i that satisfies; otherwise -1.
+1. Factor each number into its distinct primes using trial division up to sqrt(num).
+2. Build `last[p]` = the largest index whose element is divisible by prime `p`.
+3. Sweep `i` from 0 to n-2: `reach = max(reach, last[p])` for each prime `p` of `nums[i]`.
+4. Return the first `i` with `reach == i`; otherwise -1.
 
 ```text
-FUNCTION smallestCoprimeSplit(nums):
-    n ← LENGTH(nums)
-    // Step 1: factor each element
-    primeLists ← ARRAY of size n
+FUNCTION findValidSplit(nums):
+    n <- LENGTH(nums)
+    primeLists <- ARRAY of size n
+    last <- EMPTY MAP
     FOR i FROM 0 TO n-1:
-        primeLists[i] ← distinctPrimeFactors(nums[i])
-    // Step 2: build suffix sets
-    suffixSets ← ARRAY of size n+1
-    SET suffixSets[n] ← {}
-    FOR i FROM n-1 DOWNTO 0:
-        SET suffixSets[i] ← UNION(suffixSets[i+1], primeLists[i])
-    // Step 3: scan prefixes
-    SET prefixSet ← {}
+        primeLists[i] <- distinctPrimeFactors(nums[i])
+        FOR p IN primeLists[i]:
+            last[p] <- i
+    reach <- 0
     FOR i FROM 0 TO n-2:
-        SET prefixSet ← UNION(prefixSet, primeLists[i])
-        IF INTERSECTION(prefixSet, suffixSets[i+1]) IS EMPTY:
-            RETURN i+1   // split after i
+        FOR p IN primeLists[i]:
+            reach <- MAX(reach, last[p])
+        IF reach == i:
+            RETURN i
     RETURN -1
 
 FUNCTION distinctPrimeFactors(x):
-    SET factors ← {}
-    d ← 2
+    SET factors <- {}
+    d <- 2
     WHILE d * d <= x:
         IF x MOD d == 0:
             ADD d TO factors
             WHILE x MOD d == 0:
-                x ← x / d
-        d ← d + 1
+                x <- x / d
+        d <- d + 1
     IF x > 1:
         ADD x TO factors
     RETURN factors
 ```
 
 ## Walkthrough
-Consider `nums = [2,3,7,5,4,6]`.
-1. Prime factors: `[ {2}, {3}, {7}, {5}, {2}, {2,3} ]`.
-2. Build suffix sets from the end:
-   - suffix[6] = {}
-   - suffix[5] = {2,3}
-   - suffix[4] = {2,3,2} → {2,3}
-   - suffix[3] = {5,2,3}
-   - suffix[2] = {7,5,2,3}
-   - suffix[1] = {3,7,5,2,3} → {2,3,5,7}
-   - suffix[0] = {2,3,5,7}
-3. Scan prefixes:
-   - i=0, prefix={2}, suffix[1]={2,3,5,7} → intersection not empty.
-   - i=1, prefix={2,3}, suffix[2]={2,3,5,7} → not empty.
-   - i=2, prefix={2,3,7}, suffix[3]={5,2,3} → not empty.
-   - i=3, prefix={2,3,7,5}, suffix[4]={2,3} → intersection empty → split index 4 (i+1).
-Thus answer 3 (0‑based) or 4 (1‑based) as required.
+**Example 1:** `nums = [4,7,8,15,3,5]`.
+1. Prime factors: `[{2}, {7}, {2}, {3,5}, {3}, {5}]`.
+2. Last occurrences: `last[2] = 2`, `last[7] = 1`, `last[3] = 4`, `last[5] = 5`.
+3. Sweep:
+   - `i=0` (4, primes {2}): `reach = 2` -> `2 != 0`.
+   - `i=1` (7, primes {7}): `reach = max(2, 1) = 2` -> `2 != 1`.
+   - `i=2` (8, primes {2}): `reach = max(2, 2) = 2` -> `reach == 2`, return `2`.
+   (Check: prefix product `224 = 2^5 * 7`, suffix product `225 = 3^2 * 5^2`, gcd 1.)
+
+**Example 2:** `nums = [4,7,15,8,3,5]`: `last[2] = 3`, `last[7] = 1`, `last[3] = 4`, `last[5] = 5`. `reach` goes 3, 3, 5 (15 brings in 3 and 5), 5, 5 for `i = 0..4`; it never equals `i`, so return `-1`.
 
 ## Complexity Analysis
-- **Time:** Factoring each number costs O(√max(nums[i])) total; the sweep is O(n). Overall roughly O(n √A) where A is max element.
-- **Space:** O(n p) for storing prime factor sets, where p is average number of distinct primes per element (usually small).
+- **Time:** O(n sqrt(A)) for trial-division factoring (A = max element, up to 10^6, so sqrt(A) <= 1000); the sweep is O(n * p) where p <= 7 distinct primes per element.
+- **Space:** O(n p) for the prime lists plus the `last` map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if numbers could be up to 10⁹, requiring faster factorisation?
-2. Can the problem be solved in O(n) time using a global prime‑frequency map instead of per‑position sets?
+2. How would a smallest-prime-factor sieve up to 10^6 speed up factorisation to O(log A) per element?
 3. What if we need to split into more than two parts with pairwise coprime products?
 
 ## Key Takeaway
-Transforming the product coprimality condition into a set‑intersection problem on prime factors enables a linear‑time scan for the earliest valid split.
+Coprimality of the two products means no prime straddles the split; tracking each prime's last occurrence turns this into an interval-merge style sweep where the first `i` with `reach == i` is the answer.

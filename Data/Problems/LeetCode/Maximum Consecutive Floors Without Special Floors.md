@@ -82,7 +82,7 @@ Explanation: Every floor rented is a special floor, so we return 0.
 |------|--------|-----|------------------|-----------------|--------------|---------|
 | 1 | 2 | 9 | [4,6] | [1,4,6,10] | 4-1-1=2, 6-4-1=1, 10-6-1=3 | **3** |
 
-The maximum gap of 3 corresponds to floors 7‑9.
+The maximum gap of 3 corresponds to floors 7-9.
 
 ---
 

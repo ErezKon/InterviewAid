@@ -55,9 +55,9 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Floyd‑Warshall on 26‑letter graph + greedy per position
+**Algorithm:** Floyd-Warshall on 26-letter graph + greedy per position
 
-Create a directed weighted graph of 26 nodes (letters). For each allowed operation add an edge `original[i] → changed[i]` with weight `cost[i]`. Run Floyd‑Warshall to compute the cheapest conversion cost between any pair of letters. Then iterate over each index `i`; if `source[i] ≠ target[i]` add the pre‑computed shortest distance. If any distance is infinite, return `-1`.
+Create a directed weighted graph of 26 nodes (letters). For each allowed operation add an edge `original[i] → changed[i]` with weight `cost[i]`. Run Floyd-Warshall to compute the cheapest conversion cost between any pair of letters. Then iterate over each index `i`; if `source[i] ≠ target[i]` add the pre-computed shortest distance. If any distance is infinite, return `-1`.
 
 ```text
 FUNCTION minimumCost(source, target, original, changed, cost):
@@ -69,7 +69,7 @@ FUNCTION minimumCost(source, target, original, changed, cost):
         v ← ORD(changed[i]) - ORD('a')
         dist[u][v] ← MIN(dist[u][v], cost[i])
     END FOR
-    // 2. Floyd‑Warshall
+    // 2. Floyd-Warshall
     FOR k ← 0 TO 25 DO
         FOR i ← 0 TO 25 DO
             FOR j ← 0 TO 25 DO
@@ -104,10 +104,10 @@ FUNCTION minimumCost(source, target, original, changed, cost):
 
 | Metric | Complexity |
 |--------|-------------|
-| Time   | **O(26³ + n)** – Floyd‑Warshall on 26 nodes plus linear scan of strings |
+| Time   | **O(26³ + n)** – Floyd-Warshall on 26 nodes plus linear scan of strings |
 | Space  | **O(26²)** – distance matrix |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you handle the case where operations have different costs for forward and reverse conversions?
 2. Can the algorithm be extended to support batch conversions where multiple characters change simultaneously?
@@ -115,4 +115,4 @@ FUNCTION minimumCost(source, target, original, changed, cost):
 
 ## Key Takeaway
 
-Modeling character conversions as a tiny graph and applying all‑pairs shortest paths lets us answer each character’s conversion cost in O(1), yielding an overall linear‑time solution.
+Modeling character conversions as a tiny graph and applying all-pairs shortest paths lets us answer each character’s conversion cost in O(1), yielding an overall linear-time solution.

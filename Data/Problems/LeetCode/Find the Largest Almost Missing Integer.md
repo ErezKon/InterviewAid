@@ -102,11 +102,11 @@ Consider `nums = [1,2,2,3,1]` and `k = 2`.
 
 | Step | Position | Value | Windows covering position | Window count per value |
 |------|----------|-------|---------------------------|------------------------|
-| 1    | 0        | 1     | [0‑1]                     | 1 (so far)             |
-| 2    | 1        | 2     | [0‑1], [1‑2]              | 2                      |
-| 3    | 2        | 2     | [1‑2], [2‑3]              | 2 (unchanged)          |
-| 4    | 3        | 3     | [2‑3], [3‑4]              | 1 (so far)             |
-| 5    | 4        | 1     | [3‑4]                     | 2 total for 1          |
+| 1    | 0        | 1     | [0-1]                     | 1 (so far)             |
+| 2    | 1        | 2     | [0-1], [1-2]              | 2                      |
+| 3    | 2        | 2     | [1-2], [2-3]              | 2 (unchanged)          |
+| 4    | 3        | 3     | [2-3], [3-4]              | 1 (so far)             |
+| 5    | 4        | 1     | [3-4]                     | 2 total for 1          |
 
 After processing all positions, only value `3` has a window count of `1`. Hence the result is `3`.
 
@@ -123,8 +123,8 @@ After processing all positions, only value `3` has a window count of `1`. Hence 
 
 ## 7. Follow-Up Questions
 
-- How would the solution change if we needed the smallest almost‑missing integer?
-- Can the algorithm be adapted for a sliding‑window of variable size?
+- How would the solution change if we needed the smallest almost-missing integer?
+- Can the algorithm be adapted for a sliding-window of variable size?
 - What if the array length were up to 10⁵? Discuss optimizations.
 
 ---

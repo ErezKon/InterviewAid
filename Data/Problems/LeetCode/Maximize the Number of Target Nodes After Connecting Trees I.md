@@ -99,8 +99,8 @@ FUNCTION maxTargetNodes(edges1, edges2, k):
 ## Walkthrough
 
 Consider the first example:
-1. **Tree1** has nodes `0‑1‑2`. With `k = 2`, each node can reach all three nodes of tree1.
-2. **Tree2** has nodes `0‑1`. For any node in tree2, BFS within distance `k‑1 = 1` reaches both nodes, so `maxTree2 = 2`.
+1. **Tree1** has nodes `0-1-2`. With `k = 2`, each node can reach all three nodes of tree1.
+2. **Tree2** has nodes `0-1`. For any node in tree2, BFS within distance `k-1 = 1` reaches both nodes, so `maxTree2 = 2`.
 3. Connect node `1` of tree1 to node `0` of tree2. Now each tree1 node can also reach the two tree2 nodes within the extra edge (distance 1) plus the original distance, staying ≤2.
 4. Total target nodes for each tree1 node = `3 (own tree) + 2 (tree2) = 5`, but node `0` and `2` share one of the tree2 nodes, so distinct count is `4` as shown in output.
 

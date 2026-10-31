@@ -93,7 +93,7 @@ Day 6 is the first day where you have been in all the rooms.
 
 ## 5. Walkthrough
 
-We illustrate Example 1 step‑by‑step.
+We illustrate Example 1 step-by-step.
 
 | Day | Current Room | Visit Count (odd/even) | Next Room |
 |-----|--------------|-----------------------|-----------|

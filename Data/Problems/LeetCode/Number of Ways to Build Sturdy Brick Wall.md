@@ -77,7 +77,7 @@ Explanation: There are no ways to build a sturdy wall because the only type of b
 ## 5. Walkthrough
 
 **Example 1:** `width = 2, height = 2`
-1. Generate row configs: `11` (two 1‑bricks) → mask `0b0`; `2` (one 2‑brick) → mask `0b1` (joint at position 1).
+1. Generate row configs: `11` (two 1-bricks) → mask `0b0`; `2` (one 2-brick) → mask `0b1` (joint at position 1).
 2. Compatibility:
    - `mask 0b0` compatible with both masks.
    - `mask 0b1` only compatible with `mask 0b0` (cannot stack two `0b1` rows because joints align).

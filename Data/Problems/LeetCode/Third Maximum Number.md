@@ -77,8 +77,8 @@ Result: 1
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – only three extra variables.
 
-## Follow‑Up Questions
-1. How would you extend the solution to return the `k`‑th distinct maximum?
+## Follow-Up Questions
+1. How would you extend the solution to return the `k`-th distinct maximum?
 2. Can you solve the problem without using extra variables, e.g., by sorting?
 3. How would you handle streaming input where the array is too large to store?
 

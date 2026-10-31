@@ -56,13 +56,13 @@ Example 3:
 ```
 
 ## Approach
-Perform a post‑order DFS. For each node, compute the net excess `excess = coins[node] + sum(child_excess) - 1`. The absolute value of `excess` contributed by this node represents moves needed to balance its subtree. Accumulate the absolute excesses across all nodes; the total is the answer.
+Perform a post-order DFS. For each node, compute the net excess `excess = coins[node] + sum(child_excess) - 1`. The absolute value of `excess` contributed by this node represents moves needed to balance its subtree. Accumulate the absolute excesses across all nodes; the total is the answer.
 
 ## Walkthrough
-For `[0,3,0]` with edges `0‑1‑2`:
+For `[0,3,0]` with edges `0-1-2`:
 | Node | Subtree excess before fixing | Moves added |
 |------|------------------------------|------------|
-| 2 | `0 - 1 = -1` | `|‑1| = 1` |
+| 2 | `0 - 1 = -1` | `|-1| = 1` |
 | 1 | `3 + (-1) - 1 = 1` | `|1| = 1` |
 | 0 | `0 + 1 - 1 = 0` | `|0| = 0` |
 Total moves = 1 + 1 = 2.
@@ -77,4 +77,4 @@ Total moves = 1 + 1 = 2.
 - What changes are needed if each move can transfer multiple coins at once?
 
 ## Key Takeaway
-Balancing coins via post‑order aggregation of excess values yields the minimal move count in linear time.
+Balancing coins via post-order aggregation of excess values yields the minimal move count in linear time.

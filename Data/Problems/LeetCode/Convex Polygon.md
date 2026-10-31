@@ -90,8 +90,8 @@ Consider the square `[[0,0],[2,0],[2,2],[0,2]]`:
 ## Follow-Up Questions
 
 1. How would you handle polygons with colinear edges?
-2. Can you extend the algorithm to detect self‑intersecting polygons?
-3. What changes are needed for 3‑D convex hull verification?
+2. Can you extend the algorithm to detect self-intersecting polygons?
+3. What changes are needed for 3-D convex hull verification?
 
 ---
 

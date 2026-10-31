@@ -69,18 +69,18 @@ Example 2:
 
 ## Walkthrough
 
-1. **Pre‑processing** – For each of the three colors, run two passes over `colors` to fill `nearest[color][i]` with the distance from position `i` to the closest occurrence of that color.
-2. **Query resolution** – For a query `[idx, col]`, look up `nearest[col‑1][idx]`. If the stored distance is ≥ n, the color never appears, so return -1; otherwise return the distance.
+1. **Pre-processing** – For each of the three colors, run two passes over `colors` to fill `nearest[color][i]` with the distance from position `i` to the closest occurrence of that color.
+2. **Query resolution** – For a query `[idx, col]`, look up `nearest[col-1][idx]`. If the stored distance is ≥ n, the color never appears, so return -1; otherwise return the distance.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(n + q) where `n` is the length of `colors` and `q` is the number of queries (pre‑processing O(3·n) plus O(1) per query).
+- **Time:** O(n + q) where `n` is the length of `colors` and `q` is the number of queries (pre-processing O(3·n) plus O(1) per query).
 - **Space:** O(3·n) for the `nearest` arrays.
 
 ---
 
 ## Key Takeaway
 
-> Pre‑computing nearest distances for each possible target enables answering many distance queries in constant time per query.
+> Pre-computing nearest distances for each possible target enables answering many distance queries in constant time per query.

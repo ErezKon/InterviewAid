@@ -62,9 +62,9 @@ For `n = 5`:
 - **Space:** O(1) – only a few integer variables.
 
 ## Follow-Up Questions
-1. How would you handle very large integers beyond typical 32‑bit limits?
-2. Can you compute the complement without using logarithms or bit‑length functions?
-3. How does the solution change if the complement must preserve a fixed word size (e.g., 32‑bit)?
+1. How would you handle very large integers beyond typical 32-bit limits?
+2. Can you compute the complement without using logarithms or bit-length functions?
+3. How does the solution change if the complement must preserve a fixed word size (e.g., 32-bit)?
 
 ## Key Takeaway
 Using a mask of all 1s matching the number’s bit length and XORing flips every bit efficiently.

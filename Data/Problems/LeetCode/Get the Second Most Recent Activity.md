@@ -110,8 +110,8 @@ WHERE rn = 2 OR cnt = 1;
 
 ## 6. Follow-Up Questions
 
-* How would you modify the query to return the *k*‑th most recent activity?
-* Can you achieve the same result without window functions, using only `GROUP BY` and sub‑queries?
+* How would you modify the query to return the *k*-th most recent activity?
+* Can you achieve the same result without window functions, using only `GROUP BY` and sub-queries?
 
 ---
 

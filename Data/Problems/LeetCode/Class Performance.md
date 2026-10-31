@@ -84,7 +84,7 @@ FROM Scores;
 ## 6. Follow-Up Questions
 
 - How would you modify the query to compute the range for each class if a `class_id` column existed?
-- Can you write a single‑pass algorithm in a procedural language to achieve the same result without using SQL aggregates?
+- Can you write a single-pass algorithm in a procedural language to achieve the same result without using SQL aggregates?
 - How would you handle `NULL` scores in the table?
 
 ## Key Takeaway

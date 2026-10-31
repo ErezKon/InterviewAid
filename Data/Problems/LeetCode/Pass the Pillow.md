@@ -39,7 +39,7 @@ Example 2:
 ```
 
 ## Approach
-The movement forms a cycle of length `2*(n-1)`. Compute `time` modulo this cycle to find the position within one full back‑and‑forth traversal, then map it to the person index.
+The movement forms a cycle of length `2*(n-1)`. Compute `time` modulo this cycle to find the position within one full back-and-forth traversal, then map it to the person index.
 
 ```text
 FUNCTION passThePillow(n, time):
@@ -67,7 +67,7 @@ Thus person `2` holds the pillow.
 - **Time:** O(1) – only arithmetic operations.
 - **Space:** O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if the pillow moves at a variable speed (e.g., skips some people)?
 2. What if the line is circular instead of reversing at the ends?
 3. Can you compute the holder after each second for the first `k` seconds efficiently?

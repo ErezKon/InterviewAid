@@ -93,11 +93,11 @@ Consider the tree `[[5],[1,2],[3,4]]`:
 | Step | Queue (nodes) | Level Sum | minSum / resultLevel |
 |------|---------------|-----------|----------------------|
 | Start | [5] | 5 | minSum=5, resultLevel=1 |
-| After level 1 | [1,2] | 3 | minSum=3, resultLevel=2 |
-| After level 2 | [3,4] | 7 | minSum stays 3 |
+| After level 1 | [1,2] | 3 | minSum=3, resultLevel=2 |
+| After level 2 | [3,4] | 7 | minSum stays 3 |
 | End | [] | – | Return 2 |
 
-The algorithm correctly returns level 2.
+The algorithm correctly returns level 2.
 
 ---
 

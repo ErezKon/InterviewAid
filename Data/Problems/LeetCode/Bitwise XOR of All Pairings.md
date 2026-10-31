@@ -56,9 +56,9 @@ Consider `nums1 = [1,2]` (even length) and `nums2 = [3,4]` (even length). Neithe
 - **Time:** O(n + m) where n and m are the lengths of the two arrays.
 - **Space:** O(1) extra space.
 
-## Follow‑Up 
+## Follow-Up 
 - How would the solution change if we needed the XOR of all *triplet* combinations from three arrays?
 - Can this parity trick be applied to other bitwise operations like AND or OR?
 
 ## Key Takeaway
-When XOR-ing all pairwise combinations, each element’s contribution depends solely on whether the opposite array has odd length, allowing a linear‑time solution.
+When XOR-ing all pairwise combinations, each element’s contribution depends solely on whether the opposite array has odd length, allowing a linear-time solution.

@@ -42,7 +42,7 @@ Example 3:
 ```
 
 ## Approach
-Split the sentence into words, iterate with an index, and check the prefix using a string starts‑with operation.
+Split the sentence into words, iterate with an index, and check the prefix using a string starts-with operation.
 
 ```text
 FUNCTION isPrefixOfWord(sentence, searchWord):
@@ -54,7 +54,7 @@ FUNCTION isPrefixOfWord(sentence, searchWord):
 ```
 
 ## Walkthrough
-| i (0‑based) | word   | startsWith? | return |
+| i (0-based) | word   | startsWith? | return |
 |------------|--------|-------------|--------|
 |0|"i"|no|—|
 |1|"love"|no|—|

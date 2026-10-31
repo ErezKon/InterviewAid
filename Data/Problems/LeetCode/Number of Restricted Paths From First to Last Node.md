@@ -61,7 +61,7 @@ Explanation: Each circle contains the node number in black and its distanceToLas
 
 ## Walkthrough
 
-Consider Example 1. After running Dijkstra from node 5, distances are:
+Consider Example 1. After running Dijkstra from node 5, distances are:
 - dist[5] = 0
 - dist[2] = 2, dist[3] = 1, dist[4] = 2, dist[1] = 3
 Processing nodes in increasing distance order yields DP values:

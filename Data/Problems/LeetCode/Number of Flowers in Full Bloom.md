@@ -57,7 +57,7 @@ Example 2:
 
 ## 3. Key Insight
 
-> Active flowers at time `t` = (flowers that started ≤ `t`) − (flowers that ended < `t`). By sorting start times and end times separately we can answer each query with two binary searches.
+> Active flowers at time `t` = (flowers that started ≤ `t`) − (flowers that ended < `t`). By sorting start times and end times separately we can answer each query with two binary searches.
 
 ---
 
@@ -85,7 +85,7 @@ Consider `flowers = [[1,6],[3,7],[9,12],[4,13]]` and `people = [2,3,7,11]`.
 2. Query `time = 2`:
    - `started = UPPER_BOUND([1,3,4,9], 2) = 1` (only start 1 ≤ 2)
    - `ended = LOWER_BOUND([6,7,12,13], 2) = 0`
-   - active = 1‑0 = 1.
+   - active = 1-0 = 1.
 3. Query `time = 3`:
    - `started = 2` (1 and 3)
    - `ended = 0`

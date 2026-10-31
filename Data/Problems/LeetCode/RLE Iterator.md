@@ -68,7 +68,7 @@ CLASS RLEIterator:
 1. Start with `encoding = [3,8,0,9,2,5]`, `index = 0`.
 2. `next(2)`: `encoding[0]=3 >=2` → decrement to `1`, return `8`.
 3. `next(1)`: `encoding[0]=1 >=1` → decrement to `0`, return `8`.
-4. `next(1)`: `encoding[0]=0 <1` → subtract `0`, move `index` to `2` (skip zero‑count 9). Now `encoding[2]=2 >=1` → decrement to `1`, return `5`.
+4. `next(1)`: `encoding[0]=0 <1` → subtract `0`, move `index` to `2` (skip zero-count 9). Now `encoding[2]=2 >=1` → decrement to `1`, return `5`.
 5. `next(2)`: `encoding[2]=1 <2` → subtract `1`, move `index` to `4` (end). No more runs, return `-1`.
 
 ## Complexity Analysis

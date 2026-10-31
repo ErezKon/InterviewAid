@@ -38,10 +38,10 @@ Example 2:
 Rewrite the condition:
 `nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])`
 ⇔ `nums[i] - rev(nums[i]) == nums[j] - rev(nums[j])`.
-Thus each element can be represented by `key = nums[i] - rev(nums[i])`. Count how many indices share the same key; for a group of size `c` there are `c·(c‑1)/2` nice pairs.
+Thus each element can be represented by `key = nums[i] - rev(nums[i])`. Count how many indices share the same key; for a group of size `c` there are `c·(c-1)/2` nice pairs.
 
 ## Walkthrough
-| i | nums[i] | rev(nums[i]) | key = nums[i]‑rev(nums[i]) |
+| i | nums[i] | rev(nums[i]) | key = nums[i]-rev(nums[i]) |
 |---|---------|--------------|----------------------------|
 | 0 | 42 | 24 | 18 |
 | 1 | 11 | 11 | 0 |
@@ -50,13 +50,13 @@ Thus each element can be represented by `key = nums[i] - rev(nums[i])`. Count ho
 Keys 18 and 0 each appear twice → each contributes 1 pair → total 2.
 
 ## Complexity Analysis
-- **Time:** O(n · k) where `k` is the number of digits (to compute `rev`). Effectively O(n).
+- **Time:** O(n · k) where `k` is the number of digits (to compute `rev`). Effectively O(n).
 - **Space:** O(n) for the hash map of keys.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle very large numbers where reversing digits may overflow?
 2. Can the solution be adapted to count pairs where the condition uses a different arithmetic relation?
 3. What if the array is streamed and you must compute the count in an online fashion?
 
 ## Key Takeaway
-Transforming the equation reduces the problem to counting equal values of `nums[i]‑rev(nums[i])`, enabling a simple hash‑map solution.
+Transforming the equation reduces the problem to counting equal values of `nums[i]-rev(nums[i])`, enabling a simple hash-map solution.

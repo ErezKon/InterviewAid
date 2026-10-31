@@ -95,13 +95,13 @@ For each query page, look up its adjacency list to obtain direct neighbors. Coun
 | 2    | Sort by freq then ID → [2,3] |
 
 ## Complexity Analysis
-- **Time:** O(q * d log d) where `q` is number of queries and `d` is average out‑degree (sorting neighbors).
+- **Time:** O(q * d log d) where `q` is number of queries and `d` is average out-degree (sorting neighbors).
 - **Space:** O(d) for the frequency map per query.
 
 ## Follow-Up Questions
 1. How would the solution change if edges could have weights representing click probabilities?
-2. Can you extend the approach to recommend pages after two clicks (similar to Page Recommendations II)?
+2. Can you extend the approach to recommend pages after two clicks (similar to Page Recommendations II)?
 3. What if the graph is massive and cannot fit in memory—how would you stream the adjacency lists?
 
 ## Key Takeaway
-Directly accessing a node's adjacency list and sorting its neighbors by visit frequency yields the required top‑k page recommendations efficiently.
+Directly accessing a node's adjacency list and sorting its neighbors by visit frequency yields the required top-k page recommendations efficiently.

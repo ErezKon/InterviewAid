@@ -62,7 +62,7 @@ BFS from the start yields the minimum distance to every reachable cell. While tr
 
 ---
 
-## 3. Approach: BFS + Multi‑Key Sort — O(m·n·log(m·n)) ✅
+## 3. Approach: BFS + Multi-Key Sort — O(m·n·log(m·n)) ✅
 
 ```text
 FUNCTION highestRankedKItems(grid, pricing, start, k):
@@ -162,14 +162,14 @@ After BFS finishes, candidates = [(1,2,0,1),(1,3,1,0),(2,4,1,1)]. Sorting yields
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 1. How would you adapt the algorithm if diagonal moves were allowed?
-2. Can you solve the problem with O(k log k) additional space by maintaining a min‑heap of size k instead of sorting all candidates?
+2. Can you solve the problem with O(k log k) additional space by maintaining a min-heap of size k instead of sorting all candidates?
 3. What changes are needed if the ranking priority order is altered (e.g., price before distance)?
 
 ---
 
 ## 8. Key Takeaway
 
-> Use BFS to obtain exact distances, then a multi‑key sort (or heap) to rank items according to the problem’s hierarchical criteria.
+> Use BFS to obtain exact distances, then a multi-key sort (or heap) to rank items according to the problem’s hierarchical criteria.

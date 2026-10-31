@@ -45,8 +45,8 @@ Return an array `nodes` where `nodes[i]` is the last node to get marked in the t
 ```text
 FUNCTION lastMarkedNodes(edges, marked):
     // First DFS: compute farthest marked node in each subtree
-    // Second DFS: re‑root to consider paths through the parent
-    // Combine subtree and parent‑path results for each node
+    // Second DFS: re-root to consider paths through the parent
+    // Combine subtree and parent-path results for each node
     RETURN answers
 ```
 
@@ -101,7 +101,7 @@ Marked nodes: 2 and 4.
    - Node 1: farthest from children → 4
    - Node 2: itself (2)
    - Node 0: max(4 from child 1, 2 from child 2) → 4
-2. **Second DFS (re‑root)** propagates information from parent to child:
+2. **Second DFS (re-root)** propagates information from parent to child:
    - For node 1, consider path through parent 0 (which has farthest 2) → candidate 2.
    - Combine with subtree result (4) → answer 4.
    - Similar propagation gives answers for all nodes as listed in the example.
@@ -119,4 +119,4 @@ Marked nodes: 2 and 4.
 
 ## 7. Key Takeaway
 
-> **Tree re-rooting** (two‑pass DFS) efficiently computes per‑node answers that depend on the entire tree by decomposing into subtree and complement‑of‑subtree results.
+> **Tree re-rooting** (two-pass DFS) efficiently computes per-node answers that depend on the entire tree by decomposing into subtree and complement-of-subtree results.

@@ -90,7 +90,7 @@ Consider `coins = [1,2,3,4,5]`, `maxJump = 2`.
 3. `i = 2`: jumps to `j=3` (cost 3+9=12) and `j=4` (cost 3+5=8). Choose smaller → `dp[2]=8`, `next[2]=4`.
 4. `i = 1`: jumps to `j=2` (2+8=10) and `j=3` (2+9=11) → pick `j=2` → `dp[1]=10`, `next[1]=2`.
 5. `i = 0`: jumps to `j=1` (1+10=11) and `j=2` (1+8=9) → pick `j=2` → `dp[0]=9`, `next[0]=2`.
-6. Reconstruct: start at 0 → 2 → 4 → end. Convert to 1‑indexed: `[1,3,5]`.
+6. Reconstruct: start at 0 → 2 → 4 → end. Convert to 1-indexed: `[1,3,5]`.
 
 ---
 
@@ -111,4 +111,4 @@ Consider `coins = [1,2,3,4,5]`, `maxJump = 2`.
 
 ## Key Takeaway
 
-> Reverse DP builds optimal costs from the end, and storing the next index enables reconstruction of the lexicographically smallest minimum‑cost path.
+> Reverse DP builds optimal costs from the end, and storing the next index enables reconstruction of the lexicographically smallest minimum-cost path.

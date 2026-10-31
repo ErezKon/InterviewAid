@@ -75,11 +75,11 @@ Consider `nums = [3,6,2,3]`:
 
 | Time | Space |
 |------|-------|
-| O(n log n) for sorting | O(1) extra (in‑place sort) |
+| O(n log n) for sorting | O(1) extra (in-place sort) |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if you needed to return the actual triangle sides?
 - Can you solve the problem in linear time using a counting sort for bounded integer ranges?

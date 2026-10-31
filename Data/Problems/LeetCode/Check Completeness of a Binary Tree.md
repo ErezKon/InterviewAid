@@ -31,7 +31,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a breadth‑first search (BFS). Enqueue nodes level by level. Once a `null` child is encountered, all subsequent nodes in the queue must also be `null`; otherwise the tree is not complete.
+Perform a breadth-first search (BFS). Enqueue nodes level by level. Once a `null` child is encountered, all subsequent nodes in the queue must also be `null`; otherwise the tree is not complete.
 
 ```text
 FUNCTION IsCompleteTree(root):
@@ -62,17 +62,17 @@ FUNCTION IsCompleteTree(root):
 | 5 | 5 | enqueue left(null), right(null) | false |
 | 6 | 6 | enqueue left(null), right(null) | false |
 | 7 | null | set seenNull true |
-| 8‑… | all remaining nodes are null | no violation |
+| 8-… | all remaining nodes are null | no violation |
 The algorithm returns `true`.
 
 ## Complexity Analysis
 - **Time:** O(n) – each node is visited once.
 - **Space:** O(n) – the queue may hold up to one level of nodes.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to work with a tree stored as an array (heap representation)?
-2. Can you determine completeness using only depth‑first traversal?
+2. Can you determine completeness using only depth-first traversal?
 3. What is the relationship between a complete binary tree and a binary heap?
 
 ## Key Takeaway
-A BFS that flags the first `null` child and then ensures no later non‑null nodes appear perfectly captures the definition of a complete binary tree.
+A BFS that flags the first `null` child and then ensures no later non-null nodes appear perfectly captures the definition of a complete binary tree.

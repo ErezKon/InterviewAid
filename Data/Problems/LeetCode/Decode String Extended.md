@@ -90,10 +90,10 @@ FUNCTION decodeString(s):
 - **Time:** O(n) where n is length of `s` – each character processed once.
 - **Space:** O(m) for the stack, where m is the maximum nesting depth.
 
-## Follow‑Up Questions
-- How would you modify the algorithm to support multi‑digit repeat counts?
+## Follow-Up Questions
+- How would you modify the algorithm to support multi-digit repeat counts?
 - Can you decode the string without using an explicit stack (e.g., recursion)?
 - How would you handle very large output sizes that exceed memory limits?
 
 ## Key Takeaway
-A stack of previous strings and repeat counts cleanly manages nested expansions, turning a complex recursive decoding problem into an iterative linear‑time solution.
+A stack of previous strings and repeat counts cleanly manages nested expansions, turning a complex recursive decoding problem into an iterative linear-time solution.

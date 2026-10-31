@@ -91,7 +91,7 @@ Donald did not have any rides, the distance traveled by him is 0.
 ```
 
 ## Approach
-Maintain a min‑heap of size three while iterating through the travellers. Insert each traveller into the heap; if the heap exceeds three elements, remove the smallest visit count. After processing, extract the heap contents and sort them descending to obtain the top travellers.
+Maintain a min-heap of size three while iterating through the travellers. Insert each traveller into the heap; if the heap exceeds three elements, remove the smallest visit count. After processing, extract the heap contents and sort them descending to obtain the top travellers.
 
 ```text
 FUNCTION TopTravellers(travellers):
@@ -114,7 +114,7 @@ For the list `[ {id:1,5}, {id:2,8}, {id:3,3}, {id:4,9} ]`:
 5. Extract all and sort descending → `[4,2,1]`.
 
 ## Complexity Analysis
-Time: O(n log k) where *k* = 3 (effectively O(n)). Space: O(k) = O(1) extra heap space.
+Time: O(n log k) where *k* = 3 (effectively O(n)). Space: O(k) = O(1) extra heap space.
 
 ## Follow-Up Questions
 * How would you generalize the solution to return the top *k* travellers for any *k*?
@@ -122,4 +122,4 @@ Time: O(n log k) where *k* = 3 (effectively O(n)). Space: O(k) = O(1) extra 
 * How would you handle ties in visit counts while preserving the original order?
 
 ## Key Takeaway
-A fixed‑size min‑heap efficiently tracks the best *k* elements during a single pass, yielding an O(n) solution for top‑k selection.
+A fixed-size min-heap efficiently tracks the best *k* elements during a single pass, yielding an O(n) solution for top-k selection.

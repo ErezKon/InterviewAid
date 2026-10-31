@@ -33,7 +33,7 @@ Given a **0-indexed** `m x n` binary matrix `grid` representing the farmland, re
 
 ---
 
-## 2. Approach: DP with Prefix Sums — O(m × n) ✅
+## 2. Approach: DP with Prefix Sums — O(m × n) ✅
 
 ```text
 FUNCTION countPyramids(grid):
@@ -93,14 +93,14 @@ For the first example:
 |------------|----------|--------|
 | (1,1) | 1 | Base of height 1 (single cell) |
 | (2,1) | 2 | Minimum of three cells above (1,0),(1,1),(1,2) is 1 → +1 |
-The contribution `dp-1` adds 1 pyramid of height 2. The same process on the reversed grid yields the inverse pyramid.
+The contribution `dp-1` adds 1 pyramid of height 2. The same process on the reversed grid yields the inverse pyramid.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(m × n) – each cell is visited a constant number of times.
-- **Space:** O(m × n) for the DP table (can be reduced to O(n) with rolling arrays).
+- **Time:** O(m × n) – each cell is visited a constant number of times.
+- **Space:** O(m × n) for the DP table (can be reduced to O(n) with rolling arrays).
 
 ---
 
@@ -114,4 +114,4 @@ The contribution `dp-1` adds 1 pyramid of height 2. The same process on the re
 
 ## Key Takeaway
 
-> DP captures the maximal pyramid height at each apex by looking at the three cells directly below (or above). Summing `height‑1` across the grid yields the total number of pyramids and inverse pyramids.
+> DP captures the maximal pyramid height at each apex by looking at the three cells directly below (or above). Summing `height-1` across the grid yields the total number of pyramids and inverse pyramids.

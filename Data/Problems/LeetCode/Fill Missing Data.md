@@ -62,7 +62,7 @@ FUNCTION fillMissingValues(products):
     RETURN products
 ```
 
-The `FILLNA` method operates column‑wise and runs in linear time relative to the number of rows.
+The `FILLNA` method operates column-wise and runs in linear time relative to the number of rows.
 
 ---
 
@@ -79,7 +79,7 @@ The `FILLNA` method operates column‑wise and runs in linear time relative to t
 | Aspect | Complexity |
 |--------|------------|
 | Time   | O(n) — one pass over all rows |
-| Space  | O(1) additional — operation is in‑place |
+| Space  | O(1) additional — operation is in-place |
 
 ---
 

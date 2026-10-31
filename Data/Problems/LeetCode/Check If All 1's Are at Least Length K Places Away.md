@@ -57,10 +57,10 @@ All gaps satisfy the condition, so return true.
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for a circular array where the end connects to the start?
 2. What if the array contained values other than 0/1 and you needed to enforce the distance rule for a specific value?
-3. Can you solve the problem using a sliding‑window technique?
+3. Can you solve the problem using a sliding-window technique?
 
 ## Key Takeaway
 A single linear scan tracking the previous `1` index is sufficient to verify the required minimum distance.

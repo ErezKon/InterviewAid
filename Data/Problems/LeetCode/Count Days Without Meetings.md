@@ -42,7 +42,7 @@ Example 3:
 ```
 
 ## Approach
-Sort the intervals by start time and merge overlapping ones while tracking the end of the last merged interval. For each gap between the previous end and the next start, add the length of the gap to the free‑day count. After processing all intervals, add the remaining days after the last meeting.
+Sort the intervals by start time and merge overlapping ones while tracking the end of the last merged interval. For each gap between the previous end and the next start, add the length of the gap to the free-day count. After processing all intervals, add the remaining days after the last meeting.
 
 ### Pseudocode
 ```text
@@ -66,9 +66,9 @@ Consider `days = 10, meetings = [[1,2],[4,7],[9,10]]`.
 |------|-------|------------|------------|---------|
 | Init | - | 0 | 0 | 0 |
 | Interval [1,2] | 1 | 0 | 0 (1 ≤ 0+1) | 2 |
-| Interval [4,7] | 4 | 2 | 4‑2‑1 = 1 (day 3) | 7 |
-| Interval [9,10] | 9 | 7 | 9‑7‑1 = 1 (day 8) | 10 |
-| After loop | - | 10 | 10‑10 = 0 | - |
+| Interval [4,7] | 4 | 2 | 4-2-1 = 1 (day 3) | 7 |
+| Interval [9,10] | 9 | 7 | 9-7-1 = 1 (day 8) | 10 |
+| After loop | - | 10 | 10-10 = 0 | - |
 Total free days = 1+1 = 2.
 
 ## Complexity Analysis

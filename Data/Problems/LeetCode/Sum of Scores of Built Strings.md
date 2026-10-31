@@ -78,7 +78,7 @@ Explanation: Scores are 1,2,3,4 → sum = 10.
 </details>
 
 ## Approach
-The score of each prefix corresponds to the length of the longest prefix of `s` that also appears starting at that position – exactly the definition of the **Z‑function**. Computing the Z‑array for `s` in linear time gives the score for every prefix (except the first, which contributes `n`). The answer is `n + Σ Z[i]` for `i = 1 … n‑1`.
+The score of each prefix corresponds to the length of the longest prefix of `s` that also appears starting at that position – exactly the definition of the **Z-function**. Computing the Z-array for `s` in linear time gives the score for every prefix (except the first, which contributes `n`). The answer is `n + Σ Z[i]` for `i = 1 … n-1`.
 
 ### Pseudocode
 ```text
@@ -110,13 +110,13 @@ Consider `s = "zzzz"`:
 Sum = n (4) + 3 + 2 + 1 = 10.
 
 ## Complexity Analysis
-- **Time:** `O(n)` – single pass Z‑algorithm.
-- **Space:** `O(n)` for the Z‑array (can be reduced to `O(1)` with on‑the‑fly accumulation).
+- **Time:** `O(n)` – single pass Z-algorithm.
+- **Space:** `O(n)` for the Z-array (can be reduced to `O(1)` with on-the-fly accumulation).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the scores for each prefix individually?
 2. Can the same technique be applied to compute the sum of prefix function (KMP) values?
-3. How would you handle the problem if the definition of score used the longest *proper* prefix‑suffix?
+3. How would you handle the problem if the definition of score used the longest *proper* prefix-suffix?
 
 ## Key Takeaway
-The Z‑algorithm transforms the “longest prefix‑suffix for every prefix” problem into a linear‑time computation, allowing the sum of scores to be obtained by a simple accumulation of the Z‑array.
+The Z-algorithm transforms the “longest prefix-suffix for every prefix” problem into a linear-time computation, allowing the sum of scores to be obtained by a simple accumulation of the Z-array.

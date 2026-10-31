@@ -50,7 +50,7 @@ Example 1:
 ```
 
 ## Approach
-The query groups rows by `actor_id` and `director_id` and keeps only those groups whose count is ≥ 3.
+The query groups rows by `actor_id` and `director_id` and keeps only those groups whose count is ≥ 3.
 
 ### SQL Query
 ```sql
@@ -68,12 +68,12 @@ HAVING COUNT(*) >= 3;
 
 ## Complexity Analysis
 - **Time Complexity:** O(N) – the database scans each row once.
-- **Space Complexity:** O(G) – where G is the number of distinct actor‑director pairs that satisfy the condition (output size).
+- **Space Complexity:** O(G) – where G is the number of distinct actor-director pairs that satisfy the condition (output size).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the query to also return the number of collaborations for each qualifying pair?
 - How can you index the table to make this query faster on large datasets?
 - Extend the problem to find pairs that collaborated **exactly** *k* times, where *k* is a parameter.
 
 ## Key Takeaway
-A simple `GROUP BY … HAVING COUNT(*) >= 3` pattern efficiently extracts actor‑director pairs with at least three collaborations.
+A simple `GROUP BY … HAVING COUNT(*) >= 3` pattern efficiently extracts actor-director pairs with at least three collaborations.

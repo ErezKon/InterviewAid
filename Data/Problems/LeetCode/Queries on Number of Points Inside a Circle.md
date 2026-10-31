@@ -47,7 +47,7 @@ queries[0] is green, queries[1] is red, queries[2] is blue, and queries[3] is pu
 ```
 
 ## Approach
-For each query, iterate over all points and check the Euclidean distance squared to avoid floating‑point errors: a point `(px,py)` is inside the circle if `(px‑x)^2 + (py‑y)^2 ≤ r^2`. This yields O(Q·P) time where Q is number of queries and P is number of points. For larger inputs, a spatial index (e.g., KD‑Tree) can reduce the complexity, but the straightforward method satisfies the constraints.
+For each query, iterate over all points and check the Euclidean distance squared to avoid floating-point errors: a point `(px,py)` is inside the circle if `(px-x)^2 + (py-y)^2 ≤ r^2`. This yields O(Q·P) time where Q is number of queries and P is number of points. For larger inputs, a spatial index (e.g., KD-Tree) can reduce the complexity, but the straightforward method satisfies the constraints.
 
 ```text
 FUNCTION countPointsInsideCircle(points, queries):
@@ -77,7 +77,7 @@ FUNCTION countPointsInsideCircle(points, queries):
 - **Space:** O(1) extra besides the output list.
 
 ## Follow-Up Questions
-1. How would you accelerate queries using a KD‑Tree or Quad‑Tree?
+1. How would you accelerate queries using a KD-Tree or Quad-Tree?
 2. Can you answer queries online if points are added dynamically?
 3. How would you modify the solution to count points strictly inside (excluding the boundary)?
 

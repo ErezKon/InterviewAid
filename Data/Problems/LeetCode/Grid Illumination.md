@@ -108,7 +108,7 @@ Example 3:
 
 ## 5. Walkthrough
 
-1. Initialize counters for rows, columns, main diagonal (r‑c), and anti‑diagonal (r＋c).
+1. Initialize counters for rows, columns, main diagonal (r-c), and anti-diagonal (r＋c).
 2. Populate counters from the initial lamp list.
 3. For each query:
    - Check illumination by looking up the four counters.
@@ -120,19 +120,19 @@ Example 3:
 
 ## 6. Complexity Analysis
 
-- **Time:** O(L + Q) where L = number of lamps, Q = number of queries. Each lamp is processed once, each query does O(1) illumination check plus up to 9 constant‑time removals.
+- **Time:** O(L + Q) where L = number of lamps, Q = number of queries. Each lamp is processed once, each query does O(1) illumination check plus up to 9 constant-time removals.
 - **Space:** O(L) for storing lamp positions and the four hash maps.
 
 ---
 
 ## 7. Follow-Up Questions
 
-1. How would you adapt the solution for a toroidal (wrap‑around) grid?
+1. How would you adapt the solution for a toroidal (wrap-around) grid?
 2. Can the approach be extended to support dynamic addition of lamps after queries?
-3. What if illumination also included knight‑move cells?
+3. What if illumination also included knight-move cells?
 
 ---
 
 ## 8. Key Takeaway
 
-> Use **four hash maps** (row, column, main diagonal, anti‑diagonal) to maintain illumination counts, enabling O(1) per‑query checks and O(1) lamp deactivations.
+> Use **four hash maps** (row, column, main diagonal, anti-diagonal) to maintain illumination counts, enabling O(1) per-query checks and O(1) lamp deactivations.

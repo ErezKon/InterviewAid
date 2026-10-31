@@ -30,7 +30,7 @@ Output: [3.00000,14.50000,11.00000]
 ```
 
 ## Approach
-Perform a breadth‑first search (BFS). For each level, sum node values and divide by the number of nodes.
+Perform a breadth-first search (BFS). For each level, sum node values and divide by the number of nodes.
 
 ```text
 FUNCTION averageOfLevels(root):
@@ -61,10 +61,10 @@ Result `[3.0,14.5,11.0]`.
 - **Time:** O(n) where n is number of nodes (each visited once).
 - **Space:** O(w) where w is the maximum width of the tree (queue size).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the averages without using extra space for the queue (e.g., using recursion)?
 2. Can you modify the algorithm to return the median of each level instead of the average?
 3. What if the tree is extremely deep—how does recursion depth affect the solution?
 
 ## Key Takeaway
-A level‑order BFS naturally groups nodes by depth, allowing straightforward computation of per‑level averages.
+A level-order BFS naturally groups nodes by depth, allowing straightforward computation of per-level averages.

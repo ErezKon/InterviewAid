@@ -55,10 +55,10 @@ For the first example, the algorithm counts the cells (0,0), (0,2), and (2,0) as
 *Time*: O(m·n) – each cell visited once.
 *Space*: O(1) – only a few counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to handle boards where ships may touch diagonally?
 2. Can you compute the count in a single pass without storing the board dimensions explicitly?
 3. What changes are needed if ships can be of arbitrary shape (not just straight lines)?
 
 ## Key Takeaway
-Counting only the top‑left cell of each ship provides a constant‑space solution by leveraging the non‑adjacency guarantee.
+Counting only the top-left cell of each ship provides a constant-space solution by leveraging the non-adjacency guarantee.

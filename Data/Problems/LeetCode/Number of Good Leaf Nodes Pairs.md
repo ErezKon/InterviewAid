@@ -83,15 +83,15 @@ Explanation: The only good pair is [2,5].
 
 ## Walkthrough
 
-Consider Example 1. The tree structure:
-- Leaf 4 is at depth 2 from node 2.
-- Leaf 5 is at depth 2 from node 3.
-At the root, left distances = [2] (from leaf 4) and right distances = [2] (from leaf 5).
+Consider Example 1. The tree structure:
+- Leaf 4 is at depth 2 from node 2.
+- Leaf 5 is at depth 2 from node 3.
+At the root, left distances = [2] (from leaf 4) and right distances = [2] (from leaf 5).
 - Combine 2 + 2 = 4 > 3 → not counted.
-When processing node 2, its left child is null, right child leaf 4 returns [1].
+When processing node 2, its left child is null, right child leaf 4 returns [1].
 - No pair formed.
-Processing node 3 similarly yields [1] from leaf 5.
-Finally, at root, after pruning distances ≥ distance, we keep [2] from both sides and count the pair (4,5) as distance 3 (2+1 from root to each leaf). The algorithm increments result to 1.
+Processing node 3 similarly yields [1] from leaf 5.
+Finally, at root, after pruning distances ≥ distance, we keep [2] from both sides and count the pair (4,5) as distance 3 (2+1 from root to each leaf). The algorithm increments result to 1.
 
 ---
 
@@ -106,4 +106,4 @@ Finally, at root, after pruning distances ≥ distance, we keep [2] from both si
 
 ## 5. Key Takeaway
 
-> **Post-order merging of leaf distances.** At each node, cross‑pair left and right distances. Prune lists to keep only distances < limit. Distance is bounded, keeping lists small.
+> **Post-order merging of leaf distances.** At each node, cross-pair left and right distances. Prune lists to keep only distances < limit. Distance is bounded, keeping lists small.

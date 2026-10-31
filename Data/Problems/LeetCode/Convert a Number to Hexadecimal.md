@@ -53,13 +53,13 @@ FUNCTION toHex(num):
 | 2 | 1 | 1 | 1 | "1a" | 0 |
 
 ## Complexity Analysis
-- **Time:** O(k) where k is the number of hex digits (≤ 8 for 32‑bit integers).
+- **Time:** O(k) where k is the number of hex digits (≤ 8 for 32-bit integers).
 - **Space:** O(k) for the output string.
 
-## Follow‑Up Questions
-1. How would you adapt the solution for 64‑bit integers?
+## Follow-Up Questions
+1. How would you adapt the solution for 64-bit integers?
 2. Can you implement the conversion without using a lookup string?
 3. How would you handle uppercase hexadecimal output?
 
 ## Key Takeaway
-Extracting 4‑bit groups with bitwise operations yields a simple, constant‑time conversion from integer to hexadecimal.
+Extracting 4-bit groups with bitwise operations yields a simple, constant-time conversion from integer to hexadecimal.

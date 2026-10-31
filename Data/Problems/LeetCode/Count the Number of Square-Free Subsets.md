@@ -88,7 +88,7 @@ Consider `nums = [3,4,5]`.
 5. Process `5` (mask 0100):
    - From state `0000`: `dp[0100] += dp[0000] → 1`.
    - From state `0010`: `dp[0110] += dp[0010] → 1`.
-6. Final dp non‑zero states: `0010,0100,0110` → three subsets `{3},{5},{3,5}`.
+6. Final dp non-zero states: `0010,0100,0110` → three subsets `{3},{5},{3,5}`.
 7. Subtract empty subset → answer `3`.
 
 ---
@@ -112,4 +112,4 @@ Consider `nums = [3,4,5]`.
 
 ## Key Takeaway
 
-> **Square‑free product = no prime appears twice. With values ≤ 30 only ten primes matter, so a bitmask DP on prime usage efficiently counts valid subsets.**
+> **Square-free product = no prime appears twice. With values ≤ 30 only ten primes matter, so a bitmask DP on prime usage efficiently counts valid subsets.**

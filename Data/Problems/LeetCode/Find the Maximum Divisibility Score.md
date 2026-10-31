@@ -100,4 +100,4 @@ Result is 2.
 
 ## 6. Key Takeaway
 
-> Simple brute force: for each divisor, count divisible elements. Sort divisors first to auto‑handle the tie‑breaking (smallest divisor wins).
+> Simple brute force: for each divisor, count divisible elements. Sort divisors first to auto-handle the tie-breaking (smallest divisor wins).

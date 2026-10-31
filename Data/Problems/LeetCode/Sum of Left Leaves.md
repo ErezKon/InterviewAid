@@ -32,7 +32,7 @@ Output: 0
 ```
 
 ## Approach
-Use a depth‑first traversal. For each node, check if its left child is a leaf; if so, add its value to the sum.
+Use a depth-first traversal. For each node, check if its left child is a leaf; if so, add its value to the sum.
 Otherwise, recurse on both children.
 
 ```text
@@ -60,7 +60,7 @@ Total sum = 9.
 Time: O(n) where n is number of nodes.
 Space: O(h) recursion stack, h = tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you solve it iteratively using a stack?
 - How to compute the sum of right leaves?
 - Extend to sum of leaves at even depths.

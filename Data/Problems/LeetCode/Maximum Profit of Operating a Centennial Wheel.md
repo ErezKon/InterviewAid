@@ -65,7 +65,7 @@ The profit was never positive, so return -1.
 
 ## Approach
 **Greedy – Kadane’s algorithm**
-The maximum sum sub‑array can be found in linear time by maintaining a running sum and resetting it when it becomes negative.
+The maximum sum sub-array can be found in linear time by maintaining a running sum and resetting it when it becomes negative.
 
 ### Pseudocode
 ```text
@@ -93,10 +93,10 @@ The final `maxSoFar` is 8.
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to also return the start and end indices of the optimal window?
-2. What if you are allowed to pick at most two non‑overlapping windows?
+2. What if you are allowed to pick at most two non-overlapping windows?
 3. How does the solution change if the wheel must run for at least `k` minutes?
 
 ## Key Takeaway
-Kadane’s algorithm efficiently finds the maximum‑sum contiguous sub‑array by greedily extending the current window only when it improves the total.
+Kadane’s algorithm efficiently finds the maximum-sum contiguous sub-array by greedily extending the current window only when it improves the total.

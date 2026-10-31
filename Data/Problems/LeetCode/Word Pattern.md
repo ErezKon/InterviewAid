@@ -108,4 +108,4 @@ All checks pass → `true`.
 
 ## Key Takeaway
 
-> Bijection checking requires two maps (or a map + a set). One‑directional mapping misses cases like pattern="ab", s="dog dog".
+> Bijection checking requires two maps (or a map + a set). One-directional mapping misses cases like pattern="ab", s="dog dog".

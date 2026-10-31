@@ -95,4 +95,4 @@ Note that you did not use your armor ability.
 
 ## Key Takeaway
 
-> Use the one‑time shield on the highest damage level — simple greedy since the shield's value is maximized on the largest single hit.
+> Use the one-time shield on the highest damage level — simple greedy since the shield's value is maximized on the largest single hit.

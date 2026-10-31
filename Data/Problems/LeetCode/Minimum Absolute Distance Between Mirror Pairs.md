@@ -76,10 +76,10 @@ Result = 3.
 - **Time:** `O(n)` – one pass over the string.
 - **Space:** `O(σ)` where σ is the alphabet size (constant for lowercase letters).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if mirror pairs required characters to be different but positioned symmetrically?
 2. Can you adapt the algorithm to return all mirror pairs within a given distance threshold?
 3. What modifications are needed if the string contains Unicode characters with large alphabets?
 
 ## Key Takeaway
-Tracking the most recent occurrence of each character enables a linear‑time solution to find the smallest mirror‑pair distance.
+Tracking the most recent occurrence of each character enables a linear-time solution to find the smallest mirror-pair distance.

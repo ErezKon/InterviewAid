@@ -67,7 +67,7 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Sort the array and use two‑pointer technique. While `lo < hi`, compute `(nums[lo] + nums[hi]) / 2` and keep the smallest value. Increment `lo` and decrement `hi` after each pair.
+**Algorithm:** Sort the array and use two-pointer technique. While `lo < hi`, compute `(nums[lo] + nums[hi]) / 2` and keep the smallest value. Increment `lo` and decrement `hi` after each pair.
 
 Pseudocode:
 ```text
@@ -98,12 +98,12 @@ For `nums = [7,1,5,3]`:
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sort + two‑pointers | O(n log n) | O(1) |
+| Sort + two-pointers | O(n log n) | O(1) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you solve the problem if you could only use O(1) extra space and the array is read‑only?
+1. How would you solve the problem if you could only use O(1) extra space and the array is read-only?
 2. Can you extend the method to return the pair that yields the minimum average instead of just the value?
 3. What changes are needed if the average should be rounded up to the nearest integer?
 ---

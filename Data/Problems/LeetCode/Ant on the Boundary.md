@@ -72,10 +72,10 @@ Result = 2.
 - **Time:** O(n) where n = length of `nums`.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to count returns to any target position `t`?
 2. Can you handle a stream of moves without storing the entire array?
-3. What if the ant moves in a 2‑D grid and must return to the origin?
+3. What if the ant moves in a 2-D grid and must return to the origin?
 
 ## Key Takeaway
-A simple prefix‑sum scan efficiently counts how often the cumulative displacement returns to zero.
+A simple prefix-sum scan efficiently counts how often the cumulative displacement returns to zero.

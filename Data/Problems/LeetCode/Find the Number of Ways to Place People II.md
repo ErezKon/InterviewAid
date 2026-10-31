@@ -96,7 +96,7 @@ FUNCTION numberOfPairs(points):
 Take points `[[0,0],[1,2],[2,1],[3,3]]`.
 1. After sorting: `[(0,0),(1,2),(2,1),(3,3)]`.
 2. For `i=0` (point (0,0)), scan j:
-   - j=1: y=2 > 0 → not a lower‑right candidate.
+   - j=1: y=2 > 0 → not a lower-right candidate.
    - j=2: y=1 > 0 → not candidate.
    - j=3: y=3 > 0 → not candidate.
    No pairs from i=0.
@@ -113,13 +113,13 @@ Continue similarly for remaining i to obtain total valid pairs.
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(n²) — double loop after sorting |
-| **Space** | O(1) extra (in‑place sort) |
+| **Space** | O(1) extra (in-place sort) |
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you handle `n` up to 10⁵? (Consider sweep line with segment tree.)
+- How would you handle `n` up to 10⁵? (Consider sweep line with segment tree.)
 - What if points can share the same x or y coordinate?
 - Can the problem be extended to count unordered pairs only?
 

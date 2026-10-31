@@ -75,8 +75,8 @@ FUNCTION numberOfAlternatingGroups(colors, k):
 - **Time:** O(n) – each element examined at most twice.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm for a non‑binary alphabet?
+## Follow-Up Questions
+1. How would you modify the algorithm for a non-binary alphabet?
 2. Can you compute the answer for all possible `k` values in a single pass?
 3. What if the array is not circular?
 

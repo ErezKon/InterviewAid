@@ -59,13 +59,13 @@ Example 3:
 
 ---
 
-## Approach: Union‑Find — O(P + N)
+## Approach: Union-Find — O(P + N)
 
 ```text
 FUNCTION areSentencesSimilarTwo(sentence1, sentence2, similarPairs):
     IF LENGTH(sentence1) ≠ LENGTH(sentence2):
         RETURN false
-    // Build Union‑Find structure for all words
+    // Build Union-Find structure for all words
     uf ← NEW UnionFind()
     FOR each pair [a, b] IN similarPairs:
         uf.union(a, b)
@@ -83,7 +83,7 @@ FUNCTION areSentencesSimilarTwo(sentence1, sentence2, similarPairs):
 
 ## Walkthrough
 
-| Index | word1 | word2 | Same? | Union‑Find Check |
+| Index | word1 | word2 | Same? | Union-Find Check |
 |------|-------|-------|-------|------------------|
 | 0 | great | fine | No | great ↔ good ↔ fine → connected → true |
 | 1 | acting | drama | No | acting ↔ drama → connected → true |
@@ -95,14 +95,14 @@ All positions pass, so the sentences are similar.
 
 ## Complexity Analysis
 
-- **Time:** O(P + N) – building unions for P pairs and checking N word positions.
-- **Space:** O(P) – Union‑Find parent map for distinct words.
+- **Time:** O(P + N) – building unions for P pairs and checking N word positions.
+- **Space:** O(P) – Union-Find parent map for distinct words.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you handle case‑insensitive word comparison?
+1. How would you handle case-insensitive word comparison?
 2. Can you solve it without extra space by using a hashmap of equivalence classes?
 3. What if the similarity relation were not transitive – how would the algorithm change?
 
@@ -110,4 +110,4 @@ All positions pass, so the sentences are similar.
 
 ## Key Takeaway
 
-> Transitive word similarity can be modeled as connected components in an undirected graph; Union‑Find efficiently builds and queries these components.
+> Transitive word similarity can be modeled as connected components in an undirected graph; Union-Find efficiently builds and queries these components.

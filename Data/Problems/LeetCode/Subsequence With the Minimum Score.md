@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an unrelated array problem. Correct idea: since only `left`/`right` matter, remove the whole block `t[left..right]`. Compute `pre[i]` = smallest index in `s` such that `t[0..i]` is a subsequence of `s[0..pre[i]]`, and `suf[j]` = largest index in `s` such that `t[j..]` is a subsequence of `s[suf[j]..]`; then with two pointers (or binary search) find the minimum `j − i − 1` over pairs with `pre[i] < suf[j]` (including empty prefix/suffix). O(n + m).*
-
 You are given two strings `s` and `t`.
 
 You are allowed to remove any number of characters from the string `t`.
@@ -50,45 +48,67 @@ It can be proven that 3 is the minimum score that we can achieve.
 ```
 
 ## Approach
-The task is equivalent to finding the longest subarray whose sum equals `totalSum - x`. The remaining elements then have the minimum possible sum. Use a sliding window (two‑pointers) with a hash map of prefix sums to locate the longest qualifying subarray.
+The score depends only on `left` and `right`, so we may as well remove the whole block `t[left..right]`: what remains is a prefix `t[0..i]` and a suffix `t[j..m-1]` that must together be a subsequence of `s`. Match greedily from both ends:
+- `suf[j]` = the largest index in `s` such that `t[j..]` is a subsequence of `s[suf[j]..]` (greedy matching from the right; `suf[m] = n`, and `-1` if impossible).
+- Walking the prefix greedily from the left, let `p` be the index in `s` where `t[i]` is matched. The suffix `t[j..]` fits after it iff `suf[j] > p`.
+
+Because `p` only grows as `i` grows, the smallest valid `j` only moves right, so a two-pointer sweep finds the minimum `j − i − 1`. Also consider the empty prefix (remove `t[0..j-1]`, score `j`).
 
 ```text
-FUNCTION MinScoreSubsequence(nums, x):
-    SET total ← SUM(nums)
-    SET target ← total - x
-    IF target < 0:
-        RETURN -1
-    SET prefixMap ← map with {0: -1}
-    SET current ← 0
-    SET maxLen ← -1
-    FOR i FROM 0 TO LENGTH(nums)-1:
-        SET current ← current + nums[i]
-        IF (current - target) IN prefixMap:
-            SET length ← i - prefixMap[current - target]
-            SET maxLen ← MAX(maxLen, length)
-        IF current NOT IN prefixMap:
-            SET prefixMap[current] ← i
-    IF maxLen = -1:
-        RETURN -1
-    RETURN total - (maxLen * average?) // actually return total - sum of longest subarray = x? Simplify: RETURN total - (target subarray sum) = x? We'll return total - (target) = x? Need correct: RETURN total - (target) = x? Actually answer is total - (sum of longest subarray) = total - (target) = x, but we need minimum score = total - (maxLen subarray sum) = total - target = x. For clarity, RETURN total - (target) which equals x? We'll state RETURN total - (maxLen subarray sum) = total - target.
+FUNCTION MinimumScore(s, t):
+    SET n ← LENGTH(s), m ← LENGTH(t)
+    SET suf ← ARRAY of size m+1 filled with -1
+    SET suf[m] ← n
+    SET p ← n - 1
+    FOR j FROM m-1 DOWNTO 0:
+        WHILE p ≥ 0 AND s[p] ≠ t[j]: SET p ← p - 1
+        IF p < 0: BREAK
+        SET suf[j] ← p
+        SET p ← p - 1
+    SET j ← smallest index with suf[j] ≥ 0
+    SET best ← j                         // empty prefix: remove t[0..j-1]
+    IF best = 0: RETURN 0                // t is already a subsequence
+    SET p ← 0
+    FOR i FROM 0 TO m-1:
+        WHILE p < n AND s[p] ≠ t[i]: SET p ← p + 1
+        IF p = n: BREAK                  // prefix t[0..i] cannot be matched
+        SET j ← MAX(j, i + 1)
+        WHILE j < m AND suf[j] ≤ p: SET j ← j + 1
+        SET best ← MIN(best, j - i - 1)
+        SET p ← p + 1
+    RETURN best
 ```
 
 ## Walkthrough
-| Index | Num | Prefix Sum | Check `prefixSum - target` | Longest Length |
-|-------|-----|------------|---------------------------|----------------|
-| 0 | 1 | 1 | (1‑target) not found | - |
-| 1 | 1 | 2 | … | - |
-| 2 | 4 | 6 | … | updates maxLen |
-| … | … | … | … | … |
+`s = "abacaba"` (indices 0..6), `t = "bzaa"`.
+
+Suffix matching from the right:
+| j | t[j] | matched at s index | suf[j] |
+|---|------|--------------------|--------|
+| 4 | - | - | 7 |
+| 3 | a | 6 | 6 |
+| 2 | a | 4 | 4 |
+| 1 | z | not found | -1 |
+| 0 | b | (stopped) | -1 |
+
+Smallest `j` with `suf[j] ≥ 0` is 2 → `best = 2` (remove `"bz"`).
+
+Prefix sweep:
+| i | t[i] | p (match in s) | j after advancing | score `j − i − 1` | best |
+|---|------|----------------|-------------------|-------------------|------|
+| 0 | b | 1 | 2 (`suf[2] = 4 > 1`) | 1 | 1 |
+| 1 | z | not found → stop | - | - | 1 |
+
+Answer: 1 (remove only `t[1] = 'z'`), matching the expected output.
 
 ## Complexity Analysis
-- **Time:** O(n) – single pass with hash map look‑ups.
-- **Space:** O(n) – storing prefix sums.
+- **Time:** O(n + m) – each pointer moves monotonically.
+- **Space:** O(m) for the `suf` array.
 
 ## Follow-Up Questions
-- How would you adapt the solution if you could remove at most two non‑overlapping subarrays?
-- Can the algorithm be extended to handle negative numbers in the array?
-- What is the impact on complexity if you need to output the actual subarray to remove?
+- How would you return the actual `left` and `right` indices achieving the minimum?
+- Can you solve it with binary search on the answer plus a sliding-window check, and what is its complexity?
+- What if the score were the **number** of removed characters (not the span)? (It becomes a longest-common-subsequence problem.)
 
 ## Key Takeaway
-Transforming the problem into finding the longest subarray with a specific sum and applying a sliding‑window with prefix‑sum hashing yields an O(n) solution for the minimum‑score subsequence.
+When the cost depends only on the span of removals, remove a contiguous block; greedy prefix/suffix matching positions plus a monotone two-pointer sweep then solve it in linear time.

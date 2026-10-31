@@ -53,10 +53,10 @@ For `num1 = "1+1i"`, `num2 = "1+1i"`:
 4. Return `"0+2i"`.
 
 ## Complexity Analysis
-Time: O(1) – constant‑time parsing and arithmetic.
+Time: O(1) – constant-time parsing and arithmetic.
 Space: O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you extend the solution to handle multiplication of more than two complex numbers?
 - Can you perform the multiplication without explicit parsing, using regular expressions?
 - What changes are needed if the input format uses spaces, e.g., `"a + bi"`?

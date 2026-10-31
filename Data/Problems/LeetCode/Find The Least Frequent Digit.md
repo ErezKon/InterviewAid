@@ -37,7 +37,7 @@ Count occurrences of each digit using an array of size 10. After scanning, find 
 
 ```text
 FUNCTION leastFrequentDigit(num):
-    // Initialize count array for digits 0‑9
+    // Initialize count array for digits 0-9
     SET count[0..9] ← 0
     SET temp ← num
     IF temp == 0:
@@ -63,10 +63,10 @@ For `num = 123452`:
 Result `0`.
 
 ## Complexity Analysis
-- **Time:** O(L) where L is the number of digits in `num` (≤ 10 for 32‑bit integers).
+- **Time:** O(L) where L is the number of digits in `num` (≤ 10 for 32-bit integers).
 - **Space:** O(1) – constant array of 10 integers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend this to handle very large numbers given as strings?
 2. Can you return all digits that share the minimum frequency instead of just the smallest?
 3. What if the input is a list of numbers and you need the globally least frequent digit?

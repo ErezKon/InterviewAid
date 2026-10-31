@@ -49,7 +49,7 @@ Example 2:
 ```
 
 ## Approach
-Use a depth‑first search that carries the cumulative sum from the root to the current node.
+Use a depth-first search that carries the cumulative sum from the root to the current node.
 
 1. Start DFS at the root with `currentSum = 0`.
 2. At each node, update `currentSum ← currentSum + node.val`.
@@ -59,18 +59,18 @@ Use a depth‑first search that carries the cumulative sum from the root to the 
 
 ## Walkthrough
 For the first example, the DFS explores paths:
-- 1 → 0 → 1 (sum = 2) → count++
-- 1 → 1 → 0 (sum = 2) → count++
-All other paths have sums ≠ 2.
+- 1 → 0 → 1 (sum = 2) → count++
+- 1 → 1 → 0 (sum = 2) → count++
+All other paths have sums ≠ 2.
 
 ## Complexity Analysis
 - Time: O(N) – each node visited once.
-- Space: O(H) – recursion stack height `H` ≤ tree height (≤ log N for balanced, O(N) worst case).
+- Space: O(H) – recursion stack height `H` ≤ tree height (≤ log N for balanced, O(N) worst case).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for trees with arbitrary integer values?
 2. Can you solve the problem iteratively using an explicit stack?
 3. What changes are needed if paths can start at any node, not just the root?
 
 ## Key Takeaway
-A simple DFS that propagates a running sum efficiently counts qualifying root‑to‑leaf paths in a binary tree.
+A simple DFS that propagates a running sum efficiently counts qualifying root-to-leaf paths in a binary tree.

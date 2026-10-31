@@ -89,7 +89,7 @@ For `nums = [5,1,4,2,3]`:
 | Single scan | O(n) | O(1) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the array could be rotated instead of using swaps?
 2. Can you extend the method to handle multiple minima or maxima and require them all at the ends?

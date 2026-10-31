@@ -104,7 +104,7 @@ Hence, answer[1] = 1, answer[2] = 1, and the remaining values are 0.
 ## 6. Follow-Up Questions
 
 - How would you modify the solution to handle a stream of logs where the total number is unknown?
-- Can you compute the answer using only O(k) additional space without storing per‑user sets?
+- Can you compute the answer using only O(k) additional space without storing per-user sets?
 
 ---
 

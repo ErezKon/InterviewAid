@@ -77,7 +77,7 @@ Output: [2,0,1]
 1. Compute length = 5, tail = 5.
 2. k = 2 % 5 = 2.
 3. Connect tail.next to head → circular list.
-4. New tail is at position `length - k - 1 = 2` (0‑based), node with value 3.
+4. New tail is at position `length - k - 1 = 2` (0-based), node with value 3.
 5. New head = newTail.next → node 4.
 6. Break circle: set newTail.next = null.
 7. Resulting list: 4→5→1→2→3.

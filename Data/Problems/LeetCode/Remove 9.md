@@ -38,15 +38,15 @@ Output: 11
 
 ## Walkthrough
 Consider `"1923"`:
-1. Index 0: `1` → not `9`.
-2. Index 1: `9` and next digit `2` < `9` → remove this `9`.
+1. Index 0: `1` → not `9`.
+2. Index 1: `9` and next digit `2` < `9` → remove this `9`.
 3. Remaining characters: `1 2 3` → result `923`.
 
 ## Complexity Analysis
 - **Time:** O(n) where n is the length of the string.
-- **Space:** O(1) additional space (output can be built in‑place).
+- **Space:** O(1) additional space (output can be built in-place).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle removal of any digit to maximize the number?
 - What if you could remove up to k digits?
 - Extend to binary representation and remove a `1`.

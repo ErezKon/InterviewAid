@@ -99,7 +99,7 @@ Consider the tree `5(2(1,0),3(0,1))`:
 |------|-------|
 | O(n) | O(h) — recursion depth where *h* is tree height |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 * How would you adapt the solution for trees with more than two children?
 * Can you extend the DP to return the actual set of leaves to flip?

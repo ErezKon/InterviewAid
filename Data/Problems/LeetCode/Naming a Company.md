@@ -96,7 +96,7 @@ Consider `ideas = ["coffee","donuts","time","toffee"]`.
 | Next pair (t & d) | {"ime","offee"} | {"onuts"} | 0 | 2 * (2-0)*(1-0) = 4 |
 | Total | — | — | — | 2 + 4 = 6 |
 
-The algorithm counts valid swaps for each pair of first‑letter groups, subtracting the suffixes that appear in both groups because they would create collisions.
+The algorithm counts valid swaps for each pair of first-letter groups, subtracting the suffixes that appear in both groups because they would create collisions.
 
 ---
 
@@ -112,11 +112,11 @@ The algorithm counts valid swaps for each pair of first‑letter groups, subtrac
 ## 6. Follow-Up Questions
 
 1. How would you adapt the solution if the alphabet were Unicode characters beyond 26 letters?
-2. Can you compute the answer using bit‑mask representations for each suffix to speed up intersections?
+2. Can you compute the answer using bit-mask representations for each suffix to speed up intersections?
 3. How does the approach change if you must output the actual valid company names instead of just the count?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Group by first letter and count non‑overlapping suffixes.** The exclusion of common suffixes between two groups ensures swapped names remain unique.
+> **Group by first letter and count non-overlapping suffixes.** The exclusion of common suffixes between two groups ensures swapped names remain unique.

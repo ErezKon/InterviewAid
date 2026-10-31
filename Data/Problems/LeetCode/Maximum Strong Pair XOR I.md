@@ -53,7 +53,7 @@ The condition `nums[i] & nums[j] == nums[i]` means all set bits of `nums[i]` are
 1. Sort the array in descending order. Larger numbers are more likely to contain the bits of smaller numbers.
 2. Iterate over each element as a potential `nums[i]`. For each, scan later elements (smaller or equal) to find the first `nums[j]` where `nums[i] & nums[j] == nums[j]` (i.e., `nums[j]` is a subset of `nums[i]`).
 3. Compute XOR and keep the maximum.
-Because the array size is limited (≤ 10⁵) and each number fits in 30 bits, a trie of bits can be used to find the best partner in `O(30)` per element.
+Because the array size is limited (≤ 10⁵) and each number fits in 30 bits, a trie of bits can be used to find the best partner in `O(30)` per element.
 
 ```text
 FUNCTION maxStrongPairXOR(nums):
@@ -109,10 +109,10 @@ Take `nums = [0,1,2,3]`.
 *Time*: Building the trie `O(n·B)` and each query `O(B)`, where `B = 31` (bits). Overall `O(n·B)` ≈ `O(n)`.
 *Space*: Trie stores at most `n·B` nodes → `O(n·B)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the strong pair condition were `nums[i] | nums[j] == nums[j]`?
-2. Can you solve the problem without a trie, using sorting and bit‑mask checks?
+2. Can you solve the problem without a trie, using sorting and bit-mask checks?
 3. How would you extend the approach to return the pair of indices, not just the XOR value?
 
 ## Key Takeaway
-A bitwise‑subset relationship lets us use a binary trie to efficiently locate the partner that maximizes XOR while respecting the strong‑pair constraint.
+A bitwise-subset relationship lets us use a binary trie to efficiently locate the partner that maximizes XOR while respecting the strong-pair constraint.

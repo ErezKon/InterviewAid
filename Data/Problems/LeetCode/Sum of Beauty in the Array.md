@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented subarray problem. Correct idea: precompute `prefixMax[i]` (max of `nums[0..i-1]`) and `suffixMin[i]` (min of `nums[i+1..]`); for each middle index add 2 if `prefixMax < nums[i] < suffixMin`, else 1 if `nums[i-1] < nums[i] < nums[i+1]`. O(n).*
-
 You are given a **0-indexed** integer array `nums`. For each index `i` (`1 <= i <= nums.length - 2`) the **beauty** of `nums[i]` equals:
 
 - `2`, if `nums[j] < nums[i] < nums[k]`, for **all** `0 <= j < i` and for **all** `i < k <= nums.length - 1`.
@@ -50,23 +48,43 @@ Explanation: For each index i in the range 1 <= i <= 1:
 ```
 
 ## Approach
-The condition can be checked by scanning each subarray and maintaining the current minimum and maximum. For each left index `i`, expand the right pointer `j` while tracking `min`, `max`, and whether a middle element falls between them. When the condition holds, add `max‑min` to the answer.
+Beauty 2 requires `nums[i]` to be greater than **every** element on its left and smaller than **every** element on its right, i.e. `max(nums[0..i-1]) < nums[i] < min(nums[i+1..n-1])`. Precompute the suffix minimum array once, keep a running prefix maximum while scanning left to right, and fall back to the local neighbour check for beauty 1.
+
+```text
+FUNCTION sumOfBeauties(nums):
+    n ← LENGTH(nums)
+    sufMin[n-1] ← nums[n-1]
+    FOR i ← n-2 DOWNTO 0:
+        sufMin[i] ← MIN(sufMin[i+1], nums[i])
+    preMax ← nums[0]          // max of nums[0..i-1]
+    ans ← 0
+    FOR i ← 1 TO n-2:
+        IF preMax < nums[i] AND nums[i] < sufMin[i+1]:
+            ans ← ans + 2
+        ELSE IF nums[i-1] < nums[i] AND nums[i] < nums[i+1]:
+            ans ← ans + 1
+        preMax ← MAX(preMax, nums[i])
+    RETURN ans
+```
 
 ## Walkthrough
-| i (left) | j (right) | min | max | middle‑exists? | added beauty |
-|----------|-----------|-----|-----|----------------|--------------|
-| 0 | 2 | 1 | 3 | yes (2) | 2 |
-| … | … | … | … | … | … |
-The final sum accumulates all contributions.
+Example 2: `nums = [2,4,6,4]`, `sufMin = [2,4,4,4]`.
+
+| i | nums[i] | preMax | sufMin[i+1] | global check | local check | beauty | ans |
+|---|---------|--------|-------------|--------------|-------------|--------|-----|
+| 1 | 4 | 2 | 4 | 2 < 4 < 4? No | 2 < 4 < 6? Yes | 1 | 1 |
+| 2 | 6 | 4 | 4 | 4 < 6 < 4? No | 4 < 6 < 4? No | 0 | 1 |
+
+Output: `1`.
 
 ## Complexity Analysis
-Time: O(n²) – each left index expands to the right while updating min/max.
-Space: O(1) extra.
+Time: O(n) – one backward pass for suffix minima and one forward pass.
+Space: O(n) for the suffix-minimum array.
 
 ## Follow-Up Questions
-* Can the solution be improved using monotonic stacks to achieve O(n log n) or O(n)?
-* How would the problem change if the beauty definition required the middle element to be the **median** of the subarray?
-* What if we need to return the count of subarrays with non‑zero beauty instead of the sum?
+* Can you avoid the suffix array by using a monotonic stack or by counting "record" positions?
+* How would you answer the beauty of an arbitrary index after point updates to the array (segment tree for range max/min)?
+* What if the conditions used non-strict inequalities?
 
 ## Key Takeaway
-Tracking min, max, and a qualifying middle element while expanding a window lets you compute each subarray's beauty in quadratic time.
+"Greater than everything to the left and smaller than everything to the right" reduces to comparing with a prefix maximum and a suffix minimum, which are computable in linear time.

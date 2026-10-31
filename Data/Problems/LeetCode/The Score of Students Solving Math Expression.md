@@ -62,7 +62,7 @@ Example 3:
 ```
 
 ## Approach
-1. Evaluate the arithmetic expression using a stack‑based Shunting‑Yard algorithm to handle operator precedence and parentheses, obtaining the correct integer result.
+1. Evaluate the arithmetic expression using a stack-based Shunting-Yard algorithm to handle operator precedence and parentheses, obtaining the correct integer result.
 2. Iterate over `answers` and award points based on the difference to the correct result.
 
 ```text
@@ -121,10 +121,10 @@ The helper `APPLY_TOP_OPERATOR` performs the arithmetic for the top operator.
 - **Time:** O(L) to evaluate the expression where L is its length, plus O(m) for scoring m answers.
 - **Space:** O(L) for operator and value stacks.
 
-## Follow‑Up Questions
-1. How would you modify the evaluator to support floating‑point numbers and rounding rules?
+## Follow-Up Questions
+1. How would you modify the evaluator to support floating-point numbers and rounding rules?
 2. Can the scoring be extended to give partial credit for answers off by more than 1 (e.g., quadratic penalty)?
 3. How would you handle very large expressions that exceed typical integer ranges?
 
 ## Key Takeaway
-Use a stack‑based evaluator to compute the exact result, then compare each student answer to award points based on proximity.
+Use a stack-based evaluator to compute the exact result, then compare each student answer to award points based on proximity.

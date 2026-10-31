@@ -69,10 +69,10 @@ All elements become zero after 3 operations.
 *Time*: O(n) – single pass.
 *Space*: O(n) – difference array of size n+1.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if operations could decrement instead of increment?
-2. Can you solve the problem using a sliding‑window without an explicit difference array?
+2. Can you solve the problem using a sliding-window without an explicit difference array?
 3. What if each operation has a cost proportional to the length of the subarray?
 
 ## Key Takeaway
-A difference array enables O(1) range updates, allowing a linear‑time greedy scan to compute the minimal number of operations.
+A difference array enables O(1) range updates, allowing a linear-time greedy scan to compute the minimal number of operations.

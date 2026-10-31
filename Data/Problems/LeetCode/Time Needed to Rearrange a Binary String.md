@@ -74,10 +74,10 @@ Result = 4 seconds.
 *Time*: O(n) – single pass over the string.
 *Space*: O(1) – only counters are used.
 
-## Follow‑Up Questions
-1. How would the solution change if multiple `01` replacements could be performed non‑simultaneously?
+## Follow-Up Questions
+1. How would the solution change if multiple `01` replacements could be performed non-simultaneously?
 2. Can you extend the algorithm to handle ternary strings with similar swap rules?
 3. What is the effect of processing the string from right to left?
 
 ## Key Takeaway
-Counting zeros and updating the required time with `max(previous+1, zeros)` yields a linear‑time solution for the simultaneous `01 → 10` transformation.
+Counting zeros and updating the required time with `max(previous+1, zeros)` yields a linear-time solution for the simultaneous `01 → 10` transformation.

@@ -40,7 +40,7 @@ Example 1:
 ```
 
 ## Approach
-Use **Breadth‑First Search (BFS)** to store nodes level‑order in an array. The parent of the next insertion is at index `(size‑2)//2`. Insertion is O(1) and retrieving the root is O(1).
+Use **Breadth-First Search (BFS)** to store nodes level-order in an array. The parent of the next insertion is at index `(size-2)//2`. Insertion is O(1) and retrieving the root is O(1).
 
 ```text
 FUNCTION initialize(root):
@@ -80,10 +80,10 @@ FUNCTION get_root(nodes):
 - **Time:** `O(1)` per `insert`, `O(n)` for initialization where `n` is number of existing nodes.
 - **Space:** `O(n)` to store the node list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the structure to support deletion while keeping the tree complete?
 2. Can you implement the same functionality without extra space, using only tree pointers?
-3. How would you adapt this for a **complete k‑ary tree**?
+3. How would you adapt this for a **complete k-ary tree**?
 
 ## Key Takeaway
-Maintaining a level‑order array of nodes lets you locate the insertion parent in constant time, enabling an efficient complete binary tree inserter.
+Maintaining a level-order array of nodes lets you locate the insertion parent in constant time, enabling an efficient complete binary tree inserter.

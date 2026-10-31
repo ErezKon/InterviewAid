@@ -63,7 +63,7 @@ The maximum value `3` occurs at `dp[3][3]`, representing subarray `[3,2,1]`.
 - **Space:** O(m·n) for the DP matrix (can be reduced to O(min(m,n)) with rolling arrays).
 
 ## Follow-Up Questions
-1. How would you solve the problem using binary search and rolling hash to achieve O((m+n)·log min(m,n)) time?
+1. How would you solve the problem using binary search and rolling hash to achieve O((m+n)·log min(m,n)) time?
 2. Can the solution be adapted to return the actual subarray, not just its length?
 3. How does the approach change if the arrays contain very large integers and memory is constrained?
 

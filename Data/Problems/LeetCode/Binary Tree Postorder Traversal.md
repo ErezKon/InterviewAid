@@ -35,7 +35,7 @@ Example 4:
 ```
 
 ## Approach
-Use an iterative depth‑first search with a stack. Perform a modified preorder traversal (node → right → left) and reverse the collected order to obtain postorder.
+Use an iterative depth-first search with a stack. Perform a modified preorder traversal (node → right → left) and reverse the collected order to obtain postorder.
 
 ```text
 FUNCTION postorderTraversal(root):
@@ -66,7 +66,7 @@ Consider the tree `[1,null,2,3]`:
 ## Follow-Up Questions
 - How would you implement postorder traversal recursively?
 - Can you perform postorder traversal with O(1) extra space using Morris traversal?
-- How does the algorithm change for an n‑ary tree?
+- How does the algorithm change for an n-ary tree?
 
 ## Key Takeaway
 Iterative postorder can be achieved by a reversed preorder (node → right → left) using a stack, then reversing the collected order.

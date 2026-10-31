@@ -38,7 +38,7 @@ Example 3:
 ```
 
 ## Approach
-Iterate through the bits from least‑significant to most‑significant, tracking the position of the last seen `1`. When a new `1` is encountered, compute the distance to the previous `1` and update the maximum gap.
+Iterate through the bits from least-significant to most-significant, tracking the position of the last seen `1`. When a new `1` is encountered, compute the distance to the previous `1` and update the maximum gap.
 
 ```text
 FUNCTION BinaryGap(n):
@@ -71,13 +71,13 @@ FUNCTION BinaryGap(n):
 The final `maxGap` is `2`.
 
 ## Complexity Analysis
-- **Time:** O(log n) – one iteration per binary digit.
+- **Time:** O(log n) – one iteration per binary digit.
 - **Space:** O(1) – only a few integer variables.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to return the start and end indices of the longest gap?
 2. Can you compute the binary gap for all numbers in a range `[L, R]` more efficiently than processing each individually?
-3. What is the effect of using a built‑in bit‑count operation on performance?
+3. What is the effect of using a built-in bit-count operation on performance?
 
 ## Key Takeaway
 Scanning bits while remembering the position of the previous `1` lets you compute the longest zero stretch in a single pass with constant space.

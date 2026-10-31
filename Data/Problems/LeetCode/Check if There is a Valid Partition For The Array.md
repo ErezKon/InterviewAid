@@ -73,12 +73,12 @@ Example 2:
 
 ## 4. Walkthrough
 
-Consider Example 1 (`nums = [4,4,4,5,6]`).
+Consider Example 1 (`nums = [4,4,4,5,6]`).
 | i | Subarray considered | Condition satisfied | dp[i] |
 |---|----------------------|---------------------|------|
 | 2 | `[4,4]` | two equal | true |
 | 3 | `[4,4,4]` | three equal (or `[4,4]` + `[4]` not allowed) | true |
-| 5 | `[4,5,6]` (indices 3‑5) | three consecutive | true |
+| 5 | `[4,5,6]` (indices 3-5) | three consecutive | true |
 The final `dp[5]` is true, indicating a valid partition.
 
 ---
@@ -92,4 +92,4 @@ The final `dp[5]` is true, indicating a valid partition.
 
 ## Key Takeaway
 
-> Linear DP where `dp[i]` indicates whether the prefix `nums[0..i-1]` can be partitioned. Evaluate all allowed partition endings (size 2 or 3) at each position.
+> Linear DP where `dp[i]` indicates whether the prefix `nums[0..i-1]` can be partitioned. Evaluate all allowed partition endings (size 2 or 3) at each position.

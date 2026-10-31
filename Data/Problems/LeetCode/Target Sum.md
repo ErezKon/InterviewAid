@@ -86,7 +86,7 @@ Consider Example 1: `nums = [1,1,1,1,1]`, `target = 3`.
 ## 6. Follow-Up Questions
 
 * How would you modify the solution if the numbers could be negative?
-* Can you solve the problem using memoized recursion instead of bottom‑up DP?
+* Can you solve the problem using memoized recursion instead of bottom-up DP?
 
 ---
 

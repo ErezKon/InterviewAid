@@ -94,7 +94,7 @@ Delete key `3` from `[5,3,6,2,4,null,7]`.
 ## Follow-Up Questions
 
 - How would you implement the deletion iteratively without recursion?
-- Can you delete a node in a self‑balancing BST (e.g., AVL or Red‑Black) while preserving balance?
+- Can you delete a node in a self-balancing BST (e.g., AVL or Red-Black) while preserving balance?
 - What changes are needed if the tree allows duplicate values?
 
 ---

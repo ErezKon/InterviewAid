@@ -79,7 +79,7 @@ Explanation: "the", "is", "sunny" and "day" are the four most frequent words, wi
 
 ## 4. Walkthrough
 
-Consider Example 1. Frequency map: {"i":2, "love":2, "leetcode":1, "coding":1}. We push each pair into a min‑heap of size k=2.
+Consider Example 1. Frequency map: {"i":2, "love":2, "leetcode":1, "coding":1}. We push each pair into a min-heap of size k=2.
 
 1. Push (2, "i") → heap [(2,"i")]
 2. Push (2, "love") → heap [(2,"i"), (2,"love")]
@@ -92,7 +92,7 @@ Heap now contains (2,"i") and (2,"love"). Popping yields ["love","i"], reverse �
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n log k) for building the heap, where n is number of words.
+- **Time:** O(n log k) for building the heap, where n is number of words.
 - **Space:** O(n) for the frequency map plus O(k) for the heap.
 
 ---
@@ -107,4 +107,4 @@ Heap now contains (2,"i") and (2,"love"). Popping yields ["love","i"], reverse �
 
 ## Key Takeaway
 
-> Min-heap of size k for top‑k problems. The tricky part is the custom comparator: for a min‑heap, invert the comparison so the "worst" candidate is at the top (ready to be evicted).
+> Min-heap of size k for top-k problems. The tricky part is the custom comparator: for a min-heap, invert the comparison so the "worst" candidate is at the top (ready to be evicted).

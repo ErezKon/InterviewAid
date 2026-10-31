@@ -51,7 +51,7 @@ The maximum XOR possible from these pairs is 500 XOR 520 = 1020 since the only o
 ## Approach
 The condition means `nums[i]` is a bitwise subset of `nums[j]`. To maximise XOR we need the partner with the most differing bits while still being a subset. A **bitwise trie** (binary prefix tree) lets us query, for each number, the best possible subset partner in `O(30)` time.
 1. Insert all numbers into a binary trie.
-2. For each `num`, traverse the trie from the most‑significant bit to the least:
+2. For each `num`, traverse the trie from the most-significant bit to the least:
    * If the current bit of `num` is `1`, we may move to the `0` child (different bit → larger XOR) **provided** the subtree only contains numbers that are subsets of `num` (i.e., they never have a `1` where `num` has `0`).
    * Otherwise we must follow the child matching `num`'s bit.
 3. Keep the maximum XOR found.
@@ -100,7 +100,7 @@ FUNCTION QUERY_SUBSET_MAX_XOR(trie, num):
 ## Walkthrough
 Take `nums = [0,1,2,3]`.
 1. Insert all numbers into the trie.
-2. For `num = 3 (011)` the query follows the `0` child at the most‑significant `1` bit, reaching the leaf `0`. XOR = 3.
+2. For `num = 3 (011)` the query follows the `0` child at the most-significant `1` bit, reaching the leaf `0`. XOR = 3.
 3. For `num = 2 (010)` the best subset partner is `0`; XOR = 2.
 4. The maximum XOR encountered is `3`.
 
@@ -108,10 +108,10 @@ Take `nums = [0,1,2,3]`.
 *Time*: Building the trie `O(n·B)` and each query `O(B)`, where `B = 31`. Overall `O(n·B)` ≈ `O(n)`.
 *Space*: Trie stores at most `n·B` nodes → `O(n·B)`.
 
-## Follow‑Up Questions
-1. How would the solution change if the strong‑pair condition were `nums[i] | nums[j] == nums[j]`?
-2. Can you solve the problem without a trie, using sorting and bit‑mask checks?
+## Follow-Up Questions
+1. How would the solution change if the strong-pair condition were `nums[i] | nums[j] == nums[j]`?
+2. Can you solve the problem without a trie, using sorting and bit-mask checks?
 3. How would you modify the algorithm to also return the indices of the optimal pair?
 
 ## Key Takeaway
-A binary trie combined with the bitwise‑subset property enables an `O(n)` solution to find the maximum XOR among strong pairs.
+A binary trie combined with the bitwise-subset property enables an `O(n)` solution to find the maximum XOR among strong pairs.

@@ -99,8 +99,8 @@ Consider the first example `[2,2,1,1,5,3,3,5]`.
 
 | i | val | count | countFreq | maxFreq | Valid? | result |
 |---|-----|-------|-----------|---------|--------|--------|
-|0|2|{2:1}|{1:1}|1|case 1 → result=1|1|
-|1|2|{2:2}|{2:1}|2|case 4 (single value) → result=2|2|
+|0|2|{2:1}|{1:1}|1|case 1 → result=1|1|
+|1|2|{2:2}|{2:1}|2|case 4 (single value) → result=2|2|
 |2|1|{2:2,1:1}|{2:1,1:1}|2|none → result stays|2|
 |3|1|{2:2,1:2}|{2:2}|2|maxFreq*countFreq[maxFreq]=2*2=4 = i+1 → result=4|4|
 |4|5|{2:2,1:2,5:1}|{2:2,1:1}|2|none|4|
@@ -130,4 +130,4 @@ The longest prefix satisfying the condition is length `7`.
 
 ## Key Takeaway
 
-> **"Remove one to equalize frequencies" requires tracking frequency‑of‑frequencies.** Check the 4 valid cases at each prefix length.
+> **"Remove one to equalize frequencies" requires tracking frequency-of-frequencies.** Check the 4 valid cases at each prefix length.

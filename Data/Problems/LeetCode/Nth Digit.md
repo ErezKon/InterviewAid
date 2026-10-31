@@ -29,7 +29,7 @@ Example 2:
 ```
 
 ## Approach
-**Algorithm:** Determine the length block (1‑digit, 2‑digit, …) that contains the `n`‑th digit, then locate the exact number and digit within it.
+**Algorithm:** Determine the length block (1-digit, 2-digit, …) that contains the `n`-th digit, then locate the exact number and digit within it.
 
 ```text
 FUNCTION findNthDigit(n):
@@ -52,19 +52,19 @@ FUNCTION findNthDigit(n):
 
 ## Walkthrough
 Take `n = 15`:
-1. 1‑digit block: 9 digits → `n = 15-9 = 6`.
-2. Move to 2‑digit block (`digits=2`, `start=10`). `6 ≤ 2*90`, stop.
+1. 1-digit block: 9 digits → `n = 15-9 = 6`.
+2. Move to 2-digit block (`digits=2`, `start=10`). `6 ≤ 2*90`, stop.
 3. `num = 10 + (6-1) DIV 2 = 12`.
 4. `digitIdx = (6-1) MOD 2 = 1` → second digit of "12" → **2** (actually the 15th digit is 2).
 
 ## Complexity Analysis
-- **Time:** O(log n) – at most the number of digit groups.
+- **Time:** O(log n) – at most the number of digit groups.
 - **Space:** O(1) – only constant extra variables.
 
-## Follow‑Up Questions
-- How would you adapt the solution for a base‑`b` numeral system?
+## Follow-Up Questions
+- How would you adapt the solution for a base-`b` numeral system?
 - Can you compute the sum of digits in a range `[l, r]` efficiently?
 - What if the sequence excluded numbers containing a certain digit?
 
 ## Key Takeaway
-Identify the digit‑length block containing the target, then compute the exact number and digit using simple arithmetic.
+Identify the digit-length block containing the target, then compute the exact number and digit using simple arithmetic.

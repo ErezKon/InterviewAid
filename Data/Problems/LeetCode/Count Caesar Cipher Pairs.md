@@ -54,7 +54,7 @@ Example 2:
 
 **Algorithm:** Canonical Form Grouping
 
-> Compute a difference signature for each word (differences between consecutive characters modulo 26). Words with identical signatures belong to the same group; each group of size *c* contributes `c·(c‑1)/2` pairs.
+> Compute a difference signature for each word (differences between consecutive characters modulo 26). Words with identical signatures belong to the same group; each group of size *c* contributes `c·(c-1)/2` pairs.
 
 ```text
 FUNCTION countCaesarPairs(words):

@@ -99,12 +99,12 @@ Example 3:
 
 ## Walkthrough
 
-Consider Example 1.
+Consider Example 1.
 1. **Initialize** `supplySet = {flour, yeast, ham}`.
-2. Build graph and in‑degree:
+2. Build graph and in-degree:
    - "bread" needs `flour` and `yeast` → both in supplies → inDegree["bread"] = 0.
    - "sandwich" needs `bread` (not a supply) and `ham` → edge `bread → sandwich`, inDegree["sandwich"] = 1.
-3. Queue starts with `"bread"` (inDegree 0).
+3. Queue starts with `"bread"` (inDegree 0).
 4. Dequeue `"bread"`, add to result.
 5. Process its outgoing edge: decrement inDegree["sandwich"] to 0, enqueue `"sandwich"`.
 6. Dequeue `"sandwich"`, add to result.
@@ -114,8 +114,8 @@ Consider Example 1.
 
 ## Complexity Analysis
 
-- **Time:** O(V + E) where V is the number of recipes plus unique ingredients and E is the total number of ingredient‑to‑recipe edges.
-- **Space:** O(V + E) for the graph, in‑degree map, and queue.
+- **Time:** O(V + E) where V is the number of recipes plus unique ingredients and E is the total number of ingredient-to-recipe edges.
+- **Space:** O(V + E) for the graph, in-degree map, and queue.
 
 ---
 

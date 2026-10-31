@@ -70,13 +70,13 @@ FUNCTION minBitwiseArray(nums):
 | 1   | 001    | 1                    | 1 XOR 1 = 0 |
 
 ## Complexity Analysis
-- **Time:** `O(|nums| * B)` where `B` is the number of bits (≤ 31 for 32‑bit ints). Effectively `O(|nums|)`.
+- **Time:** `O(|nums| * B)` where `B` is the number of bits (≤ 31 for 32-bit ints). Effectively `O(|nums|)`.
 - **Space:** `O(|nums|)` for the output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the numbers could be negative (two's complement representation)?
-2. Can you compute the result in‑place without extra storage?
+2. Can you compute the result in-place without extra storage?
 3. What if we need to flip **exactly two** bits to obtain the minimum value?
 
 ## Key Takeaway
-Finding the lowest zero bit and clearing the preceding set bit yields the minimal value achievable by a single‑bit flip.
+Finding the lowest zero bit and clearing the preceding set bit yields the minimal value achievable by a single-bit flip.

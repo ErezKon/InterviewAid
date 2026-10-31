@@ -72,9 +72,9 @@ Example 2:
 
 ## 3. Approach
 
-**Key Insight** – Each black cell influences at most four 2×2 blocks (those whose top‑left corner is at `(r, c)`, `(r‑1, c)`, `(r, c‑1)`, or `(r‑1, c‑1)`). By counting contributions per block we avoid scanning every possible block.
+**Key Insight** – Each black cell influences at most four 2×2 blocks (those whose top-left corner is at `(r, c)`, `(r-1, c)`, `(r, c-1)`, or `(r-1, c-1)`). By counting contributions per block we avoid scanning every possible block.
 
-**Algorithm** – Use a hash map where the key is the top‑left coordinate of a block and the value is the number of black cells inside it. Iterate over all black cells, update up to four neighboring blocks, then build a histogram of counts `0…4`.
+**Algorithm** – Use a hash map where the key is the top-left coordinate of a block and the value is the number of black cells inside it. Iterate over all black cells, update up to four neighboring blocks, then build a histogram of counts `0…4`.
 
 ```text
 FUNCTION countBlackBlocks(m, n, coordinates):
@@ -100,7 +100,7 @@ FUNCTION countBlackBlocks(m, n, coordinates):
 
 Consider `m = 3, n = 3, coordinates = [[0,0],[0,1],[1,0]]`.
 
-| Step | Black Cell | Affected Blocks (top‑left) | Block Counts after update |
+| Step | Black Cell | Affected Blocks (top-left) | Block Counts after update |
 |------|------------|----------------------------|---------------------------|
 | 1 | (0,0) | (0,0) | {(0,0):1} |
 | 2 | (0,1) | (0,0), (0,1) | {(0,0):2, (0,1):1} |

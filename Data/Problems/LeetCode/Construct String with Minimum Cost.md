@@ -115,4 +115,4 @@ Consider `target = "leetcode"` with `words = ["leet","code","leetcode"]` and `co
 
 ## Key Takeaway
 
-> Word‑break with costs: Trie enables efficient prefix matching at each position. Aho‑Corasick further optimizes by avoiding redundant trie walks across positions.
+> Word-break with costs: Trie enables efficient prefix matching at each position. Aho-Corasick further optimizes by avoiding redundant trie walks across positions.

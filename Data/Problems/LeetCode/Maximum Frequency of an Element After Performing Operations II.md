@@ -60,7 +60,7 @@ Explanation: We can achieve a maximum frequency of two by:
 
 ## Approach
 
-Each element `x` defines an interval `[x‑k, x+k]` of values it can become. The problem reduces to finding a target value where the number of intervals covering it (i.e., elements that can reach it) is maximized, but we can only actually change at most `numOperations` of those elements. A sweep‑line (difference‑array) over all interval endpoints gives the count of elements that can reach each target. For each target value we compute:
+Each element `x` defines an interval `[x-k, x+k]` of values it can become. The problem reduces to finding a target value where the number of intervals covering it (i.e., elements that can reach it) is maximized, but we can only actually change at most `numOperations` of those elements. A sweep-line (difference-array) over all interval endpoints gives the count of elements that can reach each target. For each target value we compute:
 
 ```
 reachable ← sweepHeightAt(target)
@@ -102,9 +102,9 @@ FUNCTION maxFrequency(nums, k, numOperations):
 Take `nums = [1,2,4]`, `k = 1`, `numOperations = 2`.
 
 1. Build events:
-   - For `1`: (+1 at 0), (‑1 at 3)
-   - For `2`: (+1 at 1), (‑1 at 4)
-   - For `4`: (+1 at 3), (‑1 at 6)
+   - For `1`: (+1 at 0), (-1 at 3)
+   - For `2`: (+1 at 1), (-1 at 4)
+   - For `4`: (+1 at 3), (-1 at 6)
 2. Sorted events: (0,+1), (1,+1), (3,-1), (3,+1), (4,-1), (6,-1)
 3. Sweep:
    - pos 0: sweep=1 → reachable=1, already=0 → candidate=0+MIN(1,2)=1
@@ -136,4 +136,4 @@ Thus the answer is 2.
 
 ## Key Takeaway
 
-> By turning each element into an interval `[x‑k, x+k]` and sweeping across all interval boundaries, we can efficiently count how many elements can converge on any target value, then apply the operation budget to compute the maximal achievable frequency.
+> By turning each element into an interval `[x-k, x+k]` and sweeping across all interval boundaries, we can efficiently count how many elements can converge on any target value, then apply the operation budget to compute the maximal achievable frequency.

@@ -123,8 +123,8 @@ It can be shown that there is no possible way to divide nums into 3 subarrays at
 
 **Example 1:** `nums = [5,1,3,4,2]`, `k = 3`, `dist = 2`
 
-1. First subarray starts at index 0 → cost `5`.
-2. Valid split points are indices 1‑3 (window size `dist+1 = 3`). Values: `[1,3,4]`.
+1. First subarray starts at index 0 → cost `5`.
+2. Valid split points are indices 1-3 (window size `dist+1 = 3`). Values: `[1,3,4]`.
 3. Maintain two multisets; the smallest `k-1 = 2` values are `1` and `3`.
 4. Sum of smallest = `1 + 3 = 4`. Total cost = `5 + 4 = 9` (after rebalancing the exact minimum becomes `1 + 2 = 3` giving total `8`).
 5. Sliding the window yields the optimal split points at indices with values `1` and `2`.

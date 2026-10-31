@@ -58,7 +58,7 @@ Explanation: Each color is represented as: 1 -> Red, 2 -> Green, 3 -> Blue. We c
 ## Approach
 The task is to find the largest connected component consisting of nodes with the same color. This can be solved with a **single DFS** that aggregates the size of monochromatic subtrees rooted at each node.
 1. Build an adjacency list for the tree.
-2. Run a DFS from any root (e.g., node 0). For each node, compute the size of the largest monochromatic subtree that includes the node.
+2. Run a DFS from any root (e.g., node 0). For each node, compute the size of the largest monochromatic subtree that includes the node.
 3. For each child, if the child's color matches the current node's color, add the child's subtree size to the current node's size; otherwise ignore the child.
 4. Keep a global maximum of these sizes during the traversal.
 The algorithm runs in linear time because each edge is visited once.
@@ -90,26 +90,26 @@ FUNCTION maxMonochromeSubtree(n, edges, color):
 ```
 
 ## Walkthrough
-Consider Example 1.
-| Node | color | Children (post‑order) | Subtree size returned |
+Consider Example 1.
+| Node | color | Children (post-order) | Subtree size returned |
 |------|-------|----------------------|-----------------------|
 | 3    | 1     | none                 | 1 |
 | 4    | 1     | none                 | 1 |
-| 1    | 1     | 3,4 (both color 1)   | 1+1+1 = 3 |
+| 1    | 1     | 3,4 (both color 1)   | 1+1+1 = 3 |
 | 5    | 2     | none                 | 1 |
 | 6    | 2     | none                 | 1 |
-| 2    | 2     | 5,6 (both color 2)   | 1+1+1 = 3 |
-| 0    | 1     | 1 (color 1), 2 (color 2) → only child 1 contributes | 1+3 = 4 (but global max stays 3) |
+| 2    | 2     | 5,6 (both color 2)   | 1+1+1 = 3 |
+| 0    | 1     | 1 (color 1), 2 (color 2) → only child 1 contributes | 1+3 = 4 (but global max stays 3) |
 The largest monochromatic subtree size encountered is 3.
 
 ## Complexity Analysis
 *Time:* O(n) – each node and edge is processed once.
 *Space:* O(n) for the adjacency list and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if edges had weights and the score was the sum of weights inside a monochromatic component?
 2. Can we extend the algorithm to return the actual set of nodes forming the maximum subtree?
 3. What modifications are needed to handle a forest (multiple disconnected trees) instead of a single tree?
 
 ## Key Takeaway
-A depth‑first search that aggregates child contributions only when colors match efficiently finds the largest same‑color connected subgraph in linear time.
+A depth-first search that aggregates child contributions only when colors match efficiently finds the largest same-color connected subgraph in linear time.

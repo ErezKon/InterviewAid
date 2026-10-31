@@ -91,10 +91,10 @@ Result `['Push','Push','Pop','Push']`.
 - **Time:** O(n) in the worst case, as each number from 1 to `n` is considered at most once.
 - **Space:** O(k) for the output list, where `k` is the number of operations (≤ 2·n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if the stack could hold at most `m` elements at any time?
 2. Can you generate the operations in reverse order (starting from the last target element)?
 3. What if the `target` array is not strictly increasing?
 
 ## Key Takeaway
-By simulating the process and discarding unwanted numbers with immediate push‑pop pairs, we can construct the required operation sequence in linear time.
+By simulating the process and discarding unwanted numbers with immediate push-pop pairs, we can construct the required operation sequence in linear time.

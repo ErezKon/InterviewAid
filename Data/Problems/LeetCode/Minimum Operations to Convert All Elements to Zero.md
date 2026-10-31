@@ -52,7 +52,7 @@ Example 3:
 ```
 
 ## Approach
-Use a monotonic stack to count distinct non‑zero “levels”. Iterate through the array, maintaining a stack of increasing heights. When the current value is lower than the stack top, pop until the stack top ≤ current. If the current value is greater than the stack top, push it and increment operation count.
+Use a monotonic stack to count distinct non-zero “levels”. Iterate through the array, maintaining a stack of increasing heights. When the current value is lower than the stack top, pop until the stack top ≤ current. If the current value is greater than the stack top, push it and increment operation count.
 
 ```text
 FUNCTION minOperations(nums):
@@ -78,7 +78,7 @@ Final ops = 2 (matches minimal operations).
 
 ## Complexity Analysis
 Time: O(n) – each element is pushed and popped at most once.
-Space: O(n) worst‑case for the stack, O(1) extra beyond input.
+Space: O(n) worst-case for the stack, O(1) extra beyond input.
 
 ## Follow-Up Questions
 - How would the solution change if you could only subtract from prefixes?

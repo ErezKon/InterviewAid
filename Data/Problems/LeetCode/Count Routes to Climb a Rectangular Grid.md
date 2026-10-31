@@ -95,7 +95,7 @@ Explanation: The possible routes are:
 
 ## Key Insight
 
-This is a grid path‑counting problem. Depending on the allowed moves, it may reduce to combinatorics (choosing right vs. up moves) or require DP if moves are non‑standard. For a standard right/up grid, the answer is `C(m+n-2, m-1)`.
+This is a grid path-counting problem. Depending on the allowed moves, it may reduce to combinatorics (choosing right vs. up moves) or require DP if moves are non-standard. For a standard right/up grid, the answer is `C(m+n-2, m-1)`.
 
 ---
 
@@ -121,7 +121,7 @@ FUNCTION countRoutes(m, n):
 
 ## Walkthrough
 
-Consider **Example 1** with `m = 2` and `n = 3`.
+Consider **Example 1** with `m = 2` and `n = 3`.
 
 | Step | Position (row, col) | Moves taken | Ways to reach |
 |------|---------------------|-------------|---------------|
@@ -140,8 +140,8 @@ All three distinct sequences (RRU, RUR, URR) are captured, giving the output `3`
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(1) for combinatorial formula, O(m × n) for DP |
-| **Space** | O(1) for formula, O(n) with row‑wise DP |
+| **Time** | O(1) for combinatorial formula, O(m × n) for DP |
+| **Space** | O(1) for formula, O(n) with row-wise DP |
 
 ---
 
@@ -149,7 +149,7 @@ All three distinct sequences (RRU, RUR, URR) are captured, giving the output `3`
 
 1. How would the solution change if diagonal moves are also allowed?
 2. What if certain cells are blocked and cannot be visited?
-3. Can the problem be extended to 3‑dimensional grids?
+3. Can the problem be extended to 3-dimensional grids?
 
 ---
 

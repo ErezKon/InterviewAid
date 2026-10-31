@@ -46,7 +46,7 @@ Explanation: There are no 'X's in s to convert.
 
 ## Approach
 
-**Algorithm:** Greedy left‑to‑right scan
+**Algorithm:** Greedy left-to-right scan
 
 Iterate through the string. Whenever an `X` is encountered, perform a move that converts the current and the next two characters to `O`. Skip the next two positions because they are now `O`. This greedy choice is optimal because any move must cover the leftmost uncovered `X`, and covering three characters is the maximum coverage per move.
 
@@ -67,9 +67,9 @@ FUNCTION minimumMoves(s):
 
 | Step | Index `i` | Character | Action | Moves |
 |------|-----------|-----------|--------|-------|
-| 1 | 0 | X | Convert positions 0‑2 to `O` | 1 |
+| 1 | 0 | X | Convert positions 0-2 to `O` | 1 |
 | 2 | 3 | O | Skip (already `O`) | 1 |
-| 3 | 4 | X | Convert positions 4‑6 (out of bounds, treat as up to end) | 2 |
+| 3 | 4 | X | Convert positions 4-6 (out of bounds, treat as up to end) | 2 |
 
 The string becomes all `O`s after two moves.
 
@@ -78,7 +78,7 @@ The string becomes all `O`s after two moves.
 - **Time:** O(n) – single pass through the string.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if a move could convert any `k` consecutive characters?
 2. What if you could also convert three consecutive `O`s to `X`s?
@@ -86,4 +86,4 @@ The string becomes all `O`s after two moves.
 
 ## Key Takeaway
 
-> A greedy left‑to‑right scan that always handles the leftmost `X` with a three‑character conversion yields the minimum number of moves.
+> A greedy left-to-right scan that always handles the leftmost `X` with a three-character conversion yields the minimum number of moves.

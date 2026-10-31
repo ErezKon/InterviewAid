@@ -48,7 +48,7 @@ We return 0 because no subarrays meet the conditions.
 ## Approach
 Use a **sliding window** of size `k` together with a hash map that stores the frequency of each element inside the window.
 1. Expand the window by adding `nums[i]` and updating its count.
-2. When the window size exceeds `k`, remove `nums[i‑k]` and decrement its count.
+2. When the window size exceeds `k`, remove `nums[i-k]` and decrement its count.
 3. After each expansion, if the map size equals `k` (all elements distinct), update the answer with the current window sum.
 The window sum can be maintained incrementally to achieve O(1) update per step.
 
@@ -89,10 +89,10 @@ Result = 9.
 *Time*: O(n) – each element is added and removed once.
 *Space*: O(k) for the frequency map (at most `k` distinct keys).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to return the starting index of the optimal subarray?
 2. Can the algorithm be extended to handle the case where at most `m` duplicates are allowed?
 3. How would you solve the problem if the array were circular (subarrays may wrap around)?
 
 ## Key Takeaway
-A sliding‑window with a frequency map efficiently enforces the distinct‑element constraint while tracking the maximum sum in linear time.
+A sliding-window with a frequency map efficiently enforces the distinct-element constraint while tracking the maximum sum in linear time.

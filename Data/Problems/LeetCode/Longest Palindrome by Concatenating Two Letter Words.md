@@ -105,4 +105,4 @@ After loop, `hasCenter` true → add 2 → total length = 6.
 
 ## 7. Key Takeaway
 
-> Palindromic words pair with themselves; non‑palindromic words pair with their reverse. One unpaired palindromic word can sit in the center (+2).
+> Palindromic words pair with themselves; non-palindromic words pair with their reverse. One unpaired palindromic word can sit in the center (+2).

@@ -76,7 +76,7 @@ The expression evaluates to 200, which is maximal.
 - **Time:** O(n) – one pass to build the string.
 - **Space:** O(n) – the output string size.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if numbers could be negative?
 2. Can you extend the approach to maximize/minimize the result when both addition and division are allowed?
 3. What if the numbers must remain in the original order but you can also insert multiplication operators?

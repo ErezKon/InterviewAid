@@ -33,16 +33,16 @@ Output: 0
 ```
 
 ## Approach
-The problem can be solved with **2‑D prefix sums** to query any square sum in O(1) and **binary search** on the side length.
-1. Build a prefix sum matrix `pref` where `pref[i][j]` is the sum of the rectangle `(0,0)` to `(i‑1,j‑1)`.
-2. Binary search `k` in `[0, min(m,n)]`. For each candidate `k`, slide a window over the matrix and use the prefix sums to check if any `k×k` square has sum ≤ threshold.
+The problem can be solved with **2-D prefix sums** to query any square sum in O(1) and **binary search** on the side length.
+1. Build a prefix sum matrix `pref` where `pref[i][j]` is the sum of the rectangle `(0,0)` to `(i-1,j-1)`.
+2. Binary search `k` in `[0, min(m,n)]`. For each candidate `k`, slide a window over the matrix and use the prefix sums to check if any `k×k` square has sum ≤ threshold.
 3. The largest `k` that passes the check is the answer.
 
 ```text
 FUNCTION maxSideLength(mat, threshold):
     m ← ROW_COUNT(mat)
     n ← COL_COUNT(mat)
-    // Build 2‑D prefix sum
+    // Build 2-D prefix sum
     pref ← MATRIX(m+1, n+1, 0)
     FOR i ← 1 TO m:
         FOR j ← 1 TO n:
@@ -77,13 +77,13 @@ Consider the first example matrix (3×5) and `threshold = 8`.
 | End | lo = 2 is maximum side length |
 
 ## Complexity Analysis
-*Time*: Building prefix sum `O(m·n)`. Binary search performs `O(log min(m,n))` checks, each scanning the matrix `O(m·n)`. Overall `O(m·n·log min(m,n))`.
+*Time*: Building prefix sum `O(m·n)`. Binary search performs `O(log min(m,n))` checks, each scanning the matrix `O(m·n)`. Overall `O(m·n·log min(m,n))`.
 *Space*: Prefix sum matrix `O(m·n)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if the matrix contained negative numbers?
-2. Can the problem be solved in `O(m·n)` without binary search using a sliding‑window technique?
+2. Can the problem be solved in `O(m·n)` without binary search using a sliding-window technique?
 3. How would you extend this to find the largest rectangle (not necessarily square) under a threshold?
 
 ## Key Takeaway
-Using a 2‑D prefix sum enables constant‑time sub‑matrix queries, and binary search efficiently discovers the maximal feasible square size.
+Using a 2-D prefix sum enables constant-time sub-matrix queries, and binary search efficiently discovers the maximal feasible square size.

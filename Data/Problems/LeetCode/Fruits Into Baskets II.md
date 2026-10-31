@@ -113,4 +113,4 @@ The algorithm scans each basket for each fruit, marking the first sufficient bas
 
 ## 7. Key Takeaway
 
-> Simple greedy first‑fit works efficiently for small constraints: scan baskets left‑to‑right and place each fruit in the first basket with enough capacity.
+> Simple greedy first-fit works efficiently for small constraints: scan baskets left-to-right and place each fruit in the first basket with enough capacity.

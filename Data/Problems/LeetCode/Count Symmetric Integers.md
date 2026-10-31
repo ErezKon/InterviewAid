@@ -80,11 +80,11 @@ Take `low = 1200, high = 1300`:
 
 ## Follow-Up Questions
 
-* How would you solve this problem if `high` could be as large as `10⁹`? Consider generating symmetric numbers directly instead of brute‑force.
+* How would you solve this problem if `high` could be as large as `10⁹`? Consider generating symmetric numbers directly instead of brute-force.
 * Can you extend the solution to count numbers where the sum of the first half equals the sum of the second half **plus** a constant `k`?
 
 ---
 
 ## Key Takeaway
 
-> **When the range is small, a simple brute‑force scan with digit‑sum comparison is sufficient. For larger ranges, generate symmetric numbers analytically.**
+> **When the range is small, a simple brute-force scan with digit-sum comparison is sufficient. For larger ranges, generate symmetric numbers analytically.**

@@ -51,12 +51,12 @@ FUNCTION canMakeArithmeticProgression(arr):
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting; linear scan afterwards.
-- **Space:** O(1) extra (in‑place sort) or O(n) if a copy is made.
+- **Space:** O(1) extra (in-place sort) or O(n) if a copy is made.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve it in O(n) time without sorting?
 2. Can you extend the solution to handle duplicate elements?
-3. What if the progression must be strictly increasing vs. non‑decreasing?
+3. What if the progression must be strictly increasing vs. non-decreasing?
 
 ## Key Takeaway
 Sorting the array reduces the problem to a simple linear check of consecutive differences.

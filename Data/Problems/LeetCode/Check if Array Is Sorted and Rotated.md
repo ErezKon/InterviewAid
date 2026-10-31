@@ -42,7 +42,7 @@ Example 3:
 ```
 
 ## Approach
-Count the number of inversions where `nums[i] > nums[(i+1) % n]`. If the count is 0 or 1, the array is sorted‑and‑rotated.
+Count the number of inversions where `nums[i] > nums[(i+1) % n]`. If the count is 0 or 1, the array is sorted-and-rotated.
 
 ```text
 FUNCTION check(nums):
@@ -75,4 +75,4 @@ The final count is 1 → return `true`.
 3. How would the solution change for a circularly linked list representation?
 
 ## Key Takeaway
-A sorted‑and‑rotated array contains at most one drop when examined circularly, allowing a simple linear‑time check.
+A sorted-and-rotated array contains at most one drop when examined circularly, allowing a simple linear-time check.

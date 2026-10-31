@@ -44,7 +44,7 @@ Output: false
 ```
 
 ## Approach
-Backtrack over the pattern characters, trying all possible substring assignments for unmapped characters while ensuring consistency with already‑mapped ones.
+Backtrack over the pattern characters, trying all possible substring assignments for unmapped characters while ensuring consistency with already-mapped ones.
 
 ```text
 FUNCTION wordPatternMatch(pattern, s):
@@ -80,9 +80,9 @@ Pattern `"abab"`, string `"redblueredblue"`:
 - Time: O(n * m * 2^m) in worst case, where n = |s|, m = |pattern| (due to exhaustive backtracking).
 - Space: O(m) for recursion stack and mapping.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to handle patterns with wildcard characters?
-2. Can you improve average‑case performance using memoization of failed states?
+2. Can you improve average-case performance using memoization of failed states?
 3. How would you adapt the solution for streaming input where `s` is received incrementally?
 
 ## Key Takeaway

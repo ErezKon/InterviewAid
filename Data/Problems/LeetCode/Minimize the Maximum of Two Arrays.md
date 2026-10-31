@@ -74,11 +74,11 @@ Example 3:
 > - For arr1 only: not divisible by d1 = `m - m/d1`
 > - For arr2 only: not divisible by d2 = `m - m/d2`
 > - For either: not divisible by both = `m - m/lcm(d1,d2)`
-> - Use inclusion‑exclusion to check if enough numbers exist for both arrays.
+> - Use inclusion-exclusion to check if enough numbers exist for both arrays.
 
 ---
 
-## Approach: Binary Search + Inclusion‑Exclusion ✅
+## Approach: Binary Search + Inclusion-Exclusion ✅
 
 ```text
 FUNCTION minimizeSet(divisor1, divisor2, uniqueCnt1, uniqueCnt2):
@@ -111,10 +111,10 @@ Take the second example: `divisor1 = 4`, `divisor2 = 5`, `uniqueCnt1 = 2`, `uniq
 
 | Step | `mid` | `forArr1` | `forArr2` | `forBoth` | Feasible? |
 |------|------|-----------|-----------|-----------|----------|
-| 1 | 5 | 5‑⌊5/4⌋=4 | 5‑⌊5/5⌋=4 | 5‑⌊5/20⌋=5 | Yes, but we can try lower |
-| 2 | 3 | 3‑⌊3/4⌋=3 | 3‑⌊3/5⌋=3 | 3‑⌊3/20⌋=3 | Not enough for both arrays (need 4 total) |
-| 3 | 4 | 4‑⌊4/4⌋=3 | 4‑⌊4/5⌋=4 | 4‑⌊4/20⌋=4 | Still insufficient |
-| 4 | 7 | 7‑⌊7/4⌋=5 | 7‑⌊7/5⌋=6 | 7‑⌊7/20⌋=7 | Feasible → answer `7`
+| 1 | 5 | 5-⌊5/4⌋=4 | 5-⌊5/5⌋=4 | 5-⌊5/20⌋=5 | Yes, but we can try lower |
+| 2 | 3 | 3-⌊3/4⌋=3 | 3-⌊3/5⌋=3 | 3-⌊3/20⌋=3 | Not enough for both arrays (need 4 total) |
+| 3 | 4 | 4-⌊4/4⌋=3 | 4-⌊4/5⌋=4 | 4-⌊4/20⌋=4 | Still insufficient |
+| 4 | 7 | 7-⌊7/4⌋=5 | 7-⌊7/5⌋=6 | 7-⌊7/20⌋=7 | Feasible → answer `7`
 
 The binary search converges to the smallest `mid` that satisfies all three counts.
 
@@ -124,7 +124,7 @@ The binary search converges to the smallest `mid` that satisfies all three count
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Binary search + Inclusion‑Exclusion | **O(log (2 × 10⁹))** | **O(1)** |
+| Binary search + Inclusion-Exclusion | **O(log (2 × 10⁹))** | **O(1)** |
 
 ---
 
@@ -138,6 +138,6 @@ The binary search converges to the smallest `mid` that satisfies all three count
 
 ## Key Takeaway
 
-> **Binary search + inclusion‑exclusion on divisibility** — count available numbers for each constraint using floor division and LCM. A clean mathematical binary search.
+> **Binary search + inclusion-exclusion on divisibility** — count available numbers for each constraint using floor division and LCM. A clean mathematical binary search.
 
 ---

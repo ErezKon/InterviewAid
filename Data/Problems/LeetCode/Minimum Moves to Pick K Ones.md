@@ -93,8 +93,8 @@ FUNCTION minMoves(nums, k):
 Take `nums = [0,1,0,1,1]`, `k = 2`.
 1. `ones = [1,3,4]`.
 2. Windows of size 2: `[1,3]` and `[3,4]`.
-   - Window `[1,3]`: median index = 1 (position 3). Left cost = 3‑1 = 2, right cost = 0. Adjusted cost = 2‑1 = 1.
-   - Window `[3,4]`: median = 3 (position 4). Left cost = 0, right cost = 0, adjusted = 0‑1 = -1 → treat as 0.
+   - Window `[1,3]`: median index = 1 (position 3). Left cost = 3-1 = 2, right cost = 0. Adjusted cost = 2-1 = 1.
+   - Window `[3,4]`: median = 3 (position 4). Left cost = 0, right cost = 0, adjusted = 0-1 = -1 → treat as 0.
 3. Minimum cost = 1.
 
 ## Complexity Analysis

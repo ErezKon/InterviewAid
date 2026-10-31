@@ -63,7 +63,7 @@ The positions that must match form `k` independent groups: indices `i, i+k, i+2k
 ## Walkthrough
 | Group start | Characters | Frequencies | Group cost |
 |-------------|------------|-------------|------------|
-| 0 | s[0], s[2], s[4] = a, a, a | a:3 | 3‑3 = 0 |
+| 0 | s[0], s[2], s[4] = a, a, a | a:3 | 3-3 = 0 |
 | 1 | s[1], s[3], s[5] = b, b, b | b:3 | 0 |
 | Total cost = 0 |
 
@@ -71,10 +71,10 @@ The positions that must match form `k` independent groups: indices `i, i+k, i+2k
 - **Time:** O(n) – a single pass to count characters per group.
 - **Space:** O(k) for frequency maps of each group.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could only replace characters in contiguous blocks?
 2. What if the cost of changing a character depended on its position?
-3. Can the algorithm be adapted to find the minimal cost for making the string **k‑palindromic**?
+3. Can the algorithm be adapted to find the minimal cost for making the string **k-palindromic**?
 
 ## Key Takeaway
-Group characters by their modulo‑k positions and change each group to its most common character; the sum of mismatches yields the minimal operations.
+Group characters by their modulo-k positions and change each group to its most common character; the sum of mismatches yields the minimal operations.

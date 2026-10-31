@@ -56,13 +56,13 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Stack‑based parsing with DP on sub‑expressions
+**Algorithm:** Stack-based parsing with DP on sub-expressions
 
 We parse the expression from left to right using two stacks:
-- **valueStack** stores a pair `(value, minFlip)` for each sub‑expression, where `value` is the current boolean result and `minFlip` is the minimum cost to toggle that result.
+- **valueStack** stores a pair `(value, minFlip)` for each sub-expression, where `value` is the current boolean result and `minFlip` is the minimum cost to toggle that result.
 - **opStack** stores pending operators `'&'` or `'|'` and parentheses.
 
-When we encounter a closing parenthesis `')'` or when the top of `opStack` has higher precedence, we pop two operands and an operator, combine them using truth‑table logic, and push the resulting pair back onto `valueStack`.
+When we encounter a closing parenthesis `')'` or when the top of `opStack` has higher precedence, we pop two operands and an operator, combine them using truth-table logic, and push the resulting pair back onto `valueStack`.
 
 Combination rules (pseudocode):
 ```
@@ -105,7 +105,7 @@ FUNCTION minCostToFlip(expression):
             END WHILE
             opStack.POP()   // remove '('
         ELSE IF token IN '&|' THEN
-            // operators have equal precedence, evaluate left‑to‑right
+            // operators have equal precedence, evaluate left-to-right
             WHILE opStack.NOT_EMPTY() AND opStack.TOP() ≠ '(' DO
                 right ← valStack.POP()
                 left  ← valStack.POP()
@@ -149,7 +149,7 @@ Result `minFlip = 1`.
 | Time   | **O(n)** – single pass over the expression with stack operations |
 | Space  | **O(n)** – stacks store at most the length of the expression |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if flipping an operator had a different cost than flipping a literal?
 2. Can the algorithm be extended to support additional operators such as XOR (`^`)?
@@ -157,4 +157,4 @@ Result `minFlip = 1`.
 
 ## Key Takeaway
 
-By parsing the expression with stacks and maintaining for each sub‑expression both its current value and the cheapest way to invert it, we can compute the minimum cost to flip the overall result in linear time.
+By parsing the expression with stacks and maintaining for each sub-expression both its current value and the cheapest way to invert it, we can compute the minimum cost to flip the overall result in linear time.

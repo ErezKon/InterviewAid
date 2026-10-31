@@ -23,7 +23,7 @@ Return **any one** split in which the **maximum** difference between any two num
 
 ## 2. Key Insight
 
-> Enumerate all divisors of `n` and use backtracking to pick `k` factors in non‑decreasing order. Prune when the remaining product cannot be split into the required number of factors or when the current ratio already exceeds the best found.
+> Enumerate all divisors of `n` and use backtracking to pick `k` factors in non-decreasing order. Prune when the remaining product cannot be split into the required number of factors or when the current ratio already exceeds the best found.
 
 ---
 
@@ -39,7 +39,7 @@ FUNCTION balancedDecomposition(n, k):
     FUNCTION backtrack(remaining, kLeft, minFactor, path):
         // remaining: product still to factor
         // kLeft: how many factors still needed
-        // minFactor: smallest factor allowed for non‑decreasing order
+        // minFactor: smallest factor allowed for non-decreasing order
         IF kLeft == 1:
             IF remaining >= minFactor:
                 SET candidate ← path + [remaining]
@@ -98,12 +98,12 @@ Consider `n = 12`, `k = 3`.
 
 ## 6. Complexity Analysis
 
-- **Time:** Enumerating divisors is `O(√n)`. Backtracking explores combinations of up to `k` factors; worst‑case `O(d(n)^k)` where `d(n)` is the number of divisors, but pruning reduces practical runtime.
+- **Time:** Enumerating divisors is `O(√n)`. Backtracking explores combinations of up to `k` factors; worst-case `O(d(n)^k)` where `d(n)` is the number of divisors, but pruning reduces practical runtime.
 - **Space:** `O(k)` recursion stack plus storage for divisor list `O(d(n))`.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 1. How would you modify the algorithm to return *all* optimal decompositions?
 2. Can the problem be solved in polynomial time for fixed `k` using dynamic programming?
@@ -113,4 +113,4 @@ Consider `n = 12`, `k = 3`.
 
 ## Key Takeaway
 
-> Enumerate divisors and backtrack with non‑decreasing order, pruning aggressively on the remaining product and current ratio, to find the factor set that minimizes the max/min ratio.
+> Enumerate divisors and backtrack with non-decreasing order, pruning aggressively on the remaining product and current ratio, to find the factor set that minimizes the max/min ratio.

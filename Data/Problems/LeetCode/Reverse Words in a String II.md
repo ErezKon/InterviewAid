@@ -62,8 +62,8 @@ FUNCTION reverseWords(s):
 
 1. Reverse whole array → `['y','k','s',' ','e','h','t']`
 2. Scan for spaces:
-   - Word `yks` (indices 0‑2) → reverse → `['s','k','y',' ','e','h','t']`
-   - Word `eht` (indices 4‑6) → reverse → `['s','k','y',' ','t','h','e']`
+   - Word `yks` (indices 0-2) → reverse → `['s','k','y',' ','e','h','t']`
+   - Word `eht` (indices 4-6) → reverse → `['s','k','y',' ','t','h','e']`
 3. Result matches expected output.
 
 ---
@@ -72,11 +72,11 @@ FUNCTION reverseWords(s):
 
 | Time | Space |
 |------|-------|
-| O(n) – each character visited a constant number of times | O(1) – in‑place modifications only |
+| O(n) – each character visited a constant number of times | O(1) – in-place modifications only |
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the algorithm if words could be separated by multiple spaces?
 - Can you adapt the solution to handle Unicode characters with variable byte length?

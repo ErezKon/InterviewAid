@@ -69,7 +69,7 @@ Explanation: The length of the longest nice subarray is 1. Any subarray of lengt
 Consider the first example. `used` tracks the OR of bits in the current window.
 - Start with `right=0`, `nums[0]=1`, `used=1`, window `[0,0]`.
 - `right=1`, `nums[1]=3` (binary 011). `used & 3 = 1` (conflict), so shrink left: remove `nums[0]` (`used ^= 1 → 0`), `left=1`. Now `used=0`, add `3` → `used=3`.
-- Continue expanding; whenever a conflict occurs, move `left` until the window is conflict‑free. The maximum window size observed is 3.
+- Continue expanding; whenever a conflict occurs, move `left` until the window is conflict-free. The maximum window size observed is 3.
 
 ---
 
@@ -80,11 +80,11 @@ Consider the first example. `used` tracks the OR of bits in the current window.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the condition were that the bitwise OR of any two elements must be less than a given threshold?
 - Can you adapt the algorithm to return the actual subarray indices?
-- What is the impact on complexity if the numbers can be up to 64‑bit instead of 32‑bit?
+- What is the impact on complexity if the numbers can be up to 64-bit instead of 32-bit?
 
 ---
 

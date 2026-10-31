@@ -24,13 +24,13 @@ Return *the **minimum** number of operations to make* `nums` ***non-decreasing**
 
 ---
 
-## 2. Approach: Greedy with Priority Queue (Slope Trick) — O(n log n) ✅
+## 2. Approach: Greedy with Priority Queue (Slope Trick) — O(n log n) ✅
 
 ```text
 FUNCTION minCostMonotonic(arr):
-    // Compute cost for non‑decreasing version
+    // Compute cost for non-decreasing version
     costInc ← slopeTrick(arr, increasing = TRUE)
-    // Compute cost for non‑increasing version
+    // Compute cost for non-increasing version
     costDec ← slopeTrick(arr, increasing = FALSE)
     RETURN MIN(costInc, costDec)
 
@@ -83,10 +83,10 @@ Example 3:
 
 ## 4. Walkthrough
 
-Consider `[5,1,2,3]` for the non‑decreasing case:
+Consider `[5,1,2,3]` for the non-decreasing case:
 
-1. Insert `5` into max‑heap → `[5]`.
-2. Insert `1`; heap max `5` > `1` → pop `5`, add cost `5‑1 = 4`. Heap now `[1]`.
+1. Insert `5` into max-heap → `[5]`.
+2. Insert `1`; heap max `5` > `1` → pop `5`, add cost `5-1 = 4`. Heap now `[1]`.
 3. Insert `2`; heap max `2` ≤ `2` → no cost.
 4. Insert `3`; heap max `3` ≤ `3` → no cost.
 Total cost = `4`.
@@ -95,18 +95,18 @@ Total cost = `4`.
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n log n) – each element triggers at most one heap operation.
+- **Time:** O(n log n) – each element triggers at most one heap operation.
 - **Space:** O(n) – heap stores at most all elements.
 
 ---
 
 ## Follow-Up Questions
 
-- How would the solution change if each element had a different per‑unit change cost?
-- Can the problem be solved in O(n) time using a two‑pointer or deque technique when the array is already partially sorted?
+- How would the solution change if each element had a different per-unit change cost?
+- Can the problem be solved in O(n) time using a two-pointer or deque technique when the array is already partially sorted?
 
 ---
 
 ## Key Takeaway
 
-> The slope‑trick greedy algorithm uses a max‑heap to maintain a median‑like value, adjusting costs whenever monotonicity is violated, and runs twice to handle both directions.
+> The slope-trick greedy algorithm uses a max-heap to maintain a median-like value, adjusting costs whenever monotonicity is violated, and runs twice to handle both directions.

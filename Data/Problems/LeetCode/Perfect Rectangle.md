@@ -42,7 +42,7 @@ Example 3:
 ```
 
 ## Approach
-Use area summation and corner‑point tracking.
+Use area summation and corner-point tracking.
 
 1. Initialise `totalArea ← 0` and an empty set `corners`.
 2. For each rectangle `[x1, y1, x2, y2]`:
@@ -61,8 +61,8 @@ For the first example, after toggling corners the set ends with `{(1,1),(1,4),(4
 - Time: O(N) where N is the number of rectangles – each processed once.
 - Space: O(N) in the worst case for the corner set, but typically O(1) extra beyond the four final corners.
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm to handle rectangles that may be rotated (non‑axis aligned)?
+## Follow-Up Questions
+1. How would you adapt the algorithm to handle rectangles that may be rotated (non-axis aligned)?
 2. Can you detect the exact location of any overlap or gap instead of just a boolean result?
 3. What changes are needed if the input size grows to 10⁶ rectangles – can you use streaming techniques?
 

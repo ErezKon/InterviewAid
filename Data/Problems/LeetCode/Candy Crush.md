@@ -39,7 +39,7 @@ Example 2:
   Output: [[1,3,0,0,0],[3,4,0,5,2],[3,2,0,3,1],[2,4,0,5,2],[1,4,3,1,1]]
 ```
 
-## Approach: Simulation with Mark‑and‑Crush — O((m·n)²) ✅
+## Approach: Simulation with Mark-and-Crush — O((m·n)²) ✅
 
 ```text
 FUNCTION candyCrush(board):
@@ -91,10 +91,10 @@ FUNCTION candyCrush(board):
 - **Time:** Each iteration scans the board O(m·n) and may repeat up to O(m·n) times in worst case, yielding O((m·n)²).
 - **Space:** O(m·n) for the `toCrush` set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can the algorithm be optimized to run in O(m·n) using a queue of affected cells?
 2. Can you extend the solution to handle larger crush thresholds (e.g., 4 or more) without changing complexity?
-3. What data structures would allow in‑place marking without extra memory?
+3. What data structures would allow in-place marking without extra memory?
 
 ## Key Takeaway
 Repeatedly marking and crushing groups, then applying gravity, simulates the Candy Crush mechanics until a stable board is reached.

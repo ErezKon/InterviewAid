@@ -98,10 +98,10 @@ Total operations = 2 + 1 = 3? Wait calculation: first fix added 2, second added 
 
 1. How would the solution change if you could only increment elements (no decrements)?
 2. What if each operation has a cost proportional to the amount added?
-3. Extend to 2‑D grid where you need all row‑wise prefix sums positive.
+3. Extend to 2-D grid where you need all row-wise prefix sums positive.
 
 ---
 
 ## 7. Key Takeaway
 
-> Greedily fixing a non‑positive prefix by raising the current element to make the prefix exactly 1 yields the minimal number of operations.
+> Greedily fixing a non-positive prefix by raising the current element to make the prefix exactly 1 yields the minimal number of operations.

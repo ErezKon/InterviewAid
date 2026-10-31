@@ -85,13 +85,13 @@ Example 3:
 
 ## 4. Walkthrough
 
-Consider Example 1. The middle column after transposition is `[" "," "," "]`. Splitting by `'#'` yields a single slot `"   "` of length 3, matching the word length. Each character in the slot is a space, so the condition `slot[i] == ' ' OR slot[i] == w[i]` holds for all positions, allowing placement.
+Consider Example 1. The middle column after transposition is `[" "," "," "]`. Splitting by `'#'` yields a single slot `"   "` of length 3, matching the word length. Each character in the slot is a space, so the condition `slot[i] == ' ' OR slot[i] == w[i]` holds for all positions, allowing placement.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time:** For each of the two word directions we scan every row and column, splitting by `'#'` and checking slots of length L (word length). This yields `O(m·n·L)`.
+- **Time:** For each of the two word directions we scan every row and column, splitting by `'#'` and checking slots of length L (word length). This yields `O(m·n·L)`.
 - **Space:** The board and a few auxiliary lists for slots are stored, resulting in `O(m·n)`.
 
 ---
@@ -106,4 +106,4 @@ Consider Example 1. The middle column after transposition is `[" "," "," "]`. 
 
 ## Key Takeaway
 
-> Enumerate all horizontal and vertical slots (split by `'#'`), try the word in both forward and reverse directions. A slot matches if its length equals the word and every non‑blank cell already contains the correct letter.
+> Enumerate all horizontal and vertical slots (split by `'#'`), try the word in both forward and reverse directions. A slot matches if its length equals the word and every non-blank cell already contains the correct letter.

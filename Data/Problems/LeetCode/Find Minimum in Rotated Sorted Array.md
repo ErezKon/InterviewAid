@@ -97,7 +97,7 @@ Consider `nums = [4,5,6,7,0,1,2]`:
 
 - How would the algorithm change if duplicates were allowed? (Hint: need to handle `nums[mid] == nums[hi]` by decrementing `hi`.)
 - Can you adapt the method to find the rotation index instead of the minimum value?
-- What is the worst‑case time complexity when duplicates are present?
+- What is the worst-case time complexity when duplicates are present?
 
 ---
 

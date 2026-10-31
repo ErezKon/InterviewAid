@@ -94,10 +94,10 @@ For `mountainHeight = 4`, `workerTimes = [1,2]`:
 - Time: `O(log U * w)` where `U` is the upper bound and `w` is number of workers (binary search iterations × workers).
 - Space: `O(1)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if each worker could only work once?
 2. What if workers have a maximum number of units they can reduce?
 3. Can you extend the approach to handle fractional times?
 
 ## Key Takeaway
-Binary searching the time and checking feasibility via a quadratic‑solve per worker yields an efficient solution.
+Binary searching the time and checking feasibility via a quadratic-solve per worker yields an efficient solution.

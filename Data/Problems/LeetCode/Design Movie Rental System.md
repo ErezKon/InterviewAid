@@ -62,7 +62,7 @@ Example 1:
 
 ## Key Insight
 
-Maintain two indexed structures: available movies per movie ID (sorted by price, then shop) and a global set of rented entries (sorted by price, shop, movie). Sorted containers give O(log n) updates and O(1) top‑5 reads.
+Maintain two indexed structures: available movies per movie ID (sorted by price, then shop) and a global set of rented entries (sorted by price, shop, movie). Sorted containers give O(log n) updates and O(1) top-5 reads.
 
 ---
 
@@ -107,7 +107,7 @@ Consider the first example, after initializing entries:
 3. **search(2)** now sees `available[2] = [(5,0),(6,0)]` (shop 0 still has movie 2) → returns `[0]`.
 4. **drop(0,2)** moves `(6,0,2)` from `rented` back to `available[2]`.
 5. **report()** reads the first five entries of `rented`, which currently holds only `(5,0,1)` → returns `[[0,1]]`.
-The sorted containers guarantee each operation respects the required tie‑breaking order.
+The sorted containers guarantee each operation respects the required tie-breaking order.
 
 ---
 
@@ -130,4 +130,4 @@ The sorted containers guarantee each operation respects the required tie‑break
 
 ## Key Takeaway
 
-> **Two sorted indexes: per‑movie availability sorted by `(price, shop)` and a global rented list sorted by `(price, shop, movie)`. Sorting keys encode the exact tie‑breaking rules, so top‑5 queries are just slices.**
+> **Two sorted indexes: per-movie availability sorted by `(price, shop)` and a global rented list sorted by `(price, shop, movie)`. Sorting keys encode the exact tie-breaking rules, so top-5 queries are just slices.**

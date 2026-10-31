@@ -49,7 +49,7 @@ Example 3:
 
 ## Walkthrough
 For `"deeedbbcccbdaa"`, k=3:
-1. Push `d` (count 1).
+1. Push `d` (count 1).
 2. Next `e`: push `e` (1).
 3. Next `e`: increment count → 2.
 4. Next `e`: increment count → 3 → pop `e` (delete `eee`).
@@ -59,10 +59,10 @@ For `"deeedbbcccbdaa"`, k=3:
 - **Time:** O(n) where n = length of `s`.
 - **Space:** O(n) for the stack (worst case when no deletions occur).
 
-## Follow‑Up Questions
-- How would you modify the algorithm to delete groups of size ≥ k instead of exactly k?
+## Follow-Up Questions
+- How would you modify the algorithm to delete groups of size ≥ k instead of exactly k?
 - Can the solution be extended to handle Unicode characters?
 - What is the effect of processing the string in reverse order?
 
 ## Key Takeaway
-A stack tracking character counts enables single‑pass removal of k‑sized adjacent duplicate groups.
+A stack tracking character counts enables single-pass removal of k-sized adjacent duplicate groups.

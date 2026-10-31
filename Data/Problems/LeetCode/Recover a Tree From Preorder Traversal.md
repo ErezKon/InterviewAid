@@ -111,10 +111,10 @@ For `traversal = "1-2--3--4-5--6--7"`:
 - **Time:** O(n) where n is the length of the input string, each character processed once.
 - **Space:** O(h) for the stack, where h is the height of the tree (≤ number of nodes).
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to handle trees with more than two children (e.g., N‑ary trees)?
+## Follow-Up Questions
+1. How would you modify the algorithm to handle trees with more than two children (e.g., N-ary trees)?
 2. Can the reconstruction be performed without an explicit stack, using recursion instead?
-3. What changes are needed if the depth encoding uses a different delimiter or base‑64 encoding for values?
+3. What changes are needed if the depth encoding uses a different delimiter or base-64 encoding for values?
 
 ## Key Takeaway
-Parsing depth/value pairs and using a stack to maintain the current path enables linear‑time reconstruction of a binary tree from its preorder string representation.
+Parsing depth/value pairs and using a stack to maintain the current path enables linear-time reconstruction of a binary tree from its preorder string representation.

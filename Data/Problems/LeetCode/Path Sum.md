@@ -45,7 +45,7 @@ Example 3:
 ```
 
 ## Approach
-Perform a depth‑first search, subtracting the node value from `targetSum` as you descend. When a leaf is reached, check if the remaining sum equals the leaf's value.
+Perform a depth-first search, subtracting the node value from `targetSum` as you descend. When a leaf is reached, check if the remaining sum equals the leaf's value.
 
 ```text
 FUNCTION hasPathSum(node, remaining):
@@ -61,12 +61,12 @@ For the first example, start with `remaining = 22` at the root (5). Recurse left
 
 ## Complexity Analysis
 - Time: O(N) – each node visited once.
-- Space: O(H) – recursion stack depth `H` equals tree height (worst‑case O(N)).
+- Space: O(H) – recursion stack depth `H` equals tree height (worst-case O(N)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual path instead of a boolean?
 2. Can you solve it iteratively using a stack or queue?
-3. What changes are needed if the path can start and end at any node (not necessarily root‑to‑leaf)?
+3. What changes are needed if the path can start and end at any node (not necessarily root-to-leaf)?
 
 ## Key Takeaway
-Subtracting the node value while traversing turns the target‑sum check into a simple leaf‑node equality test.
+Subtracting the node value while traversing turns the target-sum check into a simple leaf-node equality test.

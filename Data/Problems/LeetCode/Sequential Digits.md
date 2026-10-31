@@ -35,7 +35,7 @@ Example 2:
 
 ## Approach
 
-Enumerate all possible sequential-digit numbers (there are at most 36) by varying length (2‑9) and starting digit (1‑9‑length). Filter those that lie within `[low, high]`.
+Enumerate all possible sequential-digit numbers (there are at most 36) by varying length (2-9) and starting digit (1-9-length). Filter those that lie within `[low, high]`.
 
 ```text
 FUNCTION sequentialDigits(low, high):
@@ -57,8 +57,8 @@ FUNCTION sequentialDigits(low, high):
 Consider `low = 100`, `high = 300`:
 | length | start | generated num |
 |--------|-------|---------------|
-| 2 | 1‑9 | 12,23,...,89 (all <100) |
-| 3 | 1‑7 | 123,234,345,...,789 |
+| 2 | 1-9 | 12,23,...,89 (all <100) |
+| 3 | 1-7 | 123,234,345,...,789 |
 Only 123 and 234 satisfy `100 ≤ num ≤ 300`.
 
 ---
@@ -74,10 +74,10 @@ Only 123 and 234 satisfy `100 ≤ num ≤ 300`.
 
 1. How would you adapt the solution to handle decreasing sequential digits (e.g., 321)?
 2. Can you generate the numbers without nested loops, using arithmetic progression?
-3. How would you modify the algorithm to work for a different base (e.g., base‑16)?
+3. How would you modify the algorithm to work for a different base (e.g., base-16)?
 
 ---
 
 ## Key Takeaway
 
-> Because the total count of sequential‑digit numbers is bounded (36), a simple enumeration and filter yields an optimal O(1) solution.
+> Because the total count of sequential-digit numbers is bounded (36), a simple enumeration and filter yields an optimal O(1) solution.

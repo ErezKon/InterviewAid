@@ -113,4 +113,4 @@ After the loop, `segments = 1`. Number of good partitions = 2^1 = 2.
 
 ## Key Takeaway
 
-> **Good partition = no value spans multiple groups. Find each value's range, merge overlapping ranges into segments, then answer is 2^(segments‑1) since each boundary between segments is an independent binary choice.**
+> **Good partition = no value spans multiple groups. Find each value's range, merge overlapping ranges into segments, then answer is 2^(segments-1) since each boundary between segments is an independent binary choice.**

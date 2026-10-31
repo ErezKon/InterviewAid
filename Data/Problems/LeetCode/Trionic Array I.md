@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below implement an invented update/query/reset data structure. Correct idea: single pass — advance `p` while strictly increasing (fail if `p == 0`), advance `q` from `p` while strictly decreasing (fail if `q == p` or `q == n−1`), then advance while strictly increasing and require reaching `n−1`. O(n).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer array `nums` of length `n`.
 
@@ -44,45 +44,50 @@ Explanation: There is no way to pick p and q to form the required three segments
 ```
 
 ## Approach
-Maintain a simple array for the values. `Update` modifies a single element in O(1). `Query` computes the sum by iterating from `l` to `r` – O(r‑l+1). `Reset` reinitializes the array to zeros – O(n). For more efficient queries, a prefix‑sum array or Fenwick tree could be used, but the basic implementation satisfies the problem statement.
+Walk the array once, greedily consuming each of the three monotone phases:
+
+1. Advance index `i` while `nums[i] < nums[i+1]`. The stopping point is `p`; it must satisfy `p > 0` (the first rise needs at least one step).
+2. From `p`, advance while `nums[i] > nums[i+1]`. The stopping point is `q`; it must satisfy `q > p` and `q < n − 1` (the fall needs a step, and something must remain for the last rise).
+3. From `q`, advance while `nums[i] < nums[i+1]`. The array is trionic exactly when this reaches `n − 1`.
+
+Greedy maximal phases are safe: since phases alternate direction, `p` must be the end of the maximal initial rise and `q` the end of the maximal fall that follows it. Equal adjacent values stop every phase and make the answer `false`.
 
 **Pseudocode**
 ```text
-CLASS TrionicArray:
-    FUNCTION __init__(initial):
-        SET arr ← COPY of initial
-        SET n ← LENGTH(arr)
-
-    FUNCTION update(i, val):
-        SET arr[i] ← val
-
-    FUNCTION query(l, r):
-        SET sum ← 0
-        FOR idx ← l TO r:
-            SET sum ← sum + arr[idx]
-        RETURN sum
-
-    FUNCTION reset():
-        FOR i ← 0 TO n-1:
-            SET arr[i] ← 0
+FUNCTION isTrionic(nums):
+    n ← LENGTH(nums)
+    i ← 0
+    WHILE i + 1 < n AND nums[i] < nums[i+1]
+        i ← i + 1
+    IF i = 0
+        RETURN false              // no first rise
+    p ← i
+    WHILE i + 1 < n AND nums[i] > nums[i+1]
+        i ← i + 1
+    IF i = p OR i = n - 1
+        RETURN false              // no fall, or nothing left for the last rise
+    WHILE i + 1 < n AND nums[i] < nums[i+1]
+        i ← i + 1
+    RETURN i = n - 1
 ```
 
 ## Walkthrough
-1. Initialize with `[1,2,3]` → `arr = [1,2,3]`.
-2. `update(1,5)` changes element at index 1 → `arr = [1,5,3]`.
-3. `query(0,2)` sums all → `1+5+3 = 9`.
-4. `reset()` sets all to `0` → `arr = [0,0,0]`.
-5. `query(0,1)` returns `0`.
+Example 1: `nums = [1,3,5,4,2,6]`, `n = 6`.
+1. Rise: 1 < 3 < 5, then 5 > 4 stops → `p = 2` (> 0, ok).
+2. Fall: 5 > 4 > 2, then 2 < 6 stops → `q = 4` (> p and < 5, ok).
+3. Rise: 2 < 6 → `i = 5 = n − 1`.
+4. Reached the end → return **true**, matching the expected output.
+
+(Example 2, `[2,1,3]`: the first rise stops at `i = 0` → `false`.)
 
 ## Complexity Analysis
-- Update: O(1) time, O(1) space.
-- Query: O(k) time where k = r‑l+1, O(1) space.
-- Reset: O(n) time, O(1) space.
+- Time: O(n) — each index is visited once.
+- Space: O(1).
 
-## Follow‑Up Questions
-1. How would you improve `query` to O(log n) using a Fenwick tree or segment tree?
-2. Can you support a `rangeUpdate(l, r, delta)` operation efficiently?
-3. What changes are needed if the array size can grow dynamically?
+## Follow-Up Questions
+1. How would you find the maximum-sum trionic **subarray** (Trionic Array II)?
+2. How would you generalize to check for `k` alternating monotone phases?
+3. How would you count the number of trionic subarrays?
 
 ## Key Takeaway
-A trionic array combines basic array updates with range queries; more advanced data structures can optimize query performance.
+Validating a fixed monotone "shape" is a single greedy pass: consume each maximal phase in turn and check that every phase is non-empty and the scan ends exactly at the last index.

@@ -87,7 +87,7 @@ Consider the matrix `[[1,0,1],[0,1,0],[1,0,0]]`.
 3. **Area calculation** for each row:
    - Row 0: `area = 1*1 = 1`, `area = 1*2 = 2` → max 2.
    - Row 1 & 2: maximum area = 1.
-4. The largest possible all‑1s submatrix after column rearrangement has area **2**.
+4. The largest possible all-1s submatrix after column rearrangement has area **2**.
 
 ---
 
@@ -109,4 +109,4 @@ Consider the matrix `[[1,0,1],[0,1,0],[1,0,0]]`.
 
 ## Key Takeaway
 
-> Build column‑wise histograms of consecutive 1s, sort each row to simulate column rearrangement, and compute the maximal rectangle as `height × width`.
+> Build column-wise histograms of consecutive 1s, sort each row to simulate column rearrangement, and compute the maximal rectangle as `height × width`.

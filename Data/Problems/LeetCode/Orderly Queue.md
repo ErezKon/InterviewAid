@@ -36,7 +36,7 @@ In the second move, we move the 3^rd character 'c' to the end, obtaining the fin
 
 ## Approach
 - If `k == 1`, the operation is equivalent to rotating the string. Use Booth's algorithm to find the lexicographically minimal rotation in linear time.
-- If `k > 1`, the operation allows arbitrary swaps, thus any permutation is reachable. The smallest possible string is simply the characters of `s` sorted in non‑decreasing order.
+- If `k > 1`, the operation allows arbitrary swaps, thus any permutation is reachable. The smallest possible string is simply the characters of `s` sorted in non-decreasing order.
 
 ## Walkthrough
 | Case | Reasoning |

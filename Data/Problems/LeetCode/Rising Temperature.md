@@ -72,7 +72,7 @@ In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 
 ## Walkthrough
 
-1. Self‑join the table on `recordDate` offset by one day.
+1. Self-join the table on `recordDate` offset by one day.
 2. Compare `w1.temperature` with `w2.temperature`.
 3. Return `w1.id` where the condition holds.
 
@@ -95,4 +95,4 @@ In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 
 ## Key Takeaway
 
-> Self‑join with `DATEDIFF = 1` connects each day to its predecessor — the standard SQL pattern for comparing consecutive rows by date.
+> Self-join with `DATEDIFF = 1` connects each day to its predecessor — the standard SQL pattern for comparing consecutive rows by date.

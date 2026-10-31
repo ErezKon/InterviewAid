@@ -39,7 +39,7 @@ Explanation: The largest subset is {"0", "1"}, so the answer is 2.
 ```
 
 ## Approach
-**Algorithm:** 2‑dimensional 0/1 knapsack DP.
+**Algorithm:** 2-dimensional 0/1 knapsack DP.
 1. Initialise a DP table `dp[i][j]` representing the maximum number of strings that can be formed using at most `i` zeros and `j` ones.
 2. For each string, count its zeros and ones.
 3. Update the table in reverse (from `m` down to `zeros`, `n` down to `ones`) to avoid reusing the same string.
@@ -68,9 +68,9 @@ For `strs = ["10","0001","111001","1","0"]`, `m=5`, `n=3`:
 - Time: O(L * m * n) where *L* is number of strings (each update scans the DP grid).
 - Space: O(m * n) for the DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if each string also had a profit value and you wanted to maximize total profit?
-2. Can the DP be optimised to use a 1‑dimensional array?
+2. Can the DP be optimised to use a 1-dimensional array?
 3. What if the strings are not binary but contain a larger alphabet?
 
 ## Key Takeaway

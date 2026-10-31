@@ -135,22 +135,22 @@ Explanation: The tree consists of only one node, so there is one good path.
 
 ## Walkthrough
 
-Consider Example 1.
+Consider Example 1.
 1. **Sort values:** 1 → nodes {0,3}, 2 → {2}, 3 → {1,4}.
-2. **Process value 1:**
-   - Union node 0 with neighbor 2? No, because `vals[2]=2 > 1`.
-   - Union node 3 with neighbor 2? No.
-   - Components: {0}, {3}. Each component size 1 → adds `1*(1-1)/2 = 0`.
+2. **Process value 1:**
+   - Union node 0 with neighbor 2? No, because `vals[2]=2 > 1`.
+   - Union node 3 with neighbor 2? No.
+   - Components: {0}, {3}. Each component size 1 → adds `1*(1-1)/2 = 0`.
    - Result so far = 5 (single nodes).
-3. **Process value 2:**
-   - Node 2 connects to 0 (value 1) and 3 (value 1) → both ≤ 2, so union(2,0) and union(2,3).
-   - Component now contains {0,2,3}. No other node of value 2, so no extra pairs.
-4. **Process value 3:**
-   - Node 1 connects to 0 (≤3) → union(1,0) merges component {0,2,3,1}.
-   - Node 4 connects to 2 (≤3) → union(4,2) merges node 4 into same component.
-   - Nodes of value 3 are {1,4}. Both share root → `cnt = 2` → add `2*1/2 = 1` good path (1‑4).
-   - Additionally, node 1 can pair with node 0 (value 1) via path 1‑0, but endpoints differ, not counted.
-   - Result = 5 + 1 (pair 1‑4) + 0 (others) = 6.
+3. **Process value 2:**
+   - Node 2 connects to 0 (value 1) and 3 (value 1) → both ≤ 2, so union(2,0) and union(2,3).
+   - Component now contains {0,2,3}. No other node of value 2, so no extra pairs.
+4. **Process value 3:**
+   - Node 1 connects to 0 (≤3) → union(1,0) merges component {0,2,3,1}.
+   - Node 4 connects to 2 (≤3) → union(4,2) merges node 4 into same component.
+   - Nodes of value 3 are {1,4}. Both share root → `cnt = 2` → add `2*1/2 = 1` good path (1-4).
+   - Additionally, node 1 can pair with node 0 (value 1) via path 1-0, but endpoints differ, not counted.
+   - Result = 5 + 1 (pair 1-4) + 0 (others) = 6.
 
 ---
 
@@ -158,11 +158,11 @@ Consider Example 1.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n log n) for sorting + near‑linear unions (α(n) amortized) |
+| **Time** | O(n log n) for sorting + near-linear unions (α(n) amortized) |
 | **Space** | O(n) for adjacency, DSU structures |
 
 ---
 
 ## 5. Key Takeaway
 
-> **Sort‑by‑value + DSU.** By processing nodes from smallest to largest value and union‑finding neighbors that satisfy the value constraint, we can count good paths efficiently without enumerating all pairs.
+> **Sort-by-value + DSU.** By processing nodes from smallest to largest value and union-finding neighbors that satisfy the value constraint, we can count good paths efficiently without enumerating all pairs.

@@ -51,12 +51,12 @@ Explanation: Initially s = "???????".
 ```
 
 ## Approach
-Work backwards: repeatedly find a window of length `m` that can be turned into all `'*'` (i.e., it matches `stamp` in all non‑`'*'` positions). Replace that window with `'*'` and record the position. Continue until the whole string is `'*'` or no progress can be made. The recorded positions reversed give a valid stamping order.
+Work backwards: repeatedly find a window of length `m` that can be turned into all `'*'` (i.e., it matches `stamp` in all non-`'*'` positions). Replace that window with `'*'` and record the position. Continue until the whole string is `'*'` or no progress can be made. The recorded positions reversed give a valid stamping order.
 
 ## Walkthrough
 For `stamp = "abc"`, `target = "ababc"`:
 1. Scan windows of size 3. Window at index 2 (`"abc"`) matches fully → replace → `ab***` (record 2).
-2. Scan again. Window at index 0 now sees `"ab*"`; non‑`'*'` chars match `stamp` → replace → `*****` (record 0).
+2. Scan again. Window at index 0 now sees `"ab*"`; non-`'*'` chars match `stamp` → replace → `*****` (record 0).
 3. Reverse recorded list → `[0,2]`.
 
 ## Complexity Analysis

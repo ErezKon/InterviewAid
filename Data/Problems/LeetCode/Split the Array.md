@@ -62,7 +62,7 @@ The algorithm stops as soon as a frequency exceeds two.
 - **Time:** O(n), where n is the length of `nums`.
 - **Space:** O(k), where k is the number of distinct elements (at most n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if each group must have the same size?
 2. Can you extend the approach to allow a maximum frequency of `m` instead of 2?
 3. What if the array must be split into more than two groups while keeping the same frequency constraint?

@@ -39,7 +39,7 @@ Example 2:
 ```
 
 ## Approach
-**Stack Simulation** – Iterate through characters, pushing letters onto a stack. When a digit is seen and the stack is non‑empty, pop the top letter (the one to delete) and ignore the digit. After processing, join the stack contents.
+**Stack Simulation** – Iterate through characters, pushing letters onto a stack. When a digit is seen and the stack is non-empty, pop the top letter (the one to delete) and ignore the digit. After processing, join the stack contents.
 
 ```text
 FUNCTION clearDigits(s):
@@ -68,10 +68,10 @@ Resulting string: "ad".
 - **Time:** O(n) – each character processed once.
 - **Space:** O(n) – stack holds at most n characters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the algorithm if digits could delete more than one preceding character?
-- Can the solution be performed in‑place without extra stack space?
+- Can the solution be performed in-place without extra stack space?
 - What if the input contains uppercase letters or other symbols?
 
 ## Key Takeaway
-A stack efficiently models the “delete previous character” operation, giving a linear‑time solution.
+A stack efficiently models the “delete previous character” operation, giving a linear-time solution.

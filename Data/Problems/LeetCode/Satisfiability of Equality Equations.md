@@ -83,18 +83,18 @@ Example 2:
 | Metric | Complexity |
 |--------|------------|
 | Time   | O(N) – two linear scans of the equations |
-| Space  | O(1) – Union‑Find for 26 letters (constant extra space) |
+| Space  | O(1) – Union-Find for 26 letters (constant extra space) |
 
 ---
 
 ## Follow-Up Questions
 
 1. How would you extend this to handle equations with more than two variables per statement?
-2. Can you solve the problem without Union‑Find, using graph connectivity?
+2. Can you solve the problem without Union-Find, using graph connectivity?
 3. What changes are needed if the variable set is larger than 26 letters?
 
 ---
 
 ## Key Takeaway
 
-> Union‑Find efficiently groups equal variables, allowing a quick check that no inequality contradicts those groups.
+> Union-Find efficiently groups equal variables, allowing a quick check that no inequality contradicts those groups.

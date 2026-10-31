@@ -53,4 +53,4 @@ FUNCTION isValidPhoneNumber(phoneNumber):
 - How would you handle optional country code prefixes like `+1`?
 
 ## Key Takeaway
-A concise regular expression can efficiently validate fixed-format phone numbers with constant‑time checks.
+A concise regular expression can efficiently validate fixed-format phone numbers with constant-time checks.

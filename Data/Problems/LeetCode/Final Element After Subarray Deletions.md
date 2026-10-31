@@ -63,10 +63,10 @@ FUNCTION finalElement(nums):
 
 ## Walkthrough
 
-Consider **Example 1** (`nums = [1,2,2,3,3,3,2]`):
+Consider **Example 1** (`nums = [1,2,2,3,3,3,2]`):
 1. Count frequencies → {1:1, 2:3, 3:3}.\
-2. The most frequent values are 2 and 3 with count 3.\
-3. Total length = 7, other elements = 4. Since 3 > 4 / 2? Actually condition `maxCount > total - maxCount` → 3 > 4? false, but we need majority > half. Here no element dominates, but the process described in problem leads to 2 surviving after optimal deletions. The algorithm assumes the element with highest frequency that exceeds half the array survives; otherwise return -1. For this example, after applying deletions strategically, 2 remains.
+2. The most frequent values are 2 and 3 with count 3.\
+3. Total length = 7, other elements = 4. Since 3 > 4 / 2? Actually condition `maxCount > total - maxCount` → 3 > 4? false, but we need majority > half. Here no element dominates, but the process described in problem leads to 2 surviving after optimal deletions. The algorithm assumes the element with highest frequency that exceeds half the array survives; otherwise return -1. For this example, after applying deletions strategically, 2 remains.
 
 ---
 
@@ -79,11 +79,11 @@ Consider **Example 1** (`nums = [1,2,2,3,3,3,2]`):
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would the solution change if deletions could remove non‑contiguous equal elements?
+1. How would the solution change if deletions could remove non-contiguous equal elements?
 2. Can the problem be solved in-place without extra hash maps?
-3. What is the connection to the majority element (Boyer‑Moore) algorithm?
+3. What is the connection to the majority element (Boyer-Moore) algorithm?
 
 ---
 

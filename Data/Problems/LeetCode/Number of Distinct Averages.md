@@ -109,7 +109,7 @@ The set size is 1, so the answer is 1.
 ## 6. Follow-Up Questions
 
 1. How would the solution change if we needed the **sum** of distinct averages instead of the count?
-2. Can we solve the problem in O(n) time without sorting using a hash‑based approach?
+2. Can we solve the problem in O(n) time without sorting using a hash-based approach?
 3. How would you adapt the algorithm for a streaming input where numbers arrive one by one?
 
 ---

@@ -110,10 +110,10 @@ FUNCTION compute_confirmation_rate():
 - **Time:** `O(U + C)` where `U` is number of users and `C` is number of confirmation rows (handled by the database engine).
 - **Space:** `O(U)` for the result set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the query to compute the rate for a specific time window?
 2. How can you index the tables to improve performance for large datasets?
 3. Extend the problem to handle multiple action types with different weights.
 
 ## Key Takeaway
-A left join combined with conditional aggregation lets you calculate per‑user rates while gracefully handling users with no activity.
+A left join combined with conditional aggregation lets you calculate per-user rates while gracefully handling users with no activity.

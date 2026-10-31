@@ -68,7 +68,7 @@ For `arr = [3,3,3,3,5,5,5,2,2,7]`:
 - **Time:** O(n log n) due to sorting the frequency list.
 - **Space:** O(m) where m is the number of distinct values.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if you could only remove at most *k* distinct values?
 2. Can you solve the problem in O(n) time using a bucket sort on frequencies?
 3. What if the array is streamed and you must decide removals online?

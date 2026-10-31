@@ -111,4 +111,4 @@ Example 4:
 
 ## Key Takeaway
 
-> Dispatch on type: null, boolean, number, string, array, or object. Recursively serialize children. Arrays use `[]` with comma‑separated values; objects use `{}` with `"key":value` pairs.
+> Dispatch on type: null, boolean, number, string, array, or object. Recursively serialize children. Arrays use `[]` with comma-separated values; objects use `{}` with `"key":value` pairs.

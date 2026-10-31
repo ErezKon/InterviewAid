@@ -40,7 +40,7 @@ Output: 5
 ```
 
 ## Approach
-**Algorithm:** Binary search for the lower bound of `k` and `k+1` using the trailing‑zeroes function; the difference gives the count.
+**Algorithm:** Binary search for the lower bound of `k` and `k+1` using the trailing-zeroes function; the difference gives the count.
 **Key Insight:** The function `Z(n)` = number of trailing zeroes in `n!` is monotonic and increases by 1 at multiples of 5, except for jumps caused by higher powers of 5. Therefore the set of `n` with a given `k` is either empty or a contiguous block of length 5.
 
 ```text
@@ -70,17 +70,17 @@ FUNCTION preimageSizeFZF(k):
 For `k = 3`:
 1. `lowerBound(3)` finds the smallest `n` with at least 3 zeroes → `n = 15`.
 2. `lowerBound(4)` finds the smallest `n` with at least 4 zeroes → `n = 20`.
-3. Difference `20 - 15 = 5` → exactly five numbers (15‑19) have 3 trailing zeroes.
+3. Difference `20 - 15 = 5` → exactly five numbers (15-19) have 3 trailing zeroes.
 For `k = 5` the two bounds are equal, yielding `0`.
 
 ## Complexity Analysis
-- **Time:** O(log M) where `M` is the search range (≈ 5·k), because each bound uses binary search and each `trailingZeroes` call is O(log₅ n).
+- **Time:** O(log M) where `M` is the search range (≈ 5·k), because each bound uses binary search and each `trailingZeroes` call is O(log₅ n).
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
-1. How would you adapt the solution for a different base (e.g., trailing zeroes in base‑b factorials)?
+## Follow-Up Questions
+1. How would you adapt the solution for a different base (e.g., trailing zeroes in base-b factorials)?
 2. Can you prove that the answer is never greater than 5 without binary search?
-3. What changes are needed if `k` can be as large as 10¹⁸ (requiring 64‑bit arithmetic)?
+3. What changes are needed if `k` can be as large as 10¹⁸ (requiring 64-bit arithmetic)?
 
 ## Key Takeaway
-The monotonic nature of the trailing‑zeroes function lets us locate the exact block of numbers with `k` zeroes via two binary‑search bounds; the block size is either 0 or 5.
+The monotonic nature of the trailing-zeroes function lets us locate the exact block of numbers with `k` zeroes via two binary-search bounds; the block size is either 0 or 5.

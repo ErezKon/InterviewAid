@@ -98,4 +98,4 @@ FUNCTION UserPurchaseMetrics(purchaseTable):
 3. Design a solution that updates these aggregates incrementally as new purchases arrive.
 
 ## Key Takeaway
-SQL aggregation (`SUM`, `COUNT`, `AVG`, `MAX`) with `GROUP BY` efficiently summarizes per‑user purchase statistics in a single pass.
+SQL aggregation (`SUM`, `COUNT`, `AVG`, `MAX`) with `GROUP BY` efficiently summarizes per-user purchase statistics in a single pass.

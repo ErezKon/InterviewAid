@@ -94,7 +94,7 @@ Explanation: Add a directed rune from focus point 4 to focus point 2.
 
 ## 5. Walkthrough
 
-Take Example 1. After finding SCCs, each node is its own SCC. In‑degree counts: component 0 has 0, component 3 has 0, others have >0. Sources = 2, so answer = 2‑1 = 1. Adding an edge from node 0 to node 3 connects the two source components, making all nodes reachable.
+Take Example 1. After finding SCCs, each node is its own SCC. In-degree counts: component 0 has 0, component 3 has 0, others have >0. Sources = 2, so answer = 2-1 = 1. Adding an edge from node 0 to node 3 connects the two source components, making all nodes reachable.
 
 ---
 

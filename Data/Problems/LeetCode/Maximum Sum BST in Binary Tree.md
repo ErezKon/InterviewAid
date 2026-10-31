@@ -44,7 +44,7 @@ Explanation: All values are negatives. Return an empty BST.
 ```
 
 ## Approach
-Perform a post‑order DFS that returns for each node:
+Perform a post-order DFS that returns for each node:
 1. Whether the subtree is a BST.
 2. Minimum and maximum values in the subtree.
 3. Sum of all node values.
@@ -71,22 +71,22 @@ FUNCTION maxSumBST(root):
 ```
 
 ## Walkthrough
-Consider the subtree rooted at the node with value `3` in Example 1.
+Consider the subtree rooted at the node with value `3` in Example 1.
 | Node | left.max | right.min | BST? | Subtree sum |
 |------|----------|-----------|------|-------------|
 | 2 (leaf) | -∞ | +∞ | Yes | 2 |
 | 4 (leaf) | -∞ | +∞ | Yes | 4 |
 | 3 | 2 | 4 | Yes (2 < 3 < 4) | 2+4+3 = 9 |
-The algorithm propagates these values upward, eventually finding the larger BST rooted at the right child of the root with sum 20.
+The algorithm propagates these values upward, eventually finding the larger BST rooted at the right child of the root with sum 20.
 
 ## Complexity Analysis
 *Time*: Each node is visited once → `O(n)` where `n` is the number of tree nodes.
-*Space*: Recursion stack depth `O(h)` where `h` is tree height (worst‑case `O(n)`).
+*Space*: Recursion stack depth `O(h)` where `h` is tree height (worst-case `O(n)`).
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to also return the root of the maximum‑sum BST?
+## Follow-Up Questions
+1. How would you modify the algorithm to also return the root of the maximum-sum BST?
 2. Can the solution be adapted to count the number of BST subtrees instead of the maximum sum?
-3. How would the approach change for an n‑ary tree where BST property is defined on child ordering?
+3. How would the approach change for an n-ary tree where BST property is defined on child ordering?
 
 ## Key Takeaway
-A post‑order traversal that aggregates BST validity, min/max bounds, and sums enables an `O(n)` solution to find the maximum‑sum BST subtree.
+A post-order traversal that aggregates BST validity, min/max bounds, and sums enables an `O(n)` solution to find the maximum-sum BST subtree.

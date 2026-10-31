@@ -54,8 +54,8 @@ Return `true` *if the number of **global inversions** is equal to the number of 
 
 ```text
 FUNCTION isIdealPermutation(nums):
-    // Every local inversion is global. So global == local iff no non‑local inversions exist.
-    // Non‑local: nums[i] > nums[j] where j > i + 1
+    // Every local inversion is global. So global == local iff no non-local inversions exist.
+    // Non-local: nums[i] > nums[j] where j > i + 1
     // Equivalent: no element is > 1 position away from its sorted position
     FOR i, num IN enumerate(nums):
         IF ABS(num - i) > 1:
@@ -85,15 +85,15 @@ Example 2:
 ## 5. Walkthrough
 
 Consider the array `[1,0,2]`:
-1. Index 0: `num = 1`, `|1‑0| = 1` → OK.
-2. Index 1: `num = 0`, `|0‑1| = 1` → OK.
-3. Index 2: `num = 2`, `|2‑2| = 0` → OK.
-All differences ≤ 1, so return `true`.
+1. Index 0: `num = 1`, `|1-0| = 1` → OK.
+2. Index 1: `num = 0`, `|0-1| = 1` → OK.
+3. Index 2: `num = 2`, `|2-2| = 0` → OK.
+All differences ≤ 1, so return `true`.
 
 For `[1,2,0]`:
-1. Index 0: `|1‑0| = 1` → OK.
-2. Index 1: `|2‑1| = 1` → OK.
-3. Index 2: `|0‑2| = 2` → exceeds 1 → return `false`.
+1. Index 0: `|1-0| = 1` → OK.
+2. Index 1: `|2-1| = 1` → OK.
+3. Index 2: `|0-2| = 2` → exceeds 1 → return `false`.
 
 ---
 
@@ -106,7 +106,7 @@ For `[1,2,0]`:
 
 ## 7. Follow-Up Questions
 
-- How would you modify the algorithm to count the number of non‑local inversions?
+- How would you modify the algorithm to count the number of non-local inversions?
 - Can this technique be extended to detect if the permutation is "almost sorted" within a given distance `k`?
 - What changes are needed if the input is not a permutation but an arbitrary array?
 
@@ -114,4 +114,4 @@ For `[1,2,0]`:
 
 ## 8. Key Takeaway
 
-> `|nums[i] - i| ≤ 1` for all `i` ⇔ no non‑local inversions ⇔ global inversions equal local inversions. A single linear scan suffices.
+> `|nums[i] - i| ≤ 1` for all `i` ⇔ no non-local inversions ⇔ global inversions equal local inversions. A single linear scan suffices.

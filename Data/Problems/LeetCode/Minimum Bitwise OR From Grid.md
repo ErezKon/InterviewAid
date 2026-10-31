@@ -47,7 +47,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Column‑wise DP with OR‑state set
+**Algorithm:** Column-wise DP with OR-state set
 Key insight: The OR operation is monotonic; the set of reachable OR values after processing each column can be tracked efficiently.
 
 ```text
@@ -78,10 +78,10 @@ Consider grid = [[1,2],[3,4]] (2 rows, 2 columns).
 ## Complexity Analysis
 | Metric | Value |
 |--------|-------|
-| Time   | O(n · m · s) where s is the number of distinct OR states (worst‑case O(n·m·2^k) but typically small) |
+| Time   | O(n · m · s) where s is the number of distinct OR states (worst-case O(n·m·2^k) but typically small) |
 | Space  | O(s) for storing the current set of OR values |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could select at most one element per row instead of per column?
 2. Can you optimize the DP by pruning states that are supersets of others?
 3. How would you adapt the algorithm for very large grids where `m` and `n` are up to 10⁵?

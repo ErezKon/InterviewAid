@@ -40,7 +40,7 @@ Output: 20
 ```text
 FUNCTION MaxAbsExpression(nums1, nums2, k):
     SET n ← LENGTH(nums1)
-    // Pre‑compute four transformed arrays
+    // Pre-compute four transformed arrays
     FOR i ← 0 TO n-1:
         SET a1[i] ←  nums1[i] + nums2[i] + i
         SET a2[i] ←  nums1[i] + nums2[i] - i
@@ -79,13 +79,13 @@ For `nums1 = [1,2,3,4]`, `nums2 = [4,3,2,1]`, `k = 2`:
 3. `a2` gives difference `0`, others give `0`. Final answer `2` (illustrative).
 
 ## Complexity Analysis
-- **Time:** `O(n)` for building arrays plus `O(4n)` for four sliding‑window passes → `O(n)`.
+- **Time:** `O(n)` for building arrays plus `O(4n)` for four sliding-window passes → `O(n)`.
 - **Space:** `O(n)` for the transformed arrays and deques.
 
-## Follow‑Up Questions
-1. How would the solution adapt if the distance constraint were based on Manhattan distance in a 2‑D grid of indices?
+## Follow-Up Questions
+1. How would the solution adapt if the distance constraint were based on Manhattan distance in a 2-D grid of indices?
 2. Can you extend the method to handle a variable `k` per query efficiently?
 3. What changes are needed if the expression includes additional weighted terms for `i` and `j`?
 
 ## Key Takeaway
-By decomposing the absolute‑value expression into linear forms, the problem reduces to a sliding‑window maximum difference, solvable in linear time.
+By decomposing the absolute-value expression into linear forms, the problem reduces to a sliding-window maximum difference, solvable in linear time.

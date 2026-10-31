@@ -63,7 +63,7 @@ FUNCTION minimumTotalCost(nums1, nums2):
     SET excess ← 2 * majorityCount - LENGTH(conflicts)
     IF excess <= 0:
         RETURN cost
-    // Need additional non‑conflict positions with a different value
+    // Need additional non-conflict positions with a different value
     FOR i ← 0 TO LENGTH(nums1)-1:
         IF i NOT IN conflicts AND nums1[i] != majorityVal AND nums2[i] != majorityVal:
             SET cost ← cost + i
@@ -133,4 +133,4 @@ The algorithm identifies conflicts, sees no majority, and simply sums the indice
 
 ## 7. Key Takeaway
 
-> **Majority element drives the difficulty.** If one conflicting value appears > half the time, we must involve additional non‑conflict positions. Otherwise, conflicts can be paired among themselves.
+> **Majority element drives the difficulty.** If one conflicting value appears > half the time, we must involve additional non-conflict positions. Otherwise, conflicts can be paired among themselves.

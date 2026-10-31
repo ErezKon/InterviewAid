@@ -74,16 +74,19 @@ FUNCTION isValidWord(word):
 ```
 
 ## Walkthrough
-Consider `word = "Hello1"`.
+Example 1: `word = "234Adas"` (length 7 ≥ 3).
+
 | Index | ch | Type | Action | hasVowel | hasConsonant |
 |-------|----|------|--------|----------|--------------|
-|0|H|letter (consonant)|SET hasConsonant←true|false|true|
-|1|e|letter (vowel)|SET hasVowel←true|true|true|
-|2|l|consonant|no change|true|true|
-|3|l|consonant|no change|true|true|
-|4|o|vowel|no change|true|true|
-|5|1|digit|continue|true|true|
-End of loop → both flags true → return true.
+|0|2|digit|continue|false|false|
+|1|3|digit|continue|false|false|
+|2|4|digit|continue|false|false|
+|3|A|letter (vowel)|SET hasVowel←true|true|false|
+|4|d|letter (consonant)|SET hasConsonant←true|true|true|
+|5|a|vowel|no change|true|true|
+|6|s|consonant|no change|true|true|
+
+End of loop → both flags true → **Output: true**. Example 2 (`"b3"`) fails the length check; Example 3 (`"a3$e"`) returns false on `'$'`.
 
 ## Complexity Analysis
 - Time: O(n) where n = len(word).

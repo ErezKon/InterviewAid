@@ -103,11 +103,11 @@ Note that slots 2, 5, 6, and 8 are empty which is permitted.
 
 Consider `nums = [1,2,3]`, `numSlots = 2`.
 1. Initial state `mask = 0` (both slots empty). `cnt = 0`, next number = 1.
-2. Try placing 1 in slot 1 → `newMask = 3^0 = 1`. DP[1] = 1&1 = 1.
-3. Try placing 1 in slot 2 → `newMask = 3^1 = 3`. DP[3] = 1&2 = 0.
-4. Process mask = 1 (slot 1 has one item). `cnt = 1`, next number = 2.
-   - Slot 1 has room (`digit=1<2`): `newMask = 1 + 3^0 = 2`. DP[2] = max(DP[2], DP[1] + (2&1)) = 1 + 0 = 1.
-   - Slot 2 empty: `newMask = 1 + 3^1 = 4`. DP[4] = 1 + (2&2) = 3.
+2. Try placing 1 in slot 1 → `newMask = 3^0 = 1`. DP[1] = 1&1 = 1.
+3. Try placing 1 in slot 2 → `newMask = 3^1 = 3`. DP[3] = 1&2 = 0.
+4. Process mask = 1 (slot 1 has one item). `cnt = 1`, next number = 2.
+   - Slot 1 has room (`digit=1<2`): `newMask = 1 + 3^0 = 2`. DP[2] = max(DP[2], DP[1] + (2&1)) = 1 + 0 = 1.
+   - Slot 2 empty: `newMask = 1 + 3^1 = 4`. DP[4] = 1 + (2&2) = 3.
 5. Continue until all numbers placed; final max DP value = 9.
 
 ---

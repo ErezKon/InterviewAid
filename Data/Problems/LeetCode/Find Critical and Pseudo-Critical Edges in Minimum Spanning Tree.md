@@ -58,7 +58,7 @@ FUNCTION findCriticalAndPseudo(n, edges):
         IF w > mstWeight OR graph disconnected:
             critical.ADD(i)
             CONTINUE
-        // Test pseudo‑critical: force‑include edge i first
+        // Test pseudo-critical: force-include edge i first
         w = kruskal(n, edges, forceInclude=i)
         IF w == mstWeight:
             pseudo.ADD(i)
@@ -69,30 +69,30 @@ FUNCTION findCriticalAndPseudo(n, edges):
 
 ## Walkthrough
 
-Consider Example 1. The baseline MST weight using Kruskal is 7.
-1. Exclude edge 0 (weight 1). The MST weight becomes 8 → edge 0 is **critical**.
-2. Exclude edge 3 (weight 2). The MST weight remains 7 → edge 3 is **not critical**.
-3. Force‑include edge 3 first, then run Kruskal. The resulting MST weight is still 7, so edge 3 is **pseudo‑critical**.
-Repeating this for every edge yields the critical list `[0,1,2]` and pseudo‑critical list `[3,4,5]`.
+Consider Example 1. The baseline MST weight using Kruskal is 7.
+1. Exclude edge 0 (weight 1). The MST weight becomes 8 → edge 0 is **critical**.
+2. Exclude edge 3 (weight 2). The MST weight remains 7 → edge 3 is **not critical**.
+3. Force-include edge 3 first, then run Kruskal. The resulting MST weight is still 7, so edge 3 is **pseudo-critical**.
+Repeating this for every edge yields the critical list `[0,1,2]` and pseudo-critical list `[3,4,5]`.
 
 ---
 
 ## Complexity Analysis
 
 - Running Kruskal once costs `O(E log E)`.
-- We run Kruskal `2·E` times (exclude and force‑include) → `O(E² log E)`; with Union‑Find α(V) factor it is `O(E²·α(V))`.
-- Space: `O(V + E)` for the Union‑Find structure and edge list.
+- We run Kruskal `2·E` times (exclude and force-include) → `O(E² log E)`; with Union-Find α(V) factor it is `O(E²·α(V))`.
+- Space: `O(V + E)` for the Union-Find structure and edge list.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the algorithm to return the actual edges instead of their indices?
-- Can you design a linear‑time solution for dense graphs?
+- Can you design a linear-time solution for dense graphs?
 - How does the approach change for directed graphs with edge constraints?
 
 ---
 
 ## Key Takeaway
 
-> **Two tests per edge: exclude (critical check) and force‑include (pseudo‑critical check). Each test runs Kruskal's. O(E²·α(V)) total.**
+> **Two tests per edge: exclude (critical check) and force-include (pseudo-critical check). Each test runs Kruskal's. O(E²·α(V)) total.**

@@ -50,7 +50,7 @@ Example 2:
 
 ## Approach
 
-**Pre‑compute increasing run lengths — O(n)**
+**Pre-compute increasing run lengths — O(n)**
 
 ```text
 FUNCTION maxIncreasingSubarrays(nums):
@@ -77,10 +77,10 @@ Consider `nums = [1,3,2,4,5,6]`.
 1. Compute `inc` (increasing run length ending at each index):
    - `inc = [1,2,1,2,3,4]`.
 2. Scan possible split points:
-   - At `i=0`: `inc[0]=1`, `inc[1]=2` → min = 1 → ans = 1.
-   - At `i=2`: `inc[2]=1`, `inc[3]=2` → min = 1.
-   - At `i=3`: `inc[3]=2`, `inc[4]=3` → min = 2 → ans updates to 2.
-   - At `i=4`: `inc[4]=3`, `inc[5]=4` → min = 3, but length 3 windows exceed array bounds, so ans stays 2.
+   - At `i=0`: `inc[0]=1`, `inc[1]=2` → min = 1 → ans = 1.
+   - At `i=2`: `inc[2]=1`, `inc[3]=2` → min = 1.
+   - At `i=3`: `inc[3]=2`, `inc[4]=3` → min = 2 → ans updates to 2.
+   - At `i=4`: `inc[4]=3`, `inc[5]=4` → min = 3, but length 3 windows exceed array bounds, so ans stays 2.
 3. Final answer is `2`.
 
 ---
@@ -93,14 +93,14 @@ Consider `nums = [1,3,2,4,5,6]`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to return the actual subarrays, not just the length?
 2. Can you solve the problem with O(1) extra space?
-3. What if the subarrays need to be non‑adjacent but still of equal length?
+3. What if the subarrays need to be non-adjacent but still of equal length?
 
 ---
 
 ## Key Takeaway
 
-> Pre‑computing increasing‑run lengths ending at each index lets you evaluate every split point in linear time, yielding the maximum possible `k` for two adjacent increasing subarrays.
+> Pre-computing increasing-run lengths ending at each index lets you evaluate every split point in linear time, yielding the maximum possible `k` for two adjacent increasing subarrays.

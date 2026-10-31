@@ -49,7 +49,7 @@ Explanation: All transactions can be taken in order, balance: 0 → 3 → 1 → 
 ```
 
 ## Approach
-**Greedy with Sorting by Effect** – Process all positive transactions first (they only increase balance). For negative transactions, sort by their absolute value descending and attempt to apply them while maintaining a non‑negative balance, using a max‑heap to possibly replace previously taken larger negatives.
+**Greedy with Sorting by Effect** – Process all positive transactions first (they only increase balance). For negative transactions, sort by their absolute value descending and attempt to apply them while maintaining a non-negative balance, using a max-heap to possibly replace previously taken larger negatives.
 
 ```text
 FUNCTION MaxTransactions(transactions):
@@ -88,7 +88,7 @@ Result = 4 transactions (optimal).
 - **Time:** `O(n log n)` for heap operations.
 - **Space:** `O(k)` where `k` is number of taken negative transactions (heap size).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if each transaction also had a processing fee?
 2. Can you adapt the solution to output the actual ordering of transactions?
 3. What if there is a lower bound on the balance (e.g., must stay above a threshold >0)?

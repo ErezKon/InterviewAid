@@ -80,4 +80,4 @@ Space: O(N·L) for the Trie plus O(L²) for recursion stack.
 3. What is the impact of using a hash map of prefixes instead of a Trie?
 
 ## Key Takeaway
-Backtracking with a prefix‑search structure (Trie) prunes the search space dramatically, enabling efficient construction of word squares.
+Backtracking with a prefix-search structure (Trie) prunes the search space dramatically, enabling efficient construction of word squares.

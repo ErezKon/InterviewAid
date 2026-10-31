@@ -72,15 +72,15 @@ Explanation: The only magical sequence is [0].
 ```text
 FUNCTION sumOfProducts(n, m, k):
     MOD ← 10^9 + 7
-    // Pre‑compute binomial coefficients C(i, j) for 0 ≤ i ≤ n
+    // Pre-compute binomial coefficients C(i, j) for 0 ≤ i ≤ n
     maxBit ← floor(log2(m))
-    // dp[mask][cnt] = number of ways to achieve a certain bitmask with cnt non‑zero elements
+    // dp[mask][cnt] = number of ways to achieve a certain bitmask with cnt non-zero elements
     INITIALIZE dp[0][0] ← 1
     FOR each number val FROM 1 TO m:
         bitMask ← binary representation of val
         FOR mask FROM (1 << maxBit) - 1 DOWNTO 0:
             newMask ← mask OR bitMask
-            FOR cnt FROM k‑1 DOWNTO 0:
+            FOR cnt FROM k-1 DOWNTO 0:
                 dp[newMask][cnt+1] ← dp[newMask][cnt+1] + dp[mask][cnt]
     // Combine contributions of each mask to the final product sum
     result ← 0
@@ -91,7 +91,7 @@ FUNCTION sumOfProducts(n, m, k):
     RETURN result
 ```
 
-The algorithm enumerates possible bit patterns of numbers up to `m` and uses DP to count how many sequences realize each combined mask with exactly `k` non‑zero elements. The product for a mask is the product of the values represented by the set bits.
+The algorithm enumerates possible bit patterns of numbers up to `m` and uses DP to count how many sequences realize each combined mask with exactly `k` non-zero elements. The product for a mask is the product of the values represented by the set bits.
 
 ---
 
@@ -111,15 +111,15 @@ After processing all numbers, dp[mask][1] = 1 for masks 01,10,11. The product fo
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(m · 2^{log m} · k) — iterating over numbers and bitmask states |
-| **Space** | O(2^{log m} · k) — DP table for masks and counts |
+| **Time** | O(m · 2^{log m} · k) — iterating over numbers and bitmask states |
+| **Space** | O(2^{log m} · k) — DP table for masks and counts |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would the solution change if the product constraint were replaced by a sum constraint?
-2. Can the approach be adapted for sequences where the order of non‑zero elements matters?
+2. Can the approach be adapted for sequences where the order of non-zero elements matters?
 3. What optimizations are possible when `m` is very large but the number of set bits per value is small?
 
 ---

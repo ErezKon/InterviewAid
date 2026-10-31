@@ -101,9 +101,9 @@ router.forwardPacket(); // There are no packets left, return [].
 
 ## Complexity Analysis
 
-- **Time:** `addPacket` O(log k) for binary‑search insertion into the per‑destination list (k = packets for that destination). `forwardPacket` O(1). `getCount` O(log k).
+- **Time:** `addPacket` O(log k) for binary-search insertion into the per-destination list (k = packets for that destination). `forwardPacket` O(1). `getCount` O(log k).
 - **Space:** O(n) to store all packets, where n is the number of packets currently in the router.
 
 ## Key Takeaway
 
-> Use a queue for FIFO, a set for deduplication, and per‑destination sorted lists with binary search for range count queries.
+> Use a queue for FIFO, a set for deduplication, and per-destination sorted lists with binary search for range count queries.

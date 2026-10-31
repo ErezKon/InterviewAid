@@ -80,10 +80,10 @@ For `stones = [5,3,1,4,2]` (n=5):
 - **Time:** O(n²) – all interval lengths and start positions.
 - **Space:** O(n²) for the DP table (can be reduced to O(n) with rolling arrays).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the score awarded were the value of the removed stone instead of the remaining sum?
-2. Can the DP be optimized to O(n) using prefix‑sum tricks and monotonicity?
+2. Can the DP be optimized to O(n) using prefix-sum tricks and monotonicity?
 3. What changes are needed if the game allowed removal of any stone (not just ends)?
 
 ## Key Takeaway
-Modeling the game as a score‑difference interval DP, where each move yields the sum of the remaining stones, leads to a clear recurrence and an O(n²) solution.
+Modeling the game as a score-difference interval DP, where each move yields the sum of the remaining stones, leads to a clear recurrence and an O(n²) solution.

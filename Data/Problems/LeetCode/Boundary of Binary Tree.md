@@ -102,10 +102,10 @@ Result `[1,2,4,7,8,6,3]`.
 - **Time:** O(n) – each node visited at most twice.
 - **Space:** O(h) recursion stack, where h is tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the boundary in clockwise order?
 2. Can you compute the boundary iteratively using a stack instead of recursion?
 3. What if the tree is extremely large and does not fit in memory?
 
 ## Key Takeaway
-A clean three‑pass DFS separates left boundary, leaves, and right boundary, enabling a linear‑time solution without extra data structures.
+A clean three-pass DFS separates left boundary, leaves, and right boundary, enabling a linear-time solution without extra data structures.

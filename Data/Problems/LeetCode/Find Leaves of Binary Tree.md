@@ -58,7 +58,7 @@ Example 2:
 
 ## Approach
 
-**Depth‑First Search (Post‑order) – compute node height**. The height of a node equals the maximum distance to any leaf. Nodes with the same height form a leaf‑removal round.
+**Depth-First Search (Post-order) – compute node height**. The height of a node equals the maximum distance to any leaf. Nodes with the same height form a leaf-removal round.
 
 ```text
 FUNCTION findLeaves(root):
@@ -96,11 +96,11 @@ Consider the tree `[1,2,3,4,5]`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to return the leaves in order of removal without grouping?
 2. Can you solve the problem iteratively using BFS?
-3. How does the solution change for an N‑ary tree?
+3. How does the solution change for an N-ary tree?
 
 ---
 

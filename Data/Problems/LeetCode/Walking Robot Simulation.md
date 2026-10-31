@@ -72,7 +72,7 @@ The furthest point the robot ever gets from the origin is (0, 6), which squared 
 ```
 
 ## Approach
-Simulate the robot step‑by‑step, storing obstacles in a hash set for O(1) lookup. Maintain direction index (0‑N,1‑E,2‑S,3‑W) and update it with modular arithmetic on turns. After each move, compute the distance squared and track the maximum.
+Simulate the robot step-by-step, storing obstacles in a hash set for O(1) lookup. Maintain direction index (0-N,1-E,2-S,3-W) and update it with modular arithmetic on turns. After each move, compute the distance squared and track the maximum.
 
 ```text
 FUNCTION robotSim(commands, obstacles):
@@ -108,13 +108,13 @@ FUNCTION robotSim(commands, obstacles):
 Maximum distance² observed = 3²+4² = 25.
 
 ## Complexity Analysis
-- Time: O(m + k) where *m* is number of commands and *k* total steps taken.
+- Time: O(m + k) where *m* is number of commands and *k* total steps taken.
 - Space: O(o) for storing *o* obstacles.
 
 ## Follow-Up Questions
-- How would you modify the algorithm for a 3‑D robot?
+- How would you modify the algorithm for a 3-D robot?
 - Can you compute the path length in addition to the maximum distance?
 - What if obstacles could be added dynamically during simulation?
 
 ## Key Takeaway
-A hash‑set for obstacles combined with direction handling via modular arithmetic enables efficient simulation and tracking of the farthest point.
+A hash-set for obstacles combined with direction handling via modular arithmetic enables efficient simulation and tracking of the farthest point.

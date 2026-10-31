@@ -42,7 +42,7 @@ A subtree of a tree `T` is the tree consisting of a node in `T` and all of its d
 
 ## 2. Key Insight
 
-> A depth‑first search can maintain a global frequency array of the 26 possible lowercase letters. By recording the count of the current node’s label **before** exploring its children and **after** the recursion returns, the difference gives the exact number of occurrences of that label in the subtree.
+> A depth-first search can maintain a global frequency array of the 26 possible lowercase letters. By recording the count of the current node’s label **before** exploring its children and **after** the recursion returns, the difference gives the exact number of occurrences of that label in the subtree.
 
 ---
 
@@ -108,9 +108,9 @@ Consider the first example.
 | Node | Label | `before` (freq) | After visiting children | `result[node]` |
 |------|-------|----------------|------------------------|----------------|
 | 0    | a     | 0 (a)          | a appears at nodes 0 and 1 → freq[a]=2 | 2 |
-| 1    | b     | 0 (b)          | b appears only at node 1 → freq[b]=1 | 1 |
-| 2    | a     | 1 (a) (inherited from node 0) | no additional `'a'` in its subtree → freq[a] stays 2 | 1 |
-| 3‑6  | …     | …              | …                      | … |
+| 1    | b     | 0 (b)          | b appears only at node 1 → freq[b]=1 | 1 |
+| 2    | a     | 1 (a) (inherited from node 0) | no additional `'a'` in its subtree → freq[a] stays 2 | 1 |
+| 3-6  | …     | …              | …                      | … |
 The DFS records the count before descending, then after returning the difference gives the exact subtree count for each node.
 
 ---
@@ -126,7 +126,7 @@ The DFS records the count before descending, then after returning the difference
 
 ## 7. Follow-Up Questions
 
-- How would the algorithm change if the tree were **directed** or if the root were not node 0?
+- How would the algorithm change if the tree were **directed** or if the root were not node 0?
 - Can the solution be adapted to handle **dynamic label updates** with queries?
 - What if the labels were not limited to 26 characters but could be any string?
 
@@ -134,4 +134,4 @@ The DFS records the count before descending, then after returning the difference
 
 ## 8. Key Takeaway
 
-> **Use a global frequency array with a snapshot before recursion.** The difference between the frequency after processing a subtree and the snapshot gives the count of the node’s label in that subtree, enabling a linear‑time solution.
+> **Use a global frequency array with a snapshot before recursion.** The difference between the frequency after processing a subtree and the snapshot gives the count of the node’s label in that subtree, enabling a linear-time solution.

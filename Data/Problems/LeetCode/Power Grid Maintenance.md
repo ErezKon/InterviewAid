@@ -8,9 +8,7 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented MST-over-time-windows problem, not this one. Correct idea: union-find the stations into grids; keep a min-heap (or sorted set) of online ids per grid root. Query `[1,x]`: return `x` if online, otherwise pop offline ids from the top of its grid's heap and return the top (or `-1`). Query `[2,x]`: mark `x` offline (lazy deletion). O((c + n + q) log c).*
-
-You are given an integer `c` representing `c` power stations, each with a unique identifier `id` from 1 to `c` (1‑based indexing).
+You are given an integer `c` representing `c` power stations, each with a unique identifier `id` from 1 to `c` (1-based indexing).
 
 These stations are interconnected via `n` **bidirectional** cables, represented by a 2D array `connections`, where each element `connections[i] = [u_i, v_i]` indicates a connection between station `u_i` and station `v_i`. Stations that are directly or indirectly connected form a **power grid**.
 
@@ -23,7 +21,7 @@ You are also given a 2D array `queries`, where each query is one of the followin
 
 Return an array of integers representing the results of each query of type `[1, x]` in the **order** they appear.
 
-**Note:** The power grid preserves its structure; an offline (non‑operational) node remains part of its grid and taking it offline does not alter connectivity.
+**Note:** The power grid preserves its structure; an offline (non-operational) node remains part of its grid and taking it offline does not alter connectivity.
 
 **Constraints:**
 - `1 <= c <= 10^5`
@@ -63,46 +61,53 @@ Explanation:
 ```
 
 ## Approach
-**Algorithm:** Transform to a time‑sweep with Union‑Find (Kruskal‑like) across overlapping intervals.
-**Key Insight:** For any candidate time `t`, the problem reduces to finding a minimum spanning tree (MST) among edges whose interval includes `t`. The optimal solution is the minimum MST cost over all times where the graph is connected.
+**Algorithm:** Union-Find to build the grids, plus one min-heap of station ids per grid with lazy deletion.
+**Key Insight:** Taking a station offline never changes connectivity, so grids are fixed up front. Each query `[1, x]` for an offline `x` only needs the smallest online id in `x`'s grid. Keep every grid's ids in a min-heap; when a station goes offline just flag it, and discard flagged ids from the top of the heap only when a query looks at it. Each id is popped at most once.
 
 ```text
-FUNCTION minMaintenanceCost(n, edges):
-    // edges: [u, v, cost, start, end]
-    // Collect all distinct interval endpoints
-    points ← SET of all start and end values from edges
-    minCost ← INF
-    FOR t IN points:
-        // select edges active at time t
-        active ← [e FOR e IN edges IF e.start ≤ t ≤ e.end]
-        IF LENGTH(active) < n-1: CONTINUE
-        // Kruskal on active edges
-        SORT active BY cost ASCENDING
-        dsu ← NEW UnionFind(n)
-        costSum ← 0
-        edgesUsed ← 0
-        FOR (u,v,c,_,_) IN active:
-            IF dsu.FIND(u) != dsu.FIND(v):
-                dsu.UNION(u, v)
-                costSum ← costSum + c
-                edgesUsed ← edgesUsed + 1
-                IF edgesUsed == n-1: BREAK
-        IF edgesUsed == n-1 AND costSum < minCost:
-            minCost ← costSum
-    RETURN minCost IF minCost != INF ELSE -1
+FUNCTION processQueries(c, connections, queries):
+    dsu ← NEW UnionFind(c)
+    FOR (u, v) IN connections:
+        dsu.UNION(u, v)
+    heaps ← MAP root → MIN-HEAP
+    FOR id ← 1 TO c:
+        PUSH id INTO heaps[dsu.FIND(id)]
+    online ← ARRAY OF TRUE LENGTH c + 1
+    result ← []
+    FOR (type, x) IN queries:
+        IF type == 2:
+            online[x] ← FALSE              // lazy deletion
+        ELSE IF online[x]:
+            APPEND x TO result
+        ELSE:
+            h ← heaps[dsu.FIND(x)]
+            WHILE h NOT EMPTY AND NOT online[TOP(h)]:
+                POP h
+            APPEND (TOP(h) IF h NOT EMPTY ELSE -1) TO result
+    RETURN result
 ```
 
 ## Walkthrough
-For the first example, distinct time points are `{0,1,2,3,4,5,6,7}`. Evaluating `t = 2` yields active edges (1‑2, 2‑3, 3‑4). Kruskal selects all three with total cost `3+2+4 = 9`, which is the minimal achievable cost.
+Example 1: `c = 5`, `connections = [[1,2],[2,3],[3,4],[4,5]]` → one grid, heap `[1,2,3,4,5]`.
+
+| Query | Action | Heap top after cleanup | Output |
+|-------|--------|------------------------|--------|
+| `[1,3]` | 3 is online | - | `3` |
+| `[2,1]` | mark 1 offline | (heap unchanged, lazy) | |
+| `[1,1]` | 1 offline → pop 1 (offline), top = 2 online | 2 | `2` |
+| `[2,2]` | mark 2 offline | | |
+| `[1,2]` | 2 offline → pop 2, top = 3 online | 3 | `3` |
+
+Result: `[3,2,3]`.
 
 ## Complexity Analysis
-- **Time:** O(k · m log m) where `k` is the number of distinct time points (≤ 2m). Each iteration runs Kruskal's algorithm.
-- **Space:** O(m) for storing edges and O(n) for the Union‑Find structure.
+- **Time:** O((c + n) · α(c) + c log c + q log c) - building the DSU and heaps, then each id is popped at most once across all queries.
+- **Space:** O(c) for the DSU, heaps, and online flags.
 
-## Follow‑Up Questions
-1. How can the algorithm be optimized using a segment tree or sweep line to avoid recomputing MST from scratch at each time point?
-2. What changes are needed if edges have different maintenance durations and can be scheduled partially?
-3. Can you extend the solution to handle multiple disconnected components that must each stay connected separately?
+## Follow-Up Questions
+1. What if stations could come back online (`[3, x]`)? (Use a sorted set per grid instead of a lazy heap, or re-push the id.)
+2. What if cables could also be removed? (Process queries offline in reverse so removals become unions.)
+3. How would you answer "largest online id" or "k-th smallest online id" in the grid?
 
 ## Key Takeaway
-By enumerating candidate times and computing an MST among edges available at that time, we find the cheapest schedule that keeps the power grid connected throughout.
+When the structure is static and only membership changes, precompute components once with Union-Find and use lazy deletion in a per-component heap so each removal costs amortized O(log c).

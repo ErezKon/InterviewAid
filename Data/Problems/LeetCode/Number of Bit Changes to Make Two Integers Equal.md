@@ -96,7 +96,7 @@ Take `n = 13 (1101₂)`, `k = 9 (1001₂)`.
 
 ## 7. Follow-Up Questions
 
-- How would the solution change if you could also flip 0‑bits to 1 at a cost?
+- How would the solution change if you could also flip 0-bits to 1 at a cost?
 - What if you needed to output the actual positions of bits to flip?
 
 ---

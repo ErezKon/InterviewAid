@@ -76,4 +76,4 @@ For `"1.0.1"` vs `"1"`:
 3. How would you handle extremely long version strings efficiently?
 
 ## Key Takeaway
-Parsing versions into numeric components and comparing them position‑by‑position handles varying lengths and leading zeros elegantly.
+Parsing versions into numeric components and comparing them position-by-position handles varying lengths and leading zeros elegantly.

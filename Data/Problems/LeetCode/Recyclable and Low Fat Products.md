@@ -75,7 +75,7 @@ Only rows meeting both `Y` flags are returned.
 - **Space:** `O(K)` for `K` matching rows returned.
 
 ## Follow-Up Questions
-1. How would you modify the query to also return products that are either low‑fat **or** recyclable?
+1. How would you modify the query to also return products that are either low-fat **or** recyclable?
 2. What indexes would improve performance for large tables?
 3. How can you write the query to return results sorted by `product_id`?
 

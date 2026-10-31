@@ -75,7 +75,7 @@ Binary search converges to `18`.
 - **Time:** `O(n log S)` where `S` is the sum of all elements (binary search iterations) and `n` is the array length.
 - **Space:** `O(1)` extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to also return the actual partitioning?
 2. Can the problem be solved using dynamic programming in `O(n·k)` time?
 3. What changes are needed if the subarrays need not be contiguous?

@@ -105,4 +105,4 @@ Consider `nums = [1,2,4,8]`.
 
 ## 7. Key Takeaway
 
-> Sort + LIS‑style DP with divisibility instead of `<`. Transitivity of divisibility in sorted order means checking only against the chain's last element is sufficient. Reconstruct via parent pointers.
+> Sort + LIS-style DP with divisibility instead of `<`. Transitivity of divisibility in sorted order means checking only against the chain's last element is sufficient. Reconstruct via parent pointers.

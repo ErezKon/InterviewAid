@@ -40,8 +40,8 @@ Example 2:
 ```
 
 ## Approach
-The operation strictly reduces a positive number and never increases it, so the optimal strategy is to always halve the **largest** positive value first. This greedy choice minimizes future work because halving a larger number yields a bigger reduction in the remaining total. Implement the greedy process with a max‑heap (priority queue):
-1. Insert all positive numbers into a max‑heap.
+The operation strictly reduces a positive number and never increases it, so the optimal strategy is to always halve the **largest** positive value first. This greedy choice minimizes future work because halving a larger number yields a bigger reduction in the remaining total. Implement the greedy process with a max-heap (priority queue):
+1. Insert all positive numbers into a max-heap.
 2. While the heap is not empty:
    - POP the maximum `x`.
    - Compute `y = ⌊x / 2⌋`.
@@ -78,13 +78,13 @@ Consider `nums = [5, 3, 2]`.
 Result = 5 operations.
 
 ## Complexity Analysis
-- **Time:** O(k log k) where *k* is the number of positive elements plus the number of heap insertions (each operation adds at most one new element). In the worst case each positive number is halved O(log maxValue) times.
+- **Time:** O(k log k) where *k* is the number of positive elements plus the number of heap insertions (each operation adds at most one new element). In the worst case each positive number is halved O(log maxValue) times.
 - **Space:** O(k) for the heap.
 
 ## Follow-Up Questions
 1. How would the algorithm change if the operation were `x = x - 1` instead of halving?
 2. What if each halving operation had a different cost depending on the current value?
-3. Can the solution be adapted to work in a streaming setting where numbers arrive one‑by‑one?
+3. Can the solution be adapted to work in a streaming setting where numbers arrive one-by-one?
 
 ## Key Takeaway
-Greedily halving the current largest positive number using a max‑heap yields the minimal number of operations to drive all values to non‑positive.
+Greedily halving the current largest positive number using a max-heap yields the minimal number of operations to drive all values to non-positive.

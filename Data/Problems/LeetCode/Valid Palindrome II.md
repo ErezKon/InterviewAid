@@ -83,7 +83,7 @@ For `s = "abca"`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * How would you extend this to allow deleting at most *k* characters?
 * Can you solve it using dynamic programming for the general case?

@@ -74,10 +74,10 @@ Combined → [1,2,3,4,6,12]; k=3 → 3.
 - **Time:** O(√n) – we only iterate to the square root.
 - **Space:** O(√n) – to store the factor lists.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to return the `k`‑th largest factor instead?
-2. Can you compute the `k`‑th factor without storing all factors, using a two‑pointer technique?
+## Follow-Up Questions
+1. How would you modify the algorithm to return the `k`-th largest factor instead?
+2. Can you compute the `k`-th factor without storing all factors, using a two-pointer technique?
 3. How would you handle very large `n` (up to 10^12) where √n may be costly?
 
 ## Key Takeaway
-Iterating only to √n and pairing each divisor with its complement yields all factors efficiently, enabling direct access to the `k`‑th one.
+Iterating only to √n and pairing each divisor with its complement yields all factors efficiently, enabling direct access to the `k`-th one.

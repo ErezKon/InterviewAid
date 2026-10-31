@@ -32,7 +32,7 @@ Output: false
 ```
 
 ## Approach
-Use the area (or cross product) of the triangle formed by the three points. If the area is non‑zero, the points are non‑collinear.
+Use the area (or cross product) of the triangle formed by the three points. If the area is non-zero, the points are non-collinear.
 
 ```text
 FUNCTION IsBoomerang(p1, p2, p3):
@@ -58,9 +58,9 @@ FUNCTION IsBoomerang(p1, p2, p3):
 - **Space:** O(1) – only a few scalar variables.
 
 ## Follow-Up Questions
-1. How would you extend this to check if a set of `k` points are all non‑collinear?
+1. How would you extend this to check if a set of `k` points are all non-collinear?
 2. What if the points are given in 3D space? How does the test change?
 3. Can you detect degenerate cases where two or more points coincide?
 
 ## Key Takeaway
-The cross product of two vectors from a common point yields zero exactly when the points are collinear, providing a constant‑time boomerang check.
+The cross product of two vectors from a common point yields zero exactly when the points are collinear, providing a constant-time boomerang check.

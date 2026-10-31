@@ -97,7 +97,7 @@ After sorting: (-1,1,9), (0,0,3), (0,2,15), (1,1,20), (2,2,7) → grouped into c
 ## Follow-Up Questions
 1. How would you perform the traversal using BFS with a priority queue?
 2. Can you output the traversal in O(n) time using a map of columns?
-3. How would you adapt the algorithm for an N‑ary tree?
+3. How would you adapt the algorithm for an N-ary tree?
 
 ## Key Takeaway
 Recording each node's column and row via DFS and then sorting by (column, row, value) yields the correct vertical order traversal.

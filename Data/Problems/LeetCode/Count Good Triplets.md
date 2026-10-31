@@ -43,7 +43,7 @@ Explanation: No triplet satisfies all conditions.
 ```
 
 ## Approach
-The constraints are small enough for a straightforward triple‑nested loop. For each `i`, iterate `j > i` and early‑continue if the first condition fails. Then iterate `k > j` and check the remaining two conditions. This avoids unnecessary work when the first condition is violated.
+The constraints are small enough for a straightforward triple-nested loop. For each `i`, iterate `j > i` and early-continue if the first condition fails. Then iterate `k > j` and check the remaining two conditions. This avoids unnecessary work when the first condition is violated.
 
 ```text
 FUNCTION countGoodTriplets(arr, a, b, c):
@@ -73,10 +73,10 @@ The loop finds the four valid triplets listed in the output.
 - **Time:** O(n³) in the worst case, where `n` is the length of `arr`.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you improve the runtime if `n` were up to 10⁵?
 2. Can the problem be solved using prefix sums or binary indexed trees?
 3. How would the solution change if the array were sorted first?
 
 ## Key Takeaway
-A simple triple‑nested loop with early pruning efficiently solves the problem for the given constraints.
+A simple triple-nested loop with early pruning efficiently solves the problem for the given constraints.

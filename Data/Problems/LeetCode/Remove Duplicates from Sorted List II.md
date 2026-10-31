@@ -72,7 +72,7 @@ Space: `O(1)` extra.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to keep one copy of each duplicated value instead of removing all?
-2. Can the solution be adapted for a doubly‑linked list without changing complexity?
+2. Can the solution be adapted for a doubly-linked list without changing complexity?
 3. What changes are needed if the list is not sorted?
 
 ## Key Takeaway

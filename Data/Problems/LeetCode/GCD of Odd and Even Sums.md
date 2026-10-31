@@ -72,7 +72,7 @@ After loop: GCD(9,6) → 3.
 - **Time:** `O(n)` for the single pass plus `O(log min(oddSum, evenSum))` for GCD computation.
 - **Space:** `O(1)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if the array is extremely large and cannot fit in memory?
 2. Can you compute the GCD incrementally as you stream the numbers?
 3. What if you need the GCD of sums of numbers at even and odd *indices* instead of parity?

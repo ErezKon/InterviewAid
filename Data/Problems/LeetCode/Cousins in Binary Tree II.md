@@ -51,7 +51,7 @@ Example 2:
 
 ## Approach
 
-Two‑pass BFS:
+Two-pass BFS:
 1. **First pass** – traverse level by level, recording the total sum of node values for each depth.
 2. **Second pass** – for each parent, compute the sum of its children (sibling sum). The cousin sum for a child is `levelSum[depth+1] - siblingSum`. Assign this value to the child.
 
@@ -96,12 +96,12 @@ FUNCTION replaceValueInTree(root):
 
 | Step | Queue (nodes) | Level Sum | Action |
 |------|---------------|-----------|--------|
-| 1 (Pass 1) | [5] | 5 | Record level 0 sum = 5.
-| 2 (Pass 1) | [4,9] | 13 | Record level 1 sum = 13.
-| 3 (Pass 1) | [1,10,7] | 18 | Record level 2 sum = 18.
-| 4 (Pass 2) | [5] (depth 0) | – | Set root.val = 0.
-| 5 (Pass 2) | [4,9] (depth 1) | – | siblingSum = 4+9 = 13 → children get 0.
-| 6 (Pass 2) | [1,10,7] (depth 2) | – | For parent 4, siblingSum = 1+10 = 11 → child 1 gets 18‑11 = 7, child 10 gets 7. For parent 9, siblingSum = 7 → child 7 gets 18‑7 = 11.
+| 1 (Pass 1) | [5] | 5 | Record level 0 sum = 5.
+| 2 (Pass 1) | [4,9] | 13 | Record level 1 sum = 13.
+| 3 (Pass 1) | [1,10,7] | 18 | Record level 2 sum = 18.
+| 4 (Pass 2) | [5] (depth 0) | – | Set root.val = 0.
+| 5 (Pass 2) | [4,9] (depth 1) | – | siblingSum = 4+9 = 13 → children get 0.
+| 6 (Pass 2) | [1,10,7] (depth 2) | – | For parent 4, siblingSum = 1+10 = 11 → child 1 gets 18-11 = 7, child 10 gets 7. For parent 9, siblingSum = 7 → child 7 gets 18-7 = 11.
 
 ---
 
@@ -118,10 +118,10 @@ FUNCTION replaceValueInTree(root):
 
 1. How would you modify the algorithm to return the original tree while also providing the cousin sums as a separate structure?
 2. Can this approach be adapted to compute cousin products instead of sums?
-3. How would you handle the problem if the tree were given as a list of parent‑child edges rather than a node‑based structure?
+3. How would you handle the problem if the tree were given as a list of parent-child edges rather than a node-based structure?
 
 ---
 
 ## Key Takeaway
 
-> **Cousin sum = level sum – sibling sum.** Two BFS passes—first collect per‑level totals, then assign each child the difference between its level’s total and its parent’s sibling sum.
+> **Cousin sum = level sum – sibling sum.** Two BFS passes—first collect per-level totals, then assign each child the difference between its level’s total and its parent’s sibling sum.

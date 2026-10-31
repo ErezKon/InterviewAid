@@ -60,7 +60,7 @@ Explanation: The sum of all XOR totals for every subset is 480.
 ```
 
 ## Approach
-The contribution of each bit is independent. If a bit is set in any element, it appears in exactly half of the subsets (2^(n‑1)). Therefore, the total sum equals `(OR of all numbers) * 2^(n‑1)`.
+The contribution of each bit is independent. If a bit is set in any element, it appears in exactly half of the subsets (2^(n-1)). Therefore, the total sum equals `(OR of all numbers) * 2^(n-1)`.
 
 ## Walkthrough
 | Step | OR so far | Explanation |
@@ -69,15 +69,15 @@ The contribution of each bit is independent. If a bit is set in any element, it 
 | after 5 | 0101 | 5 sets bits 0 and 2 |
 | after 1 | 0101 | 1 adds no new bits |
 | after 6 | 0111 | 6 adds bit 1 |
-Resulting OR = 7. Multiply by 2^(3‑1)=4 → 28.
+Resulting OR = 7. Multiply by 2^(3-1)=4 → 28.
 
 ## Complexity Analysis
 Time: O(n) to compute OR.
 Space: O(1).
 
 ## Follow-Up Questions
-* How would the solution change if subsets must be of size at least k?
+* How would the solution change if subsets must be of size at least k?
 * Can you extend the idea to compute the sum of AND over all subsets?
 
 ## Key Takeaway
-Each set bit contributes to half of the subsets, allowing a simple O(n) OR‑times‑power calculation.
+Each set bit contributes to half of the subsets, allowing a simple O(n) OR-times-power calculation.

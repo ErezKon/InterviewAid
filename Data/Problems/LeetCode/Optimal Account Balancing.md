@@ -45,8 +45,8 @@ Therefore, person #1 only need to give person #0 $4, and all debt is settled.
 
 ## Approach
 1. Compute net balance for each person.
-2. Collect non‑zero balances into a list `debts`.
-3. Use backtracking (DFS) to settle debts pairwise: try to cancel the current debt with any later opposite‑sign debt, recurse, and keep the minimum number of transactions.
+2. Collect non-zero balances into a list `debts`.
+3. Use backtracking (DFS) to settle debts pairwise: try to cancel the current debt with any later opposite-sign debt, recurse, and keep the minimum number of transactions.
 4. Prune when a debt is zero or when the current count exceeds known best.
 
 ```text
@@ -82,13 +82,13 @@ Consider `transactions = [[0,1,10],[2,0,5]]`.
 5. Total transactions = 2.
 
 ## Complexity Analysis
-- **Time:** O(n!) in the worst case due to backtracking over `k` non‑zero debts (k ≤ 12 in practice). Pruning reduces average time.
+- **Time:** O(n!) in the worst case due to backtracking over `k` non-zero debts (k ≤ 12 in practice). Pruning reduces average time.
 - **Space:** O(k) for the `debts` list and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm if each transaction had a cost proportional to the amount transferred?
 2. Can the problem be approximated with a greedy algorithm that runs in polynomial time?
 3. How would you extend the solution to handle dynamic addition of new transactions?
 
 ## Key Takeaway
-Transform the problem into settling net balances and use backtracking to pair opposite‑sign debts, pruning aggressively to find the minimal number of transactions.
+Transform the problem into settling net balances and use backtracking to pair opposite-sign debts, pruning aggressively to find the minimal number of transactions.

@@ -46,7 +46,7 @@ Example 2:
 
 ```text
 FUNCTION checkDigitorialPermutation(perm):
-    // perm is an array of length 10 containing digits 0‑9 in some order
+    // perm is an array of length 10 containing digits 0-9 in some order
     FOR i ← 0 TO LENGTH(perm) - 1:
         IF perm[i] > i:
             RETURN false
@@ -75,11 +75,11 @@ For `perm = [0,2,1,3,4,5,6,7,8,9]`:
 
 where `n` is the length of the permutation (10).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you extend this check for a factorial representation of numbers larger than 10!
 - Can you compute the actual integer represented by a valid factoradic permutation?
-- What modifications are needed if the digits are not limited to 0‑9 but to a larger range?
+- What modifications are needed if the digits are not limited to 0-9 but to a larger range?
 
 ## Key Takeaway
 

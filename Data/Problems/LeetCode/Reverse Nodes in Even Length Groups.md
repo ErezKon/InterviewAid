@@ -127,11 +127,11 @@ The algorithm correctly handles the truncated final group by counting the actual
 | Aspect | Complexity |
 |--------|------------|
 | Time   | O(n) — each node is visited a constant number of times |
-| Space  | O(1) — in‑place reversal uses only a few pointers |
+| Space  | O(1) — in-place reversal uses only a few pointers |
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the algorithm to reverse groups of **odd** length instead?
 - Can the solution be adapted to work with a doubly linked list more efficiently?
@@ -140,4 +140,4 @@ The algorithm correctly handles the truncated final group by counting the actual
 
 ## Key Takeaway
 
-> Always count the **actual** size of the current group before deciding to reverse; the last group may be shorter than its intended size, and reversing only even‑sized groups yields the correct transformed list.
+> Always count the **actual** size of the current group before deciding to reverse; the last group may be shorter than its intended size, and reversing only even-sized groups yields the correct transformed list.

@@ -47,11 +47,11 @@ Explanation: Since k is zero, we cannot delete anything. The compressed string i
 ## Approach
 **Algorithm:** Dynamic Programming with memoization.
 - **Insight 1:** For each position `i` and remaining deletions `k`, we decide either to delete `s[i]` or keep it and form a group of identical characters.
-- **Insight 2:** While extending a group, we track how many characters are the same (`same`) and how many different characters we would need to delete (`diff`). The encoded length of a group depends on the count (`1` → 1 char, `2‑9` → 2 chars, `10‑99` → 3 chars, etc.).
+- **Insight 2:** While extending a group, we track how many characters are the same (`same`) and how many different characters we would need to delete (`diff`). The encoded length of a group depends on the count (`1` → 1 char, `2-9` → 2 chars, `10-99` → 3 chars, etc.).
 - **State:** `dp(i, k)` = minimum compressed length for suffix starting at `i` with at most `k` deletions.
 - **Transition:**
   1. Delete `s[i]`: `dp(i+1, k-1)`.
-  2. Keep `s[i]` and extend a group to `j` while deleting at most `k` non‑matching chars: `encodedLen(same) + dp(j+1, k - diff)`.
+  2. Keep `s[i]` and extend a group to `j` while deleting at most `k` non-matching chars: `encodedLen(same) + dp(j+1, k - diff)`.
 - **Base Cases:** `i == n` → 0; `k < 0` → ∞.
 
 ### Pseudocode

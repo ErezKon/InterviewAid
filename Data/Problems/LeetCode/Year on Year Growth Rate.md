@@ -117,4 +117,4 @@ The function returns `[0.5, -0.2, 0.5]`.
 3. Can you extend the solution to compute compound annual growth rate (CAGR) over multiple years?
 
 ## Key Takeaway
-A single pass over the revenue list yields all year‑on‑year growth rates, turning a seemingly repetitive calculation into a straightforward O(n) solution.
+A single pass over the revenue list yields all year-on-year growth rates, turning a seemingly repetitive calculation into a straightforward O(n) solution.

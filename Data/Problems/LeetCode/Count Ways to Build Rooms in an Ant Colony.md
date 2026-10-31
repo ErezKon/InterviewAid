@@ -96,8 +96,8 @@ Consider the first example with tree edges `0→{1,2}`, `1→{3}`, `2→{4}`.
 ## Follow-Up Questions
 
 1. How would the solution change if rooms could have multiple parents (a DAG) instead of a tree?
-2. Can you compute the answer without factorial pre‑computation using combinatorial formulas on the fly?
-3. What is the impact on complexity if the modulo were a non‑prime number?
+2. Can you compute the answer without factorial pre-computation using combinatorial formulas on the fly?
+3. What is the impact on complexity if the modulo were a non-prime number?
 
 ---
 

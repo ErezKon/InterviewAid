@@ -87,8 +87,8 @@ The `nextDay` function applies the transformation rule to produce the next day's
 
 ## Walkthrough
 For the initial state `[0,1,0,1,1,0,0,1]`:
-1. Day 0 → state stored.
-2. Compute Day 1 using `nextDay` → `[0,1,1,0,0,0,0,0]`.
+1. Day 0 → state stored.
+2. Compute Day 1 using `nextDay` → `[0,1,1,0,0,0,0,0]`.
 3. Continue until a previously seen tuple reappears (after 14 days). The cycle length is 14, so for `n = 7` we simply simulate 7 steps.
 The algorithm stops early when a cycle is detected, drastically reducing work for large `n`.
 
@@ -96,7 +96,7 @@ The algorithm stops early when a cycle is detected, drastically reducing work fo
 - **Time:** `O(min(n, 64))` – at most 64 iterations before a cycle is found; after that we only simulate the remainder.
 - **Space:** `O(64)` – storage for seen states and a few auxiliary variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the number of cells were not fixed at 8?
 2. Can the cycle detection be performed using Floyd's Tortoise and Hare algorithm instead of a hashmap?
 3. How would you adapt the algorithm to return the state after each day up to `n`?

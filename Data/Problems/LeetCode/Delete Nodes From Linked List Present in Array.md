@@ -98,4 +98,4 @@ FUNCTION modifiedList(nums, head):
 
 ## Key Takeaway
 
-> **Dummy node + hash‑set lookup:** iterate with a pointer to the previous node, skipping any `next` node whose value is in the removal set. This yields O(1) deletion checks and clean edge‑case handling.
+> **Dummy node + hash-set lookup:** iterate with a pointer to the previous node, skipping any `next` node whose value is in the removal set. This yields O(1) deletion checks and clean edge-case handling.

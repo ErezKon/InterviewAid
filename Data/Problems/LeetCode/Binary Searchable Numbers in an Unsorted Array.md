@@ -61,7 +61,7 @@ Example 2:
 ```
 
 ## Approach
-**Prefix‑Max & Suffix‑Min** – For each index `i`, compute the maximum of all elements to its left (`prefixMax[i]`) and the minimum of all elements to its right (`suffixMin[i]`). `nums[i]` is searchable when `prefixMax[i] < nums[i] < suffixMin[i]`. Edge positions use `-∞`/`+∞`.
+**Prefix-Max & Suffix-Min** – For each index `i`, compute the maximum of all elements to its left (`prefixMax[i]`) and the minimum of all elements to its right (`suffixMin[i]`). `nums[i]` is searchable when `prefixMax[i] < nums[i] < suffixMin[i]`. Edge positions use `-∞`/`+∞`.
 
 ```text
 FUNCTION binarySearchableNumbers(nums):

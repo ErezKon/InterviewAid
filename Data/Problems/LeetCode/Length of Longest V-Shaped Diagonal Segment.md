@@ -87,13 +87,13 @@ Consider the first example grid:
 0 1 2
 ```
 
-1. Start at cell (0,0) value 1, move down‑right diagonal to (1,1) value 0 – pattern breaks, so turn.
-2. Turn to down‑left diagonal from (0,0) to (1,‑1) out of bounds – not valid.
-3. Start at (0,1) value 2, move down‑right to (1,2) value 1 (expected 0) – break.
-4. Start at (0,2) value 0, move down‑left to (1,1) value 0 – pattern expects 1, break.
-5. The successful V‑shape starts at (0,0) → (1,1) (turn) → (2,0): values `1→2→0` then turn to (1,2) → (0,1): values `1→2`. Total length 5.
+1. Start at cell (0,0) value 1, move down-right diagonal to (1,1) value 0 – pattern breaks, so turn.
+2. Turn to down-left diagonal from (0,0) to (1,-1) out of bounds – not valid.
+3. Start at (0,1) value 2, move down-right to (1,2) value 1 (expected 0) – break.
+4. Start at (0,2) value 0, move down-left to (1,1) value 0 – pattern expects 1, break.
+5. The successful V-shape starts at (0,0) → (1,1) (turn) → (2,0): values `1→2→0` then turn to (1,2) → (0,1): values `1→2`. Total length 5.
 
-The DFS explores each start cell and direction, tracking the longest valid V‑shaped path.
+The DFS explores each start cell and direction, tracking the longest valid V-shaped path.
 
 ---
 
@@ -109,7 +109,7 @@ DFS from each cell explores up to the grid dimension in each direction; the turn
 
 ## Follow-Up Questions
 
-1. How would you modify the algorithm if the V‑shape could contain multiple turns?
+1. How would you modify the algorithm if the V-shape could contain multiple turns?
 2. Can the solution be optimized to O(m·n) using dynamic programming on diagonals?
 3. What changes are needed if the value pattern is arbitrary instead of fixed `1→2→0`?
 
@@ -117,4 +117,4 @@ DFS from each cell explores up to the grid dimension in each direction; the turn
 
 ## Key Takeaway
 
-> DFS from each cell along diagonals with at most one direction change. The V‑shape constraint limits branching to exactly one turn point.
+> DFS from each cell along diagonals with at most one direction change. The V-shape constraint limits branching to exactly one turn point.

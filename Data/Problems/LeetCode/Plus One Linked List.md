@@ -34,8 +34,8 @@ Output: [1]
 ```
 
 ## Approach
-**Algorithm:** Single pass to locate rightmost non‑9 node, then increment and set trailing 9s to 0 (no reversal needed).
-**Key Insight:** The first node from the right that is not a 9 can be safely incremented; all nodes after it become 0. Using a sentinel simplifies handling an overflow that creates a new most‑significant digit.
+**Algorithm:** Single pass to locate rightmost non-9 node, then increment and set trailing 9s to 0 (no reversal needed).
+**Key Insight:** The first node from the right that is not a 9 can be safely incremented; all nodes after it become 0. Using a sentinel simplifies handling an overflow that creates a new most-significant digit.
 
 ```text
 FUNCTION plusOne(head):
@@ -47,7 +47,7 @@ FUNCTION plusOne(head):
         IF node.val != 9:
             notNine ← node
         node ← node.next
-    // Increment the rightmost non‑9 digit
+    // Increment the rightmost non-9 digit
     notNine.val ← notNine.val + 1
     // Set all following digits to 0
     node ← notNine.next
@@ -58,22 +58,28 @@ FUNCTION plusOne(head):
 ```
 
 ## Walkthrough
-For `head = [9,9,9]`:
+Example 1: `head = [1,2,3]`.
+
 | Step | node.val | notNine points to | Action |
 |------|----------|-------------------|--------|
-| Start | 9,9,9 | sentinel (0) | Traverse list, never updates notNine |
-| After loop | notNine = sentinel | Increment sentinel to 1 |
-| Reset tail | All three original nodes set to 0 |
-Result list becomes `[1,0,0,0]`.
+| Start | - | sentinel (0) | Begin traversal |
+| Visit 1 | 1 | node 1 | 1 != 9, update notNine |
+| Visit 2 | 2 | node 2 | 2 != 9, update notNine |
+| Visit 3 | 3 | node 3 | 3 != 9, update notNine |
+| After loop | - | node 3 | Increment 3 -> 4; no nodes after it to zero |
+
+Sentinel is still 0, so return `head`: `[1,2,4]`.
+
+Edge case `head = [9,9,9]`: `notNine` stays at the sentinel, which becomes 1, all three nodes become 0, and the sentinel is returned: `[1,0,0,0]`.
 
 ## Complexity Analysis
 - **Time:** O(n) where n is the number of nodes.
 - **Space:** O(1) extra space (ignoring output list).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to add an arbitrary integer k instead of 1?
 2. Can you solve the problem without using a sentinel node?
 3. How would you handle a doubly linked list representation?
 
 ## Key Takeaway
-Finding the rightmost non‑9 node lets you increment the number in a single pass without reversing the list.
+Finding the rightmost non-9 node lets you increment the number in a single pass without reversing the list.

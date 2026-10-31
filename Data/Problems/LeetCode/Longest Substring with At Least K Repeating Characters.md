@@ -80,14 +80,14 @@ Consider `s = "aaabbcc"`, `k = 2`.
 ## 5. Complexity Analysis
 
 - **Time:** O(26·n) ≈ O(n) – each recursion scans the string and there are at most 26 unique characters.
-- **Space:** O(26·n) for recursion stack in the worst case (splitting on each low‑frequency character).
+- **Space:** O(26·n) for recursion stack in the worst case (splitting on each low-frequency character).
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you adapt the algorithm for Unicode characters beyond the English alphabet?
-- Can you solve the problem in O(n) time without recursion using a sliding‑window approach?
+- Can you solve the problem in O(n) time without recursion using a sliding-window approach?
 - What changes are needed if the requirement is “at most k occurrences” instead of “at least k”?
 
 ---

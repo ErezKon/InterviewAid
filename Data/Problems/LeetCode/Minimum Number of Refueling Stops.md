@@ -52,7 +52,7 @@ We made 2 refueling stops along the way, so we return 2.
 ```
 
 ## Approach
-Greedy + Max‑Heap. Collect all stations reachable with current fuel, push their fuel amounts into a max‑heap, and when you cannot move further, pop the largest fuel to refuel. Repeat until you reach the target.
+Greedy + Max-Heap. Collect all stations reachable with current fuel, push their fuel amounts into a max-heap, and when you cannot move further, pop the largest fuel to refuel. Repeat until you reach the target.
 
 ```text
 FUNCTION minRefuelStops(target, startFuel, stations):
@@ -83,10 +83,10 @@ FUNCTION minRefuelStops(target, startFuel, stations):
 - Time: `O(n log n)` where `n` is the number of stations (each station is pushed/popped at most once).
 - Space: `O(n)` for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if you could only refuel at most `k` stations?
 2. What if stations could be visited multiple times?
 3. Can you adapt the algorithm for a circular route?
 
 ## Key Takeaway
-Greedy selection of the largest available fuel via a max‑heap ensures the minimum number of stops.
+Greedy selection of the largest available fuel via a max-heap ensures the minimum number of stops.

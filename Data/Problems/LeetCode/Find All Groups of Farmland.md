@@ -41,7 +41,7 @@ FUNCTION findFarmland(land):
     FOR r ← 0 TO m - 1:
         FOR c ← 0 TO n - 1:
             IF land[r][c] == 1:
-                // Find bottom‑right corner of this rectangle
+                // Find bottom-right corner of this rectangle
                 r2, c2 ← r, c
                 WHILE r2 + 1 < m AND land[r2 + 1][c] == 1:
                     r2 ← r2 + 1
@@ -90,21 +90,21 @@ Example 3:
 
 Consider the first example matrix:
 
-1. Start at `(0,0)`, it is `1` and has no `1` above or left → top‑left corner.
-2. Expand down: `(1,0)` is `0`, stop. Expand right: `(0,1)` is `0`, stop. Bottom‑right is also `(0,0)`.
+1. Start at `(0,0)`, it is `1` and has no `1` above or left → top-left corner.
+2. Expand down: `(1,0)` is `0`, stop. Expand right: `(0,1)` is `0`, stop. Bottom-right is also `(0,0)`.
 3. Mark `(0,0)` visited.
-4. Continue scanning, next unvisited `1` at `(1,1)`. Expand down to `(2,1)`, right to `(1,2)` and `(2,2)`. Bottom‑right becomes `(2,2)`.
+4. Continue scanning, next unvisited `1` at `(1,1)`. Expand down to `(2,1)`, right to `(1,2)` and `(2,2)`. Bottom-right becomes `(2,2)`.
 5. Record both rectangles and finish.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(m × n) – each cell is visited at most once.
+- **Time:** O(m × n) – each cell is visited at most once.
 - **Space:** O(1) extra besides the output list.
 
 ---
 
 ## Key Takeaway
 
-> **Rectangular groups simplify the problem: find top‑left corner, expand to bottom‑right, mark visited. No need for full BFS/DFS since shapes are rectangles.**
+> **Rectangular groups simplify the problem: find top-left corner, expand to bottom-right, mark visited. No need for full BFS/DFS since shapes are rectangles.**

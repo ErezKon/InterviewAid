@@ -101,7 +101,7 @@ Consider the first example `[1,2,3]`.
 
 1. How would the solution change if the array size could be up to 10⁵?
 2. Can the approach be adapted to count distinct XOR values for quadruplets?
-3. What if the numbers are limited to 30‑bit integers – does the basis size bound improve?
+3. What if the numbers are limited to 30-bit integers – does the basis size bound improve?
 
 ---
 

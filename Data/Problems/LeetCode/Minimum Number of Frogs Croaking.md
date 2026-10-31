@@ -81,7 +81,7 @@ FUNCTION minNumberOfFrogs(croak):
     RETURN maxFrogs
 ```
 
-## Walkthrough (Example 2)
+## Walkthrough (Example 2)
 
 **Example 1:**
 ```
@@ -113,7 +113,7 @@ Explanation: The given string is an invalid combination of "croak" from differen
 | Time   | **O(n)** – single pass over the string |
 | Space  | **O(1)** – constant counters |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the algorithm change if the croak order could be any permutation of the five letters?
 2. Can we extend the solution to report the exact time intervals during which each frog is active?

@@ -57,20 +57,20 @@ The array product is 1 * 6 * 1 * 6 * 1 * 6 * 7 = 1512, which is the minimum poss
 
 ## Approach
 
-**Algorithm:** The optimal multiset consists of the two largest numbers `p‑1` and `p‑2` repeated as evenly as possible.
+**Algorithm:** The optimal multiset consists of the two largest numbers `p-1` and `p-2` repeated as evenly as possible.
 
-- Pair each `p‑1` with a `p‑2`. Their product is `(p‑1)*(p‑2) ≡ 1 (mod p)`.
+- Pair each `p-1` with a `p-2`. Their product is `(p-1)*(p-2) ≡ 1 (mod p)`.
 - If `n` is even, use `n/2` pairs → overall product `1` modulo `p`.
-- If `n` is odd, one extra element remains; the smallest non‑zero choice is `p‑2`.
-- Therefore the minimal product modulo `p` equals `(p‑1)^{⌊n/2⌋} * (p‑2)^{⌈n/2⌉}`.
+- If `n` is odd, one extra element remains; the smallest non-zero choice is `p-2`.
+- Therefore the minimal product modulo `p` equals `(p-1)^{⌊n/2⌋} * (p-2)^{⌈n/2⌉}`.
 - Compute the exponentiation under modulus `M = 10^9+7` using fast power.
 
 ```text
 FUNCTION minNonZeroProduct(p, n):
     MOD ← 1_000_000_007
     half ← n DIV 2               // integer division
-    exp1 ← half                  // exponent for (p‑1)
-    exp2 ← n - half              // exponent for (p‑2)
+    exp1 ← half                  // exponent for (p-1)
+    exp2 ← n - half              // exponent for (p-2)
     part1 ← MOD_EXP(p-1, exp1, MOD)
     part2 ← MOD_EXP(p-2, exp2, MOD)
     RETURN (part1 * part2) MOD MOD
@@ -92,19 +92,19 @@ For `p = 7, n = 5`:
 
 - `half = 2`, `exp1 = 2`, `exp2 = 3`.
 - Compute `(6^2) * (5^3) mod M` → `36 * 125 = 4500` → `4500 mod M = 4500`.
-- This is the smallest non‑zero product achievable.
+- This is the smallest non-zero product achievable.
 
 ## Complexity Analysis
 
 - **Time:** `O(log n)` for modular exponentiation.
 - **Space:** `O(1)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if `p` were not prime?
 - Can the same reasoning be applied when the allowed set is a custom list of numbers?
-- What if we need the *maximum* non‑zero product instead?
+- What if we need the *maximum* non-zero product instead?
 
 ## Key Takeaway
 
-Pairing the two largest numbers `p‑1` and `p‑2` yields a product of `1` modulo `p`; using them as evenly as possible gives the minimal non‑zero product, computable with fast modular exponentiation.
+Pairing the two largest numbers `p-1` and `p-2` yields a product of `1` modulo `p`; using them as evenly as possible gives the minimal non-zero product, computable with fast modular exponentiation.

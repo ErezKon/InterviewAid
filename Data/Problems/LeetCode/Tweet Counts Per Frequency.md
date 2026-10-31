@@ -63,13 +63,13 @@ Maintain a map from `tweetName` to a sorted list of timestamps. For a query, com
 | 1 | `recordTweet("tweet3", 0)` | {"tweet3": [0]}
 | 2 | `recordTweet("tweet3", 60)`| {"tweet3": [0,60]}
 | 3 | `recordTweet("tweet3", 10)`| {"tweet3": [0,10,60]}
-| 4 | Query `minute`, start=0, end=60 | delta=60, intervals: [0‑59], [60‑60]; binary search yields counts 2 and 1.
+| 4 | Query `minute`, start=0, end=60 | delta=60, intervals: [0-59], [60-60]; binary search yields counts 2 and 1.
 
 ## Complexity Analysis
 - **Time:** `recordTweet` – `O(1)` amortized insertion; `getTweetCountsPerFrequency` – `O(k log n)` where `k` is number of intervals and `n` is number of timestamps for the tweet (binary searches).
 - **Space:** `O(totalTweets)` to store all timestamps.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you support removal of a tweet timestamp?
 2. Can the data structure be optimized for frequent queries on the same tweet?
 3. How would you handle very large time ranges where the number of intervals is huge?

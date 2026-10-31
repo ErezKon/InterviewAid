@@ -30,7 +30,7 @@ Given an integer array `nums`, return *the **maximum possible sum** of elements 
 
 ## 2. Key Insight
 
-> Track the best achievable sum for each remainder modulo 3 (`dp[0]`, `dp[1]`, `dp[2]`). For each number, update all three remainder states based on the previous best values.
+> Track the best achievable sum for each remainder modulo 3 (`dp[0]`, `dp[1]`, `dp[2]`). For each number, update all three remainder states based on the previous best values.
 
 ---
 
@@ -89,11 +89,11 @@ Example 3:
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n) where n is the length of `nums` (single pass with constant‑size DP).
-- **Space:** O(1) extra space for the three‑element DP array.
+- **Time:** O(n) where n is the length of `nums` (single pass with constant-size DP).
+- **Space:** O(1) extra space for the three-element DP array.
 
 ---
 
 ## 7. Key Takeaway
 
-> Using a tiny DP table for each possible remainder modulo k efficiently solves “maximum sum divisible by k” problems.
+> Using a tiny DP table for each possible remainder modulo k efficiently solves “maximum sum divisible by k” problems.

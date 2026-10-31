@@ -46,11 +46,11 @@ Use prefix sums to compute left and right contributions in O(n) time.
    - Sum both to get answer[i].
 
 ## Walkthrough
-| i | x | prefix (before) | left = x*i - prefix | right = (total‑prefix‑x) - x*(n‑i‑1) | answer[i] |
+| i | x | prefix (before) | left = x*i - prefix | right = (total-prefix-x) - x*(n-i-1) | answer[i] |
 |---|---|----------------|---------------------|-----------------------------------|-----------|
-| 0 | 2 | 0 | 0 | (10‑0‑2)‑2*2 = 8‑4 = 4 | 4 |
-| 1 | 3 | 2 | 3*1‑2 = 1 | (10‑2‑3)‑3*1 = 5‑3 = 2 | 3 |
-| 2 | 5 | 5 | 5*2‑5 = 5 | (10‑5‑5)‑5*0 = 0‑0 = 0 | 5 |
+| 0 | 2 | 0 | 0 | (10-0-2)-2*2 = 8-4 = 4 | 4 |
+| 1 | 3 | 2 | 3*1-2 = 1 | (10-2-3)-3*1 = 5-3 = 2 | 3 |
+| 2 | 5 | 5 | 5*2-5 = 5 | (10-5-5)-5*0 = 0-0 = 0 | 5 |
 (Values illustrate the computation; final answer matches expected.)
 
 ## Complexity Analysis
@@ -59,8 +59,8 @@ Use prefix sums to compute left and right contributions in O(n) time.
 
 ## Follow-Up Questions
 - How would you adapt the solution for an unsorted array?
-- Can you compute the result in‑place without an extra output array?
+- Can you compute the result in-place without an extra output array?
 - How does the algorithm change if the array contains very large integers (risk of overflow)?
 
 ## Key Takeaway
-Prefix sums let you convert the quadratic absolute‑difference calculation into a linear‑time formula by separating left and right contributions.
+Prefix sums let you convert the quadratic absolute-difference calculation into a linear-time formula by separating left and right contributions.

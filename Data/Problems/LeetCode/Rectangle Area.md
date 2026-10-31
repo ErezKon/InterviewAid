@@ -37,7 +37,7 @@ Example 2:
 ```
 
 ## Approach
-Compute the area of each rectangle individually. Then compute the overlap width and height by taking the intersection of the x‑intervals and y‑intervals. The overlapping area is the product of these dimensions (or zero if they do not intersect). Subtract the overlap from the sum of individual areas.
+Compute the area of each rectangle individually. Then compute the overlap width and height by taking the intersection of the x-intervals and y-intervals. The overlapping area is the product of these dimensions (or zero if they do not intersect). Subtract the overlap from the sum of individual areas.
 
 ## Pseudocode
 ```text
@@ -57,17 +57,17 @@ FUNCTION computeArea(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
 ## Walkthrough
 | Step | Values | overlapWidth | overlapHeight | overlapArea |
 |------|--------|--------------|---------------|-------------|
-| Compute widths | ax2‑ax1 = 6, bx2‑bx1 = 9 | MIN(3,9)=3, MAX(-3,0)=0 → 3‑0=3 | MIN(4,2)=2, MAX(0,-1)=0 → 2‑0=2 | 3*2=6 |
-| Final area | 6*4=24, 9*3=27 | 24+27‑6 = 45 |
+| Compute widths | ax2-ax1 = 6, bx2-bx1 = 9 | MIN(3,9)=3, MAX(-3,0)=0 → 3-0=3 | MIN(4,2)=2, MAX(0,-1)=0 → 2-0=2 | 3*2=6 |
+| Final area | 6*4=24, 9*3=27 | 24+27-6 = 45 |
 
 ## Complexity Analysis
 - **Time:** O(1) – constant arithmetic operations.
 - **Space:** O(1) – no additional data structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the solution to compute the union area of *k* rectangles?
-2. What changes are needed if the rectangles can be rotated (non‑axis aligned)?
-3. Can the algorithm be adapted to return the exact shape of the union (e.g., as a set of non‑overlapping rectangles)?
+2. What changes are needed if the rectangles can be rotated (non-axis aligned)?
+3. Can the algorithm be adapted to return the exact shape of the union (e.g., as a set of non-overlapping rectangles)?
 
 ## Key Takeaway
-The union area of two axis‑aligned rectangles equals the sum of their individual areas minus the area of their intersection, which can be computed with simple interval overlap formulas.
+The union area of two axis-aligned rectangles equals the sum of their individual areas minus the area of their intersection, which can be computed with simple interval overlap formulas.

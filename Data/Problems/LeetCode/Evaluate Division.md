@@ -120,9 +120,9 @@ If the queue empties without reaching the destination, the division is undefined
 
 ## Follow-Up Questions
 
-- How would you modify the solution to use Union‑Find with weight tracking for near‑O(1) query time?
+- How would you modify the solution to use Union-Find with weight tracking for near-O(1) query time?
 - Can the algorithm be extended to support equations with more than two variables (e.g., `a / b / c = v`)?
-- What changes are needed to handle floating‑point precision issues in large graphs?
+- What changes are needed to handle floating-point precision issues in large graphs?
 
 ---
 

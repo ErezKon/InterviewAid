@@ -101,4 +101,4 @@ Consider `arr = [1,2,3,3,2,1]`.
 
 ## Key Takeaway
 
-> **Greedy prefix‑sum tracking** allows counting balanced partitions in linear time without extra data structures.
+> **Greedy prefix-sum tracking** allows counting balanced partitions in linear time without extra data structures.

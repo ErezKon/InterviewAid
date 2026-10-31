@@ -49,10 +49,10 @@ Process each column independently. For a column, iterate from the second row dow
 |0|3|3|0|
 |1|2|4 (needs 2) |2|
 |2|1|5 (needs 4) |4|
-Total for column 0 = 6 (example illustrates logic). Repeat similarly for other columns.
+Total for column 0 = 6 (example illustrates logic). Repeat similarly for other columns.
 
 ## Complexity Analysis
-- **Time:** O(m × n) – each cell visited once.
+- **Time:** O(m × n) – each cell visited once.
 - **Space:** O(1) – only constant extra variables.
 
 ## Follow-Up Questions

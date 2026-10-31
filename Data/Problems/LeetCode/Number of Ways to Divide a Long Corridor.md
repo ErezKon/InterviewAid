@@ -88,7 +88,7 @@ FUNCTION numberOfWays(corridor):
 
 Consider the corridor "S P S P S" (spaces for readability):
 1. Seat indices = [0,2,4]
-2. Pairs: (0,2) and (2,4) → gaps = 2‑0 = 2 and 4‑2 = 2
+2. Pairs: (0,2) and (2,4) → gaps = 2-0 = 2 and 4-2 = 2
 3. Multiply gaps: 2 * 2 = 4 → 4 possible divider placements.
 4. Apply modulo if needed.
 

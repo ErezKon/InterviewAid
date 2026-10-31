@@ -111,7 +111,7 @@ Result is sum of such numbers.
 ## 7. Follow-Up Questions
 
 - How would you adapt the algorithm if the input range for `nums[i]` increased to `10⁹`?
-- Can you pre‑process primes up to `10⁵` to achieve O(n log log max) time?
+- Can you pre-process primes up to `10⁵` to achieve O(n log log max) time?
 - What changes are needed to return the list of numbers with exactly four divisors instead of the sum?
 
 ---

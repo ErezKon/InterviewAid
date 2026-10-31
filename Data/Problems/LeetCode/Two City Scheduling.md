@@ -49,7 +49,7 @@ Output: 3086
 Compute the difference `diff = costA - costB` for each person. Sorting by `diff` (ascending) puts people who are cheaper to send to city A first and those cheaper for city B later. Assign the first `n` people to city A and the remaining `n` to city B.
 
 ## Walkthrough
-| Person | costA | costB | diff (A‑B) |
+| Person | costA | costB | diff (A-B) |
 |--------|-------|-------|------------|
 | 0 | 10 | 20 | -10 |
 | 1 | 30 | 200 | -170 |
@@ -59,9 +59,9 @@ After sorting by diff: persons 1,0,3,2. First two → city A, last two → city 
 
 ## Complexity Analysis
 - **Time:** `O(m log m)` where `m = 2n` for sorting.
-- **Space:** `O(m)` to store the differences (or sort in‑place).
+- **Space:** `O(m)` to store the differences (or sort in-place).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if each city must receive a different number of people?
 2. Can you solve the problem using a priority queue without sorting the entire list?
 3. What if travel costs can be negative?

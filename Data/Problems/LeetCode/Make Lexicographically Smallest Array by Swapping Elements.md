@@ -88,10 +88,10 @@ FUNCTION lexicographicallySmallestArray(nums, limit):
 Consider `nums = [3,1,2,4]` and `limit = 1`.
 1. Pair and sort: `[(1,1), (2,2), (0,3), (3,4)]` (index,value).
 2. Build groups:
-   - Start new group with index 1 (value 1).
-   - Value 2 − 1 ≤ 1 → same group, add index 2.
-   - Value 3 − 2 ≤ 1 → same group, add index 0.
-   - Value 4 − 3 ≤ 1 → same group, add index 3.
+   - Start new group with index 1 (value 1).
+   - Value 2 − 1 ≤ 1 → same group, add index 2.
+   - Value 3 − 2 ≤ 1 → same group, add index 0.
+   - Value 4 − 3 ≤ 1 → same group, add index 3.
    Resulting single group: `[1,2,0,3]`.
 3. Sort indices → `[0,1,2,3]`; sort values in group → `[1,2,3,4]`.
 4. Place sorted values at sorted indices → `[1,2,3,4]`.

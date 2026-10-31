@@ -87,12 +87,12 @@ Take `arr = ["d","b","c","b","c","a"]`, `k = 2`.
 
 | Metric | Value |
 |--------|-------|
-| Time   | O(n) – one pass to count, one pass to find k‑th distinct |
+| Time   | O(n) – one pass to count, one pass to find k-th distinct |
 | Space  | O(n) – hashmap for frequencies |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the solution to return all distinct strings in order?
 - Can you solve it with O(1) extra space if the input array is mutable?
@@ -101,4 +101,4 @@ Take `arr = ["d","b","c","b","c","a"]`, `k = 2`.
 
 ## Key Takeaway
 
-> Use a frequency map to identify strings that appear exactly once, then scan the original array to pick the `k`‑th such string.
+> Use a frequency map to identify strings that appear exactly once, then scan the original array to pick the `k`-th such string.

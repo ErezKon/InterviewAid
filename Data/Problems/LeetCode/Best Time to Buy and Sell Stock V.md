@@ -88,10 +88,10 @@ Maximum profit = `sold[2] + sold[1] = 3`.
 - **Time:** O(n·k) – each day updates k transaction states.
 - **Space:** O(k) – only current day arrays are kept.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for unlimited transactions (`k` large) to achieve O(n) time?
 2. Can you modify the DP to handle a variable cooldown length `c` days?
 3. What changes are needed if transaction fees are applied on each sell?
 
 ## Key Takeaway
-Modeling stock trading with cooldown and transaction limits as a multi‑state DP lets you track holding, cooldown, and rest efficiently, turning a combinatorial problem into O(n·k) time.
+Modeling stock trading with cooldown and transaction limits as a multi-state DP lets you track holding, cooldown, and rest efficiently, turning a combinatorial problem into O(n·k) time.

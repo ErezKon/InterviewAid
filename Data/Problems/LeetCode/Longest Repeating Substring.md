@@ -89,7 +89,7 @@ Consider `s = "banana"`.
 
 ## Follow-Up Questions
 
-1. How would you improve the check to O(n) using a rolling hash (Rabin‑Karp) to avoid storing full substrings?
+1. How would you improve the check to O(n) using a rolling hash (Rabin-Karp) to avoid storing full substrings?
 2. Can the problem be solved in O(n) time using suffix arrays or suffix trees?
 3. What changes are needed if you must return the substring itself, not just its length?
 
@@ -97,4 +97,4 @@ Consider `s = "banana"`.
 
 ## Key Takeaway
 
-> Binary search on substring length combined with a hash‑based duplicate check efficiently finds the longest repeating substring.
+> Binary search on substring length combined with a hash-based duplicate check efficiently finds the longest repeating substring.

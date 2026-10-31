@@ -132,7 +132,7 @@ The algorithm correctly leaves every cell unchanged.
 
 ## 7. Follow-Up Questions
 
-- How would you extend the solution to handle variable‑size regions?
+- How would you extend the solution to handle variable-size regions?
 - Can the algorithm be adapted to compute median instead of average for each smooth region?
 - What changes are needed if the threshold varies per cell?
 

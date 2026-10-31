@@ -84,4 +84,4 @@ All elements popped → valid.
 3. What if we need to output the actual sequence of operations?
 
 ## Key Takeaway
-Simulating the stack with a pointer to the pop sequence provides a linear‑time verification of push/pop order.
+Simulating the stack with a pointer to the pop sequence provides a linear-time verification of push/pop order.

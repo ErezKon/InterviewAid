@@ -54,4 +54,4 @@ Result: `[1,-1,2,-2,0]` (any order acceptable).
 - What if the numbers must be positive and negative only (no zero) for odd `n`?
 
 ## Key Takeaway
-Pairing each positive integer with its negative (and optionally adding zero) provides a simple linear‑time construction of `n` unique integers that sum to zero.
+Pairing each positive integer with its negative (and optionally adding zero) provides a simple linear-time construction of `n` unique integers that sum to zero.

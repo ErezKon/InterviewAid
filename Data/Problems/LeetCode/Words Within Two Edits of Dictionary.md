@@ -75,7 +75,7 @@ Time: O(Q·D·L) where Q = #queries, D = #dictionary words, L = word length.
 Space: O(1) extra aside from output list.
 
 ## Follow-Up Questions
-1. How would you improve performance using a pre‑computed index of word patterns?
+1. How would you improve performance using a pre-computed index of word patterns?
 2. Can you extend the solution to allow up to *k* edits for arbitrary *k*?
 3. What changes are needed if dictionary words have varying lengths?
 

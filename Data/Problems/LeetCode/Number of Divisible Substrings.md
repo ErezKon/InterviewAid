@@ -130,7 +130,7 @@ It can be shown that there are no other substrings of word that are divisible.
 
 ```text
 FUNCTION countDivisibleSubstrings(word):
-    // Map each char to a digit (a‑c→1, d‑f→2, …, y‑z→9)
+    // Map each char to a digit (a-c→1, d-f→2, …, y-z→9)
     digit(c) ← (ASCII(c) - ASCII('a')) // 3 + 1
     count ← 0
     n ← LENGTH(word)

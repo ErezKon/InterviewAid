@@ -96,7 +96,7 @@ Explanation: There are no sequence of operations that will give us a lexicograph
 Take `s = "1234567"`, `a = 5`, `b = 2`.
 
 1. Start with `"1234567"` (best = `"1234567"`).
-2. Apply operation 1 → add 5 to odd indices (1‑based): positions 1,3,5,7 become `6,8,0,2` → `"6284502"`.
+2. Apply operation 1 → add 5 to odd indices (1-based): positions 1,3,5,7 become `6,8,0,2` → `"6284502"`.
 3. Apply operation 2 → rotate right by 2 → `"6712345"`.
 4. Continue expanding each new string; the smallest string encountered is `"0234567"`.
 

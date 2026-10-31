@@ -119,7 +119,7 @@ The result table only includes users who converted from free trial to paid subsc
 ## 4. Walkthrough
 
 1. **Group by cohort** – `activity_type` distinguishes different acquisition channels.
-2. **Count conversions** – `COUNT(DISTINCT CASE WHEN subscribe_date IS NOT NULL THEN user_id END)` counts unique users who have a non‑null `subscribe_date`.
+2. **Count conversions** – `COUNT(DISTINCT CASE WHEN subscribe_date IS NOT NULL THEN user_id END)` counts unique users who have a non-null `subscribe_date`.
 3. **Total users** – `COUNT(DISTINCT user_id)` gives the size of the cohort.
 4. **Conversion rate** – Compute the percentage of converters over total users.
 5. **Average trial** – `DATEDIFF(trial_end, trial_start)` yields the trial length per user; `AVG` aggregates it per cohort.

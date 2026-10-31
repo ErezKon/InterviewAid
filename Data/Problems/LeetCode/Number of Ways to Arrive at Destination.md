@@ -95,12 +95,12 @@ Explanation: There is only one way to go from intersection 0 to intersection 1, 
 
 **Example 1** (the first row above):
 1. Initialise `dist[0]=0`, `ways[0]=1`.
-2. Pop node 0 (distance 0). Relax edges to nodes 6, 1, 4.
+2. Pop node 0 (distance 0). Relax edges to nodes 6, 1, 4.
 3. Distances become: `dist[6]=7, ways[6]=1`; `dist[1]=2, ways[1]=1`; `dist[4]=5, ways[4]=1`.
-4. Continue popping the smallest distance node (1). Relax its edges, eventually discovering a shorter path to node 5 via 1→3→5 with total distance 6.
-5. When node 5 is reached with distance 6, `ways[5]=1`. Later node 6 also reaches 5 with distance 8, ignored.
-6. Finally node 5 relaxes edge to node 6, but distance 7 already optimal, so `ways[6]` stays `1`.
-7. The destination is node 6 (n‑1). `ways[6]=1` is returned.
+4. Continue popping the smallest distance node (1). Relax its edges, eventually discovering a shorter path to node 5 via 1→3→5 with total distance 6.
+5. When node 5 is reached with distance 6, `ways[5]=1`. Later node 6 also reaches 5 with distance 8, ignored.
+6. Finally node 5 relaxes edge to node 6, but distance 7 already optimal, so `ways[6]` stays `1`.
+7. The destination is node 6 (n-1). `ways[6]=1` is returned.
 
 ---
 

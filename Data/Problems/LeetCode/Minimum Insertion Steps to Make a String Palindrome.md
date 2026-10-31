@@ -82,7 +82,7 @@ Take `s = "mbadm"`.
 ## Follow-Up Questions
 
 - How would you modify the solution to also output the resulting palindrome?
-- Can the problem be solved in O(n) time using a two‑pointer approach for special cases?
+- Can the problem be solved in O(n) time using a two-pointer approach for special cases?
 - What changes if deletions are allowed instead of insertions?
 
 ## Key Takeaway

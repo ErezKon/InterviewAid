@@ -52,7 +52,7 @@ Explanation: It's impossible to change any character as k = 0.
 
 ---
 
-## 3. Approach: Greedy Left‑to‑Right — O(n) ✅
+## 3. Approach: Greedy Left-to-Right — O(n) ✅
 
 Traverse the string from left to right, always trying to make the current character as small as possible (preferably `'a'`). Use the remaining budget to reduce the character by the minimal distance (either forward or backward). Once the budget is exhausted, copy the remaining characters unchanged.
 
@@ -97,10 +97,10 @@ Result: `"aaz"`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if the budget could be spent on any number of operations, not just one per character?
-- What if the alphabet were larger (e.g., Unicode) and the wrap‑around distance varied?
+- What if the alphabet were larger (e.g., Unicode) and the wrap-around distance varied?
 - Can we achieve the same result with O(1) extra space by modifying the string in place?
 
 ---

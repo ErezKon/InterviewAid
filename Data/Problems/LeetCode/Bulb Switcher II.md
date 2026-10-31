@@ -98,7 +98,7 @@ Collecting unique states gives three configurations: `[0,0]`, `[1,1]`, `[1,0]` (
 
 ## 6. Complexity Analysis
 
-- **Time:** O(1) – constant‑time case analysis.
+- **Time:** O(1) – constant-time case analysis.
 - **Space:** O(1) – only a few integer variables.
 
 ---
@@ -113,4 +113,4 @@ Collecting unique states gives three configurations: `[0,0]`, `[1,1]`, `[1,0]` (
 
 ## Key Takeaway
 
-> When operations are involutions, only parities matter. With 4 buttons and period‑3 patterns, the answer space is small enough for complete case analysis.
+> When operations are involutions, only parities matter. With 4 buttons and period-3 patterns, the answer space is small enough for complete case analysis.

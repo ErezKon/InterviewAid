@@ -75,11 +75,11 @@ Example 3:
 
 **Example 1:** `nums = [1,3,5,6,8,10]`, `k = 4`
 
-| Step | Action | Sorted nums | Triple | Max‑Min | Valid? |
+| Step | Action | Sorted nums | Triple | Max-Min | Valid? |
 |------|--------|-------------|--------|--------|-------|
 | 1 | Sort | `[1,3,5,6,8,10]` | — | — | — |
-| 2 | Form first triple (indices 0‑2) | — | `[1,3,5]` | `5‑1 = 4` | ✅ |
-| 3 | Form second triple (indices 3‑5) | — | `[6,8,10]` | `10‑6 = 4` | ✅ |
+| 2 | Form first triple (indices 0-2) | — | `[1,3,5]` | `5-1 = 4` | ✅ |
+| 3 | Form second triple (indices 3-5) | — | `[6,8,10]` | `10-6 = 4` | ✅ |
 
 All triples satisfy the constraint, so the result is `[[1,3,5],[6,8,10]]`.
 
@@ -97,11 +97,11 @@ All triples satisfy the constraint, so the result is `[[1,3,5],[6,8,10]]`.
 ## Follow-Up Questions
 
 1. How would you modify the algorithm if groups could be of size `m` (not just 3)?
-2. Can you solve it in O(1) extra space if the input array can be reordered in‑place?
-3. What if the constraint was on the sum of each group instead of max‑min difference?
+2. Can you solve it in O(1) extra space if the input array can be reordered in-place?
+3. What if the constraint was on the sum of each group instead of max-min difference?
 
 ---
 
 ## Key Takeaway
 
-> **Minimizing within‑group spread = sort first, then group adjacent elements. If any group violates the constraint, no valid partition exists.**
+> **Minimizing within-group spread = sort first, then group adjacent elements. If any group violates the constraint, no valid partition exists.**

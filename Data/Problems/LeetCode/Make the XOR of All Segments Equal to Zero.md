@@ -62,11 +62,11 @@ Example 3:
 ## 4. Walkthrough
 
 Consider `nums = [1,2,0,3,0]` and `k = 2`.
-1. Group indices by `i mod k`: Group 0 → positions 0,2,4 → values `[1,0,0]`; Group 1 → positions 1,3 → values `[2,3]`.
+1. Group indices by `i mod k`: Group 0 → positions 0,2,4 → values `[1,0,0]`; Group 1 → positions 1,3 → values `[2,3]`.
 2. For each group we can either keep the most frequent value or change the whole group.
-   - Group 0: most frequent is `0` (2 occurrences). Changing the `1` costs 1.
-   - Group 1: both values appear once, so we may change both to a common value, costing 2.
-3. DP explores XOR states across groups; the optimal combination yields total cost 2, matching the answer.
+   - Group 0: most frequent is `0` (2 occurrences). Changing the `1` costs 1.
+   - Group 1: both values appear once, so we may change both to a common value, costing 2.
+3. DP explores XOR states across groups; the optimal combination yields total cost 2, matching the answer.
 
 ---
 

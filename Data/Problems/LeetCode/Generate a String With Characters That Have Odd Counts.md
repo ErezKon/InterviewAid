@@ -48,14 +48,14 @@ Example 3:
 1. Check if `n` is odd.
 2. If odd, repeat character `'a'` `n` times – the count of `'a'` is odd.
 3. If even, repeat `'a'` `n-1` times (odd count) and append a different character `'b'` once (odd count).
-4. The resulting string satisfies the odd‑frequency requirement for all characters.
+4. The resulting string satisfies the odd-frequency requirement for all characters.
 
 ## Complexity Analysis
 
 - **Time:** O(n) to build the output string.
 - **Space:** O(n) for the resulting string.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the solution to use a specific set of characters?
 - Can you generate a string where each character appears exactly three times?

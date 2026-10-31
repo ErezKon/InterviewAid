@@ -57,7 +57,7 @@ Example 2:
 
 ```text
 FUNCTION markElements(nums, queries):
-    // Pre‑sort elements by value with their indices
+    // Pre-sort elements by value with their indices
     SET sorted ← SORT(nums WITH index BY value ASC)
     SET pointer ← 0               // points to next smallest unmarked
     SET marked ← SET()            // stores marked indices
@@ -95,12 +95,12 @@ FUNCTION markElements(nums, queries):
 
 ## 5. Complexity Analysis
 
-- **Time:** Sorting O(n log n) + processing each query O(q·k log n) (heap operations) → overall O((n + q·k) log n).
+- **Time:** Sorting O(n log n) + processing each query O(q·k log n) (heap operations) → overall O((n + q·k) log n).
 - **Space:** O(n) for sorted list and marked set.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you handle dynamic updates where array values change?
 - Can the solution be adapted to support range queries for the sum of unmarked elements?
@@ -110,4 +110,4 @@ FUNCTION markElements(nums, queries):
 
 ## Key Takeaway
 
-> Pre‑sort elements and use a pointer/heap to efficiently retrieve the smallest unmarked values while maintaining a running sum.
+> Pre-sort elements and use a pointer/heap to efficiently retrieve the smallest unmarked values while maintaining a running sum.

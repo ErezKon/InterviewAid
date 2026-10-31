@@ -28,7 +28,7 @@ Example 2:
 ```
 
 ## Approach
-The key observation is that if an array `A` is beautiful, then the transformed arrays `2*A` (each element multiplied by 2) and `2*A-1` (each element multiplied by 2 then minus 1) are also beautiful. Starting from `[1]`, repeatedly apply these two transformations and keep values ≤ `n` to build the final array.
+The key observation is that if an array `A` is beautiful, then the transformed arrays `2*A` (each element multiplied by 2) and `2*A-1` (each element multiplied by 2 then minus 1) are also beautiful. Starting from `[1]`, repeatedly apply these two transformations and keep values ≤ `n` to build the final array.
 
 ```text
 FUNCTION beautifulArray(n):
@@ -54,13 +54,13 @@ For `n = 5`:
 2. Generate odds `[1]` (2*1-1) and evens `[2]` → `result = [1,2]`.
 3. Next iteration: odds from `[1,2]` → `[1,3]`; evens → `[2,4]` → `result = [1,3,2,4]`.
 4. Next iteration: odds → `[1,3,5]`; evens → `[2,4]` (5 already reached) → `result = [1,3,5,2,4]`.
-All numbers 1‑5 appear and the condition holds.
+All numbers 1-5 appear and the condition holds.
 
 ## Complexity Analysis
 *Time*: O(n log n) – each iteration roughly doubles the size of `result`.
 *Space*: O(n) – storing the resulting array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. Can you prove that the construction always yields a beautiful array for any `n`?
 2. How would you adapt the algorithm to generate the lexicographically smallest beautiful array?
 3. What changes are needed if the forbidden condition is `A[k] = (A[i] + A[j]) / 3`?

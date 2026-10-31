@@ -90,13 +90,13 @@ Explanation: The list = [12 AND 4] = [4]. The XOR sum = 4.
 
 ## 6. Walkthrough
 
-Take Example 1 step‑by‑step:
+Take Example 1 step-by-step:
 1. Compute `xor1`:
-   - Start `0`, XOR 1 → `1`
-   - XOR 2 → `1 XOR 2 = 3`
+   - Start `0`, XOR 1 → `1`
+   - XOR 2 → `1 XOR 2 = 3`
 2. Compute `xor2`:
-   - Start `0`, XOR 3 → `3`
-   - XOR 4 → `3 XOR 4 = 7`
+   - Start `0`, XOR 3 → `3`
+   - XOR 4 → `3 XOR 4 = 7`
 3. Final answer: `3 AND 7 = 3`
 The same process applies to any sized arrays, yielding the result in linear time.
 

@@ -69,11 +69,11 @@ Example 2:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you solve it if the input array were read as a stream?
-- Can you achieve O(1) extra space by modifying the array in‑place?
-- What if you needed the second‑largest unique number?
+- Can you achieve O(1) extra space by modifying the array in-place?
+- What if you needed the second-largest unique number?
 
 ---
 

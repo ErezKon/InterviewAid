@@ -62,7 +62,7 @@ Result = 3.
 
 ## Follow-Up Questions
 - How would you extend the solution to return the actual nearest point instead of its index?
-- Can the algorithm be adapted for 3‑D coordinates?
+- Can the algorithm be adapted for 3-D coordinates?
 - What if you need to handle ties by returning the point with the smallest Manhattan distance **and** smallest Euclidean distance?
 
 ## Key Takeaway

@@ -78,7 +78,7 @@ Consider the first example tree.
 | 5 | 2 | [1,3,5,6,2] |
 | 6 | 4 | [1,3,5,6,2,4] |
 
-The algorithm recurses depth‑first, appending each node before its children, yielding the final preorder list.
+The algorithm recurses depth-first, appending each node before its children, yielding the final preorder list.
 
 ---
 
@@ -94,7 +94,7 @@ The algorithm recurses depth‑first, appending each node before its children, y
 ## 6. Follow-Up Questions
 
 1. How would you implement an **iterative** preorder traversal using a stack?
-2. How does the algorithm change for **postorder** traversal of an N‑ary tree?
+2. How does the algorithm change for **postorder** traversal of an N-ary tree?
 3. Can you modify the solution to handle **large trees** without recursion depth issues?
 
 ---

@@ -49,7 +49,7 @@ Example 2:
 
 **Greedy – O(n)**
 
-At each boundary where `s[i] != s[i‑1]`, the characters on the left and right sides must become the same. The cheapest way is to flip the cheaper side of the boundary: either the left prefix (cost `i`) or the right suffix (cost `n‑i`). Summing the minimum cost for every such boundary yields the optimal answer.
+At each boundary where `s[i] != s[i-1]`, the characters on the left and right sides must become the same. The cheapest way is to flip the cheaper side of the boundary: either the left prefix (cost `i`) or the right suffix (cost `n-i`). Summing the minimum cost for every such boundary yields the optimal answer.
 
 ```text
 FUNCTION minimumCost(s):
@@ -65,7 +65,7 @@ FUNCTION minimumCost(s):
 
 ## Walkthrough
 
-| Step | i | s[i‑1] | s[i] | Decision | Accumulated Cost |
+| Step | i | s[i-1] | s[i] | Decision | Accumulated Cost |
 |------|---|--------|------|----------|------------------|
 | 1    | 1 | a      | b    | MIN(1, 2) = 1 (flip left) | 1 |
 | 2    | 2 | b      | a    | MIN(2, 1) = 1 (flip right) | 2 |

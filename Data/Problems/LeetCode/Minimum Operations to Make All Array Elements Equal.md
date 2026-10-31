@@ -85,10 +85,10 @@ Consider `nums = [1,5,6]` and `q = 3`.
 - **Time:** Sorting `O(n log n)` plus `O(m log n)` for `m` queries.
 - **Space:** `O(n)` for the prefix sum array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle updates to `nums` (insertions/deletions) while still answering queries efficiently?
 2. What if each operation had a different cost depending on the element value?
-3. Can this approach be extended to multi‑dimensional points with Manhattan distance?
+3. Can this approach be extended to multi-dimensional points with Manhattan distance?
 
 ## Key Takeaway
-Sorting once and using prefix sums enables constant‑time cost calculation for any target value, turning a naïve O(n·m) solution into O(n log n + m log n).
+Sorting once and using prefix sums enables constant-time cost calculation for any target value, turning a naïve O(n·m) solution into O(n log n + m log n).

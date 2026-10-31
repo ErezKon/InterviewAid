@@ -70,7 +70,7 @@ For the tree `[[1,2,3],[4,5,null],[6,null,null]]`:
 
 ## Complexity Analysis
 - Time: O(n) – each node visited once.
-- Space: O(h) – recursion stack depth `h` (worst‑case O(n)).
+- Space: O(h) – recursion stack depth `h` (worst-case O(n)).
 
 ## Follow-Up Questions
 - How would you implement the transformation iteratively using a stack?
@@ -78,4 +78,4 @@ For the tree `[[1,2,3],[4,5,null],[6,null,null]]`:
 - How does the algorithm change for a tree that is not a full binary tree?
 
 ## Key Takeaway
-A postorder recursion lets you rewire each node after processing its left subtree, enabling an elegant upside‑down transformation of a binary tree.
+A postorder recursion lets you rewire each node after processing its left subtree, enabling an elegant upside-down transformation of a binary tree.

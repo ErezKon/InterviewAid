@@ -53,7 +53,7 @@ Example 3:
 ```
 
 ## Approach
-**Two‑Pointers (Floyd Cycle Detection) + Direction Check** – For each unvisited index, use a slow and fast pointer to traverse the array. At each step ensure the next move has the same sign as the current element; otherwise break. If slow meets fast, a valid loop of length > 1 is found.
+**Two-Pointers (Floyd Cycle Detection) + Direction Check** – For each unvisited index, use a slow and fast pointer to traverse the array. At each step ensure the next move has the same sign as the current element; otherwise break. If slow meets fast, a valid loop of length > 1 is found.
 
 ## Walkthrough
 | Start Index | Slow Path | Fast Path | Reason for Break |
@@ -65,7 +65,7 @@ Example 3:
 - **Time:** O(n) – each element is visited at most twice.
 - **Space:** O(1) – only a few pointers are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to return the actual loop indices?
 - Can the solution be adapted for a streaming version of the array?
 - What if the array size is extremely large and cannot fit in memory?

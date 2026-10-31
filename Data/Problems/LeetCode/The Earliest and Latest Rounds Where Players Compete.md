@@ -81,10 +81,10 @@ For `n=8, p1=4, p2=7`:
 | 3 | If they avoid each other earlier, they finally meet in round 3 → latest = 3 |
 
 ## Complexity Analysis
-- Time: O(log n) for each simulated path; the total number of distinct paths is limited, making it effectively O(log n).
-- Space: O(log n) recursion stack.
+- Time: O(log n) for each simulated path; the total number of distinct paths is limited, making it effectively O(log n).
+- Space: O(log n) recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if the tournament allowed arbitrary pairing orders each round?
 2. Can you compute the answer iteratively without recursion?
 3. What is the complexity if `n` can be up to 10⁹?

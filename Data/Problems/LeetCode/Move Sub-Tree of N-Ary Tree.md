@@ -132,9 +132,9 @@ Example 4:
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
-- How would you handle the operation if the tree were a binary tree instead of N‑ary?
+- How would you handle the operation if the tree were a binary tree instead of N-ary?
 - Can the move be performed iteratively without recursion?
 - How would you extend this to support multiple move operations in a batch?
 
@@ -142,4 +142,4 @@ Example 4:
 
 ## 8. Key Takeaway
 
-> **Handle the ancestor case carefully.** If `q` is in `p`'s subtree, we must first detach `q` and re‑link its children before moving `p`.
+> **Handle the ancestor case carefully.** If `q` is in `p`'s subtree, we must first detach `q` and re-link its children before moving `p`.

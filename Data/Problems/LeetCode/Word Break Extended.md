@@ -84,11 +84,11 @@ FUNCTION findConcatenated(words):
 Result: `dp[n]` indicates segmentability.
 
 ## Complexity Analysis
-- **Word Break I:** O(n² · k) time where *n* is length of `s` and *k* average word lookup cost; O(n) space.
+- **Word Break I:** O(n² · k) time where *n* is length of `s` and *k* average word lookup cost; O(n) space.
 - **Word Break II:** Exponential in worst case due to many possible sentences, but memoization reduces repeated work; O(n²) time for DP plus output size.
 - **Concatenated Words:** O(totalLength²) in worst case; O(totalLength) space for the dictionary.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify Word Break I to return the actual segmentation path?
 - Can you improve Word Break II using a Trie for the dictionary?
 - What if the dictionary is extremely large and must be streamed?

@@ -29,7 +29,7 @@ Example 2:
 ```
 
 ## Approach
-Use a post‑order **Greedy DFS**. Each node returns a state:
+Use a post-order **Greedy DFS**. Each node returns a state:
 - `0` – needs a camera.
 - `1` – has a camera.
 - `2` – covered, no camera.
@@ -67,8 +67,8 @@ Consider a tree where the left child is a leaf and the right subtree is deeper.
 - **Time:** `O(n)` – each node visited once.
 - **Space:** `O(h)` – recursion stack, where `h` is tree height.
 
-## Follow‑Up Questions
-1. How would you adapt the solution for an N‑ary tree?
+## Follow-Up Questions
+1. How would you adapt the solution for an N-ary tree?
 2. Can you solve it iteratively using explicit stack?
 3. What if cameras could only monitor parent and itself (not children)?
 

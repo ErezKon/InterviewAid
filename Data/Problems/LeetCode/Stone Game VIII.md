@@ -59,46 +59,43 @@ The difference between their scores is (-22) - 0 = -22.
 ```
 
 ## Approach
-The game can be transformed into a prefix‑sum DP. Let `prefix[i]` be the sum of the first `i` stones. The score obtained when the current player removes the prefix up to `i` is `prefix[i]`. After removal, the remaining suffix sum becomes the new total. Define `dp[i]` as the maximum score difference the current player can achieve starting from index `i` (i.e., considering the suffix `stones[i..]`). The recurrence:
-`dp[i] = max( prefix[i] - dp[i+1], prefix[i+1] - dp[i+2], ..., prefix[n-1] - dp[n] )`
-where `dp[n] = 0`. This can be computed backwards while keeping track of the best value.
+Key observation: after any move, the new leftmost stone equals the sum of everything removed so far, so the leftmost stone always holds a prefix sum of the original array. A move that leaves the original stones `k..n-1` (plus the merged stone) therefore scores exactly `pre[k] = stones[0] + ... + stones[k-1]`. Each move just picks a strictly larger boundary `k` than the previous one, starting from `k >= 2` (since `x > 1`).
+
+Let `dp[k]` = the best score difference the player to move can secure when they may choose any boundary `j >= k`. Either they pick `j = k` (score `pre[k]`, then opponent faces `dp[k+1]`) or they skip `k` and pick something larger (`dp[k+1]`):
+`dp[k] = max(dp[k+1], pre[k] - dp[k+1])`, with base `dp[n] = pre[n]` (taking all stones ends the game). The answer is `dp[2]`.
 
 ### Pseudocode
 ```text
 FUNCTION stoneGameVIII(stones):
-    n ← LENGTH(stones)
-    SET prefix[0] ← 0
-    FOR i ← 0 TO n-1:
-        SET prefix[i+1] ← prefix[i] + stones[i]
-    SET dp[n] ← 0
-    SET best ← -INFINITY
-    FOR i ← n-1 DOWNTO 0:
-        // consider taking prefix up to i (i.e., sum of stones[0..i])
-        SET candidate ← prefix[i+1] - dp[i+1]
-        SET best ← MAX(best, candidate)
-        SET dp[i] ← best
-    RETURN dp[0]
+    n <- LENGTH(stones)
+    SET pre[0] <- 0
+    FOR i <- 0 TO n-1:
+        SET pre[i+1] <- pre[i] + stones[i]
+    SET dp <- pre[n]                  // dp[n]
+    FOR k <- n-1 DOWNTO 2:
+        SET dp <- MAX(dp, pre[k] - dp)
+    RETURN dp                         // dp[2]
 ```
 
 ## Walkthrough
-For `stones = [5,3,1,4,2]`:
-1. Prefix sums: [0,5,8,9,13,15]
-2. Start from end: dp[5]=0, best=-∞.
-3. i=4: candidate = prefix[5]-dp[5]=15-0=15 → best=15, dp[4]=15.
-4. i=3: candidate = prefix[4]-dp[4]=13-15=-2 → best remains 15, dp[3]=15.
-5. i=2: candidate = prefix[3]-dp[3]=9-15=-6 → dp[2]=15.
-6. i=1: candidate = prefix[2]-dp[2]=8-15=-7 → dp[1]=15.
-7. i=0: candidate = prefix[1]-dp[1]=5-15=-10 → dp[0]=15.
-Result dp[0]=15, which after adjusting for turn order gives difference 6.
+**Example 1:** `stones = [-1,2,-3,4,-5]` (n=5).
+1. Prefix sums: `pre = [0,-1,1,-2,2,-3]`.
+2. `dp[5] = pre[5] = -3` (take all stones).
+3. `k=4`: `max(dp[5], pre[4] - dp[5]) = max(-3, 2 - (-3)) = 5` -> `dp[4] = 5`.
+4. `k=3`: `max(5, pre[3] - 5) = max(5, -2 - 5 = -7) = 5` -> `dp[3] = 5`.
+5. `k=2`: `max(5, pre[2] - 5) = max(5, 1 - 5 = -4) = 5` -> `dp[2] = 5`.
+Result `5`: Alice takes the first 4 stones (`pre[4] = 2`), Bob is forced to take all (`pre[5] = -3`), difference `2 - (-3) = 5`.
+
+**Example 3:** `stones = [-10,-12]`: `dp[2] = pre[2] = -22`, the loop does not run, result `-22`.
 
 ## Complexity Analysis
-- **Time:** O(n) – single backward pass.
-- **Space:** O(n) for prefix array and dp (can be O(1) with rolling variables).
+- **Time:** O(n) - prefix sums plus a single backward pass.
+- **Space:** O(n) for the prefix array (O(1) if prefix sums are computed in place in `stones`).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if a player could choose any contiguous subarray instead of the prefix?
 2. Can the DP be optimized to O(1) extra space?
-3. What if the score awarded were the sum of the removed elements instead of the remaining sum?
+3. Why does the merged stone make every score a prefix sum of the original array, and how would the recurrence change if the new stone were not placed back?
 
 ## Key Takeaway
-By converting the game to a prefix‑sum DP and processing from the end, we efficiently compute the optimal score difference for the first player.
+Every move scores a prefix sum of the original array, so the game reduces to choosing increasing boundaries; `dp[k] = max(dp[k+1], pre[k] - dp[k+1])` computed from the end gives the answer in O(n).

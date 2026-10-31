@@ -89,7 +89,7 @@ FUNCTION RobotLexSmallest(s):
 
 ## Follow-Up Questions
 1. How would the solution change if the robot could also peek at the next character without pushing?
-2. Can the algorithm be adapted to produce the k‑th smallest possible output?
+2. Can the algorithm be adapted to produce the k-th smallest possible output?
 3. What is the impact on complexity if the input alphabet size is large (e.g., Unicode)?
 
 ## Key Takeaway

@@ -49,7 +49,7 @@ Explanation: It can be proven that no path exists.
 ```
 
 ## Approach
-The grid can be viewed as a directed graph where each cell has edges to reachable cells to its right and down. The goal is a shortest‑path problem measured by number of visited cells. A naïve BFS exploring all possible jumps is O(m·n·maxJump) and too slow. Instead, we maintain for each row and column a **monotonic set** of unvisited column/row indices. When processing a cell, we query the set for all indices within the jump range, enqueue them, and remove them from the set so they are visited only once. This yields an overall O(m·n·log(m+n)) solution.
+The grid can be viewed as a directed graph where each cell has edges to reachable cells to its right and down. The goal is a shortest-path problem measured by number of visited cells. A naïve BFS exploring all possible jumps is O(m·n·maxJump) and too slow. Instead, we maintain for each row and column a **monotonic set** of unvisited column/row indices. When processing a cell, we query the set for all indices within the jump range, enqueue them, and remove them from the set so they are visited only once. This yields an overall O(m·n·log(m+n)) solution.
 
 ### Pseudocode
 ```text

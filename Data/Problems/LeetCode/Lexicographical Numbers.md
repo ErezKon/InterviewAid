@@ -82,4 +82,4 @@ Result matches lexicographic order.
 
 ## 3. Key Takeaway
 
-> Simulate a pre‑order DFS on a virtual trie of numbers: go deeper (×10) when possible, otherwise move to the next sibling (+1) or backtrack (÷10). This yields lexicographic order in linear time.
+> Simulate a pre-order DFS on a virtual trie of numbers: go deeper (×10) when possible, otherwise move to the next sibling (+1) or backtrack (÷10). This yields lexicographic order in linear time.

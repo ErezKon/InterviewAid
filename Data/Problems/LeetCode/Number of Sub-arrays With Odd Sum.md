@@ -108,7 +108,7 @@ Consider Example 1 `[1,2,3,4]`:
 | 2    | 3   | 6          | even   | 2         | 2        | 4 (add oddCount) |
 | 3    | 4   | 10         | even   | 3         | 2        | 4 (add oddCount) |
 
-The final result 4 matches the counted odd‑sum subarrays.
+The final result 4 matches the counted odd-sum subarrays.
 
 ---
 

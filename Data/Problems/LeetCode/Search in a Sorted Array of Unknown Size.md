@@ -77,12 +77,17 @@ FUNCTION search(reader, target):
 
 ## 4. Walkthrough
 
-For `reader = [1,3,5,7,9]`, `target = 5`:
+Example 1: `secret = [-1,0,3,5,9,12]`, `target = 9`:
 
-| Step | left | right | mid | reader.get(mid) | Action |
-|------|------|-------|-----|----------------|--------|
-| 1 | 0 | 1 | 1 | 3 (<5) | left←1, right←2
-| 2 | 1 | 2 | 2 | 5 (=5) | return 2 |
+| Step | Phase | left | right | mid | reader.get(...) | Action |
+|------|-------|------|-------|-----|-----------------|--------|
+| 1 | expand | 0 | 1 | - | get(1) = 0 (<9) | left←1, right←2 |
+| 2 | expand | 1 | 2 | - | get(2) = 3 (<9) | left←2, right←4 |
+| 3 | expand | 2 | 4 | - | get(4) = 9 (not <9) | stop expanding |
+| 4 | binary | 2 | 4 | 3 | 5 (<9) | left←4 |
+| 5 | binary | 4 | 4 | 4 | 9 (=9) | return 4 |
+
+Output `4`, as expected. For Example 2 (`target = 2`), expansion stops at `[1,2]` (get(2) = 3 ≥ 2); binary search checks mid=1 (0 < 2, left←2), then mid=2 (3 > 2, right←1); `left > right` → return `-1`.
 
 The exponential expansion quickly reaches a bound covering the target, then binary search finds it.
 

@@ -96,10 +96,10 @@ For `nums = [2,5,3,9,5,3]`:
 | Prefix sum scan | O(n) | O(1) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the solution to return all indices achieving the minimum difference?
-2. Can the algorithm be adapted to work with floating‑point averages without integer division?
+2. Can the algorithm be adapted to work with floating-point averages without integer division?
 3. What changes are needed if the array is streamed and you cannot store it entirely?
 ---
 

@@ -38,8 +38,8 @@ Output: 6
 
 ## Approach
 Apply backtracking with aggressive pruning:
-1. Keep a 2‑D boolean grid of filled cells.
-2. At each step, locate the top‑leftmost empty cell.
+1. Keep a 2-D boolean grid of filled cells.
+2. At each step, locate the top-leftmost empty cell.
 3. Try placing the largest possible square (limited by remaining width/height and empty space).
 4. Recurse, updating the grid and the count of squares used.
 5. Prune branches where the current count already exceeds the best known solution.
@@ -79,7 +79,7 @@ Consider `n = 2, m = 3`.
 *Time*: Exponential in the worst case; pruning dramatically reduces the search space for typical inputs. 
 *Space*: `O(n*m)` for the grid plus recursion stack depth ≤ number of squares placed.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. Can dynamic programming be applied for special cases (e.g., when `n` divides `m`)?
 2. How would you modify the algorithm to also return the actual placement of squares?
 3. What heuristics improve pruning for larger rectangles?

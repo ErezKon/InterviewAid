@@ -102,4 +102,4 @@ Example 3:
 
 ## 7. Key Takeaway
 
-> Use a stack to cancel out adjacent opposite‑case letters, yielding the final “good” string.
+> Use a stack to cancel out adjacent opposite-case letters, yielding the final “good” string.

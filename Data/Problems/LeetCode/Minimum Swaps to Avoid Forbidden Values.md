@@ -38,7 +38,7 @@ Return the **minimum** number of swaps required such that, for every index `i`, 
 
 ## 2. Key Insight
 
-> Model the problem as placing elements to avoid forbidden positions. Identify conflicts (elements at forbidden positions) and find minimum swaps to resolve all conflicts, potentially using a greedy or cycle‑decomposition approach.
+> Model the problem as placing elements to avoid forbidden positions. Identify conflicts (elements at forbidden positions) and find minimum swaps to resolve all conflicts, potentially using a greedy or cycle-decomposition approach.
 
 ---
 
@@ -94,15 +94,15 @@ FUNCTION minSwaps(nums, forbidden):
 
 ## 5. Walkthrough
 
-Consider **Example 1**.
+Consider **Example 1**.
 | Index | Initial `nums[i]` | Forbidden at index | Conflict? |
 |-------|-------------------|--------------------|----------|
 | 0 | 1 | [2] | No |
-| 1 | 2 | [1] | Yes (2 is allowed, 1 is forbidden for index 1) |
+| 1 | 2 | [1] | Yes (2 is allowed, 1 is forbidden for index 1) |
 
-We need to move `1` away from index 1. Swapping indices 0 and 1 yields `[2,1,3,4]`. Now:
-- Index 0 holds `2`, which is not forbidden (forbidden list `[2]` applies to index 0, but `2` is now at index 0 → conflict! Actually need to check: index 0 forbidden `[2]`, now `2` at index 0 → conflict, so we need another swap.
-Better: swap indices 1 and 2 first: `[1,3,2,4]` (swap count 1). Now index 1 holds `3` (allowed), index 2 holds `2` (allowed). Finally swap indices 0 and 1: `[3,1,2,4]` (swap 2). Now all constraints satisfied with 2 swaps. The algorithm would construct a valid target permutation `[3,1,2,4]` and compute cycles to determine the minimal swaps (here 2).
+We need to move `1` away from index 1. Swapping indices 0 and 1 yields `[2,1,3,4]`. Now:
+- Index 0 holds `2`, which is not forbidden (forbidden list `[2]` applies to index 0, but `2` is now at index 0 → conflict! Actually need to check: index 0 forbidden `[2]`, now `2` at index 0 → conflict, so we need another swap.
+Better: swap indices 1 and 2 first: `[1,3,2,4]` (swap count 1). Now index 1 holds `3` (allowed), index 2 holds `2` (allowed). Finally swap indices 0 and 1: `[3,1,2,4]` (swap 2). Now all constraints satisfied with 2 swaps. The algorithm would construct a valid target permutation `[3,1,2,4]` and compute cycles to determine the minimal swaps (here 2).
 
 ---
 

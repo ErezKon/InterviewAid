@@ -63,7 +63,7 @@ Consider `nums = [2,5,7]`, `lower = 1`, `upper = 8`:
 | 8 | 3 | - | add 8 | [1,3,4,6,8]
 
 ## Complexity Analysis
-- **Time:** O(`upper` - `lower` + 1) – one pass over the interval.
+- **Time:** O(`upper` - `lower` + 1) – one pass over the interval.
 - **Space:** O(k) where k is the number of missing elements (output size).
 
 ## Follow-Up Questions

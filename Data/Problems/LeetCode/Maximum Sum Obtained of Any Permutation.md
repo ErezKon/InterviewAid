@@ -55,8 +55,8 @@ Explanation: A permutation with the max total sum is [4,10,5,3,2,1] with request
 ```
 
 ## Approach
-The expression `|nums[i] - i|` is maximized when large numbers are placed far from their original indices and small numbers are placed close. Sorting `nums` and pairing the smallest numbers with the largest indices (and vice‑versa) yields the maximum sum. This is equivalent to sorting `nums` and computing `Σ |sorted[i] - i|` after sorting in **ascending** order, because the absolute difference is symmetric.
-1. Sort `nums` in non‑decreasing order.
+The expression `|nums[i] - i|` is maximized when large numbers are placed far from their original indices and small numbers are placed close. Sorting `nums` and pairing the smallest numbers with the largest indices (and vice-versa) yields the maximum sum. This is equivalent to sorting `nums` and computing `Σ |sorted[i] - i|` after sorting in **ascending** order, because the absolute difference is symmetric.
+1. Sort `nums` in non-decreasing order.
 2. Iterate over indices `i` and accumulate `abs(nums[i] - i)`.
 The greedy pairing is optimal by the rearrangement inequality.
 
@@ -76,9 +76,9 @@ For `nums = [1,2,3]`:
 
 ## Complexity Analysis
 *Time*: Sorting `O(n log n)` plus a linear scan `O(n)` → `O(n log n)`.
-*Space*: `O(1)` extra space if sorting in‑place, otherwise `O(n)` for the sorted copy.
+*Space*: `O(1)` extra space if sorting in-place, otherwise `O(n)` for the sorted copy.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the cost function were `|nums[i] - i|^2`?
 2. Can you solve the problem in `O(n)` time using counting sort when the value range is limited?
 3. How would you adapt the algorithm to maximize `Σ (nums[i] * i)` instead of absolute differences?

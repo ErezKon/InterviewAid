@@ -62,7 +62,7 @@ row 2: 01
 
 ## 3. Key Insight
 
-The k-th symbol in row n depends on the `⌈k/2⌉`-th symbol in row n‑1. If k is odd, it matches the parent; if k is even, it is the flipped value of the parent. This leads to a simple recursion or a bit‑count observation.
+The k-th symbol in row n depends on the `⌈k/2⌉`-th symbol in row n-1. If k is odd, it matches the parent; if k is even, it is the flipped value of the parent. This leads to a simple recursion or a bit-count observation.
 
 ---
 
@@ -92,7 +92,7 @@ FUNCTION kthGrammar(n, k):
 | 2 | 2 | 1 | 0 | k is even → flip parent | value = 1 - 0 = 1 |
 | 1 | 1 | — | 0 | base case | return 0 |
 
-Back‑propagating: `kthGrammar(2,2) = 1`, `kthGrammar(3,3) = 1`, `kthGrammar(4,5) = 1`.
+Back-propagating: `kthGrammar(2,2) = 1`, `kthGrammar(3,3) = 1`, `kthGrammar(4,5) = 1`.
 
 ---
 
@@ -107,7 +107,7 @@ Back‑propagating: `kthGrammar(2,2) = 1`, `kthGrammar(3,3) = 1`, `kthGrammar(4,
 
 ## 7. Follow-Up Questions
 
-1. How can the solution be turned into an O(1) algorithm using the parity of set bits in `k‑1`?
+1. How can the solution be turned into an O(1) algorithm using the parity of set bits in `k-1`?
 2. What would change if the replacement rules were different, e.g., 0→"00", 1→"11"?
 3. Can this be extended to generate the entire row efficiently for large `n`?
 
@@ -115,4 +115,4 @@ Back‑propagating: `kthGrammar(2,2) = 1`, `kthGrammar(3,3) = 1`, `kthGrammar(4,
 
 ## 8. Key Takeaway
 
-> Each position's value is determined by its parent in the previous row and whether it's a left (odd) or right (even) child. Alternatively, counting set bits in `k‑1` yields the answer directly.
+> Each position's value is determined by its parent in the previous row and whether it's a left (odd) or right (even) child. Alternatively, counting set bits in `k-1` yields the answer directly.

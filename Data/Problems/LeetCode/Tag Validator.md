@@ -101,18 +101,18 @@ FUNCTION isValid(code):
 ## Walkthrough
 | Index | Substring | Action | Stack after action |
 |-------|-----------|--------|--------------------|
-| 0‑4   | `<DIV>`   | push "DIV" | ["DIV"] |
-| 5‑... | text …    | ignore | ["DIV"] |
-| …‑23  | `<![CDATA[<div>]]>` | skip | ["DIV"] |
-| …‑29  | `</DIV>`  | pop "DIV" | [] |
+| 0-4   | `<DIV>`   | push "DIV" | ["DIV"] |
+| 5-... | text …    | ignore | ["DIV"] |
+| …-23  | `<![CDATA[<div>]]>` | skip | ["DIV"] |
+| …-29  | `</DIV>`  | pop "DIV" | [] |
 | End   | –         | stack empty → valid |
 
 ## Complexity Analysis
 - Time: O(n), where n is the length of the input string, each character is processed once.
 - Space: O(m), where m is the maximum depth of nested tags (size of the stack).
 
-## Follow‑Up Questions
-1. How would you modify the parser to support self‑closing tags like `<br/>`?
+## Follow-Up Questions
+1. How would you modify the parser to support self-closing tags like `<br/>`?
 2. Can the algorithm be extended to validate XML namespaces?
 3. What changes are needed to handle attributes inside tags?
 

@@ -123,7 +123,7 @@ Consider `nums = [5,4,3,4,5]`.
 
 1. How would you modify the algorithm to count "mountain" subarrays (increase then decrease)?
 2. Can you solve the problem in O(1) extra space by using two pointers without storing full run arrays?
-3. What changes are needed if equal adjacent elements are allowed (non‑strict monotonicity)?
+3. What changes are needed if equal adjacent elements are allowed (non-strict monotonicity)?
 
 ---
 

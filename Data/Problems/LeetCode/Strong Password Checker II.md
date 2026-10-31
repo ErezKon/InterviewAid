@@ -47,7 +47,7 @@ Explanation: The password does not meet the length requirement. Therefore, we re
 ```
 
 ## Approach
-Check each requirement in a single pass using flags for character categories and a previous‑character tracker.
+Check each requirement in a single pass using flags for character categories and a previous-character tracker.
 
 ```text
 FUNCTION isStrongPassword(password):
@@ -92,10 +92,10 @@ All flags true, no repeats → return true.
 - **Time:** O(n), n = length of password.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the minimum number of modifications needed to make a password strong?
 2. Can the algorithm be adapted to handle Unicode characters and a larger set of special symbols?
 3. What if the password policy changes to require no three consecutive identical characters?
 
 ## Key Takeaway
-A single linear scan with simple flag variables efficiently validates all strong‑password criteria while ensuring constant extra space.
+A single linear scan with simple flag variables efficiently validates all strong-password criteria while ensuring constant extra space.

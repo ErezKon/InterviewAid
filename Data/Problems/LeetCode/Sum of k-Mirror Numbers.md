@@ -62,7 +62,7 @@ Explanation: The 17 smallest 7-mirror numbers are:
 ```
 
 ## Approach
-Generate base‑10 palindromes in increasing order. For each palindrome, convert it to base `k` and check if that representation is also a palindrome. Keep a running total until `n` numbers are collected.
+Generate base-10 palindromes in increasing order. For each palindrome, convert it to base `k` and check if that representation is also a palindrome. Keep a running total until `n` numbers are collected.
 
 ```text
 FUNCTION isPalindromeString(s):
@@ -105,7 +105,7 @@ FUNCTION kMirror(k, n):
 
 ## Walkthrough
 For `k = 2, n = 5`:
-1. Generate base‑10 palindromes: 1,2,3,4,5,6,7,8,9,11,…
+1. Generate base-10 palindromes: 1,2,3,4,5,6,7,8,9,11,…
 2. Test each in base 2:
    - 1 → "1" (palindrome) → add
    - 2 → "10" (not palindrome)
@@ -123,9 +123,9 @@ Sum = 25.
 - **Space:** O(L) for storing the digit list of a single number.
 
 ## Follow-Up Questions
-1. How would you modify the algorithm to return the `n`‑th k‑mirror number instead of the sum?
+1. How would you modify the algorithm to return the `n`-th k-mirror number instead of the sum?
 2. Can you generate palindromes directly in base `k` to avoid conversion?
 3. What is the complexity if `k` is very large (e.g., `k = 10^9`)?
 
 ## Key Takeaway
-Generating base‑10 palindromes and filtering them by a palindrome test in another base yields a simple yet effective O(n)‑ish solution for k‑mirror numbers.
+Generating base-10 palindromes and filtering them by a palindrome test in another base yields a simple yet effective O(n)-ish solution for k-mirror numbers.

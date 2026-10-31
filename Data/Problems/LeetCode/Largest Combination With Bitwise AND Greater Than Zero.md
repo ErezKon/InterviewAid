@@ -51,7 +51,7 @@ FUNCTION largestCombination(candidates):
 ```
 Input: candidates = [16,17,71,62,12,24,14]
 Output: 4
-Explanation: The combination [16,17,62,24] has a bitwise AND of 16 & 17 & 62 & 24 = 16 > 0 (non‑zero).
+Explanation: The combination [16,17,62,24] has a bitwise AND of 16 & 17 & 62 & 24 = 16 > 0 (non-zero).
 The size of the combination is 4 (combination size = 4).
 It can be shown that no combination with a size greater than 4 has a bitwise AND greater than 0
 (the maximum number of candidates sharing any single set bit, here bit 4, is count = 4).
@@ -64,7 +64,7 @@ For example, the combination [62,12,24,14] has a bitwise AND of 62 & 12 & 24 & 1
 Input: candidates = [8,8]
 Output: 2
 Explanation: The largest combination [8,8] has a bitwise AND of 8 & 8 = 8 > 0.
-(Bit 3 is set in both numbers: count = 2, so the max bit frequency is also count = 2).
+(Bit 3 is set in both numbers: count = 2, so the max bit frequency is also count = 2).
 The size of the combination is 2, so we return 2.
 ```
 
@@ -86,13 +86,13 @@ The algorithm records the maximum count (3) and returns it.
 
 | Time | Space |
 |------|-------|
-| O(24·n) → O(n) – one pass per bit (24 bits for 32‑bit ints) | O(1) – only counters are stored |
+| O(24·n) → O(n) – one pass per bit (24 bits for 32-bit ints) | O(1) – only counters are stored |
 
 ---
 
 ## 7. Follow-Up Questions
 
-1. How would the solution change if numbers could be up to 2³¹‑1 (31 bits)?
+1. How would the solution change if numbers could be up to 2³¹-1 (31 bits)?
 2. Can you extend the approach to find the largest subset where the bitwise OR is less than a given value?
 3. What if you need the actual subset, not just its size?
 
@@ -100,4 +100,4 @@ The algorithm records the maximum count (3) and returns it.
 
 ## Key Takeaway
 
-> Reduce bitwise AND to per‑bit counting. The largest combination sharing a common set bit = the max bit frequency. No need to enumerate subsets.
+> Reduce bitwise AND to per-bit counting. The largest combination sharing a common set bit = the max bit frequency. No need to enumerate subsets.

@@ -96,11 +96,11 @@ Consider the first example `[[1,3],[0,2],[1,3],[0,2]]`.
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return the actual two color groups?
-- Can you detect the smallest odd cycle that makes the graph non‑bipartite?
+- Can you detect the smallest odd cycle that makes the graph non-bipartite?
 - How would the solution change for a directed graph?
 
 ---
 
 ## Key Takeaway
 
-> Bipartite = 2‑colorable = no odd‑length cycles. BFS/DFS coloring: assign alternating colors, fail if a neighbor has the same color. Check all components.
+> Bipartite = 2-colorable = no odd-length cycles. BFS/DFS coloring: assign alternating colors, fail if a neighbor has the same color. Check all components.

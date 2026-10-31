@@ -81,7 +81,7 @@ The final count is 3.
 ## Follow-Up Questions
 1. How would you handle a stream of customer wealth values?
 2. What if you need to support updates to individual customers' wealth?
-3. Can you find the k‑th richest customer efficiently?
+3. Can you find the k-th richest customer efficiently?
 
 ## Key Takeaway
 Counting elements that satisfy a simple condition can be solved in linear time with constant extra space.

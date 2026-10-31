@@ -76,7 +76,7 @@ At index 2 we see `"ba"`, so the function returns `false`.
 ## 5. Complexity Analysis
 
 - **Time:** O(n) – single pass over the string.
-- **Space:** O(1) – only constant‑size variables used.
+- **Space:** O(1) – only constant-size variables used.
 
 ---
 

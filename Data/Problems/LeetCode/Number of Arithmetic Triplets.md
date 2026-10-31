@@ -81,7 +81,7 @@ FUNCTION arithmeticTriplets(nums, diff):
 
 ## 5. Walkthrough
 
-Consider Example 1 step‑by‑step:
+Consider Example 1 step-by-step:
 
 | x | `x-diff` in set? | `x-2*diff` in set? | Triplet formed? |
 |---|------------------|--------------------|-----------------|

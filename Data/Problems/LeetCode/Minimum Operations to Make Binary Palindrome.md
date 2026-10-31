@@ -49,12 +49,12 @@ Example 2:
 ```
 
 ## Approach
-A palindrome reads the same from both ends, so for each symmetric pair of indices `(i, n‑1‑i)` we only need to ensure the characters match. If they differ, one flip is sufficient to make them equal. Thus the answer is the count of mismatched pairs.
+A palindrome reads the same from both ends, so for each symmetric pair of indices `(i, n-1-i)` we only need to ensure the characters match. If they differ, one flip is sufficient to make them equal. Thus the answer is the count of mismatched pairs.
 
 **Algorithm**
 1. Initialise `flips = 0`.
-2. For `i` from `0` to `⌊(n‑1)/2⌋`:
-   - If `s[i] != s[n‑1‑i]`, increment `flips`.
+2. For `i` from `0` to `⌊(n-1)/2⌋`:
+   - If `s[i] != s[n-1-i]`, increment `flips`.
 3. Return `flips`.
 
 **Pseudocode**
@@ -70,7 +70,7 @@ FUNCTION minFlipsToPalindrome(s):
 
 ## Walkthrough
 Example `s = "1100"` (n = 4):
-| i | s[i] | s[n‑1‑i] | Mismatch? | flips |
+| i | s[i] | s[n-1-i] | Mismatch? | flips |
 |---|------|----------|-----------|-------|
 |0|1|0|yes|1|
 |1|1|0|yes|2|
@@ -80,7 +80,7 @@ Result `flips = 2`.
 - **Time:** `O(n)` – one pass over half the string.
 - **Space:** `O(1)` – constant extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if each flip had a different cost depending on its position?
 2. Can you extend the algorithm to return the actual indices to flip?
 3. What if the string contains more than two characters (e.g., ternary strings) – does the same logic apply?

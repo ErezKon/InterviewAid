@@ -89,7 +89,7 @@ Result: 4 good numbers.
 |------|-------|
 | O(n·d) | O(1) |
 
-`d` is the number of digits in each integer (≤ log₁₀n). The algorithm scans each number once and uses constant extra space.
+`d` is the number of digits in each integer (≤ log₁₀n). The algorithm scans each number once and uses constant extra space.
 
 ---
 

@@ -83,8 +83,8 @@ FUNCTION ReplaceWords(dictionary, sentence):
 - Time: O(N·L) where N is total characters in sentence and L is max root length.
 - Space: O(T) for the Trie, where T is total characters in all roots.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to handle case‑insensitive matching?
+## Follow-Up Questions
+1. How would you modify the algorithm to handle case-insensitive matching?
 2. Can you support dynamic updates to the dictionary (add/remove roots) efficiently?
 3. What if you need to replace with the longest matching root instead of the shortest?
 

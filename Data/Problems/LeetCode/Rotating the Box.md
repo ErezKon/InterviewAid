@@ -92,18 +92,16 @@ First simulate gravity, then rotate. Both steps are linear in the matrix size.
 
 ## Walkthrough
 
-Consider `box = [["#",".","*"],[".","#","."]]`.
+Example 2: `boxGrid = [["#",".","*","."],["#","#","*","."]]` (m = 2, n = 4).
 1. **Gravity**:
-   - Row 0: start `empty = 2`. At col 2 (`*`), set `empty = 1`. At col 0 (`#`), move stone to `empty=1`. Row becomes `[".","#","*"]`.
-   - Row 1: start `empty = 2`. No obstacles. Stone at col 1 moves to `empty=2`. Row becomes `[".",".","#"]`.
-2. **Rotation** (90° clockwise):
-   - Result[0][1] = box[0][0] = '.'
-   - Result[0][0] = box[1][0] = '.'
-   - Result[1][1] = box[0][1] = '#'
-   - Result[1][0] = box[1][1] = '.'
-   - Result[2][1] = box[0][2] = '*'
-   - Result[2][0] = box[1][2] = '#'
-   Final matrix: `[[".","#"],["*","."],["#","."]]`.
+   - Row 0: start `empty = 3`. col 3 `.` skip. col 2 `*` → `empty = 1`. col 1 `.` skip. col 0 `#` → move stone to col 1, `empty = 0`. Row becomes `[".","#","*","."]`.
+   - Row 1: start `empty = 3`. col 3 `.` skip. col 2 `*` → `empty = 1`. col 1 `#` stays at col 1, `empty = 0`. col 0 `#` stays at col 0. Row stays `["#","#","*","."]`.
+2. **Rotation** (90° clockwise, `result[c][m-1-r] = box[r][c]`, so row 1 becomes result column 0 and row 0 becomes result column 1):
+   - result[0] = [box[1][0], box[0][0]] = ["#","."]
+   - result[1] = [box[1][1], box[0][1]] = ["#","#"]
+   - result[2] = [box[1][2], box[0][2]] = ["*","*"]
+   - result[3] = [box[1][3], box[0][3]] = [".","."]
+   Final matrix: `[["#","."],["#","#"],["*","*"],[".","."]]`, matching the expected output.
 
 ---
 
@@ -119,8 +117,8 @@ Both gravity simulation and rotation traverse each cell once; the result matrix 
 
 ## Follow-Up Questions
 
-1. How would you modify the algorithm to rotate the box counter‑clockwise?
-2. Can you perform the rotation in‑place without allocating a new matrix?
+1. How would you modify the algorithm to rotate the box counter-clockwise?
+2. Can you perform the rotation in-place without allocating a new matrix?
 
 ---
 

@@ -82,14 +82,14 @@ Explanation: We select elements at indices 1, 4, and 9. 1 * 4, 1 * 9, 4 * 9 are 
 ## Walkthrough
 
 Consider the first example `nums = [1,2,3,4]`.
-| Index | Value | Square‑Free Part |
+| Index | Value | Square-Free Part |
 |-------|-------|------------------|
 | 1     | 1     | 1                |
 | 2     | 2     | 2                |
 | 3     | 3     | 3                |
 | 4     | 4     | 1 (since 4 = 2²) |
 
-1. Compute square‑free part for each index.
+1. Compute square-free part for each index.
 2. Group indices by these parts: `{1,4}` → sum 1+4 = 5, `{2}` → 2, `{3}` → 3.
 3. The maximum group sum is 5, so the answer is 5.
 

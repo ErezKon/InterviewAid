@@ -83,19 +83,19 @@ The algorithm iterates sorted numbers, builds a chain by repeatedly squaring whi
 
 ## 5. Complexity Analysis
 
-**Time:** `O(n log log M)` – each number is processed, and the squaring chain length is bounded by log log M.
+**Time:** `O(n log log M)` – each number is processed, and the squaring chain length is bounded by log log M.
 **Space:** `O(n)` – the hash set stores all numbers.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * How would you handle negative numbers or zero?
-* Can the solution be adapted to find the longest geometric progression with ratio r?
+* Can the solution be adapted to find the longest geometric progression with ratio r?
 * What changes are needed if the array is extremely large and cannot fit in memory?
 
 ---
 
 ## Key Takeaway
 
-> Use a hash set to quickly test membership and follow square chains from each number, leveraging the fact that chain lengths are very short (log log M).
+> Use a hash set to quickly test membership and follow square chains from each number, leveraging the fact that chain lengths are very short (log log M).

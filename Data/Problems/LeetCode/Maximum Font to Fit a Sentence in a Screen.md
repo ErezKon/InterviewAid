@@ -137,7 +137,7 @@ The algorithm returns `10` as the largest fitting font.
 ## Follow-Up Questions
 
 1. How would you adapt the solution if the font list is not sorted?
-2. Can you extend the feasibility check to handle multi‑line text wrapping?
+2. Can you extend the feasibility check to handle multi-line text wrapping?
 3. What if the `FontInfo` queries are expensive – how would you minimize calls?
 
 ---

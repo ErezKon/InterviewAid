@@ -76,7 +76,16 @@ Additional example (used in the walkthrough):
 
 ## Walkthrough
 
-Consider the input `"(()(()))"`:
+Example 2: `s = "(())"`
+
+1. Initialize `stack = [0]`.
+2. `'('` → push 0 → `[0,0]`.
+3. `'('` → push 0 → `[0,0,0]`.
+4. `')'` → pop inner 0 → score = 1 → `[0,1]`.
+5. `')'` → pop inner 1 → score = 2*1 = 2 → `[2]`.
+6. Return `2`, matching the expected output. (Example 3 `"()()"` adds 1 + 1 at the bottom level → `2`.)
+
+A deeper input, `"(()(()))"`:
 
 1. Initialize `stack = [0]`.
 2. `'('` → push 0 → `[0,0]`.

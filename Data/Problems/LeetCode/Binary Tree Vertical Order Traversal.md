@@ -31,7 +31,7 @@ Example 3:
 ```
 
 ## Approach
-Perform BFS while tracking each node's column index. Use a map from column to list of node values. Enqueue children with column‑1 (left) and column+1 (right). After traversal, output the lists sorted by column.
+Perform BFS while tracking each node's column index. Use a map from column to list of node values. Enqueue children with column-1 (left) and column+1 (right). After traversal, output the lists sorted by column.
 
 ```text
 FUNCTION verticalOrder(root):
@@ -62,9 +62,9 @@ For tree `[[3,9,20,null,null,15,7]]`:
 - Space: O(n) – queue and column map store up to n nodes.
 
 ## Follow-Up Questions
-- How would you modify the algorithm to return nodes in top‑to‑bottom, left‑to‑right order within each column?
+- How would you modify the algorithm to return nodes in top-to-bottom, left-to-right order within each column?
 - Can you solve the problem using DFS with a hashmap and then sorting?
 - How does the solution change if you need to output columns as a single flattened list?
 
 ## Key Takeaway
-BFS with column tracking naturally groups nodes by vertical columns while preserving top‑to‑bottom order, enabling an O(n) vertical order traversal.
+BFS with column tracking naturally groups nodes by vertical columns while preserving top-to-bottom order, enabling an O(n) vertical order traversal.

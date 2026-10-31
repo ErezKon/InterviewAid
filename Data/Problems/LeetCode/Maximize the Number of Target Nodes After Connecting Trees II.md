@@ -65,7 +65,7 @@ Explanation: For every i, connect node i of the first tree with any node of the 
 
 ## Walkthrough
 
-| Step | Action | Resulting even‑distance count for a sample node |
+| Step | Action | Resulting even-distance count for a sample node |
 |------|--------|-----------------------------------------------|
 | 1 | Color tree1 (even/odd depths) → partitions sizes 2 and 2 | Node 0 belongs to even partition size 2 |
 | 2 | Color tree2 → partitions sizes 2 and 1, best = 2 | 

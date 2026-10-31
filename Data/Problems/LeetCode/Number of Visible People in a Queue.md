@@ -58,7 +58,7 @@ Output: [4,1,1,1,0]
 
 ## 3. Approach
 
-**Monotonic Decreasing Stack (right‑to‑left)**
+**Monotonic Decreasing Stack (right-to-left)**
 
 Traverse the array from the end. Maintain a stack that stores heights in decreasing order. For the current height, pop all smaller heights – those are visible. If the stack is not empty after popping, the top element is the first taller person and is also visible. Record the count, then push the current height onto the stack.
 
@@ -83,7 +83,7 @@ FUNCTION canSeePersonsCount(heights):
 
 ## 4. Walkthrough
 
-We walk through **Example 1** (`heights = [10,6,8,5,11,9]`).
+We walk through **Example 1** (`heights = [10,6,8,5,11,9]`).
 
 | i | height | stack before | popped | count after pop | stack after push |
 |---|--------|--------------|--------|----------------|------------------|

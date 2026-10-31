@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-Two rectangles overlap iff their projections on both the x‑axis and y‑axis intersect with positive length. This can be checked with simple inequality comparisons.
+Two rectangles overlap iff their projections on both the x-axis and y-axis intersect with positive length. This can be checked with simple inequality comparisons.
 
 ```text
 FUNCTION IsRectangleOverlap(rec1, rec2):
@@ -71,9 +71,9 @@ All true → rectangles overlap.
 - **Space:** `O(1)` – no extra data structures.
 
 ## Follow-Up Questions
-1. How would you modify the check for rectangles that may be rotated (non‑axis aligned)?
+1. How would you modify the check for rectangles that may be rotated (non-axis aligned)?
 2. Extend the solution to return the overlapping region coordinates.
 3. What if the rectangles are defined by center point, width, and height?
 
 ## Key Takeaway
-Overlap of axis‑aligned rectangles reduces to checking interval intersection on both axes with four simple comparisons.
+Overlap of axis-aligned rectangles reduces to checking interval intersection on both axes with four simple comparisons.

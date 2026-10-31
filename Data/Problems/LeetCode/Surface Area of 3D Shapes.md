@@ -42,7 +42,7 @@ Output: 46
 ```
 
 ## Approach
-Iterate over each cell, adding the contribution of its four sides. For each side, the exposed area equals `max(0, height - neighborHeight)`. Add top and bottom faces for every non‑zero cell.
+Iterate over each cell, adding the contribution of its four sides. For each side, the exposed area equals `max(0, height - neighborHeight)`. Add top and bottom faces for every non-zero cell.
 
 ```text
 FUNCTION surfaceArea(grid):
@@ -83,8 +83,8 @@ Summing all rows yields 34.
 - **Time:** O(m·n) – each cell visited once.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm for a non‑rectangular grid (irregular shape)?
+## Follow-Up Questions
+1. How would you modify the algorithm for a non-rectangular grid (irregular shape)?
 2. Can you compute the surface area while streaming the grid rows without storing the entire matrix?
 3. How does the solution change if diagonal adjacency also hides faces?
 

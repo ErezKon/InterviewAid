@@ -92,7 +92,7 @@ FUNCTION addPoly(poly1, poly2):
 | 1 | Initialise a dummy head to build the result list. |
 | 2 | Compare the `power` of the current nodes of both lists. |
 | 3 | Append the node with the larger power to the result. |
-| 4 | If powers are equal, add the coefficients; if the sum is non‑zero, create a new node with that sum and the shared power. |
+| 4 | If powers are equal, add the coefficients; if the sum is non-zero, create a new node with that sum and the shared power. |
 | 5 | Advance the pointers of the processed list(s). |
 | 6 | After one list is exhausted, link the remaining nodes of the other list. |
 | 7 | Return the list after the dummy head. |
@@ -110,10 +110,10 @@ FUNCTION addPoly(poly1, poly2):
 
 1. How would you handle polynomials stored in ascending order of power? |
 2. How can you modify the algorithm to support multiplication of two polynomial linked lists? |
-3. What changes are needed if the coefficients are large integers requiring arbitrary‑precision arithmetic? |
+3. What changes are needed if the coefficients are large integers requiring arbitrary-precision arithmetic? |
 
 ---
 
 ## Key Takeaway
 
-> Adding two polynomial linked lists is a classic merge‑like process: traverse both lists in order of decreasing power, combine coefficients when powers match, and preserve the sorted order.
+> Adding two polynomial linked lists is a classic merge-like process: traverse both lists in order of decreasing power, combine coefficients when powers match, and preserve the sorted order.

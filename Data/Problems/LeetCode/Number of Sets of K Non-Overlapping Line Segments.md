@@ -58,7 +58,7 @@ Explanation: The total number of possible ways to draw 7 line segments is 379629
 
 ## 3. Approach
 
-**Algorithm:** Combinatorial formula using stars‑and‑bars.
+**Algorithm:** Combinatorial formula using stars-and-bars.
 
 The problem reduces to selecting `2k` endpoints from `n + k - 1` positions, giving the answer `C(n + k - 1, 2k)` modulo `10⁹+7`.
 
@@ -95,10 +95,10 @@ For `n = 4, k = 2`:
 
 1. How would the solution change if overlapping at endpoints were allowed?
 2. Can you derive a DP solution that works for larger `n` without the combinatorial shortcut?
-3. How would you extend the problem to 2‑D points forming non‑overlapping line segments?
+3. How would you extend the problem to 2-D points forming non-overlapping line segments?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Stars‑and‑bars transforms the segment‑selection problem into a simple combination**, enabling an O(k) solution.
+> **Stars-and-bars transforms the segment-selection problem into a simple combination**, enabling an O(k) solution.

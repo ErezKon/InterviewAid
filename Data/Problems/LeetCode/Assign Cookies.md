@@ -61,12 +61,12 @@ Result = 2 content children.
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting, where n = max(|g|,|s|).
-- **Space:** O(1) extra space (in‑place sort).
+- **Space:** O(1) extra space (in-place sort).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where each child can receive multiple cookies?
 2. Can you solve the problem without sorting, using a counting sort for bounded values?
 3. What if cookies have a cost and you want to minimize total cost while satisfying maximum children?
 
 ## Key Takeaway
-Sorting and a two‑pointer greedy scan yields the optimal assignment of cookies to children.
+Sorting and a two-pointer greedy scan yields the optimal assignment of cookies to children.

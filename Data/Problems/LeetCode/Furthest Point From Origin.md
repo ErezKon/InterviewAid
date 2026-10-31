@@ -79,8 +79,8 @@ Consider the input `"L_R"`:
 1. Count left moves → `1`.
 2. Count right moves → `1`.
 3. Count wildcards → `1`.
-4. Imbalance `|1‑1| = 0`. Add all wildcards to either side → `0 + 1 = 1`.
-5. However, we can also place the wildcard on the side that already has a move, giving a distance of `2` (e.g., `LLR`). The formula `ABS(L‑R) + wildcards` yields `2`.
+4. Imbalance `|1-1| = 0`. Add all wildcards to either side → `0 + 1 = 1`.
+5. However, we can also place the wildcard on the side that already has a move, giving a distance of `2` (e.g., `LLR`). The formula `ABS(L-R) + wildcards` yields `2`.
 
 ---
 

@@ -96,7 +96,7 @@ Example 2:
 
 Consider `nums = [4,1,3,2]` and `k = 3`.
 
-| Step | l | r | Window | Cost to make non‑decreasing | Valid subarrays added |
+| Step | l | r | Window | Cost to make non-decreasing | Valid subarrays added |
 |------|---|---|--------|-----------------------------|-----------------------|
 | 1 | 0 | 0 | [4] | 0 | 1 |
 | 2 | 0 | 1 | [4,1] | Need to raise `1` to `4` → cost 3 (≤k) | 2 |

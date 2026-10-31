@@ -103,14 +103,14 @@ Average O(1), worst O(n/SIZE) per operation.
 | Aspect | Value |
 |---|---|
 | **Time** | O(1) average for `put`, `get`, `remove`; O(n/SIZE) worst case when many keys collide |
-| **Space** | O(N + SIZE) where N is number of stored key‑value pairs |
+| **Space** | O(N + SIZE) where N is number of stored key-value pairs |
 
 ---
 
 ## Follow-Up Questions
 
 1. How would you handle dynamic resizing when the load factor grows?
-2. What alternative collision‑resolution strategies exist (e.g., open addressing)?
+2. What alternative collision-resolution strategies exist (e.g., open addressing)?
 3. How could you extend this design to support `getAllKeys()` efficiently?
 
 ---

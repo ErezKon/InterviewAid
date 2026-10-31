@@ -44,7 +44,7 @@ Since the answer may be large, return it **modulo** `10^9 + 7`.
 
 ## Key Insight
 
-> Each node value can be represented as a 10‑bit mask indicating which digits (0‑9) appear. The problem reduces to a tree DP where `dp[mask]` stores the best score achievable using exactly the digit set `mask`. When merging a child’s DP, only combine masks that do not overlap (bitwise AND is zero).
+> Each node value can be represented as a 10-bit mask indicating which digits (0-9) appear. The problem reduces to a tree DP where `dp[mask]` stores the best score achievable using exactly the digit set `mask`. When merging a child’s DP, only combine masks that do not overlap (bitwise AND is zero).
 
 ---
 
@@ -137,7 +137,7 @@ Explanation: - The subtree rooted at node 0 includes nodes {0, 1, 2}. The subset
 | 2 | Recurse child 1 (value 34) | dp child = {0:0, mask34:34} | – |
 | 3 | Merge child 1 into node 0 | Combine masks 001100 & 110000 = 0 → new mask `111100` score 46 | dp now has entries for masks {0, mask12, mask34, mask12|mask34} |
 | 4 | Recurse child 2 (value 56) | dp child = {0:0, mask56:56} | – |
-| 5 | Merge child 2 into accumulated dp | Non‑overlapping merges produce mask `111111` score 102 | Final dp contains max score 102 for mask covering all digits |
+| 5 | Merge child 2 into accumulated dp | Non-overlapping merges produce mask `111111` score 102 | Final dp contains max score 102 for mask covering all digits |
 
 ---
 
@@ -151,4 +151,4 @@ Explanation: - The subtree rooted at node 0 includes nodes {0, 1, 2}. The subset
 
 ## Key Takeaway
 
-> **Digit‑disjoint constraint → 10‑bit mask.** Perform a DFS tree DP merging child states only when masks do not overlap. Classic bitmask DP on trees.
+> **Digit-disjoint constraint → 10-bit mask.** Perform a DFS tree DP merging child states only when masks do not overlap. Classic bitmask DP on trees.

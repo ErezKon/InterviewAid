@@ -79,14 +79,14 @@ Resulting matrix matches the expected output.
 - **Time:** O(n²) – each cell is visited exactly once.
 - **Space:** O(n²) for the output matrix; auxiliary space is O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would you modify the algorithm to fill the matrix in a counter‑clockwise spiral?
-- Can you generate the matrix in‑place for a pre‑allocated `n×n` array without using extra data structures?
-- How would you adapt the solution to handle non‑square (m×n) matrices?
+- How would you modify the algorithm to fill the matrix in a counter-clockwise spiral?
+- Can you generate the matrix in-place for a pre-allocated `n×n` array without using extra data structures?
+- How would you adapt the solution to handle non-square (m×n) matrices?
 
 ---
 
 ## Key Takeaway
 
-> Same boundary‑shrinking technique as Spiral Matrix I (#54), but write values instead of reading them.
+> Same boundary-shrinking technique as Spiral Matrix I (#54), but write values instead of reading them.

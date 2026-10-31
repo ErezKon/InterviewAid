@@ -95,11 +95,11 @@ Explanation: [0,0] is the only stone on the plane, so you cannot remove it.
 
 ## 5. Walkthrough
 
-We illustrate the first example step‑by‑step.
+We illustrate the first example step-by-step.
 
-| Step | Operation | Union‑Find State (representative roots) |
+| Step | Operation | Union-Find State (representative roots) |
 |------|-----------|------------------------------------------|
-| 1 | Initialize Union‑Find | each row and column is its own set |
+| 1 | Initialize Union-Find | each row and column is its own set |
 | 2 | Union (0,0) → union(0, 0+10001) | {0 ↔ 10001}
 | 3 | Union (0,1) → union(0, 1+10001) | {0 ↔ 10001, 0 ↔ 10002} → rows 0, columns 0 & 1 share root 0 |
 | 4 | Union (1,0) → union(1, 0+10001) | connects row 1 to the existing component via column 0 |
@@ -115,11 +115,11 @@ After processing all stones, there is **1** connected component. Hence answer = 
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n · α(n)) — near‑linear Union‑Find |
+| **Time** | O(n · α(n)) — near-linear Union-Find |
 | **Space** | O(n) |
 
 ---
 
 ## 7. Key Takeaway
 
-> **Union rows with columns via Union‑Find.** Each stone connects its row and column. The answer = stones − components. Offset columns by 10001 to avoid collision with row indices.
+> **Union rows with columns via Union-Find.** Each stone connects its row and column. The answer = stones − components. Offset columns by 10001 to avoid collision with row indices.

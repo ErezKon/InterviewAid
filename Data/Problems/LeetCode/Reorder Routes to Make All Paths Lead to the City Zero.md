@@ -89,4 +89,4 @@ All cities reachable, total flips = 3.
 3. How would you extend the algorithm to also output the list of edges that need to be reversed?
 
 ## Key Takeaway
-By treating each road as a bidirectional edge with a flip‑cost flag, a simple BFS from city 0 counts exactly the edges that must be reoriented to make all paths lead to the capital.
+By treating each road as a bidirectional edge with a flip-cost flag, a simple BFS from city 0 counts exactly the edges that must be reoriented to make all paths lead to the capital.

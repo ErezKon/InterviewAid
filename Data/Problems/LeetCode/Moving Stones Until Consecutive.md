@@ -121,4 +121,4 @@ Consider the input `[1,2,5]`.
 
 ## 8. Key Takeaway
 
-> **Three‑stone puzzle reduces to simple gap analysis.** The maximum moves equal the total empty slots, while the minimum moves depend on whether any gap is ≤ 2, allowing a single jump to close the gap.
+> **Three-stone puzzle reduces to simple gap analysis.** The maximum moves equal the total empty slots, while the minimum moves depend on whether any gap is ≤ 2, allowing a single jump to close the gap.

@@ -89,7 +89,7 @@ The strings with the least index sum are "sad" and "happy".
 - **Time:** O(n + m) – one pass over each list.
 - **Space:** O(n) – hash map for the first list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the solution if the lists were extremely large and could not fit into memory?
 2. What if you needed to return the common strings sorted by their index sum?

@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-You are given a `m x n` 2D integer array `grid` and an integer `k`. You start at the top-left cell `(0, 0)` and your goal is to reach the bottom‑right cell `(m - 1, n - 1)`.
+You are given a `m x n` 2D integer array `grid` and an integer `k`. You start at the top-left cell `(0, 0)` and your goal is to reach the bottom-right cell `(m - 1, n - 1)`.
 
 There are two types of moves available:
 - **Normal move**: You can move right or down from your current cell `(i, j)`, i.e. you can move to `(i, j + 1)` (right) or `(i + 1, j)` (down). The cost is the value of the destination cell.
@@ -51,9 +51,9 @@ Example 2:
 
 ## Approach
 
-**Algorithm:** Dijkstra with Color Supernodes (range‑reduction trick)
+**Algorithm:** Dijkstra with Color Supernodes (range-reduction trick)
 
-Instead of adding an edge between every pair of same‑color nodes (which would be O(n²)), create a *supernode* for each color. Connect each original node to its color’s supernode with a directed edge of cost `0` (entering) and from the supernode back to the node with cost `teleportCost` (exiting). Any teleport from node `u` to node `v` of the same color now corresponds to `u → supercolor → v` with total cost `0 + teleportCost = teleportCost`.
+Instead of adding an edge between every pair of same-color nodes (which would be O(n²)), create a *supernode* for each color. Connect each original node to its color’s supernode with a directed edge of cost `0` (entering) and from the supernode back to the node with cost `teleportCost` (exiting). Any teleport from node `u` to node `v` of the same color now corresponds to `u → supercolor → v` with total cost `0 + teleportCost = teleportCost`.
 
 Run standard Dijkstra on the expanded graph (original nodes + supernodes).
 
@@ -108,7 +108,7 @@ The algorithm stops when the target is extracted with its final shortest distanc
 | Time   | **O((V + E) log V)** – Dijkstra on `V = n + C` vertices and `E = originalEdges + 2n` edges |
 | Space  | **O(V + E)** – adjacency list plus distance array |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if teleportation cost depended on the distance between nodes?
 2. Can we handle dynamic updates to colors or teleport cost without rebuilding the whole graph?
@@ -116,4 +116,4 @@ The algorithm stops when the target is extracted with its final shortest distanc
 
 ## Key Takeaway
 
-By introducing a supernode per color, teleport edges are collapsed into O(n) connections, enabling Dijkstra to find the minimum‑cost path in linearithmic time.
+By introducing a supernode per color, teleport edges are collapsed into O(n) connections, enabling Dijkstra to find the minimum-cost path in linearithmic time.

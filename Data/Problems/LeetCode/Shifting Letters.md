@@ -60,7 +60,7 @@ FUNCTION shiftingLetters(s, shifts):
     RETURN JOIN(result)
 ```
 
-The suffix‑sum of `shifts` gives the net shift for each position.
+The suffix-sum of `shifts` gives the net shift for each position.
 
 ---
 
@@ -83,7 +83,7 @@ Resulting string: "gfd".
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to handle **left shifts** instead of right shifts?
 2. Can the solution be extended to work with **Unicode** characters beyond the English alphabet?

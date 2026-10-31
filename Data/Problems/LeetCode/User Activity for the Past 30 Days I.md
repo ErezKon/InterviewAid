@@ -89,7 +89,7 @@ FUNCTION CountActiveUsers(activityTable, endDate):
 | 5 | Return the list ordered by date. |
 
 ## Complexity Analysis
-- **Time:** O(N) where N is the number of rows in `Activity` (single scan). Index on `activity_date` can improve to O(log N) for range selection.
+- **Time:** O(N) where N is the number of rows in `Activity` (single scan). Index on `activity_date` can improve to O(log N) for range selection.
 - **Space:** O(D) for storing results, where D ≤ 30 (one entry per day).
 
 ## Follow-Up Questions

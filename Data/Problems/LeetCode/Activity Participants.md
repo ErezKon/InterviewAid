@@ -113,14 +113,14 @@ HAVING COUNT(*) > (
 
 ## 4. Complexity Analysis
 
-- **Time:** O(N) – a single scan to aggregate counts, plus constant‑time subqueries over the aggregated result.
+- **Time:** O(N) – a single scan to aggregate counts, plus constant-time subqueries over the aggregated result.
 - **Space:** O(K) – extra space for the aggregated counts per distinct activity (`K` = number of activities).
 
 ---
 
 ## 5. Follow-Up Questions
 
-1. How would you modify the query to return activities whose participant count is within the middle 50 % (i.e., between the 25th and 75th percentiles)?
+1. How would you modify the query to return activities whose participant count is within the middle 50 % (i.e., between the 25th and 75th percentiles)?
 2. How can you include the actual participant count in the result set?
 3. Extend the problem to handle ties when multiple activities share the same minimum or maximum count.
 

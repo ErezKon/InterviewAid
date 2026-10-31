@@ -65,14 +65,14 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Build a graph of substring conversions, compute all‑pairs shortest paths, then run DP over the string positions using a trie (or Aho‑Corasick) to find applicable conversions.
+**Algorithm:** Build a graph of substring conversions, compute all-pairs shortest paths, then run DP over the string positions using a trie (or Aho-Corasick) to find applicable conversions.
 
-1. **Assign IDs** to every distinct substring appearing in `original` or `changed`. Add a special node for each single character to allow identity edges of cost 0.
-2. **Shortest‑path**: Run Floyd‑Warshall (or repeated Dijkstra) on the small graph (≤ 200 nodes) to obtain `minCost[u][v]` – the cheapest way to turn substring `u` into `v`.
+1. **Assign IDs** to every distinct substring appearing in `original` or `changed`. Add a special node for each single character to allow identity edges of cost 0.
+2. **Shortest-path**: Run Floyd-Warshall (or repeated Dijkstra) on the small graph (≤ 200 nodes) to obtain `minCost[u][v]` – the cheapest way to turn substring `u` into `v`.
 3. **Trie construction**: Insert all `original` substrings into a trie that stores the ID of the substring at the terminal node.
 4. **DP**: `dp[i]` = minimum cost to convert the prefix `source[0..i-1]` into the corresponding prefix of `target`. Initialise `dp[0]=0` and others = ∞.
    - At position `i`, walk the trie following `source[i..]` to enumerate every substring `orig` that starts at `i`. For each match of length `len` with ID `u`, check the corresponding segment of `target` (`target[i..i+len-1]`) and obtain its ID `v`. Update `dp[i+len] = min(dp[i+len], dp[i] + minCost[u][v])`.
-   - Also allow the trivial conversion of a single character to itself with cost 0.
+   - Also allow the trivial conversion of a single character to itself with cost 0.
 5. Result is `dp[n]` or `-1` if it remains ∞.
 
 ```text
@@ -90,7 +90,7 @@ FUNCTION minCostConvert(source, target, original, changed, cost):
         v ← ids[changed[i]]
         dist[u][v] ← MIN(dist[u][v], cost[i])
     END FOR
-    // Floyd‑Warshall on small graph
+    // Floyd-Warshall on small graph
     FOR k ← 0 TO m-1 DO
         FOR i ← 0 TO m-1 DO
             FOR j ← 0 TO m-1 DO
@@ -134,12 +134,12 @@ FUNCTION minCostConvert(source, target, original, changed, cost):
     RETURN dp[n] IF dp[n] ≠ INFINITY ELSE -1
 ```
 
-## Walkthrough (Example 1)
+## Walkthrough (Example 1)
 
 | Position `i` | Matching original | Target slice | `dist` cost | Updated `dp` |
 |--------------|-------------------|--------------|------------|--------------|
 | 0 | none (characters equal) | – | 0 | `dp[1]=0` |
-| 2 | "c" (ID u) | "f" (ID v) | `dist[u][v]=3` | `dp[3]=dp[2]+3=3` |
+| 2 | "c" (ID u) | "f" (ID v) | `dist[u][v]=3` | `dp[3]=dp[2]+3=3` |
 | … | … | … | … | … |
 
 The final `dp[5]=3`.
@@ -148,15 +148,15 @@ The final `dp[5]=3`.
 
 | Metric | Complexity |
 |--------|-------------|
-| Time   | **O(m³ + n·L)** – Floyd‑Warshall on ≤ 200 nodes (`m³`) plus DP scanning each character while traversing the trie (total `n·L`, `L` = max substring length) |
+| Time   | **O(m³ + n·L)** – Floyd-Warshall on ≤ 200 nodes (`m³`) plus DP scanning each character while traversing the trie (total `n·L`, `L` = max substring length) |
 | Space  | **O(m² + n)** – distance matrix, trie, and DP array |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if conversion costs were asymmetric (different for forward vs. reverse)?
-2. Can we replace Floyd‑Warshall with repeated Dijkstra to handle a larger set of substrings?
+2. Can we replace Floyd-Warshall with repeated Dijkstra to handle a larger set of substrings?
 3. What if overlapping conversions are prohibited; how would the DP state need to be adjusted?
 
 ## Key Takeaway
 
-By treating each allowed substring as a node in a tiny graph, computing all‑pairs cheapest conversions, and then using a trie‑driven DP over the source string, we obtain the minimum cost to transform one string into another even when conversions act on substrings.
+By treating each allowed substring as a node in a tiny graph, computing all-pairs cheapest conversions, and then using a trie-driven DP over the source string, we obtain the minimum cost to transform one string into another even when conversions act on substrings.

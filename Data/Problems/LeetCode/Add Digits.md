@@ -52,12 +52,12 @@ Take `num = 38`:
 3. Return `2`, which matches the iterative process `38 → 11 → 2`.
 
 ## Complexity Analysis
-- **Time Complexity:** `O(1)` – constant‑time arithmetic.
+- **Time Complexity:** `O(1)` – constant-time arithmetic.
 - **Space Complexity:** `O(1)` – no extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you solve the problem without using the modulo trick (i.e., with a loop)?
 - Can you extend the solution to work with arbitrarily large numbers represented as strings?
 
 ## Key Takeaway
-The digital root of a number can be obtained instantly with a simple modulo‑9 formula, avoiding any loops.
+The digital root of a number can be obtained instantly with a simple modulo-9 formula, avoiding any loops.

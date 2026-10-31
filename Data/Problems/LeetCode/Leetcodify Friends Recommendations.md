@@ -100,11 +100,11 @@ Example 1:
 
 ---
 
-## 3. Approach: Self‑Join + Anti‑Join
+## 3. Approach: Self-Join + Anti-Join
 
-1. **Self‑join `Listens`** on `song_id` and `listen_date` where `user_id` differs to find co‑listening events.
+1. **Self-join `Listens`** on `song_id` and `listen_date` where `user_id` differs to find co-listening events.
 2. **Group** by `(user_a, user_b)` and count distinct songs; keep pairs with count ≥ 3.
-3. **Anti‑join** with `Friends` to exclude existing friendships.
+3. **Anti-join** with `Friends` to exclude existing friendships.
 4. Return the remaining pairs as recommendations.
 
 ```sql
@@ -138,9 +138,9 @@ WHERE f.user_id IS NULL;
 
 | Step | Action | Result |
 |------|--------|--------|
-| 1 | Self‑join `Listens` on same song/date | Generates rows for each co‑listening pair |
+| 1 | Self-join `Listens` on same song/date | Generates rows for each co-listening pair |
 | 2 | Group & count distinct songs per pair | `(1,3)` has count 3 |
-| 3 | Anti‑join with `Friends` | Removes `(1,2)` because they are already friends |
+| 3 | Anti-join with `Friends` | Removes `(1,2)` because they are already friends |
 | 4 | Output remaining pair | Recommendation `(1,3)` |
 
 ---
@@ -149,18 +149,18 @@ WHERE f.user_id IS NULL;
 
 | Time | Space |
 |------|-------|
-| O(N²) in worst case for the self‑join (where N is number of listen records) | O(N) for intermediate tables |
+| O(N²) in worst case for the self-join (where N is number of listen records) | O(N) for intermediate tables |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you adapt the query for a sliding time window (e.g., songs listened within the same week)?
 2. Can you design an index strategy to improve performance on large datasets?
-3. How would you modify the recommendation criteria to require *distinct* songs rather than same‑day listens?
+3. How would you modify the recommendation criteria to require *distinct* songs rather than same-day listens?
 
 ---
 
 ## Key Takeaway
 
-> Use a self‑join on listening events to find co‑listening pairs, aggregate to enforce the threshold, and anti‑join with the friendship table to produce new friend recommendations.
+> Use a self-join on listening events to find co-listening pairs, aggregate to enforce the threshold, and anti-join with the friendship table to produce new friend recommendations.

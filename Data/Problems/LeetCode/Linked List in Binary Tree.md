@@ -49,7 +49,7 @@ Explanation: There is no path in the binary tree that contains all the elements 
 
 ## 3. Approach
 
-**Depth‑First Search (DFS) with two‑level recursion** – For each tree node, try to match the linked list starting there; if it fails, recurse on left and right children.
+**Depth-First Search (DFS) with two-level recursion** – For each tree node, try to match the linked list starting there; if it fails, recurse on left and right children.
 
 ```text
 FUNCTION isSubPath(head, root):
@@ -85,7 +85,7 @@ Consider linked list `1 → 4 → 2` and the tree:
 |------|--------------|--------------|--------|
 | 1 | 1 (root) | 1 | values match, recurse on children |
 | 2 | 4 (left child) | 4 | match, recurse |
-| 3 | 2 (left‑left) | 2 | match, list exhausted → return true |
+| 3 | 2 (left-left) | 2 | match, list exhausted → return true |
 
 Thus `isSubPath` returns `true`.
 
@@ -100,7 +100,7 @@ Thus `isSubPath` returns `true`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How can you improve the time complexity using KMP preprocessing on the linked list?
 2. What changes are needed if the path can go upwards as well as downwards?
@@ -110,4 +110,4 @@ Thus `isSubPath` returns `true`.
 
 ## Key Takeaway
 
-> Two‑level DFS checks every possible starting point in the tree while matching the linked list along a downward path.
+> Two-level DFS checks every possible starting point in the tree while matching the linked list along a downward path.

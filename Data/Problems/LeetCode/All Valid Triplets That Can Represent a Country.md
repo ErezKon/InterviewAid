@@ -136,7 +136,7 @@ WHERE a.student_name != b.student_name
 
 ## 4. Complexity Analysis
 
-- **Time Complexity**: `O(N_A * N_B * N_C)` where `N_X` is the row count of each table, due to the three‑way cross join.
+- **Time Complexity**: `O(N_A * N_B * N_C)` where `N_X` is the row count of each table, due to the three-way cross join.
 - **Space Complexity**: `O(K)` for `K` valid triplets returned.
 
 ---
@@ -151,4 +151,4 @@ WHERE a.student_name != b.student_name
 
 ## Key Takeaway
 
-> Three‑way cross join with pairwise inequality efficiently enumerates all distinct‑name triplets for modest table sizes.
+> Three-way cross join with pairwise inequality efficiently enumerates all distinct-name triplets for modest table sizes.

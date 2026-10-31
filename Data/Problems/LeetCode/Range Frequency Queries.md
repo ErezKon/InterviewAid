@@ -39,42 +39,42 @@ Example 1:
 ```
 
 ## Approach
-Use a **Binary Indexed Tree (Fenwick Tree)** for each distinct value to store prefix counts. On update, decrement the count tree of the old value and increment the tree of the new value. Frequency query becomes `prefix(right) - prefix(left-1)` on the tree of the target value.
+The array is static (no updates), so store, for each value, the **sorted list of indices** where it occurs (built in one left-to-right pass, so the lists are already sorted). The frequency of `value` in `[left, right]` is the number of its indices inside that range, found with two binary searches.
 
 ```text
 FUNCTION init(arr):
-    FOR each unique value v IN arr:
-        CREATE BIT[v] WITH size = len(arr)
-    FOR i FROM 0 TO len(arr)-1:
-        BIT[arr[i]].UPDATE(i, 1)
+    positions ← map value → empty list
+    FOR i ← 0 TO len(arr)-1:
+        APPEND i TO positions[arr[i]]          // lists stay sorted
 
-FUNCTION update(index, newVal):
-    oldVal ← arr[index]
-    IF oldVal = newVal: RETURN
-    BIT[oldVal].UPDATE(index, -1)
-    BIT[newVal].UPDATE(index, 1)
-    arr[index] ← newVal
-
-FUNCTION query(left, right, target):
-    RETURN BIT[target].PREFIX(right) - BIT[target].PREFIX(left-1)
+FUNCTION query(left, right, value):
+    IF value NOT IN positions: RETURN 0
+    list ← positions[value]
+    lo ← LOWER_BOUND(list, left)               // first index >= left
+    hi ← UPPER_BOUND(list, right)              // first index > right
+    RETURN hi - lo
 ```
 
 ## Walkthrough
-| Step | Action | BIT[1] | BIT[2] | BIT[3] |
-|------|--------|--------|--------|--------|
-| Init | arr = [1,2,1,3,2] | counts at indices 0,2 | counts at indices 1,4 | count at index 3 |
-| Query 1 | freq of 2 in [1,2] | – | 1 | – |
-| Update | arr[0] = 2 | decrement index0 | increment index0 | – |
-| Query 2 | freq of 2 in [0,4] | – | 3 | – |
+Example 1: `arr = [12, 33, 4, 56, 22, 2, 34, 33, 22, 12, 34, 56]`.
+
+Index lists: `12 → [0,9]`, `33 → [1,7]`, `4 → [2]`, `56 → [3,11]`, `22 → [4,8]`, `2 → [5]`, `34 → [6,10]`.
+
+| Call | list | lower_bound(left) | upper_bound(right) | result |
+|------|------|-------------------|--------------------|--------|
+| `query(1, 2, 4)` | `[2]` | 0 | 1 | 1 |
+| `query(0, 11, 33)` | `[1,7]` | 0 | 2 | 2 |
+
+Output: `[null, 1, 2]`.
 
 ## Complexity Analysis
-- **Time:** `O(log n)` per update or query.
-- **Space:** `O(k·n)` where `k` is the number of distinct values (often bounded by `n`).
+- **Time:** `O(n)` to build, `O(log n)` per query.
+- **Space:** `O(n)` total for all index lists.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where the number of distinct values is very large?
 2. Can you design a solution using a segment tree with hash maps instead of separate BITs?
 3. How would you extend the structure to support range sum of values, not just frequencies?
 
 ## Key Takeaway
-A per‑value Fenwick Tree enables logarithmic‑time updates and range frequency queries by turning the problem into prefix sum differences.
+For a static array, per-value sorted index lists turn a range frequency query into two binary searches; a per-value Fenwick tree is only needed if point updates must also be supported.

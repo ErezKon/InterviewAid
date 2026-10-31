@@ -77,13 +77,13 @@ FUNCTION changeDatatype(students):
 ## 5. Complexity Analysis
 
 - **Time:** O(n) where n is the number of rows, due to casting each element.
-- **Space:** O(1) extra space (in‑place modification).
+- **Space:** O(1) extra space (in-place modification).
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you handle conversion errors if some grades are non‑numeric?
+- How would you handle conversion errors if some grades are non-numeric?
 - Can you cast multiple columns to different types in a single operation?
 
 ---

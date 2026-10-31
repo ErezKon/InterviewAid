@@ -77,7 +77,7 @@ The DP finds this minimal count.
 - **Time:** O(2^n * m * L) where `n` is target length, `m` number of stickers, `L` average sticker length (due to character counting). For given constraints this is acceptable.
 - **Space:** O(2^n) for the DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if each sticker could be used at most once?
 2. Can you improve the runtime by preprocessing stickers to remove dominated ones?
 3. How would you adapt the algorithm for Unicode characters?

@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented "sum of square-valued ancestors" problem. Correct idea: `a·b` is a perfect square iff `a` and `b` have the same **square-free kernel** (product of primes with odd exponent). Precompute kernels with a sieve; DFS from node 0 keeping a frequency map of kernels on the root-to-node path — at node `i` add `freq[kernel(nums[i])]` to the answer, increment on entry and decrement on exit. O(n + M log log M).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an integer `n` and an undirected tree rooted at node 0 with `n` nodes numbered from 0 to `n - 1`. This is represented by a 2D array `edges` of length `n - 1`, where `edges[i] = [u_i, v_i]` indicates an undirected edge between nodes `u_i` and `v_i`.
 
@@ -65,53 +65,66 @@ Thus, the total number of valid ancestor pairs across all non-root nodes is 0 + 
 ```
 
 ## Approach
-Perform a DFS from the root while maintaining a running list (or multiset) of perfect‑square ancestor values.
-1. Before recursing to a child, if the current node's value is a perfect square, push it onto the list.
-2. At a node, the contribution is the sum of values in the list.
-3. After processing children, pop the current value if it was added.
-Checking perfect square: compute integer `r ← FLOOR(SQRT(v))`; if `r * r == v` then square.
+**Key fact:** write every positive integer as `v = core(v) · s²`, where `core(v)` (the square-free kernel) is the product of the primes that appear with an odd exponent in `v`. Then `a · b` is a perfect square **iff** `core(a) = core(b)` (all prime exponents in the product must be even).
+
+So `t_i` = number of ancestors of `i` whose value has the same core as `nums[i]`.
+1. **Precompute cores** for all values up to `M = max(nums) ≤ 10^5` with a sieve: start with `core[v] = v`, and for every `p ≥ 2` with `p² ≤ M`, divide out `p²` from all multiples of `p²` as many times as possible.
+2. **DFS from node 0** keeping `freq[c]` = number of nodes on the current root-to-node path (excluding the current node) whose core is `c`.
+   - On entering node `u`: add `freq[core(nums[u])]` to the answer (these are exactly the qualifying ancestors), then increment it.
+   - On leaving `u`: decrement it.
+3. Use an iterative DFS (explicit stack with enter/exit markers) to avoid recursion-depth issues on path-shaped trees with `n = 10^5`.
+
+The root contributes 0 automatically (empty path), matching the requirement to sum over `i ∈ [1, n − 1]`.
 
 ```text
-FUNCTION sumPerfectSquareAncestors(root):
-    SET total ← 0
-    SET stack ← []  // holds perfect‑square values of ancestors
-    FUNCTION dfs(node):
-        // contribution of current node
-        SET contrib ← SUM(stack)
-        SET total ← total + contrib
-        // possibly add current node to stack for children
-        IF isPerfectSquare(node.val):
-            PUSH node.val ONTO stack
-        FOR child IN node.children:
-            dfs(child)
-        IF isPerfectSquare(node.val):
-            POP stack
-    dfs(root)
-    RETURN total
-
-FUNCTION isPerfectSquare(v):
-    IF v < 0: RETURN false
-    SET r ← FLOOR(SQRT(v))
-    RETURN r * r == v
+FUNCTION sumOfAncestors(n, edges, nums)
+    M ← max(nums)
+    core ← array 0..M with core[v] ← v
+    FOR p ← 2 WHILE p * p ≤ M
+        FOR m ← p*p TO M STEP p*p
+            WHILE core[m] MOD (p*p) = 0
+                core[m] ← core[m] / (p*p)
+    build adjacency list adj from edges
+    freq ← map with default 0
+    answer ← 0
+    stack ← [(0, -1, ENTER)]
+    WHILE stack not empty
+        (u, parent, phase) ← POP stack
+        c ← core[nums[u]]
+        IF phase = EXIT
+            freq[c] ← freq[c] - 1
+            CONTINUE
+        answer ← answer + freq[c]       // ancestors with the same core
+        freq[c] ← freq[c] + 1
+        PUSH (u, parent, EXIT)
+        FOR v IN adj[u]
+            IF v ≠ parent
+                PUSH (v, u, ENTER)
+    RETURN answer
 ```
 
 ## Walkthrough
-Consider Example 2 (`val = [16,5,9]`).
-| Step | Node | Stack before | Contribution | Stack after |
-|------|------|--------------|--------------|-------------|
-| 1 | 1 (16) | [] | 0 | [16] |
-| 2 | 2 (5)  | [16] | 16 | [16] |
-| 3 | 3 (9)  | [16] | 16 | [16,9] |
-After returning from node 3, pop 9; after node 2, stack back to [16]; finally pop 16. Total = 0+16+16 = 32.
+Example 1: `n = 3`, `edges = [[0,1],[1,2]]`, `nums = [2,8,2]`.
+Cores: `core(2) = 2`, `core(8) = core(2·2²) = 2`.
+
+| Step | Event | core | freq[core] before | answer | freq after |
+|------|-------|------|-------------------|--------|------------|
+| 1 | enter 0 (2) | 2 | 0 | 0 | {2:1} |
+| 2 | enter 1 (8) | 2 | 1 | 1 | {2:2} |
+| 3 | enter 2 (2) | 2 | 2 | 3 | {2:3} |
+| 4 | exit 2, 1, 0 | 2 | — | 3 | {2:0} |
+
+`t_1 = 1` (8·2 = 16) and `t_2 = 2` (2·8 = 16, 2·2 = 4). Result: **3**.
 
 ## Complexity Analysis
-Time: O(n) – each node visited once, perfect‑square check O(1).
-Space: O(h) for recursion stack plus O(k) for stored perfect‑square ancestors, where h is tree height and k ≤ h.
+Time: O(M log log M) for the core sieve (with M ≤ 10^5) plus O(n) for the DFS.
+Space: O(M) for the core table and O(n) for the adjacency list, stack and frequency map.
 
-## Follow‑Up Questions
-- How would you modify the solution to count ancestors whose values are prime numbers?
-- Can the problem be solved iteratively using an explicit stack?
-- What if the tree is given as a parent array instead of adjacency lists?
+## Follow-Up Questions
+- How would you count pairs among **all** node pairs (not just ancestor–descendant) whose product is a perfect square? (Group by core and sum `C(cnt, 2)`.)
+- What if the condition were "product is a perfect cube"? (Reduce exponents mod 3 to get a cube-free signature.)
+- How would you handle values up to 10^12 where a sieve is impossible? (Factor by trial division up to the cube root plus square checks, or use Pollard's rho.)
+- How would you support queries "count such ancestors for node `i` restricted to the nearest `d` ancestors"?
 
 ## Key Takeaway
-Maintaining a dynamic list of qualifying ancestors during DFS lets you compute per‑node contributions in linear time.
+"Product is a perfect square" reduces to "same square-free kernel", turning a pairwise number-theory check into an equality test; combined with a root-to-node frequency map maintained on DFS entry/exit, every node's ancestor count is obtained in O(1).

@@ -57,7 +57,7 @@ FUNCTION buildTrie(words):
                 node.children[ch] ← new Node()
             node ← node.children[ch]
             // Update best candidate at this node
-            UPDATE node.best WITH (length_of_w, idx) USING tie‑break rules
+            UPDATE node.best WITH (length_of_w, idx) USING tie-break rules
     RETURN root
 
 FUNCTION queryTrie(root, q):
@@ -78,7 +78,7 @@ FUNCTION queryTrie(root, q):
 Consider `wordsContainer = ["time", "me", "bell"]` and query `"me"`.
 1. Build trie on reversed container words: "emit", "em", "lleb".
 2. At each node store the shortest word index with deepest depth.
-3. Query "me" reversed → "em". Traversal reaches node for "em" which holds best candidate index 1 (word "me").
+3. Query "me" reversed → "em". Traversal reaches node for "em" which holds best candidate index 1 (word "me").
 4. No longer suffix found, so answer is 1.
 
 ## 5. Complexity Analysis

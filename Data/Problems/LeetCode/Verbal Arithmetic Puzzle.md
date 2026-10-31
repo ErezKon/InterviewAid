@@ -52,7 +52,7 @@ Note that two different characters cannot map to the same digit.
 ```
 
 ## Approach
-Use depth‑first backtracking with column‑wise verification. Process the addition from the least significant column to the most, maintaining a carry. At each column, try all unused digits for the letters appearing in that column, pruning when the partial sum cannot satisfy the carry constraint.
+Use depth-first backtracking with column-wise verification. Process the addition from the least significant column to the most, maintaining a carry. At each column, try all unused digits for the letters appearing in that column, pruning when the partial sum cannot satisfy the carry constraint.
 
 ```text
 FUNCTION isSolvable(words, result):
@@ -97,20 +97,20 @@ FUNCTION backtrack(col, row, carry, mapping, usedDigits):
 
 ## Walkthrough
 Consider `SEND + MORE = MONEY`.
-| Column (right‑most) | Letters | Partial sum + carry | Assigned digit | New carry |
+| Column (right-most) | Letters | Partial sum + carry | Assigned digit | New carry |
 |---------------------|---------|----------------------|----------------|-----------|
 | 0 (units) | D + E = Y | 7 + 5 = 12 | Y←2 | 1 |
 | 1 (tens)  | N + R + carry | 6 + 8 + 1 = 15 | E←5 (already) matches 5 | 1 |
 | 2 (hundreds) | E + O + carry | 5 + 0 + 1 = 6 | N←6 matches | 0 |
 | 3 (thousands) | S + M + carry | 9 + 1 = 10 | O←0 matches | 1 |
-| 4 (ten‑thousands) | carry = 1 | M←1 matches | 0 |
+| 4 (ten-thousands) | carry = 1 | M←1 matches | 0 |
 All columns satisfied → solution exists.
 
 ## Complexity Analysis
 - **Time:** O(10! ) in worst case, but heavy pruning reduces practical runtime dramatically.
 - **Space:** O(L) for recursion depth, where L is the number of columns (≤ max word length).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual digit mapping?
 2. Can the approach be extended to handle multiplication of words?
 3. What optimizations reduce the search space further (e.g., ordering letters by frequency)?

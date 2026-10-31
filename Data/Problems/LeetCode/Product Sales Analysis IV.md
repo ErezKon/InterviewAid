@@ -107,10 +107,10 @@ User 102 spent the most money on products 1, 2, and 3.
 - Time: O(N log N) for sorting/grouping N rows.
 - Space: O(N) to store intermediate aggregates and window values.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How to modify the query for a variable length of increasing streaks?
 - Find the longest increasing revenue streak per product.
-- Extend to handle missing years (non‑consecutive calendar years).
+- Extend to handle missing years (non-consecutive calendar years).
 
 ## Key Takeaway
 Window functions like `LAG` let you compare a row with its predecessors, enabling detection of consecutive increasing trends.

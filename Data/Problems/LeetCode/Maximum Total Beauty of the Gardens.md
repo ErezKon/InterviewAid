@@ -63,7 +63,7 @@ Note that Alice could make all the gardens complete but in this case, she would 
 ```
 
 ## Approach
-**Greedy with Interval Scheduling** – Sort gardens by beauty descending, then iteratively pick the highest‑beauty garden that does not conflict with already selected gardens.
+**Greedy with Interval Scheduling** – Sort gardens by beauty descending, then iteratively pick the highest-beauty garden that does not conflict with already selected gardens.
 
 ```text
 FUNCTION MaxTotalBeauty(beauties, constraints):
@@ -95,10 +95,10 @@ FUNCTION MaxTotalBeauty(beauties, constraints):
 - **Time:** `O(n log n + m)` where `n` is number of gardens and `m` is number of constraint pairs (sorting + building map).
 - **Space:** `O(n + m)` for the conflict map and selected set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if each garden could be selected at most `k` times?
 2. Can you extend the algorithm to return the actual set of selected gardens?
 3. What if constraints form a weighted graph and you need to maximize beauty minus penalty for conflicts?
 
 ## Key Takeaway
-Sorting by beauty and greedily picking non‑conflicting gardens yields an optimal solution for this interval‑style selection problem.
+Sorting by beauty and greedily picking non-conflicting gardens yields an optimal solution for this interval-style selection problem.

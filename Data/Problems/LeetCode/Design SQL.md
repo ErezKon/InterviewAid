@@ -123,7 +123,7 @@ sQL.ins("two", ["fourth", "fifth", "sixth"]);
 5. **Delete row** `1` → remove key `1` from rows map.
 6. **Select cell** `(users,2,1)` → retrieve `'Bob'`.
 
-The design uses nested hash maps: table name → {auto‑increment ID, rows map}. Row map stores each row's values list, enabling O(1) insert, delete, and select by ID.
+The design uses nested hash maps: table name → {auto-increment ID, rows map}. Row map stores each row's values list, enabling O(1) insert, delete, and select by ID.
 
 ---
 
@@ -172,4 +172,4 @@ CLASS SQL:
 
 ## Key Takeaway
 
-> **Nested hash maps: table name → {auto‑increment ID, row map}. Row map = rowId → list of column values. Delete by removing key, select by indexing.**
+> **Nested hash maps: table name → {auto-increment ID, row map}. Row map = rowId → list of column values. Delete by removing key, select by indexing.**

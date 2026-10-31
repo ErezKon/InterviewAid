@@ -89,7 +89,7 @@ For `nums = [1,2,3,5,6]` (n = 5):
 |2|3|≤7|5|3 |
 |3|5|≤9|5|2 |
 |4|6|≤10|5|1 |
-maxKeep = 4, answer = 5‑4 = 1.
+maxKeep = 4, answer = 5-4 = 1.
 
 ---
 
@@ -111,4 +111,4 @@ maxKeep = 4, answer = 5‑4 = 1.
 
 ## Key Takeaway
 
-Find the largest subset that already fits inside any length‑`n` interval; the remaining elements must be changed, giving the minimal number of operations.
+Find the largest subset that already fits inside any length-`n` interval; the remaining elements must be changed, giving the minimal number of operations.

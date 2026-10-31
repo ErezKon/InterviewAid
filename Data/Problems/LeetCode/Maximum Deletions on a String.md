@@ -111,13 +111,13 @@ Consider the first example `"abcabcabc"`:
 | 1 | abcabcabc | Prefix `"abc"` equals next `"abc"` → delete first 3 chars |
 | 2 | abcabc | Prefix `"abc"` equals next `"abc"` → delete first 3 chars |
 | 3 | abc | No further equal prefix, delete whole string |
-The DP computes the optimal deletions by checking all possible prefix lengths using the pre‑computed LCP table.
+The DP computes the optimal deletions by checking all possible prefix lengths using the pre-computed LCP table.
 
 ---
 
 ## Follow-Up Questions
 - How would the solution change if deletions could be performed on any equal substring, not just prefixes?
-- Can the LCP pre‑computation be optimized to O(n) using suffix arrays or Z‑algorithm?
+- Can the LCP pre-computation be optimized to O(n) using suffix arrays or Z-algorithm?
 - How would you adapt the algorithm for a streaming input where the string is received character by character?
 
 ---

@@ -44,11 +44,11 @@ Explanation: In the above diagram, S denotes the student, while E denotes the ex
 ```
 
 ## Approach
-Use a **stable sort** keyed on the `k`‑th element of each row in descending order.
+Use a **stable sort** keyed on the `k`-th element of each row in descending order.
 
 ```text
 FUNCTION sortStudents(score, k):
-    // Perform stable sort based on k‑th score descending
+    // Perform stable sort based on k-th score descending
     RETURN STABLE_SORT(score, KEY = lambda row: -row[k])
 ```
 
@@ -60,11 +60,11 @@ FUNCTION sortStudents(score, k):
 
 ## Complexity Analysis
 - Time: `O(m log m)` where `m` is the number of students (rows).
-- Space: `O(m)` for the sorted output (in‑place stable sort may use `O(1)` extra).
+- Space: `O(m)` for the sorted output (in-place stable sort may use `O(1)` extra).
 
-## Follow‑Up Questions
-1. How would you sort by multiple columns (e.g., first by `k`‑th score, then by another column)?
-2. Can you achieve the same ordering without using built‑in stable sort?
+## Follow-Up Questions
+1. How would you sort by multiple columns (e.g., first by `k`-th score, then by another column)?
+2. Can you achieve the same ordering without using built-in stable sort?
 3. How would you handle very large datasets that do not fit in memory?
 
 ## Key Takeaway

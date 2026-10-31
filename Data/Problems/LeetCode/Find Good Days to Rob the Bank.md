@@ -54,9 +54,9 @@ Example 3:
 ```
 
 ## Approach
-Pre‑compute two auxiliary arrays:
-- `left[i]` = number of consecutive days ending at `i` where `security` is non‑increasing.
-- `right[i]` = number of consecutive days starting at `i` where `security` is non‑decreasing.
+Pre-compute two auxiliary arrays:
+- `left[i]` = number of consecutive days ending at `i` where `security` is non-increasing.
+- `right[i]` = number of consecutive days starting at `i` where `security` is non-decreasing.
 A day `i` is good if `left[i] >= time` and `right[i] >= time`.
 
 ## Pseudocode
@@ -96,12 +96,12 @@ Result → [2,3]
 
 ## Complexity Analysis
 - **Time:** O(n) – two linear passes.
-- **Space:** O(n) for the auxiliary arrays (can be reduced to O(1) with two‑pointer sliding windows).
+- **Space:** O(n) for the auxiliary arrays (can be reduced to O(1) with two-pointer sliding windows).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the solution for a streaming input where the array is not fully known in advance?
 - Can you solve the problem using only O(1) extra space?
-- What changes are needed if the condition uses strict inequality instead of non‑strict?
+- What changes are needed if the condition uses strict inequality instead of non-strict?
 
 ## Key Takeaway
-Prefix counts of monotonic segments let you evaluate each day in constant time, turning a seemingly quadratic check into a linear‑time solution.
+Prefix counts of monotonic segments let you evaluate each day in constant time, turning a seemingly quadratic check into a linear-time solution.

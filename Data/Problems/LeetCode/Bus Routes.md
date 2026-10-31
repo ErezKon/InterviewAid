@@ -79,9 +79,9 @@ FUNCTION numBusesToDestination(routes, source, target):
 
 ## Complexity Analysis
 - **Time:** O(R·S) where R = number of routes, S = average stops per route (building map and BFS).
-- **Space:** O(R + S) for the stop‑to‑routes map and visited set.
+- **Space:** O(R + S) for the stop-to-routes map and visited set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle dynamic addition/removal of routes?
 2. Can the algorithm be adapted to return the actual sequence of buses taken?
 3. What is the impact of extremely large stop IDs on memory usage?

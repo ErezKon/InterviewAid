@@ -52,11 +52,11 @@ Explanation: We can capture the black queen in a single move by doing one of the
 
 **Algorithm:** Case Analysis with Blocking Checks
 
-The answer is at most 2 because one piece can always move to a position that enables capture on the next turn. We only need to verify whether a single‑move capture is possible.
+The answer is at most 2 because one piece can always move to a position that enables capture on the next turn. We only need to verify whether a single-move capture is possible.
 
 1. **Rook capture in 1 move** – same row or column as the queen and no bishop between them.
 2. **Bishop capture in 1 move** – same diagonal as the queen and no rook between them.
-3. If neither condition holds, return 2.
+3. If neither condition holds, return 2.
 
 ```text
 FUNCTION minMovesToCaptureTheQueen(rR, rC, bR, bC, qR, qC):
@@ -105,4 +105,4 @@ FUNCTION isBlocked(sR, sC, eR, eC, oR, oC):
 
 ## Key Takeaway
 
-Chess capture problems often reduce to simple case analysis: verify one‑move capture possibilities with blocking conditions, otherwise the answer is two.
+Chess capture problems often reduce to simple case analysis: verify one-move capture possibilities with blocking conditions, otherwise the answer is two.

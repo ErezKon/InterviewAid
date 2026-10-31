@@ -36,13 +36,13 @@ Return *the number of boomerangs*.
 
 ## 2. Key Insight
 
-> For each anchor point `i`, group all other points by their squared distance to `i`. If `k` points share the same distance, they generate `k × (k‑1)` ordered boomerangs because any ordered pair `(j, k)` works.
+> For each anchor point `i`, group all other points by their squared distance to `i`. If `k` points share the same distance, they generate `k × (k-1)` ordered boomerangs because any ordered pair `(j, k)` works.
 
 ---
 
 ## 3. Approach
 
-**Algorithm** – Iterate over each point as the anchor, compute squared distances to all other points, store frequencies in a hash map, then sum `cnt * (cnt‑1)` for each frequency.
+**Algorithm** – Iterate over each point as the anchor, compute squared distances to all other points, store frequencies in a hash map, then sum `cnt * (cnt-1)` for each frequency.
 
 ```text
 FUNCTION numberOfBoomerangs(points):
@@ -87,7 +87,7 @@ Example 3:
 Take points `[[0,0],[1,0],[2,0]]`.
 
 1. Anchor `(0,0)`: distances → `{(1,0):1, (2,0):4}` → no frequency ≥2 → 0 boomerangs.
-2. Anchor `(1,0)`: distances → `{(0,0):1, (2,0):1}` → frequency `1` occurs twice → `2 * (2‑1) = 2` boomerangs.
+2. Anchor `(1,0)`: distances → `{(0,0):1, (2,0):1}` → frequency `1` occurs twice → `2 * (2-1) = 2` boomerangs.
 3. Anchor `(2,0)`: similar to step 1 → 0.
 
 Sum = `2`.
@@ -105,4 +105,4 @@ Sum = `2`.
 
 ## 7. Key Takeaway
 
-> **Group by distance:** For each anchor, `k` equidistant points generate `k(k‑1)` ordered boomerangs. Using a hash map yields an O(n²) solution.
+> **Group by distance:** For each anchor, `k` equidistant points generate `k(k-1)` ordered boomerangs. Using a hash map yields an O(n²) solution.

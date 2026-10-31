@@ -78,13 +78,13 @@ Consider the unbounded example with `coins = [1,3,4]`, `target = 6`:
 5. Final answer `dp[6] = 2` (e.g., `3+3`).
 
 ## Complexity Analysis
-- **Time:** O(N × target) where N is the number of items/coins.
+- **Time:** O(N × target) where N is the number of items/coins.
 - **Space:** O(target) for the DP array (can be reduced to O(1) for some variants).
 
 ## Follow-Up Questions
 - How would you adapt the DP for a **subset sum** decision problem (boolean answer)?
 - Can you extend the pattern to handle **multiple constraints** (e.g., weight and volume)?
-- What optimizations exist for very large targets (e.g., using meet‑in‑the‑middle or binary lifting)?
+- What optimizations exist for very large targets (e.g., using meet-in-the-middle or binary lifting)?
 
 ---
 

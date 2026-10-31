@@ -83,7 +83,7 @@ myStack.empty(); // return False
 
 ## Complexity Analysis
 
-- **Time:** `push` O(n) due to rotation of n‑1 elements, `pop`, `top`, `empty` O(1).
+- **Time:** `push` O(n) due to rotation of n-1 elements, `pop`, `top`, `empty` O(1).
 - **Space:** O(n) for storing n elements in a single queue.
 
 ## Follow-Up Questions
@@ -93,4 +93,4 @@ myStack.empty(); // return False
 
 ## Key Takeaway
 
-> Rotate the queue after each push so FIFO order becomes LIFO. Single‑queue solution is cleaner than two‑queue approaches.
+> Rotate the queue after each push so FIFO order becomes LIFO. Single-queue solution is cleaner than two-queue approaches.

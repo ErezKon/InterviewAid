@@ -92,7 +92,7 @@ The DP iterates over each number and each possible sum up to `target`.
 ## Follow-Up Questions
 
 1. How would you modify the solution to return the actual subsequence, not just its length?
-2. Can the algorithm be optimized for large `target` using meet‑in‑the‑middle?
+2. Can the algorithm be optimized for large `target` using meet-in-the-middle?
 3. What changes are needed if numbers can be negative?
 
 ---

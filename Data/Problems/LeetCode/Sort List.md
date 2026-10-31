@@ -58,7 +58,7 @@ FUNCTION merge(l1, l2):
 |------|-------|
 | O(n log n) | O(log n) stack |
 
-For O(1) space: bottom‑up merge sort (iterative, merge sublists of size 1, 2, 4, ...).
+For O(1) space: bottom-up merge sort (iterative, merge sublists of size 1, 2, 4, ...).
 
 ---
 
@@ -85,19 +85,19 @@ Example 3:
 ## Walkthrough
 
 1. **Find middle** – Using slow/fast pointers, the list `4→2→1→3` is split into `4→2` and `1→3`.
-2. **Recursively sort halves** – Each half is sorted recursively until single‑node lists are reached.
+2. **Recursively sort halves** – Each half is sorted recursively until single-node lists are reached.
 3. **Merge** – Merge `2→4` with `1→3` by repeatedly choosing the smaller head node, resulting in `1→2→3→4`.
-4. **Bottom‑up (optional)** – An iterative version merges sublists of increasing size, achieving O(1) extra space.
+4. **Bottom-up (optional)** – An iterative version merges sublists of increasing size, achieving O(1) extra space.
 
 ## Complexity Analysis
 
-- **Time:** O(n log n) – each level of recursion merges all nodes, and there are log n levels.
-- **Space:** O(log n) recursion stack for the top‑down approach; O(1) for the bottom‑up iterative version.
+- **Time:** O(n log n) – each level of recursion merges all nodes, and there are log n levels.
+- **Space:** O(log n) recursion stack for the top-down approach; O(1) for the bottom-up iterative version.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you modify the algorithm to sort a doubly linked list?
-- Can you sort the list in-place without recursion (iterative bottom‑up merge sort)?
+- Can you sort the list in-place without recursion (iterative bottom-up merge sort)?
 - How would you handle sorting when the list contains cycles?
 
 ---

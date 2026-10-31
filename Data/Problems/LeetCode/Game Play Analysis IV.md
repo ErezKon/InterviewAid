@@ -71,7 +71,7 @@ Example 1:
 ## 4. Walkthrough
 
 1. **First login per player** – group by `player_id` and take `MIN(event_date)`.
-2. **Left‑join** the activity table on `player_id` with `event_date = first_login + 1`.
+2. **Left-join** the activity table on `player_id` with `event_date = first_login + 1`.
 3. **Count** distinct `player_id` that have a matching row (returned players).
 4. **Divide** by total distinct players and round to two decimals.
 
@@ -82,4 +82,4 @@ Example 1:
 
 ## Key Takeaway
 
-> LEFT JOIN on `first_login + 1 day` — count non‑null matches over total players for the retention fraction.
+> LEFT JOIN on `first_login + 1 day` — count non-null matches over total players for the retention fraction.

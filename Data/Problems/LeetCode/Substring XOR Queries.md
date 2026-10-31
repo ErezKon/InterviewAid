@@ -48,7 +48,7 @@ Explanation: For this example, the substring in range [0,0] has a decimal value 
 ```
 
 ## Approach
-Pre‑compute all possible substring values up to length 30 (since 2³⁰ > 10⁹, the max query value). Store for each value the smallest interval (start, end). Then answer each query by checking if `first XOR second` exists in the map.
+Pre-compute all possible substring values up to length 30 (since 2³⁰ > 10⁹, the max query value). Store for each value the smallest interval (start, end). Then answer each query by checking if `first XOR second` exists in the map.
 
 ```text
 FUNCTION SubstringXOR(s, queries):
@@ -80,8 +80,8 @@ FUNCTION SubstringXOR(s, queries):
 After building the map, a query `[5,2]` computes `target = 5 XOR 2 = 7`; look up `7` → interval `(1,3)` etc.
 
 ## Complexity Analysis
-- **Time:** O(n · L) where `L = 30` is the max substring length considered.
-- **Space:** O(n · L) for storing at most `n·L` distinct values (bounded by ~30 n).
+- **Time:** O(n · L) where `L = 30` is the max substring length considered.
+- **Space:** O(n · L) for storing at most `n·L` distinct values (bounded by ~30 n).
 
 ## Follow-Up Questions
 - How would you handle queries where the required substring length could be larger than 30?
@@ -89,4 +89,4 @@ After building the map, a query `[5,2]` computes `target = 5 XOR 2 = 7`; look up
 - What changes are needed if the string contains characters other than `0` and `1`?
 
 ## Key Takeaway
-Limiting substring length to 30 bits keeps the search space small, allowing pre‑computation of all possible values for constant‑time query answers.
+Limiting substring length to 30 bits keeps the search space small, allowing pre-computation of all possible values for constant-time query answers.

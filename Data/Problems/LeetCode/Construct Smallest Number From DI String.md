@@ -43,7 +43,7 @@ Example 2:
 ```
 
 ## Approach
-**Algorithm:** Stack‑based construction (O(n))
+**Algorithm:** Stack-based construction (O(n))
 Iterate through the pattern, pushing sequential numbers onto a stack. Whenever the current character is `'I'` or the end of the pattern is reached, pop all elements from the stack and append them to the result. This yields the minimal lexicographic number satisfying the constraints.
 
 ```text
@@ -71,9 +71,9 @@ For `pattern = "ID"`:
 - **Time:** O(n) – each number is pushed and popped at most once.
 - **Space:** O(n) – stack holds at most `n+1` numbers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the algorithm to handle patterns that include the character `'E'` meaning equal?
-- Can you generate the *k‑th* smallest number that satisfies the pattern?
+- Can you generate the *k-th* smallest number that satisfies the pattern?
 - What changes are needed if digits may be reused?
 
 ## Key Takeaway

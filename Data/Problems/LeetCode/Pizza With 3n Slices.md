@@ -72,7 +72,7 @@ Time **O(m·n)** where *m = 3n*, space **O(m·n)** (can be reduced to O(m) with 
 ## Follow-Up Questions
 1. How to adapt the solution for a circular array with a different pick pattern?
 2. Can the problem be solved with a greedy strategy for special cases?
-3. What is the space‑optimized DP version using only two rows?
+3. What is the space-optimized DP version using only two rows?
 
 ## Key Takeaway
-Transforming the circular selection into two linear sub‑problems and applying DP on "pick‑or‑skip" yields the optimal maximum sum.
+Transforming the circular selection into two linear sub-problems and applying DP on "pick-or-skip" yields the optimal maximum sum.

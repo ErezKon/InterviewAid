@@ -71,9 +71,9 @@ Result = 3.
 - **Time:** O(n) – one pass to count, one pass over distinct values.
 - **Space:** O(m) where *m* is the number of distinct integers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem if the array is read as a stream?
-2. Can you find the second‑largest lucky integer efficiently?
+2. Can you find the second-largest lucky integer efficiently?
 3. What changes are needed if negative numbers are allowed?
 
 ## Key Takeaway

@@ -31,7 +31,7 @@ A **substring** is a contiguous sequence of characters in a string.
 FUNCTION longestBeautifulSubstring(word):
     // maxLen stores longest beautiful substring length found
     SET maxLen ← 0
-    // currLen tracks length of current non‑decreasing vowel run
+    // currLen tracks length of current non-decreasing vowel run
     SET currLen ← 1
     // distinct counts how many different vowels appear in current run
     SET distinct ← 1
@@ -110,4 +110,4 @@ Result: maxLen = 5.
 
 ## 7. Key Takeaway
 
-> Track the length of the current non‑decreasing vowel run and the number of distinct vowels seen; update the answer when all five vowels appear.
+> Track the length of the current non-decreasing vowel run and the number of distinct vowels seen; update the answer when all five vowels appear.

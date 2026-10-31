@@ -47,13 +47,13 @@ Example 3:
 
 ---
 
-## Approach: Greedy + Max‑Heap — O(n log n) ✅
+## Approach: Greedy + Max-Heap — O(n log n) ✅
 
 ```text
 FUNCTION scheduleCourse(courses):
     // Sort courses by deadline
     SORT courses BY deadline ASC
-    SET maxHeap ← empty max‑heap   // stores durations of selected courses
+    SET maxHeap ← empty max-heap   // stores durations of selected courses
     SET time ← 0
 
     FOR EACH [duration, deadline] IN courses:
@@ -90,7 +90,7 @@ Take `courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]`:
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if courses could be taken in parallel on multiple machines?
 2. Can you solve the problem using a balanced BST instead of a heap?
@@ -100,4 +100,4 @@ Take `courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]`:
 
 ## Key Takeaway
 
-> **Greedy scheduling with a max‑heap: sort by deadline, take every course, and when the total time exceeds a deadline, discard the longest course taken so far. This keeps the count maximal while respecting all deadlines.**
+> **Greedy scheduling with a max-heap: sort by deadline, take every course, and when the total time exceeds a deadline, discard the longest course taken so far. This keeps the count maximal while respecting all deadlines.**

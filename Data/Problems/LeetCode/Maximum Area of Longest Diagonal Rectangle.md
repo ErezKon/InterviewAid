@@ -101,10 +101,10 @@ The algorithm returns `120`, the area of the rectangle with the longest diagonal
 
 - How would you modify the solution to also return the dimensions of the chosen rectangle?
 - What if the input size grows to millions of rectangles? Discuss streaming or parallel approaches.
-- Extend the problem to 3‑D boxes where you compare space diagonals.
+- Extend the problem to 3-D boxes where you compare space diagonals.
 
 ---
 
 ## Key Takeaway
 
-> **Compare diagonals via squared length to avoid sqrt.** Simple greedy scan with tie‑breaking by area.
+> **Compare diagonals via squared length to avoid sqrt.** Simple greedy scan with tie-breaking by area.

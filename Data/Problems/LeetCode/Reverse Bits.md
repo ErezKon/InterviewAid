@@ -55,7 +55,7 @@ Explanation:
 FUNCTION reverseBits(n)
     result ← 0
     FOR i ← 0 TO 31 DO
-        // Append least‑significant bit of n to result
+        // Append least-significant bit of n to result
         result ← (result << 1) | (n & 1)
         // Shift n to process next bit
         n ← n >> 1
@@ -91,13 +91,13 @@ After 32 steps the bits are reversed, yielding `23068672`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would you adapt the algorithm for a 64‑bit integer?
-- Can you reverse bits in‑place without using a separate `result` variable?
+- How would you adapt the algorithm for a 64-bit integer?
+- Can you reverse bits in-place without using a separate `result` variable?
 
 ---
 
 ## Key Takeaway
 
-> Extract the least‑significant bit with `n & 1`, shift the result left, and repeat 32 times; this constant‑time loop efficiently reverses all bits of a 32‑bit integer.
+> Extract the least-significant bit with `n & 1`, shift the result left, and repeat 32 times; this constant-time loop efficiently reverses all bits of a 32-bit integer.

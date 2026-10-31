@@ -108,7 +108,7 @@ FUNCTION smallestTeamSizes(votes):
 - **Time:** O(n log n) for sorting; each candidate scans at most n elements, but overall O(n^2) in worst case – acceptable for typical constraints.
 - **Space:** O(n) for sorted list and prefix sums.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you improve the algorithm to O(n log n) for all candidates?
 2. What changes are needed if votes can be negative?
 3. Can the problem be solved in a streaming fashion when votes arrive one by one?

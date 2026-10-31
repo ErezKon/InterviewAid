@@ -106,7 +106,7 @@ Example 2:
 Take `nums = [2,2]`.
 1. Initialise `dp` for the first element: `dp[0]=dp[1]=dp[2]=1` (each possible `arr1[0]`).
 2. For `i = 1` (second element), compute `prefix` of `dp` → `[1,2,3]`.
-3. For each possible `v` (0‑2) at position 1:
+3. For each possible `v` (0-2) at position 1:
    - `v = 0`: `upperBound = MIN(0, 0 + 2 - 2) = 0` → `newDp[0] = prefix[0] = 1`.
    - `v = 1`: `upperBound = MIN(1, 1 + 2 - 2) = 1` → `newDp[1] = prefix[1] = 2`.
    - `v = 2`: `upperBound = MIN(2, 2 + 2 - 2) = 2` → `newDp[2] = prefix[2] = 3`.
@@ -116,4 +116,4 @@ Take `nums = [2,2]`.
 
 ## 7. Key Takeaway
 
-> **Prefix‑sum optimisation** on the DP transition reduces the inner loop from O(M) to O(1) per state, achieving O(n·M) overall.
+> **Prefix-sum optimisation** on the DP transition reduces the inner loop from O(M) to O(1) per state, achieving O(n·M) overall.

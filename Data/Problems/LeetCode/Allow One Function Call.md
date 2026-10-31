@@ -62,7 +62,7 @@ FUNCTION once(fn):
 - **Time:** O(1) per call – only a flag check.
 - **Space:** O(1) for the flag and closure.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend `once` to allow resetting after a certain condition?
 2. Can you implement a similar `throttle` or `debounce` utility?
 3. What changes are needed for asynchronous functions returning promises?

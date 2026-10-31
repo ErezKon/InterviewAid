@@ -53,39 +53,47 @@ Example 3:
 ```
 
 ## Approach
-Pre‑compute prefix XORs. `prefix[i]` stores XOR of `nums[0..i]`. The XOR of a subarray `l..r` equals `prefix[r] XOR prefix[l-1]`. For each split position `i` (1 ≤ i < n), compute `xorLeft = prefix[i-1]` and `xorRight = prefix[n-1] XOR prefix[i-1]`. Track the minimum of `xorLeft + xorRight`.
+Min-max partition DP with prefix XORs.
+- `P[i]` = XOR of `nums[0..i-1]` (`P[0] = 0`), so XOR of `nums[p..i-1]` is `P[i] ^ P[p]`.
+- `dp[j][i]` = minimum possible maximum XOR when splitting the first `i` elements into `j` non-empty subarrays.
+- Transition: the last subarray is `nums[p..i-1]` for some `p` in `[j-1, i-1]`:
+  `dp[j][i] = min over p of max(dp[j-1][p], P[i] ^ P[p])`.
+- Base: `dp[0][0] = 0`, everything else INF. Answer: `dp[k][n]`.
+- `n <= 250` makes O(k * n^2) (about 1.5 * 10^7) fine.
 
 ```text
-FUNCTION minXorSum(nums):
+FUNCTION minXor(nums, k):
     n ← LEN(nums)
-    prefix ← ARRAY n
-    prefix[0] ← nums[0]
-    FOR i ← 1 TO n-1:
-        prefix[i] ← prefix[i-1] XOR nums[i]
-    totalXor ← prefix[n-1]
-    minSum ← INFINITY
-    FOR i ← 0 TO n-2:   // split after i
-        xorLeft ← prefix[i]
-        xorRight ← totalXor XOR prefix[i]
-        minSum ← MIN(minSum, xorLeft + xorRight)
-    RETURN minSum
+    P ← ARRAY n+1, P[0] ← 0
+    FOR i ← 0 TO n-1:
+        P[i+1] ← P[i] XOR nums[i]
+    dp ← (k+1) x (n+1) FILLED WITH INF
+    dp[0][0] ← 0
+    FOR j ← 1 TO k:
+        FOR i ← j TO n:
+            FOR p ← j-1 TO i-1:
+                dp[j][i] ← MIN(dp[j][i], MAX(dp[j-1][p], P[i] XOR P[p]))
+    RETURN dp[k][n]
 ```
 
 ## Walkthrough
-For `nums = [1,2,3,4]`:
-- Prefix XORs: [1, 3, 0, 4]; totalXor = 4.
-- Split i=0: left xor=1, right xor=4⊕1=5 → sum=6.
-- Split i=1: left xor=3, right xor=4⊕3=7 → sum=10.
-- Split i=2: left xor=0, right xor=4⊕0=4 → sum=4 (minimum).
+Example 1: `nums = [1,2,3]`, `k = 2`.
+- Prefix XORs: `P = [0, 1, 3, 0]`.
+- `j = 1` (one subarray = whole prefix): `dp[1][1] = 1`, `dp[1][2] = 3`, `dp[1][3] = 0`.
+- `j = 2`, `i = 3`:
+  - `p = 1`: last part `[2,3]`, XOR `P[3]^P[1] = 1`; `max(dp[1][1]=1, 1) = 1`.
+  - `p = 2`: last part `[3]`, XOR `P[3]^P[2] = 3`; `max(dp[1][2]=3, 3) = 3`.
+  - `dp[2][3] = min(1, 3) = 1`.
+- Answer `1` (partition `[1]`, `[2,3]`).
 
 ## Complexity Analysis
-- **Time:** O(n) to build prefix XORs and evaluate splits.
-- **Space:** O(n) for the prefix array (can be O(1) by keeping running XOR).
+- **Time:** O(k * n^2) - for each of `k` layers and `n` end positions, try every last cut.
+- **Space:** O(k * n), reducible to O(n) by keeping only layer `j-1`.
 
-## Follow‑Up Questions
-1. How would you modify the solution if the array could be split into more than two parts?
-2. Can you solve the problem using a single pass without storing the full prefix array?
-3. What if the goal is to minimize the maximum of `xorLeft` and `xorRight` instead of their sum?
+## Follow-Up Questions
+1. Can you binary search on the answer and check feasibility greedily? Why is that tricky with XOR (not monotonic)?
+2. How would you reconstruct the actual partition?
+3. What changes if the goal is to minimize the sum of XORs instead of the maximum?
 
 ## Key Takeaway
-Prefix XORs let you compute subarray XORs in constant time, enabling a linear scan to find the optimal split.
+"Split into k subarrays minimizing the max of some segment cost" is a classic layered DP; prefix XORs make each segment cost O(1).

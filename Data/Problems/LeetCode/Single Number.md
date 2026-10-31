@@ -79,7 +79,7 @@ All paired numbers cancel, leaving the unique `4`.
 ## 5. Complexity Analysis
 
 - **Time:** O(n) – single pass through the array.
-- **Space:** O(1) – only a constant‑size accumulator.
+- **Space:** O(1) – only a constant-size accumulator.
 
 ---
 
@@ -92,4 +92,4 @@ All paired numbers cancel, leaving the unique `4`.
 
 ## Key Takeaway
 
-> XOR is the go‑to for "find the unique element" problems. `a ^ a = 0` cancels duplicates. O(n) time, O(1) space.
+> XOR is the go-to for "find the unique element" problems. `a ^ a = 0` cancels duplicates. O(n) time, O(1) space.

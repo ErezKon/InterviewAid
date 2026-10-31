@@ -64,10 +64,10 @@ For `arr = [1,15,7,9,2,5,10]`, `k = 3`:
 - **Time:** O(n·k) where n is array length.
 - **Space:** O(n) for the dp array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if the partition length must be exactly `k`?
 2. Can you solve the problem using a monotonic queue to achieve O(n) time?
 3. What changes are needed if each subarray incurs a fixed cost in addition to the sum?
 
 ## Key Takeaway
-DP over prefix lengths with a bounded inner loop efficiently captures the trade‑off between partition size and the benefit of using the maximum element.
+DP over prefix lengths with a bounded inner loop efficiently captures the trade-off between partition size and the benefit of using the maximum element.

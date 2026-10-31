@@ -90,19 +90,19 @@ The algorithm sorts rows once, then simply picks the maximum of each column from
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n × m log m) for sorting each of the n rows of length m |
-| **Space** | O(1) extra space (in‑place sorting) |
+| **Time** | O(n × m log m) for sorting each of the n rows of length m |
+| **Space** | O(1) extra space (in-place sorting) |
 
 ---
 
 ## Follow-Up Questions
 
 1. How would the solution change if rows could have different lengths?
-2. Can you solve the problem without sorting, using a max‑heap for each row?
-3. What is the time‑space trade‑off when using a priority queue versus sorting?
+2. Can you solve the problem without sorting, using a max-heap for each row?
+3. What is the time-space trade-off when using a priority queue versus sorting?
 
 ---
 
 ## Key Takeaway
 
-> **Sort each row once; then the maximum removed at step `i` corresponds to the `(m‑i)`‑th largest element of each row. Iterating columns right‑to‑left and taking the column max yields the final answer efficiently.**
+> **Sort each row once; then the maximum removed at step `i` corresponds to the `(m-i)`-th largest element of each row. Iterating columns right-to-left and taking the column max yields the final answer efficiently.**

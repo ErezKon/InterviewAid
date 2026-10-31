@@ -79,10 +79,10 @@ FUNCTION numKLenSubstrNoRepeats(s, k):
 
 - How would you adapt the solution for Unicode characters?
 - How to return the actual substrings instead of just the count?
-- How to handle case‑insensitive comparisons?
+- How to handle case-insensitive comparisons?
 
 ---
 
 ## Key Takeaway
 
-> **Fixed‑size sliding window with a frequency map. The window contains all unique characters when the map size equals `k`.**
+> **Fixed-size sliding window with a frequency map. The window contains all unique characters when the map size equals `k`.**

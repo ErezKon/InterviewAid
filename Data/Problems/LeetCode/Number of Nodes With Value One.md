@@ -96,13 +96,13 @@ Take the first example (`n = 7`, `queries = [3, 5]`).
 | Node | Direct flips | Inherited flips (parent) | Total flips | Final value |
 |------|--------------|--------------------------|-------------|-------------|
 | 1    | 0            | –                        | 0           | 0 |
-| 2    | 0            | 0 (parent 1)             | 0           | 0 |
-| 3    | 1            | 0 (parent 1)             | 1           | 1 |
-| 4    | 0            | 0 (parent 2)             | 0           | 0 |
-| 5    | 1            | 0 (parent 2)             | 1           | 1 |
-| 6    | 0            | 1 (parent 3)             | 1           | 1 |
-| 7    | 0            | 1 (parent 3)             | 1           | 1 |
-The count of nodes with value 1 is `4`.
+| 2    | 0            | 0 (parent 1)             | 0           | 0 |
+| 3    | 1            | 0 (parent 1)             | 1           | 1 |
+| 4    | 0            | 0 (parent 2)             | 0           | 0 |
+| 5    | 1            | 0 (parent 2)             | 1           | 1 |
+| 6    | 0            | 1 (parent 3)             | 1           | 1 |
+| 7    | 0            | 1 (parent 3)             | 1           | 1 |
+The count of nodes with value 1 is `4`.
 
 ---
 

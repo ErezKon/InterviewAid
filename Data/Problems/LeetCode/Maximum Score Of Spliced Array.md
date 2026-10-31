@@ -56,7 +56,7 @@ The score is max(sum(nums1), sum(nums2)) = max(31, 3) = 31.
 ```
 
 ## Approach
-The effect of splicing a subarray of length `k` is to add the difference `nums1[i] - nums2[i]` for each index in the chosen window. Thus we need the maximum sum of a length‑`k` subarray in the difference array `diff[i] = nums1[i] - nums2[i]`. Compute `diff`, then use a sliding window to find the maximum window sum.
+The effect of splicing a subarray of length `k` is to add the difference `nums1[i] - nums2[i]` for each index in the chosen window. Thus we need the maximum sum of a length-`k` subarray in the difference array `diff[i] = nums1[i] - nums2[i]`. Compute `diff`, then use a sliding window to find the maximum window sum.
 
 ```text
 FUNCTION maxScoreSplicedArray(nums1, nums2, k):
@@ -79,18 +79,18 @@ The sliding window runs in O(n).
 For `nums1 = [1,2,3,4,5]`, `nums2 = [5,4,3,2,1]`, `k = 3`:
 - diff = [-4,-2,0,2,4]
 - Initial window sum (first 3) = -6
-- Slide to indices 1‑3: sum = -2, max = -2
-- Slide to indices 2‑4: sum = 6, max = 6
+- Slide to indices 1-3: sum = -2, max = -2
+- Slide to indices 2-4: sum = 6, max = 6
 - originalSum = 15, result = 15 + 6 = 21 (maximum achievable).
 
 ## Complexity Analysis
 - **Time:** O(n) to compute differences and slide the window.
 - **Space:** O(n) for the diff array (can be O(1) if computed on the fly).
 
-## Follow‑Up Questions
-1. How would you adapt the solution if you could choose any number of non‑overlapping subarrays?
+## Follow-Up Questions
+1. How would you adapt the solution if you could choose any number of non-overlapping subarrays?
 2. What if the score counted the product of replaced elements instead of the sum?
 3. Can the problem be solved using prefix sums instead of an explicit sliding window?
 
 ## Key Takeaway
-Transform the problem to finding the maximum‑sum subarray of length `k` in the difference array; a linear sliding‑window yields the optimal score.
+Transform the problem to finding the maximum-sum subarray of length `k` in the difference array; a linear sliding-window yields the optimal score.

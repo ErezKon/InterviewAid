@@ -51,7 +51,7 @@ FUNCTION correctBinaryTree(root):
     WHILE queue NOT EMPTY:
         nextLevel ← []
         FOR node IN queue:
-            // Check right child first (right‑to‑left within the same level)
+            // Check right child first (right-to-left within the same level)
             IF node.right IS NOT NULL:
                 IF node.right IN visited:
                     // node is the invalid one; detach it from its parent
@@ -100,7 +100,7 @@ Example 2:
 
 Consider the first example where node `5`'s right child incorrectly points to node `7` at the same depth:
 1. BFS starts at root `1`. No conflict.
-2. Level 2 processes nodes `2` then `3` (right‑to‑left). When processing `3`, its right child `5` is already in `visited` from node `2`'s left subtree, indicating `5` is the invalid node.
+2. Level 2 processes nodes `2` then `3` (right-to-left). When processing `3`, its right child `5` is already in `visited` from node `2`'s left subtree, indicating `5` is the invalid node.
 3. Using `parentMap`, detach `5` from its parent `3` and return the corrected tree.
 
 ---
@@ -122,4 +122,4 @@ Consider the first example where node `5`'s right child incorrectly points to no
 
 ## Key Takeaway
 
-> BFS right‑to‑left ensures the wrongly‑pointed‑to node is visited before the invalid node. When a node's right child is already visited, that node is the culprit — remove it.
+> BFS right-to-left ensures the wrongly-pointed-to node is visited before the invalid node. When a node's right child is already visited, that node is the culprit — remove it.

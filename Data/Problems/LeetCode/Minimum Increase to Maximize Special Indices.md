@@ -84,7 +84,7 @@ Explanation: - Start with nums = [5, 2, 1, 4, 3].
 | 2 | 2 | [1,2,2,2] | 2 ≤ 2 | 1 | [1,2,3,2] | 2 |
 | 3 | 3 | [1,2,3,2] | 2 ≤ 3 | 0 | unchanged | 2 |
 
-Final array `[1,2,3,2]` has special indices at positions 1 and 2, total cost 2.
+Final array `[1,2,3,2]` has special indices at positions 1 and 2, total cost 2.
 
 ## Complexity Analysis
 
@@ -95,8 +95,8 @@ Final array `[1,2,3,2]` has special indices at positions 1 and 2, total cost
 
 - How would the solution change if you could also **decrease** elements?
 - What if the definition of a special index required `nums[i] >= 2 * nums[i-1]`?
-- Can you extend the approach to handle circular arrays where index 0 compares with the last element?
+- Can you extend the approach to handle circular arrays where index 0 compares with the last element?
 
 ## Key Takeaway
 
-> To maximize strictly‑increasing adjacent pairs with only increases allowed, greedily bump each element to just exceed its predecessor.
+> To maximize strictly-increasing adjacent pairs with only increases allowed, greedily bump each element to just exceed its predecessor.

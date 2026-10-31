@@ -60,7 +60,7 @@ Use prefix sums modulo `k`. For each index `i`, compute `prefix[i]` = sum of fir
 ## Follow-Up Questions
 1. How would you adapt the algorithm if subarray length must be exactly `k` instead of a multiple?
 2. Can the method be extended to handle a maximum length constraint as well?
-3. What changes are needed if the array is circular (wrap‑around allowed)?
+3. What changes are needed if the array is circular (wrap-around allowed)?
 
 ## Key Takeaway
 By tracking the smallest prefix sum for each modulo class, we can instantly compute the best subarray whose length satisfies the divisibility condition, turning a seemingly complex constraint into an O(n) scan.

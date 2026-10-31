@@ -134,10 +134,10 @@ The smallest `j` with `dp[3][j] ≤ 5` is `j = 1`, so the answer is `1` skip.
 
 1. How would the solution change if the speed could vary per road?
 2. Can we solve the problem in O(n log n) using a greedy or binary search approach?
-3. How would you adapt the algorithm for real‑time updates where new roads are appended?
+3. How would you adapt the algorithm for real-time updates where new roads are appended?
 
 ---
 
 ## 7. Key Takeaway
 
-> **DP on skips** — `dp[i][j]` tracks the minimum time with `j` skips through `i` roads, handling the ceiling operation for waiting. This captures the trade‑off between skipping and waiting efficiently.
+> **DP on skips** — `dp[i][j]` tracks the minimum time with `j` skips through `i` roads, handling the ceiling operation for waiting. This captures the trade-off between skipping and waiting efficiently.

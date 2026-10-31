@@ -60,17 +60,17 @@ The window always contains at most one zero, so its length is the longest possib
 
 ## Walkthrough
 For `[1,0,1,1,0]`:
-1. Expand right to index 0 → window `[1]`, zeros = 0, max = 1.
-2. Right = 1 (`0`) → zeros = 1, window `[1,0]`, max = 2.
-3. Right = 2 (`1`) → window `[1,0,1]`, max = 3.
-4. Right = 3 (`1`) → window `[1,0,1,1]`, max = 4.
-5. Right = 4 (`0`) → zeros = 2 → shrink left until zeros = 1, resulting window `[0,1,1,0]` length = 4. Final max = 4.
+1. Expand right to index 0 → window `[1]`, zeros = 0, max = 1.
+2. Right = 1 (`0`) → zeros = 1, window `[1,0]`, max = 2.
+3. Right = 2 (`1`) → window `[1,0,1]`, max = 3.
+4. Right = 3 (`1`) → window `[1,0,1,1]`, max = 4.
+5. Right = 4 (`0`) → zeros = 2 → shrink left until zeros = 1, resulting window `[0,1,1,0]` length = 4. Final max = 4.
 
 ## Complexity Analysis
 *Time*: **O(n)** – each element is visited at most twice.
 *Space*: **O(1)** – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the solution to allow flipping up to `k` zeros?
 2. Can you solve the problem in a streaming fashion where you cannot revisit earlier elements?
 3. What changes are needed if the input is a linked list instead of an array?

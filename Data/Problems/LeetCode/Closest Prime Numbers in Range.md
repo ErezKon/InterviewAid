@@ -69,7 +69,7 @@ For `left = 10, right = 19`:
 3. Gaps: 2,4,2 → smallest gap 2, first pair `[11,13]` returned.
 
 ## Complexity Analysis
-Time: O(right log log right) for sieve + O(right‑left) for scanning.
+Time: O(right log log right) for sieve + O(right-left) for scanning.
 Space: O(right) for the boolean sieve array.
 
 ## Follow-Up Questions

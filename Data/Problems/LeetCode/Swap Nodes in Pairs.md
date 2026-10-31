@@ -106,12 +106,12 @@ Output: [2,1,3]
 
 ## Follow-Up Questions
 
-1. How would you extend this to swap nodes in groups of *k*? (LeetCode 25 – Reverse Nodes in k‑Group)
-2. Can you solve it in‑place without a dummy node?
+1. How would you extend this to swap nodes in groups of *k*? (LeetCode 25 – Reverse Nodes in k-Group)
+2. Can you solve it in-place without a dummy node?
 3. How would you handle a doubly linked list version?
 
 ---
 
 ## Key Takeaway
 
-> Special case of Reverse Nodes in k‑Group (k=2). The iterative approach with a dummy node is clean and efficient.
+> Special case of Reverse Nodes in k-Group (k=2). The iterative approach with a dummy node is clean and efficient.

@@ -44,7 +44,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Union‑Find (Disjoint Set Union)
+**Algorithm:** Union-Find (Disjoint Set Union)
 1. Map each email to a unique index.
 2. Initialize UnionFind with the total number of unique emails.
 3. For each account, union the first email with every other email in that account.
@@ -61,16 +61,16 @@ Example 3:
 | 5 | Build result | Sorted emails combined with name |
 
 ## Complexity Analysis
-- **Time:** O(N α(N)) where N is total number of emails and α is the inverse Ackermann function (practically constant).
+- **Time:** O(N α(N)) where N is total number of emails and α is the inverse Ackermann function (practically constant).
 - **Space:** O(N) for the UnionFind structure and email mappings.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle streaming accounts where new accounts arrive continuously?
 2. Can the solution be adapted to merge accounts based on phone numbers as well?
 3. What changes are needed if the input size is too large to fit in memory?
 
 ## Key Takeaway
-Union‑Find efficiently merges groups with overlapping elements by providing near‑constant time union and find operations.
+Union-Find efficiently merges groups with overlapping elements by providing near-constant time union and find operations.
 
 ---
 

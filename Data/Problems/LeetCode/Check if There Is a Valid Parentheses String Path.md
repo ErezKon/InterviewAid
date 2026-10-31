@@ -61,7 +61,7 @@ FUNCTION hasValidPath(grid):
     IF (m + n) MOD 2 = 0: RETURN false  // odd length cannot be balanced
     maxBal ← (m + n) / 2
     // dp[r][c] = set of reachable balances at cell (r,c)
-    CREATE dp as 2‑D array of empty sets
+    CREATE dp as 2-D array of empty sets
     startBal ← 1 IF grid[0][0] = '(' ELSE -1
     IF startBal < 0: RETURN false
     dp[0][0].ADD(startBal)
@@ -88,22 +88,22 @@ Consider the grid:
 ( ( )
 ( ) )
 ```
-1. Start at `(0,0)` with balance = 1.
-2. Move right to `(0,1)`: char `'('` → balance = 2.
-3. Move down to `(1,1)`: char `')'` → balance = 1.
-4. Move right to `(1,2)`: char `')'` → balance = 0 (valid end).
+1. Start at `(0,0)` with balance = 1.
+2. Move right to `(0,1)`: char `'('` → balance = 2.
+3. Move down to `(1,1)`: char `')'` → balance = 1.
+4. Move right to `(1,2)`: char `')'` → balance = 0 (valid end).
 The DP records these balances at each cell and finally finds a zero balance at the destination.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time**: O(m × n × (m+n)) – each cell stores up to `maxBal` possible balances.
-- **Space**: O(m × n × (m+n)) for the DP sets (can be optimized with bitsets).
+- **Time**: O(m × n × (m+n)) – each cell stores up to `maxBal` possible balances.
+- **Space**: O(m × n × (m+n)) for the DP sets (can be optimized with bitsets).
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if diagonal moves were allowed?
 - Can the algorithm be adapted to return the actual path, not just a boolean?
@@ -113,4 +113,4 @@ The DP records these balances at each cell and finally finds a zero balance at t
 
 ## Key Takeaway
 
-> By treating the parentheses balance as a DP state, we can explore all feasible paths while keeping the balance non‑negative and ending at zero.
+> By treating the parentheses balance as a DP state, we can explore all feasible paths while keeping the balance non-negative and ending at zero.

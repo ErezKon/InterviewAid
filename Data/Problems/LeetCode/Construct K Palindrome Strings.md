@@ -60,10 +60,10 @@ FUNCTION canConstruct(s, k):
 - **Time:** `O(|s|)` – one pass to count characters.
 - **Space:** `O(1)` – at most 26 entries for lowercase letters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the string could contain uppercase letters or Unicode characters?
 2. Can you extend the algorithm to output one possible set of `k` palindrome strings?
 3. What if each palindrome must have length at least `m`?
 
 ## Key Takeaway
-The number of required palindromes is dictated by the count of odd‑frequency characters; ensuring this count does not exceed `k` guarantees a feasible construction.
+The number of required palindromes is dictated by the count of odd-frequency characters; ensuring this count does not exceed `k` guarantees a feasible construction.

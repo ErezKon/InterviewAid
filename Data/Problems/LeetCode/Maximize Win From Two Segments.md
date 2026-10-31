@@ -56,7 +56,7 @@ Explanation: For this example, one choice for the segments is [3, 3] and [4, 4],
 
 ## Key Insight
 
-> Use a sliding window for the right segment. For the left segment, precompute `prefixMax[i]` = max prizes covered by any single segment ending at or before position i. For each right segment [r‑k, r], the total = prizes in this segment + prefixMax[start of this segment - 1].
+> Use a sliding window for the right segment. For the left segment, precompute `prefixMax[i]` = max prizes covered by any single segment ending at or before position i. For each right segment [r-k, r], the total = prizes in this segment + prefixMax[start of this segment - 1].
 
 ---
 
@@ -90,8 +90,8 @@ Consider `prizePositions = [1,2,3,4,5,6]`, `k = 2`.
 2. Expand `right`:
    - `right=0`: window size 1, `count=1`, `result=1`, `prefixMax[1]=1`.
    - `right=1`: window size 2, `count=2`, `result=2`, `prefixMax[2]=2`.
-   - `right=2`: window size 3 (positions 1‑3), `count=3`, `result=3`, `prefixMax[3]=3`.
-   - `right=3`: window exceeds k (4‑1 >2), move `left` to 1, window size 3 (2‑4), `count=3`, `result = MAX(3, 3 + prefixMax[1]=1) = 4`.
+   - `right=2`: window size 3 (positions 1-3), `count=3`, `result=3`, `prefixMax[3]=3`.
+   - `right=3`: window exceeds k (4-1 >2), move `left` to 1, window size 3 (2-4), `count=3`, `result = MAX(3, 3 + prefixMax[1]=1) = 4`.
    - Continue similarly; final `result` becomes 5.
 
 ---

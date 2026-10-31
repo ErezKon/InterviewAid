@@ -51,19 +51,19 @@ Example 3:
 ```
 
 ## Approach
-Use a frequency map to count occurrences of each character. Sort the frequencies. The optimal target frequency must be one of the existing frequencies (or zero). For each candidate target, compute the total operations needed by summing absolute differences, ignoring characters that would need to be removed completely (target = 0). Choose the minimum total.
+Use a frequency map to count occurrences of each character. Sort the frequencies. The optimal target frequency must be one of the existing frequencies (or zero). For each candidate target, compute the total operations needed by summing absolute differences, ignoring characters that would need to be removed completely (target = 0). Choose the minimum total.
 
 ## Walkthrough
 | Step | Action | Explanation |
 |------|--------|-------------|
 |1|Count frequencies: `a:3, b:3, c:2`|Build hashmap.
 |2|Sort frequencies → `[2,3,3]`|Prepare candidates.
-|3|Try target = 2: operations = `(3‑2)+(3‑2)+(2‑2)=2`|Best so far.
-|4|Try target = 3: operations = `(3‑3)+(3‑3)+(3‑2)=1` (but would need to add one `c`).|Compare.
+|3|Try target = 2: operations = `(3-2)+(3-2)+(2-2)=2`|Best so far.
+|4|Try target = 3: operations = `(3-3)+(3-3)+(3-2)=1` (but would need to add one `c`).|Compare.
 |5|Select minimum = 1 operation (or 2 depending on allowed operations).|Result.
 
 ## Complexity Analysis
-- **Time:** O(n + k log k) where *n* is string length and *k* ≤ 26 is number of distinct characters.
+- **Time:** O(n + k log k) where *n* is string length and *k* ≤ 26 is number of distinct characters.
 - **Space:** O(k) for the frequency map.
 
 ## Follow-Up Questions

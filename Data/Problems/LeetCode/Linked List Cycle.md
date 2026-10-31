@@ -69,14 +69,14 @@ FUNCTION hasCycle(head):
 
 ## 4. Walkthrough
 
-Consider the list `[3,2,0,-4]` with a cycle starting at index 1.
+Consider the list `[3,2,0,-4]` with a cycle starting at index 1.
 
 | Step | slow pointer | fast pointer | Observation |
 |------|--------------|--------------|-------------|
-| 0 | node 3 (head) | node 3 (head) | start |
-| 1 | node 2 | node 0 | fast moves two steps |
-| 2 | node 0 | node 2 | fast moves two steps |
-| 3 | node -4 | node -4 | pointers meet → cycle detected |
+| 0 | node 3 (head) | node 3 (head) | start |
+| 1 | node 2 | node 0 | fast moves two steps |
+| 2 | node 0 | node 2 | fast moves two steps |
+| 3 | node -4 | node -4 | pointers meet → cycle detected |
 
 ---
 
@@ -91,7 +91,7 @@ Consider the list `[3,2,0,-4]` with a cycle starting at index 1.
 
 ## 6. Follow-Up Questions
 
-1. How to return the node where the cycle begins? (LeetCode #142)
+1. How to return the node where the cycle begins? (LeetCode #142)
 2. Can you detect a cycle in a directed graph?
 3. What modifications are needed for a singly linked list with random pointers?
 

@@ -56,7 +56,7 @@ FUNCTION maxConstrainedValue(nums, limit):
     dp ← ARRAY of size n filled with 0
     deque ← EMPTY DEQUE  // stores pairs (index, dp value) in decreasing dp order
     FOR i ← 0 TO n-1:
-        // Remove out‑of‑range indices from front
+        // Remove out-of-range indices from front
         WHILE deque NOT EMPTY AND deque[0].index < i - limit:
             POP_FRONT(deque)
         // Best previous value is at front of deque, if any
@@ -86,10 +86,10 @@ Maximum dp = 18, corresponding to subsequence `[5,4,6]`.
 *Time*: O(n) – each element enters and leaves the deque at most once.
 *Space*: O(n) for `dp` and O(limit) ≤ O(n) for the deque.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the constraint is based on value differences instead of index distance?
 2. Can we extend the approach to handle multiple simultaneous constraints?
 3. What modifications are needed to also output the actual subsequence achieving the maximum value?
 
 ## Key Takeaway
-A sliding‑window DP with a monotonic deque lets us compute the best constrained subsequence in linear time by efficiently tracking the maximum previous DP value within the allowed range.
+A sliding-window DP with a monotonic deque lets us compute the best constrained subsequence in linear time by efficiently tracking the maximum previous DP value within the allowed range.

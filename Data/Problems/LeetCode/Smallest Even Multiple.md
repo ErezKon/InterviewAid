@@ -51,7 +51,7 @@ For `n = 7`:
 - **Time:** O(1) – constant-time arithmetic.
 - **Space:** O(1) – no extra data structures.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the smallest *odd* multiple of `n`?
 2. What if `n` could be zero? How should the function behave?
 3. Can you extend the idea to find the smallest multiple of `n` that is divisible by a given integer `k`?

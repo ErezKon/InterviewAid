@@ -98,10 +98,10 @@ Consider the sequence `birth(king, "andy")`, `birth(king, "bob")`, `death("andy"
 *Time*: `O(N)` for a full inheritance query where `N` is the number of people alive or dead (DFS visits each node once). Updates are `O(1)`. 
 *Space*: `O(N)` for the `children` map and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you support removal of a person from the tree (e.g., abdication)?
 2. How to handle multiple simultaneous queries efficiently?
 3. Can you extend the model to support ranking by age within the same generation?
 
 ## Key Takeaway
-A simple hash‑map tree combined with a depth‑first traversal yields the correct inheritance order while efficiently handling births and deaths.
+A simple hash-map tree combined with a depth-first traversal yields the correct inheritance order while efficiently handling births and deaths.

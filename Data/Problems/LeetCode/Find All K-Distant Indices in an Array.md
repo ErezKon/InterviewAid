@@ -44,7 +44,7 @@ Example 2:
 ```
 
 ## Approach
-Iterate through the array to locate positions of `key`. For each occurrence at index `j`, add all indices from `max(0, j‑k)` to `min(n‑1, j+k)` into a set to avoid duplicates. Finally, convert the set to a sorted list.
+Iterate through the array to locate positions of `key`. For each occurrence at index `j`, add all indices from `max(0, j-k)` to `min(n-1, j+k)` into a set to avoid duplicates. Finally, convert the set to a sorted list.
 
 ## Pseudocode
 ```text
@@ -67,10 +67,10 @@ FUNCTION findKDistantIndices(nums, key, k):
 | after deduplication → [1,2,3] (sorted) |
 
 ## Complexity Analysis
-- **Time:** O(n·k) in the worst case (when many keys are close together). Since `k` ≤ n, this is O(n²) worst‑case but acceptable for the given constraints.
+- **Time:** O(n·k) in the worst case (when many keys are close together). Since `k` ≤ n, this is O(n²) worst-case but acceptable for the given constraints.
 - **Space:** O(n) for the result set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you improve the runtime to O(n) regardless of `k`?
 - Can you output the result without sorting by using a boolean array of length `n`?
 - What changes are needed if `k` can be larger than the array size?

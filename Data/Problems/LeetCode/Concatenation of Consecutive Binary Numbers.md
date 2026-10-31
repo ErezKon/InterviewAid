@@ -36,7 +36,7 @@ Example 3:
 ```
 
 ## Approach
-Iterate from `1` to `n`. For each `i`, compute its bit length, left‑shift the current result by that many bits, then OR with `i`. Apply modulo after each step.
+Iterate from `1` to `n`. For each `i`, compute its bit length, left-shift the current result by that many bits, then OR with `i`. Apply modulo after each step.
 
 ```text
 FUNCTION concatenatedBinary(n):
@@ -60,10 +60,10 @@ Thus for `n=3` the final result is `27`.
 - **Time:** `O(n)` – one pass over the numbers.
 - **Space:** `O(1)` – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the result if the concatenation order were reversed (n down to 1)?
 2. Can the algorithm be adapted to work with a different modulus or without overflow concerns?
 3. How many bits are required in total for the concatenated string of `1..n`?
 
 ## Key Takeaway
-By tracking each number's bit length, we can incrementally build the concatenated binary value using constant‑time bit operations.
+By tracking each number's bit length, we can incrementally build the concatenated binary value using constant-time bit operations.

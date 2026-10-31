@@ -96,16 +96,16 @@ FUNCTION TopExperiencedEmployees():
 ## Walkthrough
 1. Join `Project` with `Employee` to pair each employee with their project.
 2. Apply `RANK()` partitioned by `project_id` ordered by `experience_years` descending.
-3. Filter rows where the rank equals 1 to keep only the most experienced employees per project.
+3. Filter rows where the rank equals 1 to keep only the most experienced employees per project.
 
 ## Complexity Analysis
 - Time: O(N log N) due to the ranking operation, where N is the number of rows in `Project`.
 - Space: O(N) for the intermediate ranking result.
 
 ## Follow-Up Questions
-- How to retrieve the top K experienced employees per project?
+- How to retrieve the top K experienced employees per project?
 - How to handle projects with no assigned employees?
-- How to compute the average experience of the top M% employees per project?
+- How to compute the average experience of the top M% employees per project?
 
 ## Key Takeaway
-Window functions like `RANK()` enable easy extraction of top‑ranked rows within each group without multiple subqueries.
+Window functions like `RANK()` enable easy extraction of top-ranked rows within each group without multiple subqueries.

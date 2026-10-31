@@ -82,7 +82,7 @@ Consider the input `(a=1, b=1, c=7)`.
 | 4 | [(5,'c'),(1,'b')] | "cca" | Pop ('c',5) → add 'c' (result: "ccac"), push (4,'c') |
 | … | … | … | Continue until heap empty |
 
-The final string becomes `"ccaccbcc"`, which respects the no‑three‑consecutive rule and uses as many characters as possible.
+The final string becomes `"ccaccbcc"`, which respects the no-three-consecutive rule and uses as many characters as possible.
 
 ---
 

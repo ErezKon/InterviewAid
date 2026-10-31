@@ -61,11 +61,11 @@ FUNCTION sum(num1, num2):
 ## 6. Follow-Up Questions
 
 1. How would you implement addition without using the `+` operator? (Hint: use bitwise XOR and AND.)
-2. How does the solution change if the integers can be arbitrarily large (beyond built‑in types)?
+2. How does the solution change if the integers can be arbitrarily large (beyond built-in types)?
 3. What if you need to add two numbers represented as linked lists of digits?
 
 ---
 
 ## Key Takeaway
 
-> Adding two integers is O(1) arithmetic, but the problem can be extended to explore bit‑wise addition or handling of large numbers.
+> Adding two integers is O(1) arithmetic, but the problem can be extended to explore bit-wise addition or handling of large numbers.

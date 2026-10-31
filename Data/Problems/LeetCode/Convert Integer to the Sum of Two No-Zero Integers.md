@@ -37,7 +37,7 @@ Example 2:
 ```
 
 ## Approach
-Iterate `a` from `1` to `n‑1`. For each `a`, compute `b = n - a`. Check that both `a` and `b` have no `'0'` digit. The first valid pair can be returned.
+Iterate `a` from `1` to `n-1`. For each `a`, compute `b = n - a`. Check that both `a` and `b` have no `'0'` digit. The first valid pair can be returned.
 
 ```text
 FUNCTION getNoZeroIntegers(n):
@@ -56,7 +56,7 @@ FUNCTION CONTAINS_ZERO(x):
 ```
 
 ## Walkthrough
-| a | b = n‑a | a contains 0? | b contains 0? | Returned? |
+| a | b = n-a | a contains 0? | b contains 0? | Returned? |
 |---|--------|---------------|---------------|-----------|
 | 1 | 100 | false | true | no |
 | 2 | 99  | false | false | **yes → [2,99]** |
@@ -64,7 +64,7 @@ FUNCTION CONTAINS_ZERO(x):
 The algorithm stops at the first pair without zeros.
 
 ## Complexity Analysis
-- **Time:** O(n · d) where `d` is the number of digits in `n` (checking each number for a zero digit). For typical constraints this is acceptable.
+- **Time:** O(n · d) where `d` is the number of digits in `n` (checking each number for a zero digit). For typical constraints this is acceptable.
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions
@@ -73,4 +73,4 @@ The algorithm stops at the first pair without zeros.
 3. How does the solution change if the forbidden digit is something other than `0`?
 
 ## Key Takeaway
-A simple linear scan combined with digit‑checking quickly yields a valid no‑zero decomposition of `n`.
+A simple linear scan combined with digit-checking quickly yields a valid no-zero decomposition of `n`.

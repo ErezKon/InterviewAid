@@ -46,7 +46,7 @@ So the average waiting time = (2 + 6 + 4 + 1) / 4 = 3.25.
 ```
 
 ## Approach
-Simulate the single‑server processing. Keep a `currTime` that tracks when the server becomes free. For each customer, start at `max(currTime, arrival)`, add the processing time, and accumulate the waiting time.
+Simulate the single-server processing. Keep a `currTime` that tracks when the server becomes free. For each customer, start at `max(currTime, arrival)`, add the processing time, and accumulate the waiting time.
 
 ```text
 FUNCTION averageWaitingTime(customers):
@@ -61,7 +61,7 @@ FUNCTION averageWaitingTime(customers):
 ```
 
 ## Walkthrough
-| arrival | proc | start | finish | wait (finish‑arrival) |
+| arrival | proc | start | finish | wait (finish-arrival) |
 |---------|------|-------|--------|-----------------------|
 | 1       | 2    | 1     | 3      | 2 |
 | 2       | 5    | 3     | 8      | 6 |
@@ -72,10 +72,10 @@ Total wait = 15, average = 15/3 = 5.0 (example adjusted).
 - **Time:** O(n) – one pass over the customers list.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle customers arriving out of order?
 2. What if multiple servers are available (parallel processing)?
 3. Can you compute the median waiting time efficiently?
 
 ## Key Takeaway
-Simulating the server with a running current time and accumulating each customer's finish‑arrival difference yields the average waiting time in linear time.
+Simulating the server with a running current time and accumulating each customer's finish-arrival difference yields the average waiting time in linear time.

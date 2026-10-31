@@ -38,7 +38,7 @@ Example 2:
 
 Prefix Sums — O(m·n·min(m,n)) ✅
 
-Pre‑compute for each cell the number of consecutive `1`s to its left and above. For a candidate bottom‑right corner, a square of side `len` exists if the four edges each have at least `len` consecutive `1`s.
+Pre-compute for each cell the number of consecutive `1`s to its left and above. For a candidate bottom-right corner, a square of side `len` exists if the four edges each have at least `len` consecutive `1`s.
 
 ```text
 FUNCTION largest1BorderedSquare(grid):
@@ -69,7 +69,7 @@ Grid:
 1 1 1
 ```
 1. Compute `left` and `above` matrices.
-2. Start with `side = 3`. Bottom‑right at (2,2) has `left=3`, `above=3`, top edge `left[0][2]=3`, left edge `above[2][0]=3` → valid → return `9`.
+2. Start with `side = 3`. Bottom-right at (2,2) has `left=3`, `above=3`, top edge `left[0][2]=3`, left edge `above[2][0]=3` → valid → return `9`.
 
 ---
 
@@ -81,7 +81,7 @@ Grid:
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you adapt the algorithm for a grid with characters where the border must be a specific character?
 2. Can you improve the time complexity using binary search on side length?
@@ -91,4 +91,4 @@ Grid:
 
 ## Key Takeaway
 
-> Pre‑computing runs of consecutive `1`s in two directions lets us verify any square border in O(1). Searching side lengths from large to small yields early termination.
+> Pre-computing runs of consecutive `1`s in two directions lets us verify any square border in O(1). Searching side lengths from large to small yields early termination.

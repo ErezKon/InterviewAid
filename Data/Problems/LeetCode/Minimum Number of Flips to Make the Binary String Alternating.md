@@ -104,7 +104,7 @@ The minimum across all windows is `2`.
 | Time   | **O(n)** – single pass over `2n` characters |
 | Space  | **O(n)** – the two target strings (can be generated on the fly) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if rotations were not allowed?
 2. Can we solve the problem using prefix sums instead of explicit target strings?
@@ -112,4 +112,4 @@ The minimum across all windows is `2`.
 
 ## Key Takeaway
 
-By doubling the string and sliding a fixed‑size window while tracking mismatches against the two possible alternating patterns, we obtain the minimum flips needed after any rotation in linear time.
+By doubling the string and sliding a fixed-size window while tracking mismatches against the two possible alternating patterns, we obtain the minimum flips needed after any rotation in linear time.

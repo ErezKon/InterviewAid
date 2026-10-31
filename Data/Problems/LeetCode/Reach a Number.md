@@ -58,18 +58,18 @@ END FUNCTION
 ```
 
 ## Walkthrough
-| step | sum | sum‑target | parity | action |
+| step | sum | sum-target | parity | action |
 |------|-----|------------|--------|--------|
-|1|1|‑1|odd|continue|
+|1|1|-1|odd|continue|
 |2|3|1|odd|continue|
-|3|6|4|even|stop → answer `3` for target 2 |
+|3|6|4|even|stop → answer `3` for target 2 |
 |...|...|...|...|...|
 
 ## Complexity Analysis
 - Time: O(√target) because the sum grows quadratically.
 - Space: O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm for a target that can be any integer (including negative) without using `ABS`?
 2. Can you compute the answer in O(1) time using a direct formula?
 3. What if the step size increments by a different constant instead of 1?

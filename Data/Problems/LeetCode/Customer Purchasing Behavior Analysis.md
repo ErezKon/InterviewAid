@@ -124,7 +124,7 @@ ORDER BY loyalty_score DESC, customer_id;
 
 ## Walkthrough
 
-1. **Group** rows by `customer_id` to aggregate per‑customer data.
+1. **Group** rows by `customer_id` to aggregate per-customer data.
 2. **SUM(amount)** gives total spending per customer.
 3. **COUNT(*)** counts the number of transactions.
 4. **COUNT(DISTINCT category)** counts distinct purchase categories.
@@ -143,7 +143,7 @@ ORDER BY loyalty_score DESC, customer_id;
 ## Follow-Up Questions
 
 - How would you modify the query to include only customers with at least a certain number of transactions?
-- How can you compute a moving average loyalty score over the last M transactions per customer?
+- How can you compute a moving average loyalty score over the last M transactions per customer?
 - How would you incorporate a time window (e.g., last 30 days) into the analysis?
 
 ---

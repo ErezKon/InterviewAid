@@ -69,9 +69,9 @@ Consider `nums = [1,2,3]`, `x = 1`.
 
 1. `k = 0`: `minCosts = [1,2,3]`, total = `1+2+3 + 0 = 6`.
 2. `k = 1`: compare each type with its rotated counterpart:
-   - type 0: min(1,2) = 1
-   - type 1: min(2,3) = 2
-   - type 2: min(3,1) = 1 → `minCosts = [1,2,1]`
+   - type 0: min(1,2) = 1
+   - type 1: min(2,3) = 2
+   - type 2: min(3,1) = 1 → `minCosts = [1,2,1]`
    total = `1+2+1 + 1*1 = 5`? actually sum=4 +1=5, which is lower.
 3. `k = 2`: further rotation yields `minCosts = [1,1,1]`, total = `3 + 2 = 5`.
 4. Minimum across all `k` is `5`.
@@ -80,14 +80,14 @@ Consider `nums = [1,2,3]`, `x = 1`.
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n²) – try each of the `n‑1` rotations and update `n` types.
+- **Time:** O(n²) – try each of the `n-1` rotations and update `n` types.
 - **Space:** O(n) – `minCosts` array.
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you improve the solution if `n` were up to 10⁵? (Hint: use a sliding‑window minimum.)
+- How would you improve the solution if `n` were up to 10⁵? (Hint: use a sliding-window minimum.)
 - What if each rotation had a different cost instead of a constant `x`?
 - Can you extend the problem to allow collecting multiple chocolates per type?
 
@@ -95,4 +95,4 @@ Consider `nums = [1,2,3]`, `x = 1`.
 
 ## Key Takeaway
 
-> Enumerating rotations while maintaining a running minimum per type captures the trade‑off between rotation cost and cheaper chocolate prices.
+> Enumerating rotations while maintaining a running minimum per type captures the trade-off between rotation cost and cheaper chocolate prices.

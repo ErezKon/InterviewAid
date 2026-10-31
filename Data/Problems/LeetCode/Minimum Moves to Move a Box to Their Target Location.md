@@ -69,11 +69,11 @@ Explanation: push the box down, left, left, up and up.
 
 ## Approach
 
-**Algorithm:** 0‑1 BFS on combined box‑player states.
+**Algorithm:** 0-1 BFS on combined box-player states.
 
 - Outer BFS explores box positions; each push costs 1.
 - For each box position, an inner BFS checks if the player can reach the required pushing cell without crossing the box (cost 0).
-- Use a deque to process 0‑cost player moves before 1‑cost pushes.
+- Use a deque to process 0-cost player moves before 1-cost pushes.
 
 ```text
 FUNCTION minPushBox(grid):
@@ -84,10 +84,10 @@ FUNCTION minPushBox(grid):
     WHILE deque NOT EMPTY:
         (pushes, br, bc, pr, pc) ← deque.POPLEFT()
         IF (br, bc) == (targetR, targetC): RETURN pushes
-        FOR each direction (dr, dc) IN [(‑1,0),(1,0),(0,‑1),(0,1)]:
+        FOR each direction (dr, dc) IN [(-1,0),(1,0),(0,-1),(0,1)]:
             // Position player must stand to push box
-            pushFromR ← br ‑ dr
-            pushFromC ← bc ‑ dc
+            pushFromR ← br - dr
+            pushFromC ← bc - dc
             newBoxR ← br + dr
             newBoxC ← bc + dc
             IF pushFrom inside grid AND newBox inside grid AND grid[newBoxR][newBoxC] != '#':
@@ -104,7 +104,7 @@ FUNCTION playerCanReach(sr, sc, tr, tc, br, bc, grid):
     WHILE queue NOT EMPTY:
         (r, c) ← queue.POP()
         IF (r, c) == (tr, tc): RETURN TRUE
-        FOR each (dr, dc) IN [(‑1,0),(1,0),(0,‑1),(0,1)]:
+        FOR each (dr, dc) IN [(-1,0),(1,0),(0,-1),(0,1)]:
             nr ← r + dr; nc ← c + dc
             IF inside grid AND grid[nr][nc] != '#' AND (nr, nc) != (br, bc) AND (nr, nc) NOT IN seen:
                 seen.ADD((nr, nc))

@@ -29,7 +29,7 @@ Output: false
 ```
 
 ## Approach
-Use the two‑pointer technique on the sorted list of possible square values. Start with `a = 0` (smallest square) and `b = ⌊√c⌋` (largest possible square). Adjust pointers based on the sum compared to `c`.
+Use the two-pointer technique on the sorted list of possible square values. Start with `a = 0` (smallest square) and `b = ⌊√c⌋` (largest possible square). Adjust pointers based on the sum compared to `c`.
 
 ### Pseudocode
 ```text
@@ -58,10 +58,10 @@ For `c = 5`:
 - **Time:** `O(√c)` – each pointer moves at most `√c` steps.
 - **Space:** `O(1)` – only a few integer variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend this to find all distinct pairs `(a, b)`?
-2. Can the problem be solved using number‑theoretic properties (e.g., Fermat's theorem on sums of two squares)?
+2. Can the problem be solved using number-theoretic properties (e.g., Fermat's theorem on sums of two squares)?
 3. How would the algorithm change if `c` could be negative?
 
 ## Key Takeaway
-Two pointers on the range `[0, √c]` provide a simple linear‑time solution for checking the sum‑of‑two‑squares condition without extra space.
+Two pointers on the range `[0, √c]` provide a simple linear-time solution for checking the sum-of-two-squares condition without extra space.

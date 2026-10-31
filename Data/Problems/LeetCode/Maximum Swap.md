@@ -32,14 +32,14 @@ Explanation: No swap.
 ```
 
 ## Approach
-The greedy strategy scans the digits from left to right while remembering the last (rightmost) occurrence of each digit (0‑9). For each position, we look for a larger digit that appears later; swapping with the largest such digit yields the optimal result.
+The greedy strategy scans the digits from left to right while remembering the last (rightmost) occurrence of each digit (0-9). For each position, we look for a larger digit that appears later; swapping with the largest such digit yields the optimal result.
 
 ## Pseudocode
 ```text
 FUNCTION maximumSwap(num):
     // Convert number to list of digits for easy indexing
     SET digits ← LIST_OF_CHARACTERS(STRING(num))
-    // Record the last index of each digit 0‑9
+    // Record the last index of each digit 0-9
     SET lastIdx[0..9] ← ARRAY_FILLED_WITH(-1)
     FOR i ← 0 TO LENGTH(digits)-1:
         SET d ← INTEGER_VALUE(digits[i])
@@ -63,10 +63,10 @@ FUNCTION maximumSwap(num):
 For `num = 2736`, digits = [2,7,3,6]. `lastIdx` becomes {2:0,7:1,3:2,6:3}. At i=0, current=2; we check digits 9→3 and find 7 at index 1 (>0). Swapping yields [7,2,3,6] → 7236, which is returned.
 
 ## Complexity Analysis
-- **Time:** O(d) where d is the number of digits (≤10 for 32‑bit integers).
+- **Time:** O(d) where d is the number of digits (≤10 for 32-bit integers).
 - **Space:** O(1) extra space for the `lastIdx` array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the algorithm to allow at most `k` swaps?
 2. Can you solve the problem without converting the number to a string?
 3. What if the input is a very large integer represented as a string?

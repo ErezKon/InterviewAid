@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve a different (integer-moves) problem. Correct idea: binary search the final level `t` in `[0, max(buckets)]`; `t` is feasible iff `Σ_{b>t}(b − t) · (100 − loss)/100 ≥ Σ_{b<t}(t − b)`. O(n log(max/ε)).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 You have `n` buckets each containing some gallons of water in it, represented by a **0-indexed** integer array `buckets`, where the `i`th bucket contains `buckets[i]` gallons of water. You are also given an integer `loss`.
 
@@ -52,39 +52,47 @@ Explanation: All buckets already have the same amount of water in them.
 ```
 
 ## Approach
-**Algorithm:** Compute target level using total sum, then count surplus units.
-**Key Insight:** If the total amount of water `S` is divisible by `n`, the final equal level is `target = S / n`. Each bucket with more than `target` must give away its surplus; each unit moved reduces the surplus count by one. The minimum number of operations equals the total surplus across all buckets.
+**Algorithm:** Binary search on the final water level `t`.
+**Key Insight:** Feasibility is monotonic in `t`. For a candidate level `t`, buckets above `t` can give `Σ_{b>t}(b - t)` gallons, but only `(100 - loss)/100` of that arrives; buckets below `t` need `Σ_{b<t}(t - b)` gallons. If the delivered water covers the need, `t` is achievable, and so is every lower level. The answer lies in `[0, max(buckets)]`, so binary search on reals until the interval is smaller than `10^-5`.
 
 ```text
-FUNCTION minOperations(buckets):
-    n ← LENGTH(buckets)
-    total ← SUM of all elements in buckets
-    IF total MOD n != 0:
-        RETURN -1
-    target ← total DIV n
-    surplus ← 0
-    FOR amount IN buckets:
-        IF amount > target:
-            surplus ← surplus + (amount - target)
-    RETURN surplus
+FUNCTION equalizeWater(buckets, loss):
+    lo ← 0, hi ← MAX(buckets)
+    keep ← (100 - loss) / 100
+    WHILE hi - lo > 1e-6:
+        t ← (lo + hi) / 2
+        give ← 0, need ← 0
+        FOR b IN buckets:
+            IF b > t: give ← give + (b - t)
+            ELSE: need ← need + (t - b)
+        IF give * keep >= need:
+            lo ← t        // level t is reachable, try higher
+        ELSE:
+            hi ← t
+    RETURN lo
 ```
 
 ## Walkthrough
-For `buckets = [5,1,2]`:
-- `n = 3`, `total = 8`, `target = 8 / 3 = 2` (integer division not possible, but since 8 mod 3 ≠ 0, actually impossible – adjust example to `[6,0,0]` for clarity). Using a valid example `[6,0,0]`:
-- `target = 2`
-- Surplus from bucket 0 = `6‑2 = 4`
-- Buckets 1 and 2 need `2` each, total deficit = `4`
-- Minimum operations = surplus = `4` (move 1 unit four times).
+Example 1: `buckets = [1,2,7]`, `loss = 80` → `keep = 0.2`, search range `[0, 7]`.
+
+| t | give | delivered (give · 0.2) | need | feasible? | new range |
+|---|------|------------------------|------|-----------|-----------|
+| 3.5 | 3.5 | 0.7 | 2.5 + 1.5 = 4.0 | no | [0, 3.5] |
+| 1.75 | 0.25 + 5.25 = 5.5 | 1.1 | 0.75 | yes | [1.75, 3.5] |
+| 2.625 | 4.375 | 0.875 | 1.625 + 0.625 = 2.25 | no | [1.75, 2.625] |
+| 2.1875 | 4.8125 | 0.9625 | 1.1875 + 0.1875 = 1.375 | no | [1.75, 2.1875] |
+| ... | | | | | converges to 2 |
+
+At `t = 2`: give = 5, delivered = 1, need = 1 - exactly balanced, so the answer is `2.00000`.
 
 ## Complexity Analysis
-- **Time:** O(n) – single pass to compute sum and surplus.
+- **Time:** O(n · log(max / ε)) - about 40 iterations of an O(n) feasibility check.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
-1. How would you modify the solution if each operation could move any amount of water (not just one unit)?
-2. What if there is a limit on the number of operations allowed – can you decide feasibility?
-3. How would the algorithm change if some buckets are marked as “locked” and cannot give or receive water?
+## Follow-Up Questions
+1. Can you avoid floating-point binary search by sorting and solving for `t` exactly on each segment between consecutive bucket values?
+2. How would the answer change if each pour had a fixed loss (in gallons) rather than a percentage?
+3. Why is it never beneficial to pour from a bucket that ends below the target or to pour water twice through an intermediate bucket?
 
 ## Key Takeaway
-When the total water is divisible by the number of buckets, the minimal moves equal the total surplus above the target level, because each move transfers exactly one unit from a surplus bucket to a deficit bucket.
+When the answer is a real number and feasibility is monotonic, binary search on the answer with a linear check is the clean solution; here the check just compares delivered surplus against total deficit.

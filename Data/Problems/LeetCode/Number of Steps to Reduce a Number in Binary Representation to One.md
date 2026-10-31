@@ -68,7 +68,7 @@ Output: 0
 
 ## 3. Approach
 
-Process the bits from least‑significant to most‑significant while tracking a carry.
+Process the bits from least-significant to most-significant while tracking a carry.
 
 ```text
 FUNCTION StepsBinary(s):
@@ -81,11 +81,11 @@ FUNCTION StepsBinary(s):
             SET steps ← steps + 2    // add 1 then divide
         ELSE:
             SET steps ← steps + 1    // just divide
-    // handle most‑significant bit
+    // handle most-significant bit
     RETURN steps + carry
 ```
 
-The loop stops before the most‑significant bit because after processing all lower bits, the remaining value is either `1` (no extra step) or `10` (one extra division).
+The loop stops before the most-significant bit because after processing all lower bits, the remaining value is either `1` (no extra step) or `10` (one extra division).
 
 ---
 
@@ -123,4 +123,4 @@ Result matches the example.
 
 ## 7. Key Takeaway
 
-> **Process the binary string from right to left with a carry.** An odd bit incurs two operations (add 1 then divide), an even bit incurs one, and the final carry may add one extra step.
+> **Process the binary string from right to left with a carry.** An odd bit incurs two operations (add 1 then divide), an even bit incurs one, and the final carry may add one extra step.

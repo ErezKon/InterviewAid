@@ -61,7 +61,7 @@ Output: 0
 ## Walkthrough
 
 1. Initialize `flips = 0`.
-2. Iterate bits 0‑31.
+2. Iterate bits 0-31.
 3. For each bit, extract bits of `a`, `b`, `c`.
 4. Apply the rules from the insight to update `flips`.
 5. After the loop, return `flips`.
@@ -73,10 +73,10 @@ Output: 0
 
 ## Follow-Up Questions
 
-- How would the solution change if numbers could be up to 64‑bit?
+- How would the solution change if numbers could be up to 64-bit?
 - Can you extend the approach to handle a list of `(a,b)` pairs needing to match the same `c`?
 - What if flipping a bit has a different cost for `a` vs `b`?
 
 ## Key Takeaway
 
-> Bit manipulation problems are solved **bit‑by‑bit** — analyze each position independently based on the desired output bit value.
+> Bit manipulation problems are solved **bit-by-bit** — analyze each position independently based on the desired output bit value.

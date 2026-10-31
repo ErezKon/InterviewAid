@@ -40,11 +40,11 @@ Return *the minimum number of times you need to do this in order to make all the
 
 ## 2. Key Insight
 
-> At least `n‑1` edges are needed to connect `n` nodes. If the total number of edges is less than `n‑1`, the task is impossible. Otherwise, the answer equals the number of connected components minus one, because each redundant edge can be repurposed to bridge two components.
+> At least `n-1` edges are needed to connect `n` nodes. If the total number of edges is less than `n-1`, the task is impossible. Otherwise, the answer equals the number of connected components minus one, because each redundant edge can be repurposed to bridge two components.
 
 ---
 
-## 3. Approach: Union‑Find — O(E · α(V)) ✅
+## 3. Approach: Union-Find — O(E · α(V)) ✅
 
 ```text
 FUNCTION makeConnected(n, connections):
@@ -89,7 +89,7 @@ Explanation: There are not enough cables.
 
 **Example 1** (`n = 4`, `connections = [[0,1],[0,2],[1,2]]`)
 
-1. Initialize Union‑Find with 4 separate sets: `{0},{1},{2},{3}`.
+1. Initialize Union-Find with 4 separate sets: `{0},{1},{2},{3}`.
 2. Process `[0,1]` → merge sets `{0,1}`.
 3. Process `[0,2]` → merge `{0,1}` with `{2}` → `{0,1,2}`.
 4. Process `[1,2]` → already in the same set, counted as redundant.
@@ -110,11 +110,11 @@ Explanation: There are not enough cables.
 ## 7. Follow-Up Questions
 
 1. How would the solution change if the network were directed?
-2. Can you solve the problem using only DFS/BFS without Union‑Find?
+2. Can you solve the problem using only DFS/BFS without Union-Find?
 3. How would you extend the approach to also output the actual cable moves?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Components − 1 moves are sufficient** when enough edges exist (≥ n‑1). Redundant edges can always be repurposed to connect disjoint components.
+> **Components − 1 moves are sufficient** when enough edges exist (≥ n-1). Redundant edges can always be repurposed to connect disjoint components.

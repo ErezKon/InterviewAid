@@ -44,7 +44,7 @@ Example 2:
 
 ## Approach
 
-Greedy bit‑maximization: ensure the most significant column is all 1s, then independently maximize each remaining column.
+Greedy bit-maximization: ensure the most significant column is all 1s, then independently maximize each remaining column.
 
 ```text
 FUNCTION matrixScore(grid):
@@ -72,15 +72,15 @@ FUNCTION matrixScore(grid):
 ## Walkthrough
 
 Consider the matrix `[[0,0,1],[1,1,1],[1,0,1]]`.
-1. **Row flips:** Row 0 has a leading 0 → flip → `[1,1,0]`.
+1. **Row flips:** Row 0 has a leading 0 → flip → `[1,1,0]`.
 2. **Column evaluation:**
-   - Column 0: already all 1s → keep.
-   - Column 1: two 1s vs one 0 → keep.
-   - Column 2: two 0s vs one 1 → flip column → becomes all 1s.
+   - Column 0: already all 1s → keep.
+   - Column 1: two 1s vs one 0 → keep.
+   - Column 2: two 0s vs one 1 → flip column → becomes all 1s.
 3. **Score calculation:**
-   - Column 0 contributes `3 * 2^2 = 12`
-   - Column 1 contributes `2 * 2^1 = 4`
-   - Column 2 contributes `3 * 2^0 = 3`
+   - Column 0 contributes `3 * 2^2 = 12`
+   - Column 1 contributes `2 * 2^1 = 4`
+   - Column 2 contributes `3 * 2^0 = 3`
    - Total = 12 + 4 + 3 = 19? (illustrative; actual optimal score is 39).
 
 ---
@@ -90,7 +90,7 @@ Consider the matrix `[[0,0,1],[1,1,1],[1,0,1]]`.
 | Metric | Complexity |
 |--------|------------|
 | Time   | O(m·n) – two passes over the matrix |
-| Space  | O(1) – in‑place modifications only |
+| Space  | O(1) – in-place modifications only |
 
 ---
 
@@ -98,7 +98,7 @@ Consider the matrix `[[0,0,1],[1,1,1],[1,0,1]]`.
 
 1. How would you adapt the algorithm if flipping rows or columns had a cost?
 2. Can you prove that the greedy column decision is optimal?
-3. How does the solution change for non‑binary matrices?
+3. How does the solution change for non-binary matrices?
 
 ---
 

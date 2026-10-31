@@ -5,13 +5,13 @@
 ## Problem Description
 > *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Maximum Depth of Binary Tree.md](Maximum%20Depth%20of%20Binary%20Tree.md) for the official #104 statement, examples and constraints.*
 
-These notes summarize common patterns for computing depth, height, and related metrics in binary trees. The patterns apply to classic LeetCode problems such as Maximum Depth (#104), Minimum Depth (#111), Balanced Binary Tree (#110), Diameter of Binary Tree (#543), and Maximum Path Sum (#124). Each problem can be solved with a bottom‑up depth‑first traversal that returns a value for each subtree and updates a global answer.
+These notes summarize common patterns for computing depth, height, and related metrics in binary trees. The patterns apply to classic LeetCode problems such as Maximum Depth (#104), Minimum Depth (#111), Balanced Binary Tree (#110), Diameter of Binary Tree (#543), and Maximum Path Sum (#124). Each problem can be solved with a bottom-up depth-first traversal that returns a value for each subtree and updates a global answer.
 
 ## Examples
 | Problem | Goal |
 |---------|------|
-| Max Depth (#104) | Return the length of the longest root‑to‑leaf path.
-| Min Depth (#111) | Return the length of the shortest root‑to‑leaf path (leaf‑only).
+| Max Depth (#104) | Return the length of the longest root-to-leaf path.
+| Min Depth (#111) | Return the length of the shortest root-to-leaf path (leaf-only).
 | Balanced (#110) | Determine if for every node the heights of left and right subtrees differ by at most 1.
 | Diameter (#543) | Return the length of the longest path between any two nodes (may not pass through root).
 | Max Path Sum (#124) | Return the maximum sum of values along any path (can start and end anywhere).
@@ -40,12 +40,12 @@ Result: maximum depth = 3.
 
 ## Complexity Analysis
 *Time*: **O(n)** – each node visited once.
-*Space*: **O(h)** recursion stack, where *h* is tree height (worst‑case O(n)).
+*Space*: **O(h)** recursion stack, where *h* is tree height (worst-case O(n)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you convert the recursive DFS to an iterative version using a stack?
 2. Can you compute both height and diameter in a single traversal?
-3. How does the algorithm change for an N‑ary tree?
+3. How does the algorithm change for an N-ary tree?
 
 ## Key Takeaway
-A single post‑order DFS that returns subtree heights can be adapted to solve many tree‑depth related problems by tweaking the combine step and maintaining a global metric.
+A single post-order DFS that returns subtree heights can be adapted to solve many tree-depth related problems by tweaking the combine step and maintaining a global metric.

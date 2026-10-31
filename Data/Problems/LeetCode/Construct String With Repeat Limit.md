@@ -43,7 +43,7 @@ Example 2:
 ```
 
 ## Approach
-The problem can be solved greedily using a max‑heap (or sorted frequency map) to always pick the currently largest available character. When the chosen character reaches the repeat limit, we temporarily pick the next largest character to break the streak, then push the original character back with its remaining count.
+The problem can be solved greedily using a max-heap (or sorted frequency map) to always pick the currently largest available character. When the chosen character reaches the repeat limit, we temporarily pick the next largest character to break the streak, then push the original character back with its remaining count.
 
 **Pseudocode**
 ```text
@@ -87,13 +87,13 @@ Consider `s = "cczazcc"`, `repeatLimit = 3`.
 The final string respects the repeat limit and is lexicographically maximal.
 
 ## Complexity Analysis
-- **Time:** O(N log K) where N is the length of `s` and K is the number of distinct characters (≤26). Each heap operation costs log K.
+- **Time:** O(N log K) where N is the length of `s` and K is the number of distinct characters (≤26). Each heap operation costs log K.
 - **Space:** O(K) for the frequency map and heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the repeat limit applied globally (total occurrences) instead of consecutively?
 2. Can the algorithm be adapted to output the *smallest* possible string under the same constraints?
 3. What modifications are needed if characters include uppercase letters or digits?
 
 ## Key Takeaway
-Use a greedy max‑heap to always place the largest possible character, inserting a smaller character only when the repeat limit forces a break.
+Use a greedy max-heap to always place the largest possible character, inserting a smaller character only when the repeat limit forces a break.

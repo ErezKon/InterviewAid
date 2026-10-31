@@ -77,12 +77,12 @@ The DFS explores each child, expanding the sliding window while values remain un
 
 ## 5. Complexity Analysis
 
-**Time:** `O(N)` – each node is visited once and window adjustments are constant‑time.
+**Time:** `O(N)` – each node is visited once and window adjustments are constant-time.
 **Space:** `O(N)` – recursion stack and hash map storing last occurrence of each value.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * How would you modify the solution if the tree were directed?
 * Can you extend the approach to handle the case where up to `k` duplicate values are allowed?
@@ -92,4 +92,4 @@ The DFS explores each child, expanding the sliding window while values remain un
 
 ## Key Takeaway
 
-> Combine tree DFS with a sliding window constraint on the root‑to‑current path. Backtrack window state when returning from DFS.
+> Combine tree DFS with a sliding window constraint on the root-to-current path. Backtrack window state when returning from DFS.

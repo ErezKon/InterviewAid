@@ -14,7 +14,7 @@ The **total value** of an island is the sum of the values of all cells in the is
 
 Return the number of islands with a total value **divisible by** `k`.
 
-(Grid values are non‑negative; islands consist of non‑zero cells.)
+(Grid values are non-negative; islands consist of non-zero cells.)
 
 **Constraints:**
 - `m == grid.length`
@@ -57,7 +57,7 @@ FUNCTION countIslands(grid, k):
 
 ## 3. Examples
 
-(The walkthrough below uses a non-official grid `[[1,0,2],[0,3,0],[4,0,5]]`, k = 3, loosely grouping `{1,2}` with sum = 3 (divisible) and `{3,4,5}` sum = 12 (divisible).)
+(The walkthrough below uses a non-official grid `[[1,0,2],[0,3,0],[4,0,5]]`, k = 3, loosely grouping `{1,2}` with sum = 3 (divisible) and `{3,4,5}` sum = 12 (divisible).)
 
 ```
 Example 1:
@@ -74,19 +74,19 @@ Example 2:
   Explanation: The grid contains six islands, each with a total value that is divisible by 3.
 ```
 
-(A grid with no non‑zero cells, e.g. `[[0,0],[0,0]]`, has no islands, so the answer is 0.)
+(A grid with no non-zero cells, e.g. `[[0,0],[0,0]]`, has no islands, so the answer is 0.)
 
 ---
 
 ## 4. Walkthrough
 
 Take the first example grid and `k = 3`:
-1. Start at cell (0,0) value = 1 → start new island.
-2. Explore its neighbor (0,2) value = 2 via BFS; island sum becomes 1+2 = 3.
-3. Sum 3 % 3 = 0 → count = 1.
-4. Continue scanning, encounter cell (1,1) value = 3 → new island.
-5. BFS reaches (2,0) value = 4 and (2,2) value = 5, total sum = 3+4+5 = 12.
-6. 12 % 3 = 0 → count = 2. No other islands remain.
+1. Start at cell (0,0) value = 1 → start new island.
+2. Explore its neighbor (0,2) value = 2 via BFS; island sum becomes 1+2 = 3.
+3. Sum 3 % 3 = 0 → count = 1.
+4. Continue scanning, encounter cell (1,1) value = 3 → new island.
+5. BFS reaches (2,0) value = 4 and (2,2) value = 5, total sum = 3+4+5 = 12.
+6. 12 % 3 = 0 → count = 2. No other islands remain.
 
 ---
 
@@ -97,7 +97,7 @@ Take the first example grid and `k = 3`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return the list of island sums?
 - Can the solution be adapted for diagonal connectivity?
@@ -107,4 +107,4 @@ Take the first example grid and `k = 3`:
 
 ## Key Takeaway
 
-> Standard flood‑fill finds each connected component while accumulating its total value; after exploration, a simple divisibility check determines whether the island contributes to the answer.
+> Standard flood-fill finds each connected component while accumulating its total value; after exploration, a simple divisibility check determines whether the island contributes to the answer.

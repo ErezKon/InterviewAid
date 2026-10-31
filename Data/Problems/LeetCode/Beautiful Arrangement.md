@@ -66,7 +66,7 @@ Total count = 2.
 *Time*: O(n·2ⁿ) – each state defined by position and usedMask is visited once.
 *Space*: O(n) – recursion stack depth.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to return all valid permutations instead of just the count?
 2. Can you improve the runtime using DP memoization on `(pos, usedMask)`?
 3. What changes are needed if the divisibility condition is replaced by a custom predicate?

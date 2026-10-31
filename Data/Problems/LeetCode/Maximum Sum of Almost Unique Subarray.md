@@ -88,10 +88,10 @@ For `nums = [1,2,3,2,5]`:
 *Time*: Each element enters and leaves the window at most once → `O(n)`.
 *Space*: Hash map stores at most the distinct elements in the window → `O(n)` in worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to allow at most `k` duplicates?
-2. Can the problem be solved using a prefix‑sum and binary search approach?
+2. Can the problem be solved using a prefix-sum and binary search approach?
 3. How would the solution change if the array were circular?
 
 ## Key Takeaway
-A sliding‑window with a frequency map efficiently enforces the “at most one duplicate” constraint while tracking the maximum subarray sum.
+A sliding-window with a frequency map efficiently enforces the “at most one duplicate” constraint while tracking the maximum subarray sum.

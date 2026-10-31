@@ -104,7 +104,7 @@ Sum of maxes = 14. Similar calculation for mins gives 10. Difference = 4, matchi
 
 ## Complexity Analysis
 - **Time:** O(n) – each element is pushed and popped at most once in each stack pass.
-- **Space:** O(n) for the stacks (worst‑case when the array is monotonic).
+- **Space:** O(n) for the stacks (worst-case when the array is monotonic).
 
 ## Follow-Up Questions
 1. How would you adapt the algorithm to compute the sum of subarray **products**?

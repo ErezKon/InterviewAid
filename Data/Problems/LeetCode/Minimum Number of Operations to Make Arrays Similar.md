@@ -61,7 +61,7 @@ Explanation: The array nums is already similiar to target.
 **Greedy – Count Parity Mismatches (O(n log n))**
 
 1. Separate the numbers of each array into odd and even groups.
-2. The number of required operations equals the maximum of the mismatched odd‑to‑even counts because each operation can fix one mismatched element.
+2. The number of required operations equals the maximum of the mismatched odd-to-even counts because each operation can fix one mismatched element.
 3. Sort the mismatched groups and pair them to minimize the number of changes (though count alone suffices for the minimum).
 
 ```text
@@ -70,7 +70,7 @@ FUNCTION minOperations(nums1, nums2):
     even1← [x FOR x IN nums1 IF x MOD 2 = 0]
     odd2 ← [x FOR x IN nums2 IF x MOD 2 = 1]
     even2← [x FOR x IN nums2 IF x MOD 2 = 0]
-    // mismatches: odd in nums1 that need to become even, and vice‑versa
+    // mismatches: odd in nums1 that need to become even, and vice-versa
     mismatchOddToEven ← MAX(0, LENGTH(odd1) - LENGTH(odd2))
     mismatchEvenToOdd ← MAX(0, LENGTH(even1) - LENGTH(even2))
     RETURN MAX(mismatchOddToEven, mismatchEvenToOdd)
@@ -85,7 +85,7 @@ For `nums1 = [1,2,3]`, `nums2 = [2,1,3]`:
 |-------|----------------|----------------|
 | odd   | 2 (1,3)        | 1 (1)          |
 | even  | 1 (2)          | 2 (2,?)        |
-Mismatched odds = 2‑1 = 1, mismatched evens = 1‑2 = 0 → answer = 1.
+Mismatched odds = 2-1 = 1, mismatched evens = 1-2 = 0 → answer = 1.
 
 ---
 
@@ -107,4 +107,4 @@ Mismatched odds = 2‑1 = 1, mismatched evens = 1‑2 = 0 → answer = 1.
 
 ## Key Takeaway
 
-The minimum operations equal the larger of the odd‑to‑even and even‑to‑odd mismatches; fixing each mismatched parity resolves the permutation requirement.
+The minimum operations equal the larger of the odd-to-even and even-to-odd mismatches; fixing each mismatched parity resolves the permutation requirement.

@@ -83,7 +83,7 @@ FUNCTION MinCostThreeToppings(costs):
 | 3 | Return `6` |
 
 ## Complexity Analysis
-Sorting dominates: **O(n log n)** time, **O(1)** extra space if in‑place.
+Sorting dominates: **O(n log n)** time, **O(1)** extra space if in-place.
 
 ## Follow-Up Questions
 1. How to handle the case where fewer than three toppings are available?

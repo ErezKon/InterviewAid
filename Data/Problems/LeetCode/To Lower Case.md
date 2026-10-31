@@ -62,11 +62,11 @@ Result: `"hello"`.
 
 ## Complexity Analysis
 *Time*: O(n) where n is the length of the string.
-*Space*: O(n) for the output string (in‑place conversion would be O(1)).
+*Space*: O(n) for the output string (in-place conversion would be O(1)).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle Unicode characters beyond ASCII?
-2. Can you perform the conversion in‑place for a mutable character array?
+2. Can you perform the conversion in-place for a mutable character array?
 3. What is the impact on performance for very long strings?
 
 ## Key Takeaway

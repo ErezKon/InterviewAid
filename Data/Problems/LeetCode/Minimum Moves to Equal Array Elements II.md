@@ -71,9 +71,9 @@ Consider the array `[1,10,2,9]`.
 ## Complexity Analysis
 
 - **Time:** O(n log n) due to sorting (can be O(n) with quickselect).
-- **Space:** O(1) extra space if sorting in‑place.
+- **Space:** O(1) extra space if sorting in-place.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you achieve O(n) time without full sorting?
 - What if each move could increase or decrease an element by `k` instead of `1`?

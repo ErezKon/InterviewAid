@@ -112,4 +112,4 @@ The algorithm stops as soon as the repeated element is found.
 
 ## 8. Key Takeaway
 
-> **First duplicate = n‑repeated element.** With `n+1` unique values in a `2n`‑sized array, the repeated element must appear as a duplicate early, allowing a linear‑time hash‑set solution.
+> **First duplicate = n-repeated element.** With `n+1` unique values in a `2n`-sized array, the repeated element must appear as a duplicate early, allowing a linear-time hash-set solution.

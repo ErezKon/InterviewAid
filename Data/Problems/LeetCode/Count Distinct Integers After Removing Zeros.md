@@ -71,7 +71,7 @@ The final set size is 2.
 
 ## Complexity Analysis
 
-- **Time:** Each number is converted to a string of length *d* (max digits) and filtered, giving O(n × d).
+- **Time:** Each number is converted to a string of length *d* (max digits) and filtered, giving O(n × d).
 - **Space:** The set stores at most *n* transformed integers, O(n).
 
 ---
@@ -79,7 +79,7 @@ The final set size is 2.
 ## Follow-Up Questions
 
 1. How would you handle negative numbers or numbers with leading zeros?
-2. Can the solution be adapted to work in‑place without extra space?
+2. Can the solution be adapted to work in-place without extra space?
 3. What if the transformation rule changes to removing all occurrences of a given digit *k*?
 
 ---

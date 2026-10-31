@@ -79,10 +79,10 @@ If any accumulated sum equals `half` before the final line, the corresponding cu
 - **Time:** O(m·n) – each element visited once.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you extend the solution to allow two cuts (forming four quadrants) as in Partition II?
 - Can you handle negative numbers or large integer ranges?
 - What if the cut must be along a diagonal?
 
 ## Key Takeaway
-A single pass computing prefix sums along rows and columns quickly reveals whether a grid can be split into two equal‑sum halves.
+A single pass computing prefix sums along rows and columns quickly reveals whether a grid can be split into two equal-sum halves.

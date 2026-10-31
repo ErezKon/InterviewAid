@@ -90,16 +90,16 @@ Total = 3.
 
 ## Complexity Analysis
 
-- **Time:** O(n + 26) – one pass over the strings plus constant‑time prefix‑sum queries.
+- **Time:** O(n + 26) – one pass over the strings plus constant-time prefix-sum queries.
 - **Space:** O(26) – prefix arrays for forward and backward costs.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you handle a **dynamic** update to `nextCost`/`previousCost` after many queries?
 2. Can the solution be extended to support **different alphabets** or Unicode characters?
-3. What if the cost arrays are **non‑circular** (no wrap‑around)?
+3. What if the cost arrays are **non-circular** (no wrap-around)?
 
 ---
 

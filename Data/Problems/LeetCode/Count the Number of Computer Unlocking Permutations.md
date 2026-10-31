@@ -97,10 +97,10 @@ FUNCTION countPermutations(n, complexity):
 
 1. How would the solution change if multiple computers could be unlocked first?
 2. What if each computer has a list of prerequisite computers instead of a single dependency?
-3. Can you extend the approach to count permutations modulo a non‑prime number?
+3. Can you extend the approach to count permutations modulo a non-prime number?
 
 ---
 
 ## Key Takeaway
 
-> **When one element must come first and the rest are unconstrained, the answer is simply `(n‑1)!`. The key is identifying what constraint fixes the first position.**
+> **When one element must come first and the rest are unconstrained, the answer is simply `(n-1)!`. The key is identifying what constraint fixes the first position.**

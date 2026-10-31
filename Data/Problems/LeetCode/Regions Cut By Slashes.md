@@ -41,7 +41,7 @@ Example 3:
 ```
 
 ## Approach
-We upscale each cell to a `3 x 3` finer grid, marking the positions of slashes as walls. After expansion, the problem reduces to counting connected components of empty cells using flood‑fill (DFS/BFS) or Union‑Find.
+We upscale each cell to a `3 x 3` finer grid, marking the positions of slashes as walls. After expansion, the problem reduces to counting connected components of empty cells using flood-fill (DFS/BFS) or Union-Find.
 
 ```text
 FUNCTION regionsBySlashes(grid):
@@ -89,10 +89,10 @@ Consider `grid = [" /","/ "]` (n = 2).
 - Flood fill: visits each expanded cell once → O(n²) time.
 Overall: **Time O(n²), Space O(n²)**.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if diagonal connections between cells were considered part of the same region?
-2. Can the problem be solved using Union‑Find without explicit upscaling?
+2. Can the problem be solved using Union-Find without explicit upscaling?
 3. How does the approach adapt when the grid size grows to 1000×1000 (memory considerations)?
 
 ## Key Takeaway
-Upscaling the grid transforms slash boundaries into simple walls, allowing region counting via standard flood‑fill on a regular grid.
+Upscaling the grid transforms slash boundaries into simple walls, allowing region counting via standard flood-fill on a regular grid.

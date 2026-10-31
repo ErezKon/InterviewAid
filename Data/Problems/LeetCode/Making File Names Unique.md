@@ -95,14 +95,14 @@ Result matches output.
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n) average, each name processed with constant‑time hash lookups; worst‑case O(n · m) if many collisions but still linear in practice.
+- **Time:** O(n) average, each name processed with constant-time hash lookups; worst-case O(n · m) if many collisions but still linear in practice.
 - **Space:** O(n) for the hash map storing all unique names.
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you modify the algorithm to handle case‑insensitive file systems?
+- How would you modify the algorithm to handle case-insensitive file systems?
 - Can you output the minimal total number of characters added across all names?
 - What if the suffix format changes to `#k` instead of `(k)`?
 
@@ -110,4 +110,4 @@ Result matches output.
 
 ## Key Takeaway
 
-> Track the next available suffix for each base name. Skip already‑used suffixes. Register the new name to handle cascading conflicts.
+> Track the next available suffix for each base name. Skip already-used suffixes. Register the new name to handle cascading conflicts.

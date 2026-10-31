@@ -54,7 +54,7 @@ There are no valid node sequences of length 4, so we return -1.
 ```
 
 ## Approach
-The problem reduces to finding the maximum‑weight path in a DAG (or handling cycles by DP with memoization). Perform a topological sort; then compute `dp[node]` = `val[node]` + max(`dp[prev]`) over all incoming edges. The answer is the maximum `dp` value.
+The problem reduces to finding the maximum-weight path in a DAG (or handling cycles by DP with memoization). Perform a topological sort; then compute `dp[node]` = `val[node]` + max(`dp[prev]`) over all incoming edges. The answer is the maximum `dp` value.
 
 ```text
 FUNCTION MaxScore(vals, edges):
@@ -94,4 +94,4 @@ Consider `vals = [4,1,6,2]` and edges `[[0,2],[0,3],[2,1]]`.
 3. Can you extend the solution to return the actual sequence, not just its score?
 
 ## Key Takeaway
-Topological ordering lets you compute the maximum‑weight path in linear time by propagating best scores along directed edges.
+Topological ordering lets you compute the maximum-weight path in linear time by propagating best scores along directed edges.

@@ -125,7 +125,7 @@ The maximum window size observed is 3.
 ## 7. Follow-Up Questions
 
 1. How would the solution change if you could use **K** baskets instead of 2?
-2. Can you adapt the sliding‑window template to solve the "Longest Substring with At Most K Distinct Characters" problem?
+2. Can you adapt the sliding-window template to solve the "Longest Substring with At Most K Distinct Characters" problem?
 3. What if the fruits are given as a stream (infinite input)? How would you maintain the answer with limited memory?
 
 ---

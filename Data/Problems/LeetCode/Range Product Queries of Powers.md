@@ -40,12 +40,12 @@ The answer to the only query is powers[0] = 2. The answer modulo 10^9 + 7 is the
 ```
 
 ## Approach
-Extract the values of set bits in ascending order of their positions. Pre‑compute a prefix product array modulo `MOD`. Each query answer is `prefix[r] / prefix[l-1]` modulo `MOD`, using modular inverse.
+Extract the values of set bits in ascending order of their positions. Pre-compute a prefix product array modulo `MOD`. Each query answer is `prefix[r] / prefix[l-1]` modulo `MOD`, using modular inverse.
 
 ```text
 FUNCTION productQueries(n, queries):
     SET MOD ← 1_000_000_007
-    // Extract set‑bit values
+    // Extract set-bit values
     SET powers ← []
     SET bit ← 0
     WHILE n > 0:
@@ -91,10 +91,10 @@ END FUNCTION
 - Time: O(b + q) where `b` is number of set bits in `n` and `q` is number of queries.
 - Space: O(b) for the `powers` and `prefix` arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle updates to `n` between queries?
-2. Can you answer queries online without pre‑computing all prefix products?
-3. Extend to compute sum instead of product of set‑bit values.
+2. Can you answer queries online without pre-computing all prefix products?
+3. Extend to compute sum instead of product of set-bit values.
 
 ## Key Takeaway
-By converting set bits to their power‑of‑two values and using a prefix‑product with modular inverses, range product queries become O(1) per query after linear preprocessing.
+By converting set bits to their power-of-two values and using a prefix-product with modular inverses, range product queries become O(1) per query after linear preprocessing.

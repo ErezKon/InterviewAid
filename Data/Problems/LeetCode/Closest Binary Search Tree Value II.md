@@ -62,9 +62,9 @@ FUNCTION closestKValues(root, target, k):
 ## Walkthrough
 For the tree `[4,2,5,1,3]` and `target = 3.714286`:
 1. Inorder yields `values = [1,2,3,4,5]`.
-2. Insertion point is index 3 (`4`). `lo = 2` (`3`), `hi = 3` (`4`).
+2. Insertion point is index 3 (`4`). `lo = 2` (`3`), `hi = 3` (`4`).
 3. Compare distances: `|3-3.714| = 0.714`, `|4-3.714| = 0.286` → pick `4`.
-4. Move `hi` to 4 (`5`). Next compare `3` vs `5`; pick `3`.
+4. Move `hi` to 4 (`5`). Next compare `3` vs `5`; pick `3`.
 5. Collected `[4,3]`.
 
 ## Complexity Analysis

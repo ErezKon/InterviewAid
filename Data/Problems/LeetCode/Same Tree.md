@@ -45,7 +45,7 @@ Example 3:
 
 ## Approach
 
-Recursive depth‑first traversal comparing corresponding nodes.
+Recursive depth-first traversal comparing corresponding nodes.
 
 ```text
 FUNCTION isSameTree(p, q):
@@ -59,7 +59,7 @@ FUNCTION isSameTree(p, q):
 
 ## Walkthrough
 
-Consider Example 1 where `p` and `q` are `[1,2,3]`.
+Consider Example 1 where `p` and `q` are `[1,2,3]`.
 | Step | p node | q node | Action |
 |------|--------|--------|--------|
 | 1 | 1 | 1 | Values equal → recurse left & right |
@@ -89,4 +89,4 @@ All recursive calls return true, so final result is true.
 
 ## Key Takeaway
 
-> The three‑case base pattern (both null → true, one null → false, compare values + recurse) is the foundation for all tree comparison problems.
+> The three-case base pattern (both null → true, one null → false, compare values + recurse) is the foundation for all tree comparison problems.

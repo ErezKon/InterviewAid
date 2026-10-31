@@ -38,7 +38,7 @@ Example 3:
   Input: arr = [0,10,5,2]
   Output: 1
 ```
-<!-- Peak at index 1 with value 2. -->
+<!-- Peak at index 1 with value 2. -->
 
 ## Approach
 Use binary search on the slope direction.
@@ -59,13 +59,13 @@ For `[1,3,5,4,2]`:
 Loop ends, `lo = 2` → peak index.
 
 ## Complexity Analysis
-- Time: O(log n) – each iteration halves the search space.
+- Time: O(log n) – each iteration halves the search space.
 - Space: O(1) – only constant extra variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you find the peak in an array that may contain multiple peaks?
 2. Can you adapt the algorithm to work with a “valley” array (decreasing then increasing)?
 3. What if the array is streamed and you cannot access random indices?
 
 ## Key Takeaway
-Binary search on the monotonic slope efficiently locates the unique peak in a mountain array using O(log n) time and O(1) space.
+Binary search on the monotonic slope efficiently locates the unique peak in a mountain array using O(log n) time and O(1) space.

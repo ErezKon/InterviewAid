@@ -66,7 +66,7 @@ We can see that the string was prefix-aligned 1 time, so we return 1.
 
 ```text
 FUNCTION countPrefixAligned(flips):
-    // flips[i] is the position (1‑based) flipped at step i+1
+    // flips[i] is the position (1-based) flipped at step i+1
     SET maxFlip ← 0
     SET result ← 0
     FOR i ← 0 TO LENGTH(flips) - 1:
@@ -83,7 +83,7 @@ FUNCTION countPrefixAligned(flips):
 
 Consider `flips = [3,2,4,1,5]`.
 
-| Step (i) | flips[i] | maxFlip after update | i+1 | Prefix‑aligned? |
+| Step (i) | flips[i] | maxFlip after update | i+1 | Prefix-aligned? |
 |----------|----------|----------------------|-----|-----------------|
 | 0        | 3        | 3                    | 1   | No (3 ≠ 1)      |
 | 1        | 2        | 3                    | 2   | No (3 ≠ 2)      |
@@ -107,11 +107,11 @@ The algorithm counts the two steps where `maxFlip` equals the step count.
 ## 6. Follow-Up Questions
 
 - How would the solution change if flips could contain duplicate positions?
-- Can you extend the approach to report the actual prefix‑aligned intervals, not just the count?
+- Can you extend the approach to report the actual prefix-aligned intervals, not just the count?
 - What is the complexity if the input size is massive and must be processed in a streaming fashion?
 
 ---
 
 ## 7. Key Takeaway
 
-> **Prefix‑aligned ↔ max flipped position == step number.** Tracking the running maximum lets us determine alignment in constant space.
+> **Prefix-aligned ↔ max flipped position == step number.** Tracking the running maximum lets us determine alignment in constant space.

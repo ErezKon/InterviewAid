@@ -110,10 +110,10 @@ Result: 7 - 1 = 6
 | Aspect | Value |
 |---|---|
 | **Time** | O(n log n) — sorting dominates |
-| **Space** | O(1) extra (in‑place sort) |
+| **Space** | O(1) extra (in-place sort) |
 
 ---
 
 ## Key Takeaway
 
-> **Counting pairs with sum in a range: sort + two‑pointer `countLess`. Decompose range `[lower, upper]` into `countLess(upper) - countLess(lower‑1)` for clean implementation.**
+> **Counting pairs with sum in a range: sort + two-pointer `countLess`. Decompose range `[lower, upper]` into `countLess(upper) - countLess(lower-1)` for clean implementation.**

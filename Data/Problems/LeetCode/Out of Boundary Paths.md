@@ -36,7 +36,7 @@ Output: 12
 Use dynamic programming. `dp[r][c]` stores the number of ways to reach cell `(r,c)` after the current number of moves. For each move, distribute the counts to the four neighboring cells; if a neighbor is out of bounds, add its count to the answer.
 
 ## Walkthrough
-| Move | Cell (r,c) | Ways before | Out‑of‑bounds contributions |
+| Move | Cell (r,c) | Ways before | Out-of-bounds contributions |
 |------|------------|-------------|-----------------------------|
 | 1    | (0,0)      | 1           | 2 (up, left)                |
 | 1    | (0,1)      | 0           | 1 (up)                      |
@@ -47,7 +47,7 @@ Use dynamic programming. `dp[r][c]` stores the number of ways to reach cell `(r,
 - **Space:** O(m × n) for the DP tables.
 
 ## Follow-Up Questions
-1. How would you modify the solution for a toroidal grid (wrap‑around edges)?
+1. How would you modify the solution for a toroidal grid (wrap-around edges)?
 2. Can the DP be optimized to use O(n) space by reusing rows?
 3. What changes if diagonal moves are also allowed?
 

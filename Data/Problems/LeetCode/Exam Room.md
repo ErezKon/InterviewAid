@@ -96,7 +96,7 @@ CLASS ExamRoom:
 - **Time:** O(k) for `seat()` where k is the number of occupied seats (iteration over gaps). `leave()` is O(log k) if a balanced tree is used; here we assume O(k) for list removal.
 - **Space:** O(k) to store occupied seats.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you improve `seat()` to O(log k) using a priority queue of intervals?
 - Can you support a very large `n` (e.g., 10⁹) with sparse occupancy?
 - How would you modify the design to handle multiple exam rooms simultaneously?

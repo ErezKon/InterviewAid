@@ -49,7 +49,7 @@ Output: 1
 
 ## Walkthrough
 
-For Example 1, splitting the string on whitespace yields the list `["Hello,", "my", "name", "is", "John"]`. Its length is 5, which is the answer. For Example 2, splitting results in an empty list, so the answer is 0.
+For Example 1, splitting the string on whitespace yields the list `["Hello,", "my", "name", "is", "John"]`. Its length is 5, which is the answer. For Example 2, splitting results in an empty list, so the answer is 0.
 ---
 
 ## Approach: Split — O(n) ✅

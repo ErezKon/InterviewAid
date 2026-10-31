@@ -64,10 +64,10 @@ Result = `["girl", "student"]`.
 - Time: `O(m)` where `m` is number of words in `text`.
 - Space: `O(1)` extra besides output list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to handle overlapping bigrams?
 2. Extend to return the count of each following word.
-3. Generalize to `k`‑word phrases (n‑grams).
+3. Generalize to `k`-word phrases (n-grams).
 
 ## Key Takeaway
-A simple sliding‑window scan over the word list efficiently captures words that follow a given bigram.
+A simple sliding-window scan over the word list efficiently captures words that follow a given bigram.

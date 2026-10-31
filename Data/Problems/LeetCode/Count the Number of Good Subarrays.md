@@ -53,7 +53,7 @@ FUNCTION countGood(nums, k):
     SET n ← LENGTH(nums)
 
     FOR right ← 0 TO n - 1:
-        // Adding nums[right] creates `count[nums[right]]` new equal‑element pairs
+        // Adding nums[right] creates `count[nums[right]]` new equal-element pairs
         SET pairs ← pairs + count.GET(nums[right], 0)
         SET count[nums[right]] ← count.GET(nums[right], 0) + 1
 
@@ -80,8 +80,8 @@ FUNCTION countGood(nums, k):
 | 3 | 2 | 0 | 3 | 3 | 0 |
 | 4 | 3 | 0 | 4 | 6 | 0 |
 | 5 | 4 | 0 | 5 | 10 | 0 |
-| – | – | – | – | – | **pairs ≥ k, add `n‑right = 5‑4 = 1` to result → result=1** |
-| Shrink left | left=1, count[1]=4, pairs = 10‑4 = 6 (now < k) |
+| – | – | – | – | – | **pairs ≥ k, add `n-right = 5-4 = 1` to result → result=1** |
+| Shrink left | left=1, count[1]=4, pairs = 10-4 = 6 (now < k) |
 
 Result = 1, matching the expected output.
 
@@ -98,4 +98,4 @@ Result = 1, matching the expected output.
 
 ## Key Takeaway
 
-> **Counting equal‑element pairs in a sliding window: adding an element creates `count[x]` new pairs, removing it destroys `count[x]‑1` pairs. When the pair count reaches the threshold, all right‑extensions are automatically good.**
+> **Counting equal-element pairs in a sliding window: adding an element creates `count[x]` new pairs, removing it destroys `count[x]-1` pairs. When the pair count reaches the threshold, all right-extensions are automatically good.**

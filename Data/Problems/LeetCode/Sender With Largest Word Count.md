@@ -93,11 +93,11 @@ Example 2:
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the solution if messages could contain punctuation?
 2. Can you solve it in a single pass without storing all counts (e.g., using streaming)?
-3. What if the tie‑break rule changed to the smallest lexicographic name?
+3. What if the tie-break rule changed to the smallest lexicographic name?
 
 ---
 

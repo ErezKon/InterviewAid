@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented multi-source-BFS problem. Correct idea: let `cnt` = number of non-blocked cells; flood-fill each connected component to get its value sum `s` and size `t`; every cell outside the component (`cnt − t` cells) has `s` in its remoteness, so add `(cnt − t)·s` per component. O(n²).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 You are given a **0-indexed** matrix `grid` of order `n * n`. Each cell in this matrix has a value `grid[i][j]`, which is either a **positive** integer or `-1` representing a blocked cell.
 
@@ -51,50 +51,57 @@ Explanation: Since there are no other cells than (0, 0), R[0][0] is equal to 0. 
 ```
 
 ## Approach
-Perform a multi‑source BFS starting from all cells containing `1`. The BFS expands outward level by level, assigning distance to each `0` cell when first visited.
-1. Enqueue all `1` cells with distance 0.
-2. While queue not empty, dequeue cell, explore its four neighbors.
-3. If neighbor not visited, set its distance = current distance + 1 and enqueue.
-4. Accumulate distances as they are assigned.
+Reachability between non-blocked cells is exactly membership in the same 4-connected component. For a non-blocked cell in a component with value sum `s`, the cells it cannot reach are all non-blocked cells outside its component, so `R = S − s`, where `S` is the sum of all non-blocked values.
+
+Therefore every cell of a component with size `t` and sum `s` contributes `S − s`, and the component contributes `t · (S − s)` in total. Blocked cells contribute 0.
+1. Compute `S` = sum of all positive values.
+2. Flood-fill (iterative DFS/BFS) each unvisited non-blocked cell to get its component's size `t` and sum `s`.
+3. Add `t · (S − s)` to the answer (use 64-bit integers: up to 9·10^4 cells × 9·10^10).
 
 ```text
-FUNCTION sumRemoteness(grid):
-    SET rows ← NUMBER OF ROWS in grid
-    SET cols ← NUMBER OF COLUMNS in grid
-    CREATE queue ← []
-    CREATE dist[rows][cols] ← -1
-    FOR i FROM 0 TO rows-1:
-        FOR j FROM 0 TO cols-1:
-            IF grid[i][j] == 1:
-                SET dist[i][j] ← 0
-                ENQUEUE (i, j) INTO queue
-    SET total ← 0
-    WHILE queue NOT EMPTY:
-        SET (r, c) ← DEQUEUE(queue)
-        SET total ← total + dist[r][c]
-        FOR (nr, nc) IN [(r-1,c),(r+1,c),(r,c-1),(r,c+1)]:
-            IF nr IN RANGE AND nc IN RANGE AND dist[nr][nc] == -1:
-                SET dist[nr][nc] ← dist[r][c] + 1
-                ENQUEUE (nr, nc) INTO queue
-    RETURN total
+FUNCTION sumRemoteness(grid)
+    n ← number of rows of grid
+    S ← sum of grid[i][j] over all cells with grid[i][j] > 0
+    visited ← n x n array of false
+    answer ← 0
+    FOR i ← 0 TO n-1
+        FOR j ← 0 TO n-1
+            IF grid[i][j] > 0 AND NOT visited[i][j]
+                visited[i][j] ← true
+                stack ← [(i, j)]
+                s ← 0; t ← 0
+                WHILE stack not empty
+                    (r, c) ← POP stack
+                    s ← s + grid[r][c]
+                    t ← t + 1
+                    FOR (nr, nc) IN [(r-1,c), (r+1,c), (r,c-1), (r,c+1)]
+                        IF inside grid AND grid[nr][nc] > 0 AND NOT visited[nr][nc]
+                            visited[nr][nc] ← true
+                            PUSH (nr, nc)
+                answer ← answer + t * (S - s)   // each cell misses everything outside its component
+    RETURN answer
 ```
 
 ## Walkthrough
-Grid `[[0,1],[0,0]]`:
-- Initialize queue with (0,1) distance 0.
-- Dequeue (0,1): total=0, push neighbors (0,0) and (1,1) distance 1.
-- Dequeue (0,0): total=1, push (1,0) distance 2.
-- Dequeue (1,1): total=2, no new cells.
-- Dequeue (1,0): total=4. End. Sum = 4.
+Example 1: `grid = [[-1,1,-1],[5,-1,4],[-1,3,-1]]`. Non-blocked values: 1, 5, 4, 3 → `S = 13`. No two of them share an edge, so there are four single-cell components.
+
+| Component | t | s | t · (S − s) | answer |
+|-----------|---|---|-------------|--------|
+| {(0,1)} | 1 | 1 | 12 | 12 |
+| {(1,0)} | 1 | 5 | 8 | 20 |
+| {(1,2)} | 1 | 4 | 9 | 29 |
+| {(2,1)} | 1 | 3 | 10 | 39 |
+
+Result: **39**.
 
 ## Complexity Analysis
-Time: O(m·n) – each cell visited once.
-Space: O(m·n) for distance matrix and queue.
+Time: O(n²) — every cell is visited once by the flood fill.
+Space: O(n²) for the visited array and the explicit stack.
 
-## Follow‑Up Questions
-- How would you modify the algorithm for weighted distances?
-- Can the solution be adapted to compute the maximum remoteness instead of the sum?
-- What if the grid is extremely large and does not fit in memory?
+## Follow-Up Questions
+- How would you handle updates that block/unblock cells online? (Unblocking only: union-find with component sums; deletions need offline reverse processing.)
+- How would the answer change with 8-directional movement? (Only the neighbor list changes.)
+- Can you avoid the visited array? (Overwrite visited cells with -1 if mutating the input is allowed.)
 
 ## Key Takeaway
-A multi‑source BFS from all `1` cells efficiently computes minimum Manhattan distances to the nearest `1` for every cell.
+When a per-cell quantity depends only on which connected component the cell belongs to, compute component aggregates (size and sum) once and combine them with the global total, instead of solving reachability per cell.

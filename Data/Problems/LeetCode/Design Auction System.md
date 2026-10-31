@@ -60,7 +60,7 @@ CLASS AuctionSystem:
     SET nextId ← 1
 
     FUNCTION createAuction(endTime):
-        SET auctions[nextId] ← {endTime: endTime, active: true, bidsHeap: empty max‑heap}
+        SET auctions[nextId] ← {endTime: endTime, active: true, bidsHeap: empty max-heap}
         SET id ← nextId
         INCREMENT nextId
         RETURN id
@@ -89,7 +89,7 @@ CLASS AuctionSystem:
 | 1 | `createAuction(10)` | auctions{1:{endTime:10, active:true, heap:[]}} | New auction id 1 created |
 | 2 | `placeBid(1,100,5)` | heap → [(5,100)] | User 100 bids $5 |
 | 3 | `placeBid(1,150,7)` | heap → [(7,150),(5,100)] | User 150 bids $7, becomes max |
-| 4 | `endAuction(1)` | active:false, winner=150 | Auction ends, max‑heap yields winner 150 |
+| 4 | `endAuction(1)` | active:false, winner=150 | Auction ends, max-heap yields winner 150 |
 
 ---
 
@@ -97,19 +97,19 @@ CLASS AuctionSystem:
 
 | Aspect | Value |
 |---|---|
-| **Time** | `createAuction`: O(1); `placeBid`: O(log b) where b is number of bids for that auction; `endAuction`: O(log b) to pop max |
+| **Time** | `createAuction`: O(1); `placeBid`: O(log b) where b is number of bids for that auction; `endAuction`: O(log b) to pop max |
 | **Space** | O(a + b) where a is number of auctions and b total bids stored |
 
 ---
 
 ## Follow-Up Questions
 
-1. How would you support retrieving the top‑k highest bids without ending the auction?
-2. How can you handle tie‑breaking when multiple bids have the same amount?
+1. How would you support retrieving the top-k highest bids without ending the auction?
+2. How can you handle tie-breaking when multiple bids have the same amount?
 3. How would you persist auction data to survive server crashes?
 
 ---
 
 ## Key Takeaway
 
-> **Use a max‑heap per auction to manage bids efficiently; it gives O(log n) insertion and O(1) access to the highest bid.**
+> **Use a max-heap per auction to manage bids efficiently; it gives O(log n) insertion and O(1) access to the highest bid.**

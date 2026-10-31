@@ -46,7 +46,7 @@ Example 3:
 ```
 
 ## Approach
-The problem can be solved by iterating through the original string while tracking the next index from `spaces` where a space should be inserted. Use two‑pointer technique: one pointer for the string index and another for the `spaces` array.
+The problem can be solved by iterating through the original string while tracking the next index from `spaces` where a space should be inserted. Use two-pointer technique: one pointer for the string index and another for the `spaces` array.
 
 ```text
 FUNCTION addSpaces(s, spaces):
@@ -74,10 +74,10 @@ FUNCTION addSpaces(s, spaces):
 - **Time:** O(n) where n is the length of `s` (each character processed once).
 - **Space:** O(n) for the output string.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle duplicate indices in `spaces`?
 2. Can you modify the algorithm to insert multiple characters at each index?
 3. What if `spaces` is not sorted?
 
 ## Key Takeaway
-Use a two‑pointer scan to interleave spaces while building the result in linear time.
+Use a two-pointer scan to interleave spaces while building the result in linear time.

@@ -41,7 +41,7 @@ Explanation: The binary representation of 6 is "110".
 ```
 
 ## Approach
-Use the **inverse Gray code** property. The number of operations equals the integer obtained by XOR‑ing `n` with all its right‑shifted versions.
+Use the **inverse Gray code** property. The number of operations equals the integer obtained by XOR-ing `n` with all its right-shifted versions.
 
 ```text
 FUNCTION minimumOneBitOperations(n):
@@ -62,13 +62,13 @@ FUNCTION minimumOneBitOperations(n):
 The final `result` is the minimum operation count.
 
 ## Complexity Analysis
-Time: O(log n) – loop runs for each bit.
+Time: O(log n) – loop runs for each bit.
 Space: O(1) – constant extra variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would the solution adapt if flipping the most significant bit were allowed?
 * Can we extend the method to compute the sequence of intermediate numbers?
 * What is the relationship between this problem and binary reflected Gray codes?
 
 ## Key Takeaway
-The minimum operations correspond to the inverse Gray code of `n`, obtainable by XOR‑ing `n` with all its right‑shifted copies.
+The minimum operations correspond to the inverse Gray code of `n`, obtainable by XOR-ing `n` with all its right-shifted copies.

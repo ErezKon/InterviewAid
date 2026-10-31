@@ -87,11 +87,11 @@ Consider Example 1.
 1. Pair jobs and sort by end time → `[(1,3,20), (2,5,20), (4,6,70), (6,9,60), (3,10,100)]`.
 2. Initialize `dp[0] = 0`.
 3. For each job i:
-   - Job 1 (1‑3,20): no previous compatible job → `dp[1] = max(0, 20) = 20`.
-   - Job 2 (2‑5,20): compatible with none → `dp[2] = max(20, 20) = 20`.
-   - Job 3 (4‑6,70): latest non‑overlap ends at 3 (job 1) → `dp[3] = max(20, dp[1] + 70) = 90`.
-   - Job 4 (6‑9,60): latest non‑overlap ends at 6 (job 3) → `dp[4] = max(90, dp[3] + 60) = 150`.
-   - Job 5 (3‑10,100): latest non‑overlap ends at 3 (job 1) → `dp[5] = max(150, dp[1] + 100) = 150`.
+   - Job 1 (1-3,20): no previous compatible job → `dp[1] = max(0, 20) = 20`.
+   - Job 2 (2-5,20): compatible with none → `dp[2] = max(20, 20) = 20`.
+   - Job 3 (4-6,70): latest non-overlap ends at 3 (job 1) → `dp[3] = max(20, dp[1] + 70) = 90`.
+   - Job 4 (6-9,60): latest non-overlap ends at 6 (job 3) → `dp[4] = max(90, dp[3] + 60) = 150`.
+   - Job 5 (3-10,100): latest non-overlap ends at 3 (job 1) → `dp[5] = max(150, dp[1] + 100) = 150`.
 4. Final answer `dp[5] = 150`.
 
 ---

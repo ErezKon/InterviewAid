@@ -98,7 +98,7 @@ The algorithm updates counters based on direction changes, yielding a final `max
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm to also return the start and end indices of the longest subarray?
-- Can the solution be extended to handle non‑contiguous subsequences?
+- Can the solution be extended to handle non-contiguous subsequences?
 
 ---
 

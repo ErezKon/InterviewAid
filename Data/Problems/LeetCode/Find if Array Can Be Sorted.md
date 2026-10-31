@@ -84,16 +84,16 @@ Consider `nums = [3,1,2]`.
 |0|3|2|
 |1|1|1|
 |2|2|1|
-Groups: (2,2) for index0, (1,2) for indices1‑2. Since 2 ≤ 1 is false, we check condition: max of first group (3) ≤ min of second group (1) → false, but because groups are not required to be contiguous after swaps, the algorithm actually sorts within each popcount group; the condition holds after sorting groups internally, thus returns true.
+Groups: (2,2) for index0, (1,2) for indices1-2. Since 2 ≤ 1 is false, we check condition: max of first group (3) ≤ min of second group (1) → false, but because groups are not required to be contiguous after swaps, the algorithm actually sorts within each popcount group; the condition holds after sorting groups internally, thus returns true.
 
 ## Complexity Analysis
 - **Time:** O(n) – each element is processed a constant number of times.
 - **Space:** O(g) where g is the number of groups (≤ n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if swaps were allowed between any elements with *equal* popcount, not just consecutive ones?
 2. Can you extend the approach to handle a custom equivalence relation on elements?
 3. What is the impact on runtime if the array size reaches 10⁶?
 
 ## Key Takeaway
-By collapsing contiguous equal‑popcount segments into min‑max intervals, we can verify sortability with a simple linear scan.
+By collapsing contiguous equal-popcount segments into min-max intervals, we can verify sortability with a simple linear scan.

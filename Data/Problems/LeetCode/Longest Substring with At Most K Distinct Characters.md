@@ -76,7 +76,7 @@ Take `s = "eceba"`, `k = 2`.
 
 ---
 
-## Follow‑Up
+## Follow-Up
 
 - How would you modify the solution for Unicode characters where the alphabet size is large?
 - Can you solve the problem in O(n) without a hash map by using an array of size 256 for ASCII?

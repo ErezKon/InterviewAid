@@ -95,7 +95,7 @@ The minimum cost for mask `11` is 6.
 
 ## 5. Complexity Analysis
 
-- **Time:** For each of the `n` workers we iterate over all `2^m` masks and try up to `m` bike assignments → O(n × 2^m).
+- **Time:** For each of the `n` workers we iterate over all `2^m` masks and try up to `m` bike assignments → O(n × 2^m).
 - **Space:** Store DP for each mask → O(2^m).
 
 ---

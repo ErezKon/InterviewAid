@@ -73,7 +73,7 @@ Consider the first example grid.
 | (2,0) | 0 | 1 |
 | (2,1) | 0 | 1 |
 | (2,2) | 0 | 2 |
-The bottom‑right cell yields `2` unique paths.
+The bottom-right cell yields `2` unique paths.
 
 ## Complexity Analysis
 Time: O(m·n) – each cell processed once.
@@ -85,4 +85,4 @@ Space: O(m·n) for the DP table (can be reduced to O(n) with rolling array).
 * Can you compute the number of paths modulo a large prime?
 
 ## Key Takeaway
-Obstacles turn the classic grid‑path problem into a DP task where each cell accumulates paths from its top and left neighbours, skipping blocked cells.
+Obstacles turn the classic grid-path problem into a DP task where each cell accumulates paths from its top and left neighbours, skipping blocked cells.

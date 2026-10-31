@@ -114,4 +114,4 @@ The binary search runs `log M` iterations, each scanning the inventory.
 
 ## Key Takeaway
 
-Binary search on the price threshold combined with arithmetic‑series sums yields an O(n log M) greedy solution for maximizing profit from diminishing‑value balls.
+Binary search on the price threshold combined with arithmetic-series sums yields an O(n log M) greedy solution for maximizing profit from diminishing-value balls.

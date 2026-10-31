@@ -30,7 +30,7 @@ Output: false
 ```
 
 ## Approach
-Compute the sorted digit string of `n`. Pre‑compute the sorted digit strings of all powers of two up to 2³⁰ (since 2³⁰ > 10⁹). If any pre‑computed string matches the target, a reordering exists.
+Compute the sorted digit string of `n`. Pre-compute the sorted digit strings of all powers of two up to 2³⁰ (since 2³⁰ > 10⁹). If any pre-computed string matches the target, a reordering exists.
 
 ```text
 FUNCTION reorderedPowerOf2(n):
@@ -55,9 +55,9 @@ FUNCTION reorderedPowerOf2(n):
 - Space: O(1) – only a few temporary strings.
 
 ## Follow-Up Questions
-1. How would you adapt the solution for very large numbers beyond 32‑bit range?
-2. Can you solve the problem without sorting, using a digit‑count frequency array instead?
+1. How would you adapt the solution for very large numbers beyond 32-bit range?
+2. Can you solve the problem without sorting, using a digit-count frequency array instead?
 3. What changes are needed if the reordering must not produce leading zeros?
 
 ## Key Takeaway
-By comparing the digit‑multiset of the given number with those of all feasible powers of two, you can decide reorderability in constant time.
+By comparing the digit-multiset of the given number with those of all feasible powers of two, you can decide reorderability in constant time.

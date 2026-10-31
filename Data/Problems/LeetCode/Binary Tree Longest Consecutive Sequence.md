@@ -31,7 +31,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a **DFS** that carries the current consecutive length from the parent. If the current node continues the sequence (`node.val == parent.val + 1`), increment the length; otherwise reset to 1. Update a global maximum at each node.
+Perform a **DFS** that carries the current consecutive length from the parent. If the current node continues the sequence (`node.val == parent.val + 1`), increment the length; otherwise reset to 1. Update a global maximum at each node.
 
 ### Pseudocode
 ```text
@@ -54,19 +54,19 @@ FUNCTION dfs(node, parent, length):
 
 ## Walkthrough
 For `[1,2,3,4]`:
-1. Root `1` starts length 1 → `maxLen=1`.
-2. Child `2` continues (`2==1+1`) → length 2, `maxLen=2`.
-3. Child `3` continues → length 3, `maxLen=3`.
-4. Child `4` continues → length 4, `maxLen=4`.
+1. Root `1` starts length 1 → `maxLen=1`.
+2. Child `2` continues (`2==1+1`) → length 2, `maxLen=2`.
+3. Child `3` continues → length 3, `maxLen=3`.
+4. Child `4` continues → length 4, `maxLen=4`.
 Result = 4.
 
 ## Complexity Analysis
 - **Time:** `O(n)` – each node visited once.
-- **Space:** `O(h)` – recursion stack, where `h` is tree height (worst‑case `O(n)`).
+- **Space:** `O(h)` – recursion stack, where `h` is tree height (worst-case `O(n)`).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle paths that may go **upwards** as well as downwards?
-2. Can you adapt the solution for an **N‑ary tree**?
+2. Can you adapt the solution for an **N-ary tree**?
 3. What changes are needed to return the actual node sequence, not just its length?
 
 ## Key Takeaway

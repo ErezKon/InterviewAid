@@ -36,7 +36,7 @@ Output: 4
 ```
 
 ## Approach
-For each bit position (0‑31), count how many numbers have a `1` (`ones`). The number of pairs differing at that bit is `ones * (n - ones)`. Sum across all bits.
+For each bit position (0-31), count how many numbers have a `1` (`ones`). The number of pairs differing at that bit is `ones * (n - ones)`. Sum across all bits.
 
 ```text
 FUNCTION totalHammingDistance(nums):
@@ -65,10 +65,10 @@ Total = 6.
 *Time*: O(32·n) ≈ O(n). 
 *Space*: O(1).
 
-## Follow‑Up Questions
-1. How would you extend the solution to 64‑bit integers?
+## Follow-Up Questions
+1. How would you extend the solution to 64-bit integers?
 2. Can you compute the sum for a streaming input where numbers arrive one by one?
-3. What is the effect of using a bit‑set representation for very large arrays?
+3. What is the effect of using a bit-set representation for very large arrays?
 
 ## Key Takeaway
 Counting ones per bit and multiplying by zeros yields the total Hamming distance efficiently.

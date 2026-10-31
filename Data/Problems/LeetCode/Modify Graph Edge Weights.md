@@ -75,7 +75,7 @@ Explanation: The graph above shows a modified graph having the shortest distance
 
 ## 3. Key Insight
 
-> Use two passes of Dijkstra. First, set all `-1` edges to weight `1` (minimum). If the shortest path already exceeds `target`, impossible. Otherwise, gradually increase weights of modifiable edges while re‑running Dijkstra; the shortest path distance is monotonic with respect to edge weight increases.
+> Use two passes of Dijkstra. First, set all `-1` edges to weight `1` (minimum). If the shortest path already exceeds `target`, impossible. Otherwise, gradually increase weights of modifiable edges while re-running Dijkstra; the shortest path distance is monotonic with respect to edge weight increases.
 
 ---
 
@@ -128,7 +128,7 @@ Consider the first example.
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(E log V * log target) — Dijkstra per binary‑search step |
+| **Time** | O(E log V * log target) — Dijkstra per binary-search step |
 | **Space** | O(V + E) |
 
 ---
@@ -136,11 +136,11 @@ Consider the first example.
 ## 7. Follow-Up Questions
 
 1. How would you handle multiple modifiable edges simultaneously without binary search?
-2. Can the problem be solved in O(E log V) using a single Dijkstra with edge potentials?
+2. Can the problem be solved in O(E log V) using a single Dijkstra with edge potentials?
 3. What changes if edge weights can be fractional?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Two‑phase Dijkstra with weight adjustments.** Start with minimum weights, then increase modifiable edges until the shortest path exactly matches the target; the distance grows monotonically with edge weight increases.
+> **Two-phase Dijkstra with weight adjustments.** Start with minimum weights, then increase modifiable edges until the shortest path exactly matches the target; the distance grows monotonically with edge weight increases.

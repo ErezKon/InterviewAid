@@ -115,7 +115,7 @@ Consider `nums1 = [5,4,3]` and `nums2 = [6,5,4,3,2]`.
 
 ## Follow-Up Questions
 
-- How would the solution change if the arrays were sorted in non‑decreasing order?
+- How would the solution change if the arrays were sorted in non-decreasing order?
 - Can you adapt the algorithm to return the actual pair of indices instead of just the distance?
 - What if the arrays contain duplicate values and you need the lexicographically smallest pair?
 

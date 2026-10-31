@@ -84,7 +84,7 @@ Example 2:
 
 Consider `word = "zzabc"`, `numFriends = 3`:
 
-1. `n = 5`, `maxLen = 5‑3+1 = 3`.
+1. `n = 5`, `maxLen = 5-3+1 = 3`.
 2. Enumerate substrings of length 3:
    - i=0 → "zza"
    - i=1 → "zab"
@@ -107,7 +107,7 @@ Consider `word = "zzabc"`, `numFriends = 3`:
 
 1. How would the solution change if friends could receive substrings of varying lengths?
 2. What if the goal were to maximize the **sum** of ASCII values of the chosen substring?
-3. Can you solve the problem using a sliding‑window technique?
+3. Can you solve the problem using a sliding-window technique?
 
 ---
 

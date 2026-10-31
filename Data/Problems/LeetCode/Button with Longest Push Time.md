@@ -87,11 +87,11 @@ Result: button 2.
 ## 6. Follow-Up Questions
 
 - How would you handle overlapping button presses or missing timestamps?
-- Can you extend the solution to return the top‑k longest durations?
+- Can you extend the solution to return the top-k longest durations?
 - What if events are not sorted by time?
 
 ---
 
 ## Key Takeaway
 
-> Compute each button's push duration as the time difference from the previous event. Track the maximum with tie‑breaking on index.
+> Compute each button's push duration as the time difference from the previous event. Track the maximum with tie-breaking on index.

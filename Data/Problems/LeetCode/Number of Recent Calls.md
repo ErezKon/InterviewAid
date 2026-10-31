@@ -59,7 +59,7 @@ recentCounter.ping(3002);  // requests = [1, 100, 3001, 3002], range is [2,3002]
 
 Maintain a **queue** (or deque) of timestamps. For each `ping(t)`:
 1. Enqueue `t`.
-2. Dequeue timestamps that are older than `t‑3000`.
+2. Dequeue timestamps that are older than `t-3000`.
 3. The queue size is the answer.
 Each timestamp enters and leaves the queue exactly once, giving **amortized O(1)** time per call.
 
@@ -70,10 +70,10 @@ Each timestamp enters and leaves the queue exactly once, giving **amortized O(1)
 Consider the sequence of pings `[1, 100, 3001, 3002]`.
 | Call | Queue after enqueue | Dequeue condition | Queue after dequeue | Return |
 |------|----------------------|-------------------|----------------------|--------|
-| ping(1)   | [1]                 | none (1‑3000 = -2999) | [1]                 | 1 |
-| ping(100) | [1,100]             | none (100‑3000 = -2900) | [1,100]             | 2 |
+| ping(1)   | [1]                 | none (1-3000 = -2999) | [1]                 | 1 |
+| ping(100) | [1,100]             | none (100-3000 = -2900) | [1,100]             | 2 |
 | ping(3001)| [1,100,3001]        | remove 1 (1 < 1)   | [100,3001]          | 3 |
-| ping(3002)| [100,3001,3002]     | none (3002‑3000=2) | [100,3001,3002]     | 3 |
+| ping(3002)| [100,3001,3002]     | none (3002-3000=2) | [100,3001,3002]     | 3 |
 
 ---
 
@@ -82,18 +82,18 @@ Consider the sequence of pings `[1, 100, 3001, 3002]`.
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(1) amortized per `ping` |
-| **Space** | O(W) where W is the number of calls within the 3000 ms window |
+| **Space** | O(W) where W is the number of calls within the 3000 ms window |
 
 ---
 
 ## 6. Follow-Up Questions
 
 1. How would you modify the design to support a **variable window size** passed at construction time?
-2. Can you achieve the same functionality using a **sliding‑window pointer** on an array instead of a queue?
+2. Can you achieve the same functionality using a **sliding-window pointer** on an array instead of a queue?
 3. What changes are needed if timestamps are not guaranteed to be strictly increasing?
 
 ---
 
 ## 7. Key Takeaway
 
-> A simple queue provides an efficient sliding‑window solution: each request is added once and removed once, yielding O(1) amortized time.
+> A simple queue provides an efficient sliding-window solution: each request is added once and removed once, yielding O(1) amortized time.

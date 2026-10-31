@@ -53,12 +53,12 @@ FUNCTION ReformatString(s):
     IF ABS(LENGTH(letters) - LENGTH(digits)) > 1:
         RETURN ""
     SET result ← []
-    IF LENGTH(letters) >= LENGTH(digits):
-        SET first ← letters
-        SET second ← digits
-    ELSE:
+    IF LENGTH(digits) >= LENGTH(letters):   // ties start with a digit
         SET first ← digits
         SET second ← letters
+    ELSE:
+        SET first ← letters
+        SET second ← digits
     END IF
     FOR i ← 0 TO LENGTH(second) - 1:
         APPEND first[i] TO result
@@ -71,10 +71,13 @@ FUNCTION ReformatString(s):
 ```
 
 ## Walkthrough
-For "a0b1c2":
-1. letters = [a,b,c], digits = [0,1,2]
-2. Sizes equal, start with letters.
-3. Interleave → a0 b1 c2 → "a0b1c2" (or start with digits for alternative).
+Example 1: `s = "a0b1c2"`
+1. letters = [a,b,c], digits = [0,1,2]; |3 - 3| = 0 ≤ 1, so it is possible.
+2. Sizes equal → first = digits, second = letters.
+3. Interleave: i=0 → "0a", i=1 → "0a1b", i=2 → "0a1b2c".
+4. No leftover → return "0a1b2c" (expected output).
+
+Example 2 (`"leetcode"`): 8 letters vs 0 digits, difference > 1 → "".
 
 ## Complexity Analysis
 Time: O(n) – single pass to separate and interleave.
@@ -82,7 +85,7 @@ Space: O(n) – storage for the two lists and result.
 
 ## Follow-Up Questions
 * How would you modify the algorithm to handle uppercase letters as a separate category?
-* Can you solve the problem in‑place without extra lists?
+* Can you solve the problem in-place without extra lists?
 * What if the requirement changes to avoid three consecutive characters of the same type?
 
 ## Key Takeaway

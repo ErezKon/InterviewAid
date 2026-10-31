@@ -134,4 +134,4 @@ The simulation continues until the state `(0,0,0)` reappears after 7 unique cell
 
 ## 7. Key Takeaway
 
-> **State‑based simulation** with a visited‑state set guarantees termination and lets you count unique cells efficiently.
+> **State-based simulation** with a visited-state set guarantees termination and lets you count unique cells efficiently.

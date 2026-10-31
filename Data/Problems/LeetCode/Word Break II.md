@@ -82,7 +82,7 @@ Consider `s = "catsanddog"`, `wordDict = ["cat","cats","and","sand","dog"]`.
 1. Start at index 0, find "cat" and "cats" as prefixes.
 2. For "cat", recurse from index 3 → finds "sand" then "dog", building "cat sand dog".
 3. For "cats", recurse from index 4 → finds "and" then "dog", building "cats and dog".
-4. Memoization stores results for each index, preventing re‑exploration.
+4. Memoization stores results for each index, preventing re-exploration.
 
 The final list combines sentences from both branches.
 
@@ -95,7 +95,7 @@ The final list combines sentences from both branches.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return only the lexicographically smallest sentence?
 - Can you improve performance using a Trie for the dictionary?

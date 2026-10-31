@@ -53,7 +53,7 @@ Example 3:
 ```
 
 ## Approach
-Brute‑force every integer coordinate in the feasible range `[0, 50]` for both `x` and `y`. For each point, sum the quality contributions of towers whose distance is within `radius`. Track the maximum quality and the corresponding coordinate.
+Brute-force every integer coordinate in the feasible range `[0, 50]` for both `x` and `y`. For each point, sum the quality contributions of towers whose distance is within `radius`. Track the maximum quality and the corresponding coordinate.
 
 ```text
 FUNCTION BestCoordinate(towers, radius):
@@ -85,13 +85,13 @@ Consider `towers = [[1,2,5],[2,1,7]]` and `radius = 2`.
 The algorithm evaluates all points and picks `(2,1)`.
 
 ## Complexity Analysis
-- **Time:** O(51 × 51 × T) where `T` is the number of towers (worst‑case ≈ 2601 × T). Acceptable because constraints limit coordinates to 0‑50.
+- **Time:** O(51 × 51 × T) where `T` is the number of towers (worst-case ≈ 2601 × T). Acceptable because constraints limit coordinates to 0-50.
 - **Space:** O(1) extra space besides input storage.
 
 ## Follow-Up Questions
 - How would you handle a larger coordinate range (e.g., up to 10⁴) efficiently?
-- Can the solution be adapted to return the top‑k coordinates instead of just the best?
-- What if the signal quality function changes to a non‑linear decay?
+- Can the solution be adapted to return the top-k coordinates instead of just the best?
+- What if the signal quality function changes to a non-linear decay?
 
 ## Key Takeaway
-When the search space is small and bounded, a straightforward brute‑force scan with direct computation of contributions can be both simple and fast enough.
+When the search space is small and bounded, a straightforward brute-force scan with direct computation of contributions can be both simple and fast enough.

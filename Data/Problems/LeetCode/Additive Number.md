@@ -41,7 +41,7 @@ Example 2:
 
 ## Approach
 **Algorithm:** Backtracking – try every possible split for the first two numbers and recursively verify the rest.
-1. Iterate possible lengths for the first number `a` (1 → n/2).
+1. Iterate possible lengths for the first number `a` (1 → n/2).
 2. For each `a`, iterate possible lengths for the second number `b` (starting after `a`).
 3. Skip splits where `a` or `b` have leading zeros.
 4. Recursively check whether the remaining string starts with the sum `c = a + b` and continue with `(b, c)`.
@@ -59,7 +59,7 @@ Example 2:
 - **Time:** O(n³) in the worst case due to trying all splits and string addition.
 - **Space:** O(n) recursion depth for the backtracking calls.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual additive sequence?
 2. Can the solution be optimized using memoization of previously computed sums?
 3. How would you handle very large numbers that exceed standard integer ranges?

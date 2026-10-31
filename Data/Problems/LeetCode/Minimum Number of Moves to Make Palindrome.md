@@ -45,7 +45,7 @@ It can be shown that it is not possible to obtain a palindrome in less than 2 mo
 
 ## Approach
 
-**Algorithm:** Greedy two‑pointer with counting swaps.
+**Algorithm:** Greedy two-pointer with counting swaps.
 
 1. Verify that at most one character has an odd frequency; otherwise return `-1`.
 2. Convert the string to a mutable list.
@@ -103,15 +103,15 @@ FUNCTION minMovesToPalindrome(s):
 For `s = "aabb"`:
 
 - `left=0` (`a`), `right=3` (`b`). No match at `right`; find `j=2` where `arr[2]=a`.
-- Swap positions 2↔3 (`ab`→`ba`), moves = 1, now `arr = [a, a, b, b]`.
-- Pointers move inward, next pair matches, total moves = 2.
+- Swap positions 2↔3 (`ab`→`ba`), moves = 1, now `arr = [a, a, b, b]`.
+- Pointers move inward, next pair matches, total moves = 2.
 
 ## Complexity Analysis
 
 - **Time:** `O(n²)` in the worst case due to inner scanning and swapping.
 - **Space:** `O(n)` for the mutable character list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - Can the algorithm be optimized using a Fenwick tree to count inversions for the swap count?
 - How would the solution change if swaps could be performed between any two positions (not just adjacent)?
@@ -119,4 +119,4 @@ For `s = "aabb"`:
 
 ## Key Takeaway
 
-A greedy two‑pointer scan that repeatedly brings matching characters together via adjacent swaps yields the minimal move count for palindrome formation.
+A greedy two-pointer scan that repeatedly brings matching characters together via adjacent swaps yields the minimal move count for palindrome formation.

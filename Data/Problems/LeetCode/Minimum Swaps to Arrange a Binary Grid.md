@@ -111,7 +111,7 @@ Total swaps = 2, but a better sequence exists by swapping row 0 down one positio
 
 | Aspect | Value |
 |--------|-------|
-| **Time** | O(n²) — bubble‑sort style row moves |
+| **Time** | O(n²) — bubble-sort style row moves |
 | **Space** | O(n) — trailing zeros array |
 
 ---
@@ -119,11 +119,11 @@ Total swaps = 2, but a better sequence exists by swapping row 0 down one positio
 ## 7. Follow-Up Questions
 
 1. How would the solution change if swaps could be performed between any two rows (not just adjacent)?
-2. Can the algorithm be adapted for non‑square matrices where only a rectangular region must be zeroed?
-3. What is the impact on complexity if `n` grows to 10⁴ and we need a sub‑quadratic solution?
+2. Can the algorithm be adapted for non-square matrices where only a rectangular region must be zeroed?
+3. What is the impact on complexity if `n` grows to 10⁴ and we need a sub-quadratic solution?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Reduce to trailing‑zero requirements** — each row needs a minimum number of trailing zeros. Greedily find the nearest qualifying row and bubble it up. This selection‑sort‑like pattern on row properties yields the optimal minimum swaps.
+> **Reduce to trailing-zero requirements** — each row needs a minimum number of trailing zeros. Greedily find the nearest qualifying row and bubble it up. This selection-sort-like pattern on row properties yields the optimal minimum swaps.

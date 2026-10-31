@@ -14,7 +14,7 @@
 4. [Examples](#4-examples)
 5. [Walkthrough](#5-walkthrough)
 6. [Complexity Analysis](#6-complexity-analysis)
-7. [Follow‑Up Questions](#7-follow‑up-questions)
+7. [Follow-Up Questions](#7-follow-up-questions)
 8. [Key Takeaway](#8-key-takeaway)
 
 ---
@@ -50,7 +50,7 @@ Implement the `MyCalendarTwo` class:
 CLASS MyCalendarTwo:
     CONSTRUCTOR:
         bookings ← []   // all events
-        overlaps ← []   // double‑booked intervals
+        overlaps ← []   // double-booked intervals
 
     FUNCTION book(start, end):
         // Check for triple booking
@@ -108,7 +108,7 @@ myCalendarTwo.book(25, 55); // return True, The event can be booked, as the time
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How can you improve the time complexity to O(n log n) using an interval tree?
 - What changes are needed to support cancellation of events?
@@ -118,4 +118,4 @@ myCalendarTwo.book(25, 55); // return True, The event can be booked, as the time
 
 ## 8. Key Takeaway
 
-> **Two‑layer tracking** – keep all events and explicitly store double‑booked intervals. A triple booking occurs when a new event intersects any stored double‑booking.
+> **Two-layer tracking** – keep all events and explicitly store double-booked intervals. A triple booking occurs when a new event intersects any stored double-booking.

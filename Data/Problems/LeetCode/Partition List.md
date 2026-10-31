@@ -74,9 +74,9 @@ Consider `head = [1,4,3,2,5,2]`, `x = 3`.
 
 ## Complexity Analysis
 - **Time:** O(n) – each node visited once.
-- **Space:** O(1) – only a few pointers are used; the list is rearranged in‑place.
+- **Space:** O(1) – only a few pointers are used; the list is rearranged in-place.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem if the list were doubly linked?
 2. Can you perform the partition without using dummy nodes?
 3. How would you extend this to partition around multiple pivot values?

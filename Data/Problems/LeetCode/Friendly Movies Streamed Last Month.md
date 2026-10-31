@@ -121,7 +121,7 @@ WHERE c.Kids_content = 'Y'
 ## 4. Walkthrough
 
 1. **Join** `Content` with `TVProgram` on `content_id` to associate movies with their streaming dates.
-2. **Filter** rows where `Kids_content = 'Y'` and `content_type = 'Movies'` to keep only kid‑friendly movies.
+2. **Filter** rows where `Kids_content = 'Y'` and `content_type = 'Movies'` to keep only kid-friendly movies.
 3. **Date filter** – `MONTH` = 6 and `YEAR` = 2020 restricts to June 2020.
 4. **Distinct** – `SELECT DISTINCT` removes duplicate titles that may appear on multiple program dates.
 
@@ -130,13 +130,13 @@ WHERE c.Kids_content = 'Y'
 ## 5. Complexity Analysis
 
 *Time*: O(N) where N is the number of rows processed by the join (depends on table sizes). 
-*Space*: O(K) for the result set of distinct titles, where K ≤ number of kid‑friendly movies streamed in June 2020.
+*Space*: O(K) for the result set of distinct titles, where K ≤ number of kid-friendly movies streamed in June 2020.
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you modify the query to return the total number of streams per kid‑friendly movie?
+- How would you modify the query to return the total number of streams per kid-friendly movie?
 - Extend the query to handle a date range instead of a single month.
 - Include only movies with a rating above a certain threshold.
 
@@ -144,4 +144,4 @@ WHERE c.Kids_content = 'Y'
 
 ## 7. Key Takeaway
 
-> Simple join with filters on content type, kid‑friendliness, and date range.
+> Simple join with filters on content type, kid-friendliness, and date range.

@@ -48,7 +48,7 @@ Explanation: It can be shown that it is impossible to make all the elements equa
 
 ## Approach
 
-**Greedy – Count Prime Factors (O(n log max(nums)))**
+**Greedy – Count Prime Factors (O(n log max(nums)))**
 
 Every integer can be reduced to `1` by repeatedly dividing by a prime factor. The optimal way is to always divide by a prime factor, because any composite divisor can be broken down into prime steps without increasing the operation count. Therefore, the minimum number of operations for a single element equals the total number of prime factors (with multiplicity). Summing this count over all elements yields the global optimum.
 
@@ -63,7 +63,7 @@ FUNCTION minOperations(nums):
     RETURN ops
 ```
 
-`SMALLEST_PRIME_FACTOR` can be pre‑computed for all numbers up to `max(nums)` using a sieve in `O(max(nums) log log max(nums))`.
+`SMALLEST_PRIME_FACTOR` can be pre-computed for all numbers up to `max(nums)` using a sieve in `O(max(nums) log log max(nums))`.
 
 ---
 
@@ -83,7 +83,7 @@ Total operations = 1 + 1 + 2 = 4.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sieve + scan | **O(max(nums) log log max(nums) + n log max(nums))** | **O(max(nums))** |
+| Sieve + scan | **O(max(nums) log log max(nums) + n log max(nums))** | **O(max(nums))** |
 
 ---
 

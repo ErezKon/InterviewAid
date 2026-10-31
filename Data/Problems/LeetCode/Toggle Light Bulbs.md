@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement verified via doocs/leetcode. The Approach/Walkthrough below solve LC 319 "Bulb Switcher", a different problem. Correct idea: keep a parity array `st[1..100]`, XOR `st[x] ^= 1` for each `x` in `bulbs`, and return the indices with `st[i] == 1` in increasing order. O(n + 100).*
+> *Note: statement verified via doocs/leetcode.*
 
 You are given an array `bulbs` of integers between 1 and 100.
 
@@ -50,25 +50,36 @@ Explanation:
 ```
 
 ## Approach
-A bulb ends up on only if it is toggled an odd number of times. Bulb `k` is toggled once for each divisor of `k`. Numbers have an odd number of divisors exactly when they are perfect squares. Hence the answer equals the count of perfect squares ≤ `n`, which is `⌊√n⌋`.
+A bulb ends up on exactly when it is toggled an odd number of times. Keep a parity array `st[1..100]`, flip `st[x]` for each `x` in `bulbs`, then scan 1..100 and collect the indices still set. Scanning the fixed range in order gives the sorted output for free.
 
 ```text
-FUNCTION bulbSwitch(n):
-    RETURN FLOOR(SQRT(n))
+FUNCTION toggleLightBulbs(bulbs):
+    SET st ← ARRAY of size 101 filled with 0
+    FOR x IN bulbs:
+        SET st[x] ← st[x] XOR 1
+    SET result ← empty list
+    FOR i ← 1 TO 100:
+        IF st[i] = 1:
+            APPEND i TO result
+    RETURN result
 ```
 
 ## Walkthrough
-For `n = 5`:
-- Perfect squares ≤ 5 are 1 and 4 → count = 2 → bulbs 1 and 4 are on.
+For `bulbs = [10,30,20,10]`:
+- Toggle 10 -> `st[10] = 1`
+- Toggle 30 -> `st[30] = 1`
+- Toggle 20 -> `st[20] = 1`
+- Toggle 10 -> `st[10] = 0`
+- Scan 1..100: only `st[20]` and `st[30]` are 1 -> `[20,30]`, matching the expected output.
 
 ## Complexity Analysis
-*Time*: O(1) – direct formula.
-*Space*: O(1).
+*Time*: O(n + 100) - one pass over `bulbs` plus a fixed scan of the 100 bulbs.
+*Space*: O(100) = O(1) for the parity array.
 
-## Follow‑Up Questions
-1. How would you modify the solution if the toggle pattern changes (e.g., toggle every `i`‑th bulb starting from offset `i-1`)?
-2. Can you list the indices of the bulbs that remain on without iterating over all bulbs?
-3. What is the result if the initial state is all **on**?
+## Follow-Up Questions
+1. If the bulb numbers ranged up to 10^9, how would you do it (hash set: add on first toggle, remove on second, then sort)?
+2. How would you answer "which bulbs are on after the first `k` operations" for many `k` efficiently?
+3. Can you solve it with a single 128-bit bitmask and XOR, and how would you extract the set bits in order?
 
 ## Key Takeaway
-The number of bulbs left on equals the integer square root of `n`, because only perfect‑square positions have an odd divisor count.
+Toggling is XOR: only the parity of each bulb's count matters, and a fixed-size array scanned in order yields the sorted answer directly.

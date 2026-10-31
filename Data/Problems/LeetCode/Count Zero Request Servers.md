@@ -111,7 +111,7 @@ FUNCTION countZeroRequestServers(n, logs, x, queries):
 
 ## Follow-Up Questions
 
-- How would the solution change if queries were online (arriving in real‑time) rather than offline?
+- How would the solution change if queries were online (arriving in real-time) rather than offline?
 - Can we extend the approach to support a variable window size `x` per query?
 - What if we need to count servers with **exactly** `k` requests in the interval?
 
@@ -119,4 +119,4 @@ FUNCTION countZeroRequestServers(n, logs, x, queries):
 
 ## Key Takeaway
 
-> **Offline processing with a time‑sorted sliding window lets you answer “zero‑request” queries efficiently by maintaining a count of active servers and subtracting from the total.**
+> **Offline processing with a time-sorted sliding window lets you answer “zero-request” queries efficiently by maintaining a count of active servers and subtracting from the total.**

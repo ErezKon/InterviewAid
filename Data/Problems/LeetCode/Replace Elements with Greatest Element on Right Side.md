@@ -64,12 +64,12 @@ FUNCTION ReplaceElements(arr):
 
 ## Complexity Analysis
 - Time: O(n) – single pass.
-- Space: O(1) – in‑place.
+- Space: O(1) – in-place.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you return a new array instead of modifying in place?
 2. What if the array were circular?
-3. How to find the second‑largest element to the right?
+3. How to find the second-largest element to the right?
 
 ## Key Takeaway
-Scanning from right to left lets you keep the maximum seen so far, achieving an O(n) in‑place solution.
+Scanning from right to left lets you keep the maximum seen so far, achieving an O(n) in-place solution.

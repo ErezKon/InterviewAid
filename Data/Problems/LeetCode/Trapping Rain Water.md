@@ -206,7 +206,7 @@ FUNCTION trapStack(height):
 
 ## 9. Walkthrough (Two Pointers)
 
-We start with `left` at index 0 and `right` at the last index. At each step we move the pointer with the lower height inward, updating the running maximum on that side and adding water whenever the current height is lower than the maximum.
+We start with `left` at index 0 and `right` at the last index. At each step we move the pointer with the lower height inward, updating the running maximum on that side and adding water whenever the current height is lower than the maximum.
 
 ---
 

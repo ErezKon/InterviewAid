@@ -111,7 +111,7 @@ Consider `maxHeights = [5,3,4,1,1]`.
 | 3 | 1 | 1 * 4 = 4 |
 | 4 | 1 | 1 * 5 = 5 |
 
-Similarly compute `right[i]` from the right side. The best peak is at index 2 with total = left[2] + right[2] - maxHeights[2] = 10 + 7 - 4 = 13.
+Similarly compute `right[i]` from the right side. The best peak is at index 2 with total = left[2] + right[2] - maxHeights[2] = 10 + 7 - 4 = 13.
 
 ---
 

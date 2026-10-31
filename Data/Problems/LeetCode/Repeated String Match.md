@@ -56,12 +56,12 @@ For `a = "abcd"`, `b = "cdabcdab"`:
 | repeatedExtra = `"abcdabcd" + "abcd"` = `"abcdabcdabcd"` | `b` in `repeatedExtra` | return 3 |
 
 ## Complexity Analysis
-- **Time:** O(n + m) where n = |a|, m = |b|, due to substring checks.
-- **Space:** O(n * times) for the constructed string, at most O(m + n).
+- **Time:** O(n + m) where n = |a|, m = |b|, due to substring checks.
+- **Space:** O(n * times) for the constructed string, at most O(m + n).
 
 ## Follow-Up Questions
 1. How would you solve the problem without constructing the repeated string explicitly?
-2. Can you use rolling hash (Rabin‑Karp) to improve the substring check?
+2. Can you use rolling hash (Rabin-Karp) to improve the substring check?
 3. How would you handle Unicode characters where length may differ from byte count?
 
 ## Key Takeaway

@@ -63,7 +63,7 @@ FUNCTION isUgly(n):
 - **Time:** Each division reduces `n`; at most `O(log n)` divisions.
 - **Space:** `O(1)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you generate the first `k` ugly numbers?
 2. Can the algorithm be adapted for a different set of allowed prime factors?
 3. What is the nth ugly number and how to compute it efficiently?

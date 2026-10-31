@@ -89,7 +89,7 @@ The maximum length stored is 4.
 
 ## 5. Complexity Analysis
 
-- **Time:** O(n · log M) where M = max value in `nums` (segment‑tree queries and updates).
+- **Time:** O(n · log M) where M = max value in `nums` (segment-tree queries and updates).
 - **Space:** O(M) for the segment tree (can be compressed to O(n) with coordinate compression).
 
 ---
@@ -104,4 +104,4 @@ The maximum length stored is 4.
 
 ## 7. Key Takeaway
 
-> Use a segment tree (or BIT) to maintain the best subsequence length for each value range, enabling O(log M) updates and queries for the `k`‑bounded LIS.
+> Use a segment tree (or BIT) to maintain the best subsequence length for each value range, enabling O(log M) updates and queries for the `k`-bounded LIS.

@@ -84,7 +84,7 @@ Return `"Goal"`.
 
 ## 6. Follow-Up Questions
 
-- How would you implement the interpretation with a single linear scan without using built‑in replace?
+- How would you implement the interpretation with a single linear scan without using built-in replace?
 - Can the solution be adapted to handle nested patterns?
 - What is the impact on performance for very long strings?
 

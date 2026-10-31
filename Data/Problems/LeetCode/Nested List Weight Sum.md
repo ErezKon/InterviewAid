@@ -84,11 +84,11 @@ Example 3:
 ## 5. Walkthrough
 
 Consider `nestedList = [1,[4,[6]]]`.
-1. Call `depthSum` with depth = 1.
+1. Call `depthSum` with depth = 1.
 2. Encounter integer `1` → add `1*1 = 1`.
-3. Encounter sublist `[4,[6]]` → recurse with depth = 2.
+3. Encounter sublist `[4,[6]]` → recurse with depth = 2.
    - Inside, integer `4` → add `4*2 = 8`.
-   - Sublist `[6]` → recurse with depth = 3.
+   - Sublist `[6]` → recurse with depth = 3.
      * Integer `6` → add `6*3 = 18`.
 4. Sum contributions: 1 + 8 + 18 = 27.
 

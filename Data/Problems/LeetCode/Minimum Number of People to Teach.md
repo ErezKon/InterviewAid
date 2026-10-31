@@ -74,10 +74,10 @@ FUNCTION minimumTeachings(n, languages, friendships):
 ```
 
 ## Walkthrough
-Consider Example 1. The conflicting friendships are none because each pair already shares a language, so `needTeach` is empty and the function returns `0`. In a case where a conflict exists, `needTeach` would contain the two endpoints of that edge, and the loop over languages would find the language that minimizes additional teachings.
+Consider Example 1. The conflicting friendships are none because each pair already shares a language, so `needTeach` is empty and the function returns `0`. In a case where a conflict exists, `needTeach` would contain the two endpoints of that edge, and the loop over languages would find the language that minimizes additional teachings.
 
 ## Complexity Analysis
-- **Time:** O(n + m + n · k) where `m` is the number of friendships and `k` is the size of `needTeach` (≤ 2 · m). In practice O(n · k) dominates.
+- **Time:** O(n + m + n · k) where `m` is the number of friendships and `k` is the size of `needTeach` (≤ 2 · m). In practice O(n · k) dominates.
 - **Space:** O(n + k) for storing language sets and the `needTeach` set.
 
 ## Follow-Up Questions

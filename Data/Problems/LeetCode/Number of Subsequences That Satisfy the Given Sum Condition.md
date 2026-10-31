@@ -62,7 +62,7 @@ Number of valid subsequences (63 - 2 = 61).
 
 ## 2. Key Insight
 
-> Sort the array. Fix the smallest element (lo). Find the rightmost hi where `nums[lo] + nums[hi] ≤ target`. All 2^(hi‑lo) subsets of `[lo+1..hi]` including lo are valid.
+> Sort the array. Fix the smallest element (lo). Find the rightmost hi where `nums[lo] + nums[hi] ≤ target`. All 2^(hi-lo) subsets of `[lo+1..hi]` including lo are valid.
 
 ---
 
@@ -95,7 +95,7 @@ Consider `nums = [3,5,6,7]`, `target = 9`.
 | Step | lo | hi | nums[lo]+nums[hi] | Action | result |
 |------|----|----|------------------|--------|--------|
 | 1 | 0 (3) | 3 (7) | 10 > 9 | hi-- → 2 |
-| 2 | 0 (3) | 2 (6) | 9 ≤ 9 | add 2^(2‑0)=4 → result=4, lo++ → 1 |
+| 2 | 0 (3) | 2 (6) | 9 ≤ 9 | add 2^(2-0)=4 → result=4, lo++ → 1 |
 | 3 | 1 (5) | 2 (6) | 11 > 9 | hi-- → 1 |
 | 4 | 1 (5) | 1 (5) | 10 > 9 | hi-- → 0 (loop ends) |
 

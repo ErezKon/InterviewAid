@@ -43,9 +43,9 @@ Example 2:
 
 ## Approach
 
-**Sliding Window with Pre‑check — O(n·k)**
+**Sliding Window with Pre-check — O(n·k)**
 
-We slide a window of size `k` across the array and, for each position `i`, check whether the window `nums[i…i+k‑1]` is strictly increasing. If it is, we store the result. When we find two consecutive windows that are both increasing, we return `true`.
+We slide a window of size `k` across the array and, for each position `i`, check whether the window `nums[i…i+k-1]` is strictly increasing. If it is, we store the result. When we find two consecutive windows that are both increasing, we return `true`.
 
 ```text
 FUNCTION hasIncreasingSubarrays(nums, k):
@@ -81,14 +81,14 @@ Consider `nums = [1,3,2,4,5,6]` and `k = 2`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How can you reduce the time complexity to **O(n)** by pre‑computing the length of increasing runs?
-2. What changes are needed if the subarrays may be non‑adjacent but still of length `k`?
+1. How can you reduce the time complexity to **O(n)** by pre-computing the length of increasing runs?
+2. What changes are needed if the subarrays may be non-adjacent but still of length `k`?
 3. Can the solution be adapted to detect decreasing subarrays?
 
 ---
 
 ## Key Takeaway
 
-> A straightforward brute‑force scan works, but pre‑computing increasing run lengths enables an **O(n)** solution.
+> A straightforward brute-force scan works, but pre-computing increasing run lengths enables an **O(n)** solution.

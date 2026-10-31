@@ -71,7 +71,16 @@ FUNCTION xorQueries(arr, queries):
 | Add 4 | prefix.append(2 ^ 4) | [0,1,2,6] |
 | Add 8 | prefix.append(6 ^ 8) | [0,1,2,6,14] |
 
-Query `[1,2]`: result = prefix[3] ^ prefix[1] = 6 ^ 1 = 7.
+Example 1 (`arr = [1,3,4,8]`), answering the queries:
+
+| Query | prefix[r+1] ^ prefix[l] | ans |
+|-------|-------------------------|-----|
+| [0,1] | prefix[2] ^ prefix[0] = 2 ^ 0 | 2 |
+| [1,2] | prefix[3] ^ prefix[1] = 6 ^ 1 | 7 |
+| [0,3] | prefix[4] ^ prefix[0] = 14 ^ 0 | 14 |
+| [3,3] | prefix[4] ^ prefix[3] = 14 ^ 6 | 8 |
+
+**Output: [2,7,14,8]**. Example 2 builds prefix = [0,4,12,14,4] and yields [8,0,4,4].
 
 ## Complexity Analysis
 - **Time:** O(n + q) where `n` is length of `arr` and `q` is number of queries.
@@ -83,4 +92,4 @@ Query `[1,2]`: result = prefix[3] ^ prefix[1] = 6 ^ 1 = 7.
 3. What if the queries ask for the maximum XOR subarray within a range?
 
 ## Key Takeaway
-A prefix XOR array transforms each subarray XOR query into a constant‑time operation, turning an O(n·q) problem into O(n+q).
+A prefix XOR array transforms each subarray XOR query into a constant-time operation, turning an O(n·q) problem into O(n+q).

@@ -14,7 +14,7 @@
 4. [Examples](#4-examples)
 5. [Walkthrough](#5-walkthrough)
 6. [Complexity Analysis](#6-complexity-analysis)
-7. [Follow‑Up Questions](#7-follow‑up-questions)
+7. [Follow-Up Questions](#7-follow-up-questions)
 8. [Key Takeaway](#8-key-takeaway)
 
 ---
@@ -99,7 +99,7 @@ myCalendar.book(20, 30); // return True, The event can be booked, as the first e
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you achieve O(log n) insertion time?
 - Can you support range queries like “how many events overlap a given interval?”

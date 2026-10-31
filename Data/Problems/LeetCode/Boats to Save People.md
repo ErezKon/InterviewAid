@@ -64,13 +64,13 @@ FUNCTION numRescueBoats(people, limit):
 | 3 | – | 2 | remaining 2 → boat | 3 |
 
 ## Complexity Analysis
-- **Time:** O(n log n) for sorting, then O(n) for the two‑pointer scan.
-- **Space:** O(1) extra beyond the input array (in‑place sort).
+- **Time:** O(n log n) for sorting, then O(n) for the two-pointer scan.
+- **Space:** O(1) extra beyond the input array (in-place sort).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if a boat could carry up to three people?
 2. Can you solve the problem without sorting, using a counting sort for bounded weight ranges?
 3. What if each boat had a different weight limit?
 
 ## Key Takeaway
-Sorting the weights and greedily pairing the lightest with the heaviest yields an optimal O(n log n) solution for minimizing boats.
+Sorting the weights and greedily pairing the lightest with the heaviest yields an optimal O(n log n) solution for minimizing boats.

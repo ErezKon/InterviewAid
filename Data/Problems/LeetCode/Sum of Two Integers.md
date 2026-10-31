@@ -69,18 +69,18 @@ When a carry occurs, e.g., `a = 1 (01)`, `b = 1 (01)`:
 
 ## 5. Complexity Analysis
 
-- **Time:** O(1) – at most 32 iterations for 32‑bit integers (constant bound).
+- **Time:** O(1) – at most 32 iterations for 32-bit integers (constant bound).
 - **Space:** O(1) – only a few integer variables.
 
 ---
 
 ## 6. Follow-Up Questions
 
-- How would you adapt the algorithm for languages without fixed‑width integers (e.g., Python) to avoid overflow?
+- How would you adapt the algorithm for languages without fixed-width integers (e.g., Python) to avoid overflow?
 - Can you extend this to compute subtraction, multiplication, or division using only bitwise operators?
 
 ---
 
 ## Key Takeaway
 
-> Using `XOR` for sum without carry and `AND` + left‑shift for the carry mimics how hardware adders work, enabling addition without `+` or `-`.
+> Using `XOR` for sum without carry and `AND` + left-shift for the carry mimics how hardware adders work, enabling addition without `+` or `-`.

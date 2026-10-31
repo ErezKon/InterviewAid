@@ -61,7 +61,7 @@ Explanation: After flipping values in the first two columns, the last two rows h
 
 ## 3. Approach
 
-Normalize each row by XOR‑ing every element with the first element of that row. After normalization, rows that were originally identical or complementary become the same pattern. Count the frequency of each pattern; the highest frequency is the answer.
+Normalize each row by XOR-ing every element with the first element of that row. After normalization, rows that were originally identical or complementary become the same pattern. Count the frequency of each pattern; the highest frequency is the answer.
 
 ```text
 FUNCTION maxEqualRowsAfterFlips(matrix):
@@ -86,7 +86,7 @@ Consider `matrix = [[0,1,0],[1,0,1],[0,1,0]]`.
 | 2 | `[1,0,1]` | 1 | `(0,1,0)` (XOR each with 1) |
 | 3 | `[0,1,0]` | 0 | `(0,1,0)` |
 
-All three rows map to the same key `(0,1,0)`. The most frequent key appears 3 times, so flipping column 2 yields three identical rows.
+All three rows map to the same key `(0,1,0)`. The most frequent key appears 3 times, so flipping column 2 yields three identical rows.
 
 ---
 

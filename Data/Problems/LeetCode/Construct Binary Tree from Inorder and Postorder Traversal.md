@@ -70,7 +70,7 @@ FUNCTION buildTree(inorder, postorder):
 - **Time:** `O(n)` – each node is processed once.
 - **Space:** `O(n)` for the hashmap and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you construct the tree iteratively using a stack?
 2. Can the algorithm be adapted for preorder + inorder traversals?
 3. What changes are needed if the tree contains duplicate values?

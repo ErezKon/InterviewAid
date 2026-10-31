@@ -59,7 +59,7 @@ Example 2:
 
 ## 3. Key Insight
 
-> The **maximum** subsequence sum = sum of all positive elements. Each other subsequence sum equals maxSum minus some subset sum of absolute values. So the k‑th largest subsequence sum equals `maxSum - (k‑1)‑th smallest subset sum of |nums|`.
+> The **maximum** subsequence sum = sum of all positive elements. Each other subsequence sum equals maxSum minus some subset sum of absolute values. So the k-th largest subsequence sum equals `maxSum - (k-1)-th smallest subset sum of |nums|`.
 
 ---
 
@@ -71,7 +71,7 @@ FUNCTION kSum(nums, k):
     absNums ← SORTED([ABS(x) FOR x IN nums])
     n ← LENGTH(absNums)
 
-    // Min‑heap stores (subsetSum, index)
+    // Min-heap stores (subsetSum, index)
     heap ← MinHeap()
     heap.PUSH((0, -1))   // empty subset
     visited ← SET()
@@ -118,12 +118,12 @@ Result matches expected `2` after adjusting for duplicate sums.
 
 ## 7. Follow-Up Questions
 
-- How would the solution change if we needed the k‑th smallest subsequence sum?
-- Can we extend the approach to handle negative `k` (i.e., k‑th most negative sum)?
+- How would the solution change if we needed the k-th smallest subsequence sum?
+- Can we extend the approach to handle negative `k` (i.e., k-th most negative sum)?
 - What if `k` can be as large as `2^n`? How would you avoid enumerating all subsets?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Transform the problem** into finding the k‑th smallest subset sum of absolute values via a max‑sum trick, then enumerate subset sums efficiently with a min‑heap.
+> **Transform the problem** into finding the k-th smallest subset sum of absolute values via a max-sum trick, then enumerate subset sums efficiently with a min-heap.

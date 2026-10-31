@@ -42,7 +42,7 @@ majorityChecker.query(2, 3, 2); // return 2
 ```
 
 ## Approach
-Use a **Segment Tree** where each node stores a candidate majority element and its relative count using the Boyer‑Moore voting principle. Merging two nodes combines candidates to produce a new candidate for the union interval. To answer a query, retrieve the candidate from the segment tree for `[l, r]` and then verify its actual frequency with a prefix‑sum map.
+Use a **Segment Tree** where each node stores a candidate majority element and its relative count using the Boyer-Moore voting principle. Merging two nodes combines candidates to produce a new candidate for the union interval. To answer a query, retrieve the candidate from the segment tree for `[l, r]` and then verify its actual frequency with a prefix-sum map.
 
 ### Pseudocode
 ```text
@@ -87,7 +87,7 @@ FUNCTION majorityQuery(l, r):
 | Step | Action | Result |
 |------|--------|--------|
 |1|Build segment tree for `arr = [1,2,1,1,3]`|Each leaf stores its element as candidate|
-|2|Query `[0,2]`|Merge nodes covering indices 0‑2 → candidate `1`|
+|2|Query `[0,2]`|Merge nodes covering indices 0-2 → candidate `1`|
 |3|Verify frequency of `1` in `[0,2]` → 2 > 1.5|Return `1`|
 |4|Query `[1,4]`|Candidate becomes `1` after merges|
 |5|Count `1` in `[1,4]` → 2 ≤ 2|Return `-1`|
@@ -96,10 +96,10 @@ FUNCTION majorityQuery(l, r):
 - Building segment tree: **O(n)** time, **O(n)** space.
 - Each query: **O(log n)** to retrieve candidate + **O(k)** verification where `k` is occurrences (using prefix map, O(1) per check). Overall **O(log n)** amortized.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for dynamic updates (changing array values)?
 2. Can you solve the problem using **Mo's algorithm** for offline queries?
 3. What if the threshold is a different fraction, e.g., > 30% of the subarray?
 
 ## Key Takeaway
-A segment tree combined with Boyer‑Moore voting provides an online majority candidate in logarithmic time, and a simple frequency check confirms the true majority.
+A segment tree combined with Boyer-Moore voting provides an online majority candidate in logarithmic time, and a simple frequency check confirms the true majority.

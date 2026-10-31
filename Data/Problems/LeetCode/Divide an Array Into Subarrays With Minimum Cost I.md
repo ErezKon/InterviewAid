@@ -69,7 +69,7 @@ It can be shown that 12 is the minimum cost achievable.
 
 **Example:** `nums = [5,1,3,4,2]`
 
-1. First subarray starts at index 0 → first element `5`.
+1. First subarray starts at index 0 → first element `5`.
 2. Remaining elements `[1,3,4,2]` are sorted → `[1,2,3,4]`.
 3. Pick two smallest values `1` and `2` as starts of the second and third subarrays.
 4. Total cost = `5 + 1 + 2 = 8`.
@@ -78,8 +78,8 @@ It can be shown that 12 is the minimum cost achievable.
 
 ## Complexity Analysis
 
-- **Time:** `O(n log n)` for sorting the remaining `n‑1` elements.
-- **Space:** `O(n)` for the sorted copy (can be `O(1)` if sorted in‑place).
+- **Time:** `O(n log n)` for sorting the remaining `n-1` elements.
+- **Space:** `O(n)` for the sorted copy (can be `O(1)` if sorted in-place).
 
 ---
 

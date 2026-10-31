@@ -101,4 +101,4 @@ Example 1:
 
 ## Key Takeaway
 
-> **Granularity maps to a string prefix length. Since timestamps are zero‑padded `YYYY:MM:DD:HH:MM:SS`, lexicographic prefix comparison equals chronological comparison.**
+> **Granularity maps to a string prefix length. Since timestamps are zero-padded `YYYY:MM:DD:HH:MM:SS`, lexicographic prefix comparison equals chronological comparison.**

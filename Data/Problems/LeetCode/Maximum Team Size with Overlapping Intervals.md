@@ -58,18 +58,18 @@ Explanation: - For i = 0 with interval [3, 8].
 ```
 
 ## Approach
-The task reduces to finding the maximum number of intervals that share a common intersection. Sort intervals by their start time and maintain a min‑heap of end times. While iterating:
+The task reduces to finding the maximum number of intervals that share a common intersection. Sort intervals by their start time and maintain a min-heap of end times. While iterating:
 1. Push the current interval's end into the heap.
 2. Remove from the heap any intervals whose end is **strictly less** than the current start (they cannot overlap with the current interval).
 3. The heap size after cleanup equals the number of intervals overlapping at the current start; track the maximum size.
-This greedy‑heap method runs in O(n log n) time.
+This greedy-heap method runs in O(n log n) time.
 
 ## Pseudocode
 ```text
 FUNCTION maximumTeamSize(intervals):
     // Sort intervals by start time
     SORT intervals BY start ASCENDING
-    SET minHeap ← EMPTY MIN‑HEAP   // stores end times
+    SET minHeap ← EMPTY MIN-HEAP   // stores end times
     SET maxSize ← 0
     FOR each interval IN intervals:
         SET start ← interval[0]
@@ -96,10 +96,10 @@ All three intervals overlap, so the answer is 3.
 - **Time:** O(n log n) for sorting plus heap operations.
 - **Space:** O(n) in the worst case for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to also return the time interval where the maximum overlap occurs?
 2. Can the problem be solved in O(n) time if the intervals are already sorted?
 3. How would you handle intervals with inclusive/exclusive endpoints differently?
 
 ## Key Takeaway
-Sorting by start time and using a min‑heap of end times efficiently tracks the current overlapping group, yielding the maximum team size in logarithmic time per interval.
+Sorting by start time and using a min-heap of end times efficiently tracks the current overlapping group, yielding the maximum team size in logarithmic time per interval.

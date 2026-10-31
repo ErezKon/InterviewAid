@@ -41,15 +41,15 @@ Example 1:
   Output: 8
   Explanation:
   At (the beginning of) second 0,
-  - Data server 1 sends its message (denoted 1A) to the master server.
-  - Data server 2 sends its message (denoted 2A) to the master server.
+  - Data server 1 sends its message (denoted 1A) to the master server.
+  - Data server 2 sends its message (denoted 2A) to the master server.
 
-  At second 1,
+  At second 1,
   - Message 1A arrives at the master server. Master server processes message 1A instantly and sends a reply 1A back.
   - Server 1 has not received any reply. 1 second (1 < patience[1] = 2) elapsed since this server has sent the message, therefore it does not resend the message.
-  - Server 2 has not received any reply. 1 second (1 == patience[2] = 1) elapsed since this server has sent the message, therefore it resends the message (denoted 2B).
+  - Server 2 has not received any reply. 1 second (1 == patience[2] = 1) elapsed since this server has sent the message, therefore it resends the message (denoted 2B).
 
-  At second 2,
+  At second 2,
   - The reply 1A arrives at server 1. No more resending will occur from server 1.
   - Message 2A arrives at the master server. Master server processes message 2A instantly and sends a reply 2A back.
   - Server 2 resends the message (denoted 2C).
@@ -67,13 +67,13 @@ Example 2:
   Input: edges = [[0,1],[0,2],[1,2]], patience = [0,10,10]
   Output: 3
   Explanation: Data servers 1 and 2 receive a reply back at the beginning of second 2.
-  From the beginning of the second 3, the network becomes idle.
+  From the beginning of the second 3, the network becomes idle.
 ```
 
 ## Approach
-1. Perform a BFS from server 0 to compute the shortest distance `dist[i]` (in edges) to every server.
-2. The round‑trip time for server i is `rt = 2 * dist[i]`.
-3. If `patience[i]` is 0, the server sends only one message. Otherwise, the last message sent before the reply arrives is at time `⌊(rt‑1) / patience[i]⌋ * patience[i]`. The reply to that message arrives at `lastSend + rt`.
+1. Perform a BFS from server 0 to compute the shortest distance `dist[i]` (in edges) to every server.
+2. The round-trip time for server i is `rt = 2 * dist[i]`.
+3. If `patience[i]` is 0, the server sends only one message. Otherwise, the last message sent before the reply arrives is at time `⌊(rt-1) / patience[i]⌋ * patience[i]`. The reply to that message arrives at `lastSend + rt`.
 4. The network becomes idle at the maximum of all such arrival times.
 
 ```text
@@ -120,10 +120,10 @@ Maximum arrival time = 8 seconds.
 - **Time:** O(n + m) for BFS plus O(n) for the final scan, where `m` is number of edges.
 - **Space:** O(n + m) for adjacency list, distance array, and queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if edges had different transmission delays?
-2. Can you compute the idle time without explicit BFS by using Union‑Find on a tree?
+2. Can you compute the idle time without explicit BFS by using Union-Find on a tree?
 3. How would you extend the problem to handle directed edges with asymmetric latencies?
 
 ## Key Takeaway
-Compute shortest round‑trip times with BFS, then use each server’s patience to determine the last message that matters; the maximum of these times is when the network finally becomes idle.
+Compute shortest round-trip times with BFS, then use each server’s patience to determine the last message that matters; the maximum of these times is when the network finally becomes idle.

@@ -64,10 +64,10 @@ FUNCTION rightSideView(root):
 
 | Step | Queue before iteration | Processed node | Action | Result list |
 |------|------------------------|----------------|--------|-------------|
-| 1 | [1] | 1 (i=0, levelSize=1) | i == levelSize‑1 → add 1 | [1] |
+| 1 | [1] | 1 (i=0, levelSize=1) | i == levelSize-1 → add 1 | [1] |
 | 2 | [2,3] | 2 (i=0) | enqueue children (none) | [1] |
-|   |      | 3 (i=1) | i == levelSize‑1 → add 3; enqueue 4 | [1,3] |
-| 3 | [4] | 4 (i=0) | i == levelSize‑1 → add 4 | [1,3,4] |
+|   |      | 3 (i=1) | i == levelSize-1 → add 3; enqueue 4 | [1,3] |
+| 3 | [4] | 4 (i=0) | i == levelSize-1 → add 4 | [1,3,4] |
 
 ---
 
@@ -81,7 +81,7 @@ FUNCTION rightSideView(root):
 
 ## 6. Follow-Up Questions
 
-* How would you modify the algorithm to return the left‑side view?
+* How would you modify the algorithm to return the left-side view?
 * Can you solve it using DFS instead of BFS?
 * What if the tree is extremely deep – how would you avoid stack overflow?
 

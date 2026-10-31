@@ -49,7 +49,7 @@ Explanation: The maximum min-product is achieved with the subarray [5,6,4] (mini
 ```
 
 ## Approach
-The min‑product can be maximized by treating each element as the minimum of a candidate subarray. Using a **monotonic stack** we find, for each index `i`, the nearest smaller element to the left and right, which gives the maximal span where `nums[i]` remains the minimum. With a prefix‑sum array we can compute the sum of that span in O(1).
+The min-product can be maximized by treating each element as the minimum of a candidate subarray. Using a **monotonic stack** we find, for each index `i`, the nearest smaller element to the left and right, which gives the maximal span where `nums[i]` remains the minimum. With a prefix-sum array we can compute the sum of that span in O(1).
 1. Build prefix sums `pref` where `pref[0]=0` and `pref[i+1]=pref[i]+nums[i]`.
 2. Iterate through `nums` with a stack storing indices of increasing values.
 3. When popping an index `mid`, the left boundary is the new stack top (or `-1`) and the right boundary is the current index `i`. Compute `subSum = pref[i] - pref[left+1]` and update `maxProd = max(maxProd, nums[mid] * subSum)`.
@@ -95,10 +95,10 @@ Result = 14.
 *Time*: Each element is pushed and popped at most once → `O(n)`.
 *Space*: Prefix array `O(n)` and stack `O(n)` in worst case.
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm to return the subarray indices achieving the maximum min‑product?
+## Follow-Up Questions
+1. How would you adapt the algorithm to return the subarray indices achieving the maximum min-product?
 2. Can the approach be extended to handle the product of the minimum and the **maximum** element of a subarray?
 3. What changes are needed if the array may contain negative numbers?
 
 ## Key Takeaway
-A monotonic stack combined with prefix sums efficiently enumerates every possible subarray where a given element is the minimum, enabling an `O(n)` solution for the maximum min‑product.
+A monotonic stack combined with prefix sums efficiently enumerates every possible subarray where a given element is the minimum, enabling an `O(n)` solution for the maximum min-product.

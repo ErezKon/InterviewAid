@@ -72,7 +72,7 @@ Thus mismatchesB = 4 - 1 = 3, answer = 1.
 | Time   | O(n) – single pass through the string |
 | Space  | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the solution to handle strings with characters other than `0`/`1` where you need to alternate between two specific characters?
 2. If you could also delete characters (not just flip), how would the minimum edit distance change?
 3. Can this approach be adapted to find the minimum flips to achieve a periodic pattern of length > 2?

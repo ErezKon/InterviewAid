@@ -57,10 +57,10 @@ The final result is 5.
 - **Time:** O(n) – one pass through the list.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
-1. How would you handle a list that represents a number larger than the 32‑bit integer range?
-2. Can the algorithm be adapted to work with a doubly‑linked list without changing the logic?
-3. What if the bits were stored in reverse order (least‑significant bit first)?
+## Follow-Up Questions
+1. How would you handle a list that represents a number larger than the 32-bit integer range?
+2. Can the algorithm be adapted to work with a doubly-linked list without changing the logic?
+3. What if the bits were stored in reverse order (least-significant bit first)?
 
 ## Key Takeaway
-Iteratively shift‑and‑add while traversing the list to convert binary to decimal in linear time and constant space.
+Iteratively shift-and-add while traversing the list to convert binary to decimal in linear time and constant space.

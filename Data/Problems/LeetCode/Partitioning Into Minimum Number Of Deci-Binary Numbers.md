@@ -39,7 +39,7 @@ Example 3:
 ```
 
 ## Approach
-The answer equals the maximum digit in the decimal representation because each deci‑binary number can contribute at most `1` to each digit position. Thus the minimum count is the largest digit.
+The answer equals the maximum digit in the decimal representation because each deci-binary number can contribute at most `1` to each digit position. Thus the minimum count is the largest digit.
 
 ```text
 FUNCTION minPartitions(n):
@@ -68,10 +68,10 @@ Result = 8.
 - **Time:** O(L) where L is the number of digits in `n`.
 - **Space:** O(1) – only a few integer variables.
 
-## Follow‑Up Questions
-1. How would you construct the actual deci‑binary numbers achieving the minimum count?
-2. Can this be extended to other bases, e.g., binary‑like numbers in base‑3?
+## Follow-Up Questions
+1. How would you construct the actual deci-binary numbers achieving the minimum count?
+2. Can this be extended to other bases, e.g., binary-like numbers in base-3?
 3. What if the input number is extremely large (beyond standard integer range)?
 
 ## Key Takeaway
-The minimal number of deci‑binary partitions equals the maximum digit of the original number.
+The minimal number of deci-binary partitions equals the maximum digit of the original number.

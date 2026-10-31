@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a breadth‑first search (BFS) level by level. For each level, iterate through its nodes while keeping track of the previous node's value. When the current node’s value equals `u`, the previously visited node (if any) is the left neighbor; the next node in the same level (if it exists) is the right neighbor. Return the right neighbor’s value or `-1` if none.
+Perform a breadth-first search (BFS) level by level. For each level, iterate through its nodes while keeping track of the previous node's value. When the current node’s value equals `u`, the previously visited node (if any) is the left neighbor; the next node in the same level (if it exists) is the right neighbor. Return the right neighbor’s value or `-1` if none.
 
 ## Walkthrough
 For the tree `[1,2,3,4,5,null,7]` and `u = 5`:
@@ -48,9 +48,9 @@ For the tree `[1,2,3,4,5,null,7]` and `u = 5`:
 - **Space:** O(w) where w is the maximum width of the tree (queue size).
 
 ## Follow-Up Questions
-- How would you solve the problem using a depth‑first search without extra space?
+- How would you solve the problem using a depth-first search without extra space?
 - Can you modify the algorithm to return the nearest left node instead?
 - What changes are needed if the tree is represented as a parent pointer list?
 
 ## Key Takeaway
-A level‑order traversal naturally exposes the horizontal ordering of nodes, allowing the nearest right neighbor to be identified in a single pass.
+A level-order traversal naturally exposes the horizontal ordering of nodes, allowing the nearest right neighbor to be identified in a single pass.

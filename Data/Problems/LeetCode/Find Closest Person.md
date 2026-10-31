@@ -82,7 +82,7 @@ FUNCTION closestPerson(x, y, z):
 
 ## Walkthrough
 
-| Step | x | y | z | d1 = |x‑z| | d2 = |y‑z| | Decision |
+| Step | x | y | z | d1 = |x-z| | d2 = |y-z| | Decision |
 |------|---|---|---|--------|--------|----------|
 | 1    | 1 | 2 | 3 | 2      | 1      | d2 < d1 → return 2 |
 | 2    | 5 | 5 |10 | 5      | 5      | equal → return 0 |
@@ -99,7 +99,7 @@ FUNCTION closestPerson(x, y, z):
 ## Follow-Up Questions
 
 1. How would you extend this to handle *n* people and find the closest one?
-2. What if the positions were in 2‑D space? How would you compute distances?
+2. What if the positions were in 2-D space? How would you compute distances?
 3. Could you solve it without using the absolute function by comparing squares?
 
 ---

@@ -65,7 +65,7 @@ FUNCTION countValidPaths(n, edges):
     SET isPrime ← sieve(n)
     SET adj ← build adjacency list from edges
     SET uf ← UnionFind(n+1)
-    // Union non‑prime nodes
+    // Union non-prime nodes
     FOR each [u, v] IN edges:
         IF NOT isPrime[u] AND NOT isPrime[v]:
             uf.union(u, v)
@@ -85,7 +85,7 @@ FUNCTION countValidPaths(n, edges):
             FOR s IN sizes:
                 SET result ← result + s * cumulative
                 SET cumulative ← cumulative + s
-            // Single‑node path consisting of p itself
+            // Single-node path consisting of p itself
             SET result ← result + 1
     RETURN result
 ```
@@ -97,11 +97,11 @@ FUNCTION countValidPaths(n, edges):
 Consider **Example 1** (`n = 5`, edges = [[1,2],[1,3],[3,4],[3,5]]).
 
 1. **Prime identification:** 2,3,5 are prime.
-2. **Union‑Find on non‑prime nodes:** Nodes 1 and 4 are non‑prime and not directly connected, so each forms its own component of size 1.
-3. **Process prime node 2:** Adjacent non‑prime component size = 1 (node 1). Paths ending at 2: `1`. No cross‑component paths. Add single‑node path → total 2.
-4. **Process prime node 3:** Adjacent non‑prime components are node 1 (size 1) and node 4 (size 1). Paths ending at 3: `1 + 1 = 2`. Cross‑component paths: `1 * 1 = 1`. Single‑node path: `1`. Subtotal for 3 = `4`.
-5. **Process prime node 5:** Adjacent non‑prime component size = 1 (node 3’s component is prime, so only node 3 itself is not counted). Paths ending at 5: `1`. No cross‑component paths. Single‑node path: `1`. Subtotal for 5 = `2`.
-6. **Sum all contributions:** `2 + 4 + 2 = 8`. The algorithm counts the single‑node path for each prime; if the problem excludes single‑node paths, subtract the number of primes (3) → final answer `5`. Adjust according to problem definition; the provided output `7` matches counting all valid paths including the prime‑only path for node 3.
+2. **Union-Find on non-prime nodes:** Nodes 1 and 4 are non-prime and not directly connected, so each forms its own component of size 1.
+3. **Process prime node 2:** Adjacent non-prime component size = 1 (node 1). Paths ending at 2: `1`. No cross-component paths. Add single-node path → total 2.
+4. **Process prime node 3:** Adjacent non-prime components are node 1 (size 1) and node 4 (size 1). Paths ending at 3: `1 + 1 = 2`. Cross-component paths: `1 * 1 = 1`. Single-node path: `1`. Subtotal for 3 = `4`.
+5. **Process prime node 5:** Adjacent non-prime component size = 1 (node 3’s component is prime, so only node 3 itself is not counted). Paths ending at 5: `1`. No cross-component paths. Single-node path: `1`. Subtotal for 5 = `2`.
+6. **Sum all contributions:** `2 + 4 + 2 = 8`. The algorithm counts the single-node path for each prime; if the problem excludes single-node paths, subtract the number of primes (3) → final answer `5`. Adjust according to problem definition; the provided output `7` matches counting all valid paths including the prime-only path for node 3.
 
 ---
 
@@ -109,8 +109,8 @@ Consider **Example 1** (`n = 5`, edges = [[1,2],[1,3],[3,4],[3,5]]).
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(n + m) — sieve, building adjacency, Union‑Find operations |
-| **Space** | O(n) — adjacency list, Union‑Find structures |
+| **Time** | O(n + m) — sieve, building adjacency, Union-Find operations |
+| **Space** | O(n) — adjacency list, Union-Find structures |
 
 ---
 
@@ -124,4 +124,4 @@ Consider **Example 1** (`n = 5`, edges = [[1,2],[1,3],[3,4],[3,5]]).
 
 ## Key Takeaway
 
-> **Group non‑prime nodes into connected components, then for each prime node combine the sizes of adjacent components. Paths either end at the prime or cross through it connecting two components, plus the single‑node prime path.**
+> **Group non-prime nodes into connected components, then for each prime node combine the sizes of adjacent components. Paths either end at the prime or cross through it connecting two components, plus the single-node prime path.**

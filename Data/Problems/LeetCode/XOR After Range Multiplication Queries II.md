@@ -113,10 +113,10 @@ FUNCTION query(node, l, r, ql, qr):
 Time: O((n + q)·log n) for building, updates, and queries.
 Space: O(n) for the segment tree.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle addition updates instead of multiplication?
 2. Can a Binary Indexed Tree be adapted for this problem with range multiplication and XOR queries?
 3. What changes are needed if the modulus is removed and values may overflow?
 
 ## Key Takeaway
-Lazy‑propagation segment trees allow efficient combination of range multiplication updates with sub‑array XOR queries despite the non‑linear interaction between multiplication and XOR.
+Lazy-propagation segment trees allow efficient combination of range multiplication updates with sub-array XOR queries despite the non-linear interaction between multiplication and XOR.

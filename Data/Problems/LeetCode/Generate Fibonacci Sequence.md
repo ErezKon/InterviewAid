@@ -76,7 +76,7 @@ FUNCTION fibonacciGenerator():
 ## 6. Follow-Up Questions
 
 - How would you modify the generator to stop after producing `n` numbers?
-- Can you compute the `n`‑th Fibonacci number in O(log n) time using matrix exponentiation?
+- Can you compute the `n`-th Fibonacci number in O(log n) time using matrix exponentiation?
 
 ---
 

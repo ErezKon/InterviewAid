@@ -72,7 +72,7 @@ FUNCTION findReplaceString(s, indices, sources, targets):
     RETURN s
 ```
 
-Processing right‑to‑left ensures earlier indices remain valid after later replacements.
+Processing right-to-left ensures earlier indices remain valid after later replacements.
 
 ---
 
@@ -97,10 +97,10 @@ Processing right‑to‑left ensures earlier indices remain valid after later re
 
 - How would you handle overlapping replacements?
 - Can you solve it without sorting, using a hash map of indices?
-- Extend to support regex‑style pattern replacements.
+- Extend to support regex-style pattern replacements.
 
 ---
 
 ## Key Takeaway
 
-> **Sort replacements by index descending and apply right‑to‑left so earlier positions aren't shifted. Classic string mutation pattern.**
+> **Sort replacements by index descending and apply right-to-left so earlier positions aren't shifted. Classic string mutation pattern.**

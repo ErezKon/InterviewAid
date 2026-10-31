@@ -47,7 +47,7 @@ Example 1:
 ```
 
 ## Approach
-Use a semaphore limiting the number of philosophers that may try to pick up forks simultaneously to four (N‑1). Each philosopher acquires the semaphore, then locks the lower‑indexed fork first, then the higher‑indexed fork, ensuring a global ordering that avoids circular wait. After eating, they release the forks and the semaphore.
+Use a semaphore limiting the number of philosophers that may try to pick up forks simultaneously to four (N-1). Each philosopher acquires the semaphore, then locks the lower-indexed fork first, then the higher-indexed fork, ensuring a global ordering that avoids circular wait. After eating, they release the forks and the semaphore.
 
 ```text
 FUNCTION philosopher(id):
@@ -81,9 +81,9 @@ FUNCTION philosopher(id):
 - Time: O(∞) as philosophers run indefinitely; each eat/thinking cycle is O(1).
 - Space: O(N) for fork mutexes and the semaphore.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to use a monitor with condition variables instead of a semaphore?
-2. Can you achieve deadlock‑free execution without limiting concurrency (e.g., using a resource hierarchy)?
+2. Can you achieve deadlock-free execution without limiting concurrency (e.g., using a resource hierarchy)?
 3. What changes are needed to detect and recover from a deadlock if it occurs?
 
 ## Key Takeaway

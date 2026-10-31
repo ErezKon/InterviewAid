@@ -46,7 +46,7 @@ FUNCTION findDisappearedNumbers(nums):
             APPEND i + 1 TO result
     RETURN result
 ```
-The algorithm runs in‑place, using only constant extra space.
+The algorithm runs in-place, using only constant extra space.
 
 ## Walkthrough
 For `nums = [4,3,2,7,8,2,3,1]`:
@@ -72,4 +72,4 @@ Second pass finds positive entries at indices 4 and 5 → numbers 5 and 6.
 3. How would you adapt the algorithm to return the missing numbers in sorted order without an extra sort step?
 
 ## Key Takeaway
-Negating the element at the index derived from each value lets you flag presence in‑place, yielding a linear‑time, constant‑space solution.
+Negating the element at the index derived from each value lets you flag presence in-place, yielding a linear-time, constant-space solution.

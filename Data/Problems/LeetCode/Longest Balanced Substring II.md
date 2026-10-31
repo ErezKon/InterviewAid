@@ -76,13 +76,13 @@ FUNCTION longestBalanced(s):
 
 Consider `s = "aabb"`:
 
-| i | char | freq(a) | freq(b) | ref | state (a‑ref, b‑ref) | firstSeen[state] |
+| i | char | freq(a) | freq(b) | ref | state (a-ref, b-ref) | firstSeen[state] |
 |---|------|--------|--------|-----|----------------------|------------------|
 |0| - |0|0|0|(0,0)|0|
-|1| a |1|0|1|(0,‑1)|new → 1|
-|2| a |2|0|2|(0,‑2)|new → 2|
-|3| b |2|1|2|(0,‑1)|seen at 1 → len=3‑1=2|
-|4| b |2|2|2|(0,0)|seen at 0 → len=4‑0=4|
+|1| a |1|0|1|(0,-1)|new → 1|
+|2| a |2|0|2|(0,-2)|new → 2|
+|3| b |2|1|2|(0,-1)|seen at 1 → len=3-1=2|
+|4| b |2|2|2|(0,0)|seen at 0 → len=4-0=4|
 
 Maximum length recorded is 4.
 

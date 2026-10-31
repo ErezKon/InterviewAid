@@ -80,7 +80,7 @@ FUNCTION canIWin(maxChoosableInteger, desiredTotal):
 - **Time:** O(2^n) where n = `maxChoosableInteger` (state space of used masks).
 - **Space:** O(2^n) for memoization.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if numbers could be reused after a certain cooldown?
 2. Can you extend the algorithm to return the winning move sequence?
 3. What is the impact of increasing `maxChoosableInteger` beyond 20 on performance?

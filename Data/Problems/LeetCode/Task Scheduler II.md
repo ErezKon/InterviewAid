@@ -72,13 +72,18 @@ FUNCTION taskSchedulerII(tasks, space):
 ```
 
 ## Walkthrough
-Consider `tasks = ["a","b","a"]` and `space = 3`.
-| Step | task | day before | day after | lastDay map |
-|------|------|------------|-----------|------------|
-| 1 | a | 0 | 1 | {a:1} |
-| 2 | b | 1 | 2 | {a:1, b:2} |
-| 3 | a | 2 | 6 (max(3,1+3+1)) | {a:6, b:2} |
-The final day is 6, plus the initial offset gives 7 total days.
+Example 1: `tasks = [1,2,1,2,3,1]`, `space = 3`.
+
+| Step | task | day + 1 | cooldown bound | day after | lastDay map |
+|------|------|---------|----------------|-----------|-------------|
+| 1 | 1 | 1 | - | 1 | {1:1} |
+| 2 | 2 | 2 | - | 2 | {1:1, 2:2} |
+| 3 | 1 | 3 | 1+3+1 = 5 | 5 | {1:5, 2:2} |
+| 4 | 2 | 6 | 2+3+1 = 6 | 6 | {1:5, 2:6} |
+| 5 | 3 | 7 | - | 7 | {1:5, 2:6, 3:7} |
+| 6 | 1 | 8 | 5+3+1 = 9 | 9 | {1:9, 2:6, 3:7} |
+
+**Output: 9.** Example 2 (`[5,8,8,5]`, `space = 2`) gives days 1, 2, 5, 6 -> **6**.
 
 ## Complexity Analysis
 - Time: O(n) where n is the number of tasks, each processed once.

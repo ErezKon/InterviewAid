@@ -114,6 +114,6 @@ Example 2:
 
 Take Example 1 (3×3 grid):
 1. Diagonal cells (0,0), (1,1), (2,2) give 1+5+9 = 15.
-2. Upper‑right triangle for Child 2 (cells where col > row): DP computes max path from (0,2) to (2,2) moving left/down, collecting 2+3+6 = 11.
-3. Lower‑left triangle for Child 3 (cells where row > col): DP computes max path from (2,0) to (2,2) moving up/right, collecting 7+8 = 14.
+2. Upper-right triangle for Child 2 (cells where col > row): DP computes max path from (0,2) to (2,2) moving left/down, collecting 2+3+6 = 11.
+3. Lower-left triangle for Child 3 (cells where row > col): DP computes max path from (2,0) to (2,2) moving up/right, collecting 7+8 = 14.
 4. Sum = 15 + 11 + 14 = 40 (adjusted for overlapping diagonal counted once) → final total 45 after adding missing corner fruits.

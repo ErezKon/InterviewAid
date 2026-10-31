@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve a different problem (checking that all primes lie on the main diagonal). Correct idea: scan both diagonals — `nums[i][i]` and `nums[i][n-1-i]` — and return the largest value that is prime (trial division up to `√v`), or `0`. O(n·√V).*
-
 You are given a 0-indexed two-dimensional integer array `nums`.
 
 Return *the largest **prime** number that lies on at least one of the **diagonals** of* `nums`. In case, no prime is present on any of the diagonals, return *0.*
@@ -43,39 +41,42 @@ Explanation: The numbers 1, 3, 9, 10, and 17 are all present on at least one of 
 ```
 
 ## Approach
-Iterate through all cells. For each cell, if the value is prime and its row index `i` is not equal to column index `j`, the matrix fails the condition.
+Only the `2n` cells on the two diagonals matter: `nums[i][i]` and `nums[i][n-1-i]`. Scan them, test each value for primality with trial division up to `√v`, and keep the largest prime seen (start from `0`). Skipping values not larger than the current best avoids unnecessary prime checks.
 
 ### Pseudocode
 ```text
-FUNCTION primeInDiagonal(matrix):
-    FOR i ← 0 TO matrix.length - 1:
-        FOR j ← 0 TO matrix[i].length - 1:
-            IF isPrime(matrix[i][j]) AND i ≠ j:
-                RETURN FALSE
-    RETURN TRUE
+FUNCTION diagonalPrime(nums):
+    n ← nums.length
+    best ← 0
+    FOR i ← 0 TO n - 1:
+        FOR v IN [nums[i][i], nums[i][n - 1 - i]]:
+            IF v > best AND isPrime(v):
+                best ← v
+    RETURN best
 
 FUNCTION isPrime(x):
     IF x < 2: RETURN FALSE
-    FOR d ← 2 TO sqrt(x):
+    FOR d ← 2 WHILE d * d ≤ x:
         IF x MOD d = 0: RETURN FALSE
     RETURN TRUE
 ```
 
 ## Walkthrough
-Consider the first example matrix `[[2,4,6],[8,3,10],[12,14,5]]`.
-- (0,0): 2 is prime, i=j → ok.
-- (1,1): 3 is prime, i=j → ok.
-- (2,2): 5 is prime, i=j → ok.
-All other cells are non‑prime, so the function returns `TRUE`.
+Example 2: `nums = [[1,2,3],[5,17,7],[9,11,10]]`, `n = 3`.
+- i=0: `nums[0][0] = 1` (not prime), `nums[0][2] = 3` → prime, best = 3.
+- i=1: `nums[1][1] = 17` → prime, best = 17; `nums[1][1] = 17` again, not > best.
+- i=2: `nums[2][2] = 10` (not > 17, skipped), `nums[2][0] = 9` (skipped).
+
+Return `17`.
 
 ## Complexity Analysis
-- Time: `O(n² * √m)` where `m` is the maximum element value (prime check).
+- Time: `O(n * √m)` where `m` is the maximum element value - `2n` diagonal cells, each with an `O(√m)` prime check.
 - Space: `O(1)` additional space.
 
-## Follow‑Up Questions
-- How would you optimize the prime check for large matrix values?
-- Can the solution be extended to check primes on both main and anti‑diagonals?
-- What if the matrix is sparse and stored in a compressed format?
+## Follow-Up Questions
+- When would a Sieve of Eratosthenes up to `4*10^6` be preferable to trial division, and what is its memory cost?
+- How would you use Miller-Rabin if values could be up to `10^18`?
+- How would you return the largest prime on any row, column, or diagonal of the matrix?
 
 ## Key Takeaway
-A simple double loop combined with a primality test efficiently verifies that all primes reside on the main diagonal.
+Restrict the search to the `2n` diagonal cells and apply a `√v` primality test; only check candidates that could improve the current answer.

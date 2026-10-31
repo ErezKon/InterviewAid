@@ -77,7 +77,7 @@ FUNCTION reset(playerId):
 |------|-----------|------------|-------------|
 | 1 | `addScore(1,73)` | {1:73} | Insert player 1 with 73 points |
 | 2 | `addScore(2,56)` | {1:73, 2:56} | Insert player 2 |
-| 3 | `top(1)` | – | Sorted scores = [73,56]; top‑1 sum = 73 |
+| 3 | `top(1)` | – | Sorted scores = [73,56]; top-1 sum = 73 |
 | 4 | `reset(1)` | {1:0, 2:56} | Player 1 score reset to 0 |
 | 5 | `addScore(1,40)` | {1:40, 2:56} | Player 1 gains 40 points |
 | 6 | `top(2)` | – | Sorted scores = [56,40]; sum = 96 |
@@ -95,7 +95,7 @@ FUNCTION reset(playerId):
 
 ## Follow-Up Questions
 
-1. How would you improve `top(K)` to O(K log n) using a balanced BST or a max‑heap?
+1. How would you improve `top(K)` to O(K log n) using a balanced BST or a max-heap?
 2. How can you support frequent `top(K)` queries with a sliding window of recent scores?
 3. How would you persist the leaderboard across server restarts?
 
@@ -103,4 +103,4 @@ FUNCTION reset(playerId):
 
 ## Key Takeaway
 
-> **Hash map stores player scores; sorting enables top‑K retrieval. For many top‑K calls, maintain a sorted structure for faster queries.**
+> **Hash map stores player scores; sorting enables top-K retrieval. For many top-K calls, maintain a sorted structure for faster queries.**

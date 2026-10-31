@@ -88,4 +88,4 @@ FUNCTION longestValidSubstring(word, forbidden):
 
 ## 6. Key Takeaway
 
-> Exploit the short length of forbidden words. By scanning right‑to‑left and only checking up to 10 characters ahead, we efficiently maintain the longest valid window.
+> Exploit the short length of forbidden words. By scanning right-to-left and only checking up to 10 characters ahead, we efficiently maintain the longest valid window.

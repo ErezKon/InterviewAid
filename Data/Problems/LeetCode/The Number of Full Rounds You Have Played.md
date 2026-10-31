@@ -57,7 +57,7 @@ Use integer division to compute how many times 5 fits into `n`. The floor divisi
 ## Complexity Analysis
 Time complexity is `O(1)` because only a single arithmetic operation is performed. Space complexity is `O(1)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would you handle a variable round length instead of a fixed 5 minutes?
 * If the game had overtime rules where a partial round counts after a certain threshold, how would the calculation change?
 * How to compute the total minutes spent in incomplete rounds across multiple games?

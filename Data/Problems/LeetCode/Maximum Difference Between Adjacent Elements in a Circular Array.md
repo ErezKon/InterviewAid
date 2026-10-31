@@ -97,4 +97,4 @@ The final `maxDiff` is `4`.
 
 ## Key Takeaway
 
-> **Circular adjacency: use `(i+1) % n` to handle wrap‑around.** One‑pass max of absolute differences.
+> **Circular adjacency: use `(i+1) % n` to handle wrap-around.** One-pass max of absolute differences.

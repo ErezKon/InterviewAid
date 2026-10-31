@@ -57,7 +57,7 @@ Explanation: - It is impossible to reach (2, 2) from (1, 1) using the allowed mo
 
 ## Approach
 
-**Algorithm:** Breadth‑First Search (BFS) on the grid
+**Algorithm:** Breadth-First Search (BFS) on the grid
 
 BFS explores cells in order of increasing distance from the start, guaranteeing the first time we dequeue the target we have the shortest path length. We maintain a queue of `(row, col, distance)` and a visited matrix to avoid revisiting cells.
 
@@ -102,7 +102,7 @@ FUNCTION minMoves(grid, target):
 | Time   | **O(m·n)** – each cell visited at most once |
 | Space  | **O(m·n)** – visited matrix and queue |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if diagonal moves were allowed?
 2. Can we compute the shortest path when each cell has a traversal cost (weighted grid) without using Dijkstra?

@@ -52,7 +52,7 @@ Thus, the minimum number of swaps required is 0.
 ```
 
 ## Approach
-**Algorithm:** Fixed‑size sliding window on a circular array.
+**Algorithm:** Fixed-size sliding window on a circular array.
 1. Count total number of `1`s → window size `k`.
 2. Slide a window of size `k` around the circle, counting `0`s inside.
 3. The minimum `0`s encountered equals the minimum swaps.
@@ -81,18 +81,18 @@ FUNCTION minSwaps(nums):
 Consider `nums = [1,0,1,0,1]` (n=5, ones=3).
 | Step | Window indices | Zeros in window | minZeros |
 |------|----------------|----------------|----------|
-| Init | 0‑2            | 1              | 1 |
-| i=1  | 1‑3            | 2              | 1 |
-| i=2  | 2‑4            | 1              | 1 |
-| i=3  | 3‑0 (wrap)     | 2              | 1 |
-| i=4  | 4‑1 (wrap)     | 1              | 1 |
+| Init | 0-2            | 1              | 1 |
+| i=1  | 1-3            | 2              | 1 |
+| i=2  | 2-4            | 1              | 1 |
+| i=3  | 3-0 (wrap)     | 2              | 1 |
+| i=4  | 4-1 (wrap)     | 1              | 1 |
 Result = 1 swap.
 
 ## Complexity Analysis
 - Time: O(n) – one pass around the array.
 - Space: O(1) – only counters are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the array were not circular?
 2. Can you extend the approach to group `k` specific values together?
 3. What if swaps are only allowed between adjacent elements?

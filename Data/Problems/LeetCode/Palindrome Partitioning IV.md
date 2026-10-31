@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-Use dynamic programming. Pre‑compute `isPalin[i][j]` indicating whether `s[i..j]` is a palindrome. Then define `dp[i][c]` as whether the prefix `s[0..i]` can be split into exactly `c` palindromic substrings. Transition: for each end index `i` and possible cut position `j ≤ i`, if `isPalin[j][i]` is true and `dp[j-1][c-1]` is true, then `dp[i][c]` becomes true.
+Use dynamic programming. Pre-compute `isPalin[i][j]` indicating whether `s[i..j]` is a palindrome. Then define `dp[i][c]` as whether the prefix `s[0..i]` can be split into exactly `c` palindromic substrings. Transition: for each end index `i` and possible cut position `j ≤ i`, if `isPalin[j][i]` is true and `dp[j-1][c-1]` is true, then `dp[i][c]` becomes true. For this problem call it with `k = 3` and return `dp[n-1][3]`.
 
 ```text
 FUNCTION canPartitionKPalindromes(s, k):
@@ -57,14 +57,18 @@ FUNCTION canPartitionKPalindromes(s, k):
 ```
 
 ## Walkthrough
-Consider `s = "aab"`, `k = 2`.
-1. `isPalin` table true for (0,0), (1,1), (2,2), (0,1) because "aa".
-2. Initialize `dp`:
-   - `dp[0][1]` true ("a").
-   - `dp[1][1]` true ("aa").
-3. For `c = 2` and `i = 2` (char 'b'):
-   - Check `j = 2`: `isPalin[2][2]` true and `dp[1][1]` true → `dp[2][2]` becomes true.
-Result: `dp[2][2]` true → return `true`.
+Example 1: `s = "abcbdd"`, call with `k = 3`.
+1. `isPalin` is true for all single chars plus `(1,3)` = "bcb" and `(4,5)` = "dd".
+2. `c = 1`: only `dp[0][1]` is true ("a"); no longer prefix is a palindrome.
+3. `c = 2`:
+   - `dp[1][2]`: `j = 1`, "b" palindrome and `dp[0][1]` true -> true.
+   - `dp[3][2]`: `j = 1`, "bcb" palindrome and `dp[0][1]` true -> true ("a" + "bcb").
+4. `c = 3`:
+   - `dp[2][3]` ("a"+"b"+"c"), `dp[4][3]` ("a"+"bcb"+"d") become true.
+   - `dp[5][3]`: `j = 4`, "dd" palindrome and `dp[3][2]` true -> true.
+5. `dp[5][3]` is true -> return `true` ("a" + "bcb" + "dd").
+
+For Example 2 (`"bcbddxy"`), `dp[6][3]` stays false: the last piece must be a palindrome ending at 'y', which is only "y", and "bcbddx" cannot be split into 2 palindromes.
 
 ## Complexity Analysis
 - **Time:** O(n²·k) – building the palindrome table O(n²) and DP transitions O(n²·k).
@@ -76,4 +80,4 @@ Result: `dp[2][2]` true → return `true`.
 3. What changes are needed if the order of substrings does not matter (i.e., you can reorder pieces)?
 
 ## Key Takeaway
-Pre‑computing palindrome substrings lets a DP efficiently answer whether a string can be split into an exact number of palindrome pieces.
+Pre-computing palindrome substrings lets a DP efficiently answer whether a string can be split into an exact number of palindrome pieces.

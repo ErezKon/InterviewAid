@@ -40,7 +40,7 @@ Output: false
 ```
 
 ## Approach
-Use a two‑pointer scan from both ends, checking the mapping at each step.
+Use a two-pointer scan from both ends, checking the mapping at each step.
 
 ```text
 FUNCTION isStrobogrammatic(num):
@@ -68,10 +68,10 @@ Loop ends, return `true`.
 - **Time:** O(n), where n is the length of `num`.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you generate all strobogrammatic numbers of length `n`?
 2. Can the algorithm be adapted to handle very large numbers stored as streams?
 3. What changes are needed if the input may contain leading zeros?
 
 ## Key Takeaway
-A simple two‑pointer scan with a constant‑size mapping table determines strobogrammatic numbers in linear time and constant space.
+A simple two-pointer scan with a constant-size mapping table determines strobogrammatic numbers in linear time and constant space.

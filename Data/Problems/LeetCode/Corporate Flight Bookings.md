@@ -80,4 +80,4 @@ Consider `bookings = [[1,2,10],[2,3,20]]`, `n = 3`.
 - What if the number of flights `n` is extremely large (e.g., 10⁹) but bookings are sparse?
 
 ## Key Takeaway
-A difference array turns range‑addition updates into constant‑time operations, and a single prefix‑sum pass yields the final values.
+A difference array turns range-addition updates into constant-time operations, and a single prefix-sum pass yields the final values.

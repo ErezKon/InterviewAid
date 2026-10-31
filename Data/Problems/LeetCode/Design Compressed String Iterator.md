@@ -120,4 +120,4 @@ Consider the compressed string `"L1e2t1C1o1d1e1"`.
 
 ## Key Takeaway
 
-> Parse the run‑length encoded string into `(char, count)` pairs and maintain an index plus a remaining‑count counter; each `next()` consumes one count and advances the index when the count reaches zero.
+> Parse the run-length encoded string into `(char, count)` pairs and maintain an index plus a remaining-count counter; each `next()` consumes one count and advances the index when the count reaches zero.

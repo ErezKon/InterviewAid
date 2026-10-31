@@ -66,10 +66,10 @@ The query directly produces the normalized names without needing procedural code
 - **Time:** `O(n)` where `n` is the number of rows, as each row is processed once.
 - **Space:** `O(1)` additional space; the database handles result storage.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle names with leading/trailing spaces?
 2. Extend the query to also capitalize middle names or surnames.
 3. What indexes would improve performance for large tables?
 
 ## Key Takeaway
-SQL string functions let you transform and normalize textual data directly within a query, avoiding post‑processing in application code.
+SQL string functions let you transform and normalize textual data directly within a query, avoiding post-processing in application code.

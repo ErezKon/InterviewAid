@@ -109,4 +109,4 @@ FUNCTION delayedCount(stream, d):
 
 ## Key Takeaway
 
-> **Use a hashmap for frequencies combined with a sliding‑window‑style queue to enforce the required delay before counts become visible.**
+> **Use a hashmap for frequencies combined with a sliding-window-style queue to enforce the required delay before counts become visible.**

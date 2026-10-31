@@ -100,7 +100,7 @@ Result: [0,1]
 ## 7. Follow-Up Questions
 
 - How would you solve the variant where the total distance is minimized? (Campus Bikes II – requires DP with bitmask.)
-- What if workers and bikes are streamed in real‑time?
+- What if workers and bikes are streamed in real-time?
 
 ---
 

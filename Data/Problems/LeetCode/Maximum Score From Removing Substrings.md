@@ -45,7 +45,7 @@ Output: 20
 ```
 
 ## Approach
-Choose the higher‑value pair first. Use a stack to greedily delete that pair in one pass, then a second pass to delete the lower‑value pair from the remaining characters.
+Choose the higher-value pair first. Use a stack to greedily delete that pair in one pass, then a second pass to delete the lower-value pair from the remaining characters.
 
 ```text
 FUNCTION maximumGain(s, x, y):
@@ -61,7 +61,7 @@ FUNCTION maximumGain(s, x, y):
         SET firstPair ← "ab"
         SET secondPair ← "ba"
     SET score ← 0
-    // Pass 1: remove high‑value pair
+    // Pass 1: remove high-value pair
     SET stack1 ← []
     FOR ch IN s:
         IF stack1 NOT EMPTY AND stack1[-1] + ch = firstPair:
@@ -69,7 +69,7 @@ FUNCTION maximumGain(s, x, y):
             SET score ← score + highScore
         ELSE:
             PUSH ch TO stack1
-    // Pass 2: remove low‑value pair from remainder
+    // Pass 2: remove low-value pair from remainder
     SET stack2 ← []
     FOR ch IN stack1:
         IF stack2 NOT EMPTY AND stack2[-1] + ch = secondPair:
@@ -79,23 +79,23 @@ FUNCTION maximumGain(s, x, y):
             PUSH ch TO stack2
     RETURN score
 ```
-The two‑pass stack guarantees optimal removal because higher‑value deletions never interfere with lower‑value ones.
+The two-pass stack guarantees optimal removal because higher-value deletions never interfere with lower-value ones.
 
 ## Walkthrough
 For `s = "cdbcbbaaabab"`, `x = 4`, `y = 5`:
 - Since `y > x`, `firstPair = "ba"`, `highScore = 5`.
-- Pass 1 removes three "ba" substrings, accumulating 15 points.
+- Pass 1 removes three "ba" substrings, accumulating 15 points.
 - Remaining characters become `"cdbcbbaa"`.
-- Pass 2 removes one "ab" for an additional 4 points, total 19.
+- Pass 2 removes one "ab" for an additional 4 points, total 19.
 
 ## Complexity Analysis
 - **Time:** O(n) where n = length of `s` (two linear passes).
-- **Space:** O(n) for the stacks (worst‑case when no deletions occur).
+- **Space:** O(n) for the stacks (worst-case when no deletions occur).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if deletions could overlap?
 2. Can the solution be extended to more than two substring patterns with different scores?
 3. What is the impact on complexity if the string contains additional characters beyond `'a'` and `'b'`?
 
 ## Key Takeaway
-Greedy two‑pass stack removal, handling the higher‑value pair first, yields the maximum achievable score.
+Greedy two-pass stack removal, handling the higher-value pair first, yields the maximum achievable score.

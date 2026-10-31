@@ -97,8 +97,8 @@ Explanation: Select the points (0, 0), (0, 1), (0, 2), (1, 2), and (2, 2).
 ## Walkthrough
 
 1. **Convert to linear positions:**
-   - For each point, compute its distance from the bottom‑left corner moving clockwise.
-   - Example 1 yields positions `[0, 2, 6, 8]` on a perimeter of `8`.
+   - For each point, compute its distance from the bottom-left corner moving clockwise.
+   - Example 1 yields positions `[0, 2, 6, 8]` on a perimeter of `8`.
 2. **Binary search:**
    - Start with `lo = 0`, `hi = 8`.
    - Mid = 4 → `canPlace(4)` succeeds (places points at 0 and 4), so `lo = 4`.

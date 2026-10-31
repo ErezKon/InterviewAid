@@ -40,7 +40,7 @@ Explanation: Mark the indices 0, 2, and 1 in order. The total reward will then b
 ```
 
 ## Approach
-**Weighted Interval Scheduling – DP with Binary Search** – Sort operations by end time. For each operation, find the last non‑conflicting operation using binary search, then decide to take or skip.
+**Weighted Interval Scheduling – DP with Binary Search** – Sort operations by end time. For each operation, find the last non-conflicting operation using binary search, then decide to take or skip.
 
 ```text
 FUNCTION MaxReward(operations):
@@ -55,7 +55,7 @@ FUNCTION MaxReward(operations):
         SET cur ← ops[i-1]
         // Find index j of last operation with end < cur.start
         SET j ← BINARY_SEARCH_RIGHTMOST(ends, cur.start - 1)
-        SET include ← cur.reward + dp[j+1]   // dp is 1‑based
+        SET include ← cur.reward + dp[j+1]   // dp is 1-based
         SET exclude ← dp[i-1]
         SET dp[i] ← MAX(include, exclude)
     RETURN dp[n]
@@ -75,10 +75,10 @@ Result = 9.
 - **Time:** `O(n log n)` for sorting and binary searches.
 - **Space:** `O(n)` for the DP array and auxiliary lists.
 
-## Follow‑Up Questions
-1. How would the solution change if each operation also had a cost and you needed to maximize reward‑minus‑cost?
+## Follow-Up Questions
+1. How would the solution change if each operation also had a cost and you needed to maximize reward-minus-cost?
 2. Can you modify the algorithm to also return the selected operations?
 3. What if intervals are allowed to overlap as long as the total overlap length does not exceed a given threshold?
 
 ## Key Takeaway
-Sorting by end time and applying DP with binary search yields the optimal non‑overlapping reward selection.
+Sorting by end time and applying DP with binary search yields the optimal non-overlapping reward selection.

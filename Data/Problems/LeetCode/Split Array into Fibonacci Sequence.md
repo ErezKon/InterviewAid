@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below work on an integer array; the official input is a **digit string**. Correct idea: backtrack over the lengths of the first two numbers (no leading zeros, each `< 2^31`), then greedily check that the string continues with `f[i] + f[i+1]`; return the first full split found. O(n²·n).*
-
 You are given a string of digits `num`, such as `"123456579"`. We can split it into a Fibonacci-like sequence `[123, 456, 579]`.
 
 Formally, a **Fibonacci-like** sequence is a list `f` of non-negative integers such that:
@@ -50,47 +48,53 @@ Explanation: Leading zeroes are not allowed, so "01", "2", "3" is not valid.
 ```
 
 ## Approach
-Use backtracking to try every pair of starting numbers. After fixing the first two numbers, iteratively compute the expected next value and check if it appears later in the array. Continue until the end of the array is reached or a mismatch occurs.
+Once the first two numbers are fixed, the whole sequence is determined: every next term must be `f[i] + f[i+1]`, and its decimal string must appear exactly at the current position of `num`. So we only enumerate the lengths of the first two numbers and greedily verify the rest.
+
+- Each number is `< 2^31`, so it has at most 10 digits — the two lengths are each bounded by 10.
+- A piece longer than one digit may not start with `'0'`.
+- Stop extending as soon as the next sum is `≥ 2^31` or its string does not match at the current position.
+- Return the first sequence that consumes the entire string with at least 3 terms.
 
 ```text
-FUNCTION isFibonacciSplit(nums):
-    SET n ← LENGTH(nums)
-    IF n < 3: RETURN false
-    // Try every ordered pair as the first two numbers
-    FOR i ← 0 TO n - 3:
-        FOR j ← i + 1 TO n - 2:
-            SET seq ← [nums[i], nums[j]]
-            SET idx ← j + 1
-            WHILE idx < n:
-                SET nextVal ← seq[-2] + seq[-1]
-                // Find nextVal at or after idx
-                SET found ← false
-                FOR k ← idx TO n - 1:
-                    IF nums[k] == nextVal:
-                        APPEND nextVal TO seq
-                        SET idx ← k + 1
-                        SET found ← true
-                        BREAK
-                IF NOT found: BREAK
-            IF LENGTH(seq) ≥ 3 AND idx == n:
-                RETURN true
-    RETURN false
+FUNCTION splitIntoFibonacci(num):
+    n ← LENGTH(num); LIMIT ← 2^31
+    FOR i ← 1 TO MIN(10, n):                     // length of first number
+        IF num[0] == '0' AND i > 1: BREAK
+        a ← INT(num[0..i-1]); IF a ≥ LIMIT: BREAK
+        FOR j ← i+1 TO MIN(i+10, n):             // end of second number
+            IF num[i] == '0' AND j > i+1: BREAK
+            b ← INT(num[i..j-1]); IF b ≥ LIMIT: BREAK
+            f ← [a, b]; k ← j
+            WHILE k < n:
+                c ← f[-1] + f[-2]
+                IF c ≥ LIMIT: BREAK
+                s ← STRING(c)
+                IF num does not start with s at index k: BREAK
+                APPEND c TO f; k ← k + LENGTH(s)
+            IF k == n AND LENGTH(f) ≥ 3: RETURN f
+    RETURN []
 ```
 
 ## Walkthrough
-For `nums = [1,2,3,5,8]`:
-- Choose first pair `(1,2)`. Expected next `3` found at index 2 → sequence `[1,2,3]`.
-- Next expected `5` found at index 3 → `[1,2,3,5]`.
-- Next expected `8` found at index 4 → `[1,2,3,5,8]`. All numbers used, return `true`.
+Example 1: `num = "1101111"`.
+
+| First | Second | Extension | Result |
+|-------|--------|-----------|--------|
+| 1 | 1 | next 2, string has "0" at index 2 | fail |
+| 1 | 10 | next 11, string has "11" at index 3 → [1,10,11]; next 21 vs "1" | fail |
+| 1 | 101 / 1011 / ... | next sum does not match | fail |
+| 11 | 0 | next 11 matches index 3 → [11,0,11]; next 11 matches index 5 → [11,0,11,11], k = 7 = n | success |
+
+Output: `[11,0,11,11]`.
 
 ## Complexity Analysis
-- **Time:** In the worst case we try O(n²) starting pairs and for each may scan the remaining array, leading to O(n³) time.
-- **Space:** The sequence list stores at most n numbers → O(n) auxiliary space.
+- **Time:** O(10 · 10 · n) = O(n): at most 100 starting pairs (lengths bounded by 10 digits), each verified in O(n) string comparisons.
+- **Space:** O(n) for the sequence being built.
 
-## Follow‑Up Questions
-1. How can memoization reduce the repeated scanning for the next expected value?
-2. Can the problem be solved in O(n) time using a sliding‑window approach when the array is already sorted?
-3. What modifications are needed to allow reuse of elements (i.e., multiset rather than ordered list)?
+## Follow-Up Questions
+1. How would you return *all* valid Fibonacci-like splits instead of any one?
+2. How would you handle numbers of arbitrary size (no `2^31` bound)?
+3. How would you return the split with the maximum number of terms?
 
 ## Key Takeaway
-Backtracking over all possible first two numbers and greedily extending the Fibonacci condition lets us verify whether the array can be partitioned into a valid Fibonacci‑like sequence.
+The first two terms fully determine a Fibonacci-like sequence, so enumerate only their (digit-bounded) lengths and greedily verify the rest against the string, respecting leading-zero and overflow rules.

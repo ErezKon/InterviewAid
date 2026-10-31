@@ -69,13 +69,13 @@ FUNCTION commonFactors(a, b):
 
 ## Walkthrough
 
-Consider **Example 1** (`a = 12`, `b = 6`).
+Consider **Example 1** (`a = 12`, `b = 6`).
 | Step | Action | `g = GCD(12,6)` | Divisors Found |
 |------|--------|----------------|----------------|
 | 1 | Compute GCD | 6 | — |
 | 2 | Iterate i = 1 → √6 ≈ 2 | — | i=1 divides 6 → count+=2 (1,6) |
 | 3 | i = 2 divides 6 → count+=2 (2,3) | — | Total count = 4 |
-The four divisors correspond to the common factors 1, 2, 3, 6.
+The four divisors correspond to the common factors 1, 2, 3, 6.
 
 ---
 

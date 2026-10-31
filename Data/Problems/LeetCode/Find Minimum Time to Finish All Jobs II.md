@@ -47,7 +47,7 @@ It can be proven that 3 days is the minimum number of days needed.
 ```
 
 ## Approach
-The answer lies between `max(jobs)` (the fastest possible maximum) and `sum(jobs)` (all jobs to one worker). Perform binary search on this range. For a candidate limit `mid`, check if we can assign all jobs to at most `k` workers without any worker exceeding `mid`. The feasibility check is a depth‑first search with pruning:
+The answer lies between `max(jobs)` (the fastest possible maximum) and `sum(jobs)` (all jobs to one worker). Perform binary search on this range. For a candidate limit `mid`, check if we can assign all jobs to at most `k` workers without any worker exceeding `mid`. The feasibility check is a depth-first search with pruning:
 - Sort jobs in descending order to place large jobs first.
 - Try to put the current job into each worker whose current load + job ≤ `mid`.
 - Skip symmetric states by not placing a job into an empty worker if a previous empty worker was already tried.
@@ -56,19 +56,19 @@ If the DFS succeeds, `mid` is feasible; otherwise, increase the lower bound.
 ## Walkthrough
 | Step | Workers loads (k=2) | Current job | Decision |
 |------|--------------------|------------|----------|
-| 1    | [0,0]              | 8          | Put into worker 1 → [8,0]
-| 2    | [8,0]              | 7          | Put into worker 2 → [8,7]
-| 3    | [8,7]              | 4          | Worker 2 can take 4 (7+4≤11) → [8,11]
-| 4    | [8,11]             | 2          | Worker 1 can take 2 (8+2≤11) → [10,11]
-| 5    | [10,11]            | 1          | Worker 1 can take 1 (10+1≤11) → [11,11]
+| 1    | [0,0]              | 8          | Put into worker 1 → [8,0]
+| 2    | [8,0]              | 7          | Put into worker 2 → [8,7]
+| 3    | [8,7]              | 4          | Worker 2 can take 4 (7+4≤11) → [8,11]
+| 4    | [8,11]             | 2          | Worker 1 can take 2 (8+2≤11) → [10,11]
+| 5    | [10,11]            | 1          | Worker 1 can take 1 (10+1≤11) → [11,11]
 All jobs placed with max load 11, so 11 is feasible.
 
 ## Complexity Analysis
-- Binary search runs `O(log sum(jobs))` iterations.
+- Binary search runs `O(log sum(jobs))` iterations.
 - Each feasibility check explores at most `k^n` states, but pruning reduces it dramatically; with `n ≤ 12` it runs comfortably.
-Overall time: `O(k^n · log sum)` (acceptable for the given limits). Space: `O(k)` for worker loads plus recursion stack `O(n)`.
+Overall time: `O(k^n · log sum)` (acceptable for the given limits). Space: `O(k)` for worker loads plus recursion stack `O(n)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if `k` could be larger than `jobs.length`?
 2. Can the problem be solved with dynamic programming using bitmasking?
 3. What if each worker has a different speed factor?

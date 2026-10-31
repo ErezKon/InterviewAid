@@ -80,11 +80,11 @@ Consider Example 1. The first pass computes `up` lengths: `[0,0,1,2,0,0,1]`. The
 ## 5. Complexity Analysis
 
 - **Time:** O(n) – two linear passes.
-- **Space:** O(n) for the `up` and `down` arrays (can be reduced to O(1) with a single‑pass two‑pointer method).
+- **Space:** O(n) for the `up` and `down` arrays (can be reduced to O(1) with a single-pass two-pointer method).
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you solve the problem using O(1) extra space?
 - Can you extend the solution to handle multiple peaks and return all longest mountains?

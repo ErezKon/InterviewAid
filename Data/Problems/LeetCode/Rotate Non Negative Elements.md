@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below rotate the non-negative elements **right by one**; the official problem rotates them **left by `k`** (cyclically). Same extract/rotate/scatter idea: with `m` non-negative values `t`, place `t[i]` at position `((i − k) mod m + m) mod m`, then write them back into the non-negative slots. O(n).*
-
 You are given an integer array `nums` and an integer `k`.
 
 Rotate only the **non-negative** elements of the array to the **left** by `k` positions, in a cyclic manner.
@@ -29,29 +27,30 @@ Return the resulting array.
 
 ## Approach
 
+Only the relative order of the non-negative elements changes. Collect their indices and values, rotate the value list left by `k` (cyclically, so use `r = k mod m` where `m` is the number of non-negative elements), and write the rotated values back into the same indices. After a left rotation by `r`, the element that lands at slot `j` is `values[(j + r) mod m]`. If `m = 0`, nothing moves.
+
 ```text
-FUNCTION rotateNonNegative(nums):
-    // Collect indices of non‑negative elements
+FUNCTION rotateNonNegative(nums, k):
+    // Collect indices of non-negative elements
     indices ← []
     FOR i ← 0 TO LENGTH(nums) - 1:
         IF nums[i] ≥ 0:
             APPEND i TO indices
+    m ← LENGTH(indices)
+    IF m = 0:
+        RETURN nums
 
     // Extract their values
     values ← []
     FOR idx IN indices:
         APPEND nums[idx] TO values
 
-    // Rotate values right by 1
-    IF LENGTH(values) > 0:
-        last ← values[-1]
-        FOR i ← LENGTH(values) - 1 DOWNTO 1:
-            values[i] ← values[i-1]
-        values[0] ← last
+    // Left rotation by k is the same as by k mod m
+    r ← k MOD m
 
-    // Scatter back
-    FOR i ← 0 TO LENGTH(indices) - 1:
-        nums[indices[i]] ← values[i]
+    // Scatter back: slot j receives values[(j + r) mod m]
+    FOR j ← 0 TO m - 1:
+        nums[indices[j]] ← values[(j + r) MOD m]
 
     RETURN nums
 ```
@@ -95,34 +94,36 @@ Explanation:
 
 ## Walkthrough
 
-**Example:** `nums = [1, -2, 3, -4, 5]`
+**Example 3:** `nums = [5, 4, -9, 6]`, `k = 2`
 
-1. Indices of non‑negative elements: `[0, 2, 4]`.
-2. Values at those indices: `[1, 3, 5]`.
-3. Rotate right by one → `[5, 1, 3]`.
-4. Place back:
-   - `nums[0] = 5`
-   - `nums[2] = 1`
-   - `nums[4] = 3`
-5. Resulting array: `[5, -2, 1, -4, 3]`.
+1. Indices of non-negative elements: `[0, 1, 3]`; values: `[5, 4, 6]`; `m = 3`.
+2. `r = 2 mod 3 = 2`.
+3. Scatter back:
+   - `j = 0`: `nums[0] = values[(0+2) mod 3] = values[2] = 6`
+   - `j = 1`: `nums[1] = values[(1+2) mod 3] = values[0] = 5`
+   - `j = 2`: `nums[3] = values[(2+2) mod 3] = values[1] = 4`
+4. The negative `-9` at index 2 is untouched.
+5. Resulting array: `[6, 5, -9, 4]` — matches the expected output.
+
+(Example 1: values `[1, 3]`, `r = 3 mod 2 = 1` → `[3, 1]` → `[3, -2, 1, -4]`.)
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(n) – one pass to collect indices and another to write back.
-- **Space:** O(m) where m is the number of non‑negative elements (extra arrays for indices and values).
+- **Time:** O(n) – one pass to collect indices/values and one pass to write back; `k` is reduced modulo `m`, so its size does not matter.
+- **Space:** O(m) where m is the number of non-negative elements (extra arrays for indices and values).
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would you rotate the non‑negative elements by `k` positions?
-- Can you achieve O(1) extra space by rotating in‑place?
-- How would the solution change for a doubly linked list representation?
+- How would you rotate to the **right** by `k` instead? (Slot `j` receives `values[(j − r + m) mod m]`.)
+- Can you achieve O(1) extra space? (Apply the three-reversal rotation trick on the "virtual" array of non-negative positions, using two pointers that skip negative indices.)
+- What if the array is updated online and many rotation queries arrive? (Keep a cumulative offset instead of physically rotating, and resolve positions lazily.)
 
 ---
 
 ## Key Takeaway
 
-> Extract, rotate, and scatter: filter the elements you need to move, transform them, then place them back at their original positions.
+> Extract, rotate, and scatter: filter the elements that move, rotate them left by `k mod m` using index arithmetic `(j + r) mod m`, then place them back at their original positions.

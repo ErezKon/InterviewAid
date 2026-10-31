@@ -56,7 +56,7 @@ Output: [4,4,4]
 ```
 
 ## Approach
-**Algorithm:** Simulate each unit with a two‑pointer scan (left then right) – O(V·n) worst case, but acceptable for typical constraints.
+**Algorithm:** Simulate each unit with a two-pointer scan (left then right) – O(V·n) worst case, but acceptable for typical constraints.
 **Key Insight:** For each drop, find the leftmost position with a strictly lower height than the current position; if none, repeat the search to the right. Updating the height at the chosen index simulates water accumulation.
 
 ```text
@@ -94,9 +94,9 @@ Result `[2,2,2,3,2,2,2]`.
 - **Time:** O(V·n) in the worst case, where `V` is the volume and `n` the number of columns.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you improve the algorithm to O(n + V log n) using a priority queue?
-2. Can the solution be adapted for a 2‑D terrain grid?
+2. Can the solution be adapted for a 2-D terrain grid?
 3. What changes are needed if water can flow over equal heights as well as lower ones?
 
 ## Key Takeaway

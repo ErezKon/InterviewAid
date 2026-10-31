@@ -71,10 +71,10 @@ The algorithm counts the two `Yes` entries.
 - **Time:** Two passes over the matrix → `O(m·n)`.
 - **Space:** Two auxiliary arrays of size `m + n` → `O(m + n)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for a sparse matrix representation?
 2. Can the problem be solved in a single pass without extra arrays?
-3. What changes are needed if the definition of a special position allows multiple `1`s per row/column but still requires uniqueness per row‑column pair?
+3. What changes are needed if the definition of a special position allows multiple `1`s per row/column but still requires uniqueness per row-column pair?
 
 ## Key Takeaway
 By precomputing row and column counts, we can identify special positions in linear time with minimal extra space.

@@ -83,4 +83,4 @@ The recursion explores all inclusion/exclusion choices while respecting the beau
 3. How would the approach change if the condition were `|x - y| > k` instead of `!= k`?
 
 ## Key Takeaway
-Backtrack while maintaining a frequency map that blocks inclusion of numbers whose `k`‑distance neighbors are already chosen, counting all valid non‑empty subsets.
+Backtrack while maintaining a frequency map that blocks inclusion of numbers whose `k`-distance neighbors are already chosen, counting all valid non-empty subsets.

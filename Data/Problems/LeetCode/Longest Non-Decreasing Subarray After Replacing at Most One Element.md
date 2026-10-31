@@ -68,13 +68,13 @@ The maximum dp1 value is 5.
 
 ## Complexity Analysis
 - **Time:** O(n) – single pass through the array.
-- **Space:** O(1) – only constant‑size variables are stored.
+- **Space:** O(1) – only constant-size variables are stored.
 
 ## Follow-Up Questions
 - How would the solution change if up to *k* replacements were allowed?
-- Can this be extended to handle non‑contiguous subarrays?
+- Can this be extended to handle non-contiguous subarrays?
 - What if the array contains negative numbers and large ranges?
 
 ## Key Takeaway
 
-> Track two states: length with 0 replacements and with 1 replacement. When the non-decreasing property breaks, the 1‑change state can bridge one violation.
+> Track two states: length with 0 replacements and with 1 replacement. When the non-decreasing property breaks, the 1-change state can bridge one violation.

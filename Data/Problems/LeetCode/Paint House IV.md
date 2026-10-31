@@ -47,73 +47,48 @@ Example 2:
     - Houses at positions 2 and 3 (equidistant from the ends) are not painted the same color (2 != 3).
   The minimum cost to paint the houses so that they look beautiful is 2 + 8 + 1 + 2 + 3 + 2 = 18.
 ```
-<!-- choose color 2 (cost 4) to avoid matching the previous house. -->
+<!-- choose color 2 (cost 4) to avoid matching the previous house. -->
 
 ## Approach
-Perform two DP passes:
-1. **Forward pass** – compute the minimum cost to paint up to each house assuming the left neighbor's color.
-2. **Backward pass** – compute the minimum cost from the right side.
-Combine the two passes to ensure both left and right adjacency constraints are satisfied.
-The state `dp[i][c]` stores the minimum cost to paint houses `0..i` with house `i` colored `c`.
-For each house, transition from any color `p` of the previous house where `p != c`.
-After the forward pass, run a similar backward pass to enforce the right‑side constraint and take the minimum combined cost.
+Paint the row from both ends toward the middle, one **mirror pair** `(i, n-1-i)` at a time.
+- State `dp[a][b]` = minimum cost to paint houses `0..i` and `n-1-i..n-1` where house `i` has color `a` and house `n-1-i` has color `b`.
+- A pair is valid only if `a != b` (equidistant constraint). For the innermost pair `(n/2-1, n/2)` this same check also covers their adjacency.
+- Transition from pair `i-1` with colors `(pa, pb)` to pair `i` with `(a, b)` requires `a != pa` (left neighbors) and `b != pb` (right neighbors).
+- With 3 colors there are only 6 valid pair states, so each step is constant work.
+- Answer = `min(dp[a][b])` after processing pair `n/2 - 1`.
 
 ```text
-FUNCTION minCostPaint(houses, cost):
-    SET m ← LENGTH of houses
-    SET n ← NUMBER OF colors per house
-    CREATE forward[m][n] FILLED WITH INF
-    CREATE backward[m][n] FILLED WITH INF
-    // Initialize first house
-    FOR c ← 0 TO n-1:
-        IF houses[0] == 0 OR houses[0] == c+1:
-            SET forward[0][c] ← cost[0][c]
-    // Forward DP
-    FOR i ← 1 TO m-1:
-        FOR c ← 0 TO n-1:
-            IF houses[i] != 0 AND houses[i] != c+1: CONTINUE
-            SET paintCost ← cost[i][c]
-            FOR p ← 0 TO n-1:
-                IF p == c: CONTINUE
-                SET forward[i][c] ← MIN(forward[i][c], forward[i-1][p] + paintCost)
-    // Initialize last house for backward DP
-    FOR c ← 0 TO n-1:
-        IF houses[m-1] == 0 OR houses[m-1] == c+1:
-            SET backward[m-1][c] ← cost[m-1][c]
-    // Backward DP
-    FOR i ← m-2 DOWNTO 0:
-        FOR c ← 0 TO n-1:
-            IF houses[i] != 0 AND houses[i] != c+1: CONTINUE
-            SET paintCost ← cost[i][c]
-            FOR p ← 0 TO n-1:
-                IF p == c: CONTINUE
-                SET backward[i][c] ← MIN(backward[i][c], backward[i+1][p] + paintCost)
-    // Combine passes
-    SET answer ← INF
-    FOR i ← 0 TO m-1:
-        FOR c ← 0 TO n-1:
-            SET answer ← MIN(answer, forward[i][c] + backward[i][c] - cost[i][c])
-    RETURN answer
+FUNCTION minCost(n, cost):
+    dp ← {}
+    FOR a IN 0..2, b IN 0..2 WITH a != b:
+        dp[(a,b)] ← cost[0][a] + cost[n-1][b]
+    FOR i ← 1 TO n/2 - 1:
+        j ← n - 1 - i
+        nd ← {}
+        FOR a IN 0..2, b IN 0..2 WITH a != b:
+            best ← MIN(dp[(pa,pb)] FOR (pa,pb) IN dp IF pa != a AND pb != b)
+            nd[(a,b)] ← best + cost[i][a] + cost[j][b]
+        dp ← nd
+    RETURN MIN(dp.values())
 ```
 
 ## Walkthrough
-Consider `houses = [0,0]`, `cost = [[1,2],[2,1]]` (2 houses, 2 colors).
-1. Forward DP:
-   - House 0: `forward[0] = [1,2]`.
-   - House 1: for color 0, take min from previous color 1 → `1 + 2 = 3`; for color 1, take min from previous color 0 → `2 + 1 = 3`.
-   Result `forward[1] = [3,3]`.
-2. Backward DP mirrors the same values.
-3. Combine: `answer = min( forward[0][c] + backward[0][c] - cost[0][c], forward[1][c] + backward[1][c] - cost[1][c] ) = 3`.
-Thus the minimum cost is `3`.
+Example 1: `n = 4`, `cost = [[3,5,7],[6,2,9],[4,8,1],[7,3,5]]` (colors 0-indexed below).
+1. Pair `(0, 3)`: `dp[(a,b)] = cost[0][a] + cost[3][b]`:
+   - `(0,1)=3+3=6`, `(0,2)=3+5=8`, `(1,0)=5+7=12`, `(1,2)=5+5=10`, `(2,0)=7+7=14`, `(2,1)=7+3=10`.
+2. Pair `(1, 2)` (also the adjacent middle pair):
+   - `(1,2)`: previous states with `pa != 1`, `pb != 2`: `(0,1)=6`, `(2,0)=14`, `(2,1)=10` -> best 6; add `cost[1][1] + cost[2][2] = 2 + 1` -> **9**.
+   - Others: `(0,1)=24`, `(0,2)=17`, `(1,0)=12`, `(2,0)=19`, `(2,1)=25`.
+3. Answer = `min = 9`, colors `[1,2,3,2]` (1-indexed), matching the expected output.
 
 ## Complexity Analysis
-- **Time:** O(m · n²) – each house considers all pairs of different colors.
-- **Space:** O(m · n) – two DP tables; can be reduced to O(n) with rolling arrays.
+- **Time:** O(n) - n/2 pairs, each with a constant 6 x 6 state transition.
+- **Space:** O(1) - only the previous pair's 6 states are kept.
 
 ## Follow-Up Questions
-1. How would you adapt the algorithm if the number of colors `n` is very large (e.g., 10⁵)?
-2. Can the solution be extended to allow a maximum of `k` consecutive houses of the same color?
+1. How would you generalize to `k` colors (O(n * k^4) naive; how to speed up with best/second-best tricks)?
+2. How would you handle an odd `n`, where the middle house has no mirror partner?
 3. What changes are needed to output the actual painting sequence, not just the cost?
 
 ## Key Takeaway
-Two directional DP passes let you enforce adjacency constraints from both sides while keeping the state simple: minimum cost for each possible color at each position.
+When constraints link position `i` with `n-1-i`, process mirror pairs together from the outside in; the state becomes the colors of both ends, and adjacency plus symmetry constraints are both checked locally.

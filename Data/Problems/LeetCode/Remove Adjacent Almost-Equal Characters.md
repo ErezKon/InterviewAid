@@ -47,7 +47,7 @@ Example 3:
 ```
 
 ## Approach
-**Two‑Pointers Greedy** – Use a stack‑like pointer to build the result. For each character, if it forms an almost‑equal pair with the previous kept character, discard both; otherwise, keep the character.
+**Two-Pointers Greedy** – Use a stack-like pointer to build the result. For each character, if it forms an almost-equal pair with the previous kept character, discard both; otherwise, keep the character.
 
 ## Walkthrough
 For `"abccba"`:
@@ -60,12 +60,12 @@ For `"abccba"`:
 
 ## Complexity Analysis
 - **Time:** O(n) where n is the length of the string.
-- **Space:** O(n) for the result (can be in‑place with two pointers).
+- **Space:** O(n) for the result (can be in-place with two pointers).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the solution change if the allowed difference threshold were a parameter `k`?
 - Can you extend the algorithm to handle Unicode characters?
 - What is the effect of processing the string from right to left?
 
 ## Key Takeaway
-A stack‑like two‑pointer scan efficiently removes adjacent almost‑equal characters in a single pass.
+A stack-like two-pointer scan efficiently removes adjacent almost-equal characters in a single pass.

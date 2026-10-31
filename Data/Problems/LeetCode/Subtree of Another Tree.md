@@ -76,11 +76,11 @@ For the first example:
 
 ## 6. Follow-Up Questions
 
-- How to improve to O(m + n) using tree serialization and KMP/Rabin‑Karp?
+- How to improve to O(m + n) using tree serialization and KMP/Rabin-Karp?
 - How to handle large trees without recursion (iterative DFS/BFS)?
 
 ---
 
 ## Key Takeaway
 
-> The straightforward recursive solution checks every possible root position and verifies structural equality with a helper that compares two trees node‑by‑node.
+> The straightforward recursive solution checks every possible root position and verifies structural equality with a helper that compares two trees node-by-node.

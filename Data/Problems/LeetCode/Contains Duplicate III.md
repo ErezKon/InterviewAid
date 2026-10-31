@@ -42,7 +42,7 @@ Example 2:
 ```
 
 ## Approach
-Use a bucket‑based hash map to group numbers into intervals of size `valueDiff + 1`. Numbers falling into the same bucket are guaranteed to satisfy the value difference condition. For each new number, check its own bucket and the adjacent buckets for a close value, while maintaining a sliding window of size `indexDiff` to enforce the index constraint.
+Use a bucket-based hash map to group numbers into intervals of size `valueDiff + 1`. Numbers falling into the same bucket are guaranteed to satisfy the value difference condition. For each new number, check its own bucket and the adjacent buckets for a close value, while maintaining a sliding window of size `indexDiff` to enforce the index constraint.
 
 **Pseudocode**
 ```text
@@ -79,10 +79,10 @@ The algorithm finds a duplicate within the allowed distance.
 - **Time:** O(n) – each element causes O(1) bucket operations.
 - **Space:** O(min(n, indexDiff + 1)) for the sliding window of buckets.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if `valueDiff` could be negative?
 2. Can the approach be adapted for a streaming setting where numbers arrive continuously?
-3. What if the numbers are floating‑point values?
+3. What if the numbers are floating-point values?
 
 ## Key Takeaway
 Bucket the numbers by value range to achieve O(1) checks, and slide the window to enforce the index distance.

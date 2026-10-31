@@ -94,7 +94,7 @@ Consider `word = "abcabc"`, `k = 2`.
 
 ## 5. Complexity Analysis
 
-- **Time:** O(26 × n) – we iterate over at most 26 possible distinct‑character counts for each segment.
+- **Time:** O(26 × n) – we iterate over at most 26 possible distinct-character counts for each segment.
 - **Space:** O(26) – frequency map stores at most 26 characters.
 
 ---
@@ -109,4 +109,4 @@ Consider `word = "abcabc"`, `k = 2`.
 
 ## Key Takeaway
 
-> The adjacency constraint partitions the problem into independent segments. Within each, try all possible numbers of distinct characters (1–26) with a fixed‑size sliding window.
+> The adjacency constraint partitions the problem into independent segments. Within each, try all possible numbers of distinct characters (1–26) with a fixed-size sliding window.

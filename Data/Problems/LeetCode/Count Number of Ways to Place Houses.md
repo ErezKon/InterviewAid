@@ -39,11 +39,11 @@ Example 2:
 The problem reduces to counting binary strings of length `n` without consecutive `1`s (house = 1, empty = 0). This is the classic Fibonacci recurrence:
 - `f(0) = 1` (empty string)
 - `f(1) = 2` (0 or 1)
-- `f(i) = f(i‑1) + f(i‑2)` for `i ≥ 2`
+- `f(i) = f(i-1) + f(i-2)` for `i ≥ 2`
 Compute `f(n)` modulo `MOD`. Since both sides are independent, the final answer is `(f(n) * f(n)) % MOD`.
 
 ## Walkthrough
-| i | f(i‑1) | f(i‑2) | f(i) = f(i‑1)+f(i‑2) |
+| i | f(i-1) | f(i-2) | f(i) = f(i-1)+f(i-2) |
 |---|--------|--------|----------------------|
 | 0 | –      | –      | 1 |
 | 1 | 1      | 1      | 2 |
@@ -52,7 +52,7 @@ Compute `f(n)` modulo `MOD`. Since both sides are independent, the final answer 
 After computing up to `n`, square the result for both sides.
 
 ## Complexity Analysis
-- **Time:** O(n) – single loop computing the Fibonacci‑like sequence.
+- **Time:** O(n) – single loop computing the Fibonacci-like sequence.
 - **Space:** O(1) – only two previous values are stored.
 
 ## Follow-Up Questions
@@ -61,4 +61,4 @@ After computing up to `n`, square the result for both sides.
 - What if the street is circular, i.e., the first and last plots are considered adjacent?
 
 ## Key Takeaway
-Counting non‑adjacent placements on a line maps to the Fibonacci recurrence; independence of the two sides lets you square the single‑side count.
+Counting non-adjacent placements on a line maps to the Fibonacci recurrence; independence of the two sides lets you square the single-side count.

@@ -90,10 +90,10 @@ Now compute score for "abc": traverse a(2) + b(4) + c(2) = 8? Wait counts: after
 ## Complexity Analysis
 Time: O(N·L) where N is number of words and L is average word length (building + querying). Space: O(N·L) for the Trie nodes.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the solution if words could contain uppercase letters?
 - Can you compute the scores in a single pass without a second traversal?
 - What if you need to support dynamic insertion and deletion of words?
 
 ## Key Takeaway
-A Trie with per‑node frequency counters lets you aggregate prefix statistics efficiently in linear time relative to total characters.
+A Trie with per-node frequency counters lets you aggregate prefix statistics efficiently in linear time relative to total characters.

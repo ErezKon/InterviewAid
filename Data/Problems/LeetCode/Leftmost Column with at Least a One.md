@@ -102,4 +102,4 @@ Return result = 1.
 
 ## Key Takeaway
 
-> Starting from the top‑right corner lets you eliminate an entire row or column with each query, achieving linear time in matrix dimensions.
+> Starting from the top-right corner lets you eliminate an entire row or column with each query, achieving linear time in matrix dimensions.

@@ -90,4 +90,4 @@ Consider `words = ["apple", "banana", "cherry"]`, `x = 'a'`.
 
 ## 6. Key Takeaway
 
-> Simple linear scan with constant‑time character check per word solves the problem efficiently.
+> Simple linear scan with constant-time character check per word solves the problem efficiently.

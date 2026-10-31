@@ -37,7 +37,7 @@ Explanation: The only possible triangle has corners (1, 1), (2, 2), and (3, 3). 
 - All `coords[i]` are **unique**.
 
 ## Approach
-A straightforward O(n³) enumeration checks every triple and computes its area using the shoelace formula. For larger inputs, compute the convex hull first (O(n log n)) and then apply the rotating‑calipers technique to examine only hull vertices, achieving O(m²) where *m* is hull size.
+A straightforward O(n³) enumeration checks every triple and computes its area using the shoelace formula. For larger inputs, compute the convex hull first (O(n log n)) and then apply the rotating-calipers technique to examine only hull vertices, achieving O(m²) where *m* is hull size.
 
 ### Pseudocode (simple enumeration)
 ```text
@@ -63,13 +63,13 @@ area = |0*(0-2) + 2*(2-0) + 0*(0-0)| / 2 = 4 / 2 = 2
 No other triple gives a larger value, so the answer is `2`.
 
 ## Complexity Analysis
-- **Time:** O(n³) for the naïve enumeration; O(m²) after convex‑hull optimisation.
+- **Time:** O(n³) for the naïve enumeration; O(m²) after convex-hull optimisation.
 - **Space:** O(1) extra space (aside from input storage).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to return the actual three points that achieve the maximum area?
-2. Can the rotating‑calipers method be extended to find the maximum‑area triangle on a set of points in 3‑D?
-3. What if the points are given as floating‑point coordinates – how would you handle precision?
+2. Can the rotating-calipers method be extended to find the maximum-area triangle on a set of points in 3-D?
+3. What if the points are given as floating-point coordinates – how would you handle precision?
 
 ## Key Takeaway
-Enumerating all triples and applying the shoelace formula directly yields the maximum triangle area; for larger datasets, limiting the search to convex‑hull vertices dramatically reduces work.
+Enumerating all triples and applying the shoelace formula directly yields the maximum triangle area; for larger datasets, limiting the search to convex-hull vertices dramatically reduces work.

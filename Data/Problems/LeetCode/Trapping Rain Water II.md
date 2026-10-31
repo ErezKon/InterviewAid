@@ -80,25 +80,25 @@ Output: 10
 
 ## 4. Walkthrough
 
-We start by pushing all border cells into the min‑heap. The smallest border height is 1 (top‑left corner). Pop it, update `maxHeight` to 1, no water added. Adjacent interior cells are examined; if they are higher than `maxHeight`, they become new boundaries; if lower, water is trapped equal to `maxHeight - height`. The heap always gives the next lowest boundary, ensuring we never underestimate water level.
+We start by pushing all border cells into the min-heap. The smallest border height is 1 (top-left corner). Pop it, update `maxHeight` to 1, no water added. Adjacent interior cells are examined; if they are higher than `maxHeight`, they become new boundaries; if lower, water is trapped equal to `maxHeight - height`. The heap always gives the next lowest boundary, ensuring we never underestimate water level.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time:** O(m × n · log(m × n)) — each cell is processed once and heap operations cost log of total cells.
-- **Space:** O(m × n) for the visited matrix and heap.
+- **Time:** O(m × n · log(m × n)) — each cell is processed once and heap operations cost log of total cells.
+- **Space:** O(m × n) for the visited matrix and heap.
 
 ---
 
 ## 6. Follow-Up Questions
 
-1. How would you adapt the algorithm for a non‑rectangular grid or irregular terrain?
-2. Can you achieve O(mn) time using a bucket‑sort style approach on heights?
-3. How does this problem relate to the 1‑D version (Trapping Rain Water) in terms of algorithmic insight?
+1. How would you adapt the algorithm for a non-rectangular grid or irregular terrain?
+2. Can you achieve O(mn) time using a bucket-sort style approach on heights?
+3. How does this problem relate to the 1-D version (Trapping Rain Water) in terms of algorithmic insight?
 
 ---
 
 ## Key Takeaway
 
-> 2D trapping water generalizes to 3D with a min‑heap BFS from the border inward. The min‑heap ensures we always process the lowest boundary, which determines the water level for interior cells.
+> 2D trapping water generalizes to 3D with a min-heap BFS from the border inward. The min-heap ensures we always process the lowest boundary, which determines the water level for interior cells.

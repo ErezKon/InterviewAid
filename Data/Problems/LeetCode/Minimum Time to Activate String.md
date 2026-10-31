@@ -160,4 +160,4 @@ After loop, trailing zeros: maxTime←MAX(1,1)=1. However, the leading zero segm
 
 ## 5. Key Takeaway
 
-> **Segment gap analysis** — zero‑segments between ones activate from both sides (time = ⌈L/2⌉). Edge segments activate from one side only (time = L). Answer = max segment time.
+> **Segment gap analysis** — zero-segments between ones activate from both sides (time = ⌈L/2⌉). Edge segments activate from one side only (time = L). Answer = max segment time.

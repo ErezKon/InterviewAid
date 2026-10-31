@@ -63,14 +63,14 @@ FUNCTION movesToMakeZigzag(nums):
 
 **Example 1:** `nums = [1,2,3]`
 
-| Index | Value | Left Neighbor | Right Neighbor | Target (min‑1) | Decrease Needed |
+| Index | Value | Left Neighbor | Right Neighbor | Target (min-1) | Decrease Needed |
 |-------|-------|---------------|----------------|---------------|-----------------|
-| 0 (even) | 1 | INF | 2 | 1 (2‑1) | 0 |
-| 2 (even) | 3 | 2 | INF | 1 (2‑1) | 2 |
+| 0 (even) | 1 | INF | 2 | 1 (2-1) | 0 |
+| 2 (even) | 3 | 2 | INF | 1 (2-1) | 2 |
 
-Total decrease for even‑index pattern = 2.
+Total decrease for even-index pattern = 2.
 
-For odd‑index pattern (index 1):
+For odd-index pattern (index 1):
 - Left = 1, Right = 3, target = 0, decrease = 2.
 Total = 2.
 Minimum = 2, matching the expected output.

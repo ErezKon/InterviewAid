@@ -87,7 +87,7 @@ Result `[1,3]`.
 
 ## Follow-Up Questions
 
-1. How would you modify the solution if rows are sorted (all 1s come before 0s) to achieve O(m + n)?
+1. How would you modify the solution if rows are sorted (all 1s come before 0s) to achieve O(m + n)?
 2. Can you return all rows that share the maximum count of 1s?
 
 ---

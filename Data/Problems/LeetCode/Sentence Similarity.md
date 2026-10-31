@@ -102,4 +102,4 @@ Consider `sentence1 = ["great","acting","skills"]`, `sentence2 = ["fine","acting
 
 ## Key Takeaway
 
-> Direct word‑by‑word comparison using a hash set of allowed pairs solves the problem efficiently without needing transitive closure.
+> Direct word-by-word comparison using a hash set of allowed pairs solves the problem efficiently without needing transitive closure.

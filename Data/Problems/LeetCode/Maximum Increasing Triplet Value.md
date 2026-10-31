@@ -84,18 +84,18 @@ The stack ensures we find the smallest greater element on the right efficiently.
 For `nums = [2,5,3,1,4,9]`:
 1. `leftMin` becomes `[INF,2,2,2,1,1]`.
 2. Scanning from right, the stack yields `rightMax = [-1,9,9,9,9,-1]`.
-3. At `j=1` (value 5): left = 2, right = 9 → sum = 16 (max).
-4. At `j=4` (value 4): left = 1, right = 9 → sum = 14.
+3. At `j=1` (value 5): left = 2, right = 9 → sum = 16 (max).
+4. At `j=4` (value 4): left = 1, right = 9 → sum = 14.
 5. Final answer `16`.
 
 ## Complexity Analysis
 *Time*: **O(n)** – two linear passes and stack operations are amortized O(1).
 *Space*: **O(n)** – auxiliary arrays and stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the actual triplet values?
 2. Can the solution be extended to find the maximum sum of an increasing subsequence of length `k`?
 3. What changes are needed if the array may contain duplicate values and the triplet must be strictly increasing?
 
 ## Key Takeaway
-By precomputing the best smaller left value and the best larger right value for each position, a linear‑time scan yields the maximum‑sum increasing triplet.
+By precomputing the best smaller left value and the best larger right value for each position, a linear-time scan yields the maximum-sum increasing triplet.

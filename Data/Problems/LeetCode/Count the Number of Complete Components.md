@@ -87,7 +87,7 @@ FUNCTION countCompleteComponents(n, edges):
 
 **Input:** `n = 5, edges = [[0,1],[0,2],[1,2],[3,4]]`
 
-1. Union‑Find merges {0,1,2} and {3,4}.
+1. Union-Find merges {0,1,2} and {3,4}.
 2. Component A: nodes=3, edges=3 → `3*2/2 = 3` → complete.
 3. Component B: nodes=2, edges=1 → `2*1/2 = 1` → complete.
 4. Result = 2 complete components.

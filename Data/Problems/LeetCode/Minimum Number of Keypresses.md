@@ -55,10 +55,10 @@ A total of 15 button presses are needed, so return 15.
 
 ## Approach
 
-**Algorithm:** Count character frequencies, sort them in descending order, then assign incremental costs starting from 1.
+**Algorithm:** Count character frequencies, sort them in descending order, then assign incremental costs starting from 1.
 
 1. Build a frequency map for all characters in `s`.
-2. Sort the frequency values in non‑increasing order.
+2. Sort the frequency values in non-increasing order.
 3. Initialise `cost ← 1` and `total ← 0`.
 4. For each frequency `f` in the sorted list:
    - `total ← total + f * cost`
@@ -89,10 +89,10 @@ For `s = "aabbccc"`:
 
 ## Complexity Analysis
 
-- **Time:** `O(n + m log m)` where `n` is the length of the string and `m` is the number of distinct characters (≤ 26).
+- **Time:** `O(n + m log m)` where `n` is the length of the string and `m` is the number of distinct characters (≤ 26).
 - **Space:** `O(m)` for the frequency map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if you could reuse costs for multiple characters?
 - What if the cost assignment must be a permutation of the first `k` positive integers where `k` is the number of distinct characters?

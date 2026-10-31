@@ -89,7 +89,7 @@ Example 1:
 1. **postTweet** stores `(time,5)` in `tweets[1]` and increments global `time`.
 2. **follow** adds `2` to `following[1]`.
 3. **getNewsFeed(1)** builds `users = {1,2}`.
-4. For each user, the last 10 tweets are pushed into a min‑heap of size 10.
+4. For each user, the last 10 tweets are pushed into a min-heap of size 10.
 5. The heap now contains the most recent tweets; extracting them in descending order yields the feed.
 
 ---
@@ -106,4 +106,4 @@ Example 1:
 
 ## Key Takeaway
 
-> Combines hash maps for relationships/posts with a heap for k‑way merge of sorted tweet lists. A practical OOD problem that tests data structure composition.
+> Combines hash maps for relationships/posts with a heap for k-way merge of sorted tweet lists. A practical OOD problem that tests data structure composition.

@@ -81,4 +81,4 @@ Consider `s = "aba"`:
 3. What changes are needed if substrings must also satisfy a length constraint?
 
 ## Key Takeaway
-Backtracking with a seen‑set systematically explores all unique‑substring splits, yielding the maximum count despite exponential worst‑case complexity.
+Backtracking with a seen-set systematically explores all unique-substring splits, yielding the maximum count despite exponential worst-case complexity.

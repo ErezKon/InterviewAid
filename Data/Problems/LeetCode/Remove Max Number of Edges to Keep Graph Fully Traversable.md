@@ -50,7 +50,7 @@ Explanation: In the current graph, Alice cannot reach node 4 from the other node
 ```
 
 ## Approach
-Use two Union‑Find (Disjoint Set) structures, one for Alice and one for Bob. Process type‑3 edges first because they benefit both. For each edge, attempt to union the endpoints; if the union fails (already connected) the edge is redundant and can be removed. After processing type‑3 edges, process type‑1 edges only in Alice's Union‑Find and type‑2 edges only in Bob's Union‑Find, counting redundant edges similarly. Finally, verify that both Union‑Find structures have a single component; otherwise return `-1`. The count of redundant edges is the answer.
+Use two Union-Find (Disjoint Set) structures, one for Alice and one for Bob. Process type-3 edges first because they benefit both. For each edge, attempt to union the endpoints; if the union fails (already connected) the edge is redundant and can be removed. After processing type-3 edges, process type-1 edges only in Alice's Union-Find and type-2 edges only in Bob's Union-Find, counting redundant edges similarly. Finally, verify that both Union-Find structures have a single component; otherwise return `-1`. The count of redundant edges is the answer.
 
 ```text
 FUNCTION maxNumEdgesToRemove(n, edges):
@@ -76,11 +76,11 @@ FUNCTION maxNumEdgesToRemove(n, edges):
 ```
 
 ## Walkthrough
-For the first example, after processing type‑3 edges we connect nodes `{1,2,3}`. The redundant type‑3 edge is counted. Then type‑1 edge `[1,1,3]` is redundant (already connected) → removed. Remaining edges keep both graphs connected, total removed = 2.
+For the first example, after processing type-3 edges we connect nodes `{1,2,3}`. The redundant type-3 edge is counted. Then type-1 edge `[1,1,3]` is redundant (already connected) → removed. Remaining edges keep both graphs connected, total removed = 2.
 
 ## Complexity Analysis
 Time: `O(E α(N))` where `α` is the inverse Ackermann function (practically constant). 
-Space: `O(N)` for the two Union‑Find structures.
+Space: `O(N)` for the two Union-Find structures.
 
 ## Follow-Up Questions
 1. How would you adapt the algorithm if edges had individual removal costs and you needed to minimize total cost?
@@ -88,4 +88,4 @@ Space: `O(N)` for the two Union‑Find structures.
 3. What changes are needed if the graph is directed?
 
 ## Key Takeaway
-Processing shared edges first and using two Union‑Find structures lets you greedily keep necessary connections while counting removable edges.
+Processing shared edges first and using two Union-Find structures lets you greedily keep necessary connections while counting removable edges.

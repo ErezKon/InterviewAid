@@ -62,7 +62,7 @@ Example 2:
   Output: 3
 ```
 
-*Explanation*: Each string’s even‑position characters and odd‑position characters are sorted to form a canonical key. Strings sharing the same key belong to the same group.
+*Explanation*: Each string’s even-position characters and odd-position characters are sorted to form a canonical key. Strings sharing the same key belong to the same group.
 
 ## 4. Walkthrough
 
@@ -76,7 +76,7 @@ Example 2:
 - **Time:** O(n·k log k) where *n* is number of words and *k* is average word length (sorting each half).
 - **Space:** O(n·k) for storing the set of canonical keys.
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the solution change if swaps were allowed between any positions, not just even/odd?
 - Can you extend the approach to handle Unicode characters?
@@ -84,4 +84,4 @@ Example 2:
 
 ## Key Takeaway
 
-> Canonicalize each string by sorting its even‑indexed and odd‑indexed characters separately; identical canonical keys define a special‑equivalent group.
+> Canonicalize each string by sorting its even-indexed and odd-indexed characters separately; identical canonical keys define a special-equivalent group.

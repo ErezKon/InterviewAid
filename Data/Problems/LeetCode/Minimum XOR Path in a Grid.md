@@ -58,9 +58,9 @@ The XOR value of this path is 0, which is the minimum possible.
 ## Approach
 **Algorithm:** Dynamic programming with bitmask propagation.
 1. For each cell, maintain a set of achievable XOR values from the start to that cell.
-2. Transition from the top and left neighbours, XOR‑ing the current cell value with each value in the neighbour's set.
+2. Transition from the top and left neighbours, XOR-ing the current cell value with each value in the neighbour's set.
 3. To keep the set small, prune values that are superseded (if a value `a` is ≤ `b` and `a` dominates `b` in terms of future possibilities, keep only `a`). In practice, the number of distinct XORs per cell stays manageable because XOR values are bounded by `2^10` for typical constraints.
-4. The answer is the minimum value in the set at the bottom‑right cell.
+4. The answer is the minimum value in the set at the bottom-right cell.
 
 ### Pseudocode
 ```text
@@ -102,10 +102,10 @@ Minimum at (1,1) is 1, but a better path 0→2→3 yields XOR 0, which appears a
 - Time: O(m * n * K) where *K* is the average size of the XOR set per cell (bounded by a constant after pruning).
 - Space: O(m * n * K).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if moves could also go left or up (any direction) without cycles?
 2. Can you adapt the method to find the *maximum* XOR path?
 3. What if each cell value can be negative? How does that affect pruning?
 
 ## Key Takeaway
-By propagating reachable XOR values cell‑by‑cell and pruning the state space, a DP solution efficiently finds the minimum XOR path in a grid.
+By propagating reachable XOR values cell-by-cell and pruning the state space, a DP solution efficiently finds the minimum XOR path in a grid.

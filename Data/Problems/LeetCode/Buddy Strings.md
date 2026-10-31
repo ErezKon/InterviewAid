@@ -39,7 +39,7 @@ Example 3:
 **Case Analysis** –
 1. If lengths differ → `false`.
 2. If strings are identical, a valid swap exists only if there is at least one duplicate character in `s`.
-3. Otherwise, collect the indices where `s` and `goal` differ. A single swap can fix the strings only if there are exactly two mismatched positions and the characters cross‑match.
+3. Otherwise, collect the indices where `s` and `goal` differ. A single swap can fix the strings only if there are exactly two mismatched positions and the characters cross-match.
 
 ```text
 FUNCTION buddyStrings(s, goal):
@@ -63,10 +63,10 @@ FUNCTION buddyStrings(s, goal):
 - **Time:** O(n) where n is the string length.
 - **Space:** O(1) extra space (only a few indices stored).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend this to allow at most two swaps?
 2. Can you solve the problem in a single pass without storing mismatched indices?
 3. What if the strings contain Unicode characters?
 
 ## Key Takeaway
-A simple mismatch‑count check combined with a duplicate‑character test covers all cases for a single‑swap transformation.
+A simple mismatch-count check combined with a duplicate-character test covers all cases for a single-swap transformation.

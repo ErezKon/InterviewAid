@@ -101,4 +101,4 @@ Next `pop()`: `group[2]` currently `[5,7]`; pop returns `7` (most recent). Updat
 
 ## Key Takeaway
 
-> Using a hash map for frequencies together with a stack per frequency level yields constant‑time `push` and `pop` while automatically handling tie‑breaking by recency.
+> Using a hash map for frequencies together with a stack per frequency level yields constant-time `push` and `pop` while automatically handling tie-breaking by recency.

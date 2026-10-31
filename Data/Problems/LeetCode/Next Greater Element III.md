@@ -106,7 +106,7 @@ Take `n = 1243`:
 
 - How would you adapt the algorithm to find the *previous* permutation?
 - Can you solve the problem without converting the integer to a string?
-- What changes are needed to handle very large numbers beyond 32‑bit range?
+- What changes are needed to handle very large numbers beyond 32-bit range?
 
 ---
 

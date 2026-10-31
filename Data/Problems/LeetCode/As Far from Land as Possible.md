@@ -32,7 +32,7 @@ Example 2:
 ```
 
 ## Approach
-**Multi‑source BFS — O(n²)**
+**Multi-source BFS — O(n²)**
 Start BFS simultaneously from all land cells. Each BFS layer expands to adjacent water cells, marking them as visited (turning them into land). The number of layers processed equals the maximum distance.
 
 ```text
@@ -69,7 +69,7 @@ The final `dist` is the answer.
 - **Time:** O(n²) – each cell is visited at most once.
 - **Space:** O(n²) for the queue in the worst case.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm for rectangular grids (`m x n`)?
 2. Can you solve the problem using DP without an explicit queue?
 3. What if diagonal moves were allowed? How would the distance metric change?

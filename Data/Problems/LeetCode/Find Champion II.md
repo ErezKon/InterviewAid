@@ -76,25 +76,25 @@ FUNCTION findChampion(n, edges):
 ## Walkthrough
 
 Consider the first example `n = 3, edges = [[0,1],[0,2]]`.
-| Node | In‑Degree |
+| Node | In-Degree |
 |------|-----------|
 | 0    | 0 |
 | 1    | 1 |
 | 2    | 1 |
-The algorithm builds the in‑degree array, finds node 0 as the sole candidate, and returns it as the champion.
+The algorithm builds the in-degree array, finds node 0 as the sole candidate, and returns it as the champion.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** O(n + m) – one pass to compute in‑degrees and one pass to scan candidates.
-- **Space:** O(n) – the in‑degree array.
+- **Time:** O(n + m) – one pass to compute in-degrees and one pass to scan candidates.
+- **Space:** O(n) – the in-degree array.
 
 ---
 
 ## Follow-Up Questions
 
-1. How would you modify the solution to return all nodes with in‑degree 0?
+1. How would you modify the solution to return all nodes with in-degree 0?
 2. Can you detect cycles in the graph while computing the champion?
 3. What if the graph is given as an adjacency matrix instead of edge list?
 

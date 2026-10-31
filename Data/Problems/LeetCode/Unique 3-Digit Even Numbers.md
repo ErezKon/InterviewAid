@@ -47,7 +47,7 @@ Explanation: No even 3-digit numbers can be formed.
 ```
 
 ## Approach
-Enumerate all permutations of three distinct indices, build the number, check evenness and leading‑zero rule, and store it in a set to guarantee uniqueness.
+Enumerate all permutations of three distinct indices, build the number, check evenness and leading-zero rule, and store it in a set to guarantee uniqueness.
 
 ```text
 FUNCTION CountUniqueEvenNumbers(digits):
@@ -65,17 +65,22 @@ FUNCTION CountUniqueEvenNumbers(digits):
 ```
 
 ## Walkthrough
-For `digits = [2,2,8]`:
+Example 2: `digits = [0,2,2]` (all 6 ordered index triples):
+
 | i | j | k | num | valid? |
 |---|---|---|-----|--------|
-|0|1|2| 2*100+2*10+8 = 228 | yes |
-|0|2|1| 2*100+8*10+2 = 282 | yes |
-|1|0|2| 2*100+2*10+8 = 228 | duplicate (set) |
-Result set = {228, 282} → count = 2.
+|0|1|2| 0*100+2*10+2 = 22 | no (leading zero, < 100) |
+|0|2|1| 22 | no (leading zero) |
+|1|0|2| 2*100+0*10+2 = 202 | yes → add |
+|1|2|0| 2*100+2*10+0 = 220 | yes → add |
+|2|0|1| 202 | duplicate (set) |
+|2|1|0| 220 | duplicate (set) |
+
+Result set = {202, 220} → **Output: 2**. Example 1 (`[1,2,3,4]`) similarly yields the 12 listed numbers.
 
 ## Complexity Analysis
 - **Time:** O(n³) where n = length of `digits` (n ≤ 10).
-- **Space:** O(k) for the set of unique numbers, k ≤ 120.
+- **Space:** O(k) for the set of unique numbers, k ≤ 720 (at most n·(n-1)·(n-2) triples).
 
 ## Follow-Up Questions
 1. How would you adapt the solution if the digits array could be very large (e.g., n up to 10⁵)?
@@ -83,4 +88,4 @@ Result set = {228, 282} → count = 2.
 3. How would you modify the algorithm to return the list of numbers sorted in ascending order?
 
 ## Key Takeaway
-Enumerating all three‑digit permutations and deduplicating with a set yields a simple O(n³) solution that easily satisfies the small input constraints.
+Enumerating all three-digit permutations and deduplicating with a set yields a simple O(n³) solution that easily satisfies the small input constraints.

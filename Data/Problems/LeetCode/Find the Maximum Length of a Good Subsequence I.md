@@ -84,7 +84,7 @@ Consider Example 1 (`nums = [1,2,1,2,1]`, `k = 1`).
 | 3 | 2 | 2 | 3 | Extend from index 2 (different) using the one allowed transition → length 3.
 | 4 | 1 | 3 | 3 | Extend from index 2 (same) → dp[2][0]+1 = 3. Extending from index 3 would exceed k.
 
-Maximum length with ≤1 bad transition is 4 (subsequence indices 0‑1‑3‑4).
+Maximum length with ≤1 bad transition is 4 (subsequence indices 0-1-3-4).
 
 ---
 

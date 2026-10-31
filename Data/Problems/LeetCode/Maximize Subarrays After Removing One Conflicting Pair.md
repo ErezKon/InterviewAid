@@ -91,7 +91,7 @@ Consider the first example with `n = 5` and conflicts `[(1,3), (2,4), (3,5)]`.
 | 3 | Choose conflict with max unique block count. | Remove `(2,4)` → gain = 3. |
 | 4 | Add gain to baseline. | Result = 6 + 3 = 9 valid subarrays. |
 
-The sweep line tracks the nearest right‑most blocker for each left index, and a difference array aggregates the unique contributions efficiently.
+The sweep line tracks the nearest right-most blocker for each left index, and a difference array aggregates the unique contributions efficiently.
 
 ---
 

@@ -86,7 +86,7 @@ Consider the first example `nums = [1,2,3,2,2]`, `k = 2`.
 
 1. How would the solution change if you could perform the operation on **multiple** subarrays?
 2. Can the algorithm be optimized to **O(n log n)** using prefix sums and a balanced BST?
-3. What if the added constant `c` must be **non‑negative**?
+3. What if the added constant `c` must be **non-negative**?
 
 ---
 

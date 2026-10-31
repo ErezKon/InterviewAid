@@ -116,16 +116,16 @@ Password `"aaaB1"` (length 5):
 1. Missing types: has lower? no → missing 1 (lower). Upper and digit present.
 2. Length < 6, need 1 insertion.
 3. Repeating group `"aaa"` needs 1 replacement, but insertion can break it.
-Result = max(missing=1, 6-5=1) = 1 step (insert a lower‑case letter between the a's).
+Result = max(missing=1, 6-5=1) = 1 step (insert a lower-case letter between the a's).
 
 ## Complexity Analysis
 - **Time:** O(n) to scan characters and identify repeats; sorting repeats is O(k log k) where k ≤ n/3, overall O(n log n) in worst case.
 - **Space:** O(k) for repeat lengths, O(n) in worst case but can be done in O(1) with careful counting.
 
-## Follow‑Up Questions
-1. How would the solution change if the allowed password length range were different (e.g., 8‑30)?
+## Follow-Up Questions
+1. How would the solution change if the allowed password length range were different (e.g., 8-30)?
 2. Can the algorithm be adapted to return the actual modified password string?
 3. What modifications are needed if Unicode characters are allowed and case folding rules differ?
 
 ## Key Takeaway
-By separating length adjustments, missing character types, and repeating‑character fixes, and by greedily applying deletions to the most beneficial repeat groups, we achieve the minimum number of edits in linear time.
+By separating length adjustments, missing character types, and repeating-character fixes, and by greedily applying deletions to the most beneficial repeat groups, we achieve the minimum number of edits in linear time.

@@ -58,7 +58,7 @@ Example 1:
   Explanation: [0,2,4,2], [0,3,0,2] and [0,3,1,2] are accepted answers.
   [0,2,4,2] is equivalent to ["ATL","LAX","HND","LAX"] which has edit distance = 1 with targetPath.
   [0,3,0,2] is equivalent to ["ATL","DXB","ATL","LAX"] which has edit distance = 1 with targetPath.
-  [0,3,1,2] is equivalent to ["ATL","DXB","PEK","LAX"] which has edit distance = 1 with targetPath.
+  [0,3,1,2] is equivalent to ["ATL","DXB","PEK","LAX"] which has edit distance = 1 with targetPath.
 ```
 ```
 Example 2:
@@ -74,11 +74,11 @@ Example 3:
   Output: [3,4,5,4,3,2,1]
   Explanation: [3,4,5,4,3,2,1] is the only path with edit distance = 0 with targetPath.
   It's equivalent to ["ATL","DXB","HND","DXB","ATL","LAX","PEK"]
-  (graph is a simple chain 0-1-2-3-4-5) 
+  (graph is a simple chain 0-1-2-3-4-5) 
 ```
 
 ## Approach
-Treat each node as a state and perform a BFS/DFS while maintaining the edit‑distance DP table for the prefix of `targetPath` matched so far. For each traversed edge, update the DP using the classic Levenshtein recurrence (insert, delete, replace). Keep the minimal distance when reaching `destination`.
+Treat each node as a state and perform a BFS/DFS while maintaining the edit-distance DP table for the prefix of `targetPath` matched so far. For each traversed edge, update the DP using the classic Levenshtein recurrence (insert, delete, replace). Keep the minimal distance when reaching `destination`.
 
 ```text
 FUNCTION mostSimilarPath(n, edges, source, destination, targetPath):
@@ -113,9 +113,9 @@ The DP updates consider insertions, deletions, and replacements to compute Leven
 ## Walkthrough
 | Step | Node | i (matched labels) | Action |
 |------|------|--------------------|--------|
-| 1 | 0 | 0 | Start at source with distance 0 |
-| 2 | 0→1 (label "a") | 1 | Match first target label, cost 0 |
-| 3 | 1→2 (label "b") | 2 | Match second label, total distance 0, reach destination |
+| 1 | 0 | 0 | Start at source with distance 0 |
+| 2 | 0→1 (label "a") | 1 | Match first target label, cost 0 |
+| 3 | 1→2 (label "b") | 2 | Match second label, total distance 0, reach destination |
 | … | … | … | If exact match not possible, DP explores alternatives and records minimal edit distance.
 
 ## Complexity Analysis
@@ -128,4 +128,4 @@ The DP updates consider insertions, deletions, and replacements to compute Leven
 3. How would you handle cycles in the graph to avoid infinite exploration while still finding the optimal path?
 
 ## Key Takeaway
-Combine graph traversal with Levenshtein‑style DP to track edit distance while extending paths, yielding the most similar path to a target label sequence.
+Combine graph traversal with Levenshtein-style DP to track edit distance while extending paths, yielding the most similar path to a target label sequence.

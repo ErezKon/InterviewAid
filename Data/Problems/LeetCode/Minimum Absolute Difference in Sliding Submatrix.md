@@ -66,7 +66,7 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Brute‑force sliding window with sorting per submatrix.
+**Algorithm:** Brute-force sliding window with sorting per submatrix.
 
 Key insight: For a fixed `k × k` window, collecting its `k²` elements, sorting them, and checking adjacent differences yields the minimum absolute difference.
 
@@ -100,7 +100,7 @@ FUNCTION minAbsDiffSubmatrix(grid, k):
 
 ## Walkthrough
 
-For the first window of Example 1 (`[[1,3],[4,6]]`):
+For the first window of Example 1 (`[[1,3],[4,6]]`):
 1. Collected values → `[1,3,4,6]`
 2. Sorted → `[1,3,4,6]`
 3. Adjacent diffs: `2,1,2` → minimum `1`.
@@ -111,16 +111,16 @@ The same process repeats for each window.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Brute‑force per window | O((m‑k+1)(n‑k+1)·k²·log(k²)) | O(k²) |
+| Brute-force per window | O((m-k+1)(n-k+1)·k²·log(k²)) | O(k²) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How can you reduce the time using a sliding‑window multiset to maintain sorted elements while moving the window?
-2. What is the complexity if you pre‑process rows with balanced BSTs and merge them column‑wise?
-3. Can the solution be adapted for non‑square windows (`k×l`)?
+1. How can you reduce the time using a sliding-window multiset to maintain sorted elements while moving the window?
+2. What is the complexity if you pre-process rows with balanced BSTs and merge them column-wise?
+3. Can the solution be adapted for non-square windows (`k×l`)?
 ---
 
 ## Key Takeaway
 
-> Sorting the elements of each submatrix turns the problem into a simple adjacent‑difference scan; for small `k` this brute‑force method is sufficient.
+> Sorting the elements of each submatrix turns the problem into a simple adjacent-difference scan; for small `k` this brute-force method is sufficient.

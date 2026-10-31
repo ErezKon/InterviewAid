@@ -99,7 +99,7 @@ Consider pair `(a, b)` on `"aababbb"` (forward pass):
 After reverse pass, the maximum observed is `3`.
 
 ## Complexity Analysis
-- **Time:** O(26² · n) ≈ O(n) for each of the 650 character pairs.
+- **Time:** O(26² · n) ≈ O(n) for each of the 650 character pairs.
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions

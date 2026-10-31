@@ -82,11 +82,11 @@ FUNCTION sellingWood(m, n, prices):
 
 ## Walkthrough
 
-| Step | Sub‑piece (h×w) | Decision | Revenue |
+| Step | Sub-piece (h×w) | Decision | Revenue |
 |------|----------------|----------|---------|
 | 1    | 2×3            | Cut vertically at w=2 | dp[2][2] + dp[2][1] |
-| 2    | 2×2            | Sell (price 7) | 7 |
-| 3    | 2×1            | Sell (price 2) | 2 |
+| 2    | 2×2            | Sell (price 7) | 7 |
+| 3    | 2×1            | Sell (price 2) | 2 |
 | **Total** | — | — | **9** |
 
 ---
@@ -98,9 +98,9 @@ FUNCTION sellingWood(m, n, prices):
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you modify the algorithm if rotations of sub‑pieces are allowed?
+1. How would you modify the algorithm if rotations of sub-pieces are allowed?
 2. Can you extend the solution to handle a limited number of cuts?
 3. What if the price list is extremely large – how would you optimise the lookup?
 
@@ -108,4 +108,4 @@ FUNCTION sellingWood(m, n, prices):
 
 ## Key Takeaway
 
-> Classic 2D cutting‑stock DP — for each dimension, try all possible cuts and take the maximum. Similar to rod cutting but in two dimensions.
+> Classic 2D cutting-stock DP — for each dimension, try all possible cuts and take the maximum. Similar to rod cutting but in two dimensions.

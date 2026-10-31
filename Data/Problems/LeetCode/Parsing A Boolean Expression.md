@@ -53,7 +53,7 @@ Example 3:
 ```
 
 ## Approach
-Stack‑based evaluation — O(n) ✅
+Stack-based evaluation — O(n) ✅
 
 ```text
 FUNCTION parseBoolExpr(expression):
@@ -77,7 +77,7 @@ FUNCTION parseBoolExpr(expression):
             stack.PUSH(result)
     RETURN stack[0] = 't'
 ```
-The stack stores characters until a closing parenthesis triggers evaluation of the most recent sub‑expression.
+The stack stores characters until a closing parenthesis triggers evaluation of the most recent sub-expression.
 
 ## Walkthrough
 Expression: `|(&(t,f,t),!(f))`
@@ -90,9 +90,9 @@ Stack ends with `t` → expression evaluates to true.
 
 ## Complexity Analysis
 - **Time:** O(n) – each character is processed once.
-- **Space:** O(n) – stack holds at most the characters of the current nested sub‑expression.
+- **Space:** O(n) – stack holds at most the characters of the current nested sub-expression.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to support additional operators like XOR (`^`)?
 2. Can you evaluate the expression without using extra space, e.g., by recursion?
 3. How would you handle invalid expressions or mismatched parentheses?

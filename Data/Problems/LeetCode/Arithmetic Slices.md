@@ -58,10 +58,10 @@ Result = 3.
 *Time*: O(n) – single pass.
 *Space*: O(1) – only a few counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the list of all arithmetic slices?
-2. Can you solve the problem using a sliding‑window instead of DP?
-3. What changes are needed if the array may contain floating‑point numbers?
+2. Can you solve the problem using a sliding-window instead of DP?
+3. What changes are needed if the array may contain floating-point numbers?
 
 ## Key Takeaway
 A linear scan that tracks how many slices end at each position yields the total count in O(n) time.

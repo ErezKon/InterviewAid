@@ -47,7 +47,7 @@ Example 2:
 
 ## Approach
 **DP with Hash Map — O(n²)**
-We maintain for each index `i` a hash map `dp[i]` where `dp[i][d]` stores the number of arithmetic subsequences of length ≥2 ending at `i` with common difference `d`. For each pair `(j, i)` with `j < i`, we compute `diff = nums[i] - nums[j]`. Any existing subsequence ending at `j` with the same `diff` can be extended by `nums[i]`, contributing `dp[j][diff]` new valid slices (of length ≥3). Additionally, the pair `(nums[j], nums[i])` itself forms a length‑2 subsequence, so we increment `dp[i][diff]` by `dp[j][diff] + 1`.
+We maintain for each index `i` a hash map `dp[i]` where `dp[i][d]` stores the number of arithmetic subsequences of length ≥2 ending at `i` with common difference `d`. For each pair `(j, i)` with `j < i`, we compute `diff = nums[i] - nums[j]`. Any existing subsequence ending at `j` with the same `diff` can be extended by `nums[i]`, contributing `dp[j][diff]` new valid slices (of length ≥3). Additionally, the pair `(nums[j], nums[i])` itself forms a length-2 subsequence, so we increment `dp[i][diff]` by `dp[j][diff] + 1`.
 
 ```text
 FUNCTION numberOfArithmeticSlices(nums):

@@ -65,14 +65,14 @@ Explanation: In this example all the words are equal, thus the answer is 0.
 
 ## Approach
 
-**Two Pointers** – Check the outermost elements first. If they differ, the distance is `n‑1`. If they are the same, move one pointer inward from the side that matches the opposite end until a mismatch is found.
+**Two Pointers** – Check the outermost elements first. If they differ, the distance is `n-1`. If they are the same, move one pointer inward from the side that matches the opposite end until a mismatch is found.
 
 ```text
 FUNCTION maxUnequalDistance(words):
     n ← LENGTH(words)
     IF words[0] ≠ words[n-1]:
         RETURN n-1
-    // Try leftmost vs second‑last
+    // Try leftmost vs second-last
     IF words[0] ≠ words[n-2]:
         RETURN n-2
     // Try second vs rightmost
@@ -105,10 +105,10 @@ FUNCTION maxUnequalDistance(words):
 
 - How would you modify the algorithm if you needed the **pair of indices** instead of just the distance?
 - Can the solution be extended to return the **maximum distance for each distinct word**?
-- What changes are required if the array is **circular** (wrap‑around allowed)?
+- What changes are required if the array is **circular** (wrap-around allowed)?
 
 ---
 
 ## Key Takeaway
 
-> **Check the ends first; the answer is usually `n‑1`.** If the ends match, move inward until a mismatch gives the maximal distance.
+> **Check the ends first; the answer is usually `n-1`.** If the ends match, move inward until a mismatch gives the maximal distance.

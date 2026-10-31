@@ -55,7 +55,7 @@ Example 1:
 5. `release(1)` adds `1` back to both queue and set.
 6. `check(1)` now finds `1` in the set → `true`.
 
-The queue maintains allocation order, while the set enables O(1) existence checks and prevents double‑release.
+The queue maintains allocation order, while the set enables O(1) existence checks and prevents double-release.
 
 ---
 

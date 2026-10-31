@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-**Interval Dynamic Programming** – Consider which balloon is burst **last** in a sub‑interval `(left, right)`. If balloon `k` is the last to burst in this interval, the coins gained are `nums[left] * nums[k] * nums[right]` plus the optimal results of the two sub‑intervals `(left, k)` and `(k, right)`.
+**Interval Dynamic Programming** – Consider which balloon is burst **last** in a sub-interval `(left, right)`. If balloon `k` is the last to burst in this interval, the coins gained are `nums[left] * nums[k] * nums[right]` plus the optimal results of the two sub-intervals `(left, k)` and `(k, right)`.
 
 ```text
 FUNCTION maxCoins(nums):
@@ -66,7 +66,7 @@ For `nums = [3,1,5,8]` (padded `[1,3,1,5,8,1]`):
 - **Time:** O(n³) – three nested loops over interval length, left index, and possible last balloon `k`.
 - **Space:** O(n²) for the DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. Can the solution be optimized using memoization with recursion to avoid filling the entire table?
 2. How would the algorithm change if bursting a balloon also removed its neighbors?
 3. What is the complexity if the balloon values are bounded (e.g., ≤ 100) – can a faster DP be devised?

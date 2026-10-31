@@ -121,14 +121,14 @@ Consider the first example grid:
 | **0**   | 3 | 1 | 4 |
 | **1**   | 2 | 5 | 1 |
 
-**Row processing (right‑to‑left)**
+**Row processing (right-to-left)**
 - Row 0: start with empty stack.
   - c=2 (value 4): stack empty → visible=0, push 4.
   - c=1 (value 1): 1 < 4 → visible=1 (can see 4), push 1.
   - c=0 (value 3): pop 1 (shorter) → visible=1, now top=4 (taller) → visible=2, push 3.
 - Row 1 follows similarly.
 
-**Column processing (bottom‑to‑top)**
+**Column processing (bottom-to-top)**
 - Column 0: start empty.
   - r=1 (value 2): stack empty → visible=0, push 2.
   - r=0 (value 3): pop 2 (shorter) → visible=1, stack empty → no taller person, push 3.

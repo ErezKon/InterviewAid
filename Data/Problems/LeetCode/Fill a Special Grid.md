@@ -78,10 +78,10 @@ FUNCTION specialGrid(n):
             counter ← counter + 1
             RETURN
         half ← s / 2
-        fill(r + half, c + half, half)  // bottom‑right (smallest values)
-        fill(r + half, c, half)          // bottom‑left
-        fill(r, c + half, half)          // top‑right
-        fill(r, c, half)                 // top‑left (largest values)
+        fill(r + half, c + half, half)  // bottom-right (smallest values)
+        fill(r + half, c, half)          // bottom-left
+        fill(r, c + half, half)          // top-right
+        fill(r, c, half)                 // top-left (largest values)
 
     fill(0, 0, size)
     RETURN grid
@@ -91,14 +91,14 @@ FUNCTION specialGrid(n):
 
 ## Walkthrough
 
-Consider **Example 1** (`n = 1`, grid size 2):
+Consider **Example 1** (`n = 1`, grid size 2):
 | Step | Action | Grid State |
 |------|--------|------------|
 | 1 | Call `fill(0,0,2)` → split into four 1×1 quadrants. | empty |
-| 2 | Fill bottom‑right `(1,1)`: assign `0`. | [[ , ],[ ,0]] |
-| 3 | Fill bottom‑left `(1,0)`: assign `1`. | [[ , ],[1,0]] |
-| 4 | Fill top‑right `(0,1)`: assign `2`. | [[ ,2],[1,0]] |
-| 5 | Fill top‑left `(0,0)`: assign `3`. | [[3,2],[1,0]] |
+| 2 | Fill bottom-right `(1,1)`: assign `0`. | [[ , ],[ ,0]] |
+| 3 | Fill bottom-left `(1,0)`: assign `1`. | [[ , ],[1,0]] |
+| 4 | Fill top-right `(0,1)`: assign `2`. | [[ ,2],[1,0]] |
+| 5 | Fill top-left `(0,0)`: assign `3`. | [[3,2],[1,0]] |
 The final grid matches the required decreasing order.
 
 ---
@@ -112,11 +112,11 @@ The final grid matches the required decreasing order.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you modify the algorithm to fill the grid in **increasing** order?
-2. Can the same divide‑and‑conquer strategy be applied to non‑power‑of‑two grid sizes?
-3. What is the time‑space trade‑off if you generate the values on‑the‑fly without storing the full grid?
+2. Can the same divide-and-conquer strategy be applied to non-power-of-two grid sizes?
+3. What is the time-space trade-off if you generate the values on-the-fly without storing the full grid?
 
 ---
 

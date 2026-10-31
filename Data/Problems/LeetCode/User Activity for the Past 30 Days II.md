@@ -65,7 +65,7 @@ Explanation: User 1 and 2 each had 1 session in the past 30 days while user 3 ha
 ```
 
 ## Approach
-Perform a left‑join of the generated date range with the `Activity` table, then aggregate distinct users per day.
+Perform a left-join of the generated date range with the `Activity` table, then aggregate distinct users per day.
 
 ```text
 FUNCTION DailyActiveUsers(activityTable, endDate):
@@ -86,13 +86,13 @@ FUNCTION DailyActiveUsers(activityTable, endDate):
 |------|--------|
 | 1 | Compute `startDate` = `endDate` - 29 days. |
 | 2 | Generate a series of all dates from `startDate` to `endDate`. |
-| 3 | Left‑join the series with `Activity` on matching dates. |
+| 3 | Left-join the series with `Activity` on matching dates. |
 | 4 | For each date, count distinct `user_id`s (NULL yields 0). |
 | 5 | Return ordered list of dates with counts. |
 
 ## Complexity Analysis
 - **Time:** O(N + D) where N is rows in `Activity` and D = 30 for the date series.
-- **Space:** O(D) to store the result set (≤ 30 rows).
+- **Space:** O(D) to store the result set (≤ 30 rows).
 
 ## Follow-Up Questions
 1. How to handle a sliding window of variable length?
@@ -100,4 +100,4 @@ FUNCTION DailyActiveUsers(activityTable, endDate):
 3. Optimize for very large tables using indexed partitions.
 
 ## Key Takeaway
-A left‑joined date series combined with `COUNT(DISTINCT ...)` cleanly produces daily active user counts, including days with zero activity.
+A left-joined date series combined with `COUNT(DISTINCT ...)` cleanly produces daily active user counts, including days with zero activity.

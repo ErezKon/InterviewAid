@@ -26,7 +26,7 @@ age 21 30
 ```
 
 ## Approach
-Read each line, split into fields, and build an array where each column accumulates its values. After processing all lines, print each column as a space‑separated line.
+Read each line, split into fields, and build an array where each column accumulates its values. After processing all lines, print each column as a space-separated line.
 
 ```text
 FUNCTION transposeFile(filePath):
@@ -50,12 +50,12 @@ FUNCTION transposeFile(filePath):
 Printing each column yields the transposed output.
 
 ## Complexity Analysis
-- **Time:** O(m × n) where *m* is number of rows and *n* is number of columns.
-- **Space:** O(m × n) for storing the transposed matrix (or O(n) if streamed output is used).
+- **Time:** O(m × n) where *m* is number of rows and *n* is number of columns.
+- **Space:** O(m × n) for storing the transposed matrix (or O(n) if streamed output is used).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle rows of varying lengths?
-2. Can the transposition be performed in‑place for a matrix stored in memory?
+2. Can the transposition be performed in-place for a matrix stored in memory?
 3. How would you adapt the solution for very large files that don’t fit in memory?
 
 ## Key Takeaway

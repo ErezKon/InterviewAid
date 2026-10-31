@@ -95,7 +95,7 @@ The DP array `dist[i]` stores the earliest semester when course `i` can finish. 
 
 ## Complexity Analysis
 - **Time:** O(V + E) – each course and prerequisite edge is processed once.
-- **Space:** O(V + E) for adjacency list, in‑degree array, and DP array.
+- **Space:** O(V + E) for adjacency list, in-degree array, and DP array.
 
 ## Follow-Up Questions
 1. How would you modify the algorithm if each semester has a limit on the number of concurrent courses?

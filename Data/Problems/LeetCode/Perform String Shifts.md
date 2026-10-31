@@ -71,10 +71,10 @@ For `s = "abc"` and `shift = [[0,1],[1,2]]`:
 - Time: O(m + n) where `m = shift.length` and `n = s.length` (for the final string construction).
 - Space: O(n) for the resulting string.
 
-## Follow‑Up Questions
-1. How would you modify the solution to support left‑right circular shifts on a mutable character array in‑place?
+## Follow-Up Questions
+1. How would you modify the solution to support left-right circular shifts on a mutable character array in-place?
 2. Can you handle very large `amount` values (e.g., up to 10⁹) without overflow?
-3. What if the shift operations need to be applied in real‑time as a stream?
+3. What if the shift operations need to be applied in real-time as a stream?
 
 ## Key Takeaway
-Aggregating all shift operations into a single net rotation using modulo arithmetic yields an O(m + n) solution.
+Aggregating all shift operations into a single net rotation using modulo arithmetic yields an O(m + n) solution.

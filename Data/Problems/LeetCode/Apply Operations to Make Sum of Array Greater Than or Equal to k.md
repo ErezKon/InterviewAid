@@ -34,7 +34,7 @@ Return *the **minimum** number of operations required to make the **sum** of ele
 FUNCTION minOperations(k):
     IF k <= 1:
         RETURN 0
-    best ← k - 1  // worst case: increment k‑1 times
+    best ← k - 1  // worst case: increment k-1 times
     FOR v FROM 1 TO k:
         copies ← CEIL(k / v) - 1
         ops ← (v - 1) + copies
@@ -102,4 +102,4 @@ The sequence uses 5 operations, matching the optimal count.
 
 ## Key Takeaway
 
-> Increment‑then‑duplicate problems have an optimal balance point near `√k`: increment to `√k`, then duplicate `√k` times, giving ~`2√k` total operations.
+> Increment-then-duplicate problems have an optimal balance point near `√k`: increment to `√k`, then duplicate `√k` times, giving ~`2√k` total operations.

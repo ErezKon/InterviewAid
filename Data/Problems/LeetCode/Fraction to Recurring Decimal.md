@@ -127,7 +127,7 @@ Take `numerator = 4`, `denominator = 333`:
 
 - How would you adapt the algorithm to handle very large numerators and denominators that exceed standard integer ranges?
 - Can you modify the solution to return the length of the repeating cycle instead of the full decimal string?
-- What changes are needed to support base‑`k` representations (e.g., binary or hexadecimal) of the fraction?
+- What changes are needed to support base-`k` representations (e.g., binary or hexadecimal) of the fraction?
 
 ---
 

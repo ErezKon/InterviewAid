@@ -49,9 +49,9 @@ Example 2:
 
 ## Approach
 
-**Algorithm:** Multi‑source Dijkstra (all apple cities as sources)
+**Algorithm:** Multi-source Dijkstra (all apple cities as sources)
 
-Treat each city `j` as a source with initial distance equal to its apple price `appleCost[j]`. When expanding an edge `(u, v, w)`, add `2*w` because the round‑trip travel cost is incurred twice. The resulting distance `dist[i]` after the algorithm finishes equals the minimum `appleCost[j] + 2 * shortestPath(i, j)`.
+Treat each city `j` as a source with initial distance equal to its apple price `appleCost[j]`. When expanding an edge `(u, v, w)`, add `2*w` because the round-trip travel cost is incurred twice. The resulting distance `dist[i]` after the algorithm finishes equals the minimum `appleCost[j] + 2 * shortestPath(i, j)`.
 
 ```text
 FUNCTION minCostApples(n, edges, appleCost):
@@ -92,7 +92,7 @@ FUNCTION minCostApples(n, edges, appleCost):
 | 3 | city 2 (4) | 4 | 2→1 (2) → nd = 4 + 4 = 8 (no improvement) |
 | … | … | … | … | … |
 
-The final `dist` array provides the optimal buy‑and‑return cost for each city.
+The final `dist` array provides the optimal buy-and-return cost for each city.
 
 ## Complexity Analysis
 
@@ -101,7 +101,7 @@ The final `dist` array provides the optimal buy‑and‑return cost for each cit
 | Time   | **O((V+E) log V)** – Dijkstra on `n` vertices and `|edges|` edges |
 | Space  | **O(V + E)** – adjacency list, distance array, priority queue |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the algorithm change if the return trip cost were a different multiplier than 2?
 2. Can we support dynamic updates to road weights or apple prices without recomputing from scratch?
@@ -109,4 +109,4 @@ The final `dist` array provides the optimal buy‑and‑return cost for each cit
 
 ## Key Takeaway
 
-Running Dijkstra from all cities simultaneously, seeded with their apple prices and using doubled edge weights, yields the minimum round‑trip purchase cost for every city in a single pass.
+Running Dijkstra from all cities simultaneously, seeded with their apple prices and using doubled edge weights, yields the minimum round-trip purchase cost for every city in a single pass.

@@ -39,7 +39,7 @@ Example 2:
 ```
 
 ## Approach
-The product equality condition can be transformed using logarithms: take `log` of each number, turning the product equality into a sum equality. The problem becomes a classic subset‑sum: can we select a subset whose sum of logs equals half of the total sum of logs? Because of floating‑point precision, we instead work with prime factorization. Compute the total exponent vector of prime factors for all numbers. The goal is to split the exponent vector equally between two subsets. This reduces to a multi‑dimensional knapsack which is NP‑hard, but given the constraints (small numbers, limited distinct primes), we can use backtracking with memoization on the exponent state.
+The product equality condition can be transformed using logarithms: take `log` of each number, turning the product equality into a sum equality. The problem becomes a classic subset-sum: can we select a subset whose sum of logs equals half of the total sum of logs? Because of floating-point precision, we instead work with prime factorization. Compute the total exponent vector of prime factors for all numbers. The goal is to split the exponent vector equally between two subsets. This reduces to a multi-dimensional knapsack which is NP-hard, but given the constraints (small numbers, limited distinct primes), we can use backtracking with memoization on the exponent state.
 
 ```text
 FUNCTION canPartitionEqualProduct(nums):
@@ -88,10 +88,10 @@ For `[2,3,4,6]`:
 - **Time:** Exponential in the number of elements due to backtracking, but practical for ≤20 elements and limited distinct primes.
 - **Space:** O(n) recursion depth plus memoization of visited states.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle larger arrays where backtracking is infeasible?
 2. Can you design a DP using bitmask when the number of distinct primes is small?
 3. What changes are needed if numbers can be zero or negative?
 
 ## Key Takeaway
-Transforming product equality into equal prime‑exponent distribution enables a backtracking search that checks feasibility of splitting the array into two equal‑product subsets.
+Transforming product equality into equal prime-exponent distribution enables a backtracking search that checks feasibility of splitting the array into two equal-product subsets.

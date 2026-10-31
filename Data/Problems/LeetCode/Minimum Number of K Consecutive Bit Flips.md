@@ -47,12 +47,12 @@ Flip nums[5],nums[6],nums[7]: nums becomes [1,1,1,1,1,1,1,1]
 
 ## Approach
 
-**Algorithm:** Greedy with a sliding‑window counter.
+**Algorithm:** Greedy with a sliding-window counter.
 
 - Iterate from left to right, maintaining `flipCount`, the number of flips affecting the current position.
 - When the current effective bit (`(nums[i] + flipCount) % 2`) is `0`, we must start a new flip at `i` (if `i + k` fits within the array).
 - Record the start of each flip in an auxiliary array `flipped[i] = 1` and increment `flipCount`.
-- When the window moves past `k` positions, subtract the effect of the flip that ends (`flipped[i‑k]`).
+- When the window moves past `k` positions, subtract the effect of the flip that ends (`flipped[i-k]`).
 - Count each new flip; if a required flip would exceed the array bounds, return `-1`.
 
 ```text
@@ -91,7 +91,7 @@ For `nums = [0,0,0,1,0,1,1,0]`, `k = 3`:
 - **Time:** `O(n)` – single pass through the array.
 - **Space:** `O(n)` for the `flipped` auxiliary array (can be reduced to `O(k)` with a queue).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you adapt the algorithm if flips could be of variable length?
 - Can the solution be extended to minimize the number of flips when the target pattern is not all `1`s?
@@ -99,4 +99,4 @@ For `nums = [0,0,0,1,0,1,1,0]`, `k = 3`:
 
 ## Key Takeaway
 
-A left‑to‑right greedy scan with a sliding‑window counter determines exactly where flips are needed, yielding a linear‑time solution.
+A left-to-right greedy scan with a sliding-window counter determines exactly where flips are needed, yielding a linear-time solution.

@@ -93,8 +93,8 @@ Resulting string after processing all characters.
 
 ## Follow-Up Questions
 1. How would you adapt the algorithm for multiple values of `k` in a single pass?
-2. Can the solution be implemented with O(1) extra space by modifying the string in‑place?
+2. Can the solution be implemented with O(1) extra space by modifying the string in-place?
 3. How would the approach change if the string contained more than two distinct characters?
 
 ## Key Takeaway
-A stack enables greedy removal of k‑balanced substrings as soon as they appear, guaranteeing linear time processing.
+A stack enables greedy removal of k-balanced substrings as soon as they appear, guaranteeing linear time processing.

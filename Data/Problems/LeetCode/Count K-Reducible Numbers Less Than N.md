@@ -85,19 +85,19 @@ Example 3:
 
 Take `n = "1010"` (10) and `k = 2`:
 1. Precompute steps: popcount(1)=1 → steps[1]=0, popcount(2)=1 → steps[2]=1, popcount(3)=2 → steps[2]=1 → steps[3]=2, etc.
-2. For each possible popcount `b` (1‑4), check if `steps[b] ≤ 2`.
+2. For each possible popcount `b` (1-4), check if `steps[b] ≤ 2`.
 3. Use digit DP to count numbers < 1010 with exactly `b` set bits. Sum those counts → 4.
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time:** `O(L²)` where `L` is the length of the binary string (digit DP) plus `O(L)` for pre‑computation.
+- **Time:** `O(L²)` where `L` is the length of the binary string (digit DP) plus `O(L)` for pre-computation.
 - **Space:** `O(L²)` for DP table.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would the solution change if `k` were large (e.g., up to 30)?
 - Can you extend the DP to handle a range `[L, R]` instead of `[1, n)`?
@@ -107,4 +107,4 @@ Take `n = "1010"` (10) and `k = 2`:
 
 ## Key Takeaway
 
-> Combine a small pre‑computation of popcount‑reduction steps with digit DP on the binary representation to efficiently count k‑reducible numbers.
+> Combine a small pre-computation of popcount-reduction steps with digit DP on the binary representation to efficiently count k-reducible numbers.

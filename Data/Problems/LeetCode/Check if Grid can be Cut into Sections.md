@@ -50,7 +50,7 @@ Example 3:
 
 ## Approach
 **Algorithm:** Merge overlapping intervals on both axes and test cut positions.
-1. Project all cells onto the x‑axis and y‑axis to obtain intervals.
+1. Project all cells onto the x-axis and y-axis to obtain intervals.
 2. Merge overlapping intervals separately for x and y.
 3. Enumerate possible cut positions between merged intervals; a valid cut must separate the intervals into distinct groups.
 4. Check all combinations of one vertical and one horizontal cut (or two vertical/two horizontal) to see if three groups are formed.
@@ -76,16 +76,16 @@ Consider `cells = [(0,0),(0,1),(1,0),(1,1)]`:
 - xIntervals = [[0,1],[0,1],[1,2],[1,2]] → mergedX = [[0,2]]
 - yIntervals = similar → mergedY = [[0,2]]
 - Possible vertical cut at x=1, horizontal cut at y=1.
-- The cuts separate the four cells into three groups: top‑left, bottom‑right, and the remaining two cells share a group → valid.
+- The cuts separate the four cells into three groups: top-left, bottom-right, and the remaining two cells share a group → valid.
 
 ## Complexity Analysis
 - **Time:** O(n log n) for sorting intervals, plus O(k²) for trying cut combinations where k is number of merged intervals (usually small).
 - **Space:** O(n) to store intervals.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if cuts could be diagonal?
 2. Can you extend the algorithm to allow more than two cuts for `k` groups?
 3. What is the best way to handle extremely large grids where cells are streamed?
 
 ## Key Takeaway
-Merging projections on each axis reduces the problem to a small set of candidate cut positions, enabling an efficient check for a feasible two‑cut partition.
+Merging projections on each axis reduces the problem to a small set of candidate cut positions, enabling an efficient check for a feasible two-cut partition.

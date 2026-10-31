@@ -24,7 +24,7 @@ Return the number of integers `y` in the range `[l, r]` (inclusive) that are **p
 
 ```text
 FUNCTION countKthRoots(lo, hi, k):
-    // Helper to compute integer k‑th root floor
+    // Helper to compute integer k-th root floor
     FUNCTION intRoot(n, k):
         low ← 1
         high ← n
@@ -44,7 +44,7 @@ FUNCTION countKthRoots(lo, hi, k):
 
 | Time | Space |
 |------|-------|
-| O(log hi) for each root calculation | O(1) |
+| O(log hi) for each root calculation | O(1) |
 
 ---
 
@@ -75,16 +75,16 @@ Hence, the answer is 3.
 
 ## 4. Walkthrough
 
-Take Example 1 (`lo = 1, hi = 10, k = 2`):
+Take Example 1 (`lo = 1, hi = 10, k = 2`):
 1. Compute `intRoot(10,2)` → binary search finds 3 because 3²=9 ≤10 and 4²=16>10.
-2. Compute `intRoot(0,2)` (since lo‑1 = 0) → returns 0.
+2. Compute `intRoot(0,2)` (since lo-1 = 0) → returns 0.
 3. Result = 3 − 0 = 3, matching the three perfect squares 1,4,9.
 
 ---
 
 ## 5. Complexity Analysis
 
-- **Time:** Each `intRoot` runs in O(log n) binary search; we call it twice → O(log hi).
+- **Time:** Each `intRoot` runs in O(log n) binary search; we call it twice → O(log hi).
 - **Space:** O(1) auxiliary space.
 
 ---
@@ -99,4 +99,4 @@ Take Example 1 (`lo = 1, hi = 10, k = 2`):
 
 ## Key Takeaway
 
-> The count of perfect k‑th powers up to `n` is `⌊n^(1/k)⌋`. Use binary search to compute the integer k‑th root safely, then subtract the counts for the lower bound.
+> The count of perfect k-th powers up to `n` is `⌊n^(1/k)⌋`. Use binary search to compute the integer k-th root safely, then subtract the counts for the lower bound.

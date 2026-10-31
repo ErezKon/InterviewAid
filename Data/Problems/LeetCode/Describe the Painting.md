@@ -93,7 +93,7 @@ Example 3:
 2. **Sort Points** – Sort all unique event positions.
 3. **Sweep** – Iterate through sorted points, maintaining a running `curr` color sum.
 4. **Emit Segments** – Between consecutive points, if `curr > 0`, output `[point[i], point[i+1], curr]`.
-5. **Result** – The emitted list is the non‑overlapping painting description.
+5. **Result** – The emitted list is the non-overlapping painting description.
 
 ---
 

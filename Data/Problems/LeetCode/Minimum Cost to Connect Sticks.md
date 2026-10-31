@@ -47,7 +47,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Greedy using a Min‑Heap (Huffman‑like)
+**Algorithm:** Greedy using a Min-Heap (Huffman-like)
 Repeatedly extract the two smallest sticks, merge them, add the merge cost to the total, and push the combined stick back into the heap. This yields the optimal minimal total cost.
 
 ```text
@@ -71,13 +71,13 @@ For `sticks = [2,4,3]`:
 ## Complexity Analysis
 | Metric | Value |
 |--------|-------|
-| Time   | O(n log n) – each heap operation costs log n |
+| Time   | O(n log n) – each heap operation costs log n |
 | Space  | O(n) for the heap |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if you could only connect sticks that are adjacent in the original array?
 2. Can you prove that this greedy strategy is optimal using an exchange argument?
 3. What is the total cost if all sticks have the same length `L` and there are `k` sticks?
 
 ## Key Takeaway
-Merging the two smallest sticks first (using a min‑heap) minimizes the incremental cost at each step, leading to the overall minimal total cost, analogous to Huffman coding.
+Merging the two smallest sticks first (using a min-heap) minimizes the incremental cost at each step, leading to the overall minimal total cost, analogous to Huffman coding.

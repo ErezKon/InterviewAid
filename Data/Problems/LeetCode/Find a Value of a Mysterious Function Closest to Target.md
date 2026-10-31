@@ -51,7 +51,7 @@ Because `f` is monotonic, we can perform a binary search on the integer domain.
 2. **Binary search** – while `low < high`:
    * `mid = low + (high - low) // 2`
    * If `f(mid) < T`, move `low = mid + 1`; else `high = mid`.
-3. After the loop, `low` and `low‑1` are the two candidate integers around the target. Compute `f(low)` and `f(low‑1)` (if within bounds) and pick the one with the smaller absolute difference to `T`. If equal, choose the smaller integer.
+3. After the loop, `low` and `low-1` are the two candidate integers around the target. Compute `f(low)` and `f(low-1)` (if within bounds) and pick the one with the smaller absolute difference to `T`. If equal, choose the smaller integer.
 
 ### Pseudocode
 ```text
@@ -91,13 +91,13 @@ Assume `f(x) = x * x` and `T = 10`.
 Thus the algorithm returns `3`.
 
 ## Complexity Analysis
-- **Time:** O(log range) where `range = INT_MAX - INT_MIN` (≈ 32 iterations) plus O(1) evaluations of `f`.
+- **Time:** O(log range) where `range = INT_MAX - INT_MIN` (≈ 32 iterations) plus O(1) evaluations of `f`.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm if `f` were only *approximately* monotonic (e.g., occasional plateaus)?
 2. What if evaluating `f(x)` is expensive? Discuss caching or exponential search to tighten bounds first.
 3. Extend to find the `k` integers whose function values are closest to `T`.
 
 ## Key Takeaway
-Monotonicity lets us binary‑search the entire integer domain, reducing an otherwise infinite search to logarithmic time while handling edge cases with a simple post‑processing check.
+Monotonicity lets us binary-search the entire integer domain, reducing an otherwise infinite search to logarithmic time while handling edge cases with a simple post-processing check.

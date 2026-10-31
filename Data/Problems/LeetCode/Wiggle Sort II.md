@@ -68,9 +68,9 @@ Result satisfies `nums[0] < nums[1] > nums[2] …`.
 - Time: O(n log n) for sorting.
 - Space: O(n) for the auxiliary `small` and `large` arrays.
 
-## Follow‑Up Questions
-- How would you achieve O(n) time using the nth‑element (quick‑select) algorithm?
-- Can you modify the algorithm to work in‑place with O(1) extra space?
+## Follow-Up Questions
+- How would you achieve O(n) time using the nth-element (quick-select) algorithm?
+- Can you modify the algorithm to work in-place with O(1) extra space?
 - What if the array contains many duplicate values?
 
 ## Key Takeaway

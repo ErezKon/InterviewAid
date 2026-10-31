@@ -48,8 +48,8 @@ Example 2:
 ```
 
 ## Approach
-**Greedy – Max‑Heap of Potential Reductions**  
-The operation that yields the largest reduction in the total sum should be applied first. Each element contributes a reduction of `x - ⌊x/2⌋`. By storing the current value of each element in a max‑heap keyed by its reduction, we repeatedly extract the element with the greatest reduction, apply the operation, push the new value back, and update the running sum.
+**Greedy – Max-Heap of Potential Reductions**  
+The operation that yields the largest reduction in the total sum should be applied first. Each element contributes a reduction of `x - ⌊x/2⌋`. By storing the current value of each element in a max-heap keyed by its reduction, we repeatedly extract the element with the greatest reduction, apply the operation, push the new value back, and update the running sum.
 
 ```
 text
@@ -83,10 +83,10 @@ The sum 15 ≤ 33/2, so 3 operations are sufficient.
 - **Time:** Each heap operation costs `O(log n)`. In the worst case we perform `k` operations, where `k` is the answer, so `O(k log n)`.
 - **Space:** `O(n)` for the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the operation could replace `x` with `⌈x/2⌉`?
 2. What if each operation had a cost proportional to the value reduced?
 3. Can the same greedy strategy be applied when halving is replaced by any other fractional reduction?
 
 ## Key Takeaway
-Greedy selection of the element that yields the largest immediate reduction, implemented via a max‑heap, yields the optimal minimal number of operations.
+Greedy selection of the element that yields the largest immediate reduction, implemented via a max-heap, yields the optimal minimal number of operations.

@@ -75,7 +75,7 @@ For `n = 3`, `batteries = [3,3,3,3]`:
 - **Time:** O(m log S) where `m = batteries.length` and `S` is the sum of battery capacities.
 - **Space:** O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if each computer must use whole batteries (no splitting)?
 2. What if batteries can be recharged after a certain cooldown period?
 3. Can you extend the solution to handle a scenario where some computers have higher power requirements than others?

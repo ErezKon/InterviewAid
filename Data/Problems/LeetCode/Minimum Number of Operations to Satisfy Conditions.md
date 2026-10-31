@@ -62,19 +62,19 @@ If feasible, the optimal target value is the median of the transformed values `v
 ## Walkthrough
 | i | nums[i] | v_i |
 |---|---------|-----|
-| 0 | 1 | (1‑1)/4 = 0 |
-| 1 | 5 | (5‑1)/4 = 1 |
-| 2 | 9 | (9‑1)/4 = 2 |
-Median of {0,1,2} is 1 → operations = |0‑1|+|1‑1|+|2‑1| = 2.
+| 0 | 1 | (1-1)/4 = 0 |
+| 1 | 5 | (5-1)/4 = 1 |
+| 2 | 9 | (9-1)/4 = 2 |
+Median of {0,1,2} is 1 → operations = |0-1|+|1-1|+|2-1| = 2.
 
 ## Complexity Analysis
-- **Time:** O(n log n) for sorting (or O(n) with quick‑select).
+- **Time:** O(n log n) for sorting (or O(n) with quick-select).
 - **Space:** O(n) for the transformed list.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where `k` can be zero?
 2. Can the solution be extended to minimize the maximum number of operations on any single element?
 3. What changes if you are allowed to add or subtract any multiple of `k` in a single operation?
 
 ## Key Takeaway
-All numbers must share the same modulo‑k remainder; once normalized, aligning them to the median of the scaled values yields the minimal operation count.
+All numbers must share the same modulo-k remainder; once normalized, aligning them to the median of the scaled values yields the minimal operation count.

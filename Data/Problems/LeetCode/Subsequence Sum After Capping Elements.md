@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below solve an invented "maximum capped sum" problem. Correct idea: sort `nums`; sweep `x = 1..n`, adding every value `≤ x` to a 0/1-knapsack bitset of reachable sums (`≤ k`); with `c` values still `> x` (each acts as a copy of `x`), `answer[x-1]` is true iff some `j ∈ [0, c]` has `k − j·x` reachable. O(n·k/w + Σ c).*
-
 You are given an integer array `nums` of size `n` and a positive integer `k`.
 
 An array **capped** by value `x` is obtained by replacing every element `nums[i]` with `min(nums[i], x)`.
@@ -44,35 +42,50 @@ Explanation: For every value of x, it is always possible to select a subsequence
 ```
 
 ## Approach
-Sort the array in descending order. While iterating, replace each element larger than `k` with `k` and accumulate the sum. Since capping larger values never decreases the sum, the greedy choice of capping every element above `k` yields the maximum.
+Sort `nums` and sweep `x` from 1 to `n`. Elements `≤ x` are unchanged by capping, so add each of them once (when `x` first reaches its value) to a 0/1-knapsack set of reachable sums up to `k`, stored as a bitset (`reach |= reach << v`). The remaining `c` elements are all `> x` and each becomes exactly `x`, so they behave like `c` identical copies of `x`. Sum `k` is achievable iff for some `j` in `[0, c]` with `j·x ≤ k`, the sum `k − j·x` is reachable using the small elements.
 
 ```text
-FUNCTION MaxCappedSubsequenceSum(nums, k):
-    SET total ← 0
-    FOR value IN nums:
-        IF value > k:
-            SET total ← total + k
-        ELSE:
-            SET total ← total + value
-    RETURN total
+FUNCTION SubsequenceSumAfterCapping(nums, k):
+    SET a ← SORT(nums)
+    SET n ← LENGTH(a)
+    SET reach ← bitset with only bit 0 set      // sums reachable from elements ≤ x
+    SET i ← 0
+    SET answer ← empty list
+    FOR x ← 1 TO n:
+        WHILE i < n AND a[i] ≤ x:
+            SET reach ← (reach OR (reach << a[i])) restricted to bits 0..k
+            SET i ← i + 1
+        SET c ← n - i                            // elements capped to x
+        SET ok ← false
+        FOR j ← 0 TO c:
+            IF j * x > k: BREAK
+            IF reach has bit (k - j * x):
+                SET ok ← true
+                BREAK
+        APPEND ok TO answer
+    RETURN answer
 ```
 
 ## Walkthrough
-| Step | Original Value | Capped Value | Running Total |
-|------|----------------|--------------|---------------|
-| 1 | 1 | 1 | 1 |
-| 2 | 3 | 3 | 4 |
-| 3 | 5 | 3 (k) | 7 |
-| 4 | 2 | 2 | 9 |
+`nums = [4,3,2,4]`, `k = 5` → sorted `[2,3,4,4]`.
+
+| x | added to knapsack | reachable sums (≤ 5) | c (capped to x) | checks `k − j·x` | answer |
+|---|-------------------|----------------------|-----------------|------------------|--------|
+| 1 | - | {0} | 4 | 5, 4, 3, 2, 1 - none reachable | false |
+| 2 | 2 | {0, 2} | 3 | 5, 3, 1 - none reachable | false |
+| 3 | 3 | {0, 2, 3, 5} | 2 | 5 reachable (j = 0) | true |
+| 4 | 4, 4 | {0, 2, 3, 4, 5} | 0 | 5 reachable (j = 0) | true |
+
+Result: `[false, false, true, true]`, matching the expected output.
 
 ## Complexity Analysis
-- **Time:** O(n) – one pass through the array.
-- **Space:** O(1) – only a few scalar variables.
+- **Time:** O(n log n + n·k/w + k log n) – sorting, each element is added to the bitset once (`k/w` word operations), and for each `x` at most `k/x + 1` values of `j` are checked (harmonic sum).
+- **Space:** O(k/w) for the bitset plus O(n) for the answer.
 
 ## Follow-Up Questions
-- How would the solution change if you could cap at *different* values for each element?
-- Can you extend the approach to handle a stream of numbers where `k` may vary over time?
-- What if you were required to return the actual subsequence achieving the maximum sum?
+- Why is it valid to add each small element to the knapsack only once instead of rebuilding it for every `x`?
+- How would you answer the same question for arbitrary queries `(x, k)` given offline?
+- What if subsequences had to have exactly `m` elements?
 
 ## Key Takeaway
-Capping every element that exceeds the limit `k` and summing yields the optimal subsequence sum, achievable with a simple linear scan.
+Sorting turns the per-`x` capping into an incremental process: small elements feed a growing subset-sum bitset, while all capped elements are interchangeable copies of `x`, so each query reduces to checking a few residues `k − j·x`.

@@ -66,8 +66,8 @@ Example 2:
 ```
 
 ## Approach
-**Algorithm:** Recursive divide‑and‑conquer (O(n²))
-For a region defined by its top‑left corner `(r, c)` and size `size`, check if all cells are identical. If so, create a leaf node. Otherwise, split the region into four equal quadrants of size `size/2` and recursively build each child.
+**Algorithm:** Recursive divide-and-conquer (O(n²))
+For a region defined by its top-left corner `(r, c)` and size `size`, check if all cells are identical. If so, create a leaf node. Otherwise, split the region into four equal quadrants of size `size/2` and recursively build each child.
 
 ```text
 FUNCTION construct(grid):
@@ -104,9 +104,9 @@ For `grid = [[0,1],[1,0]]`:
 - **Space:** O(n²) in worst case for the recursion stack and node objects (each cell may become a leaf).
 
 ## Follow-Up Questions
-- How would you modify the algorithm to handle non‑binary values (e.g., grayscale images)?
-- Can you construct the quad‑tree iteratively using a stack or queue?
-- What is the impact on space complexity if you compress leaf nodes further using run‑length encoding?
+- How would you modify the algorithm to handle non-binary values (e.g., grayscale images)?
+- Can you construct the quad-tree iteratively using a stack or queue?
+- What is the impact on space complexity if you compress leaf nodes further using run-length encoding?
 
 ## Key Takeaway
-A quad‑tree recursively partitions a grid until each region is uniform, enabling efficient representation of large homogeneous areas with a simple divide‑and‑conquer strategy.
+A quad-tree recursively partitions a grid until each region is uniform, enabling efficient representation of large homogeneous areas with a simple divide-and-conquer strategy.

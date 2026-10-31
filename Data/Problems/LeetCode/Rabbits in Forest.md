@@ -66,7 +66,7 @@ Total = 5.
 Time: O(n) to count frequencies, where n is length of `answers`.
 Space: O(m) for the map, where m is the number of distinct answers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if rabbits could lie about their group size?
 2. Can you adapt the algorithm to output the actual grouping of rabbits?
 3. What is the impact on complexity if the answer values can be very large (e.g., up to 10⁹)?

@@ -73,7 +73,7 @@ Output: 0
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you solve the problem if the input strings were extremely large and could not fit into memory?
 - Can you adapt the solution to handle Unicode characters beyond the basic ASCII set?
@@ -83,4 +83,4 @@ Output: 0
 
 ## Key Takeaway
 
-> Convert jewels to a set for O(1) lookup, then count matches in stones. A classic "hash set for membership testing" warm‑up problem.
+> Convert jewels to a set for O(1) lookup, then count matches in stones. A classic "hash set for membership testing" warm-up problem.

@@ -55,7 +55,7 @@ Example 3:
 FUNCTION makeAntiPalindrome(s):
     n ← LENGTH(s)
     IF n MOD 2 == 1:
-        RETURN ""   // odd length can never be anti‑palindromic
+        RETURN ""   // odd length can never be anti-palindromic
     // Count frequencies
     freq ← ARRAY[26] OF 0
     FOR ch IN s:
@@ -112,14 +112,14 @@ All mirrored positions now differ.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would the algorithm change if the string could contain Unicode characters?
-- Can we construct the anti‑palindrome in linear time using counting sort for limited alphabets?
-- What is the minimal number of swaps required to transform the original string into the anti‑palindrome?
+- Can we construct the anti-palindrome in linear time using counting sort for limited alphabets?
+- What is the minimal number of swaps required to transform the original string into the anti-palindrome?
 
 ---
 
 ## Key Takeaway
 
-> Sort the characters, split into two halves, and greedily ensure each mirrored pair differs; if a pair matches, swap within the second half. This yields the lexicographically smallest anti‑palindrome when possible.
+> Sort the characters, split into two halves, and greedily ensure each mirrored pair differs; if a pair matches, swap within the second half. This yields the lexicographically smallest anti-palindrome when possible.

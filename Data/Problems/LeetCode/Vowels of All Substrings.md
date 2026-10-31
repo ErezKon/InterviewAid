@@ -82,4 +82,4 @@ Total = 6.
 - What if the problem asked for the sum modulo a large prime?
 
 ## Key Takeaway
-A vowel’s contribution depends only on its position, allowing a linear‑time calculation without enumerating substrings.
+A vowel’s contribution depends only on its position, allowing a linear-time calculation without enumerating substrings.

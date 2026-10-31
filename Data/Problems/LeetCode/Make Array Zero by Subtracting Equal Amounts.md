@@ -76,7 +76,7 @@ The distinct positive values were {1,3,5}, so 3 operations.
 ## 5. Complexity Analysis
 
 - **Time:** O(n) – single pass to collect distinct values.
-- **Space:** O(n) – set of distinct positive numbers (worst‑case all elements unique).
+- **Space:** O(n) – set of distinct positive numbers (worst-case all elements unique).
 
 ---
 

@@ -62,7 +62,7 @@ Example 3:
 
 ## 3. Key Insight
 
-> Fix two rows. Count columns where both rows have a `1`. If `k` such columns exist, the number of rectangles from this row pair is `C(k, 2) = k(k‑1)/2`.
+> Fix two rows. Count columns where both rows have a `1`. If `k` such columns exist, the number of rectangles from this row pair is `C(k, 2) = k(k-1)/2`.
 
 ---
 
@@ -91,7 +91,7 @@ Consider the grid `[[1,1,1],[1,1,1]]`.
 
 | Step | r1 | r2 | common columns | rectangles added |
 |------|----|----|----------------|------------------|
-| 1 | 0 | 1 | columns 0,1,2 → 3 | 3 * (3‑1) / 2 = 3 |
+| 1 | 0 | 1 | columns 0,1,2 → 3 | 3 * (3-1) / 2 = 3 |
 
 The algorithm iterates over the single pair of rows, finds three shared `1`s, and adds `3` rectangles, matching the expected answer.
 
@@ -110,7 +110,7 @@ The algorithm iterates over the single pair of rows, finds three shared `1`s, an
 
 1. How would you adapt the solution for a sparse grid using hash maps?
 2. Can the algorithm be parallelized across row pairs?
-3. What changes are needed if rectangles can be non‑axis aligned?
+3. What changes are needed if rectangles can be non-axis aligned?
 
 ---
 

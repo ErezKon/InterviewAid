@@ -70,7 +70,7 @@ FUNCTION longestCycle(edges):
 
 Consider `edges = [3,3,4,2,3]`:
 1. Start at node 0 → path 0→3→2→4→3, detect cycle when revisiting 3.
-2. Recorded steps: 0@0, 3@1, 2@2, 4@3, revisit 3 at step 4 → length = 4‑1 = 3.
+2. Recorded steps: 0@0, 3@1, 2@2, 4@3, revisit 3 at step 4 → length = 4-1 = 3.
 3. No longer cycles found from other start nodes.
 
 ## 5. Complexity Analysis
@@ -86,4 +86,4 @@ Consider `edges = [3,3,4,2,3]`:
 
 ## 7. Key Takeaway
 
-> In a functional graph, tracking the step index of each node during a DFS lets you compute cycle length instantly when a node re‑appears in the current path.
+> In a functional graph, tracking the step index of each node during a DFS lets you compute cycle length instantly when a node re-appears in the current path.

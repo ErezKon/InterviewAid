@@ -81,7 +81,7 @@ Result matches expected output.
 - **Time:** Two passes over the list → `O(n)` where `n` is the number of nodes.
 - **Space:** Output array of size `k` → `O(k)` auxiliary space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to split the list into parts of exactly equal size, discarding extra nodes?
 2. Can the split be performed in a single pass without counting length first?
 3. What changes are needed if the list is doubly linked?

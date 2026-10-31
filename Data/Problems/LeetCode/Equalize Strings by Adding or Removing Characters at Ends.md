@@ -88,10 +88,10 @@ FUNCTION minOperations(s, t):
 - **Time:** O(n) where n = max(|s|, |t|) – scanning from both ends.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you extend the solution to allow insertions/removals at **any** position?
 - Can you output the actual sequence of operations, not just the count?
 - What changes are needed if each operation has a different cost?
 
 ## Key Takeaway
-Matching the longest common prefix and suffix isolates the immutable core; the remaining characters dictate the minimal number of end‑only edits.
+Matching the longest common prefix and suffix isolates the immutable core; the remaining characters dictate the minimal number of end-only edits.

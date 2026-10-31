@@ -96,4 +96,4 @@ Example 2:
 
 ## 7. Key Takeaway
 
-> Greedily move the most negative element to the end whenever the running prefix sum becomes negative. A min‑heap efficiently tracks candidates, ensuring the minimal number of moves.
+> Greedily move the most negative element to the end whenever the running prefix sum becomes negative. A min-heap efficiently tracks candidates, ensuring the minimal number of moves.

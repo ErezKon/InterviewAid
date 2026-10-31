@@ -38,9 +38,9 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 
 ## Approach
 
-**Algorithm**: Breadth‑First Search (BFS) with symmetry reduction.
+**Algorithm**: Breadth-First Search (BFS) with symmetry reduction.
 
-We exploit symmetry by converting `(x, y)` to `(abs(x), abs(y))`, limiting the search to the first quadrant. The BFS explores knight moves while keeping coordinates `≥ -1` to allow necessary back‑steps.
+We exploit symmetry by converting `(x, y)` to `(abs(x), abs(y))`, limiting the search to the first quadrant. The BFS explores knight moves while keeping coordinates `≥ -1` to allow necessary back-steps.
 
 ```text
 FUNCTION minKnightMoves(x, y):
@@ -74,7 +74,7 @@ Example: `x = 2, y = 1`
 - **Time**: O(max(|x|,|y|)²) – each reachable coordinate within the bounded region is visited once.
 - **Space**: O(max(|x|,|y|)²) – storage for the visited set and queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the board were finite with obstacles?
 2. Can you devise a mathematical formula for the minimum moves without BFS?

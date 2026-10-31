@@ -59,9 +59,9 @@ Example 3:
 ```
 
 ## Approach
-1. Remove all non‑digit characters.
+1. Remove all non-digit characters.
 2. While more than 4 digits remain, take the next three and append a hyphen.
-3. For the last 2‑4 digits, apply the rule: if 4 remain, split into two groups of two; otherwise output the remaining digits as a single block.
+3. For the last 2-4 digits, apply the rule: if 4 remain, split into two groups of two; otherwise output the remaining digits as a single block.
 
 ```text
 FUNCTION ReformatPhoneNumber(numberString):
@@ -94,8 +94,8 @@ Space: O(n) – storage for the digits and result list.
 
 ## Follow-Up Questions
 * How would you adapt the algorithm to support custom group sizes?
-* Can you perform the reformatting in‑place without extra arrays?
+* Can you perform the reformatting in-place without extra arrays?
 * What changes are needed if the separator should be a space instead of a hyphen?
 
 ## Key Takeaway
-Strip non‑digit characters, then greedily emit groups of three, handling the final four digits as two groups of two.
+Strip non-digit characters, then greedily emit groups of three, handling the final four digits as two groups of two.

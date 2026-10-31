@@ -127,18 +127,18 @@ Take `nums = [1,3,-1,-3,5,3,6,7]`, `k = 3`.
 ## 5. Complexity Analysis
 
 - **Time:** O(n log k) – each insertion/removal costs `log k`.
-- **Space:** O(k) – the two heaps store at most `k` elements plus the lazy‑deletion map.
+- **Space:** O(k) – the two heaps store at most `k` elements plus the lazy-deletion map.
 
 ---
 
 ## 6. Follow-Up Questions
 
 - How to support **arbitrary deletions** without lazy deletion?
-- Can we achieve **O(n)** time using a balanced BST with order‑statistics?
-- What changes for **even‑length windows** returning the lower median?
+- Can we achieve **O(n)** time using a balanced BST with order-statistics?
+- What changes for **even-length windows** returning the lower median?
 
 ---
 
 ## Key Takeaway
 
-> Sliding‑window median extends the classic two‑heap median‑maintenance technique with lazy deletion to efficiently evict elements that leave the window.
+> Sliding-window median extends the classic two-heap median-maintenance technique with lazy deletion to efficiently evict elements that leave the window.

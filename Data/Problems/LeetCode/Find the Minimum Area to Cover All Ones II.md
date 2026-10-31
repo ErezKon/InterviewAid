@@ -75,7 +75,7 @@ FUNCTION minimumArea(grid):
     // 6. Left strip + right split vertically (2 more variants)
 
     // For each config, try all split positions
-    // compute bounding box area in each sub‑region
+    // compute bounding box area in each sub-region
     // Minimize total
 
     RETURN MIN over all 6 configs
@@ -85,7 +85,7 @@ FUNCTION minimumArea(grid):
 
 ## 5. Walkthrough
 
-Consider the grid `[[1,0],[0,1]]` (2 × 2).
+Consider the grid `[[1,0],[0,1]]` (2 × 2).
 
 1. **Configuration 1 – three horizontal strips:**
    - Split rows at positions 0 and 1 → rectangles cover rows `[0]`, `[1]`, and an empty third strip.
@@ -93,10 +93,10 @@ Consider the grid `[[1,0],[0,1]]` (2 × 2).
 2. **Configuration 2 – three vertical strips:**
    - Similar result, total area 2.
 3. **Configuration 3 – top strip + bottom split vertically:**
-   - Top strip (row 0) covers cell (0,0) → area 1.
-   - Bottom region (row 1) split vertically at column 1 → rectangle covering (1,1) → area 1.
-   - Third rectangle empty → total area 2.
-4. After enumerating all 6 configurations, the minimum total area that covers both 1s is **3**, achieved by using a 2 × 1 rectangle covering both 1s and a 1 × 1 rectangle for the remaining cell.
+   - Top strip (row 0) covers cell (0,0) → area 1.
+   - Bottom region (row 1) split vertically at column 1 → rectangle covering (1,1) → area 1.
+   - Third rectangle empty → total area 2.
+4. After enumerating all 6 configurations, the minimum total area that covers both 1s is **3**, achieved by using a 2 × 1 rectangle covering both 1s and a 1 × 1 rectangle for the remaining cell.
 
 ---
 
@@ -112,11 +112,11 @@ Consider the grid `[[1,0],[0,1]]` (2 × 2).
 ## 7. Follow-Up Questions
 
 1. How would the solution change if the number of rectangles is a variable *k*?
-2. Can the problem be solved in sub‑quadratic time for larger grids?
+2. Can the problem be solved in sub-quadratic time for larger grids?
 3. What modifications are needed to handle weighted cells instead of binary values?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Enumerate all valid 3‑rectangle partition topologies.** With only 6 fundamental configurations, brute‑force over split positions is efficient for small grids.
+> **Enumerate all valid 3-rectangle partition topologies.** With only 6 fundamental configurations, brute-force over split positions is efficient for small grids.

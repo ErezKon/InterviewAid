@@ -11,7 +11,7 @@ Given a binary string `s`, return the number of non-empty substrings that have t
 
 Substrings that occur multiple times are counted the number of times they occur.
 
-(A valid substring is a non‑empty block of `0`s followed by an equal-length block of `1`s, or vice‑versa.)
+(A valid substring is a non-empty block of `0`s followed by an equal-length block of `1`s, or vice-versa.)
 
 **Constraints:**
 - `1 <= s.length <= 10^5`
@@ -67,7 +67,7 @@ For `s = "00110011"`:
 ## Follow-Up Questions
 - How would you modify the algorithm to count substrings with at most `k` consecutive groups?
 - Can this be extended to ternary strings with three characters?
-- What is the relationship between this problem and run‑length encoding?
+- What is the relationship between this problem and run-length encoding?
 
 ## Key Takeaway
-Counting equal‑group binary substrings reduces to summing `min(length_of_current_group, length_of_previous_group)` for each adjacent pair, enabling an O(n) solution.
+Counting equal-group binary substrings reduces to summing `min(length_of_current_group, length_of_previous_group)` for each adjacent pair, enabling an O(n) solution.

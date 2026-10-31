@@ -89,13 +89,13 @@ FUNCTION countVisitedNodes(edges):
 
 | Step | Node | Action | Result for node |
 |------|------|--------|-----------------|
-| 1 | 0 | Tail node, edge → 1 | will inherit result of node 1 + 1 |
-| 2 | 1 | Tail node, edge → 2 | will inherit result of node 2 + 1 |
-| 3 | 2 | Part of cycle (2‑3‑4) length 3 | result[2] ← 3 |
+| 1 | 0 | Tail node, edge → 1 | will inherit result of node 1 + 1 |
+| 2 | 1 | Tail node, edge → 2 | will inherit result of node 2 + 1 |
+| 3 | 2 | Part of cycle (2-3-4) length 3 | result[2] ← 3 |
 | 4 | 3 | Cycle node | result[3] ← 3 |
 | 5 | 4 | Cycle node | result[4] ← 3 |
-| 6 | Back‑propagate | result[1] ← result[2] + 1 = 4 |
-| 7 | Back‑propagate | result[0] ← result[1] + 1 = 5 |
+| 6 | Back-propagate | result[1] ← result[2] + 1 = 4 |
+| 7 | Back-propagate | result[0] ← result[1] + 1 = 5 |
 
 Thus the final array is `[5,4,3,3,3]`.
 
@@ -113,7 +113,7 @@ Thus the final array is `[5,4,3,3,3]`.
 ## Follow-Up Questions
 
 1. How would you modify the algorithm if each node could have multiple outgoing edges? (Leads to general directed graphs and requires DFS/BFS.)
-2. Can you compute the number of visited nodes for each node in a graph that contains self‑loops and multiple components?
+2. Can you compute the number of visited nodes for each node in a graph that contains self-loops and multiple components?
 
 ---
 

@@ -78,7 +78,7 @@ Result `[1,3]`.
 - Time: O(n) – single pass through the array.
 - Space: O(p) – where `p` is the number of peaks (output size), plus O(1) auxiliary.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to find *local minima* as well?
 2. Can you solve it in a single pass without storing the result until the end (streaming)?
 3. What if the array is extremely large and stored on disk – how would you minimize I/O?

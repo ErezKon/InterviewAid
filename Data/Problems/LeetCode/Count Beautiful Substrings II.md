@@ -119,14 +119,14 @@ Consider `s = "aabb"`, `k = 4`.
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n × √k) – scanning the string and constant‑time hashmap operations.
+- **Time:** O(n × √k) – scanning the string and constant-time hashmap operations.
 - **Space:** O(n) – hashmap storing seen states.
 
 ---
 
 ## 7. Follow-Up Questions
 
-1. Can the solution be improved to O(n) using number‑theoretic properties of `k`?
+1. Can the solution be improved to O(n) using number-theoretic properties of `k`?
 2. How would you adapt the algorithm for Unicode characters and extended vowel sets?
 3. What if the condition changes to `(vowels + consonants) % k == 0`?
 
@@ -134,4 +134,4 @@ Consider `s = "aabb"`, `k = 4`.
 
 ## Key Takeaway
 
-> Grouping prefix states by balance and periodic index enables counting valid substrings in near‑linear time despite the modular constraint.
+> Grouping prefix states by balance and periodic index enables counting valid substrings in near-linear time despite the modular constraint.

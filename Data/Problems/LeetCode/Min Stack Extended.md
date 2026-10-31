@@ -119,10 +119,10 @@ Push sequence `3, 5, 2, 1`:
 - **Time:** `O(1)` for each operation (`push`, `pop`, `top`, `getMin`, `getMax`).
 - **Space:** `O(n)` for storing auxiliary stacks alongside the main stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the design to support `getMedian` in `O(log n)` time?
 2. Can you implement the same functionality using a single stack with encoded values?
 3. What changes are needed if the stack must also support a `peekMax` operation that returns the maximum without removal?
 
 ## Key Takeaway
-Using parallel auxiliary stacks to mirror the primary stack preserves the current minimum and maximum at each depth, enabling constant‑time queries.
+Using parallel auxiliary stacks to mirror the primary stack preserves the current minimum and maximum at each depth, enabling constant-time queries.

@@ -116,10 +116,10 @@ The algorithm checks `z[t*k] ≥ n - t*k` and finds `t = 1` satisfies the condit
 
 1. How would the solution differ if the appended characters must be a permutation of the removed ones?
 2. Can we extend the method to handle multiple possible `k` values per operation?
-3. What alternative string‑matching techniques could replace the Z-function?
+3. What alternative string-matching techniques could replace the Z-function?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Z-function enables efficient suffix‑prefix matching.** By checking `z[t*k] ≥ n - t*k` for increasing `t`, we obtain the minimum seconds in linear time.
+> **Z-function enables efficient suffix-prefix matching.** By checking `z[t*k] ≥ n - t*k` for increasing `t`, we obtain the minimum seconds in linear time.

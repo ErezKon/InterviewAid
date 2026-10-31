@@ -47,12 +47,12 @@ FUNCTION maximumSumOfHeights(maxHeights):
     SET ans ← 0
     FOR peak ← 0 TO n-1:
         SET total ← maxHeights[peak]
-        // extend left (non‑increasing)
+        // extend left (non-increasing)
         SET curMin ← maxHeights[peak]
         FOR j ← peak-1 DOWNTO 0:
             SET curMin ← MIN(curMin, maxHeights[j])
             SET total ← total + curMin
-        // extend right (non‑increasing)
+        // extend right (non-increasing)
         SET curMin ← maxHeights[peak]
         FOR j ← peak+1 TO n-1:
             SET curMin ← MIN(curMin, maxHeights[j])
@@ -92,4 +92,4 @@ The maximum total is 13 at peak 0.
 
 ## Key Takeaway
 
-> For each peak candidate, greedily extend left/right taking the running minimum. This O(n²) brute‑force works for small inputs; the O(n) monotonic‑stack method is the scalable improvement.
+> For each peak candidate, greedily extend left/right taking the running minimum. This O(n²) brute-force works for small inputs; the O(n) monotonic-stack method is the scalable improvement.

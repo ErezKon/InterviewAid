@@ -54,7 +54,7 @@ Example 3:
   Explanation: There is no integer in the range [0, 5000] whose sum of digits is 49. Thus, the answer is 0.
 ```
 
-(Note: every valid array must be non‑decreasing and use values in [0, 5000].)
+(Note: every valid array must be non-decreasing and use values in [0, 5000].)
 
 ---
 
@@ -63,7 +63,7 @@ Example 3:
 ```text
 FUNCTION countArrays(digitSums):
     SET n ← LENGTH(digitSums)
-    // Pre‑compute all numbers (0‑99…) whose digit sum equals each target
+    // Pre-compute all numbers (0-99…) whose digit sum equals each target
     SET candidates ← ARRAY of LISTS size n
     FOR i FROM 0 TO n-1:
         SET target ← digitSums[i]
@@ -87,13 +87,13 @@ FUNCTION countArrays(digitSums):
 
 Consider `digitSums = [1,2]`.
 
-1. **Pre‑compute candidates**:
-   - For sum 1 → {1,10,100,…}
-   - For sum 2 → {2,11,20,101,…}
+1. **Pre-compute candidates**:
+   - For sum 1 → {1,10,100,…}
+   - For sum 2 → {2,11,20,101,…}
 2. **DP iteration**:
    - Start with empty prefix `{0:1}`.
-   - For first position, allowed values ≥0 are all candidates for sum 1 → dpPrev becomes `{1:1,10:1,100:1,…}`.
-   - For second position, we only keep values ≥ previous value. Valid pairs are `(1,2)` and `(1,11)`, giving count 2.
+   - For first position, allowed values ≥0 are all candidates for sum 1 → dpPrev becomes `{1:1,10:1,100:1,…}`.
+   - For second position, we only keep values ≥ previous value. Valid pairs are `(1,2)` and `(1,11)`, giving count 2.
 
 ---
 
@@ -105,7 +105,7 @@ Consider `digitSums = [1,2]`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you adapt the solution if the array length is up to 10⁵ and values can be large? (Hint: use prefix sums and combinatorics.)
 2. Can the problem be solved with a combinatorial formula without explicit DP?
@@ -115,4 +115,4 @@ Consider `digitSums = [1,2]`.
 
 ## Key Takeaway
 
-> Enumerate all numbers matching each digit‑sum, then use DP to enforce the non‑decreasing constraint while counting valid arrays.
+> Enumerate all numbers matching each digit-sum, then use DP to enforce the non-decreasing constraint while counting valid arrays.

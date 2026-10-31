@@ -59,9 +59,9 @@ Thus the minimum is 3.
 - Time: O(n·√n) – each `i` iterates over all squares ≤ `i`.
 - Space: O(n) – the `dp` array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to also return one possible combination of squares?
-2. Can you prove that the answer is never greater than 4 (Lagrange's four‑square theorem) and use it to optimise the algorithm?
+2. Can you prove that the answer is never greater than 4 (Lagrange's four-square theorem) and use it to optimise the algorithm?
 3. What changes are needed if `n` can be as large as 10⁹?
 
 ## Key Takeaway

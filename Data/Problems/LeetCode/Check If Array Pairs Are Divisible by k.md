@@ -43,7 +43,7 @@ Example 3:
 ```
 
 ## Approach
-The key insight is that two numbers `a` and `b` sum to a multiple of `k` iff `(a % k) + (b % k) ≡ 0 (mod k)`. Therefore each remainder `r` must be paired with remainder `k‑r`.
+The key insight is that two numbers `a` and `b` sum to a multiple of `k` iff `(a % k) + (b % k) ≡ 0 (mod k)`. Therefore each remainder `r` must be paired with remainder `k-r`.
 
 ```text
 FUNCTION canArrange(arr, k):
@@ -81,4 +81,4 @@ After counting, `count[2] == count[3]` (both 0) and `count[4] == count[1]` (both
 3. Extend to a streaming scenario where numbers arrive one by one.
 
 ## Key Takeaway
-Pairing numbers by complementary remainders modulo `k` reduces the problem to a simple frequency‑matching check.
+Pairing numbers by complementary remainders modulo `k` reduces the problem to a simple frequency-matching check.

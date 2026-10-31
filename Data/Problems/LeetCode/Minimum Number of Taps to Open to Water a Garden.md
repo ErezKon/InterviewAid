@@ -44,7 +44,7 @@ Explanation: Even if you activate all the four taps you cannot water the whole g
 ```
 
 ## Approach
-The problem can be reduced to the classic Jump Game II / Video Stitching problem. For each tap we compute the farthest right point it can reach from its leftmost start, then greedily determine the minimum number of intervals (taps) needed to cover `[0, n]`.
+The problem can be reduced to the classic Jump Game II / Video Stitching problem. For each tap we compute the farthest right point it can reach from its leftmost start, then greedily determine the minimum number of intervals (taps) needed to cover `[0, n]`.
 
 ### Pseudocode
 ```text
@@ -71,8 +71,8 @@ FUNCTION minTaps(n, ranges):
 
 ## Walkthrough
 Consider `n = 5`, `ranges = [3,4,1,1,0,0]`.
-1. Compute intervals: tap 0 → `[0,3]`, tap 1 → `[0,5]`, tap 2 → `[1,3]`, …
-2. Build `maxReach`: `maxReach[0] = 5` (from tap 1), others remain `0`.
+1. Compute intervals: tap 0 → `[0,3]`, tap 1 → `[0,5]`, tap 2 → `[1,3]`, …
+2. Build `maxReach`: `maxReach[0] = 5` (from tap 1), others remain `0`.
 3. Iterate positions:
    - At `i = 0`, `farthest = 5`, `i == curEnd` → open a tap (`taps = 1`), set `curEnd = 5`.
    - Loop ends as `curEnd` already covers the garden.
@@ -84,8 +84,8 @@ Result is `1` tap.
 
 ## Follow-Up Questions
 - How would the solution change if each tap had a different activation cost and you needed to minimize total cost?
-- Can the algorithm be adapted for a 2‑dimensional garden with circular watering ranges?
+- Can the algorithm be adapted for a 2-dimensional garden with circular watering ranges?
 - What if taps could be turned on partially, providing fractional coverage?
 
 ## Key Takeaway
-Transforming tap ranges into interval reachability and applying the greedy Jump Game II strategy yields the minimum number of taps needed to water the whole garden.
+Transforming tap ranges into interval reachability and applying the greedy Jump Game II strategy yields the minimum number of taps needed to water the whole garden.

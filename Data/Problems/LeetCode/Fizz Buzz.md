@@ -89,11 +89,11 @@ The algorithm iterates `n` times with constant work per iteration. **Time:** O(n
 
 ## 6. Follow-Up Questions
 
-1. How would you modify the solution to support custom divisor‑label pairs?
+1. How would you modify the solution to support custom divisor-label pairs?
 2. Can you generate the sequence lazily using an iterator/generator?
 3. How would you handle very large `n` where storing the full list is infeasible?
 ---
 
 ## 7. Key Takeaway
 
-> Checking the most specific divisor (`%15`) first simplifies the logic; the pattern scales to arbitrary divisor‑label mappings.
+> Checking the most specific divisor (`%15`) first simplifies the logic; the pattern scales to arbitrary divisor-label mappings.

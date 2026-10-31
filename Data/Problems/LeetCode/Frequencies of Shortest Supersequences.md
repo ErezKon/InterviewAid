@@ -64,7 +64,7 @@ Explanation: "aabbcc" and all its permutations are SCSs.
 
 ## 3. Key Insight
 
-> Since strings are length 2, the problem reduces to a graph where each string `ab` creates an edge a→b. The shortest supersequence relates to finding an Euler‑path‑like structure. Enumerate possible character sets using bitmasks.
+> Since strings are length 2, the problem reduces to a graph where each string `ab` creates an edge a→b. The shortest supersequence relates to finding an Euler-path-like structure. Enumerate possible character sets using bitmasks.
 
 ---
 
@@ -130,4 +130,4 @@ FUNCTION supersequences(words):
 
 ## 8. Key Takeaway
 
-> With only 26 possible characters and length‑2 strings, the problem is tractable via bitmask enumeration over which characters appear multiple times, combined with a topological‑sort verification.
+> With only 26 possible characters and length-2 strings, the problem is tractable via bitmask enumeration over which characters appear multiple times, combined with a topological-sort verification.

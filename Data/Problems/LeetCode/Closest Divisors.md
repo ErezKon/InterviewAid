@@ -79,10 +79,10 @@ The scan stops after the first divisor for each candidate because any smaller di
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 - How would you adapt the algorithm if you needed the pair whose product is exactly `num + k` for a larger `k`?
 - Can you solve the problem without scanning from √n by using prime factorization?
-- What changes are needed if the numbers can be up to 10¹⁸ (requiring 64‑bit arithmetic)?
+- What changes are needed if the numbers can be up to 10¹⁸ (requiring 64-bit arithmetic)?
 
 ---
 

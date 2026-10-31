@@ -69,10 +69,10 @@ Tweet 2 has length = 33. It is an invalid tweet.
 - **Time:** O(N) where *N* is the number of rows, because the filter touches each row once.
 - **Space:** O(1) additional space besides the output list of IDs.
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you adapt the query for Unicode characters where `CHAR_LENGTH` is needed?
-- Can you write a single‑pass algorithm in a procedural language that mimics this filter?
+- Can you write a single-pass algorithm in a procedural language that mimics this filter?
 - How would you index the table to speed up the length check for very large datasets?
 
 ## Key Takeaway

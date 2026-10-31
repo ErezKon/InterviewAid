@@ -86,7 +86,7 @@ LIMIT 1;
 
 ## Follow-Up Questions
 
-- How would you modify the query to return the top K customers with the most orders?
+- How would you modify the query to return the top K customers with the most orders?
 - How can you handle ties where multiple customers have the same maximum order count?
 - How would you retrieve the total order amount for the top customer if an `order_amount` column existed?
 

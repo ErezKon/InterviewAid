@@ -61,8 +61,8 @@ Example 2:
 
 ## Approach
 Use dynamic programming where `dp[i][t]` represents the maximum profit up to day `i` with `t` transactions (or respecting cooldown/fee). Transition:
-- Do nothing on day `i` → `dp[i][t] = dp[i‑1][t]`
-- Sell on day `i` → `dp[i][t] = max(dp[i][t], price[i] + maxPrevBuy)` where `maxPrevBuy` tracks the best value of `dp[j][t‑1] - price[j]` respecting cooldown.
+- Do nothing on day `i` → `dp[i][t] = dp[i-1][t]`
+- Sell on day `i` → `dp[i][t] = max(dp[i][t], price[i] + maxPrevBuy)` where `maxPrevBuy` tracks the best value of `dp[j][t-1] - price[j]` respecting cooldown.
 The algorithm iterates days and transaction states, updating `maxPrevBuy` on the fly for O(n·k) time where `k` is the number of allowed transactions (or 1 for fee/cooldown variants).
 
 ```text
@@ -100,13 +100,13 @@ FUNCTION MaxProfit(prices, strategy):
 The table shows how `maxPrevBuy` captures the best buying point and how `dp` updates when selling yields higher profit.
 
 ## Complexity Analysis
-- **Time:** O(n · k) where `n` is number of days and `k` is allowed transactions (often ≤ 2). For fee or cooldown variants, `k` = 1, giving O(n).
-- **Space:** O(n · k) can be reduced to O(k) by keeping only previous day values.
+- **Time:** O(n · k) where `n` is number of days and `k` is allowed transactions (often ≤ 2). For fee or cooldown variants, `k` = 1, giving O(n).
+- **Space:** O(n · k) can be reduced to O(k) by keeping only previous day values.
 
 ## Follow-Up Questions
 1. How would the solution change if there is a fixed transaction fee for each sell?
 2. What if unlimited transactions are allowed but a cooldown of one day is required after each sell?
-3. Can the problem be solved in O(1) extra space for the single‑transaction case?
+3. Can the problem be solved in O(1) extra space for the single-transaction case?
 
 ## Key Takeaway
 Model the profit problem with dynamic programming that tracks the best “buy” state (`maxPrevBuy`) and updates profit on each sell, allowing easy extension to transaction limits, fees, or cooldowns.

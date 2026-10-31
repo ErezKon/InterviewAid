@@ -88,11 +88,11 @@ Explanation: We can do the hopping 0 -> 4 -> 6 with a score of (4 - 0) * 9 + (6 
 ## Walkthrough
 
 Consider `nums = [1,3,2,5]`.
-1. Start at index 0 (`value=1`). The suffix maximum from index 0 is at index 3 (`value=5`).
-2. Jump to index 3: score `(3-0)*5 = 15`.
+1. Start at index 0 (`value=1`). The suffix maximum from index 0 is at index 3 (`value=5`).
+2. Jump to index 3: score `(3-0)*5 = 15`.
 3. Reached the last index, stop. Total score = 15.
 
-The greedy suffix‑max rule matches the optimal DP result.
+The greedy suffix-max rule matches the optimal DP result.
 
 ---
 

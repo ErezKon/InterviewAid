@@ -49,17 +49,17 @@ Output: 27
 ```
 
 ## Approach
-Use frequency of each possible bitmask (0‑1023 for 10‑bit numbers). For each pair of masks `a` and `b`, compute `a & b` and accumulate its count. Then for each mask `c`, add the number of pairs whose AND with `c` is zero.
+Use frequency of each possible bitmask (0-1023 for 10-bit numbers). For each pair of masks `a` and `b`, compute `a & b` and accumulate its count. Then for each mask `c`, add the number of pairs whose AND with `c` is zero.
 
 **Pseudocode**
 ```text
 FUNCTION countTriplets(nums):
-    // count frequency of each value (assume 10‑bit numbers)
+    // count frequency of each value (assume 10-bit numbers)
     SET freq[0..1023] ← 0
     FOR v IN nums:
         SET freq[v] ← freq[v] + 1
 
-    // pre‑compute pair AND frequencies
+    // pre-compute pair AND frequencies
     SET pairAnd[0..1023] ← 0
     FOR a FROM 0 TO 1023:
         IF freq[a] = 0: CONTINUE
@@ -88,10 +88,10 @@ For `nums = [2,1,3]` (binary 010,001,011):
 - Time: O(M²) where M = 2¹⁰ = 1024 (constant), plus O(M) for final sum → effectively O(1) for typical constraints.
 - Space: O(M) for frequency and pairAnd arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if numbers could have up to 20 bits?
 2. Can you adapt the solution to count unordered triples?
 3. What if the array length is extremely large and cannot fit in memory?
 
 ## Key Takeaway
-By aggregating pairwise AND results into a frequency table, the triple‑count reduces to a series of constant‑size look‑ups, turning an O(n³) problem into near‑linear time.
+By aggregating pairwise AND results into a frequency table, the triple-count reduces to a series of constant-size look-ups, turning an O(n³) problem into near-linear time.

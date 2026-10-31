@@ -80,22 +80,24 @@ FUNCTION findRLEArray(encoded1, encoded2):
 The algorithm processes each run exactly once.
 
 ## Walkthrough
-For `encoded1 = [[1,3],[2,1]]`, `encoded2 = [[2,2],[3,2]]`:
-1. Multiply 1*2, take 2 → result `[[2,2]]`; remaining counts: `[1,1]` and `[2,2]`.
-2. Multiply 1*2, take 1 → merge with previous (same product) → `[[2,3]]`.
-3. Move to next run in `encoded1` (value 2, count 1) and continue with `encoded2` (value 3, count 2).
-4. Multiply 2*3, take 1 → result `[[2,3],[6,1]]`.
-5. Remaining count in `encoded2` is 1, but `encoded1` exhausted, loop ends.
-Final encoded product: `[[2,3],[6,1]]`.
+Example 2: `encoded1 = [[1,3],[2,1],[3,2]]`, `encoded2 = [[2,3],[3,3]]`:
+
+| Step | run1 (val,cnt) | run2 (val,cnt) | prod | take | result |
+|------|----------------|----------------|------|------|--------|
+| 1 | (1,3) | (2,3) | 2 | 3 | `[[2,3]]` (both runs exhausted, i=1, j=1) |
+| 2 | (2,1) | (3,3) | 6 | 1 | `[[2,3],[6,1]]` (i=2, run2 left (3,2)) |
+| 3 | (3,2) | (3,2) | 9 | 2 | `[[2,3],[6,1],[9,2]]` (both exhausted) |
+
+Final encoded product: `[[2,3],[6,1],[9,2]]`. In Example 1 the products 1*6 and 2*3 are both 6, so the two runs merge into `[[6,6]]`.
 
 ## Complexity Analysis
 - **Time:** `O(m + n)` where `m` and `n` are the lengths of the encoded arrays.
 - **Space:** `O(k)` for the result, where `k` is the number of runs in the product.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle overflow if the product exceeds integer limits?
-2. Can the algorithm be adapted to compute the sum of two run‑length encoded arrays?
+2. Can the algorithm be adapted to compute the sum of two run-length encoded arrays?
 3. What changes are needed if the input arrays are extremely large and must be streamed?
 
 ## Key Takeaway
-By processing runs with two pointers and merging identical products, you can compute the element‑wise product of run‑length encoded arrays in linear time.
+By processing runs with two pointers and merging identical products, you can compute the element-wise product of run-length encoded arrays in linear time.

@@ -99,7 +99,7 @@ Only two combinations satisfy the pattern, so the function returns 2.
 
 1. How would you adapt the solution if the time format included seconds ("HH:MM:SS")?
 2. Can you compute the answer without iterating over all possibilities?
-3. What if the input allowed a 12‑hour clock with AM/PM designators?
+3. What if the input allowed a 12-hour clock with AM/PM designators?
 
 ---
 

@@ -68,7 +68,7 @@ FUNCTION validSquare(p1, p2, p3, p4):
 ## Follow-Up Questions
 - How would you extend this check to verify a rectangle (allowing unequal adjacent sides)?
 - Can you determine the orientation of the square without sorting distances?
-- How would you handle floating‑point coordinates with precision errors?
+- How would you handle floating-point coordinates with precision errors?
 
 ## Key Takeaway
 A square can be identified by the pattern of its pairwise distances: four equal sides and two equal diagonals, all derived from simple geometry.

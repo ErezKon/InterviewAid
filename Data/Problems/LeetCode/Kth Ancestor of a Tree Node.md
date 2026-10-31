@@ -93,7 +93,7 @@ Consider the tree with `parent = [-1,0,0,1,1,2,2]` and query `(node=5, k=2)`.
 
 1. **Preprocess:** Build `up` table. For each node, store ancestors at powers of two.
 2. **Binary representation of k:** `k = 2` → `10₂`. Only the 2¹ (second) bit is set.
-3. **Jump:** Starting at node 5, look at `up[5][1]` (2‑th ancestor) which is node 0.
+3. **Jump:** Starting at node 5, look at `up[5][1]` (2-th ancestor) which is node 0.
 4. Return node 0 as the answer.
 
 ---
@@ -103,7 +103,7 @@ Consider the tree with `parent = [-1,0,0,1,1,2,2]` and query `(node=5, k=2)`.
 | Metric | Value |
 |--------|-------|
 | Preprocess | O(n log n) – fill binary lifting table |
-| Query | O(log n) – at most log n jumps |
+| Query | O(log n) – at most log n jumps |
 | Space | O(n log n) – `up` table |
 
 ---
@@ -112,10 +112,10 @@ Consider the tree with `parent = [-1,0,0,1,1,2,2]` and query `(node=5, k=2)`.
 
 - How would you modify the structure to support dynamic updates (adding/removing edges)?
 - Can you extend binary lifting to answer Lowest Common Ancestor (LCA) queries efficiently?
-- What is the trade‑off between preprocessing time and query time for different `k` ranges?
+- What is the trade-off between preprocessing time and query time for different `k` ranges?
 
 ---
 
 ## 8. Key Takeaway
 
-> **Binary lifting** precomputes 2^j‑th ancestors for every node, enabling k‑th ancestor queries in logarithmic time by decomposing `k` into binary bits.
+> **Binary lifting** precomputes 2^j-th ancestors for every node, enabling k-th ancestor queries in logarithmic time by decomposing `k` into binary bits.

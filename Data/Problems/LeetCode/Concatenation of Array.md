@@ -58,13 +58,13 @@ For `nums = [1,2,1]`:
 Time: O(n) – each element is visited twice.
 Space: O(n) for the output array (the input is unchanged).
 
-## Follow‑Up Questions
-- How would you modify the solution to work in‑place if the language allowed resizing the original array?
-- Can you achieve the same result using slicing or built‑in concatenation operators?
+## Follow-Up Questions
+- How would you modify the solution to work in-place if the language allowed resizing the original array?
+- Can you achieve the same result using slicing or built-in concatenation operators?
 - What is the complexity if the input is a linked list instead of an array?
 
 ---
 
 ## Key Takeaway
 
-> Concatenating an array with itself is a straightforward linear‑time operation that simply repeats the original sequence.
+> Concatenating an array with itself is a straightforward linear-time operation that simply repeats the original sequence.

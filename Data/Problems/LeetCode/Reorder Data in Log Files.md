@@ -46,7 +46,7 @@ Output: ["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
 ```
 
 ## Approach
-Separate logs into two lists based on the first character after the identifier. Sort the letter‑log list using a composite key of content then identifier. Finally concatenate the sorted letter‑logs with the original‑order digit‑logs.
+Separate logs into two lists based on the first character after the identifier. Sort the letter-log list using a composite key of content then identifier. Finally concatenate the sorted letter-logs with the original-order digit-logs.
 
 ```text
 FUNCTION reorderLogFiles(logs):
@@ -74,13 +74,13 @@ FUNCTION reorderLogFiles(logs):
 After sorting letters by content then identifier we get: "let1 art can", "let3 art zero", "let2 own kit dig". Concatenate with digits preserves their order.
 
 ## Complexity Analysis
-- Time: O(n log n) for sorting the *m* letter‑logs (where *m ≤ n*).
+- Time: O(n log n) for sorting the *m* letter-logs (where *m ≤ n*).
 - Space: O(n) to store the two separate lists.
 
 ## Follow-Up Questions
-1. How would you modify the algorithm to sort digit‑logs numerically instead of keeping original order?
-2. Can you achieve the same ordering in‑place without extra lists?
+1. How would you modify the algorithm to sort digit-logs numerically instead of keeping original order?
+2. Can you achieve the same ordering in-place without extra lists?
 3. How would you handle logs where the content may contain a mix of letters and digits?
 
 ## Key Takeaway
-Separating logs by type and sorting only the letter‑logs by content (with identifier as a tie‑breaker) yields the required order while preserving digit‑log stability.
+Separating logs by type and sorting only the letter-logs by content (with identifier as a tie-breaker) yields the required order while preserving digit-log stability.

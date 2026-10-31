@@ -62,13 +62,13 @@ FUNCTION compressedString(word):
 ```
 
 ## Walkthrough
-For `word = "aabccc"`:
-| i | char | count | result |
-|---|------|-------|--------|
-|0|a|2|"2a"|
-|2|b|1|"2a1b"|
-|3|c|3|"2a1b3c"|
-Final result `"2a1b3c"`.
+For `word = "aaaaaaaaaaaaaabb"` (Example 2, 14 `a`s then 2 `b`s):
+| i (start) | char | count | i (end) | result |
+|---|------|-------|---|--------|
+|0|a|9 (capped)|9|"9a"|
+|9|a|5|14|"9a5a"|
+|14|b|2|16|"9a5a2b"|
+Final result `"9a5a2b"`. For `"abcde"` (Example 1) every group has count 1, giving `"1a1b1c1d1e"`.
 
 ## Complexity Analysis
 - **Time:** O(n) where n is length of `word`.

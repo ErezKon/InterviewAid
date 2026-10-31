@@ -76,7 +76,7 @@ Explanation: The starting pixel is already colored with 0, which is the same as 
 | 2 | Call `dfs(sr, sc)`. |
 | 3 | In `dfs`, recolor current pixel and recursively visit its four neighbors. |
 | 4 | Recursion stops when out of bounds or pixel color differs from original. |
-| 5 | After recursion finishes, all reachable original‑color pixels are recolored. |
+| 5 | After recursion finishes, all reachable original-color pixels are recolored. |
 
 ---
 
@@ -92,7 +92,7 @@ Explanation: The starting pixel is already colored with 0, which is the same as 
 ## Follow-Up Questions
 
 1. How would you implement the same algorithm iteratively using a queue (BFS)?
-2. How does the algorithm change for 8‑directional connectivity?
+2. How does the algorithm change for 8-directional connectivity?
 3. Can you modify it to return the number of distinct regions in the image?
 
 ---

@@ -106,7 +106,7 @@ ORDER BY student_number DESC, d.dept_name;
 ## Walkthrough
 
 1. **LEFT JOIN** ensures every department appears, even if no matching student rows.
-2. `COUNT(s.student_id)` counts only non‑NULL `student_id`s, so departments without students contribute `0`.
+2. `COUNT(s.student_id)` counts only non-NULL `student_id`s, so departments without students contribute `0`.
 3. Group by department identifiers to aggregate counts per department.
 4. Order the result first by the computed `student_number` in descending order, then alphabetically by department name.
 ---

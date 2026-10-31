@@ -88,7 +88,7 @@ Time: **O(n·S)** where *S* is half of total sum. Space: **O(S)** for the DP set
 ## Follow-Up Questions
 
 - How would you solve this with a bitset to improve constant factors?
-- Can you adapt the solution for larger weight ranges using meet‑in‑the‑middle?
+- Can you adapt the solution for larger weight ranges using meet-in-the-middle?
 - What if you needed to output the actual partition of stones?
 
 ---

@@ -112,10 +112,10 @@ Take the first example `["2","1","+","3","*"]`:
 
 - How would you modify the algorithm to support additional operators like exponentiation or modulo?
 - Can you evaluate RPN expressions without using an explicit stack, e.g., via recursion?
-- What changes are needed to handle floating‑point numbers instead of integers?
+- What changes are needed to handle floating-point numbers instead of integers?
 
 ---
 
 ## Key Takeaway
 
-> RPN evaluation uses a simple stack: push operands, pop two on each operator, compute, and push the result. No precedence rules are needed, making it an ideal fit for a linear‑time solution.
+> RPN evaluation uses a simple stack: push operands, pop two on each operator, compute, and push the result. No precedence rules are needed, making it an ideal fit for a linear-time solution.

@@ -98,7 +98,7 @@ FUNCTION minAbsDiffQueries(nums, queries):
 For `nums = [1,2,4,7]` and query `[1,4]`:
 1. Frequency of each value in the whole array is computed.
 2. Scan values 1..100: present values are 1,2,4,7.
-3. Gaps: 2‑1 = 1, 4‑2 = 2, 7‑4 = 3 → minimum = 1.
+3. Gaps: 2-1 = 1, 4-2 = 2, 7-4 = 3 → minimum = 1.
 ---
 
 ## Complexity Analysis
@@ -108,7 +108,7 @@ For `nums = [1,2,4,7]` and query `[1,4]`:
 | Prefix counts + scan | O((n + q)·100) | O(n·100) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would you adapt the solution if the value range were large (e.g., up to 10^9)?
 2. Can you answer queries in `O(log n)` using a segment tree of ordered sets?

@@ -65,7 +65,7 @@ Explanation: It can be shown that there are no valid selections.
 
 ## 3. Approach: Counting Sequences — O(n) ✅
 
-We traverse the string while maintaining counts of single characters and two‑character alternating sequences. When we encounter a `0`, it can extend every previously seen `1` to form a `10` pair and every existing `01` pair to complete a `010` triple. The symmetric logic applies for `1`.
+We traverse the string while maintaining counts of single characters and two-character alternating sequences. When we encounter a `0`, it can extend every previously seen `1` to form a `10` pair and every existing `01` pair to complete a `010` triple. The symmetric logic applies for `1`.
 
 ```text
 FUNCTION numberOfWays(s):
@@ -127,4 +127,4 @@ The final `result` is `2`, matching the expected output.
 
 ## 7. Key Takeaway
 
-> **Build sequences incrementally.** Track 1‑length and 2‑length alternating subsequences. Each new character completes a 3‑length sequence from the opposite 2‑length count.
+> **Build sequences incrementally.** Track 1-length and 2-length alternating subsequences. Each new character completes a 3-length sequence from the opposite 2-length count.

@@ -107,11 +107,11 @@ Example 1:
   keyboard's most recent order is in 2020-08-01, it was ordered two times this day.
   mouse's most recent order is in 2020-08-03, it was ordered only once this day.
   screen's most recent order is in 2020-08-29, it was ordered only once this day.
-  The hard disk was never ordered and we do not include it in the result table.
+  The hard disk was never ordered and we do not include it in the result table.
 ```
 
 ## Approach
-Use a SQL window function to rank orders per product by `order_date` descending, then keep the top‑ranked row.
+Use a SQL window function to rank orders per product by `order_date` descending, then keep the top-ranked row.
 
 ```text
 SELECT order_id, product_id, order_date
@@ -140,9 +140,9 @@ The inner query assigns a row number per product based on recency; the outer que
 - **Space:** O(N) for intermediate grouping and ranking.
 
 ## Follow-Up Questions
-1. How would you modify the query to return the top k most recent orders per product?
+1. How would you modify the query to return the top k most recent orders per product?
 2. How can you handle ties by returning all orders that share the latest date for a product?
 3. If the table is extremely large, what indexes would improve query performance?
 
 ## Key Takeaway
-Rank orders per product by date using a window function and select the row with rank 1 to obtain the most recent order for each product.
+Rank orders per product by date using a window function and select the row with rank 1 to obtain the most recent order for each product.

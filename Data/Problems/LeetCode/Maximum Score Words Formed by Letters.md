@@ -98,7 +98,7 @@ For `words = ["dog","cat","dad","good"]` and the given `letters`:
 - **Time:** O(2^n * m) where n = number of words and m = average word length (checking feasibility). In practice n ≤ 14.
 - **Space:** O(n) recursion depth plus O(26) for letter counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if each word could be used multiple times?
 2. Can the problem be solved using DP with bitmasking for larger `words` arrays?
 3. What if the score of a word depended on the order of letters chosen?

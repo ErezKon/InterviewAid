@@ -55,7 +55,7 @@ Output: 4
 The alternating cost can be encoded in the state of Dijkstra’s algorithm. Each heap entry stores `(time, row, col, parity)` where `parity` indicates whether the next move will cost 1 (`parity=0`) or 2 (`parity=1`). When expanding a node:
 1. Determine `stepCost ← 1` if `parity = 0` else `2`.
 2. For each neighbor, compute `nextTime ← currentTime + stepCost`.
-3. Push `(nextTime, nr, nc, 1‑parity)` onto the min‑heap if it improves the recorded distance for that `(nr,nc,parity)`.
+3. Push `(nextTime, nr, nc, 1-parity)` onto the min-heap if it improves the recorded distance for that `(nr,nc,parity)`.
 The first time we pop the target cell (any parity) we have the optimal answer.
 
 ## Walkthrough
@@ -66,16 +66,16 @@ The first time we pop the target cell (any parity) we have the optimal answer.
 | (1,0,1)                   | (1,1)     | 2        | 3        | 0          |
 | (0,1,1)                   | (1,1)     | 2        | 3        | 0          |
 | (1,1,0) (target)          | —         | —        | 3        | —          |
-The algorithm stops when `(m‑1,n‑1)` is popped.
+The algorithm stops when `(m-1,n-1)` is popped.
 
 ## Complexity Analysis
 Time: `O(m·n·log(m·n))` because each cell is processed for two parity states and each heap operation is logarithmic.
 Space: `O(m·n)` for the distance matrix storing the best time for each parity.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the move costs followed a different periodic pattern?
 2. What if each cell also had a waiting time that must be respected before entering?
-3. Can a 0‑1 BFS be used when the alternating costs are only 0 and 1?
+3. Can a 0-1 BFS be used when the alternating costs are only 0 and 1?
 
 ## Key Takeaway
 By extending Dijkstra’s state with a parity flag, we can handle periodic edge costs and still obtain the optimal path efficiently.

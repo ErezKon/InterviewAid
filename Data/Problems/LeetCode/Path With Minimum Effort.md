@@ -45,7 +45,7 @@ Example 3:
 ```
 
 ## Approach
-Treat each edge between adjacent cells as having weight equal to the absolute height difference. The problem becomes finding a path that minimizes the maximum edge weight – a classic *min‑max* problem solvable with a modified Dijkstra (or binary search + BFS). Using Dijkstra, the priority queue stores the current effort to reach a cell; when expanding, the new effort is `max(currentEffort, edgeWeight)`. The first time we pop the target cell we have the optimal minimal effort.
+Treat each edge between adjacent cells as having weight equal to the absolute height difference. The problem becomes finding a path that minimizes the maximum edge weight – a classic *min-max* problem solvable with a modified Dijkstra (or binary search + BFS). Using Dijkstra, the priority queue stores the current effort to reach a cell; when expanding, the new effort is `max(currentEffort, edgeWeight)`. The first time we pop the target cell we have the optimal minimal effort.
 
 ```text
 FUNCTION minimumEffortPath(heights):
@@ -54,7 +54,7 @@ FUNCTION minimumEffortPath(heights):
     SET INF ← a very large number
     SET dist ← MATRIX m×n filled with INF
     SET dist[0][0] ← 0
-    // min‑heap stores (effort, row, col)
+    // min-heap stores (effort, row, col)
     SET heap ← PRIORITY_QUEUE containing (0, 0, 0)
     SET directions ← [(1,0),(-1,0),(0,1),(0,-1)]
 
@@ -89,13 +89,13 @@ For the first example matrix:
 | Final pop of (2,2) yields effort `2`.
 
 ## Complexity Analysis
-- **Time:** O(m·n log(m·n)) – each cell may be processed once and heap operations are logarithmic.
+- **Time:** O(m·n log(m·n)) – each cell may be processed once and heap operations are logarithmic.
 - **Space:** O(m·n) for the distance matrix and the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem using binary search on the effort value combined with BFS?
-2. Can the algorithm be adapted for 3‑D terrain (adding a third dimension)?
+2. Can the algorithm be adapted for 3-D terrain (adding a third dimension)?
 3. What changes are needed if diagonal moves are allowed?
 
 ## Key Takeaway
-A Dijkstra‑style search that propagates the maximum edge weight seen so far yields the minimal possible effort for reaching the destination.
+A Dijkstra-style search that propagates the maximum edge weight seen so far yields the minimal possible effort for reaching the destination.

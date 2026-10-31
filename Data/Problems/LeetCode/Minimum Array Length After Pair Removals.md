@@ -90,10 +90,10 @@ For `nums = [1,1,1,2,2]`:
 | Frequency map | O(n) | O(n) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if the removal condition required `nums[i] + nums[j]` to be even?
-2. Can you extend the method to handle multi‑set removal where more than two elements are removed per operation?
+2. Can you extend the method to handle multi-set removal where more than two elements are removed per operation?
 3. What is the impact on complexity if the array is streamed and cannot be stored entirely?
 ---
 

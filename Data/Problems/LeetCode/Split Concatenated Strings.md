@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below solve an invented problem. Correct idea: first replace every string by the larger of itself and its reverse; then for each string `i` (both orientations) and each cut position `j` inside it, the candidate is `s_i[j:] + (all strings after i) + (all strings before i) + s_i[:j]`; return the maximum. O(L²).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 You are given an array of strings `strs`. You could concatenate these strings together into a loop, where for each string, you could choose to reverse it or not. Among all the possible loops
 
@@ -44,41 +44,47 @@ Output: "cba"
 ```
 
 ## Approach
-Use dynamic programming. Let `dp[i]` be true if the prefix `s[0:i]` can be split according to the rule. For each position `i`, try all possible substring lengths `len` that end at `i`. A candidate substring `sub = s[i‑len:i]` is valid if it appears at least twice in the prefix `s[0:i]` (including the current occurrence). If `dp[i‑len]` is true and `sub` satisfies the frequency condition, set `dp[i] = true`.
+Every string that is not cut should be oriented to its lexicographically larger form (`max(s, reverse(s))`), because it appears as a contiguous block in the middle of the answer. Only the string containing the cut point needs both orientations tried. So: normalize all strings, then for each string `i`, each orientation `t` of it, and each cut position `j` inside `t`, build the candidate `t[j:] + (strings after i) + (strings before i) + t[:j]` and keep the maximum.
 
+**Pseudocode**
 ```text
-FUNCTION canSplitConcatenated(s):
-    SET n ← LENGTH(s)
-    SET dp ← ARRAY of size n+1 initialized to false
-    SET dp[0] ← true
-    FOR i ← 1 TO n:
-        FOR len ← 1 TO i:
-            SET sub ← s[i‑len : i]
-            // Count occurrences of sub in prefix s[0:i]
-            SET count ← 0
-            FOR start ← 0 TO i‑len:
-                IF s[start : start+len] == sub:
-                    SET count ← count + 1
-            IF count >= 2 AND dp[i‑len] == true:
-                SET dp[i] ← true
-                BREAK
-    RETURN dp[n]
+FUNCTION splitLoopedString(strs):
+    FOR k ← 0 TO LENGTH(strs) - 1:
+        SET strs[k] ← MAX(strs[k], REVERSE(strs[k]))
+    SET best ← ""
+    FOR i ← 0 TO LENGTH(strs) - 1:
+        SET mid ← CONCAT(strs[i+1 ..]) + CONCAT(strs[.. i-1])
+        FOR t IN [strs[i], REVERSE(strs[i])]:
+            FOR j ← 0 TO LENGTH(t) - 1:
+                SET cand ← t[j:] + mid + t[:j]
+                IF cand > best:
+                    SET best ← cand
+    RETURN best
 ```
 
 ## Walkthrough
-For `s = "abcabcabc"` (n=9):
-- At `i=3`, `sub = "abc"` appears once → not enough.
-- At `i=6`, `sub = "abc"` appears twice in prefix `"abcabc"`; `dp[3]` is false, but `sub` itself can start a new split, so `dp[6]` becomes true.
-- At `i=9`, `sub = "abc"` appears three times; `dp[6]` is true, so `dp[9]` becomes true → overall `true`.
+`strs = ["abc","xyz"]`
+
+Normalize: `"abc"` → `"cba"`, `"xyz"` → `"zyx"`, so `strs = ["cba","zyx"]`.
+
+| i | mid | t | j | candidate |
+|---|-----|---|---|-----------|
+| 0 | `"zyx"` | `"cba"` | 0,1,2 | `"cbazyx"`, `"bazyxc"`, `"azyxcb"` |
+| 0 | `"zyx"` | `"abc"` | 0,1,2 | `"abczyx"`, `"bczyxa"`, `"czyxab"` |
+| 1 | `"cba"` | `"zyx"` | 0 | `"zyxcba"` |
+| 1 | `"cba"` | `"zyx"` | 1,2 | `"yxcbaz"`, `"xcbazy"` |
+| 1 | `"cba"` | `"xyz"` | 0,1,2 | `"xyzcba"`, `"yzcbax"`, `"zcbaxy"` |
+
+The maximum is `"zyxcba"` (beats `"zcbaxy"` at index 1: `'y' > 'c'`). Output: `"zyxcba"`.
 
 ## Complexity Analysis
-- **Time:** The double loop with substring counting leads to `O(n³)` in the worst case.
-- **Space:** `O(n)` for the DP array.
+- **Time:** `O(L²)` where `L = sum(strs[i].length)`: there are `2L` cut candidates, each built and compared in `O(L)`.
+- **Space:** `O(L)` for the current candidate and the best string.
 
-## Follow‑Up Questions
-1. How can we improve the time complexity using a suffix automaton or rolling hash?
-2. What if the requirement changes to each substring appearing exactly `k` times?
-3. Can the problem be solved in linear time for binary strings?
+## Follow-Up Questions
+1. Why is it safe to fix the orientation of every string except the one being cut?
+2. How could you prune candidates, e.g. only cut at positions where `t[j]` equals the maximum character overall?
+3. How would you find the lexicographically largest rotation of a single string in `O(n)` (Booth's algorithm / Duval)?
 
 ## Key Takeaway
-Dynamic programming combined with frequency checks on each candidate substring determines whether a concatenated string can be partitioned into repeatedly occurring pieces.
+Greedy normalization (each uncut piece takes its larger orientation) reduces the exponential choice of reversals to just trying every cut point in both orientations of one string, giving a simple `O(L²)` enumeration.

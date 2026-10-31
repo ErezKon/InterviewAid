@@ -50,7 +50,7 @@ For `root = [4,2,5,1,3]` and `target = 3.714286`:
 3. `|2-3.714| < |4-3.714|`? No, keep `closest = 4`.
 4. Target > 2 → move right to `3`.
 5. `|3-3.714| < |4-3.714|` → update `closest = 3`.
-6. Target > 3 → move right to `null` → stop. Return `4` (or `3` depending on tie‑break; both are acceptable).
+6. Target > 3 → move right to `null` → stop. Return `4` (or `3` depending on tie-break; both are acceptable).
 
 ## Complexity Analysis
 Time: O(h) where h is the height of the tree (O(log n) for balanced BST). Space: O(1).

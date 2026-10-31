@@ -32,8 +32,8 @@ Output: [7,9,6,6,8,7,3,0,9,5]
 ```
 
 ## Approach
-1. Traverse the list to locate the `k`‑th node from the start (`first`).
-2. Use a two‑pointer technique: start a `fast` pointer at `first` and a `second` pointer at the head. Advance both until `fast` reaches the last node; `second` will then point to the `k`‑th node from the end.
+1. Traverse the list to locate the `k`-th node from the start (`first`).
+2. Use a two-pointer technique: start a `fast` pointer at `first` and a `second` pointer at the head. Advance both until `fast` reaches the last node; `second` will then point to the `k`-th node from the end.
 3. Swap the `val` fields of `first` and `second`.
 
 ```text
@@ -65,10 +65,10 @@ For `head = [1,2,3,4,5]`, `k = 2`:
 - **Time:** O(n) – one pass to locate both nodes.
 - **Space:** O(1) – only a few pointers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to swap the actual nodes instead of just their values?
-2. Can the solution be adapted for a doubly‑linked list with O(1) node swaps?
+2. Can the solution be adapted for a doubly-linked list with O(1) node swaps?
 3. What changes are needed if `k` could be larger than the list length?
 
 ## Key Takeaway
-A single traversal with a fast‑slow pointer pair locates the symmetric node from the end, enabling an in‑place value swap in constant extra space.
+A single traversal with a fast-slow pointer pair locates the symmetric node from the end, enabling an in-place value swap in constant extra space.

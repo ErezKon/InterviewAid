@@ -85,11 +85,11 @@ Take `word = "abcdefd", ch = "d"`:
 
 ## Follow-Up Questions
 
-1. How would you perform the operation in‑place on a mutable character array?
+1. How would you perform the operation in-place on a mutable character array?
 2. How to handle Unicode characters that may occupy multiple code units?
 
 ---
 
 ## Key Takeaway
 
-> Locate the target character, reverse the substring up to that point, and re‑attach the remainder — a simple pattern for prefix‑based string transformations.
+> Locate the target character, reverse the substring up to that point, and re-attach the remainder — a simple pattern for prefix-based string transformations.

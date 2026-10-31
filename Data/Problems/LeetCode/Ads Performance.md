@@ -112,7 +112,7 @@ Example 1:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you modify the query to compute CTR per day?
 2. What if you need to exclude `Ignored` actions from the denominator?

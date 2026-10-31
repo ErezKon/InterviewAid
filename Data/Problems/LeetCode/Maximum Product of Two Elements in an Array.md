@@ -79,4 +79,4 @@ Consider `nums = [1,5,4,5]`:
 - Can you solve it without storing the two largest values explicitly (single pass with constant memory)?
 
 ## Key Takeaway
-> **Track top‑2 in one pass** — simple linear scan for the two largest elements.
+> **Track top-2 in one pass** — simple linear scan for the two largest elements.

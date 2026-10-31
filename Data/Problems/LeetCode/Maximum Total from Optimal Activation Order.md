@@ -140,7 +140,7 @@ Thus, the maximum possible total is 12.
 ```
 
 ## Approach
-**Greedy with Priority on High Value & Low Neighbor Count** – At each step pick the inactive element with the highest `value` that currently has the fewest activated neighbors. Use a max‑heap keyed by `(value, -activeNeighborCount)` and update neighbor counts after each activation.
+**Greedy with Priority on High Value & Low Neighbor Count** – At each step pick the inactive element with the highest `value` that currently has the fewest activated neighbors. Use a max-heap keyed by `(value, -activeNeighborCount)` and update neighbor counts after each activation.
 
 ```text
 FUNCTION MaxTotalActivation(values):
@@ -148,7 +148,7 @@ FUNCTION MaxTotalActivation(values):
     // Track activation state and active neighbor count for each index
     SET active ← ARRAY of size n INITIALIZED TO FALSE
     SET neighborCount ← ARRAY of size n INITIALIZED TO 0
-    // Build max‑heap of (value, -neighborCount, index)
+    // Build max-heap of (value, -neighborCount, index)
     SET heap ← MAX_HEAP of tuples (values[i], -neighborCount[i], i) for i ← 0 TO n-1
     SET total ← 0
     WHILE heap NOT EMPTY:
@@ -169,21 +169,21 @@ FUNCTION MaxTotalActivation(values):
 ## Walkthrough
 Consider `values = [4,2,1,5]`.
 1. Initial heap: (5,0,3), (4,0,0), (2,0,1), (1,0,2).
-2. Pop (5,0,3): gain 0, activate index 3. Update neighbor 2 → count 1, push (1,-1,2).
+2. Pop (5,0,3): gain 0, activate index 3. Update neighbor 2 → count 1, push (1,-1,2).
 3. Heap now: (4,0,0), (2,0,1), (1,-1,2).
-4. Pop (4,0,0): gain 0, activate index 0. Update neighbor 1 → count 1, push (2,-1,1).
-5. Pop (2,-1,1): gain 2 × 1 = 2, activate index 1. Update neighbor 2 → count 2, push (1,-2,2).
-6. Pop (1,-2,2): gain 1 × 2 = 2, activate index 2.
+4. Pop (4,0,0): gain 0, activate index 0. Update neighbor 1 → count 1, push (2,-1,1).
+5. Pop (2,-1,1): gain 2 × 1 = 2, activate index 1. Update neighbor 2 → count 2, push (1,-2,2).
+6. Pop (1,-2,2): gain 1 × 2 = 2, activate index 2.
 Total points = 0+0+2+2 = 4 (illustrative; actual optimal total per problem is higher).
 
 ## Complexity Analysis
 - **Time:** `O(n log n)` for heap operations.
 - **Space:** `O(n)` for activation flags, neighbor counts, and heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if activation points depended on the sum of neighbor values instead of count?
 2. Can you design a DP solution that runs in `O(n^2)` without a heap?
 3. What if the activation order must respect a given partial order (some elements must be activated before others)?
 
 ## Key Takeaway
-Prioritizing high‑value elements while dynamically tracking active neighbor counts leads to an optimal activation sequence.
+Prioritizing high-value elements while dynamically tracking active neighbor counts leads to an optimal activation sequence.

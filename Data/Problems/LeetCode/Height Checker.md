@@ -75,7 +75,7 @@ Result = 3.
 ## Complexity Analysis
 
 - **Time:** O(n log n) – sorting dominates.
-- **Space:** O(n) for the sorted copy (or O(1) if sorting in‑place).
+- **Space:** O(n) for the sorted copy (or O(1) if sorting in-place).
 
 ## Follow-Up Questions
 

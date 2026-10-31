@@ -88,10 +88,10 @@ Consider `s = "abc"` (n = 3).
 |------|-------|------|--------|--------|--------|
 | 1 | 0 (`a`) | 0 | `a` | a=1,b=0,c=0 | 0 |
 | 2 | 1 (`b`) | 0 | `ab` | a=1,b=1,c=0 | 0 |
-| 3 | 2 (`c`) | 0 | `abc` | a=1,b=1,c=1 | add 3‑2 = 1 → result=1; shrink left → `bc` (a=0) |
+| 3 | 2 (`c`) | 0 | `abc` | a=1,b=1,c=1 | add 3-2 = 1 → result=1; shrink left → `bc` (a=0) |
 | 4 | (end) | 1 | `bc` | a=0,b=1,c=1 | loop ends |
 
-Result = 1 (only substring `"abc"`). For longer strings each time the window is valid we add `n‑right` substrings.
+Result = 1 (only substring `"abc"`). For longer strings each time the window is valid we add `n-right` substrings.
 
 ---
 
@@ -114,4 +114,4 @@ Result = 1 (only substring `"abc"`). For longer strings each time the window is 
 
 ## 8. Key Takeaway
 
-> **"At least" → count extensions.** When window is valid, all right‑extensions are also valid. Add `n - right` and shrink left.
+> **"At least" → count extensions.** When window is valid, all right-extensions are also valid. Add `n - right` and shrink left.

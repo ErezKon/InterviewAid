@@ -49,9 +49,9 @@ For "the quick brown fox jumps over the lazy dog":
 - Time: O(n), where n is the length of the sentence.
 - Space: O(1) extra (the set holds at most 26 characters).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle uppercase letters or punctuation?
-- Can you solve the problem using a bit‑mask instead of a set?
+- Can you solve the problem using a bit-mask instead of a set?
 - What is the minimum length a pangram can have?
 
 ## Key Takeaway

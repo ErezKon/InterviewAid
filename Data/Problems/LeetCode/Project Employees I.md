@@ -105,4 +105,4 @@ FUNCTION ComputeAverageExperience():
 - How to filter projects based on a minimum average experience threshold?
 
 ## Key Takeaway
-Aggregating joined relational data with `GROUP BY` and `AVG` provides concise per‑group statistics.
+Aggregating joined relational data with `GROUP BY` and `AVG` provides concise per-group statistics.

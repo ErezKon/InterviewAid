@@ -87,10 +87,10 @@ Total result = 3+2+1 = 6 (plus earlier contributions from longer windows) = 9.
 
 1. How would you modify the algorithm for Unicode characters?
 2. Can you count substrings where **exactly** one character meets the frequency ≥ k condition?
-3. What is the impact of using a multiset instead of a fixed‑size frequency array?
+3. What is the impact of using a multiset instead of a fixed-size frequency array?
 
 ---
 
 ## Key Takeaway
 
-> **"At least one character with frequency ≥ k": sliding window, shrink from left once condition is met, count all right‑extensions each time.**
+> **"At least one character with frequency ≥ k": sliding window, shrink from left once condition is met, count all right-extensions each time.**

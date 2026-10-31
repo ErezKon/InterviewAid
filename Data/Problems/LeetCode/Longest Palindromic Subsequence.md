@@ -53,7 +53,7 @@ The same result can be obtained via **LCS** between `s` and its reverse.
 ## Walkthrough
 Consider `s = "bbbab"` (n = 5):
 1. Initialize diagonal `dp[i][i] = 1` for all i.
-2. Fill table bottom‑up:
+2. Fill table bottom-up:
    - For i=3, j=4 (`a` vs `b`): dp[3][4] = 1.
    - For i=2, j=3 (`b` vs `a`): dp[2][3] = 1.
    - For i=2, j=4 (`b` vs `b`): dp[2][4] = dp[3][3] + 2 = 3.
@@ -64,7 +64,7 @@ Consider `s = "bbbab"` (n = 5):
 *Time*: **O(n²)** – each pair (i, j) is processed once.
 *Space*: **O(n²)** – the DP table. Can be reduced to **O(n)** by keeping only two rows.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to also return the actual subsequence, not just its length?
 2. Can you solve the problem using only **O(n)** extra space?
 3. How does the DP change if the input string can contain wildcard characters that match any letter?

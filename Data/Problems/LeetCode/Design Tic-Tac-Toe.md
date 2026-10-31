@@ -112,17 +112,17 @@ CLASS TicTacToe:
 
 ## Complexity Analysis
 
-- Each `move` updates constant‑time counters and checks four conditions: **O(1)** time.
+- Each `move` updates constant-time counters and checks four conditions: **O(1)** time.
 - Storage: four arrays/counters of size *n*: **O(n)** space.
 
 ## Follow-Up Questions
 
 - How would you modify the design to support undo operations?
 - Can you extend it to detect a draw when the board is full?
-- What changes are needed for a variable‑size board where *n* can be up to 10⁴?
+- What changes are needed for a variable-size board where *n* can be up to 10⁴?
 
 ---
 
 ## Key Takeaway
 
-> **Encode players as +1/-1 and maintain row, column, diagonal, and anti‑diagonal sums. A sum reaching ±n indicates a winning line, giving O(1) per move and O(n) space without storing the full board.**
+> **Encode players as +1/-1 and maintain row, column, diagonal, and anti-diagonal sums. A sum reaching ±n indicates a winning line, giving O(1) per move and O(n) space without storing the full board.**

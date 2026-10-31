@@ -81,7 +81,7 @@ Example 2:
   Explanation: Any subarray of nums containing 3 has bitwise OR equal to 3, and subarrays containing
   only 1 have bitwise OR equal to 1.
   In both cases, the result is present in the subarray, so all subarrays are good, and the answer is 6.
-  (Note: the condition is about bitwise OR, not equal‑pair combinations.)
+  (Note: the condition is about bitwise OR, not equal-pair combinations.)
 ```
 
 ---
@@ -93,11 +93,11 @@ Example 2:
 | Init | 0 | - | {} | 0 | 0 |
 | Expand | 0 | 0 | {1:1} | 0 | 0 |
 | Expand | 0 | 1 | {1:1,2:1} | 0 | 0 |
-| Expand | 0 | 2 | {1:2,2:1} | 1 (pair 1‑3) | 0 |
-| Expand | 0 | 3 | {1:2,2:2} | 3 (pairs:1‑3,2‑4,1‑4) | 0 |
-| While pairs≥k | 0→1 | 3 | {1:1,2:2} | 2 | + (5‑3)=2 |
-| While pairs≥k | 1→2 | 3 | {1:1,2:1} | 1 | + (5‑3)=2 |
-| Expand | 2 | 4 | {1:2,2:1} | 2 | + (5‑4)=1 |
+| Expand | 0 | 2 | {1:2,2:1} | 1 (pair 1-3) | 0 |
+| Expand | 0 | 3 | {1:2,2:2} | 3 (pairs:1-3,2-4,1-4) | 0 |
+| While pairs≥k | 0→1 | 3 | {1:1,2:2} | 2 | + (5-3)=2 |
+| While pairs≥k | 1→2 | 3 | {1:1,2:1} | 1 | + (5-3)=2 |
+| Expand | 2 | 4 | {1:2,2:1} | 2 | + (5-4)=1 |
 | End | – | – | – | – | Total = 7 |
 
 ---

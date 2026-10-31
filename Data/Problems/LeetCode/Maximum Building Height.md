@@ -80,13 +80,13 @@ FUNCTION maxBuilding(n, restrictions):
     restrictions.APPEND([n, n - 1])
     SORT restrictions BY id
 
-    // Left‑to‑right pass: limit each restriction by the previous one
+    // Left-to-right pass: limit each restriction by the previous one
     FOR i ← 1 TO len(restrictions) - 1:
         dist ← restrictions[i].id - restrictions[i-1].id
         restrictions[i].max ← MIN(restrictions[i].max,
                                  restrictions[i-1].max + dist)
 
-    // Right‑to‑left pass: limit each restriction by the next one
+    // Right-to-left pass: limit each restriction by the next one
     FOR i ← len(restrictions) - 2 DOWNTO 0:
         dist ← restrictions[i+1].id - restrictions[i].id
         restrictions[i].max ← MIN(restrictions[i].max,
@@ -109,13 +109,13 @@ FUNCTION maxBuilding(n, restrictions):
 
 ## Walkthrough
 
-Consider **Example 1**: `n = 5`, `restrictions = [[2,1],[4,1]]`.
+Consider **Example 1**: `n = 5`, `restrictions = [[2,1],[4,1]]`.
 
 | Step | Action | Restrictions (id, max) |
 |------|--------|------------------------|
-| 0 | Add building 1 and 5, sort | `[[1,0],[2,1],[4,1],[5,4]]` |
-| 1 | Left‑to‑right pass | `[[1,0],[2,1],[4,2],[5,4]]` (building 4 limited by `1 + (4‑2) = 3`, keep 1) |
-| 2 | Right‑to‑left pass | `[[1,0],[2,1],[4,1],[5,4]]` (no change) |
+| 0 | Add building 1 and 5, sort | `[[1,0],[2,1],[4,1],[5,4]]` |
+| 1 | Left-to-right pass | `[[1,0],[2,1],[4,2],[5,4]]` (building 4 limited by `1 + (4-2) = 3`, keep 1) |
+| 2 | Right-to-left pass | `[[1,0],[2,1],[4,1],[5,4]]` (no change) |
 | 3 | Compute peaks between pairs:
 - Between 1 and 2: peak = (0+1+1)/2 = 1
 - Between 2 and 4: peak = (1+1+2)/2 = 2
@@ -130,7 +130,7 @@ Thus the answer is **2**.
 
 | Approach | Time | Space |
 |----------|------|-------|
-| Sort + two‑pass | **O(m log m)** | O(m) |
+| Sort + two-pass | **O(m log m)** | O(m) |
 
 ---
 
@@ -144,4 +144,4 @@ Thus the answer is **2**.
 
 ## Key Takeaway
 
-> **Two‑pass constraint propagation (left→right then right→left) resolves all height limits. The peak between two restrictions is `(h1 + h2 + dist) / 2`.** Classic technique for 1D building/elevation problems.
+> **Two-pass constraint propagation (left→right then right→left) resolves all height limits. The peak between two restrictions is `(h1 + h2 + dist) / 2`.** Classic technique for 1D building/elevation problems.

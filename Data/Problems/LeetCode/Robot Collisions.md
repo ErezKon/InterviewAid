@@ -32,7 +32,7 @@ Return *an array containing the health of the remaining robots (in the order the
 
 ## Key Insight
 
-> Sort robots by position and use a **stack** for right‑moving robots. When a left‑moving robot appears, resolve collisions with the stack top – the same pattern as the classic asteroid collision problem.
+> Sort robots by position and use a **stack** for right-moving robots. When a left-moving robot appears, resolve collisions with the stack top – the same pattern as the classic asteroid collision problem.
 
 ---
 
@@ -43,7 +43,7 @@ FUNCTION survivedRobotsHealths(positions, healths, directions):
     // Pair each robot with its original index and sort by position
     robots ← SORTED LIST of (position, health, direction, originalIndex)
 
-    stack ← []    // stores indices of right‑moving robots
+    stack ← []    // stores indices of right-moving robots
     FOR robot IN robots:
         IF robot.direction == 'R':
             stack.PUSH(robot)
@@ -104,12 +104,12 @@ Explanation: Robot 1 and robot 2 will collide and since both have the same healt
 
 1. Sort robots by position → [(1,R,10), (2,L,15), (3,R,9), (4,L,17), (5,R,2)].
 2. Process each robot:
-   - Push right‑moving robots onto the stack.
-   - When a left‑moving robot arrives, repeatedly compare with the stack top:
+   - Push right-moving robots onto the stack.
+   - When a left-moving robot arrives, repeatedly compare with the stack top:
      * If top health < current health → pop top, decrement current health.
      * If equal → pop top and discard current robot.
      * If top health > current health → decrement top health, discard current robot.
-3. After all collisions, remaining robots in the stack and any untouched left‑moving robots are survivors.
+3. After all collisions, remaining robots in the stack and any untouched left-moving robots are survivors.
 4. Return their healths preserving the original input order.
 
 ---
@@ -121,9 +121,9 @@ Explanation: Robot 1 and robot 2 will collide and since both have the same healt
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would the algorithm change if robots could also move vertically (2‑D plane)?
+- How would the algorithm change if robots could also move vertically (2-D plane)?
 - Can you handle the case where multiple robots collide at the exact same point simultaneously?
 - What if health reduction is proportional to the difference in health rather than a fixed 1?
 
@@ -131,4 +131,4 @@ Explanation: Robot 1 and robot 2 will collide and since both have the same healt
 
 ## Key Takeaway
 
-> Sorting by position and using a stack to resolve opposite‑direction collisions mirrors the asteroid‑collision pattern, turning a seemingly complex interaction into a linear pass.
+> Sorting by position and using a stack to resolve opposite-direction collisions mirrors the asteroid-collision pattern, turning a seemingly complex interaction into a linear pass.

@@ -58,10 +58,10 @@ For `nums = [1,2,3,1]`, `k = 3`:
 - **Time:** O(n) – each element is processed once.
 - **Space:** O(k) – the set stores at most `k` elements.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the solution to return the indices of the duplicate pair?
 - What changes are needed if the distance constraint is based on value difference rather than index distance?
 - Can this be extended to handle a stream of numbers with limited memory?
 
 ## Key Takeaway
-A sliding‑window set efficiently tracks recent elements, enabling O(1) duplicate checks within a bounded index distance.
+A sliding-window set efficiently tracks recent elements, enabling O(1) duplicate checks within a bounded index distance.

@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a depth‑first search. At each node, if its value is greater than `low` explore the left child; if less than `high` explore the right child. Accumulate the node value when it lies within the range.
+Perform a depth-first search. At each node, if its value is greater than `low` explore the left child; if less than `high` explore the right child. Accumulate the node value when it lies within the range.
 
 ```text
 FUNCTION rangeSumBST(root, low, high):
@@ -66,10 +66,10 @@ END FUNCTION
 - Time: O(n) in worst case, but average O(k) where k is number of visited nodes due to pruning.
 - Space: O(h) recursion stack, h = tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement the same logic iteratively using a stack?
 2. Can you extend the solution to handle a stream of queries efficiently?
 3. What changes are needed if the tree is not a BST?
 
 ## Key Takeaway
-Leveraging the BST ordering allows pruning of irrelevant sub‑trees, turning a naïve O(n) traversal into a more efficient search that only visits nodes potentially within the target range.
+Leveraging the BST ordering allows pruning of irrelevant sub-trees, turning a naïve O(n) traversal into a more efficient search that only visits nodes potentially within the target range.

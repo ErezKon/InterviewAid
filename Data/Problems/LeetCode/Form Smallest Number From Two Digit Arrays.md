@@ -94,4 +94,4 @@ If the arrays were `[0,5,6]` and `[0,1]`:
 
 ## 7. Key Takeaway
 
-> Use a hash set to detect a common digit instantly; otherwise, combine the smallest digits from each array to form the minimal two‑digit number.
+> Use a hash set to detect a common digit instantly; otherwise, combine the smallest digits from each array to form the minimal two-digit number.

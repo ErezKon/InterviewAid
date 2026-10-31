@@ -49,7 +49,7 @@ Example 2:
 ```
 
 ## Approach
-**Algorithm:** Day‑indexed Dynamic Programming
+**Algorithm:** Day-indexed Dynamic Programming
 For each day `d` up to the last travel day, `dp[d]` stores the minimum cost to cover all travel up to day `d`. If `d` is not a travel day, the cost stays the same as the previous day. If it is, consider buying each type of pass and take the minimum.
 
 ```text
@@ -70,10 +70,10 @@ FUNCTION mincostTickets(days, costs):
 
 ## Walkthrough
 Consider `days = [1,4,6,7,8,20]` and `costs = [2,7,15]`.
-1. Days 1‑3: only day 1 is travel, so `dp[1]=2`, `dp[2]=2`, `dp[3]=2`.
+1. Days 1-3: only day 1 is travel, so `dp[1]=2`, `dp[2]=2`, `dp[3]=2`.
 2. Day 4: travel, options → `dp[3]+2=4`, `dp[0]+7=7`, `dp[0]+15=15` → choose 4.
-3. Days 5‑8: continue updating; buying a 7‑day pass at day 4 covers up to day 10, giving `dp[8]=9`.
-4. Day 20: add a 1‑day pass → final cost `dp[20]=11`.
+3. Days 5-8: continue updating; buying a 7-day pass at day 4 covers up to day 10, giving `dp[8]=9`.
+4. Day 20: add a 1-day pass → final cost `dp[20]=11`.
 
 ## Complexity Analysis
 | Metric | Value |
@@ -81,10 +81,10 @@ Consider `days = [1,4,6,7,8,20]` and `costs = [2,7,15]`.
 | Time   | O(D) where D is the last travel day (≤ 365) |
 | Space  | O(D) for the DP array |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if passes could start on any day, not necessarily the travel day?
 2. Can you reduce the space usage to O(1) by keeping only the last 30 values?
-3. What changes are needed if the cost structure includes arbitrary‑length passes?
+3. What changes are needed if the cost structure includes arbitrary-length passes?
 
 ## Key Takeaway
 Dynamic programming over days, choosing the cheapest among available passes at each travel day, yields an optimal minimum cost.

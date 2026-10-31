@@ -58,7 +58,7 @@ FUNCTION networkDelayTime(times, n, k):
         APPEND (v, w) TO graph[u]
 
     dist ← map with default ∞, SET dist[k] ← 0
-    heap ← min‑heap containing (0, k)   // (distance, node)
+    heap ← min-heap containing (0, k)   // (distance, node)
 
     WHILE heap NOT EMPTY:
         (d, u) ← heap.POP_MIN()
@@ -104,7 +104,7 @@ FUNCTION networkDelayTime(times, n, k):
 
 ## Follow-Up Questions
 
-1. How would you adapt the solution if edges could have negative weights? (Consider Bellman‑Ford.)
+1. How would you adapt the solution if edges could have negative weights? (Consider Bellman-Ford.)
 2. Can you compute the minimum time for a subset of target nodes only?
 3. How would you handle dynamic updates to edge weights?
 
@@ -112,4 +112,4 @@ FUNCTION networkDelayTime(times, n, k):
 
 ## Key Takeaway
 
-> Classic Dijkstra's: min‑heap for shortest paths from a single source. The answer is the max distance to any node (time for the last node to receive the signal).
+> Classic Dijkstra's: min-heap for shortest paths from a single source. The answer is the max distance to any node (time for the last node to receive the signal).

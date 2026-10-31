@@ -37,7 +37,7 @@ Given a positive integer `n`, return the number of the integers in the range `[0
 ```text
 FUNCTION findIntegers(n):
     // Numbers without consecutive 1s in binary follow Fibonacci pattern
-    bits ← binary representation of n (most‑significant to least)
+    bits ← binary representation of n (most-significant to least)
     fib[0] ← 1; fib[1] ← 2
     FOR i ← 2 TO LENGTH(bits) - 1:
         fib[i] ← fib[i-1] + fib[i-2]
@@ -101,7 +101,7 @@ Example 3:
 ## 6. Walkthrough
 
 **Example:** `n = 5` (binary `101`)
-1. Pre‑compute `fib`: `[1,2,3,5,...]`.
+1. Pre-compute `fib`: `[1,2,3,5,...]`.
 2. Scan bits from MSB:
    - Bit2 (`1`): add `fib[2] = 3` → `count = 3` (all numbers with leading `0` in this position).
    - `prevBit = 1`.

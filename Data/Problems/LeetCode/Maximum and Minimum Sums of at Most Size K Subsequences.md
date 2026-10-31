@@ -118,7 +118,7 @@ Explanation: The subsequences [1, 1] and [1] each appear 3 times. For all of the
 
 Take Example 1 (`nums = [1,2,3]`, `k = 2`).
 1. **Sort** → `[1,2,3]` (already sorted).
-2. **Pre‑compute** factorials for n=3.
+2. **Pre-compute** factorials for n=3.
 3. **Iterate** each index:
    - i=0, `nums[0]=1`:
      * `countAsMax = Σ C(0, j) for j≤1 → C(0,0)=1`
@@ -146,4 +146,4 @@ Take Example 1 (`nums = [1,2,3]`, `k = 2`).
 
 ## Key Takeaway
 
-> By sorting, each element’s contribution as a minimum or maximum can be counted combinatorially. This transforms a seemingly exponential enumeration into a linear‑ith‑log‑n computation.
+> By sorting, each element’s contribution as a minimum or maximum can be counted combinatorially. This transforms a seemingly exponential enumeration into a linear-ith-log-n computation.

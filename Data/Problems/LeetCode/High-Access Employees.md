@@ -91,7 +91,7 @@ Consider an employee with access timestamps `[10:00, 10:20, 10:55, 11:10]`.
 
 - How would you handle overlapping windows for the same employee?
 - Can the solution be adapted for a variable `k` accesses within `t` minutes?
-- What if the data stream is real‑time and you need an online algorithm?
+- What if the data stream is real-time and you need an online algorithm?
 
 ## Key Takeaway
 

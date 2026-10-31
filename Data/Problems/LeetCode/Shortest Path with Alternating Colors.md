@@ -75,7 +75,7 @@ Output: [0,1,-1]
 2. **Queue Seed** – Start from node 0 with both possible previous colors (red and blue) at distance 0.
 3. **BFS Loop** – Dequeue a state, record the distance for the node if not set, then explore all outgoing edges of the opposite color.
 4. **State Tracking** – `visited` stores `(node, color)` pairs to avoid revisiting the same node with the same incoming color, which would not improve the distance.
-5. **Termination** – When the queue empties, every reachable node has its shortest alternating‑color distance; unreachable nodes remain `-1`.
+5. **Termination** – When the queue empties, every reachable node has its shortest alternating-color distance; unreachable nodes remain `-1`.
 
 ---
 
@@ -89,9 +89,9 @@ Output: [0,1,-1]
 
 ## Follow-Up Questions
 
-* How would you adapt the algorithm to return the actual alternating‑color paths, not just their lengths?
+* How would you adapt the algorithm to return the actual alternating-color paths, not just their lengths?
 * Can the solution be extended to handle weighted edges while still enforcing color alternation?
-* What changes are needed if the graph contains self‑loops or multiple edges of the same color between two nodes?
+* What changes are needed if the graph contains self-loops or multiple edges of the same color between two nodes?
 
 ---
 

@@ -35,10 +35,10 @@ Example 2:
   Output: 14
 ```
 
-(Of the `2^3 = 8` movements for n = 3, the only 2 collision‑free arrangements are where all move clockwise or all counter‑clockwise.)
+(Of the `2^3 = 8` movements for n = 3, the only 2 collision-free arrangements are where all move clockwise or all counter-clockwise.)
 
 ## Approach
-Each monkey has two choices, giving `2^n` total configurations. The only collision‑free configurations are the two where every monkey moves uniformly clockwise or uniformly counter‑clockwise. Subtract these from the total and apply modulo.
+Each monkey has two choices, giving `2^n` total configurations. The only collision-free configurations are the two where every monkey moves uniformly clockwise or uniformly counter-clockwise. Subtract these from the total and apply modulo.
 
 ### Pseudocode
 ```text
@@ -52,7 +52,7 @@ FUNCTION monkeyMove(n):
 ## Walkthrough
 For `n = 3`:
 1. Total configurations = `2^3 = 8`.
-2. Collision‑free: all clockwise, all counter‑clockwise → 2 configurations.
+2. Collision-free: all clockwise, all counter-clockwise → 2 configurations.
 3. Result = `8 - 2 = 6`.
 
 ## Complexity Analysis
@@ -65,4 +65,4 @@ For `n = 3`:
 - Can you generalize to `k` possible jump directions per monkey?
 
 ## Key Takeaway
-The collision count equals `2^n - 2`, derived by subtracting the two uniform‑direction configurations from all possible jumps.
+The collision count equals `2^n - 2`, derived by subtracting the two uniform-direction configurations from all possible jumps.

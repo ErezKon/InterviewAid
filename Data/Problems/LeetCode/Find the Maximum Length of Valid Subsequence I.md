@@ -44,7 +44,7 @@ Return the length of the **longest valid** subsequence of `nums`.
 
 ```text
 FUNCTION maximumLength(nums):
-    // Patterns: all even, all odd, alternating even‑odd, alternating odd‑even
+    // Patterns: all even, all odd, alternating even-odd, alternating odd-even
     allEven ← SUM(1 FOR x IN nums IF x % 2 == 0)
     allOdd  ← LENGTH(nums) - allEven
     // Alternating starting with even
@@ -90,9 +90,9 @@ Example 3:
 Take `nums = [1,2,3,4,5]`.
 1. **All even:** count = 2 (2,4).
 2. **All odd:** count = 3 (1,3,5).
-3. **Alternating even‑odd (start even):**
+3. **Alternating even-odd (start even):**
    - expect 0 → 1 (odd) skip, 2 (even) take → expect 1, 3 (odd) take → expect 0, 4 (even) take → expect 1, 5 (odd) take → length = 4.
-4. **Alternating odd‑even (start odd):**
+4. **Alternating odd-even (start odd):**
    - expect 1 → 1 (odd) take → expect 0, 2 (even) take → expect 1, 3 (odd) take → expect 0, 4 (even) take → expect 1, 5 (odd) take → length = 5.
 Maximum of {2,3,4,5} is **5**.
 
@@ -109,4 +109,4 @@ Maximum of {2,3,4,5} is **5**.
 
 ## 7. Key Takeaway
 
-> With mod 2, only four valid subsequence patterns exist. Enumerate all four greedily and return the longest.
+> With mod 2, only four valid subsequence patterns exist. Enumerate all four greedily and return the longest.

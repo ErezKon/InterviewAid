@@ -12,20 +12,20 @@ Given an integer `n`, return `true` *if* `n` *has **exactly three positive divis
 An integer `m` is a **divisor** of `n` if there exists an integer `k` such that `n = k * m`.
 
 **Constraints:**
-- `1 ≤ n ≤ 10⁴`
+- `1 ≤ n ≤ 10⁴`
 
 ## Examples
 ```
 Example 1:
   Input: n = 2
   Output: false
-  Explanation: 2 has only two divisors: 1 and 2, so the answer is false.
+  Explanation: 2 has only two divisors: 1 and 2, so the answer is false.
 ```
 ```
 Example 2:
   Input: n = 4
   Output: true
-  Explanation: 4 has three divisors: 1, 2, and 4.
+  Explanation: 4 has three divisors: 1, 2, and 4.
 ```
 
 ## Approach
@@ -58,10 +58,10 @@ Take `n = 49`:
 - **Time:** O(√√n) ≈ O(√n) for the primality test of `root` (since `root ≤ √n`).
 - **Space:** O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle multiple queries for different `n` efficiently?
-2. Can you pre‑compute all numbers ≤ 10⁶ with exactly three divisors?
-3. What changes if the input range expands to 64‑bit integers?
+2. Can you pre-compute all numbers ≤ 10⁶ with exactly three divisors?
+3. What changes if the input range expands to 64-bit integers?
 
 ## Key Takeaway
 A number has exactly three divisors precisely when it is the square of a prime, allowing a simple √ check followed by a primality test.

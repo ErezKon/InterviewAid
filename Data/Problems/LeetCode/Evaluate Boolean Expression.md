@@ -84,11 +84,11 @@ As shown, you need to find the value of each boolean expression in the table usi
 ```
 
 ## Approach
-Use two stacks: one for operands (`0`/`1`) and one for operators. Scan the string left‑to‑right.
+Use two stacks: one for operands (`0`/`1`) and one for operators. Scan the string left-to-right.
 1. When encountering a digit, push its boolean value.
 2. When encountering `'!'`, push it onto the operator stack (unary).
 3. When encountering `'&'` or `'|'`, resolve any operators on the stack with **higher or equal** precedence before pushing the new operator.
-4. `'('` is pushed to mark a new sub‑expression. When `')'` is seen, pop and evaluate until the matching `'('` is removed.
+4. `'('` is pushed to mark a new sub-expression. When `')'` is seen, pop and evaluate until the matching `'('` is removed.
 5. After the scan, evaluate any remaining operators.
 The evaluation of a unary `!` pops one operand, flips it, and pushes the result. Binary operators pop two operands, apply the operation, and push the result.
 
@@ -155,10 +155,10 @@ Result → true.
 - **Time:** O(n) where n is the length of the expression – each character is processed once.
 - **Space:** O(n) for the two stacks in the worst case (deeply nested parentheses).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the algorithm to support additional operators such as XOR (`^`)?
 - Can you evaluate the expression in a single pass without explicit stacks (e.g., using recursion)?
 - What changes are needed if the expression may contain whitespace or invalid characters?
 
 ## Key Takeaway
-A pair of operand and operator stacks allow systematic handling of precedence and parentheses, turning a complex boolean expression into a linear‑time evaluation.
+A pair of operand and operator stacks allow systematic handling of precedence and parentheses, turning a complex boolean expression into a linear-time evaluation.

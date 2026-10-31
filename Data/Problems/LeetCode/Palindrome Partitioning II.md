@@ -38,7 +38,7 @@ Example 3:
 ```
 
 ## Approach
-Use dynamic programming. Pre‑compute a table `isPalin[i][j]` indicating whether `s[i..j]` is a palindrome. Then `dp[i]` stores the minimum cuts for the prefix `s[0..i]`. For each `i`, if `s[0..i]` is a palindrome, `dp[i]=0`; otherwise try every possible cut position `j` and update `dp[i]` with `dp[j-1]+1` when `s[j..i]` is a palindrome.
+Use dynamic programming. Pre-compute a table `isPalin[i][j]` indicating whether `s[i..j]` is a palindrome. Then `dp[i]` stores the minimum cuts for the prefix `s[0..i]`. For each `i`, if `s[0..i]` is a palindrome, `dp[i]=0`; otherwise try every possible cut position `j` and update `dp[i]` with `dp[j-1]+1` when `s[j..i]` is a palindrome.
 
 ```text
 FUNCTION minCut(s):
@@ -78,4 +78,4 @@ Result = 1 cut.
 3. How does the problem change if you are allowed to reorder the substrings?
 
 ## Key Takeaway
-Pre‑computing palindrome substrings enables a simple DP that iteratively builds the minimum cut count for each prefix.
+Pre-computing palindrome substrings enables a simple DP that iteratively builds the minimum cut count for each prefix.

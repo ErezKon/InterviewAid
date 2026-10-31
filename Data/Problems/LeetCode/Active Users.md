@@ -134,4 +134,4 @@ ORDER BY a.id;
 
 ## Key Takeaway
 
-> The "consecutive days" pattern uses `date - ROW_NUMBER()` to create groups. Consecutive dates yield the same group, non‑consecutive dates yield different groups. Then `HAVING COUNT(*) >= k` filters for runs of length *k*.
+> The "consecutive days" pattern uses `date - ROW_NUMBER()` to create groups. Consecutive dates yield the same group, non-consecutive dates yield different groups. Then `HAVING COUNT(*) >= k` filters for runs of length *k*.

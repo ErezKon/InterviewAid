@@ -66,8 +66,8 @@ FUNCTION findRelativeRanks(score):
 For `score = [10,3,8,9,4]`:
 1. Pairing → `[(10,0),(3,1),(8,2),(9,3),(4,4)]`.
 2. Sorting descending → `[(10,0),(9,3),(8,2),(4,4),(3,1)]`.
-3. Assign medals: index 0 → "Gold Medal", index 3 → "Silver Medal", index 2 → "Bronze Medal".
-4. Remaining indices get numeric ranks: index 4 → "4", index 1 → "5".
+3. Assign medals: index 0 → "Gold Medal", index 3 → "Silver Medal", index 2 → "Bronze Medal".
+4. Remaining indices get numeric ranks: index 4 → "4", index 1 → "5".
 5. Result array ordered by original indices → `["Gold Medal","5","Bronze Medal","Silver Medal","4"]`.
 
 ## Complexity Analysis
@@ -75,7 +75,7 @@ For `score = [10,3,8,9,4]`:
 - Additional passes: O(n) time, O(n) extra space for pairs and result.
 Overall: **Time O(n log n), Space O(n)**.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm if scores could be duplicate, requiring ties to share the same rank?
 2. Can you achieve O(n) time using a counting sort or bucket sort given the score range?
 3. How would you adapt the solution for a streaming scenario where scores arrive one by one?

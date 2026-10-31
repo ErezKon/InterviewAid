@@ -57,7 +57,7 @@ Example 2:
 
 ## 3. Walkthrough
 
-1. **Initialize** a queue with all water cells and set their height to 0.
+1. **Initialize** a queue with all water cells and set their height to 0.
 2. **BFS**: Pop a cell, examine its four neighbors. If a neighbor has not been assigned a height, set its height to `current height + 1` and enqueue it.
 3. Continue until the queue is empty. Because BFS expands uniformly outward, each land cell receives the shortest distance to any water cell, which is the maximal feasible height under the adjacency constraint.
 
@@ -65,19 +65,19 @@ Example 2:
 
 ## 4. Complexity Analysis
 
-- **Time:** O(m · n) – each cell is visited once in the multi‑source BFS.
-- **Space:** O(m · n) – storage for the height matrix and the BFS queue.
+- **Time:** O(m · n) – each cell is visited once in the multi-source BFS.
+- **Space:** O(m · n) – storage for the height matrix and the BFS queue.
 
 ---
 
-## 5. Follow‑Up Questions
+## 5. Follow-Up Questions
 
-- How would you adapt the algorithm if diagonal adjacency also required a height difference ≤ 1?
-- Can you compute the result in‑place without an extra height matrix?
+- How would you adapt the algorithm if diagonal adjacency also required a height difference ≤ 1?
+- Can you compute the result in-place without an extra height matrix?
 - How would you handle very large grids that do not fit into memory?
 
 ---
 
 ## 3. Key Takeaway
 
-> Multi‑source BFS from all water cells simultaneously assigns each land cell its minimum distance to water, yielding the highest possible minimum height while respecting the adjacency constraint.
+> Multi-source BFS from all water cells simultaneously assigns each land cell its minimum distance to water, yielding the highest possible minimum height while respecting the adjacency constraint.

@@ -122,4 +122,4 @@ Consider the first example grid and pattern `"ab"`.
 
 ## Key Takeaway
 
-> Perform independent horizontal and vertical string‑matching passes, mark the covered cells, and intersect the markings to count overlapping cells.
+> Perform independent horizontal and vertical string-matching passes, mark the covered cells, and intersect the markings to count overlapping cells.

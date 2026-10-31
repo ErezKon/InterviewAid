@@ -98,7 +98,18 @@ FUNCTION ReplaceQuestions(s):
 
 ## Walkthrough
 
-Example: `s = "j?qg??b"`
+Example 1: `s = "?zs"`
+
+- i=0: `?` → prev=NONE, next=`z` → choose `a` → `a`
+- i=1: `z`, i=2: `s` → keep → `"azs"` (matches expected output)
+
+Example 2: `s = "ubv?w"`
+
+- i=0..2: `u`, `b`, `v` → keep → `ubv`
+- i=3: `?` → prev=`v`, next=`w` → choose `a` → `ubva`
+- i=4: `w` → keep → `"ubvaw"` (matches expected output)
+
+Extra example with adjacent `?`s: `s = "j?qg??b"`
 
 - i=0: `j` → keep → `j`
 - i=1: `?` → neighbors: prev=`j`, next=`q` → choose `a` (≠`j`, ≠`q`) → `ja`

@@ -107,19 +107,19 @@ The sorted order guarantees correct ranking, and the cursor ensures each call re
 
 ## Complexity Analysis
 
-- **Time:** `add` – O(log n) for insertion into the sorted list; `get` – O(1) to access by index.
+- **Time:** `add` – O(log n) for insertion into the sorted list; `get` – O(1) to access by index.
 - **Space:** O(n) to store all inserted entries.
 
 ---
 
 ## Follow-Up Questions
 
-1. How would you implement the structure without a built‑in sorted list, using two heaps?
+1. How would you implement the structure without a built-in sorted list, using two heaps?
 2. Can you support deletions of entries while preserving the ranking?
-3. How would you modify the design to handle real‑time score updates for existing names?
+3. How would you modify the design to handle real-time score updates for existing names?
 
 ---
 
 ## Key Takeaway
 
-A sorted container combined with a simple cursor provides an elegant O(log n) insertion and O(1) retrieval solution for rank‑tracking problems.
+A sorted container combined with a simple cursor provides an elegant O(log n) insertion and O(1) retrieval solution for rank-tracking problems.

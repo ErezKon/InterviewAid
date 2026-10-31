@@ -43,11 +43,11 @@ Example 3:
 ```
 
 ## Approach
-Use the **Meet‑in‑the‑Middle** technique:
+Use the **Meet-in-the-Middle** technique:
 1. Split `nums` into two halves.
 2. Enumerate all subset sums of each half (`leftSums`, `rightSums`).
 3. Sort `rightSums`.
-4. For each sum `s` in `leftSums`, binary‑search in `rightSums` for the value closest to `goal‑s` and update the best difference.
+4. For each sum `s` in `leftSums`, binary-search in `rightSums` for the value closest to `goal-s` and update the best difference.
 
 ### Pseudocode
 ```text
@@ -87,7 +87,7 @@ For `nums = [5,-7,3,5]`, `goal = 6`:
 5. No better diff possible; return `0`.
 
 ## Complexity Analysis
-Time: O(2^{n/2} · log(2^{n/2})) ≈ O(2^{n/2} log 2^{n/2}). Space: O(2^{n/2}) for storing subset sums.
+Time: O(2^{n/2} · log(2^{n/2})) ≈ O(2^{n/2} log 2^{n/2}). Space: O(2^{n/2}) for storing subset sums.
 
 ## Follow-Up Questions
 - How would you adapt the algorithm if `nums` length were up to 100?
@@ -98,4 +98,4 @@ Time: O(2^{n/2} · log(2^{n/2})) ≈ O(2^{n/2} log 2^{n/2}). Space: O(2^{n/2})
 
 ## Key Takeaway
 
-> Splitting the array in half reduces an exponential‑time subset‑sum problem to manageable O(2^{n/2}) by pairing sums from each half.
+> Splitting the array in half reduces an exponential-time subset-sum problem to manageable O(2^{n/2}) by pairing sums from each half.

@@ -47,7 +47,7 @@ FUNCTION isLongPressedName(name, typed):
             i ← i + 1
             j ← j + 1
         ELSE IF j > 0 AND typed[j] == typed[j - 1]:
-            // current char is a long‑press of previous char
+            // current char is a long-press of previous char
             j ← j + 1
         ELSE:
             RETURN false
@@ -62,10 +62,10 @@ Take `name = "alex"`, `typed = "aaleex"`.
 | Step | i (name) | j (typed) | Action |
 |------|----------|-----------|--------|
 | 1 | 0 | 0 | chars match 'a' → i=1, j=1 |
-| 2 | 1 | 1 | typed[1] = 'a' ≠ name[1] = 'l', but equals typed[0] → long‑press, j=2 |
+| 2 | 1 | 1 | typed[1] = 'a' ≠ name[1] = 'l', but equals typed[0] → long-press, j=2 |
 | 3 | 1 | 2 | typed[2] = 'l' matches name[1] → i=2, j=3 |
 | 4 | 2 | 3 | typed[3] = 'e' ≠ name[2] = 'e'? actually matches, i=3, j=4 |
-| 5 | 3 | 4 | typed[4] = 'e' ≠ name[3] = 'x', but equals typed[3] → long‑press, j=5 |
+| 5 | 3 | 4 | typed[4] = 'e' ≠ name[3] = 'x', but equals typed[3] → long-press, j=5 |
 | 6 | 3 | 5 | typed[5] = 'x' matches name[3] → i=4, j=6 |
 End: i == LENGTH(name) → true.
 
@@ -82,7 +82,7 @@ End: i == LENGTH(name) → true.
 ## 6. Follow-Up Questions
 
 * How would you handle Unicode characters that may consist of multiple code points?
-* Can the algorithm be extended to report the minimal number of long‑presses needed?
+* Can the algorithm be extended to report the minimal number of long-presses needed?
 * What changes are required if the input strings are streamed character by character?
 
 ---

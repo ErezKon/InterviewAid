@@ -68,7 +68,7 @@ The algorithm correctly tallies the qualifying pairs.
 Let *m* be the total number of indices across all groups (equal to *n*). In the worst case where all elements are identical, the double loop examines O(n²) pairs, giving **Time O(n²)**. The hash map stores at most *n* indices, so **Space O(n)**.
 
 ## Follow-Up Questions
-1. Can you improve the time complexity using number‑theoretic properties of `k`?
+1. Can you improve the time complexity using number-theoretic properties of `k`?
 2. How would you handle a streaming version where numbers arrive one by one?
 3. What if the condition were `(i + j) % k == 0` instead of product?
 

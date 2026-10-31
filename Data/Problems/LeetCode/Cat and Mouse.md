@@ -99,7 +99,7 @@ Consider the first example `graph = [[1,2],[0],[0]]`:
 - **Space:** O(n³) for the outcome and degree tables.
 
 ## Follow-Up Questions
-1. How would the solution change if the cat could also move to node 0?
+1. How would the solution change if the cat could also move to node 0?
 2. Can the algorithm be optimized for sparse graphs?
 3. How to extend the game to more than two players?
 

@@ -76,8 +76,8 @@ Consider `nums = [1,2,3,1]`:
 
 - How would you modify the solution if houses were arranged in a binary tree?
 - What if each house had a cooldown period after being robbed?
-- Can you extend the algorithm to handle k‑adjacent restriction?
+- Can you extend the algorithm to handle k-adjacent restriction?
 
 ## 7. Key Takeaway
 
-> Convert the circular constraint into two linear sub‑problems and take the maximum, achieving linear time and constant space.
+> Convert the circular constraint into two linear sub-problems and take the maximum, achieving linear time and constant space.

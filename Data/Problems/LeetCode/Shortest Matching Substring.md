@@ -27,22 +27,24 @@ Return the length of the **shortest** substring in `s` that matches `p`. If ther
 
 ```text
 FUNCTION shortestMatchingSubstring(s, p):
-    // Split pattern by '*', up to three literal parts
+    // Split pattern by '*' into exactly three literal parts (any may be empty)
     parts ← split p by '*'
     // For each part, find all start indices in s using KMP or Z-algorithm
-    occurrences ← list of index lists for each part
-    // Use two‑pointer / sliding window to locate the minimal window covering parts in order
+    // (an empty part "occurs" at every index 0..|s|)
+    occurrences ← sorted index lists for each part
+    // Greedy: for a fixed start i, taking the earliest later occurrence of each
+    // following part is optimal. pos only grows with i, so pointers never move back.
+    ptr[1] ← 0; ptr[2] ← 0
     minLen ← infinity
     FOR each start index i in occurrences[0]:
         pos ← i + length(parts[0])
-        FOR partIdx FROM 1 TO length(parts)-1:
-            // Find the first occurrence of parts[partIdx] at or after pos
-            j ← first index in occurrences[partIdx] ≥ pos
-            IF j does not exist: BREAK out of inner loop
-            pos ← j + length(parts[partIdx])
-        IF all parts matched:
-            windowLen ← pos - i
-            minLen ← MIN(minLen, windowLen)
+        FOR k FROM 1 TO 2:
+            // Advance to the first occurrence of parts[k] at or after pos
+            WHILE ptr[k] < LENGTH(occurrences[k]) AND occurrences[k][ptr[k]] < pos:
+                ptr[k] ← ptr[k] + 1
+            IF ptr[k] = LENGTH(occurrences[k]): RETURN minLen IF minLen ≠ infinity ELSE -1
+            pos ← occurrences[k][ptr[k]] + length(parts[k])
+        minLen ← MIN(minLen, pos - i)
     RETURN minLen IF minLen ≠ infinity ELSE -1
 ```
 
@@ -82,32 +84,37 @@ Explanation: The shortest matching substring of p in s is "adlogi".
 
 ## Walkthrough
 
-Consider `s = "abcdeabc"`, `p = "a*e"`.
+Example 1: `s = "abaacbaecebce"`, `p = "ba*c*ce"`.
 
-1. Split pattern → parts = ["a", "e"].
-2. Find occurrences of "a" → indices [0, 5]; occurrences of "e" → index [4].
-3. Start with first "a" at 0, look for an "e" at or after position 1 → found at 4.
-4. Window length = 4 - 0 + 1 = 5, update `minLen`.
-5. Next start "a" at 5, no "e" after it → discard.
-6. Minimum length = 5.
+1. parts = ["ba", "c", "ce"].
+2. Occurrences: "ba" → [1, 5]; "c" → [4, 8, 11]; "ce" → [8, 11].
+
+| start i | pos after "ba" | first "c" ≥ pos | pos | first "ce" ≥ pos | end | length |
+|---------|----------------|-----------------|-----|------------------|-----|--------|
+| 1 | 3 | 4 | 5 | 8 | 10 | 9 |
+| 5 | 7 | 8 | 9 | 11 | 13 | 8 |
+
+3. Minimum length = 8 ("baecebce"), the expected output.
+
+Example 4 (`p = "*adlogi*"`): parts = ["", "adlogi", ""]; "adlogi" occurs at 1, giving length 6. Empty parts match everywhere, which also makes Example 3 return 0.
 
 ---
 
 ## Complexity Analysis
 
-- **Time:** `O(|s| + |p|)` for building KMP tables for each part plus linear scans for the sliding‑window step.
+- **Time:** `O(|s| + |p|)` for building KMP tables for each part plus linear scans for the sliding-window step.
 - **Space:** `O(|s|)` to store occurrence lists (or `O(1)` if processed on the fly).
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you extend the solution to support more than two `*` wildcards?
 - Can the algorithm be adapted to return the actual substring, not just its length?
-- What changes are needed if `*` can also match the empty string?
+- What changes are needed if `*` must match **at least one** character?
 
 ---
 
 ## Key Takeaway
 
-> By splitting the pattern on `*` and locating each literal part in order, the problem reduces to a minimal‑window search over pre‑computed occurrence positions.
+> By splitting the pattern on `*` and locating each literal part in order, the problem reduces to a minimal-window search over pre-computed occurrence positions.

@@ -84,8 +84,8 @@ Result = 3 moves.
 
 ## Follow-Up Questions
 1. How would the algorithm change if machines were arranged in a circle?
-2. Can you compute the moves using a prefix‑sum array instead of a running sum?
+2. Can you compute the moves using a prefix-sum array instead of a running sum?
 3. What if each move could transfer more than one dress at a time?
 
 ## Key Takeaway
-Balancing loads reduces to tracking cumulative surplus; the worst‑case absolute cumulative imbalance determines the minimum moves.
+Balancing loads reduces to tracking cumulative surplus; the worst-case absolute cumulative imbalance determines the minimum moves.

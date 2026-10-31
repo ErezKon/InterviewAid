@@ -8,14 +8,14 @@ Related: #48 Rotate Image, #54 Spiral Matrix, #73 Set Matrix Zeroes, #289 Game o
 
 > *Note: companion pattern file (not an official LeetCode problem) — see [Rotate Image.md](Rotate%20Image.md) for the official statement and constraints of #48.*
 
-This reference summarizes common matrix rotation and transformation operations that appear in several LeetCode problems (e.g., Rotate Image, Spiral Matrix). Understanding these patterns helps design in‑place algorithms for rotating or reflecting a square matrix.
+This reference summarizes common matrix rotation and transformation operations that appear in several LeetCode problems (e.g., Rotate Image, Spiral Matrix). Understanding these patterns helps design in-place algorithms for rotating or reflecting a square matrix.
 
 ## Examples
 - **90° clockwise rotation** of a 3×3 matrix transforms `[[1,2,3],[4,5,6],[7,8,9]]` into `[[7,4,1],[8,5,2],[9,6,3]]`.
 - **180° rotation** swaps rows and columns twice, yielding `[[9,8,7],[6,5,4],[3,2,1]]`.
 
 ## Approach
-Use a two‑step process: first transpose the matrix (swap `matrix[i][j]` with `matrix[j][i]`), then reverse rows or columns depending on the desired rotation.
+Use a two-step process: first transpose the matrix (swap `matrix[i][j]` with `matrix[j][i]`), then reverse rows or columns depending on the desired rotation.
 
 ```text
 FUNCTION Rotate90Clockwise(matrix):
@@ -30,7 +30,7 @@ FUNCTION Rotate90Clockwise(matrix):
     RETURN matrix
 ```
 
-Similar templates apply for counter‑clockwise and 180° rotations by reversing columns instead of rows or performing both reversals.
+Similar templates apply for counter-clockwise and 180° rotations by reversing columns instead of rows or performing both reversals.
 
 ## Walkthrough
 | Step | Operation | Matrix State |
@@ -40,12 +40,12 @@ Similar templates apply for counter‑clockwise and 180° rotations by reversing
 
 ## Complexity Analysis
 - Time: O(n²) for an n×n matrix.
-- Space: O(1) extra space (in‑place).
+- Space: O(1) extra space (in-place).
 
-## Follow‑Up Questions
-1. How would you rotate a non‑square (m×n) matrix by 90°?
+## Follow-Up Questions
+1. How would you rotate a non-square (m×n) matrix by 90°?
 2. Can you perform the rotation using only O(min(m,n)) extra space?
 3. How to extend the pattern to rotate layers independently (e.g., spiral rotation)?
 
 ## Key Takeaway
-Transposition followed by row or column reversal provides a simple in‑place method to achieve any 90° multiple rotation of a square matrix.
+Transposition followed by row or column reversal provides a simple in-place method to achieve any 90° multiple rotation of a square matrix.

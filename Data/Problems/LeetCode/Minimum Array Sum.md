@@ -115,7 +115,7 @@ For `nums = [10,20,7]`, `k = 5`, `op1 = 1`, `op2 = 1`:
 | DP over operation budgets | O(n · op1 · op2) | O(op1 · op2) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if `op1` could be applied multiple times on the same element?
 2. Can you design a greedy approximation when `op1` and `op2` are large (e.g., >10)?

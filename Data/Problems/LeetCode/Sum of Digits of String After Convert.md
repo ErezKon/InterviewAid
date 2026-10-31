@@ -67,12 +67,12 @@ Iteratively compute the digit sum. For each iteration, traverse the string repre
 | 2 (if k>1) | "6" | 6 |
 
 ## Complexity Analysis
-Time: O(L · k) where L is the length of the number string (shrinks quickly). Space: O(1) besides the string.
+Time: O(L · k) where L is the length of the number string (shrinks quickly). Space: O(1) besides the string.
 
 ## Follow-Up Questions
 * How can you compute the result without constructing the full concatenated number for very long strings?
-* What is the effect of large `k` on the result – does it always converge to a single‑digit digital root?
+* What is the effect of large `k` on the result – does it always converge to a single-digit digital root?
 * Can the process be performed modulo a given number?
 
 ## Key Takeaway
-Repeated digit‑sum reduction quickly collapses a large concatenated value to a small integer, achievable with simple loops.
+Repeated digit-sum reduction quickly collapses a large concatenated value to a small integer, achievable with simple loops.

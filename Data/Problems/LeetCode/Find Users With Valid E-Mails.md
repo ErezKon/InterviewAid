@@ -88,7 +88,7 @@ FUNCTION GetValidUsers():
 - **Space:** O(1) extra space besides the result set.
 
 ## Follow-Up Questions
-- How would you modify the query to handle case‑insensitive email validation?
+- How would you modify the query to handle case-insensitive email validation?
 - How can you index the `mail` column to improve performance for large tables?
 - Extend the pattern to allow subdomains like `@sub.leetcode.com`.
 

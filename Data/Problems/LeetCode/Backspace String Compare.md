@@ -90,13 +90,13 @@ Example 3:
 
 ---
 
-## 5. Walkthrough (Two‑Pointer Method)
+## 5. Walkthrough (Two-Pointer Method)
 
 | Step | s index | t index | s char | t char | skipS | skipT | Action |
 |------|---------|---------|-------|-------|------|------|--------|
 | 1 | 3 | 0 | 'c' | 'b' | 0 | 0 | chars differ → return false |
 
-In Example 3, after handling backspaces, the pointers land on `'c'` and `'b'`, leading to a mismatch.
+In Example 3, after handling backspaces, the pointers land on `'c'` and `'b'`, leading to a mismatch.
 
 ---
 
@@ -107,7 +107,7 @@ In Example 3, after handling backspaces, the pointers land on `'c'` and `'b'`,
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you extend the solution to handle Unicode characters?
 - Can you modify the algorithm to return the final processed strings instead of just a boolean?
@@ -117,4 +117,4 @@ In Example 3, after handling backspaces, the pointers land on `'c'` and `'b'`,
 
 ## Key Takeaway
 
-> Processing from the end lets you handle backspaces on‑the‑fly with constant extra space, avoiding the need for auxiliary stacks.
+> Processing from the end lets you handle backspaces on-the-fly with constant extra space, avoiding the need for auxiliary stacks.

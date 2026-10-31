@@ -99,7 +99,7 @@ FUNCTION countSubarrays(nums):
 
 Consider `nums = [1,0,1]`:
 
-| i | nums[i] | prefix after i | query(prefix‑1) | result after i |
+| i | nums[i] | prefix after i | query(prefix-1) | result after i |
 |---|---------|----------------|----------------|----------------|
 | -1 | – | 0 (initial) | – | 0 |
 | 0 | 1 | 1 | bit.query(0) = 1 (prefix 0) | 1 |
@@ -121,7 +121,7 @@ The final `result = 3`, but we count subarrays with *strictly* more ones, so we 
 
 ## Follow-Up Questions
 
-- How would you solve the problem using a merge‑sort based counting method instead of a BIT?
+- How would you solve the problem using a merge-sort based counting method instead of a BIT?
 - Can the approach be extended to arrays with values other than binary, e.g., count subarrays where the sum exceeds a threshold?
 - What modifications are needed to return the actual subarrays instead of just the count?
 

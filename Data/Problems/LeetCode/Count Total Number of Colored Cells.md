@@ -63,7 +63,7 @@ Take `n = 4`.
 2. Minute 2: add `4·1 = 4` cells → total 5.
 3. Minute 3: add `4·2 = 8` cells → total 13.
 4. Minute 4: add `4·3 = 12` cells → total 25.
-Using formula: `2*4^2 - 2*4 + 1 = 32 - 8 + 1 = 25` matches the step‑by‑step count.
+Using formula: `2*4^2 - 2*4 + 1 = 32 - 8 + 1 = 25` matches the step-by-step count.
 
 ---
 
@@ -79,11 +79,11 @@ Using formula: `2*4^2 - 2*4 + 1 = 32 - 8 + 1 = 25` matches the step‑by‑step 
 ## Follow-Up Questions
 
 1. How would the count change if the expansion added `8(i-1)` cells each minute (a larger diamond)?
-2. Can you generalize the formula for a 3‑dimensional expansion (octahedron) pattern?
+2. Can you generalize the formula for a 3-dimensional expansion (octahedron) pattern?
 3. What if the grid were finite with obstacles; how would you compute reachable cells?
 
 ---
 
 ## Key Takeaway
 
-> **Diamond expansion on a grid yields a closed‑form `2n² - 2n + 1` by summing an arithmetic series of added cells per minute.**
+> **Diamond expansion on a grid yields a closed-form `2n² - 2n + 1` by summing an arithmetic series of added cells per minute.**

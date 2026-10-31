@@ -58,7 +58,7 @@ FUNCTION secondLargestDigit(s):
 
 **Example:** `"dfa12321"`
 1. Iterate characters, collect digits → `{1,2,3}`.
-2. Set size is 3 ≥ 2, continue.
+2. Set size is 3 ≥ 2, continue.
 3. Sort descending → `[3,2,1]`.
 4. Return the second element `2`.
 
@@ -71,10 +71,10 @@ FUNCTION secondLargestDigit(s):
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you modify the solution to return the *k*‑th largest digit?
-2. Can you solve the problem without sorting, using only constant‑time operations?
+1. How would you modify the solution to return the *k*-th largest digit?
+2. Can you solve the problem without sorting, using only constant-time operations?
 3. How would you adapt the algorithm for Unicode digit characters?
 
 ---

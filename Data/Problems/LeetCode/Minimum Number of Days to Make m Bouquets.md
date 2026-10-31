@@ -92,15 +92,15 @@ FUNCTION canMake(bloomDay, m, k, day):
 For the first example with `day = 3`:
 
 - Eligible flowers (≤3): positions 0,2,4 → pattern `eligible, not, eligible, not, eligible`.
-- Scanning yields three single‑flower bouquets, satisfying `m = 3`.
-- Binary search narrows to day 3 as the smallest feasible day.
+- Scanning yields three single-flower bouquets, satisfying `m = 3`.
+- Binary search narrows to day 3 as the smallest feasible day.
 
 ## Complexity Analysis
 
 - **Time:** `O(n log D)` where `D` is the range between min and max bloom days.
 - **Space:** `O(1)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if the `k` flowers for a bouquet need not be adjacent?
 - Can we extend the approach to return the actual indices of the chosen flowers?

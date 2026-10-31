@@ -116,13 +116,12 @@ CLASS Solution:
 ```
 
 ## Walkthrough
-Assume the file contains "abcdefgh" and we call `read(buf,5)` then `read(buf,4)`.
-1. First `read`:
-   - `read4` → `buf4 = [a,b,c,d]`, `n4=4`. Copy `a,b,c,d` (4 chars).
-   - Need 1 more: call `read4` again → `buf4 = [e,f,g,h]`, `n4=4`. Copy `e`. `i4` now 1.
-2. Second `read`:
-   - Start with leftover `buf4` from previous call (`i4=1`, `n4=4`). Copy `f,g,h` (3 chars).
-   - Need 1 more: `read4` returns 0 (EOF). Loop ends.
+Example 1: `file = "abc"`, `queries = [1,2,1]`.
+1. `read(buf, 1)`: `i4 == n4 == 0` → `read4` gives `buf4 = [a,b,c]`, `n4=3`, `i4=0`. Copy `a` → `i4=1`. Return **1**.
+2. `read(buf, 2)`: leftover `b,c` still in `buf4` (`i4=1`, `n4=3`). Copy `b`, `c` → `i4=3`. Return **2** (buf = "bc").
+3. `read(buf, 1)`: `i4 == n4` → `read4` returns 0 (EOF) → break. Return **0**.
+
+Output `[1,2,0]`. Example 2 (`[4,1]`): the first call copies `a,b,c`, then `read4` returns 0 → returns 3; the second call hits EOF immediately → 0.
 
 ## Complexity Analysis
 - **Time:** O(n) – each character is processed at most once across calls.

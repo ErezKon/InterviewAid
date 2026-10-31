@@ -74,7 +74,7 @@ The maximum area found is `2.0`, which the function returns.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you improve the runtime if *n* were up to 10⁴?
 - Can the problem be solved using convex hull techniques?

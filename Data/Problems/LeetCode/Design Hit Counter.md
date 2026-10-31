@@ -56,7 +56,7 @@ Example 1:
 | 1 | `hit(1)` | `times[1] = 1`, `hits[1] = 1`
 | 2 | `hit(2)` | `times[2] = 2`, `hits[2] = 1`
 | 3 | `hit(300)` | `times[0] = 300`, `hits[0] = 1` (index 0 = 300 % 300)
-| 4 | `getHits(300)` | Iterate 0‑299, sum hits where `300 - times[i] < 300` → total = 3 |
+| 4 | `getHits(300)` | Iterate 0-299, sum hits where `300 - times[i] < 300` → total = 3 |
 | 5 | `getHits(301)` | `times[1] = 1` is now older than 300 seconds, excluded → total = 2 |
 
 The walkthrough shows how the circular array overwrites old timestamps and how the sum is computed.

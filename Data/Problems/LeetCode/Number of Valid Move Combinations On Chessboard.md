@@ -91,12 +91,12 @@ Explanation: The image above shows the possible squares the piece can move to.
 Consider two pieces: a rook at a1 and a bishop at c1.
 | Piece | Possible Moves (dir,dist) |
 |-------|---------------------------|
-| Rook  | (right,1‑7), (up,1‑7) |
-| Bishop| (up‑right,1‑7), (up‑left,1‑7) |
+| Rook  | (right,1-7), (up,1-7) |
+| Bishop| (up-right,1-7), (up-left,1-7) |
 
 Backtrack over each rook move and each bishop move, then simulate each timestep:
 - Rook moves right 3 squares: a1→d1.
-- Bishop moves up‑right 2 squares: c1→e3.
+- Bishop moves up-right 2 squares: c1→e3.
 At each step, check squares: step1 (b1 vs d2), step2 (c1 vs e3) – no collision, so this combination is valid.
 Repeating for all combos yields 12 valid pairs.
 

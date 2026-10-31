@@ -60,7 +60,7 @@ Example 2:
 Consider `left = 1, right = 22`:
 1. Iterate `i` from 1 to 22.
 2. For each `i`, call `isSelfDividing(i)`.
-3. `i = 10` → digit `0` found → not self‑dividing.
+3. `i = 10` → digit `0` found → not self-dividing.
 4. `i = 12` → digits `1` and `2`; 12 % 1 == 0 and 12 % 2 == 0 → include.
 5. Continue until 22, collecting all qualifying numbers.
 
@@ -79,10 +79,10 @@ The algorithm checks each digit of every number in the range.
 ## Follow-Up Questions
 
 1. How would you modify the solution to handle very large ranges efficiently?
-2. Can you generate self‑dividing numbers without converting numbers to strings?
+2. Can you generate self-dividing numbers without converting numbers to strings?
 
 ---
 
 ## Key Takeaway
 
-A self‑dividing number must be divisible by each of its non‑zero digits; iterating through the range and checking digits yields a simple O(n·d) solution.
+A self-dividing number must be divisible by each of its non-zero digits; iterating through the range and checking digits yields a simple O(n·d) solution.

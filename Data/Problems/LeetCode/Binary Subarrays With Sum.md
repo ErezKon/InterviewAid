@@ -33,7 +33,7 @@ Example 2:
 ```
 
 ## Approach
-The problem can be solved using the **Sliding Window** technique. The key insight is that the number of subarrays with sum exactly `K` equals `atMost(K) - atMost(K‑1)`, where `atMost(x)` counts subarrays with sum **≤** `x`. For a binary array, a sliding window can maintain the current sum and expand/shrink efficiently.
+The problem can be solved using the **Sliding Window** technique. The key insight is that the number of subarrays with sum exactly `K` equals `atMost(K) - atMost(K-1)`, where `atMost(x)` counts subarrays with sum **≤** `x`. For a binary array, a sliding window can maintain the current sum and expand/shrink efficiently.
 
 ### Pseudocode
 ```text
@@ -56,18 +56,18 @@ FUNCTION atMost(nums, limit):
 
 ## Walkthrough
 Consider `nums = [1,0,1,0,1]`, `goal = 2`.
-1. Compute `atMost(2)`: sliding window expands, counting all subarrays with sum ≤ 2 → 9.
+1. Compute `atMost(2)`: sliding window expands, counting all subarrays with sum ≤ 2 → 9.
 2. Compute `atMost(1)`: similarly → 5.
-3. Result = 9 − 5 = 4, matching the example.
+3. Result = 9 − 5 = 4, matching the example.
 
 ## Complexity Analysis
 - **Time:** `O(n)` – each element is visited at most twice by the two pointers.
 - **Space:** `O(1)` – only a few integer variables are used.
 
-## Follow‑Up Questions
-1. How would the solution change if the array contained arbitrary non‑negative integers?
+## Follow-Up Questions
+1. How would the solution change if the array contained arbitrary non-negative integers?
 2. Can you extend the method to count subarrays with sum in a range `[L, R]`?
 3. What if the array were very large and streamed? How would you maintain the count online?
 
 ## Key Takeaway
-Transform the exact‑sum problem into a difference of two “at most” counts and solve each with a linear‑time sliding window.
+Transform the exact-sum problem into a difference of two “at most” counts and solve each with a linear-time sliding window.

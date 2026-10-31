@@ -94,7 +94,7 @@ Resulting list: `1↔2↔4↔5↔3`.
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(n) – each node visited a constant number of times |
-| **Space** | O(1) – in‑place modifications only |
+| **Space** | O(1) – in-place modifications only |
 
 ---
 

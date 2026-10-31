@@ -127,4 +127,4 @@ The CTE groups rows with the same `grp` value; counting rows per group yields st
 
 ## Key Takeaway
 
-Use the “gaps‑and‑islands” technique: subtract two row numbers to create a constant group identifier for consecutive rows, then aggregate within each group to find the longest win streak.
+Use the “gaps-and-islands” technique: subtract two row numbers to create a constant group identifier for consecutive rows, then aggregate within each group to find the longest win streak.

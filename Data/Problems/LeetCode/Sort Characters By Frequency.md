@@ -91,10 +91,10 @@ For `"tree"`:
 ## 6. Follow-Up Questions
 
 - How would you modify the algorithm to return the **lexicographically smallest** string among all valid orderings?
-- Can this be solved using a **max‑heap** instead of bucket sort? What would be the time trade‑off?
+- Can this be solved using a **max-heap** instead of bucket sort? What would be the time trade-off?
 
 ---
 
 ## Key Takeaway
 
-> Bucket sort by frequency uses the frequency itself as an index, giving a linear‑time solution for sorting characters by how often they appear.
+> Bucket sort by frequency uses the frequency itself as an index, giving a linear-time solution for sorting characters by how often they appear.

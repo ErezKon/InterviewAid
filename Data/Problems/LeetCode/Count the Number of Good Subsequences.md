@@ -50,7 +50,7 @@ Example 3:
 
 ## Key Insight
 
-Fix the target frequency `f` (1 to max character count). For each character `c` with count `cnt[c] ≥ f`, you can either skip it or choose `f` of its occurrences: `C(cnt[c], f) + 1` options (the +1 is for skipping). Multiply across all characters, subtract 1 (for the all‑skip case). Sum over all valid `f`.
+Fix the target frequency `f` (1 to max character count). For each character `c` with count `cnt[c] ≥ f`, you can either skip it or choose `f` of its occurrences: `C(cnt[c], f) + 1` options (the +1 is for skipping). Multiply across all characters, subtract 1 (for the all-skip case). Sum over all valid `f`.
 
 ---
 
@@ -72,7 +72,7 @@ FUNCTION countGoodSubsequences(s):
                 // Choose f occurrences of c or skip c entirely
                 ways ← ways * (COMB(cnt[c], f) + 1) MOD MOD
             // If cnt[c] < f, only the skip option (×1) exists
-        ways ← ways - 1               // remove the all‑skip combination
+        ways ← ways - 1               // remove the all-skip combination
         result ← (result + ways) MOD MOD
 
     RETURN result
@@ -83,13 +83,13 @@ FUNCTION countGoodSubsequences(s):
 ## Walkthrough
 
 **Using Example 3 (`s = "aab"`):**
-| f | cnt[a] | cnt[b] | Options for a (`C(2,f)+1`) | Options for b (`C(1,f)+1`) | ways (product) | ways‑1 (exclude empty) |
+| f | cnt[a] | cnt[b] | Options for a (`C(2,f)+1`) | Options for b (`C(1,f)+1`) | ways (product) | ways-1 (exclude empty) |
 |---|--------|--------|---------------------------|---------------------------|----------------|-----------------------|
-| 1 | 2 | 1 | C(2,1)+1 = 3 | C(1,1)+1 = 2 | 3 × 2 = 6 | 5 |
-| 2 | 2 | 1 | C(2,2)+1 = 2 | cnt[b] < 2 → 1 | 2 × 1 = 2 | 1 |
+| 1 | 2 | 1 | C(2,1)+1 = 3 | C(1,1)+1 = 2 | 3 × 2 = 6 | 5 |
+| 2 | 2 | 1 | C(2,2)+1 = 2 | cnt[b] < 2 → 1 | 2 × 1 = 2 | 1 |
 | maxCount = 2, stop |
 
-Sum of `ways‑1` over all `f` = 5 + 1 = 6. Adding the subsequence consisting of a single `b` counted in `f=1` gives total 5 good non‑empty subsequences, matching the example.
+Sum of `ways-1` over all `f` = 5 + 1 = 6. Adding the subsequence consisting of a single `b` counted in `f=1` gives total 5 good non-empty subsequences, matching the example.
 
 ---
 
@@ -97,12 +97,12 @@ Sum of `ways‑1` over all `f` = 5 + 1 = 6. Adding the subsequence consisting of
 
 | Aspect | Value |
 |---|---|
-| **Time** | O(maxCount × |Σ|) where |Σ| ≤ 26 (alphabet size) — pre‑computing combinations makes each iteration constant time |
+| **Time** | O(maxCount × |Σ|) where |Σ| ≤ 26 (alphabet size) — pre-computing combinations makes each iteration constant time |
 | **Space** | O(|Σ|) for the frequency map and factorial tables |
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the algorithm change if the alphabet were Unicode (large |Σ|)?
 - Can we adapt the method to count subsequences where frequencies differ by at most one?

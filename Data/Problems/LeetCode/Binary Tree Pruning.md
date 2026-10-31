@@ -53,7 +53,7 @@ For the tree `[[1,0,1],[0,0,0],[0,0,1]]`:
 
 ## Complexity Analysis
 - Time: O(n) – each node visited once.
-- Space: O(h) – recursion stack height `h` (worst‑case O(n)).
+- Space: O(h) – recursion stack height `h` (worst-case O(n)).
 
 ## Follow-Up Questions
 - How would you implement the pruning iteratively using a stack?

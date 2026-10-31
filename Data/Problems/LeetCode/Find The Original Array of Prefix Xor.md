@@ -39,7 +39,7 @@ Explanation: We have pref[0] = arr[0] = 13.
 - `0 <= pref[i] <= 10^6`
 
 ## Approach
-The original element at index `i` can be obtained by XOR‑ing `pref[i]` with `pref[i‑1]` (for `i>0`). For `i=0`, the element equals `pref[0]`.
+The original element at index `i` can be obtained by XOR-ing `pref[i]` with `pref[i-1]` (for `i>0`). For `i=0`, the element equals `pref[0]`.
 
 ```text
 FUNCTION reconstructArray(pref):
@@ -64,12 +64,12 @@ Result `[5,7,2,3]` (matches definition).
 
 ## Complexity Analysis
 - **Time:** O(n) – one pass over `pref`.
-- **Space:** O(n) – output array of size n (in‑place possible).
+- **Space:** O(n) – output array of size n (in-place possible).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where `pref` is given as a stream?
 2. Can you reconstruct the array if some prefix values are missing?
 3. What if the XOR operation is replaced by another associative operation?
 
 ## Key Takeaway
-Each original element equals the XOR of consecutive prefix values, enabling linear‑time reconstruction.
+Each original element equals the XOR of consecutive prefix values, enabling linear-time reconstruction.

@@ -68,41 +68,57 @@ We did not include the friendship of users 2 and 3 because they only have two co
 ```
 
 ## Approach
-Sort the ages and use a two‑pointer technique to count pairs whose sum exceeds the threshold.
+1. **Make friendships symmetric:** build `f(u, v)` containing every pair in both directions (`UNION ALL` of the table with its columns swapped), so "friends of `x`" is simply `f.v WHERE f.u = x`.
+2. **Find common friends:** for each original row `(user1_id, user2_id)` (already `user1_id < user2_id`, so no duplicates), join `f a` on `a.u = user1_id` and `f b` on `b.u = user2_id AND b.v = a.v`. Each joined row is one common friend `a.v`.
+3. **Count and filter:** `GROUP BY` the pair, `COUNT(*)` as `common_friend`, keep groups with `HAVING COUNT(*) >= 3`.
 
-```text
-FUNCTION countStrongFriendships(ages, threshold):
-    SORT ages ASCENDING
-    SET left ← 0
-    SET right ← LENGTH(ages) - 1
-    SET count ← 0
-    WHILE left < right:
-        IF ages[left] + ages[right] > threshold:
-            // All elements between left and right form valid pairs with ages[right]
-            SET count ← count + (right - left)
-            SET right ← right - 1
-        ELSE:
-            SET left ← left + 1
-    RETURN count
+```sql
+WITH f AS (
+    SELECT user1_id AS u, user2_id AS v FROM Friendship
+    UNION ALL
+    SELECT user2_id AS u, user1_id AS v FROM Friendship
+)
+SELECT fr.user1_id, fr.user2_id, COUNT(*) AS common_friend
+FROM Friendship fr
+JOIN f a ON a.u = fr.user1_id
+JOIN f b ON b.u = fr.user2_id AND b.v = a.v
+GROUP BY fr.user1_id, fr.user2_id
+HAVING COUNT(*) >= 3;
 ```
 
 ## Walkthrough
-For `ages = [10,20,30]`, `threshold = 35`:
+Using Example 1, the symmetric friend lists are:
 
-| left | right | ages[left] + ages[right] | Action | count |
-|------|-------|--------------------------|--------|-------|
-| 0 (10) | 2 (30) | 40 > 35 | add (2-0)=2, right←1 | 2 |
-| 0 (10) | 1 (20) | 30 ≤ 35 | left←1 |
-Loop ends, return 2.
+| user | friends |
+|------|---------|
+| 1 | 2, 3, 4, 5, 6, 7 |
+| 2 | 1, 3, 4, 5, 6 |
+| 3 | 1, 2, 6, 7 |
+| 4 | 1, 2 |
+| 5 | 1, 2 |
+| 6 | 1, 2, 3 |
+| 7 | 1, 3 |
+
+Joining each friendship row with the intersection of the two friend lists:
+
+| pair | common friends | count | kept? |
+|------|----------------|-------|-------|
+| (1,2) | 3, 4, 5, 6 | 4 | yes |
+| (1,3) | 2, 6, 7 | 3 | yes |
+| (2,3) | 1, 6 | 2 | no |
+| (1,6), (2,6), (3,6) | 2 each | 2 | no |
+| (1,4), (1,5), (1,7), (2,4), (2,5), (3,7) | 1 each | 1 | no |
+
+Result: `(1, 2, 4)` and `(1, 3, 3)`, matching the expected output.
 
 ## Complexity Analysis
-- **Time:** O(n log n) for sorting, then O(n) for the two‑pointer scan.
-- **Space:** O(1) extra space (in‑place sort).
+- **Time:** O(sum over friendships of deg(user1) + deg(user2)) for the self-joins (hash joins on `u`), plus grouping; worst case O(E * D) where D is the max degree.
+- **Space:** O(E) for the symmetric CTE plus intermediate join rows.
 
-## Follow‑Up Questions
-1. How would you handle the case where ages are streamed and cannot be stored entirely?
-2. Can you extend the definition of strong friendship to include a minimum age difference?
-3. What if the threshold varies per query—how would you preprocess for multiple queries?
+## Follow-Up Questions
+1. How would you list the actual common friends (e.g. with `GROUP_CONCAT`) alongside the count?
+2. How would you find strong pairs that are *not* yet friends (friend recommendations)?
+3. Which indexes on `Friendship` would speed up the self-joins?
 
 ## Key Takeaway
-Sorting combined with a two‑pointer scan efficiently counts pairs whose sum exceeds a given threshold in linear time after sorting.
+Symmetrize the edge table, then a double self-join on the shared neighbor counts common friends per existing friendship; `HAVING COUNT(*) >= 3` keeps the strong ones.

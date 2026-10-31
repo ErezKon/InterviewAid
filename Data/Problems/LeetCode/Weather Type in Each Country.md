@@ -129,10 +129,10 @@ FUNCTION mapWeather(countries):
 - Time: O(n) where n is the number of country entries.
 - Space: O(n) for the resulting map.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle duplicate country entries with conflicting weather reports?
 - What if you needed to group countries by weather type instead of mapping each country?
 - Can you extend the solution to support queries for the weather of a specific country in O(1) time?
 
 ## Key Takeaway
-A simple hash‑map construction from the input list provides an immediate country‑to‑weather lookup.
+A simple hash-map construction from the input list provides an immediate country-to-weather lookup.

@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach below sums `|d1 − d2|`; the official "digit difference" **counts** positions whose digits differ. Correct contribution per position: `C(n, 2) − Σ_d C(cnt[d], 2)` (or `Σ_{d1<d2} cnt[d1]·cnt[d2]`). O(n·digits).*
-
 You are given an array `nums` consisting of **positive** integers where all integers have the **same** number of digits.
 
 The **digit difference** between two integers is the *count* of different digits that are in the **same** position in the two integers.
@@ -44,23 +42,42 @@ All the integers in the array are the same. So the total sum of digit difference
 ```
 
 ## Approach
-Treat each decimal position independently. For each digit position, count how many numbers have each digit (0‑9). The contribution of that position equals the sum over all digit pairs of `|d1‑d2| * count[d1] * count[d2]`. Sum contributions across positions.
+Digit positions are independent, so the total equals the sum over positions of the number of pairs whose digits differ at that position. For one position, count `cnt[d]` for each digit `d`. Out of all `C(n, 2)` pairs, those with equal digits number `Σ_d C(cnt[d], 2)`, so the differing pairs are `C(n, 2) − Σ_d C(cnt[d], 2)`.
+
+```text
+FUNCTION sumDigitDifferences(nums):
+    n ← LENGTH(nums)
+    L ← number of digits of nums[0]
+    ans ← 0
+    FOR p ← 0 TO L-1:
+        cnt[0..9] ← 0
+        FOR x IN nums:
+            cnt[(x / 10^p) MOD 10] ← cnt[(x / 10^p) MOD 10] + 1
+        same ← 0
+        FOR d ← 0 TO 9:
+            same ← same + cnt[d] · (cnt[d] − 1) / 2
+        ans ← ans + n · (n − 1) / 2 − same
+    RETURN ans
+```
 
 ## Walkthrough
-| Position (units) | counts 0‑9 | contribution |
-|------------------|-----------|--------------|
-| units of [12,23] | 0:0,1:1,2:1,3:1,… | (|1‑2|+|1‑3|+|2‑3|)=2 |
-| tens ... |
-Total = 2.
+Example 1: `nums = [13,23,12]`, `n = 3`, `C(3,2) = 3` pairs per position.
+
+| Position | digits | counts | equal pairs | differing pairs |
+|----------|--------|--------|-------------|-----------------|
+| units | 3, 3, 2 | 3:2, 2:1 | C(2,2) = 1 | 3 − 1 = 2 |
+| tens  | 1, 2, 1 | 1:2, 2:1 | C(2,2) = 1 | 3 − 1 = 2 |
+
+Total = 2 + 2 = `4`.
 
 ## Complexity Analysis
-Time: O(L·10) where L is max number of digits (≤10 for 32‑bit ints).
+Time: O(n · L) where L ≤ 9 is the number of digits.
 Space: O(10) for digit counts per position.
 
 ## Follow-Up Questions
-* How would you adapt the solution for binary representation?
-* Can you compute the sum modulo 10⁹ + 7 for very large arrays?
-* What if numbers have leading zeros considered?
+* How would you adapt the solution for binary representation (count of differing bits = Hamming distance sum)?
+* What if the numbers had different lengths and missing positions were treated as leading zeros?
+* What if the difference at a position were weighted by `|d1 − d2|` instead of being 0/1?
 
 ## Key Takeaway
-Separating digit positions allows linear‑time aggregation of pairwise digit differences.
+Count pairs per position by complement: all pairs minus pairs with the same digit, using digit frequency counts — this turns an O(n²) pairwise sum into O(n · L).

@@ -78,11 +78,11 @@ FUNCTION criticalConnections(n, connections):
 | 1 | Start DFS at node 0 | `[0,-1,-1,-1]` | `[0,0,0,0]` | – |
 | 2 | Visit 1 from 0 | `[0,1,-1,-1]` | `[0,1,0,0]` | – |
 | 3 | Visit 2 from 1 | `[0,1,2,-1]` | `[0,1,2,0]` | – |
-| 4 | Edge 2‑0 is back edge → update `low[2]` to `0` | – | `low[2]=0` | – |
+| 4 | Edge 2-0 is back edge → update `low[2]` to `0` | – | `low[2]=0` | – |
 | 5 | Return to 1, `low[1]=MIN(1, low[2]=0)=0` | – | – | – |
-| 6 | Explore edge 1‑3 (unvisited) | `disc[3]=3`, `low[3]=3` | – | – |
+| 6 | Explore edge 1-3 (unvisited) | `disc[3]=3`, `low[3]=3` | – | – |
 | 7 | Return to 1, `low[3]=3 > disc[1]=1` → bridge `[1,3]` added | – | – | `[[1,3]]` |
-| 8 | Return to 0, `low[1]=0` → no bridge on edge 0‑1 |
+| 8 | Return to 0, `low[1]=0` → no bridge on edge 0-1 |
 
 The algorithm correctly identifies `[1,3]` as the only critical connection.
 

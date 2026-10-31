@@ -54,10 +54,10 @@ FUNCTION MaxReward(operations):
             IF ops[j].end < ops[i].start:
                 SET p[i] ← j
                 BREAK
-    // DP array where dp[i] is max reward using first i operations (0‑based)
+    // DP array where dp[i] is max reward using first i operations (0-based)
     SET dp ← ARRAY of size n+1 INITIALIZED TO 0
     FOR i ← 1 TO n:
-        SET include ← ops[i-1].reward + dp[p[i-1]+1]  // +1 because dp is 1‑based
+        SET include ← ops[i-1].reward + dp[p[i-1]+1]  // +1 because dp is 1-based
         SET exclude ← dp[i-1]
         SET dp[i] ← MAX(include, exclude)
     RETURN dp[n]
@@ -77,10 +77,10 @@ Result = 9.
 - **Time:** `O(n log n)` for sorting plus `O(n^2)` in the naïve `p` computation; can be reduced to `O(n log n)` with binary search.
 - **Space:** `O(n)` for the sorted list, `p` array, and DP table.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm if each operation also had a cost and you needed to maximize reward‑minus‑cost?
+## Follow-Up Questions
+1. How would you modify the algorithm if each operation also had a cost and you needed to maximize reward-minus-cost?
 2. Can the solution be extended to return the actual set of selected operations?
 3. What changes are needed if intervals are allowed to overlap as long as the total overlap length does not exceed a given threshold?
 
 ## Key Takeaway
-Sorting by end time and applying weighted‑interval‑scheduling DP yields the optimal non‑overlapping reward selection.
+Sorting by end time and applying weighted-interval-scheduling DP yields the optimal non-overlapping reward selection.

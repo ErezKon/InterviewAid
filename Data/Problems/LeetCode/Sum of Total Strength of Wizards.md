@@ -58,7 +58,7 @@ The sum of all the total strengths is 25 + 16 + 36 + 36 + 40 + 60 = 213.
 ```
 
 ## Approach
-The formula `total = min * sum` suggests separating the contribution of each element when it acts as the minimum. For each index `i`, find the range where `strength[i]` is the **strictly** smallest element using a monotonic increasing stack to get `left[i]` (distance to previous smaller) and `right[i]` (distance to next smaller). Within that range, every subarray that includes `i` and where `i` is the minimum contributes `strength[i] * (sum of subarray elements)`. Prefix sums and prefix‑of‑prefix sums allow O(1) retrieval of any subarray sum, turning the contribution into a closed‑form expression.
+The formula `total = min * sum` suggests separating the contribution of each element when it acts as the minimum. For each index `i`, find the range where `strength[i]` is the **strictly** smallest element using a monotonic increasing stack to get `left[i]` (distance to previous smaller) and `right[i]` (distance to next smaller). Within that range, every subarray that includes `i` and where `i` is the minimum contributes `strength[i] * (sum of subarray elements)`. Prefix sums and prefix-of-prefix sums allow O(1) retrieval of any subarray sum, turning the contribution into a closed-form expression.
 
 ```text
 FUNCTION totalStrength(strength):
@@ -117,7 +117,7 @@ Take `strength = [1,3,1,2]`.
 
 ## Complexity Analysis
 - **Time:** O(n) – each element is processed a constant number of times (two stack passes and linear scans).
-- **Space:** O(n) – for prefix arrays, prefix‑of‑prefix arrays, and the stacks.
+- **Space:** O(n) – for prefix arrays, prefix-of-prefix arrays, and the stacks.
 
 ## Follow-Up Questions
 1. How would the solution change if the subarray minimum were replaced by the maximum?
@@ -125,4 +125,4 @@ Take `strength = [1,3,1,2]`.
 3. What modifications are needed to handle very large input values without overflow (beyond modulo arithmetic)?
 
 ## Key Takeaway
-By treating each element as the minimum of a range and using prefix‑of‑prefix sums, the problem reduces to O(n) time with simple arithmetic, avoiding explicit enumeration of all subarrays.
+By treating each element as the minimum of a range and using prefix-of-prefix sums, the problem reduces to O(n) time with simple arithmetic, avoiding explicit enumeration of all subarrays.

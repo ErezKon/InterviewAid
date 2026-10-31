@@ -29,7 +29,7 @@ Example 3:
 ```
 
 ## Approach
-Perform a standard breadth‑first search (BFS) to collect nodes level by level, then reverse the list of levels.
+Perform a standard breadth-first search (BFS) to collect nodes level by level, then reverse the list of levels.
 
 ### Pseudocode
 ```text
@@ -64,10 +64,10 @@ For `[3,9,20,null,null,15,7]`:
 - **Time:** `O(n)` – each node enqueued and dequeued once.
 - **Space:** `O(n)` – queue holds at most one level of nodes; result stores all nodes.
 
-## Follow‑Up Questions
-1. How would you output the levels in **top‑down** order without reversing?
+## Follow-Up Questions
+1. How would you output the levels in **top-down** order without reversing?
 2. Can you solve it using a **deque** to prepend each level during BFS?
-3. How would you modify the algorithm for a **N‑ary tree**?
+3. How would you modify the algorithm for a **N-ary tree**?
 
 ## Key Takeaway
-A simple BFS collects levels in natural order; reversing the list yields bottom‑up traversal.
+A simple BFS collects levels in natural order; reversing the list yields bottom-up traversal.

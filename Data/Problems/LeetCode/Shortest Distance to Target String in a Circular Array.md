@@ -77,7 +77,7 @@ Example 3:
 ## Walkthrough
 
 1. Iterate over every position `i` in `words`.
-2. When `words[i]` matches `target`, compute the circular distance: the smaller of moving forward (`ABS(i‑startIndex)`) or backward (`n‑ABS(i‑startIndex)`).
+2. When `words[i]` matches `target`, compute the circular distance: the smaller of moving forward (`ABS(i-startIndex)`) or backward (`n-ABS(i-startIndex)`).
 3. Keep the smallest distance seen.
 4. If no occurrence is found, return `-1`.
 

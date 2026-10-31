@@ -48,7 +48,7 @@ Example 2:
 
 ## Key Insight
 
-The condition only involves three consecutive elements, so a simple sliding window of size 3 suffices. No extra data structures are required; just evaluate the arithmetic expression for each window.
+The condition only involves three consecutive elements, so a simple sliding window of size 3 suffices. No extra data structures are required; just evaluate the arithmetic expression for each window.
 
 ---
 
@@ -79,15 +79,15 @@ Consider `nums = [1,2,1,2,1]`:
 | 3 | 1 | 2 | 1 | 4 | 4 = 2? No | 0 |
 | 4 | 2 | 1 | 2 | 8 | 8 = 1? No | 0 |
 
-Oops, the table above mis‑aligned; the correct centers are indices 1 and 3:
+Oops, the table above mis-aligned; the correct centers are indices 1 and 3:
 
-| center i | a (i‑1) | b (i) | c (i+1) | (a+c)*2 | equals b? | count |
+| center i | a (i-1) | b (i) | c (i+1) | (a+c)*2 | equals b? | count |
 |----------|---------|-------|---------|----------|-----------|-------|
 | 1 | 1 | 2 | 1 | 4 | **No** | 0 |
 | 2 | 2 | 1 | 2 | 8 | **No** | 0 |
 | 3 | 1 | 2 | 1 | 4 | **No** | 0 |
 
-Actually the condition is never met for this example; the earlier explanation used a different condition. Adjusting the example to `[2,8,2,8,2]` shows matches at centers 1 and 3.
+Actually the condition is never met for this example; the earlier explanation used a different condition. Adjusting the example to `[2,8,2,8,2]` shows matches at centers 1 and 3.
 
 ---
 
@@ -110,4 +110,4 @@ Actually the condition is never met for this example; the earlier explanation us
 
 ## Key Takeaway
 
-> **Fixed‑length subarray problems with a simple arithmetic condition are best tackled with a sliding window of that exact size, checking the condition directly for each window.**
+> **Fixed-length subarray problems with a simple arithmetic condition are best tackled with a sliding window of that exact size, checking the condition directly for each window.**

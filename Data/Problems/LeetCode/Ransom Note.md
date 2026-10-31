@@ -68,10 +68,10 @@ END FUNCTION
 - Time: O(m + n) where m = length of `magazine`, n = length of `ransomNote`.
 - Space: O(1) additional space (fixed alphabet size).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if characters could be Unicode with a large alphabet?
 2. Can you solve the problem using sorting instead of a frequency map?
 3. What if you need to construct multiple ransom notes from the same magazine?
 
 ## Key Takeaway
-A simple frequency counter lets you verify whether the required characters are available, providing an O(m + n) solution with constant extra space.
+A simple frequency counter lets you verify whether the required characters are available, providing an O(m + n) solution with constant extra space.

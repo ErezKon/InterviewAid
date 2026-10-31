@@ -102,7 +102,7 @@ GROUP BY v.customer_id;
 ## Walkthrough
 
 1. **LEFT JOIN** `Visits` with `Transactions` on `visit_id` to keep all visit rows.
-2. **WHERE t.visit_id IS NULL** filters rows where no matching transaction exists (anti‑join).
+2. **WHERE t.visit_id IS NULL** filters rows where no matching transaction exists (anti-join).
 3. **GROUP BY v.customer_id** aggregates the filtered rows per customer.
 4. **COUNT(*)** counts the number of visits without transactions for each customer.
 
@@ -111,7 +111,7 @@ GROUP BY v.customer_id;
 ## Complexity Analysis
 
 - **Time Complexity:** O(N log N) – the join processes N rows and the grouping sorts/aggregates the result.
-- **Space Complexity:** O(G) – where G is the number of distinct customers with at least one non‑transaction visit.
+- **Space Complexity:** O(G) – where G is the number of distinct customers with at least one non-transaction visit.
 
 ---
 
@@ -125,4 +125,4 @@ GROUP BY v.customer_id;
 
 ## Key Takeaway
 
-> **LEFT JOIN + WHERE IS NULL = anti‑join. Finds visits with no matching transaction, then GROUP BY counts per customer.**
+> **LEFT JOIN + WHERE IS NULL = anti-join. Finds visits with no matching transaction, then GROUP BY counts per customer.**

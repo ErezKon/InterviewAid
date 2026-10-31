@@ -76,11 +76,11 @@ FUNCTION nextSpecialPalindrome(n):
 
 **Example:** `n = 123`
 
-1. `length = 3`. We examine 3‑digit and 4‑digit candidates.
+1. `length = 3`. We examine 3-digit and 4-digit candidates.
 2. Pair of digits `(1,3)` generates first halves:
-   - For 3‑digit: firstHalf = `13` → palindrome `131`.
+   - For 3-digit: firstHalf = `13` → palindrome `131`.
 3. `131 > 123` and is currently the smallest candidate.
-4. No 3‑digit candidate with a smaller value exists, and 4‑digit candidates start at `1001` which is larger.
+4. No 3-digit candidate with a smaller value exists, and 4-digit candidates start at `1001` which is larger.
 5. Return `131`.
 
 ---
@@ -97,7 +97,7 @@ FUNCTION nextSpecialPalindrome(n):
 ## 6. Follow-Up Questions
 
 1. How would you adapt the algorithm if the palindrome may contain up to **k** distinct digits?
-2. Can you compute the **k‑th** special palindrome greater than `n` without enumerating all candidates?
+2. Can you compute the **k-th** special palindrome greater than `n` without enumerating all candidates?
 3. How would the solution change if the input range includes very large numbers (e.g., up to 10¹⁸)?
 
 ---

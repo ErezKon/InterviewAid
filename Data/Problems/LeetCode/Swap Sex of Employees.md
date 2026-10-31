@@ -77,10 +77,10 @@ FUNCTION swapSex():
 - **Time:** O(n) – the database scans each row once.
 - **Space:** O(1) – no additional storage beyond the table itself.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you perform the swap if the table also contained other gender values (e.g., `'non-binary'`)?
 2. Can you write the query to return the rows that were changed?
 3. How would you ensure the operation is atomic in a concurrent environment?
 
 ## Key Takeaway
-A `CASE` expression inside an `UPDATE` statement provides a concise, set‑based way to toggle column values across an entire table.
+A `CASE` expression inside an `UPDATE` statement provides a concise, set-based way to toggle column values across an entire table.

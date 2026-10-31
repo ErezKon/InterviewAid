@@ -47,7 +47,7 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 ```
 
 ## Approach
-Perform a depth‑first traversal, carrying the number formed so far. At each node, update `currentNum = currentNum * 10 + node.val`. When a leaf is reached, add `currentNum` to the total.
+Perform a depth-first traversal, carrying the number formed so far. At each node, update `currentNum = currentNum * 10 + node.val`. When a leaf is reached, add `currentNum` to the total.
 
 ```text
 FUNCTION sumRootToLeaf(root):
@@ -68,8 +68,8 @@ For tree `[4,9,0,5,1]`:
 |------|------------|
 | 4 (root) | 4 |
 | 9 (left) | 49 |
-| 5 (left‑left leaf) | 495 → add 495 |
-| 1 (left‑right leaf) | 491 → add 491 |
+| 5 (left-left leaf) | 495 → add 495 |
+| 1 (left-right leaf) | 491 → add 491 |
 | 0 (right leaf) | 40 → add 40 |
 Total = 495 + 491 + 40 = 1026.
 
@@ -78,8 +78,8 @@ Time: `O(n)` – each node visited once. Space: `O(h)` recursion stack, where `h
 
 ## Follow-Up Questions
 1. How would you solve it iteratively using a stack?
-2. Can you modify the algorithm to return the maximum root‑to‑leaf number instead of the sum?
+2. Can you modify the algorithm to return the maximum root-to-leaf number instead of the sum?
 3. What changes are needed if nodes can contain multiple digits?
 
 ## Key Takeaway
-A simple DFS that propagates the accumulated number yields the sum of all root‑to‑leaf values in linear time.
+A simple DFS that propagates the accumulated number yields the sum of all root-to-leaf values in linear time.

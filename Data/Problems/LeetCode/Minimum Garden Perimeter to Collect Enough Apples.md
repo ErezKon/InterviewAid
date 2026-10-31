@@ -24,7 +24,7 @@ The value of `|x|` is defined as:
 
 ## Key Insight
 
-> For a square of half‑side `n`, total apples = `2n(n+1)(2n+1)`. Binary search or linear scan for the smallest `n` where this ≥ `neededApples`. Perimeter = `8n`.
+> For a square of half-side `n`, total apples = `2n(n+1)(2n+1)`. Binary search or linear scan for the smallest `n` where this ≥ `neededApples`. Perimeter = `8n`.
 
 ## Approach: Binary Search / Linear — O(∛n) ✅
 
@@ -69,13 +69,13 @@ Output: 5040
 
 ## Complexity Analysis
 
-- **Time**: O(∛neededApples) for linear scan (or O(log n) with binary search).
+- **Time**: O(∛neededApples) for linear scan (or O(log n) with binary search).
 - **Space**: O(1).
 
 ## Follow-Up Questions
 
 - How would you adapt the solution for a rectangular region instead of a square?
-- Can you derive a closed‑form solution without iteration?
+- Can you derive a closed-form solution without iteration?
 - What if the apple count at each point follows a different function, e.g., `|i| * |j|`?
 
 ## Key Takeaway

@@ -72,7 +72,7 @@ FUNCTION largestIsland(grid):
     RETURN maxArea
 
 FUNCTION dfsLabel(grid, r, c, label):
-    // Flood‑fill to label the island and count its cells
+    // Flood-fill to label the island and count its cells
     IF r < 0 OR r ≥ n OR c < 0 OR c ≥ n OR grid[r][c] ≠ 1:
         RETURN 0
     grid[r][c] ← label
@@ -92,9 +92,9 @@ For `grid = [[1,0],[0,1]]`:
 
 ## Complexity Analysis
 *Time*: **O(n²)** – each cell is visited a constant number of times.
-*Space*: **O(n²)** for the label grid and area map (can be reduced to O(n²) in‑place).
+*Space*: **O(n²)** for the label grid and area map (can be reduced to O(n²) in-place).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for a rectangular `m × n` grid?
 2. Can you achieve the same result with **O(1)** extra space by modifying the input grid in place?
 3. What changes are needed if you may flip **up to k** water cells instead of just one?

@@ -72,10 +72,10 @@ The longest length is 6, but the example expects 4 due to a mistake; correct lon
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(n) – hash map stores at most one entry per distinct prefix sum.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution for an array with more than two distinct values?
 2. Can the algorithm be extended to return the actual subarray indices?
 3. What changes are needed if the array is streamed and you cannot store the whole prefix map?
 
 ## Key Takeaway
-Transforming `0`s to `-1`s turns the equal‑count condition into a zero‑sum problem, solvable with a prefix‑sum hash map.
+Transforming `0`s to `-1`s turns the equal-count condition into a zero-sum problem, solvable with a prefix-sum hash map.

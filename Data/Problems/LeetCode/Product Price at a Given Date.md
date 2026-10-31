@@ -57,9 +57,9 @@ Output:
 ```
 
 ## Approach
-The task is a classic “latest‑record‑as‑of‑date” problem. For each `product_id` we need the most recent `new_price` where `change_date` ≤ target date. This can be solved with a correlated subquery or window function. The provided solution uses a correlated subquery that orders rows by `change_date` descending and picks the first matching row. `COALESCE` supplies the default price when no row exists.
+The task is a classic “latest-record-as-of-date” problem. For each `product_id` we need the most recent `new_price` where `change_date` ≤ target date. This can be solved with a correlated subquery or window function. The provided solution uses a correlated subquery that orders rows by `change_date` descending and picks the first matching row. `COALESCE` supplies the default price when no row exists.
 
-### Pseudocode (SQL‑style)
+### Pseudocode (SQL-style)
 ```text
 SELECT DISTINCT product_id,
     COALESCE(
@@ -76,7 +76,7 @@ The outer query ensures every `product_id` appears once, while the inner query f
 
 ## Walkthrough
 For `product_id = 1`:
-- Inner query finds rows with dates ≤ 2019‑08‑16 → only the row dated 2019‑08‑10 (price 20).
+- Inner query finds rows with dates ≤ 2019-08-16 → only the row dated 2019-08-10 (price 20).
 - Ordering descending returns 20, which becomes the result.
 For `product_id = 3`:
 - No rows satisfy the date condition, so the inner query returns NULL.
@@ -86,7 +86,7 @@ For `product_id = 3`:
 - **Time:** `O(N log N)` in the worst case due to the correlated subquery sorting per product (or `O(N)` with proper indexing and window functions).
 - **Space:** `O(N)` for the intermediate result set.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you rewrite the query using `ROW_NUMBER()` window function for better performance?
 2. How can you adapt the solution if the target date is a parameter supplied at query time?
 3. What changes are needed if multiple price changes can occur on the same day and you must pick the highest price?

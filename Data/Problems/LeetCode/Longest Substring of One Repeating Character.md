@@ -68,8 +68,8 @@ Thus, we return [2,3].
 Consider the initial string "aaabbbbcc" and query (3, 'c'):
 | Step | Operation | Segment Tree Node Updates | Longest Run |
 |------|-----------|---------------------------|------------|
-| 0 | Build tree from characters | leaves store each char and length 1 | 4 ("bbbb") |
-| 1 | Update index 3 to 'c' | leaf at position 3 changes char, recompute ancestors | New longest run becomes 4 (still "bbbb") |
+| 0 | Build tree from characters | leaves store each char and length 1 | 4 ("bbbb") |
+| 1 | Update index 3 to 'c' | leaf at position 3 changes char, recompute ancestors | New longest run becomes 4 (still "bbbb") |
 | 2 | Query result returned as root.maxLen = 4 |
 
 ---

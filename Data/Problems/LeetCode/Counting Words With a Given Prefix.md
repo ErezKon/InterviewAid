@@ -58,10 +58,10 @@ FUNCTION prefixCount(words, pref):
 - **Time:** O(n · m) – each word is examined up to the length of the prefix.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you handle a large number of queries with different prefixes?
 - Can you improve the query time using a Trie data structure?
-- What changes are needed if the comparison should be case‑insensitive?
+- What changes are needed if the comparison should be case-insensitive?
 
 ## Key Takeaway
 A simple linear scan with a prefix check solves the problem efficiently, while a Trie can accelerate multiple prefix queries.

@@ -40,11 +40,11 @@ Example 3:
 ```
 
 ## Approach
-The bitwise AND of a set is `0` iff for every bit position there exists at least one element with that bit cleared. Therefore, we need to select the largest subset where the union of zero‑bits covers all 32 (or 64) bit positions.
+The bitwise AND of a set is `0` iff for every bit position there exists at least one element with that bit cleared. Therefore, we need to select the largest subset where the union of zero-bits covers all 32 (or 64) bit positions.
 
 A greedy strategy works:
 1. Count for each bit how many numbers have that bit set.
-2. Any number that has a unique set bit (i.e., that bit count is `1`) is **essential** for achieving a non‑zero AND; removing it may help reach `0`.
+2. Any number that has a unique set bit (i.e., that bit count is `1`) is **essential** for achieving a non-zero AND; removing it may help reach `0`.
 3. Remove all numbers that are *necessary* to keep a set bit; the remaining numbers form the maximal subset with AND `0`.
 
 Implementation steps:
@@ -83,13 +83,13 @@ For `[1,2,3]` (binary `01,10,11`):
 - No number has a uniquely set bit, so all three are kept → answer `3`.
 For `[4,5,6]` (`100,101,110`):
 - Bit2 count = 3, bit0 count = 1 (only 5), bit1 count = 2 (6 and 5).
-- Number `5` has a unique bit0, so it must be kept. After keeping `5`, the AND of any larger subset still has bit0 set, preventing zero. The maximal zero‑AND subset is just `[0]` if present, otherwise size `1`.
+- Number `5` has a unique bit0, so it must be kept. After keeping `5`, the AND of any larger subset still has bit0 set, preventing zero. The maximal zero-AND subset is just `[0]` if present, otherwise size `1`.
 
 ## Complexity Analysis
 *Time*: **O(n·B)** where `B` is the number of bits (constant 32/64). → effectively **O(n)**.
 *Space*: **O(B)** for the bit counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if numbers are up to `10^9` (still 32 bits) but you need to output the actual subset?
 2. Can you extend the approach to achieve a target AND value `k` instead of `0`?
 3. What is the complexity if the array length is up to `10^5` and you must handle updates (add/remove numbers) dynamically?

@@ -42,7 +42,7 @@ Explanation: This is the base case.
 ```
 
 ## Approach
-Iteratively build each term using run‑length encoding of the previous term.
+Iteratively build each term using run-length encoding of the previous term.
 
 ```text
 FUNCTION countAndSay(n):
@@ -77,7 +77,7 @@ For `n = 4`:
 ## Follow-Up Questions
 1. How would you generate the sequence using recursion?
 2. Can you compute the term without constructing all previous terms?
-3. What is the length growth rate of the `n`‑th term?
+3. What is the length growth rate of the `n`-th term?
 
 ## Key Takeaway
-The count‑and‑say sequence is built by repeatedly applying run‑length encoding to the previous term.
+The count-and-say sequence is built by repeatedly applying run-length encoding to the previous term.

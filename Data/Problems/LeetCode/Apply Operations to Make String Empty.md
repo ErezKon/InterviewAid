@@ -92,7 +92,7 @@ Example 2:
 | 1st removal (a,b,c) | `a` | removed one `a`, `b`, `c` |
 | 2nd removal (a) | `` (empty) | removed remaining `a` |
 
-The string just before it became empty was `a`. However, because we track the last occurrence of the max‑frequency character, the final non‑empty state is `ac` as shown in the example.
+The string just before it became empty was `a`. However, because we track the last occurrence of the max-frequency character, the final non-empty state is `ac` as shown in the example.
 
 ---
 

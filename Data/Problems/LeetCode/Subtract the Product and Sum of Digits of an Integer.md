@@ -56,16 +56,16 @@ For `n = 4421`:
 2. digit 2 → product=2, sum=3
 3. digit 4 → product=8, sum=7
 4. digit 4 → product=32, sum=11
-Return `32‑11 = 21`.
+Return `32-11 = 21`.
 
 ## Complexity Analysis
 *Time*: O(k) where k is the number of digits in `n`.
 *Space*: O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would you handle very large integers that do not fit in standard numeric types?
 * Can you compute the result without using multiplication (e.g., using addition only)?
 * What if the digits are provided as a string instead of an integer?
 
 ## Key Takeaway
-Iterating over each digit once and maintaining running product and sum yields a simple O(number‑of‑digits) solution.
+Iterating over each digit once and maintaining running product and sum yields a simple O(number-of-digits) solution.

@@ -97,7 +97,7 @@ Result matrix matches the example.
 - **Time:** O(n) where n is the length of `colsum`.
 - **Space:** O(n) for the two output rows.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return all possible matrices instead of just one?
 2. What changes are needed if the matrix can have more than two rows?
 3. Can the solution be adapted for a streaming `colsum` where the array is not fully known in advance?

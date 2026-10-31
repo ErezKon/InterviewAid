@@ -73,7 +73,7 @@ Take "YazaAay". The set of characters is {Y,a,z,A,y}. At index 0, 'Y' has no mat
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you solve the problem iteratively in O(n) time?
 - Can the approach be adapted to return all nice substrings of maximum length?

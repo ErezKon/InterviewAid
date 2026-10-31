@@ -70,10 +70,10 @@ The set provides O(1) lookup for previously seen values.
 - **Time:** O(n) where n is the length of `nums`.
 - **Space:** O(n) in the worst case for the `seen` set.
 
-## Follow‑Up Questions
-1. How would you solve the problem if the array is read‑only and you cannot use extra space?
+## Follow-Up Questions
+1. How would you solve the problem if the array is read-only and you cannot use extra space?
 2. What if more than two numbers could be duplicated; how would you modify the algorithm?
-3. Can you find the duplicates in a single pass without using a hash set, e.g., by modifying the array in‑place?
+3. Can you find the duplicates in a single pass without using a hash set, e.g., by modifying the array in-place?
 
 ## Key Takeaway
-A hash set enables constant‑time detection of previously seen elements, making it trivial to collect the two duplicated numbers.
+A hash set enables constant-time detection of previously seen elements, making it trivial to collect the two duplicated numbers.

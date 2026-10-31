@@ -73,7 +73,7 @@ Example 1:
 
 ## Walkthrough
 
-1. **Self‑join** the table: `e` represents each employee, `m` represents their manager.
+1. **Self-join** the table: `e` represents each employee, `m` represents their manager.
 2. **Match** rows where `e.managerId = m.id`.
 3. **Filter** rows where `e.salary > m.salary`.
 4. **Select** the employee name from the filtered rows.
@@ -84,11 +84,11 @@ The join pairs each employee with their manager, and the `WHERE` clause keeps on
 
 ## Complexity Analysis
 
-- **Time:** O(N) – a single self‑join scans the table once.
+- **Time:** O(N) – a single self-join scans the table once.
 - **Space:** O(N) – additional space for the join result.
 
 ---
 
 ## Key Takeaway
 
-> **Self‑join is the SQL pattern for comparing rows within the same table. Join employee to manager via the foreign key, then apply the comparison in WHERE.**
+> **Self-join is the SQL pattern for comparing rows within the same table. Join employee to manager via the foreign key, then apply the comparison in WHERE.**

@@ -99,7 +99,7 @@ Example 2:
 
 1. Query `(1,2)`: `ballColor={1→2}`, `colorCount={2→1}`, `distinct=1` → output `1`.
 2. Query `(2,3)`: add new ball, `colorCount={2→1,3→1}`, `distinct=2` → output `2`.
-3. Query `(1,3)`: ball 1 changes from 2 to 3. Decrement `colorCount[2]` to 0 → `distinct` decreases to `1`, then increment `colorCount[3]` to 2 → `distinct` increases back to `2`. Output `2`.
+3. Query `(1,3)`: ball 1 changes from 2 to 3. Decrement `colorCount[2]` to 0 → `distinct` decreases to `1`, then increment `colorCount[3]` to 2 → `distinct` increases back to `2`. Output `2`.
 
 ---
 
@@ -115,7 +115,7 @@ Example 2:
 ## 7. Follow-Up Questions
 
 1. How would you modify the solution to support removal of balls?
-2. Can the approach be extended to handle range queries asking for distinct colors in a sub‑range of ball IDs?
+2. Can the approach be extended to handle range queries asking for distinct colors in a sub-range of ball IDs?
 3. What if the number of possible colors is extremely large—how would you keep memory usage low?
 
 ---

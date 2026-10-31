@@ -64,7 +64,7 @@ The algorithm captures both repeated substrings.
 
 ## Complexity Analysis
 - **Time:** O(n) where n is the length of the string, each window processed once.
-- **Space:** O(n) for the `seen` set (worst‑case each 10‑letter window is unique).
+- **Space:** O(n) for the `seen` set (worst-case each 10-letter window is unique).
 
 ## Follow-Up Questions
 1. How would you modify the solution to handle substrings of length *k* instead of 10?
@@ -72,4 +72,4 @@ The algorithm captures both repeated substrings.
 3. How would you output the substrings in lexicographic order?
 
 ## Key Takeaway
-A fixed‑size sliding window combined with a hash set efficiently finds repeated substrings in linear time.
+A fixed-size sliding window combined with a hash set efficiently finds repeated substrings in linear time.

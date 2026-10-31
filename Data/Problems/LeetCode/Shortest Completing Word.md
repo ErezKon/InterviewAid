@@ -89,13 +89,13 @@ Example 2:
 
 ## Complexity Analysis
 
-- **Time:** O(L + W × K) where *L* is length of the license plate, *W* is number of words, and *K* is average word length (building frequency maps).
+- **Time:** O(L + W × K) where *L* is length of the license plate, *W* is number of words, and *K* is average word length (building frequency maps).
 - **Space:** O(26) for the two frequency maps (constant space).
 
 ## Follow-Up Questions
 
 1. How would you adapt the solution if the list of words were streamed and could not be stored entirely in memory?
-2. Can the algorithm be optimized using a pre‑processed index of words by their letter frequencies?
+2. Can the algorithm be optimized using a pre-processed index of words by their letter frequencies?
 3. What changes are needed if the license plate may contain Unicode letters beyond the basic Latin alphabet?
 
 ## Key Takeaway

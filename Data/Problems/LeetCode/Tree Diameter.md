@@ -39,7 +39,7 @@ Explanation: The longest path of the tree is the path 3 - 2 - 1 - 4 - 5.
 ```
 
 ## Approach
-Perform two breadth‑first searches (BFS). First BFS from any node finds the farthest node `A`. A second BFS starting from `A` finds the farthest node `B` and the distance between `A` and `B`, which is the diameter.
+Perform two breadth-first searches (BFS). First BFS from any node finds the farthest node `A`. A second BFS starting from `A` finds the farthest node `B` and the distance between `A` and `B`, which is the diameter.
 
 ```text
 FUNCTION treeDiameter(edges):
@@ -81,10 +81,10 @@ Second BFS from node 4 yields maxDist = 4, the diameter.
 - **Time:** O(N) – each BFS visits every node once.
 - **Space:** O(N) – adjacency list and BFS queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you compute the diameter if edge weights were given?
 2. Can the algorithm be adapted to return the actual path of the diameter?
-3. How does the solution change for a rooted tree where you need the longest root‑to‑leaf path?
+3. How does the solution change for a rooted tree where you need the longest root-to-leaf path?
 
 ## Key Takeaway
 Two BFS traversals—first to locate an extreme node, second to measure the farthest distance from it—yield the tree diameter in linear time.

@@ -64,7 +64,7 @@ FUNCTION eraseOverlapIntervals(intervals):
     RETURN count
 ```
 
-The greedy choice of always keeping the interval with the earliest end maximizes the number of non‑overlapping intervals, thus minimizing removals.
+The greedy choice of always keeping the interval with the earliest end maximizes the number of non-overlapping intervals, thus minimizing removals.
 
 ---
 
@@ -86,11 +86,11 @@ Consider the input `[[1,2],[2,3],[3,4],[1,3]]`:
 
 | Time | Space |
 |------|-------|
-| O(n log n) – sorting dominates | O(1) – in‑place processing |
+| O(n log n) – sorting dominates | O(1) – in-place processing |
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 * How would you modify the algorithm to return the actual set of intervals to keep?
 * Can this be solved in O(n) time if the intervals are already sorted?
@@ -100,4 +100,4 @@ Consider the input `[[1,2],[2,3],[3,4],[1,3]]`:
 
 ## Key Takeaway
 
-> By sorting intervals by their end points and greedily selecting non‑overlapping ones, you minimize removals—mirroring the classic activity‑selection problem.
+> By sorting intervals by their end points and greedily selecting non-overlapping ones, you minimize removals—mirroring the classic activity-selection problem.

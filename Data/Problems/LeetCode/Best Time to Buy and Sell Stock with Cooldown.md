@@ -65,7 +65,7 @@ The final profit is `MAX(sold, rest) = 3`.
 
 ## Complexity Analysis
 - **Time:** O(n) – one pass through the price list.
-- **Space:** O(1) – only constant‑size variables.
+- **Space:** O(1) – only constant-size variables.
 
 ## Follow-Up Questions
 1. How would the algorithm change if the cooldown period were `k` days instead of 1?

@@ -44,8 +44,8 @@ Output: [2,3,6,7,1,5,4]
 ```text
 FUNCTION oddEvenList(head):
     IF head == null: RETURN null
-    odd ← head               // head of odd‑position chain
-    even ← head.next         // head of even‑position chain
+    odd ← head               // head of odd-position chain
+    even ← head.next         // head of even-position chain
     evenHead ← even          // remember start of even chain
     WHILE even != null AND even.next != null:
         odd.next ← even.next
@@ -84,7 +84,7 @@ Consider the list **1→2→3→4→5**:
 
 ## 6. Follow-Up Questions
 
-1. How would you modify the algorithm to group nodes by **even‑odd** positions instead?
+1. How would you modify the algorithm to group nodes by **even-odd** positions instead?
 2. Can you solve the problem in a single pass without using a separate `evenHead` pointer?
 3. How would you extend this to a **doubly linked list**?
 

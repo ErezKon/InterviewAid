@@ -84,7 +84,7 @@ Explanation: The startUrl links to all other pages that do not share the same ho
 ```
 
 ## Approach
-Perform a breadth‑first search (BFS) using a queue. Maintain a visited set to avoid revisiting URLs. Only enqueue URLs whose hostname matches that of `startUrl`.
+Perform a breadth-first search (BFS) using a queue. Maintain a visited set to avoid revisiting URLs. Only enqueue URLs whose hostname matches that of `startUrl`.
 
 ```text
 FUNCTION crawl(startUrl, htmlParser):
@@ -111,13 +111,13 @@ FUNCTION getHostname(url):
 | …    | …        | …                  | …                | … |
 
 ## Complexity Analysis
-- Time: O(V + E) where V is number of visited pages and E total links examined.
+- Time: O(V + E) where V is number of visited pages and E total links examined.
 - Space: O(V) for visited set and queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you limit crawling depth?
 - What if you needed to respect robots.txt rules?
 - Can you parallelize the BFS while preserving correctness?
 
 ## Key Takeaway
-A simple BFS with a visited set efficiently discovers all same‑host pages reachable from the start URL.
+A simple BFS with a visited set efficiently discovers all same-host pages reachable from the start URL.

@@ -77,10 +77,10 @@ For `[3,1,4,2]`, `p=6`:
 *Time*: **O(n)** – single pass through the array.
 *Space*: **O(n)** – hash map stores at most one entry per index.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to also return the actual subarray indices?
 2. Can the solution be adapted for circular arrays where removal may wrap around?
 3. What changes are needed if `p` can be zero?
 
 ## Key Takeaway
-Transform the problem into finding a shortest subarray whose prefix sums differ by the required remainder; a hash map of prefix‑mod values makes this O(n).
+Transform the problem into finding a shortest subarray whose prefix sums differ by the required remainder; a hash map of prefix-mod values makes this O(n).

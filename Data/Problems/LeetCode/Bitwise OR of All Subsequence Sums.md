@@ -75,7 +75,7 @@ Take `nums = [1,2,3]`.
 
 ## 6. Follow-Up Questions
 
-1. Can you derive a closed‑form answer without DP using bit‑carry properties?
+1. Can you derive a closed-form answer without DP using bit-carry properties?
 2. How would the solution change if numbers could be negative?
 3. What if you needed the **count** of distinct subsequence sums instead of their OR?
 

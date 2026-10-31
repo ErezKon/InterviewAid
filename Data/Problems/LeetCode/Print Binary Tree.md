@@ -79,16 +79,16 @@ Consider the tree `[1,2,3,null,4]`.
 | 2 | 1 | 0 | 2 | 1 | 2 |
 | 3 | 1 | 4 | 6 | 5 | 3 |
 | 4 | 2 | 2 | 2 | 2 | 4 |
-The matrix built from these placements matches the output shown in Example 1.
+The matrix built from these placements matches the output shown in Example 1.
 
 ## Complexity Analysis
 - **Time:** `O(N)` – each node is visited once during height computation and once during filling.
 - **Space:** `O(N)` – the result matrix holds `rows × cols = O(N)` strings; recursion stack depth is `O(height)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to print the tree in a compact format without empty columns?
 2. Can you output the layout using BFS instead of recursion?
 3. How would you handle very deep trees where the matrix size becomes prohibitive?
 
 ## Key Takeaway
-Use the tree height to determine a fixed matrix size, then recursively place each node at the midpoint of its allocated column range to achieve a clean 2‑D representation.
+Use the tree height to determine a fixed matrix size, then recursively place each node at the midpoint of its allocated column range to achieve a clean 2-D representation.

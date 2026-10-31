@@ -54,52 +54,54 @@ Example 2:
 ```
 
 ## Approach
-Use a sliding window to maintain a set of characters in the current substring. When a duplicate character is encountered, start a new substring and clear the set.
+Simulate the procedure directly, tracking seen segments.
+- Grow `cur` one character at a time. As soon as `cur` is not in `seen`, emit it, add it to `seen`, and reset `cur`.
+- A leftover `cur` at the end (already seen) is discarded, as in Example 2.
+- To avoid rebuilding/hashing strings, use a **trie**: walk one node per character from the root; if the child does not exist, create it, emit the segment, and jump back to the root. Every emitted segment is a fresh trie node, so membership checks are O(1) per character.
+- Segment lengths are bounded by about sqrt(2n), since all segments are distinct (there are few short strings).
 
 ```text
 FUNCTION partitionString(s):
-    SET count ← 0
-    SET charSet ← empty set
-
-    FOR ch IN s:
-        IF ch IN charSet:
-            // duplicate found, start new substring
-            INCREMENT count
-            CLEAR charSet
-        ENDIF
-        ADD ch TO charSet
-    ENDFOR
-
-    // account for the last substring
-    IF charSet IS NOT empty:
-        INCREMENT count
-    RETURN count
+    root ← new TrieNode
+    node ← root
+    start ← 0
+    result ← []
+    FOR i ← 0 TO LEN(s)-1:
+        ch ← s[i]
+        IF ch NOT IN node.children:
+            node.children[ch] ← new TrieNode    // marks segment as seen
+            APPEND s[start..i] TO result
+            node ← root
+            start ← i + 1
+        ELSE:
+            node ← node.children[ch]           // segment already seen, extend
+    RETURN result                              // trailing seen segment dropped
 ```
 
 ## Walkthrough
-Consider `s = "abacaba"`.
+Example 1: `s = "abbccccd"`.
 
-| Index | ch | charSet before | Duplicate? | Action |
-|-------|----|----------------|------------|--------|
-| 0 | a | {} | No | add a → {a}
-| 1 | b | {a} | No | add b → {a,b}
-| 2 | a | {a,b} | Yes | count=1, clear, add a → {a}
-| 3 | c | {a} | No | add c → {a,c}
-| 4 | a | {a,c} | Yes | count=2, clear, add a → {a}
-| 5 | b | {a} | No | add b → {a,b}
-| 6 | a | {a,b} | Yes | count=3, clear, add a → {a}
-| End | – | {a} | – | count=4 (final increment) |
+| i | ch | Current segment | Seen? | Action | Result |
+|---|----|-----------------|-------|--------|--------|
+| 0 | a | "a" | No | emit, reset | ["a"] |
+| 1 | b | "b" | No | emit, reset | ["a","b"] |
+| 2 | b | "b" | Yes | extend | ["a","b"] |
+| 3 | c | "bc" | No | emit, reset | ["a","b","bc"] |
+| 4 | c | "c" | No | emit, reset | ["a","b","bc","c"] |
+| 5 | c | "c" | Yes | extend | ["a","b","bc","c"] |
+| 6 | c | "cc" | No | emit, reset | ["a","b","bc","c","cc"] |
+| 7 | d | "d" | No | emit, reset | ["a","b","bc","c","cc","d"] |
 
-Result: 4 substrings.
+Result: `["a","b","bc","c","cc","d"]`. (In Example 2, `"aaaa"` ends with an already-seen `"a"`, which is dropped.)
 
 ## Complexity Analysis
-- **Time:** O(n) – each character processed once.
-- **Space:** O(min(n, alphabet)) – the set holds at most the size of the character set (e.g., 26 for lowercase letters).
+- **Time:** O(n) with the trie (one step per character); O(n * sqrt(n)) with a hash set of strings.
+- **Space:** O(n) - at most one trie node per character.
 
-## Follow‑Up Questions
-1. How would the solution change if the string could contain Unicode characters?
-2. Can you modify the algorithm to also return the actual substrings, not just the count?
-3. What if the constraint was to limit each substring to at most `k` distinct characters?
+## Follow-Up Questions
+1. Why are segment lengths bounded by O(sqrt(n))?
+2. How would you return only the number of segments, using O(1) extra memory beyond the trie?
+3. What if a segment must also not be a prefix of any previously seen segment?
 
 ## Key Takeaway
-A sliding‑window with a character set lets you greedily start a new substring whenever a duplicate appears, yielding the minimal partition count.
+When a process asks "has this growing string been seen?", a trie turns each extension into an O(1) child lookup instead of rehashing the whole string.

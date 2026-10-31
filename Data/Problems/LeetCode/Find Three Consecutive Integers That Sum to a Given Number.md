@@ -31,7 +31,7 @@ Example 2:
 ```
 
 ## Approach
-The sum of three consecutive integers starting at `x` is `3x + 3`. Solve `3x + 3 = num` → `x = (num - 3) / 3`. The triple exists if `(num - 3)` is divisible by `3` and the resulting `x` is an integer (which it will be) and non‑negative (if required).
+The sum of three consecutive integers starting at `x` is `3x + 3`. Solve `3x + 3 = num` → `x = (num - 3) / 3`. The triple exists if `(num - 3)` is divisible by `3` and the resulting `x` is an integer (which it will be) and non-negative (if required).
 
 ```text
 FUNCTION hasThreeConsecutiveSum(num):
@@ -55,10 +55,10 @@ For `num = 10`:
 - **Time:** O(1) – constant arithmetic.
 - **Space:** O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle negative numbers or allow negative starting integers?
 2. Extend to `k` consecutive integers – what is the general formula?
 3. Can you find the actual triple values, not just existence?
 
 ## Key Takeaway
-The sum of three consecutive integers forms an arithmetic progression with a simple closed‑form, allowing a constant‑time divisibility check.
+The sum of three consecutive integers forms an arithmetic progression with a simple closed-form, allowing a constant-time divisibility check.

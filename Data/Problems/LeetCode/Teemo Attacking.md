@@ -62,9 +62,9 @@ Result = 4 seconds.
 - Time: O(n) where n is the number of attacks.
 - Space: O(1) – only a few scalar variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle overlapping intervals if attacks could be unsorted?
-2. Can you compute the poisoned time using a sweep‑line approach?
+2. Can you compute the poisoned time using a sweep-line approach?
 3. What changes are needed if each attack has a different duration?
 
 ## Key Takeaway

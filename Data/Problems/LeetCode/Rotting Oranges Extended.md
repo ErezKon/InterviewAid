@@ -8,19 +8,19 @@ Related: #994, #542, #286, #1162
 
 > *Note: companion pattern file (not an official LeetCode problem) — see [Rotting Oranges.md](Rotting%20Oranges.md) for the official statement and constraints of #994.*
 
-Given a 2D grid of cells where `0` represents an empty cell, `1` a fresh orange, and `2` a rotten orange, each minute all fresh oranges adjacent (4‑directionally) to a rotten orange become rotten. Return the minimum number of minutes required until no fresh orange remains. If it is impossible, return `-1`.
+Given a 2D grid of cells where `0` represents an empty cell, `1` a fresh orange, and `2` a rotten orange, each minute all fresh oranges adjacent (4-directionally) to a rotten orange become rotten. Return the minimum number of minutes required until no fresh orange remains. If it is impossible, return `-1`.
 
 ## Examples
 | Grid | Output | Explanation |
 |------|--------|-------------|
 | `[[2,1,1],[1,1,0],[0,1,1]]` | `4` | Rot spreads from the initial rotten orange to all fresh ones in 4 minutes. |
-| `[[2,1,1],[0,1,1],[1,0,1]]` | `-1` | The fresh orange at bottom‑right can never be reached. |
+| `[[2,1,1],[0,1,1],[1,0,1]]` | `-1` | The fresh orange at bottom-right can never be reached. |
 
 ## Approach
-**Algorithm:** Multi‑Source Breadth‑First Search (BFS)
+**Algorithm:** Multi-Source Breadth-First Search (BFS)
 
 1. Enqueue all initially rotten oranges as BFS sources.
-2. Perform level‑order traversal, expanding to adjacent fresh oranges.
+2. Perform level-order traversal, expanding to adjacent fresh oranges.
 3. Count levels (minutes) until no fresh orange remains.
 4. If any fresh orange is left after BFS, return `-1`.
 
@@ -70,13 +70,13 @@ Consider the first example grid.
 The BFS processes cells level by level, matching the minute count.
 
 ## Complexity Analysis
-- **Time:** O(m × n) – each cell is visited at most once.
-- **Space:** O(m × n) in the worst case for the queue.
+- **Time:** O(m × n) – each cell is visited at most once.
+- **Space:** O(m × n) in the worst case for the queue.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the coordinates of the last orange that rots?
 2. What changes are needed if oranges can also spread diagonally?
-3. Can you solve the problem using Union‑Find instead of BFS?
+3. Can you solve the problem using Union-Find instead of BFS?
 
 ## Key Takeaway
-Multi‑source BFS treats all initial rotten oranges as simultaneous sources, allowing the minute count to be captured by BFS levels.
+Multi-source BFS treats all initial rotten oranges as simultaneous sources, allowing the minute count to be captured by BFS levels.

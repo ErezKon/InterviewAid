@@ -35,13 +35,13 @@ Example 2:
 ```
 
 ## Approach
-Use dynamic programming with pre‑computed median costs. The optimal mailbox for a contiguous segment of houses is at the median house, giving minimal sum of absolute distances.
+Use dynamic programming with pre-computed median costs. The optimal mailbox for a contiguous segment of houses is at the median house, giving minimal sum of absolute distances.
 
 ```text
 FUNCTION minDistance(houses, k):
     SORT houses
     n ← LEN(houses)
-    // Pre‑compute cost[i][j] = distance sum for houses[i..j] with one mailbox at median
+    // Pre-compute cost[i][j] = distance sum for houses[i..j] with one mailbox at median
     FOR i ← 0 TO n-1:
         FOR j ← i TO n-1:
             median ← (i + j) // 2
@@ -65,13 +65,13 @@ Consider `houses = [1,4,8,10,20]`, `k = 3`.
 4. Continue until `dp[4][3]` yields 5.
 
 ## Complexity Analysis
-- **Time:** O(n²·k) for DP (pre‑computing costs O(n²) and DP triple loop).
+- **Time:** O(n²·k) for DP (pre-computing costs O(n²) and DP triple loop).
 - **Space:** O(n²) for cost matrix and O(n·k) for DP table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can the solution be optimized to O(n·k) using prefix sums?
-2. What changes if mailboxes can be placed at non‑integer positions?
+2. What changes if mailboxes can be placed at non-integer positions?
 3. How to handle very large `n` (e.g., 10⁵) with limited memory?
 
 ## Key Takeaway
-Transform the problem into DP over sorted houses, using median‑based segment costs to achieve the minimal total distance.
+Transform the problem into DP over sorted houses, using median-based segment costs to achieve the minimal total distance.

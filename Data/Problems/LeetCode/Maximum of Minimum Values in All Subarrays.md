@@ -108,7 +108,7 @@ For `arr = [1,3,2,4]`:
 - **Time:** `O(n)` – two passes with a monotonic stack.
 - **Space:** `O(n)` for the `left`, `right` arrays and the stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to return the subarray(s) that achieve the maximum minimum?
 2. Can the method be extended to compute the maximum of *maximum* values of all subarrays?
 3. What changes are needed if the array contains negative numbers and you need the maximum absolute minimum?

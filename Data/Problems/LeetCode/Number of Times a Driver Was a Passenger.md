@@ -90,7 +90,7 @@ GROUP BY r1.driver_id;
 
 ## 4. Walkthrough
 
-1. **Self‑join** the `Rides` table: match each driver (`r1.driver_id`) with rides where they appear as a passenger (`r2.passenger_id`).
+1. **Self-join** the `Rides` table: match each driver (`r1.driver_id`) with rides where they appear as a passenger (`r2.passenger_id`).
 2. Use `LEFT JOIN` to keep drivers who never rode as passengers (count will be 0).
 3. `GROUP BY` the driver to aggregate the number of matching rides.
 4. The `COUNT(r2.ride_id)` gives the total times the driver was a passenger.
@@ -116,4 +116,4 @@ GROUP BY r1.driver_id;
 
 ## 7. Key Takeaway
 
-> **Self‑join:** drivers who are also passengers. LEFT JOIN on `driver_id = passenger_id`, then group and count.
+> **Self-join:** drivers who are also passengers. LEFT JOIN on `driver_id = passenger_id`, then group and count.

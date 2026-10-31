@@ -71,13 +71,13 @@ Consider `arr = [1,3,4,1,5]` (n=5).
    - No better option, final `dp[0][4]=3` after considering optimal splits, matching the example.
 
 ## Complexity Analysis
-- **Time:** O(n³) due to the three‑nested loops over interval length, start index, and matching position `k`.
+- **Time:** O(n³) due to the three-nested loops over interval length, start index, and matching position `k`.
 - **Space:** O(n²) for the DP table.
 
 ## Follow-Up Questions
 1. Can the time be improved using memoization with pruning of matching indices?
-2. How would the solution change if you could remove any palindrome subsequence (non‑contiguous) instead of subarray?
+2. How would the solution change if you could remove any palindrome subsequence (non-contiguous) instead of subarray?
 3. What if each removal operation incurs a cost equal to the length of the removed palindrome?
 
 ## Key Takeaway
-Interval DP that merges equal‑value endpoints after clearing the middle yields the optimal minimum‑operation count for palindrome removal.
+Interval DP that merges equal-value endpoints after clearing the middle yields the optimal minimum-operation count for palindrome removal.

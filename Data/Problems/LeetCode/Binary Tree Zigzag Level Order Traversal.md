@@ -99,7 +99,7 @@ Consider the tree `[3,9,20,null,null,15,7]`.
 
 ## 6. Follow-Up Questions
 
-1. How would you modify the algorithm to return a spiral order (right‑to‑left then left‑to‑right) without reversing lists?
+1. How would you modify the algorithm to return a spiral order (right-to-left then left-to-right) without reversing lists?
 2. Can you solve it using a deque to avoid the explicit reversal step?
 3. How would you handle very deep trees where recursion depth is a concern?
 

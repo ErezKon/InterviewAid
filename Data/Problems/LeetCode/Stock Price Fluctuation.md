@@ -99,13 +99,13 @@ CLASS StockPrice:
 ```
 
 ## Complexity Analysis
-- **Time:** O(log n) per `update`, O(1) for `current`, O(log n) for `maximum`/`minimum` (multiset operations).
+- **Time:** O(log n) per `update`, O(1) for `current`, O(log n) for `maximum`/`minimum` (multiset operations).
 - **Space:** O(n) to store all timestamps and prices.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you implement `prices` using two heaps with lazy deletion instead of a multiset?
 2. Can you support `average()` price queries over a time window efficiently?
 3. How would the design change if timestamps arrived out of order and you needed to query the price at any given timestamp?
 
 ## Key Takeaway
-Combining a hash map for direct timestamp updates with a balanced multiset (or two heaps) enables O(log n) retrieval of global max/min while handling overwrites gracefully.
+Combining a hash map for direct timestamp updates with a balanced multiset (or two heaps) enables O(log n) retrieval of global max/min while handling overwrites gracefully.

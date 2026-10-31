@@ -69,7 +69,7 @@ Example 3:
 
 ## 3. Approach
 
-**Algorithm:** Brute‑Force Search
+**Algorithm:** Brute-Force Search
 
 ```text
 FUNCTION nextBalancedNumber(n):
@@ -117,7 +117,7 @@ The loop stops after a few hundred increments because the gap between balanced n
 
 ## 6. Follow-Up Questions
 
-- How would you pre‑compute all balanced numbers up to `10⁶` and answer queries in O(1)?
+- How would you pre-compute all balanced numbers up to `10⁶` and answer queries in O(1)?
 - Can the algorithm be adapted for larger ranges, e.g., `n ≤ 10¹⁸`?
 - What modifications are needed if the definition changes to “digit `d` appears at most `d` times”?
 
@@ -125,4 +125,4 @@ The loop stops after a few hundred increments because the gap between balanced n
 
 ## 7. Key Takeaway
 
-> Brute‑force works because numerically balanced numbers are extremely sparse; the next one is never far away for `n ≤ 10⁶`.
+> Brute-force works because numerically balanced numbers are extremely sparse; the next one is never far away for `n ≤ 10⁶`.

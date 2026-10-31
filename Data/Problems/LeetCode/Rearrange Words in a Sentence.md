@@ -82,4 +82,4 @@ FUNCTION rearrangeSentence(s):
 3. How to handle punctuation attached to words?
 
 ## Key Takeaway
-Sort the words by length after normalizing case, then re‑capitalize the first word to form the final sentence.
+Sort the words by length after normalizing case, then re-capitalize the first word to form the final sentence.

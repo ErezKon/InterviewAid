@@ -58,7 +58,7 @@ Example 3:
 Classify mismatched positions into two types:
 - Type A: `nums1[i] > nums2[i]`
 - Type B: `nums1[i] < nums2[i]`
-Pairs of opposite types can be resolved with a same‑position swap (cost 1). After pairing as many as possible, any remaining mismatches must be fixed with cross‑position swaps (cost 2 each).
+Pairs of opposite types can be resolved with a same-position swap (cost 1). After pairing as many as possible, any remaining mismatches must be fixed with cross-position swaps (cost 2 each).
 
 ```text
 FUNCTION minCostSwaps(nums1, nums2):
@@ -68,8 +68,8 @@ FUNCTION minCostSwaps(nums1, nums2):
         IF nums1[i] = nums2[i] THEN CONTINUE
         IF nums1[i] > nums2[i] THEN typeA ← typeA + 1
         ELSE typeB ← typeB + 1
-    pairs ← MIN(typeA, typeB)          // same‑position swaps
-    remaining ← ABS(typeA - typeB)      // need cross‑position swaps
+    pairs ← MIN(typeA, typeB)          // same-position swaps
+    remaining ← ABS(typeA - typeB)      // need cross-position swaps
     RETURN pairs * 1 + remaining * 2
 ```
 
@@ -86,10 +86,10 @@ Pairs = min(1,1)=1 → cost 1, remaining 0 → total 1.
 | Time   | O(n) – single pass over the arrays |
 | Space  | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if swapping any two elements across the two arrays (not necessarily one from each) had cost 1?
 2. Can you extend the algorithm to handle weighted swap costs that depend on the indices involved?
 3. What is the minimum cost if you are also allowed to change a value at cost 1 instead of swapping?
 
 ## Key Takeaway
-Pair opposite‑type mismatches first using cheap same‑position swaps; any leftovers require more expensive cross‑position swaps, yielding the optimal total cost.
+Pair opposite-type mismatches first using cheap same-position swaps; any leftovers require more expensive cross-position swaps, yielding the optimal total cost.

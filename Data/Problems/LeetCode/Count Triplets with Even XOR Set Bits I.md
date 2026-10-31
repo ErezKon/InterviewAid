@@ -51,7 +51,7 @@ FUNCTION countTriplets(a, b, c):
     RETURN eA*eB*eC + eA*oB*oC + oA*eB*oC + oA*oB*eC
 ```
 
-The parity‑based O(n) solution works even for the small‑constraint version, replacing the brute‑force triple loop.
+The parity-based O(n) solution works even for the small-constraint version, replacing the brute-force triple loop.
 
 ---
 
@@ -85,7 +85,7 @@ Consider `a = [1,2]`, `b = [3,4]`, `c = [5,6]`.
 
 1. How would you adapt the solution if the arrays were of different lengths?
 2. Can the approach be extended to count quadruplets with even XOR set bits?
-3. What changes are needed if the constraint on array sizes is removed and a brute‑force solution becomes infeasible?
+3. What changes are needed if the constraint on array sizes is removed and a brute-force solution becomes infeasible?
 
 ---
 

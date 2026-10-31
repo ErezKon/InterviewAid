@@ -33,7 +33,7 @@ Output: 444
 ```
 
 ## Approach
-Use a monotonic increasing stack to compute, for each element, the number of subarrays where it is the minimum. For each index `i`, find `left[i]` – distance to previous smaller element, and `right[i]` – distance to next smaller-or‑equal element. Contribution = `arr[i] * left[i] * right[i]`. Accumulate modulo `10^9+7`.
+Use a monotonic increasing stack to compute, for each element, the number of subarrays where it is the minimum. For each index `i`, find `left[i]` – distance to previous smaller element, and `right[i]` – distance to next smaller-or-equal element. Contribution = `arr[i] * left[i] * right[i]`. Accumulate modulo `10^9+7`.
 
 ### Pseudocode
 ```text
@@ -66,16 +66,16 @@ FUNCTION sumSubarrayMins(arr):
 For `arr = [3,1,2,4]`:
 - `left` = [1,2,1,1]
 - `right` = [4,1,2,1]
-Contribution: 3*1*4 + 1*2*1 + 2*1*2 + 4*1*1 = 12 + 2 + 4 + 4 = 22 → modulo gives 17 after correcting off‑by‑one handling (actual contributions yield 17).
+Contribution: 3*1*4 + 1*2*1 + 2*1*2 + 4*1*1 = 12 + 2 + 4 + 4 = 22 → modulo gives 17 after correcting off-by-one handling (actual contributions yield 17).
 
 ## Complexity Analysis
 - **Time:** `O(n)` – each element pushed/popped at most once.
-- **Space:** `O(n)` for `left`, `right`, and the stack (can be reduced to `O(1)` with on‑the‑fly computation).
+- **Space:** `O(n)` for `left`, `right`, and the stack (can be reduced to `O(1)` with on-the-fly computation).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm to compute the sum of maximums of all subarrays?
 2. Can you extend the method to handle circular arrays?
 3. What changes are needed if duplicate elements should be treated with strict inequality on both sides?
 
 ## Key Takeaway
-A monotonic stack efficiently determines the span of each element as the minimum, enabling a linear‑time aggregation of subarray minimums.
+A monotonic stack efficiently determines the span of each element as the minimum, enabling a linear-time aggregation of subarray minimums.

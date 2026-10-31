@@ -68,7 +68,7 @@ All values processed → valid.
 - **Time:** O(n) – each element is pushed and popped at most once.
 - **Space:** O(n) in the worst case for the stack (strictly decreasing sequence).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you verify a postorder traversal of a BST?
 2. Can the algorithm be adapted to handle duplicate values?
 3. What if the tree must be a balanced BST?

@@ -61,12 +61,12 @@ Result `[0,1,2,4,5,3]`.
 
 ## Complexity Analysis
 - **Time:** O(n) – one pass over the array.
-- **Space:** O(n) for the output array (in‑place modification is also possible).
+- **Space:** O(n) for the output array (in-place modification is also possible).
 
-## Follow‑Up Questions
-1. How would you solve the problem **in‑place** without using extra O(n) space?
+## Follow-Up Questions
+1. How would you solve the problem **in-place** without using extra O(n) space?
 2. What if the permutation property is not guaranteed – how would you detect invalid inputs?
 3. Can you generalize the approach to compute `ans[i] = nums[nums[...nums[i]]]` k times?
 
 ## Key Takeaway
-A simple one‑pass mapping leverages the permutation property to compute the required composition directly.
+A simple one-pass mapping leverages the permutation property to compute the required composition directly.

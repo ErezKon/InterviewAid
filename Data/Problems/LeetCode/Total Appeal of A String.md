@@ -80,7 +80,7 @@ Result = 28.
 *Time*: O(n) – single pass.
 *Space*: O(1) – array of size 26.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for Unicode characters?
 2. Can you compute the total appeal for all substrings of length `k` only?
 3. What is the effect of allowing repeated characters to count multiple times?

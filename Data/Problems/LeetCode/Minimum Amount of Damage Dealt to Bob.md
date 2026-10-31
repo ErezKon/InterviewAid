@@ -82,11 +82,11 @@ FUNCTION minDamage(power, damage, health):
 
 For the first example:
 1. `turns = [3,1,2]` (ceil division).
-2. Ratios: `3/4 = 0.75`, `1/2 = 0.5`, `2/1 = 2.0`. Sorted order → enemy 1, enemy 0, enemy 2.
+2. Ratios: `3/4 = 0.75`, `1/2 = 0.5`, `2/1 = 2.0`. Sorted order → enemy 1, enemy 0, enemy 2.
 3. Start with totalDamage = 9.
-   - Kill enemy 1: result += 9*1 = 9, totalDamage = 5.
-   - Kill enemy 0: result += 5*3 = 15, totalDamage = 1.
-   - Kill enemy 2: result += 1*2 = 2.
+   - Kill enemy 1: result += 9*1 = 9, totalDamage = 5.
+   - Kill enemy 0: result += 5*3 = 15, totalDamage = 1.
+   - Kill enemy 2: result += 1*2 = 2.
    - Final result = 26 (example numbers illustrate the process).
 ---
 
@@ -97,7 +97,7 @@ For the first example:
 | Greedy sort | O(n log n) | O(n) |
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the strategy change if enemies could be attacked in parallel by multiple heroes?
 2. Can you prove the greedy order is optimal using an exchange argument?

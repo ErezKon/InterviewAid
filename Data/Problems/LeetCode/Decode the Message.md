@@ -82,18 +82,18 @@ FUNCTION decodeMessage(key, message):
 | Aspect | Value |
 |---|---|
 | **Time** | O(n + m) |
-| **Space** | O(1) — 26‑char mapping |
+| **Space** | O(1) — 26-char mapping |
 
 ---
 
 ## Follow-Up Questions
 
-1. How would you modify the algorithm if the key could contain uppercase letters and you need case‑preserving decoding?
+1. How would you modify the algorithm if the key could contain uppercase letters and you need case-preserving decoding?
 2. Can the mapping be built in a single pass without storing the entire `key` string?
-3. How would you handle non‑alphabetic characters that should also be mapped uniquely?
+3. How would you handle non-alphabetic characters that should also be mapped uniquely?
 
 ---
 
 ## Key Takeaway
 
-> **Substitution cipher: build mapping from first‑occurrence order in the key, then translate each character. Spaces and non‑letters pass through unchanged.**
+> **Substitution cipher: build mapping from first-occurrence order in the key, then translate each character. Spaces and non-letters pass through unchanged.**

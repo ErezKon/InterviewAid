@@ -61,7 +61,7 @@ FUNCTION longestCommonPrefix(strs):
 
 ## Follow-Up Questions
 1. How would you adapt the solution for a large dataset that cannot fit in memory?
-2. Can you solve the problem using a Trie data structure and what would be the trade‑offs?
+2. Can you solve the problem using a Trie data structure and what would be the trade-offs?
 3. How would you modify the algorithm to find the longest common suffix instead?
 
 ## Key Takeaway

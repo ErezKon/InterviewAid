@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below ignore the monotonicity requirement. Correct idea: prefix sums plus `inc[i]` (is `nums[0..i]` strictly increasing) and `dec[i]` (is `nums[i..n-1]` strictly decreasing); consider only cuts `i` with `inc[i] && dec[i+1]`, minimising `|s[i] − (total − s[i])|`; return `-1` if none. O(n).*
-
 You are given an integer array `nums`.
 
 Split the array into **exactly** two subarrays, `left` and `right`, such that `left` is **strictly increasing** and `right` is **strictly decreasing**.
@@ -55,40 +53,48 @@ Explanation: No valid split exists, so the answer is -1.
 ```
 
 ## Approach
-Compute prefix sums while iterating once. At each split point `i` (1 ≤ i < n), the left sum is `prefix[i]` and the right sum is `total - prefix[i]`. Track the minimum absolute difference.
+A cut after index `i` (left = `nums[0..i]`, right = `nums[i+1..n-1]`) is valid only if the prefix is strictly increasing and the suffix is strictly decreasing. Precompute:
+
+- `inc[i]` — `nums[0..i]` is strictly increasing (`inc[i] = inc[i-1] AND nums[i] > nums[i-1]`).
+- `dec[i]` — `nums[i..n-1]` is strictly decreasing (`dec[i] = dec[i+1] AND nums[i] > nums[i+1]`).
+
+Then scan cuts with a running prefix sum `s`; for each valid cut the difference is `|s - (total - s)|`. Keep the minimum, or `-1` if no cut is valid.
 
 ```text
-FUNCTION minimumDifference(nums):
-    SET total ← SUM of all elements in nums
-    SET prefix ← 0
-    SET minDiff ← INFINITY
-    FOR i ← 0 TO LENGTH(nums) - 2:   // cannot split after last element
-        SET prefix ← prefix + nums[i]
-        SET diff ← ABS(prefix - (total - prefix))
-        IF diff < minDiff:
-            SET minDiff ← diff
-    RETURN minDiff
+FUNCTION splitArray(nums):
+    n ← LENGTH(nums)
+    inc[0] ← true
+    FOR i ← 1 TO n-1: inc[i] ← inc[i-1] AND nums[i] > nums[i-1]
+    dec[n-1] ← true
+    FOR i ← n-2 DOWNTO 0: dec[i] ← dec[i+1] AND nums[i] > nums[i+1]
+    total ← SUM(nums); s ← 0; best ← -1
+    FOR i ← 0 TO n-2:
+        s ← s + nums[i]
+        IF inc[i] AND dec[i+1]:
+            d ← ABS(2*s - total)
+            IF best == -1 OR d < best: best ← d
+    RETURN best
 ```
 
 ## Walkthrough
-For `nums = [2, -1, 0, 4, -2, 3]`:
-| i | prefix | right sum | diff |
-|---|--------|-----------|------|
-|0|2|6|4|
-|1|1|7|6|
-|2|1|7|6|
-|3|5|3|2|
-|4|3|5|2|
-Minimum diff becomes `1` at split after index 3.
+Example 2: `nums = [1,2,4,3]`, `total = 10`. `inc = [T,T,T,F]`, `dec = [F,F,T,T]`.
+
+| i | prefix s | inc[i] | dec[i+1] | valid | diff = abs(2s − 10) | best |
+|---|----------|--------|----------|-------|------------------|------|
+| 0 | 1 | T | F | No  | - | -1 |
+| 1 | 3 | T | T | Yes | 4 | 4 |
+| 2 | 7 | T | T | Yes | 4 | 4 |
+
+Output: `4`.
 
 ## Complexity Analysis
-- **Time:** Single pass `O(n)`.
-- **Space:** `O(1)` extra space.
+- **Time:** O(n) — two passes to build `inc`/`dec` and one scan over cuts.
+- **Space:** O(n) for the two boolean arrays (can be reduced to O(1) by noting valid cuts form a contiguous range around the peak).
 
-## Follow‑Up Questions
-1. How would you handle the case where the subarrays must have equal length?
-2. Can the algorithm be extended to minimize the maximum sum of the two parts instead of the difference?
-3. What if the array is circular and the split can wrap around?
+## Follow-Up Questions
+1. Since valid cuts can only lie next to the array's maximum (the peak), how can you solve it with O(1) extra space?
+2. How would the answer change if "strictly" were relaxed to "non-strictly" monotone?
+3. What if the array could be split into `left` increasing, `middle` arbitrary, and `right` decreasing?
 
 ## Key Takeaway
-A single linear scan with running prefix sums yields the optimal split for minimizing the absolute difference between two parts.
+Precompute prefix-increasing and suffix-decreasing flags so each cut's validity is O(1); combined with a running prefix sum, the best valid split is found in a single linear scan.

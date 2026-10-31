@@ -71,7 +71,7 @@ CLASS Spreadsheet:
 |------|--------|--------|
 | 1 | `setCell("A1", 5)` | cells["A1"] = 5 |
 | 2 | `setFormula("B1", "=A1+3")` | evaluate reads A1 → 5, adds 3 → 8, stores cells["B1"] = 8 |
-| 3 | `resetCell("A1")` | cells["A1"] = 0, re‑evaluate B1 → 3 |
+| 3 | `resetCell("A1")` | cells["A1"] = 0, re-evaluate B1 → 3 |
 
 ## Complexity Analysis
 
@@ -82,7 +82,7 @@ CLASS Spreadsheet:
 ## Follow-Up Questions
 
 - How would you detect and handle circular dependencies?
-- Extend to support built‑in functions like `SUM` over ranges.
+- Extend to support built-in functions like `SUM` over ranges.
 - Design a collaborative version with concurrent edits.
 
 ---

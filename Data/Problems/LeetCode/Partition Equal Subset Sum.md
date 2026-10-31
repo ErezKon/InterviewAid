@@ -88,4 +88,4 @@ Consider `nums = [1,5,11,5]`.
 
 ## Key Takeaway
 
-> Reducing the equal‑partition problem to a subset‑sum (0/1 knapsack) lets you use a compact DP that runs in pseudo‑polynomial time.
+> Reducing the equal-partition problem to a subset-sum (0/1 knapsack) lets you use a compact DP that runs in pseudo-polynomial time.

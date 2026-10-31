@@ -80,8 +80,8 @@ Explanation: "leeto" did not occur in "leetcode", so we return -1.
 ## Follow-Up Questions
 
 - How would you adapt KMP to handle multiple pattern searches simultaneously?
-- Can you implement a rolling hash (Rabin‑Karp) solution for this problem?
+- Can you implement a rolling hash (Rabin-Karp) solution for this problem?
 
 ## Key Takeaway
 
-> KMP builds a failure function to avoid re‑examining characters, achieving linear time string matching.
+> KMP builds a failure function to avoid re-examining characters, achieving linear time string matching.

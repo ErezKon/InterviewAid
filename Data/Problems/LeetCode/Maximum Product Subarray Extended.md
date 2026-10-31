@@ -67,10 +67,10 @@ The final `result` is `6`.
 - **Time:** O(n) – single pass through the array.
 - **Space:** O(1) – only constant extra variables.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to also return the indices of the maximum‑product subarray?
+## Follow-Up Questions
+1. How would you modify the algorithm to also return the indices of the maximum-product subarray?
 2. Can the approach be extended to handle circular subarrays (wrapping around the ends)?
 3. What changes are needed if the input may contain zeros and you want the longest subarray with maximum product > 1?
 
 ## Key Takeaway
-Kadane's algorithm can be adapted to products by tracking both maximum and minimum suffix products, allowing a single‑pass solution to the maximum product subarray problem.
+Kadane's algorithm can be adapted to products by tracking both maximum and minimum suffix products, allowing a single-pass solution to the maximum product subarray problem.

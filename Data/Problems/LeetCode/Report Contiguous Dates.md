@@ -132,7 +132,7 @@ Given `["2023-01-01","2023-01-02","2023-01-04","2023-01-05","2023-01-06"]`:
 
 ## Follow-Up Questions
 
-- *How to handle very large inputs?* Use an in‑place sort and stream the output to avoid extra memory.
+- *How to handle very large inputs?* Use an in-place sort and stream the output to avoid extra memory.
 - *Can we avoid sorting?* If the input is already sorted, the algorithm reduces to O(n).
 - *What about time zones or timestamps with times?* Convert to UTC dates first, then apply the same logic.
 - *How to output ranges in a different format?* Adjust the string construction step accordingly.

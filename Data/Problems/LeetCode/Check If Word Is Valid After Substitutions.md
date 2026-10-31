@@ -71,7 +71,7 @@ Similar to removing matching parentheses, but we remove `"abc"` sequences.
 
 ## 4. Walkthrough
 
-Take `s = "aabcbc"` (Example 1):
+Take `s = "aabcbc"` (Example 1):
 1. Push `a` → `[a]`
 2. Push `a` → `[a,a]`
 3. Push `b` → `[a,a,b]`
@@ -87,18 +87,18 @@ Take `s = "aabcbc"` (Example 1):
 | Metric | Complexity |
 |--------|------------|
 | Time   | O(n) – each character processed once |
-| Space  | O(n) – worst‑case stack size equals string length |
+| Space  | O(n) – worst-case stack size equals string length |
 
 ---
 
 ## 6. Follow-Up Questions
 
 * How would you modify the algorithm to handle a different pattern, e.g., "xyz"?
-* Can you solve the problem in O(1) extra space by using two‑pointer technique?
+* Can you solve the problem in O(1) extra space by using two-pointer technique?
 * What if the pattern length is variable or given as input?
 
 ---
 
 ## Key Takeaway
 
-> Stack-based reduction: push characters and pop when the last 3 form `"abc"`. If the stack empties, the string is valid. Same pattern as valid parentheses but with a 3‑char sequence.
+> Stack-based reduction: push characters and pop when the last 3 form `"abc"`. If the stack empties, the string is valid. Same pattern as valid parentheses but with a 3-char sequence.

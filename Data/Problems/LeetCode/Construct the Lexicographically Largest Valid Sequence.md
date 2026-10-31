@@ -83,7 +83,7 @@ FUNCTION constructDistancedSequence(n):
 - **Time:** In the worst case exponential due to backtracking, but the search space is small (`n ≤ 20`).
 - **Space:** `O(n)` for the answer array and recursion stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return **any** valid sequence instead of the lexicographically largest?
 2. Can you design an iterative greedy approach that works for all `n`?
 3. What changes are needed if the distance requirement becomes `i+1` instead of `i`?

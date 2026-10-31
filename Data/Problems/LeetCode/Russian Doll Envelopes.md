@@ -25,7 +25,7 @@ Return *the maximum number of envelopes you can Russian doll (i.e., put one insi
 
 ## Key Insight
 
-> Sort envelopes by width ascending and height **descending** (to prevent same‑width stacking). Then the problem reduces to finding the Longest Increasing Subsequence (LIS) of the heights.
+> Sort envelopes by width ascending and height **descending** (to prevent same-width stacking). Then the problem reduces to finding the Longest Increasing Subsequence (LIS) of the heights.
 
 ---
 
@@ -81,7 +81,9 @@ Take `[[5,4],[6,4],[6,7],[2,3]]`:
    - `4` > `3` → `tails = [3,4]`
    - `7` > `4` → `tails = [3,4,7]`
    - `4` replaces position 1 → `tails = [3,4,7]` (unchanged length).
-Result length `3`.
+Result length `3`, matching Example 1.
+
+Example 2 `[[1,1],[1,1],[1,1]]`: heights `[1,1,1]`; the first `1` gives `tails = [1]`, each later `1` replaces position 0 → length `1`.
 
 ---
 
@@ -92,7 +94,7 @@ Result length `3`.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution change if envelopes could be rotated?
 2. Can you adapt the algorithm to also output the actual nesting sequence?
@@ -102,4 +104,4 @@ Result length `3`.
 
 ## Key Takeaway
 
-Sorting by width and height descending transforms the nesting problem into a classic LIS on heights, enabling an efficient O(n log n) solution.
+Sorting by width and height descending transforms the nesting problem into a classic LIS on heights, enabling an efficient O(n log n) solution.

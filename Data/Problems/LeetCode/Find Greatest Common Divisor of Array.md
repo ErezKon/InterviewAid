@@ -61,7 +61,7 @@ The GCD of the entire array can be obtained by repeatedly applying the Euclidean
 | 4    | 2           | 10           | GCD(2,10)=2 |
 
 ## Complexity Analysis
-- **Time:** O(n · log M) where *n* is the array length and *M* is the maximum element (cost of Euclidean GCD).
+- **Time:** O(n · log M) where *n* is the array length and *M* is the maximum element (cost of Euclidean GCD).
 - **Space:** O(1) extra space.
 
 ## Follow-Up Questions

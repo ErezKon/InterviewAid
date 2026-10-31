@@ -70,7 +70,7 @@ Explanation: There are 4 ways to form target.
 
 ## 2. Key Insight
 
-> Pre‑compute the frequency of each character at every column. Then use DP: for each column, either skip it or use it to match the next needed character of the target.
+> Pre-compute the frequency of each character at every column. Then use DP: for each column, either skip it or use it to match the next needed character of the target.
 
 ---
 
@@ -123,10 +123,10 @@ Target = "abc", words = ["abc","abc","abc"]:
 ## Follow-Up Questions
 
 1. How would the solution change if you could reuse columns multiple times?
-2. Can you extend the DP to handle variable‑length words?
+2. Can you extend the DP to handle variable-length words?
 
 ---
 
 ## 5. Key Takeaway
 
-> **Column‑wise DP with frequency counts.** Process columns left to right, using reverse DP to combine ways without double‑counting.
+> **Column-wise DP with frequency counts.** Process columns left to right, using reverse DP to combine ways without double-counting.

@@ -98,14 +98,14 @@ Consider `nums = [1,2,3,4]`, `limit = 5`.
    - `a+b = 5` → 0 moves.
    - `lo = 3`, `hi = 8` → sums `3..8` need 1 move.
 4. Using the difference array we accumulate costs for each possible sum `T` from `2` to `10`.
-5. After prefix‑summing, the minimum total moves is `2` at target sum `5`.
+5. After prefix-summing, the minimum total moves is `2` at target sum `5`.
 
 ## Complexity Analysis
 
 - **Time:** O(n + limit) – one pass over the array plus a linear sweep over the possible sums.
 - **Space:** O(limit) – the difference array of size `2*limit + 2`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if the array length could be odd?
 - Can you adapt the algorithm to return the actual target sum(s) achieving the minimum moves?

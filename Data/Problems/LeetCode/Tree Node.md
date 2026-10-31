@@ -94,17 +94,17 @@ Use a `CASE` expression:
 | Step | Condition Checked | Result |
 |------|-------------------|--------|
 | Row with `p_id IS NULL` | Root condition true | type = 'Root' |
-| Row where `id` appears in sub‑query `SELECT DISTINCT p_id …` | Inner condition true | type = 'Inner' |
+| Row where `id` appears in sub-query `SELECT DISTINCT p_id …` | Inner condition true | type = 'Inner' |
 | Otherwise | Neither condition true | type = 'Leaf' |
 
 ## Complexity Analysis
-- **Time:** O(N) – the sub‑query scans the table once, and the outer query scans it again.
-- **Space:** O(N) – temporary set of parent ids produced by the sub‑query.
+- **Time:** O(N) – the sub-query scans the table once, and the outer query scans it again.
+- **Space:** O(N) – temporary set of parent ids produced by the sub-query.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the query to also return the depth of each node?
 2. Can you write a version that works on hierarchical data stored in a single `path` column?
 3. How would you handle cycles or invalid parent references?
 
 ## Key Takeaway
-A single `CASE` statement combined with a sub‑query that extracts all parent identifiers cleanly classifies nodes as root, inner, or leaf in pure SQL.
+A single `CASE` statement combined with a sub-query that extracts all parent identifiers cleanly classifies nodes as root, inner, or leaf in pure SQL.

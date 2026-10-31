@@ -65,7 +65,7 @@ Steps needed = 1 + 1 + 2 + 2 + 3 + 3 + 4 + 4 + 5 + 5 + 6 + 6 + 7 = 49.
 ```
 
 ## Approach
-Simulate the process left‑to‑right, tracking remaining water. When a plant cannot be watered, add steps for returning to the river and coming back (`2*i`), reset water to `capacity`, then water the plant.
+Simulate the process left-to-right, tracking remaining water. When a plant cannot be watered, add steps for returning to the river and coming back (`2*i`), reset water to `capacity`, then water the plant.
 
 ```text
 FUNCTION wateringPlants(plants, capacity):
@@ -100,4 +100,4 @@ Total steps = 14.
 - Can you compute the minimum total distance walked instead of step count?
 
 ## Key Takeaway
-A greedy simulation that adds back‑and‑forth steps whenever water is insufficient yields the total steps efficiently.
+A greedy simulation that adds back-and-forth steps whenever water is insufficient yields the total steps efficiently.

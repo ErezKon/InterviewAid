@@ -70,8 +70,8 @@ Final displacement is (0,0) → `true`.
 - Time: O(n) where n is the length of `moves`.
 - Space: O(1) – only two counters.
 
-## Follow‑Up Questions
-1. How would you adapt the solution to handle a 2‑D grid with obstacles?
+## Follow-Up Questions
+1. How would you adapt the solution to handle a 2-D grid with obstacles?
 2. Can you extend it to return the shortest subsequence of moves that brings the robot back to origin?
 3. What changes are needed if moves are given as a stream?
 

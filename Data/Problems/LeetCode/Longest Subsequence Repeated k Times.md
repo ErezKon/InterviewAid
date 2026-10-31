@@ -30,7 +30,7 @@ Return *the **longest subsequence repeated** *`k`* times in string *`s`*. If mul
 
 ```text
 // Only characters appearing ≥ k times can be in the answer
-// BFS/DFS on candidate subsequences (length‑first)
+// BFS/DFS on candidate subsequences (length-first)
 // For each candidate, check if candidate * k is a subsequence of s
 // Return the lexicographically largest longest candidate
 ```
@@ -67,7 +67,7 @@ Explanation: There is no subsequence repeated 2 times. Empty string is returned.
 
 Consider `s = "ababa"`, `k = 2`.
 
-1. Count character frequencies: `a:3, b:2` (both ≥ k).
+1. Count character frequencies: `a:3, b:2` (both ≥ k).
 2. Start BFS with empty string.
 3. Append `'a'` → candidate `"a"`. Check `"aa"` is subsequence of `s`? Yes.
 4. Append `'b'` → candidate `"b"`. Check `"bb"`? No, discard.
@@ -79,12 +79,12 @@ Consider `s = "ababa"`, `k = 2`.
 
 ## 5. Complexity Analysis
 
-- **Time:** BFS explores candidates; worst‑case `O(26^(n/k) · n)`, but pruning by frequency makes it fast in practice.
+- **Time:** BFS explores candidates; worst-case `O(26^(n/k) · n)`, but pruning by frequency makes it fast in practice.
 - **Space:** Stores queue of candidates, up to `O(26^(n/k))` strings.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you modify the algorithm if `k` could be up to `10`?
 2. Can you design a DP solution that avoids explicit BFS?

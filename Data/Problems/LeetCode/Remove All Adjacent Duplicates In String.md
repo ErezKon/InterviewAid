@@ -48,12 +48,12 @@ Result `"ca"`.
 
 ## Complexity Analysis
 - **Time:** O(n) where n = length of `s`.
-- **Space:** O(n) worst‑case for the stack (can be in‑place with two pointers).
+- **Space:** O(n) worst-case for the stack (can be in-place with two pointers).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How to handle removal of k identical adjacent characters (generalized version)?
 - Can the algorithm be adapted for Unicode strings?
 - What if deletions must be performed only on the leftmost possible pair?
 
 ## Key Takeaway
-A simple stack (or two‑pointer) scan removes adjacent duplicates in linear time by discarding matching pairs on the fly.
+A simple stack (or two-pointer) scan removes adjacent duplicates in linear time by discarding matching pairs on the fly.

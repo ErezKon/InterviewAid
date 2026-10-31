@@ -89,7 +89,7 @@ If the input were `[1,2,3,4]`:
 ## Follow-Up Questions
 
 - How would you modify the solution if the array length were odd?
-- Can you solve the problem in‑place without extra space?
+- Can you solve the problem in-place without extra space?
 - What if pairs must consist of numbers whose sum equals a target value?
 
 ---

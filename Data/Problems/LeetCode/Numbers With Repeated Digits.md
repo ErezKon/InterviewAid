@@ -38,7 +38,7 @@ Output: 262
 ## Approach
 **Digit DP (Dynamic Programming on Digits)**
 The key insight is to count numbers **without** repeated digits and subtract from `n+1`.
-1. Pre‑compute permutations for choosing distinct digits.
+1. Pre-compute permutations for choosing distinct digits.
 2. Process digits of `n` from most significant to least, tracking used digits with a mask.
 3. For each position, try placing a smaller unused digit and add the number of ways to fill remaining positions.
 4. If a digit repeats, stop early.
@@ -83,10 +83,10 @@ Total unique = 90+8+1+1 = 100 → repeated = 322 - 100 = 222.
 - Time: `O(L * 10)` where `L` is number of digits (≤10). 
 - Space: `O(1)` for mask and counters.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to count numbers with exactly `k` repeated digits?
 2. Extend to handle a range `[low, high]` instead of `[0, n]`.
 3. What changes are needed for bases other than decimal?
 
 ## Key Takeaway
-Digit DP lets you efficiently count numbers with digit constraints by enumerating possibilities position‑by‑position while tracking used digits.
+Digit DP lets you efficiently count numbers with digit constraints by enumerating possibilities position-by-position while tracking used digits.

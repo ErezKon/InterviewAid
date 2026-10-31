@@ -85,7 +85,7 @@ Consider `x = 8`:
 
 - How would you modify the algorithm to compute the square root with a precision of `10⁻⁶`?
 - Can you solve the problem using Newton's method and what would be its time complexity?
-- How would you handle very large integers that do not fit in standard 64‑bit types?
+- How would you handle very large integers that do not fit in standard 64-bit types?
 
 ---
 

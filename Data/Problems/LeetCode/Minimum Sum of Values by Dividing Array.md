@@ -80,7 +80,7 @@ Explanation: The bitwise AND of the entire array nums is 0. As there is no possi
 FUNCTION minimumValueSum(nums, andValues):
     n, m ← LENGTH(nums), LENGTH(andValues)
     // dp[i][j] = min sum using first i elements in j groups
-    // For each (i, j), track possible AND values for the j‑th group
+    // For each (i, j), track possible AND values for the j-th group
     
     MEMO ← {}
     FUNCTION solve(i, j, curAnd):
@@ -129,7 +129,7 @@ Total sum = 3 + 6 = 9.
 ## Follow-Up Questions
 
 1. How would the solution change if the cost to minimize were the **sum of subarray lengths** instead of last elements?
-2. Can the approach be adapted for a **non‑contiguous** partition of `nums`?
+2. Can the approach be adapted for a **non-contiguous** partition of `nums`?
 3. What if the AND operation were replaced by **OR** or **XOR**?
 
 ---

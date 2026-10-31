@@ -121,4 +121,4 @@ Assume hidden array length `5` and baseline query `query(0,1,2,3) = 0`.
 
 ## 7. Key Takeaway
 
-> Clever use of overlapping 4‑element queries lets you compare each element to a reference, achieving `O(n)` queries to locate the majority.
+> Clever use of overlapping 4-element queries lets you compare each element to a reference, achieving `O(n)` queries to locate the majority.

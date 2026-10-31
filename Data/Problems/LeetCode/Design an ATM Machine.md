@@ -82,7 +82,7 @@ Example 1:
 
 ## Walkthrough
 
-1. **Deposit** – `deposit([0,0,1,2,1])` adds one 100‑note, two 200‑notes, and one 500‑note to the machine.
+1. **Deposit** – `deposit([0,0,1,2,1])` adds one 100-note, two 200-notes, and one 500-note to the machine.
 2. **Withdraw 380** – Greedy loop starts with 500 (none used), then 200 → take 1 (remaining 180), 100 → take 1 (remaining 80), 50 → take 1 (remaining 30), 20 → take 1 (remaining 10). Since 10 cannot be formed, the algorithm would backtrack, but with available counts it succeeds with `[0,1,1,1,0]`.
 3. **Withdraw 30** – After the previous withdrawal, the remaining denominations cannot make 30, so the method returns `[-1]` and state stays unchanged.
 
@@ -90,7 +90,7 @@ Example 1:
 
 ## Complexity Analysis
 
-- **Time**: `deposit` O(1) (fixed 5 denominations), `withdraw` O(5) ≈ O(1).
+- **Time**: `deposit` O(1) (fixed 5 denominations), `withdraw` O(5) ≈ O(1).
 - **Space**: O(1) for storing counts of the five denominations.
 
 ---
@@ -99,7 +99,7 @@ Example 1:
 
 - How would you modify the design to support new denominations dynamically?
 - How to handle concurrent deposits and withdrawals safely?
-- How to provide a minimal‑note solution when multiple combinations exist?
+- How to provide a minimal-note solution when multiple combinations exist?
 
 ---
 

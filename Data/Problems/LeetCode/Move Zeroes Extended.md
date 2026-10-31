@@ -7,7 +7,7 @@
 ---
 
 ## Problem Description
-Given an integer array `nums`, move all `0`s to the end of the array while maintaining the relative order of the non‑zero elements. The operation must be performed **in‑place** with O(1) extra space.
+Given an integer array `nums`, move all `0`s to the end of the array while maintaining the relative order of the non-zero elements. The operation must be performed **in-place** with O(1) extra space.
 
 **Constraints:**
 - `1 <= nums.length <= 10^4`
@@ -39,11 +39,11 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Reader‑Writer (slow‑fast) pointer.
+**Algorithm:** Reader-Writer (slow-fast) pointer.
 1. Initialise `write = 0`.
-2. Iterate `read` from `0` to `n‑1`.
+2. Iterate `read` from `0` to `n-1`.
 3. When `nums[read] != 0`, copy it to `nums[write]` and increment `write`.
-4. After the loop, fill the remaining positions from `write` to `n‑1` with `0`.
+4. After the loop, fill the remaining positions from `write` to `n-1` with `0`.
 
 ### Pseudocode
 ```text
@@ -76,10 +76,10 @@ For `nums = [0,1,0,3,12]`:
 - Time: O(n) – single pass.
 - Space: O(1) – only two index variables.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to move all occurrences of a given value `val` to the end?
-2. Can you solve the problem using a two‑pointer swapping approach instead of copy?
+2. Can you solve the problem using a two-pointer swapping approach instead of copy?
 3. What is the runtime if the array is immutable and you must return a new array?
 
 ## Key Takeaway
-The reader‑writer pointer lets you compact all desired elements at the front in a single linear scan, then pad the remainder with zeros using constant extra space.
+The reader-writer pointer lets you compact all desired elements at the front in a single linear scan, then pad the remainder with zeros using constant extra space.

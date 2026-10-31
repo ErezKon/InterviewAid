@@ -37,7 +37,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Represent each word as a 26‑bit mask. For every pair of masks that have `AND == 0`, compute the product of word lengths and keep the maximum.
+**Algorithm:** Represent each word as a 26-bit mask. For every pair of masks that have `AND == 0`, compute the product of word lengths and keep the maximum.
 
 ```text
 FUNCTION maxProduct(words):
@@ -82,8 +82,8 @@ Consider `words = ["abc","def","ghij"]`:
 
 ## Follow-Up Questions
 - How would you improve the time complexity using sorting or pruning?
-- Can you adapt the solution for Unicode characters beyond 'a'‑'z'?
-- What if you need the **top‑k** products instead of just the maximum?
+- Can you adapt the solution for Unicode characters beyond 'a'-'z'?
+- What if you need the **top-k** products instead of just the maximum?
 
 ## Key Takeaway
-> **Bitmask each word** – enables O(1) disjoint‑letter checks via bitwise AND.
+> **Bitmask each word** – enables O(1) disjoint-letter checks via bitwise AND.

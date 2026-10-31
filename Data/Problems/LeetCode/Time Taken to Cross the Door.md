@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem — statement verified via doocs/leetcode. The Approach/Walkthrough below use different priority rules and return a total time; the official problem returns each person's crossing second. Correct idea: two queues (enter/exit) and a state `st` (1 = previous second idle or exit, 0 = enter). Each second, enqueue arrivals; if both queues are non-empty serve `q[st]`, if exactly one is non-empty switch `st` to it and serve it, otherwise set `st = 1`. O(n).*
+> *Note: premium problem — statement verified via doocs/leetcode.*
 
 There are `n` persons numbered from `0` to `n - 1` and a door. Each person can enter or exit through the door once, taking one second.
 
@@ -60,68 +60,63 @@ Explanation: At each second we have the following:
 ```
 
 ## Approach
-Simulate using two queues (enter and exit) and track the last processed action. At each second:
-1. Enqueue newly arrived people into the appropriate queue.
-2. Choose the next person based on priority rules.
-3. Process one person and update `lastAction`.
-Continue until both queues are empty.
+Simulate second by second with two FIFO queues, `q[0]` (enter) and `q[1]` (exit), and a direction flag `st` meaning "the door's preferred direction this second". Initially `st = 1` (door unused, so exit goes first). At each second `t`:
+1. Push every person with `arrival[i] <= t` into `q[state[i]]` (indices arrive in increasing order, so each queue is ordered by index).
+2. If both queues are non-empty, serve `q[st]` - this encodes "same direction as last second, or exit if the door was idle".
+3. If exactly one queue is non-empty, set `st` to that direction and serve it.
+4. If both are empty, the door is idle this second: reset `st = 1`.
+
+Since `arrival[i] <= n`, the simulation ends within `2n + 1` seconds.
 
 ```text
-FUNCTION timeToCrossDoor(arrivalTimes, actions):
-    SET enterQueue ← empty queue
-    SET exitQueue ← empty queue
-    SET i ← 0  // index over arrivals
-    SET time ← 0
-    SET lastAction ← NONE
-    WHILE i < LENGTH(arrivalTimes) OR NOT EMPTY(enterQueue) OR NOT EMPTY(exitQueue):
-        // enqueue arrivals at current time
-        WHILE i < LENGTH(arrivalTimes) AND arrivalTimes[i] = time:
-            IF actions[i] = 'enter':
-                ENQUEUE(enterQueue, i)
-            ELSE:
-                ENQUEUE(exitQueue, i)
+FUNCTION timeTaken(arrival, state):
+    SET n ← LENGTH(arrival)
+    SET q ← [empty queue, empty queue]      // q[0] = enter, q[1] = exit
+    SET answer ← ARRAY of size n
+    SET st ← 1
+    SET t ← 0
+    SET i ← 0
+    SET done ← 0
+    WHILE done < n:
+        WHILE i < n AND arrival[i] <= t:
+            ENQUEUE(q[state[i]], i)
             SET i ← i + 1
-        // decide who to process
-        IF NOT EMPTY(enterQueue) AND NOT EMPTY(exitQueue):
-            IF lastAction = 'enter':
-                SET idx ← DEQUEUE(exitQueue)
-                SET lastAction ← 'exit'
-            ELSE IF lastAction = 'exit':
-                SET idx ← DEQUEUE(enterQueue)
-                SET lastAction ← 'enter'
-            ELSE: // no previous action
-                SET idx ← DEQUEUE(enterQueue)
-                SET lastAction ← 'enter'
-        ELSE IF NOT EMPTY(enterQueue):
-            SET idx ← DEQUEUE(enterQueue)
-            SET lastAction ← 'enter'
-        ELSE IF NOT EMPTY(exitQueue):
-            SET idx ← DEQUEUE(exitQueue)
-            SET lastAction ← 'exit'
-        // processed one person this second
-        SET time ← time + 1
-    RETURN time
+        IF NOT EMPTY(q[0]) AND NOT EMPTY(q[1]):
+            // keep st (previous direction, or exit after an idle second)
+        ELSE IF NOT EMPTY(q[0]) OR NOT EMPTY(q[1]):
+            SET st ← 0 IF NOT EMPTY(q[0]) ELSE 1
+        ELSE:
+            SET st ← 1                        // idle second
+            SET t ← t + 1
+            CONTINUE
+        SET p ← DEQUEUE(q[st])
+        SET answer[p] ← t
+        SET done ← done + 1
+        SET t ← t + 1
+    RETURN answer
 ```
 
 ## Walkthrough
-For the first example `[0,0,1,5]` with actions `enter, exit, enter, enter`:
-| time | arrivals enqueued | queues (E/E) | lastAction | processed |
-|------|-------------------|--------------|------------|-----------|
-| 0 | idx0→enter, idx1→exit | E:[0] X:[1] | NONE | enter (idx0) |
-| 1 | idx2→enter (arrives) | E:[2] X:[1] | enter | exit (idx1) |
-| 2 | – | E:[2] | exit | enter (idx2) |
-| 3‑5 | – | – | – | idle |
-| 5 | idx3→enter | E:[3] | enter | enter (idx3) |
-Total time = 7.
+Example 1: `arrival = [0,1,1,2,4]`, `state = [0,1,0,0,1]`.
+
+| t | arrivals | enter queue | exit queue | st before | rule | crosses |
+|---|---|---|---|---|---|---|
+| 0 | P0 (enter) | [0] | [] | 1 | only enter -> st = 0 | P0 enters, answer[0] = 0 |
+| 1 | P1 (exit), P2 (enter) | [2] | [1] | 0 | both, keep st = 0 | P2 enters, answer[2] = 1 |
+| 2 | P3 (enter) | [3] | [1] | 0 | both, keep st = 0 | P3 enters, answer[3] = 2 |
+| 3 | - | [] | [1] | 0 | only exit -> st = 1 | P1 exits, answer[1] = 3 |
+| 4 | P4 (exit) | [] | [4] | 1 | only exit | P4 exits, answer[4] = 4 |
+
+Result: `[0,3,1,2,4]`, matching the expected output.
 
 ## Complexity Analysis
-*Time*: O(n) – each person is enqueued and dequeued once.
-*Space*: O(n) – queues store pending people.
+*Time*: O(n) - each person is enqueued and dequeued once, and there are at most `2n + 1` simulated seconds.
+*Space*: O(n) - the queues and the answer array.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm for multiple doors working in parallel?
-2. What if processing time varies per person?
-3. Can you compute the exact order of processed people without simulation?
+## Follow-Up Questions
+1. How would you skip long idle gaps if arrival times could be as large as 10^9 (jump `t` to the next arrival and reset `st`)?
+2. How would the simulation change if crossing took `k` seconds instead of one?
+3. How would you generalize to several doors, each with its own direction state?
 
 ## Key Takeaway
-A priority‑aware simulation using two queues and tracking the last action yields the total crossing time efficiently.
+Encode the tie-break rules as a single "preferred direction" flag: keep it while both queues are busy, switch it when only one side is waiting, and reset it to exit after an idle second. Then a plain two-queue simulation yields each person's crossing time.

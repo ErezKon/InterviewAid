@@ -74,4 +74,4 @@ The condition can be checked in linear time using a hash map to store frequencie
 3. How would you extend this to return all valid outliers instead of only the largest?
 
 ## Key Takeaway
-Using a frequency hash map lets you verify the pairing condition for each element in constant time, yielding an overall linear‑time solution.
+Using a frequency hash map lets you verify the pairing condition for each element in constant time, yielding an overall linear-time solution.

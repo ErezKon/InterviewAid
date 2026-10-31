@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below sum the squares of distinct **values**; the official problem sums the squares of the distinct **counts**. Correct idea: sweep the right end `j`; let `p` = previous index of `nums[j]`. The distinct count of every subarray starting in `(p, j]` grows by 1. Keep a segment tree over start indices with range-add and range-sum; since `Σ(c+1)² = Σc² + 2·Σc + len`, maintain the running sum of squares and add it to the answer after each `j`. O(n log n).*
-
 You are given a **0-indexed** integer array `nums`.
 
 The **distinct count** of a subarray of `nums` is defined as:
@@ -54,46 +52,46 @@ The sum of the squares of the distinct counts in all subarrays is equal to 1^2 +
 ```
 
 ## Approach
-**Sliding Window with Frequency Map and Incremental Contribution** – Maintain a window `[l, r]` and a hash map of element frequencies. When extending the right end, if the element is new, add its square to the current distinct‑sum; if it already exists, the distinct‑sum stays unchanged. When shrinking from the left, decrement frequency and remove the square when count reaches zero. For each position `r`, the contribution of all subarrays ending at `r` equals the current distinct‑sum multiplied by the number of possible left boundaries.
+**Sweep the right end + segment tree over start indices (range add, range sum).** Let `c[i]` be the distinct count of `nums[i..j]` for the current right end `j`. When `j` advances and `p` is the previous index of `nums[j]` (or `-1`), exactly the subarrays starting in `(p, j]` gain a new distinct value, so `c[i] += 1` for `i` in `(p, j]` (the new start `j` goes from 0 to 1). Using `(c+1)² = c² + 2c + 1`, the sum of squares over all starts grows by `2·Σ_{i=p+1..j} c[i] + (j - p)`. A lazy segment tree gives that range sum and applies the range `+1` in O(log n). After each `j`, the running sum of squares is the total over all subarrays ending at `j`; add it to the answer.
 
 ```text
-FUNCTION totalDistinctSquareSum(nums):
+FUNCTION sumCounts(nums):
     SET MOD ← 1_000_000_007
-    SET freq ← empty map
-    SET distinctSum ← 0          // sum of squares of distinct elements in current window
+    SET n ← LENGTH(nums)
+    SET tree ← segment tree over [0, n-1], all zeros (supports RANGE_ADD and RANGE_SUM)
+    SET last ← empty map
+    SET sumSq ← 0                 // Σ c[i]² over starts i ≤ j
     SET result ← 0
-    SET left ← 0
-    FOR right FROM 0 TO LENGTH(nums)-1:
-        SET val ← nums[right]
-        IF freq.get(val, 0) == 0:
-            SET distinctSum ← (distinctSum + val*val) % MOD
-        END IF
-        SET freq[val] ← freq.get(val, 0) + 1
-        // All subarrays ending at `right` start anywhere from `left` to `right`
-        SET result ← (result + distinctSum * (right - left + 1)) % MOD
-        // Optional: shrink left while needed for other constraints (none here)
+    FOR j FROM 0 TO n-1:
+        SET p ← last.get(nums[j], -1)
+        SET s ← tree.RANGE_SUM(p+1, j)
+        SET sumSq ← (sumSq + 2*s + (j - p)) % MOD
+        tree.RANGE_ADD(p+1, j, 1)
+        SET result ← (result + sumSq) % MOD
+        SET last[nums[j]] ← j
     END FOR
     RETURN result
 ```
-The key insight is that the distinct‑sum for a fixed right endpoint can be reused for all left boundaries, giving O(n) time.
+The key insight is that a new element only affects the contiguous block of starts after its previous occurrence, and the square update needs only the plain sum over that block.
 
 ## Walkthrough
 Take `nums = [1,2,1]`.
-| step | right | val | freq after add | distinctSum | subarrays ending at right | result increment | result |
-|------|-------|-----|----------------|-------------|---------------------------|------------------|--------|
-| 1    | 0     | 1   | {1:1}          | 1           | [1]                       | 1*1=1            | 1 |
-| 2    | 1     | 2   | {1:1,2:1}      | 1+4=5       | [1,2], [2]                | 5*2=10           | 11 |
-| 3    | 2     | 1   | {1:2,2:1}      | 5 (unchanged) | [1,2,1], [2,1], [1]      | 5*3=15           | 26 |
-Result = 26 mod MOD = 26 (matches example after correcting arithmetic).
+| j | val | p | range (p, j] | Σc in range (before) | sumSq update | c after | result |
+|---|-----|---|--------------|----------------------|--------------|---------|--------|
+| 0 | 1 | -1 | [0,0] | 0 | 0 + 0 + 1 = 1 | [1] | 1 |
+| 1 | 2 | -1 | [0,1] | 1 + 0 = 1 | 1 + 2 + 2 = 5 | [2,1] | 6 |
+| 2 | 1 | 0 | [1,2] | 1 + 0 = 1 | 5 + 2 + 2 = 9 | [2,2,1] | 15 |
+
+Check at `j=2`: `2² + 2² + 1² = 9`. Final result = 15, matching the expected output.
 
 ## Complexity Analysis
-- **Time:** O(n) – single pass with constant‑time map operations.
-- **Space:** O(m) where `m` is the number of distinct values in `nums` (hash map).
+- **Time:** O(n log n) – one range query and one range update per index.
+- **Space:** O(n) for the segment tree and the last-occurrence map.
 
 ## Follow-Up Questions
-1. How would you adapt the algorithm to compute the sum of cubes of distinct elements?
-2. Can the method be extended to handle queries asking for the distinct‑sum on arbitrary subarray ranges?
-3. What changes are needed if the array is streamed and you must output the running total after each new element?
+1. How would you compute the sum of **cubes** of distinct counts (hint: also maintain `Σc²` in the tree)?
+2. Can a Fenwick tree with two arrays (range add / range sum) replace the lazy segment tree?
+3. How would the approach change if only subarrays of length at most `k` counted?
 
 ## Key Takeaway
-By maintaining a frequency map and the running sum of squares of distinct elements, a sliding‑window yields a linear‑time solution for aggregating distinct‑element contributions across all subarrays.
+Fix the right endpoint and track a per-start quantity; when an update is a range `+1`, the change in `Σc²` depends only on `Σc` over that range, which a lazy segment tree provides in logarithmic time.

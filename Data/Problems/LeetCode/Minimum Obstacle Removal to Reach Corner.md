@@ -43,7 +43,7 @@ Example 2:
 ```
 
 ## Approach
-Apply **0‑1 BFS**. Treat moving onto a `0` cell as cost 0 and onto a `1` cell as cost 1. Use a deque to process nodes: push to front for cost 0 edges, push to back for cost 1 edges. Maintain a distance matrix of minimum obstacles removed to reach each cell.
+Apply **0-1 BFS**. Treat moving onto a `0` cell as cost 0 and onto a `1` cell as cost 1. Use a deque to process nodes: push to front for cost 0 edges, push to back for cost 1 edges. Maintain a distance matrix of minimum obstacles removed to reach each cell.
 
 ## Walkthrough
 | Step | Cell (r,c) | Cost to reach | Deque operation |
@@ -51,18 +51,18 @@ Apply **0‑1 BFS**. Treat moving onto a `0` cell as cost 0 and onto a `1` cel
 | Start | (0,0) | 0 | push front |
 | Move to (0,1) (obstacle) | 1 | push back |
 | Move to (1,0) (obstacle) | 1 | push back |
-| Continue exploring 0‑cost moves before 1‑cost moves |
+| Continue exploring 0-cost moves before 1-cost moves |
 | Reach (2,2) with cost 2 | 2 | — |
-The final distance at (m‑1,n‑1) is the answer.
+The final distance at (m-1,n-1) is the answer.
 
 ## Complexity Analysis
-Time: O(m × n) – each cell processed at most twice (once for cost 0, once for cost 1).
-Space: O(m × n) – distance matrix and deque.
+Time: O(m × n) – each cell processed at most twice (once for cost 0, once for cost 1).
+Space: O(m × n) – distance matrix and deque.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would the algorithm change if diagonal moves were allowed?
 * Can we retrieve the actual path of removed obstacles?
 * What if each obstacle had a different removal cost?
 
 ## Key Takeaway
-0‑1 BFS efficiently computes the minimum obstacle removals by treating obstacle traversal as a weighted edge of cost 1 and empty cells as cost 0.
+0-1 BFS efficiently computes the minimum obstacle removals by treating obstacle traversal as a weighted edge of cost 1 and empty cells as cost 0.

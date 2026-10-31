@@ -61,13 +61,13 @@ FUNCTION constructRectangle(area):
 | 122122 | 349 (≈ sqrt)        | 286 (first divisor) | 427 |
 
 ## Complexity Analysis
-- **Time:** `O(√area)` – at most the square‑root iterations.
+- **Time:** `O(√area)` – at most the square-root iterations.
 - **Space:** `O(1)` – constant extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return all possible `[L, W]` pairs?
-2. Can you solve the problem without using the square‑root function?
+2. Can you solve the problem without using the square-root function?
 3. How would the solution change if `area` could be up to `10^12` and you need to avoid overflow?
 
 ## Key Takeaway
-Searching downward from the square root quickly finds the divisor pair with minimal length‑width difference.
+Searching downward from the square root quickly finds the divisor pair with minimal length-width difference.

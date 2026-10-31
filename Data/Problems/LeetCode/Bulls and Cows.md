@@ -44,7 +44,7 @@ Example 2:
 ```
 
 ## Approach
-**Two‑Pass Counting** – First pass counts bulls and records the frequency of non‑matching digits for both strings. Second pass sums the minimum of each digit’s counts to obtain cows.
+**Two-Pass Counting** – First pass counts bulls and records the frequency of non-matching digits for both strings. Second pass sums the minimum of each digit’s counts to obtain cows.
 
 ```text
 FUNCTION getHint(secret, guess):
@@ -77,7 +77,7 @@ Result `1A3B`.
 - **Time:** O(n) where n is the length of the strings.
 - **Space:** O(1) – fixed arrays of size 10.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the algorithm for an alphabet of letters instead of digits?
 2. Can you solve the problem in a single pass without separate count arrays?
 3. What if the hint must also report the positions of bulls?

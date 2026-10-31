@@ -40,7 +40,7 @@ Output: 104
 ```
 
 ## Approach
-Use top‑down DP with memoization. Let `dp(i, m)` be the maximum stones the current player can obtain starting at index `i` with current `M = m`. The total remaining stones from `i` onward is `suffixSum[i]`. The player chooses `X` from `1` to `2*m` (bounded by remaining piles). After taking `X` piles, the opponent will obtain `dp(i+X, max(m, X))`. Hence the current player’s gain is `suffixSum[i] - dp(i+X, max(m, X))`. We take the maximum over all feasible `X`.
+Use top-down DP with memoization. Let `dp(i, m)` be the maximum stones the current player can obtain starting at index `i` with current `M = m`. The total remaining stones from `i` onward is `suffixSum[i]`. The player chooses `X` from `1` to `2*m` (bounded by remaining piles). After taking `X` piles, the opponent will obtain `dp(i+X, max(m, X))`. Hence the current player’s gain is `suffixSum[i] - dp(i+X, max(m, X))`. We take the maximum over all feasible `X`.
 
 ### Pseudocode
 ```text
@@ -78,8 +78,8 @@ The DP memoizes subproblems, avoiding recomputation.
 - **Time:** O(n³) in the worst case (n states for `i`, up to n values for `m`, and up to 2·m choices). With `n ≤ 100` this is acceptable.
 - **Space:** O(n²) for memoization table and O(n) for suffix sums.
 
-## Follow‑Up Questions
-1. How can the time complexity be reduced using bottom‑up DP or pruning?
+## Follow-Up Questions
+1. How can the time complexity be reduced using bottom-up DP or pruning?
 2. What changes are needed if the game is played with more than two players?
 3. Can you adapt the solution to return the actual sequence of moves for Alice?
 

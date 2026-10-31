@@ -74,9 +74,9 @@ Example 3:
 
 ## Approach
 
-**Algorithm:** Multi‑source Dijkstra (all apple cities as sources)
+**Algorithm:** Multi-source Dijkstra (all apple cities as sources)
 
-Treat each city `j` as a source with initial distance equal to its apple price `appleCost[j]`. When expanding an edge `(u, v, w)`, add `2*w` because traveling from `u` to `j` and back incurs a round‑trip cost. The resulting distance `dist[i]` after the algorithm finishes equals the minimum `appleCost[j] + 2 * shortestPath(i, j)`.
+Treat each city `j` as a source with initial distance equal to its apple price `appleCost[j]`. When expanding an edge `(u, v, w)`, add `2*w` because traveling from `u` to `j` and back incurs a round-trip cost. The resulting distance `dist[i]` after the algorithm finishes equals the minimum `appleCost[j] + 2 * shortestPath(i, j)`.
 
 ```text
 FUNCTION minCostApples(n, edges, appleCost):
@@ -116,7 +116,7 @@ FUNCTION minCostApples(n, edges, appleCost):
 | 2 | city 0 (5) | 5 | 0→1 (2) → nd=5+4=9 (no change) |
 | … | … | … | … | … |
 
-The final `dist` array gives the optimal buy‑and‑return cost for each city.
+The final `dist` array gives the optimal buy-and-return cost for each city.
 
 ## Complexity Analysis
 
@@ -125,7 +125,7 @@ The final `dist` array gives the optimal buy‑and‑return cost for each city.
 | Time   | **O((V+E) log V)** – Dijkstra on `n` vertices and `|edges|` edges |
 | Space  | **O(V + E)** – adjacency list, distance array, priority queue |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 1. How would the solution adapt if the return trip cost were a different multiplier than 2?
 2. Can we handle dynamic updates to road weights or apple prices without recomputing from scratch?
@@ -133,4 +133,4 @@ The final `dist` array gives the optimal buy‑and‑return cost for each city.
 
 ## Key Takeaway
 
-Running Dijkstra from all cities simultaneously, seeded with their apple prices and using doubled edge weights, yields the minimum round‑trip purchase cost for every city in a single pass.
+Running Dijkstra from all cities simultaneously, seeded with their apple prices and using doubled edge weights, yields the minimum round-trip purchase cost for every city in a single pass.

@@ -87,4 +87,4 @@ Total count = 3.
 
 ## Key Takeaway
 
-> Use a prefix‑sum hash map while performing a DFS. The map records sums along the current root‑to‑node path, and a lookup of `currSum‑target` tells how many earlier prefixes form a valid downward path.
+> Use a prefix-sum hash map while performing a DFS. The map records sums along the current root-to-node path, and a lookup of `currSum-target` tells how many earlier prefixes form a valid downward path.

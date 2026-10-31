@@ -107,7 +107,7 @@ Output: `010203`.
 - **Time:** `O(n)` – each number and each zero is printed exactly once.
 - **Space:** `O(1)` – only a few synchronization primitives and counters are stored.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution to use locks and condition variables instead of semaphores?
 2. Can the algorithm be extended to support more than three threads with a different printing pattern?
 3. What changes are needed if the output order should be `0 1 0 2 0 3 …` with spaces between characters?

@@ -75,10 +75,10 @@ FUNCTION tree2str(root):
 - **Time:** `O(n)` where `n` is number of nodes – each node visited once.
 - **Space:** `O(h)` recursion stack, `h` = tree height.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to produce an **iterative** solution using a stack?
 2. Can you generate the string in **postorder** while preserving the same format?
-3. What changes are needed if node values can be negative or multi‑digit?
+3. What changes are needed if node values can be negative or multi-digit?
 
 ## Key Takeaway
 A simple preorder recursion with conditional parentheses yields the required string representation while handling missing children correctly.

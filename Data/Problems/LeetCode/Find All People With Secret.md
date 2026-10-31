@@ -28,7 +28,7 @@ Return *a list of all the people that have the secret after all the meetings hav
 
 ---
 
-## Approach: Union‑Find by Time Groups — O(n log n) ✅
+## Approach: Union-Find by Time Groups — O(n log n) ✅
 
 ```text
 FUNCTION findAllPeople(n, meetings, firstPerson):
@@ -37,7 +37,7 @@ FUNCTION findAllPeople(n, meetings, firstPerson):
     i ← 0
     WHILE i < LENGTH(meetings):
         currentTime ← meetings[i][2]
-        // Build Union‑Find for this time slice
+        // Build Union-Find for this time slice
         uf ← UnionFind()
         j ← i
         WHILE j < LENGTH(meetings) AND meetings[j][2] == currentTime:
@@ -96,7 +96,7 @@ Example 3:
 ## Walkthrough
 
 Take the first example:
-1. **Time 1:** meetings `(0,2)` and `(1,3)`. Union‑Find creates two components `{0,2}` and `{1,3}`. Known set is `{0,3}` (0 knows secret, 3 knows because `firstPerson=3`). Component `{0,2}` contains 0 → add 2. Component `{1,3}` contains 3 → add 1. Known becomes `{0,1,2,3}`.
+1. **Time 1:** meetings `(0,2)` and `(1,3)`. Union-Find creates two components `{0,2}` and `{1,3}`. Known set is `{0,3}` (0 knows secret, 3 knows because `firstPerson=3`). Component `{0,2}` contains 0 → add 2. Component `{1,3}` contains 3 → add 1. Known becomes `{0,1,2,3}`.
 2. **Time 2:** meeting `(2,3)`. Both already know the secret, so no change.
 3. End result includes everyone.
 
@@ -104,14 +104,14 @@ Take the first example:
 
 ## Complexity Analysis
 
-- **Time:** O(m log m) for sorting `m` meetings plus near‑linear Union‑Find operations per time group.
-- **Space:** O(n + m) for the Union‑Find structure and the known set.
+- **Time:** O(m log m) for sorting `m` meetings plus near-linear Union-Find operations per time group.
+- **Space:** O(n + m) for the Union-Find structure and the known set.
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you handle meetings that occur at the same time but form a chain of connections (e.g., `0‑1`, `1‑2` at the same timestamp)?
+1. How would you handle meetings that occur at the same time but form a chain of connections (e.g., `0-1`, `1-2` at the same timestamp)?
 2. Can the solution be adapted to return the earliest time each person learns the secret?
 3. How would you modify the algorithm if meetings could be added dynamically after processing has begun?
 
@@ -119,4 +119,4 @@ Take the first example:
 
 ## Key Takeaway
 
-> **Group meetings by timestamp, use Union‑Find within each group, and propagate the secret only when a component contains a known person. This isolates propagation to the correct time slice and avoids premature sharing.**
+> **Group meetings by timestamp, use Union-Find within each group, and propagate the secret only when a component contains a known person. This isolates propagation to the correct time slice and avoids premature sharing.**

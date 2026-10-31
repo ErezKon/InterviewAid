@@ -80,8 +80,8 @@ Example 1:
 ## 4. Walkthrough
 
 1. **First login per player** – `first_login` CTE groups by `player_id` and selects the earliest `event_date` as `install_dt`.
-2. **Left join** the `Activity` table on `player_id` where `event_date = install_dt + 1` to find day‑1 activity.
-3. **Aggregate** by `install_dt` counting total installs and day‑1 matches.
+2. **Left join** the `Activity` table on `player_id` where `event_date = install_dt + 1` to find day-1 activity.
+3. **Aggregate** by `install_dt` counting total installs and day-1 matches.
 4. **Compute retention** as `COUNT(day1) / COUNT(installs)` and round.
 
 ## 5. Complexity Analysis

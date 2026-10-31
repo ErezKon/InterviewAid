@@ -50,9 +50,9 @@ Treat each possible stamp placement as a **candidate** that can clear a set of `
 
 ## Walkthrough
 Consider the first example with a `3×3` grid and a `2×2` stamp `[[1,0],[0,1]]`.
-1. List all 4 possible placements (top‑left corners `(0,0)`, `(0,1)`, `(1,0)`, `(1,1)`).
-2. Starting from the bottom‑right, placement `(1,1)` clears cells `(1,1)` and `(2,2)`. Record `(1,1)` and update the grid.
-3. Re‑evaluate placements; now `(0,1)` can clear `(0,1)` and `(1,2)`. Record and apply.
+1. List all 4 possible placements (top-left corners `(0,0)`, `(0,1)`, `(1,0)`, `(1,1)`).
+2. Starting from the bottom-right, placement `(1,1)` clears cells `(1,1)` and `(2,2)`. Record `(1,1)` and update the grid.
+3. Re-evaluate placements; now `(0,1)` can clear `(0,1)` and `(1,2)`. Record and apply.
 4. Continue similarly; after five placements the grid becomes all `0`.
 
 ## Complexity Analysis
@@ -65,4 +65,4 @@ Consider the first example with a `3×3` grid and a `2×2` stamp `[[1,0],[0,1]]`
 3. What is the minimum number of stamps needed if overlapping is prohibited?
 
 ## Key Takeaway
-By repeatedly applying stamp placements that are currently valid and recording them in reverse order, you can greedily clear the grid while guaranteeing a minimal‑count solution when one exists.
+By repeatedly applying stamp placements that are currently valid and recording them in reverse order, you can greedily clear the grid while guaranteeing a minimal-count solution when one exists.

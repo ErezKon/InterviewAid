@@ -59,18 +59,18 @@ Example 3:
 
 ## Approach
 Dynamic programming with three dimensions:
-- `i` – index of the current house (0‑based).
-- `j` – color used for house `i` (1‑based).
+- `i` – index of the current house (0-based).
+- `j` – color used for house `i` (1-based).
 - `k` – number of neighborhoods formed so far.
 `dp[i][j][k]` stores the minimum cost for the prefix `0..i` ending with color `j` and `k` neighborhoods.
 Transition:
 1. If `houses[i]` is already painted (`houses[i] != 0`), only that color is allowed.
 2. Otherwise iterate over all colors `j`.
-3. For each previous color `p` at `i‑1`:
+3. For each previous color `p` at `i-1`:
    - If `j == p`, neighborhoods count stays `k`.
-   - Else neighborhoods count becomes `k‑1`.
+   - Else neighborhoods count becomes `k-1`.
 Take the minimum over all valid transitions.
-Finally, answer = min over `dp[m‑1][j][target]` for all colors `j`.
+Finally, answer = min over `dp[m-1][j][target]` for all colors `j`.
 
 ```text
 FUNCTION minCost(houses, cost, m, n, target):
@@ -98,23 +98,28 @@ FUNCTION minCost(houses, cost, m, n, target):
 ```
 
 ## Walkthrough
-Consider `houses = [0,0]`, `cost = [[5,1],[4,2]]`, `n = 2`, `target = 2`.
-1. Initialize `dp[0][1][1] = 5`, `dp[0][2][1] = 1`.
-2. For house 1, color 1:
-   - From prevColor 1 (same) → `newK = 1`, cost = 5+4 = 9.
-   - From prevColor 2 (different) → `newK = 2`, cost = 1+4 = 5.
-   Store minima accordingly.
-3. For house 1, color 2 similarly.
-4. Minimum cost for exactly 2 neighborhoods is `5`.
+Example 2: `houses = [0,2,1,2,0]`, `cost = [[1,10],[10,1],[10,1],[1,10],[5,1]]`, `n = 2`, `target = 3`.
+Notation: `dp[i][color] = [k=1, k=2, k=3]` (INF shown as `-`).
+1. House 0 (unpainted): `dp[0][1] = [1,-,-]`, `dp[0][2] = [10,-,-]`.
+2. House 1 (fixed color 2, paint cost 0):
+   - From color 2, k=1 (same) -> `dp[1][2][1] = 10`.
+   - From color 1, k=1 (different) -> `dp[1][2][2] = 1`.
+   - `dp[1][2] = [10,1,-]`, `dp[1][1]` all INF.
+3. House 2 (fixed color 1): from color 2 (different) -> k shifts by 1: `dp[2][1] = [-,10,1]`.
+4. House 3 (fixed color 2): from color 1 (different), `dp[2][1][2] = 10` -> `dp[3][2][3] = 10`; `dp[2][1][3] = 1` would need k=4 > target, dropped. `dp[3][2] = [-,-,10]`.
+5. House 4 (unpainted):
+   - Color 2 (same as prev): `dp[4][2][3] = 10 + cost[4][1] = 11`.
+   - Color 1 (different): would need k=4, dropped.
+6. Answer = `min(dp[4][1][3], dp[4][2][3]) = 11` (painting `[2,2,1,2,2]`).
 
 ## Complexity Analysis
-- **Time:** O(m · n² · target) – three nested loops over houses, colors, and neighborhoods.
-- **Space:** O(m · n · target) – can be reduced to O(n · target) by rolling arrays.
+- **Time:** O(m · n² · target) – three nested loops over houses, colors, and neighborhoods.
+- **Space:** O(m · n · target) – can be reduced to O(n · target) by rolling arrays.
 
 ## Follow-Up Questions
-1. How would you optimize space to O(n · target) using two layers of DP?
+1. How would you optimize space to O(n · target) using two layers of DP?
 2. Can the solution be adapted if each house has a limited set of allowable colors?
 3. What changes are needed to output the actual painting plan, not just the cost?
 
 ## Key Takeaway
-Model the problem with DP over house index, color, and neighborhoods, and use the smallest‑and‑second‑smallest trick only when colors are unrestricted; otherwise a full three‑dimensional DP is required.
+Model the problem with DP over house index, color, and neighborhoods, and use the smallest-and-second-smallest trick only when colors are unrestricted; otherwise a full three-dimensional DP is required.

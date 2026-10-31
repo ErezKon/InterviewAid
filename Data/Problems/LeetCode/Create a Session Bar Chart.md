@@ -85,7 +85,7 @@ SELECT '15+'     AS bin, COUNT(session_id) AS total FROM Sessions WHERE duration
 1. **Define bins** – each `SELECT` corresponds to one duration interval.
 2. **Filter rows** – `WHERE` clause restricts `duration` to the interval (duration stored in seconds).
 3. **Count** – `COUNT(session_id)` returns number of sessions in that interval.
-4. **Combine** – `UNION ALL` stacks the four result rows, preserving empty‑bin rows with count 0.
+4. **Combine** – `UNION ALL` stacks the four result rows, preserving empty-bin rows with count 0.
 5. **Return** – final result lists all bins in the desired order.
 
 ---
@@ -95,7 +95,7 @@ SELECT '15+'     AS bin, COUNT(session_id) AS total FROM Sessions WHERE duration
 | Aspect | Value |
 |---|---|
 | **Time** | O(n) – each row is examined once per `WHERE` clause (four scans over the table). |
-| **Space** | O(1) – only constant‑size aggregates are stored.
+| **Space** | O(1) – only constant-size aggregates are stored.
 
 ---
 

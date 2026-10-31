@@ -60,12 +60,12 @@ Output: false
 ## Walkthrough
 
 1. For `n = 16` (binary `10000`): `n-1 = 15` (binary `01111`). `n & (n-1) = 0`, and `n > 0`, so return `true`.
-2. For `n = 3` (binary `11`): `n-1 = 2` (binary `10`). `n & (n-1) = 2` (non‑zero), so return `false`.
+2. For `n = 3` (binary `11`): `n-1 = 2` (binary `10`). `n & (n-1) = 2` (non-zero), so return `false`.
 3. The check works for any positive integer; zero fails the `n > 0` condition.
 
 ## Complexity Analysis
 
-- **Time:** O(1) – constant‑time bit operation.
+- **Time:** O(1) – constant-time bit operation.
 - **Space:** O(1) – only a few variables.
 
 ---

@@ -56,7 +56,7 @@ Example 1:
 ```
 
 ## Approach
-**SQL Aggregation** – Group rows by `class`, count distinct `student` values, and filter groups with a count ≥ 5 using the `HAVING` clause.
+**SQL Aggregation** – Group rows by `class`, count distinct `student` values, and filter groups with a count ≥ 5 using the `HAVING` clause.
 
 ```text
 SELECT class
@@ -75,7 +75,7 @@ HAVING COUNT(DISTINCT student) >= 5;
 - **Time:** O(N) – each row is processed once during grouping.
 - **Space:** O(K) – stores aggregation for K distinct classes.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the query to return classes with exactly *k* students where *k* is a parameter?
 - How can you retrieve the list of students for each qualifying class in a single query?
 - What indexes would improve the performance of this query on a large dataset?

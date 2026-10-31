@@ -43,7 +43,7 @@ Example 2:
 ```
 
 ## Approach
-Use dynamic programming while keeping only the smallest and second‑smallest costs from the previous row.
+Use dynamic programming while keeping only the smallest and second-smallest costs from the previous row.
 1. For the first house, store its costs.
 2. For each subsequent house, for each color `j`:
    - If `j` is not the index of the previous row's minimum, add that minimum.
@@ -84,7 +84,7 @@ Consider `costs = [[1,5,3],[2,9,4]]` (n=2, k=3).
 Result = min(curr) = 5.
 
 ## Complexity Analysis
-- **Time:** O(n · k) – each house scans all colors twice.
+- **Time:** O(n · k) – each house scans all colors twice.
 - **Space:** O(k) – only two rows are stored.
 
 ## Follow-Up Questions
@@ -93,4 +93,4 @@ Result = min(curr) = 5.
 3. What changes are needed if each house has a list of forbidden colors?
 
 ## Key Takeaway
-By tracking only the smallest and second‑smallest costs of the previous row, the DP runs in O(nk) time with O(k) space, avoiding the O(nk²) naïve approach.
+By tracking only the smallest and second-smallest costs of the previous row, the DP runs in O(nk) time with O(k) space, avoiding the O(nk²) naïve approach.

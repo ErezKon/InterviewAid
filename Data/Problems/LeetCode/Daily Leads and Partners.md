@@ -100,4 +100,4 @@ GROUP BY date_id, make_name;
 
 ## Key Takeaway
 
-> **COUNT(DISTINCT) with GROUP BY provides per‑group unique counts without extra subqueries.**
+> **COUNT(DISTINCT) with GROUP BY provides per-group unique counts without extra subqueries.**

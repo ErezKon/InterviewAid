@@ -58,7 +58,7 @@ Example 2:
 ```
 
 ## Approach
-Use the two‑pointer technique. Maintain a `write` pointer indicating the position to write the next allowed element. Start `write` at 2 because the first two elements are always allowed. Iterate `read` from index 2 onward; for each `nums[read]`, compare it with `nums[write‑2]`. If they differ, the element can be kept and written at `write`, then increment `write`.
+Use the two-pointer technique. Maintain a `write` pointer indicating the position to write the next allowed element. Start `write` at 2 because the first two elements are always allowed. Iterate `read` from index 2 onward; for each `nums[read]`, compare it with `nums[write-2]`. If they differ, the element can be kept and written at `write`, then increment `write`.
 
 ```text
 FUNCTION removeDuplicates(nums):
@@ -73,7 +73,7 @@ FUNCTION removeDuplicates(nums):
 ```
 
 ## Walkthrough
-| Step | read index | nums[read] | nums[write‑2] | Action | write after |
+| Step | read index | nums[read] | nums[write-2] | Action | write after |
 |------|------------|-----------|--------------|--------|------------|
 | 1 | 2 | 1 | 1 | equal → skip | 2 |
 | 2 | 3 | 2 | 1 | not equal → write 2 at idx2 | 3 |
@@ -84,7 +84,7 @@ Resulting array `[1,1,2,2,3]` with length 5.
 
 ## Complexity Analysis
 - **Time:** O(N) where N is the length of `nums`.
-- **Space:** O(1) extra space (in‑place).
+- **Space:** O(1) extra space (in-place).
 
 ## Follow-Up Questions
 1. How would you modify the algorithm to allow at most *k* duplicates for any k?
@@ -92,4 +92,4 @@ Resulting array `[1,1,2,2,3]` with length 5.
 3. How would you handle the case where the array is not sorted?
 
 ## Key Takeaway
-Two‑pointer scanning with a lag of two positions lets you enforce the “at most two duplicates” rule in a single pass and O(1) space.
+Two-pointer scanning with a lag of two positions lets you enforce the “at most two duplicates” rule in a single pass and O(1) space.

@@ -37,7 +37,7 @@ Return the length of the **longest valid** subsequence of `nums`.
 
 ## 2. Key Insight
 
-> For each possible target remainder `r` (0 … k‑1), the subsequence must satisfy: for any two consecutive elements `a` and `b`, `(a + b) % k = r`. This implies that if an element has remainder `m = a % k`, the next element must have remainder `(r - m) % k`. Tracking the longest subsequence ending with each remainder yields a DP solution.
+> For each possible target remainder `r` (0 … k-1), the subsequence must satisfy: for any two consecutive elements `a` and `b`, `(a + b) % k = r`. This implies that if an element has remainder `m = a % k`, the next element must have remainder `(r - m) % k`. Tracking the longest subsequence ending with each remainder yields a DP solution.
 
 ---
 
@@ -79,7 +79,7 @@ Example 2:
 Consider `nums = [1, 2, 3, 4, 5]`, `k = 2`.
 1. **r = 0** (pairs must sum to an even number):
    - Initialize `dp = [0,0]`.
-   - Process 1 (m=1): need = (0‑1+2)%2 = 1 → dp[1] = dp[1] + 1 = 1.
+   - Process 1 (m=1): need = (0-1+2)%2 = 1 → dp[1] = dp[1] + 1 = 1.
    - Process 2 (m=0): need = 0 → dp[0] = dp[0] + 1 = 1.
    - Process 3 (m=1): need = 1 → dp[1] = dp[1] + 1 = 2.
    - Process 4 (m=0): need = 0 → dp[0] = dp[0] + 1 = 2.
@@ -101,4 +101,4 @@ The overall answer is the larger of the two, **3**.
 
 ## 7. Key Takeaway
 
-> By fixing the target pair‑sum remainder and maintaining a DP of longest subsequences ending with each modular class, we solve the problem in linear time per remainder.
+> By fixing the target pair-sum remainder and maintaining a DP of longest subsequences ending with each modular class, we solve the problem in linear time per remainder.

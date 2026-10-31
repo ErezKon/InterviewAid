@@ -66,11 +66,11 @@ FUNCTION countUnguarded(m, n, guards, walls):
 
 ## Walkthrough
 
-**Example 1 step‑by‑step:**
+**Example 1 step-by-step:**
 | Step | Action | Grid state (G=guard, W=wall, X=guarded, 0=empty) |
 |------|--------|---------------------------------------------------|
 | 1 | Place guards and walls | `[[G,W,0,0,0,0], [0,G,0,0,W,0], [0,0,W,G,0,0], [0,0,0,0,0,0]]` |
-| 2 | Guard (0,0) casts rays → marks (0,2‑5) and (1,0‑5) as X until blocked | ... |
+| 2 | Guard (0,0) casts rays → marks (0,2-5) and (1,0-5) as X until blocked | ... |
 | 3 | Guard (1,1) casts rays → marks its visible cells avoiding walls | ... |
 | 4 | Guard (2,3) casts rays → marks its visible cells | ... |
 | 5 | Count cells still 0 → 7 unguarded cells |
@@ -88,4 +88,4 @@ FUNCTION countUnguarded(m, n, guards, walls):
 
 ## Key Takeaway
 
-> **Simulation: mark guard/wall cells, then ray‑cast in 4 directions from each guard. Walls and guards block the ray. Count remaining unmarked cells.**
+> **Simulation: mark guard/wall cells, then ray-cast in 4 directions from each guard. Walls and guards block the ray. Count remaining unmarked cells.**

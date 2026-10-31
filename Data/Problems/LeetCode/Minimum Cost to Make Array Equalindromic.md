@@ -43,7 +43,7 @@ Example 3:
 ```
 
 ## Approach
-**Algorithm:** Median‑based target selection with nearest palindrome search
+**Algorithm:** Median-based target selection with nearest palindrome search
 1. Sort `nums` and find the median value `m` (or any value between the two middle elements for even length). 2. Generate the closest palindrome numbers `p1 ≤ m` and `p2 ≥ m`. 3. Compute total absolute difference cost to each candidate palindrome and return the smaller.
 
 ```text
@@ -67,20 +67,20 @@ FUNCTION minimumCost(nums):
 For `nums = [12,34,56]`:
 - Sorted → [12,34,56]; median = 34.
 - Nearest palindromes: 33 (≤34) and 44 (≥34).
-- Cost to 33 = |12‑33|+|34‑33|+|56‑33| = 21+1+23 = 45.
-- Cost to 44 = |12‑44|+|34‑44|+|56‑44| = 32+10+12 = 54.
+- Cost to 33 = |12-33|+|34-33|+|56-33| = 21+1+23 = 45.
+- Cost to 44 = |12-44|+|34-44|+|56-44| = 32+10+12 = 54.
 - Minimum cost = 45.
 
 ## Complexity Analysis
 | Metric | Value |
 |--------|-------|
-| Time   | O(n log n) for sorting plus O(log m) to find nearest palindromes |
+| Time   | O(n log n) for sorting plus O(log m) to find nearest palindromes |
 | Space  | O(1) additional space |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the target palindrome length (number of digits) were fixed?
 2. Can you extend the approach to handle a custom cost per unit change (different weights for increase vs decrease)?
-3. What if you needed to make the array elements equal to a *non‑palindromic* target – how does the algorithm simplify?
+3. What if you needed to make the array elements equal to a *non-palindromic* target – how does the algorithm simplify?
 
 ## Key Takeaway
 The optimal palindromic target lies near the median; checking the closest palindromes on both sides yields the minimum total adjustment cost.

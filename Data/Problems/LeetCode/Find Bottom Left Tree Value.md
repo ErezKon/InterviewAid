@@ -81,11 +81,11 @@ The algorithm processes each level, updating `result` to the first node of that 
 
 ## Follow-Up Questions
 
-1. How would you solve the problem using a depth‑first search while tracking depth?
+1. How would you solve the problem using a depth-first search while tracking depth?
 2. Can the solution be adapted to return the entire leftmost view of the tree?
 
 ---
 
 ## Key Takeaway
 
-> **BFS level‑by‑level: the first node of each level overwrites `result`. After BFS completes, `result` holds the leftmost value of the deepest level.**
+> **BFS level-by-level: the first node of each level overwrites `result`. After BFS completes, `result` holds the leftmost value of the deepest level.**

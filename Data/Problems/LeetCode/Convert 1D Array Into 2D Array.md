@@ -70,9 +70,9 @@ The final `result` matches the expected output.
 - **Time:** O(m·n) – each element is visited once.
 - **Space:** O(m·n) for the output array.
 
-## Follow‑Up Questions
-1. How would you modify the algorithm to reshape in column‑major order?
-2. Can the solution be adapted to work in‑place for mutable array structures?
+## Follow-Up Questions
+1. How would you modify the algorithm to reshape in column-major order?
+2. Can the solution be adapted to work in-place for mutable array structures?
 3. What if the input were a stream of numbers; how would you produce rows lazily?
 
 ## Key Takeaway

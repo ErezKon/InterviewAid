@@ -61,9 +61,9 @@ Take `[4,1,2,3]`:
 |------|-------|
 | O(n log n) for sorting | O(n) for counter |
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-- How would you handle floating‑point numbers where exact doubling may not hold?
+- How would you handle floating-point numbers where exact doubling may not hold?
 - Can the algorithm be adapted for a custom multiplier other than 2?
 - What changes are needed if the array length can be odd?
 

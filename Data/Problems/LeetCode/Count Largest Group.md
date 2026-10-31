@@ -13,7 +13,7 @@ We need to group the numbers from `1` to `n` according to the sum of its digits.
 
 Return the number of groups that have the largest size, i.e. the **maximum** number of elements.
 
-(In other words, numbers with the same digit‑sum form one group.)
+(In other words, numbers with the same digit-sum form one group.)
 
 **Constraints:**
 - `1 <= n <= 10^4`
@@ -26,7 +26,7 @@ Example 1:
   Explanation: There are 9 groups in total, they are grouped according sum of its digits of numbers from 1 to 13:
   [1,10], [2,11], [3,12], [4,13], [5], [6], [7], [8], [9].
   There are 4 groups with largest size.
-  (Digit‑sum groups of the largest size have 2 elements each.)
+  (Digit-sum groups of the largest size have 2 elements each.)
 ```
 
 ```
@@ -37,10 +37,10 @@ Example 2:
 ```
 
 ## Approach
-Use a hash map to count how many numbers fall into each digit‑sum group, then find the maximum frequency and count how many groups achieve it.
+Use a hash map to count how many numbers fall into each digit-sum group, then find the maximum frequency and count how many groups achieve it.
 
 ## Walkthrough
-| i | digit‑sum | groups after i |
+| i | digit-sum | groups after i |
 |---|-----------|----------------|
 | 1 | 1 | {1:1} |
 | 2 | 2 | {1:1, 2:1} |
@@ -49,13 +49,13 @@ Use a hash map to count how many numbers fall into each digit‑sum group, then 
 Continue until `n`, then compute `maxSize = max(groups.values())` and sum groups with that size.
 
 ## Complexity Analysis
-- **Time:** O(n · log 10 n) → O(n) because digit sum of a number takes O(log n) time.
-- **Space:** O(k) where `k` is the number of distinct digit sums (≤ 9 · log₁₀ n).
+- **Time:** O(n · log 10 n) → O(n) because digit sum of a number takes O(log n) time.
+- **Space:** O(k) where `k` is the number of distinct digit sums (≤ 9 · log₁₀ n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution for a very large `n` (e.g., 10¹⁸) where iterating through all numbers is infeasible?
 2. Can the problem be solved using combinatorial counting instead of enumeration?
 3. How would the solution change if numbers were given in an arbitrary unsorted array instead of the range `1…n`?
 
 ## Key Takeaway
-Counting digit‑sum groups reduces to a simple frequency map; the answer is the count of groups whose frequency equals the maximum frequency.
+Counting digit-sum groups reduces to a simple frequency map; the answer is the count of groups whose frequency equals the maximum frequency.

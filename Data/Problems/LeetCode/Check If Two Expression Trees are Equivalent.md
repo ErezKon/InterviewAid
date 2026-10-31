@@ -70,7 +70,7 @@ Since only `+` is used, the expression is just a multiset of variables. Two expr
 
 ## 4. Walkthrough
 
-Consider the trees from Example 2:
+Consider the trees from Example 2:
 
 1. **Traverse root1** (`[+, a, [+, b, c]]`):
    - Visit leaf `a` → `{a:1}`

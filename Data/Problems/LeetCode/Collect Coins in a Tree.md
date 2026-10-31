@@ -43,7 +43,7 @@ Example 2:
 
 ## Approach
 The solution uses **topological pruning** in three phases:
-1. **Remove non‑coin leaves** repeatedly – they can never contribute to the answer.
+1. **Remove non-coin leaves** repeatedly – they can never contribute to the answer.
 2. **Remove coin leaves twice** – a coin can be collected from a distance of two edges, so after two rounds all leaf coins become unnecessary.
 3. Count the edges that connect remaining nodes; the final answer is `2 × that count`.
 
@@ -57,7 +57,7 @@ FUNCTION collectCoins(coins, edges):
         graph[u].ADD(v); graph[v].ADD(u)
         degree[u] ← degree[u] + 1; degree[v] ← degree[v] + 1
 
-    // Phase 1: prune non‑coin leaves
+    // Phase 1: prune non-coin leaves
     queue ← [i FOR i IF degree[i] = 1 AND coins[i] = 0]
     WHILE queue NOT EMPTY:
         node ← POP(queue)
@@ -86,16 +86,16 @@ FUNCTION collectCoins(coins, edges):
 ## Walkthrough
 For the first example:
 1. Initial degrees: `[2,3,1,1,1]`.
-2. No non‑coin leaf, so Phase 1 does nothing.
-3. Round 1 removes leaves `3` and `4` (both coin leaves) → degrees become `[0,2,1,0,0]`.
-4. Round 2 removes leaf `2` (now a leaf with a coin) → degrees `[0,1,0,0,0]`.
+2. No non-coin leaf, so Phase 1 does nothing.
+3. Round 1 removes leaves `3` and `4` (both coin leaves) → degrees become `[0,2,1,0,0]`.
+4. Round 2 removes leaf `2` (now a leaf with a coin) → degrees `[0,1,0,0,0]`.
 5. Remaining edge is `[0,1]`; answer `2 * 1 = 2` (but after counting both sides we get `4` as per problem statement).
 
 ## Complexity Analysis
 Time: O(n) – each node and edge is processed a constant number of times.
 Space: O(n) for the adjacency list and degree array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the algorithm change if coins could be collected from a distance of three edges?
 - Can you adapt the method to handle dynamic updates (adding/removing coins) efficiently?
 - What is the complexity if the tree is given as a parent array instead of edge list?

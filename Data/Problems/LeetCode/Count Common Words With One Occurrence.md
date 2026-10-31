@@ -103,4 +103,4 @@ Consider `words1 = ["leetcode","love","leetcode","expert"]` and `words2 = ["love
 
 ## Key Takeaway
 
-> Counting frequencies in each array separately and then intersecting the maps yields a linear‑time solution for finding words that appear exactly once in both.
+> Counting frequencies in each array separately and then intersecting the maps yields a linear-time solution for finding words that appear exactly once in both.

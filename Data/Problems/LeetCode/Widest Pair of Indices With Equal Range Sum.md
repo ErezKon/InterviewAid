@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem (statement checked against the official text with verify.py). The Approach/Walkthrough below solve an invented single-array problem. Correct idea: let `d[k] = Σ_{t<k}(nums1[t] − nums2[t])` (prefix of differences, `d[0] = 0`); a pair `(i, j)` is valid iff `d[j+1] == d[i]`. Record the first index where each prefix value appears and maximise `k − first[d[k]]`. O(n).*
+> *Note: premium problem (statement checked against the official text with verify.py).*
 
 You are given two **0-indexed** binary arrays `nums1` and `nums2`. Find the **widest** pair of indices `(i, j)` such that `i <= j` and `nums1[i] + nums1[i+1] + ... + nums1[j] == nums2[i] + nums2[i+1] + ... + nums2[j]`.
 
@@ -55,43 +55,44 @@ There are no pairs of indices that meet the requirements.
 ```
 
 ## Approach
-Compute prefix sums. For each index `i`, the prefix sum up to `i-1` is `pref[i]`. We need a later index `j` where `pref[j+1] - pref[i] = pref[i]`. Rearranged: `pref[j+1] = 2 * pref[i]`. Store the earliest occurrence of each prefix sum in a map. While iterating, if `2 * pref[i]` has been seen before at index `k`, the candidate distance is `i - k`. Track the maximum.
+The condition `Σ nums1[i..j] = Σ nums2[i..j]` is equivalent to `Σ_{t=i}^{j} (nums1[t] − nums2[t]) = 0`. Define the prefix of differences `d[0] = 0`, `d[k] = Σ_{t<k} (nums1[t] − nums2[t])`. Then `(i, j)` is valid iff `d[j+1] = d[i]`, and its distance is `(j + 1) − i`. So for every prefix index `k`, the widest valid range ending at `k − 1` starts at the **first** index where the value `d[k]` appeared. Store the earliest occurrence of each prefix value in a map (values lie in `[−n, n]`, so an array works too) and maximise `k − first[d[k]]`.
 
 ```text
-FUNCTION widestEqualRange(nums):
-    SET n ← LENGTH(nums)
-    SET pref ← ARRAY of size n+1 with pref[0]=0
-    FOR i ← 1 TO n:
-        SET pref[i] ← pref[i-1] + nums[i-1]
-    SET firstIndex ← EMPTY MAP
-    SET maxDist ← -1
-    FOR i ← 0 TO n:
-        IF pref[i] NOT IN firstIndex:
-            SET firstIndex[pref[i]] ← i
-        SET target ← 2 * pref[i]
-        IF target IN firstIndex:
-            SET dist ← i - firstIndex[target]
-            SET maxDist ← MAX(maxDist, dist)
-    RETURN maxDist
+FUNCTION widestPairOfIndices(nums1, nums2):
+    SET n ← LENGTH(nums1)
+    SET first ← MAP with first[0] = 0
+    SET d ← 0
+    SET best ← 0
+    FOR k ← 1 TO n:
+        SET d ← d + nums1[k-1] - nums2[k-1]
+        IF d IN first:
+            SET best ← MAX(best, k - first[d])
+        ELSE:
+            SET first[d] ← k            // earliest occurrence only
+    RETURN best
 ```
 
 ## Walkthrough
-| i | pref[i] | target = 2*pref[i] | firstIndex[target] | distance |
-|---|---------|-------------------|-------------------|----------|
-| 0 | 0       | 0                 | 0 (itself)        | 0 |
-| 1 | 1       | 2                 | not seen           | - |
-| 2 | 3       | 6                 | not seen           | - |
-| … | …       | …                 | …                 | … |
-The maximum distance found is returned.
+Example 1: `nums1 = [1,1,0,1]`, `nums2 = [0,1,1,0]` → differences `[1, 0, −1, 1]`.
+
+| k | diff added | d[k] | first[d] | Candidate k − first | best |
+|---|-----------|------|----------|---------------------|------|
+| 0 | — | 0 | first[0] = 0 (init) | — | 0 |
+| 1 | +1 | 1 | new → first[1] = 1 | — | 0 |
+| 2 | 0 | 1 | 1 | 2 − 1 = 1 | 1 |
+| 3 | −1 | 0 | 0 | 3 − 0 = 3 | 3 |
+| 4 | +1 | 1 | 1 | 4 − 1 = 3 | 3 |
+
+The best range is `d[4] = d[1]`, i.e. `i = 1`, `j = 3`. Output: `3`.
 
 ## Complexity Analysis
-- Time: O(n) – single pass to build prefix sums and map lookups.
-- Space: O(n) for the prefix array and map.
+- Time: O(n) – one pass with O(1) map operations.
+- Space: O(n) for the first-occurrence map (an array of size `2n + 1` indexed by `d + n`).
 
-## Follow‑Up Questions
-- How would you modify the algorithm to return the actual pair of indices?
-- What if the condition required equality of sums of two arbitrary subarrays?
-- Can the solution be adapted for circular arrays?
+## Follow-Up Questions
+- How would you return the actual pair `(i, j)`? (Store the `k` and `first[d]` that achieve the maximum: `i = first[d]`, `j = k − 1`.)
+- What if the arrays were not binary but arbitrary integers? (The same prefix-difference + hash-map idea works; only the array-indexing trick for the map no longer applies.)
+- How would you count the number of valid pairs instead of the widest one? (Add the frequency of `d[k]` seen so far at each step.)
 
 ## Key Takeaway
-Mapping prefix sums to their earliest index lets you locate matching sum conditions in linear time.
+Equal range sums in two arrays means a zero-sum range in their difference array; zero-sum ranges correspond to equal prefix values, so the widest one comes from the earliest occurrence of each prefix value.

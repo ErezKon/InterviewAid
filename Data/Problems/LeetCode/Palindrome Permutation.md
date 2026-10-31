@@ -65,4 +65,4 @@ For "code":
 3. What changes if you need to output one valid palindrome permutation?
 
 ## Key Takeaway
-A palindrome permits at most one odd‑frequency character; counting frequencies suffices to decide feasibility.
+A palindrome permits at most one odd-frequency character; counting frequencies suffices to decide feasibility.

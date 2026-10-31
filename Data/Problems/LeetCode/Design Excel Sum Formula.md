@@ -128,7 +128,7 @@ Example 1:
 
 ## Complexity Analysis
 
-- **Time:** Each `set` is O(1). `sum` parses references O(k) where k is number of cells referenced. `get` may traverse the dependency graph; worst‑case O(N) where N is total cells.
+- **Time:** Each `set` is O(1). `sum` parses references O(k) where k is number of cells referenced. `get` may traverse the dependency graph; worst-case O(N) where N is total cells.
 - **Space:** Stores grid values O(H·W) and formula mappings O(F) where F is number of formulas.
 
 ---

@@ -103,7 +103,7 @@ For the first example, rows are `[0110,0110,1001,1001]`. Pattern1 = `0110`, patt
 
 ## Follow-Up Questions
 1. How would you adapt the algorithm if swaps could only be performed on adjacent rows/columns?
-2. Can the solution be extended to non‑binary boards where cells have more than two values?
+2. Can the solution be extended to non-binary boards where cells have more than two values?
 3. What is the minimum number of swaps if you are allowed to flip individual cells instead of swapping rows/columns?
 
 ## Key Takeaway

@@ -63,7 +63,7 @@ Explanation: Since the first word has length 101, we need to truncate the last t
 ## Walkthrough
 
 1. Input caption is split into words after trimming spaces.
-2. The first word is lower‑cased and prefixed with `#`.
+2. The first word is lower-cased and prefixed with `#`.
 3. Each subsequent word has its first character capitalized and is concatenated.
 4. If the resulting string exceeds 100 characters, it is truncated.
 5. The final tag is returned.
@@ -73,7 +73,7 @@ Explanation: Since the first word has length 101, we need to truncate the last t
 - **Time:** O(L) where L is the length of the caption (single pass to split and process).
 - **Space:** O(L) for the list of words and the output tag.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you handle Unicode characters or emojis?
 - Can you generate tags that preserve original punctuation?

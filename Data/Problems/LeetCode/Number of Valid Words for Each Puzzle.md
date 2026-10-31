@@ -70,7 +70,7 @@ FUNCTION findNumOfValidWords(words, puzzles):
     wordMasks ← Counter(bitmask(w) for w in words)
     result ← []
     FOR puzzle IN puzzles:
-        mask ← bitmask(puzzle)               // 26‑bit integer
+        mask ← bitmask(puzzle)               // 26-bit integer
         firstBit ← 1 << (puzzle[0] - 'a')    // bit of the first letter
         count ← 0
         submask ← mask
@@ -90,7 +90,7 @@ Consider the first example puzzle "aboveyz":
 | Step | Action | Explanation |
 |------|--------|-------------|
 | 1 | Convert puzzle to bitmask | `mask = 0b...` representing letters a,b,o,v,e,y,z |
-| 2 | Identify first‑letter bit | `firstBit` corresponds to 'a' |
+| 2 | Identify first-letter bit | `firstBit` corresponds to 'a' |
 | 3 | Enumerate submasks (≤128) | Loop over all subsets of the 7 letters |
 | 4 | Check inclusion of first bit | Only submasks containing 'a' are considered |
 | 5 | Look up submask in `wordMasks` | Only submask representing "aaaa" exists, count = 1 |
@@ -103,7 +103,7 @@ The same process repeats for each puzzle, yielding the final output `[1,1,3,2,4]
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(W + P · 2⁷) – building word masks plus enumerating at most 128 submasks per puzzle |
-| **Space** | O(W) for the word‑mask frequency map |
+| **Space** | O(W) for the word-mask frequency map |
 
 ---
 
@@ -111,7 +111,7 @@ The same process repeats for each puzzle, yielding the final output `[1,1,3,2,4]
 
 1. How would the solution change if puzzles could contain up to 10 letters?
 2. Can you adapt the algorithm to return the actual list of valid words for each puzzle instead of just the count?
-3. What alternative data structures (e.g., Trie) could be used to solve this problem, and what trade‑offs would they introduce?
+3. What alternative data structures (e.g., Trie) could be used to solve this problem, and what trade-offs would they introduce?
 
 ---
 

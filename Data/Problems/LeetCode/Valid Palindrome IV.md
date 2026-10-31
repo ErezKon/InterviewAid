@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: premium problem (statement checked against the official text with verify.py). The original description (and the Approach/Walkthrough below) treat this as "remove at most k characters" (that is #1216). Correct idea: count mismatched pairs `s[i] != s[n−1−i]` with two pointers; return `true` iff the count is `≤ 2`. O(n).*
+> *Note: premium problem (statement checked against the official text with verify.py).*
 
 You are given a **0-indexed** string `s` consisting of only lowercase English letters. In one operation, you can change **any** character of `s` to any **other** character.
 
@@ -47,39 +47,48 @@ Explanation: It is not possible to make s a palindrome using one or two operatio
 ```
 
 ## Approach
-The problem reduces to checking whether the **minimum deletions** needed to form a palindrome are ≤ `k`. This minimum equals `len(s) - LPS`, where `LPS` is the length of the longest palindromic subsequence. Compute `LPS` via **LCS** between `s` and its reverse.
+Compare the mirrored pairs `(s[i], s[n-1-i])` with two pointers and count how many pairs differ. Each mismatched pair needs at least one change, and one change (set one side equal to the other) is enough to fix it. So:
+
+- **0 mismatches:** already a palindrome, but we must perform at least one operation. For odd length, change the middle character (1 op); otherwise change both characters of any pair to the same new letter (2 ops). Always possible → `true`.
+- **1 mismatch:** fix it with 1 op → `true`.
+- **2 mismatches:** fix both with 2 ops → `true`.
+- **3+ mismatches:** needs at least 3 ops → `false`.
+
+Hence the answer is simply `mismatches ≤ 2`.
 
 ### Pseudocode
 ```text
-FUNCTION canMakePalindrome(s, k):
-    n ← LENGTH(s)
-    rev ← REVERSE(s)
-    dp ← MATRIX (n+1) × (n+1) FILLED WITH 0
-    FOR i ← 1 TO n:
-        FOR j ← 1 TO n:
-            IF s[i-1] == rev[j-1]:
-                dp[i][j] ← dp[i-1][j-1] + 1
-            ELSE:
-                dp[i][j] ← MAX(dp[i-1][j], dp[i][j-1])
-    lps ← dp[n][n]
-    minDeletions ← n - lps
-    RETURN minDeletions ≤ k
+FUNCTION makePalindrome(s):
+    i ← 0;  j ← LENGTH(s) - 1
+    mismatches ← 0
+    WHILE i < j:
+        IF s[i] ≠ s[j]:
+            mismatches ← mismatches + 1
+        i ← i + 1;  j ← j - 1
+    RETURN mismatches ≤ 2
 ```
 
 ## Walkthrough
-For `s = "abca"`:
-- Reverse = `"acba"`.
-- DP yields `LPS = 3` ("aba" or "aca").
-- Minimum deletions = 4 - 3 = 1 ≤ k, so return true.
+Example 1: `s = "abcdba"` (n = 6).
+
+| Step | i | j | s[i] | s[j] | Mismatch? | Count |
+|------|---|---|------|------|-----------|-------|
+| 1 | 0 | 5 | a | a | no | 0 |
+| 2 | 1 | 4 | b | b | no | 0 |
+| 3 | 2 | 3 | c | d | yes | 1 |
+
+`i ≥ j`, stop. `1 ≤ 2` → output `true`.
+
+(Example 3: `"abcdef"` has pairs a/f, b/e, c/d → 3 mismatches → `false`.)
 
 ## Complexity Analysis
-- **Time:** O(n²) for the DP computation.
-- **Space:** O(n²) (can be optimized to O(n) with rolling arrays).
+- **Time:** O(n) — one pass over half of the string.
+- **Space:** O(1).
 
 ## Follow-Up Questions
-1. How can you reduce the space complexity to O(n)?
-2. Extend to allow at most `k` **replacements** instead of deletions.
-3. Find the actual palindrome after performing the deletions.
+1. Generalize: can `s` become a palindrome with **exactly** `k` operations? (Need `mismatches ≤ k`; the extra `k − mismatches` operations can be absorbed by changing a pair twice, both characters of a matched pair, or the middle character, so check parity/length edge cases carefully.)
+2. What if the operation is deletion instead of replacement? (That becomes Valid Palindrome III, solved via longest palindromic subsequence DP.)
+3. Can you stop early? (Yes — return `false` as soon as the count reaches 3.)
 
 ## Key Takeaway
-The edit distance to a palindrome equals the string length minus its longest palindromic subsequence, which can be efficiently computed via LCS.
+For replacement-based palindrome edits, only the number of mismatched mirror pairs matters: each costs exactly one operation, and the "exactly one or two" requirement is always satisfiable when the count is 0, so the answer is `mismatches ≤ 2`.

@@ -85,12 +85,12 @@ For `coins = [1,2,3]`:
 - **Time:** `O(n)` to sum the array.
 - **Space:** `O(1)`.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would the solution change if you could add coins of any denomination, not just `1`?
 - What if the target sum must be a power of three instead of two?
-- Can you compute the answer without using bit‑operations, using only arithmetic?
+- Can you compute the answer without using bit-operations, using only arithmetic?
 
 ## Key Takeaway
 
-The minimal number of `1`‑coins needed is simply the difference between the current sum and the next higher power of two; bit manipulation makes finding that power trivial.
+The minimal number of `1`-coins needed is simply the difference between the current sum and the next higher power of two; bit manipulation makes finding that power trivial.

@@ -81,18 +81,18 @@ Example 2:
 
 | Time | Space |
 |------|-------|
-| O(n log log n) for sieve + O(n²) worst‑case sliding window | O(n) |
+| O(n log log n) for sieve + O(n²) worst-case sliding window | O(n) |
 
 ---
 
 ## 6. Follow-Up Questions
 
 - How would you adapt the solution to return **all** prime sums ≤ `limit` instead of only the largest?
-- Can the sliding‑window search be optimized to O(n) using two‑pointer technique?
+- Can the sliding-window search be optimized to O(n) using two-pointer technique?
 - What changes are needed if the input `limit` can be as large as 10⁹?
 
 ---
 
 ## Key Takeaway
 
-> Generate primes with a sieve, then use prefix sums and a sliding‑window search to find the largest prime that is a sum of consecutive primes.
+> Generate primes with a sieve, then use prefix sums and a sliding-window search to find the largest prime that is a sum of consecutive primes.

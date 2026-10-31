@@ -109,19 +109,21 @@ END FUNCTION
 
 ## Walkthrough
 
-`eventTime = 10, k = 1, startTime = [0,3,7], endTime = [1,5,8]`
+Example 2: `eventTime = 10, k = 1, startTime = [0,2,9], endTime = [1,4,10]`
 
-Gaps: [0, 2, 2, 2] → gaps before meeting 0, between 0-1, between 1-2, after meeting 2.
+Gaps: [0, 1, 5, 0] → before meeting 0 (0-0), between 0-1 (2-1), between 1-2 (9-4), after meeting 2 (10-10).
 
 Window size = k+1 = 2:
 
 | Window | Gaps included | Sum |
 |--------|--------------|-----|
-| [0,1]  | 0 + 2        | 2   |
-| [1,2]  | 2 + 2        | 4   |
-| [2,3]  | 2 + 2        | 4   |
+| [0,1]  | 0 + 1        | 1   |
+| [1,2]  | 1 + 5        | 6   |
+| [2,3]  | 5 + 0        | 5   |
 
-Best = **5** (adjusted for meeting durations being pushed together) ✅
+Best = **6** (move meeting [2,4] left to [1,3], freeing [3,9]), matching the expected output.
+
+Check Example 1: gaps [1, 1, 0], windows 1+1 = 2 and 1+0 = 1 → **2**. Example 3: all gaps are 0 → **0**.
 
 ---
 

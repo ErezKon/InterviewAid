@@ -43,7 +43,7 @@ Example 2:
 ```
 
 ## Approach
-Perform a depth‑first search (DFS) or breadth‑first search (BFS) to label each island and count its cells. Iterate over the grid, launching a flood‑fill whenever an unvisited `1` is found, accumulating the size.
+Perform a depth-first search (DFS) or breadth-first search (BFS) to label each island and count its cells. Iterate over the grid, launching a flood-fill whenever an unvisited `1` is found, accumulating the size.
 
 ```text
 FUNCTION maxAreaOfIsland(grid):
@@ -74,12 +74,12 @@ For the first example, the DFS started at cell (0,2) discovers cells (0,2),(1,2)
 
 ## Complexity Analysis
 *Time*: **O(n·m)** – each cell is visited at most once.
-*Space*: **O(n·m)** for the visited set (or in‑place marking).
+*Space*: **O(n·m)** for the visited set (or in-place marking).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return the coordinates of the largest island?
 2. Can the solution be adapted to count islands with diagonal connections?
 3. What changes are needed if the grid is extremely large and cannot fit in memory?
 
 ## Key Takeaway
-A simple flood‑fill (DFS/BFS) efficiently computes island areas by exploring each connected component exactly once.
+A simple flood-fill (DFS/BFS) efficiently computes island areas by exploring each connected component exactly once.

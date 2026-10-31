@@ -87,4 +87,4 @@ Thus there are 4 arrays of length 2 whose product is 6.
 
 ## Key Takeaway
 
-> **Factorize `k` into prime powers and use stars‑and‑bars (`C(a+n‑1, n‑1)`) to distribute each exponent among the `n` positions; multiply the results for all primes.**
+> **Factorize `k` into prime powers and use stars-and-bars (`C(a+n-1, n-1)`) to distribute each exponent among the `n` positions; multiply the results for all primes.**

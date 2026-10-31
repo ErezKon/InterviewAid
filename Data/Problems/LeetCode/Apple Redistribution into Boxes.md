@@ -66,7 +66,7 @@ FUNCTION minimumBoxes(apple, capacity):
 - **Time:** O(n log n) for sorting the `capacity` array, where n = length of `capacity`.
 - **Space:** O(1) extra space aside from the input arrays.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you handle the case where some boxes have a minimum fill requirement?
 2. What if moving apples incurs a cost proportional to the number of apples moved?
 3. Can you solve the problem in O(n) time using a counting sort when capacities are bounded?

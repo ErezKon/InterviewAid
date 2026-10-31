@@ -50,42 +50,40 @@ Since 2 is the only occupied position, we return [2].
 ```
 
 ## Approach
-The goal is to keep the most frequent positions and relocate the rest. Count occurrences of each position, sort frequencies descending, and sum the counts of positions beyond the top `k`.
+Only the set of occupied positions matters, not how many marbles sit at each one. Keep a hash set of occupied positions. For each step, remove `moveFrom[i]` and add `moveTo[i]` (remove first, so a move to the same position keeps it occupied). The problem guarantees `moveFrom[i]` is occupied at that moment. Finally return the sorted set.
 
 ```text
-FUNCTION relocateMarbles(nums, k):
-    // Count frequency of each position
-    freqMap ← EMPTY MAP
-    FOR pos IN nums:
-        freqMap[pos] ← freqMap.get(pos, 0) + 1
-    // Extract frequencies and sort descending
-    frequencies ← LIST of values in freqMap
-    SORT frequencies DESCENDING
-    // If there are ≤ k distinct positions, no moves needed
-    IF LENGTH(frequencies) <= k:
-        RETURN 0
-    // Sum counts of positions beyond the top k
-    moves ← 0
-    FOR i FROM k TO LENGTH(frequencies)-1:
-        moves ← moves + frequencies[i]
-    RETURN moves
+FUNCTION relocateMarbles(nums, moveFrom, moveTo):
+    occupied ← SET(nums)
+    FOR i FROM 0 TO LENGTH(moveFrom)-1:
+        REMOVE moveFrom[i] FROM occupied
+        ADD moveTo[i] TO occupied
+    RETURN SORTED(occupied)
 ```
 
 ## Walkthrough
-For `nums = [1,2,2,3,4]`, `k = 2`:
-1. Frequencies: `{1:1, 2:2, 3:1, 4:1}` → `[2,1,1,1]` sorted.
-2. Top 2 frequencies: `2` and `1` (positions 2 and any one of {1,3,4}).
-3. Remaining frequencies sum = `1 + 1 = 2` → need 2 moves.
+Example 1: `nums = [1,6,7,8]`, `moveFrom = [1,7,2]`, `moveTo = [2,9,5]`:
+
+| Step | Move | occupied after |
+|------|------|----------------|
+| init | - | {1,6,7,8} |
+| 0 | 1 → 2 | {2,6,7,8} |
+| 1 | 7 → 9 | {2,6,8,9} |
+| 2 | 2 → 5 | {5,6,8,9} |
+
+Sorted → `[5,6,8,9]`.
+
+Example 2: `nums = [1,1,3,3]` → occupied `{1,3}`; move 1 → 2 gives `{2,3}`; move 3 → 2 gives `{2}` → `[2]`.
 
 ## Complexity Analysis
-- Counting frequencies: O(n) time, O(d) space where d = distinct positions.
-- Sorting frequencies: O(d log d) time.
-Overall: **Time O(n + d log d), Space O(d)**.
+- Building the set: O(n); each move is O(1) average, O(m) total.
+- Sorting the final set of at most n distinct positions: O(n log n).
+Overall: **Time O(n log n + m), Space O(n)**.
 
-## Follow‑Up Questions
-1. How would the solution change if moving a marble incurs a cost proportional to the distance moved?
-2. Can you solve the problem in O(n) time without explicit sorting using a selection algorithm to find the k‑th largest frequency?
-3. How would you handle the case where `k` can be larger than the number of distinct positions?
+## Follow-Up Questions
+1. How would you also return the number of marbles at each occupied position?
+2. What changes if a move may reference an empty position (no guarantee)?
+3. How would you answer "is position p occupied?" queries interleaved with moves?
 
 ## Key Takeaway
-Minimizing moves reduces to keeping the `k` most frequent positions and relocating all others.
+Since every marble at a position moves together, only the set of occupied positions matters; a hash set with remove-then-add per step solves it directly.

@@ -39,7 +39,7 @@ Example 3:
 ```
 
 ## Approach
-State‑Compression Dynamic Programming – treat each column as a state (a length‑`m` string of colors with no vertical adjacency). Pre‑compute all valid states and which pairs of states are compatible (no same color in the same row). Then iterate column by column, accumulating counts.
+State-Compression Dynamic Programming – treat each column as a state (a length-`m` string of colors with no vertical adjacency). Pre-compute all valid states and which pairs of states are compatible (no same color in the same row). Then iterate column by column, accumulating counts.
 
 ```text
 FUNCTION colorTheGrid(m, n):
@@ -50,7 +50,7 @@ FUNCTION colorTheGrid(m, n):
         state ← decode(mask, m) // list of m colors
         IF no two adjacent colors in state are equal:
             APPEND state TO validStates
-    // Pre‑compute compatibility
+    // Pre-compute compatibility
     compatible ← MAP from state TO list of states
     FOR s1 IN validStates:
         FOR s2 IN validStates:
@@ -77,10 +77,10 @@ For `m = 2`, valid column states are `01,02,10,12,20,21` (6 states). Compatibili
 - **Time:** O(n · S²) where `S` is the number of valid states (≤ 48 for `m ≤ 5`).
 - **Space:** O(S) for the DP table and compatibility lists.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if diagonal adjacency were also prohibited?
 2. Can you extend the method to more than three colors?
 3. What optimizations reduce the O(S²) transition cost?
 
 ## Key Takeaway
-By compressing each column into a state and pre‑computing compatible transitions, we transform a 2‑D coloring problem into a linear DP over columns.
+By compressing each column into a state and pre-computing compatible transitions, we transform a 2-D coloring problem into a linear DP over columns.

@@ -71,7 +71,7 @@ Consider the input "1122":
 
 - How would you modify the algorithm to handle very long strings without converting each character to an integer?
 - Can this be extended to check balance for any arbitrary partition of indices?
-- What if the string contains non‑digit characters?
+- What if the string contains non-digit characters?
 
 ## Key Takeaway
 

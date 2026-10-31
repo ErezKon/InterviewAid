@@ -89,58 +89,54 @@ Output:
 ```
 
 ## Approach
-Model the tournament as a directed graph where an edge `u → v` means `u` defeated `v`. A player can be a winner if they are not *definitely* beaten by another player via a directed path. Compute the transitive closure (or use Floyd‑Warshall / BFS from each node) to find which players are reachable from each other. Any player that is not reachable from any other player is a candidate winner.
+Each player can appear as `first_player` or `second_player`, so first flatten the `Matches` table into one `(player_id, score)` row per player per match with `UNION ALL`. Sum the points per player, attach the group via `Players`, then rank players inside each group by total points descending and `player_id` ascending (tie-break). The row with rank 1 in each group is the winner.
 
-**Pseudocode**
-```text
-FUNCTION tournamentWinners(n, matches):
-    SET adj ← LIST of n empty lists
-    FOR each [u, v] IN matches:
-        APPEND v TO adj[u]
-    // compute reachability using BFS from each node
-    SET canBeat ← MATRIX n×n initialized FALSE
-    FOR i ← 1 TO n:
-        CALL bfs(i, adj, canBeat[i])
-    SET result ← []
-    FOR i ← 1 TO n:
-        SET beatenByOther ← FALSE
-        FOR j ← 1 TO n:
-            IF i ≠ j AND canBeat[j][i] = TRUE:
-                SET beatenByOther ← TRUE
-                BREAK
-        IF NOT beatenByOther:
-            APPEND i TO result
-    RETURN result
-
-FUNCTION bfs(start, adj, row):
-    SET queue ← [start]
-    SET visited ← SET containing start
-    WHILE queue NOT EMPTY:
-        SET node ← POP_FRONT(queue)
-        FOR each neighbor IN adj[node]:
-            IF neighbor NOT IN visited:
-                SET visited ADD neighbor
-                SET row[neighbor] ← TRUE
-                PUSH_BACK(queue, neighbor)
+**SQL**
+```sql
+WITH scores AS (
+    SELECT first_player AS player_id, first_score AS score FROM Matches
+    UNION ALL
+    SELECT second_player, second_score FROM Matches
+),
+totals AS (
+    SELECT p.group_id, p.player_id, SUM(s.score) AS total
+    FROM Players p
+    JOIN scores s ON s.player_id = p.player_id
+    GROUP BY p.group_id, p.player_id
+),
+ranked AS (
+    SELECT group_id, player_id,
+           ROW_NUMBER() OVER (PARTITION BY group_id
+                              ORDER BY total DESC, player_id ASC) AS rn
+    FROM totals
+)
+SELECT group_id, player_id
+FROM ranked
+WHERE rn = 1;
 ```
 
 ## Walkthrough
-Consider `n = 3, matches = [[1,2],[2,3]]`.
-1. Build adjacency: 1→2, 2→3.
-2. BFS from 1 reaches {2,3}; from 2 reaches {3}; from 3 reaches {}.
-3. Player 1 is not reachable from any other player → candidate.
-4. Player 2 is not reachable from any other player (only reachable from 1) → candidate.
-5. Player 3 is reachable from 1 and 2 → not a candidate.
-Result `[1,2]`.
+Example 1:
+1. Flatten matches into per-player scores: 15: 3 + 0 = 3, 45: 0, 30: 1 + 2 = 3, 25: 2, 40: 5, 20: 2, 35: 1, 50: 1.
+2. Totals per group:
+
+| group_id | player totals |
+|----------|---------------|
+| 1 | 15 -> 3, 30 -> 3, 25 -> 2, 45 -> 0 |
+| 2 | 35 -> 1, 50 -> 1 |
+| 3 | 40 -> 5, 20 -> 2 |
+
+3. Rank by `total DESC, player_id ASC`: group 1 tie (15 vs 30, both 3) -> 15 wins (lower id); group 2 tie (35 vs 50) -> 35; group 3 -> 40.
+4. Output: `(1, 15), (2, 35), (3, 40)` - matches the expected result.
 
 ## Complexity Analysis
-- Time: O(n · (m + n)) where `m` is number of matches (BFS from each node). For dense graphs Floyd‑Warshall O(n³) is also possible.
-- Space: O(n²) for the reachability matrix and O(n + m) for adjacency.
+- Time: O(M + P log P) - one pass over the matches to flatten and aggregate, plus sorting inside each group partition for the ranking (M = matches, P = players).
+- Space: O(M + P) for the intermediate CTE results.
 
 ## Follow-Up Questions
-1. How would you improve the algorithm for very large `n` where O(n²) space is prohibitive?
-2. Can the problem be solved using topological ordering without explicit reachability matrix?
-3. How would you handle ties where multiple players have the same maximum win count?
+1. How would you write this without window functions (e.g. with a correlated subquery or `GROUP BY` + `MIN`)?
+2. How would you also return players who never played (total 0) if a whole group had no matches?
+3. How would you return all tied players instead of only the lowest `player_id`?
 
 ## Key Takeaway
-A player can be a possible tournament winner iff no other player can reach (defeat) them through a directed path; computing reachability reveals all such candidates.
+Unpivot symmetric columns (`first_*` / `second_*`) with `UNION ALL`, aggregate, and then use `ROW_NUMBER()` with a compound `ORDER BY` to pick one winner per group including the tie-break rule.

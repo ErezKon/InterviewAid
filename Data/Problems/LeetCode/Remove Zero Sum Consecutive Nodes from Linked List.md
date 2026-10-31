@@ -40,7 +40,7 @@ Output: [1]
 ```
 
 ## Approach
-Use prefix sums with a hash map to locate the farthest node that shares the same cumulative sum. In the first pass, store the last occurrence of each prefix sum. In the second pass, reconnect each node to the node after the last occurrence, thereby skipping zero‑sum intervals.
+Use prefix sums with a hash map to locate the farthest node that shares the same cumulative sum. In the first pass, store the last occurrence of each prefix sum. In the second pass, reconnect each node to the node after the last occurrence, thereby skipping zero-sum intervals.
 
 ```text
 FUNCTION removeZeroSumSublists(head):
@@ -54,7 +54,7 @@ FUNCTION removeZeroSumSublists(head):
         SET prefixSum ← prefixSum + node.val
         SET prefixMap[prefixSum] ← node
         SET node ← node.next
-    // Second pass: skip zero‑sum intervals
+    // Second pass: skip zero-sum intervals
     SET prefixSum ← 0
     SET node ← dummy
     WHILE node IS NOT NULL:
@@ -80,9 +80,9 @@ Second pass uses these mappings to jump over the 1→2→-3 segment.
 - Space: O(n) for the hash map storing prefix sums.
 
 ## Follow-Up Questions
-1. How would you adapt the algorithm to remove only the *first* zero‑sum sublist?
-2. Can this be solved in‑place without extra hash‑map storage?
+1. How would you adapt the algorithm to remove only the *first* zero-sum sublist?
+2. Can this be solved in-place without extra hash-map storage?
 3. How would you handle a circular linked list version of the problem?
 
 ## Key Takeaway
-By tracking prefix sums and their last occurrences, you can eliminate any zero‑sum consecutive segment in a single pass, turning a seemingly complex removal into a simple pointer jump.
+By tracking prefix sums and their last occurrences, you can eliminate any zero-sum consecutive segment in a single pass, turning a seemingly complex removal into a simple pointer jump.

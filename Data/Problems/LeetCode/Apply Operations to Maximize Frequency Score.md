@@ -72,7 +72,7 @@ Thus maximum frequency = 3.
 - **Time:** O(n log n) for sorting plus O(n) sliding window.
 - **Space:** O(n) for prefix sums (can be O(1) with running sum).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if decrement operations were also allowed?
 2. Can you adapt the algorithm to return the actual target value achieving the max frequency?
 3. What is the complexity if `k` is extremely large (e.g., 10⁹)?

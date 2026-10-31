@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-> *Note: statement checked against the official text with verify.py. The Approach/Walkthrough below solve an invented digit problem. Correct idea: single pass — `nums[i]` is good iff (`i − k < 0` or `nums[i] > nums[i − k]`) and (`i + k ≥ n` or `nums[i] > nums[i + k]`); sum the good ones. O(n).*
+> *Note: statement checked against the official text with verify.py.*
 
 Given an array of integers `nums` and an integer `k`, an element `nums[i]` is considered **good** if it is **strictly** greater than the elements at indices `i - k` and `i + k` (if those indices exist). If neither of these indices *exists*, `nums[i]` is still considered **good**.
 
@@ -38,24 +38,42 @@ The only good number is nums[0] = 2 because it is strictly greater than nums[1].
 ```
 
 ## Approach
-Generate good numbers by performing a depth‑first search on digit positions, appending only allowed digits. Stop recursion when the constructed number exceeds `n`. Accumulate the sum of all generated numbers.
+Each element only needs to be compared with at most two other elements: `nums[i - k]` and `nums[i + k]`. A missing neighbor (index out of range) imposes no condition. So a single linear scan decides goodness for every index and sums the good values.
+
+```text
+FUNCTION sumOfGoodNumbers(nums, k)
+    n ← length(nums)
+    total ← 0
+    FOR i ← 0 TO n-1
+        leftOk ← (i - k < 0) OR (nums[i] > nums[i - k])
+        rightOk ← (i + k ≥ n) OR (nums[i] > nums[i + k])
+        IF leftOk AND rightOk
+            total ← total + nums[i]
+    RETURN total
+```
 
 ## Walkthrough
-| Step | Current number | Action |
-|------|----------------|--------|
-| 0 | "" (empty) | start DFS |
-| 1 | "1" | ≤ n, add to sum |
-| 2 | "10" | ≤ n, add to sum |
-| … | … | continue exploring allowed digits |
+Example 1: `nums = [1,3,2,1,5,4]`, `k = 2`.
+
+| i | nums[i] | nums[i-k] | nums[i+k] | Good? | total |
+|---|---------|-----------|-----------|-------|-------|
+| 0 | 1 | — | 2 | no (1 ≤ 2) | 0 |
+| 1 | 3 | — | 1 | yes | 3 |
+| 2 | 2 | 1 | 5 | no (2 ≤ 5) | 3 |
+| 3 | 1 | 3 | 4 | no | 3 |
+| 4 | 5 | 2 | — | yes | 8 |
+| 5 | 4 | 1 | — | yes | 12 |
+
+Result: **12**.
 
 ## Complexity Analysis
-Time: O(g) where g is the count of good numbers ≤ n (much smaller than n). Each number is built once.
-Space: O(d) recursion depth, where d is the number of digits of `n`.
+Time: O(n) — each index is checked with at most two comparisons.
+Space: O(1) extra space.
 
 ## Follow-Up Questions
-* How would you adapt the algorithm to count good numbers instead of summing them?
-* Can the solution be extended to bases other than decimal?
-* What if the set of allowed digits changes dynamically?
+* What if an element must be strictly greater than all elements within distance `k` (a window), not just the two at exactly distance `k`? (Use a sliding-window maximum with a monotonic deque.)
+* How would you answer many queries with different values of `k` efficiently?
+* What changes if "greater or equal" is allowed instead of strictly greater?
 
 ## Key Takeaway
-Restricting digit choices enables a compact DFS that enumerates only valid numbers, avoiding a linear scan of the entire range.
+When the condition for each element depends on a constant number of fixed positions, a direct single pass with careful boundary handling is optimal.

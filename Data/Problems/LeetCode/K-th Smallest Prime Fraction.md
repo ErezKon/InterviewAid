@@ -45,7 +45,7 @@ Output: [1,7]
 
 ---
 
-## Approach: Binary Search on Value — O(n log max) ✅
+## Approach: Binary Search on Value — O(n log max) ✅
 
 ```text
 FUNCTION kthSmallestPrimeFraction(arr, k):
@@ -93,19 +93,19 @@ For `arr = [1,2,3,5]`, `k = 3`:
 
 | Metric | Value | Explanation |
 |--------|-------|-------------|
-| Time | O(n log ε) | Binary search on value (≈ log precision) with O(n) counting per step |
+| Time | O(n log ε) | Binary search on value (≈ log precision) with O(n) counting per step |
 | Space | O(1) | Only constant extra variables |
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-1. How would you solve the problem using a **min‑heap** of size `k`?
-2. Can you extend the approach to handle **non‑prime** sorted arrays?
-3. What changes are needed to return the `k`‑th largest fraction instead?
+1. How would you solve the problem using a **min-heap** of size `k`?
+2. Can you extend the approach to handle **non-prime** sorted arrays?
+3. What changes are needed to return the `k`-th largest fraction instead?
 
 ---
 
 ## Key Takeaway
 
-> Binary search on the fraction value combined with a two‑pointer sweep counts how many fractions are ≤ a candidate, allowing us to pinpoint the `k`‑th smallest fraction without enumerating all pairs.
+> Binary search on the fraction value combined with a two-pointer sweep counts how many fractions are ≤ a candidate, allowing us to pinpoint the `k`-th smallest fraction without enumerating all pairs.

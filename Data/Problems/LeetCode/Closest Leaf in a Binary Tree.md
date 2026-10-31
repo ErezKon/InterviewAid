@@ -88,7 +88,7 @@ FUNCTION findClosestLeaf(root, k):
 ## Follow-Up Questions
 1. How would you modify the solution to return the path to the closest leaf?
 2. Can this be solved without converting the tree to a graph, using only parent pointers?
-3. How would the algorithm change for a k‑ary tree?
+3. How would the algorithm change for a k-ary tree?
 
 ## Key Takeaway
 Transforming the tree into an undirected graph lets a simple BFS locate the nearest leaf efficiently.

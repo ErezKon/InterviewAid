@@ -42,18 +42,18 @@ Example 3:
 ```
 
 ## Approach
-Sort the array to locate the median index (`mid = n/2`). For each element, if its index is ≤ mid and value > k, decrement it to k; if index ≥ mid and value < k, increment it to k. Sum the absolute differences; this yields the minimal operations because moving any element farther from k would only increase the total.
+Sort the array to locate the median index (`mid = n/2`). For each element, if its index is ≤ mid and value > k, decrement it to k; if index ≥ mid and value < k, increment it to k. Sum the absolute differences; this yields the minimal operations because moving any element farther from k would only increase the total.
 
 ## Walkthrough
 | Sorted nums | Median index | Target adjustments |
 |-------------|--------------|--------------------|
-|[1,1,1,1]    |1 (second)    |Increase positions 1 and 2 from 1 to 5 → 4 + 4 = 8 |
+|[1,1,1,1]    |1 (second)    |Increase positions 1 and 2 from 1 to 5 → 4 + 4 = 8 |
 |[1,2,3,4,5] |2 (third)     |No change needed → 0 |
-|[1,2,3,4,5,6]|2 (third)    |Increase index 2 from 3 to 4 (1), decrease index 3 from 4 to 4 (0) → total 1 |
+|[1,2,3,4,5,6]|2 (third)    |Increase index 2 from 3 to 4 (1), decrease index 3 from 4 to 4 (0) → total 1 |
 
 ## Complexity Analysis
-- **Time:** O(n log n) for sorting.
-- **Space:** O(1) extra space if sorting in‑place, otherwise O(n).
+- **Time:** O(n log n) for sorting.
+- **Space:** O(1) extra space if sorting in-place, otherwise O(n).
 
 ## Follow-Up Questions
 1. How would the solution differ if only increment operations were allowed?

@@ -123,10 +123,10 @@ Given a small dataset:
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(N) – single scan of the table by the database engine |
-| **Space** | O(G) – space for groups, where G is number of month‑country pairs |
+| **Space** | O(G) – space for groups, where G is number of month-country pairs |
 
 ---
 
 ## 8. Key Takeaway
 
-> **Conditional aggregation** lets you compute multiple metrics in one grouped query without sub‑queries.
+> **Conditional aggregation** lets you compute multiple metrics in one grouped query without sub-queries.

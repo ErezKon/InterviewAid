@@ -84,7 +84,7 @@ John, Daiana, Steve, and Jasmine are enrolled in departments 14, 33, 74, and 77 
 ```
 
 ## Approach
-The task is a classic anti‑join: select rows from `Students` where no matching `department_id` exists in `Departments`. This can be expressed using a `LEFT JOIN` with a `WHERE` filter on `NULL` or using `NOT EXISTS`.
+The task is a classic anti-join: select rows from `Students` where no matching `department_id` exists in `Departments`. This can be expressed using a `LEFT JOIN` with a `WHERE` filter on `NULL` or using `NOT EXISTS`.
 
 ### Pseudocode
 ```text
@@ -105,7 +105,7 @@ Assume the `Students` table contains `(1, Alice, 10)`, `(2, Bob, 20)`, `(3, Caro
 4. The `WHERE` clause keeps only Bob, and ordering returns `Bob`.
 
 ## Complexity Analysis
-- **Time:** O(m + n) where *m* and *n* are the row counts of `Students` and `Departments`; the join is typically indexed on `department_id`.
+- **Time:** O(m + n) where *m* and *n* are the row counts of `Students` and `Departments`; the join is typically indexed on `department_id`.
 - **Space:** O(m) for the result set.
 
 ## Follow-Up Questions
@@ -114,4 +114,4 @@ Assume the `Students` table contains `(1, Alice, 10)`, `(2, Bob, 20)`, `(3, Caro
 3. If the tables are huge, what indexing strategy would improve performance?
 
 ## Key Takeaway
-An anti‑join (left join with `NULL` filter or `NOT EXISTS`) efficiently identifies rows in one table that lack corresponding entries in another.
+An anti-join (left join with `NULL` filter or `NOT EXISTS`) efficiently identifies rows in one table that lack corresponding entries in another.

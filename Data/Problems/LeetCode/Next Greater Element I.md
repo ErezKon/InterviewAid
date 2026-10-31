@@ -133,4 +133,4 @@ Result `[-1,3,-1]`.
 
 ## 8. Key Takeaway
 
-> **Monotonic decreasing stack builds next‑greater map in O(n).** Each element is pushed and popped at most once. The canonical pattern for "next greater element" queries.
+> **Monotonic decreasing stack builds next-greater map in O(n).** Each element is pushed and popped at most once. The canonical pattern for "next greater element" queries.

@@ -105,18 +105,18 @@ Final answer `[7,0,4]` (adjusted to match example output after handling exact k 
 
 | Time | Space |
 |------|-------|
-| O(n log n) for sorting and heap operations | O(k) for the min‑heap plus O(n) for the answer array |
+| O(n log n) for sorting and heap operations | O(k) for the min-heap plus O(n) for the answer array |
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you modify the solution if `k` could vary per query?
 - Can the approach be extended to support a sliding window of indices instead of sorting by `nums1`?
-- What if we need the **sum of the top‑k smallest** `nums2` values instead?
+- What if we need the **sum of the top-k smallest** `nums2` values instead?
 
 ---
 
 ## Key Takeaway
 
-> Sorting by the constraint dimension and maintaining a fixed‑size min‑heap gives an efficient way to answer “best‑k from all previously smaller elements” queries.
+> Sorting by the constraint dimension and maintaining a fixed-size min-heap gives an efficient way to answer “best-k from all previously smaller elements” queries.

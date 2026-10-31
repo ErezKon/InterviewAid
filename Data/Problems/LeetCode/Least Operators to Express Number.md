@@ -53,11 +53,11 @@ Example 3:
 
 ---
 
-## 3. Approach: DP on Base‑x Representation
+## 3. Approach: DP on Base-x Representation
 
 1. Convert `target` to base `x` to obtain digits.
-2. Process digits from least‑significant to most‑significant.
-3. For each digit `d`, decide whether to represent it directly using `d` copies of `x` (cost `d`) or to use `(x‑d)` copies and carry `1` to the next higher power (cost `x‑d + 1`).
+2. Process digits from least-significant to most-significant.
+3. For each digit `d`, decide whether to represent it directly using `d` copies of `x` (cost `d`) or to use `(x-d)` copies and carry `1` to the next higher power (cost `x-d + 1`).
 4. Use recursion with memoization on `(position, carry)` to compute minimal operators.
 
 ```text
@@ -72,7 +72,7 @@ FUNCTION leastOpsExpressTarget(x, target):
         SET low ← FLOOR(value / power)
         // Cost to reach high*power and low*power
         RETURN MIN(
-            high + dfs(high * power - value),   // use (x‑low) and carry
+            high + dfs(high * power - value),   // use (x-low) and carry
             low + dfs(value - low * power)      // use low directly
         )
     RETURN dfs(target)
@@ -99,7 +99,7 @@ FUNCTION leastOpsExpressTarget(x, target):
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would the solution change if parentheses were allowed?
 2. Can you extend the approach to support a limited number of each operator?

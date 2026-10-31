@@ -37,7 +37,7 @@ Example 3:
 ```
 
 ## Approach
-Use the sliding‑window technique to compute `atMost(k)` – the number of subarrays with at most `k` odd numbers. The answer is `atMost(k) - atMost(k-1)`. The `atMost` function expands a right pointer, counts odd numbers, and shrinks the left pointer while the odd count exceeds the limit.
+Use the sliding-window technique to compute `atMost(k)` – the number of subarrays with at most `k` odd numbers. The answer is `atMost(k) - atMost(k-1)`. The `atMost` function expands a right pointer, counts odd numbers, and shrinks the left pointer while the odd count exceeds the limit.
 
 ## Walkthrough
 | Step | right index | nums[right] | odds | left index | count added |
@@ -59,4 +59,4 @@ The `atMost` routine yields counts for `k` and `k-1`; their difference gives the
 - What changes are needed if the definition of “nice” uses even numbers instead of odd?
 
 ## Key Takeaway
-Transforming “exactly k odd numbers” into a difference of two “at most k” counts enables a linear‑time sliding‑window solution.
+Transforming “exactly k odd numbers” into a difference of two “at most k” counts enables a linear-time sliding-window solution.

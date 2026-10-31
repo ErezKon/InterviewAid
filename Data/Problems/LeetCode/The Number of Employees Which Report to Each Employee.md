@@ -81,21 +81,21 @@ Output:
 ```
 
 ## Approach
-Use SQL aggregation with a self‑join. Join the table to itself on `reports_to = employee_id` to pair managers with their direct reports, then `GROUP BY` the manager fields and compute `COUNT` and `AVG`.
+Use SQL aggregation with a self-join. Join the table to itself on `reports_to = employee_id` to pair managers with their direct reports, then `GROUP BY` the manager fields and compute `COUNT` and `AVG`.
 
 ## Walkthrough
-1. Self‑join `Employees e1` (managers) with `Employees e2` (reports) on `e1.employee_id = e2.reports_to`.
+1. Self-join `Employees e1` (managers) with `Employees e2` (reports) on `e1.employee_id = e2.reports_to`.
 2. Group by `e1.employee_id, e1.name`.
 3. Compute `COUNT(e2.employee_id)` for the number of reports.
 4. Compute `AVG(e2.age)` for the average age; if no reports, AVG returns `NULL`.
 
 ## Complexity Analysis
-The query scans the table twice (once for managers, once for reports) and performs a hash‑based join. Time complexity is `O(N)` where `N` is the number of rows. Space complexity is `O(N)` for the join hash table.
+The query scans the table twice (once for managers, once for reports) and performs a hash-based join. Time complexity is `O(N)` where `N` is the number of rows. Space complexity is `O(N)` for the join hash table.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 * How would you modify the query to include indirect reports (the whole subtree)?
 * How to handle ties when multiple managers have the same number of reports?
 * How to compute the median age of reports instead of the average?
 
 ## Key Takeaway
-Self‑joining a table with itself and aggregating lets you compute per‑manager statistics such as report count and average age in a single SQL statement.
+Self-joining a table with itself and aggregating lets you compute per-manager statistics such as report count and average age in a single SQL statement.

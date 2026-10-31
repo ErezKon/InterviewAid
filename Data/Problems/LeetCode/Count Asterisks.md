@@ -104,7 +104,7 @@ The final count after ignoring asterisks inside pipe pairs is 2.
 ## 6. Follow-Up Questions
 
 1. How would you modify the algorithm if pipes could be nested?
-2. Can you solve the problem in a single regular‑expression pass?
+2. Can you solve the problem in a single regular-expression pass?
 3. What if the input also contains other special characters that should be ignored?
 
 ---

@@ -46,7 +46,7 @@ Simulate spiral traversal using direction vectors and boundaries. At each step, 
 
 ```text
 FUNCTION spiralMatrix(m, n, head):
-    SET matrix ← 2‑D ARRAY of size m×n filled with -1
+    SET matrix ← 2-D ARRAY of size m×n filled with -1
     SET dirs ← [(0,1), (1,0), (0,-1), (-1,0)]  // right, down, left, up
     SET r ← 0
     SET c ← 0
@@ -85,10 +85,10 @@ For `m=3, n=3` with list `[3,0,2,5,4]`:
 - **Time:** Each cell is visited once → `O(m·n)`.
 - **Space:** The output matrix → `O(m·n)` auxiliary space.
 
-## Follow‑Up Questions
-1. How would you adapt the algorithm for a counter‑clockwise spiral?
-2. Can you fill the matrix in‑place if the list length equals `m·n`?
+## Follow-Up Questions
+1. How would you adapt the algorithm for a counter-clockwise spiral?
+2. Can you fill the matrix in-place if the list length equals `m·n`?
 3. What modifications are needed to start the spiral from a different corner?
 
 ## Key Takeaway
-A simple direction‑vector simulation with boundary checks lets you fill a matrix in spiral order while handling a possibly shorter linked list.
+A simple direction-vector simulation with boundary checks lets you fill a matrix in spiral order while handling a possibly shorter linked list.

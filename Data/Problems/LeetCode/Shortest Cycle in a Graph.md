@@ -73,7 +73,7 @@ Example 2:
 
 ## Walkthrough
 
-Consider the first example with a triangle 0‑1‑2.
+Consider the first example with a triangle 0-1-2.
 
 | Step | Action | Queue | dist | parent | minCycle |
 |------|--------|-------|------|--------|----------|
@@ -95,4 +95,4 @@ The algorithm discovers the triangle length 3, which is the answer.
 
 ## Key Takeaway
 
-> BFS from every node detects the shortest cycle passing through that node. When BFS finds an already‑visited non‑parent neighbor, the cycle length is `dist[u] + dist[v] + 1`.
+> BFS from every node detects the shortest cycle passing through that node. When BFS finds an already-visited non-parent neighbor, the cycle length is `dist[u] + dist[v] + 1`.

@@ -80,7 +80,7 @@ Take the initial state `"++++"`.
 
 | Step | Current State | Action | Resulting State |
 |------|---------------|--------|-----------------|
-| 1 | `++++` | Flip positions 2‑3 (`++` → `--`) | `+--+` |
+| 1 | `++++` | Flip positions 2-3 (`++` → `--`) | `+--+` |
 | 2 | `+--+` | Opponent has no `++` to flip → loses | — |
 
 Since the first player can force a state with no moves for the opponent, the initial state is winning.
@@ -91,7 +91,7 @@ Since the first player can force a state with no moves for the opponent, the ini
 
 | Aspect | Complexity |
 |--------|------------|
-| **Time** | O(2^n) worst‑case without memoization; with memoization each unique state is evaluated once, giving O(S) where S is the number of reachable states (≤ 2^n). |
+| **Time** | O(2^n) worst-case without memoization; with memoization each unique state is evaluated once, giving O(S) where S is the number of reachable states (≤ 2^n). |
 | **Space** | O(S) for memo table plus recursion stack depth O(n). |
 
 ---
@@ -106,4 +106,4 @@ Since the first player can force a state with no moves for the opponent, the ini
 
 ## 7. Key Takeaway
 
-> Model the game as a recursive state‑space search. If any move leads to a losing position for the opponent, the current player can force a win. Memoization dramatically reduces repeated work.
+> Model the game as a recursive state-space search. If any move leads to a losing position for the opponent, the current player can force a win. Memoization dramatically reduces repeated work.

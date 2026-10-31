@@ -148,7 +148,7 @@ Given the example data:
 | Aspect | Value |
 |--------|-------|
 | **Time** | O(N) – single scan of both tables by the database engine |
-| **Space** | O(G) – space for groups, where G is number of month‑country pairs |
+| **Space** | O(G) – space for groups, where G is number of month-country pairs |
 
 ---
 

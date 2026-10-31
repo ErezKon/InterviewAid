@@ -72,4 +72,4 @@ Space: `O(1)` extra for the frequency map (max 26 entries).
 3. Can you determine the minimum number of deletions required to achieve equal frequency?
 
 ## Key Takeaway
-By enumerating the single‑character removal and checking uniformity of the remaining frequencies, we can decide feasibility in linear time.
+By enumerating the single-character removal and checking uniformity of the remaining frequencies, we can decide feasibility in linear time.

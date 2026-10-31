@@ -77,8 +77,8 @@ Loop ends, return `right = 2`.
 *Time*: **O(log n)** – binary search iterations.
 *Space*: **O(1)** – only a few variables.
 
-## Follow‑Up Questions
-1. How would you compute the height without binary search, using the quadratic formula?\n2. What if each row must contain a *different* number of blocks following a custom sequence?\n3. How does the solution change if `n` can be up to `10^18` (use 64‑bit arithmetic). 
+## Follow-Up Questions
+1. How would you compute the height without binary search, using the quadratic formula?\n2. What if each row must contain a *different* number of blocks following a custom sequence?\n3. How does the solution change if `n` can be up to `10^18` (use 64-bit arithmetic). 
 
 ## Key Takeaway
 Transform the problem into a monotonic inequality and apply binary search (or direct algebra) to find the largest integer satisfying the condition.

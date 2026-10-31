@@ -72,13 +72,13 @@ CLASS H2O:
 3. When the third thread arrives, the barrier releases all three; `resetSemaphores` restores the semaphore counts for the next molecule.
 
 ## Complexity Analysis
-- **Time:** Each call performs a constant‑time semaphore acquire/release and barrier wait → O(1).
+- **Time:** Each call performs a constant-time semaphore acquire/release and barrier wait → O(1).
 - **Space:** O(1) extra synchronization primitives.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the design to allow a different ratio, e.g., `CH4` (one carbon, four hydrogens)?
 2. Can you implement the same coordination using only mutexes and condition variables?
 3. What are the potential deadlock scenarios and how does the barrier prevent them?
 
 ## Key Takeaway
-Semaphores combined with a barrier enforce the exact count of required threads per molecule, guaranteeing correct ordering without busy‑waiting.
+Semaphores combined with a barrier enforce the exact count of required threads per molecule, guaranteeing correct ordering without busy-waiting.

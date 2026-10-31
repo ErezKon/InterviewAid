@@ -83,12 +83,12 @@ FUNCTION MaxSegmentSums(nums, removeOrder):
 | Insertion | Present indices | Segments (sum) | Max |
 |-----------|----------------|----------------|-----|
 | 5 (idx2) | {2} | [5] | 5 |
-| 2 (idx1) | {1,2} | [2,5] (sum 7) | 7 |
-| 1 (idx0) | {0,1,2} | [1,2,5] (sum 8) | 8 |
-| 6 (idx3) | {0,1,2,3} | [1,2,5,6] (sum 14) | 14 |
+| 2 (idx1) | {1,2} | [2,5] (sum 7) | 7 |
+| 1 (idx0) | {0,1,2} | [1,2,5] (sum 8) | 8 |
+| 6 (idx3) | {0,1,2,3} | [1,2,5,6] (sum 14) | 14 |
 
 ## Complexity Analysis
-- Time: `O(n α(n))` where `α` is the inverse Ackermann function (near‑constant) for DSU operations.
+- Time: `O(n α(n))` where `α` is the inverse Ackermann function (near-constant) for DSU operations.
 - Space: `O(n)` for DSU structures, presence array, and segment sums.
 
 ## Follow-Up Questions
@@ -97,4 +97,4 @@ FUNCTION MaxSegmentSums(nums, removeOrder):
 3. What if each element also had a weight that contributed multiplicatively to the segment score?
 
 ## Key Takeaway
-Reversing the removal process and using DSU to merge newly inserted neighbours lets you maintain segment sums efficiently, yielding linear‑time computation of maximum segment sums.
+Reversing the removal process and using DSU to merge newly inserted neighbours lets you maintain segment sums efficiently, yielding linear-time computation of maximum segment sums.

@@ -107,11 +107,11 @@ Consider the expression `{a,b}{c,{d,e}}`.
 ## 6. Complexity Analysis
 
 - **Time:** Proportional to the total size of the output strings, i.e., O(total characters produced). Each character is processed once during parsing.
-- **Space:** Stores intermediate sets of strings; worst‑case O(total output size).
+- **Space:** Stores intermediate sets of strings; worst-case O(total output size).
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you modify the algorithm to handle escaped braces or nested commas?
 - Can you generate the output lazily without storing all strings at once?

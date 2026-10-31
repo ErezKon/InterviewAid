@@ -62,7 +62,7 @@ FUNCTION fib(n):
 ```
 
 ## Walkthrough
-| i | a (F(i‑2)) | b (F(i‑1)) | temp = a+b (F(i)) |
+| i | a (F(i-2)) | b (F(i-1)) | temp = a+b (F(i)) |
 |---|-----------|-----------|-------------------|
 | 2 | 0 | 1 | 1 |
 | 3 | 1 | 1 | 2 |
@@ -74,10 +74,10 @@ The loop ends with `b = 5`, which is `F(5)`.
 - **Time:** O(n) – each integer from 2 to n is processed once.
 - **Space:** O(1) – only a few scalar variables are used.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How can you compute `F(n)` in O(log n) time? (Use matrix exponentiation or fast doubling.)
 - What modifications are needed to handle very large `n` under a modulus?
-- Can you derive a closed‑form expression (Binet's formula) and discuss its numerical stability?
+- Can you derive a closed-form expression (Binet's formula) and discuss its numerical stability?
 
 ## Key Takeaway
-An iterative two‑variable update provides the simplest and most efficient way to compute Fibonacci numbers in linear time with constant space.
+An iterative two-variable update provides the simplest and most efficient way to compute Fibonacci numbers in linear time with constant space.

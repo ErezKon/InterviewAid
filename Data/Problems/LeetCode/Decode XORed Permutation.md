@@ -44,7 +44,7 @@ FUNCTION decode(encoded):
     n ← LENGTH(encoded) + 1
     totalXOR ← XOR of all numbers from 1 TO n
     oddXOR ← 0
-    FOR i ← 1 TO n-2 STEP 2: // odd indices (1‑based)
+    FOR i ← 1 TO n-2 STEP 2: // odd indices (1-based)
         oddXOR ← oddXOR XOR encoded[i]
     perm[0] ← totalXOR XOR oddXOR
     FOR i ← 0 TO LENGTH(encoded)-1:
@@ -58,8 +58,8 @@ FUNCTION decode(encoded):
 
 **Example `[3,1]`**
 1. `n = 3`, `totalXOR = 1 XOR 2 XOR 3 = 0`.
-2. Odd indices of `encoded` → only index 1 (`encoded[1]=3`). `oddXOR = 3`.
-3. `perm[0] = totalXOR XOR oddXOR = 0 XOR 3 = 3` (but actual first element is 1; note 0‑based vs 1‑based handling – after correcting, we get `perm[0]=1`).
+2. Odd indices of `encoded` → only index 1 (`encoded[1]=3`). `oddXOR = 3`.
+3. `perm[0] = totalXOR XOR oddXOR = 0 XOR 3 = 3` (but actual first element is 1; note 0-based vs 1-based handling – after correcting, we get `perm[0]=1`).
 4. Reconstruct: `perm[1] = perm[0] XOR encoded[0] = 1 XOR 3 = 2`.
 5. `perm[2] = perm[1] XOR encoded[1] = 2 XOR 1 = 3`.
 Result `[1,2,3]`.

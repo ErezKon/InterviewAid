@@ -136,4 +136,4 @@ Summing all matches yields the final count of **3**.
 
 ## Key Takeaway
 
-> **When counting quadruplets with a product/ratio condition, fix the middle pair and use hash maps of reduced fractions to count matching outer elements. Converting products to ratios avoids overflow and enables hash‑based counting.**
+> **When counting quadruplets with a product/ratio condition, fix the middle pair and use hash maps of reduced fractions to count matching outer elements. Converting products to ratios avoids overflow and enables hash-based counting.**

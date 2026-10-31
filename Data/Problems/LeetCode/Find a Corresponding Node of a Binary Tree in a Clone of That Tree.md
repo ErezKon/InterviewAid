@@ -76,7 +76,7 @@ FUNCTION FindCorrespondingNode(original, cloned, target):
 ## Follow-Up Questions
 - How would you solve it iteratively using a stack or queue?
 - Can you modify the algorithm to work when node values are not unique?
-- What changes are needed if the trees are not binary but n‑ary?
+- What changes are needed if the trees are not binary but n-ary?
 
 ## Key Takeaway
-A synchronized depth‑first traversal of the original and cloned trees lets you locate the counterpart of any node in linear time without extra storage.
+A synchronized depth-first traversal of the original and cloned trees lets you locate the counterpart of any node in linear time without extra storage.

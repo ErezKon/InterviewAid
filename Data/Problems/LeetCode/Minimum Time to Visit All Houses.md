@@ -108,7 +108,7 @@ The algorithm adds each absolute difference to `total` and returns 5.
 
 1. How would the solution change if the visiting order could be rearranged?
 2. What if moving between houses incurs a variable speed or cost?
-3. Can the problem be extended to a 2‑D plane with Euclidean distances?
+3. Can the problem be extended to a 2-D plane with Euclidean distances?
 
 ---
 

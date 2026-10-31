@@ -73,7 +73,7 @@ FUNCTION changeRoot(node):
 
 1. **Start** at the desired new root `node`.
 2. **Iterate** upward: store current parent, redirect `parent` pointer to `prev` (the node processed in the previous iteration).
-3. **Re‑attach** the original child (if any) that led to `prev` so the tree structure remains valid.
+3. **Re-attach** the original child (if any) that led to `prev` so the tree structure remains valid.
 4. Continue until reaching the original root (where `parent` becomes `null`).
 5. The last processed node (`node`) is now the root with correct parent/child links.
 
@@ -86,14 +86,14 @@ FUNCTION changeRoot(node):
 
 ---
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
 - How would you adapt the algorithm if nodes did **not** have parent pointers?
-- Can you perform the re‑rooting in a single recursive pass?
-- What changes are needed for a multi‑way tree (each node may have many children)?
+- Can you perform the re-rooting in a single recursive pass?
+- What changes are needed for a multi-way tree (each node may have many children)?
 
 ---
 
 ## Key Takeaway
 
-> Re‑rooting with parent pointers is analogous to reversing a singly linked list: walk from the new root to the old root, flipping parent‑child links along the way.
+> Re-rooting with parent pointers is analogous to reversing a singly linked list: walk from the new root to the old root, flipping parent-child links along the way.

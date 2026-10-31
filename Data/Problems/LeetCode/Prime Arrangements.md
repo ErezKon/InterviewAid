@@ -33,9 +33,9 @@ Output: 682289015
 ```
 
 ## Approach
-The problem reduces to counting permutations of primes among prime positions and non‑primes among non‑prime positions.
+The problem reduces to counting permutations of primes among prime positions and non-primes among non-prime positions.
 1. Count `p` = number of primes ≤ n.
-2. Count `np` = n - p (non‑primes).
+2. Count `np` = n - p (non-primes).
 3. Answer = `p! * np!` modulo `10^9+7`.
 
 ### Pseudocode
@@ -78,10 +78,10 @@ FUNCTION factorial(k):
 - Time: `O(n √n)` for prime counting (sieve can improve to `O(n log log n)`).
 - Space: `O(1)` extra space besides input.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you modify the solution to handle multiple queries of `n` efficiently?
 - Can you compute the result for very large `n` (e.g., up to 10^7) within time limits?
 - What if the arrangement must also satisfy that the sum of numbers at prime indices is prime?
 
 ## Key Takeaway
-The count of valid arrangements equals the product of factorials of the number of prime and non‑prime positions, highlighting a simple combinatorial reduction.
+The count of valid arrangements equals the product of factorials of the number of prime and non-prime positions, highlighting a simple combinatorial reduction.

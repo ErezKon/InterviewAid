@@ -91,7 +91,7 @@ Total ops = 3.
 
 1. How would the solution change if the allowed increments were any set of positive integers?
 2. Can you modify the algorithm to also output the exact sequence of operations?
-3. What if the clock uses a 12‑hour format with AM/PM?
+3. What if the clock uses a 12-hour format with AM/PM?
 
 ---
 

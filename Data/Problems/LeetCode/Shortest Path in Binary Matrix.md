@@ -78,7 +78,7 @@ Output: -1
 ## Walkthrough
 
 Take grid `[[0,1,0],[1,0,1],[0,1,0]]`.
-1. Start at (0,0) distance 1, enqueue its 8‑neighbors that are `0` → (1,1).
+1. Start at (0,0) distance 1, enqueue its 8-neighbors that are `0` → (1,1).
 2. Dequeue (1,1) distance 2, its valid neighbors → (0,2), (2,0), (2,2).
 3. (2,2) is the target, distance returned = 4.
 
@@ -95,10 +95,10 @@ Take grid `[[0,1,0],[1,0,1],[0,1,0]]`.
 
 1. How would you adapt the algorithm for weighted cells (different movement costs)?
 2. Can you use A* search with a heuristic to speed up large grids?
-3. What changes if only 4‑directional moves are allowed?
+3. What changes if only 4-directional moves are allowed?
 
 ---
 
 ## Key Takeaway
 
-Standard BFS over an 8‑directional grid finds the shortest clear path in linear time relative to the number of cells.
+Standard BFS over an 8-directional grid finds the shortest clear path in linear time relative to the number of cells.

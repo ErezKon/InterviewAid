@@ -78,7 +78,7 @@ FUNCTION kSmallestPairs(nums1, nums2, k):
 
 ## Complexity Analysis
 
-- **Time:** O(k log k) – each of the `k` extractions and insertions costs log k.
+- **Time:** O(k log k) – each of the `k` extractions and insertions costs log k.
 - **Space:** O(k) – heap stores at most `k` candidate pairs.
 
 ---
@@ -86,11 +86,11 @@ FUNCTION kSmallestPairs(nums1, nums2, k):
 ## Follow-Up Questions
 
 - How would you adapt the algorithm if the arrays were not sorted?
-- Can you solve it using a max‑heap of size `k`?
+- Can you solve it using a max-heap of size `k`?
 - How to return pairs in descending order of sum?
 
 ---
 
 ## Key Takeaway
 
-> **Min‑heap BFS from the smallest index pair (0,0). Pop the smallest sum, then push its right and down neighbors while tracking visited pairs.**
+> **Min-heap BFS from the smallest index pair (0,0). Pop the smallest sum, then push its right and down neighbors while tracking visited pairs.**

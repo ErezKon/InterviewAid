@@ -50,7 +50,7 @@ Example 3:
 ```
 
 ## Approach
-Treat each cell as a node in a graph. For each cell, enumerate its possible outgoing directions based on its street type. For each direction, check the neighboring cell’s type to see if it has a complementary opening. Perform BFS (or DFS) from `(0,0)` visiting only cells with matching connections. If `(m‑1,n‑1)` is reached, a valid path exists.
+Treat each cell as a node in a graph. For each cell, enumerate its possible outgoing directions based on its street type. For each direction, check the neighboring cell’s type to see if it has a complementary opening. Perform BFS (or DFS) from `(0,0)` visiting only cells with matching connections. If `(m-1,n-1)` is reached, a valid path exists.
 
 ```text
 FUNCTION hasValidPath(grid):
@@ -78,8 +78,8 @@ FUNCTION hasValidPath(grid):
 
 ## Walkthrough
 For the grid `[[2,4,3],[6,5,2]]`:
-1. Start at `(0,0)` type 2 (right & left). Move right to `(0,1)` type 4 (down & up).
-2. From `(0,1)` go down to `(1,1)` type 5 (left & right). Continue following matching openings until reaching `(1,2)` which is the bottom‑right cell.
+1. Start at `(0,0)` type 2 (right & left). Move right to `(0,1)` type 4 (down & up).
+2. From `(0,1)` go down to `(1,1)` type 5 (left & right). Continue following matching openings until reaching `(1,2)` which is the bottom-right cell.
 The BFS explores these cells and returns true.
 
 ## Complexity Analysis

@@ -53,7 +53,7 @@ Explanation:
 
 **Greedy – O(m·n)**
 
-Each cell belongs to a group of up to four symmetric positions: `(i,j)`, `(i,n‑1‑j)`, `(m‑1‑i,j)`, `(m‑1‑i,n‑1‑j)`. All cells in a group must share the same value. The cheapest way is to flip the minority bits in the group.
+Each cell belongs to a group of up to four symmetric positions: `(i,j)`, `(i,n-1-j)`, `(m-1-i,j)`, `(m-1-i,n-1-j)`. All cells in a group must share the same value. The cheapest way is to flip the minority bits in the group.
 
 ```text
 FUNCTION minFlips(grid):
@@ -75,7 +75,7 @@ FUNCTION minFlips(grid):
 
 ## Walkthrough
 
-Consider the grid from Example 2 (3×3). The symmetric groups are:
+Consider the grid from Example 2 (3×3). The symmetric groups are:
 | Group cells | Values | Flips needed |
 |-------------|--------|--------------|
 | (0,0),(0,2),(2,0),(2,2) | 0,1,0,1 | 2 (flip two cells) |

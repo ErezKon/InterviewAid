@@ -79,9 +79,9 @@ FUNCTION spiralMatrixIII(rows, cols, rStart, cStart):
 - **Time:** O(max(R, C)²) – each step moves at most one cell and the spiral expands until the grid is covered.
 - **Space:** O(R·C) for the output list; auxiliary space O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 
-- How would you modify the algorithm to start the spiral in a counter‑clockwise direction?
+- How would you modify the algorithm to start the spiral in a counter-clockwise direction?
 - Can you generate the order without storing all coordinates (streaming output)?
 - How would you adapt the solution for a toroidal grid where moving off one edge wraps around?
 

@@ -57,8 +57,8 @@ It can be shown that 40 is the maximum score obtainable by performing any number
 ```
 
 ## Approach
-**Greedy on leaf values – treat the tree as a forest of sub‑trees**
-The optimal strategy is to always merge the smallest (or most negative) leaf value with its neighbor first, because its contribution is multiplied only once. Use a min‑heap of leaf values and repeatedly pop the smallest leaf, add `leaf * neighbor` to score, update neighbor's value, and adjust degrees.
+**Greedy on leaf values – treat the tree as a forest of sub-trees**
+The optimal strategy is to always merge the smallest (or most negative) leaf value with its neighbor first, because its contribution is multiplied only once. Use a min-heap of leaf values and repeatedly pop the smallest leaf, add `leaf * neighbor` to score, update neighbor's value, and adjust degrees.
 
 ### Pseudocode
 ```text
@@ -90,18 +90,18 @@ FUNCTION maxScoreTree(vals, edges):
 
 ## Walkthrough
 For `vals = [1,2,3]` and edges `[[0,1],[1,2]]`:
-1. Leaves: node 0 (1) and node 2 (3). Heap pops leaf 0 (value 1).
-2. Neighbor is 1 (value 2): score += 1*2 = 2; update node 1 value → 3; degrees: node 0 removed, node 1 becomes leaf.
-3. Heap now has leaf 2 (3) and leaf 1 (3). Pop leaf 2 (3), neighbor 1 (3): score += 3*3 = 9; total = 11.
+1. Leaves: node 0 (1) and node 2 (3). Heap pops leaf 0 (value 1).
+2. Neighbor is 1 (value 2): score += 1*2 = 2; update node 1 value → 3; degrees: node 0 removed, node 1 becomes leaf.
+3. Heap now has leaf 2 (3) and leaf 1 (3). Pop leaf 2 (3), neighbor 1 (3): score += 3*3 = 9; total = 11.
 Result matches optimal.
 
 ## Complexity Analysis
 - **Time:** O(n log n) – each node enters the heap at most once.
 - **Space:** O(n) – adjacency list, degree array, heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if merging adds `val[u] + val[v]` to the score instead of the product?
-2. Can you solve the problem in O(n) using a topological‑like leaf‑pruning without a heap?
+2. Can you solve the problem in O(n) using a topological-like leaf-pruning without a heap?
 3. What if the tree is rooted and you may only merge a child into its parent?
 
 ## Key Takeaway

@@ -120,4 +120,4 @@ With σ ≤ 5 (digits): O(20n) = O(n).
 
 ## Key Takeaway
 
-> **Enumerate character pairs, use parity‑based prefix optimization.** Group prefix sums by (parityA, parityB) to find the best substring efficiently.
+> **Enumerate character pairs, use parity-based prefix optimization.** Group prefix sums by (parityA, parityB) to find the best substring efficiently.

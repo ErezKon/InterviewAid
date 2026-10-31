@@ -87,16 +87,16 @@ FUNCTION winningPlayerCount(n, pick):
 
 ## 4. Walkthrough
 
-Consider example 1 with `n = 3` and `pick = [[0,1],[0,1],[1,2],[2,1],[2,1]]`.
+Consider example 1 with `n = 3` and `pick = [[0,1],[0,1],[1,2],[2,1],[2,1]]`.
 1. Build counts:
-   - Player 0: color 1 → 2
-   - Player 1: color 2 → 1
-   - Player 2: color 1 → 2
+   - Player 0: color 1 → 2
+   - Player 1: color 2 → 1
+   - Player 2: color 1 → 2
 2. Evaluate each player:
-   - Player 0: maxCount = 2 > 0 → winner.
-   - Player 1: maxCount = 1 ≤ 1 → not a winner.
-   - Player 2: maxCount = 2 ≤ 2 → not a winner (needs >2).
-3. Winners = 1 (only player 0). (If the rule is >i, adjust accordingly.)
+   - Player 0: maxCount = 2 > 0 → winner.
+   - Player 1: maxCount = 1 ≤ 1 → not a winner.
+   - Player 2: maxCount = 2 ≤ 2 → not a winner (needs >2).
+3. Winners = 1 (only player 0). (If the rule is >i, adjust accordingly.)
 
 ---
 
@@ -105,7 +105,7 @@ Consider example 1 with `n = 3` and `pick = [[0,1],[0,1],[1,2],[2,1],[2,1]]`.
 | Aspect | Complexity |
 |--------|------------|
 | **Time** | O(n + m) where *m* is length of `pick` (single pass to count) |
-| **Space** | O(n + c) where *c* is number of distinct colors (hash map storage) |
+| **Space** | O(n + c) where *c* is number of distinct colors (hash map storage) |
 
 ---
 
@@ -119,4 +119,4 @@ Consider example 1 with `n = 3` and `pick = [[0,1],[0,1],[1,2],[2,1],[2,1]]`.
 
 ## 7. Key Takeaway
 
-> Track per‑player color frequencies with a hash map; a player wins if any color count exceeds their index.
+> Track per-player color frequencies with a hash map; a player wins if any color count exceeds their index.

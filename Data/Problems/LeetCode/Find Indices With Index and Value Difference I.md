@@ -73,8 +73,8 @@ The first matching index `0` is returned.
 
 ## Follow-Up Questions
 1. How would you modify the solution to return **all** matching indices?
-2. Can the problem be solved using a hash map for faster look‑ups when the condition is `i + nums[i] == target`?
-3. What if the array is sorted—does it enable a binary‑search approach?
+2. Can the problem be solved using a hash map for faster look-ups when the condition is `i + nums[i] == target`?
+3. What if the array is sorted—does it enable a binary-search approach?
 
 ## Key Takeaway
 A simple linear scan suffices: checking `i - nums[i]` against the target for each index yields an O(n) time, O(1) space solution.

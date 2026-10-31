@@ -54,7 +54,7 @@ Example 1:
   Input: nums = [0,1,1,1]
   Output: 5
   Explanation: The following subarrays are alternating: [0], [1], [1], [1], and [0,1].
-  (For comparison, a fully alternating array of length 4 has 4 single‑element subarrays, 3 of length 2, 2 of length 3, and 1 of length 4, totaling 10.)
+  (For comparison, a fully alternating array of length 4 has 4 single-element subarrays, 3 of length 2, 2 of length 3, and 1 of length 4, totaling 10.)
 ```
 
 ```
@@ -68,7 +68,7 @@ Example 2:
 
 ## Walkthrough
 
-Consider Example 1 (`[1,0,1,0]`).
+Consider Example 1 (`[1,0,1,0]`).
 | Index | Value | `count` (run length) | `result` (total so far) |
 |-------|-------|----------------------|------------------------|
 | 0     | 1     | 1                    | 1                      |

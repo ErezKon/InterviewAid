@@ -104,7 +104,7 @@ Take `num = "123456"` and `change = [0,5,2,3,4,5,6,7,8,9]`:
 
 ## Follow-Up Questions
 
-1. How would you modify the algorithm to allow multiple non‑overlapping substrings to be mutated?
+1. How would you modify the algorithm to allow multiple non-overlapping substrings to be mutated?
 2. Can the solution be adapted to work with very large numbers where storing the entire string is infeasible?
 3. What changes are needed if `change[d]` could be smaller than `d` and you still want the maximum result?
 

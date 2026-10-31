@@ -98,7 +98,7 @@ Example 1:
 2. `GROUP BY` the canonical pair.
 3. Compute `COUNT(*)` for call count and `SUM(duration)` for total duration.
 
-Pseudocode (language‑agnostic):
+Pseudocode (language-agnostic):
 
 ```text
 FUNCTION aggregateCalls(calls):

@@ -28,7 +28,7 @@ A quadruplet `(i, j, k, l)` is increasing if:
 
 ---
 
-## 3. Approach: Prefix‑Suffix Counts — O(n²) ✅
+## 3. Approach: Prefix-Suffix Counts — O(n²) ✅
 
 ```text
 FUNCTION countQuadruplets(nums):
@@ -106,7 +106,7 @@ Example 2:
 Consider `nums = [1,2,3,4]`.
 1. `j = 1` (value 2), `k = 2` (value 3) → `nums[k] > nums[j]` → skip.
 2. `j = 2` (value 3), `k = 3` (value 4) → `nums[k] > nums[j]` → skip.
-3. `j = 1`, `k = 2` does not satisfy `nums[k] < nums[j]`, so only pair `(j=2,k=3)` qualifies when `nums[k] < nums[j]` is false. The only valid `(j,k)` is `(j=2,k=1)` after re‑ordering, yielding one quadruplet.
+3. `j = 1`, `k = 2` does not satisfy `nums[k] < nums[j]`, so only pair `(j=2,k=3)` qualifies when `nums[k] < nums[j]` is false. The only valid `(j,k)` is `(j=2,k=1)` after re-ordering, yielding one quadruplet.
 
 ---
 
@@ -127,4 +127,4 @@ Consider `nums = [1,2,3,4]`.
 
 ## Key Takeaway
 
-> By fixing the middle two indices and using prefix‑suffix frequency counts, the quadruplet counting problem reduces from O(n⁴) to O(n²).
+> By fixing the middle two indices and using prefix-suffix frequency counts, the quadruplet counting problem reduces from O(n⁴) to O(n²).

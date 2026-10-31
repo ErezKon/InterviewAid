@@ -63,7 +63,7 @@ Consider `deliciousness = [1,3,5]`.
 Result = 2 good pairs.
 
 ## Complexity Analysis
-- **Time:** O(n * log C) where `C` is the maximum possible sum (≈21 iterations per element).
+- **Time:** O(n * log C) where `C` is the maximum possible sum (≈21 iterations per element).
 - **Space:** O(n) for the frequency map.
 
 ## Follow-Up Questions

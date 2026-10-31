@@ -47,7 +47,7 @@ Example 2:
 ```
 
 ## Approach
-**Stack‑Based Greedy** – Scan `s` character by character, pushing each onto a stack. After each push, if the top of the stack matches `part`, pop `len(part)` characters to delete the occurrence.
+**Stack-Based Greedy** – Scan `s` character by character, pushing each onto a stack. After each push, if the top of the stack matches `part`, pop `len(part)` characters to delete the occurrence.
 
 ## Walkthrough
 For `s = "daabcbaabcbc"`, `part = "abc"`:
@@ -56,13 +56,13 @@ For `s = "daabcbaabcbc"`, `part = "abc"`:
 3. Final stack yields `"dab"`.
 
 ## Complexity Analysis
-- **Time:** O(n · m) in the worst case where `n` = |s| and `m` = |part| (each push may compare up to `m` characters).
+- **Time:** O(n · m) in the worst case where `n` = |s| and `m` = |part| (each push may compare up to `m` characters).
 - **Space:** O(n) for the stack.
 
-## Follow‑Up Questions
-- How would you improve the time complexity using a rolling hash (Rabin‑Karp)?
+## Follow-Up Questions
+- How would you improve the time complexity using a rolling hash (Rabin-Karp)?
 - Can the algorithm be adapted to handle overlapping patterns?
 - What changes are needed for Unicode strings?
 
 ## Key Takeaway
-A stack that checks the recent characters after each push enables incremental removal of a substring in a single left‑to‑right pass.
+A stack that checks the recent characters after each push enables incremental removal of a substring in a single left-to-right pass.

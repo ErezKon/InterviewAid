@@ -77,12 +77,12 @@ The result is the largest permutation smaller than the original.
 
 ## Complexity Analysis
 - **Time:** O(n) – a single pass from the right and a second pass to locate `j`.
-- **Space:** O(1) – in‑place modification.
+- **Space:** O(1) – in-place modification.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if you were allowed up to `k` swaps?
 2. Can you adapt the solution to return the previous permutation for a multiset (array with duplicate values) while still using at most one swap?
-3. What is the time‑space trade‑off if you pre‑process the array with a suffix maximum structure?
+3. What is the time-space trade-off if you pre-process the array with a suffix maximum structure?
 
 ## Key Takeaway
 Identify the first decreasing position from the right and swap it with the greatest smaller element to its right (choosing the leftmost duplicate) to obtain the maximal smaller permutation in a single swap.

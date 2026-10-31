@@ -90,7 +90,7 @@ FUNCTION maxTurbulenceSize(arr):
 | 7     | 1      | 8 > 1 ↓    | 1   | 2   | 6 |
 | 8     | 9      | 1 < 9 ↑    | 3   | 1   | 6 |
 
-The longest turbulent length observed is 5 (indices 1‑5).
+The longest turbulent length observed is 5 (indices 1-5).
 
 ---
 

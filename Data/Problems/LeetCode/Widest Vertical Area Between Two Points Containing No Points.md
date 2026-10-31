@@ -36,7 +36,7 @@ Output: 3
 ```
 
 ## Approach
-Extract all x‑coordinates, sort them, and compute the maximum difference between consecutive x values.
+Extract all x-coordinates, sort them, and compute the maximum difference between consecutive x values.
 
 ```text
 FUNCTION maxWidthOfVerticalArea(points):
@@ -58,12 +58,12 @@ Result = 1.
 
 ## Complexity Analysis
 - Time: O(n log n) for sorting `n` points.
-- Space: O(n) to store the sorted x‑coordinates.
+- Space: O(n) to store the sorted x-coordinates.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you adapt the solution for the widest horizontal area?
 - What if points could be added dynamically and you needed to maintain the max gap?
 - Can you solve it in O(n) using a bucket sort when coordinates are bounded?
 
 ## Key Takeaway
-Sorting the unique x‑coordinates and scanning adjacent gaps yields the widest empty vertical strip.
+Sorting the unique x-coordinates and scanning adjacent gaps yields the widest empty vertical strip.

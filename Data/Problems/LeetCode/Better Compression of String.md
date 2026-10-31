@@ -29,7 +29,7 @@ Return the *better compression* of `compressed`.
 
 ## Approach
 
-Parse character‑count pairs, aggregate in a map, sort by character, reconstruct. Standard string parsing pattern.
+Parse character-count pairs, aggregate in a map, sort by character, reconstruct. Standard string parsing pattern.
 
 ```text
 FUNCTION betterCompression(compressed):
@@ -98,10 +98,10 @@ Take `"a3b2c1a2"`.
 
 1. How would you modify the algorithm to handle uppercase and lowercase as distinct characters?
 2. Can you output the result without sorting, preserving original order of first appearance?
-3. What if the counts can be very large (beyond 32‑bit)?
+3. What if the counts can be very large (beyond 32-bit)?
 
 ---
 
 ## Key Takeaway
 
-> Parse character‑count pairs, aggregate in a map, sort by character, and rebuild the compressed string.
+> Parse character-count pairs, aggregate in a map, sort by character, and rebuild the compressed string.

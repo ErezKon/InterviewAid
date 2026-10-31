@@ -60,16 +60,16 @@ Example 3:
 
 ## Walkthrough
 For `[[0,1],[1,0]]`:
-1. Row 0 starts with `0` → keep.
-2. Row 1 starts with `1` → flip row 1 → becomes `[0,1]`.
-3. Matrix now `[[0,1],[0,1]]`. Column 1 has two `1`s; flipping column 1 yields all zeros.
+1. Row 0 starts with `0` → keep.
+2. Row 1 starts with `1` → flip row 1 → becomes `[0,1]`.
+3. Matrix now `[[0,1],[0,1]]`. Column 1 has two `1`s; flipping column 1 yields all zeros.
 Result: 0 ones.
 
 ## Complexity Analysis
 - **Time:** O(m·n) – one pass to normalize rows, another to count column `1`s.
 - **Space:** O(1) extra beyond the input matrix.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would the solution change if flips were limited to at most `k` rows/columns?
 - What if the cost of flipping a row differs from flipping a column?
 - Can you extend the approach to ternary matrices (0,1,2)?

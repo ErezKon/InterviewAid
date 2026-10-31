@@ -45,21 +45,21 @@ Example 1:
 ```
 
 ## Operations
-- `inc(key)`: Increment the count of `key`. If `key` does not exist, insert it with count 1.
+- `inc(key)`: Increment the count of `key`. If `key` does not exist, insert it with count 1.
 - `dec(key)`: Decrement the count of `key`. If the count becomes 0, remove the key.
 - `getMaxKey()`: Return any key with the highest count.
 - `getMinKey()`: Return any key with the lowest count.
 
 ## Approach
-**Algorithm:** Combine a doubly linked list of count‑buckets with hash maps.
+**Algorithm:** Combine a doubly linked list of count-buckets with hash maps.
 1. Each bucket node stores a count value and a set of keys having that count.
 2. Maintain a hash map `key → bucketNode` for O(1) access to a key's bucket.
 3. `inc(key)`:
-   - If key absent, place it in the bucket with count 1 (create if needed).
-   - Otherwise move the key to the next bucket (count + 1), creating that bucket if missing.
+   - If key absent, place it in the bucket with count 1 (create if needed).
+   - Otherwise move the key to the next bucket (count + 1), creating that bucket if missing.
    - Remove the old bucket if it becomes empty.
 4. `dec(key)`:
-   - Locate the key's bucket, move it to the previous bucket (count - 1) or delete if count becomes 0.
+   - Locate the key's bucket, move it to the previous bucket (count - 1) or delete if count becomes 0.
    - Clean up empty buckets.
 5. `getMaxKey()`: Return any key from the tail bucket (largest count).
 6. `getMinKey()`: Return any key from the head bucket (smallest count).
@@ -67,23 +67,23 @@ Example 1:
 ## Walkthrough
 | Step | Action | Affected Buckets |
 |------|--------|------------------|
-| 1 | `inc("apple")` (new) | Create bucket 1 → {"apple"}
-| 2 | `inc("apple")` | Move "apple" to bucket 2, delete bucket 1 if empty
-| 3 | `inc("banana")` (new) | Bucket 1 created → {"banana"}
-| 4 | `dec("apple")` | Move "apple" back to bucket 1, now both keys share count 1
-| 5 | `getMaxKey()` | Returns any key from tail bucket (count 1)
+| 1 | `inc("apple")` (new) | Create bucket 1 → {"apple"}
+| 2 | `inc("apple")` | Move "apple" to bucket 2, delete bucket 1 if empty
+| 3 | `inc("banana")` (new) | Bucket 1 created → {"banana"}
+| 4 | `dec("apple")` | Move "apple" back to bucket 1, now both keys share count 1
+| 5 | `getMaxKey()` | Returns any key from tail bucket (count 1)
 
 ## Complexity Analysis
-- **Time:** O(1) for each operation because all structures are hash‑based and bucket navigation is constant.
+- **Time:** O(1) for each operation because all structures are hash-based and bucket navigation is constant.
 - **Space:** O(N) for storing N distinct keys plus bucket overhead.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you extend the structure to support `getRandomKey()` in O(1)?
 2. Can the design be adapted for a multiset where duplicate keys are allowed?
 3. What changes are needed if counts can be negative?
 
 ## Key Takeaway
-A doubly linked list of count buckets paired with a key‑to‑bucket map enables true O(1) updates and retrieval of min/max keys.
+A doubly linked list of count buckets paired with a key-to-bucket map enables true O(1) updates and retrieval of min/max keys.
 
 ---
 

@@ -86,9 +86,9 @@ Take `word1 = "cab"`, `word2 = "abc"`.
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
-* How would you improve the time complexity to O(m+n) using a suffix‑array or rolling hash?
+* How would you improve the time complexity to O(m+n) using a suffix-array or rolling hash?
 * What if the merge must be the lexicographically smallest instead?
 * How does the algorithm change for more than two input strings?
 

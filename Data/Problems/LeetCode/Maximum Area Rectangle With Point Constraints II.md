@@ -107,11 +107,11 @@ The maximum area rectangle is formed by the points [1,3], [1,2], [3,2], [3,3], w
 
 | Step | Action | Reason |
 |------|--------|--------|
-| 1 | Group points by their x‑coordinate and sort x values. | Enables column‑wise processing. |
-| 2 | For each x‑column, collect sorted y‑values. | Provides ordered pairs of potential rectangle heights. |
-| 3 | Enumerate all pairs of y‑values within the column. | Each pair defines a possible top‑bottom edge. |
-| 4 | Use a hash map `prevX` to remember the last x‑column where this y‑pair appeared. | Forms the left side of a candidate rectangle. |
-| 5 | When the same y‑pair reappears at a new x, compute area using distance between current and previous x. | Gives a rectangle with those y‑bounds. |
+| 1 | Group points by their x-coordinate and sort x values. | Enables column-wise processing. |
+| 2 | For each x-column, collect sorted y-values. | Provides ordered pairs of potential rectangle heights. |
+| 3 | Enumerate all pairs of y-values within the column. | Each pair defines a possible top-bottom edge. |
+| 4 | Use a hash map `prevX` to remember the last x-column where this y-pair appeared. | Forms the left side of a candidate rectangle. |
+| 5 | When the same y-pair reappears at a new x, compute area using distance between current and previous x. | Gives a rectangle with those y-bounds. |
 | 6 | Optionally query a segment tree/BIT to ensure the interior region is empty. | Satisfies the “no interior points” constraint. |
 | 7 | Update the maximum area if larger. | Tracks best solution. |
 
@@ -119,7 +119,7 @@ The maximum area rectangle is formed by the points [1,3], [1,2], [3,2], [3,3], w
 
 ## Follow-Up Questions
 
-- How would you adapt the algorithm for non‑axis‑aligned rectangles?
+- How would you adapt the algorithm for non-axis-aligned rectangles?
 - Can you reduce the time complexity using advanced geometric data structures?
 - What changes are needed if interior points are allowed but must be minimized?
 
@@ -127,4 +127,4 @@ The maximum area rectangle is formed by the points [1,3], [1,2], [3,2], [3,3], w
 
 ## Key Takeaway
 
-> **Track (y1, y2) pairs across x‑columns using a hash map.** The last x‑column that had both y‑values forms the closest valid rectangle. Use range queries for the interior emptiness check.
+> **Track (y1, y2) pairs across x-columns using a hash map.** The last x-column that had both y-values forms the closest valid rectangle. Use range queries for the interior emptiness check.

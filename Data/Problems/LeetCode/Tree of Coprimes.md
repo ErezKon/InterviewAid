@@ -49,7 +49,7 @@ Output: [-1,0,-1,0,0,0,-1]
 ```
 
 ## Approach
-Use a depth‑first search while maintaining, for each possible value `v` (1 ≤ v ≤ 50), the most recent node on the current path whose value equals `v`. For the current node `u`, iterate over all values `v` that are coprime with `vals[u]` (pre‑computed list). Among those, pick the node with greatest depth – that is the nearest ancestor.
+Use a depth-first search while maintaining, for each possible value `v` (1 ≤ v ≤ 50), the most recent node on the current path whose value equals `v`. For the current node `u`, iterate over all values `v` that are coprime with `vals[u]` (pre-computed list). Among those, pick the node with greatest depth – that is the nearest ancestor.
 
 ## Walkthrough
 | Step | Node | Current Path Values (value→node) | Coprime candidates checked | Chosen ancestor |
@@ -60,13 +60,13 @@ Use a depth‑first search while maintaining, for each possible value `v` (1 ≤
 | … | … | … | … | … |
 
 ## Complexity Analysis
-- **Time:** `O(n * C)` where `C` is the number of values (≤ 50) checked per node (pre‑computed coprime list). Effectively `O(n * 50)`.
-- **Space:** `O(n + 50)` for adjacency list, depth map, and the value‑to‑node stack.
+- **Time:** `O(n * C)` where `C` is the number of values (≤ 50) checked per node (pre-computed coprime list). Effectively `O(n * 50)`.
+- **Space:** `O(n + 50)` for adjacency list, depth map, and the value-to-node stack.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution if node values could be up to `10^5`?
 2. Can the problem be solved iteratively using a stack instead of recursion?
-3. What if we needed the *k*‑th nearest coprime ancestor?
+3. What if we needed the *k*-th nearest coprime ancestor?
 
 ## Key Takeaway
-Maintain a map of the latest occurrence of each possible value while traversing the tree; this lets you answer nearest‑ancestor queries in constant time per candidate value.
+Maintain a map of the latest occurrence of each possible value while traversing the tree; this lets you answer nearest-ancestor queries in constant time per candidate value.

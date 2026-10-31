@@ -71,7 +71,7 @@ For `nums = [1,2,3,4,5]`:
 Result = 8.
 
 ## Complexity Analysis
-- **Time**: O(N²) in the worst case because each iteration processes a decreasing array of size N, N‑1, …, 1.
+- **Time**: O(N²) in the worst case because each iteration processes a decreasing array of size N, N-1, …, 1.
 - **Space**: O(N) for the temporary `next` array.
 
 ## Follow-Up Questions

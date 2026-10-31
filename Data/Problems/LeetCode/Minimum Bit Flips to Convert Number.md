@@ -48,7 +48,7 @@ Key insight: `start XOR goal` yields a binary number with `1`s exactly at positi
 ```text
 FUNCTION minBitFlips(start, goal):
     diff ← start XOR goal
-    RETURN POPCOUNT(diff)  // number of 1‑bits in diff
+    RETURN POPCOUNT(diff)  // number of 1-bits in diff
 ```
 
 ## Walkthrough
@@ -60,10 +60,10 @@ Thus three flips are needed.
 ## Complexity Analysis
 | Metric | Value |
 |--------|-------|
-| Time   | O(1) – constant‑time bit operations |
+| Time   | O(1) – constant-time bit operations |
 | Space  | O(1) |
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the solution to return the actual positions of bits to flip?
 2. If the integers were represented as very long binary strings (e.g., >10⁶ bits), how would you handle the computation efficiently?
 3. Can this approach be extended to compute the Hamming distance between two binary strings of different lengths?

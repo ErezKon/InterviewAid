@@ -117,7 +117,7 @@ Resulting root is `+` with left child `3` and right child `*`.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you modify the algorithm to support unary operators (e.g., negative numbers)?
 - Can you build the tree in a single pass without explicit stacks using recursion?

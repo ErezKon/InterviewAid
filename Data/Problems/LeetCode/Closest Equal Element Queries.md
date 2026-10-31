@@ -39,7 +39,7 @@ Example 2:
 
 ## Approach
 1. Build a hash map `positions` mapping each value to a list of its indices (sorted).
-2. For each index in the array, compute the nearest same‑value index by looking at its predecessor and successor in the list, considering circular wrap‑around.
+2. For each index in the array, compute the nearest same-value index by looking at its predecessor and successor in the list, considering circular wrap-around.
 3. Store these distances in an array `nearest`.
 4. Answer each query by reading `nearest[i]` (or `-1` if unchanged).
 
@@ -79,11 +79,11 @@ Time: O(n + u) where `u` is total occurrences (overall O(n)). Space: O(n) for th
 
 ## Follow-Up Questions
 - How would you support updates to `nums` (changing a value) and still answer queries efficiently?
-- Can the solution be extended to find the *k*‑th nearest equal element?
-- What changes if the array is considered non‑circular?
+- Can the solution be extended to find the *k*-th nearest equal element?
+- What changes if the array is considered non-circular?
 
 ---
 
 ## Key Takeaway
 
-> By grouping equal values and examining neighboring indices in each group, we can compute the nearest equal‑element distance for every position in linear time.
+> By grouping equal values and examining neighboring indices in each group, we can compute the nearest equal-element distance for every position in linear time.

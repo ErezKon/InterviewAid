@@ -56,7 +56,7 @@ FUNCTION countBits(n):
     RETURN ans
 ```
 
-The recurrence uses the fact that shifting right drops the least‑significant bit; the count for `i` equals the count for `i/2` plus the last bit.
+The recurrence uses the fact that shifting right drops the least-significant bit; the count for `i` equals the count for `i/2` plus the last bit.
 
 ---
 

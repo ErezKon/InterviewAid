@@ -68,10 +68,10 @@ Result `[0,2]`.
 - Time: O(N²·M) where N is number of people and M is average list size (set containment check).
 - Space: O(N·M) for storing the sets.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you improve the runtime using bitmask encoding if the total number of distinct companies is small?
-2. Can you solve the problem in O(N·log N) by sorting the sets by size and using a trie?
+2. Can you solve the problem in O(N·log N) by sorting the sets by size and using a trie?
 3. What changes are needed if you must also return the actual company lists, not just indices?
 
 ## Key Takeaway
-Representing each person's favorites as a set enables straightforward subset checks; iterating over all pairs yields the required non‑subset indices.
+Representing each person's favorites as a set enables straightforward subset checks; iterating over all pairs yields the required non-subset indices.

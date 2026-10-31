@@ -60,13 +60,13 @@ FUNCTION transpose(matrix):
 | 3 | 2 | [3,6,9] | [[1,4,7],[2,5,8],[3,6,9]] |
 
 ## Complexity Analysis
-- Time: O(m · n) – each element is visited once.
-- Space: O(m · n) for the output matrix.
+- Time: O(m · n) – each element is visited once.
+- Space: O(m · n) for the output matrix.
 
 ## Follow-Up Questions
-1. How would you perform the transpose in‑place for a square matrix?
+1. How would you perform the transpose in-place for a square matrix?
 2. Can you extend the algorithm to handle sparse matrices efficiently?
-3. What modifications are needed to transpose a 3‑dimensional tensor?
+3. What modifications are needed to transpose a 3-dimensional tensor?
 
 ## Key Takeaway
 Transposing a matrix is simply swapping row and column indices, which can be done by iterating over columns and collecting corresponding row elements.

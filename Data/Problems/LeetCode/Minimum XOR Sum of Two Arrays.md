@@ -80,10 +80,10 @@ Result `dp[11] = 2` – the minimal XOR sum.
 - Time: O(n * 2^n) – each mask iterates over at most `n` unset bits.
 - Space: O(2^n) for the DP array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you adapt the solution if `n` could be up to 1000? (Hint: use Hungarian algorithm with cost matrix.)
 2. Can you modify the DP to also return the actual permutation achieving the minimum?
 3. What changes are needed if the XOR operation is replaced by another binary operation like AND?
 
 ## Key Takeaway
-When `n` is small, a bitmask DP efficiently explores all assignments, turning the minimum‑XOR‑sum problem into a tractable exponential‑time dynamic programming solution.
+When `n` is small, a bitmask DP efficiently explores all assignments, turning the minimum-XOR-sum problem into a tractable exponential-time dynamic programming solution.

@@ -84,7 +84,7 @@ ORDER BY id;
 |------|-------|
 | O(N log N) for grouping (depends on DB engine) | O(G) where G is number of groups |
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the query to return the specific dates on which each viewer satisfied the condition?
 - What if you need to consider a sliding window of 7 days instead of a single day?

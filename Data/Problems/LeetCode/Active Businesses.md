@@ -115,4 +115,4 @@ HAVING COUNT(*) > 1;
 
 ## Key Takeaway
 
-> Compute per-event-type averages in a CTE, join back, filter above‑average, then group by business and require multiple qualifying event types with `HAVING COUNT(*) > 1`.
+> Compute per-event-type averages in a CTE, join back, filter above-average, then group by business and require multiple qualifying event types with `HAVING COUNT(*) > 1`.

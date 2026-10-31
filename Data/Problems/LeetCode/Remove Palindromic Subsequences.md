@@ -67,7 +67,7 @@ FUNCTION MinMovesToDelete(s):
 - **Time:** O(n) to check if `s` equals its reverse.
 - **Space:** O(1) extra space.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the string could contain any lowercase letters?
 2. What is the minimum number of moves if you can only delete *contiguous* palindromic substrings?
 3. Can you extend the approach to return the actual sequence of deletions?

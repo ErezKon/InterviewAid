@@ -67,7 +67,7 @@ Example 3:
 
 ## 3. Key Insight
 
-> For a fixed number `k` of used acts (1 ≤ k ≤ min(n,x)), the total ways are:
+> For a fixed number `k` of used acts (1 ≤ k ≤ min(n,x)), the total ways are:
 > `C(x, k) × S(n, k) × y^k`.
 > Summing over all feasible `k` yields the answer.
 
@@ -78,7 +78,7 @@ Example 3:
 ```text
 FUNCTION numberOfWays(n, x, y):
     SET MOD ← 1_000_000_007
-    // Pre‑compute factorials and inverse factorials for binomial coefficients
+    // Pre-compute factorials and inverse factorials for binomial coefficients
     PRECOMPUTE fact[0..x], invFact[0..x]
     // DP for Stirling numbers of the second kind S(i, j)
     SET S[0][0] ← 1
@@ -98,13 +98,13 @@ FUNCTION numberOfWays(n, x, y):
 
 ## 5. Walkthrough
 
-Take Example 1 (`n=3, x=2, y=2`):
+Take Example 1 (`n=3, x=2, y=2`):
 
 | k (used acts) | C(x,k) | S(n,k) | y^k | Contribution |
 |---------------|--------|--------|-----|--------------|
-| 1             | 2      | 1      | 2   | 2 × 1 × 2 = 4 |
-| 2             | 1      | 3      | 4   | 1 × 3 × 4 = 12 |
-Total = 4 + 12 = 16 (mod MOD). The algorithm computes `S[3][1]=1`, `S[3][2]=3`, then aggregates as shown.
+| 1             | 2      | 1      | 2   | 2 × 1 × 2 = 4 |
+| 2             | 1      | 3      | 4   | 1 × 3 × 4 = 12 |
+Total = 4 + 12 = 16 (mod MOD). The algorithm computes `S[3][1]=1`, `S[3][2]=3`, then aggregates as shown.
 
 ---
 
@@ -127,4 +127,4 @@ Total = 4 + 12 = 16 (mod MOD). The algorithm computes `S[3][1]=1`, `S[3][2
 
 ## 8. Key Takeaway
 
-> Decomposing the problem by the number of used acts and using Stirling numbers of the second kind turns a combinatorial explosion into a manageable DP with linear‑time summation.
+> Decomposing the problem by the number of used acts and using Stirling numbers of the second kind turns a combinatorial explosion into a manageable DP with linear-time summation.

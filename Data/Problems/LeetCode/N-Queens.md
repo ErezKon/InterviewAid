@@ -89,10 +89,10 @@ FUNCTION solveNQueens(n):
 
 Consider `n = 4`.
 
-1. **Row 0:** try column 1 → safe, place queen.
-2. **Row 1:** column 3 is safe (col 1 occupied, diagonals blocked), place queen.
-3. **Row 2:** column 0 is safe, place queen.
-4. **Row 3:** column 2 is safe → first complete board recorded.
+1. **Row 0:** try column 1 → safe, place queen.
+2. **Row 1:** column 3 is safe (col 1 occupied, diagonals blocked), place queen.
+3. **Row 2:** column 0 is safe, place queen.
+4. **Row 3:** column 2 is safe → first complete board recorded.
 5. Backtrack to explore alternatives, eventually placing queens at columns `[2,0,3,1]` for the second solution.
 
 ---
@@ -116,4 +116,4 @@ Consider `n = 4`.
 
 ## 7. Key Takeaway
 
-> **Backtracking with diagonal encoding** (`row±col`) efficiently solves N‑Queens and generalizes to many constraint‑satisfaction problems.
+> **Backtracking with diagonal encoding** (`row±col`) efficiently solves N-Queens and generalizes to many constraint-satisfaction problems.

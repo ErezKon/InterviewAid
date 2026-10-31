@@ -92,7 +92,7 @@ Example 3:
 ## 4. Walkthrough
 
 Consider `words = ["wrt","wrf","er","ett","rftt"]`:
-1. Initialize graph with characters {w,r,t,f,e} and zero in‑degrees.
+1. Initialize graph with characters {w,r,t,f,e} and zero in-degrees.
 2. Compare "wrt" and "wrf": first differing char at position 2 → edge t → f.
 3. Compare "wrf" and "er": first differing char at position 0 → edge w → e.
 4. Compare "er" and "ett": first differing char at position 1 → edge r → t.
@@ -108,7 +108,7 @@ Consider `words = ["wrt","wrf","er","ett","rftt"]`:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 - How would you modify the algorithm to detect multiple valid orderings?
 - Can the approach be adapted if the input list is not sorted?

@@ -8,8 +8,6 @@
 
 ## Problem Description
 
-> *Note: the Approach/Walkthrough below handle arbitrary `u`–`v` distance queries (LCA); the official problem only asks for root-to-`x` distances, so the LCA part is unnecessary: Euler tour + Fenwick tree with range add (edge update adds `w' − w` to the deeper endpoint's subtree range) and point query. O((n + q) log n).*
-
 You are given an integer `n` and an undirected, weighted tree rooted at node 1 with `n` nodes numbered from 1 to `n`. This is represented by a 2D array `edges` of length `n - 1`, where `edges[i] = [u_i, v_i, w_i]` indicates an undirected edge from node `u_i` to `v_i` with weight `w_i`.
 
 You are also given a 2D integer array `queries` of length `q`, where each `queries[i]` is either:
@@ -36,14 +34,39 @@ Return an integer array `answer`, where `answer[i]` is the **shortest** path dis
 
 ---
 
-## Approach: Euler Tour + BIT/Segment Tree
+## Approach: Euler Tour + BIT (Range Add, Point Query)
+
+Since every query asks for the distance from the **root** to `x`, no LCA is needed. Let `dist[x]` be the root-to-`x` path weight. Changing the weight of edge `(p, c)` (where `p` is the parent of `c`) by `delta = w' − w` changes `dist` of **every node in the subtree of `c`** by `delta`, and nothing else.
+
+1. Run an iterative DFS from node 1 to get `parent[]`, entry time `tin[]` and exit time `tout[]`; the subtree of `c` is the contiguous range `[tin[c], tout[c]]`.
+2. Use a Fenwick tree over a difference array: "add `d` to range `[l, r]`" = `add(l, d)`, `add(r+1, −d)`; the point value at position `i` is `prefixSum(i)`.
+3. Initialise by range-adding each edge weight `w(parent[v], v)` to the subtree range of `v`. Then `dist[x] = prefixSum(tin[x])`.
+4. Update `[1, u, v, w']`: let `c` be the child endpoint (`c = v` if `parent[v] = u`, else `u`), apply `delta = w' − current weight` to `[tin[c], tout[c]]`, store the new weight.
+5. Query `[2, x]`: append `prefixSum(tin[x])`.
 
 ```text
-// Preprocess tree with Euler tour to obtain entry/exit times for each node
-// Compute depth‑wise prefix distances dist[u]
-// LCA(u, v) via RMQ on Euler tour
-// Distance(u, v) = dist[u] + dist[v] - 2 * dist[LCA(u, v)]
-// For an edge weight update, adjust dist values of the subtree rooted at the deeper endpoint using a BIT or Segment Tree.
+FUNCTION treeQueries(n, edges, queries):
+    build adjacency list; weight[{u,v}] ← w for every edge
+    // iterative DFS from root 1
+    timer ← 0
+    DFS(1): tin[u] ← ++timer; set parent[child] ← u; after children tout[u] ← timer
+    BIT ← Fenwick tree of size n + 1
+    FUNCTION rangeAdd(l, r, d):
+        BIT.add(l, d); BIT.add(r + 1, -d)
+    FOR v ← 2 TO n:
+        rangeAdd(tin[v], tout[v], weight[{parent[v], v}])
+    answer ← []
+    FOR each query IN queries:
+        IF query[0] = 1:
+            (u, v, w') ← query[1..3]
+            c ← v IF parent[v] = u ELSE u          // deeper endpoint
+            delta ← w' - weight[{u, v}]
+            weight[{u, v}] ← w'
+            rangeAdd(tin[c], tout[c], delta)
+        ELSE:
+            x ← query[1]
+            APPEND BIT.prefixSum(tin[x]) TO answer  // current dist[x]
+    RETURN answer
 ```
 
 ---
@@ -88,11 +111,20 @@ Explanation:
 
 ## Walkthrough
 
-1. **Euler Tour** – Perform a DFS to record the time each node is entered and exited; this linearises the tree.
-2. **Prefix Distances** – While DFS, compute `dist[u]` as the sum of edge weights from the root to `u`.
-3. **LCA via RMQ** – Store the depth sequence of the Euler tour; a Range Minimum Query (Sparse Table) yields the Lowest Common Ancestor in `O(1)`.
-4. **Edge Update** – Identify the deeper endpoint of the updated edge; all nodes in its subtree have their `dist` shifted by the weight delta. Apply this delta with a BIT/Segment Tree over the Euler tour interval.
-5. **Distance Query** – Retrieve `dist[u]` and `dist[v]` (including any pending BIT updates), compute `LCA(u,v)`, and apply the formula `dist[u] + dist[v] - 2*dist[LCA]`.
+**Example 3:** `n = 4`, `edges = [[1,2,2],[2,3,1],[3,4,5]]` (a chain 1–2–3–4).
+
+1. **DFS** – `tin = {1:1, 2:2, 3:3, 4:4}`, `tout = {1:4, 2:4, 3:4, 4:4}`; parents: 2→1, 3→2, 4→3.
+2. **Initialise BIT** – range-add 2 on `[2,4]` (edge 1–2), 1 on `[3,4]` (edge 2–3), 5 on `[4,4]` (edge 3–4). Point values: pos1 = 0, pos2 = 2, pos3 = 3, pos4 = 8.
+
+| Query | Action | Result |
+|-------|--------|--------|
+| [2,4] | prefixSum(tin[4] = 4) = 2 + 1 + 5 | **8** |
+| [2,3] | prefixSum(3) = 2 + 1 | **3** |
+| [1,2,3,3] | child c = 3, delta = 3 − 1 = +2, range-add +2 on `[3,4]` | — |
+| [2,2] | prefixSum(2) = 2 | **2** |
+| [2,3] | prefixSum(3) = 2 + 1 + 2 | **5** |
+
+Output: `[8,3,2,5]` — matches the expected output.
 
 ---
 
@@ -100,18 +132,18 @@ Explanation:
 
 | Time | Space |
 |------|-------|
-| `O(log n)` per update/query (BIT/Segment Tree operations) | `O(n)` for Euler tour, depth array, and BIT/Segment Tree |
+| `O(n log n)` to build, `O(log n)` per update/query → `O((n + q) log n)` total | `O(n)` for adjacency list, `tin`/`tout`/`parent`, edge weights and the BIT |
 
 ---
 
 ## Follow-Up Questions
 
-* How would you handle edge deletions or insertions in the tree?
-* Can you extend the solution to support path‑sum queries with arbitrary functions (e.g., max edge weight on the path)?
-* What changes are needed if the tree is rooted dynamically for each query?
+* How would you answer arbitrary `u`–`v` distance queries? (Add LCA via binary lifting or Euler-tour RMQ: `dist[u] + dist[v] − 2·dist[LCA(u, v)]`, with each `dist` read from the BIT.)
+* How would you support "maximum edge weight on the root-to-`x` path" with updates? (Point updates on edges plus heavy-light decomposition with a segment tree.)
+* What if the root changes between queries? (Root-to-`x` distance becomes a general `u`–`x` distance query, so use the LCA formula above.)
 
 ---
 
 ## Key Takeaway
 
-> Combining **Euler tour** for LCA with a **BIT/Segment Tree** over the tour interval enables fast updates and queries on weighted‑tree distances.
+> An edge-weight change shifts the root distance of exactly one subtree; flattening the tree with an Euler tour turns that into a range add, and a Fenwick tree over a difference array answers each root-distance query with a prefix sum in `O(log n)`.

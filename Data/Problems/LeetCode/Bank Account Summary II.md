@@ -112,7 +112,7 @@ Example 1:
 
 ---
 
-## 6. Follow‑Up Questions
+## 6. Follow-Up Questions
 
 1. How would you modify the query to return users whose balance is **between** two thresholds?
 2. How can you handle cases where a user has no transactions?

@@ -71,7 +71,7 @@ Space: O(U) where U is the number of unique card values.
 ## Follow-Up Questions
 1. How would you modify the solution to return all possible valid group sizes?
 2. What if the deck size is extremely large and cannot fit in memory?
-3. Can the algorithm be adapted for multi‑set grouping where groups may contain multiple distinct values?
+3. Can the algorithm be adapted for multi-set grouping where groups may contain multiple distinct values?
 
 ## Key Takeaway
 The problem reduces to finding the GCD of card frequencies; the GCD determines the largest uniform group size possible.

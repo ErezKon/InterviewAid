@@ -50,7 +50,7 @@ Output: 7
 
 ## 3. Approach: At-Most Subtraction — O(n) ✅
 
-The count of subarrays with maximum in `[left, right]` equals the count of subarrays with maximum ≤ `right` minus the count with maximum ≤ `left‑1`. Each "at‑most" count can be obtained with a single pass that maintains the length of the current valid window.
+The count of subarrays with maximum in `[left, right]` equals the count of subarrays with maximum ≤ `right` minus the count with maximum ≤ `left-1`. Each "at-most" count can be obtained with a single pass that maintains the length of the current valid window.
 
 ```text
 FUNCTION numSubarrayBoundedMax(nums, left, right):
@@ -73,7 +73,7 @@ FUNCTION numSubarrayBoundedMax(nums, left, right):
 
 Consider the first example `nums = [2,1,4,3]`, `left = 2`, `right = 3`.
 
-| Index | num | current (≤ right) | countAtMost(right) | current (≤ left‑1) | countAtMost(left‑1) |
+| Index | num | current (≤ right) | countAtMost(right) | current (≤ left-1) | countAtMost(left-1) |
 |-------|-----|-------------------|--------------------|--------------------|----------------------|
 | 0     | 2   | 1                 | 1                  | 0 (2 > 1)          | 0                    |
 | 1     | 1   | 2                 | 3 (=1+2)            | 1 (1 ≤ 1)          | 1 (=0+1)              |
@@ -103,4 +103,4 @@ Final result: `4 - 1 = 3` valid subarrays.
 
 ## 7. Key Takeaway
 
-> **"Exactly in range" = "at most right" - "at most left‑1".** Classic subtraction trick for bounded range problems. Running count resets on violation.
+> **"Exactly in range" = "at most right" - "at most left-1".** Classic subtraction trick for bounded range problems. Running count resets on violation.

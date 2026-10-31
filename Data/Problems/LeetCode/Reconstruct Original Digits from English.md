@@ -68,18 +68,18 @@ FUNCTION originalDigits(s):
 ## Walkthrough
 Take `s = "fviefuro"`.
 1. Count letters: f:2, v:1, i:1, e:2, u:1, r:1, o:1.
-2. Unique digits: out[4] = count['u'] = 1 (four), out[5] = count['f'] - out[4] = 2‑1 = 1 (five).
+2. Unique digits: out[4] = count['u'] = 1 (four), out[5] = count['f'] - out[4] = 2-1 = 1 (five).
 3. All other out[*] become 0.
 4. Result string: "45".
 
 ## Complexity Analysis
-- **Time:** O(n) where n is the length of the input string (counting) plus O(1) for fixed‑size operations.
+- **Time:** O(n) where n is the length of the input string (counting) plus O(1) for fixed-size operations.
 - **Space:** O(1) extra space for the fixed-size count map and output array.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the algorithm change if the input could contain uppercase letters?
 2. Can you extend the method to handle a different language’s digit words?
 3. What is the impact on complexity if the digit words are not guaranteed to be unique in their letters?
 
 ## Key Takeaway
-Counting letters and leveraging uniquely identifying characters enables a linear‑time reconstruction of the original digits.
+Counting letters and leveraging uniquely identifying characters enables a linear-time reconstruction of the original digits.

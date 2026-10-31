@@ -79,8 +79,8 @@ FUNCTION createCounter(init):
 
 ## Follow-Up Questions
 - How would you extend this design to support a `set(value)` operation?
-- Can you make the counter thread‑safe for concurrent accesses?
+- Can you make the counter thread-safe for concurrent accesses?
 - How would you implement the same functionality without closures (e.g., using a class)?
 
 ## Key Takeaway
-A closure provides a simple way to encapsulate mutable state and expose controlled operations with constant‑time performance.
+A closure provides a simple way to encapsulate mutable state and expose controlled operations with constant-time performance.

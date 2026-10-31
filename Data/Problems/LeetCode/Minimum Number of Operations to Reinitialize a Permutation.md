@@ -51,9 +51,9 @@ Output: 4
 ```
 
 ## Approach
-The operation defines a deterministic mapping of indices. Observing the pattern reveals that each index follows a cycle whose length is the order of 2 modulo `n‑1`. The number of operations needed is the smallest `k` such that `2^k ≡ 1 (mod n‑1)`.
+The operation defines a deterministic mapping of indices. Observing the pattern reveals that each index follows a cycle whose length is the order of 2 modulo `n-1`. The number of operations needed is the smallest `k` such that `2^k ≡ 1 (mod n-1)`.
 
-1. Set `mod ← n‑1` and `k ← 0`.
+1. Set `mod ← n-1` and `k ← 0`.
 2. Initialize `pow ← 1`.
 3. While `pow != 1` or `k == 0`:
    - `pow ← (pow * 2) mod mod`.
@@ -62,22 +62,22 @@ The operation defines a deterministic mapping of indices. Observing the pattern 
 The loop runs at most `mod` times because the multiplicative order divides `φ(mod)`.
 
 ## Walkthrough
-| Step | pow (2^step mod n‑1) | k |
+| Step | pow (2^step mod n-1) | k |
 |------|----------------------|---|
 | 0 | 1 | 0 |
-| 1 | 2 mod (n‑1) | 1 |
-| 2 | 4 mod (n‑1) | 2 |
+| 1 | 2 mod (n-1) | 1 |
+| 2 | 4 mod (n-1) | 2 |
 | … | … | … |
 When `pow` returns to 1, `k` is the answer.
 
 ## Complexity Analysis
-- **Time:** O(n) in the worst case, but typically O(log n) because the order of 2 grows slowly.
+- **Time:** O(n) in the worst case, but typically O(log n) because the order of 2 grows slowly.
 - **Space:** O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if the permutation size `n` could be odd?
-2. Can you compute the answer without iterating, using number‑theoretic formulas for the multiplicative order?
+2. Can you compute the answer without iterating, using number-theoretic formulas for the multiplicative order?
 3. What is the total number of distinct permutations reachable from the identity under this operation?
 
 ## Key Takeaway
-The reinitialization count equals the multiplicative order of 2 modulo `n‑1`; iteratively multiplying by 2 until reaching 1 yields the minimal operations.
+The reinitialization count equals the multiplicative order of 2 modulo `n-1`; iteratively multiplying by 2 until reaching 1 yields the minimal operations.

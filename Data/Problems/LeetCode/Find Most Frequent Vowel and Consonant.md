@@ -63,7 +63,7 @@ Maximum vowel count = 2, maximum consonant count = 3, sum = 5.
 ## Follow-Up Questions
 - How would you modify the solution to handle uppercase letters and Unicode?
 - Can you return the actual characters that achieve the maximum frequencies?
-- What if you need the sum of top‑k frequent vowels and consonants?
+- What if you need the sum of top-k frequent vowels and consonants?
 
 ## Key Takeaway
 A single pass with separate frequency counters for vowels and consonants yields the required sum efficiently.

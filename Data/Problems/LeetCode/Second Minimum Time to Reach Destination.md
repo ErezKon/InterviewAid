@@ -117,7 +117,7 @@ Example 2:
 | 3 | 1 | 6 | Red (wait 2) | Return to 1
 | 4 | 3 | 11 | Green | Travel via 1→3→5, second shortest path
 
-The BFS explores both earliest and second‑earliest arrivals, applying the waiting logic at each node, ultimately yielding the second minimum time.
+The BFS explores both earliest and second-earliest arrivals, applying the waiting logic at each node, ultimately yielding the second minimum time.
 
 ---
 

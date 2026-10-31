@@ -127,4 +127,4 @@ Take `nums = [1,2,3,4]`, `k = 2`.
 
 ## 8. Key Takeaway
 
-> **Transform the bitwise condition into a simple sum of popcounts.** Sorting and binary search then turn the problem into a classic two‑sum count.
+> **Transform the bitwise condition into a simple sum of popcounts.** Sorting and binary search then turn the problem into a classic two-sum count.

@@ -52,8 +52,8 @@ At time 30, one of the two pigs must die, and the poisonous bucket is the one it
 ```
 
 ## Approach
-**Algorithm:** Information theory / base‑`(rounds+1)` encoding
-**Key Insight:** In `R = minutesToTest / minutesToDie` rounds, each pig can produce `R+1` distinct states (dies in round 1…R or survives). With `p` pigs we can encode `(R+1)^p` bucket outcomes. Find the smallest `p` such that `(R+1)^p >= buckets`.
+**Algorithm:** Information theory / base-`(rounds+1)` encoding
+**Key Insight:** In `R = minutesToTest / minutesToDie` rounds, each pig can produce `R+1` distinct states (dies in round 1…R or survives). With `p` pigs we can encode `(R+1)^p` bucket outcomes. Find the smallest `p` such that `(R+1)^p >= buckets`.
 
 ```text
 FUNCTION poorPigs(buckets, minutesToDie, minutesToTest):
@@ -73,10 +73,10 @@ For `buckets=1000, minutesToDie=15, minutesToTest=60`:
 Thus 5 pigs suffice.
 
 ## Complexity Analysis
-- **Time:** O(log buckets) – each iteration multiplies `states` until the condition is met.
+- **Time:** O(log buckets) – each iteration multiplies `states` until the condition is met.
 - **Space:** O(1).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would the solution change if pigs could be reused within a round (partial testing)?
 2. What if the test time is not an exact multiple of `minutesToDie`?
 3. Can you extend the approach to minimize total testing time given a fixed number of pigs?

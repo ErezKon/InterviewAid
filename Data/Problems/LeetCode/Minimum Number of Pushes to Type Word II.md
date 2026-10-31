@@ -95,4 +95,4 @@ For `word = "hello"` the calculation mirrors the I version: total presses = 28.
 3. Extend to include a fixed cost per key change.
 
 ## Key Takeaway
-Even with the “next‑key” constraint, the optimal strategy is to type characters in order, counting each character’s offset within its eight‑letter key.
+Even with the “next-key” constraint, the optimal strategy is to type characters in order, counting each character’s offset within its eight-letter key.

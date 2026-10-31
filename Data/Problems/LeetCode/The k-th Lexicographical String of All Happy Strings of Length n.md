@@ -27,7 +27,7 @@ Return *the kth string* of this list or return an **empty string** if there are 
 Example 1:
   Input: n = 1, k = 3
   Output: "c"
-  Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
+  Explanation: The list ["a", "b", "c"] contains all happy strings of length 1. The third string is "c".
 ```
 ```
 Example 2:
@@ -44,7 +44,7 @@ Example 3:
 ```
 
 ## Approach
-The total number of happy strings of length `n` is `3 * 2^(n‑1)`. We can construct the answer directly by deciding each character from left to right, skipping whole blocks of strings when `k` is larger than the block size.
+The total number of happy strings of length `n` is `3 * 2^(n-1)`. We can construct the answer directly by deciding each character from left to right, skipping whole blocks of strings when `k` is larger than the block size.
 
 ```text
 FUNCTION getHappyString(n, k):
@@ -80,10 +80,10 @@ Result: `cab`
 - **Time:** O(n) – we iterate once over the `n` positions.
 - **Space:** O(n) – to store the resulting string.
 
-## Follow‑Up Questions
-1. How would you generate the `k`‑th string if the alphabet size were larger than 3?
-2. Can you adapt the method to return the `k`‑th string in *reverse* lexicographic order?
+## Follow-Up Questions
+1. How would you generate the `k`-th string if the alphabet size were larger than 3?
+2. Can you adapt the method to return the `k`-th string in *reverse* lexicographic order?
 3. How would you enumerate all happy strings efficiently without storing them all at once?
 
 ## Key Takeaway
-By treating each character choice as a block of `2^(remaining‑1)` strings, we can directly compute the `k`‑th happy string in linear time without exhaustive enumeration.
+By treating each character choice as a block of `2^(remaining-1)` strings, we can directly compute the `k`-th happy string in linear time without exhaustive enumeration.

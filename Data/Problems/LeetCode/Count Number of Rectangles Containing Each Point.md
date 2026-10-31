@@ -28,7 +28,7 @@ The `i^th` rectangle **contains** the `j^th` point if `0 <= x_j <= l_i` and `0 <
 
 ## 2. Key Insight
 
-> Heights are small (≤ 100). Group rectangle lengths by height. For each point `(xj, yj)`, iterate over all heights `h ≥ yj` and binary search for how many rectangle lengths at that height are `≥ xj`.
+> Heights are small (≤ 100). Group rectangle lengths by height. For each point `(xj, yj)`, iterate over all heights `h ≥ yj` and binary search for how many rectangle lengths at that height are `≥ xj`.
 
 ---
 
@@ -93,24 +93,24 @@ Therefore, we return [1, 3].
 
 Take rectangles `[(2,3), (3,4)]` and points `[(1,1), (2,2)]`.
 
-1. Group lengths: height 3 → `[2]`, height 4 → `[3]`.
-2. For point `(1,1)`: iterate heights 1‑100. Relevant heights are 3 and 4.
-   - Height 3 list `[2]`: binary search for `≥1` gives index 0 → add `1`.
-   - Height 4 list `[3]`: index 0 → add `1`. Total `2`.
+1. Group lengths: height 3 → `[2]`, height 4 → `[3]`.
+2. For point `(1,1)`: iterate heights 1-100. Relevant heights are 3 and 4.
+   - Height 3 list `[2]`: binary search for `≥1` gives index 0 → add `1`.
+   - Height 4 list `[3]`: index 0 → add `1`. Total `2`.
 3. For point `(2,2)`: heights ≥2 → 3 and 4.
-   - Height 3: search `≥2` → index 0 → add `1`.
-   - Height 4: search `≥2` → index 0 → add `1`. Total `2`? Actually rectangle height 3 length 2 includes point `(2,2)` on boundary, height 4 length 3 also includes → count `2`. (Adjust example accordingly.)
+   - Height 3: search `≥2` → index 0 → add `1`.
+   - Height 4: search `≥2` → index 0 → add `1`. Total `2`? Actually rectangle height 3 length 2 includes point `(2,2)` on boundary, height 4 length 3 also includes → count `2`. (Adjust example accordingly.)
 
 ---
 
 ## 6. Complexity Analysis
 
-- **Time:** O(n log n + q × 100 × log n) – sorting rectangles once, then binary searches per point.
+- **Time:** O(n log n + q × 100 × log n) – sorting rectangles once, then binary searches per point.
 - **Space:** O(n) – storing grouped lengths.
 
 ---
 
-## 7. Follow‑Up Questions
+## 7. Follow-Up Questions
 
 - How would you adapt the solution if rectangle heights were not bounded?
 - Can you answer queries online as points arrive, using a Fenwick tree or segment tree?
@@ -119,4 +119,4 @@ Take rectangles `[(2,3), (3,4)]` and points `[(1,1), (2,2)]`.
 
 ## Key Takeaway
 
-> When one dimension is small, group by that dimension and binary‑search the other. This reduces a 2‑D range count to many 1‑D searches.
+> When one dimension is small, group by that dimension and binary-search the other. This reduces a 2-D range count to many 1-D searches.

@@ -47,8 +47,8 @@ COMMAND: sed -n '10p' <filename>
 - Time: O(n) where n is the number of lines up to the 10th (constant for this problem).
 - Space: O(1) – only the current line is held in memory.
 
-## Follow‑Up Questions
-1. How would you modify the command to print a range of lines, e.g., 5‑15?
+## Follow-Up Questions
+1. How would you modify the command to print a range of lines, e.g., 5-15?
 2. Can you achieve the same result using `awk` or `head`/`tail`?
 3. What changes are needed if the file is extremely large and you want to avoid reading the whole file?
 

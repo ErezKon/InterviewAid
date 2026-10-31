@@ -109,13 +109,13 @@ CLASS OrderManagementSystem:
 
 ## Walkthrough
 
-Consider Example 1 step‑by‑step:
+Consider Example 1 step-by-step:
 1. **placeOrder(1, BUY, 100, 10)** – added to `buyOrders` as `(-100, t1, 1, 10)`.
-2. **placeOrder(2, SELL, 95, 5)** – added to `sellOrders` as `(95, t2, 2, 5)`. `matchOrders` sees `100 ≥ 95`, trades 5 units, removes order 2, reduces order 1 quantity to 5.
-3. **placeOrder(3, SELL, 98, 7)** – inserted as `(98, t3, 3, 7)`. `matchOrders` matches remaining 5 units of order 1 with 5 of order 3, leaving order 3 with 2 units.
-4. **cancelOrder(2)** – order 2 already filled; adding to `cancelled` has no effect.
-5. **placeOrder(4, BUY, 97, 3)** – inserted as `(-97, t5, 4, 3)`. No sell order price ≤ 97, so it stays in the buy book.
-The heap structures guarantee the highest‑price buy and lowest‑price sell are always examined first, and lazy deletion keeps cancellations O(1).
+2. **placeOrder(2, SELL, 95, 5)** – added to `sellOrders` as `(95, t2, 2, 5)`. `matchOrders` sees `100 ≥ 95`, trades 5 units, removes order 2, reduces order 1 quantity to 5.
+3. **placeOrder(3, SELL, 98, 7)** – inserted as `(98, t3, 3, 7)`. `matchOrders` matches remaining 5 units of order 1 with 5 of order 3, leaving order 3 with 2 units.
+4. **cancelOrder(2)** – order 2 already filled; adding to `cancelled` has no effect.
+5. **placeOrder(4, BUY, 97, 3)** – inserted as `(-97, t5, 4, 3)`. No sell order price ≤ 97, so it stays in the buy book.
+The heap structures guarantee the highest-price buy and lowest-price sell are always examined first, and lazy deletion keeps cancellations O(1).
 
 ---
 
@@ -131,11 +131,11 @@ The heap structures guarantee the highest‑price buy and lowest‑price sell ar
 ## Follow-Up Questions
 
 1. How would you modify the design to support order types such as market orders or iceberg orders?
-2. What changes are needed to provide real‑time market depth (top‑k buy/sell prices) efficiently?
+2. What changes are needed to provide real-time market depth (top-k buy/sell prices) efficiently?
 3. How can you persist the order book to survive server restarts while maintaining the same matching semantics?
 
 ---
 
 ## Key Takeaway
 
-> **Two priority queues (max‑heap for buys, min‑heap for sells) together with lazy deletion enable O(log n) order insertion, cancellation, and price‑priority matching.**
+> **Two priority queues (max-heap for buys, min-heap for sells) together with lazy deletion enable O(log n) order insertion, cancellation, and price-priority matching.**

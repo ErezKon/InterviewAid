@@ -50,7 +50,7 @@ Example 2:
 - **Time:** O(Catalan(n/2)) – the number of full binary trees grows as the Catalan sequence.
 - **Space:** O(Catalan(n/2)) for storing all trees plus recursion stack O(n).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to return trees with node values equal to their depth?
 2. Can you generate the trees iteratively using dynamic programming?
 3. What is the impact on memory if `n` is large (e.g., 19)?

@@ -42,13 +42,13 @@ Example 3:
 ```
 
 ## Approach
-Use a variant of Dijkstra where the priority is the **maximum** of the path‑minimum so far. A max‑heap stores `(currentMin, row, col)`. For each neighbor, the new path minimum is `min(currentMin, grid[nr][nc])`. If this value improves the best known for that cell, push it onto the heap. The first time we pop the target cell, we have the optimal answer.
+Use a variant of Dijkstra where the priority is the **maximum** of the path-minimum so far. A max-heap stores `(currentMin, row, col)`. For each neighbor, the new path minimum is `min(currentMin, grid[nr][nc])`. If this value improves the best known for that cell, push it onto the heap. The first time we pop the target cell, we have the optimal answer.
 
 ```text
 FUNCTION maximumMinimumPath(grid):
     SET m ← NUMBER OF ROWS in grid
     SET n ← NUMBER OF COLUMNS in grid
-    // max‑heap: store negative for max behaviour
+    // max-heap: store negative for max behaviour
     SET heap ← PRIORITY_QUEUE containing ( -grid[0][0], 0, 0 )
     SET best ← MATRIX m×n filled with -∞
     SET best[0][0] ← grid[0][0]
@@ -83,13 +83,13 @@ For the first example grid:
 The returned minimum is `4`.
 
 ## Complexity Analysis
-- **Time:** O(m·n log(m·n)) – each cell may be pushed to the heap once.
+- **Time:** O(m·n log(m·n)) – each cell may be pushed to the heap once.
 - **Space:** O(m·n) for the `best` matrix and the heap.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you solve the problem using binary search on the answer combined with BFS?
 2. Can the algorithm be adapted for weighted edges where the weight is the cell value?
 3. What changes are needed if movement is allowed diagonally?
 
 ## Key Takeaway
-Treat the path score as a bottleneck and use a max‑heap Dijkstra variant to greedily expand the highest‑possible minimum first.
+Treat the path score as a bottleneck and use a max-heap Dijkstra variant to greedily expand the highest-possible minimum first.

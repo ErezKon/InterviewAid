@@ -124,7 +124,7 @@ All operations run in O(1) time.
 
 - How would you modify the design to support dynamic resizing when the queue becomes full?
 - Can you implement the same queue using a singly linked list with a dummy head?
-- How would you make the queue thread‑safe for concurrent producers and consumers?
+- How would you make the queue thread-safe for concurrent producers and consumers?
 
 ---
 

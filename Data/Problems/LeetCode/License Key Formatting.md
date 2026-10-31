@@ -84,7 +84,7 @@ Take `s = "5F3Z-2e-9-w"`, `k = 4`:
 
 ## 6. Follow-Up Questions
 
-* How would you handle Unicode characters or locale‑specific case conversion?
+* How would you handle Unicode characters or locale-specific case conversion?
 * Can the algorithm be adapted to format from the left instead of the right?
 * What if the dash separator needed to be a different character based on locale?
 

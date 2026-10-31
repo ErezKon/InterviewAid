@@ -9,7 +9,7 @@
 ## Problem Description
 > *Note: custom pattern collection (not an official LeetCode problem; no URL by design) — see [Odd Even Linked List](Odd%20Even%20Linked%20List.md) for the official #328 statement, examples and constraints.*
 
-Given the head of a singly‑linked list, rearrange the nodes such that all nodes at odd positions come first followed by all nodes at even positions, preserving their original relative order. The transformation must be done in‑place with O(1) extra space.
+Given the head of a singly-linked list, rearrange the nodes such that all nodes at odd positions come first followed by all nodes at even positions, preserving their original relative order. The transformation must be done in-place with O(1) extra space.
 
 ## Examples
 | Input List | Output List |
@@ -19,9 +19,9 @@ Given the head of a singly‑linked list, rearrange the nodes such that all node
 | 1→2 | 1→2 |
 
 ## Approach
-**Algorithm:** Two‑pointer (odd/even) traversal.
+**Algorithm:** Two-pointer (odd/even) traversal.
 1. Initialise `odd` to `head` and `even` to `head.next`; keep `evenHead` to later connect.
-2. While both pointers are non‑null, link `odd.next` to `even.next` (next odd node) and advance `odd`.
+2. While both pointers are non-null, link `odd.next` to `even.next` (next odd node) and advance `odd`.
 3. Link `even.next` to `odd.next` (next even node) and advance `even`.
 4. After the loop, connect the end of the odd list to `evenHead`.
 
@@ -57,7 +57,7 @@ For list `1→2→3→4→5`:
 - Time: O(n) – each node visited once.
 - Space: O(1) – only a few pointers.
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How would you modify the algorithm to group nodes by value parity instead of position?
 2. Can you perform the rearrangement recursively?
 3. What changes are needed if the list is doubly linked?

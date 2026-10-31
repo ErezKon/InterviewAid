@@ -90,7 +90,7 @@ Explanation: The startUrl links to all other pages that do not share the same ho
 ```
 
 ## Approach
-Use a thread‑safe queue for URLs to visit and a concurrent set for visited URLs. Spawn a pool of worker threads; each repeatedly dequeues a URL, fetches its outgoing links via `htmlParser.getUrls`, and enqueues any unvisited same‑host URLs.
+Use a thread-safe queue for URLs to visit and a concurrent set for visited URLs. Spawn a pool of worker threads; each repeatedly dequeues a URL, fetches its outgoing links via `htmlParser.getUrls`, and enqueues any unvisited same-host URLs.
 
 ```text
 FUNCTION crawl(startUrl, htmlParser):
@@ -124,14 +124,14 @@ FUNCTION getHostname(url):
 | … | continue until queue empty |
 
 ## Complexity Analysis
-- Time: O(V + E) where V is number of visited pages and E total links examined.
+- Time: O(V + E) where V is number of visited pages and E total links examined.
 - Space: O(V) for visited set and queue.
-- Parallelism reduces wall‑clock time proportionally to the number of threads (up to I/O limits).
+- Parallelism reduces wall-clock time proportionally to the number of threads (up to I/O limits).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 - How would you limit the depth of crawling?
-- What changes are needed to handle rate‑limiting per domain?
-- Can you design a lock‑free version of the visited set?
+- What changes are needed to handle rate-limiting per domain?
+- Can you design a lock-free version of the visited set?
 
 ## Key Takeaway
-A concurrent queue and visited set enable safe, parallel breadth‑first crawling while guaranteeing each URL is processed once.
+A concurrent queue and visited set enable safe, parallel breadth-first crawling while guaranteeing each URL is processed once.

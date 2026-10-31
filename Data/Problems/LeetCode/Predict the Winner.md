@@ -46,7 +46,7 @@ Explanation: - Player 1 first takes 1, leaving [5,233,7]. Player 2 must then cho
 
 ## Approach
 **Algorithm:** Interval Dynamic Programming (Minimax) – compute the maximum score difference the current player can achieve over the opponent for every subarray.
-**Key Insight:** For a subarray `nums[i..j]`, the optimal difference is `max(nums[i] - dp[i+1][j], nums[j] - dp[i][j-1])`. If the final difference `dp[0][n-1]` is non‑negative, the first player can at least tie.
+**Key Insight:** For a subarray `nums[i..j]`, the optimal difference is `max(nums[i] - dp[i+1][j], nums[j] - dp[i][j-1])`. If the final difference `dp[0][n-1]` is non-negative, the first player can at least tie.
 
 ```text
 FUNCTION predictTheWinner(nums):
@@ -81,10 +81,10 @@ Final dp[0][2] = -2 < 0 → first player loses → `false`.
 - **Time:** O(n²) – filling the DP table for all subarray lengths.
 - **Space:** O(n²) – the DP matrix (can be reduced to O(n) with rolling arrays).
 
-## Follow‑Up Questions
+## Follow-Up Questions
 1. How can the space usage be reduced to O(n) while preserving the same time complexity?
 2. What changes are needed if the players can also remove a middle element (any index) on their turn?
 3. How would you adapt the solution for a circular array where the ends are adjacent?
 
 ## Key Takeaway
-Interval DP captures the optimal score difference for each subarray; a non‑negative final difference guarantees the first player can win or tie.
+Interval DP captures the optimal score difference for each subarray; a non-negative final difference guarantees the first player can win or tie.

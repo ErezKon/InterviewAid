@@ -43,7 +43,7 @@ Return an integer denoting the **minimum** total time (in hours) required to com
 
 ## 2. Key Insight
 
-> Sort locations. The optimal strategy minimizes backtracking — visit one side first, then the other. Try both orderings (left‑then‑right, right‑then‑left) and take the minimum.
+> Sort locations. The optimal strategy minimizes backtracking — visit one side first, then the other. Try both orderings (left-then-right, right-then-left) and take the minimum.
 
 ---
 
@@ -121,4 +121,4 @@ Take `locations = [2,8,4]`, `start = 5`.
 
 ## 8. Key Takeaway
 
-> **Two‑direction travel optimization** — when delivering on a line from a start point, visit the shorter side first (double it) then the longer side once. `min(2L+R, L+2R)` gives the minimal total time.
+> **Two-direction travel optimization** — when delivering on a line from a start point, visit the shorter side first (double it) then the longer side once. `min(2L+R, L+2R)` gives the minimal total time.
