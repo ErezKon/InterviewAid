@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { getDb, initSchema, closeDb } from '../db/connection.js';
 import { METADATA_DIR } from '../config/paths.js';
-import { TAXONOMY, TAXONOMY_MAP } from './taxonomy.js';
+import { TAXONOMY, TAXONOMY_MAP, DESIGN_TOPIC_IDS } from './taxonomy.js';
 import { Problem, Subject } from '../types/problem.types.js';
 import { createLogger } from '../utils/logger.js';
 
@@ -62,7 +62,7 @@ export async function buildDb(): Promise<void> {
     const insertTopic = db.prepare('INSERT OR REPLACE INTO topics (id, label, kind) VALUES (?, ?, ?)');
     for (const t of TAXONOMY) {
       const kind = t.id.startsWith('theory-') ? 'theory'
-        : ['system-design', 'oop-design', 'data-structures-design'].includes(t.id) ? 'design'
+        : DESIGN_TOPIC_IDS.includes(t.id) ? 'design'
         : 'algorithmic';
       insertTopic.run(t.id, t.label, kind);
     }

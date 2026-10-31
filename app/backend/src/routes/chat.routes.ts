@@ -15,6 +15,7 @@ import { initSse, sendSseEvent, sendSseDone, sendSseError, startHeartbeat } from
 import { HumanMessage, AIMessage } from '@langchain/core/messages';
 import { createLogger } from '../utils/logger.js';
 import { getDb } from '../db/connection.js';
+import { designProblemExists } from '../services/design.service.js';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -53,17 +54,27 @@ function toEnvelope(raw: any, fallbackText: string): ChatUiResponse {
   };
 }
 
-/** Drop hallucinated problem slugs. */
+/** Drop hallucinated problem and design slugs. */
 function validateProblemSlugs(envelope: ChatUiResponse): ChatUiResponse {
-  if (!envelope.inputs?.problems?.length) return envelope;
-  const db = getDb();
-  const stmt = db.prepare('SELECT 1 FROM problems WHERE slug = ?');
-  const kept = envelope.inputs.problems.filter((p: any) => {
-    const exists = stmt.get(p.slug);
-    if (!exists) log.warn(`Dropped unknown slug: ${p.slug}`);
-    return !!exists;
-  });
-  return { ...envelope, inputs: { ...envelope.inputs, problems: kept } };
+  let inputs = envelope.inputs;
+  if (inputs?.problems?.length) {
+    const stmt = getDb().prepare('SELECT 1 FROM problems WHERE slug = ?');
+    const kept = inputs.problems.filter((p: any) => {
+      const exists = stmt.get(p.slug);
+      if (!exists) log.warn(`Dropped unknown slug: ${p.slug}`);
+      return !!exists;
+    });
+    inputs = { ...inputs, problems: kept };
+  }
+  if (inputs?.designProblems?.length) {
+    const kept = inputs.designProblems.filter((p: any) => {
+      const exists = designProblemExists(p.slug);
+      if (!exists) log.warn(`Dropped unknown design slug: ${p.slug}`);
+      return exists;
+    });
+    inputs = { ...inputs, designProblems: kept };
+  }
+  return inputs === envelope.inputs ? envelope : { ...envelope, inputs };
 }
 
 export const chatRouter = Router();
@@ -105,6 +116,9 @@ chatRouter.post('/chat', async (req, res) => {
     let userMessage = body.message;
     if (body.context?.problemSlug) {
       userMessage += `\n\n[Context: The user is looking at problem "${body.context.problemSlug}"]`;
+    }
+    if (body.context?.designSlug) {
+      userMessage += `\n\n[Context: The user is looking at design problem "${body.context.designSlug}" (use get_design_problem)]`;
     }
     if (body.context?.subjectId) {
       userMessage += `\n\n[Context: The user is studying subject "${body.context.subjectId}"]`;

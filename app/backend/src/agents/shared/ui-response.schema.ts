@@ -11,6 +11,7 @@ export const CHAT_COMPONENTS = [
   'chat-interview-question',
   'chat-evaluation-scorecard',
   'chat-enrichment-report',
+  'chat-design-list',
 ] as const;
 
 export type ChatComponentName = (typeof CHAT_COMPONENTS)[number];
@@ -22,6 +23,16 @@ const problemCardSchema = z.object({
   topics: z.array(z.string()).describe('Topic ids'),
   companies: z.array(z.string()).describe('Company slugs'),
   why: z.string().describe('One sentence: why this problem is relevant to the user request. Must NOT name its topic, pattern, data structure or technique'),
+});
+
+const designCardSchema = z.object({
+  slug: z.string().describe('Exact design slug as returned by search_design_problems — never invent one'),
+  title: z.string().describe('Design problem title'),
+  category: z.string().describe('system-design | oop-design | frontend-system-design | ai-ml-system-design'),
+  difficulty: z.string().describe('Easy | Medium | Hard'),
+  seniority: z.string().nullable().optional().describe('junior | mid | senior | staff'),
+  companies: z.array(z.string()).describe('Company names'),
+  why: z.string().describe('One sentence: why this design problem fits the user request. Must NOT reveal the solution'),
 });
 
 const quizQuestionSchema = z.object({
@@ -64,6 +75,10 @@ const chatInputsSchema = z.object({
     topics: z.array(z.string()),
     seniority: z.string().nullable(),
   }).optional().describe('What you understood from the request; shown as chips above "chat-problem-list".'),
+
+  // --- chat-design-list ---
+  designProblems: z.array(designCardSchema).optional()
+    .describe('REQUIRED for "chat-design-list". Only slugs returned by search_design_problems/get_design_problem.'),
 
   // --- chat-quiz-cards ---
   subject: z.object({
@@ -110,6 +125,7 @@ export const chatUiResponseSchema = z.object({
     '"text" for plain conversational answers, clarifying questions, or errors. ' +
     '"chat-markdown-viewer" when returning raw source/study material as markdown. ' +
     '"chat-problem-list" when recommending coding problems. ' +
+    '"chat-design-list" when recommending design interview problems (system / low-level / frontend / AI-ML design). ' +
     '"chat-quiz-cards" when returning quiz questions. ' +
     '"chat-hint-card" when returning progressive hints. ' +
     '"chat-interview-question" when asking the next mock-interview question. ' +

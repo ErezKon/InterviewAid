@@ -1,0 +1,128 @@
+<div class="detail-page">
+  <a mat-stroked-button routerLink="/design">
+    <mat-icon>arrow_back</mat-icon> Back to Design
+  </a>
+
+  @if (detail(); as d) {
+    <mat-card class="detail-card">
+      <mat-card-header>
+        <mat-card-title>{{ d.title }}</mat-card-title>
+        <mat-card-subtitle>
+          <span class="category">{{ d.categoryLabel }}</span>
+          <span [class]="'difficulty-' + d.difficulty.toLowerCase()">{{ d.difficulty }}</span>
+          @if (d.seniority) {
+            <span class="meta">{{ d.seniority }}</span>
+          }
+          @if (d.timeMinutes) {
+            <span class="meta"><mat-icon inline>schedule</mat-icon> {{ d.timeMinutes }} min</span>
+          }
+          <app-topic-spoiler class="tags" [topics]="d.tags" label="Show concepts" />
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        @if (d.companies.length) {
+          <div class="companies">
+            @for (c of d.companies; track c) {
+              <span class="company-chip">{{ c }}</span>
+            }
+          </div>
+        }
+
+        <div class="practice-actions">
+          <button mat-flat-button color="primary" (click)="practice(d, 'interview')">
+            <mat-icon>record_voice_over</mat-icon> Mock interview
+          </button>
+          <button mat-stroked-button (click)="practice(d, 'coach')">
+            <mat-icon>school</mat-icon> Coach me in chat
+          </button>
+        </div>
+
+        @if (d.statementMd) {
+          <section>
+            <h3>Problem Statement</h3>
+            <app-chat-markdown-viewer [content]="d.statementMd" />
+          </section>
+        }
+
+        @if (d.clarifyingMd) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Clarifying Questions</mat-panel-title>
+              <mat-panel-description>Try listing your own first</mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-chat-markdown-viewer [content]="d.clarifyingMd" />
+          </mat-expansion-panel>
+        }
+
+        @if (d.requirementsMd) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Requirements</mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-chat-markdown-viewer [content]="d.requirementsMd" />
+          </mat-expansion-panel>
+        }
+
+        @if (!solutionRevealed()) {
+          <div class="reveal-box">
+            <mat-icon>visibility_off</mat-icon>
+            <p>Sketch your own design first, then compare it with the reference solution.</p>
+            <button mat-stroked-button (click)="solutionRevealed.set(true)">
+              <mat-icon>lock_open</mat-icon> Reveal reference solution
+            </button>
+          </div>
+        } @else {
+          @if (d.solutionMd) {
+            <section class="solution">
+              <h3>Reference Solution</h3>
+              <app-chat-markdown-viewer [content]="d.solutionMd" />
+            </section>
+          }
+          @if (d.followUpsMd) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Follow-up Questions</mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-chat-markdown-viewer [content]="d.followUpsMd" />
+            </mat-expansion-panel>
+          }
+          @if (d.mistakesMd) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Common Mistakes</mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-chat-markdown-viewer [content]="d.mistakesMd" />
+            </mat-expansion-panel>
+          }
+          @if (d.takeawaysMd) {
+            <section>
+              <h3>Key Takeaways</h3>
+              <app-chat-markdown-viewer [content]="d.takeawaysMd" />
+            </section>
+          }
+          <button mat-button (click)="solutionRevealed.set(false)">
+            <mat-icon>visibility_off</mat-icon> Hide solution
+          </button>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    @if (d.related.length) {
+      <h3 class="related-title">More {{ d.categoryLabel }} problems</h3>
+      <div class="related">
+        @for (r of d.related; track r.slug) {
+          <a mat-stroked-button [routerLink]="['/design', r.slug]">
+            {{ r.title }} <span [class]="'difficulty-' + r.difficulty.toLowerCase()">· {{ r.difficulty }}</span>
+          </a>
+        }
+      </div>
+    }
+  } @else if (store.detailError()) {
+    <p class="error">{{ store.detailError() }}</p>
+  } @else {
+    <div class="loading">
+      <mat-spinner diameter="48"></mat-spinner>
+    </div>
+  }
+</div>

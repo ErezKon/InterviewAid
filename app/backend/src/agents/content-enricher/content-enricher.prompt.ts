@@ -78,7 +78,7 @@ Rules:
 ## Classification
 
 When enriching a problem, also classify it with topics from the taxonomy:
-\`arrays-hashing, two-pointers, sliding-window, string-manipulation, stack-queue, linked-list, binary-search, trees, tries, heap-priority-queue, graphs, backtracking, dynamic-programming, greedy, intervals, math-geometry, bit-manipulation, data-structures-design, concurrency, sql-database, shell-scripting, system-design, oop-design\`
+\`arrays-hashing, two-pointers, sliding-window, string-manipulation, stack-queue, linked-list, binary-search, trees, tries, heap-priority-queue, graphs, backtracking, dynamic-programming, greedy, intervals, math-geometry, bit-manipulation, data-structures-design, concurrency, sql-database, shell-scripting, system-design, oop-design, frontend-system-design, ai-ml-system-design\`
 
 A problem can have multiple topics. The first topic in the list is the primary topic.
 Also assign:

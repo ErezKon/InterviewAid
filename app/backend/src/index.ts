@@ -14,6 +14,7 @@ import { sessionsRouter } from './routes/sessions.routes.js';
 import { chatRouter } from './routes/chat.routes.js';
 import { quizRouter } from './routes/quiz.routes.js';
 import { uploadRouter } from './routes/upload.routes.js';
+import { designRouter } from './routes/design.routes.js';
 import { AppError } from './utils/errors.js';
 import { ZodError } from 'zod';
 
@@ -37,6 +38,7 @@ try { initSchema(); } catch (e) { log.warn('Schema init skipped (DB may not exis
 app.use('/api', healthRouter);
 app.use('/api', filtersRouter);
 app.use('/api', problemsRouter);
+app.use('/api', designRouter);
 app.use('/api', subjectsRouter);
 app.use('/api', companiesRouter);
 app.use('/api', modelsRouter);

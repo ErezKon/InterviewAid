@@ -1,0 +1,85 @@
+.design-page {
+  display: flex;
+  gap: 1.5rem;
+}
+.filter-panel {
+  width: 280px;
+  flex-shrink: 0;
+}
+.filter-panel h3 { margin-top: 0; }
+.full-width { width: 100%; }
+.category-filter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.filter-label {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+.count { opacity: 0.6; }
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.results { flex: 1; min-width: 0; }
+.category-group { margin-bottom: 2rem; }
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+.group-count {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+.design-card {
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.design-card:hover {
+  box-shadow: 0 4px 20px color-mix(in srgb, currentColor 12%, transparent);
+}
+.meta {
+  margin-left: 0.75rem;
+  opacity: 0.75;
+}
+.summary {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin: 0.5rem 0;
+}
+.companies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.company-chip {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  opacity: 0.6;
+}
+.empty-state mat-icon { font-size: 48px; width: 48px; height: 48px; }
+.error-card { margin-bottom: 1rem; color: #f44336; }
+@media (max-width: 768px) {
+  .design-page { flex-direction: column; }
+  .filter-panel { width: 100%; }
+}

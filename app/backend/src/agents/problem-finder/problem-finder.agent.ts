@@ -6,6 +6,8 @@ import { createGetProblemTool } from '../shared/tools/get-problem.tool.js';
 import { createGetProblemHintTool } from '../shared/tools/get-problem-hint.tool.js';
 import { createSearchSubjectsTool } from '../shared/tools/search-subjects.tool.js';
 import { createGetSubjectTool } from '../shared/tools/get-subject.tool.js';
+import { createSearchDesignProblemsTool } from '../shared/tools/search-design-problems.tool.js';
+import { createGetDesignProblemTool } from '../shared/tools/get-design-problem.tool.js';
 import { chatUiResponseSchema } from '../shared/ui-response.schema.js';
 import { PROBLEM_FINDER_SYSTEM_PROMPT } from './problem-finder.prompt.js';
 import { createLogger } from '../../utils/logger.js';
@@ -21,6 +23,8 @@ export async function createProblemFinderAgent(modelId?: string): Promise<{ agen
     createSearchProblemsTool(),
     createGetProblemTool(),
     createGetProblemHintTool(),
+    createSearchDesignProblemsTool(),
+    createGetDesignProblemTool(),
     createSearchSubjectsTool(),
     createGetSubjectTool(),
   ];

@@ -13,6 +13,16 @@ export const routes: Routes = [
       import('./features/problems/problem-detail/problem-detail.component').then(m => m.ProblemDetailComponent),
   },
   {
+    path: 'design',
+    loadComponent: () =>
+      import('./features/design/design-list/design-list.component').then(m => m.DesignListComponent),
+  },
+  {
+    path: 'design/:slug',
+    loadComponent: () =>
+      import('./features/design/design-detail/design-detail.component').then(m => m.DesignDetailComponent),
+  },
+  {
     path: 'subjects',
     loadComponent: () =>
       import('./features/subjects/subjects-list/subjects-list.component').then(m => m.SubjectsListComponent),

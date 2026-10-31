@@ -27,6 +27,8 @@ export const TAXONOMY: TaxonomyEntry[] = [
   { id: 'shell-scripting', label: 'Shell Scripting' },
   { id: 'system-design', label: 'System Design' },
   { id: 'oop-design', label: 'OOP / Low-Level Design' },
+  { id: 'frontend-system-design', label: 'Frontend System Design' },
+  { id: 'ai-ml-system-design', label: 'AI/ML System Design' },
   { id: 'theory-ai', label: 'AI / LLM / Agents Theory' },
   { id: 'theory-ai-engineering', label: 'AI Engineering' },
   { id: 'theory-distributed-systems', label: 'Distributed Systems' },
@@ -35,6 +37,24 @@ export const TAXONOMY: TaxonomyEntry[] = [
   { id: 'theory-security', label: 'Security & Auth' },
   { id: 'theory-engineering-leadership', label: 'Engineering Practices & Leadership' },
   { id: 'theory-architecture', label: 'Architecture & Practices Theory' },
+];
+
+export const DESIGN_TOPIC_IDS = ['system-design', 'oop-design', 'data-structures-design', 'frontend-system-design', 'ai-ml-system-design'];
+
+export interface DesignCategory {
+  /** Taxonomy topic id */
+  id: string;
+  label: string;
+  /** Folder under Data/Problems/Design/ */
+  folder: string;
+}
+
+/** Categories of the design-problem bank (Data/Problems/Design/<folder>/*.md), in display order. */
+export const DESIGN_CATEGORIES: DesignCategory[] = [
+  { id: 'system-design', label: 'System Design', folder: 'System Design' },
+  { id: 'oop-design', label: 'Low-Level Design', folder: 'Low-Level Design' },
+  { id: 'frontend-system-design', label: 'Frontend System Design', folder: 'Frontend System Design' },
+  { id: 'ai-ml-system-design', label: 'AI/ML System Design', folder: 'AI-ML System Design' },
 ];
 
 export const TAXONOMY_IDS = TAXONOMY.map(t => t.id);

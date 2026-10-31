@@ -8,6 +8,7 @@ import { ChatHintCardComponent } from './components/chat-hint-card/chat-hint-car
 import { ChatInterviewQuestionComponent } from './components/chat-interview-question/chat-interview-question.component';
 import { ChatEvaluationScorecardComponent } from './components/chat-evaluation-scorecard/chat-evaluation-scorecard.component';
 import { ChatEnrichmentReportComponent } from './components/chat-enrichment-report/chat-enrichment-report.component';
+import { ChatDesignListComponent } from './components/chat-design-list/chat-design-list.component';
 
 export interface ChatComponentDef {
   component: Type<unknown>;
@@ -27,6 +28,7 @@ export const CHAT_COMPONENT_REGISTRY: Record<ChatComponentName, ChatComponentDef
   'chat-interview-question':   { component: ChatInterviewQuestionComponent,  inputKeys: ['stage', 'questionText', 'currentProblemSlug', 'hintsGiven', 'sessionProgress', 'nextAction'] },
   'chat-evaluation-scorecard': { component: ChatEvaluationScorecardComponent, inputKeys: ['evaluation'] },
   'chat-enrichment-report':    { component: ChatEnrichmentReportComponent,   inputKeys: ['enrichment'] },
+  'chat-design-list':          { component: ChatDesignListComponent,         inputKeys: ['designProblems'] },
 };
 
 export const FALLBACK_COMPONENT: ChatComponentName = 'text';

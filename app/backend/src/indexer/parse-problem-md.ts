@@ -50,12 +50,12 @@ function parseCompanies(raw: string): { slug: string; name: string }[] {
     .map(name => ({ slug: slugify(name), name }));
 }
 
-interface MdSection {
+export interface MdSection {
   heading: string;
   body: string;
 }
 
-function splitSections(content: string): MdSection[] {
+export function splitSections(content: string): MdSection[] {
   const lines = content.split('\n');
   const sections: MdSection[] = [];
   let currentHeading = '';

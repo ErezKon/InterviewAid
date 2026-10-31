@@ -15,7 +15,8 @@ export type ChatComponentName =
   | 'chat-hint-card'
   | 'chat-interview-question'
   | 'chat-evaluation-scorecard'
-  | 'chat-enrichment-report';
+  | 'chat-enrichment-report'
+  | 'chat-design-list';
 
 export interface ChatUiEnvelope {
   component: ChatComponentName;

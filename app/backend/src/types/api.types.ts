@@ -66,6 +66,19 @@ export const subjectsQuerySchema = z.object({
 
 export type SubjectsQuery = z.infer<typeof subjectsQuerySchema>;
 
+export const designQuerySchema = z.object({
+  q: z.string().optional(),
+  categories: optionalCsvArray,
+  difficulties: optionalCsvArray,
+  seniority: z.string().optional(),
+  companies: optionalCsvArray,
+  tags: optionalCsvArray,
+  page: z.coerce.number().int().min(1).default(1),
+  pageSize: z.coerce.number().int().min(1).max(100).default(100),
+});
+
+export type DesignQueryParams = z.infer<typeof designQuerySchema>;
+
 export const companiesQuerySchema = z.object({
   q: z.string().optional(),
   limit: z.coerce.number().int().min(1).max(200).default(50),
@@ -93,6 +106,7 @@ export const chatBodySchema = z.object({
   context: z.object({
     subjectId: z.string().optional(),
     problemSlug: z.string().optional(),
+    designSlug: z.string().optional(),
     filters: z.record(z.string(), z.unknown()).optional(),
   }).optional(),
 });

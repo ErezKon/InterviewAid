@@ -51,7 +51,7 @@ These rules apply to every task in this folder and take precedence over everythi
 # Backend type-check (from app/backend/) — there is no compiled build
 npx tsc --noEmit --skipLibCheck
 
-# Backend tests (from app/backend/) — node:test via tsx, 7 files / 100 tests, no LLM or network calls
+# Backend tests (from app/backend/) — node:test via tsx, 9 files / 121 tests, no LLM or network calls
 npm test
 
 # Frontend production build (from app/frontend/)
@@ -91,7 +91,8 @@ Frontend unit tests (`cd frontend && npm test`, Karma + Chrome) are not a reliab
 | Model registry | `backend/src/config/models.ts` |
 | Content / data paths | `backend/src/config/paths.ts` |
 | DB connection + schema | `backend/src/db/connection.ts` + `backend/src/db/schema.sql` |
-| Topic taxonomy | `backend/src/indexer/taxonomy.ts` |
+| Topic taxonomy + design categories | `backend/src/indexer/taxonomy.ts` (`TAXONOMY`, `DESIGN_CATEGORIES`, `DESIGN_TOPIC_IDS`) |
+| Design problem bank (parser / service / routes) | `backend/src/indexer/parse-design-md.ts`, `backend/src/services/design.service.ts`, `backend/src/routes/design.routes.ts` |
 | Indexer CLI | `backend/src/indexer/run-index.ts` |
 | Content-enricher CLI | `backend/src/agents/content-enricher/run-enricher-loop.ts` |
 | UI envelope types (frontend) | `frontend/src/app/core/models/chat.model.ts` |
@@ -108,6 +109,7 @@ Frontend unit tests (`cd frontend && npm test`, Karma + Chrome) are not a reliab
 A two-package project with a **Node/TypeScript backend** and an **Angular 19 frontend** for interview preparation. The indexer parses the LeetCode problem markdown files (3,415 at the last parse) and the theory/study-material markdown of the surrounding Interview repo, classifies them with an LLM, and loads them into SQLite. The app then provides:
 
 - Problem browsing/search with metadata filtering (company, topic, difficulty, seniority, patterns, interview value, full-text)
+- A **Design** section: 60 design interview problems (system design / HLD, low-level OOP design, frontend system design, AI/ML system design) read straight from markdown files, browsable by category / difficulty / seniority, with the reference solution hidden until revealed, and "Mock interview" / "Coach me in chat" buttons
 - Subject/theory browsing with markdown rendering and Mermaid diagrams
 - Streaming AI chat with five GenUI agent modes (free chat, find problems, mock interview, subject quiz, content enrichment) plus an `auto` router
 - Generative UI: the LLM chooses which Angular component renders each response
@@ -125,6 +127,9 @@ The content itself lives **outside** `app/`, under `CONTENT_ROOT` (the Interview
 │   │                                        #   **LeetCode:** <url>, **Companies:** a, b, then "## <Section>" blocks
 │   ├── INDEX.md                             # Mapping file — skipped by the enricher
 │   └── audit_report.md                      # Default audit report location for the enricher (when present)
+├── Data/Problems/Design/<Category>/*.md     # Design problems — folders: "System Design", "Low-Level Design",
+│   │                                        #   "Frontend System Design", "AI-ML System Design" (see Design Problem Bank)
+│   └── README.md                            # Generated index of the design bank — skipped by the parser
 ├── Data/Material/<Main>/[<Sub>/]*.md        # Theory material (nested or flat layout)
 └── LeetCode/
     ├── problems_data.json                   # External metadata merged at parse time (difficulty, acceptance, URL, company frequencies)
@@ -168,7 +173,7 @@ app/
 │       ├── config/
 │       │   ├── env.ts                    # Zod-validated environment (exits the process on invalid env)
 │       │   ├── models.ts                 # LLM model registry, provider detection, ModelDef interface
-│       │   └── paths.ts                  # Content paths (CONTENT_ROOT-relative) + DATA_DIR/METADATA_DIR (source-relative)
+│       │   └── paths.ts                  # Content paths (CONTENT_ROOT-relative, incl. DESIGN_DIR) + DATA_DIR/METADATA_DIR (source-relative)
 │       ├── db/
 │       │   ├── connection.ts             # Singleton better-sqlite3, WAL + foreign_keys pragmas, initSchema(), chat migration
 │       │   ├── schema.sql                # CREATE TABLE / INDEX IF NOT EXISTS (no FTS tables)
@@ -177,6 +182,7 @@ app/
 │       │   ├── chat.routes.ts            # POST /chat — mode detection, agent selection, SSE/JSON, envelope validation
 │       │   ├── upload.routes.ts          # POST /upload — Multer (memory, .md, 5 MB, 20 files); JSON or SSE (agentic)
 │       │   ├── problems.routes.ts        # GET /problems, /problems/random, /problems/:slug, /problems/:slug/solution
+│       │   ├── design.routes.ts          # GET /design, /design/categories, /design/random, /design/:slug
 │       │   ├── subjects.routes.ts        # GET /subjects, /subjects/:id
 │       │   ├── filters.routes.ts         # GET /filters (companies, difficulties, topics, seniority; 60 s in-memory cache)
 │       │   ├── companies.routes.ts       # GET /companies (typeahead: q, limit)
@@ -188,6 +194,7 @@ app/
 │       │   └── upload.test.ts            # Upload tests (temp CONTENT_ROOT + temp DB)
 │       ├── services/
 │       │   ├── problem.service.ts        # Search, filter, paginate, detail, solution, random (+ problem.service.test.ts)
+│       │   ├── design.service.ts         # File-backed design bank: load (fingerprint cache), query, detail, categories, random (+ design.service.test.ts)
 │       │   ├── subject.service.ts        # Search, filter, paginate, detail
 │       │   ├── session.service.ts        # Chat threads, messages, interview sessions (SQLite CRUD)
 │       │   ├── quiz.service.ts           # Quiz stats, questions, regeneration
@@ -199,7 +206,7 @@ app/
 │       │   ├── shared/
 │       │   │   ├── ui-response.schema.ts # chatUiResponseSchema (Zod) — THE contract
 │       │   │   ├── ui-response.prompt.ts # UI_RESPONSE_PROMPT — component-logic instructions
-│       │   │   └── tools/                # 6 shared tools (+ tools.test.ts) — see Agent System
+│       │   │   └── tools/                # 8 shared tools (+ tools.test.ts; design tools tested in design.service.test.ts) — see Agent System
 │       │   ├── free-chat/                # Tutoring/study-partner agent
 │       │   ├── problem-finder/           # Problem search + recommendations agent (+ unused legacy *.schema.ts)
 │       │   ├── mock-interview/           # Stateful interview simulation agent (+ unused legacy *.schema.ts)
@@ -211,14 +218,16 @@ app/
 │       │   ├── run-index.ts              # CLI entry: --stage=parse|classify|build|questions|all, --force, --model=<id>
 │       │   ├── parse-problem-md.ts       # Problem markdown parser (+ parse-problem-md.test.ts)
 │       │   ├── parse-theory-md.ts        # Theory material scanner (+ parse-theory-md.test.ts)
+│       │   ├── parse-design-md.ts        # Design problem parser + listDesignFiles (+ parse-design-md.test.ts = quality gate over the real bank)
 │       │   ├── classify-with-llm.ts      # Batched structured-output classification (problems + subjects)
 │       │   ├── build-db.ts               # SQLite + FTS5 build, filters.json
 │       │   ├── generate-questions.ts     # Quiz question generation stage
-│       │   └── taxonomy.ts               # TAXONOMY (31 topic ids), DIFFICULTIES, SENIORITY
+│       │   └── taxonomy.ts               # TAXONOMY (33 topic ids), DESIGN_CATEGORIES, DESIGN_TOPIC_IDS, DIFFICULTIES, SENIORITY
 │       ├── types/
 │       │   ├── api.types.ts              # Zod schemas for request bodies/query params + response interfaces
 │       │   ├── chat.types.ts             # ChatThread, ChatMessage, InterviewSession interfaces
-│       │   └── problem.types.ts          # Problem, Subject, ParseReport (+ deprecated aliases)
+│       │   ├── problem.types.ts          # Problem, Subject, ParseReport (+ deprecated aliases)
+│       │   └── design.types.ts           # DesignProblem, DesignProblemListItem, DesignProblemDetail, DesignCategorySummary
 │       └── utils/
 │           ├── logger.ts                 # createLogger(tag) — colored timestamped logging
 │           ├── errors.ts                 # AppError, NotFoundError, ValidationError
@@ -243,21 +252,22 @@ app/
             ├── app.routes.ts             # Lazy-loaded routes for all feature pages
             ├── app.component.*           # Shell: toolbar, nav links, theme toggle, router-outlet (spec is stale scaffold)
             ├── core/
-            │   ├── api/                  # chat, problems, subjects, filters, models, threads, quiz, upload API services
-            │   ├── models/               # chat, filter, problem, quiz, subject interfaces
+            │   ├── api/                  # chat, problems, design, subjects, filters, models, threads, quiz, upload API services
+            │   ├── models/               # chat, design, filter, problem, quiz, subject interfaces
             │   ├── services/
             │   │   ├── markdown.service.ts  # marked + highlight.js rendering, mermaid blocks
             │   │   └── theme.service.ts     # Dark/light toggle, localStorage persistence
             │   └── directives/
             │       └── mermaid.directive.ts # [appMermaid] — renders Mermaid blocks after innerHTML
-            ├── state/                    # NgRx Signal Stores (chat, filters, models, problems, quiz, subjects, upload)
+            ├── state/                    # NgRx Signal Stores (chat, design, filters, models, problems, quiz, subjects, upload)
             ├── shared/
             │   └── topic-spoiler/        # <app-topic-spoiler [topics]> — hides problem topics until clicked (no-spoiler chip)
             └── features/
                 ├── chat/                 # chat-page, chat-component-host, component-registry.ts, chat-markdown-viewer,
                 │                         #   chat-quiz-cards, components/ (text, problem-list, hint-card,
-                │                         #   interview-question, evaluation-scorecard, enrichment-report)
+                │                         #   interview-question, evaluation-scorecard, enrichment-report, design-list)
                 ├── problems/             # problems-list + problem-detail
+                ├── design/               # design-list + design-detail
                 ├── subjects/             # subjects-list + subject-detail
                 ├── quiz/                 # quiz-page
                 └── upload/               # upload-page (manual + agentic)
@@ -437,6 +447,7 @@ Key exports:
 | Service | Responsibility |
 |---|---|
 | `problem.service` | `queryProblems()`: dynamic SQL with FTS `MATCH`, difficulty / seniority / acceptance range / min interview value / has-solution filters, topic / company / pattern joins (`matchMode` any\|all), `excludeSlugs`, `randomize`, sort, pagination, then hydration of topics, patterns and companies. `getProblemBySlug()`: adds `rawMarkdown` (read from the file under `CONTENT_ROOT`) and 5 `relatedSlugs` (same primary topic, closest interview value). `getProblemSolution()`, `getRandomProblem()` |
+| `design.service` | **File-backed, no DB.** `loadDesignProblems()` lists `DESIGN_DIR` recursively (`listDesignFiles`), builds a fingerprint of `path:mtime:size` and re-parses only when it changes (in-memory cache; new/edited files show up without restart or re-index); duplicate slugs get `-2`, `-3`…; sorted by `DESIGN_CATEGORIES` order → difficulty → title. `queryDesignProblems()` (categories by id or label, difficulties, seniority, companies = case-insensitive substring, tags, `excludeSlugs`, `randomize`, pagination default 100; `q` = word-prefix match per token with every token required, weighted over title 6 / tags 4 / category + aliases 3 / companies 2 / statement 1.5 / rest 0.5, sorted by score). List items never contain markdown bodies. `getDesignProblemBySlug()` adds `rawMarkdown` + up to 5 `related` (same category, closest difficulty); `NotFoundError` for unknown slugs. Also `getDesignCategories()`, `getRandomDesignProblem()`, `designProblemExists()` |
 | `subject.service` | `querySubjects()` (FTS, topics, `sourceFile`, `mainSubject`, pagination; ordered by main subject, sub subject, title), `getSubjectById()` |
 | `session.service` | Chat thread CRUD, message persistence (`payload_json`), recent-history window, interview-session upsert/lookup |
 | `quiz.service` | Quiz stats grouped by `mainSubject`, questions by subject ids (shuffle/limit), per-subject regeneration (replaces rows in a transaction) |
@@ -457,20 +468,20 @@ Key exports:
 
 ### Chat Route (`routes/chat.routes.ts`)
 
-This is the most complex route. Request body (`chatBodySchema`): `{ message, modelId?, threadId?, mode? = 'auto', stream? = true, context?: { subjectId?, problemSlug?, filters? } }`.
+This is the most complex route. Request body (`chatBodySchema`): `{ message, modelId?, threadId?, mode? = 'auto', stream? = true, context?: { subjectId?, problemSlug?, designSlug?, filters? } }`.
 
 1. Validate the body with `chatBodySchema` (Zod)
 2. `detectMode(message, mode)` — resolves `auto` to a specific mode via regex
 3. Get or create the thread (persists in SQLite; title = first 60 chars of the message; model falls back to `'gpt-oss-120b'`)
 4. Persist the user message
 5. Replay recent history (last 12 messages, which already include the message just persisted) as LangChain `HumanMessage`/`AIMessage`
-6. Enrich the message with context (problem slug, subject ID, filters) and append it as a new `HumanMessage`
+6. Enrich the message with context (problem slug, design slug, subject ID, filters) and append it as a new `HumanMessage`
 7. Create the agent for the resolved mode (`free-chat`, `mock-interview`, `subject-quiz`, `content-enricher`; anything else → problem-finder)
 8. `recursionLimit`: 800 for `content-enricher`, 50 for all other agents
 9. **Stream path** (SSE): stream the agent, emit `meta` → (`step` / `token` / `tool`)* → `result` → `done` (or `error`); heartbeat every 15 s; stops when the client disconnects
 10. **Non-stream path**: iterates the same stream and returns `{ data: { threadId, modelId, agent, ui } }`
 11. `toEnvelope()` — 3-tier validation: `safeParse(structured)` → `extractJson(rawText)` → `text` fallback
-12. `validateProblemSlugs()` — drops hallucinated slugs from `inputs.problems` by checking the DB
+12. `validateProblemSlugs()` — drops hallucinated slugs from `inputs.problems` (checked against the DB) and `inputs.designProblems` (checked with `designProblemExists()`)
 13. Persist the assistant message (`content` = envelope message, `payload_json` = full envelope)
 14. Mock interview (stream path only): upsert `interview_sessions` from the envelope (`stage`, `sessionProgress.step`, `interpretedFilters` → target company/role, `problems` → `plan_json`; status `completed` when `nextAction === 'end_interview'`, else `active`)
 15. `DEBUG_RUNS=true` → `saveDebugDump()` writes `input.json` + `output.txt` to `backend/data/runs/<agent>-<timestamp>/`
@@ -514,10 +525,11 @@ Manual upload behavior (`upload.service.ts`):
 - HTTP client with Fetch backend
 - Async animations
 
-**`app.component.ts`** — Toolbar with nav links (Problems, Subjects, Quiz, Chat, Upload) and a dark/light toggle. On init: applies the theme, loads filter options, loads the model list.
+**`app.component.ts`** — Toolbar with nav links (Problems, Design, Subjects, Quiz, Chat, Upload) and a dark/light toggle. On init: applies the theme, loads filter options, loads the model list.
 
 **`app.routes.ts`** — All feature pages are lazy-loaded via `loadComponent`; `''` and unknown paths redirect to `/problems`. Route params:
 - `/problems/:slug` → `ProblemDetailComponent.slug`
+- `/design/:slug` → `DesignDetailComponent.slug`
 - `/subjects/:id` → `SubjectDetailComponent.id`
 - `/chat/:threadId` → `ChatPageComponent.threadId`
 
@@ -531,6 +543,7 @@ All root-provided. Standard REST APIs use `HttpClient`; streaming APIs (chat, ag
 |---|---|---|
 | `ChatApi` | `sendStream(body, onEvent, signal?)`, `sendSync(body)` | `POST /api/chat`; events dispatched in `NgZone.run`; resolves on `done`/`error`/abort |
 | `ProblemsApi` | `query(filters)`, `getBySlug(slug)`, `getSolution(slug)`, `getRandom(filters)` | `/api/problems`, `/api/problems/:slug`, `/api/problems/:slug/solution`, `/api/problems/random`; omits null/empty params |
+| `DesignApi` | `query(filters)`, `categories()`, `getBySlug(slug)`, `getRandom(filters)` | `/api/design`, `/api/design/categories`, `/api/design/:slug`, `/api/design/random`; same param serialization |
 | `SubjectsApi` | `query(filters)`, `getById(id)` | `/api/subjects`, `/api/subjects/:id`; same param serialization |
 | `FiltersApi` | `load()` | `GET /api/filters` → `FiltersData` |
 | `ModelsApi` | `load()` | `GET /api/models` → `{ models, defaultModelId }` |
@@ -552,6 +565,7 @@ Defined but currently not used by any component: `ChatApi.sendSync`, `ProblemsAp
 | `chat.model.ts` | `ChatThread`, `ChatComponentName`, `ChatUiEnvelope`, `ChatMessage`, `ModelInfo`, `ChatMode`, `SseEvent` |
 | `filter.model.ts` | `CompanyOption`, `TopicOption`, `FiltersData`, `SelectedFilters` |
 | `problem.model.ts` | `ProblemListItem`, `ProblemDetail`, `ProblemSolution` |
+| `design.model.ts` | `DesignListItem`, `DesignDetail`, `DesignCategory`, `DesignFilters`, `DESIGN_CATEGORY_ICONS`, `DESIGN_CATEGORY_LABELS` |
 | `quiz.model.ts` | `QuizQuestion`, `QuizSubjectInfo`, `QuizStatsGroup` |
 | `subject.model.ts` | `SubjectListItem`, `SubjectDetail` |
 
@@ -576,6 +590,7 @@ All stores are `{ providedIn: 'root' }`, use `signalStore` + `withState` + `with
 | `FiltersStore` | companies, topics, difficulties, seniority (options), selected, loading, error, loaded | Persists `selected` to `localStorage('filters.selected')`. Computed `queryParams`, `hasActiveFilters`, selected counts |
 | `ModelsStore` | models, defaultModelId, selectedModelId, loaded | Persists selection to `localStorage('selectedModelId')`. Default: `'gpt-oss-120b'` |
 | `ProblemsStore` | items, total, page, pageSize, sort, order, status, error, detailCache | Caches problem details by slug |
+| `DesignStore` | items, total, categories, filters (q, categories, difficulties, seniority), status, error, detailCache, detailError | Persists `filters` to `localStorage('design.filters')`; computed `groups` (items grouped by category in category order) and `hasActiveFilters`; loads up to 100 items (no paginator); caches details by slug |
 | `QuizStore` | stats, selectedSubjectIds, questions, currentIndex, revealed, selectedOptionIndex, answers, status, error | Full quiz lifecycle: idle → loading → active → complete. Local scoring (a multiple-choice answer is correct when `expectedAnswer` contains the option text); `retryQuiz()` reshuffles |
 | `SubjectsStore` | items, total, page, pageSize, status, error, currentDetail | No detail caching (unlike problems) |
 | `UploadStore` | files, type, title, agentic, mainSubject, subSubject, classification, subClassification, difficulty, status, progress, result, error | Sync (`HttpClient`) or SSE (agentic) uploads, `AbortController` cancellation, falls back to `success` if the `result` event is missed |
@@ -586,6 +601,8 @@ All stores are `{ providedIn: 'root' }`, use `signalStore` + `withState` + `with
 |---|---|---|---|
 | `/problems` | `ProblemsListComponent` | ProblemsStore, FiltersStore | Effect watches `filtersStore.queryParams()` to auto-reload; paginator; topics hidden behind `TopicSpoilerComponent` |
 | `/problems/:slug` | `ProblemDetailComponent` | ProblemsStore | Route-bound `slug` input; renders the DB sections (description, examples, solution, complexity, follow-ups, takeaway) with `ChatMarkdownViewerComponent`; topics hidden behind `TopicSpoilerComponent` |
+| `/design` | `DesignListComponent` | DesignStore | Filter panel (search, category checkboxes with counts, difficulty, seniority, "Random problem"); results grouped by category, each sorted by difficulty; an effect reloads whenever `filters` change |
+| `/design/:slug` | `DesignDetailComponent` | DesignStore, ChatStore, ModelsStore | Statement, Clarifying Questions + Requirements (expansion panels), tags behind `TopicSpoilerComponent` ("Show concepts"); the reference solution, follow-ups, common mistakes and takeaways stay hidden until "Reveal reference solution" (reset on navigation). "Mock interview" / "Coach me in chat" start a new thread (`mock-interview` / `free-chat` mode) with `context.designSlug` and navigate to `/chat`; related problems at the bottom |
 | `/subjects` | `SubjectsListComponent` | SubjectsStore | Groups items by `mainSubject`; paginator |
 | `/subjects/:id` | `SubjectDetailComponent` | SubjectsStore | Uses `ChatMarkdownViewerComponent` |
 | `/quiz` | `QuizPageComponent` | QuizStore | Subject selection grouped by main subject (only subjects with questions), question answering, scoring |
@@ -661,6 +678,7 @@ The registry (`component-registry.ts`) maps component names to Angular component
 | `chat-interview-question` | `ChatInterviewQuestionComponent` | `stage`, `questionText`, `currentProblemSlug`, `hintsGiven`, `sessionProgress`, `nextAction` |
 | `chat-evaluation-scorecard` | `ChatEvaluationScorecardComponent` | `evaluation` |
 | `chat-enrichment-report` | `ChatEnrichmentReportComponent` | `enrichment` |
+| `chat-design-list` | `ChatDesignListComponent` | `designProblems` |
 
 ### Envelope Validation (3-tier)
 
@@ -670,7 +688,7 @@ In `chat.routes.ts → toEnvelope()`:
 2. `extractJson(rawText)` → `safeParse` — extract JSON from markdown fences
 3. Fallback: `{ component: 'text', message: rawText, inputs: {}, followUpSuggestions: [] }`
 
-Then `validateProblemSlugs()` drops any problem slugs not found in the DB.
+Then `validateProblemSlugs()` drops any problem slugs not found in the DB and any design slugs not in the design bank.
 
 ### No-Spoiler Rule for Problem Topics
 
@@ -717,6 +735,8 @@ Provider-specific behavior:
 | `search-problems.tool.ts` | `search_problems` | `query`, `companies`, `difficulties`, `topics`, `patterns`, `seniority`, `matchMode`, `minInterviewValue`, `limit` (default 10, max 25), `randomize`, `excludeSlugs` (all optional) | Wraps `queryProblems()`; returns compact cards `{ slug, title, difficulty, primaryTopic, oneLiner, topCompanies }` (no solution body). `randomize` → random order; `excludeSlugs` for "another/different" requests |
 | `get-problem.tool.ts` | `get_problem` | `slug`, optional `include` (description, examples, solution, complexity, followUps) | Default: description + examples. Solution excluded unless explicitly requested. Top 10 company names |
 | `get-problem-hint.tool.ts` | `get_problem_hint` | `slug`, `hintLevel` (1-3) | Returns internal context plus a `[SYSTEM — do NOT include …]` instruction block. Level 1: restate + observations (no pattern names). Level 2: pattern + data structure (≤500 chars of complexity notes). Level 3: step outline (≤1,500 chars of solution + complexity). Never full code |
+| `search-design-problems.tool.ts` | `search_design_problems` | `query`, `categories` (enum of design category ids), `difficulties`, `seniority` (junior/mid/senior/staff), `companies` (plain names), `limit` (default 10, max 25), `randomize`, `excludeSlugs` (all optional) | Wraps `queryDesignProblems()`; returns `{ count, total, designProblems: [{ slug, title, category, difficulty, seniority, timeMinutes, summary, topCompanies }] }` (no solution) |
+| `get-design-problem.tool.ts` | `get_design_problem` | `slug`, optional `include` (statement, requirements, solution, followUps, mistakes, takeaways, full) | Default: statement + clarifying questions + requirements. Always returns metadata, `sections` and `related`. `solution` is truncated at the last `##` boundary before 16,000 chars; `full` = raw markdown |
 | `search-subjects.tool.ts` | `search_subjects` | `query` (required), optional `topics`, `limit` (default 10, max 25) | Returns subject metadata (id, title, sourceFile, main/sub subject, primaryTopic, keyConcepts, wordCount) |
 | `get-subject.tool.ts` | `get_subject` | `id`, optional `section`, optional `maxChars` (default 12000) | Section extraction by heading match (exact → contains → reverse-contains, numbering stripped). Truncates at the last `##` boundary. Always returns `sections` (all headings) plus `sectionExtracted` / `matchedSection` |
 
@@ -729,9 +749,9 @@ Each agent directory contains:
 
 | Agent | Mode | Tools | Components Used | recursionLimit |
 |---|---|---|---|---|
-| **Free Chat** | `free-chat` (frontend default) | All 6 shared tools | `text`, `chat-hint-card`, `chat-markdown-viewer`, `chat-problem-list` | 50 |
-| **Problem Finder** | `find-problems` (fallback for `auto`) | All 6 shared tools | `chat-problem-list`, `chat-markdown-viewer`, `chat-hint-card`, `text` | 50 |
-| **Mock Interview** | `mock-interview` | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint` | `chat-interview-question`, `chat-evaluation-scorecard`, `chat-hint-card`, `text` | 50 |
+| **Free Chat** | `free-chat` (frontend default) | All 8 shared tools | `text`, `chat-hint-card`, `chat-markdown-viewer`, `chat-problem-list`, `chat-design-list` | 50 |
+| **Problem Finder** | `find-problems` (fallback for `auto`) | All 8 shared tools | `chat-problem-list`, `chat-design-list`, `chat-markdown-viewer`, `chat-hint-card`, `text` | 50 |
+| **Mock Interview** | `mock-interview` | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint`, `search_design_problems`, `get_design_problem` | `chat-interview-question`, `chat-evaluation-scorecard`, `chat-hint-card`, `text` | 50 |
 | **Subject Quiz** | `subject-quiz` | `search_subjects`, `get_subject` | `chat-quiz-cards`, `chat-markdown-viewer`, `text` | 50 |
 | **Content Enricher** | `content-enricher` | 5 enricher-specific tools | `chat-enrichment-report`, `text` | 800 (chat) / 200 (CLI loop) |
 | **Content Uploader** | _(internal, `POST /api/upload` with `agentic=true`)_ | `classify_content`, `split_material`, `save_uploaded_files` | _(none — no `responseFormat`, SSE progress)_ | 50 |
@@ -744,6 +764,7 @@ Tutoring/study partner mode — the default mode in the UI. Key prompt behaviors
 - Step-by-step breakdowns with WHY explanations, pattern recognition, edge cases, complexity
 - Never volunteer full solutions unless explicitly asked
 - Random problems → `search_problems` with `randomize: true`; "another/different" → `excludeSlugs` + `randomize: true`; recommendations always via tools and always as `chat-problem-list`
+- Design questions (rule 11) → `search_design_problems` + `get_design_problem`; coaches from requirements to deep dives, fetches `solution` only when asked or to check a proposal; design recommendations → `chat-design-list`, a requested reference solution → `chat-markdown-viewer`
 
 ### Problem Finder Agent
 
@@ -751,6 +772,7 @@ Interview coach over the problem DB (default target of `auto`). Key prompt rules
 - Always call `list_filters` before `search_problems` for named entities; extract seniority from the prompt; map difficulty words and topic words to taxonomy ids (e.g. "DP" → `dynamic-programming`)
 - `matchMode: "any"` by default, `"all"` only when the user explicitly says "and"; relax one filter at a time on 0 results and say what was relaxed
 - Same random/another rules as Free Chat; never reveal solutions unless asked (offer hints)
+- Design requests (rule 15: system design / HLD / LLD / frontend / ML / "design X") → `search_design_problems` → `chat-design-list`; `get_design_problem` with `solution` only when explicitly asked
 - Source material requests → `search_subjects` + `get_subject` (prefer the `section` parameter for sub-topics) → `chat-markdown-viewer`; after a section extraction, suggest "Would you like to retrieve the whole file?"
 
 ### Mock Interview Agent
@@ -763,6 +785,8 @@ Stateful interview simulation with stages:
 5. `hint` → Progressive hints (on request or after 2 stalls)
 6. `feedback` → 1-5 scoring on 4 axes
 7. `next`/`end` → Advance or finish
+
+**Design rounds**: when the candidate asks for system / low-level / frontend / AI-ML design (or a design interview), the agent picks 1-2 problems via `search_design_problems` and runs the same stage names with a design flow: `ask_basic` = statement only, answers clarifying questions from the file's Clarifying Questions; `probe` = requirements → estimation → API / entities → data model → architecture; `expand` = deep dives, scale, failure modes, the file's follow-ups (category-specific focus for LLD / frontend / AI-ML); `hint` = nudges from the reference design (`chat-hint-card`, hint slug = design slug); `feedback` = `chat-evaluation-scorecard` with the axes reinterpreted (correctness = requirements coverage / soundness, complexity = scalability and trade-offs, communication, edgeCases = failure modes / bottlenecks), compared against Key Takeaways + Common Mistakes. `currentProblemSlug` holds the design slug. Mixed loops (coding + design) are allowed.
 
 One question per turn, never volunteers the solution. Interview sessions are persisted in the `interview_sessions` table (from the streamed envelope — see Chat Route step 14).
 
@@ -842,12 +866,46 @@ Agentic classification + splitting for uploads (`createContentUploaderAgent(file
 
 ### Taxonomy (`indexer/taxonomy.ts`)
 
-31 canonical topic ids (the `kind` column is assigned in `build-db.ts`):
+33 canonical topic ids (the `kind` column is assigned in `build-db.ts` from `DESIGN_TOPIC_IDS` / the `theory-` prefix):
 - **Algorithmic** (20): `arrays-hashing`, `two-pointers`, `sliding-window`, `string-manipulation`, `stack-queue`, `linked-list`, `binary-search`, `trees`, `tries`, `heap-priority-queue`, `graphs`, `backtracking`, `dynamic-programming`, `greedy`, `intervals`, `math-geometry`, `bit-manipulation`, `concurrency`, `sql-database`, `shell-scripting`
-- **Design** (3): `system-design`, `oop-design`, `data-structures-design`
+- **Design** (5): `system-design`, `oop-design`, `data-structures-design`, `frontend-system-design`, `ai-ml-system-design`
 - **Theory** (8, ids start with `theory-`): `theory-ai`, `theory-ai-engineering`, `theory-distributed-systems`, `theory-frontend`, `theory-infra-devops`, `theory-security`, `theory-engineering-leadership`, `theory-architecture`
 
-Also exports `TAXONOMY_IDS`, `TAXONOMY_MAP`, `DIFFICULTIES` (`Easy`, `Medium`, `Hard`) and `SENIORITY` (`junior`, `mid`, `senior`, `staff`, `principal`).
+`DESIGN_CATEGORIES` (`{ id, label, folder }`, in display order) defines the 4 categories of the design bank and maps them to taxonomy ids: `system-design` → "System Design", `oop-design` → "Low-Level Design", `frontend-system-design` → "Frontend System Design", `ai-ml-system-design` → "AI/ML System Design" (folder `AI-ML System Design`). The two new topic ids reach the DB `topics` table (and `GET /api/filters`) only after the next `index:build`; the design bank itself does not depend on the DB.
+
+Also exports `TAXONOMY_IDS`, `TAXONOMY_MAP`, `DESIGN_TOPIC_IDS`, `DIFFICULTIES` (`Easy`, `Medium`, `Hard`) and `SENIORITY` (`junior`, `mid`, `senior`, `staff`, `principal`).
+
+---
+
+### Design Problem Bank (not indexed)
+
+Design problems are **not** part of the indexer pipeline: no `problems.json` entry, no LLM classification, no SQLite table or FTS. `design.service.ts` reads `Data/Problems/Design/**/*.md` directly (see Services). Files named `README.md` / `INDEX.md` or starting with `_` are skipped.
+
+File format (parsed by `parse-design-md.ts`, enforced by `parse-design-md.test.ts`):
+
+```
+# <Title>                         ← slug = slugify(title), "&" → "and"
+
+**Category:** System Design       ← label/id/folder of a DESIGN_CATEGORIES entry (aliases: LLD/OOP, Frontend, AI/ML/LLM); falls back to the folder name
+**Difficulty:** 🟡 Medium         ← Easy | Medium | Hard (unparseable → Medium)
+**Seniority:** senior             ← junior | mid | senior | staff | principal
+**Companies:** Google, Amazon
+**Tags:** kebab-case, tags
+**Time:** 45 min
+
+---
+
+## Problem Statement              → statementMd (+ summary = first ≤ 220 chars)
+## Clarifying Questions           → clarifyingMd (questions with *italic assumed answers*)
+## Requirements                   → requirementsMd (### Functional / ### Non-Functional)
+## <category-specific sections>   → solutionMd (every ## section not matched by another field, concatenated in file order)
+## Trade-offs                     → part of solutionMd
+## Follow-up Questions            → followUpsMd
+## Common Mistakes                → mistakesMd
+## Key Takeaways                  → takeawaysMd
+```
+
+Category-specific solution sections used by the bank: System Design — Capacity Estimation, API Design, Data Model, High-Level Design (mermaid flowchart), Deep Dives, Scaling & Reliability; Low-Level Design — Core Entities, Class Diagram (mermaid classDiagram), Design Patterns, Key Workflows (mermaid sequenceDiagram), Implementation (pseudocode only), Concurrency & Extensibility; Frontend — Component Architecture, Data Model & State, API & Interfaces, Rendering & Performance, Accessibility & UX, Edge Cases & Resilience; AI/ML — Problem Framing, Data Pipeline, Model Design, Training & Evaluation, Serving Architecture, Monitoring & Iteration. Mermaid blocks must parse with Mermaid 11 (quote labels containing spaces or punctuation). `Data/Problems/Design/README.md` is a hand-generated index (not read by the app) — update it when adding problems.
 
 ---
 
@@ -881,12 +939,14 @@ Indexes: `idx_problems_difficulty`, `idx_problems_primary_topic`, `idx_pc_compan
 
 ### Backend (`app/backend/`, `npm test`)
 
-`tsx --test $(find src -name '*.test.ts')` — Node's built-in test runner, 7 files, 100 test cases:
+`tsx --test $(find src -name '*.test.ts')` — Node's built-in test runner, 9 files, 121 test cases:
 
 | File | Covers |
 |---|---|
 | `agents/model-factory.test.ts` | Model registry, `getModel`, `detectProvider` |
-| `agents/shared/tools/tools.test.ts` | The 6 shared tools against a seeded temp DB |
+| `agents/shared/tools/tools.test.ts` | The 6 DB-backed shared tools against a seeded temp DB |
+| `indexer/parse-design-md.test.ts` | Quality gate over the **real** design bank: every category populated, file in its category folder, valid header (difficulty marker, seniority, companies, tags), all common sections, Trade-offs, a mermaid block, balanced code fences, unique slugs |
+| `services/design.service.test.ts` | Design parser, service (filters, search, cache invalidation), `/api/design` routes and the 2 design tools against a temp `CONTENT_ROOT` fixture |
 | `indexer/parse-problem-md.test.ts` | `parseSingleFile` on real content files (`3Sum.md`, Two Sum) |
 | `indexer/parse-theory-md.test.ts` | Theory scanning of the real `Data/Material/` |
 | `routes/integration.test.ts` | REST routes (health, filters, problems, models, companies, 404) on a temp DB |
@@ -954,9 +1014,10 @@ Karma + Jasmine (Chrome), 6 spec files (`app.component`, `chat-page`, `problems-
 
 - `localStorage('theme')` — light/dark preference
 - `localStorage('filters.selected')` — problem filter selections
+- `localStorage('design.filters')` — Design page filter selections
 - `localStorage('selectedModelId')` — chosen LLM model
-- SQLite — all content, chat history, quiz questions, interview sessions
-- Files — uploaded/enriched markdown under `CONTENT_ROOT`; metadata JSON/JSONL under `backend/data/metadata/`
+- SQLite — indexed content (problems, subjects), chat history, quiz questions, interview sessions
+- Files — design problems (read directly, cached in memory), uploaded/enriched markdown under `CONTENT_ROOT`; metadata JSON/JSONL under `backend/data/metadata/`
 
 ---
 
@@ -1010,6 +1071,15 @@ Karma + Jasmine (Chrome), 6 spec files (`app.component`, `chat-page`, `problems-
 3. The frontend picks it up automatically via `GET /api/models`
 4. Changing the default model means updating every hardcoded `'gpt-oss-120b'` (see Synchronization Points)
 
+### Adding a Design Problem
+
+1. Create `Data/Problems/Design/<category folder>/<Title>.md` with the header and sections described in [Design Problem Bank](#design-problem-bank-not-indexed)
+2. Run `npx tsx --test src/indexer/parse-design-md.test.ts` (from `app/backend/`) — the content quality gate
+3. Add a row to `Data/Problems/Design/README.md`
+4. Nothing else: the running backend picks the file up on the next request (fingerprint cache), no re-index needed
+
+To add a **design category**: add a `DESIGN_CATEGORIES` entry (and a `TAXONOMY` + `DESIGN_TOPIC_IDS` entry for its id) in `taxonomy.ts`, extend the `categories` description in `search-design-problems.tool.ts` and the agent prompts, `CATEGORY_ALIASES` in `design.service.ts`, `DESIGN_CATEGORY_ICONS` / `DESIGN_CATEGORY_LABELS` in the frontend `design.model.ts`, and the expected category list in `design.service.test.ts`.
+
 ### Adding / Changing a Taxonomy Topic
 
 1. Edit `TAXONOMY` in `indexer/taxonomy.ts` (it drives the classification Zod enum, `update_problem_metadata` / `classify_content` validation and the uploader prompt)
@@ -1038,6 +1108,8 @@ Karma + Jasmine (Chrome), 6 spec files (`app.component`, `chat-page`, `problems-
 - **TLS verification is disabled** in several npm scripts, both Dockerfiles (`strict-ssl false`, backend runtime `ENV NODE_TLS_REJECT_UNAUTHORIZED=0`) and `docker-compose.yml` — a corporate-network workaround, not something to copy into new code.
 
 ### Indexer & Data
+
+- **Design problems bypass the indexer**: they never appear in `problems`, `GET /api/problems`, `search_problems` or the problem-topic filter (even though `system-design` / `oop-design` / … are taxonomy topics). Use `/api/design` and the `*_design_problem(s)` tools. A design file with a header error still loads (with defaults) — only the quality-gate test catches it.
 
 - **Parse wipes classifications**: `index:parse` regenerates `problems.json`/`subjects.json` with null/empty classification fields. Run `index:classify` next (cheap when the JSONL caches are complete) — `index:build` fails on `problems.primary_topic NOT NULL` otherwise.
 - **Metadata edits outside the JSONL are fragile**: `update_problem_metadata`, audit fixes and uploads only edit `metadata/*.json` (+ DB for uploads). Re-running parse → classify discards them: items already in `classification.jsonl` get their cached values back, and items missing from it (e.g. uploads) are re-classified by the LLM. Running only `index:build` keeps them.
@@ -1084,4 +1156,7 @@ These must stay in sync — changes to one require changes to the other:
 | Default model `gpt-oss-120b` | `config/models.ts`, `chat.routes.ts` (thread fallback), `run-enricher-loop.ts` (CLI default), `model-factory.test.ts` | `models.store.ts` initial state |
 | Taxonomy ids | `indexer/taxonomy.ts` + hardcoded list in `content-enricher.prompt.ts` + `kind` mapping in `build-db.ts` | Loaded dynamically via `GET /api/filters` |
 | Seniority values | `SENIORITY` in `taxonomy.ts`, `filters.routes.ts`, `build-db.ts` (`filters.json`) | Loaded dynamically via `GET /api/filters` |
+| Design categories | `DESIGN_CATEGORIES` in `taxonomy.ts` (+ `CATEGORY_ALIASES` in `design.service.ts`, tool enum, agent prompts) | `DESIGN_CATEGORY_ICONS` / `DESIGN_CATEGORY_LABELS` in `design.model.ts` (category list itself is loaded from `GET /api/design/categories`) |
+| Design list/detail shape | `DesignProblemListItem` / `DesignProblemDetail` in `types/design.types.ts` | `DesignListItem` / `DesignDetail` in `design.model.ts` |
+| Design cards in chat | `designCardSchema` in `ui-response.schema.ts` | `DesignCard` in `chat-design-list.component.ts` |
 | Problem-topic no-spoiler policy | "NO SPOILERS" in `ui-response.prompt.ts` + `why` description in `ui-response.schema.ts` (+ rule 9 in `problem-finder.prompt.ts`) | `TopicSpoilerComponent` used in problems list, problem detail, `ChatProblemListComponent` |

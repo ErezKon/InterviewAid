@@ -1,6 +1,6 @@
 # Interview Prep Platform
 
-A Node/TypeScript backend (REST API over an LLM-classified SQLite index of 3,415 LeetCode problems and theory markdown) and an Angular 19 frontend (Angular Material + NgRx Signal Store) offering metadata filtering, streaming **Generative UI** chat with AI agents, mock interviews, subject quizzes, and **user content uploads** (manual or LLM-agentic classification). Supports **multi-provider LLM** (OpenAI-compatible, Anthropic, Google Gemini) with automatic provider detection from model names.
+A Node/TypeScript backend (REST API over an LLM-classified SQLite index of 3,415 LeetCode problems and theory markdown, plus a file-backed bank of 60 **design interview problems**) and an Angular 19 frontend (Angular Material + NgRx Signal Store) offering metadata filtering, a **Design** section (system / low-level / frontend / AI-ML design), streaming **Generative UI** chat with AI agents, mock interviews, subject quizzes, and **user content uploads** (manual or LLM-agentic classification). Supports **multi-provider LLM** (OpenAI-compatible, Anthropic, Google Gemini) with automatic provider detection from model names.
 
 The chat system uses a **GenUI architecture**: every agent response is a structured `{ component, message, inputs, followUpSuggestions }` envelope that tells the frontend which Angular component to render, eliminating all client-side JSON heuristics.
 
@@ -142,25 +142,26 @@ app/
 │       ├── index.ts                  # Express bootstrap
 │       ├── config/                   # env (Zod), models (registry), paths
 │       ├── db/                       # SQLite connection, schema (with app_meta), queries
-│       ├── indexer/                  # parse -> classify -> build (+ questions) pipeline, taxonomy
+│       ├── indexer/                  # parse -> classify -> build (+ questions) pipeline, taxonomy (+ DESIGN_CATEGORIES), parse-design-md
 │       ├── routes/
 │       │   ├── chat.routes.ts        # SSE streaming, mode detection, envelope validation, slug guard
 │       │   ├── upload.routes.ts      # POST /upload — multipart file upload (manual + agentic)
+│       │   ├── design.routes.ts      # GET /design, /design/categories, /design/random, /design/:slug
 │       │   └── ...                   # problems, subjects, filters, companies, models, sessions, quiz, health
-│       ├── services/                 # Business logic: problem, subject, session, quiz, quiz-generator, upload, sse
+│       ├── services/                 # Business logic: problem, design (file-backed), subject, session, quiz, quiz-generator, upload, sse
 │       ├── agents/
 │       │   ├── model-factory.ts      # Multi-provider: ChatOpenAI / ChatAnthropic / ChatGoogleGenerativeAI + createResponseFormat()
 │       │   ├── shared/
 │       │   │   ├── ui-response.schema.ts   # chatUiResponseSchema (Zod) -- shared by all GenUI agents
 │       │   │   ├── ui-response.prompt.ts   # <component-logic> prompt block
-│       │   │   └── tools/                  # 6 shared tool factories
-│       │   ├── free-chat/            # createAgent + 6 tools (tutor / study partner)
-│       │   ├── problem-finder/       # createAgent + 6 tools
-│       │   ├── mock-interview/       # createAgent + 4 tools
+│       │   │   └── tools/                  # 8 shared tool factories (incl. search_design_problems, get_design_problem)
+│       │   ├── free-chat/            # createAgent + 8 tools (tutor / study partner)
+│       │   ├── problem-finder/       # createAgent + 8 tools
+│       │   ├── mock-interview/       # createAgent + 6 tools (coding + design rounds)
 │       │   ├── subject-quiz/         # createAgent + 2 tools
 │       │   ├── content-enricher/     # createAgent + 5 tools, audit-report parser, batch CLI loop
 │       │   └── content-uploader/     # createAgent + 3 tools (classify, split, save)
-│       ├── types/                    # API (Zod), chat, problem types
+│       ├── types/                    # API (Zod), chat, problem, design types
 │       └── utils/                    # logger, errors, OAuth token cache
 └── frontend/
     ├── Dockerfile
@@ -169,17 +170,18 @@ app/
         ├── styles.scss                     # Global styles + dark theme
         ├── proxy.conf.json                 # Dev proxy /api -> http://localhost:3100
         └── app/
-            ├── app.routes.ts               # Lazy routes: /problems, /subjects, /quiz, /chat, /upload
+            ├── app.routes.ts               # Lazy routes: /problems, /design, /subjects, /quiz, /chat, /upload
             ├── core/
-            │   ├── api/                    # HTTP + SSE clients (chat, problems, subjects, filters, models, threads, quiz, upload)
+            │   ├── api/                    # HTTP + SSE clients (chat, problems, design, subjects, filters, models, threads, quiz, upload)
             │   ├── models/chat.model.ts    # ChatUiEnvelope, ChatComponentName, ChatMessage, ChatMode
             │   ├── services/               # markdown.service.ts (marked + highlight.js), theme.service.ts
             │   └── directives/             # mermaid.directive.ts
-            ├── state/                      # NgRx Signal Stores (chat, filters, models, problems, quiz, subjects, upload)
+            ├── state/                      # NgRx Signal Stores (chat, design, filters, models, problems, quiz, subjects, upload)
             │   └── chat.store.ts           # SSE handler: result -> ui envelope, done -> fallback
             ├── shared/topic-spoiler/       # Click-to-reveal chip that hides problem topics (no spoilers)
             └── features/
                 ├── problems/               # Problem list (filters, pagination) + problem detail; topics hidden until clicked
+                ├── design/                 # Design list (grouped by category, filters, random) + detail (solution hidden until revealed)
                 ├── subjects/               # Subject list (grouped by main subject) + subject detail
                 ├── quiz/                   # Quiz page (pre-generated questions, local scoring)
                 ├── upload/                 # Upload page -- drag & drop .md files
@@ -192,6 +194,7 @@ app/
                     └── components/
                         ├── chat-text/                  # Empty (message rendered by chat page)
                         ├── chat-problem-list/          # Problem cards with filter chips + router links
+                        ├── chat-design-list/           # Design problem cards (category, difficulty, seniority) + router links
                         ├── chat-hint-card/             # Progressive hint reveal
                         ├── chat-interview-question/    # Stage chip + progress bar + question
                         ├── chat-evaluation-scorecard/  # 4-axis score bars + average badge
@@ -256,9 +259,9 @@ Unknown model IDs are auto-detected by name pattern (`/claude|anthropic/` -> ant
 
 | Agent | Tools | UI Components |
 |---|---|---|
-| **Free Chat** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint`, `search_subjects`, `get_subject` | `text`, `chat-hint-card`, `chat-markdown-viewer`, `chat-problem-list` |
-| **Problem Finder** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint`, `search_subjects`, `get_subject` | `chat-problem-list`, `chat-markdown-viewer`, `chat-hint-card`, `text` |
-| **Mock Interview** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint` | `chat-interview-question`, `chat-evaluation-scorecard`, `chat-hint-card`, `text` |
+| **Free Chat** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint`, `search_design_problems`, `get_design_problem`, `search_subjects`, `get_subject` | `text`, `chat-hint-card`, `chat-markdown-viewer`, `chat-problem-list`, `chat-design-list` |
+| **Problem Finder** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint`, `search_design_problems`, `get_design_problem`, `search_subjects`, `get_subject` | `chat-problem-list`, `chat-design-list`, `chat-markdown-viewer`, `chat-hint-card`, `text` |
+| **Mock Interview** | `list_filters`, `search_problems`, `get_problem`, `get_problem_hint`, `search_design_problems`, `get_design_problem` | `chat-interview-question`, `chat-evaluation-scorecard`, `chat-hint-card`, `text` |
 | **Subject Quiz** | `search_subjects`, `get_subject` | `chat-quiz-cards`, `chat-markdown-viewer`, `text` |
 | **Content Enricher** | `scan_problems`, `read_problem_file`, `enrich_problem_file`, `update_problem_metadata`, `read_audit_report` | `chat-enrichment-report`, `text` |
 | **Content Uploader** | `classify_content`, `split_material`, `save_uploaded_files` | _(SSE progress events, not GenUI)_ |
@@ -266,7 +269,7 @@ Unknown model IDs are auto-detected by name pattern (`/claude|anthropic/` -> ant
 ### Safety & Reliability
 
 - **3-tier envelope validation**: `safeParse(structuredResponse)` -> `extractJson(rawText)` -> graceful `text` fallback. Responses never throw.
-- **Slug validation**: problem slugs in `inputs.problems` are checked against the DB; hallucinated slugs are silently dropped.
+- **Slug validation**: problem slugs in `inputs.problems` are checked against the DB and design slugs in `inputs.designProblems` against the design bank; hallucinated slugs are silently dropped.
 - **Input filtering**: the host component only passes keys listed in the registry's `inputKeys`, so extra LLM-generated keys are silently ignored.
 - **Streaming resilience**: the `done` SSE event applies a fallback `text` envelope if `result` never arrived, so the bubble is never blank.
 - **Heartbeats**: SSE streams send a `: heartbeat` comment every 15 s so proxies keep long agent runs open.
@@ -279,6 +282,7 @@ Unknown model IDs are auto-detected by name pattern (`/claude|anthropic/` -> ant
 | `chat-markdown-viewer` | Raw study material, source content | `content` (markdown), `title` |
 | `chat-quiz-cards` | Generated quiz questions with interactive reveal/score | `questions`, `studyTips`, `subject` |
 | `chat-problem-list` | Recommended coding problems with filter chips (each card's topics are hidden behind a click-to-reveal "Show topic" chip) | `problems` (cards with slug, title, difficulty, topics, companies, why), `interpretedFilters` |
+| `chat-design-list` | Recommended design interview problems (system / low-level / frontend / AI-ML design) | `designProblems` (cards with slug, title, category, difficulty, seniority, companies, why) |
 | `chat-hint-card` | Progressive hints (collapsed behind reveal buttons) | `hints` (slug, level, text), `problemTitle` |
 | `chat-interview-question` | Mock interview question with progress tracking | `stage`, `questionText`, `currentProblemSlug`, `sessionProgress`, `nextAction`, `hintsGiven` |
 | `chat-evaluation-scorecard` | Candidate answer scoring (4 axes, 1-5 scale) | `evaluation` (correctness, complexity, communication, edgeCases, notes) |
@@ -296,6 +300,7 @@ Below are example questions you can ask in each mode, and what the response look
 | _"give me a hint for longest palindromic substring"_ | **`chat-hint-card`** -- progressive hints behind "Reveal Hint N" buttons. |
 | _"surprise me with a random medium problem"_ | **`chat-problem-list`** -- the agent searches with `randomize: true` (and excludes already-shown slugs when you ask for "another one"). |
 | _"explain how a trie works"_ | **`text`** or **`chat-markdown-viewer`** -- an explanation, or the matching study material. |
+| _"coach me through designing a rate limiter"_ | **`text`** -- the agent loads the design problem (`get_design_problem`) and guides you through requirements, estimation, API, data model and deep dives without dumping the reference design. |
 
 #### Find Problems (mode: `find-problems`)
 
@@ -306,6 +311,7 @@ Below are example questions you can ask in each mode, and what the response look
 | _"give me a hint for two-sum"_ | **`chat-hint-card`** -- progressive hints (level 1 = nudge, level 2 = approach, level 3 = near-solution), each hidden behind a "Reveal Hint N" button. |
 | _"what topics should I study for a senior backend role?"_ | **`text`** -- a conversational markdown response with advice and follow-up suggestion chips like "Find Hard problems on system design" or "Quiz me on distributed systems". |
 | _"medium dynamic programming problems for Amazon"_ | **`chat-problem-list`** -- filter chips (`amazon`, `Medium`, `dynamic-programming`) and matching problem cards with links. |
+| _"senior-level system design questions asked at Meta"_ / _"easy low-level design problems"_ | **`chat-design-list`** -- design problem cards with category, difficulty, seniority and company chips, each linked to `/design/:slug`. |
 
 #### Mock Interview (mode: `mock-interview`)
 
@@ -313,6 +319,7 @@ Below are example questions you can ask in each mode, and what the response look
 |---|---|
 | _"interview me for a senior backend role at Google"_ | **`chat-interview-question`** -- a stage chip (`plan`), a progress bar (1/N), and the first interview question rendered in markdown. Footer shows "Waiting for your answer...". |
 | _(after answering a question)_ _"I would use a hash map to store the complements"_ | **`chat-evaluation-scorecard`** -- four labeled progress bars (Correctness, Complexity, Communication, Edge Cases) scored 1-5, an average score badge, and qualitative feedback notes. Then a follow-up `chat-interview-question` on the next turn. |
+| _"mock system design interview for a staff role"_ | **`chat-interview-question`** -- a design round: the problem statement first, then requirements → estimation → API / data model → architecture → deep dives, one prompt per turn; scored with **`chat-evaluation-scorecard`** (axes interpreted for design). |
 | _"I'm stuck, can I get a hint?"_ | **`chat-hint-card`** -- Socratic nudge without revealing the solution, with hints hidden behind reveal buttons. |
 | _(after all problems)_ | **`chat-interview-question`** -- stage chip shows `end`, progress bar at 100%, with a summary message and "Interview complete" footer. |
 
@@ -356,7 +363,7 @@ The chat uses Server-Sent Events for real-time streaming:
 
 ### Adding a New Component
 
-To add a 9th (or Nth) component:
+To add a 10th (or Nth) component:
 
 1. **Backend**: add the component name to `CHAT_COMPONENTS` in `agents/shared/ui-response.schema.ts`, add its input fields to `chatInputsSchema`, and update the `<component-logic>` block in `agents/shared/ui-response.prompt.ts` (plus the "Component Choice" section of the relevant agent prompts).
 2. **Frontend**: add the name to `ChatComponentName` in `core/models/chat.model.ts`, create the Angular component under `features/chat/components/`, then add it to `CHAT_COMPONENT_REGISTRY` in `component-registry.ts` with its `inputKeys`.
@@ -472,12 +479,16 @@ All endpoints are under `/api` and return `{ data, meta? }` on success or `{ err
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/health` | Health check with DB stats (`status`, `dbPath`, `problemCount`, `subjectCount`, `indexedAt`) |
+| `GET` | `/api/health` | Health check with DB stats (`status`, `dbPath`, `problemCount`, `subjectCount`, `designProblemCount`, `indexedAt`) |
 | `GET` | `/api/filters` | Filter options: companies, difficulties, topics (with kind + problem counts), seniority (cached 60s) |
 | `GET` | `/api/problems` | Filtered problem list (paginated, sortable) |
 | `GET` | `/api/problems/random` | Random matching problem (`difficulties`, `topics`, `companies`; 404 if none) |
 | `GET` | `/api/problems/:slug` | Full problem detail with markdown sections, raw file markdown and related slugs |
 | `GET` | `/api/problems/:slug/solution` | Solution sections (spoiler-gated) |
+| `GET` | `/api/design` | Design problem list (`q`, `categories`, `difficulties`, `seniority`, `companies`, `tags`, `page`, `pageSize` default 100) — cards without solution bodies |
+| `GET` | `/api/design/categories` | The 4 design categories with problem counts per difficulty |
+| `GET` | `/api/design/random` | Random matching design problem (same filters; 404 if none) |
+| `GET` | `/api/design/:slug` | Design problem detail: statement, clarifying questions, requirements, solution sections, follow-ups, mistakes, takeaways, raw markdown, related problems |
 | `GET` | `/api/subjects` | Filtered subject list (`topics`, `sourceFile`, `mainSubject`, `q`, `page`, `pageSize`) |
 | `GET` | `/api/subjects/:id` | Full subject body |
 | `GET` | `/api/companies` | Company typeahead (`q`, `limit` default 50, max 200) |
@@ -502,6 +513,8 @@ All endpoints are under `/api` and return `{ data, meta? }` on success or `{ err
 
 Responses include `meta: { page, pageSize, total, totalPages, appliedFilters }`.
 
+**Design problems** are read directly from `Data/Problems/Design/<Category>/*.md` (no indexer run or LLM classification needed): the service parses the header (`**Category:**`, `**Difficulty:**`, `**Seniority:**`, `**Companies:**`, `**Tags:**`, `**Time:**`) and `##` sections, caches the result in memory and re-parses automatically when a file is added, removed or changed. `GET /api/design` filters: `categories` = `system-design`, `oop-design` (low-level design), `frontend-system-design`, `ai-ml-system-design` (or their labels); `companies` match case-insensitively by substring; `q` is a word-prefix search over title, tags, category (incl. aliases such as `lld`, `hld`, `ml`), companies, statement and body, with every word required. Results are ordered by category, then difficulty, then title (by relevance when `q` is set).
+
 ### Agentic Chat
 
 | Method | Endpoint | Description |
@@ -522,7 +535,7 @@ Responses include `meta: { page, pageSize, total, totalPages, appliedFilters }`.
 | `modelId` | `string` | No | Model id from `/api/models` (default: `gpt-oss-120b`) |
 | `threadId` | `string` | No | Continue an existing thread (a new thread is created otherwise) |
 | `stream` | `boolean` | No | `true` (default) = SSE stream; `false` = JSON `{ data: { threadId, modelId, agent, ui } }` |
-| `context` | `{ subjectId?, problemSlug?, filters? }` | No | Extra context appended to the message for the agent |
+| `context` | `{ subjectId?, problemSlug?, designSlug?, filters? }` | No | Extra context appended to the message for the agent (the Design detail page's "Mock interview" / "Coach me in chat" buttons send `designSlug`) |
 
 ### Content Upload
 
@@ -608,7 +621,7 @@ Root scripts only delegate to `backend/` and `frontend/` (`npm run <script> --pr
 ## Testing
 
 ```bash
-# Backend unit + integration tests (100 tests, no LLM or network calls)
+# Backend unit + integration tests (121 tests, no LLM or network calls)
 npm run test:backend
 
 # Full verification (from app/)
@@ -622,4 +635,5 @@ npm test --prefix frontend
 
 Notes:
 - The backend tests use temporary SQLite DBs in `/tmp` and fake API keys. Several test files default `CONTENT_ROOT` to `/home/sio/Code/Interview`, and the parser tests read real content files from it — adjust that path when running on another machine.
+- `indexer/parse-design-md.test.ts` is a quality gate over the real design bank: every file must sit in the folder of its category and have a valid header, all common sections, a Trade-offs section, a mermaid diagram and balanced code fences. Run it after adding or editing design problems.
 - `frontend/src/app/app.component.spec.ts` is still the Angular CLI scaffold (it expects a `title` property and an `<h1>` the app no longer has), so the Karma run fails to compile until that spec is updated.

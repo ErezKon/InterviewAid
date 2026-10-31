@@ -1,0 +1,30 @@
+@if (designProblems().length === 0) {
+  <p class="empty-state">No matching design problems.</p>
+} @else {
+  <div class="design-list">
+    @for (p of designProblems(); track p.slug) {
+      <mat-card class="design-card">
+        <mat-card-header>
+          <mat-card-title>
+            <a [routerLink]="'/design/' + p.slug" class="design-link">{{ p.title }}</a>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chips-row">
+            <span class="chip category-chip"><mat-icon inline>{{ icon(p.category) }}</mat-icon> {{ categoryLabel(p.category) }}</span>
+            <span class="chip" [class]="'difficulty-' + p.difficulty.toLowerCase()">{{ p.difficulty }}</span>
+            @if (p.seniority) {
+              <span class="chip">{{ p.seniority }}</span>
+            }
+            @for (c of p.companies; track c) {
+              <span class="chip">{{ c }}</span>
+            }
+          </div>
+          @if (p.why) {
+            <p class="why-text">{{ p.why }}</p>
+          }
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+}

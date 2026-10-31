@@ -10,6 +10,7 @@ export interface ChatRequest {
   context?: {
     subjectId?: string;
     problemSlug?: string;
+    designSlug?: string;
     filters?: Record<string, unknown>;
   };
 }

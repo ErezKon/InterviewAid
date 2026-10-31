@@ -1,0 +1,105 @@
+<div class="design-page">
+  <aside class="filter-panel">
+    <h3>Filters</h3>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Search</mat-label>
+      <input matInput [ngModel]="store.filters().q" (ngModelChange)="store.setQuery($event)"
+             placeholder="e.g. rate limiter, RAG, parking lot">
+    </mat-form-field>
+
+    <div class="category-filter">
+      <div class="filter-label">Category</div>
+      @for (c of store.categories(); track c.id) {
+        <mat-checkbox [checked]="store.filters().categories.includes(c.id)" (change)="store.toggleCategory(c.id)">
+          {{ c.label }} <span class="count">({{ c.count }})</span>
+        </mat-checkbox>
+      }
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Difficulty</mat-label>
+      <mat-select [ngModel]="store.filters().difficulties" (ngModelChange)="store.setDifficulties($event)" multiple>
+        @for (d of difficulties; track d) {
+          <mat-option [value]="d">{{ d }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Seniority</mat-label>
+      <mat-select [ngModel]="store.filters().seniority" (ngModelChange)="store.setSeniority($event)">
+        <mat-option [value]="null">Any</mat-option>
+        @for (s of seniorities; track s) {
+          <mat-option [value]="s">{{ s }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" (click)="randomProblem()">
+        <mat-icon>casino</mat-icon> Random problem
+      </button>
+      @if (store.hasActiveFilters()) {
+        <button mat-stroked-button (click)="store.reset()">
+          <mat-icon>clear</mat-icon> Clear filters
+        </button>
+      }
+    </div>
+  </aside>
+
+  <section class="results">
+    @if (store.status() === 'loading') {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+
+    @if (store.status() === 'error') {
+      <mat-card class="error-card">
+        <mat-card-content>Error: {{ store.error() }}</mat-card-content>
+      </mat-card>
+    }
+
+    @for (g of store.groups(); track g.id) {
+      <div class="category-group">
+        <h2 class="group-title">
+          <mat-icon>{{ icon(g.id) }}</mat-icon>
+          {{ g.label }}
+          <span class="group-count">{{ g.items.length }}</span>
+        </h2>
+        <div class="design-grid">
+          @for (p of g.items; track p.slug) {
+            <mat-card class="design-card" [routerLink]="['/design', p.slug]">
+              <mat-card-header>
+                <mat-card-title>{{ p.title }}</mat-card-title>
+                <mat-card-subtitle>
+                  <span [class]="'difficulty-' + p.difficulty.toLowerCase()">{{ p.difficulty }}</span>
+                  @if (p.seniority) {
+                    <span class="meta">{{ p.seniority }}</span>
+                  }
+                  @if (p.timeMinutes) {
+                    <span class="meta"><mat-icon inline>schedule</mat-icon> {{ p.timeMinutes }} min</span>
+                  }
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="summary">{{ p.summary }}</p>
+                <div class="companies">
+                  @for (c of p.companies.slice(0, 4); track c) {
+                    <span class="company-chip">{{ c }}</span>
+                  }
+                </div>
+              </mat-card-content>
+            </mat-card>
+          }
+        </div>
+      </div>
+    }
+
+    @if (store.status() === 'idle' && store.total() === 0) {
+      <div class="empty-state">
+        <mat-icon>search_off</mat-icon>
+        <p>No design problems match your filters.</p>
+      </div>
+    }
+  </section>
+</div>
